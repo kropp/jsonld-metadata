@@ -1,0 +1,6 @@
+.gradle
+build.gradle
+
+# Ignore user files from IDEA folder
+.idea
+*.iml
