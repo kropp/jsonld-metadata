@@ -1,5 +1,5 @@
 .gradle
-build.gradle
+build
 
 # Ignore user files from IDEA folder
 .idea
