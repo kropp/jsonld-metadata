@@ -105,11 +105,29 @@ class GeneratorSink : TripleSink {
                 append("public class ${type.name!!.capitalize()}")
                 type.parentType?.let { types.get(it)?.let { append(" extends ${it.name}") } }
                 appendln(" {")
+
+                // getters
                 for (field in type.subTypes) {
                     types.get(field)?.let {
-                        appendln("  private ${types.get(it.dataType)?.name} ${it.name};")
+                        if (it.name != null) {
+                            val name = it.name!!.capitalize()
+                            appendln("  public ${types.get(it.dataType)?.name} get$name() {")
+                            appendln("    return my$name;")
+                            appendln("  }")
+                        }
                     }
                 }
+
+                // private fields
+                for (field in type.subTypes) {
+                    types.get(field)?.let {
+                        if (it.name != null) {
+                            appendln("  private ${types.get(it.dataType)?.name} my${it.name!!.capitalize()};")
+                        }
+                    }
+                }
+
+
                 appendln("}")
 
                 file.writeText(toString())
