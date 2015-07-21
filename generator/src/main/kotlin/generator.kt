@@ -147,6 +147,10 @@ class GeneratorSink : TripleSink {
             with(StringBuilder()) {
                 appendln("package $ns;")
                 appendln()
+                if (typeName == "Thing") {
+                    appendln("import com.fasterxml.jackson.annotation.JsonProperty;")
+                    appendln()
+                }
 
                 appendln("/**")
                 type.comment?.let { appendln(" * ${it.replace("\n", "\n  * ")}") }
@@ -162,6 +166,14 @@ class GeneratorSink : TripleSink {
                     append(type.interfaces.join(", "))
                 }
                 appendln(" {")
+
+                if (typeName == "Thing") {
+                    appendln("""  @JsonProperty("@type")
+  public String getJsonLdType() {
+    return getClass().getSimpleName();
+  }
+""")
+                }
 
                 // getters
                 for (field in type.subTypes) {
