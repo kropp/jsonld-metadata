@@ -17,20 +17,26 @@ import kotlin.text.Regex
  */
 
 class Type() {
+    var isInterface: Boolean = false
     var name: String? = null
     var parentType: String? = null
     var comment: String? = null
     var source: String? = null
     var equivalent: String? = null
-    var subTypes: MutableList<String> = ArrayList()
+    val subTypes: MutableList<String> = ArrayList()
+    val interfaces: MutableList<String> = ArrayList()
     var isField = false
-    var dataType: String? = null
+    val dataTypes: MutableList<String> = ArrayList()
 }
+
+val Type.classOrInterface: String
+    get() = when(isInterface) { true -> "interface"; else -> "class" }
 
 class GeneratorSink : TripleSink {
     private var uri: String = "http://schema.org/"
 
     private val types = HashMap<String, Type>()
+    private val interfaces = HashSet<String>()
 
     override fun setProperty(key: String, value: Any): Boolean {
         println("Property: $key=$value")
@@ -38,6 +44,12 @@ class GeneratorSink : TripleSink {
     }
 
     override fun endStream() {
+        for (type in types.values()) {
+            if (type.isField && type.isInterface) {
+                type.isField = false
+                type.dataTypes.forEach { types.get(it).interfaces.add(type.name!!.capitalize()) }
+            }
+        }
     }
 
     override fun setBaseUri(baseUri: String) {
@@ -49,31 +61,56 @@ class GeneratorSink : TripleSink {
 
     override fun addNonLiteral(subj: String, pred: String, obj: String) {
         when(pred) {
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" -> types.put(subj, Type())
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" -> { if(!types.containsKey(subj)) types.put(subj, Type()) }
             "http://www.w3.org/2000/01/rdf-schema#subClassOf" -> types.get(subj).parentType = obj
             "http://schema.org/domainIncludes" -> {
                 val objType = types.get(obj)
 
                 if (objType != null) {
                     val subjType = types.get(subj)
-                    subjType.isField = true
-                    objType.subTypes.add(subj)
+//                    if (!subjType.isInterface) {
+                        subjType.isField = true
+                        objType.subTypes.add(subj)
+/*
+                    } else {
+                        objType.interfaces.add(getInterfaceName(subj))
+                    }
+*/
+                } else {
+                    val type = Type()
+                    type.interfaces.add(getInterfaceName(subj))
+                    types.put(obj, type)
                 }
             }
-            "http://schema.org/rangeIncludes" -> types.get(subj).dataType = obj
+            "http://schema.org/rangeIncludes" -> types.get(subj).dataTypes.add(obj)
             "http://purl.org/dc/terms/source" -> types.get(subj).source = obj
             "http://www.w3.org/2002/07/owl#equivalentClass" -> types.get(subj).equivalent = obj
             "http://www.w3.org/2002/07/owl#equivalentProperty" -> types.get(subj).equivalent = obj
             "http://schema.org/inverseOf" -> { /* ignore */ }
             "http://schema.org/supersededBy" -> { /* ignore */ }
-            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" -> { /* ignore */ }
+            "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" -> {
+                val interfaceType = Type()
+                interfaceType.name = getInterfaceName(obj)
+                interfaceType.isInterface = true
+                types.put(obj, interfaceType)
+
+                if (!types.containsKey(subj)) types.put(subj, Type())
+                val type = types.get(subj)
+                if (type.isField) {
+                    type.dataTypes.add(obj)
+                } else {
+                    type.interfaces.add(interfaceType.name!!)
+                }
+            }
             else -> System.err.println("Unknown non-literal: $pred")
         }
     }
 
+    private fun getInterfaceName(obj: String): String = obj.substring(uri.length()).capitalize()
+
     override fun addPlainLiteral(subj: String, pred: String, content: String, lang: String?) {
         when(pred) {
-            "http://www.w3.org/2000/01/rdf-schema#label" -> types.get(subj).name = content.trim()
+            "http://www.w3.org/2000/01/rdf-schema#label" -> types.get(subj).name = content.replace(" ", "").replace(".", "")
             "http://www.w3.org/2000/01/rdf-schema#comment" -> types.get(subj).comment = content
             else -> System.err.println("Unknown plain literal: $pred")
         }
@@ -83,24 +120,29 @@ class GeneratorSink : TripleSink {
         System.err.println("Unknown typed literal: $pred")
     }
 
-    private fun getType(name: String?): String? {
+    private fun getFieldType(names: List<String>): String? {
+        val name = names.firstOrNull { types.get(it).isInterface } ?: names.firstOrNull()
         return when(types.get(name)?.name) {
             "Text" -> "String"
             "DateTime", "Date", "Time" -> "java.util.Date"
-            else -> types.get(name)?.name
+            else -> types.get(name)?.name?.capitalize()
         }
     }
 
-    private fun shouldSkip(name: String): Boolean = arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Float", "Double").contains(name)
+    private fun shouldSkip(name: String): Boolean {
+        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Float", "Double").contains(name) ||
+                name.contains("#") || name.contains("/")
+    }
 
     fun writeJava(dir: File, ns: String) {
         val packageDir = ns.split(Regex("\\.")).fold(dir) { d, s -> File(d, s) }
         packageDir.mkdirs()
         for (type in types.values()) {
-            if (type.name.isNullOrEmpty() || type.isField || shouldSkip(type.name!!))
+            if (type.name.isNullOrEmpty() || (type.isField && !type.isInterface) || shouldSkip(type.name!!))
                 continue
 
-            val file = File(packageDir, type.name + ".java")
+            val typeName = type.name!!.capitalize()
+            val file = File(packageDir, typeName + ".java")
 
             with(StringBuilder()) {
                 appendln("package $ns;")
@@ -113,8 +155,12 @@ class GeneratorSink : TripleSink {
                 appendln(" */")
 
                 appendln()
-                append("public class ${type.name!!.capitalize()}")
+                append("public ${type.classOrInterface} $typeName")
                 type.parentType?.let { types.get(it)?.let { append(" extends ${it.name}") } }
+                if (type.interfaces.any()) {
+                    append(" implements ")
+                    append(type.interfaces.join(", "))
+                }
                 appendln(" {")
 
                 // getters
@@ -122,18 +168,25 @@ class GeneratorSink : TripleSink {
                     types.get(field)?.let {
                         if (it.name != null) {
                             val name = it.name!!.capitalize()
-                            appendln("  public ${getType(it.dataType)} get$name() {")
+                            it.comment?.let {
+                                appendln("  /**")
+                                appendln("   * $it")
+                                appendln("   */")
+                            }
+                            appendln("  public ${getFieldType(it.dataTypes)} get$name() {")
                             appendln("    return my$name;")
                             appendln("  }")
                         }
                     }
                 }
 
-                // private fields
+
+                // private constructor and fields
+                appendln("  private $typeName() {}")
                 for (field in type.subTypes) {
                     types.get(field)?.let {
                         if (it.name != null) {
-                            appendln("  private ${getType(it.dataType)} my${it.name!!.capitalize()};")
+                            appendln("  private ${getFieldType(it.dataTypes)} my${it.name!!.capitalize()};")
                         }
                     }
                 }
