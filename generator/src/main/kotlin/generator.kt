@@ -115,16 +115,37 @@ class GeneratorSink : TripleSink {
         System.err.println("Unknown typed literal: $pred")
     }
 
+    private fun getBasicTypeName(name: String?): String? {
+        return when(name) {
+            "Text", "URL" -> "String"
+            "DateTime", "Date", "Time" -> "java.util.Date"
+            else -> name?.capitalize()
+        }
+    }
+
     private fun getFieldType(field: Type): String? {
         if (field.isInterface && field.name != null)
             return field.name!!.capitalize()
 
         val name = field.dataTypes.firstOrNull { types.get(it).isInterface } ?: field.dataTypes.firstOrNull()
-        return when(types.get(name)?.name) {
-            "Text", "URL" -> "String"
-            "DateTime", "Date", "Time" -> "java.util.Date"
-            else -> types.get(name)?.name?.capitalize()
-        }
+        return getBasicTypeName(types.get(name)?.name)
+    }
+
+    private fun getEitherFieldType(field: Type): String? {
+        val names = getEitherTypes(field)
+        if (names.size() < 2)
+            return names.firstOrNull()
+        return "Either${names.size()}<${names.join(",")}>"
+    }
+
+    private fun getEitherTypes(field: Type): Collection<String> {
+        if (field.isInterface && field.name != null)
+            return listOf(field.name!!.capitalize())
+
+        if (field.dataTypes.size() < 2)
+            return listOf(getFieldType(field) ?: "")
+
+        return field.dataTypes.map { getBasicTypeName(types.get(it)?.name) }.filterNotNull().toHashSet()
     }
 
     private fun shouldSkip(name: String): Boolean {
@@ -137,33 +158,28 @@ class GeneratorSink : TripleSink {
         packageDir.mkdirs()
         generateTypes(ns, packageDir)
         generateBuilders(ns, packageDir)
-        generateTuples(ns, packageDir, types.values().filter { it.isField }.map { it.dataTypes.size() }.max()!!)
+        generateEither(ns, packageDir, types.values().filter { it.isField }.map { it.dataTypes.size() }.max()!!)
     }
 
-    private fun generateTuples(ns: String, packageDir: File, max: Int) {
+    private fun generateEither(ns: String, packageDir: File, max: Int) {
         for (i in 2..max) {
             with(StringBuilder()) {
                 appendln("/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on ${Date(System.currentTimeMillis())} */")
                 appendln()
                 appendln("package $ns;")
                 appendln()
-                append("class Tuple$i<")
+                append("class Either$i<")
                 append((1..i).map { "T$it" }.join(", "))
                 appendln("> {")
-                append("  public Tuple$i(")
-                append((1..i).map { "T$it p$it" }.join(", "))
-                appendln(") {")
+                appendln("  public Either$i() {}")
                 (1..i).forEach {
-                    appendln("    my$it = p$it;")
-                }
-                appendln("  }")
-                (1..i).forEach {
+                    appendln("  public void set$it(T$it value) { my$it = value; }")
                     appendln("  public T$it get$it() { return my$it; }")
-                    appendln("  private final T$it my$it;")
+                    appendln("  private T$it my$it;")
                 }
                 appendln("}")
 
-                File(packageDir, "Tuple$i.java").writeText(toString())
+                File(packageDir, "Either$i.java").writeText(toString())
             }
         }
     }
@@ -236,7 +252,7 @@ class GeneratorSink : TripleSink {
                 for (field in type.subTypes) {
                     types.get(field)?.let {
                         if (it.name != null && !it.isSuperseded && it.name != "hasPart") {
-                            val fieldType = getFieldType(it)
+                            val fieldType = getEitherFieldType(it)
                             val name = it.name!!.capitalize()
                             it.comment?.let {
                                 appendln("  /**")
@@ -263,19 +279,26 @@ class GeneratorSink : TripleSink {
                     appendln("    }")
                     for (field in getAllFields(type)) {
                         if (field.name != null) {
-                            val name = field.name!!.capitalize()
-                            field.comment?.let {
-                                appendln("    /**")
-                                appendln("     * $it")
-                                appendln("     */")
+                            val eitherTypes = getEitherTypes(field)
+                            eitherTypes.forEachIndexed { i, fieldType ->
+                                val name = field.name!!.capitalize()
+                                field.comment?.let {
+                                    appendln("    /**")
+                                    appendln("     * $it")
+                                    appendln("     */")
+                                }
+                                appendln("    public Builder ${name.decapitalize()}($fieldType value) {")
+                                if (eitherTypes.size() < 2) {
+                                    appendln("      ${name.decapitalize()} = value;")
+                                } else {
+                                    appendln("      ${name.decapitalize()}.set${i + 1}(value);")
+                                }
+                                appendln("      return this;")
+                                appendln("    }")
                             }
-                            appendln("    public Builder ${name.decapitalize()}(${getFieldType(field)} value) {")
-                            appendln("      ${name.decapitalize()} = value;")
-                            appendln("      return this;")
-                            appendln("    }")
                         }
                     }
-                    getAllFields(type).forEach { appendln("    private ${getFieldType(it)} ${it.name!!.decapitalize()};") }
+                    getAllFields(type).forEach { appendln("    private ${getEitherFieldType(it)} ${it.name!!.decapitalize()};") }
                     appendln("  }")
                     appendln()
                 }
@@ -283,7 +306,7 @@ class GeneratorSink : TripleSink {
                 // package-local constructor and private fields
                 if (!type.isInterface) {
                     append("  protected $typeName(")
-                    append(getAllFields(type).map { "${getFieldType(it)} ${it.name!!.decapitalize()}" }.join(", "))
+                    append(getAllFields(type).map { "${getEitherFieldType(it)} ${it.name!!.decapitalize()}" }.join(", "))
                     appendln(") {")
                     type.parentType?.let {
                         append("    super(")
@@ -302,7 +325,7 @@ class GeneratorSink : TripleSink {
                 for (field in type.subTypes) {
                     types.get(field)?.let {
                         if (it.name != null && !it.isSuperseded && it.name != "hasPart") {
-                            appendln("  private ${getFieldType(it)} my${it.name!!.capitalize()};")
+                            appendln("  private ${getEitherFieldType(it)} my${it.name!!.capitalize()};")
                         }
                     }
                 }
