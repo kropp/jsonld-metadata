@@ -223,37 +223,37 @@ class GeneratorSink : TripleSink {
 
                 // builder
                 if (!type.isInterface) {
-                    appendln("/**")
-                    appendln(" * Builder for {@see $typeName}")
-                    appendln(" */")
-                    appendln("public static final class Builder {")
-                    appendln("  public ${typeName} build() {")
-                    append("    return new ${typeName}(")
+                    appendln("  /**")
+                    appendln("   * Builder for {@see $typeName}")
+                    appendln("   */")
+                    appendln("  public static final class Builder {")
+                    appendln("    public ${typeName} build() {")
+                    append("      return new ${typeName}(")
                     append(getAllFields(type).map { it.name?.decapitalize() }.filterNotNull().join(", "))
                     appendln(");")
-                    appendln("  }")
+                    appendln("    }")
                     for (field in getAllFields(type)) {
                         if (field.name != null) {
                             val name = field.name!!.capitalize()
                             field.comment?.let {
-                                appendln("  /**")
-                                appendln("   * $it")
-                                appendln("   */")
+                                appendln("    /**")
+                                appendln("     * $it")
+                                appendln("     */")
                             }
-                            appendln("  public Builder ${name.decapitalize()}(${getFieldType(field)} value) {")
-                            appendln("    ${name.decapitalize()} = value;")
-                            appendln("    return this;")
-                            appendln("  }")
+                            appendln("    public Builder ${name.decapitalize()}(${getFieldType(field)} value) {")
+                            appendln("      ${name.decapitalize()} = value;")
+                            appendln("      return this;")
+                            appendln("    }")
                         }
                     }
-                    getAllFields(type).forEach { appendln("  private ${getFieldType(it)} ${it.name!!.decapitalize()};") }
-                    appendln("}")
+                    getAllFields(type).forEach { appendln("    private ${getFieldType(it)} ${it.name!!.decapitalize()};") }
+                    appendln("  }")
                     appendln()
                 }
 
                 // package-local constructor and private fields
                 if (!type.isInterface) {
-                    append("  $typeName(")
+                    append("  protected $typeName(")
                     append(getAllFields(type).map { "${getFieldType(it)} ${it.name!!.decapitalize()}" }.join(", "))
                     appendln(") {")
                     type.parentType?.let {
