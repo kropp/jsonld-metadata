@@ -123,14 +123,14 @@ class GeneratorSink : TripleSink {
     private fun getFieldType(names: List<String>): String? {
         val name = names.firstOrNull { types.get(it).isInterface } ?: names.firstOrNull()
         return when(types.get(name)?.name) {
-            "Text" -> "String"
+            "Text", "URL" -> "String"
             "DateTime", "Date", "Time" -> "java.util.Date"
             else -> types.get(name)?.name?.capitalize()
         }
     }
 
     private fun shouldSkip(name: String): Boolean {
-        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Float", "Double").contains(name) ||
+        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Float", "Double", "URL").contains(name) ||
                 name.contains("#") || name.contains("/")
     }
 
@@ -145,6 +145,8 @@ class GeneratorSink : TripleSink {
             val file = File(packageDir, typeName + ".java")
 
             with(StringBuilder()) {
+                appendln("/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on ${Date(System.currentTimeMillis())} */")
+                appendln()
                 appendln("package $ns;")
                 appendln()
                 if (typeName == "Thing") {
@@ -158,7 +160,6 @@ class GeneratorSink : TripleSink {
                 type.equivalent?.let { appendln(" * Equivalent class: $it") }
                 appendln(" */")
 
-                appendln()
                 append("public ${type.classOrInterface} $typeName")
                 type.parentType?.let { types.get(it)?.let { append(" extends ${it.name}") } }
                 if (type.interfaces.any()) {
@@ -194,7 +195,7 @@ class GeneratorSink : TripleSink {
 
 
                 // private constructor and fields
-                appendln("  private $typeName() {}")
+                appendln("  protected $typeName() {}")
                 for (field in type.subTypes) {
                     types.get(field)?.let {
                         if (it.name != null) {
