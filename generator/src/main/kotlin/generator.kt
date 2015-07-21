@@ -133,7 +133,7 @@ class GeneratorSink : TripleSink {
     }
 
     private fun shouldSkip(name: String): Boolean {
-        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Float", "Double", "URL").contains(name) ||
+        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Float", "Double", "URL", "True", "False", "Class").contains(name) ||
                 name.contains("#") || name.contains("/")
     }
 
