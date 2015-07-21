@@ -120,8 +120,11 @@ class GeneratorSink : TripleSink {
         System.err.println("Unknown typed literal: $pred")
     }
 
-    private fun getFieldType(names: List<String>): String? {
-        val name = names.firstOrNull { types.get(it).isInterface } ?: names.firstOrNull()
+    private fun getFieldType(field: Type): String? {
+        if (field.isInterface && field.name != null)
+            return field.name
+
+        val name = field.dataTypes.firstOrNull { types.get(it).isInterface } ?: field.dataTypes.firstOrNull()
         return when(types.get(name)?.name) {
             "Text", "URL" -> "String"
             "DateTime", "Date", "Time" -> "java.util.Date"
@@ -171,7 +174,7 @@ class GeneratorSink : TripleSink {
                                 appendln("     * $it")
                                 appendln("     */")
                             }
-                            appendln("    public ${typeName}Builder ${name.decapitalize()}(${getFieldType(it.dataTypes)} value) {")
+                            appendln("    public ${typeName}Builder ${name.decapitalize()}(${getFieldType(it)} value) {")
                             appendln("      ${name.decapitalize()} = value;")
                             appendln("      return this;")
                             appendln("    }")
@@ -181,7 +184,7 @@ class GeneratorSink : TripleSink {
                 for (field in type.subTypes) {
                     types.get(field)?.let {
                         if (it.name != null) {
-                            appendln("    private ${getFieldType(it.dataTypes)} ${it.name!!.decapitalize()};")
+                            appendln("    private ${getFieldType(it)} ${it.name!!.decapitalize()};")
                         }
                     }
                 }
@@ -241,7 +244,7 @@ class GeneratorSink : TripleSink {
                                 appendln("   * $it")
                                 appendln("   */")
                             }
-                            appendln("  public ${getFieldType(it.dataTypes)} get$name() {")
+                            appendln("  public ${getFieldType(it)} get$name() {")
                             appendln("    return my$name;")
                             appendln("  }")
                         }
@@ -251,7 +254,7 @@ class GeneratorSink : TripleSink {
                 // package-local constructor and private fields
                 if (!type.isInterface) {
                     append("  $typeName(")
-                    append(type.subTypes.map { types.get(it) }.filter { it?.name != null }.map { "${getFieldType(it.dataTypes)} ${it.name!!.decapitalize()}" }.join(", "))
+                    append(type.subTypes.map { types.get(it) }.filter { it?.name != null }.map { "${getFieldType(it)} ${it.name!!.decapitalize()}" }.join(", "))
                     appendln(") {")
                     for (field in type.subTypes) {
                         types.get(field)?.let {
@@ -265,7 +268,7 @@ class GeneratorSink : TripleSink {
                 for (field in type.subTypes) {
                     types.get(field)?.let {
                         if (it.name != null) {
-                            appendln("  private ${getFieldType(it.dataTypes)} my${it.name!!.capitalize()};")
+                            appendln("  private ${getFieldType(it)} my${it.name!!.capitalize()};")
                         }
                     }
                 }
