@@ -83,10 +83,21 @@ class GeneratorSink : TripleSink {
         System.err.println("Unknown typed literal: $pred")
     }
 
+    private fun getType(name: String?): String? {
+        return when(types.get(name)?.name) {
+            "Text" -> "String"
+            "DateTime", "Date", "Time" -> "java.util.Date"
+            else -> types.get(name)?.name
+        }
+    }
+
+    private fun shouldSkip(name: String): Boolean = arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Float", "Double").contains(name)
+
     fun writeJava(dir: File, ns: String) {
         val packageDir = ns.split(Regex("\\.")).fold(dir) { d, s -> File(d, s) }
+        packageDir.mkdirs()
         for (type in types.values()) {
-            if (type.name.isNullOrEmpty() || type.isField)
+            if (type.name.isNullOrEmpty() || type.isField || shouldSkip(type.name!!))
                 continue
 
             val file = File(packageDir, type.name + ".java")
@@ -111,7 +122,7 @@ class GeneratorSink : TripleSink {
                     types.get(field)?.let {
                         if (it.name != null) {
                             val name = it.name!!.capitalize()
-                            appendln("  public ${types.get(it.dataType)?.name} get$name() {")
+                            appendln("  public ${getType(it.dataType)} get$name() {")
                             appendln("    return my$name;")
                             appendln("  }")
                         }
@@ -122,7 +133,7 @@ class GeneratorSink : TripleSink {
                 for (field in type.subTypes) {
                     types.get(field)?.let {
                         if (it.name != null) {
-                            appendln("  private ${types.get(it.dataType)?.name} my${it.name!!.capitalize()};")
+                            appendln("  private ${getType(it.dataType)} my${it.name!!.capitalize()};")
                         }
                     }
                 }
