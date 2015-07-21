@@ -1,15 +1,14 @@
-import org.semarglproject.rdf.TurtleSerializer
+import GeneratorSink
+import Type
 import org.semarglproject.rdf.rdfa.RdfaParser
-import org.semarglproject.sink.CharOutputSink
-import org.semarglproject.sink.CharSink
-import org.semarglproject.sink.DataSink
 import org.semarglproject.sink.TripleSink
 import org.semarglproject.source.StreamProcessor
 import java.io.File
 import java.io.FileInputStream
-import java.io.InputStream
-import java.util.*
-import kotlin.properties.Delegates
+import java.util.ArrayList
+import java.util.Date
+import java.util.HashMap
+import java.util.HashSet
 import kotlin.text.Regex
 
 /**
@@ -36,7 +35,6 @@ class GeneratorSink : TripleSink {
     private var uri: String = "http://schema.org/"
 
     private val types = HashMap<String, Type>()
-    private val interfaces = HashSet<String>()
 
     override fun setProperty(key: String, value: Any): Boolean {
         println("Property: $key=$value")
@@ -68,14 +66,8 @@ class GeneratorSink : TripleSink {
 
                 if (objType != null) {
                     val subjType = types.get(subj)
-//                    if (!subjType.isInterface) {
-                        subjType.isField = true
-                        objType.subTypes.add(subj)
-/*
-                    } else {
-                        objType.interfaces.add(getInterfaceName(subj))
-                    }
-*/
+                    subjType.isField = true
+                    objType.subTypes.add(subj)
                 } else {
                     val type = Type()
                     type.interfaces.add(getInterfaceName(subj))
@@ -254,8 +246,13 @@ class GeneratorSink : TripleSink {
                 // package-local constructor and private fields
                 if (!type.isInterface) {
                     append("  $typeName(")
-                    append(type.subTypes.map { types.get(it) }.filter { it?.name != null }.map { "${getFieldType(it)} ${it.name!!.decapitalize()}" }.join(", "))
+                    append(getAllConstructorArguments(type).map { "${getFieldType(it)} ${it.name!!.decapitalize()}" }.join(", "))
                     appendln(") {")
+                    type.parentType?.let {
+                        append("    super(")
+                        append(getAllConstructorArguments(types.get(type.parentType)).map { it.name!!.decapitalize() }.join(", "))
+                        appendln(");")
+                    }
                     for (field in type.subTypes) {
                         types.get(field)?.let {
                             if (it.name != null) {
@@ -279,6 +276,14 @@ class GeneratorSink : TripleSink {
                 file.writeText(toString())
             }
         }
+    }
+
+    private fun getAllConstructorArguments(type: Type?): Iterable<Type> {
+        if (type == null) {
+            return emptyList()
+        }
+        val fieldTypes = type.subTypes.map { types.get(it) }.filter { it?.name != null }
+        return fieldTypes + getAllConstructorArguments(types.get(type.parentType))
     }
 }
 
