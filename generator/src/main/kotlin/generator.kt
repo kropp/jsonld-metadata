@@ -137,6 +137,35 @@ class GeneratorSink : TripleSink {
         packageDir.mkdirs()
         generateTypes(ns, packageDir)
         generateBuilders(ns, packageDir)
+        generateTuples(ns, packageDir, types.values().filter { it.isField }.map { it.dataTypes.size() }.max()!!)
+    }
+
+    private fun generateTuples(ns: String, packageDir: File, max: Int) {
+        for (i in 2..max) {
+            with(StringBuilder()) {
+                appendln("/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on ${Date(System.currentTimeMillis())} */")
+                appendln()
+                appendln("package $ns;")
+                appendln()
+                append("class Tuple$i<")
+                append((1..i).map { "T$it" }.join(", "))
+                appendln("> {")
+                append("  public Tuple$i(")
+                append((1..i).map { "T$it p$it" }.join(", "))
+                appendln(") {")
+                (1..i).forEach {
+                    appendln("    my$it = p$it;")
+                }
+                appendln("  }")
+                (1..i).forEach {
+                    appendln("  public T$it get$it() { return my$it; }")
+                    appendln("  private final T$it my$it;")
+                }
+                appendln("}")
+
+                File(packageDir, "Tuple$i.java").writeText(toString())
+            }
+        }
     }
 
     private fun generateBuilders(ns: String, packageDir: File) {
