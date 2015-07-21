@@ -137,6 +137,65 @@ class GeneratorSink : TripleSink {
     fun writeJava(dir: File, ns: String) {
         val packageDir = ns.split(Regex("\\.")).fold(dir) { d, s -> File(d, s) }
         packageDir.mkdirs()
+        generateTypes(ns, packageDir)
+        generateBuilders(ns, packageDir)
+    }
+
+    private fun generateBuilders(ns: String, packageDir: File) {
+        val file = File(packageDir, "SchemaOrg.java")
+        with(StringBuilder()) {
+            appendln("package $ns;")
+            appendln()
+            appendln("public class SchemaOrg {")
+
+            for (type in types.values()) {
+                if (type.name.isNullOrEmpty() || type.isField || type.isInterface || shouldSkip(type.name!!))
+                    continue
+
+                val typeName = type.name!!.capitalize()
+
+                appendln("  public static ${typeName}Builder ${typeName.decapitalize()}() { return new ${typeName}Builder(); }")
+                appendln()
+                appendln("  public static final class ${typeName}Builder {")
+                appendln("    public ${typeName} build() {")
+                append("      return new ${typeName}(")
+                append(type.subTypes.map { types.get(it)?.name?.decapitalize() }.filterNotNull().join(", "))
+                appendln(");")
+                appendln("    }")
+                for (field in type.subTypes) {
+                    types.get(field)?.let {
+                        if (it.name != null) {
+                            val name = it.name!!.capitalize()
+                            it.comment?.let {
+                                appendln("    /**")
+                                appendln("     * $it")
+                                appendln("     */")
+                            }
+                            appendln("    public ${typeName}Builder ${name.decapitalize()}(${getFieldType(it.dataTypes)} value) {")
+                            appendln("      ${name.decapitalize()} = value;")
+                            appendln("      return this;")
+                            appendln("    }")
+                        }
+                    }
+                }
+                for (field in type.subTypes) {
+                    types.get(field)?.let {
+                        if (it.name != null) {
+                            appendln("    private ${getFieldType(it.dataTypes)} ${it.name!!.decapitalize()};")
+                        }
+                    }
+                }
+                appendln("  }")
+                appendln()
+
+            }
+            appendln("}")
+
+            file.writeText(toString())
+        }
+    }
+
+    private fun generateTypes(ns: String, packageDir: File) {
         for (type in types.values()) {
             if (type.name.isNullOrEmpty() || (type.isField && !type.isInterface) || shouldSkip(type.name!!))
                 continue
@@ -149,10 +208,6 @@ class GeneratorSink : TripleSink {
                 appendln()
                 appendln("package $ns;")
                 appendln()
-                if (typeName == "Thing") {
-                    appendln("import com.fasterxml.jackson.annotation.JsonProperty;")
-                    appendln()
-                }
 
                 appendln("/**")
                 type.comment?.let { appendln(" * ${it.replace("\n", "\n  * ")}") }
@@ -169,7 +224,7 @@ class GeneratorSink : TripleSink {
                 appendln(" {")
 
                 if (typeName == "Thing") {
-                    appendln("""  @JsonProperty("@type")
+                    appendln("""  @com.fasterxml.jackson.annotation.JsonProperty("@type")
   public String getJsonLdType() {
     return getClass().getSimpleName();
   }
@@ -193,9 +248,20 @@ class GeneratorSink : TripleSink {
                     }
                 }
 
-
-                // private constructor and fields
-                appendln("  protected $typeName() {}")
+                // package-local constructor and private fields
+                if (!type.isInterface) {
+                    append("  $typeName(")
+                    append(type.subTypes.map { types.get(it) }.filter { it?.name != null }.map { "${getFieldType(it.dataTypes)} ${it.name!!.decapitalize()}" }.join(", "))
+                    appendln(") {")
+                    for (field in type.subTypes) {
+                        types.get(field)?.let {
+                            if (it.name != null) {
+                                appendln("    my${it.name!!.capitalize()} = ${it.name!!.decapitalize()};")
+                            }
+                        }
+                    }
+                    appendln("  }")
+                }
                 for (field in type.subTypes) {
                     types.get(field)?.let {
                         if (it.name != null) {
