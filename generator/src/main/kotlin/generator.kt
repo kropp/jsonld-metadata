@@ -139,6 +139,8 @@ class GeneratorSink : TripleSink {
     private fun generateBuilders(ns: String, packageDir: File) {
         val file = File(packageDir, "SchemaOrg.java")
         with(StringBuilder()) {
+            appendln("/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on ${Date(System.currentTimeMillis())} */")
+            appendln()
             appendln("package $ns;")
             appendln()
             appendln("public class SchemaOrg {")
@@ -154,32 +156,24 @@ class GeneratorSink : TripleSink {
                 appendln("  public static final class ${typeName}Builder {")
                 appendln("    public ${typeName} build() {")
                 append("      return new ${typeName}(")
-                append(type.subTypes.map { types.get(it)?.name?.decapitalize() }.filterNotNull().join(", "))
+                append(getAllFields(type).map { it.name?.decapitalize() }.filterNotNull().join(", "))
                 appendln(");")
                 appendln("    }")
-                for (field in type.subTypes) {
-                    types.get(field)?.let {
-                        if (it.name != null) {
-                            val name = it.name!!.capitalize()
-                            it.comment?.let {
-                                appendln("    /**")
-                                appendln("     * $it")
-                                appendln("     */")
-                            }
-                            appendln("    public ${typeName}Builder ${name.decapitalize()}(${getFieldType(it)} value) {")
-                            appendln("      ${name.decapitalize()} = value;")
-                            appendln("      return this;")
-                            appendln("    }")
+                for (field in getAllFields(type)) {
+                    if (field.name != null) {
+                        val name = field.name!!.capitalize()
+                        field.comment?.let {
+                            appendln("    /**")
+                            appendln("     * $it")
+                            appendln("     */")
                         }
+                        appendln("    public ${typeName}Builder ${name.decapitalize()}(${getFieldType(field)} value) {")
+                        appendln("      ${name.decapitalize()} = value;")
+                        appendln("      return this;")
+                        appendln("    }")
                     }
                 }
-                for (field in type.subTypes) {
-                    types.get(field)?.let {
-                        if (it.name != null) {
-                            appendln("    private ${getFieldType(it)} ${it.name!!.decapitalize()};")
-                        }
-                    }
-                }
+                getAllFields(type).forEach { appendln("    private ${getFieldType(it)} ${it.name!!.decapitalize()};") }
                 appendln("  }")
                 appendln()
 
@@ -246,11 +240,11 @@ class GeneratorSink : TripleSink {
                 // package-local constructor and private fields
                 if (!type.isInterface) {
                     append("  $typeName(")
-                    append(getAllConstructorArguments(type).map { "${getFieldType(it)} ${it.name!!.decapitalize()}" }.join(", "))
+                    append(getAllFields(type).map { "${getFieldType(it)} ${it.name!!.decapitalize()}" }.join(", "))
                     appendln(") {")
                     type.parentType?.let {
                         append("    super(")
-                        append(getAllConstructorArguments(types.get(type.parentType)).map { it.name!!.decapitalize() }.join(", "))
+                        append(getAllFields(types.get(type.parentType)).map { it.name!!.decapitalize() }.join(", "))
                         appendln(");")
                     }
                     for (field in type.subTypes) {
@@ -278,12 +272,12 @@ class GeneratorSink : TripleSink {
         }
     }
 
-    private fun getAllConstructorArguments(type: Type?): Iterable<Type> {
+    private fun getAllFields(type: Type?): Iterable<Type> {
         if (type == null) {
             return emptyList()
         }
         val fieldTypes = type.subTypes.map { types.get(it) }.filter { it?.name != null }
-        return fieldTypes + getAllConstructorArguments(types.get(type.parentType))
+        return fieldTypes + getAllFields(types.get(type.parentType))
     }
 }
 
