@@ -16,6 +16,7 @@ import kotlin.text.Regex
  */
 
 class Type() {
+    var isSuperseded: Boolean = false
     var isInterface: Boolean = false
     var name: String? = null
     var parentType: String? = null
@@ -67,7 +68,9 @@ class GeneratorSink : TripleSink {
                 if (objType != null) {
                     val subjType = types.get(subj)
                     subjType.isField = true
-                    objType.subTypes.add(subj)
+                    if (!objType.subTypes.contains(subj)) {
+                        objType.subTypes.add(subj)
+                    }
                 } else {
                     val type = Type()
                     type.interfaces.add(getInterfaceName(subj))
@@ -79,7 +82,7 @@ class GeneratorSink : TripleSink {
             "http://www.w3.org/2002/07/owl#equivalentClass" -> types.get(subj).equivalent = obj
             "http://www.w3.org/2002/07/owl#equivalentProperty" -> types.get(subj).equivalent = obj
             "http://schema.org/inverseOf" -> { /* ignore */ }
-            "http://schema.org/supersededBy" -> { /* ignore */ }
+            "http://schema.org/supersededBy" -> { types.get(subj).isSuperseded = true }
             "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" -> {
                 val interfaceType = Type()
                 interfaceType.name = getInterfaceName(obj)
@@ -114,7 +117,7 @@ class GeneratorSink : TripleSink {
 
     private fun getFieldType(field: Type): String? {
         if (field.isInterface && field.name != null)
-            return field.name
+            return field.name!!.capitalize()
 
         val name = field.dataTypes.firstOrNull { types.get(it).isInterface } ?: field.dataTypes.firstOrNull()
         return when(types.get(name)?.name) {
@@ -137,7 +140,7 @@ class GeneratorSink : TripleSink {
     }
 
     private fun generateBuilders(ns: String, packageDir: File) {
-        val file = File(packageDir, "SchemaOrg.java")
+        // public API
         with(StringBuilder()) {
             appendln("/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on ${Date(System.currentTimeMillis())} */")
             appendln()
@@ -151,36 +154,16 @@ class GeneratorSink : TripleSink {
 
                 val typeName = type.name!!.capitalize()
 
-                appendln("  public static ${typeName}Builder ${typeName.decapitalize()}() { return new ${typeName}Builder(); }")
-                appendln()
-                appendln("  public static final class ${typeName}Builder {")
-                appendln("    public ${typeName} build() {")
-                append("      return new ${typeName}(")
-                append(getAllFields(type).map { it.name?.decapitalize() }.filterNotNull().join(", "))
-                appendln(");")
-                appendln("    }")
-                for (field in getAllFields(type)) {
-                    if (field.name != null) {
-                        val name = field.name!!.capitalize()
-                        field.comment?.let {
-                            appendln("    /**")
-                            appendln("     * $it")
-                            appendln("     */")
-                        }
-                        appendln("    public ${typeName}Builder ${name.decapitalize()}(${getFieldType(field)} value) {")
-                        appendln("      ${name.decapitalize()} = value;")
-                        appendln("      return this;")
-                        appendln("    }")
-                    }
+                type.comment?.let {
+                    appendln("  /**")
+                    appendln("   * $it")
+                    appendln("   */")
                 }
-                getAllFields(type).forEach { appendln("    private ${getFieldType(it)} ${it.name!!.decapitalize()};") }
-                appendln("  }")
-                appendln()
-
+                appendln("  public static ${typeName}.Builder ${typeName.decapitalize()}() { return new ${typeName}.Builder(); }")
             }
             appendln("}")
 
-            file.writeText(toString())
+            File(packageDir, "SchemaOrg.java").writeText(toString())
         }
     }
 
@@ -190,7 +173,6 @@ class GeneratorSink : TripleSink {
                 continue
 
             val typeName = type.name!!.capitalize()
-            val file = File(packageDir, typeName + ".java")
 
             with(StringBuilder()) {
                 appendln("/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on ${Date(System.currentTimeMillis())} */")
@@ -206,9 +188,10 @@ class GeneratorSink : TripleSink {
 
                 append("public ${type.classOrInterface} $typeName")
                 type.parentType?.let { types.get(it)?.let { append(" extends ${it.name}") } }
-                if (type.interfaces.any()) {
+                val interfaces = type.interfaces.filter { i -> types.any { it.getValue().name == i } }
+                if (interfaces.any()) {
                     append(" implements ")
-                    append(type.interfaces.join(", "))
+                    append(interfaces.join(", "))
                 }
                 appendln(" {")
 
@@ -223,18 +206,49 @@ class GeneratorSink : TripleSink {
                 // getters
                 for (field in type.subTypes) {
                     types.get(field)?.let {
-                        if (it.name != null) {
+                        if (it.name != null && !it.isSuperseded && it.name != "hasPart") {
+                            val fieldType = getFieldType(it)
                             val name = it.name!!.capitalize()
                             it.comment?.let {
                                 appendln("  /**")
                                 appendln("   * $it")
                                 appendln("   */")
                             }
-                            appendln("  public ${getFieldType(it)} get$name() {")
+                            appendln("  public $fieldType get$name() {")
                             appendln("    return my$name;")
                             appendln("  }")
                         }
                     }
+                }
+
+                // builder
+                if (!type.isInterface) {
+                    appendln("/**")
+                    appendln(" * Builder for {@see $typeName}")
+                    appendln(" */")
+                    appendln("public static final class Builder {")
+                    appendln("  public ${typeName} build() {")
+                    append("    return new ${typeName}(")
+                    append(getAllFields(type).map { it.name?.decapitalize() }.filterNotNull().join(", "))
+                    appendln(");")
+                    appendln("  }")
+                    for (field in getAllFields(type)) {
+                        if (field.name != null) {
+                            val name = field.name!!.capitalize()
+                            field.comment?.let {
+                                appendln("  /**")
+                                appendln("   * $it")
+                                appendln("   */")
+                            }
+                            appendln("  public Builder ${name.decapitalize()}(${getFieldType(field)} value) {")
+                            appendln("    ${name.decapitalize()} = value;")
+                            appendln("    return this;")
+                            appendln("  }")
+                        }
+                    }
+                    getAllFields(type).forEach { appendln("  private ${getFieldType(it)} ${it.name!!.decapitalize()};") }
+                    appendln("}")
+                    appendln()
                 }
 
                 // package-local constructor and private fields
@@ -249,7 +263,7 @@ class GeneratorSink : TripleSink {
                     }
                     for (field in type.subTypes) {
                         types.get(field)?.let {
-                            if (it.name != null) {
+                            if (it.name != null && !it.isSuperseded && it.name != "hasPart") {
                                 appendln("    my${it.name!!.capitalize()} = ${it.name!!.decapitalize()};")
                             }
                         }
@@ -258,7 +272,7 @@ class GeneratorSink : TripleSink {
                 }
                 for (field in type.subTypes) {
                     types.get(field)?.let {
-                        if (it.name != null) {
+                        if (it.name != null && !it.isSuperseded && it.name != "hasPart") {
                             appendln("  private ${getFieldType(it)} my${it.name!!.capitalize()};")
                         }
                     }
@@ -267,7 +281,7 @@ class GeneratorSink : TripleSink {
 
                 appendln("}")
 
-                file.writeText(toString())
+                File(packageDir, typeName + ".java").writeText(toString())
             }
         }
     }
@@ -276,8 +290,9 @@ class GeneratorSink : TripleSink {
         if (type == null) {
             return emptyList()
         }
-        val fieldTypes = type.subTypes.map { types.get(it) }.filter { it?.name != null }
-        return fieldTypes + getAllFields(types.get(type.parentType))
+        val fieldTypes = type.subTypes.map { types.get(it) }.filter { it.name != null && !it.isSuperseded && it.name != "hasPart" }.toHashSet()
+        getAllFields(types.get(type.parentType)).filterNot { i -> fieldTypes.any { it.name == i.name} }.forEach { fieldTypes.add(it) }
+        return fieldTypes
     }
 }
 
