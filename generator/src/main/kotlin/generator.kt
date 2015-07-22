@@ -209,12 +209,25 @@ class GeneratorSink : TripleSink {
             appendln("package $ns;")
             appendln()
             appendln("class $eitherName {")
-            appendln("  public $eitherName() {}")
+            val filteredTypes = types.filterNot { shouldSkip(it) || it == "String" || it == "Boolean" || it == "Number" || it == "Integer" }
+            if (filteredTypes.any() && !filteredTypes.contains("Thing")) {
+                appendln("  public Thing getThing() {")
+                filteredTypes.forEach {
+                    appendln("    if (my$it != null) return my$it;")
+                }
+                appendln("    return null;")
+                appendln("  }")
+            }
             types.forEach {
-                appendln("  public void set$it($it ${getVariableName(it, "value")}) { my$it = ${getVariableName(it, "value")}; }")
+                appendln("  public void set$it($it ${getVariableName(it, "value")}) { clear(); my$it = ${getVariableName(it, "value")}; }")
                 appendln("  public $it get$it() { return my$it; }")
                 appendln("  private $it my$it;")
             }
+            appendln("  private void clear() {")
+            types.forEach {
+                appendln("    my$it = null;")
+            }
+            appendln("  }")
             appendln("}")
 
             File(packageDir, "$eitherName.java").writeText(toString())
