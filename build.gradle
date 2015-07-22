@@ -26,8 +26,7 @@ sourceSets {
 jar {}
 
 dependencies {
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.5.0'
-    //compile 'com.fasterxml.jackson.core:jackson-databind:2.5.1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.5.4'
 }
 
 task wrapper(type: Wrapper) {
