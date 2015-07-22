@@ -25,7 +25,6 @@ import java.text.DateFormat
 import java.util.ArrayList
 import java.util.Date
 import java.util.HashMap
-import java.util.HashSet
 import kotlin.text.Regex
 
 /**
@@ -186,7 +185,7 @@ class GeneratorSink : TripleSink {
         if (iface != null)
             return listOf(types.get(iface).name!!)
 
-        return field.dataTypes.map { getBasicTypeName(types.get(it)?.name) }.filterNotNull().toHashSet()
+        return field.dataTypes.map { getBasicTypeName(types.get(it)?.name) }.filterNotNull().toHashSet().sort()
     }
 
     private fun shouldSkip(name: String): Boolean {
@@ -432,7 +431,7 @@ class GeneratorSink : TripleSink {
         if (type == null) {
             return emptyList()
         }
-        val fieldTypes = type.subTypes.map { types.get(it) }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.toHashSet()
+        val fieldTypes = type.subTypes.map { types.get(it) }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.toArrayList()
         getAllFields(types.get(type.parentType)).filterNot { i -> fieldTypes.any { it.name == i.name} }.forEach { fieldTypes.add(it) }
         return fieldTypes
     }
