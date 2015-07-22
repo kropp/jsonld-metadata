@@ -1,4 +1,21 @@
-/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on Tue Jul 21 16:07:12 CEST 2015 */
+/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This is auto-generated file. Do not edit.
+ * Generated on Jul 22, 2015.
+ */
 
 package org.schema;
 
@@ -22,7 +39,7 @@ public class Nerve extends AnatomicalStructure {
   /**
    * The neurological pathway extension that inputs and sends information to the brain or spinal cord.
    */
-  public AnatomicalStructure getSensoryUnit() {
+  public SuperficialAnatomyOrAnatomicalStructure getSensoryUnit() {
     return mySensoryUnit;
   }
   /**
@@ -32,98 +49,139 @@ public class Nerve extends AnatomicalStructure {
     return mySourcedFrom;
   }
   /**
-   * Builder for {@see Nerve}
+   * Builder for {@link Nerve}
    */
   public static final class Builder {
+    /**
+     * Creates new {@link Nerve} instance.
+     */
     public Nerve build() {
-      return new Nerve(branch, potentialAction, additionalType, connectedTo, medicineSystem, partOfSystem, code, bodyLocation, nerveMotor, image, guideline, description, function, mainEntityOfPage, relatedCondition, subStructure, alternateName, sourcedFrom, url, associatedPathophysiology, recognizingAuthority, sameAs, study, diagram, name, relevantSpecialty, relatedTherapy, sensoryUnit);
+      return new Nerve(recognizingAuthority, bodyLocation, code, diagram, additionalType, sameAs, associatedPathophysiology, nerveMotor, sensoryUnit, study, potentialAction, relevantSpecialty, medicineSystem, sourcedFrom, relatedTherapy, connectedTo, name, mainEntityOfPage, guideline, url, partOfSystem, function, relatedCondition, branch, alternateName, subStructure, description);
     }
     /**
-     * The branches that delineate from the nerve bundle.
+     * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    public Builder branch(AnatomicalStructure value) {
-      branch = value;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action value) {
-      potentialAction = value;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String value) {
-      additionalType = value;
-      return this;
-    }
-    /**
-     * Other anatomical structures to which this structure is connected.
-     */
-    public Builder connectedTo(AnatomicalStructure value) {
-      connectedTo = value;
-      return this;
-    }
-    /**
-     * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
-     */
-    public Builder medicineSystem(MedicineSystem value) {
-      medicineSystem = value;
-      return this;
-    }
-    /**
-     * The anatomical or organ system that this structure is part of.
-     */
-    public Builder partOfSystem(IsPartOf value) {
-      partOfSystem = value;
-      return this;
-    }
-    /**
-     * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
-     */
-    public Builder code(MedicalCode value) {
-      code = value;
+    public Builder recognizingAuthority(Organization organization) {
+      this.recognizingAuthority = organization;
       return this;
     }
     /**
      * Location in the body of the anatomical structure.
      */
-    public Builder bodyLocation(String value) {
-      bodyLocation = value;
+    public Builder bodyLocation(String bodyLocation) {
+      this.bodyLocation = bodyLocation;
+      return this;
+    }
+    /**
+     * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
+     */
+    public Builder code(MedicalCode medicalCode) {
+      this.code = medicalCode;
+      return this;
+    }
+    /**
+     * An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
+     */
+    public Builder diagram(ImageObject imageObject) {
+      this.diagram = imageObject;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
+     */
+    public Builder associatedPathophysiology(String associatedPathophysiology) {
+      this.associatedPathophysiology = associatedPathophysiology;
       return this;
     }
     /**
      * The neurological pathway extension that involves muscle control.
      */
-    public Builder nerveMotor(Muscle value) {
-      nerveMotor = value;
-      return this;
-    }
-    public Builder image(Image value) {
-      image = value;
+    public Builder nerveMotor(Muscle muscle) {
+      this.nerveMotor = muscle;
       return this;
     }
     /**
-     * A medical guideline related to this entity.
+     * The neurological pathway extension that inputs and sends information to the brain or spinal cord.
      */
-    public Builder guideline(MedicalGuideline value) {
-      guideline = value;
+    public Builder sensoryUnit(SuperficialAnatomy superficialAnatomy) {
+      this.sensoryUnit.setSuperficialAnatomy(superficialAnatomy);
       return this;
     }
     /**
-     * A short description of the item.
+     * The neurological pathway extension that inputs and sends information to the brain or spinal cord.
      */
-    public Builder description(String value) {
-      description = value;
+    public Builder sensoryUnit(AnatomicalStructure anatomicalStructure) {
+      this.sensoryUnit.setAnatomicalStructure(anatomicalStructure);
       return this;
     }
     /**
-     * Function of the anatomical structure.
+     * A medical study or trial related to this entity.
      */
-    public Builder function(String value) {
-      function = value;
+    public Builder study(MedicalStudy medicalStudy) {
+      this.study = medicalStudy;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
+    /**
+     * If applicable, a medical specialty in which this entity is relevant.
+     */
+    public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
+      this.relevantSpecialty = medicalSpecialty;
+      return this;
+    }
+    /**
+     * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
+     */
+    public Builder medicineSystem(MedicineSystem medicineSystem) {
+      this.medicineSystem = medicineSystem;
+      return this;
+    }
+    /**
+     * The neurological pathway that originates the neurons.
+     */
+    public Builder sourcedFrom(BrainStructure brainStructure) {
+      this.sourcedFrom = brainStructure;
+      return this;
+    }
+    /**
+     * A medical therapy related to this anatomy.
+     */
+    public Builder relatedTherapy(MedicalTherapy medicalTherapy) {
+      this.relatedTherapy = medicalTherapy;
+      return this;
+    }
+    /**
+     * Other anatomical structures to which this structure is connected.
+     */
+    public Builder connectedTo(AnatomicalStructure anatomicalStructure) {
+      this.connectedTo = anatomicalStructure;
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -156,140 +214,138 @@ public class Nerve extends AnatomicalStructure {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork value) {
-      mainEntityOfPage = value;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * A medical condition associated with this anatomy.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder relatedCondition(MedicalCondition value) {
-      relatedCondition = value;
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * Component (sub-)structure(s) that comprise this anatomical structure.
+     * A medical guideline related to this entity.
      */
-    public Builder subStructure(AnatomicalStructure value) {
-      subStructure = value;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String value) {
-      alternateName = value;
-      return this;
-    }
-    /**
-     * The neurological pathway that originates the neurons.
-     */
-    public Builder sourcedFrom(BrainStructure value) {
-      sourcedFrom = value;
+    public Builder guideline(MedicalGuideline medicalGuideline) {
+      this.guideline = medicalGuideline;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String value) {
-      url = value;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
-     * If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
+     * The anatomical or organ system that this structure is part of.
      */
-    public Builder associatedPathophysiology(String value) {
-      associatedPathophysiology = value;
+    public Builder partOfSystem(IsPartOf isPartOf) {
+      this.partOfSystem = isPartOf;
       return this;
     }
     /**
-     * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
+     * Function of the anatomical structure.
      */
-    public Builder recognizingAuthority(Organization value) {
-      recognizingAuthority = value;
+    public Builder function(String function) {
+      this.function = function;
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * A medical condition associated with this anatomy.
      */
-    public Builder sameAs(String value) {
-      sameAs = value;
+    public Builder relatedCondition(MedicalCondition medicalCondition) {
+      this.relatedCondition = medicalCondition;
       return this;
     }
     /**
-     * A medical study or trial related to this entity.
+     * The branches that delineate from the nerve bundle.
      */
-    public Builder study(MedicalStudy value) {
-      study = value;
+    public Builder branch(AnatomicalStructure anatomicalStructure) {
+      this.branch = anatomicalStructure;
       return this;
     }
     /**
-     * An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
+     * An alias for the item.
      */
-    public Builder diagram(ImageObject value) {
-      diagram = value;
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
       return this;
     }
     /**
-     * The name of the item.
+     * Component (sub-)structure(s) that comprise this anatomical structure.
      */
-    public Builder name(String value) {
-      name = value;
+    public Builder subStructure(AnatomicalStructure anatomicalStructure) {
+      this.subStructure = anatomicalStructure;
       return this;
     }
     /**
-     * If applicable, a medical specialty in which this entity is relevant.
+     * A short description of the item.
      */
-    public Builder relevantSpecialty(MedicalSpecialty value) {
-      relevantSpecialty = value;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
-    /**
-     * A medical therapy related to this anatomy.
-     */
-    public Builder relatedTherapy(MedicalTherapy value) {
-      relatedTherapy = value;
-      return this;
-    }
-    /**
-     * The neurological pathway extension that inputs and sends information to the brain or spinal cord.
-     */
-    public Builder sensoryUnit(AnatomicalStructure value) {
-      sensoryUnit = value;
-      return this;
-    }
-    private AnatomicalStructure branch;
-    private Action potentialAction;
-    private String additionalType;
-    private AnatomicalStructure connectedTo;
-    private MedicineSystem medicineSystem;
-    private IsPartOf partOfSystem;
-    private MedicalCode code;
-    private String bodyLocation;
-    private Muscle nerveMotor;
-    private Image image;
-    private MedicalGuideline guideline;
-    private String description;
-    private String function;
-    private CreativeWork mainEntityOfPage;
-    private MedicalCondition relatedCondition;
-    private AnatomicalStructure subStructure;
-    private String alternateName;
-    private BrainStructure sourcedFrom;
-    private String url;
-    private String associatedPathophysiology;
     private Organization recognizingAuthority;
-    private String sameAs;
-    private MedicalStudy study;
+    private String bodyLocation;
+    private MedicalCode code;
     private ImageObject diagram;
-    private String name;
+    private String additionalType;
+    private String sameAs;
+    private String associatedPathophysiology;
+    private Muscle nerveMotor;
+    private SuperficialAnatomyOrAnatomicalStructure sensoryUnit;
+    private MedicalStudy study;
+    private Action potentialAction;
     private MedicalSpecialty relevantSpecialty;
+    private MedicineSystem medicineSystem;
+    private BrainStructure sourcedFrom;
     private MedicalTherapy relatedTherapy;
-    private AnatomicalStructure sensoryUnit;
+    private AnatomicalStructure connectedTo;
+    private String name;
+    private StringOrCreativeWork mainEntityOfPage;
+    private MedicalGuideline guideline;
+    private String url;
+    private IsPartOf partOfSystem;
+    private String function;
+    private MedicalCondition relatedCondition;
+    private AnatomicalStructure branch;
+    private String alternateName;
+    private AnatomicalStructure subStructure;
+    private String description;
   }
 
-  protected Nerve(AnatomicalStructure branch, Action potentialAction, String additionalType, AnatomicalStructure connectedTo, MedicineSystem medicineSystem, IsPartOf partOfSystem, MedicalCode code, String bodyLocation, Muscle nerveMotor, Image image, MedicalGuideline guideline, String description, String function, CreativeWork mainEntityOfPage, MedicalCondition relatedCondition, AnatomicalStructure subStructure, String alternateName, BrainStructure sourcedFrom, String url, String associatedPathophysiology, Organization recognizingAuthority, String sameAs, MedicalStudy study, ImageObject diagram, String name, MedicalSpecialty relevantSpecialty, MedicalTherapy relatedTherapy, AnatomicalStructure sensoryUnit) {
-    super(function, mainEntityOfPage, relatedCondition, subStructure, potentialAction, alternateName, url, additionalType, connectedTo, medicineSystem, associatedPathophysiology, recognizingAuthority, sameAs, partOfSystem, code, study, diagram, bodyLocation, image, name, relevantSpecialty, guideline, description, relatedTherapy);
+  protected Nerve(Organization recognizingAuthority, String bodyLocation, MedicalCode code, ImageObject diagram, String additionalType, String sameAs, String associatedPathophysiology, Muscle nerveMotor, SuperficialAnatomyOrAnatomicalStructure sensoryUnit, MedicalStudy study, Action potentialAction, MedicalSpecialty relevantSpecialty, MedicineSystem medicineSystem, BrainStructure sourcedFrom, MedicalTherapy relatedTherapy, AnatomicalStructure connectedTo, String name, StringOrCreativeWork mainEntityOfPage, MedicalGuideline guideline, String url, IsPartOf partOfSystem, String function, MedicalCondition relatedCondition, AnatomicalStructure branch, String alternateName, AnatomicalStructure subStructure, String description) {
+    super(recognizingAuthority, bodyLocation, code, relatedTherapy, connectedTo, name, mainEntityOfPage, diagram, guideline, additionalType, sameAs, url, partOfSystem, function, relatedCondition, alternateName, associatedPathophysiology, study, subStructure, potentialAction, description, relevantSpecialty, medicineSystem);
     myBranch = branch;
     myNerveMotor = nerveMotor;
     mySensoryUnit = sensoryUnit;
@@ -297,6 +353,6 @@ public class Nerve extends AnatomicalStructure {
   }
   private AnatomicalStructure myBranch;
   private Muscle myNerveMotor;
-  private AnatomicalStructure mySensoryUnit;
+  private SuperficialAnatomyOrAnatomicalStructure mySensoryUnit;
   private BrainStructure mySourcedFrom;
 }

@@ -1,4 +1,21 @@
-/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on Tue Jul 21 16:07:12 CEST 2015 */
+/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This is auto-generated file. Do not edit.
+ * Generated on Jul 22, 2015.
+ */
 
 package org.schema;
 
@@ -13,21 +30,36 @@ public class PerformAction extends PlayAction {
     return myEntertainmentBusiness;
   }
   /**
-   * Builder for {@see PerformAction}
+   * Builder for {@link PerformAction}
    */
   public static final class Builder {
+    /**
+     * Creates new {@link PerformAction} instance.
+     */
     public PerformAction build() {
-      return new PerformAction(event, instrument, mainEntityOfPage, agent, endTime, alternateName, potentialAction, audience, participant, additionalType, url, sameAs, startTime, actionStatus, result, entertainmentBusiness, image, name, error, target, object, description, location);
+      return new PerformAction(entertainmentBusiness, startTime, name, mainEntityOfPage, error, audience, event, url, sameAs, additionalType, agent, alternateName, description, target, potentialAction, endTime, actionStatus);
     }
     /**
-     * Upcoming or past event associated with this place, organization, or action.
+     * A sub property of location. The entertainment business where the action occurred.
      */
-    public Builder event(Event value) {
-      event = value;
+    public Builder entertainmentBusiness(EntertainmentBusiness entertainmentBusiness) {
+      this.entertainmentBusiness = entertainmentBusiness;
       return this;
     }
-    public Builder instrument(Instrument value) {
-      instrument = value;
+    /**
+     * The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from *January* to December.
+
+Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+     */
+    public Builder startTime(java.util.Date date) {
+      this.startTime = date;
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -60,15 +92,126 @@ public class PerformAction extends PlayAction {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork value) {
-      mainEntityOfPage = value;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      this.mainEntityOfPage.setString(mainEntityOfPage);
+      return this;
+    }
+    /**
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
+     */
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      return this;
+    }
+    /**
+     * For failed actions, more information on the cause of the failure.
+     */
+    public Builder error(Thing thing) {
+      this.error = thing;
+      return this;
+    }
+    /**
+     * An intended audience, i.e. a group for whom something was created.
+     */
+    public Builder audience(Audience audience) {
+      this.audience = audience;
+      return this;
+    }
+    /**
+     * Upcoming or past event associated with this place, organization, or action.
+     */
+    public Builder event(Event event) {
+      this.event = event;
+      return this;
+    }
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
       return this;
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Organization value) {
-      agent = value;
+    public Builder agent(Organization organization) {
+      this.agent.setOrganization(organization);
+      return this;
+    }
+    /**
+     * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
+     */
+    public Builder agent(Person person) {
+      this.agent.setPerson(person);
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+    /**
+     * Indicates a target EntryPoint for an Action.
+     */
+    public Builder target(EntryPoint entryPoint) {
+      this.target = entryPoint;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
       return this;
     }
     /**
@@ -76,150 +219,38 @@ public class PerformAction extends PlayAction {
 
 Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
-    public Builder endTime(java.util.Date value) {
-      endTime = value;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String value) {
-      alternateName = value;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action value) {
-      potentialAction = value;
-      return this;
-    }
-    /**
-     * An intended audience, i.e. a group for whom something was created.
-     */
-    public Builder audience(Audience value) {
-      audience = value;
-      return this;
-    }
-    public Builder participant(Participant value) {
-      participant = value;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String value) {
-      additionalType = value;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String value) {
-      url = value;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String value) {
-      sameAs = value;
-      return this;
-    }
-    /**
-     * The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from *January* to December.
-
-Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
-     */
-    public Builder startTime(java.util.Date value) {
-      startTime = value;
+    public Builder endTime(java.util.Date date) {
+      this.endTime = date;
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
-    public Builder actionStatus(ActionStatusType value) {
-      actionStatus = value;
+    public Builder actionStatus(ActionStatusType actionStatusType) {
+      this.actionStatus = actionStatusType;
       return this;
     }
-    public Builder result(Result value) {
-      result = value;
-      return this;
-    }
-    /**
-     * A sub property of location. The entertainment business where the action occurred.
-     */
-    public Builder entertainmentBusiness(EntertainmentBusiness value) {
-      entertainmentBusiness = value;
-      return this;
-    }
-    public Builder image(Image value) {
-      image = value;
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String value) {
-      name = value;
-      return this;
-    }
-    /**
-     * For failed actions, more information on the cause of the failure.
-     */
-    public Builder error(Thing value) {
-      error = value;
-      return this;
-    }
-    /**
-     * Indicates a target EntryPoint for an Action.
-     */
-    public Builder target(EntryPoint value) {
-      target = value;
-      return this;
-    }
-    public Builder object(Object value) {
-      object = value;
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String value) {
-      description = value;
-      return this;
-    }
-    public Builder location(Location value) {
-      location = value;
-      return this;
-    }
-    private Event event;
-    private Instrument instrument;
-    private CreativeWork mainEntityOfPage;
-    private Organization agent;
-    private java.util.Date endTime;
-    private String alternateName;
-    private Action potentialAction;
+    private EntertainmentBusiness entertainmentBusiness;
+    private java.util.Date startTime;
+    private String name;
+    private StringOrCreativeWork mainEntityOfPage;
+    private Thing error;
     private Audience audience;
-    private Participant participant;
-    private String additionalType;
+    private Event event;
     private String url;
     private String sameAs;
-    private java.util.Date startTime;
-    private ActionStatusType actionStatus;
-    private Result result;
-    private EntertainmentBusiness entertainmentBusiness;
-    private Image image;
-    private String name;
-    private Thing error;
-    private EntryPoint target;
-    private Object object;
+    private String additionalType;
+    private OrganizationOrPerson agent;
+    private String alternateName;
     private String description;
-    private Location location;
+    private EntryPoint target;
+    private Action potentialAction;
+    private java.util.Date endTime;
+    private ActionStatusType actionStatus;
   }
 
-  protected PerformAction(Event event, Instrument instrument, CreativeWork mainEntityOfPage, Organization agent, java.util.Date endTime, String alternateName, Action potentialAction, Audience audience, Participant participant, String additionalType, String url, String sameAs, java.util.Date startTime, ActionStatusType actionStatus, Result result, EntertainmentBusiness entertainmentBusiness, Image image, String name, Thing error, EntryPoint target, Object object, String description, Location location) {
-    super(event, instrument, mainEntityOfPage, agent, endTime, alternateName, potentialAction, audience, participant, additionalType, url, startTime, sameAs, actionStatus, result, error, name, image, target, object, location, description);
+  protected PerformAction(EntertainmentBusiness entertainmentBusiness, java.util.Date startTime, String name, StringOrCreativeWork mainEntityOfPage, Thing error, Audience audience, Event event, String url, String sameAs, String additionalType, OrganizationOrPerson agent, String alternateName, String description, EntryPoint target, Action potentialAction, java.util.Date endTime, ActionStatusType actionStatus) {
+    super(startTime, name, error, mainEntityOfPage, audience, event, url, sameAs, additionalType, agent, alternateName, potentialAction, target, description, endTime, actionStatus);
     myEntertainmentBusiness = entertainmentBusiness;
   }
   private EntertainmentBusiness myEntertainmentBusiness;

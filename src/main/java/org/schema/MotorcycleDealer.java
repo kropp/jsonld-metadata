@@ -1,4 +1,21 @@
-/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on Tue Jul 21 16:07:12 CEST 2015 */
+/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This is auto-generated file. Do not edit.
+ * Generated on Jul 22, 2015.
+ */
 
 package org.schema;
 
@@ -7,105 +24,156 @@ package org.schema;
  */
 public class MotorcycleDealer extends AutomotiveBusiness {
   /**
-   * Builder for {@see MotorcycleDealer}
+   * Builder for {@link MotorcycleDealer}
    */
   public static final class Builder {
+    /**
+     * Creates new {@link MotorcycleDealer} instance.
+     */
     public MotorcycleDealer build() {
-      return new MotorcycleDealer(openingHoursSpecification, review, openingHours, potentialAction, additionalType, logo, parentOrganization, currenciesAccepted, image, containedIn, description, hasMap, event, faxNumber, mainEntityOfPage, globalLocationNumber, priceRange, telephone, alternateName, photo, url, geo, sameAs, aggregateRating, name, paymentAccepted, address, additionalProperty, isicV4);
+      return new MotorcycleDealer(aggregateRating, review, logo, parentOrganization, sameAs, additionalType, containedIn, event, priceRange, openingHoursSpecification, currenciesAccepted, potentialAction, address, additionalProperty, openingHours, globalLocationNumber, isicV4, name, paymentAccepted, mainEntityOfPage, hasMap, url, alternateName, faxNumber, telephone, geo, description, photo);
     }
     /**
-     * The opening hours of a certain place.
+     * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    public Builder openingHoursSpecification(OpeningHoursSpecification value) {
-      openingHoursSpecification = value;
+    public Builder aggregateRating(AggregateRating aggregateRating) {
+      this.aggregateRating = aggregateRating;
       return this;
     }
     /**
      * A review of the item.
      */
-    public Builder review(Review value) {
-      review = value;
-      return this;
-    }
-    /**
-     * The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.<br />- Days are specified using the following two-letter combinations: <code>Mo</code>, <code>Tu</code>, <code>We</code>, <code>Th</code>, <code>Fr</code>, <code>Sa</code>, <code>Su</code>.<br />- Times are specified using 24:00 time. For example, 3pm is specified as <code>15:00</code>. <br />- Here is an example: <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Tu,Th 16:00-20:00&quot;&gt;Tuesdays and Thursdays 4-8pm&lt;/time&gt;</code>. <br />- If a business is open 7 days a week, then it can be specified as <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Mo-Su&quot;&gt;Monday through Sunday, all day&lt;/time&gt;</code>.
-     */
-    public Builder openingHours(String value) {
-      openingHours = value;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action value) {
-      potentialAction = value;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String value) {
-      additionalType = value;
+    public Builder review(Review review) {
+      this.review = review;
       return this;
     }
     /**
      * An associated logo.
      */
-    public Builder logo(ImageObject value) {
-      logo = value;
+    public Builder logo(ImageObject imageObject) {
+      this.logo.setImageObject(imageObject);
+      return this;
+    }
+    /**
+     * An associated logo.
+     */
+    public Builder logo(String logo) {
+      this.logo.setString(logo);
       return this;
     }
     /**
      * The larger organization that this local business is a branch of, if any.
      */
-    public Builder parentOrganization(Organization value) {
-      parentOrganization = value;
+    public Builder parentOrganization(Organization organization) {
+      this.parentOrganization = organization;
       return this;
     }
     /**
-     * The currency accepted (in <a href='http://en.wikipedia.org/wiki/ISO_4217'>ISO 4217 currency format</a>).
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder currenciesAccepted(String value) {
-      currenciesAccepted = value;
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
-    public Builder image(Image value) {
-      image = value;
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
       return this;
     }
     /**
      * The basic containment relation between places.
      */
-    public Builder containedIn(Place value) {
-      containedIn = value;
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String value) {
-      description = value;
-      return this;
-    }
-    /**
-     * A URL to a map of the place.
-     */
-    public Builder hasMap(String value) {
-      hasMap = value;
+    public Builder containedIn(Place place) {
+      this.containedIn = place;
       return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
-    public Builder event(Event value) {
-      event = value;
+    public Builder event(Event event) {
+      this.event = event;
       return this;
     }
     /**
-     * The fax number.
+     * The price range of the business, for example <code>$$$</code>.
      */
-    public Builder faxNumber(String value) {
-      faxNumber = value;
+    public Builder priceRange(String priceRange) {
+      this.priceRange = priceRange;
+      return this;
+    }
+    /**
+     * The opening hours of a certain place.
+     */
+    public Builder openingHoursSpecification(OpeningHoursSpecification openingHoursSpecification) {
+      this.openingHoursSpecification = openingHoursSpecification;
+      return this;
+    }
+    /**
+     * The currency accepted (in <a href='http://en.wikipedia.org/wiki/ISO_4217'>ISO 4217 currency format</a>).
+     */
+    public Builder currenciesAccepted(String currenciesAccepted) {
+      this.currenciesAccepted = currenciesAccepted;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
+    /**
+     * Physical address of the item.
+     */
+    public Builder address(PostalAddress postalAddress) {
+      this.address = postalAddress;
+      return this;
+    }
+    /**
+     * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
+
+Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+
+     */
+    public Builder additionalProperty(PropertyValue propertyValue) {
+      this.additionalProperty = propertyValue;
+      return this;
+    }
+    /**
+     * The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.<br />- Days are specified using the following two-letter combinations: <code>Mo</code>, <code>Tu</code>, <code>We</code>, <code>Th</code>, <code>Fr</code>, <code>Sa</code>, <code>Su</code>.<br />- Times are specified using 24:00 time. For example, 3pm is specified as <code>15:00</code>. <br />- Here is an example: <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Tu,Th 16:00-20:00&quot;&gt;Tuesdays and Thursdays 4-8pm&lt;/time&gt;</code>. <br />- If a business is open 7 days a week, then it can be specified as <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Mo-Su&quot;&gt;Monday through Sunday, all day&lt;/time&gt;</code>.
+     */
+    public Builder openingHours(String openingHours) {
+      this.openingHours = openingHours;
+      return this;
+    }
+    /**
+     * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+     */
+    public Builder globalLocationNumber(String globalLocationNumber) {
+      this.globalLocationNumber = globalLocationNumber;
+      return this;
+    }
+    /**
+     * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
+     */
+    public Builder isicV4(String isicV4) {
+      this.isicV4 = isicV4;
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+    /**
+     * Cash, credit card, etc.
+     */
+    public Builder paymentAccepted(String paymentAccepted) {
+      this.paymentAccepted = paymentAccepted;
       return this;
     }
     /**
@@ -138,143 +206,152 @@ public class MotorcycleDealer extends AutomotiveBusiness {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork value) {
-      mainEntityOfPage = value;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder globalLocationNumber(String value) {
-      globalLocationNumber = value;
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * The price range of the business, for example <code>$$$</code>.
+     * A URL to a map of the place.
      */
-    public Builder priceRange(String value) {
-      priceRange = value;
+    public Builder hasMap(Map map) {
+      this.hasMap.setMap(map);
       return this;
     }
     /**
-     * The telephone number.
+     * A URL to a map of the place.
      */
-    public Builder telephone(String value) {
-      telephone = value;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String value) {
-      alternateName = value;
-      return this;
-    }
-    /**
-     * A photograph of this place.
-     */
-    public Builder photo(ImageObject value) {
-      photo = value;
+    public Builder hasMap(String hasMap) {
+      this.hasMap.setString(hasMap);
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String value) {
-      url = value;
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * The fax number.
+     */
+    public Builder faxNumber(String faxNumber) {
+      this.faxNumber = faxNumber;
+      return this;
+    }
+    /**
+     * The telephone number.
+     */
+    public Builder telephone(String telephone) {
+      this.telephone = telephone;
       return this;
     }
     /**
      * The geo coordinates of the place.
      */
-    public Builder geo(GeoCoordinates value) {
-      geo = value;
+    public Builder geo(GeoCoordinates geoCoordinates) {
+      this.geo.setGeoCoordinates(geoCoordinates);
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * The geo coordinates of the place.
      */
-    public Builder sameAs(String value) {
-      sameAs = value;
+    public Builder geo(GeoShape geoShape) {
+      this.geo.setGeoShape(geoShape);
       return this;
     }
     /**
-     * The overall rating, based on a collection of reviews or ratings, of the item.
+     * A short description of the item.
      */
-    public Builder aggregateRating(AggregateRating value) {
-      aggregateRating = value;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
-     * The name of the item.
+     * A photograph of this place.
      */
-    public Builder name(String value) {
-      name = value;
+    public Builder photo(ImageObject imageObject) {
+      this.photo.setImageObject(imageObject);
       return this;
     }
     /**
-     * Cash, credit card, etc.
+     * A photograph of this place.
      */
-    public Builder paymentAccepted(String value) {
-      paymentAccepted = value;
+    public Builder photo(Photograph photograph) {
+      this.photo.setPhotograph(photograph);
       return this;
     }
-    /**
-     * Physical address of the item.
-     */
-    public Builder address(PostalAddress value) {
-      address = value;
-      return this;
-    }
-    /**
-     * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
-     */
-    public Builder additionalProperty(PropertyValue value) {
-      additionalProperty = value;
-      return this;
-    }
-    /**
-     * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
-     */
-    public Builder isicV4(String value) {
-      isicV4 = value;
-      return this;
-    }
-    private OpeningHoursSpecification openingHoursSpecification;
-    private Review review;
-    private String openingHours;
-    private Action potentialAction;
-    private String additionalType;
-    private ImageObject logo;
-    private Organization parentOrganization;
-    private String currenciesAccepted;
-    private Image image;
-    private Place containedIn;
-    private String description;
-    private String hasMap;
-    private Event event;
-    private String faxNumber;
-    private CreativeWork mainEntityOfPage;
-    private String globalLocationNumber;
-    private String priceRange;
-    private String telephone;
-    private String alternateName;
-    private ImageObject photo;
-    private String url;
-    private GeoCoordinates geo;
-    private String sameAs;
     private AggregateRating aggregateRating;
-    private String name;
-    private String paymentAccepted;
+    private Review review;
+    private ImageObjectOrString logo;
+    private Organization parentOrganization;
+    private String sameAs;
+    private String additionalType;
+    private Place containedIn;
+    private Event event;
+    private String priceRange;
+    private OpeningHoursSpecification openingHoursSpecification;
+    private String currenciesAccepted;
+    private Action potentialAction;
     private PostalAddress address;
     private PropertyValue additionalProperty;
+    private String openingHours;
+    private String globalLocationNumber;
     private String isicV4;
+    private String name;
+    private String paymentAccepted;
+    private StringOrCreativeWork mainEntityOfPage;
+    private MapOrString hasMap;
+    private String url;
+    private String alternateName;
+    private String faxNumber;
+    private String telephone;
+    private GeoCoordinatesOrGeoShape geo;
+    private String description;
+    private ImageObjectOrPhotograph photo;
   }
 
-  protected MotorcycleDealer(OpeningHoursSpecification openingHoursSpecification, Review review, String openingHours, Action potentialAction, String additionalType, ImageObject logo, Organization parentOrganization, String currenciesAccepted, Image image, Place containedIn, String description, String hasMap, Event event, String faxNumber, CreativeWork mainEntityOfPage, String globalLocationNumber, String priceRange, String telephone, String alternateName, ImageObject photo, String url, GeoCoordinates geo, String sameAs, AggregateRating aggregateRating, String name, String paymentAccepted, PostalAddress address, PropertyValue additionalProperty, String isicV4) {
-    super(openingHoursSpecification, review, openingHours, potentialAction, additionalType, logo, currenciesAccepted, parentOrganization, image, containedIn, description, hasMap, event, faxNumber, mainEntityOfPage, globalLocationNumber, priceRange, telephone, alternateName, photo, url, geo, sameAs, aggregateRating, name, address, paymentAccepted, additionalProperty, isicV4);
+  protected MotorcycleDealer(AggregateRating aggregateRating, Review review, ImageObjectOrString logo, Organization parentOrganization, String sameAs, String additionalType, Place containedIn, Event event, String priceRange, OpeningHoursSpecification openingHoursSpecification, String currenciesAccepted, Action potentialAction, PostalAddress address, PropertyValue additionalProperty, String openingHours, String globalLocationNumber, String isicV4, String name, String paymentAccepted, StringOrCreativeWork mainEntityOfPage, MapOrString hasMap, String url, String alternateName, String faxNumber, String telephone, GeoCoordinatesOrGeoShape geo, String description, ImageObjectOrPhotograph photo) {
+    super(aggregateRating, review, logo, parentOrganization, containedIn, event, additionalType, sameAs, priceRange, openingHoursSpecification, currenciesAccepted, potentialAction, address, additionalProperty, openingHours, globalLocationNumber, isicV4, name, paymentAccepted, mainEntityOfPage, hasMap, url, alternateName, faxNumber, geo, telephone, description, photo);
   }
 }

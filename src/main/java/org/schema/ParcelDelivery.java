@@ -1,4 +1,21 @@
-/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on Tue Jul 21 16:07:12 CEST 2015 */
+/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This is auto-generated file. Do not edit.
+ * Generated on Jul 22, 2015.
+ */
 
 package org.schema;
 
@@ -69,15 +86,67 @@ public class ParcelDelivery extends Intangible {
   /**
    * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
    */
-  public Person getProvider() {
+  public OrganizationOrPerson getProvider() {
     return myProvider;
   }
   /**
-   * Builder for {@see ParcelDelivery}
+   * Builder for {@link ParcelDelivery}
    */
   public static final class Builder {
+    /**
+     * Creates new {@link ParcelDelivery} instance.
+     */
     public ParcelDelivery build() {
-      return new ParcelDelivery(mainEntityOfPage, expectedArrivalUntil, originAddress, trackingNumber, alternateName, potentialAction, itemShipped, url, additionalType, sameAs, expectedArrivalFrom, hasDeliveryMethod, name, image, deliveryAddress, partOfOrder, deliveryStatus, trackingUrl, description, provider);
+      return new ParcelDelivery(deliveryAddress, expectedArrivalUntil, provider, hasDeliveryMethod, name, deliveryStatus, mainEntityOfPage, sameAs, url, itemShipped, partOfOrder, additionalType, trackingNumber, trackingUrl, alternateName, potentialAction, description, expectedArrivalFrom, originAddress);
+    }
+    /**
+     * Destination address.
+     */
+    public Builder deliveryAddress(PostalAddress postalAddress) {
+      this.deliveryAddress = postalAddress;
+      return this;
+    }
+    /**
+     * The latest date the package may arrive.
+     */
+    public Builder expectedArrivalUntil(java.util.Date date) {
+      this.expectedArrivalUntil = date;
+      return this;
+    }
+    /**
+     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+     */
+    public Builder provider(Organization organization) {
+      this.provider.setOrganization(organization);
+      return this;
+    }
+    /**
+     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+     */
+    public Builder provider(Person person) {
+      this.provider.setPerson(person);
+      return this;
+    }
+    /**
+     * Method used for delivery or shipping.
+     */
+    public Builder hasDeliveryMethod(DeliveryMethod deliveryMethod) {
+      this.hasDeliveryMethod = deliveryMethod;
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+    /**
+     * New entry added as the package passes through each leg of its journey (from shipment to final delivery).
+     */
+    public Builder deliveryStatus(DeliveryEvent deliveryEvent) {
+      this.deliveryStatus = deliveryEvent;
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -109,164 +178,151 @@ public class ParcelDelivery extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork value) {
-      mainEntityOfPage = value;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The latest date the package may arrive.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder expectedArrivalUntil(java.util.Date value) {
-      expectedArrivalUntil = value;
-      return this;
-    }
-    /**
-     * Shipper's address.
-     */
-    public Builder originAddress(PostalAddress value) {
-      originAddress = value;
-      return this;
-    }
-    /**
-     * Shipper tracking number.
-     */
-    public Builder trackingNumber(String value) {
-      trackingNumber = value;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String value) {
-      alternateName = value;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action value) {
-      potentialAction = value;
-      return this;
-    }
-    /**
-     * Item(s) being shipped.
-     */
-    public Builder itemShipped(Product value) {
-      itemShipped = value;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String value) {
-      url = value;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String value) {
-      additionalType = value;
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String value) {
-      sameAs = value;
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
     /**
-     * The earliest date the package may arrive.
+     * URL of the item.
      */
-    public Builder expectedArrivalFrom(java.util.Date value) {
-      expectedArrivalFrom = value;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
-     * Method used for delivery or shipping.
+     * Item(s) being shipped.
      */
-    public Builder hasDeliveryMethod(DeliveryMethod value) {
-      hasDeliveryMethod = value;
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String value) {
-      name = value;
-      return this;
-    }
-    public Builder image(Image value) {
-      image = value;
-      return this;
-    }
-    /**
-     * Destination address.
-     */
-    public Builder deliveryAddress(PostalAddress value) {
-      deliveryAddress = value;
+    public Builder itemShipped(Product product) {
+      this.itemShipped = product;
       return this;
     }
     /**
      * The overall order the items in this delivery were included in.
      */
-    public Builder partOfOrder(IsPartOf value) {
-      partOfOrder = value;
+    public Builder partOfOrder(IsPartOf isPartOf) {
+      this.partOfOrder = isPartOf;
       return this;
     }
     /**
-     * New entry added as the package passes through each leg of its journey (from shipment to final delivery).
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder deliveryStatus(DeliveryEvent value) {
-      deliveryStatus = value;
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * Shipper tracking number.
+     */
+    public Builder trackingNumber(String trackingNumber) {
+      this.trackingNumber = trackingNumber;
       return this;
     }
     /**
      * Tracking url for the parcel delivery.
      */
-    public Builder trackingUrl(String value) {
-      trackingUrl = value;
+    public Builder trackingUrl(String trackingUrl) {
+      this.trackingUrl = trackingUrl;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String value) {
-      description = value;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
-     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+     * The earliest date the package may arrive.
      */
-    public Builder provider(Person value) {
-      provider = value;
+    public Builder expectedArrivalFrom(java.util.Date date) {
+      this.expectedArrivalFrom = date;
       return this;
     }
-    private CreativeWork mainEntityOfPage;
+    /**
+     * Shipper's address.
+     */
+    public Builder originAddress(PostalAddress postalAddress) {
+      this.originAddress = postalAddress;
+      return this;
+    }
+    private PostalAddress deliveryAddress;
     private java.util.Date expectedArrivalUntil;
-    private PostalAddress originAddress;
-    private String trackingNumber;
-    private String alternateName;
-    private Action potentialAction;
-    private Product itemShipped;
-    private String url;
-    private String additionalType;
-    private String sameAs;
-    private java.util.Date expectedArrivalFrom;
+    private OrganizationOrPerson provider;
     private DeliveryMethod hasDeliveryMethod;
     private String name;
-    private Image image;
-    private PostalAddress deliveryAddress;
-    private IsPartOf partOfOrder;
     private DeliveryEvent deliveryStatus;
+    private StringOrCreativeWork mainEntityOfPage;
+    private String sameAs;
+    private String url;
+    private Product itemShipped;
+    private IsPartOf partOfOrder;
+    private String additionalType;
+    private String trackingNumber;
     private String trackingUrl;
+    private String alternateName;
+    private Action potentialAction;
     private String description;
-    private Person provider;
+    private java.util.Date expectedArrivalFrom;
+    private PostalAddress originAddress;
   }
 
-  protected ParcelDelivery(CreativeWork mainEntityOfPage, java.util.Date expectedArrivalUntil, PostalAddress originAddress, String trackingNumber, String alternateName, Action potentialAction, Product itemShipped, String url, String additionalType, String sameAs, java.util.Date expectedArrivalFrom, DeliveryMethod hasDeliveryMethod, String name, Image image, PostalAddress deliveryAddress, IsPartOf partOfOrder, DeliveryEvent deliveryStatus, String trackingUrl, String description, Person provider) {
-    super(mainEntityOfPage, image, name, potentialAction, alternateName, additionalType, url, description, sameAs);
+  protected ParcelDelivery(PostalAddress deliveryAddress, java.util.Date expectedArrivalUntil, OrganizationOrPerson provider, DeliveryMethod hasDeliveryMethod, String name, DeliveryEvent deliveryStatus, StringOrCreativeWork mainEntityOfPage, String sameAs, String url, Product itemShipped, IsPartOf partOfOrder, String additionalType, String trackingNumber, String trackingUrl, String alternateName, Action potentialAction, String description, java.util.Date expectedArrivalFrom, PostalAddress originAddress) {
+    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
     myDeliveryAddress = deliveryAddress;
     myDeliveryStatus = deliveryStatus;
     myExpectedArrivalFrom = expectedArrivalFrom;
@@ -289,5 +345,5 @@ public class ParcelDelivery extends Intangible {
   private IsPartOf myPartOfOrder;
   private String myTrackingNumber;
   private String myTrackingUrl;
-  private Person myProvider;
+  private OrganizationOrPerson myProvider;
 }

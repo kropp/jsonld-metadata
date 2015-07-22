@@ -1,4 +1,21 @@
-/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on Tue Jul 21 16:07:12 CEST 2015 */
+/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This is auto-generated file. Do not edit.
+ * Generated on Jul 22, 2015.
+ */
 
 package org.schema;
 
@@ -25,13 +42,13 @@ public class PropertyValue extends StructuredValue {
   /**
    * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
    */
-  public Number getValue() {
+  public StructuredValueOrBooleanOrStringOrNumber getValue() {
     return myValue;
   }
   /**
    * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
    */
-  public Enumeration getValueReference() {
+  public PropertyValueOrStructuredValueOrQualitativeValueOrEnumerationOrQuantitativeValue getValueReference() {
     return myValueReference;
   }
   /**
@@ -51,11 +68,71 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     return myPropertyID;
   }
   /**
-   * Builder for {@see PropertyValue}
+   * Builder for {@link PropertyValue}
    */
   public static final class Builder {
+    /**
+     * Creates new {@link PropertyValue} instance.
+     */
     public PropertyValue build() {
-      return new PropertyValue(mainEntityOfPage, valueReference, potentialAction, alternateName, unitCode, additionalType, url, sameAs, minValue, name, image, propertyID, unitText, description, value);
+      return new PropertyValue(unitText, valueReference, unitCode, name, mainEntityOfPage, sameAs, additionalType, url, minValue, value, propertyID, alternateName, potentialAction, description);
+    }
+    /**
+     * A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
+<a href='unitCode'>unitCode</a>.
+     */
+    public Builder unitText(String unitText) {
+      this.unitText = unitText;
+      return this;
+    }
+    /**
+     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+     */
+    public Builder valueReference(PropertyValue propertyValue) {
+      this.valueReference.setPropertyValue(propertyValue);
+      return this;
+    }
+    /**
+     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+     */
+    public Builder valueReference(StructuredValue structuredValue) {
+      this.valueReference.setStructuredValue(structuredValue);
+      return this;
+    }
+    /**
+     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+     */
+    public Builder valueReference(QualitativeValue qualitativeValue) {
+      this.valueReference.setQualitativeValue(qualitativeValue);
+      return this;
+    }
+    /**
+     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+     */
+    public Builder valueReference(Enumeration enumeration) {
+      this.valueReference.setEnumeration(enumeration);
+      return this;
+    }
+    /**
+     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+     */
+    public Builder valueReference(QuantitativeValue quantitativeValue) {
+      this.valueReference.setQuantitativeValue(quantitativeValue);
+      return this;
+    }
+    /**
+     * The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
+     */
+    public Builder unitCode(String unitCode) {
+      this.unitCode = unitCode;
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -87,75 +164,98 @@ Standards bodies should promote a standard prefix for the identifiers of propert
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork value) {
-      mainEntityOfPage = value;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder valueReference(Enumeration value) {
-      valueReference = value;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action value) {
-      potentialAction = value;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String value) {
-      alternateName = value;
-      return this;
-    }
-    /**
-     * The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
-     */
-    public Builder unitCode(String value) {
-      unitCode = value;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String value) {
-      additionalType = value;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String value) {
-      url = value;
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String value) {
-      sameAs = value;
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
      * The lower value of some characteristic or property.
      */
-    public Builder minValue(Number value) {
-      minValue = value;
+    public Builder minValue(Number number) {
+      this.minValue = number;
       return this;
     }
     /**
-     * The name of the item.
+     * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
      */
-    public Builder name(String value) {
-      name = value;
+    public Builder value(StructuredValue structuredValue) {
+      this.value.setStructuredValue(structuredValue);
       return this;
     }
-    public Builder image(Image value) {
-      image = value;
+    /**
+     * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
+     */
+    public Builder value(Boolean value) {
+      this.value.setBoolean(value);
+      return this;
+    }
+    /**
+     * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
+     */
+    public Builder value(String value) {
+      this.value.setString(value);
+      return this;
+    }
+    /**
+     * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
+     */
+    public Builder value(Number number) {
+      this.value.setNumber(number);
       return this;
     }
     /**
@@ -164,51 +264,49 @@ Standards bodies should promote a standard prefix for the identifiers of propert
 a URL indicating the type of the property, either pointing to an external vocabulary, or a Web resource that describes the property (e.g. a glossary entry).
 Standards bodies should promote a standard prefix for the identifiers of properties from their standards.
      */
-    public Builder propertyID(String value) {
-      propertyID = value;
+    public Builder propertyID(String propertyID) {
+      this.propertyID = propertyID;
       return this;
     }
     /**
-     * A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
-<a href='unitCode'>unitCode</a>.
+     * An alias for the item.
      */
-    public Builder unitText(String value) {
-      unitText = value;
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String value) {
-      description = value;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
-    /**
-     * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
-     */
-    public Builder value(Number value) {
-      value = value;
-      return this;
-    }
-    private CreativeWork mainEntityOfPage;
-    private Enumeration valueReference;
-    private Action potentialAction;
-    private String alternateName;
+    private String unitText;
+    private PropertyValueOrStructuredValueOrQualitativeValueOrEnumerationOrQuantitativeValue valueReference;
     private String unitCode;
+    private String name;
+    private StringOrCreativeWork mainEntityOfPage;
+    private String sameAs;
     private String additionalType;
     private String url;
-    private String sameAs;
     private Number minValue;
-    private String name;
-    private Image image;
+    private StructuredValueOrBooleanOrStringOrNumber value;
     private String propertyID;
-    private String unitText;
+    private String alternateName;
+    private Action potentialAction;
     private String description;
-    private Number value;
   }
 
-  protected PropertyValue(CreativeWork mainEntityOfPage, Enumeration valueReference, Action potentialAction, String alternateName, String unitCode, String additionalType, String url, String sameAs, Number minValue, String name, Image image, String propertyID, String unitText, String description, Number value) {
-    super(mainEntityOfPage, name, image, potentialAction, alternateName, url, additionalType, description, sameAs);
+  protected PropertyValue(String unitText, PropertyValueOrStructuredValueOrQualitativeValueOrEnumerationOrQuantitativeValue valueReference, String unitCode, String name, StringOrCreativeWork mainEntityOfPage, String sameAs, String additionalType, String url, Number minValue, StructuredValueOrBooleanOrStringOrNumber value, String propertyID, String alternateName, Action potentialAction, String description) {
+    super(sameAs, additionalType, url, alternateName, name, description, potentialAction, mainEntityOfPage);
     myMinValue = minValue;
     myUnitCode = unitCode;
     myValue = value;
@@ -218,8 +316,8 @@ Standards bodies should promote a standard prefix for the identifiers of propert
   }
   private Number myMinValue;
   private String myUnitCode;
-  private Number myValue;
-  private Enumeration myValueReference;
+  private StructuredValueOrBooleanOrStringOrNumber myValue;
+  private PropertyValueOrStructuredValueOrQualitativeValueOrEnumerationOrQuantitativeValue myValueReference;
   private String myUnitText;
   private String myPropertyID;
 }

@@ -1,4 +1,21 @@
-/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on Tue Jul 21 16:07:11 CEST 2015 */
+/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This is auto-generated file. Do not edit.
+ * Generated on Jul 22, 2015.
+ */
 
 package org.schema;
 
@@ -49,17 +66,41 @@ public class PeopleAudience extends Audience {
     return mySuggestedMinAge;
   }
   /**
-   * Builder for {@see PeopleAudience}
+   * Builder for {@link PeopleAudience}
    */
   public static final class Builder {
+    /**
+     * Creates new {@link PeopleAudience} instance.
+     */
     public PeopleAudience build() {
-      return new PeopleAudience(requiredMinAge, mainEntityOfPage, geographicArea, healthCondition, audienceType, potentialAction, alternateName, suggestedMinAge, suggestedMaxAge, additionalType, url, sameAs, suggestedGender, image, name, requiredMaxAge, requiredGender, description);
+      return new PeopleAudience(audienceType, suggestedMaxAge, name, requiredMaxAge, mainEntityOfPage, requiredGender, healthCondition, additionalType, url, sameAs, geographicArea, alternateName, requiredMinAge, suggestedGender, description, potentialAction, suggestedMinAge);
     }
     /**
-     * Audiences defined by a person's minimum age.
+     * The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).
      */
-    public Builder requiredMinAge(Integer value) {
-      requiredMinAge = value;
+    public Builder audienceType(String audienceType) {
+      this.audienceType = audienceType;
+      return this;
+    }
+    /**
+     * Maximal age recommended for viewing content.
+     */
+    public Builder suggestedMaxAge(Number number) {
+      this.suggestedMaxAge = number;
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+    /**
+     * Audiences defined by a person's maximum age.
+     */
+    public Builder requiredMaxAge(Integer integer) {
+      this.requiredMaxAge = integer;
       return this;
     }
     /**
@@ -92,141 +133,149 @@ public class PeopleAudience extends Audience {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork value) {
-      mainEntityOfPage = value;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The geographic area associated with the audience.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder geographicArea(AdministrativeArea value) {
-      geographicArea = value;
-      return this;
-    }
-    /**
-     * Expectations for health conditions of target audience.
-     */
-    public Builder healthCondition(MedicalCondition value) {
-      healthCondition = value;
-      return this;
-    }
-    /**
-     * The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).
-     */
-    public Builder audienceType(String value) {
-      audienceType = value;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action value) {
-      potentialAction = value;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String value) {
-      alternateName = value;
-      return this;
-    }
-    /**
-     * Minimal age recommended for viewing content.
-     */
-    public Builder suggestedMinAge(Number value) {
-      suggestedMinAge = value;
-      return this;
-    }
-    /**
-     * Maximal age recommended for viewing content.
-     */
-    public Builder suggestedMaxAge(Number value) {
-      suggestedMaxAge = value;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String value) {
-      additionalType = value;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String value) {
-      url = value;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String value) {
-      sameAs = value;
-      return this;
-    }
-    /**
-     * The gender of the person or audience.
-     */
-    public Builder suggestedGender(String value) {
-      suggestedGender = value;
-      return this;
-    }
-    public Builder image(Image value) {
-      image = value;
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String value) {
-      name = value;
-      return this;
-    }
-    /**
-     * Audiences defined by a person's maximum age.
-     */
-    public Builder requiredMaxAge(Integer value) {
-      requiredMaxAge = value;
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
      * Audiences defined by a person's gender.
      */
-    public Builder requiredGender(String value) {
-      requiredGender = value;
+    public Builder requiredGender(String requiredGender) {
+      this.requiredGender = requiredGender;
+      return this;
+    }
+    /**
+     * Expectations for health conditions of target audience.
+     */
+    public Builder healthCondition(MedicalCondition medicalCondition) {
+      this.healthCondition = medicalCondition;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * The geographic area associated with the audience.
+     */
+    public Builder geographicArea(AdministrativeArea administrativeArea) {
+      this.geographicArea = administrativeArea;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * Audiences defined by a person's minimum age.
+     */
+    public Builder requiredMinAge(Integer integer) {
+      this.requiredMinAge = integer;
+      return this;
+    }
+    /**
+     * The gender of the person or audience.
+     */
+    public Builder suggestedGender(String suggestedGender) {
+      this.suggestedGender = suggestedGender;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String value) {
-      description = value;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
-    private Integer requiredMinAge;
-    private CreativeWork mainEntityOfPage;
-    private AdministrativeArea geographicArea;
-    private MedicalCondition healthCondition;
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
+    /**
+     * Minimal age recommended for viewing content.
+     */
+    public Builder suggestedMinAge(Number number) {
+      this.suggestedMinAge = number;
+      return this;
+    }
     private String audienceType;
-    private Action potentialAction;
-    private String alternateName;
-    private Number suggestedMinAge;
     private Number suggestedMaxAge;
+    private String name;
+    private Integer requiredMaxAge;
+    private StringOrCreativeWork mainEntityOfPage;
+    private String requiredGender;
+    private MedicalCondition healthCondition;
     private String additionalType;
     private String url;
     private String sameAs;
+    private AdministrativeArea geographicArea;
+    private String alternateName;
+    private Integer requiredMinAge;
     private String suggestedGender;
-    private Image image;
-    private String name;
-    private Integer requiredMaxAge;
-    private String requiredGender;
     private String description;
+    private Action potentialAction;
+    private Number suggestedMinAge;
   }
 
-  protected PeopleAudience(Integer requiredMinAge, CreativeWork mainEntityOfPage, AdministrativeArea geographicArea, MedicalCondition healthCondition, String audienceType, Action potentialAction, String alternateName, Number suggestedMinAge, Number suggestedMaxAge, String additionalType, String url, String sameAs, String suggestedGender, Image image, String name, Integer requiredMaxAge, String requiredGender, String description) {
-    super(mainEntityOfPage, geographicArea, image, name, audienceType, alternateName, potentialAction, url, additionalType, description, sameAs);
+  protected PeopleAudience(String audienceType, Number suggestedMaxAge, String name, Integer requiredMaxAge, StringOrCreativeWork mainEntityOfPage, String requiredGender, MedicalCondition healthCondition, String additionalType, String url, String sameAs, AdministrativeArea geographicArea, String alternateName, Integer requiredMinAge, String suggestedGender, String description, Action potentialAction, Number suggestedMinAge) {
+    super(additionalType, url, sameAs, geographicArea, audienceType, alternateName, name, potentialAction, description, mainEntityOfPage);
     myHealthCondition = healthCondition;
     myRequiredGender = requiredGender;
     myRequiredMaxAge = requiredMaxAge;

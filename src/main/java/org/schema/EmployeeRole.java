@@ -1,4 +1,21 @@
-/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on Tue Jul 21 16:07:12 CEST 2015 */
+/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This is auto-generated file. Do not edit.
+ * Generated on Jul 22, 2015.
+ */
 
 package org.schema;
 
@@ -13,11 +30,63 @@ public class EmployeeRole extends OrganizationRole {
     return mySalaryCurrency;
   }
   /**
-   * Builder for {@see EmployeeRole}
+   * Builder for {@link EmployeeRole}
    */
   public static final class Builder {
+    /**
+     * Creates new {@link EmployeeRole} instance.
+     */
     public EmployeeRole build() {
-      return new EmployeeRole(mainEntityOfPage, roleName, potentialAction, alternateName, salaryCurrency, additionalType, url, numberedPosition, sameAs, startDate, name, image, description);
+      return new EmployeeRole(additionalType, url, sameAs, alternateName, name, potentialAction, description, mainEntityOfPage, roleName, salaryCurrency, startDate, numberedPosition);
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -49,108 +118,88 @@ public class EmployeeRole extends OrganizationRole {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork value) {
-      mainEntityOfPage = value;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      this.mainEntityOfPage.setString(mainEntityOfPage);
+      return this;
+    }
+    /**
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
+     */
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
      * A role played, performed or filled by a person or organization. For example, the team of creators for a comic book might fill the roles named 'inker', 'penciller', and 'letterer'; or an athlete in a SportsTeam might play in the position named 'Quarterback'.
      */
-    public Builder roleName(String value) {
-      roleName = value;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action value) {
-      potentialAction = value;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String value) {
-      alternateName = value;
+    public Builder roleName(String roleName) {
+      this.roleName = roleName;
       return this;
     }
     /**
      * The currency (coded using ISO 4217, http://en.wikipedia.org/wiki/ISO_4217 ) used for the main salary information in this job posting or for this employee.
      */
-    public Builder salaryCurrency(String value) {
-      salaryCurrency = value;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String value) {
-      additionalType = value;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String value) {
-      url = value;
-      return this;
-    }
-    /**
-     * A number associated with a role in an organization, for example, the number on an athlete's jersey.
-     */
-    public Builder numberedPosition(Number value) {
-      numberedPosition = value;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String value) {
-      sameAs = value;
+    public Builder salaryCurrency(String salaryCurrency) {
+      this.salaryCurrency = salaryCurrency;
       return this;
     }
     /**
      * The start date and time of the item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).
      */
-    public Builder startDate(java.util.Date value) {
-      startDate = value;
+    public Builder startDate(java.util.Date date) {
+      this.startDate = date;
       return this;
     }
     /**
-     * The name of the item.
+     * A number associated with a role in an organization, for example, the number on an athlete's jersey.
      */
-    public Builder name(String value) {
-      name = value;
+    public Builder numberedPosition(Number number) {
+      this.numberedPosition = number;
       return this;
     }
-    public Builder image(Image value) {
-      image = value;
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String value) {
-      description = value;
-      return this;
-    }
-    private CreativeWork mainEntityOfPage;
-    private String roleName;
-    private Action potentialAction;
-    private String alternateName;
-    private String salaryCurrency;
     private String additionalType;
     private String url;
-    private Number numberedPosition;
     private String sameAs;
-    private java.util.Date startDate;
+    private String alternateName;
     private String name;
-    private Image image;
+    private Action potentialAction;
     private String description;
+    private StringOrCreativeWork mainEntityOfPage;
+    private String roleName;
+    private String salaryCurrency;
+    private java.util.Date startDate;
+    private Number numberedPosition;
   }
 
-  protected EmployeeRole(CreativeWork mainEntityOfPage, String roleName, Action potentialAction, String alternateName, String salaryCurrency, String additionalType, String url, Number numberedPosition, String sameAs, java.util.Date startDate, String name, Image image, String description) {
-    super(mainEntityOfPage, startDate, image, name, roleName, potentialAction, alternateName, additionalType, url, description, sameAs, numberedPosition);
+  protected EmployeeRole(String additionalType, String url, String sameAs, String alternateName, String name, Action potentialAction, String description, StringOrCreativeWork mainEntityOfPage, String roleName, String salaryCurrency, java.util.Date startDate, Number numberedPosition) {
+    super(url, additionalType, sameAs, alternateName, description, potentialAction, name, roleName, mainEntityOfPage, startDate, numberedPosition);
     mySalaryCurrency = salaryCurrency;
   }
   private String mySalaryCurrency;

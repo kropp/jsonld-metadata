@@ -1,4 +1,21 @@
-/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on Tue Jul 21 16:07:12 CEST 2015 */
+/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This is auto-generated file. Do not edit.
+ * Generated on Jul 22, 2015.
+ */
 
 package org.schema;
 
@@ -56,119 +73,174 @@ public class ExercisePlan extends PhysicalActivity {
     return myWorkload;
   }
   /**
-   * Builder for {@see ExercisePlan}
+   * Builder for {@link ExercisePlan}
    */
   public static final class Builder {
+    /**
+     * Creates new {@link ExercisePlan} instance.
+     */
     public ExercisePlan build() {
-      return new ExercisePlan(indication, adverseOutcome, workload, potentialAction, additionalType, medicineSystem, restPeriods, code, exerciseType, epidemiology, activityDuration, image, guideline, description, associatedAnatomy, pathophysiology, mainEntityOfPage, contraindication, intensity, alternateName, url, sameAs, recognizingAuthority, study, additionalVariable, activityFrequency, name, duplicateTherapy, relevantSpecialty, repetitions, seriousAdverseOutcome, category);
+      return new ExercisePlan(intensity, recognizingAuthority, exerciseType, code, indication, restPeriods, seriousAdverseOutcome, sameAs, additionalType, duplicateTherapy, pathophysiology, study, potentialAction, relevantSpecialty, medicineSystem, epidemiology, workload, category, activityDuration, name, adverseOutcome, mainEntityOfPage, guideline, repetitions, url, associatedAnatomy, additionalVariable, contraindication, alternateName, description, activityFrequency);
     }
     /**
-     * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
+     * Quantitative measure gauging the degree of force involved in the exercise, for example, heartbeats per minute. May include the velocity of the movement.
      */
-    public Builder indication(MedicalIndication value) {
-      indication = value;
+    public Builder intensity(String intensity) {
+      this.intensity = intensity;
       return this;
     }
     /**
-     * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
+     * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    public Builder adverseOutcome(MedicalEntity value) {
-      adverseOutcome = value;
-      return this;
-    }
-    /**
-     * Quantitative measure of the physiologic output of the exercise; also referred to as energy expenditure.
-     */
-    public Builder workload(Energy value) {
-      workload = value;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action value) {
-      potentialAction = value;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String value) {
-      additionalType = value;
-      return this;
-    }
-    /**
-     * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
-     */
-    public Builder medicineSystem(MedicineSystem value) {
-      medicineSystem = value;
-      return this;
-    }
-    /**
-     * How often one should break from the activity.
-     */
-    public Builder restPeriods(String value) {
-      restPeriods = value;
-      return this;
-    }
-    /**
-     * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
-     */
-    public Builder code(MedicalCode value) {
-      code = value;
+    public Builder recognizingAuthority(Organization organization) {
+      this.recognizingAuthority = organization;
       return this;
     }
     /**
      * Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
      */
-    public Builder exerciseType(String value) {
-      exerciseType = value;
+    public Builder exerciseType(String exerciseType) {
+      this.exerciseType = exerciseType;
       return this;
     }
     /**
-     * The characteristics of associated patients, such as age, gender, race etc.
+     * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
-    public Builder epidemiology(String value) {
-      epidemiology = value;
+    public Builder code(MedicalCode medicalCode) {
+      this.code = medicalCode;
       return this;
     }
     /**
-     * Length of time to engage in the activity.
+     * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
      */
-    public Builder activityDuration(Duration value) {
-      activityDuration = value;
-      return this;
-    }
-    public Builder image(Image value) {
-      image = value;
+    public Builder indication(MedicalIndication medicalIndication) {
+      this.indication = medicalIndication;
       return this;
     }
     /**
-     * A medical guideline related to this entity.
+     * How often one should break from the activity.
      */
-    public Builder guideline(MedicalGuideline value) {
-      guideline = value;
+    public Builder restPeriods(String restPeriods) {
+      this.restPeriods = restPeriods;
       return this;
     }
     /**
-     * A short description of the item.
+     * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
      */
-    public Builder description(String value) {
-      description = value;
+    public Builder seriousAdverseOutcome(MedicalEntity medicalEntity) {
+      this.seriousAdverseOutcome = medicalEntity;
       return this;
     }
     /**
-     * The anatomy of the underlying organ system or structures associated with this entity.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder associatedAnatomy(AnatomicalStructure value) {
-      associatedAnatomy = value;
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * A therapy that duplicates or overlaps this one.
+     */
+    public Builder duplicateTherapy(MedicalTherapy medicalTherapy) {
+      this.duplicateTherapy = medicalTherapy;
       return this;
     }
     /**
      * Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.
      */
-    public Builder pathophysiology(String value) {
-      pathophysiology = value;
+    public Builder pathophysiology(String pathophysiology) {
+      this.pathophysiology = pathophysiology;
+      return this;
+    }
+    /**
+     * A medical study or trial related to this entity.
+     */
+    public Builder study(MedicalStudy medicalStudy) {
+      this.study = medicalStudy;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
+    /**
+     * If applicable, a medical specialty in which this entity is relevant.
+     */
+    public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
+      this.relevantSpecialty = medicalSpecialty;
+      return this;
+    }
+    /**
+     * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
+     */
+    public Builder medicineSystem(MedicineSystem medicineSystem) {
+      this.medicineSystem = medicineSystem;
+      return this;
+    }
+    /**
+     * The characteristics of associated patients, such as age, gender, race etc.
+     */
+    public Builder epidemiology(String epidemiology) {
+      this.epidemiology = epidemiology;
+      return this;
+    }
+    /**
+     * Quantitative measure of the physiologic output of the exercise; also referred to as energy expenditure.
+     */
+    public Builder workload(Energy energy) {
+      this.workload = energy;
+      return this;
+    }
+    /**
+     * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+     */
+    public Builder category(Thing thing) {
+      this.category.setThing(thing);
+      return this;
+    }
+    /**
+     * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+     */
+    public Builder category(String category) {
+      this.category.setString(category);
+      return this;
+    }
+    /**
+     * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+     */
+    public Builder category(PhysicalActivityCategory physicalActivityCategory) {
+      this.category.setPhysicalActivityCategory(physicalActivityCategory);
+      return this;
+    }
+    /**
+     * Length of time to engage in the activity.
+     */
+    public Builder activityDuration(Duration duration) {
+      this.activityDuration = duration;
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+    /**
+     * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
+     */
+    public Builder adverseOutcome(MedicalEntity medicalEntity) {
+      this.adverseOutcome = medicalEntity;
       return this;
     }
     /**
@@ -201,151 +273,156 @@ public class ExercisePlan extends PhysicalActivity {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork value) {
-      mainEntityOfPage = value;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * A contraindication for this therapy.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder contraindication(MedicalContraindication value) {
-      contraindication = value;
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * Quantitative measure gauging the degree of force involved in the exercise, for example, heartbeats per minute. May include the velocity of the movement.
+     * A medical guideline related to this entity.
      */
-    public Builder intensity(String value) {
-      intensity = value;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String value) {
-      alternateName = value;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String value) {
-      url = value;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String value) {
-      sameAs = value;
-      return this;
-    }
-    /**
-     * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
-     */
-    public Builder recognizingAuthority(Organization value) {
-      recognizingAuthority = value;
-      return this;
-    }
-    /**
-     * A medical study or trial related to this entity.
-     */
-    public Builder study(MedicalStudy value) {
-      study = value;
-      return this;
-    }
-    /**
-     * Any additional component of the exercise prescription that may need to be articulated to the patient. This may include the order of exercises, the number of repetitions of movement, quantitative distance, progressions over time, etc.
-     */
-    public Builder additionalVariable(String value) {
-      additionalVariable = value;
-      return this;
-    }
-    /**
-     * How often one should engage in the activity.
-     */
-    public Builder activityFrequency(String value) {
-      activityFrequency = value;
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String value) {
-      name = value;
-      return this;
-    }
-    /**
-     * A therapy that duplicates or overlaps this one.
-     */
-    public Builder duplicateTherapy(MedicalTherapy value) {
-      duplicateTherapy = value;
-      return this;
-    }
-    /**
-     * If applicable, a medical specialty in which this entity is relevant.
-     */
-    public Builder relevantSpecialty(MedicalSpecialty value) {
-      relevantSpecialty = value;
+    public Builder guideline(MedicalGuideline medicalGuideline) {
+      this.guideline = medicalGuideline;
       return this;
     }
     /**
      * Number of times one should repeat the activity.
      */
-    public Builder repetitions(Number value) {
-      repetitions = value;
+    public Builder repetitions(Number number) {
+      this.repetitions = number;
       return this;
     }
     /**
-     * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
+     * URL of the item.
      */
-    public Builder seriousAdverseOutcome(MedicalEntity value) {
-      seriousAdverseOutcome = value;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
-     * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+     * The anatomy of the underlying organ system or structures associated with this entity.
      */
-    public Builder category(PhysicalActivityCategory value) {
-      category = value;
+    public Builder associatedAnatomy(SuperficialAnatomy superficialAnatomy) {
+      this.associatedAnatomy.setSuperficialAnatomy(superficialAnatomy);
       return this;
     }
-    private MedicalIndication indication;
-    private MedicalEntity adverseOutcome;
-    private Energy workload;
-    private Action potentialAction;
-    private String additionalType;
-    private MedicineSystem medicineSystem;
-    private String restPeriods;
-    private MedicalCode code;
-    private String exerciseType;
-    private String epidemiology;
-    private Duration activityDuration;
-    private Image image;
-    private MedicalGuideline guideline;
-    private String description;
-    private AnatomicalStructure associatedAnatomy;
-    private String pathophysiology;
-    private CreativeWork mainEntityOfPage;
-    private MedicalContraindication contraindication;
+    /**
+     * The anatomy of the underlying organ system or structures associated with this entity.
+     */
+    public Builder associatedAnatomy(AnatomicalSystem anatomicalSystem) {
+      this.associatedAnatomy.setAnatomicalSystem(anatomicalSystem);
+      return this;
+    }
+    /**
+     * The anatomy of the underlying organ system or structures associated with this entity.
+     */
+    public Builder associatedAnatomy(AnatomicalStructure anatomicalStructure) {
+      this.associatedAnatomy.setAnatomicalStructure(anatomicalStructure);
+      return this;
+    }
+    /**
+     * Any additional component of the exercise prescription that may need to be articulated to the patient. This may include the order of exercises, the number of repetitions of movement, quantitative distance, progressions over time, etc.
+     */
+    public Builder additionalVariable(String additionalVariable) {
+      this.additionalVariable = additionalVariable;
+      return this;
+    }
+    /**
+     * A contraindication for this therapy.
+     */
+    public Builder contraindication(MedicalContraindication medicalContraindication) {
+      this.contraindication = medicalContraindication;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+    /**
+     * How often one should engage in the activity.
+     */
+    public Builder activityFrequency(String activityFrequency) {
+      this.activityFrequency = activityFrequency;
+      return this;
+    }
     private String intensity;
-    private String alternateName;
-    private String url;
-    private String sameAs;
     private Organization recognizingAuthority;
-    private MedicalStudy study;
-    private String additionalVariable;
-    private String activityFrequency;
-    private String name;
-    private MedicalTherapy duplicateTherapy;
-    private MedicalSpecialty relevantSpecialty;
-    private Number repetitions;
+    private String exerciseType;
+    private MedicalCode code;
+    private MedicalIndication indication;
+    private String restPeriods;
     private MedicalEntity seriousAdverseOutcome;
-    private PhysicalActivityCategory category;
+    private String sameAs;
+    private String additionalType;
+    private MedicalTherapy duplicateTherapy;
+    private String pathophysiology;
+    private MedicalStudy study;
+    private Action potentialAction;
+    private MedicalSpecialty relevantSpecialty;
+    private MedicineSystem medicineSystem;
+    private String epidemiology;
+    private Energy workload;
+    private ThingOrStringOrPhysicalActivityCategory category;
+    private Duration activityDuration;
+    private String name;
+    private MedicalEntity adverseOutcome;
+    private StringOrCreativeWork mainEntityOfPage;
+    private MedicalGuideline guideline;
+    private Number repetitions;
+    private String url;
+    private SuperficialAnatomyOrAnatomicalSystemOrAnatomicalStructure associatedAnatomy;
+    private String additionalVariable;
+    private MedicalContraindication contraindication;
+    private String alternateName;
+    private String description;
+    private String activityFrequency;
   }
 
-  protected ExercisePlan(MedicalIndication indication, MedicalEntity adverseOutcome, Energy workload, Action potentialAction, String additionalType, MedicineSystem medicineSystem, String restPeriods, MedicalCode code, String exerciseType, String epidemiology, Duration activityDuration, Image image, MedicalGuideline guideline, String description, AnatomicalStructure associatedAnatomy, String pathophysiology, CreativeWork mainEntityOfPage, MedicalContraindication contraindication, String intensity, String alternateName, String url, String sameAs, Organization recognizingAuthority, MedicalStudy study, String additionalVariable, String activityFrequency, String name, MedicalTherapy duplicateTherapy, MedicalSpecialty relevantSpecialty, Number repetitions, MedicalEntity seriousAdverseOutcome, PhysicalActivityCategory category) {
-    super(indication, adverseOutcome, mainEntityOfPage, contraindication, alternateName, potentialAction, additionalType, url, medicineSystem, sameAs, recognizingAuthority, code, study, epidemiology, image, name, relevantSpecialty, duplicateTherapy, seriousAdverseOutcome, category, guideline, description, pathophysiology, associatedAnatomy);
+  protected ExercisePlan(String intensity, Organization recognizingAuthority, String exerciseType, MedicalCode code, MedicalIndication indication, String restPeriods, MedicalEntity seriousAdverseOutcome, String sameAs, String additionalType, MedicalTherapy duplicateTherapy, String pathophysiology, MedicalStudy study, Action potentialAction, MedicalSpecialty relevantSpecialty, MedicineSystem medicineSystem, String epidemiology, Energy workload, ThingOrStringOrPhysicalActivityCategory category, Duration activityDuration, String name, MedicalEntity adverseOutcome, StringOrCreativeWork mainEntityOfPage, MedicalGuideline guideline, Number repetitions, String url, SuperficialAnatomyOrAnatomicalSystemOrAnatomicalStructure associatedAnatomy, String additionalVariable, MedicalContraindication contraindication, String alternateName, String description, String activityFrequency) {
+    super(recognizingAuthority, epidemiology, indication, code, category, name, adverseOutcome, mainEntityOfPage, seriousAdverseOutcome, guideline, sameAs, url, additionalType, associatedAnatomy, duplicateTherapy, alternateName, contraindication, pathophysiology, study, potentialAction, description, relevantSpecialty, medicineSystem);
     myActivityDuration = activityDuration;
     myActivityFrequency = activityFrequency;
     myAdditionalVariable = additionalVariable;

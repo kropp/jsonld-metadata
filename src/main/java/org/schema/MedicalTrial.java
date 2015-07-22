@@ -1,4 +1,21 @@
-/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on Tue Jul 21 16:07:12 CEST 2015 */
+/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This is auto-generated file. Do not edit.
+ * Generated on Jul 22, 2015.
+ */
 
 package org.schema;
 
@@ -20,24 +37,69 @@ public class MedicalTrial extends MedicalStudy {
     return myTrialDesign;
   }
   /**
-   * Builder for {@see MedicalTrial}
+   * Builder for {@link MedicalTrial}
    */
   public static final class Builder {
+    /**
+     * Creates new {@link MedicalTrial} instance.
+     */
     public MedicalTrial build() {
-      return new MedicalTrial(sponsor, studyLocation, mainEntityOfPage, status, potentialAction, alternateName, additionalType, url, medicineSystem, sameAs, recognizingAuthority, outcome, study, code, studySubject, name, image, relevantSpecialty, guideline, description, population, phase, trialDesign);
+      return new MedicalTrial(recognizingAuthority, status, code, studyLocation, trialDesign, population, phase, name, mainEntityOfPage, guideline, url, sponsor, additionalType, sameAs, studySubject, alternateName, study, description, potentialAction, relevantSpecialty, medicineSystem, outcome);
     }
     /**
-     * Sponsor of the study.
+     * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    public Builder sponsor(Organization value) {
-      sponsor = value;
+    public Builder recognizingAuthority(Organization organization) {
+      this.recognizingAuthority = organization;
+      return this;
+    }
+    /**
+     * The status of the study (enumerated).
+     */
+    public Builder status(MedicalStudyStatus medicalStudyStatus) {
+      this.status = medicalStudyStatus;
+      return this;
+    }
+    /**
+     * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
+     */
+    public Builder code(MedicalCode medicalCode) {
+      this.code = medicalCode;
       return this;
     }
     /**
      * The location in which the study is taking/took place.
      */
-    public Builder studyLocation(AdministrativeArea value) {
-      studyLocation = value;
+    public Builder studyLocation(AdministrativeArea administrativeArea) {
+      this.studyLocation = administrativeArea;
+      return this;
+    }
+    /**
+     * Specifics about the trial design (enumerated).
+     */
+    public Builder trialDesign(MedicalTrialDesign medicalTrialDesign) {
+      this.trialDesign = medicalTrialDesign;
+      return this;
+    }
+    /**
+     * Any characteristics of the population used in the study, e.g. 'males under 65'.
+     */
+    public Builder population(String population) {
+      this.population = population;
+      return this;
+    }
+    /**
+     * The phase of the trial.
+     */
+    public Builder phase(String phase) {
+      this.phase = phase;
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -70,174 +132,161 @@ public class MedicalTrial extends MedicalStudy {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork value) {
-      mainEntityOfPage = value;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The status of the study (enumerated).
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder status(MedicalStudyStatus value) {
-      status = value;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action value) {
-      potentialAction = value;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String value) {
-      alternateName = value;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String value) {
-      additionalType = value;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String value) {
-      url = value;
-      return this;
-    }
-    /**
-     * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
-     */
-    public Builder medicineSystem(MedicineSystem value) {
-      medicineSystem = value;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String value) {
-      sameAs = value;
-      return this;
-    }
-    /**
-     * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
-     */
-    public Builder recognizingAuthority(Organization value) {
-      recognizingAuthority = value;
-      return this;
-    }
-    /**
-     * Expected or actual outcomes of the study.
-     */
-    public Builder outcome(String value) {
-      outcome = value;
-      return this;
-    }
-    /**
-     * A medical study or trial related to this entity.
-     */
-    public Builder study(MedicalStudy value) {
-      study = value;
-      return this;
-    }
-    /**
-     * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
-     */
-    public Builder code(MedicalCode value) {
-      code = value;
-      return this;
-    }
-    /**
-     * A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
-     */
-    public Builder studySubject(MedicalEntity value) {
-      studySubject = value;
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String value) {
-      name = value;
-      return this;
-    }
-    public Builder image(Image value) {
-      image = value;
-      return this;
-    }
-    /**
-     * If applicable, a medical specialty in which this entity is relevant.
-     */
-    public Builder relevantSpecialty(MedicalSpecialty value) {
-      relevantSpecialty = value;
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
-    public Builder guideline(MedicalGuideline value) {
-      guideline = value;
+    public Builder guideline(MedicalGuideline medicalGuideline) {
+      this.guideline = medicalGuideline;
+      return this;
+    }
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * Sponsor of the study.
+     */
+    public Builder sponsor(Organization organization) {
+      this.sponsor = organization;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
+     */
+    public Builder studySubject(MedicalEntity medicalEntity) {
+      this.studySubject = medicalEntity;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A medical study or trial related to this entity.
+     */
+    public Builder study(MedicalStudy medicalStudy) {
+      this.study = medicalStudy;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String value) {
-      description = value;
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
-     * Any characteristics of the population used in the study, e.g. 'males under 65'.
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder population(String value) {
-      population = value;
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
       return this;
     }
     /**
-     * The phase of the trial.
+     * If applicable, a medical specialty in which this entity is relevant.
      */
-    public Builder phase(String value) {
-      phase = value;
+    public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
+      this.relevantSpecialty = medicalSpecialty;
       return this;
     }
     /**
-     * Specifics about the trial design (enumerated).
+     * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
-    public Builder trialDesign(MedicalTrialDesign value) {
-      trialDesign = value;
+    public Builder medicineSystem(MedicineSystem medicineSystem) {
+      this.medicineSystem = medicineSystem;
       return this;
     }
-    private Organization sponsor;
-    private AdministrativeArea studyLocation;
-    private CreativeWork mainEntityOfPage;
-    private MedicalStudyStatus status;
-    private Action potentialAction;
-    private String alternateName;
-    private String additionalType;
-    private String url;
-    private MedicineSystem medicineSystem;
-    private String sameAs;
+    /**
+     * Expected or actual outcomes of the study.
+     */
+    public Builder outcome(String outcome) {
+      this.outcome = outcome;
+      return this;
+    }
     private Organization recognizingAuthority;
-    private String outcome;
-    private MedicalStudy study;
+    private MedicalStudyStatus status;
     private MedicalCode code;
-    private MedicalEntity studySubject;
-    private String name;
-    private Image image;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalGuideline guideline;
-    private String description;
+    private AdministrativeArea studyLocation;
+    private MedicalTrialDesign trialDesign;
     private String population;
     private String phase;
-    private MedicalTrialDesign trialDesign;
+    private String name;
+    private StringOrCreativeWork mainEntityOfPage;
+    private MedicalGuideline guideline;
+    private String url;
+    private Organization sponsor;
+    private String additionalType;
+    private String sameAs;
+    private MedicalEntity studySubject;
+    private String alternateName;
+    private MedicalStudy study;
+    private String description;
+    private Action potentialAction;
+    private MedicalSpecialty relevantSpecialty;
+    private MedicineSystem medicineSystem;
+    private String outcome;
   }
 
-  protected MedicalTrial(Organization sponsor, AdministrativeArea studyLocation, CreativeWork mainEntityOfPage, MedicalStudyStatus status, Action potentialAction, String alternateName, String additionalType, String url, MedicineSystem medicineSystem, String sameAs, Organization recognizingAuthority, String outcome, MedicalStudy study, MedicalCode code, MedicalEntity studySubject, String name, Image image, MedicalSpecialty relevantSpecialty, MedicalGuideline guideline, String description, String population, String phase, MedicalTrialDesign trialDesign) {
-    super(studyLocation, sponsor, status, mainEntityOfPage, potentialAction, alternateName, additionalType, url, medicineSystem, recognizingAuthority, sameAs, code, study, outcome, image, name, studySubject, relevantSpecialty, guideline, description, population);
+  protected MedicalTrial(Organization recognizingAuthority, MedicalStudyStatus status, MedicalCode code, AdministrativeArea studyLocation, MedicalTrialDesign trialDesign, String population, String phase, String name, StringOrCreativeWork mainEntityOfPage, MedicalGuideline guideline, String url, Organization sponsor, String additionalType, String sameAs, MedicalEntity studySubject, String alternateName, MedicalStudy study, String description, Action potentialAction, MedicalSpecialty relevantSpecialty, MedicineSystem medicineSystem, String outcome) {
+    super(status, recognizingAuthority, studyLocation, code, population, name, mainEntityOfPage, guideline, additionalType, sameAs, sponsor, url, alternateName, studySubject, study, potentialAction, description, relevantSpecialty, medicineSystem, outcome);
     myPhase = phase;
     myTrialDesign = trialDesign;
   }

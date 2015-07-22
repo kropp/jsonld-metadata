@@ -1,4 +1,21 @@
-/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on Tue Jul 21 16:07:12 CEST 2015 */
+/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This is auto-generated file. Do not edit.
+ * Generated on Jul 22, 2015.
+ */
 
 package org.schema;
 
@@ -75,7 +92,7 @@ public class Offer extends Intangible {
   /**
    * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
    */
-  public PhysicalActivityCategory getCategory() {
+  public ThingOrStringOrPhysicalActivityCategory getCategory() {
     return myCategory;
   }
   /**
@@ -105,13 +122,13 @@ public class Offer extends Intangible {
   /**
    * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
    */
-  public GeoShape getEligibleRegion() {
+  public PlaceOrGeoShapeOrString getEligibleRegion() {
     return myEligibleRegion;
   }
   /**
    * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
    */
-  public GeoShape getIneligibleRegion() {
+  public PlaceOrGeoShapeOrString getIneligibleRegion() {
     return myIneligibleRegion;
   }
   /**
@@ -197,7 +214,7 @@ public class Offer extends Intangible {
 </ul>
       
    */
-  public Number getPrice() {
+  public StringOrNumber getPrice() {
     return myPrice;
   }
   /**
@@ -223,9 +240,6 @@ public class Offer extends Intangible {
    */
   public Participant getSeller() {
     return mySeller;
-  }
-  public SerialNumber getSerialNumber() {
-    return mySerialNumber;
   }
   /**
    * The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
@@ -258,227 +272,223 @@ public class Offer extends Intangible {
     return myPriceCurrency;
   }
   /**
-   * Builder for {@see Offer}
+   * Builder for {@link Offer}
    */
   public static final class Builder {
+    /**
+     * Creates new {@link Offer} instance.
+     */
     public Offer build() {
-      return new Offer(priceSpecification, deliveryLeadTime, review, acceptedPaymentMethod, eligibleTransactionVolume, itemCondition, potentialAction, advanceBookingRequirement, additionalType, eligibleRegion, validFrom, itemOffered, includesObject, image, validThrough, inventoryLevel, serialNumber, availableDeliveryMethod, ineligibleRegion, eligibleDuration, warranty, eligibleQuantity, description, seller, price, gtin12, availability, eligibleCustomerType, availabilityEnds, mainEntityOfPage, priceCurrency, businessFunction, gtin13, alternateName, priceValidUntil, url, gtin14, addOn, gtin8, sameAs, aggregateRating, availableAtOrFrom, availabilityStarts, name, category, sku, mpn);
+      return new Offer(availabilityEnds, availableDeliveryMethod, aggregateRating, addOn, acceptedPaymentMethod, review, businessFunction, gtin14, seller, priceValidUntil, deliveryLeadTime, sameAs, additionalType, gtin12, validThrough, eligibleDuration, availabilityStarts, sku, potentialAction, eligibleQuantity, category, availableAtOrFrom, priceCurrency, advanceBookingRequirement, name, mpn, includesObject, eligibleTransactionVolume, mainEntityOfPage, itemOffered, ineligibleRegion, availability, price, gtin8, eligibleRegion, url, validFrom, itemCondition, alternateName, eligibleCustomerType, inventoryLevel, gtin13, description, priceSpecification, warranty);
     }
     /**
-     * One or more detailed price specifications, indicating the unit price and delivery or payment charges.
+     * The end of the availability of the product or service included in the offer.
      */
-    public Builder priceSpecification(PriceSpecification value) {
-      priceSpecification = value;
-      return this;
-    }
-    /**
-     * The typical delay between the receipt of the order and the goods leaving the warehouse.
-     */
-    public Builder deliveryLeadTime(QuantitativeValue value) {
-      deliveryLeadTime = value;
-      return this;
-    }
-    /**
-     * A review of the item.
-     */
-    public Builder review(Review value) {
-      review = value;
-      return this;
-    }
-    /**
-     * The payment method(s) accepted by seller for this offer.
-     */
-    public Builder acceptedPaymentMethod(PaymentMethod value) {
-      acceptedPaymentMethod = value;
-      return this;
-    }
-    /**
-     * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
-     */
-    public Builder eligibleTransactionVolume(PriceSpecification value) {
-      eligibleTransactionVolume = value;
-      return this;
-    }
-    /**
-     * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
-     */
-    public Builder itemCondition(OfferItemCondition value) {
-      itemCondition = value;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action value) {
-      potentialAction = value;
-      return this;
-    }
-    /**
-     * The amount of time that is required between accepting the offer and the actual usage of the resource or service.
-     */
-    public Builder advanceBookingRequirement(QuantitativeValue value) {
-      advanceBookingRequirement = value;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String value) {
-      additionalType = value;
-      return this;
-    }
-    /**
-     * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
-     */
-    public Builder eligibleRegion(GeoShape value) {
-      eligibleRegion = value;
-      return this;
-    }
-    /**
-     * The date when the item becomes valid.
-     */
-    public Builder validFrom(java.util.Date value) {
-      validFrom = value;
-      return this;
-    }
-    /**
-     * The item being offered.
-     */
-    public Builder itemOffered(Product value) {
-      itemOffered = value;
-      return this;
-    }
-    /**
-     * This links to a node or nodes indicating the exact quantity of the products included in the offer.
-     */
-    public Builder includesObject(TypeAndQuantityNode value) {
-      includesObject = value;
-      return this;
-    }
-    public Builder image(Image value) {
-      image = value;
-      return this;
-    }
-    /**
-     * The end of the validity of offer, price specification, or opening hours data.
-     */
-    public Builder validThrough(java.util.Date value) {
-      validThrough = value;
-      return this;
-    }
-    /**
-     * The current approximate inventory level for the item or items.
-     */
-    public Builder inventoryLevel(QuantitativeValue value) {
-      inventoryLevel = value;
-      return this;
-    }
-    public Builder serialNumber(SerialNumber value) {
-      serialNumber = value;
+    public Builder availabilityEnds(java.util.Date date) {
+      this.availabilityEnds = date;
       return this;
     }
     /**
      * The delivery method(s) available for this offer.
      */
-    public Builder availableDeliveryMethod(DeliveryMethod value) {
-      availableDeliveryMethod = value;
+    public Builder availableDeliveryMethod(DeliveryMethod deliveryMethod) {
+      this.availableDeliveryMethod = deliveryMethod;
       return this;
     }
     /**
-     * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
+     * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    public Builder ineligibleRegion(GeoShape value) {
-      ineligibleRegion = value;
+    public Builder aggregateRating(AggregateRating aggregateRating) {
+      this.aggregateRating = aggregateRating;
       return this;
     }
     /**
-     * The duration for which the given offer is valid.
+     * An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
      */
-    public Builder eligibleDuration(QuantitativeValue value) {
-      eligibleDuration = value;
+    public Builder addOn(Offer offer) {
+      this.addOn = offer;
       return this;
     }
     /**
-     * The warranty promise(s) included in the offer.
+     * The payment method(s) accepted by seller for this offer.
      */
-    public Builder warranty(WarrantyPromise value) {
-      warranty = value;
+    public Builder acceptedPaymentMethod(PaymentMethod paymentMethod) {
+      this.acceptedPaymentMethod = paymentMethod;
       return this;
     }
     /**
-     * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
+     * A review of the item.
      */
-    public Builder eligibleQuantity(QuantitativeValue value) {
-      eligibleQuantity = value;
+    public Builder review(Review review) {
+      this.review = review;
       return this;
     }
     /**
-     * A short description of the item.
+     * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
      */
-    public Builder description(String value) {
-      description = value;
+    public Builder businessFunction(BusinessFunction businessFunction) {
+      this.businessFunction = businessFunction;
+      return this;
+    }
+    /**
+     * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-14.aspx">GTIN-14</a> code of the product, or the product to which the offer refers. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+     */
+    public Builder gtin14(String gtin14) {
+      this.gtin14 = gtin14;
       return this;
     }
     /**
      * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
      */
-    public Builder seller(Participant value) {
-      seller = value;
+    public Builder seller(Participant participant) {
+      this.seller = participant;
       return this;
     }
     /**
-     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * The date after which the price is no longer available.
      */
-    public Builder price(Number value) {
-      price = value;
+    public Builder priceValidUntil(java.util.Date date) {
+      this.priceValidUntil = date;
+      return this;
+    }
+    /**
+     * The typical delay between the receipt of the order and the goods leaving the warehouse.
+     */
+    public Builder deliveryLeadTime(QuantitativeValue quantitativeValue) {
+      this.deliveryLeadTime = quantitativeValue;
+      return this;
+    }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
       return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-12.aspx">GTIN-12</a> code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
-    public Builder gtin12(String value) {
-      gtin12 = value;
+    public Builder gtin12(String gtin12) {
+      this.gtin12 = gtin12;
       return this;
     }
     /**
-     * The availability of this item&#x2014;for example In stock, Out of stock, Pre-order, etc.
+     * The end of the validity of offer, price specification, or opening hours data.
      */
-    public Builder availability(ItemAvailability value) {
-      availability = value;
+    public Builder validThrough(java.util.Date date) {
+      this.validThrough = date;
       return this;
     }
     /**
-     * The type(s) of customers for which the given offer is valid.
+     * The duration for which the given offer is valid.
      */
-    public Builder eligibleCustomerType(BusinessEntityType value) {
-      eligibleCustomerType = value;
+    public Builder eligibleDuration(QuantitativeValue quantitativeValue) {
+      this.eligibleDuration = quantitativeValue;
       return this;
     }
     /**
-     * The end of the availability of the product or service included in the offer.
+     * The beginning of the availability of the product or service included in the offer.
      */
-    public Builder availabilityEnds(java.util.Date value) {
-      availabilityEnds = value;
+    public Builder availabilityStarts(java.util.Date date) {
+      this.availabilityStarts = date;
+      return this;
+    }
+    /**
+     * The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
+     */
+    public Builder sku(String sku) {
+      this.sku = sku;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
+    /**
+     * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
+     */
+    public Builder eligibleQuantity(QuantitativeValue quantitativeValue) {
+      this.eligibleQuantity = quantitativeValue;
+      return this;
+    }
+    /**
+     * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+     */
+    public Builder category(Thing thing) {
+      this.category.setThing(thing);
+      return this;
+    }
+    /**
+     * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+     */
+    public Builder category(String category) {
+      this.category.setString(category);
+      return this;
+    }
+    /**
+     * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+     */
+    public Builder category(PhysicalActivityCategory physicalActivityCategory) {
+      this.category.setPhysicalActivityCategory(physicalActivityCategory);
+      return this;
+    }
+    /**
+     * The place(s) from which the offer can be obtained (e.g. store locations).
+     */
+    public Builder availableAtOrFrom(Place place) {
+      this.availableAtOrFrom = place;
+      return this;
+    }
+    /**
+     * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
+     */
+    public Builder priceCurrency(String priceCurrency) {
+      this.priceCurrency = priceCurrency;
+      return this;
+    }
+    /**
+     * The amount of time that is required between accepting the offer and the actual usage of the resource or service.
+     */
+    public Builder advanceBookingRequirement(QuantitativeValue quantitativeValue) {
+      this.advanceBookingRequirement = quantitativeValue;
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+    /**
+     * The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
+     */
+    public Builder mpn(String mpn) {
+      this.mpn = mpn;
+      return this;
+    }
+    /**
+     * This links to a node or nodes indicating the exact quantity of the products included in the offer.
+     */
+    public Builder includesObject(TypeAndQuantityNode typeAndQuantityNode) {
+      this.includesObject = typeAndQuantityNode;
+      return this;
+    }
+    /**
+     * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
+     */
+    public Builder eligibleTransactionVolume(PriceSpecification priceSpecification) {
+      this.eligibleTransactionVolume = priceSpecification;
       return this;
     }
     /**
@@ -511,180 +521,280 @@ public class Offer extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork value) {
-      mainEntityOfPage = value;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder priceCurrency(String value) {
-      priceCurrency = value;
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
+     * The item being offered.
      */
-    public Builder businessFunction(BusinessFunction value) {
-      businessFunction = value;
+    public Builder itemOffered(Product product) {
+      this.itemOffered = product;
       return this;
     }
     /**
-     * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-13.aspx">GTIN-13</a> code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+     * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
      */
-    public Builder gtin13(String value) {
-      gtin13 = value;
+    public Builder ineligibleRegion(Place place) {
+      this.ineligibleRegion.setPlace(place);
       return this;
     }
     /**
-     * An alias for the item.
+     * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
      */
-    public Builder alternateName(String value) {
-      alternateName = value;
+    public Builder ineligibleRegion(GeoShape geoShape) {
+      this.ineligibleRegion.setGeoShape(geoShape);
       return this;
     }
     /**
-     * The date after which the price is no longer available.
+     * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
      */
-    public Builder priceValidUntil(java.util.Date value) {
-      priceValidUntil = value;
+    public Builder ineligibleRegion(String ineligibleRegion) {
+      this.ineligibleRegion.setString(ineligibleRegion);
       return this;
     }
     /**
-     * URL of the item.
+     * The availability of this item&#x2014;for example In stock, Out of stock, Pre-order, etc.
      */
-    public Builder url(String value) {
-      url = value;
+    public Builder availability(ItemAvailability itemAvailability) {
+      this.availability = itemAvailability;
       return this;
     }
     /**
-     * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-14.aspx">GTIN-14</a> code of the product, or the product to which the offer refers. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
      */
-    public Builder gtin14(String value) {
-      gtin14 = value;
+    public Builder price(String price) {
+      this.price.setString(price);
       return this;
     }
     /**
-     * An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
      */
-    public Builder addOn(Offer value) {
-      addOn = value;
+    public Builder price(Number number) {
+      this.price.setNumber(number);
       return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-8.aspx">GTIN-8</a> code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
-    public Builder gtin8(String value) {
-      gtin8 = value;
+    public Builder gtin8(String gtin8) {
+      this.gtin8 = gtin8;
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
      */
-    public Builder sameAs(String value) {
-      sameAs = value;
+    public Builder eligibleRegion(Place place) {
+      this.eligibleRegion.setPlace(place);
       return this;
     }
     /**
-     * The overall rating, based on a collection of reviews or ratings, of the item.
+     * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
      */
-    public Builder aggregateRating(AggregateRating value) {
-      aggregateRating = value;
+    public Builder eligibleRegion(GeoShape geoShape) {
+      this.eligibleRegion.setGeoShape(geoShape);
       return this;
     }
     /**
-     * The place(s) from which the offer can be obtained (e.g. store locations).
+     * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
      */
-    public Builder availableAtOrFrom(Place value) {
-      availableAtOrFrom = value;
+    public Builder eligibleRegion(String eligibleRegion) {
+      this.eligibleRegion.setString(eligibleRegion);
       return this;
     }
     /**
-     * The beginning of the availability of the product or service included in the offer.
+     * URL of the item.
      */
-    public Builder availabilityStarts(java.util.Date value) {
-      availabilityStarts = value;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
-     * The name of the item.
+     * The date when the item becomes valid.
      */
-    public Builder name(String value) {
-      name = value;
+    public Builder validFrom(java.util.Date date) {
+      this.validFrom = date;
       return this;
     }
     /**
-     * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+     * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
      */
-    public Builder category(PhysicalActivityCategory value) {
-      category = value;
+    public Builder itemCondition(OfferItemCondition offerItemCondition) {
+      this.itemCondition = offerItemCondition;
       return this;
     }
     /**
-     * The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
+     * An alias for the item.
      */
-    public Builder sku(String value) {
-      sku = value;
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
       return this;
     }
     /**
-     * The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
+     * The type(s) of customers for which the given offer is valid.
      */
-    public Builder mpn(String value) {
-      mpn = value;
+    public Builder eligibleCustomerType(BusinessEntityType businessEntityType) {
+      this.eligibleCustomerType = businessEntityType;
       return this;
     }
-    private PriceSpecification priceSpecification;
-    private QuantitativeValue deliveryLeadTime;
-    private Review review;
-    private PaymentMethod acceptedPaymentMethod;
-    private PriceSpecification eligibleTransactionVolume;
-    private OfferItemCondition itemCondition;
-    private Action potentialAction;
-    private QuantitativeValue advanceBookingRequirement;
-    private String additionalType;
-    private GeoShape eligibleRegion;
-    private java.util.Date validFrom;
-    private Product itemOffered;
-    private TypeAndQuantityNode includesObject;
-    private Image image;
-    private java.util.Date validThrough;
-    private QuantitativeValue inventoryLevel;
-    private SerialNumber serialNumber;
-    private DeliveryMethod availableDeliveryMethod;
-    private GeoShape ineligibleRegion;
-    private QuantitativeValue eligibleDuration;
-    private WarrantyPromise warranty;
-    private QuantitativeValue eligibleQuantity;
-    private String description;
-    private Participant seller;
-    private Number price;
-    private String gtin12;
-    private ItemAvailability availability;
-    private BusinessEntityType eligibleCustomerType;
+    /**
+     * The current approximate inventory level for the item or items.
+     */
+    public Builder inventoryLevel(QuantitativeValue quantitativeValue) {
+      this.inventoryLevel = quantitativeValue;
+      return this;
+    }
+    /**
+     * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-13.aspx">GTIN-13</a> code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+     */
+    public Builder gtin13(String gtin13) {
+      this.gtin13 = gtin13;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
+      return this;
+    }
+    /**
+     * One or more detailed price specifications, indicating the unit price and delivery or payment charges.
+     */
+    public Builder priceSpecification(PriceSpecification priceSpecification) {
+      this.priceSpecification = priceSpecification;
+      return this;
+    }
+    /**
+     * The warranty promise(s) included in the offer.
+     */
+    public Builder warranty(WarrantyPromise warrantyPromise) {
+      this.warranty = warrantyPromise;
+      return this;
+    }
     private java.util.Date availabilityEnds;
-    private CreativeWork mainEntityOfPage;
-    private String priceCurrency;
-    private BusinessFunction businessFunction;
-    private String gtin13;
-    private String alternateName;
-    private java.util.Date priceValidUntil;
-    private String url;
-    private String gtin14;
-    private Offer addOn;
-    private String gtin8;
-    private String sameAs;
+    private DeliveryMethod availableDeliveryMethod;
     private AggregateRating aggregateRating;
-    private Place availableAtOrFrom;
+    private Offer addOn;
+    private PaymentMethod acceptedPaymentMethod;
+    private Review review;
+    private BusinessFunction businessFunction;
+    private String gtin14;
+    private Participant seller;
+    private java.util.Date priceValidUntil;
+    private QuantitativeValue deliveryLeadTime;
+    private String sameAs;
+    private String additionalType;
+    private String gtin12;
+    private java.util.Date validThrough;
+    private QuantitativeValue eligibleDuration;
     private java.util.Date availabilityStarts;
-    private String name;
-    private PhysicalActivityCategory category;
     private String sku;
+    private Action potentialAction;
+    private QuantitativeValue eligibleQuantity;
+    private ThingOrStringOrPhysicalActivityCategory category;
+    private Place availableAtOrFrom;
+    private String priceCurrency;
+    private QuantitativeValue advanceBookingRequirement;
+    private String name;
     private String mpn;
+    private TypeAndQuantityNode includesObject;
+    private PriceSpecification eligibleTransactionVolume;
+    private StringOrCreativeWork mainEntityOfPage;
+    private Product itemOffered;
+    private PlaceOrGeoShapeOrString ineligibleRegion;
+    private ItemAvailability availability;
+    private StringOrNumber price;
+    private String gtin8;
+    private PlaceOrGeoShapeOrString eligibleRegion;
+    private String url;
+    private java.util.Date validFrom;
+    private OfferItemCondition itemCondition;
+    private String alternateName;
+    private BusinessEntityType eligibleCustomerType;
+    private QuantitativeValue inventoryLevel;
+    private String gtin13;
+    private String description;
+    private PriceSpecification priceSpecification;
+    private WarrantyPromise warranty;
   }
 
-  protected Offer(PriceSpecification priceSpecification, QuantitativeValue deliveryLeadTime, Review review, PaymentMethod acceptedPaymentMethod, PriceSpecification eligibleTransactionVolume, OfferItemCondition itemCondition, Action potentialAction, QuantitativeValue advanceBookingRequirement, String additionalType, GeoShape eligibleRegion, java.util.Date validFrom, Product itemOffered, TypeAndQuantityNode includesObject, Image image, java.util.Date validThrough, QuantitativeValue inventoryLevel, SerialNumber serialNumber, DeliveryMethod availableDeliveryMethod, GeoShape ineligibleRegion, QuantitativeValue eligibleDuration, WarrantyPromise warranty, QuantitativeValue eligibleQuantity, String description, Participant seller, Number price, String gtin12, ItemAvailability availability, BusinessEntityType eligibleCustomerType, java.util.Date availabilityEnds, CreativeWork mainEntityOfPage, String priceCurrency, BusinessFunction businessFunction, String gtin13, String alternateName, java.util.Date priceValidUntil, String url, String gtin14, Offer addOn, String gtin8, String sameAs, AggregateRating aggregateRating, Place availableAtOrFrom, java.util.Date availabilityStarts, String name, PhysicalActivityCategory category, String sku, String mpn) {
-    super(mainEntityOfPage, image, name, potentialAction, alternateName, additionalType, url, description, sameAs);
+  protected Offer(java.util.Date availabilityEnds, DeliveryMethod availableDeliveryMethod, AggregateRating aggregateRating, Offer addOn, PaymentMethod acceptedPaymentMethod, Review review, BusinessFunction businessFunction, String gtin14, Participant seller, java.util.Date priceValidUntil, QuantitativeValue deliveryLeadTime, String sameAs, String additionalType, String gtin12, java.util.Date validThrough, QuantitativeValue eligibleDuration, java.util.Date availabilityStarts, String sku, Action potentialAction, QuantitativeValue eligibleQuantity, ThingOrStringOrPhysicalActivityCategory category, Place availableAtOrFrom, String priceCurrency, QuantitativeValue advanceBookingRequirement, String name, String mpn, TypeAndQuantityNode includesObject, PriceSpecification eligibleTransactionVolume, StringOrCreativeWork mainEntityOfPage, Product itemOffered, PlaceOrGeoShapeOrString ineligibleRegion, ItemAvailability availability, StringOrNumber price, String gtin8, PlaceOrGeoShapeOrString eligibleRegion, String url, java.util.Date validFrom, OfferItemCondition itemCondition, String alternateName, BusinessEntityType eligibleCustomerType, QuantitativeValue inventoryLevel, String gtin13, String description, PriceSpecification priceSpecification, WarrantyPromise warranty) {
+    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
     myAcceptedPaymentMethod = acceptedPaymentMethod;
     myAddOn = addOn;
     myAdvanceBookingRequirement = advanceBookingRequirement;
@@ -717,7 +827,6 @@ public class Offer extends Intangible {
     myPriceValidUntil = priceValidUntil;
     myReview = review;
     mySeller = seller;
-    mySerialNumber = serialNumber;
     mySku = sku;
     myValidFrom = validFrom;
     myValidThrough = validThrough;
@@ -734,13 +843,13 @@ public class Offer extends Intangible {
   private Place myAvailableAtOrFrom;
   private DeliveryMethod myAvailableDeliveryMethod;
   private BusinessFunction myBusinessFunction;
-  private PhysicalActivityCategory myCategory;
+  private ThingOrStringOrPhysicalActivityCategory myCategory;
   private QuantitativeValue myDeliveryLeadTime;
   private BusinessEntityType myEligibleCustomerType;
   private QuantitativeValue myEligibleDuration;
   private QuantitativeValue myEligibleQuantity;
-  private GeoShape myEligibleRegion;
-  private GeoShape myIneligibleRegion;
+  private PlaceOrGeoShapeOrString myEligibleRegion;
+  private PlaceOrGeoShapeOrString myIneligibleRegion;
   private PriceSpecification myEligibleTransactionVolume;
   private String myGtin12;
   private String myGtin13;
@@ -751,12 +860,11 @@ public class Offer extends Intangible {
   private OfferItemCondition myItemCondition;
   private Product myItemOffered;
   private String myMpn;
-  private Number myPrice;
+  private StringOrNumber myPrice;
   private PriceSpecification myPriceSpecification;
   private java.util.Date myPriceValidUntil;
   private Review myReview;
   private Participant mySeller;
-  private SerialNumber mySerialNumber;
   private String mySku;
   private java.util.Date myValidFrom;
   private java.util.Date myValidThrough;
