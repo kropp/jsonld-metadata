@@ -1,3 +1,19 @@
+/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import GeneratorSink
 import Type
 import org.semarglproject.rdf.rdfa.RdfaParser
@@ -5,6 +21,7 @@ import org.semarglproject.sink.TripleSink
 import org.semarglproject.source.StreamProcessor
 import java.io.File
 import java.io.FileInputStream
+import java.text.DateFormat
 import java.util.ArrayList
 import java.util.Date
 import java.util.HashMap
@@ -31,6 +48,25 @@ class Type() {
 
 val Type.classOrInterface: String
     get() = when(isInterface) { true -> "interface"; else -> "class" }
+
+private val BANNER = """/*
+ * Copyright 2015 JetBrains s.r.o.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * This is auto-generated file. Do not edit.
+ * Generated on ${DateFormat.getDateInstance().format(Date(System.currentTimeMillis()))}.
+ */"""
 
 class GeneratorSink : TripleSink {
     private var uri: String = "http://schema.org/"
@@ -168,7 +204,7 @@ class GeneratorSink : TripleSink {
     private fun generateEither(ns: String, packageDir: File, types: Collection<String>): String {
         val eitherName = types.join("Or")
         with(StringBuilder()) {
-            appendln("/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on ${Date(System.currentTimeMillis())} */")
+            appendln(BANNER)
             appendln()
             appendln("package $ns;")
             appendln()
@@ -189,7 +225,7 @@ class GeneratorSink : TripleSink {
     private fun generateBuilders(ns: String, packageDir: File) {
         // public API
         with(StringBuilder()) {
-            appendln("/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on ${Date(System.currentTimeMillis())} */")
+            appendln(BANNER)
             appendln()
             appendln("package $ns;")
             appendln()
@@ -222,7 +258,7 @@ class GeneratorSink : TripleSink {
             val typeName = type.name!!.capitalize()
 
             with(StringBuilder()) {
-                appendln("/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on ${Date(System.currentTimeMillis())} */")
+                appendln(BANNER)
                 appendln()
                 appendln("package $ns;")
                 appendln()
@@ -271,9 +307,12 @@ class GeneratorSink : TripleSink {
                 // builder
                 if (!type.isInterface) {
                     appendln("  /**")
-                    appendln("   * Builder for {@see $typeName}")
+                    appendln("   * Builder for {@link $typeName}")
                     appendln("   */")
                     appendln("  public static final class Builder {")
+                    appendln("    /**")
+                    appendln("     * Creates new {@link $typeName} instance.")
+                    appendln("     */")
                     appendln("    public ${typeName} build() {")
                     append("      return new ${typeName}(")
                     append(getAllFields(type).map { it.name?.decapitalize() }.filterNotNull().join(", "))
