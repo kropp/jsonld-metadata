@@ -296,6 +296,11 @@ class GeneratorSink : TripleSink {
   public String getJsonLdType() {
     return getClass().getSimpleName();
   }
+
+  @com.fasterxml.jackson.annotation.JsonProperty("@context")
+  public String getJsonLdContext() {
+    return "http://schema.org/";
+  }
 """)
                 }
 
