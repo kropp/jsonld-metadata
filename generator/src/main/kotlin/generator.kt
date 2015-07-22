@@ -118,7 +118,7 @@ class GeneratorSink : TripleSink {
     private fun getBasicTypeName(name: String?): String? {
         return when(name) {
             "Text", "URL" -> "String"
-            "DateTime", "Date", "Time" -> "Date"
+            "DateTime", "Date", "Time" -> "java.util.Date"
             else -> name?.capitalize()
         }
     }
@@ -174,7 +174,7 @@ class GeneratorSink : TripleSink {
             appendln("class $eitherName {")
             appendln("  public $eitherName() {}")
             types.forEach {
-                appendln("  public void set$it($it ${it.decapitalize()}) { my$it = ${it.decapitalize()}; }")
+                appendln("  public void set$it($it ${getVariableName(it, "value")}) { my$it = ${getVariableName(it, "value")}; }")
                 appendln("  public $it get$it() { return my$it; }")
                 appendln("  private $it my$it;")
             }
@@ -224,8 +224,6 @@ class GeneratorSink : TripleSink {
                 appendln("/** THIS IS AN AUTO GENERATED CLASS. DO NOT EDIT. Generated on ${Date(System.currentTimeMillis())} */")
                 appendln()
                 appendln("package $ns;")
-                appendln()
-                appendln("import java.util.Date;")
                 appendln()
 
                 appendln("/**")
@@ -290,18 +288,18 @@ class GeneratorSink : TripleSink {
                                     appendln("     * $it")
                                     appendln("     */")
                                 }
-                                appendln("    public Builder ${name.decapitalize()}($fieldType ${fieldType.decapitalize()}) {")
+                                appendln("    public Builder ${name.decapitalize()}($fieldType ${getVariableName(fieldType, name)}) {")
                                 if (eitherTypes.size() < 2) {
-                                    appendln("      this.${name.decapitalize()} = ${fieldType.decapitalize()};")
+                                    appendln("      this.${name.decapitalize()} = ${getVariableName(fieldType, name)};")
                                 } else {
-                                    appendln("      this.${name.decapitalize()}.set$fieldType(${fieldType.decapitalize()});")
+                                    appendln("      this.${name.decapitalize()}.set$fieldType(${getVariableName(fieldType, name)});")
                                 }
                                 appendln("      return this;")
                                 appendln("    }")
                             }
                         }
                     }
-                    getAllFields(type).forEach { appendln("    private ${getEitherFieldType(ns, packageDir, it)} ${it.name!!.decapitalize()};") }
+                    getAllFields(type).forEach { appendln("    private ${getEitherFieldType(ns, packageDir, it)} ${getVariableName(it.name!!)};") }
                     appendln("  }")
                     appendln()
                 }
@@ -339,6 +337,17 @@ class GeneratorSink : TripleSink {
                 File(packageDir, typeName + ".java").writeText(toString())
             }
         }
+    }
+
+    private fun getVariableName(typeName: String, entityName: String? = null): String {
+        val indexOfDot = typeName.lastIndexOf('.')
+        if (indexOfDot > 0) {
+            return typeName.substring(indexOfDot+1).decapitalize()
+        }
+        if (entityName != null && (typeName == "Boolean" || typeName == "String" || typeName == "Class")) {
+            return entityName.decapitalize()
+        }
+        return typeName.decapitalize()
     }
 
     private fun getAllFields(type: Type?): Iterable<Type> {
