@@ -119,6 +119,7 @@ class GeneratorSink : TripleSink {
         return when(name) {
             "Text", "URL" -> "String"
             "DateTime", "Date", "Time" -> "java.util.Date"
+            "Class" -> null
             else -> name?.capitalize()
         }
     }
@@ -234,7 +235,7 @@ class GeneratorSink : TripleSink {
 
                 append("public ${type.classOrInterface} $typeName")
                 type.parentType?.let { types.get(it)?.let { append(" extends ${it.name}") } }
-                val interfaces = type.interfaces.filter { i -> types.any { it.getValue().name == i } }
+                val interfaces = type.interfaces.filter { i -> types.values().any { it.name == i && !it.isField } }
                 if (interfaces.any()) {
                     append(" implements ")
                     append(interfaces.join(", "))
@@ -252,7 +253,7 @@ class GeneratorSink : TripleSink {
                 // getters
                 for (field in type.subTypes) {
                     types.get(field)?.let {
-                        if (it.name != null && !it.isSuperseded && it.name != "hasPart") {
+                        if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
                             val fieldType = getEitherFieldType(ns, packageDir, it)
                             val name = it.name!!.capitalize()
                             it.comment?.let {
@@ -316,7 +317,7 @@ class GeneratorSink : TripleSink {
                     }
                     for (field in type.subTypes) {
                         types.get(field)?.let {
-                            if (it.name != null && !it.isSuperseded && it.name != "hasPart") {
+                            if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
                                 appendln("    my${it.name!!.capitalize()} = ${it.name!!.decapitalize()};")
                             }
                         }
@@ -325,7 +326,7 @@ class GeneratorSink : TripleSink {
                 }
                 for (field in type.subTypes) {
                     types.get(field)?.let {
-                        if (it.name != null && !it.isSuperseded && it.name != "hasPart") {
+                        if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
                             appendln("  private ${getEitherFieldType(ns, packageDir, it)} my${it.name!!.capitalize()};")
                         }
                     }
@@ -354,7 +355,7 @@ class GeneratorSink : TripleSink {
         if (type == null) {
             return emptyList()
         }
-        val fieldTypes = type.subTypes.map { types.get(it) }.filter { it.name != null && !it.isSuperseded && it.name != "hasPart" }.toHashSet()
+        val fieldTypes = type.subTypes.map { types.get(it) }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.toHashSet()
         getAllFields(types.get(type.parentType)).filterNot { i -> fieldTypes.any { it.name == i.name} }.forEach { fieldTypes.add(it) }
         return fieldTypes
     }
