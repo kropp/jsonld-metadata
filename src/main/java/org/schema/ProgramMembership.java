@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -49,34 +48,20 @@ public class ProgramMembership extends Intangible {
      * Creates new {@link ProgramMembership} instance.
      */
     public ProgramMembership build() {
-      return new ProgramMembership(additionalType, url, sameAs, alternateName, hostingOrganization, name, potentialAction, description, mainEntityOfPage, programName, membershipNumber);
+      return new ProgramMembership(membershipNumber, programName, hostingOrganization, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     * A unique identifier for the membership.
      */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
+    public Builder membershipNumber(String membershipNumber) {
+      this.membershipNumber = membershipNumber;
       return this;
     }
     /**
-     * URL of the item.
+     * The program providing the membership.
      */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
+    public Builder programName(String programName) {
+      this.programName = programName;
       return this;
     }
     /**
@@ -87,17 +72,17 @@ public class ProgramMembership extends Intangible {
       return this;
     }
     /**
-     * The name of the item.
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
       return this;
     }
     /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     * An alias for the item.
      */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
       return this;
     }
     /**
@@ -137,8 +122,9 @@ public class ProgramMembership extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
@@ -171,39 +157,54 @@ public class ProgramMembership extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The program providing the membership.
+     * The name of the item.
      */
-    public Builder programName(String programName) {
-      this.programName = programName;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
-     * A unique identifier for the membership.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder membershipNumber(String membershipNumber) {
-      this.membershipNumber = membershipNumber;
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
-    private String additionalType;
-    private String url;
-    private String sameAs;
-    private String alternateName;
-    private Organization hostingOrganization;
-    private String name;
-    private Action potentialAction;
-    private String description;
-    private StringOrCreativeWork mainEntityOfPage;
-    private String programName;
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
     private String membershipNumber;
+    private String programName;
+    private Organization hostingOrganization;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected ProgramMembership(String additionalType, String url, String sameAs, String alternateName, Organization hostingOrganization, String name, Action potentialAction, String description, StringOrCreativeWork mainEntityOfPage, String programName, String membershipNumber) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected ProgramMembership(String membershipNumber, String programName, Organization hostingOrganization, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myMembershipNumber = membershipNumber;
     myProgramName = programName;
     myHostingOrganization = hostingOrganization;

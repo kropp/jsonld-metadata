@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -103,13 +102,34 @@ public class NutritionInformation extends StructuredValue {
      * Creates new {@link NutritionInformation} instance.
      */
     public NutritionInformation build() {
-      return new NutritionInformation(cholesterolContent, fiberContent, saturatedFatContent, transFatContent, name, mainEntityOfPage, proteinContent, calories, url, additionalType, sameAs, unsaturatedFatContent, carbohydrateContent, alternateName, fatContent, sodiumContent, potentialAction, description, sugarContent, servingSize);
+      return new NutritionInformation(calories, carbohydrateContent, cholesterolContent, fatContent, fiberContent, proteinContent, saturatedFatContent, servingSize, sodiumContent, sugarContent, transFatContent, unsaturatedFatContent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+    }
+    /**
+     * The number of calories.
+     */
+    public Builder calories(Energy energy) {
+      this.calories = energy;
+      return this;
+    }
+    /**
+     * The number of grams of carbohydrates.
+     */
+    public Builder carbohydrateContent(Mass mass) {
+      this.carbohydrateContent = mass;
+      return this;
     }
     /**
      * The number of milligrams of cholesterol.
      */
     public Builder cholesterolContent(Mass mass) {
       this.cholesterolContent = mass;
+      return this;
+    }
+    /**
+     * The number of grams of fat.
+     */
+    public Builder fatContent(Mass mass) {
+      this.fatContent = mass;
       return this;
     }
     /**
@@ -120,10 +140,38 @@ public class NutritionInformation extends StructuredValue {
       return this;
     }
     /**
+     * The number of grams of protein.
+     */
+    public Builder proteinContent(Mass mass) {
+      this.proteinContent = mass;
+      return this;
+    }
+    /**
      * The number of grams of saturated fat.
      */
     public Builder saturatedFatContent(Mass mass) {
       this.saturatedFatContent = mass;
+      return this;
+    }
+    /**
+     * The serving size, in terms of the number of volume or mass.
+     */
+    public Builder servingSize(String servingSize) {
+      this.servingSize = servingSize;
+      return this;
+    }
+    /**
+     * The number of milligrams of sodium.
+     */
+    public Builder sodiumContent(Mass mass) {
+      this.sodiumContent = mass;
+      return this;
+    }
+    /**
+     * The number of grams of sugar.
+     */
+    public Builder sugarContent(Mass mass) {
+      this.sugarContent = mass;
       return this;
     }
     /**
@@ -134,44 +182,31 @@ public class NutritionInformation extends StructuredValue {
       return this;
     }
     /**
-     * The name of the item.
+     * The number of grams of unsaturated fat.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder unsaturatedFatContent(Mass mass) {
+      this.unsaturatedFatContent = mass;
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -205,35 +240,50 @@ public class NutritionInformation extends StructuredValue {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * The number of grams of protein.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder proteinContent(Mass mass) {
-      this.proteinContent = mass;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The number of calories.
+     * The name of the item.
      */
-    public Builder calories(Energy energy) {
-      this.calories = energy;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -244,38 +294,10 @@ public class NutritionInformation extends StructuredValue {
       return this;
     }
     /**
-     * The number of grams of unsaturated fat.
+     * URL of the item.
      */
-    public Builder unsaturatedFatContent(Mass mass) {
-      this.unsaturatedFatContent = mass;
-      return this;
-    }
-    /**
-     * The number of grams of carbohydrates.
-     */
-    public Builder carbohydrateContent(Mass mass) {
-      this.carbohydrateContent = mass;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * The number of grams of fat.
-     */
-    public Builder fatContent(Mass mass) {
-      this.fatContent = mass;
-      return this;
-    }
-    /**
-     * The number of milligrams of sodium.
-     */
-    public Builder sodiumContent(Mass mass) {
-      this.sodiumContent = mass;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
@@ -285,51 +307,30 @@ public class NutritionInformation extends StructuredValue {
       this.potentialAction = action;
       return this;
     }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-    /**
-     * The number of grams of sugar.
-     */
-    public Builder sugarContent(Mass mass) {
-      this.sugarContent = mass;
-      return this;
-    }
-    /**
-     * The serving size, in terms of the number of volume or mass.
-     */
-    public Builder servingSize(String servingSize) {
-      this.servingSize = servingSize;
-      return this;
-    }
-    private Mass cholesterolContent;
-    private Mass fiberContent;
-    private Mass saturatedFatContent;
-    private Mass transFatContent;
-    private String name;
-    private StringOrCreativeWork mainEntityOfPage;
-    private Mass proteinContent;
     private Energy calories;
-    private String url;
-    private String additionalType;
-    private String sameAs;
-    private Mass unsaturatedFatContent;
     private Mass carbohydrateContent;
-    private String alternateName;
+    private Mass cholesterolContent;
     private Mass fatContent;
-    private Mass sodiumContent;
-    private Action potentialAction;
-    private String description;
-    private Mass sugarContent;
+    private Mass fiberContent;
+    private Mass proteinContent;
+    private Mass saturatedFatContent;
     private String servingSize;
+    private Mass sodiumContent;
+    private Mass sugarContent;
+    private Mass transFatContent;
+    private Mass unsaturatedFatContent;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected NutritionInformation(Mass cholesterolContent, Mass fiberContent, Mass saturatedFatContent, Mass transFatContent, String name, StringOrCreativeWork mainEntityOfPage, Mass proteinContent, Energy calories, String url, String additionalType, String sameAs, Mass unsaturatedFatContent, Mass carbohydrateContent, String alternateName, Mass fatContent, Mass sodiumContent, Action potentialAction, String description, Mass sugarContent, String servingSize) {
-    super(sameAs, additionalType, url, alternateName, name, description, potentialAction, mainEntityOfPage);
+  protected NutritionInformation(Energy calories, Mass carbohydrateContent, Mass cholesterolContent, Mass fatContent, Mass fiberContent, Mass proteinContent, Mass saturatedFatContent, String servingSize, Mass sodiumContent, Mass sugarContent, Mass transFatContent, Mass unsaturatedFatContent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myCalories = calories;
     myCarbohydrateContent = carbohydrateContent;
     myCholesterolContent = cholesterolContent;

@@ -14,24 +14,30 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class StringOrQualitativeValue {
-  public Thing getThing() {
-    if (myQualitativeValue != null) return myQualitativeValue;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class CreativeWorkOrString {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
+    if (myCreativeWork != null) return myCreativeWork;
+    if (myString != null) return myString;
     return null;
   }
+  public Thing getThing() {
+    if (myCreativeWork != null) return myCreativeWork;
+    return null;
+  }
+  public void setCreativeWork(CreativeWork creativeWork) { clear(); myCreativeWork = creativeWork; }
+  public CreativeWork getCreativeWork() { return myCreativeWork; }
+  private CreativeWork myCreativeWork;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
-  public void setQualitativeValue(QualitativeValue qualitativeValue) { clear(); myQualitativeValue = qualitativeValue; }
-  public QualitativeValue getQualitativeValue() { return myQualitativeValue; }
-  private QualitativeValue myQualitativeValue;
   private void clear() {
+    myCreativeWork = null;
     myString = null;
-    myQualitativeValue = null;
   }
 }

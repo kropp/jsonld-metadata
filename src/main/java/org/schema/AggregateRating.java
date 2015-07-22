@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -49,41 +48,43 @@ public class AggregateRating extends Rating {
      * Creates new {@link AggregateRating} instance.
      */
     public AggregateRating build() {
-      return new AggregateRating(additionalType, url, sameAs, alternateName, itemReviewed, ratingValue, description, potentialAction, name, worstRating, mainEntityOfPage, reviewCount, ratingCount, bestRating);
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
+      return new AggregateRating(itemReviewed, ratingCount, reviewCount, bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
      * The item that is being reviewed/rated.
      */
     public Builder itemReviewed(Thing thing) {
       this.itemReviewed = thing;
+      return this;
+    }
+    /**
+     * The count of total number of ratings.
+     */
+    public Builder ratingCount(Integer integer) {
+      this.ratingCount = integer;
+      return this;
+    }
+    /**
+     * The count of total number of reviews.
+     */
+    public Builder reviewCount(Integer integer) {
+      this.reviewCount = integer;
+      return this;
+    }
+    /**
+     * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
+     */
+    public Builder bestRating(Number number) {
+      if(this.bestRating == null) this.bestRating = new NumberOrString();
+      this.bestRating.setNumber(number);
+      return this;
+    }
+    /**
+     * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
+     */
+    public Builder bestRating(String bestRating) {
+      if(this.bestRating == null) this.bestRating = new NumberOrString();
+      this.bestRating.setString(bestRating);
       return this;
     }
     /**
@@ -94,72 +95,40 @@ public class AggregateRating extends Rating {
       return this;
     }
     /**
-     * A short description of the item.
+     * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
      */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder worstRating(Number number) {
+      if(this.worstRating == null) this.worstRating = new NumberOrString();
+      this.worstRating.setNumber(number);
       return this;
     }
     /**
      * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
      */
     public Builder worstRating(String worstRating) {
+      if(this.worstRating == null) this.worstRating = new NumberOrString();
       this.worstRating.setString(worstRating);
       return this;
     }
     /**
-     * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder worstRating(Number number) {
-      this.worstRating.setNumber(number);
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * An alias for the item.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -193,55 +162,91 @@ public class AggregateRating extends Rating {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * The count of total number of reviews.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder reviewCount(Integer integer) {
-      this.reviewCount = integer;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The count of total number of ratings.
+     * The name of the item.
      */
-    public Builder ratingCount(Integer integer) {
-      this.ratingCount = integer;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
-     * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder bestRating(String bestRating) {
-      this.bestRating.setString(bestRating);
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
     /**
-     * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
+     * URL of the item.
      */
-    public Builder bestRating(Number number) {
-      this.bestRating.setNumber(number);
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
-    private String additionalType;
-    private String url;
-    private String sameAs;
-    private String alternateName;
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
     private Thing itemReviewed;
-    private String ratingValue;
-    private String description;
-    private Action potentialAction;
-    private String name;
-    private StringOrNumber worstRating;
-    private StringOrCreativeWork mainEntityOfPage;
-    private Integer reviewCount;
     private Integer ratingCount;
-    private StringOrNumber bestRating;
+    private Integer reviewCount;
+    private NumberOrString bestRating;
+    private String ratingValue;
+    private NumberOrString worstRating;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected AggregateRating(String additionalType, String url, String sameAs, String alternateName, Thing itemReviewed, String ratingValue, String description, Action potentialAction, String name, StringOrNumber worstRating, StringOrCreativeWork mainEntityOfPage, Integer reviewCount, Integer ratingCount, StringOrNumber bestRating) {
-    super(additionalType, url, sameAs, alternateName, name, potentialAction, description, ratingValue, worstRating, mainEntityOfPage, bestRating);
+  protected AggregateRating(Thing itemReviewed, Integer ratingCount, Integer reviewCount, NumberOrString bestRating, String ratingValue, NumberOrString worstRating, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myItemReviewed = itemReviewed;
     myRatingCount = ratingCount;
     myReviewCount = reviewCount;

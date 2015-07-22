@@ -14,30 +14,31 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class OrganizationOrPersonOrAudience {
-  public Thing getThing() {
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class BrandOrOrganization {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
+    if (myBrand != null) return myBrand;
     if (myOrganization != null) return myOrganization;
-    if (myPerson != null) return myPerson;
-    if (myAudience != null) return myAudience;
     return null;
   }
+  public Thing getThing() {
+    if (myBrand != null) return myBrand;
+    if (myOrganization != null) return myOrganization;
+    return null;
+  }
+  public void setBrand(Brand brand) { clear(); myBrand = brand; }
+  public Brand getBrand() { return myBrand; }
+  private Brand myBrand;
   public void setOrganization(Organization organization) { clear(); myOrganization = organization; }
   public Organization getOrganization() { return myOrganization; }
   private Organization myOrganization;
-  public void setPerson(Person person) { clear(); myPerson = person; }
-  public Person getPerson() { return myPerson; }
-  private Person myPerson;
-  public void setAudience(Audience audience) { clear(); myAudience = audience; }
-  public Audience getAudience() { return myAudience; }
-  private Audience myAudience;
   private void clear() {
+    myBrand = null;
     myOrganization = null;
-    myPerson = null;
-    myAudience = null;
   }
 }

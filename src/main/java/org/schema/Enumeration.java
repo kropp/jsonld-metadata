@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -37,13 +36,22 @@ public class Enumeration extends Intangible {
      * Creates new {@link Enumeration} instance.
      */
     public Enumeration build() {
-      return new Enumeration(url, additionalType, sameAs, alternateName, supersededBy, name, potentialAction, description, mainEntityOfPage);
+      return new Enumeration(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
-     * URL of the item.
+     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
-    public Builder url(String url) {
-      this.url = url;
+    public Builder supersededBy(Enumeration enumeration) {
+      if(this.supersededBy == null) this.supersededBy = new EnumerationOrProperty();
+      this.supersededBy.setEnumeration(enumeration);
+      return this;
+    }
+    /**
+     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
+     */
+    public Builder supersededBy(Property property) {
+      if(this.supersededBy == null) this.supersededBy = new EnumerationOrProperty();
+      this.supersededBy.setProperty(property);
       return this;
     }
     /**
@@ -54,45 +62,10 @@ public class Enumeration extends Intangible {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
-      return this;
-    }
-    /**
      * An alias for the item.
      */
     public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
-     */
-    public Builder supersededBy(Enumeration enumeration) {
-      this.supersededBy.setEnumeration(enumeration);
-      return this;
-    }
-    /**
-     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
-     */
-    public Builder supersededBy(Property property) {
-      this.supersededBy.setProperty(property);
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
       return this;
     }
     /**
@@ -132,8 +105,9 @@ public class Enumeration extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
@@ -166,23 +140,52 @@ public class Enumeration extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
-    private String url;
-    private String additionalType;
-    private String sameAs;
-    private String alternateName;
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
     private EnumerationOrProperty supersededBy;
-    private String name;
-    private Action potentialAction;
+    private String additionalType;
+    private String alternateName;
     private String description;
-    private StringOrCreativeWork mainEntityOfPage;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected Enumeration(String url, String additionalType, String sameAs, String alternateName, EnumerationOrProperty supersededBy, String name, Action potentialAction, String description, StringOrCreativeWork mainEntityOfPage) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected Enumeration(EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     mySupersededBy = supersededBy;
   }
   private EnumerationOrProperty mySupersededBy;

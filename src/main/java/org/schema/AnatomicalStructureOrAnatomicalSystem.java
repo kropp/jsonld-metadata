@@ -14,25 +14,31 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class SuperficialAnatomyOrAnatomicalStructure {
-  public Thing getThing() {
-    if (mySuperficialAnatomy != null) return mySuperficialAnatomy;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class AnatomicalStructureOrAnatomicalSystem {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
     if (myAnatomicalStructure != null) return myAnatomicalStructure;
+    if (myAnatomicalSystem != null) return myAnatomicalSystem;
     return null;
   }
-  public void setSuperficialAnatomy(SuperficialAnatomy superficialAnatomy) { clear(); mySuperficialAnatomy = superficialAnatomy; }
-  public SuperficialAnatomy getSuperficialAnatomy() { return mySuperficialAnatomy; }
-  private SuperficialAnatomy mySuperficialAnatomy;
+  public Thing getThing() {
+    if (myAnatomicalStructure != null) return myAnatomicalStructure;
+    if (myAnatomicalSystem != null) return myAnatomicalSystem;
+    return null;
+  }
   public void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
   public AnatomicalStructure getAnatomicalStructure() { return myAnatomicalStructure; }
   private AnatomicalStructure myAnatomicalStructure;
+  public void setAnatomicalSystem(AnatomicalSystem anatomicalSystem) { clear(); myAnatomicalSystem = anatomicalSystem; }
+  public AnatomicalSystem getAnatomicalSystem() { return myAnatomicalSystem; }
+  private AnatomicalSystem myAnatomicalSystem;
   private void clear() {
-    mySuperficialAnatomy = null;
     myAnatomicalStructure = null;
+    myAnatomicalSystem = null;
   }
 }

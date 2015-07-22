@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -42,7 +41,7 @@ public class ItemList extends Intangible {
     <br/><br/>
     Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
    */
-  public ThingOrListItemOrString getItemListElement() {
+  public ListItemOrStringOrThing getItemListElement() {
     return myItemListElement;
   }
   /**
@@ -53,28 +52,7 @@ public class ItemList extends Intangible {
      * Creates new {@link ItemList} instance.
      */
     public ItemList build() {
-      return new ItemList(additionalType, url, sameAs, numberOfItems, alternateName, itemListOrder, name, potentialAction, description, mainEntityOfPage, itemListElement);
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
-      return this;
+      return new ItemList(numberOfItems, itemListOrder, itemListElement, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
      * The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list.
@@ -84,16 +62,10 @@ public class ItemList extends Intangible {
       return this;
     }
     /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
      * Type of ordering (e.g. Ascending, Descending, Unordered).
      */
     public Builder itemListOrder(ItemListOrderType itemListOrderType) {
+      if(this.itemListOrder == null) this.itemListOrder = new ItemListOrderTypeOrString();
       this.itemListOrder.setItemListOrderType(itemListOrderType);
       return this;
     }
@@ -101,21 +73,58 @@ public class ItemList extends Intangible {
      * Type of ordering (e.g. Ascending, Descending, Unordered).
      */
     public Builder itemListOrder(String itemListOrder) {
+      if(this.itemListOrder == null) this.itemListOrder = new ItemListOrderTypeOrString();
       this.itemListOrder.setString(itemListOrder);
       return this;
     }
     /**
-     * The name of the item.
+     * For itemListElement values, you can use simple strings (e.g. "Peter", "Paul", "Mary"), existing entities, or use ListItem.
+    <br/><br/>
+    Text values are best if the elements in the list are plain strings. Existing entities are best for a simple, unordered list of existing things in your data. ListItem is used with ordered lists when you want to provide additional context about the element in that list or when the same item might be in different places in different lists.
+    <br/><br/>
+    Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder itemListElement(ListItem listItem) {
+      if(this.itemListElement == null) this.itemListElement = new ListItemOrStringOrThing();
+      this.itemListElement.setListItem(listItem);
       return this;
     }
     /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     * For itemListElement values, you can use simple strings (e.g. "Peter", "Paul", "Mary"), existing entities, or use ListItem.
+    <br/><br/>
+    Text values are best if the elements in the list are plain strings. Existing entities are best for a simple, unordered list of existing things in your data. ListItem is used with ordered lists when you want to provide additional context about the element in that list or when the same item might be in different places in different lists.
+    <br/><br/>
+    Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
+    public Builder itemListElement(String itemListElement) {
+      if(this.itemListElement == null) this.itemListElement = new ListItemOrStringOrThing();
+      this.itemListElement.setString(itemListElement);
+      return this;
+    }
+    /**
+     * For itemListElement values, you can use simple strings (e.g. "Peter", "Paul", "Mary"), existing entities, or use ListItem.
+    <br/><br/>
+    Text values are best if the elements in the list are plain strings. Existing entities are best for a simple, unordered list of existing things in your data. ListItem is used with ordered lists when you want to provide additional context about the element in that list or when the same item might be in different places in different lists.
+    <br/><br/>
+    Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
+     */
+    public Builder itemListElement(Thing thing) {
+      if(this.itemListElement == null) this.itemListElement = new ListItemOrStringOrThing();
+      this.itemListElement.setThing(thing);
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
       return this;
     }
     /**
@@ -155,8 +164,9 @@ public class ItemList extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
@@ -189,63 +199,59 @@ public class ItemList extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * For itemListElement values, you can use simple strings (e.g. "Peter", "Paul", "Mary"), existing entities, or use ListItem.
-    <br/><br/>
-    Text values are best if the elements in the list are plain strings. Existing entities are best for a simple, unordered list of existing things in your data. ListItem is used with ordered lists when you want to provide additional context about the element in that list or when the same item might be in different places in different lists.
-    <br/><br/>
-    Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
+     * The name of the item.
      */
-    public Builder itemListElement(Thing thing) {
-      this.itemListElement.setThing(thing);
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
-     * For itemListElement values, you can use simple strings (e.g. "Peter", "Paul", "Mary"), existing entities, or use ListItem.
-    <br/><br/>
-    Text values are best if the elements in the list are plain strings. Existing entities are best for a simple, unordered list of existing things in your data. ListItem is used with ordered lists when you want to provide additional context about the element in that list or when the same item might be in different places in different lists.
-    <br/><br/>
-    Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder itemListElement(ListItem listItem) {
-      this.itemListElement.setListItem(listItem);
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
     /**
-     * For itemListElement values, you can use simple strings (e.g. "Peter", "Paul", "Mary"), existing entities, or use ListItem.
-    <br/><br/>
-    Text values are best if the elements in the list are plain strings. Existing entities are best for a simple, unordered list of existing things in your data. ListItem is used with ordered lists when you want to provide additional context about the element in that list or when the same item might be in different places in different lists.
-    <br/><br/>
-    Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
+     * URL of the item.
      */
-    public Builder itemListElement(String itemListElement) {
-      this.itemListElement.setString(itemListElement);
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
-    private String additionalType;
-    private String url;
-    private String sameAs;
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
     private Integer numberOfItems;
-    private String alternateName;
     private ItemListOrderTypeOrString itemListOrder;
-    private String name;
-    private Action potentialAction;
+    private ListItemOrStringOrThing itemListElement;
+    private String additionalType;
+    private String alternateName;
     private String description;
-    private StringOrCreativeWork mainEntityOfPage;
-    private ThingOrListItemOrString itemListElement;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected ItemList(String additionalType, String url, String sameAs, Integer numberOfItems, String alternateName, ItemListOrderTypeOrString itemListOrder, String name, Action potentialAction, String description, StringOrCreativeWork mainEntityOfPage, ThingOrListItemOrString itemListElement) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected ItemList(Integer numberOfItems, ItemListOrderTypeOrString itemListOrder, ListItemOrStringOrThing itemListElement, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myNumberOfItems = numberOfItems;
     myItemListOrder = itemListOrder;
     myItemListElement = itemListElement;
   }
   private Integer myNumberOfItems;
   private ItemListOrderTypeOrString myItemListOrder;
-  private ThingOrListItemOrString myItemListElement;
+  private ListItemOrStringOrThing myItemListElement;
 }

@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -31,21 +30,7 @@ public class TrainStation extends CivicStructure {
      * Creates new {@link TrainStation} instance.
      */
     public TrainStation build() {
-      return new TrainStation(aggregateRating, review, openingHours, logo, isicV4, globalLocationNumber, name, mainEntityOfPage, hasMap, url, sameAs, containedIn, event, additionalType, alternateName, openingHoursSpecification, faxNumber, telephone, geo, description, potentialAction, additionalProperty, photo, address);
-    }
-    /**
-     * The overall rating, based on a collection of reviews or ratings, of the item.
-     */
-    public Builder aggregateRating(AggregateRating aggregateRating) {
-      this.aggregateRating = aggregateRating;
-      return this;
-    }
-    /**
-     * A review of the item.
-     */
-    public Builder review(Review review) {
-      this.review = review;
-      return this;
+      return new TrainStation(openingHours, address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
      * The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.<br />- Days are specified using the following two-letter combinations: <code>Mo</code>, <code>Tu</code>, <code>We</code>, <code>Th</code>, <code>Fr</code>, <code>Sa</code>, <code>Su</code>.<br />- Times are specified using 24:00 time. For example, 3pm is specified as <code>15:00</code>. <br />- Here is an example: <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Tu,Th 16:00-20:00&quot;&gt;Tuesdays and Thursdays 4-8pm&lt;/time&gt;</code>. <br />- If a business is open 7 days a week, then it can be specified as <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Mo-Su&quot;&gt;Monday through Sunday, all day&lt;/time&gt;</code>.
@@ -55,24 +40,54 @@ public class TrainStation extends CivicStructure {
       return this;
     }
     /**
-     * An associated logo.
+     * Physical address of the item.
      */
-    public Builder logo(ImageObject imageObject) {
-      this.logo.setImageObject(imageObject);
+    public Builder address(PostalAddress postalAddress) {
+      this.address = postalAddress;
       return this;
     }
     /**
-     * An associated logo.
+     * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    public Builder logo(String logo) {
-      this.logo.setString(logo);
+    public Builder aggregateRating(AggregateRating aggregateRating) {
+      this.aggregateRating = aggregateRating;
       return this;
     }
     /**
-     * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
+     * The basic containment relation between places.
      */
-    public Builder isicV4(String isicV4) {
-      this.isicV4 = isicV4;
+    public Builder containedIn(Place place) {
+      this.containedIn = place;
+      return this;
+    }
+    /**
+     * Upcoming or past event associated with this place, organization, or action.
+     */
+    public Builder event(Event event) {
+      this.event = event;
+      return this;
+    }
+    /**
+     * The fax number.
+     */
+    public Builder faxNumber(String faxNumber) {
+      this.faxNumber = faxNumber;
+      return this;
+    }
+    /**
+     * The geo coordinates of the place.
+     */
+    public Builder geo(GeoCoordinates geoCoordinates) {
+      if(this.geo == null) this.geo = new GeoCoordinatesOrGeoShape();
+      this.geo.setGeoCoordinates(geoCoordinates);
+      return this;
+    }
+    /**
+     * The geo coordinates of the place.
+     */
+    public Builder geo(GeoShape geoShape) {
+      if(this.geo == null) this.geo = new GeoCoordinatesOrGeoShape();
+      this.geo.setGeoShape(geoShape);
       return this;
     }
     /**
@@ -83,44 +98,110 @@ public class TrainStation extends CivicStructure {
       return this;
     }
     /**
-     * The name of the item.
+     * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder isicV4(String isicV4) {
+      this.isicV4 = isicV4;
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * An associated logo.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder logo(ImageObject imageObject) {
+      if(this.logo == null) this.logo = new ImageObjectOrString();
+      this.logo.setImageObject(imageObject);
+      return this;
+    }
+    /**
+     * An associated logo.
+     */
+    public Builder logo(String logo) {
+      if(this.logo == null) this.logo = new ImageObjectOrString();
+      this.logo.setString(logo);
+      return this;
+    }
+    /**
+     * A URL to a map of the place.
+     */
+    public Builder hasMap(Map map) {
+      if(this.hasMap == null) this.hasMap = new MapOrString();
+      this.hasMap.setMap(map);
+      return this;
+    }
+    /**
+     * A URL to a map of the place.
+     */
+    public Builder hasMap(String hasMap) {
+      if(this.hasMap == null) this.hasMap = new MapOrString();
+      this.hasMap.setString(hasMap);
+      return this;
+    }
+    /**
+     * The opening hours of a certain place.
+     */
+    public Builder openingHoursSpecification(OpeningHoursSpecification openingHoursSpecification) {
+      this.openingHoursSpecification = openingHoursSpecification;
+      return this;
+    }
+    /**
+     * A photograph of this place.
+     */
+    public Builder photo(ImageObject imageObject) {
+      if(this.photo == null) this.photo = new ImageObjectOrPhotograph();
+      this.photo.setImageObject(imageObject);
+      return this;
+    }
+    /**
+     * A photograph of this place.
+     */
+    public Builder photo(Photograph photograph) {
+      if(this.photo == null) this.photo = new ImageObjectOrPhotograph();
+      this.photo.setPhotograph(photograph);
+      return this;
+    }
+    /**
+     * A review of the item.
+     */
+    public Builder review(Review review) {
+      this.review = review;
+      return this;
+    }
+    /**
+     * The telephone number.
+     */
+    public Builder telephone(String telephone) {
+      this.telephone = telephone;
+      return this;
+    }
+    /**
+     * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
+
+Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+
+     */
+    public Builder additionalProperty(PropertyValue propertyValue) {
+      this.additionalProperty = propertyValue;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -154,28 +235,50 @@ public class TrainStation extends CivicStructure {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * A URL to a map of the place.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder hasMap(Map map) {
-      this.hasMap.setMap(map);
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * A URL to a map of the place.
+     * The name of the item.
      */
-    public Builder hasMap(String hasMap) {
-      this.hasMap.setString(hasMap);
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -186,73 +289,10 @@ public class TrainStation extends CivicStructure {
       return this;
     }
     /**
-     * The basic containment relation between places.
+     * URL of the item.
      */
-    public Builder containedIn(Place place) {
-      this.containedIn = place;
-      return this;
-    }
-    /**
-     * Upcoming or past event associated with this place, organization, or action.
-     */
-    public Builder event(Event event) {
-      this.event = event;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * The opening hours of a certain place.
-     */
-    public Builder openingHoursSpecification(OpeningHoursSpecification openingHoursSpecification) {
-      this.openingHoursSpecification = openingHoursSpecification;
-      return this;
-    }
-    /**
-     * The fax number.
-     */
-    public Builder faxNumber(String faxNumber) {
-      this.faxNumber = faxNumber;
-      return this;
-    }
-    /**
-     * The telephone number.
-     */
-    public Builder telephone(String telephone) {
-      this.telephone = telephone;
-      return this;
-    }
-    /**
-     * The geo coordinates of the place.
-     */
-    public Builder geo(GeoCoordinates geoCoordinates) {
-      this.geo.setGeoCoordinates(geoCoordinates);
-      return this;
-    }
-    /**
-     * The geo coordinates of the place.
-     */
-    public Builder geo(GeoShape geoShape) {
-      this.geo.setGeoShape(geoShape);
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
@@ -262,64 +302,33 @@ public class TrainStation extends CivicStructure {
       this.potentialAction = action;
       return this;
     }
-    /**
-     * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
-     */
-    public Builder additionalProperty(PropertyValue propertyValue) {
-      this.additionalProperty = propertyValue;
-      return this;
-    }
-    /**
-     * A photograph of this place.
-     */
-    public Builder photo(ImageObject imageObject) {
-      this.photo.setImageObject(imageObject);
-      return this;
-    }
-    /**
-     * A photograph of this place.
-     */
-    public Builder photo(Photograph photograph) {
-      this.photo.setPhotograph(photograph);
-      return this;
-    }
-    /**
-     * Physical address of the item.
-     */
-    public Builder address(PostalAddress postalAddress) {
-      this.address = postalAddress;
-      return this;
-    }
-    private AggregateRating aggregateRating;
-    private Review review;
     private String openingHours;
-    private ImageObjectOrString logo;
-    private String isicV4;
-    private String globalLocationNumber;
-    private String name;
-    private StringOrCreativeWork mainEntityOfPage;
-    private MapOrString hasMap;
-    private String url;
-    private String sameAs;
+    private PostalAddress address;
+    private AggregateRating aggregateRating;
     private Place containedIn;
     private Event event;
+    private String faxNumber;
+    private GeoCoordinatesOrGeoShape geo;
+    private String globalLocationNumber;
+    private String isicV4;
+    private ImageObjectOrString logo;
+    private MapOrString hasMap;
+    private OpeningHoursSpecification openingHoursSpecification;
+    private ImageObjectOrPhotograph photo;
+    private Review review;
+    private String telephone;
+    private PropertyValue additionalProperty;
     private String additionalType;
     private String alternateName;
-    private OpeningHoursSpecification openingHoursSpecification;
-    private String faxNumber;
-    private String telephone;
-    private GeoCoordinatesOrGeoShape geo;
     private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
     private Action potentialAction;
-    private PropertyValue additionalProperty;
-    private ImageObjectOrPhotograph photo;
-    private PostalAddress address;
   }
 
-  protected TrainStation(AggregateRating aggregateRating, Review review, String openingHours, ImageObjectOrString logo, String isicV4, String globalLocationNumber, String name, StringOrCreativeWork mainEntityOfPage, MapOrString hasMap, String url, String sameAs, Place containedIn, Event event, String additionalType, String alternateName, OpeningHoursSpecification openingHoursSpecification, String faxNumber, String telephone, GeoCoordinatesOrGeoShape geo, String description, Action potentialAction, PropertyValue additionalProperty, ImageObjectOrPhotograph photo, PostalAddress address) {
-    super(aggregateRating, review, openingHours, globalLocationNumber, isicV4, logo, name, mainEntityOfPage, hasMap, containedIn, event, additionalType, sameAs, url, faxNumber, openingHoursSpecification, alternateName, geo, telephone, potentialAction, description, address, photo, additionalProperty);
+  protected TrainStation(String openingHours, PostalAddress address, AggregateRating aggregateRating, Place containedIn, Event event, String faxNumber, GeoCoordinatesOrGeoShape geo, String globalLocationNumber, String isicV4, ImageObjectOrString logo, MapOrString hasMap, OpeningHoursSpecification openingHoursSpecification, ImageObjectOrPhotograph photo, Review review, String telephone, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(openingHours, address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
   }
 }

@@ -14,25 +14,31 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class PlaceOrFoodEstablishment {
-  public Thing getThing() {
-    if (myPlace != null) return myPlace;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class FoodEstablishmentOrPlace {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
     if (myFoodEstablishment != null) return myFoodEstablishment;
+    if (myPlace != null) return myPlace;
     return null;
   }
-  public void setPlace(Place place) { clear(); myPlace = place; }
-  public Place getPlace() { return myPlace; }
-  private Place myPlace;
+  public Thing getThing() {
+    if (myFoodEstablishment != null) return myFoodEstablishment;
+    if (myPlace != null) return myPlace;
+    return null;
+  }
   public void setFoodEstablishment(FoodEstablishment foodEstablishment) { clear(); myFoodEstablishment = foodEstablishment; }
   public FoodEstablishment getFoodEstablishment() { return myFoodEstablishment; }
   private FoodEstablishment myFoodEstablishment;
+  public void setPlace(Place place) { clear(); myPlace = place; }
+  public Place getPlace() { return myPlace; }
+  private Place myPlace;
   private void clear() {
-    myPlace = null;
     myFoodEstablishment = null;
+    myPlace = null;
   }
 }

@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -61,7 +60,21 @@ public class BroadcastService extends Thing {
      * Creates new {@link BroadcastService} instance.
      */
     public BroadcastService build() {
-      return new BroadcastService(broadcastAffiliateOf, name, mainEntityOfPage, broadcastDisplayName, parentService, url, sameAs, additionalType, alternateName, timezone, potentialAction, description, broadcaster);
+      return new BroadcastService(broadcaster, parentService, broadcastAffiliateOf, broadcastDisplayName, timezone, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+    }
+    /**
+     * The organization owning or operating the broadcast service.
+     */
+    public Builder broadcaster(Organization organization) {
+      this.broadcaster = organization;
+      return this;
+    }
+    /**
+     * A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
+     */
+    public Builder parentService(BroadcastService broadcastService) {
+      this.parentService = broadcastService;
+      return this;
     }
     /**
      * The media network(s) whose content is broadcast on this station.
@@ -71,44 +84,38 @@ public class BroadcastService extends Thing {
       return this;
     }
     /**
-     * The name of the item.
+     * The name displayed in the channel guide. For many US affiliates, it is the network name.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder broadcastDisplayName(String broadcastDisplayName) {
+      this.broadcastDisplayName = broadcastDisplayName;
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * The timezone in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 format</a> for which the service bases its broadcasts.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder timezone(String timezone) {
+      this.timezone = timezone;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -142,28 +149,50 @@ public class BroadcastService extends Thing {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * The name displayed in the channel guide. For many US affiliates, it is the network name.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder broadcastDisplayName(String broadcastDisplayName) {
-      this.broadcastDisplayName = broadcastDisplayName;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
+     * The name of the item.
      */
-    public Builder parentService(BroadcastService broadcastService) {
-      this.parentService = broadcastService;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -174,24 +203,10 @@ public class BroadcastService extends Thing {
       return this;
     }
     /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     * URL of the item.
      */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * The timezone in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 format</a> for which the service bases its broadcasts.
-     */
-    public Builder timezone(String timezone) {
-      this.timezone = timezone;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
@@ -201,37 +216,23 @@ public class BroadcastService extends Thing {
       this.potentialAction = action;
       return this;
     }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-    /**
-     * The organization owning or operating the broadcast service.
-     */
-    public Builder broadcaster(Organization organization) {
-      this.broadcaster = organization;
-      return this;
-    }
-    private Organization broadcastAffiliateOf;
-    private String name;
-    private StringOrCreativeWork mainEntityOfPage;
-    private String broadcastDisplayName;
+    private Organization broadcaster;
     private BroadcastService parentService;
-    private String url;
-    private String sameAs;
+    private Organization broadcastAffiliateOf;
+    private String broadcastDisplayName;
+    private String timezone;
     private String additionalType;
     private String alternateName;
-    private String timezone;
-    private Action potentialAction;
     private String description;
-    private Organization broadcaster;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected BroadcastService(Organization broadcastAffiliateOf, String name, StringOrCreativeWork mainEntityOfPage, String broadcastDisplayName, BroadcastService parentService, String url, String sameAs, String additionalType, String alternateName, String timezone, Action potentialAction, String description, Organization broadcaster) {
-    super(url, sameAs, additionalType, alternateName, potentialAction, name, description, mainEntityOfPage);
+  protected BroadcastService(Organization broadcaster, BroadcastService parentService, Organization broadcastAffiliateOf, String broadcastDisplayName, String timezone, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myBroadcaster = broadcaster;
     myParentService = parentService;
     myBroadcastAffiliateOf = broadcastAffiliateOf;

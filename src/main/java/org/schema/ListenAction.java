@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -31,7 +30,39 @@ public class ListenAction extends ConsumeAction {
      * Creates new {@link ListenAction} instance.
      */
     public ListenAction build() {
-      return new ListenAction(startTime, name, mainEntityOfPage, error, sameAs, url, additionalType, agent, expectsAcceptanceOf, alternateName, target, potentialAction, description, endTime, actionStatus);
+      return new ListenAction(expectsAcceptanceOf, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+    }
+    /**
+     * An Offer which must be accepted before the user can perform the Action. For example, the user may need to buy a movie before being able to watch it.
+     */
+    public Builder expectsAcceptanceOf(Offer offer) {
+      this.expectsAcceptanceOf = offer;
+      return this;
+    }
+    /**
+     * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
+     */
+    public Builder agent(Organization organization) {
+      if(this.agent == null) this.agent = new OrganizationOrPerson();
+      this.agent.setOrganization(organization);
+      return this;
+    }
+    /**
+     * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
+     */
+    public Builder agent(Person person) {
+      if(this.agent == null) this.agent = new OrganizationOrPerson();
+      this.agent.setPerson(person);
+      return this;
+    }
+    /**
+     * The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to *December*.
+
+Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+     */
+    public Builder endTime(java.util.Date date) {
+      this.endTime = date;
+      return this;
     }
     /**
      * The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from *January* to December.
@@ -43,44 +74,45 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       return this;
     }
     /**
-     * The name of the item.
+     * Indicates the current disposition of the Action.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder actionStatus(ActionStatusType actionStatusType) {
+      this.actionStatus = actionStatusType;
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * For failed actions, more information on the cause of the failure.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder error(Thing thing) {
+      this.error = thing;
+      return this;
+    }
+    /**
+     * Indicates a target EntryPoint for an Action.
+     */
+    public Builder target(EntryPoint entryPoint) {
+      this.target = entryPoint;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -114,14 +146,50 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * For failed actions, more information on the cause of the failure.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder error(Thing thing) {
-      this.error = thing;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -139,95 +207,30 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       return this;
     }
     /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
-     */
-    public Builder agent(Organization organization) {
-      this.agent.setOrganization(organization);
-      return this;
-    }
-    /**
-     * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
-     */
-    public Builder agent(Person person) {
-      this.agent.setPerson(person);
-      return this;
-    }
-    /**
-     * An Offer which must be accepted before the user can perform the Action. For example, the user may need to buy a movie before being able to watch it.
-     */
-    public Builder expectsAcceptanceOf(Offer offer) {
-      this.expectsAcceptanceOf = offer;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * Indicates a target EntryPoint for an Action.
-     */
-    public Builder target(EntryPoint entryPoint) {
-      this.target = entryPoint;
-      return this;
-    }
-    /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-    /**
-     * The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to *December*.
-
-Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
-     */
-    public Builder endTime(java.util.Date date) {
-      this.endTime = date;
-      return this;
-    }
-    /**
-     * Indicates the current disposition of the Action.
-     */
-    public Builder actionStatus(ActionStatusType actionStatusType) {
-      this.actionStatus = actionStatusType;
-      return this;
-    }
+    private Offer expectsAcceptanceOf;
+    private OrganizationOrPerson agent;
+    private java.util.Date endTime;
     private java.util.Date startTime;
-    private String name;
-    private StringOrCreativeWork mainEntityOfPage;
+    private ActionStatusType actionStatus;
     private Thing error;
+    private EntryPoint target;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
     private String sameAs;
     private String url;
-    private String additionalType;
-    private OrganizationOrPerson agent;
-    private Offer expectsAcceptanceOf;
-    private String alternateName;
-    private EntryPoint target;
     private Action potentialAction;
-    private String description;
-    private java.util.Date endTime;
-    private ActionStatusType actionStatus;
   }
 
-  protected ListenAction(java.util.Date startTime, String name, StringOrCreativeWork mainEntityOfPage, Thing error, String sameAs, String url, String additionalType, OrganizationOrPerson agent, Offer expectsAcceptanceOf, String alternateName, EntryPoint target, Action potentialAction, String description, java.util.Date endTime, ActionStatusType actionStatus) {
-    super(startTime, name, error, mainEntityOfPage, url, sameAs, additionalType, agent, expectsAcceptanceOf, alternateName, potentialAction, description, target, endTime, actionStatus);
+  protected ListenAction(Offer expectsAcceptanceOf, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(expectsAcceptanceOf, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
   }
 }

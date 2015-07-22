@@ -14,29 +14,36 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class PlaceOrGeoShapeOrString {
-  public Thing getThing() {
-    if (myPlace != null) return myPlace;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class GeoShapeOrPlaceOrString {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
     if (myGeoShape != null) return myGeoShape;
+    if (myPlace != null) return myPlace;
+    if (myString != null) return myString;
     return null;
   }
-  public void setPlace(Place place) { clear(); myPlace = place; }
-  public Place getPlace() { return myPlace; }
-  private Place myPlace;
+  public Thing getThing() {
+    if (myGeoShape != null) return myGeoShape;
+    if (myPlace != null) return myPlace;
+    return null;
+  }
   public void setGeoShape(GeoShape geoShape) { clear(); myGeoShape = geoShape; }
   public GeoShape getGeoShape() { return myGeoShape; }
   private GeoShape myGeoShape;
+  public void setPlace(Place place) { clear(); myPlace = place; }
+  public Place getPlace() { return myPlace; }
+  private Place myPlace;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
   private void clear() {
-    myPlace = null;
     myGeoShape = null;
+    myPlace = null;
     myString = null;
   }
 }

@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -62,27 +61,13 @@ public class EntryPoint extends Intangible {
      * Creates new {@link EntryPoint} instance.
      */
     public EntryPoint build() {
-      return new EntryPoint(sameAs, url, additionalType, encodingType, actionApplication, httpMethod, alternateName, name, potentialAction, description, mainEntityOfPage, contentType, urlTemplate);
+      return new EntryPoint(httpMethod, encodingType, contentType, actionApplication, urlTemplate, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * An HTTP method that specifies the appropriate HTTP method for a request to an HTTP EntryPoint. Values are capitalized strings as used in HTTP.
      */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
+    public Builder httpMethod(String httpMethod) {
+      this.httpMethod = httpMethod;
       return this;
     }
     /**
@@ -93,6 +78,13 @@ public class EntryPoint extends Intangible {
       return this;
     }
     /**
+     * The supported content type(s) for an EntryPoint response.
+     */
+    public Builder contentType(String contentType) {
+      this.contentType = contentType;
+      return this;
+    }
+    /**
      * An application that can complete the request.
      */
     public Builder actionApplication(SoftwareApplication softwareApplication) {
@@ -100,10 +92,17 @@ public class EntryPoint extends Intangible {
       return this;
     }
     /**
-     * An HTTP method that specifies the appropriate HTTP method for a request to an HTTP EntryPoint. Values are capitalized strings as used in HTTP.
+     * An url template (RFC6570) that will be used to construct the target of the execution of the action.
      */
-    public Builder httpMethod(String httpMethod) {
-      this.httpMethod = httpMethod;
+    public Builder urlTemplate(String urlTemplate) {
+      this.urlTemplate = urlTemplate;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
       return this;
     }
     /**
@@ -111,20 +110,6 @@ public class EntryPoint extends Intangible {
      */
     public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
       return this;
     }
     /**
@@ -164,8 +149,9 @@ public class EntryPoint extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
@@ -198,41 +184,56 @@ public class EntryPoint extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The supported content type(s) for an EntryPoint response.
+     * The name of the item.
      */
-    public Builder contentType(String contentType) {
-      this.contentType = contentType;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
-     * An url template (RFC6570) that will be used to construct the target of the execution of the action.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder urlTemplate(String urlTemplate) {
-      this.urlTemplate = urlTemplate;
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
+    private String httpMethod;
+    private String encodingType;
+    private String contentType;
+    private SoftwareApplication actionApplication;
+    private String urlTemplate;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
     private String sameAs;
     private String url;
-    private String additionalType;
-    private String encodingType;
-    private SoftwareApplication actionApplication;
-    private String httpMethod;
-    private String alternateName;
-    private String name;
     private Action potentialAction;
-    private String description;
-    private StringOrCreativeWork mainEntityOfPage;
-    private String contentType;
-    private String urlTemplate;
   }
 
-  protected EntryPoint(String sameAs, String url, String additionalType, String encodingType, SoftwareApplication actionApplication, String httpMethod, String alternateName, String name, Action potentialAction, String description, StringOrCreativeWork mainEntityOfPage, String contentType, String urlTemplate) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected EntryPoint(String httpMethod, String encodingType, String contentType, SoftwareApplication actionApplication, String urlTemplate, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myHttpMethod = httpMethod;
     myEncodingType = encodingType;
     myContentType = contentType;

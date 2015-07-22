@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -50,28 +49,7 @@ public class Brand extends Intangible {
      * Creates new {@link Brand} instance.
      */
     public Brand build() {
-      return new Brand(additionalType, url, sameAs, aggregateRating, alternateName, review, logo, name, potentialAction, description, mainEntityOfPage);
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
-      return this;
+      return new Brand(aggregateRating, logo, review, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
@@ -81,10 +59,19 @@ public class Brand extends Intangible {
       return this;
     }
     /**
-     * An alias for the item.
+     * An associated logo.
      */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
+    public Builder logo(ImageObject imageObject) {
+      if(this.logo == null) this.logo = new ImageObjectOrString();
+      this.logo.setImageObject(imageObject);
+      return this;
+    }
+    /**
+     * An associated logo.
+     */
+    public Builder logo(String logo) {
+      if(this.logo == null) this.logo = new ImageObjectOrString();
+      this.logo.setString(logo);
       return this;
     }
     /**
@@ -95,31 +82,17 @@ public class Brand extends Intangible {
       return this;
     }
     /**
-     * An associated logo.
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder logo(ImageObject imageObject) {
-      this.logo.setImageObject(imageObject);
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
       return this;
     }
     /**
-     * An associated logo.
+     * An alias for the item.
      */
-    public Builder logo(String logo) {
-      this.logo.setString(logo);
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
       return this;
     }
     /**
@@ -159,8 +132,9 @@ public class Brand extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
@@ -193,25 +167,54 @@ public class Brand extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
-    private String additionalType;
-    private String url;
-    private String sameAs;
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
     private AggregateRating aggregateRating;
-    private String alternateName;
-    private Review review;
     private ImageObjectOrString logo;
-    private String name;
-    private Action potentialAction;
+    private Review review;
+    private String additionalType;
+    private String alternateName;
     private String description;
-    private StringOrCreativeWork mainEntityOfPage;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected Brand(String additionalType, String url, String sameAs, AggregateRating aggregateRating, String alternateName, Review review, ImageObjectOrString logo, String name, Action potentialAction, String description, StringOrCreativeWork mainEntityOfPage) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected Brand(AggregateRating aggregateRating, ImageObjectOrString logo, Review review, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myAggregateRating = aggregateRating;
     myLogo = logo;
     myReview = review;

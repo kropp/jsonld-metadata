@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -31,21 +30,7 @@ public class Duration extends Quantity {
      * Creates new {@link Duration} instance.
      */
     public Duration build() {
-      return new Duration(url, sameAs, additionalType, alternateName, potentialAction, name, description, mainEntityOfPage);
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
-      return this;
+      return new Duration(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
@@ -59,20 +44,6 @@ public class Duration extends Quantity {
      */
     public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String name) {
-      this.name = name;
       return this;
     }
     /**
@@ -112,8 +83,9 @@ public class Duration extends Quantity {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
@@ -146,21 +118,50 @@ public class Duration extends Quantity {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
-    private String url;
-    private String sameAs;
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
     private String additionalType;
     private String alternateName;
-    private Action potentialAction;
-    private String name;
     private String description;
-    private StringOrCreativeWork mainEntityOfPage;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected Duration(String url, String sameAs, String additionalType, String alternateName, Action potentialAction, String name, String description, StringOrCreativeWork mainEntityOfPage) {
-    super(sameAs, additionalType, url, alternateName, name, description, potentialAction, mainEntityOfPage);
+  protected Duration(String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
   }
 }

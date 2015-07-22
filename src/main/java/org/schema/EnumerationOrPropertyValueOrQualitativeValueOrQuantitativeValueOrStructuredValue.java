@@ -14,40 +14,49 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class PropertyValueOrStructuredValueOrQualitativeValueOrEnumerationOrQuantitativeValue {
-  public Thing getThing() {
-    if (myPropertyValue != null) return myPropertyValue;
-    if (myStructuredValue != null) return myStructuredValue;
-    if (myQualitativeValue != null) return myQualitativeValue;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
     if (myEnumeration != null) return myEnumeration;
+    if (myPropertyValue != null) return myPropertyValue;
+    if (myQualitativeValue != null) return myQualitativeValue;
     if (myQuantitativeValue != null) return myQuantitativeValue;
+    if (myStructuredValue != null) return myStructuredValue;
     return null;
   }
-  public void setPropertyValue(PropertyValue propertyValue) { clear(); myPropertyValue = propertyValue; }
-  public PropertyValue getPropertyValue() { return myPropertyValue; }
-  private PropertyValue myPropertyValue;
-  public void setStructuredValue(StructuredValue structuredValue) { clear(); myStructuredValue = structuredValue; }
-  public StructuredValue getStructuredValue() { return myStructuredValue; }
-  private StructuredValue myStructuredValue;
-  public void setQualitativeValue(QualitativeValue qualitativeValue) { clear(); myQualitativeValue = qualitativeValue; }
-  public QualitativeValue getQualitativeValue() { return myQualitativeValue; }
-  private QualitativeValue myQualitativeValue;
+  public Thing getThing() {
+    if (myEnumeration != null) return myEnumeration;
+    if (myPropertyValue != null) return myPropertyValue;
+    if (myQualitativeValue != null) return myQualitativeValue;
+    if (myQuantitativeValue != null) return myQuantitativeValue;
+    if (myStructuredValue != null) return myStructuredValue;
+    return null;
+  }
   public void setEnumeration(Enumeration enumeration) { clear(); myEnumeration = enumeration; }
   public Enumeration getEnumeration() { return myEnumeration; }
   private Enumeration myEnumeration;
+  public void setPropertyValue(PropertyValue propertyValue) { clear(); myPropertyValue = propertyValue; }
+  public PropertyValue getPropertyValue() { return myPropertyValue; }
+  private PropertyValue myPropertyValue;
+  public void setQualitativeValue(QualitativeValue qualitativeValue) { clear(); myQualitativeValue = qualitativeValue; }
+  public QualitativeValue getQualitativeValue() { return myQualitativeValue; }
+  private QualitativeValue myQualitativeValue;
   public void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
   public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
   private QuantitativeValue myQuantitativeValue;
+  public void setStructuredValue(StructuredValue structuredValue) { clear(); myStructuredValue = structuredValue; }
+  public StructuredValue getStructuredValue() { return myStructuredValue; }
+  private StructuredValue myStructuredValue;
   private void clear() {
-    myPropertyValue = null;
-    myStructuredValue = null;
-    myQualitativeValue = null;
     myEnumeration = null;
+    myPropertyValue = null;
+    myQualitativeValue = null;
     myQuantitativeValue = null;
+    myStructuredValue = null;
   }
 }

@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -63,7 +62,7 @@ public class QualitativeValue extends Enumeration {
   /**
    * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
    */
-  public PropertyValueOrStructuredValueOrQualitativeValueOrEnumerationOrQuantitativeValue getValueReference() {
+  public EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue getValueReference() {
     return myValueReference;
   }
   /**
@@ -83,7 +82,42 @@ Note: Publishers should be aware that applications designed to use specific sche
      * Creates new {@link QualitativeValue} instance.
      */
     public QualitativeValue build() {
-      return new QualitativeValue(nonEqual, valueReference, equal, greaterOrEqual, name, mainEntityOfPage, lesserOrEqual, url, additionalType, sameAs, alternateName, supersededBy, greater, description, potentialAction, additionalProperty, lesser);
+      return new QualitativeValue(equal, greater, greaterOrEqual, lesser, lesserOrEqual, nonEqual, valueReference, additionalProperty, supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+    }
+    /**
+     * This ordering relation for qualitative values indicates that the subject is equal to the object.
+     */
+    public Builder equal(QualitativeValue qualitativeValue) {
+      this.equal = qualitativeValue;
+      return this;
+    }
+    /**
+     * This ordering relation for qualitative values indicates that the subject is greater than the object.
+     */
+    public Builder greater(QualitativeValue qualitativeValue) {
+      this.greater = qualitativeValue;
+      return this;
+    }
+    /**
+     * This ordering relation for qualitative values indicates that the subject is greater than or equal to the object.
+     */
+    public Builder greaterOrEqual(QualitativeValue qualitativeValue) {
+      this.greaterOrEqual = qualitativeValue;
+      return this;
+    }
+    /**
+     * This ordering relation for qualitative values indicates that the subject is lesser than the object.
+     */
+    public Builder lesser(QualitativeValue qualitativeValue) {
+      this.lesser = qualitativeValue;
+      return this;
+    }
+    /**
+     * This ordering relation for qualitative values indicates that the subject is lesser than or equal to the object.
+     */
+    public Builder lesserOrEqual(QualitativeValue qualitativeValue) {
+      this.lesserOrEqual = qualitativeValue;
+      return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is not equal to the object.
@@ -95,91 +129,88 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    public Builder valueReference(PropertyValue propertyValue) {
-      this.valueReference.setPropertyValue(propertyValue);
-      return this;
-    }
-    /**
-     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
-     */
-    public Builder valueReference(StructuredValue structuredValue) {
-      this.valueReference.setStructuredValue(structuredValue);
-      return this;
-    }
-    /**
-     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
-     */
-    public Builder valueReference(QualitativeValue qualitativeValue) {
-      this.valueReference.setQualitativeValue(qualitativeValue);
-      return this;
-    }
-    /**
-     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
-     */
     public Builder valueReference(Enumeration enumeration) {
+      if(this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setEnumeration(enumeration);
       return this;
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
+    public Builder valueReference(PropertyValue propertyValue) {
+      if(this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
+      this.valueReference.setPropertyValue(propertyValue);
+      return this;
+    }
+    /**
+     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+     */
+    public Builder valueReference(QualitativeValue qualitativeValue) {
+      if(this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
+      this.valueReference.setQualitativeValue(qualitativeValue);
+      return this;
+    }
+    /**
+     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+     */
     public Builder valueReference(QuantitativeValue quantitativeValue) {
+      if(this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setQuantitativeValue(quantitativeValue);
       return this;
     }
     /**
-     * This ordering relation for qualitative values indicates that the subject is equal to the object.
+     * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    public Builder equal(QualitativeValue qualitativeValue) {
-      this.equal = qualitativeValue;
+    public Builder valueReference(StructuredValue structuredValue) {
+      if(this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
+      this.valueReference.setStructuredValue(structuredValue);
       return this;
     }
     /**
-     * This ordering relation for qualitative values indicates that the subject is greater than or equal to the object.
+     * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
+
+Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+
      */
-    public Builder greaterOrEqual(QualitativeValue qualitativeValue) {
-      this.greaterOrEqual = qualitativeValue;
+    public Builder additionalProperty(PropertyValue propertyValue) {
+      this.additionalProperty = propertyValue;
       return this;
     }
     /**
-     * The name of the item.
+     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder supersededBy(Enumeration enumeration) {
+      if(this.supersededBy == null) this.supersededBy = new EnumerationOrProperty();
+      this.supersededBy.setEnumeration(enumeration);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder supersededBy(Property property) {
+      if(this.supersededBy == null) this.supersededBy = new EnumerationOrProperty();
+      this.supersededBy.setProperty(property);
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -213,28 +244,50 @@ Note: Publishers should be aware that applications designed to use specific sche
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * This ordering relation for qualitative values indicates that the subject is lesser than or equal to the object.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder lesserOrEqual(QualitativeValue qualitativeValue) {
-      this.lesserOrEqual = qualitativeValue;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * URL of the item.
+     * The name of the item.
      */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -245,38 +298,10 @@ Note: Publishers should be aware that applications designed to use specific sche
       return this;
     }
     /**
-     * An alias for the item.
+     * URL of the item.
      */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
-     */
-    public Builder supersededBy(Enumeration enumeration) {
-      this.supersededBy.setEnumeration(enumeration);
-      return this;
-    }
-    /**
-     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
-     */
-    public Builder supersededBy(Property property) {
-      this.supersededBy.setProperty(property);
-      return this;
-    }
-    /**
-     * This ordering relation for qualitative values indicates that the subject is greater than the object.
-     */
-    public Builder greater(QualitativeValue qualitativeValue) {
-      this.greater = qualitativeValue;
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
@@ -286,44 +311,27 @@ Note: Publishers should be aware that applications designed to use specific sche
       this.potentialAction = action;
       return this;
     }
-    /**
-     * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
-     */
-    public Builder additionalProperty(PropertyValue propertyValue) {
-      this.additionalProperty = propertyValue;
-      return this;
-    }
-    /**
-     * This ordering relation for qualitative values indicates that the subject is lesser than the object.
-     */
-    public Builder lesser(QualitativeValue qualitativeValue) {
-      this.lesser = qualitativeValue;
-      return this;
-    }
-    private QualitativeValue nonEqual;
-    private PropertyValueOrStructuredValueOrQualitativeValueOrEnumerationOrQuantitativeValue valueReference;
     private QualitativeValue equal;
-    private QualitativeValue greaterOrEqual;
-    private String name;
-    private StringOrCreativeWork mainEntityOfPage;
-    private QualitativeValue lesserOrEqual;
-    private String url;
-    private String additionalType;
-    private String sameAs;
-    private String alternateName;
-    private EnumerationOrProperty supersededBy;
     private QualitativeValue greater;
-    private String description;
-    private Action potentialAction;
-    private PropertyValue additionalProperty;
+    private QualitativeValue greaterOrEqual;
     private QualitativeValue lesser;
+    private QualitativeValue lesserOrEqual;
+    private QualitativeValue nonEqual;
+    private EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference;
+    private PropertyValue additionalProperty;
+    private EnumerationOrProperty supersededBy;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected QualitativeValue(QualitativeValue nonEqual, PropertyValueOrStructuredValueOrQualitativeValueOrEnumerationOrQuantitativeValue valueReference, QualitativeValue equal, QualitativeValue greaterOrEqual, String name, StringOrCreativeWork mainEntityOfPage, QualitativeValue lesserOrEqual, String url, String additionalType, String sameAs, String alternateName, EnumerationOrProperty supersededBy, QualitativeValue greater, String description, Action potentialAction, PropertyValue additionalProperty, QualitativeValue lesser) {
-    super(url, additionalType, sameAs, alternateName, supersededBy, name, potentialAction, description, mainEntityOfPage);
+  protected QualitativeValue(QualitativeValue equal, QualitativeValue greater, QualitativeValue greaterOrEqual, QualitativeValue lesser, QualitativeValue lesserOrEqual, QualitativeValue nonEqual, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, PropertyValue additionalProperty, EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myEqual = equal;
     myGreater = greater;
     myGreaterOrEqual = greaterOrEqual;
@@ -339,6 +347,6 @@ Note: Publishers should be aware that applications designed to use specific sche
   private QualitativeValue myLesser;
   private QualitativeValue myLesserOrEqual;
   private QualitativeValue myNonEqual;
-  private PropertyValueOrStructuredValueOrQualitativeValueOrEnumerationOrQuantitativeValue myValueReference;
+  private EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue myValueReference;
   private PropertyValue myAdditionalProperty;
 }

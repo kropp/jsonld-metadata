@@ -14,12 +14,18 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
 class NumberOrQuantitativeValue {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
+    if (myNumber != null) return myNumber;
+    if (myQuantitativeValue != null) return myQuantitativeValue;
+    return null;
+  }
   public Thing getThing() {
     if (myQuantitativeValue != null) return myQuantitativeValue;
     return null;

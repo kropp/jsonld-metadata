@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -62,20 +61,13 @@ public class AlignmentObject extends Intangible {
      * Creates new {@link AlignmentObject} instance.
      */
     public AlignmentObject build() {
-      return new AlignmentObject(sameAs, url, educationalFramework, additionalType, targetUrl, alternateName, alignmentType, targetName, name, potentialAction, description, mainEntityOfPage, targetDescription);
+      return new AlignmentObject(alignmentType, educationalFramework, targetDescription, targetName, targetUrl, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationLevel'.
      */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
+    public Builder alignmentType(String alignmentType) {
+      this.alignmentType = alignmentType;
       return this;
     }
     /**
@@ -86,31 +78,10 @@ public class AlignmentObject extends Intangible {
       return this;
     }
     /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     * The description of a node in an established educational framework.
      */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * The URL of a node in an established educational framework.
-     */
-    public Builder targetUrl(String targetUrl) {
-      this.targetUrl = targetUrl;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationLevel'.
-     */
-    public Builder alignmentType(String alignmentType) {
-      this.alignmentType = alignmentType;
+    public Builder targetDescription(String targetDescription) {
+      this.targetDescription = targetDescription;
       return this;
     }
     /**
@@ -121,17 +92,24 @@ public class AlignmentObject extends Intangible {
       return this;
     }
     /**
-     * The name of the item.
+     * The URL of a node in an established educational framework.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder targetUrl(String targetUrl) {
+      this.targetUrl = targetUrl;
       return this;
     }
     /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
       return this;
     }
     /**
@@ -171,8 +149,9 @@ public class AlignmentObject extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
@@ -205,34 +184,56 @@ public class AlignmentObject extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The description of a node in an established educational framework.
+     * The name of the item.
      */
-    public Builder targetDescription(String targetDescription) {
-      this.targetDescription = targetDescription;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
+      return this;
+    }
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
+    private String alignmentType;
+    private String educationalFramework;
+    private String targetDescription;
+    private String targetName;
+    private String targetUrl;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
     private String sameAs;
     private String url;
-    private String educationalFramework;
-    private String additionalType;
-    private String targetUrl;
-    private String alternateName;
-    private String alignmentType;
-    private String targetName;
-    private String name;
     private Action potentialAction;
-    private String description;
-    private StringOrCreativeWork mainEntityOfPage;
-    private String targetDescription;
   }
 
-  protected AlignmentObject(String sameAs, String url, String educationalFramework, String additionalType, String targetUrl, String alternateName, String alignmentType, String targetName, String name, Action potentialAction, String description, StringOrCreativeWork mainEntityOfPage, String targetDescription) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected AlignmentObject(String alignmentType, String educationalFramework, String targetDescription, String targetName, String targetUrl, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myAlignmentType = alignmentType;
     myEducationalFramework = educationalFramework;
     myTargetDescription = targetDescription;

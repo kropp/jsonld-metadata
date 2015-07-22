@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -38,12 +37,14 @@ public class RentalCarReservation extends Reservation {
   /**
    * When a taxi will pickup a passenger or a rental car can be picked up.
    */
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getPickupTime() {
     return myPickupTime;
   }
   /**
    * When a rental car can be dropped off.
    */
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getDropoffTime() {
     return myDropoffTime;
   }
@@ -55,13 +56,13 @@ public class RentalCarReservation extends Reservation {
      * Creates new {@link RentalCarReservation} instance.
      */
     public RentalCarReservation build() {
-      return new RentalCarReservation(bookingTime, dropoffLocation, reservationStatus, modifiedTime, provider, reservationId, totalPrice, priceCurrency, name, underName, reservedTicket, mainEntityOfPage, pickupTime, additionalType, url, sameAs, broker, programMembershipUsed, reservationFor, alternateName, dropoffTime, description, potentialAction, pickupLocation);
+      return new RentalCarReservation(pickupLocation, dropoffLocation, pickupTime, dropoffTime, reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
-     * The date and time the reservation was booked.
+     * Where a taxi will pick up a passenger or a rental car can be picked up.
      */
-    public Builder bookingTime(java.util.Date date) {
-      this.bookingTime = date;
+    public Builder pickupLocation(Place place) {
+      this.pickupLocation = place;
       return this;
     }
     /**
@@ -72,31 +73,17 @@ public class RentalCarReservation extends Reservation {
       return this;
     }
     /**
-     * The current status of the reservation.
+     * When a taxi will pickup a passenger or a rental car can be picked up.
      */
-    public Builder reservationStatus(ReservationStatusType reservationStatusType) {
-      this.reservationStatus = reservationStatusType;
+    public Builder pickupTime(java.util.Date date) {
+      this.pickupTime = date;
       return this;
     }
     /**
-     * The date and time the reservation was modified.
+     * When a rental car can be dropped off.
      */
-    public Builder modifiedTime(java.util.Date date) {
-      this.modifiedTime = date;
-      return this;
-    }
-    /**
-     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
-     */
-    public Builder provider(Organization organization) {
-      this.provider.setOrganization(organization);
-      return this;
-    }
-    /**
-     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
-     */
-    public Builder provider(Person person) {
-      this.provider.setPerson(person);
+    public Builder dropoffTime(java.util.Date date) {
+      this.dropoffTime = date;
       return this;
     }
     /**
@@ -107,44 +94,24 @@ public class RentalCarReservation extends Reservation {
       return this;
     }
     /**
-     * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
+     * The current status of the reservation.
      */
-    public Builder totalPrice(PriceSpecification priceSpecification) {
-      this.totalPrice.setPriceSpecification(priceSpecification);
+    public Builder reservationStatus(ReservationStatusType reservationStatusType) {
+      this.reservationStatus = reservationStatusType;
       return this;
     }
     /**
-     * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
+     * The thing -- flight, event, restaurant,etc. being reserved.
      */
-    public Builder totalPrice(String totalPrice) {
-      this.totalPrice.setString(totalPrice);
-      return this;
-    }
-    /**
-     * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
-     */
-    public Builder totalPrice(Number number) {
-      this.totalPrice.setNumber(number);
-      return this;
-    }
-    /**
-     * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
-     */
-    public Builder priceCurrency(String priceCurrency) {
-      this.priceCurrency = priceCurrency;
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder reservationFor(Thing thing) {
+      this.reservationFor = thing;
       return this;
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
     public Builder underName(Organization organization) {
+      if(this.underName == null) this.underName = new OrganizationOrPerson();
       this.underName.setOrganization(organization);
       return this;
     }
@@ -152,7 +119,45 @@ public class RentalCarReservation extends Reservation {
      * The person or organization the reservation or ticket is for.
      */
     public Builder underName(Person person) {
+      if(this.underName == null) this.underName = new OrganizationOrPerson();
       this.underName.setPerson(person);
+      return this;
+    }
+    /**
+     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+     */
+    public Builder provider(Organization organization) {
+      if(this.provider == null) this.provider = new OrganizationOrPerson();
+      this.provider.setOrganization(organization);
+      return this;
+    }
+    /**
+     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+     */
+    public Builder provider(Person person) {
+      if(this.provider == null) this.provider = new OrganizationOrPerson();
+      this.provider.setPerson(person);
+      return this;
+    }
+    /**
+     * The date and time the reservation was booked.
+     */
+    public Builder bookingTime(java.util.Date date) {
+      this.bookingTime = date;
+      return this;
+    }
+    /**
+     * The date and time the reservation was modified.
+     */
+    public Builder modifiedTime(java.util.Date date) {
+      this.modifiedTime = date;
+      return this;
+    }
+    /**
+     * Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.
+     */
+    public Builder programMembershipUsed(ProgramMembership programMembership) {
+      this.programMembershipUsed = programMembership;
       return this;
     }
     /**
@@ -163,37 +168,71 @@ public class RentalCarReservation extends Reservation {
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder totalPrice(Number number) {
+      if(this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
+      this.totalPrice.setNumber(number);
+      return this;
+    }
+    /**
+     * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
+     */
+    public Builder totalPrice(PriceSpecification priceSpecification) {
+      if(this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
+      this.totalPrice.setPriceSpecification(priceSpecification);
+      return this;
+    }
+    /**
+     * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
+     */
+    public Builder totalPrice(String totalPrice) {
+      if(this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
+      this.totalPrice.setString(totalPrice);
+      return this;
+    }
+    /**
+     * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
+     */
+    public Builder priceCurrency(String priceCurrency) {
+      this.priceCurrency = priceCurrency;
+      return this;
+    }
+    /**
+     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+     */
+    public Builder broker(Organization organization) {
+      if(this.broker == null) this.broker = new OrganizationOrPerson();
+      this.broker.setOrganization(organization);
+      return this;
+    }
+    /**
+     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+     */
+    public Builder broker(Person person) {
+      if(this.broker == null) this.broker = new OrganizationOrPerson();
+      this.broker.setPerson(person);
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -227,28 +266,50 @@ public class RentalCarReservation extends Reservation {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * When a taxi will pickup a passenger or a rental car can be picked up.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder pickupTime(java.util.Date date) {
-      this.pickupTime = date;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     * The name of the item.
      */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -259,52 +320,10 @@ public class RentalCarReservation extends Reservation {
       return this;
     }
     /**
-     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+     * URL of the item.
      */
-    public Builder broker(Organization organization) {
-      this.broker.setOrganization(organization);
-      return this;
-    }
-    /**
-     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
-     */
-    public Builder broker(Person person) {
-      this.broker.setPerson(person);
-      return this;
-    }
-    /**
-     * Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.
-     */
-    public Builder programMembershipUsed(ProgramMembership programMembership) {
-      this.programMembershipUsed = programMembership;
-      return this;
-    }
-    /**
-     * The thing -- flight, event, restaurant,etc. being reserved.
-     */
-    public Builder reservationFor(Thing thing) {
-      this.reservationFor = thing;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * When a rental car can be dropped off.
-     */
-    public Builder dropoffTime(java.util.Date date) {
-      this.dropoffTime = date;
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
@@ -314,41 +333,34 @@ public class RentalCarReservation extends Reservation {
       this.potentialAction = action;
       return this;
     }
-    /**
-     * Where a taxi will pick up a passenger or a rental car can be picked up.
-     */
-    public Builder pickupLocation(Place place) {
-      this.pickupLocation = place;
-      return this;
-    }
-    private java.util.Date bookingTime;
-    private Place dropoffLocation;
-    private ReservationStatusType reservationStatus;
-    private java.util.Date modifiedTime;
-    private OrganizationOrPerson provider;
-    private String reservationId;
-    private PriceSpecificationOrStringOrNumber totalPrice;
-    private String priceCurrency;
-    private String name;
-    private OrganizationOrPerson underName;
-    private Ticket reservedTicket;
-    private StringOrCreativeWork mainEntityOfPage;
-    private java.util.Date pickupTime;
-    private String additionalType;
-    private String url;
-    private String sameAs;
-    private OrganizationOrPerson broker;
-    private ProgramMembership programMembershipUsed;
-    private Thing reservationFor;
-    private String alternateName;
-    private java.util.Date dropoffTime;
-    private String description;
-    private Action potentialAction;
     private Place pickupLocation;
+    private Place dropoffLocation;
+    private java.util.Date pickupTime;
+    private java.util.Date dropoffTime;
+    private String reservationId;
+    private ReservationStatusType reservationStatus;
+    private Thing reservationFor;
+    private OrganizationOrPerson underName;
+    private OrganizationOrPerson provider;
+    private java.util.Date bookingTime;
+    private java.util.Date modifiedTime;
+    private ProgramMembership programMembershipUsed;
+    private Ticket reservedTicket;
+    private NumberOrPriceSpecificationOrString totalPrice;
+    private String priceCurrency;
+    private OrganizationOrPerson broker;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected RentalCarReservation(java.util.Date bookingTime, Place dropoffLocation, ReservationStatusType reservationStatus, java.util.Date modifiedTime, OrganizationOrPerson provider, String reservationId, PriceSpecificationOrStringOrNumber totalPrice, String priceCurrency, String name, OrganizationOrPerson underName, Ticket reservedTicket, StringOrCreativeWork mainEntityOfPage, java.util.Date pickupTime, String additionalType, String url, String sameAs, OrganizationOrPerson broker, ProgramMembership programMembershipUsed, Thing reservationFor, String alternateName, java.util.Date dropoffTime, String description, Action potentialAction, Place pickupLocation) {
-    super(bookingTime, reservationStatus, modifiedTime, provider, reservationId, totalPrice, priceCurrency, name, underName, mainEntityOfPage, reservedTicket, sameAs, url, additionalType, broker, reservationFor, programMembershipUsed, alternateName, potentialAction, description);
+  protected RentalCarReservation(Place pickupLocation, Place dropoffLocation, java.util.Date pickupTime, java.util.Date dropoffTime, String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myPickupLocation = pickupLocation;
     myDropoffLocation = dropoffLocation;
     myPickupTime = pickupTime;

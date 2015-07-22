@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -38,34 +37,20 @@ public class MedicalObservationalStudy extends MedicalStudy {
      * Creates new {@link MedicalObservationalStudy} instance.
      */
     public MedicalObservationalStudy build() {
-      return new MedicalObservationalStudy(status, recognizingAuthority, code, studyLocation, population, name, mainEntityOfPage, guideline, url, additionalType, sameAs, sponsor, studySubject, alternateName, studyDesign, study, description, potentialAction, relevantSpecialty, medicineSystem, outcome);
+      return new MedicalObservationalStudy(studyDesign, outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
-     * The status of the study (enumerated).
+     * Specifics about the observational study design (enumerated).
      */
-    public Builder status(MedicalStudyStatus medicalStudyStatus) {
-      this.status = medicalStudyStatus;
+    public Builder studyDesign(MedicalObservationalStudyDesign medicalObservationalStudyDesign) {
+      this.studyDesign = medicalObservationalStudyDesign;
       return this;
     }
     /**
-     * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
+     * Expected or actual outcomes of the study.
      */
-    public Builder recognizingAuthority(Organization organization) {
-      this.recognizingAuthority = organization;
-      return this;
-    }
-    /**
-     * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
-     */
-    public Builder code(MedicalCode medicalCode) {
-      this.code = medicalCode;
-      return this;
-    }
-    /**
-     * The location in which the study is taking/took place.
-     */
-    public Builder studyLocation(AdministrativeArea administrativeArea) {
-      this.studyLocation = administrativeArea;
+    public Builder outcome(String outcome) {
+      this.outcome = outcome;
       return this;
     }
     /**
@@ -76,44 +61,94 @@ public class MedicalObservationalStudy extends MedicalStudy {
       return this;
     }
     /**
-     * The name of the item.
+     * Sponsor of the study.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder sponsor(Organization organization) {
+      this.sponsor = organization;
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * The status of the study (enumerated).
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder status(MedicalStudyStatus medicalStudyStatus) {
+      this.status = medicalStudyStatus;
+      return this;
+    }
+    /**
+     * The location in which the study is taking/took place.
+     */
+    public Builder studyLocation(AdministrativeArea administrativeArea) {
+      this.studyLocation = administrativeArea;
+      return this;
+    }
+    /**
+     * A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
+     */
+    public Builder studySubject(MedicalEntity medicalEntity) {
+      this.studySubject = medicalEntity;
+      return this;
+    }
+    /**
+     * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
+     */
+    public Builder code(MedicalCode medicalCode) {
+      this.code = medicalCode;
+      return this;
+    }
+    /**
+     * A medical guideline related to this entity.
+     */
+    public Builder guideline(MedicalGuideline medicalGuideline) {
+      this.guideline = medicalGuideline;
+      return this;
+    }
+    /**
+     * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
+     */
+    public Builder medicineSystem(MedicineSystem medicineSystem) {
+      this.medicineSystem = medicineSystem;
+      return this;
+    }
+    /**
+     * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
+     */
+    public Builder recognizingAuthority(Organization organization) {
+      this.recognizingAuthority = organization;
+      return this;
+    }
+    /**
+     * If applicable, a medical specialty in which this entity is relevant.
+     */
+    public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
+      this.relevantSpecialty = medicalSpecialty;
+      return this;
+    }
+    /**
+     * A medical study or trial related to this entity.
+     */
+    public Builder study(MedicalStudy medicalStudy) {
+      this.study = medicalStudy;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -147,28 +182,50 @@ public class MedicalObservationalStudy extends MedicalStudy {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * A medical guideline related to this entity.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder guideline(MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * URL of the item.
+     * The name of the item.
      */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -179,45 +236,10 @@ public class MedicalObservationalStudy extends MedicalStudy {
       return this;
     }
     /**
-     * Sponsor of the study.
+     * URL of the item.
      */
-    public Builder sponsor(Organization organization) {
-      this.sponsor = organization;
-      return this;
-    }
-    /**
-     * A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
-     */
-    public Builder studySubject(MedicalEntity medicalEntity) {
-      this.studySubject = medicalEntity;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * Specifics about the observational study design (enumerated).
-     */
-    public Builder studyDesign(MedicalObservationalStudyDesign medicalObservationalStudyDesign) {
-      this.studyDesign = medicalObservationalStudyDesign;
-      return this;
-    }
-    /**
-     * A medical study or trial related to this entity.
-     */
-    public Builder study(MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
@@ -227,52 +249,31 @@ public class MedicalObservationalStudy extends MedicalStudy {
       this.potentialAction = action;
       return this;
     }
-    /**
-     * If applicable, a medical specialty in which this entity is relevant.
-     */
-    public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
-      return this;
-    }
-    /**
-     * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
-     */
-    public Builder medicineSystem(MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
-      return this;
-    }
-    /**
-     * Expected or actual outcomes of the study.
-     */
-    public Builder outcome(String outcome) {
-      this.outcome = outcome;
-      return this;
-    }
-    private MedicalStudyStatus status;
-    private Organization recognizingAuthority;
-    private MedicalCode code;
-    private AdministrativeArea studyLocation;
-    private String population;
-    private String name;
-    private StringOrCreativeWork mainEntityOfPage;
-    private MedicalGuideline guideline;
-    private String url;
-    private String additionalType;
-    private String sameAs;
-    private Organization sponsor;
-    private MedicalEntity studySubject;
-    private String alternateName;
     private MedicalObservationalStudyDesign studyDesign;
-    private MedicalStudy study;
-    private String description;
-    private Action potentialAction;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicineSystem medicineSystem;
     private String outcome;
+    private String population;
+    private Organization sponsor;
+    private MedicalStudyStatus status;
+    private AdministrativeArea studyLocation;
+    private MedicalEntity studySubject;
+    private MedicalCode code;
+    private MedicalGuideline guideline;
+    private MedicineSystem medicineSystem;
+    private Organization recognizingAuthority;
+    private MedicalSpecialty relevantSpecialty;
+    private MedicalStudy study;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected MedicalObservationalStudy(MedicalStudyStatus status, Organization recognizingAuthority, MedicalCode code, AdministrativeArea studyLocation, String population, String name, StringOrCreativeWork mainEntityOfPage, MedicalGuideline guideline, String url, String additionalType, String sameAs, Organization sponsor, MedicalEntity studySubject, String alternateName, MedicalObservationalStudyDesign studyDesign, MedicalStudy study, String description, Action potentialAction, MedicalSpecialty relevantSpecialty, MedicineSystem medicineSystem, String outcome) {
-    super(status, recognizingAuthority, studyLocation, code, population, name, mainEntityOfPage, guideline, additionalType, sameAs, sponsor, url, alternateName, studySubject, study, potentialAction, description, relevantSpecialty, medicineSystem, outcome);
+  protected MedicalObservationalStudy(MedicalObservationalStudyDesign studyDesign, String outcome, String population, Organization sponsor, MedicalStudyStatus status, AdministrativeArea studyLocation, MedicalEntity studySubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myStudyDesign = studyDesign;
   }
   private MedicalObservationalStudyDesign myStudyDesign;

@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -49,35 +48,7 @@ public class ListItem extends Intangible implements Position {
      * Creates new {@link ListItem} instance.
      */
     public ListItem build() {
-      return new ListItem(additionalType, url, sameAs, alternateName, item, name, potentialAction, description, mainEntityOfPage, nextItem, previousItem);
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
+      return new ListItem(item, previousItem, nextItem, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
      * An entity represented by an entry in a list (e.g. an 'artist' in a list of 'artists')’.
@@ -87,17 +58,31 @@ public class ListItem extends Intangible implements Position {
       return this;
     }
     /**
-     * The name of the item.
+     * A link to the ListItem that preceeds the current one.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder previousItem(ListItem listItem) {
+      this.previousItem = listItem;
       return this;
     }
     /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     * A link to the ListItem that follows the current one.
      */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
+    public Builder nextItem(ListItem listItem) {
+      this.nextItem = listItem;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
       return this;
     }
     /**
@@ -137,8 +122,9 @@ public class ListItem extends Intangible implements Position {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
@@ -171,39 +157,54 @@ public class ListItem extends Intangible implements Position {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * A link to the ListItem that follows the current one.
+     * The name of the item.
      */
-    public Builder nextItem(ListItem listItem) {
-      this.nextItem = listItem;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
-     * A link to the ListItem that preceeds the current one.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder previousItem(ListItem listItem) {
-      this.previousItem = listItem;
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
-    private String additionalType;
-    private String url;
-    private String sameAs;
-    private String alternateName;
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
     private Thing item;
-    private String name;
-    private Action potentialAction;
-    private String description;
-    private StringOrCreativeWork mainEntityOfPage;
-    private ListItem nextItem;
     private ListItem previousItem;
+    private ListItem nextItem;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected ListItem(String additionalType, String url, String sameAs, String alternateName, Thing item, String name, Action potentialAction, String description, StringOrCreativeWork mainEntityOfPage, ListItem nextItem, ListItem previousItem) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected ListItem(Thing item, ListItem previousItem, ListItem nextItem, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myItem = item;
     myPreviousItem = previousItem;
     myNextItem = nextItem;

@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -32,12 +31,14 @@ public class TrainTrip extends Intangible {
   /**
    * The expected departure time.
    */
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getDepartureTime() {
     return myDepartureTime;
   }
   /**
    * The expected arrival time.
    */
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getArrivalTime() {
     return myArrivalTime;
   }
@@ -85,12 +86,13 @@ public class TrainTrip extends Intangible {
      * Creates new {@link TrainTrip} instance.
      */
     public TrainTrip build() {
-      return new TrainTrip(provider, departurePlatform, name, arrivalStation, mainEntityOfPage, additionalType, url, sameAs, trainNumber, alternateName, departureStation, arrivalTime, arrivalPlatform, potentialAction, description, trainName, departureTime);
+      return new TrainTrip(provider, departureTime, arrivalTime, trainNumber, trainName, departureStation, arrivalStation, departurePlatform, arrivalPlatform, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     public Builder provider(Organization organization) {
+      if(this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setOrganization(organization);
       return this;
     }
@@ -98,21 +100,43 @@ public class TrainTrip extends Intangible {
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     public Builder provider(Person person) {
+      if(this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setPerson(person);
       return this;
     }
     /**
-     * The platform from which the train departs.
+     * The expected departure time.
      */
-    public Builder departurePlatform(String departurePlatform) {
-      this.departurePlatform = departurePlatform;
+    public Builder departureTime(java.util.Date date) {
+      this.departureTime = date;
       return this;
     }
     /**
-     * The name of the item.
+     * The expected arrival time.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder arrivalTime(java.util.Date date) {
+      this.arrivalTime = date;
+      return this;
+    }
+    /**
+     * The unique identifier for the train.
+     */
+    public Builder trainNumber(String trainNumber) {
+      this.trainNumber = trainNumber;
+      return this;
+    }
+    /**
+     * The name of the train (e.g. The Orient Express).
+     */
+    public Builder trainName(String trainName) {
+      this.trainName = trainName;
+      return this;
+    }
+    /**
+     * The station from which the train departs.
+     */
+    public Builder departureStation(TrainStation trainStation) {
+      this.departureStation = trainStation;
       return this;
     }
     /**
@@ -123,37 +147,38 @@ public class TrainTrip extends Intangible {
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * The platform from which the train departs.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder departurePlatform(String departurePlatform) {
+      this.departurePlatform = departurePlatform;
+      return this;
+    }
+    /**
+     * The platform where the train arrives.
+     */
+    public Builder arrivalPlatform(String arrivalPlatform) {
+      this.arrivalPlatform = arrivalPlatform;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -187,21 +212,50 @@ public class TrainTrip extends Intangible {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * URL of the item.
+     * The name of the item.
      */
-    public Builder url(String url) {
-      this.url = url;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -212,38 +266,10 @@ public class TrainTrip extends Intangible {
       return this;
     }
     /**
-     * The unique identifier for the train.
+     * URL of the item.
      */
-    public Builder trainNumber(String trainNumber) {
-      this.trainNumber = trainNumber;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * The station from which the train departs.
-     */
-    public Builder departureStation(TrainStation trainStation) {
-      this.departureStation = trainStation;
-      return this;
-    }
-    /**
-     * The expected arrival time.
-     */
-    public Builder arrivalTime(java.util.Date date) {
-      this.arrivalTime = date;
-      return this;
-    }
-    /**
-     * The platform where the train arrives.
-     */
-    public Builder arrivalPlatform(String arrivalPlatform) {
-      this.arrivalPlatform = arrivalPlatform;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
@@ -253,48 +279,27 @@ public class TrainTrip extends Intangible {
       this.potentialAction = action;
       return this;
     }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-    /**
-     * The name of the train (e.g. The Orient Express).
-     */
-    public Builder trainName(String trainName) {
-      this.trainName = trainName;
-      return this;
-    }
-    /**
-     * The expected departure time.
-     */
-    public Builder departureTime(java.util.Date date) {
-      this.departureTime = date;
-      return this;
-    }
     private OrganizationOrPerson provider;
-    private String departurePlatform;
-    private String name;
-    private TrainStation arrivalStation;
-    private StringOrCreativeWork mainEntityOfPage;
-    private String additionalType;
-    private String url;
-    private String sameAs;
-    private String trainNumber;
-    private String alternateName;
-    private TrainStation departureStation;
-    private java.util.Date arrivalTime;
-    private String arrivalPlatform;
-    private Action potentialAction;
-    private String description;
-    private String trainName;
     private java.util.Date departureTime;
+    private java.util.Date arrivalTime;
+    private String trainNumber;
+    private String trainName;
+    private TrainStation departureStation;
+    private TrainStation arrivalStation;
+    private String departurePlatform;
+    private String arrivalPlatform;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected TrainTrip(OrganizationOrPerson provider, String departurePlatform, String name, TrainStation arrivalStation, StringOrCreativeWork mainEntityOfPage, String additionalType, String url, String sameAs, String trainNumber, String alternateName, TrainStation departureStation, java.util.Date arrivalTime, String arrivalPlatform, Action potentialAction, String description, String trainName, java.util.Date departureTime) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected TrainTrip(OrganizationOrPerson provider, java.util.Date departureTime, java.util.Date arrivalTime, String trainNumber, String trainName, TrainStation departureStation, TrainStation arrivalStation, String departurePlatform, String arrivalPlatform, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myProvider = provider;
     myDepartureTime = departureTime;
     myArrivalTime = arrivalTime;

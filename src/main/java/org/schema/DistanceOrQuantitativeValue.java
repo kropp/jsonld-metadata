@@ -14,25 +14,31 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class QuantitativeValueOrDistance {
-  public Thing getThing() {
-    if (myQuantitativeValue != null) return myQuantitativeValue;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class DistanceOrQuantitativeValue {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
     if (myDistance != null) return myDistance;
+    if (myQuantitativeValue != null) return myQuantitativeValue;
     return null;
   }
-  public void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
-  public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
-  private QuantitativeValue myQuantitativeValue;
+  public Thing getThing() {
+    if (myDistance != null) return myDistance;
+    if (myQuantitativeValue != null) return myQuantitativeValue;
+    return null;
+  }
   public void setDistance(Distance distance) { clear(); myDistance = distance; }
   public Distance getDistance() { return myDistance; }
   private Distance myDistance;
+  public void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
+  public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
+  private QuantitativeValue myQuantitativeValue;
   private void clear() {
-    myQuantitativeValue = null;
     myDistance = null;
+    myQuantitativeValue = null;
   }
 }

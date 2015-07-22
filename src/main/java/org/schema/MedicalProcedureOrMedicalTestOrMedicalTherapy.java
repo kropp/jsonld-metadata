@@ -14,30 +14,37 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class MedicalTherapyOrMedicalTestOrMedicalProcedure {
-  public Thing getThing() {
-    if (myMedicalTherapy != null) return myMedicalTherapy;
-    if (myMedicalTest != null) return myMedicalTest;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class MedicalProcedureOrMedicalTestOrMedicalTherapy {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
     if (myMedicalProcedure != null) return myMedicalProcedure;
+    if (myMedicalTest != null) return myMedicalTest;
+    if (myMedicalTherapy != null) return myMedicalTherapy;
     return null;
   }
-  public void setMedicalTherapy(MedicalTherapy medicalTherapy) { clear(); myMedicalTherapy = medicalTherapy; }
-  public MedicalTherapy getMedicalTherapy() { return myMedicalTherapy; }
-  private MedicalTherapy myMedicalTherapy;
-  public void setMedicalTest(MedicalTest medicalTest) { clear(); myMedicalTest = medicalTest; }
-  public MedicalTest getMedicalTest() { return myMedicalTest; }
-  private MedicalTest myMedicalTest;
+  public Thing getThing() {
+    if (myMedicalProcedure != null) return myMedicalProcedure;
+    if (myMedicalTest != null) return myMedicalTest;
+    if (myMedicalTherapy != null) return myMedicalTherapy;
+    return null;
+  }
   public void setMedicalProcedure(MedicalProcedure medicalProcedure) { clear(); myMedicalProcedure = medicalProcedure; }
   public MedicalProcedure getMedicalProcedure() { return myMedicalProcedure; }
   private MedicalProcedure myMedicalProcedure;
+  public void setMedicalTest(MedicalTest medicalTest) { clear(); myMedicalTest = medicalTest; }
+  public MedicalTest getMedicalTest() { return myMedicalTest; }
+  private MedicalTest myMedicalTest;
+  public void setMedicalTherapy(MedicalTherapy medicalTherapy) { clear(); myMedicalTherapy = medicalTherapy; }
+  public MedicalTherapy getMedicalTherapy() { return myMedicalTherapy; }
+  private MedicalTherapy myMedicalTherapy;
   private void clear() {
-    myMedicalTherapy = null;
-    myMedicalTest = null;
     myMedicalProcedure = null;
+    myMedicalTest = null;
+    myMedicalTherapy = null;
   }
 }

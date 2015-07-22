@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -43,7 +42,7 @@ public class SportsTeam extends SportsOrganization implements Competitor {
      * Creates new {@link SportsTeam} instance.
      */
     public SportsTeam build() {
-      return new SportsTeam(coach, aggregateRating, sport, review, duns, logo, department, subOrganization, sameAs, event, award, additionalType, foundingDate, numberOfEmployees, seeks, brand, naics, potentialAction, dissolutionDate, foundingLocation, address, founder, owns, email, member, makesOffer, employee, isicV4, globalLocationNumber, taxID, name, vatID, mainEntityOfPage, legalName, memberOf, url, contactPoint, hasPOS, athlete, alternateName, faxNumber, telephone, description);
+      return new SportsTeam(coach, athlete, sport, address, aggregateRating, award, brand, contactPoint, department, duns, email, employee, event, faxNumber, founder, dissolutionDate, foundingDate, globalLocationNumber, hasPOS, isicV4, legalName, logo, makesOffer, member, memberOf, naics, numberOfEmployees, owns, review, seeks, subOrganization, taxID, telephone, vatID, foundingLocation, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
      * A person that acts in a coaching role for a sports team.
@@ -53,10 +52,10 @@ public class SportsTeam extends SportsOrganization implements Competitor {
       return this;
     }
     /**
-     * The overall rating, based on a collection of reviews or ratings, of the item.
+     * A person that acts as performing member of a sports team; a player as opposed to a coach.
      */
-    public Builder aggregateRating(AggregateRating aggregateRating) {
-      this.aggregateRating = aggregateRating;
+    public Builder athlete(Person person) {
+      this.athlete = person;
       return this;
     }
     /**
@@ -67,59 +66,17 @@ public class SportsTeam extends SportsOrganization implements Competitor {
       return this;
     }
     /**
-     * A review of the item.
+     * Physical address of the item.
      */
-    public Builder review(Review review) {
-      this.review = review;
+    public Builder address(PostalAddress postalAddress) {
+      this.address = postalAddress;
       return this;
     }
     /**
-     * The Dun & Bradstreet DUNS number for identifying an organization or business person.
+     * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    public Builder duns(String duns) {
-      this.duns = duns;
-      return this;
-    }
-    /**
-     * An associated logo.
-     */
-    public Builder logo(ImageObject imageObject) {
-      this.logo.setImageObject(imageObject);
-      return this;
-    }
-    /**
-     * An associated logo.
-     */
-    public Builder logo(String logo) {
-      this.logo.setString(logo);
-      return this;
-    }
-    /**
-     * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
-     */
-    public Builder department(Organization organization) {
-      this.department = organization;
-      return this;
-    }
-    /**
-     * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
-     */
-    public Builder subOrganization(Organization organization) {
-      this.subOrganization = organization;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
-      return this;
-    }
-    /**
-     * Upcoming or past event associated with this place, organization, or action.
-     */
-    public Builder event(Event event) {
-      this.event = event;
+    public Builder aggregateRating(AggregateRating aggregateRating) {
+      this.aggregateRating = aggregateRating;
       return this;
     }
     /**
@@ -130,101 +87,40 @@ public class SportsTeam extends SportsOrganization implements Competitor {
       return this;
     }
     /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * The date that this organization was founded.
-     */
-    public Builder foundingDate(java.util.Date date) {
-      this.foundingDate = date;
-      return this;
-    }
-    /**
-     * The number of employees in an organization e.g. business.
-     */
-    public Builder numberOfEmployees(QuantitativeValue quantitativeValue) {
-      this.numberOfEmployees = quantitativeValue;
-      return this;
-    }
-    /**
-     * A pointer to products or services sought by the organization or person (demand).
-     */
-    public Builder seeks(Demand demand) {
-      this.seeks = demand;
+    public Builder brand(Brand brand) {
+      if(this.brand == null) this.brand = new BrandOrOrganization();
+      this.brand.setBrand(brand);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     public Builder brand(Organization organization) {
+      if(this.brand == null) this.brand = new BrandOrOrganization();
       this.brand.setOrganization(organization);
       return this;
     }
     /**
-     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     * A contact point for a person or organization.
      */
-    public Builder brand(Brand brand) {
-      this.brand.setBrand(brand);
+    public Builder contactPoint(ContactPoint contactPoint) {
+      this.contactPoint = contactPoint;
       return this;
     }
     /**
-     * The North American Industry Classification System (NAICS) code for a particular organization or business person.
+     * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
      */
-    public Builder naics(String naics) {
-      this.naics = naics;
+    public Builder department(Organization organization) {
+      this.department = organization;
       return this;
     }
     /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     * The Dun & Bradstreet DUNS number for identifying an organization or business person.
      */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
-      return this;
-    }
-    /**
-     * The date that this organization was dissolved.
-     */
-    public Builder dissolutionDate(java.util.Date date) {
-      this.dissolutionDate = date;
-      return this;
-    }
-    /**
-     * The place where the Organization was founded.
-     */
-    public Builder foundingLocation(Place place) {
-      this.foundingLocation = place;
-      return this;
-    }
-    /**
-     * Physical address of the item.
-     */
-    public Builder address(PostalAddress postalAddress) {
-      this.address = postalAddress;
-      return this;
-    }
-    /**
-     * A person who founded this organization.
-     */
-    public Builder founder(Person person) {
-      this.founder = person;
-      return this;
-    }
-    /**
-     * Products owned by the organization or person.
-     */
-    public Builder owns(Product product) {
-      this.owns.setProduct(product);
-      return this;
-    }
-    /**
-     * Products owned by the organization or person.
-     */
-    public Builder owns(OwnershipInfo ownershipInfo) {
-      this.owns.setOwnershipInfo(ownershipInfo);
+    public Builder duns(String duns) {
+      this.duns = duns;
       return this;
     }
     /**
@@ -235,27 +131,6 @@ public class SportsTeam extends SportsOrganization implements Competitor {
       return this;
     }
     /**
-     * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
-     */
-    public Builder member(Organization organization) {
-      this.member.setOrganization(organization);
-      return this;
-    }
-    /**
-     * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
-     */
-    public Builder member(Person person) {
-      this.member.setPerson(person);
-      return this;
-    }
-    /**
-     * A pointer to products or services offered by the organization or person.
-     */
-    public Builder makesOffer(Offer offer) {
-      this.makesOffer = offer;
-      return this;
-    }
-    /**
      * Someone working for this organization.
      */
     public Builder employee(Person person) {
@@ -263,10 +138,38 @@ public class SportsTeam extends SportsOrganization implements Competitor {
       return this;
     }
     /**
-     * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
+     * Upcoming or past event associated with this place, organization, or action.
      */
-    public Builder isicV4(String isicV4) {
-      this.isicV4 = isicV4;
+    public Builder event(Event event) {
+      this.event = event;
+      return this;
+    }
+    /**
+     * The fax number.
+     */
+    public Builder faxNumber(String faxNumber) {
+      this.faxNumber = faxNumber;
+      return this;
+    }
+    /**
+     * A person who founded this organization.
+     */
+    public Builder founder(Person person) {
+      this.founder = person;
+      return this;
+    }
+    /**
+     * The date that this organization was dissolved.
+     */
+    public Builder dissolutionDate(java.util.Date date) {
+      this.dissolutionDate = date;
+      return this;
+    }
+    /**
+     * The date that this organization was founded.
+     */
+    public Builder foundingDate(java.util.Date date) {
+      this.foundingDate = date;
       return this;
     }
     /**
@@ -277,6 +180,133 @@ public class SportsTeam extends SportsOrganization implements Competitor {
       return this;
     }
     /**
+     * Points-of-Sales operated by the organization or person.
+     */
+    public Builder hasPOS(Place place) {
+      this.hasPOS = place;
+      return this;
+    }
+    /**
+     * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
+     */
+    public Builder isicV4(String isicV4) {
+      this.isicV4 = isicV4;
+      return this;
+    }
+    /**
+     * The official name of the organization, e.g. the registered company name.
+     */
+    public Builder legalName(String legalName) {
+      this.legalName = legalName;
+      return this;
+    }
+    /**
+     * An associated logo.
+     */
+    public Builder logo(ImageObject imageObject) {
+      if(this.logo == null) this.logo = new ImageObjectOrString();
+      this.logo.setImageObject(imageObject);
+      return this;
+    }
+    /**
+     * An associated logo.
+     */
+    public Builder logo(String logo) {
+      if(this.logo == null) this.logo = new ImageObjectOrString();
+      this.logo.setString(logo);
+      return this;
+    }
+    /**
+     * A pointer to products or services offered by the organization or person.
+     */
+    public Builder makesOffer(Offer offer) {
+      this.makesOffer = offer;
+      return this;
+    }
+    /**
+     * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
+     */
+    public Builder member(Organization organization) {
+      if(this.member == null) this.member = new OrganizationOrPerson();
+      this.member.setOrganization(organization);
+      return this;
+    }
+    /**
+     * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
+     */
+    public Builder member(Person person) {
+      if(this.member == null) this.member = new OrganizationOrPerson();
+      this.member.setPerson(person);
+      return this;
+    }
+    /**
+     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+     */
+    public Builder memberOf(Organization organization) {
+      if(this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
+      this.memberOf.setOrganization(organization);
+      return this;
+    }
+    /**
+     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+     */
+    public Builder memberOf(ProgramMembership programMembership) {
+      if(this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
+      this.memberOf.setProgramMembership(programMembership);
+      return this;
+    }
+    /**
+     * The North American Industry Classification System (NAICS) code for a particular organization or business person.
+     */
+    public Builder naics(String naics) {
+      this.naics = naics;
+      return this;
+    }
+    /**
+     * The number of employees in an organization e.g. business.
+     */
+    public Builder numberOfEmployees(QuantitativeValue quantitativeValue) {
+      this.numberOfEmployees = quantitativeValue;
+      return this;
+    }
+    /**
+     * Products owned by the organization or person.
+     */
+    public Builder owns(OwnershipInfo ownershipInfo) {
+      if(this.owns == null) this.owns = new OwnershipInfoOrProduct();
+      this.owns.setOwnershipInfo(ownershipInfo);
+      return this;
+    }
+    /**
+     * Products owned by the organization or person.
+     */
+    public Builder owns(Product product) {
+      if(this.owns == null) this.owns = new OwnershipInfoOrProduct();
+      this.owns.setProduct(product);
+      return this;
+    }
+    /**
+     * A review of the item.
+     */
+    public Builder review(Review review) {
+      this.review = review;
+      return this;
+    }
+    /**
+     * A pointer to products or services sought by the organization or person (demand).
+     */
+    public Builder seeks(Demand demand) {
+      this.seeks = demand;
+      return this;
+    }
+    /**
+     * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
+     */
+    public Builder subOrganization(Organization organization) {
+      this.subOrganization = organization;
+      return this;
+    }
+    /**
      * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
      */
     public Builder taxID(String taxID) {
@@ -284,10 +314,10 @@ public class SportsTeam extends SportsOrganization implements Competitor {
       return this;
     }
     /**
-     * The name of the item.
+     * The telephone number.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder telephone(String telephone) {
+      this.telephone = telephone;
       return this;
     }
     /**
@@ -298,37 +328,31 @@ public class SportsTeam extends SportsOrganization implements Competitor {
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * The place where the Organization was founded.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder foundingLocation(Place place) {
+      this.foundingLocation = place;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -362,28 +386,57 @@ public class SportsTeam extends SportsOrganization implements Competitor {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * The official name of the organization, e.g. the registered company name.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder legalName(String legalName) {
-      this.legalName = legalName;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+     * The name of the item.
      */
-    public Builder memberOf(Organization organization) {
-      this.memberOf.setOrganization(organization);
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
-     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder memberOf(ProgramMembership programMembership) {
-      this.memberOf.setProgramMembership(programMembership);
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
     /**
@@ -394,101 +447,59 @@ public class SportsTeam extends SportsOrganization implements Competitor {
       return this;
     }
     /**
-     * A contact point for a person or organization.
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder contactPoint(ContactPoint contactPoint) {
-      this.contactPoint = contactPoint;
-      return this;
-    }
-    /**
-     * Points-of-Sales operated by the organization or person.
-     */
-    public Builder hasPOS(Place place) {
-      this.hasPOS = place;
-      return this;
-    }
-    /**
-     * A person that acts as performing member of a sports team; a player as opposed to a coach.
-     */
-    public Builder athlete(Person person) {
-      this.athlete = person;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * The fax number.
-     */
-    public Builder faxNumber(String faxNumber) {
-      this.faxNumber = faxNumber;
-      return this;
-    }
-    /**
-     * The telephone number.
-     */
-    public Builder telephone(String telephone) {
-      this.telephone = telephone;
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
       return this;
     }
     private Person coach;
-    private AggregateRating aggregateRating;
-    private String sport;
-    private Review review;
-    private String duns;
-    private ImageObjectOrString logo;
-    private Organization department;
-    private Organization subOrganization;
-    private String sameAs;
-    private Event event;
-    private String award;
-    private String additionalType;
-    private java.util.Date foundingDate;
-    private QuantitativeValue numberOfEmployees;
-    private Demand seeks;
-    private OrganizationOrBrand brand;
-    private String naics;
-    private Action potentialAction;
-    private java.util.Date dissolutionDate;
-    private Place foundingLocation;
-    private PostalAddress address;
-    private Person founder;
-    private ProductOrOwnershipInfo owns;
-    private String email;
-    private OrganizationOrPerson member;
-    private Offer makesOffer;
-    private Person employee;
-    private String isicV4;
-    private String globalLocationNumber;
-    private String taxID;
-    private String name;
-    private String vatID;
-    private StringOrCreativeWork mainEntityOfPage;
-    private String legalName;
-    private OrganizationOrProgramMembership memberOf;
-    private String url;
-    private ContactPoint contactPoint;
-    private Place hasPOS;
     private Person athlete;
-    private String alternateName;
+    private String sport;
+    private PostalAddress address;
+    private AggregateRating aggregateRating;
+    private String award;
+    private BrandOrOrganization brand;
+    private ContactPoint contactPoint;
+    private Organization department;
+    private String duns;
+    private String email;
+    private Person employee;
+    private Event event;
     private String faxNumber;
+    private Person founder;
+    private java.util.Date dissolutionDate;
+    private java.util.Date foundingDate;
+    private String globalLocationNumber;
+    private Place hasPOS;
+    private String isicV4;
+    private String legalName;
+    private ImageObjectOrString logo;
+    private Offer makesOffer;
+    private OrganizationOrPerson member;
+    private OrganizationOrProgramMembership memberOf;
+    private String naics;
+    private QuantitativeValue numberOfEmployees;
+    private OwnershipInfoOrProduct owns;
+    private Review review;
+    private Demand seeks;
+    private Organization subOrganization;
+    private String taxID;
     private String telephone;
+    private String vatID;
+    private Place foundingLocation;
+    private String additionalType;
+    private String alternateName;
     private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected SportsTeam(Person coach, AggregateRating aggregateRating, String sport, Review review, String duns, ImageObjectOrString logo, Organization department, Organization subOrganization, String sameAs, Event event, String award, String additionalType, java.util.Date foundingDate, QuantitativeValue numberOfEmployees, Demand seeks, OrganizationOrBrand brand, String naics, Action potentialAction, java.util.Date dissolutionDate, Place foundingLocation, PostalAddress address, Person founder, ProductOrOwnershipInfo owns, String email, OrganizationOrPerson member, Offer makesOffer, Person employee, String isicV4, String globalLocationNumber, String taxID, String name, String vatID, StringOrCreativeWork mainEntityOfPage, String legalName, OrganizationOrProgramMembership memberOf, String url, ContactPoint contactPoint, Place hasPOS, Person athlete, String alternateName, String faxNumber, String telephone, String description) {
-    super(aggregateRating, sport, review, logo, duns, department, subOrganization, award, event, sameAs, additionalType, foundingDate, numberOfEmployees, seeks, brand, naics, potentialAction, dissolutionDate, foundingLocation, address, founder, owns, email, makesOffer, member, employee, globalLocationNumber, isicV4, taxID, vatID, name, legalName, mainEntityOfPage, memberOf, url, contactPoint, hasPOS, faxNumber, alternateName, telephone, description);
+  protected SportsTeam(Person coach, Person athlete, String sport, PostalAddress address, AggregateRating aggregateRating, String award, BrandOrOrganization brand, ContactPoint contactPoint, Organization department, String duns, String email, Person employee, Event event, String faxNumber, Person founder, java.util.Date dissolutionDate, java.util.Date foundingDate, String globalLocationNumber, Place hasPOS, String isicV4, String legalName, ImageObjectOrString logo, Offer makesOffer, OrganizationOrPerson member, OrganizationOrProgramMembership memberOf, String naics, QuantitativeValue numberOfEmployees, OwnershipInfoOrProduct owns, Review review, Demand seeks, Organization subOrganization, String taxID, String telephone, String vatID, Place foundingLocation, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(sport, address, aggregateRating, award, brand, contactPoint, department, duns, email, employee, event, faxNumber, founder, dissolutionDate, foundingDate, globalLocationNumber, hasPOS, isicV4, legalName, logo, makesOffer, member, memberOf, naics, numberOfEmployees, owns, review, seeks, subOrganization, taxID, telephone, vatID, foundingLocation, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myCoach = coach;
     myAthlete = athlete;
   }

@@ -14,24 +14,31 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class StringOrCreativeWork {
-  public Thing getThing() {
-    if (myCreativeWork != null) return myCreativeWork;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class ListItemOrStringOrThing {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
+    if (myListItem != null) return myListItem;
+    if (myString != null) return myString;
+    if (myThing != null) return myThing;
     return null;
   }
+  public void setListItem(ListItem listItem) { clear(); myListItem = listItem; }
+  public ListItem getListItem() { return myListItem; }
+  private ListItem myListItem;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
-  public void setCreativeWork(CreativeWork creativeWork) { clear(); myCreativeWork = creativeWork; }
-  public CreativeWork getCreativeWork() { return myCreativeWork; }
-  private CreativeWork myCreativeWork;
+  public void setThing(Thing thing) { clear(); myThing = thing; }
+  public Thing getThing() { return myThing; }
+  private Thing myThing;
   private void clear() {
+    myListItem = null;
     myString = null;
-    myCreativeWork = null;
+    myThing = null;
   }
 }

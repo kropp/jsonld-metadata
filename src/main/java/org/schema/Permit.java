@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -44,6 +43,7 @@ public class Permit extends Intangible {
   /**
    * The date when the item becomes valid.
    */
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getValidFrom() {
     return myValidFrom;
   }
@@ -56,6 +56,7 @@ public class Permit extends Intangible {
   /**
    * The date when the item is no longer valid.
    */
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getValidUntil() {
     return myValidUntil;
   }
@@ -73,7 +74,14 @@ public class Permit extends Intangible {
      * Creates new {@link Permit} instance.
      */
     public Permit build() {
-      return new Permit(permitAudience, name, validUntil, mainEntityOfPage, validFor, validFrom, additionalType, url, sameAs, issuedThrough, alternateName, potentialAction, validIn, description, issuedBy);
+      return new Permit(issuedThrough, permitAudience, validFor, validFrom, validIn, validUntil, issuedBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+    }
+    /**
+     * The service through with the permit was granted.
+     */
+    public Builder issuedThrough(Service service) {
+      this.issuedThrough = service;
+      return this;
     }
     /**
      * The target audience for this permit.
@@ -83,10 +91,24 @@ public class Permit extends Intangible {
       return this;
     }
     /**
-     * The name of the item.
+     * The time validity of the permit.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder validFor(Duration duration) {
+      this.validFor = duration;
+      return this;
+    }
+    /**
+     * The date when the item becomes valid.
+     */
+    public Builder validFrom(java.util.Date date) {
+      this.validFrom = date;
+      return this;
+    }
+    /**
+     * The geographic area where the permit is valid.
+     */
+    public Builder validIn(AdministrativeArea administrativeArea) {
+      this.validIn = administrativeArea;
       return this;
     }
     /**
@@ -97,37 +119,31 @@ public class Permit extends Intangible {
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * The organization issuing the ticket or permit.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder issuedBy(Organization organization) {
+      this.issuedBy = organization;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -161,35 +177,50 @@ public class Permit extends Intangible {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * The time validity of the permit.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder validFor(Duration duration) {
-      this.validFor = duration;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The date when the item becomes valid.
+     * The name of the item.
      */
-    public Builder validFrom(java.util.Date date) {
-      this.validFrom = date;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -200,17 +231,10 @@ public class Permit extends Intangible {
       return this;
     }
     /**
-     * The service through with the permit was granted.
+     * URL of the item.
      */
-    public Builder issuedThrough(Service service) {
-      this.issuedThrough = service;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
@@ -220,46 +244,25 @@ public class Permit extends Intangible {
       this.potentialAction = action;
       return this;
     }
-    /**
-     * The geographic area where the permit is valid.
-     */
-    public Builder validIn(AdministrativeArea administrativeArea) {
-      this.validIn = administrativeArea;
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-    /**
-     * The organization issuing the ticket or permit.
-     */
-    public Builder issuedBy(Organization organization) {
-      this.issuedBy = organization;
-      return this;
-    }
+    private Service issuedThrough;
     private Audience permitAudience;
-    private String name;
-    private java.util.Date validUntil;
-    private StringOrCreativeWork mainEntityOfPage;
     private Duration validFor;
     private java.util.Date validFrom;
-    private String additionalType;
-    private String url;
-    private String sameAs;
-    private Service issuedThrough;
-    private String alternateName;
-    private Action potentialAction;
     private AdministrativeArea validIn;
-    private String description;
+    private java.util.Date validUntil;
     private Organization issuedBy;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected Permit(Audience permitAudience, String name, java.util.Date validUntil, StringOrCreativeWork mainEntityOfPage, Duration validFor, java.util.Date validFrom, String additionalType, String url, String sameAs, Service issuedThrough, String alternateName, Action potentialAction, AdministrativeArea validIn, String description, Organization issuedBy) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected Permit(Service issuedThrough, Audience permitAudience, Duration validFor, java.util.Date validFrom, AdministrativeArea validIn, java.util.Date validUntil, Organization issuedBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myIssuedThrough = issuedThrough;
     myPermitAudience = permitAudience;
     myValidFor = validFor;

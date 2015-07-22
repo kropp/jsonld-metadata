@@ -14,25 +14,31 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class PlaceOrContactPoint {
-  public Thing getThing() {
-    if (myPlace != null) return myPlace;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class ContactPointOrPlace {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
     if (myContactPoint != null) return myContactPoint;
+    if (myPlace != null) return myPlace;
     return null;
   }
-  public void setPlace(Place place) { clear(); myPlace = place; }
-  public Place getPlace() { return myPlace; }
-  private Place myPlace;
+  public Thing getThing() {
+    if (myContactPoint != null) return myContactPoint;
+    if (myPlace != null) return myPlace;
+    return null;
+  }
   public void setContactPoint(ContactPoint contactPoint) { clear(); myContactPoint = contactPoint; }
   public ContactPoint getContactPoint() { return myContactPoint; }
   private ContactPoint myContactPoint;
+  public void setPlace(Place place) { clear(); myPlace = place; }
+  public Place getPlace() { return myPlace; }
+  private Place myPlace;
   private void clear() {
-    myPlace = null;
     myContactPoint = null;
+    myPlace = null;
   }
 }

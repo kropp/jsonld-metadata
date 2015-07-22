@@ -14,30 +14,31 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class SuperficialAnatomyOrAnatomicalSystemOrAnatomicalStructure {
-  public Thing getThing() {
-    if (mySuperficialAnatomy != null) return mySuperficialAnatomy;
-    if (myAnatomicalSystem != null) return myAnatomicalSystem;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class AnatomicalStructureOrSuperficialAnatomy {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
     if (myAnatomicalStructure != null) return myAnatomicalStructure;
+    if (mySuperficialAnatomy != null) return mySuperficialAnatomy;
     return null;
   }
-  public void setSuperficialAnatomy(SuperficialAnatomy superficialAnatomy) { clear(); mySuperficialAnatomy = superficialAnatomy; }
-  public SuperficialAnatomy getSuperficialAnatomy() { return mySuperficialAnatomy; }
-  private SuperficialAnatomy mySuperficialAnatomy;
-  public void setAnatomicalSystem(AnatomicalSystem anatomicalSystem) { clear(); myAnatomicalSystem = anatomicalSystem; }
-  public AnatomicalSystem getAnatomicalSystem() { return myAnatomicalSystem; }
-  private AnatomicalSystem myAnatomicalSystem;
+  public Thing getThing() {
+    if (myAnatomicalStructure != null) return myAnatomicalStructure;
+    if (mySuperficialAnatomy != null) return mySuperficialAnatomy;
+    return null;
+  }
   public void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
   public AnatomicalStructure getAnatomicalStructure() { return myAnatomicalStructure; }
   private AnatomicalStructure myAnatomicalStructure;
+  public void setSuperficialAnatomy(SuperficialAnatomy superficialAnatomy) { clear(); mySuperficialAnatomy = superficialAnatomy; }
+  public SuperficialAnatomy getSuperficialAnatomy() { return mySuperficialAnatomy; }
+  private SuperficialAnatomy mySuperficialAnatomy;
   private void clear() {
-    mySuperficialAnatomy = null;
-    myAnatomicalSystem = null;
     myAnatomicalStructure = null;
+    mySuperficialAnatomy = null;
   }
 }

@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -97,7 +96,49 @@ public class ExerciseAction extends PlayAction {
      * Creates new {@link ExerciseAction} instance.
      */
     public ExerciseAction build() {
-      return new ExerciseAction(opponent, exerciseType, startTime, sportsEvent, error, distance, event, sameAs, additionalType, potentialAction, exerciseCourse, exercisePlan, toLocation, name, mainEntityOfPage, sportsTeam, audience, fromLocation, exerciseRelatedDiet, url, agent, sportsActivityLocation, alternateName, description, target, endTime, actionStatus);
+      return new ExerciseAction(exerciseCourse, exerciseRelatedDiet, distance, exercisePlan, exerciseType, fromLocation, opponent, sportsActivityLocation, sportsEvent, sportsTeam, toLocation, audience, event, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+    }
+    /**
+     * A sub property of location. The course where this action was taken.
+     */
+    public Builder exerciseCourse(Place place) {
+      this.exerciseCourse = place;
+      return this;
+    }
+    /**
+     * A sub property of instrument. The diet used in this action.
+     */
+    public Builder exerciseRelatedDiet(Diet diet) {
+      this.exerciseRelatedDiet = diet;
+      return this;
+    }
+    /**
+     * The distance travelled, e.g. exercising or travelling.
+     */
+    public Builder distance(Distance distance) {
+      this.distance = distance;
+      return this;
+    }
+    /**
+     * A sub property of instrument. The exercise plan used on this action.
+     */
+    public Builder exercisePlan(ExercisePlan exercisePlan) {
+      this.exercisePlan = exercisePlan;
+      return this;
+    }
+    /**
+     * Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
+     */
+    public Builder exerciseType(String exerciseType) {
+      this.exerciseType = exerciseType;
+      return this;
+    }
+    /**
+     * A sub property of location. The original location of the object or the agent before the action.
+     */
+    public Builder fromLocation(Place place) {
+      this.fromLocation = place;
+      return this;
     }
     /**
      * A sub property of participant. The opponent on this action.
@@ -107,10 +148,70 @@ public class ExerciseAction extends PlayAction {
       return this;
     }
     /**
-     * Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
+     * A sub property of location. The sports activity location where this action occurred.
      */
-    public Builder exerciseType(String exerciseType) {
-      this.exerciseType = exerciseType;
+    public Builder sportsActivityLocation(SportsActivityLocation sportsActivityLocation) {
+      this.sportsActivityLocation = sportsActivityLocation;
+      return this;
+    }
+    /**
+     * A sub property of location. The sports event where this action occurred.
+     */
+    public Builder sportsEvent(SportsEvent sportsEvent) {
+      this.sportsEvent = sportsEvent;
+      return this;
+    }
+    /**
+     * A sub property of participant. The sports team that participated on this action.
+     */
+    public Builder sportsTeam(SportsTeam sportsTeam) {
+      this.sportsTeam = sportsTeam;
+      return this;
+    }
+    /**
+     * A sub property of location. The final location of the object or the agent after the action.
+     */
+    public Builder toLocation(Place place) {
+      this.toLocation = place;
+      return this;
+    }
+    /**
+     * An intended audience, i.e. a group for whom something was created.
+     */
+    public Builder audience(Audience audience) {
+      this.audience = audience;
+      return this;
+    }
+    /**
+     * Upcoming or past event associated with this place, organization, or action.
+     */
+    public Builder event(Event event) {
+      this.event = event;
+      return this;
+    }
+    /**
+     * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
+     */
+    public Builder agent(Organization organization) {
+      if(this.agent == null) this.agent = new OrganizationOrPerson();
+      this.agent.setOrganization(organization);
+      return this;
+    }
+    /**
+     * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
+     */
+    public Builder agent(Person person) {
+      if(this.agent == null) this.agent = new OrganizationOrPerson();
+      this.agent.setPerson(person);
+      return this;
+    }
+    /**
+     * The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to *December*.
+
+Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+     */
+    public Builder endTime(java.util.Date date) {
+      this.endTime = date;
       return this;
     }
     /**
@@ -123,10 +224,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       return this;
     }
     /**
-     * A sub property of location. The sports event where this action occurred.
+     * Indicates the current disposition of the Action.
      */
-    public Builder sportsEvent(SportsEvent sportsEvent) {
-      this.sportsEvent = sportsEvent;
+    public Builder actionStatus(ActionStatusType actionStatusType) {
+      this.actionStatus = actionStatusType;
       return this;
     }
     /**
@@ -137,24 +238,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       return this;
     }
     /**
-     * The distance travelled, e.g. exercising or travelling.
+     * Indicates a target EntryPoint for an Action.
      */
-    public Builder distance(Distance distance) {
-      this.distance = distance;
-      return this;
-    }
-    /**
-     * Upcoming or past event associated with this place, organization, or action.
-     */
-    public Builder event(Event event) {
-      this.event = event;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
+    public Builder target(EntryPoint entryPoint) {
+      this.target = entryPoint;
       return this;
     }
     /**
@@ -165,72 +252,17 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       return this;
     }
     /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     * An alias for the item.
      */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
       return this;
     }
     /**
-     * A sub property of location. The course where this action was taken.
+     * A short description of the item.
      */
-    public Builder exerciseCourse(Place place) {
-      this.exerciseCourse = place;
-      return this;
-    }
-    /**
-     * A sub property of instrument. The exercise plan used on this action.
-     */
-    public Builder exercisePlan(ExercisePlan exercisePlan) {
-      this.exercisePlan = exercisePlan;
-      return this;
-    }
-    /**
-     * A sub property of location. The final location of the object or the agent after the action.
-     */
-    public Builder toLocation(Place place) {
-      this.toLocation = place;
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-    /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
-     */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -264,35 +296,57 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * A sub property of participant. The sports team that participated on this action.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder sportsTeam(SportsTeam sportsTeam) {
-      this.sportsTeam = sportsTeam;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * An intended audience, i.e. a group for whom something was created.
+     * The name of the item.
      */
-    public Builder audience(Audience audience) {
-      this.audience = audience;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
-     * A sub property of location. The original location of the object or the agent before the action.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder fromLocation(Place place) {
-      this.fromLocation = place;
-      return this;
-    }
-    /**
-     * A sub property of instrument. The diet used in this action.
-     */
-    public Builder exerciseRelatedDiet(Diet diet) {
-      this.exerciseRelatedDiet = diet;
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
     /**
@@ -303,94 +357,43 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       return this;
     }
     /**
-     * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder agent(Organization organization) {
-      this.agent.setOrganization(organization);
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
       return this;
     }
-    /**
-     * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
-     */
-    public Builder agent(Person person) {
-      this.agent.setPerson(person);
-      return this;
-    }
-    /**
-     * A sub property of location. The sports activity location where this action occurred.
-     */
-    public Builder sportsActivityLocation(SportsActivityLocation sportsActivityLocation) {
-      this.sportsActivityLocation = sportsActivityLocation;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-    /**
-     * Indicates a target EntryPoint for an Action.
-     */
-    public Builder target(EntryPoint entryPoint) {
-      this.target = entryPoint;
-      return this;
-    }
-    /**
-     * The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to *December*.
-
-Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
-     */
-    public Builder endTime(java.util.Date date) {
-      this.endTime = date;
-      return this;
-    }
-    /**
-     * Indicates the current disposition of the Action.
-     */
-    public Builder actionStatus(ActionStatusType actionStatusType) {
-      this.actionStatus = actionStatusType;
-      return this;
-    }
-    private Person opponent;
-    private String exerciseType;
-    private java.util.Date startTime;
-    private SportsEvent sportsEvent;
-    private Thing error;
-    private Distance distance;
-    private Event event;
-    private String sameAs;
-    private String additionalType;
-    private Action potentialAction;
     private Place exerciseCourse;
-    private ExercisePlan exercisePlan;
-    private Place toLocation;
-    private String name;
-    private StringOrCreativeWork mainEntityOfPage;
-    private SportsTeam sportsTeam;
-    private Audience audience;
-    private Place fromLocation;
     private Diet exerciseRelatedDiet;
-    private String url;
-    private OrganizationOrPerson agent;
+    private Distance distance;
+    private ExercisePlan exercisePlan;
+    private String exerciseType;
+    private Place fromLocation;
+    private Person opponent;
     private SportsActivityLocation sportsActivityLocation;
+    private SportsEvent sportsEvent;
+    private SportsTeam sportsTeam;
+    private Place toLocation;
+    private Audience audience;
+    private Event event;
+    private OrganizationOrPerson agent;
+    private java.util.Date endTime;
+    private java.util.Date startTime;
+    private ActionStatusType actionStatus;
+    private Thing error;
+    private EntryPoint target;
+    private String additionalType;
     private String alternateName;
     private String description;
-    private EntryPoint target;
-    private java.util.Date endTime;
-    private ActionStatusType actionStatus;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected ExerciseAction(Person opponent, String exerciseType, java.util.Date startTime, SportsEvent sportsEvent, Thing error, Distance distance, Event event, String sameAs, String additionalType, Action potentialAction, Place exerciseCourse, ExercisePlan exercisePlan, Place toLocation, String name, StringOrCreativeWork mainEntityOfPage, SportsTeam sportsTeam, Audience audience, Place fromLocation, Diet exerciseRelatedDiet, String url, OrganizationOrPerson agent, SportsActivityLocation sportsActivityLocation, String alternateName, String description, EntryPoint target, java.util.Date endTime, ActionStatusType actionStatus) {
-    super(startTime, name, error, mainEntityOfPage, audience, event, url, sameAs, additionalType, agent, alternateName, potentialAction, target, description, endTime, actionStatus);
+  protected ExerciseAction(Place exerciseCourse, Diet exerciseRelatedDiet, Distance distance, ExercisePlan exercisePlan, String exerciseType, Place fromLocation, Person opponent, SportsActivityLocation sportsActivityLocation, SportsEvent sportsEvent, SportsTeam sportsTeam, Place toLocation, Audience audience, Event event, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(audience, event, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myExerciseCourse = exerciseCourse;
     myExerciseRelatedDiet = exerciseRelatedDiet;
     myDistance = distance;

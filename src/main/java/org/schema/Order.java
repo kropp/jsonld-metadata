@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -56,7 +55,7 @@ public class Order extends Intangible {
   /**
    * Any discount applied (to an Order).
    */
-  public StringOrNumber getDiscount() {
+  public NumberOrString getDiscount() {
     return myDiscount;
   }
   /**
@@ -80,13 +79,14 @@ public class Order extends Intangible {
   /**
    * Date order was placed.
    */
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getOrderDate() {
     return myOrderDate;
   }
   /**
    * The item ordered.
    */
-  public ProductOrOrderItem getOrderedItem() {
+  public OrderItemOrProduct getOrderedItem() {
     return myOrderedItem;
   }
   /**
@@ -110,6 +110,7 @@ public class Order extends Intangible {
   /**
    * The date that payment is due.
    */
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getPaymentDue() {
     return myPaymentDue;
   }
@@ -151,83 +152,20 @@ public class Order extends Intangible {
      * Creates new {@link Order} instance.
      */
     public Order build() {
-      return new Order(discountCurrency, seller, additionalType, sameAs, paymentMethodId, orderNumber, partOfInvoice, paymentMethod, potentialAction, customer, billingAddress, isGift, confirmationNumber, paymentUrl, orderDate, discountCode, discount, name, mainEntityOfPage, orderStatus, url, broker, acceptedOffer, alternateName, orderedItem, description, orderDelivery, paymentDue);
+      return new Order(orderDelivery, acceptedOffer, billingAddress, confirmationNumber, customer, discount, discountCode, discountCurrency, isGift, orderDate, orderedItem, orderNumber, orderStatus, partOfInvoice, paymentDue, paymentMethod, paymentMethodId, paymentUrl, seller, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
-     * The currency (in 3-letter ISO 4217 format) of the discount.
+     * The delivery of the parcel related to this order or order item.
      */
-    public Builder discountCurrency(String discountCurrency) {
-      this.discountCurrency = discountCurrency;
+    public Builder orderDelivery(ParcelDelivery parcelDelivery) {
+      this.orderDelivery = parcelDelivery;
       return this;
     }
     /**
-     * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
+     * The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
      */
-    public Builder seller(Participant participant) {
-      this.seller = participant;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
-      return this;
-    }
-    /**
-     * An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
-     */
-    public Builder paymentMethodId(String paymentMethodId) {
-      this.paymentMethodId = paymentMethodId;
-      return this;
-    }
-    /**
-     * The identifier of the transaction.
-     */
-    public Builder orderNumber(String orderNumber) {
-      this.orderNumber = orderNumber;
-      return this;
-    }
-    /**
-     * The order is being paid as part of the referenced Invoice.
-     */
-    public Builder partOfInvoice(Invoice invoice) {
-      this.partOfInvoice = invoice;
-      return this;
-    }
-    /**
-     * The name of the credit card or other method of payment for the order.
-     */
-    public Builder paymentMethod(PaymentMethod paymentMethod) {
-      this.paymentMethod = paymentMethod;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
-      return this;
-    }
-    /**
-     * Party placing the order or paying the invoice.
-     */
-    public Builder customer(Organization organization) {
-      this.customer.setOrganization(organization);
-      return this;
-    }
-    /**
-     * Party placing the order or paying the invoice.
-     */
-    public Builder customer(Person person) {
-      this.customer.setPerson(person);
+    public Builder acceptedOffer(Offer offer) {
+      this.acceptedOffer = offer;
       return this;
     }
     /**
@@ -238,13 +176,6 @@ public class Order extends Intangible {
       return this;
     }
     /**
-     * Was the offer accepted as a gift for someone other than the buyer.
-     */
-    public Builder isGift(Boolean isGift) {
-      this.isGift = isGift;
-      return this;
-    }
-    /**
      * A number that confirms the given order or payment has been received.
      */
     public Builder confirmationNumber(String confirmationNumber) {
@@ -252,17 +183,35 @@ public class Order extends Intangible {
       return this;
     }
     /**
-     * The URL for sending a payment.
+     * Party placing the order or paying the invoice.
      */
-    public Builder paymentUrl(String paymentUrl) {
-      this.paymentUrl = paymentUrl;
+    public Builder customer(Organization organization) {
+      if(this.customer == null) this.customer = new OrganizationOrPerson();
+      this.customer.setOrganization(organization);
       return this;
     }
     /**
-     * Date order was placed.
+     * Party placing the order or paying the invoice.
      */
-    public Builder orderDate(java.util.Date date) {
-      this.orderDate = date;
+    public Builder customer(Person person) {
+      if(this.customer == null) this.customer = new OrganizationOrPerson();
+      this.customer.setPerson(person);
+      return this;
+    }
+    /**
+     * Any discount applied (to an Order).
+     */
+    public Builder discount(Number number) {
+      if(this.discount == null) this.discount = new NumberOrString();
+      this.discount.setNumber(number);
+      return this;
+    }
+    /**
+     * Any discount applied (to an Order).
+     */
+    public Builder discount(String discount) {
+      if(this.discount == null) this.discount = new NumberOrString();
+      this.discount.setString(discount);
       return this;
     }
     /**
@@ -273,58 +222,133 @@ public class Order extends Intangible {
       return this;
     }
     /**
-     * Any discount applied (to an Order).
+     * The currency (in 3-letter ISO 4217 format) of the discount.
      */
-    public Builder discount(String discount) {
-      this.discount.setString(discount);
+    public Builder discountCurrency(String discountCurrency) {
+      this.discountCurrency = discountCurrency;
       return this;
     }
     /**
-     * Any discount applied (to an Order).
+     * Was the offer accepted as a gift for someone other than the buyer.
      */
-    public Builder discount(Number number) {
-      this.discount.setNumber(number);
+    public Builder isGift(Boolean isGift) {
+      this.isGift = isGift;
       return this;
     }
     /**
-     * The name of the item.
+     * Date order was placed.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder orderDate(java.util.Date date) {
+      this.orderDate = date;
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * The item ordered.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder orderedItem(OrderItem orderItem) {
+      if(this.orderedItem == null) this.orderedItem = new OrderItemOrProduct();
+      this.orderedItem.setOrderItem(orderItem);
+      return this;
+    }
+    /**
+     * The item ordered.
+     */
+    public Builder orderedItem(Product product) {
+      if(this.orderedItem == null) this.orderedItem = new OrderItemOrProduct();
+      this.orderedItem.setProduct(product);
+      return this;
+    }
+    /**
+     * The identifier of the transaction.
+     */
+    public Builder orderNumber(String orderNumber) {
+      this.orderNumber = orderNumber;
+      return this;
+    }
+    /**
+     * The current status of the order.
+     */
+    public Builder orderStatus(OrderStatus orderStatus) {
+      this.orderStatus = orderStatus;
+      return this;
+    }
+    /**
+     * The order is being paid as part of the referenced Invoice.
+     */
+    public Builder partOfInvoice(Invoice invoice) {
+      this.partOfInvoice = invoice;
+      return this;
+    }
+    /**
+     * The date that payment is due.
+     */
+    public Builder paymentDue(java.util.Date date) {
+      this.paymentDue = date;
+      return this;
+    }
+    /**
+     * The name of the credit card or other method of payment for the order.
+     */
+    public Builder paymentMethod(PaymentMethod paymentMethod) {
+      this.paymentMethod = paymentMethod;
+      return this;
+    }
+    /**
+     * An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
+     */
+    public Builder paymentMethodId(String paymentMethodId) {
+      this.paymentMethodId = paymentMethodId;
+      return this;
+    }
+    /**
+     * The URL for sending a payment.
+     */
+    public Builder paymentUrl(String paymentUrl) {
+      this.paymentUrl = paymentUrl;
+      return this;
+    }
+    /**
+     * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
+     */
+    public Builder seller(Participant participant) {
+      this.seller = participant;
+      return this;
+    }
+    /**
+     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+     */
+    public Builder broker(Organization organization) {
+      if(this.broker == null) this.broker = new OrganizationOrPerson();
+      this.broker.setOrganization(organization);
+      return this;
+    }
+    /**
+     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+     */
+    public Builder broker(Person person) {
+      if(this.broker == null) this.broker = new OrganizationOrPerson();
+      this.broker.setPerson(person);
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -358,14 +382,57 @@ public class Order extends Intangible {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * The current status of the order.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder orderStatus(OrderStatus orderStatus) {
-      this.orderStatus = orderStatus;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
+      return this;
+    }
+    /**
+     * The name of the item.
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
     /**
@@ -376,100 +443,44 @@ public class Order extends Intangible {
       return this;
     }
     /**
-     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder broker(Organization organization) {
-      this.broker.setOrganization(organization);
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
       return this;
     }
-    /**
-     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
-     */
-    public Builder broker(Person person) {
-      this.broker.setPerson(person);
-      return this;
-    }
-    /**
-     * The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
-     */
-    public Builder acceptedOffer(Offer offer) {
-      this.acceptedOffer = offer;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * The item ordered.
-     */
-    public Builder orderedItem(Product product) {
-      this.orderedItem.setProduct(product);
-      return this;
-    }
-    /**
-     * The item ordered.
-     */
-    public Builder orderedItem(OrderItem orderItem) {
-      this.orderedItem.setOrderItem(orderItem);
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-    /**
-     * The delivery of the parcel related to this order or order item.
-     */
-    public Builder orderDelivery(ParcelDelivery parcelDelivery) {
-      this.orderDelivery = parcelDelivery;
-      return this;
-    }
-    /**
-     * The date that payment is due.
-     */
-    public Builder paymentDue(java.util.Date date) {
-      this.paymentDue = date;
-      return this;
-    }
-    private String discountCurrency;
-    private Participant seller;
-    private String additionalType;
-    private String sameAs;
-    private String paymentMethodId;
-    private String orderNumber;
-    private Invoice partOfInvoice;
-    private PaymentMethod paymentMethod;
-    private Action potentialAction;
-    private OrganizationOrPerson customer;
-    private PostalAddress billingAddress;
-    private Boolean isGift;
-    private String confirmationNumber;
-    private String paymentUrl;
-    private java.util.Date orderDate;
-    private String discountCode;
-    private StringOrNumber discount;
-    private String name;
-    private StringOrCreativeWork mainEntityOfPage;
-    private OrderStatus orderStatus;
-    private String url;
-    private OrganizationOrPerson broker;
-    private Offer acceptedOffer;
-    private String alternateName;
-    private ProductOrOrderItem orderedItem;
-    private String description;
     private ParcelDelivery orderDelivery;
+    private Offer acceptedOffer;
+    private PostalAddress billingAddress;
+    private String confirmationNumber;
+    private OrganizationOrPerson customer;
+    private NumberOrString discount;
+    private String discountCode;
+    private String discountCurrency;
+    private Boolean isGift;
+    private java.util.Date orderDate;
+    private OrderItemOrProduct orderedItem;
+    private String orderNumber;
+    private OrderStatus orderStatus;
+    private Invoice partOfInvoice;
     private java.util.Date paymentDue;
+    private PaymentMethod paymentMethod;
+    private String paymentMethodId;
+    private String paymentUrl;
+    private Participant seller;
+    private OrganizationOrPerson broker;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected Order(String discountCurrency, Participant seller, String additionalType, String sameAs, String paymentMethodId, String orderNumber, Invoice partOfInvoice, PaymentMethod paymentMethod, Action potentialAction, OrganizationOrPerson customer, PostalAddress billingAddress, Boolean isGift, String confirmationNumber, String paymentUrl, java.util.Date orderDate, String discountCode, StringOrNumber discount, String name, StringOrCreativeWork mainEntityOfPage, OrderStatus orderStatus, String url, OrganizationOrPerson broker, Offer acceptedOffer, String alternateName, ProductOrOrderItem orderedItem, String description, ParcelDelivery orderDelivery, java.util.Date paymentDue) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected Order(ParcelDelivery orderDelivery, Offer acceptedOffer, PostalAddress billingAddress, String confirmationNumber, OrganizationOrPerson customer, NumberOrString discount, String discountCode, String discountCurrency, Boolean isGift, java.util.Date orderDate, OrderItemOrProduct orderedItem, String orderNumber, OrderStatus orderStatus, Invoice partOfInvoice, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, String paymentUrl, Participant seller, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myOrderDelivery = orderDelivery;
     myAcceptedOffer = acceptedOffer;
     myBillingAddress = billingAddress;
@@ -496,12 +507,12 @@ public class Order extends Intangible {
   private PostalAddress myBillingAddress;
   private String myConfirmationNumber;
   private OrganizationOrPerson myCustomer;
-  private StringOrNumber myDiscount;
+  private NumberOrString myDiscount;
   private String myDiscountCode;
   private String myDiscountCurrency;
   private Boolean myIsGift;
   private java.util.Date myOrderDate;
-  private ProductOrOrderItem myOrderedItem;
+  private OrderItemOrProduct myOrderedItem;
   private String myOrderNumber;
   private OrderStatus myOrderStatus;
   private Invoice myPartOfInvoice;

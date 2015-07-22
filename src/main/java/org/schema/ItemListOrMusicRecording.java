@@ -14,25 +14,31 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class MusicRecordingOrItemList {
-  public Thing getThing() {
-    if (myMusicRecording != null) return myMusicRecording;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class ItemListOrMusicRecording {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
     if (myItemList != null) return myItemList;
+    if (myMusicRecording != null) return myMusicRecording;
     return null;
   }
-  public void setMusicRecording(MusicRecording musicRecording) { clear(); myMusicRecording = musicRecording; }
-  public MusicRecording getMusicRecording() { return myMusicRecording; }
-  private MusicRecording myMusicRecording;
+  public Thing getThing() {
+    if (myItemList != null) return myItemList;
+    if (myMusicRecording != null) return myMusicRecording;
+    return null;
+  }
   public void setItemList(ItemList itemList) { clear(); myItemList = itemList; }
   public ItemList getItemList() { return myItemList; }
   private ItemList myItemList;
+  public void setMusicRecording(MusicRecording musicRecording) { clear(); myMusicRecording = musicRecording; }
+  public MusicRecording getMusicRecording() { return myMusicRecording; }
+  private MusicRecording myMusicRecording;
   private void clear() {
-    myMusicRecording = null;
     myItemList = null;
+    myMusicRecording = null;
   }
 }

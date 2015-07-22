@@ -14,12 +14,18 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
 class BooleanOrString {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
+    if (myBoolean != null) return myBoolean;
+    if (myString != null) return myString;
+    return null;
+  }
   public void setBoolean(Boolean value) { clear(); myBoolean = value; }
   public Boolean getBoolean() { return myBoolean; }
   private Boolean myBoolean;

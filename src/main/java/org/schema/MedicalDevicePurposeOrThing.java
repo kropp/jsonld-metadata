@@ -14,20 +14,26 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class ThingOrMedicalDevicePurpose {
-  public void setThing(Thing thing) { clear(); myThing = thing; }
-  public Thing getThing() { return myThing; }
-  private Thing myThing;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class MedicalDevicePurposeOrThing {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
+    if (myMedicalDevicePurpose != null) return myMedicalDevicePurpose;
+    if (myThing != null) return myThing;
+    return null;
+  }
   public void setMedicalDevicePurpose(MedicalDevicePurpose medicalDevicePurpose) { clear(); myMedicalDevicePurpose = medicalDevicePurpose; }
   public MedicalDevicePurpose getMedicalDevicePurpose() { return myMedicalDevicePurpose; }
   private MedicalDevicePurpose myMedicalDevicePurpose;
+  public void setThing(Thing thing) { clear(); myThing = thing; }
+  public Thing getThing() { return myThing; }
+  private Thing myThing;
   private void clear() {
-    myThing = null;
     myMedicalDevicePurpose = null;
+    myThing = null;
   }
 }

@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -32,12 +31,14 @@ public class BusTrip extends Intangible {
   /**
    * The expected departure time.
    */
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getDepartureTime() {
     return myDepartureTime;
   }
   /**
    * The expected arrival time.
    */
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getArrivalTime() {
     return myArrivalTime;
   }
@@ -73,12 +74,13 @@ public class BusTrip extends Intangible {
      * Creates new {@link BusTrip} instance.
      */
     public BusTrip build() {
-      return new BusTrip(provider, name, mainEntityOfPage, busName, additionalType, url, sameAs, alternateName, busNumber, departureBusStop, arrivalTime, potentialAction, description, departureTime, arrivalBusStop);
+      return new BusTrip(provider, departureTime, arrivalTime, busNumber, busName, departureBusStop, arrivalBusStop, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     public Builder provider(Organization organization) {
+      if(this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setOrganization(organization);
       return this;
     }
@@ -86,48 +88,89 @@ public class BusTrip extends Intangible {
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     public Builder provider(Person person) {
+      if(this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setPerson(person);
       return this;
     }
     /**
-     * The name of the item.
+     * The expected departure time.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder departureTime(java.util.Date date) {
+      this.departureTime = date;
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * The expected arrival time.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder arrivalTime(java.util.Date date) {
+      this.arrivalTime = date;
+      return this;
+    }
+    /**
+     * The unique identifier for the bus.
+     */
+    public Builder busNumber(String busNumber) {
+      this.busNumber = busNumber;
+      return this;
+    }
+    /**
+     * The name of the bus (e.g. Bolt Express).
+     */
+    public Builder busName(String busName) {
+      this.busName = busName;
+      return this;
+    }
+    /**
+     * The stop or station from which the bus departs.
+     */
+    public Builder departureBusStop(BusStation busStation) {
+      if(this.departureBusStop == null) this.departureBusStop = new BusStationOrBusStop();
+      this.departureBusStop.setBusStation(busStation);
+      return this;
+    }
+    /**
+     * The stop or station from which the bus departs.
+     */
+    public Builder departureBusStop(BusStop busStop) {
+      if(this.departureBusStop == null) this.departureBusStop = new BusStationOrBusStop();
+      this.departureBusStop.setBusStop(busStop);
+      return this;
+    }
+    /**
+     * The stop or station from which the bus arrives.
+     */
+    public Builder arrivalBusStop(BusStation busStation) {
+      if(this.arrivalBusStop == null) this.arrivalBusStop = new BusStationOrBusStop();
+      this.arrivalBusStop.setBusStation(busStation);
+      return this;
+    }
+    /**
+     * The stop or station from which the bus arrives.
+     */
+    public Builder arrivalBusStop(BusStop busStop) {
+      if(this.arrivalBusStop == null) this.arrivalBusStop = new BusStationOrBusStop();
+      this.arrivalBusStop.setBusStop(busStop);
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -161,28 +204,50 @@ public class BusTrip extends Intangible {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * The name of the bus (e.g. Bolt Express).
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder busName(String busName) {
-      this.busName = busName;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     * The name of the item.
      */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -193,38 +258,10 @@ public class BusTrip extends Intangible {
       return this;
     }
     /**
-     * An alias for the item.
+     * URL of the item.
      */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * The unique identifier for the bus.
-     */
-    public Builder busNumber(String busNumber) {
-      this.busNumber = busNumber;
-      return this;
-    }
-    /**
-     * The stop or station from which the bus departs.
-     */
-    public Builder departureBusStop(BusStation busStation) {
-      this.departureBusStop.setBusStation(busStation);
-      return this;
-    }
-    /**
-     * The stop or station from which the bus departs.
-     */
-    public Builder departureBusStop(BusStop busStop) {
-      this.departureBusStop.setBusStop(busStop);
-      return this;
-    }
-    /**
-     * The expected arrival time.
-     */
-    public Builder arrivalTime(java.util.Date date) {
-      this.arrivalTime = date;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
@@ -234,53 +271,25 @@ public class BusTrip extends Intangible {
       this.potentialAction = action;
       return this;
     }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-    /**
-     * The expected departure time.
-     */
-    public Builder departureTime(java.util.Date date) {
-      this.departureTime = date;
-      return this;
-    }
-    /**
-     * The stop or station from which the bus arrives.
-     */
-    public Builder arrivalBusStop(BusStation busStation) {
-      this.arrivalBusStop.setBusStation(busStation);
-      return this;
-    }
-    /**
-     * The stop or station from which the bus arrives.
-     */
-    public Builder arrivalBusStop(BusStop busStop) {
-      this.arrivalBusStop.setBusStop(busStop);
-      return this;
-    }
     private OrganizationOrPerson provider;
-    private String name;
-    private StringOrCreativeWork mainEntityOfPage;
-    private String busName;
-    private String additionalType;
-    private String url;
-    private String sameAs;
-    private String alternateName;
-    private String busNumber;
-    private BusStationOrBusStop departureBusStop;
-    private java.util.Date arrivalTime;
-    private Action potentialAction;
-    private String description;
     private java.util.Date departureTime;
+    private java.util.Date arrivalTime;
+    private String busNumber;
+    private String busName;
+    private BusStationOrBusStop departureBusStop;
     private BusStationOrBusStop arrivalBusStop;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected BusTrip(OrganizationOrPerson provider, String name, StringOrCreativeWork mainEntityOfPage, String busName, String additionalType, String url, String sameAs, String alternateName, String busNumber, BusStationOrBusStop departureBusStop, java.util.Date arrivalTime, Action potentialAction, String description, java.util.Date departureTime, BusStationOrBusStop arrivalBusStop) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected BusTrip(OrganizationOrPerson provider, java.util.Date departureTime, java.util.Date arrivalTime, String busNumber, String busName, BusStationOrBusStop departureBusStop, BusStationOrBusStop arrivalBusStop, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myProvider = provider;
     myDepartureTime = departureTime;
     myArrivalTime = arrivalTime;

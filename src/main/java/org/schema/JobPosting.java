@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -26,7 +25,7 @@ public class JobPosting extends Intangible {
   /**
    * The base salary of the job or of an employee in an EmployeeRole.
    */
-  public PriceSpecificationOrNumber getBaseSalary() {
+  public NumberOrPriceSpecification getBaseSalary() {
     return myBaseSalary;
   }
   /**
@@ -38,6 +37,7 @@ public class JobPosting extends Intangible {
   /**
    * Publication date for the job posting.
    */
+    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getDatePosted() {
     return myDatePosted;
   }
@@ -139,69 +139,29 @@ public class JobPosting extends Intangible {
      * Creates new {@link JobPosting} instance.
      */
     public JobPosting build() {
-      return new JobPosting(responsibilities, jobLocation, incentiveCompensation, skills, qualifications, baseSalary, additionalType, sameAs, datePosted, specialCommitments, potentialAction, title, experienceRequirements, name, hiringOrganization, occupationalCategory, mainEntityOfPage, salaryCurrency, jobBenefits, url, alternateName, industry, educationRequirements, description, workHours, employmentType);
+      return new JobPosting(baseSalary, jobBenefits, datePosted, educationRequirements, employmentType, experienceRequirements, hiringOrganization, incentiveCompensation, industry, jobLocation, occupationalCategory, qualifications, responsibilities, salaryCurrency, skills, specialCommitments, title, workHours, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
-     * Responsibilities associated with this role.
+     * The base salary of the job or of an employee in an EmployeeRole.
      */
-    public Builder responsibilities(String responsibilities) {
-      this.responsibilities = responsibilities;
-      return this;
-    }
-    /**
-     * A (typically single) geographic location associated with the job position.
-     */
-    public Builder jobLocation(Place place) {
-      this.jobLocation = place;
-      return this;
-    }
-    /**
-     * Description of bonus and commission compensation aspects of the job.
-     */
-    public Builder incentiveCompensation(String incentiveCompensation) {
-      this.incentiveCompensation = incentiveCompensation;
-      return this;
-    }
-    /**
-     * Skills required to fulfill this role.
-     */
-    public Builder skills(String skills) {
-      this.skills = skills;
-      return this;
-    }
-    /**
-     * Specific qualifications required for this role.
-     */
-    public Builder qualifications(String qualifications) {
-      this.qualifications = qualifications;
+    public Builder baseSalary(Number number) {
+      if(this.baseSalary == null) this.baseSalary = new NumberOrPriceSpecification();
+      this.baseSalary.setNumber(number);
       return this;
     }
     /**
      * The base salary of the job or of an employee in an EmployeeRole.
      */
     public Builder baseSalary(PriceSpecification priceSpecification) {
+      if(this.baseSalary == null) this.baseSalary = new NumberOrPriceSpecification();
       this.baseSalary.setPriceSpecification(priceSpecification);
       return this;
     }
     /**
-     * The base salary of the job or of an employee in an EmployeeRole.
+     * Description of benefits associated with the job.
      */
-    public Builder baseSalary(Number number) {
-      this.baseSalary.setNumber(number);
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
-     */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
+    public Builder jobBenefits(String jobBenefits) {
+      this.jobBenefits = jobBenefits;
       return this;
     }
     /**
@@ -212,24 +172,17 @@ public class JobPosting extends Intangible {
       return this;
     }
     /**
-     * Any special commitments associated with this job posting. Valid entries include VeteranCommit, MilitarySpouseCommit, etc.
+     * Educational background needed for the position.
      */
-    public Builder specialCommitments(String specialCommitments) {
-      this.specialCommitments = specialCommitments;
+    public Builder educationRequirements(String educationRequirements) {
+      this.educationRequirements = educationRequirements;
       return this;
     }
     /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     * Type of employment (e.g. full-time, part-time, contract, temporary, seasonal, internship).
      */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
-      return this;
-    }
-    /**
-     * The title of the job.
-     */
-    public Builder title(String title) {
-      this.title = title;
+    public Builder employmentType(String employmentType) {
+      this.employmentType = employmentType;
       return this;
     }
     /**
@@ -240,17 +193,31 @@ public class JobPosting extends Intangible {
       return this;
     }
     /**
-     * The name of the item.
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-    /**
      * Organization offering the job position.
      */
     public Builder hiringOrganization(Organization organization) {
       this.hiringOrganization = organization;
+      return this;
+    }
+    /**
+     * Description of bonus and commission compensation aspects of the job.
+     */
+    public Builder incentiveCompensation(String incentiveCompensation) {
+      this.incentiveCompensation = incentiveCompensation;
+      return this;
+    }
+    /**
+     * The industry associated with the job position.
+     */
+    public Builder industry(String industry) {
+      this.industry = industry;
+      return this;
+    }
+    /**
+     * A (typically single) geographic location associated with the job position.
+     */
+    public Builder jobLocation(Place place) {
+      this.jobLocation = place;
       return this;
     }
     /**
@@ -261,37 +228,73 @@ public class JobPosting extends Intangible {
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * Specific qualifications required for this role.
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder qualifications(String qualifications) {
+      this.qualifications = qualifications;
+      return this;
+    }
+    /**
+     * Responsibilities associated with this role.
+     */
+    public Builder responsibilities(String responsibilities) {
+      this.responsibilities = responsibilities;
+      return this;
+    }
+    /**
+     * The currency (coded using ISO 4217, http://en.wikipedia.org/wiki/ISO_4217 ) used for the main salary information in this job posting or for this employee.
+     */
+    public Builder salaryCurrency(String salaryCurrency) {
+      this.salaryCurrency = salaryCurrency;
+      return this;
+    }
+    /**
+     * Skills required to fulfill this role.
+     */
+    public Builder skills(String skills) {
+      this.skills = skills;
+      return this;
+    }
+    /**
+     * Any special commitments associated with this job posting. Valid entries include VeteranCommit, MilitarySpouseCommit, etc.
+     */
+    public Builder specialCommitments(String specialCommitments) {
+      this.specialCommitments = specialCommitments;
+      return this;
+    }
+    /**
+     * The title of the job.
+     */
+    public Builder title(String title) {
+      this.title = title;
+      return this;
+    }
+    /**
+     * The typical working hours for this job (e.g. 1st shift, night shift, 8am-5pm).
+     */
+    public Builder workHours(String workHours) {
+      this.workHours = workHours;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -325,21 +328,57 @@ public class JobPosting extends Intangible {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * The currency (coded using ISO 4217, http://en.wikipedia.org/wiki/ISO_4217 ) used for the main salary information in this job posting or for this employee.
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder salaryCurrency(String salaryCurrency) {
-      this.salaryCurrency = salaryCurrency;
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * Description of benefits associated with the job.
+     * The name of the item.
      */
-    public Builder jobBenefits(String jobBenefits) {
-      this.jobBenefits = jobBenefits;
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+    /**
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     */
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
     /**
@@ -350,77 +389,42 @@ public class JobPosting extends Intangible {
       return this;
     }
     /**
-     * An alias for the item.
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
       return this;
     }
-    /**
-     * The industry associated with the job position.
-     */
-    public Builder industry(String industry) {
-      this.industry = industry;
-      return this;
-    }
-    /**
-     * Educational background needed for the position.
-     */
-    public Builder educationRequirements(String educationRequirements) {
-      this.educationRequirements = educationRequirements;
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
-      return this;
-    }
-    /**
-     * The typical working hours for this job (e.g. 1st shift, night shift, 8am-5pm).
-     */
-    public Builder workHours(String workHours) {
-      this.workHours = workHours;
-      return this;
-    }
-    /**
-     * Type of employment (e.g. full-time, part-time, contract, temporary, seasonal, internship).
-     */
-    public Builder employmentType(String employmentType) {
-      this.employmentType = employmentType;
-      return this;
-    }
-    private String responsibilities;
-    private Place jobLocation;
-    private String incentiveCompensation;
-    private String skills;
-    private String qualifications;
-    private PriceSpecificationOrNumber baseSalary;
-    private String additionalType;
-    private String sameAs;
-    private java.util.Date datePosted;
-    private String specialCommitments;
-    private Action potentialAction;
-    private String title;
-    private String experienceRequirements;
-    private String name;
-    private Organization hiringOrganization;
-    private String occupationalCategory;
-    private StringOrCreativeWork mainEntityOfPage;
-    private String salaryCurrency;
+    private NumberOrPriceSpecification baseSalary;
     private String jobBenefits;
-    private String url;
-    private String alternateName;
-    private String industry;
+    private java.util.Date datePosted;
     private String educationRequirements;
-    private String description;
-    private String workHours;
     private String employmentType;
+    private String experienceRequirements;
+    private Organization hiringOrganization;
+    private String incentiveCompensation;
+    private String industry;
+    private Place jobLocation;
+    private String occupationalCategory;
+    private String qualifications;
+    private String responsibilities;
+    private String salaryCurrency;
+    private String skills;
+    private String specialCommitments;
+    private String title;
+    private String workHours;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected JobPosting(String responsibilities, Place jobLocation, String incentiveCompensation, String skills, String qualifications, PriceSpecificationOrNumber baseSalary, String additionalType, String sameAs, java.util.Date datePosted, String specialCommitments, Action potentialAction, String title, String experienceRequirements, String name, Organization hiringOrganization, String occupationalCategory, StringOrCreativeWork mainEntityOfPage, String salaryCurrency, String jobBenefits, String url, String alternateName, String industry, String educationRequirements, String description, String workHours, String employmentType) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected JobPosting(NumberOrPriceSpecification baseSalary, String jobBenefits, java.util.Date datePosted, String educationRequirements, String employmentType, String experienceRequirements, Organization hiringOrganization, String incentiveCompensation, String industry, Place jobLocation, String occupationalCategory, String qualifications, String responsibilities, String salaryCurrency, String skills, String specialCommitments, String title, String workHours, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myBaseSalary = baseSalary;
     myJobBenefits = jobBenefits;
     myDatePosted = datePosted;
@@ -440,7 +444,7 @@ public class JobPosting extends Intangible {
     myTitle = title;
     myWorkHours = workHours;
   }
-  private PriceSpecificationOrNumber myBaseSalary;
+  private NumberOrPriceSpecification myBaseSalary;
   private String myJobBenefits;
   private java.util.Date myDatePosted;
   private String myEducationRequirements;

@@ -14,24 +14,30 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class StringOrDriveWheelConfigurationValue {
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class DriveWheelConfigurationValueOrString {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
+    if (myDriveWheelConfigurationValue != null) return myDriveWheelConfigurationValue;
+    if (myString != null) return myString;
+    return null;
+  }
   public Thing getThing() {
     if (myDriveWheelConfigurationValue != null) return myDriveWheelConfigurationValue;
     return null;
   }
-  public void setString(String value) { clear(); myString = value; }
-  public String getString() { return myString; }
-  private String myString;
   public void setDriveWheelConfigurationValue(DriveWheelConfigurationValue driveWheelConfigurationValue) { clear(); myDriveWheelConfigurationValue = driveWheelConfigurationValue; }
   public DriveWheelConfigurationValue getDriveWheelConfigurationValue() { return myDriveWheelConfigurationValue; }
   private DriveWheelConfigurationValue myDriveWheelConfigurationValue;
+  public void setString(String value) { clear(); myString = value; }
+  public String getString() { return myString; }
+  private String myString;
   private void clear() {
-    myString = null;
     myDriveWheelConfigurationValue = null;
+    myString = null;
   }
 }

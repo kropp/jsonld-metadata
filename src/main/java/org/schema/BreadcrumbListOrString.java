@@ -14,24 +14,30 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class StringOrBreadcrumbList {
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class BreadcrumbListOrString {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
+    if (myBreadcrumbList != null) return myBreadcrumbList;
+    if (myString != null) return myString;
+    return null;
+  }
   public Thing getThing() {
     if (myBreadcrumbList != null) return myBreadcrumbList;
     return null;
   }
-  public void setString(String value) { clear(); myString = value; }
-  public String getString() { return myString; }
-  private String myString;
   public void setBreadcrumbList(BreadcrumbList breadcrumbList) { clear(); myBreadcrumbList = breadcrumbList; }
   public BreadcrumbList getBreadcrumbList() { return myBreadcrumbList; }
   private BreadcrumbList myBreadcrumbList;
+  public void setString(String value) { clear(); myString = value; }
+  public String getString() { return myString; }
+  private String myString;
   private void clear() {
-    myString = null;
     myBreadcrumbList = null;
+    myString = null;
   }
 }

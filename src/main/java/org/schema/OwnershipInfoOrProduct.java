@@ -14,25 +14,31 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class ProductOrOwnershipInfo {
-  public Thing getThing() {
-    if (myProduct != null) return myProduct;
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class OwnershipInfoOrProduct {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
     if (myOwnershipInfo != null) return myOwnershipInfo;
+    if (myProduct != null) return myProduct;
     return null;
   }
-  public void setProduct(Product product) { clear(); myProduct = product; }
-  public Product getProduct() { return myProduct; }
-  private Product myProduct;
+  public Thing getThing() {
+    if (myOwnershipInfo != null) return myOwnershipInfo;
+    if (myProduct != null) return myProduct;
+    return null;
+  }
   public void setOwnershipInfo(OwnershipInfo ownershipInfo) { clear(); myOwnershipInfo = ownershipInfo; }
   public OwnershipInfo getOwnershipInfo() { return myOwnershipInfo; }
   private OwnershipInfo myOwnershipInfo;
+  public void setProduct(Product product) { clear(); myProduct = product; }
+  public Product getProduct() { return myProduct; }
+  private Product myProduct;
   private void clear() {
-    myProduct = null;
     myOwnershipInfo = null;
+    myProduct = null;
   }
 }

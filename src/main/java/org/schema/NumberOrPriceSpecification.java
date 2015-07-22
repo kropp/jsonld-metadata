@@ -14,28 +14,30 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class PriceSpecificationOrStringOrNumber {
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class NumberOrPriceSpecification {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
+    if (myNumber != null) return myNumber;
+    if (myPriceSpecification != null) return myPriceSpecification;
+    return null;
+  }
   public Thing getThing() {
     if (myPriceSpecification != null) return myPriceSpecification;
     return null;
   }
-  public void setPriceSpecification(PriceSpecification priceSpecification) { clear(); myPriceSpecification = priceSpecification; }
-  public PriceSpecification getPriceSpecification() { return myPriceSpecification; }
-  private PriceSpecification myPriceSpecification;
-  public void setString(String value) { clear(); myString = value; }
-  public String getString() { return myString; }
-  private String myString;
   public void setNumber(Number number) { clear(); myNumber = number; }
   public Number getNumber() { return myNumber; }
   private Number myNumber;
+  public void setPriceSpecification(PriceSpecification priceSpecification) { clear(); myPriceSpecification = priceSpecification; }
+  public PriceSpecification getPriceSpecification() { return myPriceSpecification; }
+  private PriceSpecification myPriceSpecification;
   private void clear() {
-    myPriceSpecification = null;
-    myString = null;
     myNumber = null;
+    myPriceSpecification = null;
   }
 }

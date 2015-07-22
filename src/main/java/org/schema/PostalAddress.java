@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -67,21 +66,7 @@ public class PostalAddress extends ContactPoint {
      * Creates new {@link PostalAddress} instance.
      */
     public PostalAddress build() {
-      return new PostalAddress(availableLanguage, email, addressCountry, addressLocality, streetAddress, areaServed, name, postOfficeBoxNumber, hoursAvailable, addressRegion, mainEntityOfPage, productSupported, postalCode, url, additionalType, sameAs, faxNumber, alternateName, telephone, description, potentialAction, contactType, contactOption);
-    }
-    /**
-     * A language someone may use with the item.
-     */
-    public Builder availableLanguage(Language language) {
-      this.availableLanguage = language;
-      return this;
-    }
-    /**
-     * Email address.
-     */
-    public Builder email(String email) {
-      this.email = email;
-      return this;
+      return new PostalAddress(addressCountry, addressLocality, addressRegion, postalCode, postOfficeBoxNumber, streetAddress, areaServed, availableLanguage, contactOption, contactType, email, faxNumber, hoursAvailable, productSupported, telephone, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
      * The country. For example, USA. You can also provide the two-letter <a href='http://en.wikipedia.org/wiki/ISO_3166-1'>ISO 3166-1 alpha-2 country code</a>.
@@ -95,6 +80,27 @@ public class PostalAddress extends ContactPoint {
      */
     public Builder addressLocality(String addressLocality) {
       this.addressLocality = addressLocality;
+      return this;
+    }
+    /**
+     * The region. For example, CA.
+     */
+    public Builder addressRegion(String addressRegion) {
+      this.addressRegion = addressRegion;
+      return this;
+    }
+    /**
+     * The postal code. For example, 94043.
+     */
+    public Builder postalCode(String postalCode) {
+      this.postalCode = postalCode;
+      return this;
+    }
+    /**
+     * The post office box number for PO box addresses.
+     */
+    public Builder postOfficeBoxNumber(String postOfficeBoxNumber) {
+      this.postOfficeBoxNumber = postOfficeBoxNumber;
       return this;
     }
     /**
@@ -112,17 +118,38 @@ public class PostalAddress extends ContactPoint {
       return this;
     }
     /**
-     * The name of the item.
+     * A language someone may use with the item.
      */
-    public Builder name(String name) {
-      this.name = name;
+    public Builder availableLanguage(Language language) {
+      this.availableLanguage = language;
       return this;
     }
     /**
-     * The post office box number for PO box addresses.
+     * An option available on this contact point (e.g. a toll-free number or support for hearing-impaired callers).
      */
-    public Builder postOfficeBoxNumber(String postOfficeBoxNumber) {
-      this.postOfficeBoxNumber = postOfficeBoxNumber;
+    public Builder contactOption(ContactPointOption contactPointOption) {
+      this.contactOption = contactPointOption;
+      return this;
+    }
+    /**
+     * A person or organization can have different contact points, for different purposes. For example, a sales contact point, a PR contact point and so on. This property is used to specify the kind of contact point.
+     */
+    public Builder contactType(String contactType) {
+      this.contactType = contactType;
+      return this;
+    }
+    /**
+     * Email address.
+     */
+    public Builder email(String email) {
+      this.email = email;
+      return this;
+    }
+    /**
+     * The fax number.
+     */
+    public Builder faxNumber(String faxNumber) {
+      this.faxNumber = faxNumber;
       return this;
     }
     /**
@@ -133,44 +160,47 @@ public class PostalAddress extends ContactPoint {
       return this;
     }
     /**
-     * The region. For example, CA.
+     * The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. "iPhone") or a general category of products or services (e.g. "smartphones").
      */
-    public Builder addressRegion(String addressRegion) {
-      this.addressRegion = addressRegion;
+    public Builder productSupported(Product product) {
+      if(this.productSupported == null) this.productSupported = new ProductOrString();
+      this.productSupported.setProduct(product);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     * The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. "iPhone") or a general category of products or services (e.g. "smartphones").
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder productSupported(String productSupported) {
+      if(this.productSupported == null) this.productSupported = new ProductOrString();
+      this.productSupported.setString(productSupported);
+      return this;
+    }
+    /**
+     * The telephone number.
+     */
+    public Builder telephone(String telephone) {
+      this.telephone = telephone;
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
+     * An alias for the item.
+     */
+    public Builder alternateName(String alternateName) {
+      this.alternateName = alternateName;
+      return this;
+    }
+    /**
+     * A short description of the item.
+     */
+    public Builder description(String description) {
+      this.description = description;
       return this;
     }
     /**
@@ -204,42 +234,50 @@ public class PostalAddress extends ContactPoint {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
-     * The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. "iPhone") or a general category of products or services (e.g. "smartphones").
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
      */
-    public Builder productSupported(Product product) {
-      this.productSupported.setProduct(product);
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. "iPhone") or a general category of products or services (e.g. "smartphones").
+     * The name of the item.
      */
-    public Builder productSupported(String productSupported) {
-      this.productSupported.setString(productSupported);
-      return this;
-    }
-    /**
-     * The postal code. For example, 94043.
-     */
-    public Builder postalCode(String postalCode) {
-      this.postalCode = postalCode;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
@@ -250,31 +288,10 @@ public class PostalAddress extends ContactPoint {
       return this;
     }
     /**
-     * The fax number.
+     * URL of the item.
      */
-    public Builder faxNumber(String faxNumber) {
-      this.faxNumber = faxNumber;
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    public Builder alternateName(String alternateName) {
-      this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * The telephone number.
-     */
-    public Builder telephone(String telephone) {
-      this.telephone = telephone;
-      return this;
-    }
-    /**
-     * A short description of the item.
-     */
-    public Builder description(String description) {
-      this.description = description;
+    public Builder url(String url) {
+      this.url = url;
       return this;
     }
     /**
@@ -284,47 +301,33 @@ public class PostalAddress extends ContactPoint {
       this.potentialAction = action;
       return this;
     }
-    /**
-     * A person or organization can have different contact points, for different purposes. For example, a sales contact point, a PR contact point and so on. This property is used to specify the kind of contact point.
-     */
-    public Builder contactType(String contactType) {
-      this.contactType = contactType;
-      return this;
-    }
-    /**
-     * An option available on this contact point (e.g. a toll-free number or support for hearing-impaired callers).
-     */
-    public Builder contactOption(ContactPointOption contactPointOption) {
-      this.contactOption = contactPointOption;
-      return this;
-    }
-    private Language availableLanguage;
-    private String email;
     private Country addressCountry;
     private String addressLocality;
+    private String addressRegion;
+    private String postalCode;
+    private String postOfficeBoxNumber;
     private String streetAddress;
     private AdministrativeArea areaServed;
-    private String name;
-    private String postOfficeBoxNumber;
-    private OpeningHoursSpecification hoursAvailable;
-    private String addressRegion;
-    private StringOrCreativeWork mainEntityOfPage;
-    private ProductOrString productSupported;
-    private String postalCode;
-    private String url;
-    private String additionalType;
-    private String sameAs;
-    private String faxNumber;
-    private String alternateName;
-    private String telephone;
-    private String description;
-    private Action potentialAction;
-    private String contactType;
+    private Language availableLanguage;
     private ContactPointOption contactOption;
+    private String contactType;
+    private String email;
+    private String faxNumber;
+    private OpeningHoursSpecification hoursAvailable;
+    private ProductOrString productSupported;
+    private String telephone;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected PostalAddress(Language availableLanguage, String email, Country addressCountry, String addressLocality, String streetAddress, AdministrativeArea areaServed, String name, String postOfficeBoxNumber, OpeningHoursSpecification hoursAvailable, String addressRegion, StringOrCreativeWork mainEntityOfPage, ProductOrString productSupported, String postalCode, String url, String additionalType, String sameAs, String faxNumber, String alternateName, String telephone, String description, Action potentialAction, String contactType, ContactPointOption contactOption) {
-    super(availableLanguage, email, areaServed, name, hoursAvailable, mainEntityOfPage, productSupported, sameAs, additionalType, url, alternateName, faxNumber, telephone, potentialAction, description, contactType, contactOption);
+  protected PostalAddress(Country addressCountry, String addressLocality, String addressRegion, String postalCode, String postOfficeBoxNumber, String streetAddress, AdministrativeArea areaServed, Language availableLanguage, ContactPointOption contactOption, String contactType, String email, String faxNumber, OpeningHoursSpecification hoursAvailable, ProductOrString productSupported, String telephone, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(areaServed, availableLanguage, contactOption, contactType, email, faxNumber, hoursAvailable, productSupported, telephone, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     myAddressCountry = addressCountry;
     myAddressLocality = addressLocality;
     myAddressRegion = addressRegion;

@@ -14,7 +14,6 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
@@ -44,7 +43,7 @@ public class Seat extends Intangible {
   /**
    * The type/class of the seat.
    */
-  public StringOrQualitativeValue getSeatingType() {
+  public QualitativeValueOrString getSeatingType() {
     return mySeatingType;
   }
   /**
@@ -55,41 +54,20 @@ public class Seat extends Intangible {
      * Creates new {@link Seat} instance.
      */
     public Seat build() {
-      return new Seat(sameAs, additionalType, url, seatingType, seatSection, alternateName, name, potentialAction, description, mainEntityOfPage, seatNumber, seatRow);
+      return new Seat(seatNumber, seatRow, seatSection, seatingType, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * The location of the reserved seat (e.g., 27).
      */
-    public Builder sameAs(String sameAs) {
-      this.sameAs = sameAs;
+    public Builder seatNumber(String seatNumber) {
+      this.seatNumber = seatNumber;
       return this;
     }
     /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     * The row location of the reserved seat (e.g., B).
      */
-    public Builder additionalType(String additionalType) {
-      this.additionalType = additionalType;
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    public Builder url(String url) {
-      this.url = url;
-      return this;
-    }
-    /**
-     * The type/class of the seat.
-     */
-    public Builder seatingType(String seatingType) {
-      this.seatingType.setString(seatingType);
-      return this;
-    }
-    /**
-     * The type/class of the seat.
-     */
-    public Builder seatingType(QualitativeValue qualitativeValue) {
-      this.seatingType.setQualitativeValue(qualitativeValue);
+    public Builder seatRow(String seatRow) {
+      this.seatRow = seatRow;
       return this;
     }
     /**
@@ -100,24 +78,33 @@ public class Seat extends Intangible {
       return this;
     }
     /**
+     * The type/class of the seat.
+     */
+    public Builder seatingType(QualitativeValue qualitativeValue) {
+      if(this.seatingType == null) this.seatingType = new QualitativeValueOrString();
+      this.seatingType.setQualitativeValue(qualitativeValue);
+      return this;
+    }
+    /**
+     * The type/class of the seat.
+     */
+    public Builder seatingType(String seatingType) {
+      if(this.seatingType == null) this.seatingType = new QualitativeValueOrString();
+      this.seatingType.setString(seatingType);
+      return this;
+    }
+    /**
+     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
+     */
+    public Builder additionalType(String additionalType) {
+      this.additionalType = additionalType;
+      return this;
+    }
+    /**
      * An alias for the item.
      */
     public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    public Builder potentialAction(Action action) {
-      this.potentialAction = action;
       return this;
     }
     /**
@@ -157,8 +144,9 @@ public class Seat extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
     /**
@@ -191,40 +179,55 @@ public class Seat extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+    public Builder mainEntityOfPage(String mainEntityOfPage) {
+      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
     /**
-     * The location of the reserved seat (e.g., 27).
+     * The name of the item.
      */
-    public Builder seatNumber(String seatNumber) {
-      this.seatNumber = seatNumber;
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
     /**
-     * The row location of the reserved seat (e.g., B).
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder seatRow(String seatRow) {
-      this.seatRow = seatRow;
+    public Builder sameAs(String sameAs) {
+      this.sameAs = sameAs;
       return this;
     }
-    private String sameAs;
-    private String additionalType;
-    private String url;
-    private StringOrQualitativeValue seatingType;
-    private String seatSection;
-    private String alternateName;
-    private String name;
-    private Action potentialAction;
-    private String description;
-    private StringOrCreativeWork mainEntityOfPage;
+    /**
+     * URL of the item.
+     */
+    public Builder url(String url) {
+      this.url = url;
+      return this;
+    }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action action) {
+      this.potentialAction = action;
+      return this;
+    }
     private String seatNumber;
     private String seatRow;
+    private String seatSection;
+    private QualitativeValueOrString seatingType;
+    private String additionalType;
+    private String alternateName;
+    private String description;
+    private CreativeWorkOrString mainEntityOfPage;
+    private String name;
+    private String sameAs;
+    private String url;
+    private Action potentialAction;
   }
 
-  protected Seat(String sameAs, String additionalType, String url, StringOrQualitativeValue seatingType, String seatSection, String alternateName, String name, Action potentialAction, String description, StringOrCreativeWork mainEntityOfPage, String seatNumber, String seatRow) {
-    super(additionalType, url, sameAs, alternateName, description, potentialAction, name, mainEntityOfPage);
+  protected Seat(String seatNumber, String seatRow, String seatSection, QualitativeValueOrString seatingType, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
     mySeatNumber = seatNumber;
     mySeatRow = seatRow;
     mySeatSection = seatSection;
@@ -233,5 +236,5 @@ public class Seat extends Intangible {
   private String mySeatNumber;
   private String mySeatRow;
   private String mySeatSection;
-  private StringOrQualitativeValue mySeatingType;
+  private QualitativeValueOrString mySeatingType;
 }

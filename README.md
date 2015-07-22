@@ -1,7 +1,7 @@
 java-jsonld-mappings
 ====================
 
-Library provides easy to use Java classes and builders for [schema.org][http://schema.org/] entities.
+Library provides easy to use Java classes and builders for [schema.org](http://schema.org/) entities.
 
 All classes are auto generated from schema.rdfa
 
@@ -19,6 +19,6 @@ final Article article = SchemaOrg.article()
 Than one can serialize it to JSON with __Jackson__ as follows:
 ```
 final ObjectMapper objectMapper = new ObjectMapper();
-objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-objectMapper.writeValue(System.out, comment);
+objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+objectMapper.writeValue(System.out, event);
 ```

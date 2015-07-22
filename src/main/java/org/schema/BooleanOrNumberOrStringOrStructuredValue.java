@@ -14,32 +14,40 @@
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on Jul 22, 2015.
  */
 
 package org.schema;
 
-class StructuredValueOrBooleanOrStringOrNumber {
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class BooleanOrNumberOrStringOrStructuredValue {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
+    if (myBoolean != null) return myBoolean;
+    if (myNumber != null) return myNumber;
+    if (myString != null) return myString;
+    if (myStructuredValue != null) return myStructuredValue;
+    return null;
+  }
   public Thing getThing() {
     if (myStructuredValue != null) return myStructuredValue;
     return null;
   }
-  public void setStructuredValue(StructuredValue structuredValue) { clear(); myStructuredValue = structuredValue; }
-  public StructuredValue getStructuredValue() { return myStructuredValue; }
-  private StructuredValue myStructuredValue;
   public void setBoolean(Boolean value) { clear(); myBoolean = value; }
   public Boolean getBoolean() { return myBoolean; }
   private Boolean myBoolean;
-  public void setString(String value) { clear(); myString = value; }
-  public String getString() { return myString; }
-  private String myString;
   public void setNumber(Number number) { clear(); myNumber = number; }
   public Number getNumber() { return myNumber; }
   private Number myNumber;
+  public void setString(String value) { clear(); myString = value; }
+  public String getString() { return myString; }
+  private String myString;
+  public void setStructuredValue(StructuredValue structuredValue) { clear(); myStructuredValue = structuredValue; }
+  public StructuredValue getStructuredValue() { return myStructuredValue; }
+  private StructuredValue myStructuredValue;
   private void clear() {
-    myStructuredValue = null;
     myBoolean = null;
-    myString = null;
     myNumber = null;
+    myString = null;
+    myStructuredValue = null;
   }
 }
