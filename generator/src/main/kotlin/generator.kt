@@ -190,7 +190,7 @@ class GeneratorSink : TripleSink {
     }
 
     private fun shouldSkip(name: String): Boolean {
-        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Float", "Double", "URL", "True", "False", "Class").contains(name) ||
+        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Float", "Double", "URL", "True", "False", "Class", "Object").contains(name) ||
                 name.contains("#") || name.contains("/")
     }
 
@@ -203,34 +203,47 @@ class GeneratorSink : TripleSink {
 
     private fun generateEither(ns: String, packageDir: File, types: Collection<String>): String {
         val eitherName = types.join("Or")
-        with(StringBuilder()) {
-            appendln(BANNER)
-            appendln()
-            appendln("package $ns;")
-            appendln()
-            appendln("class $eitherName {")
-            val filteredTypes = types.filterNot { shouldSkip(it) || it == "String" || it == "Boolean" || it == "Number" || it == "Integer" }
-            if (filteredTypes.any() && !filteredTypes.contains("Thing")) {
-                appendln("  public Thing getThing() {")
-                filteredTypes.forEach {
+        val file = File(packageDir, "$eitherName.java")
+        if (!file.exists()) {
+            with(StringBuilder()) {
+                appendln(BANNER)
+                appendln()
+                appendln("package $ns;")
+                appendln()
+                appendln("@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)")
+                appendln("class $eitherName {")
+
+                appendln("  @com.fasterxml.jackson.annotation.JsonValue")
+                appendln("  public Object getJsonLdValue() {")
+                types.forEach {
                     appendln("    if (my$it != null) return my$it;")
                 }
                 appendln("    return null;")
                 appendln("  }")
-            }
-            types.forEach {
-                appendln("  public void set$it($it ${getVariableName(it, "value")}) { clear(); my$it = ${getVariableName(it, "value")}; }")
-                appendln("  public $it get$it() { return my$it; }")
-                appendln("  private $it my$it;")
-            }
-            appendln("  private void clear() {")
-            types.forEach {
-                appendln("    my$it = null;")
-            }
-            appendln("  }")
-            appendln("}")
 
-            File(packageDir, "$eitherName.java").writeText(toString())
+                val filteredTypes = types.filterNot { shouldSkip(it) || it == "String" || it == "Boolean" || it == "Number" || it == "Integer" }
+                if (filteredTypes.any() && !filteredTypes.contains("Thing")) {
+                    appendln("  public Thing getThing() {")
+                    filteredTypes.forEach {
+                        appendln("    if (my$it != null) return my$it;")
+                    }
+                    appendln("    return null;")
+                    appendln("  }")
+                }
+                types.forEach {
+                    appendln("  public void set$it($it ${getVariableName(it, "value")}) { clear(); my$it = ${getVariableName(it, "value")}; }")
+                    appendln("  public $it get$it() { return my$it; }")
+                    appendln("  private $it my$it;")
+                }
+                appendln("  private void clear() {")
+                types.forEach {
+                    appendln("    my$it = null;")
+                }
+                appendln("  }")
+                appendln("}")
+
+                file.writeText(toString())
+            }
         }
         return eitherName
     }
@@ -282,6 +295,9 @@ class GeneratorSink : TripleSink {
                 type.equivalent?.let { appendln(" * Equivalent class: $it") }
                 appendln(" */")
 
+                if (typeName == "Thing") {
+                    appendln("@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)")
+                }
                 append("public ${type.classOrInterface} $typeName")
                 type.parentType?.let { types.get(it)?.let { append(" extends ${it.name}") } }
                 val interfaces = type.interfaces.filter { i -> types.values().any { it.name == i && !it.isField } }
@@ -314,6 +330,9 @@ class GeneratorSink : TripleSink {
                                 appendln("  /**")
                                 appendln("   * $it")
                                 appendln("   */")
+                            }
+                            if (fieldType == "java.util.Date") {
+                                appendln("    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")")
                             }
                             appendln("  public $fieldType get$name() {")
                             appendln("    return my$name;")
@@ -350,6 +369,7 @@ class GeneratorSink : TripleSink {
                                 if (eitherTypes.size() < 2) {
                                     appendln("      this.${name.decapitalize()} = ${getVariableName(fieldType, name)};")
                                 } else {
+                                    appendln("      if(this.${name.decapitalize()} == null) this.${name.decapitalize()} = new ${getEitherFieldType(ns, packageDir, field)}();")
                                     appendln("      this.${name.decapitalize()}.set$fieldType(${getVariableName(fieldType, name)});")
                                 }
                                 appendln("      return this;")
