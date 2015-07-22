@@ -64,7 +64,6 @@ private val BANNER = """/*
  * limitations under the License.
  *
  * This is auto-generated file. Do not edit.
- * Generated on ${DateFormat.getDateInstance().format(Date(System.currentTimeMillis()))}.
  */"""
 
 class GeneratorSink : TripleSink {
