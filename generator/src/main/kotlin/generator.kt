@@ -80,7 +80,7 @@ class GeneratorSink : TripleSink {
         for (type in types.values()) {
             if (type.isField && type.isInterface) {
                 type.isField = false
-                type.dataTypes.forEach { types.get(it).interfaces.add(type.name!!.capitalize()) }
+                type.dataTypes.forEach { types.get(it)!!.interfaces.add(type.name!!.capitalize()) }
             }
         }
     }
@@ -95,12 +95,12 @@ class GeneratorSink : TripleSink {
     override fun addNonLiteral(subj: String, pred: String, obj: String) {
         when(pred) {
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" -> { if(!types.containsKey(subj)) types.put(subj, Type()) }
-            "http://www.w3.org/2000/01/rdf-schema#subClassOf" -> types.get(subj).parentType = obj
+            "http://www.w3.org/2000/01/rdf-schema#subClassOf" -> types.get(subj)!!.parentType = obj
             "http://schema.org/domainIncludes" -> {
                 val objType = types.get(obj)
 
                 if (objType != null) {
-                    val subjType = types.get(subj)
+                    val subjType = types.get(subj)!!
                     subjType.isField = true
                     if (!objType.subTypes.contains(subj)) {
                         objType.subTypes.add(subj)
@@ -111,12 +111,12 @@ class GeneratorSink : TripleSink {
                     types.put(obj, type)
                 }
             }
-            "http://schema.org/rangeIncludes" -> types.get(subj).dataTypes.add(obj)
-            "http://purl.org/dc/terms/source" -> types.get(subj).source = obj
-            "http://www.w3.org/2002/07/owl#equivalentClass" -> types.get(subj).equivalent = obj
-            "http://www.w3.org/2002/07/owl#equivalentProperty" -> types.get(subj).equivalent = obj
+            "http://schema.org/rangeIncludes" -> types.get(subj)!!.dataTypes.add(obj)
+            "http://purl.org/dc/terms/source" -> types.get(subj)!!.source = obj
+            "http://www.w3.org/2002/07/owl#equivalentClass" -> types.get(subj)!!.equivalent = obj
+            "http://www.w3.org/2002/07/owl#equivalentProperty" -> types.get(subj)!!.equivalent = obj
             "http://schema.org/inverseOf" -> { /* ignore */ }
-            "http://schema.org/supersededBy" -> { types.get(subj).isSuperseded = true }
+            "http://schema.org/supersededBy" -> { types.get(subj)!!.isSuperseded = true }
             "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" -> {
                 val interfaceType = Type()
                 interfaceType.name = getInterfaceName(obj)
@@ -124,7 +124,7 @@ class GeneratorSink : TripleSink {
                 types.put(obj, interfaceType)
 
                 if (!types.containsKey(subj)) types.put(subj, Type())
-                val type = types.get(subj)
+                val type = types.get(subj)!!
                 if (type.isField) {
                     type.dataTypes.add(obj)
                 } else {
@@ -139,8 +139,8 @@ class GeneratorSink : TripleSink {
 
     override fun addPlainLiteral(subj: String, pred: String, content: String, lang: String?) {
         when(pred) {
-            "http://www.w3.org/2000/01/rdf-schema#label" -> types.get(subj).name = content.replace(" ", "").replace(".", "").capitalize()
-            "http://www.w3.org/2000/01/rdf-schema#comment" -> types.get(subj).comment = content
+            "http://www.w3.org/2000/01/rdf-schema#label" -> types.get(subj)!!.name = content.replace(" ", "").replace(".", "").capitalize()
+            "http://www.w3.org/2000/01/rdf-schema#comment" -> types.get(subj)!!.comment = content
             else -> System.err.println("Unknown plain literal: $pred")
         }
     }
@@ -162,7 +162,7 @@ class GeneratorSink : TripleSink {
         if (field.isInterface && field.name != null)
             return field.name!!.capitalize()
 
-        val name = field.dataTypes.firstOrNull { types.get(it).isInterface } ?: field.dataTypes.firstOrNull()
+        val name = field.dataTypes.firstOrNull { types.get(it)!!.isInterface } ?: field.dataTypes.firstOrNull()
         return getBasicTypeName(types.get(name)?.name)
     }
 
@@ -180,9 +180,9 @@ class GeneratorSink : TripleSink {
         if (field.dataTypes.size() < 2)
             return listOf(getFieldType(field) ?: "")
 
-        val iface = field.dataTypes.firstOrNull { types.get(it).isInterface }
+        val iface = field.dataTypes.firstOrNull { types.get(it)!!.isInterface }
         if (iface != null)
-            return listOf(types.get(iface).name!!)
+            return listOf(types.get(iface)!!.name!!)
 
         return field.dataTypes.map { getBasicTypeName(types.get(it)?.name) }.filterNotNull().toHashSet().sort()
     }
@@ -430,7 +430,7 @@ class GeneratorSink : TripleSink {
         if (type == null) {
             return emptyList()
         }
-        val fieldTypes = type.subTypes.map { types.get(it) }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.toArrayList()
+        val fieldTypes = type.subTypes.map { types.get(it) }.filterNotNull().filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.toArrayList()
         getAllFields(types.get(type.parentType)).filterNot { i -> fieldTypes.any { it.name == i.name} }.forEach { fieldTypes.add(it) }
         return fieldTypes
     }
