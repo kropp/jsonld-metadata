@@ -55,7 +55,7 @@ public class Nerve extends AnatomicalStructure {
      * Creates new {@link Nerve} instance.
      */
     public Nerve build() {
-      return new Nerve(branch, nerveMotor, sensoryUnit, sourcedFrom, associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Nerve(branch, nerveMotor, sensoryUnit, sourcedFrom, associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The branches that delineate from the nerve bundle.
@@ -318,6 +318,10 @@ public class Nerve extends AnatomicalStructure {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private AnatomicalStructure branch;
     private Muscle nerveMotor;
     private AnatomicalStructureOrSuperficialAnatomy sensoryUnit;
@@ -345,10 +349,11 @@ public class Nerve extends AnatomicalStructure {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Nerve(AnatomicalStructure branch, Muscle nerveMotor, AnatomicalStructureOrSuperficialAnatomy sensoryUnit, BrainStructure sourcedFrom, String associatedPathophysiology, String bodyLocation, AnatomicalStructure connectedTo, ImageObject diagram, String function, IsPartOf partOfSystem, MedicalCondition relatedCondition, MedicalTherapy relatedTherapy, AnatomicalStructure subStructure, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Nerve(AnatomicalStructure branch, Muscle nerveMotor, AnatomicalStructureOrSuperficialAnatomy sensoryUnit, BrainStructure sourcedFrom, String associatedPathophysiology, String bodyLocation, AnatomicalStructure connectedTo, ImageObject diagram, String function, IsPartOf partOfSystem, MedicalCondition relatedCondition, MedicalTherapy relatedTherapy, AnatomicalStructure subStructure, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myBranch = branch;
     myNerveMotor = nerveMotor;
     mySensoryUnit = sensoryUnit;

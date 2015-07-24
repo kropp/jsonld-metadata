@@ -39,7 +39,7 @@ public class BreadcrumbList extends ItemList {
      * Creates new {@link BreadcrumbList} instance.
      */
     public BreadcrumbList build() {
-      return new BreadcrumbList(numberOfItems, itemListOrder, itemListElement, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new BreadcrumbList(numberOfItems, itemListOrder, itemListElement, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list.
@@ -219,6 +219,10 @@ public class BreadcrumbList extends ItemList {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Integer numberOfItems;
     private ItemListOrderTypeOrString itemListOrder;
     private ListItemOrStringOrThing itemListElement;
@@ -230,9 +234,10 @@ public class BreadcrumbList extends ItemList {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected BreadcrumbList(Integer numberOfItems, ItemListOrderTypeOrString itemListOrder, ListItemOrStringOrThing itemListElement, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(numberOfItems, itemListOrder, itemListElement, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected BreadcrumbList(Integer numberOfItems, ItemListOrderTypeOrString itemListOrder, ListItemOrStringOrThing itemListElement, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(numberOfItems, itemListOrder, itemListElement, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

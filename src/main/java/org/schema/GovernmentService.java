@@ -36,7 +36,7 @@ public class GovernmentService extends Service {
      * Creates new {@link GovernmentService} instance.
      */
     public GovernmentService build() {
-      return new GovernmentService(serviceOperator, aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new GovernmentService(serviceOperator, aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The operating organization, if different from the provider.  This enables the representation of services that are provided by an organization, but operated by another organization like a subcontractor.
@@ -222,6 +222,10 @@ public class GovernmentService extends Service {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Organization serviceOperator;
     private AggregateRating aggregateRating;
     private ServiceChannel availableChannel;
@@ -238,10 +242,11 @@ public class GovernmentService extends Service {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected GovernmentService(Organization serviceOperator, AggregateRating aggregateRating, ServiceChannel availableChannel, Thing serviceOutput, Review review, AdministrativeArea serviceArea, String serviceType, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected GovernmentService(Organization serviceOperator, AggregateRating aggregateRating, ServiceChannel availableChannel, Thing serviceOutput, Review review, AdministrativeArea serviceArea, String serviceType, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myServiceOperator = serviceOperator;
   }
   private Organization myServiceOperator;

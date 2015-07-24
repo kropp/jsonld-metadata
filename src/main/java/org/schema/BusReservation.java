@@ -30,7 +30,7 @@ public class BusReservation extends Reservation {
      * Creates new {@link BusReservation} instance.
      */
     public BusReservation build() {
-      return new BusReservation(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new BusReservation(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A unique identifier for the reservation.
@@ -279,6 +279,10 @@ public class BusReservation extends Reservation {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String reservationId;
     private ReservationStatusType reservationStatus;
     private Thing reservationFor;
@@ -299,9 +303,10 @@ public class BusReservation extends Reservation {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected BusReservation(String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected BusReservation(String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

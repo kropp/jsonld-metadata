@@ -43,7 +43,7 @@ public class DayOfWeek extends Enumeration {
      * Creates new {@link DayOfWeek} instance.
      */
     public DayOfWeek build() {
-      return new DayOfWeek(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new DayOfWeek(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
@@ -180,6 +180,10 @@ public class DayOfWeek extends Enumeration {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private EnumerationOrProperty supersededBy;
     private String additionalType;
     private String alternateName;
@@ -189,9 +193,10 @@ public class DayOfWeek extends Enumeration {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected DayOfWeek(EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected DayOfWeek(EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

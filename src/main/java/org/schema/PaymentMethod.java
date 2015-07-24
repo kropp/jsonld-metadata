@@ -44,7 +44,7 @@ public class PaymentMethod extends Enumeration {
      * Creates new {@link PaymentMethod} instance.
      */
     public PaymentMethod build() {
-      return new PaymentMethod(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new PaymentMethod(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
@@ -181,6 +181,10 @@ public class PaymentMethod extends Enumeration {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private EnumerationOrProperty supersededBy;
     private String additionalType;
     private String alternateName;
@@ -190,9 +194,10 @@ public class PaymentMethod extends Enumeration {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected PaymentMethod(EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected PaymentMethod(EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

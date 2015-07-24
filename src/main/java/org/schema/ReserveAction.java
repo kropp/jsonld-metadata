@@ -30,7 +30,7 @@ public class ReserveAction extends PlanAction {
      * Creates new {@link ReserveAction} instance.
      */
     public ReserveAction build() {
-      return new ReserveAction(scheduledTime, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ReserveAction(scheduledTime, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The time the object is scheduled to.
@@ -213,6 +213,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private java.util.Date scheduledTime;
     private OrganizationOrPerson agent;
     private java.util.Date endTime;
@@ -228,9 +232,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ReserveAction(java.util.Date scheduledTime, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(scheduledTime, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ReserveAction(java.util.Date scheduledTime, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(scheduledTime, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

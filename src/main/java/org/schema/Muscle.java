@@ -67,7 +67,7 @@ public class Muscle extends AnatomicalStructure {
      * Creates new {@link Muscle} instance.
      */
     public Muscle build() {
-      return new Muscle(muscleAction, antagonist, bloodSupply, insertion, nerve, origin, associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Muscle(muscleAction, antagonist, bloodSupply, insertion, nerve, origin, associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The movement the muscle generates.
@@ -335,6 +335,10 @@ public class Muscle extends AnatomicalStructure {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String muscleAction;
     private Muscle antagonist;
     private Vessel bloodSupply;
@@ -364,10 +368,11 @@ public class Muscle extends AnatomicalStructure {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Muscle(String muscleAction, Muscle antagonist, Vessel bloodSupply, AnatomicalStructure insertion, Nerve nerve, AnatomicalStructure origin, String associatedPathophysiology, String bodyLocation, AnatomicalStructure connectedTo, ImageObject diagram, String function, IsPartOf partOfSystem, MedicalCondition relatedCondition, MedicalTherapy relatedTherapy, AnatomicalStructure subStructure, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Muscle(String muscleAction, Muscle antagonist, Vessel bloodSupply, AnatomicalStructure insertion, Nerve nerve, AnatomicalStructure origin, String associatedPathophysiology, String bodyLocation, AnatomicalStructure connectedTo, ImageObject diagram, String function, IsPartOf partOfSystem, MedicalCondition relatedCondition, MedicalTherapy relatedTherapy, AnatomicalStructure subStructure, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myMuscleAction = muscleAction;
     myAntagonist = antagonist;
     myBloodSupply = bloodSupply;

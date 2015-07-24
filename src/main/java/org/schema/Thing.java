@@ -108,6 +108,10 @@ public class Thing {
   public Action getPotentialAction() {
     return myPotentialAction;
   }
+  @com.fasterxml.jackson.annotation.JsonProperty("@id")
+  public String getId() {
+    return myId;
+  }
   /**
    * Builder for {@link Thing}
    */
@@ -116,7 +120,7 @@ public class Thing {
      * Creates new {@link Thing} instance.
      */
     public Thing build() {
-      return new Thing(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Thing(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
@@ -237,6 +241,10 @@ public class Thing {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String additionalType;
     private String alternateName;
     private String description;
@@ -245,9 +253,10 @@ public class Thing {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Thing(String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
+  protected Thing(String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     myAdditionalType = additionalType;
     myAlternateName = alternateName;
     myDescription = description;
@@ -256,6 +265,7 @@ public class Thing {
     mySameAs = sameAs;
     myUrl = url;
     myPotentialAction = potentialAction;
+    myId = id;
   }
   private String myAdditionalType;
   private String myAlternateName;
@@ -265,4 +275,5 @@ public class Thing {
   private String mySameAs;
   private String myUrl;
   private Action myPotentialAction;
+  private String myId;
 }

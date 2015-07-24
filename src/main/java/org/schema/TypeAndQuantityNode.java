@@ -62,7 +62,7 @@ public class TypeAndQuantityNode extends StructuredValue {
      * Creates new {@link TypeAndQuantityNode} instance.
      */
     public TypeAndQuantityNode build() {
-      return new TypeAndQuantityNode(amountOfThisGood, businessFunction, typeOfGood, unitCode, unitText, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new TypeAndQuantityNode(amountOfThisGood, businessFunction, typeOfGood, unitCode, unitText, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The quantity of the goods included in the offer.
@@ -219,6 +219,10 @@ public class TypeAndQuantityNode extends StructuredValue {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Number amountOfThisGood;
     private BusinessFunction businessFunction;
     private Product typeOfGood;
@@ -232,10 +236,11 @@ public class TypeAndQuantityNode extends StructuredValue {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected TypeAndQuantityNode(Number amountOfThisGood, BusinessFunction businessFunction, Product typeOfGood, String unitCode, String unitText, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected TypeAndQuantityNode(Number amountOfThisGood, BusinessFunction businessFunction, Product typeOfGood, String unitCode, String unitText, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAmountOfThisGood = amountOfThisGood;
     myBusinessFunction = businessFunction;
     myTypeOfGood = typeOfGood;

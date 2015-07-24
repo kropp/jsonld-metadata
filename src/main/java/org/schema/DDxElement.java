@@ -43,7 +43,7 @@ public class DDxElement extends MedicalIntangible {
      * Creates new {@link DDxElement} instance.
      */
     public DDxElement build() {
-      return new DDxElement(diagnosis, distinguishingSign, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new DDxElement(diagnosis, distinguishingSign, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * One or more alternative conditions considered in the differential diagnosis process.
@@ -220,6 +220,10 @@ public class DDxElement extends MedicalIntangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private MedicalCondition diagnosis;
     private MedicalSignOrSymptom distinguishingSign;
     private MedicalCode code;
@@ -236,10 +240,11 @@ public class DDxElement extends MedicalIntangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected DDxElement(MedicalCondition diagnosis, MedicalSignOrSymptom distinguishingSign, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected DDxElement(MedicalCondition diagnosis, MedicalSignOrSymptom distinguishingSign, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myDiagnosis = diagnosis;
     myDistinguishingSign = distinguishingSign;
   }

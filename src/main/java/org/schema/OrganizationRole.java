@@ -36,7 +36,7 @@ public class OrganizationRole extends Role {
      * Creates new {@link OrganizationRole} instance.
      */
     public OrganizationRole build() {
-      return new OrganizationRole(numberedPosition, startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new OrganizationRole(numberedPosition, startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A number associated with a role in an organization, for example, the number on an athlete's jersey.
@@ -178,6 +178,10 @@ public class OrganizationRole extends Role {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Number numberedPosition;
     private java.util.Date startDate;
     private String roleName;
@@ -189,10 +193,11 @@ public class OrganizationRole extends Role {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected OrganizationRole(Number numberedPosition, java.util.Date startDate, String roleName, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected OrganizationRole(Number numberedPosition, java.util.Date startDate, String roleName, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myNumberedPosition = numberedPosition;
   }
   private Number myNumberedPosition;

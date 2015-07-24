@@ -86,7 +86,7 @@ public class TrainTrip extends Intangible {
      * Creates new {@link TrainTrip} instance.
      */
     public TrainTrip build() {
-      return new TrainTrip(provider, departureTime, arrivalTime, trainNumber, trainName, departureStation, arrivalStation, departurePlatform, arrivalPlatform, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new TrainTrip(provider, departureTime, arrivalTime, trainNumber, trainName, departureStation, arrivalStation, departurePlatform, arrivalPlatform, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
@@ -279,6 +279,10 @@ public class TrainTrip extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private OrganizationOrPerson provider;
     private java.util.Date departureTime;
     private java.util.Date arrivalTime;
@@ -296,10 +300,11 @@ public class TrainTrip extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected TrainTrip(OrganizationOrPerson provider, java.util.Date departureTime, java.util.Date arrivalTime, String trainNumber, String trainName, TrainStation departureStation, TrainStation arrivalStation, String departurePlatform, String arrivalPlatform, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected TrainTrip(OrganizationOrPerson provider, java.util.Date departureTime, java.util.Date arrivalTime, String trainNumber, String trainName, TrainStation departureStation, TrainStation arrivalStation, String departurePlatform, String arrivalPlatform, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myProvider = provider;
     myDepartureTime = departureTime;
     myArrivalTime = arrivalTime;

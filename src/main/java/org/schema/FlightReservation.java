@@ -54,7 +54,7 @@ public class FlightReservation extends Reservation {
      * Creates new {@link FlightReservation} instance.
      */
     public FlightReservation build() {
-      return new FlightReservation(boardingGroup, passengerSequenceNumber, securityScreening, passengerPriorityStatus, reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new FlightReservation(boardingGroup, passengerSequenceNumber, securityScreening, passengerPriorityStatus, reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The airline-specific indicator of boarding order / preference.
@@ -340,6 +340,10 @@ public class FlightReservation extends Reservation {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String boardingGroup;
     private String passengerSequenceNumber;
     private String securityScreening;
@@ -364,10 +368,11 @@ public class FlightReservation extends Reservation {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected FlightReservation(String boardingGroup, String passengerSequenceNumber, String securityScreening, QualitativeValueOrString passengerPriorityStatus, String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected FlightReservation(String boardingGroup, String passengerSequenceNumber, String securityScreening, QualitativeValueOrString passengerPriorityStatus, String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myBoardingGroup = boardingGroup;
     myPassengerSequenceNumber = passengerSequenceNumber;
     mySecurityScreening = securityScreening;

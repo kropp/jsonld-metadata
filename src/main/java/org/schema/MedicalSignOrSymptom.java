@@ -43,7 +43,7 @@ public class MedicalSignOrSymptom extends MedicalEntity {
      * Creates new {@link MedicalSignOrSymptom} instance.
      */
     public MedicalSignOrSymptom build() {
-      return new MedicalSignOrSymptom(cause, possibleTreatment, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalSignOrSymptom(cause, possibleTreatment, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * An underlying cause. More specifically, one of the causative agent(s) that are most directly responsible for the pathophysiologic process that eventually results in the occurrence.
@@ -220,6 +220,10 @@ public class MedicalSignOrSymptom extends MedicalEntity {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private MedicalCause cause;
     private MedicalTherapy possibleTreatment;
     private MedicalCode code;
@@ -236,10 +240,11 @@ public class MedicalSignOrSymptom extends MedicalEntity {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalSignOrSymptom(MedicalCause cause, MedicalTherapy possibleTreatment, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalSignOrSymptom(MedicalCause cause, MedicalTherapy possibleTreatment, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myCause = cause;
     myPossibleTreatment = possibleTreatment;
   }

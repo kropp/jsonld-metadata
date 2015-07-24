@@ -74,7 +74,7 @@ public class Permit extends Intangible {
      * Creates new {@link Permit} instance.
      */
     public Permit build() {
-      return new Permit(issuedThrough, permitAudience, validFor, validFrom, validIn, validUntil, issuedBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Permit(issuedThrough, permitAudience, validFor, validFrom, validIn, validUntil, issuedBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The service through with the permit was granted.
@@ -244,6 +244,10 @@ public class Permit extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Service issuedThrough;
     private Audience permitAudience;
     private Duration validFor;
@@ -259,10 +263,11 @@ public class Permit extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Permit(Service issuedThrough, Audience permitAudience, Duration validFor, java.util.Date validFrom, AdministrativeArea validIn, java.util.Date validUntil, Organization issuedBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Permit(Service issuedThrough, Audience permitAudience, Duration validFor, java.util.Date validFrom, AdministrativeArea validIn, java.util.Date validUntil, Organization issuedBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myIssuedThrough = issuedThrough;
     myPermitAudience = permitAudience;
     myValidFor = validFor;

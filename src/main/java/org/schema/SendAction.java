@@ -42,7 +42,7 @@ public class SendAction extends TransferAction {
      * Creates new {@link SendAction} instance.
      */
     public SendAction build() {
-      return new SendAction(deliveryMethod, recipient, fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new SendAction(deliveryMethod, recipient, fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A sub property of instrument. The method of delivery.
@@ -263,6 +263,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private DeliveryMethod deliveryMethod;
     private AudienceOrOrganizationOrPerson recipient;
     private Place fromLocation;
@@ -281,10 +285,11 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected SendAction(DeliveryMethod deliveryMethod, AudienceOrOrganizationOrPerson recipient, Place fromLocation, Place toLocation, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected SendAction(DeliveryMethod deliveryMethod, AudienceOrOrganizationOrPerson recipient, Place fromLocation, Place toLocation, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myDeliveryMethod = deliveryMethod;
     myRecipient = recipient;
   }

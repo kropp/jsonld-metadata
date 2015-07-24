@@ -36,7 +36,7 @@ public class LendAction extends TransferAction {
      * Creates new {@link LendAction} instance.
      */
     public LendAction build() {
-      return new LendAction(borrower, fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new LendAction(borrower, fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A sub property of participant. The person that borrows the object being lent.
@@ -233,6 +233,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Person borrower;
     private Place fromLocation;
     private Place toLocation;
@@ -250,10 +254,11 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected LendAction(Person borrower, Place fromLocation, Place toLocation, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected LendAction(Person borrower, Place fromLocation, Place toLocation, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myBorrower = borrower;
   }
   private Person myBorrower;

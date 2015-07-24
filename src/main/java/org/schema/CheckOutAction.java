@@ -30,7 +30,7 @@ public class CheckOutAction extends CommunicateAction {
      * Creates new {@link CheckOutAction} instance.
      */
     public CheckOutAction build() {
-      return new CheckOutAction(about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new CheckOutAction(about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The subject matter of the content.
@@ -253,6 +253,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Thing about;
     private LanguageOrString inLanguage;
     private AudienceOrOrganizationOrPerson recipient;
@@ -270,9 +274,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected CheckOutAction(Thing about, LanguageOrString inLanguage, AudienceOrOrganizationOrPerson recipient, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected CheckOutAction(Thing about, LanguageOrString inLanguage, AudienceOrOrganizationOrPerson recipient, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

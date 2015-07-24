@@ -48,7 +48,7 @@ public class ListItem extends Intangible implements Position {
      * Creates new {@link ListItem} instance.
      */
     public ListItem build() {
-      return new ListItem(item, previousItem, nextItem, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ListItem(item, previousItem, nextItem, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * An entity represented by an entry in a list (e.g. an 'artist' in a list of 'artists')’.
@@ -190,6 +190,10 @@ public class ListItem extends Intangible implements Position {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Thing item;
     private ListItem previousItem;
     private ListItem nextItem;
@@ -201,10 +205,11 @@ public class ListItem extends Intangible implements Position {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ListItem(Thing item, ListItem previousItem, ListItem nextItem, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ListItem(Thing item, ListItem previousItem, ListItem nextItem, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myItem = item;
     myPreviousItem = previousItem;
     myNextItem = nextItem;

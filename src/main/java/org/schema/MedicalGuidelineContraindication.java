@@ -31,7 +31,7 @@ public class MedicalGuidelineContraindication extends MedicalGuideline {
      * Creates new {@link MedicalGuidelineContraindication} instance.
      */
     public MedicalGuidelineContraindication build() {
-      return new MedicalGuidelineContraindication(evidenceLevel, evidenceOrigin, guidelineDate, guidelineSubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalGuidelineContraindication(evidenceLevel, evidenceOrigin, guidelineDate, guidelineSubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Strength of evidence of the data used to formulate the guideline (enumerated).
@@ -222,6 +222,10 @@ public class MedicalGuidelineContraindication extends MedicalGuideline {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private MedicalEvidenceLevel evidenceLevel;
     private String evidenceOrigin;
     private java.util.Date guidelineDate;
@@ -240,9 +244,10 @@ public class MedicalGuidelineContraindication extends MedicalGuideline {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalGuidelineContraindication(MedicalEvidenceLevel evidenceLevel, String evidenceOrigin, java.util.Date guidelineDate, MedicalEntity guidelineSubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(evidenceLevel, evidenceOrigin, guidelineDate, guidelineSubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalGuidelineContraindication(MedicalEvidenceLevel evidenceLevel, String evidenceOrigin, java.util.Date guidelineDate, MedicalEntity guidelineSubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(evidenceLevel, evidenceOrigin, guidelineDate, guidelineSubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

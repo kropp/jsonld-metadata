@@ -37,7 +37,7 @@ public class EngineSpecification extends StructuredValue {
      * Creates new {@link EngineSpecification} instance.
      */
     public EngineSpecification build() {
-      return new EngineSpecification(fuelType, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new EngineSpecification(fuelType, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
@@ -174,6 +174,10 @@ public class EngineSpecification extends StructuredValue {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private QualitativeValueOrString fuelType;
     private String additionalType;
     private String alternateName;
@@ -183,10 +187,11 @@ public class EngineSpecification extends StructuredValue {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected EngineSpecification(QualitativeValueOrString fuelType, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected EngineSpecification(QualitativeValueOrString fuelType, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myFuelType = fuelType;
   }
   private QualitativeValueOrString myFuelType;

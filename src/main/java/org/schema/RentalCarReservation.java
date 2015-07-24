@@ -56,7 +56,7 @@ public class RentalCarReservation extends Reservation {
      * Creates new {@link RentalCarReservation} instance.
      */
     public RentalCarReservation build() {
-      return new RentalCarReservation(pickupLocation, dropoffLocation, pickupTime, dropoffTime, reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new RentalCarReservation(pickupLocation, dropoffLocation, pickupTime, dropoffTime, reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Where a taxi will pick up a passenger or a rental car can be picked up.
@@ -333,6 +333,10 @@ public class RentalCarReservation extends Reservation {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Place pickupLocation;
     private Place dropoffLocation;
     private java.util.Date pickupTime;
@@ -357,10 +361,11 @@ public class RentalCarReservation extends Reservation {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected RentalCarReservation(Place pickupLocation, Place dropoffLocation, java.util.Date pickupTime, java.util.Date dropoffTime, String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected RentalCarReservation(Place pickupLocation, Place dropoffLocation, java.util.Date pickupTime, java.util.Date dropoffTime, String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myPickupLocation = pickupLocation;
     myDropoffLocation = dropoffLocation;
     myPickupTime = pickupTime;

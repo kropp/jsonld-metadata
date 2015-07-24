@@ -48,7 +48,7 @@ public class GeoCoordinates extends StructuredValue {
      * Creates new {@link GeoCoordinates} instance.
      */
     public GeoCoordinates build() {
-      return new GeoCoordinates(elevation, latitude, longitude, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new GeoCoordinates(elevation, latitude, longitude, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The elevation of a location.
@@ -217,6 +217,10 @@ public class GeoCoordinates extends StructuredValue {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private NumberOrString elevation;
     private NumberOrString latitude;
     private NumberOrString longitude;
@@ -228,10 +232,11 @@ public class GeoCoordinates extends StructuredValue {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected GeoCoordinates(NumberOrString elevation, NumberOrString latitude, NumberOrString longitude, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected GeoCoordinates(NumberOrString elevation, NumberOrString latitude, NumberOrString longitude, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myElevation = elevation;
     myLatitude = latitude;
     myLongitude = longitude;

@@ -30,7 +30,7 @@ public class ConfirmAction extends InformAction {
      * Creates new {@link ConfirmAction} instance.
      */
     public ConfirmAction build() {
-      return new ConfirmAction(event, about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ConfirmAction(event, about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
@@ -260,6 +260,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Event event;
     private Thing about;
     private LanguageOrString inLanguage;
@@ -278,9 +282,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ConfirmAction(Event event, Thing about, LanguageOrString inLanguage, AudienceOrOrganizationOrPerson recipient, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(event, about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ConfirmAction(Event event, Thing about, LanguageOrString inLanguage, AudienceOrOrganizationOrPerson recipient, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(event, about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

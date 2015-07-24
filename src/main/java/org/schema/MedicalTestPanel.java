@@ -37,7 +37,7 @@ public class MedicalTestPanel extends MedicalTest {
      * Creates new {@link MedicalTestPanel} instance.
      */
     public MedicalTestPanel build() {
-      return new MedicalTestPanel(subTest, affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalTestPanel(subTest, affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A component test of the panel.
@@ -242,6 +242,10 @@ public class MedicalTestPanel extends MedicalTest {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private MedicalTest subTest;
     private Drug affectedBy;
     private String normalRange;
@@ -262,10 +266,11 @@ public class MedicalTestPanel extends MedicalTest {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalTestPanel(MedicalTest subTest, Drug affectedBy, String normalRange, MedicalSign signDetected, MedicalCondition usedToDiagnose, MedicalDevice usesDevice, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalTestPanel(MedicalTest subTest, Drug affectedBy, String normalRange, MedicalSign signDetected, MedicalCondition usedToDiagnose, MedicalDevice usesDevice, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     mySubTest = subTest;
   }
   private MedicalTest mySubTest;

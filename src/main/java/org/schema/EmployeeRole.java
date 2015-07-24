@@ -36,7 +36,7 @@ public class EmployeeRole extends OrganizationRole {
      * Creates new {@link EmployeeRole} instance.
      */
     public EmployeeRole build() {
-      return new EmployeeRole(salaryCurrency, numberedPosition, startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new EmployeeRole(salaryCurrency, numberedPosition, startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The currency (coded using ISO 4217, http://en.wikipedia.org/wiki/ISO_4217 ) used for the main salary information in this job posting or for this employee.
@@ -185,6 +185,10 @@ public class EmployeeRole extends OrganizationRole {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String salaryCurrency;
     private Number numberedPosition;
     private java.util.Date startDate;
@@ -197,10 +201,11 @@ public class EmployeeRole extends OrganizationRole {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected EmployeeRole(String salaryCurrency, Number numberedPosition, java.util.Date startDate, String roleName, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(numberedPosition, startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected EmployeeRole(String salaryCurrency, Number numberedPosition, java.util.Date startDate, String roleName, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(numberedPosition, startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     mySalaryCurrency = salaryCurrency;
   }
   private String mySalaryCurrency;

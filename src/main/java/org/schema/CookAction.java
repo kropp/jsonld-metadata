@@ -48,7 +48,7 @@ public class CookAction extends CreateAction {
      * Creates new {@link CookAction} instance.
      */
     public CookAction build() {
-      return new CookAction(foodEstablishment, foodEvent, recipe, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new CookAction(foodEstablishment, foodEvent, recipe, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A sub property of location. The specific food establishment where the action occurred.
@@ -254,6 +254,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private FoodEstablishmentOrPlace foodEstablishment;
     private FoodEvent foodEvent;
     private Recipe recipe;
@@ -271,10 +275,11 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected CookAction(FoodEstablishmentOrPlace foodEstablishment, FoodEvent foodEvent, Recipe recipe, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected CookAction(FoodEstablishmentOrPlace foodEstablishment, FoodEvent foodEvent, Recipe recipe, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myFoodEstablishment = foodEstablishment;
     myFoodEvent = foodEvent;
     myRecipe = recipe;

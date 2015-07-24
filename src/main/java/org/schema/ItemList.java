@@ -52,7 +52,7 @@ public class ItemList extends Intangible {
      * Creates new {@link ItemList} instance.
      */
     public ItemList build() {
-      return new ItemList(numberOfItems, itemListOrder, itemListElement, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ItemList(numberOfItems, itemListOrder, itemListElement, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list.
@@ -232,6 +232,10 @@ public class ItemList extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Integer numberOfItems;
     private ItemListOrderTypeOrString itemListOrder;
     private ListItemOrStringOrThing itemListElement;
@@ -243,10 +247,11 @@ public class ItemList extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ItemList(Integer numberOfItems, ItemListOrderTypeOrString itemListOrder, ListItemOrStringOrThing itemListElement, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ItemList(Integer numberOfItems, ItemListOrderTypeOrString itemListOrder, ListItemOrStringOrThing itemListElement, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myNumberOfItems = numberOfItems;
     myItemListOrder = itemListOrder;
     myItemListElement = itemListElement;

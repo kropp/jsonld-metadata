@@ -48,7 +48,7 @@ public class RsvpAction extends InformAction {
      * Creates new {@link RsvpAction} instance.
      */
     public RsvpAction build() {
-      return new RsvpAction(additionalNumberOfGuests, rsvpResponse, comment, event, about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new RsvpAction(additionalNumberOfGuests, rsvpResponse, comment, event, about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * If responding yes, the number of guests who will attend in addition to the invitee.
@@ -299,6 +299,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Number additionalNumberOfGuests;
     private RsvpResponseType rsvpResponse;
     private Comment comment;
@@ -320,10 +324,11 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected RsvpAction(Number additionalNumberOfGuests, RsvpResponseType rsvpResponse, Comment comment, Event event, Thing about, LanguageOrString inLanguage, AudienceOrOrganizationOrPerson recipient, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(event, about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected RsvpAction(Number additionalNumberOfGuests, RsvpResponseType rsvpResponse, Comment comment, Event event, Thing about, LanguageOrString inLanguage, AudienceOrOrganizationOrPerson recipient, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(event, about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAdditionalNumberOfGuests = additionalNumberOfGuests;
     myRsvpResponse = rsvpResponse;
     myComment = comment;

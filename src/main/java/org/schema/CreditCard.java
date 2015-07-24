@@ -41,7 +41,7 @@ public class CreditCard extends PaymentMethod {
      * Creates new {@link CreditCard} instance.
      */
     public CreditCard build() {
-      return new CreditCard(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new CreditCard(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
@@ -178,6 +178,10 @@ public class CreditCard extends PaymentMethod {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private EnumerationOrProperty supersededBy;
     private String additionalType;
     private String alternateName;
@@ -187,9 +191,10 @@ public class CreditCard extends PaymentMethod {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected CreditCard(EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected CreditCard(EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

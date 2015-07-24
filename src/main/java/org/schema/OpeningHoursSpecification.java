@@ -65,7 +65,7 @@ public class OpeningHoursSpecification extends StructuredValue {
      * Creates new {@link OpeningHoursSpecification} instance.
      */
     public OpeningHoursSpecification build() {
-      return new OpeningHoursSpecification(closes, dayOfWeek, opens, validFrom, validThrough, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new OpeningHoursSpecification(closes, dayOfWeek, opens, validFrom, validThrough, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The closing hour of the place or service on the given day(s) of the week.
@@ -221,6 +221,10 @@ public class OpeningHoursSpecification extends StructuredValue {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private java.util.Date closes;
     private DayOfWeek dayOfWeek;
     private java.util.Date opens;
@@ -234,10 +238,11 @@ public class OpeningHoursSpecification extends StructuredValue {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected OpeningHoursSpecification(java.util.Date closes, DayOfWeek dayOfWeek, java.util.Date opens, java.util.Date validFrom, java.util.Date validThrough, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected OpeningHoursSpecification(java.util.Date closes, DayOfWeek dayOfWeek, java.util.Date opens, java.util.Date validFrom, java.util.Date validThrough, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myCloses = closes;
     myDayOfWeek = dayOfWeek;
     myOpens = opens;

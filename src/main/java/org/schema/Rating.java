@@ -48,7 +48,7 @@ public class Rating extends Intangible {
      * Creates new {@link Rating} instance.
      */
     public Rating build() {
-      return new Rating(bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Rating(bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
@@ -208,6 +208,10 @@ public class Rating extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private NumberOrString bestRating;
     private String ratingValue;
     private NumberOrString worstRating;
@@ -219,10 +223,11 @@ public class Rating extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Rating(NumberOrString bestRating, String ratingValue, NumberOrString worstRating, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Rating(NumberOrString bestRating, String ratingValue, NumberOrString worstRating, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myBestRating = bestRating;
     myRatingValue = ratingValue;
     myWorstRating = worstRating;

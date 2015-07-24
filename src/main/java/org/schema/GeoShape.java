@@ -61,7 +61,7 @@ public class GeoShape extends StructuredValue {
      * Creates new {@link GeoShape} instance.
      */
     public GeoShape build() {
-      return new GeoShape(box, circle, elevation, line, polygon, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new GeoShape(box, circle, elevation, line, polygon, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A box is the area enclosed by the rectangle formed by two points. The first point is the lower corner, the second point is the upper corner. A box is expressed as two points separated by a space character.
@@ -226,6 +226,10 @@ public class GeoShape extends StructuredValue {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String box;
     private String circle;
     private NumberOrString elevation;
@@ -239,10 +243,11 @@ public class GeoShape extends StructuredValue {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected GeoShape(String box, String circle, NumberOrString elevation, String line, String polygon, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected GeoShape(String box, String circle, NumberOrString elevation, String line, String polygon, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myBox = box;
     myCircle = circle;
     myElevation = elevation;

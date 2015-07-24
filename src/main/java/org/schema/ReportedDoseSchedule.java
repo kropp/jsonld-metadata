@@ -30,7 +30,7 @@ public class ReportedDoseSchedule extends DoseSchedule {
      * Creates new {@link ReportedDoseSchedule} instance.
      */
     public ReportedDoseSchedule build() {
-      return new ReportedDoseSchedule(doseUnit, doseValue, frequency, targetPopulation, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ReportedDoseSchedule(doseUnit, doseValue, frequency, targetPopulation, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The unit of the dose, e.g. 'mg'.
@@ -221,6 +221,10 @@ public class ReportedDoseSchedule extends DoseSchedule {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String doseUnit;
     private Number doseValue;
     private String frequency;
@@ -239,9 +243,10 @@ public class ReportedDoseSchedule extends DoseSchedule {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ReportedDoseSchedule(String doseUnit, Number doseValue, String frequency, String targetPopulation, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(doseUnit, doseValue, frequency, targetPopulation, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ReportedDoseSchedule(String doseUnit, Number doseValue, String frequency, String targetPopulation, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(doseUnit, doseValue, frequency, targetPopulation, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

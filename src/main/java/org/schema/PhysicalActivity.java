@@ -55,7 +55,7 @@ public class PhysicalActivity extends LifestyleModification {
      * Creates new {@link PhysicalActivity} instance.
      */
     public PhysicalActivity build() {
-      return new PhysicalActivity(associatedAnatomy, category, epidemiology, pathophysiology, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new PhysicalActivity(associatedAnatomy, category, epidemiology, pathophysiology, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
@@ -315,6 +315,10 @@ public class PhysicalActivity extends LifestyleModification {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy;
     private PhysicalActivityCategoryOrStringOrThing category;
     private String epidemiology;
@@ -338,10 +342,11 @@ public class PhysicalActivity extends LifestyleModification {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected PhysicalActivity(AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, PhysicalActivityCategoryOrStringOrThing category, String epidemiology, String pathophysiology, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected PhysicalActivity(AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, PhysicalActivityCategoryOrStringOrThing category, String epidemiology, String pathophysiology, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAssociatedAnatomy = associatedAnatomy;
     myCategory = category;
     myEpidemiology = epidemiology;

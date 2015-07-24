@@ -43,7 +43,7 @@ public class PaymentChargeSpecification extends PriceSpecification {
      * Creates new {@link PaymentChargeSpecification} instance.
      */
     public PaymentChargeSpecification build() {
-      return new PaymentChargeSpecification(appliesToDeliveryMethod, appliesToPaymentMethod, eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new PaymentChargeSpecification(appliesToDeliveryMethod, appliesToPaymentMethod, eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The delivery method(s) to which the delivery charge or payment charge specification applies.
@@ -290,6 +290,10 @@ public class PaymentChargeSpecification extends PriceSpecification {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private DeliveryMethod appliesToDeliveryMethod;
     private PaymentMethod appliesToPaymentMethod;
     private QuantitativeValue eligibleQuantity;
@@ -309,10 +313,11 @@ public class PaymentChargeSpecification extends PriceSpecification {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected PaymentChargeSpecification(DeliveryMethod appliesToDeliveryMethod, PaymentMethod appliesToPaymentMethod, QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, NumberOrString price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected PaymentChargeSpecification(DeliveryMethod appliesToDeliveryMethod, PaymentMethod appliesToPaymentMethod, QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, NumberOrString price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAppliesToDeliveryMethod = appliesToDeliveryMethod;
     myAppliesToPaymentMethod = appliesToPaymentMethod;
   }

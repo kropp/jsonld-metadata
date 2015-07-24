@@ -49,7 +49,7 @@ public class InfectiousDisease extends MedicalCondition {
      * Creates new {@link InfectiousDisease} instance.
      */
     public InfectiousDisease build() {
-      return new InfectiousDisease(infectiousAgent, infectiousAgentClass, transmissionMethod, associatedAnatomy, cause, differentialDiagnosis, epidemiology, expectedPrognosis, naturalProgression, pathophysiology, possibleComplication, possibleTreatment, primaryPrevention, riskFactor, secondaryPrevention, signOrSymptom, stage, subtype, typicalTest, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new InfectiousDisease(infectiousAgent, infectiousAgentClass, transmissionMethod, associatedAnatomy, cause, differentialDiagnosis, epidemiology, expectedPrognosis, naturalProgression, pathophysiology, possibleComplication, possibleTreatment, primaryPrevention, riskFactor, secondaryPrevention, signOrSymptom, stage, subtype, typicalTest, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The actual infectious agent, such as a specific bacterium.
@@ -362,6 +362,10 @@ public class InfectiousDisease extends MedicalCondition {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String infectiousAgent;
     private InfectiousAgentClass infectiousAgentClass;
     private String transmissionMethod;
@@ -395,10 +399,11 @@ public class InfectiousDisease extends MedicalCondition {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected InfectiousDisease(String infectiousAgent, InfectiousAgentClass infectiousAgentClass, String transmissionMethod, AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, MedicalCause cause, DDxElement differentialDiagnosis, String epidemiology, String expectedPrognosis, String naturalProgression, String pathophysiology, String possibleComplication, MedicalTherapy possibleTreatment, MedicalTherapy primaryPrevention, MedicalRiskFactor riskFactor, MedicalTherapy secondaryPrevention, MedicalSignOrSymptom signOrSymptom, MedicalConditionStage stage, String subtype, MedicalTest typicalTest, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(associatedAnatomy, cause, differentialDiagnosis, epidemiology, expectedPrognosis, naturalProgression, pathophysiology, possibleComplication, possibleTreatment, primaryPrevention, riskFactor, secondaryPrevention, signOrSymptom, stage, subtype, typicalTest, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected InfectiousDisease(String infectiousAgent, InfectiousAgentClass infectiousAgentClass, String transmissionMethod, AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, MedicalCause cause, DDxElement differentialDiagnosis, String epidemiology, String expectedPrognosis, String naturalProgression, String pathophysiology, String possibleComplication, MedicalTherapy possibleTreatment, MedicalTherapy primaryPrevention, MedicalRiskFactor riskFactor, MedicalTherapy secondaryPrevention, MedicalSignOrSymptom signOrSymptom, MedicalConditionStage stage, String subtype, MedicalTest typicalTest, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(associatedAnatomy, cause, differentialDiagnosis, epidemiology, expectedPrognosis, naturalProgression, pathophysiology, possibleComplication, possibleTreatment, primaryPrevention, riskFactor, secondaryPrevention, signOrSymptom, stage, subtype, typicalTest, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myInfectiousAgent = infectiousAgent;
     myInfectiousAgentClass = infectiousAgentClass;
     myTransmissionMethod = transmissionMethod;

@@ -72,7 +72,7 @@ public class Service extends Intangible {
      * Creates new {@link Service} instance.
      */
     public Service build() {
-      return new Service(aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Service(aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
@@ -251,6 +251,10 @@ public class Service extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private AggregateRating aggregateRating;
     private ServiceChannel availableChannel;
     private Thing serviceOutput;
@@ -266,10 +270,11 @@ public class Service extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Service(AggregateRating aggregateRating, ServiceChannel availableChannel, Thing serviceOutput, Review review, AdministrativeArea serviceArea, String serviceType, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Service(AggregateRating aggregateRating, ServiceChannel availableChannel, Thing serviceOutput, Review review, AdministrativeArea serviceArea, String serviceType, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAggregateRating = aggregateRating;
     myAvailableChannel = availableChannel;
     myServiceOutput = serviceOutput;

@@ -43,7 +43,7 @@ public class MedicalSign extends MedicalSignOrSymptom {
      * Creates new {@link MedicalSign} instance.
      */
     public MedicalSign build() {
-      return new MedicalSign(identifyingExam, identifyingTest, cause, possibleTreatment, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalSign(identifyingExam, identifyingTest, cause, possibleTreatment, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A physical examination that can identify this sign.
@@ -234,6 +234,10 @@ public class MedicalSign extends MedicalSignOrSymptom {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private PhysicalExam identifyingExam;
     private MedicalTest identifyingTest;
     private MedicalCause cause;
@@ -252,10 +256,11 @@ public class MedicalSign extends MedicalSignOrSymptom {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalSign(PhysicalExam identifyingExam, MedicalTest identifyingTest, MedicalCause cause, MedicalTherapy possibleTreatment, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(cause, possibleTreatment, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalSign(PhysicalExam identifyingExam, MedicalTest identifyingTest, MedicalCause cause, MedicalTherapy possibleTreatment, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(cause, possibleTreatment, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myIdentifyingExam = identifyingExam;
     myIdentifyingTest = identifyingTest;
   }

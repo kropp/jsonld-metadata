@@ -37,7 +37,7 @@ public class MedicalObservationalStudy extends MedicalStudy {
      * Creates new {@link MedicalObservationalStudy} instance.
      */
     public MedicalObservationalStudy build() {
-      return new MedicalObservationalStudy(studyDesign, outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalObservationalStudy(studyDesign, outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Specifics about the observational study design (enumerated).
@@ -249,6 +249,10 @@ public class MedicalObservationalStudy extends MedicalStudy {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private MedicalObservationalStudyDesign studyDesign;
     private String outcome;
     private String population;
@@ -270,10 +274,11 @@ public class MedicalObservationalStudy extends MedicalStudy {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalObservationalStudy(MedicalObservationalStudyDesign studyDesign, String outcome, String population, Organization sponsor, MedicalStudyStatus status, AdministrativeArea studyLocation, MedicalEntity studySubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalObservationalStudy(MedicalObservationalStudyDesign studyDesign, String outcome, String population, Organization sponsor, MedicalStudyStatus status, AdministrativeArea studyLocation, MedicalEntity studySubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myStudyDesign = studyDesign;
   }
   private MedicalObservationalStudyDesign myStudyDesign;

@@ -98,7 +98,7 @@ public class ParcelDelivery extends Intangible {
      * Creates new {@link ParcelDelivery} instance.
      */
     public ParcelDelivery build() {
-      return new ParcelDelivery(deliveryAddress, deliveryStatus, expectedArrivalFrom, expectedArrivalUntil, hasDeliveryMethod, itemShipped, originAddress, partOfOrder, trackingNumber, trackingUrl, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ParcelDelivery(deliveryAddress, deliveryStatus, expectedArrivalFrom, expectedArrivalUntil, hasDeliveryMethod, itemShipped, originAddress, partOfOrder, trackingNumber, trackingUrl, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Destination address.
@@ -305,6 +305,10 @@ public class ParcelDelivery extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private PostalAddress deliveryAddress;
     private DeliveryEvent deliveryStatus;
     private java.util.Date expectedArrivalFrom;
@@ -324,10 +328,11 @@ public class ParcelDelivery extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ParcelDelivery(PostalAddress deliveryAddress, DeliveryEvent deliveryStatus, java.util.Date expectedArrivalFrom, java.util.Date expectedArrivalUntil, DeliveryMethod hasDeliveryMethod, Product itemShipped, PostalAddress originAddress, IsPartOf partOfOrder, String trackingNumber, String trackingUrl, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ParcelDelivery(PostalAddress deliveryAddress, DeliveryEvent deliveryStatus, java.util.Date expectedArrivalFrom, java.util.Date expectedArrivalUntil, DeliveryMethod hasDeliveryMethod, Product itemShipped, PostalAddress originAddress, IsPartOf partOfOrder, String trackingNumber, String trackingUrl, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myDeliveryAddress = deliveryAddress;
     myDeliveryStatus = deliveryStatus;
     myExpectedArrivalFrom = expectedArrivalFrom;

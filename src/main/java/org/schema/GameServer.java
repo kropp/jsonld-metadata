@@ -48,7 +48,7 @@ public class GameServer extends Intangible {
      * Creates new {@link GameServer} instance.
      */
     public GameServer build() {
-      return new GameServer(serverStatus, playersOnline, game, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new GameServer(serverStatus, playersOnline, game, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Status of a game server.
@@ -190,6 +190,10 @@ public class GameServer extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private GameServerStatus serverStatus;
     private Integer playersOnline;
     private VideoGame game;
@@ -201,10 +205,11 @@ public class GameServer extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected GameServer(GameServerStatus serverStatus, Integer playersOnline, VideoGame game, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected GameServer(GameServerStatus serverStatus, Integer playersOnline, VideoGame game, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myServerStatus = serverStatus;
     myPlayersOnline = playersOnline;
     myGame = game;

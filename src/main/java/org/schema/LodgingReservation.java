@@ -68,7 +68,7 @@ public class LodgingReservation extends Reservation {
      * Creates new {@link LodgingReservation} instance.
      */
     public LodgingReservation build() {
-      return new LodgingReservation(checkinTime, checkoutTime, lodgingUnitType, lodgingUnitDescription, numAdults, numChildren, reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new LodgingReservation(checkinTime, checkoutTime, lodgingUnitType, lodgingUnitDescription, numAdults, numChildren, reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The earliest someone may check into a lodging establishment.
@@ -386,6 +386,10 @@ public class LodgingReservation extends Reservation {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private java.util.Date checkinTime;
     private java.util.Date checkoutTime;
     private QualitativeValueOrString lodgingUnitType;
@@ -412,10 +416,11 @@ public class LodgingReservation extends Reservation {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected LodgingReservation(java.util.Date checkinTime, java.util.Date checkoutTime, QualitativeValueOrString lodgingUnitType, String lodgingUnitDescription, IntegerOrQuantitativeValue numAdults, IntegerOrQuantitativeValue numChildren, String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected LodgingReservation(java.util.Date checkinTime, java.util.Date checkoutTime, QualitativeValueOrString lodgingUnitType, String lodgingUnitDescription, IntegerOrQuantitativeValue numAdults, IntegerOrQuantitativeValue numChildren, String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myCheckinTime = checkinTime;
     myCheckoutTime = checkoutTime;
     myLodgingUnitType = lodgingUnitType;

@@ -127,7 +127,7 @@ public class MedicalCondition extends MedicalEntity {
      * Creates new {@link MedicalCondition} instance.
      */
     public MedicalCondition build() {
-      return new MedicalCondition(associatedAnatomy, cause, differentialDiagnosis, epidemiology, expectedPrognosis, naturalProgression, pathophysiology, possibleComplication, possibleTreatment, primaryPrevention, riskFactor, secondaryPrevention, signOrSymptom, stage, subtype, typicalTest, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalCondition(associatedAnatomy, cause, differentialDiagnosis, epidemiology, expectedPrognosis, naturalProgression, pathophysiology, possibleComplication, possibleTreatment, primaryPrevention, riskFactor, secondaryPrevention, signOrSymptom, stage, subtype, typicalTest, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
@@ -419,6 +419,10 @@ public class MedicalCondition extends MedicalEntity {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy;
     private MedicalCause cause;
     private DDxElement differentialDiagnosis;
@@ -449,10 +453,11 @@ public class MedicalCondition extends MedicalEntity {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalCondition(AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, MedicalCause cause, DDxElement differentialDiagnosis, String epidemiology, String expectedPrognosis, String naturalProgression, String pathophysiology, String possibleComplication, MedicalTherapy possibleTreatment, MedicalTherapy primaryPrevention, MedicalRiskFactor riskFactor, MedicalTherapy secondaryPrevention, MedicalSignOrSymptom signOrSymptom, MedicalConditionStage stage, String subtype, MedicalTest typicalTest, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalCondition(AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, MedicalCause cause, DDxElement differentialDiagnosis, String epidemiology, String expectedPrognosis, String naturalProgression, String pathophysiology, String possibleComplication, MedicalTherapy possibleTreatment, MedicalTherapy primaryPrevention, MedicalRiskFactor riskFactor, MedicalTherapy secondaryPrevention, MedicalSignOrSymptom signOrSymptom, MedicalConditionStage stage, String subtype, MedicalTest typicalTest, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAssociatedAnatomy = associatedAnatomy;
     myCause = cause;
     myDifferentialDiagnosis = differentialDiagnosis;

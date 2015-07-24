@@ -135,7 +135,7 @@ public class Flight extends Intangible {
      * Creates new {@link Flight} instance.
      */
     public Flight build() {
-      return new Flight(seller, provider, flightNumber, departureTime, arrivalTime, departureAirport, arrivalAirport, departureGate, arrivalGate, boardingPolicy, departureTerminal, arrivalTerminal, aircraft, mealService, estimatedFlightDuration, flightDistance, webCheckinTime, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Flight(seller, provider, flightNumber, departureTime, arrivalTime, departureAirport, arrivalAirport, departureGate, arrivalGate, boardingPolicy, departureTerminal, arrivalTerminal, aircraft, mealService, estimatedFlightDuration, flightDistance, webCheckinTime, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
@@ -411,6 +411,10 @@ public class Flight extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Participant seller;
     private OrganizationOrPerson provider;
     private String flightNumber;
@@ -436,10 +440,11 @@ public class Flight extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Flight(Participant seller, OrganizationOrPerson provider, String flightNumber, java.util.Date departureTime, java.util.Date arrivalTime, Airport departureAirport, Airport arrivalAirport, String departureGate, String arrivalGate, BoardingPolicyType boardingPolicy, String departureTerminal, String arrivalTerminal, StringOrVehicle aircraft, String mealService, DurationOrString estimatedFlightDuration, DistanceOrString flightDistance, java.util.Date webCheckinTime, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Flight(Participant seller, OrganizationOrPerson provider, String flightNumber, java.util.Date departureTime, java.util.Date arrivalTime, Airport departureAirport, Airport arrivalAirport, String departureGate, String arrivalGate, BoardingPolicyType boardingPolicy, String departureTerminal, String arrivalTerminal, StringOrVehicle aircraft, String mealService, DurationOrString estimatedFlightDuration, DistanceOrString flightDistance, java.util.Date webCheckinTime, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     mySeller = seller;
     myProvider = provider;
     myFlightNumber = flightNumber;

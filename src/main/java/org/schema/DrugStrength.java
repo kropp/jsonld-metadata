@@ -55,7 +55,7 @@ public class DrugStrength extends MedicalIntangible {
      * Creates new {@link DrugStrength} instance.
      */
     public DrugStrength build() {
-      return new DrugStrength(activeIngredient, availableIn, strengthUnit, strengthValue, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new DrugStrength(activeIngredient, availableIn, strengthUnit, strengthValue, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * An active ingredient, typically chemical compounds and/or biologic substances.
@@ -246,6 +246,10 @@ public class DrugStrength extends MedicalIntangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String activeIngredient;
     private AdministrativeArea availableIn;
     private String strengthUnit;
@@ -264,10 +268,11 @@ public class DrugStrength extends MedicalIntangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected DrugStrength(String activeIngredient, AdministrativeArea availableIn, String strengthUnit, Number strengthValue, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected DrugStrength(String activeIngredient, AdministrativeArea availableIn, String strengthUnit, Number strengthValue, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myActiveIngredient = activeIngredient;
     myAvailableIn = availableIn;
     myStrengthUnit = strengthUnit;

@@ -66,6 +66,8 @@ private val BANNER = """/*
  * This is auto-generated file. Do not edit.
  */"""
 
+private val ID_TYPE = "http://schema.org/@id"
+
 class GeneratorSink : TripleSink {
     private var uri: String = "http://schema.org/"
 
@@ -81,7 +83,15 @@ class GeneratorSink : TripleSink {
                 type.isField = false
                 type.dataTypes.forEach { types.get(it)!!.interfaces.add(type.name!!.capitalize()) }
             }
+            if (type.name == "Thing") {
+                type.subTypes.add(ID_TYPE)
+            }
         }
+        val idType = Type()
+        idType.name = "Id"
+        idType.isField = true
+        idType.dataTypes.add("http://schema.org/Text")
+        types.put(ID_TYPE, idType)
     }
 
     override fun setBaseUri(baseUri: String) {
@@ -179,9 +189,9 @@ class GeneratorSink : TripleSink {
         if (field.dataTypes.size() < 2)
             return listOf(getFieldType(field) ?: "")
 
-        val iface = field.dataTypes.firstOrNull { types.get(it)!!.isInterface }
-        if (iface != null)
-            return listOf(types.get(iface)!!.name!!)
+        val interfaceName = field.dataTypes.firstOrNull { types.get(it)!!.isInterface }
+        if (interfaceName != null)
+            return listOf(types.get(interfaceName)!!.name!!)
 
         return field.dataTypes.map { getBasicTypeName(types.get(it)?.name) }.filterNotNull().toHashSet().sort()
     }
@@ -330,6 +340,9 @@ class GeneratorSink : TripleSink {
                             }
                             if (fieldType == "java.util.Date") {
                                 appendln("    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")")
+                            }
+                            if (name == "Id") {
+                                appendln("  @com.fasterxml.jackson.annotation.JsonProperty(\"@id\")");
                             }
                             appendln("  public $fieldType get$name() {")
                             appendln("    return my$name;")

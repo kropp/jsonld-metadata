@@ -72,7 +72,7 @@ public class PeopleAudience extends Audience {
      * Creates new {@link PeopleAudience} instance.
      */
     public PeopleAudience build() {
-      return new PeopleAudience(healthCondition, requiredGender, requiredMaxAge, requiredMinAge, suggestedGender, suggestedMaxAge, suggestedMinAge, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new PeopleAudience(healthCondition, requiredGender, requiredMaxAge, requiredMinAge, suggestedGender, suggestedMaxAge, suggestedMinAge, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Expectations for health conditions of target audience.
@@ -256,6 +256,10 @@ public class PeopleAudience extends Audience {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private MedicalCondition healthCondition;
     private String requiredGender;
     private Integer requiredMaxAge;
@@ -273,10 +277,11 @@ public class PeopleAudience extends Audience {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected PeopleAudience(MedicalCondition healthCondition, String requiredGender, Integer requiredMaxAge, Integer requiredMinAge, String suggestedGender, Number suggestedMaxAge, Number suggestedMinAge, String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected PeopleAudience(MedicalCondition healthCondition, String requiredGender, Integer requiredMaxAge, Integer requiredMinAge, String suggestedGender, Number suggestedMaxAge, Number suggestedMinAge, String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myHealthCondition = healthCondition;
     myRequiredGender = requiredGender;
     myRequiredMaxAge = requiredMaxAge;

@@ -48,7 +48,7 @@ public class ProgramMembership extends Intangible {
      * Creates new {@link ProgramMembership} instance.
      */
     public ProgramMembership build() {
-      return new ProgramMembership(membershipNumber, programName, hostingOrganization, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ProgramMembership(membershipNumber, programName, hostingOrganization, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A unique identifier for the membership.
@@ -190,6 +190,10 @@ public class ProgramMembership extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String membershipNumber;
     private String programName;
     private Organization hostingOrganization;
@@ -201,10 +205,11 @@ public class ProgramMembership extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ProgramMembership(String membershipNumber, String programName, Organization hostingOrganization, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ProgramMembership(String membershipNumber, String programName, Organization hostingOrganization, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myMembershipNumber = membershipNumber;
     myProgramName = programName;
     myHostingOrganization = hostingOrganization;

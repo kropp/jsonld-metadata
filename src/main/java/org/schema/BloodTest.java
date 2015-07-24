@@ -31,7 +31,7 @@ public class BloodTest extends MedicalTest {
      * Creates new {@link BloodTest} instance.
      */
     public BloodTest build() {
-      return new BloodTest(affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new BloodTest(affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Drugs that affect the test's results.
@@ -229,6 +229,10 @@ public class BloodTest extends MedicalTest {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Drug affectedBy;
     private String normalRange;
     private MedicalSign signDetected;
@@ -248,9 +252,10 @@ public class BloodTest extends MedicalTest {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected BloodTest(Drug affectedBy, String normalRange, MedicalSign signDetected, MedicalCondition usedToDiagnose, MedicalDevice usesDevice, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected BloodTest(Drug affectedBy, String normalRange, MedicalSign signDetected, MedicalCondition usedToDiagnose, MedicalDevice usesDevice, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

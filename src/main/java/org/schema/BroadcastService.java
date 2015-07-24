@@ -60,7 +60,7 @@ public class BroadcastService extends Thing {
      * Creates new {@link BroadcastService} instance.
      */
     public BroadcastService build() {
-      return new BroadcastService(broadcaster, parentService, broadcastAffiliateOf, broadcastDisplayName, timezone, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new BroadcastService(broadcaster, parentService, broadcastAffiliateOf, broadcastDisplayName, timezone, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The organization owning or operating the broadcast service.
@@ -216,6 +216,10 @@ public class BroadcastService extends Thing {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Organization broadcaster;
     private BroadcastService parentService;
     private Organization broadcastAffiliateOf;
@@ -229,10 +233,11 @@ public class BroadcastService extends Thing {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected BroadcastService(Organization broadcaster, BroadcastService parentService, Organization broadcastAffiliateOf, String broadcastDisplayName, String timezone, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected BroadcastService(Organization broadcaster, BroadcastService parentService, Organization broadcastAffiliateOf, String broadcastDisplayName, String timezone, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myBroadcaster = broadcaster;
     myParentService = parentService;
     myBroadcastAffiliateOf = broadcastAffiliateOf;

@@ -45,7 +45,7 @@ public class Role extends Intangible {
      * Creates new {@link Role} instance.
      */
     public Role build() {
-      return new Role(startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Role(startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The start date and time of the item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).
@@ -180,6 +180,10 @@ public class Role extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private java.util.Date startDate;
     private String roleName;
     private String additionalType;
@@ -190,10 +194,11 @@ public class Role extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Role(java.util.Date startDate, String roleName, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Role(java.util.Date startDate, String roleName, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myStartDate = startDate;
     myRoleName = roleName;
   }

@@ -42,7 +42,7 @@ public class Property extends Intangible {
      * Creates new {@link Property} instance.
      */
     public Property build() {
-      return new Property(inverseOf, supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Property(inverseOf, supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Relates a property to a property that is its inverse. Inverse properties relate the same pairs of items to each other, but in reversed direction. For example, the 'alumni' and 'alumniOf' properties are inverseOf each other. Some properties don't have explicit inverses; in these situations RDFa and JSON-LD syntax for reverse properties can be used.
@@ -186,6 +186,10 @@ public class Property extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Property inverseOf;
     private EnumerationOrProperty supersededBy;
     private String additionalType;
@@ -196,10 +200,11 @@ public class Property extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Property(Property inverseOf, EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Property(Property inverseOf, EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myInverseOf = inverseOf;
     mySupersededBy = supersededBy;
   }

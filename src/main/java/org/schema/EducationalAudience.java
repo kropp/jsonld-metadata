@@ -37,7 +37,7 @@ public class EducationalAudience extends Audience {
      * Creates new {@link EducationalAudience} instance.
      */
     public EducationalAudience build() {
-      return new EducationalAudience(educationalRole, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new EducationalAudience(educationalRole, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * An educationalRole of an EducationalAudience.
@@ -179,6 +179,10 @@ public class EducationalAudience extends Audience {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String educationalRole;
     private String audienceType;
     private AdministrativeArea geographicArea;
@@ -190,10 +194,11 @@ public class EducationalAudience extends Audience {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected EducationalAudience(String educationalRole, String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected EducationalAudience(String educationalRole, String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myEducationalRole = educationalRole;
   }
   private String myEducationalRole;

@@ -37,7 +37,7 @@ public class MedicalRiskScore extends MedicalRiskEstimator {
      * Creates new {@link MedicalRiskScore} instance.
      */
     public MedicalRiskScore build() {
-      return new MedicalRiskScore(algorithm, estimatesRiskOf, includedRiskFactor, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalRiskScore(algorithm, estimatesRiskOf, includedRiskFactor, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The algorithm or rules to follow to compute the score.
@@ -221,6 +221,10 @@ public class MedicalRiskScore extends MedicalRiskEstimator {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String algorithm;
     private MedicalEntity estimatesRiskOf;
     private MedicalRiskFactor includedRiskFactor;
@@ -238,10 +242,11 @@ public class MedicalRiskScore extends MedicalRiskEstimator {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalRiskScore(String algorithm, MedicalEntity estimatesRiskOf, MedicalRiskFactor includedRiskFactor, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(estimatesRiskOf, includedRiskFactor, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalRiskScore(String algorithm, MedicalEntity estimatesRiskOf, MedicalRiskFactor includedRiskFactor, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(estimatesRiskOf, includedRiskFactor, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAlgorithm = algorithm;
   }
   private String myAlgorithm;

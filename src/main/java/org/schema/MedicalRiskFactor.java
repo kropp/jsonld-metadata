@@ -37,7 +37,7 @@ public class MedicalRiskFactor extends MedicalEntity {
      * Creates new {@link MedicalRiskFactor} instance.
      */
     public MedicalRiskFactor build() {
-      return new MedicalRiskFactor(increasesRiskOf, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalRiskFactor(increasesRiskOf, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The condition, complication, etc. influenced by this factor.
@@ -207,6 +207,10 @@ public class MedicalRiskFactor extends MedicalEntity {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private MedicalEntity increasesRiskOf;
     private MedicalCode code;
     private MedicalGuideline guideline;
@@ -222,10 +226,11 @@ public class MedicalRiskFactor extends MedicalEntity {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalRiskFactor(MedicalEntity increasesRiskOf, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalRiskFactor(MedicalEntity increasesRiskOf, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myIncreasesRiskOf = increasesRiskOf;
   }
   private MedicalEntity myIncreasesRiskOf;

@@ -49,7 +49,7 @@ public class DeliveryChargeSpecification extends PriceSpecification {
      * Creates new {@link DeliveryChargeSpecification} instance.
      */
     public DeliveryChargeSpecification build() {
-      return new DeliveryChargeSpecification(appliesToDeliveryMethod, eligibleRegion, ineligibleRegion, eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new DeliveryChargeSpecification(appliesToDeliveryMethod, eligibleRegion, ineligibleRegion, eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The delivery method(s) to which the delivery charge or payment charge specification applies.
@@ -337,6 +337,10 @@ public class DeliveryChargeSpecification extends PriceSpecification {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private DeliveryMethod appliesToDeliveryMethod;
     private GeoShapeOrPlaceOrString eligibleRegion;
     private GeoShapeOrPlaceOrString ineligibleRegion;
@@ -357,10 +361,11 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected DeliveryChargeSpecification(DeliveryMethod appliesToDeliveryMethod, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, NumberOrString price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected DeliveryChargeSpecification(DeliveryMethod appliesToDeliveryMethod, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, NumberOrString price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAppliesToDeliveryMethod = appliesToDeliveryMethod;
     myEligibleRegion = eligibleRegion;
     myIneligibleRegion = ineligibleRegion;

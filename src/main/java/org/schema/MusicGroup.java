@@ -48,7 +48,7 @@ public class MusicGroup extends PerformingGroup {
      * Creates new {@link MusicGroup} instance.
      */
     public MusicGroup build() {
-      return new MusicGroup(album, track, genre, address, aggregateRating, award, brand, contactPoint, department, duns, email, employee, event, faxNumber, founder, dissolutionDate, foundingDate, globalLocationNumber, hasPOS, isicV4, legalName, logo, makesOffer, member, memberOf, naics, numberOfEmployees, owns, review, seeks, subOrganization, taxID, telephone, vatID, foundingLocation, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MusicGroup(album, track, genre, address, aggregateRating, award, brand, contactPoint, department, duns, email, employee, event, faxNumber, founder, dissolutionDate, foundingDate, globalLocationNumber, hasPOS, isicV4, legalName, logo, makesOffer, member, memberOf, naics, numberOfEmployees, owns, review, seeks, subOrganization, taxID, telephone, vatID, foundingLocation, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A music album.
@@ -468,6 +468,10 @@ public class MusicGroup extends PerformingGroup {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private MusicAlbum album;
     private ItemListOrMusicRecording track;
     private String genre;
@@ -511,10 +515,11 @@ public class MusicGroup extends PerformingGroup {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MusicGroup(MusicAlbum album, ItemListOrMusicRecording track, String genre, PostalAddress address, AggregateRating aggregateRating, String award, BrandOrOrganization brand, ContactPoint contactPoint, Organization department, String duns, String email, Person employee, Event event, String faxNumber, Person founder, java.util.Date dissolutionDate, java.util.Date foundingDate, String globalLocationNumber, Place hasPOS, String isicV4, String legalName, ImageObjectOrString logo, Offer makesOffer, OrganizationOrPerson member, OrganizationOrProgramMembership memberOf, String naics, QuantitativeValue numberOfEmployees, OwnershipInfoOrProduct owns, Review review, Demand seeks, Organization subOrganization, String taxID, String telephone, String vatID, Place foundingLocation, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(address, aggregateRating, award, brand, contactPoint, department, duns, email, employee, event, faxNumber, founder, dissolutionDate, foundingDate, globalLocationNumber, hasPOS, isicV4, legalName, logo, makesOffer, member, memberOf, naics, numberOfEmployees, owns, review, seeks, subOrganization, taxID, telephone, vatID, foundingLocation, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MusicGroup(MusicAlbum album, ItemListOrMusicRecording track, String genre, PostalAddress address, AggregateRating aggregateRating, String award, BrandOrOrganization brand, ContactPoint contactPoint, Organization department, String duns, String email, Person employee, Event event, String faxNumber, Person founder, java.util.Date dissolutionDate, java.util.Date foundingDate, String globalLocationNumber, Place hasPOS, String isicV4, String legalName, ImageObjectOrString logo, Offer makesOffer, OrganizationOrPerson member, OrganizationOrProgramMembership memberOf, String naics, QuantitativeValue numberOfEmployees, OwnershipInfoOrProduct owns, Review review, Demand seeks, Organization subOrganization, String taxID, String telephone, String vatID, Place foundingLocation, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(address, aggregateRating, award, brand, contactPoint, department, duns, email, employee, event, faxNumber, founder, dissolutionDate, foundingDate, globalLocationNumber, hasPOS, isicV4, legalName, logo, makesOffer, member, memberOf, naics, numberOfEmployees, owns, review, seeks, subOrganization, taxID, telephone, vatID, foundingLocation, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAlbum = album;
     myTrack = track;
     myGenre = genre;

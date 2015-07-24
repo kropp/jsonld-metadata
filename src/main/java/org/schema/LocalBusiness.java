@@ -60,7 +60,7 @@ public class LocalBusiness extends Place {
      * Creates new {@link LocalBusiness} instance.
      */
     public LocalBusiness build() {
-      return new LocalBusiness(parentOrganization, currenciesAccepted, openingHours, paymentAccepted, priceRange, address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new LocalBusiness(parentOrganization, currenciesAccepted, openingHours, paymentAccepted, priceRange, address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The larger organization that this local business is a branch of, if any.
@@ -360,6 +360,10 @@ Note: Publishers should be aware that applications designed to use specific sche
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Organization parentOrganization;
     private String currenciesAccepted;
     private String openingHours;
@@ -388,10 +392,11 @@ Note: Publishers should be aware that applications designed to use specific sche
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected LocalBusiness(Organization parentOrganization, String currenciesAccepted, String openingHours, String paymentAccepted, String priceRange, PostalAddress address, AggregateRating aggregateRating, Place containedIn, Event event, String faxNumber, GeoCoordinatesOrGeoShape geo, String globalLocationNumber, String isicV4, ImageObjectOrString logo, MapOrString hasMap, OpeningHoursSpecification openingHoursSpecification, ImageObjectOrPhotograph photo, Review review, String telephone, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected LocalBusiness(Organization parentOrganization, String currenciesAccepted, String openingHours, String paymentAccepted, String priceRange, PostalAddress address, AggregateRating aggregateRating, Place containedIn, Event event, String faxNumber, GeoCoordinatesOrGeoShape geo, String globalLocationNumber, String isicV4, ImageObjectOrString logo, MapOrString hasMap, OpeningHoursSpecification openingHoursSpecification, ImageObjectOrPhotograph photo, Review review, String telephone, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myParentOrganization = parentOrganization;
     myCurrenciesAccepted = currenciesAccepted;
     myOpeningHours = openingHours;

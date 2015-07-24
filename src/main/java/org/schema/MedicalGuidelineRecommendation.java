@@ -37,7 +37,7 @@ public class MedicalGuidelineRecommendation extends MedicalGuideline {
      * Creates new {@link MedicalGuidelineRecommendation} instance.
      */
     public MedicalGuidelineRecommendation build() {
-      return new MedicalGuidelineRecommendation(recommendationStrength, evidenceLevel, evidenceOrigin, guidelineDate, guidelineSubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalGuidelineRecommendation(recommendationStrength, evidenceLevel, evidenceOrigin, guidelineDate, guidelineSubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Strength of the guideline's recommendation (e.g. 'class I').
@@ -235,6 +235,10 @@ public class MedicalGuidelineRecommendation extends MedicalGuideline {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String recommendationStrength;
     private MedicalEvidenceLevel evidenceLevel;
     private String evidenceOrigin;
@@ -254,10 +258,11 @@ public class MedicalGuidelineRecommendation extends MedicalGuideline {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalGuidelineRecommendation(String recommendationStrength, MedicalEvidenceLevel evidenceLevel, String evidenceOrigin, java.util.Date guidelineDate, MedicalEntity guidelineSubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(evidenceLevel, evidenceOrigin, guidelineDate, guidelineSubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalGuidelineRecommendation(String recommendationStrength, MedicalEvidenceLevel evidenceLevel, String evidenceOrigin, java.util.Date guidelineDate, MedicalEntity guidelineSubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(evidenceLevel, evidenceOrigin, guidelineDate, guidelineSubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myRecommendationStrength = recommendationStrength;
   }
   private String myRecommendationStrength;

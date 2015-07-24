@@ -48,7 +48,7 @@ public class AggregateRating extends Rating {
      * Creates new {@link AggregateRating} instance.
      */
     public AggregateRating build() {
-      return new AggregateRating(itemReviewed, ratingCount, reviewCount, bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new AggregateRating(itemReviewed, ratingCount, reviewCount, bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The item that is being reviewed/rated.
@@ -229,6 +229,10 @@ public class AggregateRating extends Rating {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Thing itemReviewed;
     private Integer ratingCount;
     private Integer reviewCount;
@@ -243,10 +247,11 @@ public class AggregateRating extends Rating {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected AggregateRating(Thing itemReviewed, Integer ratingCount, Integer reviewCount, NumberOrString bestRating, String ratingValue, NumberOrString worstRating, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected AggregateRating(Thing itemReviewed, Integer ratingCount, Integer reviewCount, NumberOrString bestRating, String ratingValue, NumberOrString worstRating, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myItemReviewed = itemReviewed;
     myRatingCount = ratingCount;
     myReviewCount = reviewCount;

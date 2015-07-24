@@ -78,7 +78,7 @@ public class ServiceChannel extends Intangible {
      * Creates new {@link ServiceChannel} instance.
      */
     public ServiceChannel build() {
-      return new ServiceChannel(availableLanguage, processingTime, providesService, serviceLocation, servicePhone, servicePostalAddress, serviceSmsNumber, serviceUrl, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ServiceChannel(availableLanguage, processingTime, providesService, serviceLocation, servicePhone, servicePostalAddress, serviceSmsNumber, serviceUrl, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A language someone may use with the item.
@@ -255,6 +255,10 @@ public class ServiceChannel extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Language availableLanguage;
     private Duration processingTime;
     private Service providesService;
@@ -271,10 +275,11 @@ public class ServiceChannel extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ServiceChannel(Language availableLanguage, Duration processingTime, Service providesService, Place serviceLocation, ContactPoint servicePhone, PostalAddress servicePostalAddress, ContactPoint serviceSmsNumber, String serviceUrl, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ServiceChannel(Language availableLanguage, Duration processingTime, Service providesService, Place serviceLocation, ContactPoint servicePhone, PostalAddress servicePostalAddress, ContactPoint serviceSmsNumber, String serviceUrl, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAvailableLanguage = availableLanguage;
     myProcessingTime = processingTime;
     myProvidesService = providesService;

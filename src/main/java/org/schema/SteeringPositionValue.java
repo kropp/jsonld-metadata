@@ -31,7 +31,7 @@ public class SteeringPositionValue extends QualitativeValue {
      * Creates new {@link SteeringPositionValue} instance.
      */
     public SteeringPositionValue build() {
-      return new SteeringPositionValue(equal, greater, greaterOrEqual, lesser, lesserOrEqual, nonEqual, valueReference, additionalProperty, supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new SteeringPositionValue(equal, greater, greaterOrEqual, lesser, lesserOrEqual, nonEqual, valueReference, additionalProperty, supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is equal to the object.
@@ -260,6 +260,10 @@ Note: Publishers should be aware that applications designed to use specific sche
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private QualitativeValue equal;
     private QualitativeValue greater;
     private QualitativeValue greaterOrEqual;
@@ -277,9 +281,10 @@ Note: Publishers should be aware that applications designed to use specific sche
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected SteeringPositionValue(QualitativeValue equal, QualitativeValue greater, QualitativeValue greaterOrEqual, QualitativeValue lesser, QualitativeValue lesserOrEqual, QualitativeValue nonEqual, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, PropertyValue additionalProperty, EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(equal, greater, greaterOrEqual, lesser, lesserOrEqual, nonEqual, valueReference, additionalProperty, supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected SteeringPositionValue(QualitativeValue equal, QualitativeValue greater, QualitativeValue greaterOrEqual, QualitativeValue lesser, QualitativeValue lesserOrEqual, QualitativeValue nonEqual, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, PropertyValue additionalProperty, EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(equal, greater, greaterOrEqual, lesser, lesserOrEqual, nonEqual, valueReference, additionalProperty, supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

@@ -42,7 +42,7 @@ public class PublicationEvent extends Event {
      * Creates new {@link PublicationEvent} instance.
      */
     public PublicationEvent build() {
-      return new PublicationEvent(isAccessibleForFree, publishedOn, aggregateRating, organizer, attendee, doorTime, duration, endDate, eventStatus, inLanguage, offers, performer, previousStartDate, recordedIn, review, startDate, subEvent, superEvent, typicalAgeRange, workPerformed, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new PublicationEvent(isAccessibleForFree, publishedOn, aggregateRating, organizer, attendee, doorTime, duration, endDate, eventStatus, inLanguage, offers, performer, previousStartDate, recordedIn, review, startDate, subEvent, superEvent, typicalAgeRange, workPerformed, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A flag to signal that the publication is accessible for free.
@@ -339,6 +339,10 @@ public class PublicationEvent extends Event {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Boolean isAccessibleForFree;
     private BroadcastService publishedOn;
     private AggregateRating aggregateRating;
@@ -367,10 +371,11 @@ public class PublicationEvent extends Event {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected PublicationEvent(Boolean isAccessibleForFree, BroadcastService publishedOn, AggregateRating aggregateRating, OrganizationOrPerson organizer, OrganizationOrPerson attendee, java.util.Date doorTime, Duration duration, java.util.Date endDate, EventStatusType eventStatus, LanguageOrString inLanguage, Offer offers, OrganizationOrPerson performer, java.util.Date previousStartDate, CreativeWork recordedIn, Review review, java.util.Date startDate, Event subEvent, Event superEvent, String typicalAgeRange, CreativeWork workPerformed, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(aggregateRating, organizer, attendee, doorTime, duration, endDate, eventStatus, inLanguage, offers, performer, previousStartDate, recordedIn, review, startDate, subEvent, superEvent, typicalAgeRange, workPerformed, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected PublicationEvent(Boolean isAccessibleForFree, BroadcastService publishedOn, AggregateRating aggregateRating, OrganizationOrPerson organizer, OrganizationOrPerson attendee, java.util.Date doorTime, Duration duration, java.util.Date endDate, EventStatusType eventStatus, LanguageOrString inLanguage, Offer offers, OrganizationOrPerson performer, java.util.Date previousStartDate, CreativeWork recordedIn, Review review, java.util.Date startDate, Event subEvent, Event superEvent, String typicalAgeRange, CreativeWork workPerformed, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(aggregateRating, organizer, attendee, doorTime, duration, endDate, eventStatus, inLanguage, offers, performer, previousStartDate, recordedIn, review, startDate, subEvent, superEvent, typicalAgeRange, workPerformed, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myIsAccessibleForFree = isAccessibleForFree;
     myPublishedOn = publishedOn;
   }

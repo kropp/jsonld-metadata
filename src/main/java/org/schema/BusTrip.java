@@ -74,7 +74,7 @@ public class BusTrip extends Intangible {
      * Creates new {@link BusTrip} instance.
      */
     public BusTrip build() {
-      return new BusTrip(provider, departureTime, arrivalTime, busNumber, busName, departureBusStop, arrivalBusStop, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new BusTrip(provider, departureTime, arrivalTime, busNumber, busName, departureBusStop, arrivalBusStop, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
@@ -271,6 +271,10 @@ public class BusTrip extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private OrganizationOrPerson provider;
     private java.util.Date departureTime;
     private java.util.Date arrivalTime;
@@ -286,10 +290,11 @@ public class BusTrip extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected BusTrip(OrganizationOrPerson provider, java.util.Date departureTime, java.util.Date arrivalTime, String busNumber, String busName, BusStationOrBusStop departureBusStop, BusStationOrBusStop arrivalBusStop, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected BusTrip(OrganizationOrPerson provider, java.util.Date departureTime, java.util.Date arrivalTime, String busNumber, String busName, BusStationOrBusStop departureBusStop, BusStationOrBusStop arrivalBusStop, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myProvider = provider;
     myDepartureTime = departureTime;
     myArrivalTime = arrivalTime;

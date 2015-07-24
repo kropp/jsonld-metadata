@@ -316,7 +316,7 @@ public class Person extends Thing implements Competitor {
      * Creates new {@link Person} instance.
      */
     public Person build() {
-      return new Person(additionalName, address, affiliation, alumniOf, award, birthDate, brand, children, colleague, contactPoint, deathDate, duns, email, familyName, faxNumber, follows, gender, givenName, globalLocationNumber, hasPOS, height, homeLocation, honorificPrefix, honorificSuffix, isicV4, jobTitle, knows, makesOffer, memberOf, naics, nationality, netWorth, owns, parent, performerIn, relatedTo, seeks, sibling, spouse, taxID, telephone, vatID, weight, workLocation, worksFor, birthPlace, deathPlace, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Person(additionalName, address, affiliation, alumniOf, award, birthDate, brand, children, colleague, contactPoint, deathDate, duns, email, familyName, faxNumber, follows, gender, givenName, globalLocationNumber, hasPOS, height, homeLocation, honorificPrefix, honorificSuffix, isicV4, jobTitle, knows, makesOffer, memberOf, naics, nationality, netWorth, owns, parent, performerIn, relatedTo, seeks, sibling, spouse, taxID, telephone, vatID, weight, workLocation, worksFor, birthPlace, deathPlace, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * An additional name for a Person, can be used for a middle name.
@@ -820,6 +820,10 @@ public class Person extends Thing implements Competitor {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String additionalName;
     private PostalAddress address;
     private Organization affiliation;
@@ -875,10 +879,11 @@ public class Person extends Thing implements Competitor {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Person(String additionalName, PostalAddress address, Organization affiliation, EducationalOrganization alumniOf, String award, java.util.Date birthDate, BrandOrOrganization brand, Person children, Person colleague, ContactPoint contactPoint, java.util.Date deathDate, String duns, String email, String familyName, String faxNumber, Person follows, String gender, String givenName, String globalLocationNumber, Place hasPOS, DistanceOrQuantitativeValue height, ContactPointOrPlace homeLocation, String honorificPrefix, String honorificSuffix, String isicV4, String jobTitle, Person knows, Offer makesOffer, OrganizationOrProgramMembership memberOf, String naics, Country nationality, PriceSpecification netWorth, OwnershipInfoOrProduct owns, Person parent, Event performerIn, Person relatedTo, Demand seeks, Person sibling, Person spouse, String taxID, String telephone, String vatID, QuantitativeValue weight, ContactPointOrPlace workLocation, Organization worksFor, Place birthPlace, Place deathPlace, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Person(String additionalName, PostalAddress address, Organization affiliation, EducationalOrganization alumniOf, String award, java.util.Date birthDate, BrandOrOrganization brand, Person children, Person colleague, ContactPoint contactPoint, java.util.Date deathDate, String duns, String email, String familyName, String faxNumber, Person follows, String gender, String givenName, String globalLocationNumber, Place hasPOS, DistanceOrQuantitativeValue height, ContactPointOrPlace homeLocation, String honorificPrefix, String honorificSuffix, String isicV4, String jobTitle, Person knows, Offer makesOffer, OrganizationOrProgramMembership memberOf, String naics, Country nationality, PriceSpecification netWorth, OwnershipInfoOrProduct owns, Person parent, Event performerIn, Person relatedTo, Demand seeks, Person sibling, Person spouse, String taxID, String telephone, String vatID, QuantitativeValue weight, ContactPointOrPlace workLocation, Organization worksFor, Place birthPlace, Place deathPlace, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAdditionalName = additionalName;
     myAddress = address;
     myAffiliation = affiliation;

@@ -37,7 +37,7 @@ public class DrugLegalStatus extends MedicalIntangible {
      * Creates new {@link DrugLegalStatus} instance.
      */
     public DrugLegalStatus build() {
-      return new DrugLegalStatus(applicableLocation, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new DrugLegalStatus(applicableLocation, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The location in which the status applies.
@@ -207,6 +207,10 @@ public class DrugLegalStatus extends MedicalIntangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private AdministrativeArea applicableLocation;
     private MedicalCode code;
     private MedicalGuideline guideline;
@@ -222,10 +226,11 @@ public class DrugLegalStatus extends MedicalIntangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected DrugLegalStatus(AdministrativeArea applicableLocation, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected DrugLegalStatus(AdministrativeArea applicableLocation, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myApplicableLocation = applicableLocation;
   }
   private AdministrativeArea myApplicableLocation;

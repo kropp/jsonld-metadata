@@ -74,7 +74,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
      * Creates new {@link PropertyValue} instance.
      */
     public PropertyValue build() {
-      return new PropertyValue(minValue, unitCode, value, valueReference, unitText, propertyID, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new PropertyValue(minValue, unitCode, value, valueReference, unitText, propertyID, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The lower value of some characteristic or property.
@@ -299,6 +299,10 @@ Standards bodies should promote a standard prefix for the identifiers of propert
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Number minValue;
     private String unitCode;
     private BooleanOrNumberOrStringOrStructuredValue value;
@@ -313,10 +317,11 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected PropertyValue(Number minValue, String unitCode, BooleanOrNumberOrStringOrStructuredValue value, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, String unitText, String propertyID, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected PropertyValue(Number minValue, String unitCode, BooleanOrNumberOrStringOrStructuredValue value, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, String unitText, String propertyID, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myMinValue = minValue;
     myUnitCode = unitCode;
     myValue = value;

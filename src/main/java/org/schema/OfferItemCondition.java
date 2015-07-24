@@ -30,7 +30,7 @@ public class OfferItemCondition extends Enumeration {
      * Creates new {@link OfferItemCondition} instance.
      */
     public OfferItemCondition build() {
-      return new OfferItemCondition(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new OfferItemCondition(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
@@ -167,6 +167,10 @@ public class OfferItemCondition extends Enumeration {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private EnumerationOrProperty supersededBy;
     private String additionalType;
     private String alternateName;
@@ -176,9 +180,10 @@ public class OfferItemCondition extends Enumeration {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected OfferItemCondition(EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected OfferItemCondition(EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

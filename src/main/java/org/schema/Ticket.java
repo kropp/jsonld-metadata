@@ -79,7 +79,7 @@ public class Ticket extends Intangible {
      * Creates new {@link Ticket} instance.
      */
     public Ticket build() {
-      return new Ticket(underName, totalPrice, priceCurrency, issuedBy, dateIssued, ticketedSeat, ticketNumber, ticketToken, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Ticket(underName, totalPrice, priceCurrency, issuedBy, dateIssued, ticketedSeat, ticketNumber, ticketToken, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The person or organization the reservation or ticket is for.
@@ -282,6 +282,10 @@ public class Ticket extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private OrganizationOrPerson underName;
     private NumberOrPriceSpecificationOrString totalPrice;
     private String priceCurrency;
@@ -298,10 +302,11 @@ public class Ticket extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Ticket(OrganizationOrPerson underName, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, Organization issuedBy, java.util.Date dateIssued, Seat ticketedSeat, String ticketNumber, String ticketToken, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Ticket(OrganizationOrPerson underName, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, Organization issuedBy, java.util.Date dateIssued, Seat ticketedSeat, String ticketNumber, String ticketToken, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myUnderName = underName;
     myTotalPrice = totalPrice;
     myPriceCurrency = priceCurrency;

@@ -48,7 +48,7 @@ public class BusinessAudience extends Audience {
      * Creates new {@link BusinessAudience} instance.
      */
     public BusinessAudience build() {
-      return new BusinessAudience(numberOfEmployees, yearlyRevenue, yearsInOperation, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new BusinessAudience(numberOfEmployees, yearlyRevenue, yearsInOperation, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The number of employees in an organization e.g. business.
@@ -204,6 +204,10 @@ public class BusinessAudience extends Audience {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private QuantitativeValue numberOfEmployees;
     private QuantitativeValue yearlyRevenue;
     private QuantitativeValue yearsInOperation;
@@ -217,10 +221,11 @@ public class BusinessAudience extends Audience {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected BusinessAudience(QuantitativeValue numberOfEmployees, QuantitativeValue yearlyRevenue, QuantitativeValue yearsInOperation, String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected BusinessAudience(QuantitativeValue numberOfEmployees, QuantitativeValue yearlyRevenue, QuantitativeValue yearsInOperation, String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myNumberOfEmployees = numberOfEmployees;
     myYearlyRevenue = yearlyRevenue;
     myYearsInOperation = yearsInOperation;

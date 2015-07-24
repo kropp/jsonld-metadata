@@ -103,7 +103,7 @@ public class DietarySupplement extends MedicalTherapy {
      * Creates new {@link DietarySupplement} instance.
      */
     public DietarySupplement build() {
-      return new DietarySupplement(activeIngredient, background, dosageForm, isProprietary, legalStatus, manufacturer, maximumIntake, mechanismOfAction, nonProprietaryName, recommendedIntake, safetyConsideration, targetPopulation, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new DietarySupplement(activeIngredient, background, dosageForm, isProprietary, legalStatus, manufacturer, maximumIntake, mechanismOfAction, nonProprietaryName, recommendedIntake, safetyConsideration, targetPopulation, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * An active ingredient, typically chemical compounds and/or biologic substances.
@@ -385,6 +385,10 @@ public class DietarySupplement extends MedicalTherapy {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String activeIngredient;
     private String background;
     private String dosageForm;
@@ -416,10 +420,11 @@ public class DietarySupplement extends MedicalTherapy {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected DietarySupplement(String activeIngredient, String background, String dosageForm, Boolean isProprietary, DrugLegalStatus legalStatus, Organization manufacturer, MaximumDoseSchedule maximumIntake, String mechanismOfAction, String nonProprietaryName, RecommendedDoseSchedule recommendedIntake, String safetyConsideration, String targetPopulation, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected DietarySupplement(String activeIngredient, String background, String dosageForm, Boolean isProprietary, DrugLegalStatus legalStatus, Organization manufacturer, MaximumDoseSchedule maximumIntake, String mechanismOfAction, String nonProprietaryName, RecommendedDoseSchedule recommendedIntake, String safetyConsideration, String targetPopulation, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myActiveIngredient = activeIngredient;
     myBackground = background;
     myDosageForm = dosageForm;

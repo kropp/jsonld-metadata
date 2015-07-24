@@ -139,7 +139,7 @@ public class JobPosting extends Intangible {
      * Creates new {@link JobPosting} instance.
      */
     public JobPosting build() {
-      return new JobPosting(baseSalary, jobBenefits, datePosted, educationRequirements, employmentType, experienceRequirements, hiringOrganization, incentiveCompensation, industry, jobLocation, occupationalCategory, qualifications, responsibilities, salaryCurrency, skills, specialCommitments, title, workHours, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new JobPosting(baseSalary, jobBenefits, datePosted, educationRequirements, employmentType, experienceRequirements, hiringOrganization, incentiveCompensation, industry, jobLocation, occupationalCategory, qualifications, responsibilities, salaryCurrency, skills, specialCommitments, title, workHours, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The base salary of the job or of an employee in an EmployeeRole.
@@ -395,6 +395,10 @@ public class JobPosting extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private NumberOrPriceSpecification baseSalary;
     private String jobBenefits;
     private java.util.Date datePosted;
@@ -421,10 +425,11 @@ public class JobPosting extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected JobPosting(NumberOrPriceSpecification baseSalary, String jobBenefits, java.util.Date datePosted, String educationRequirements, String employmentType, String experienceRequirements, Organization hiringOrganization, String incentiveCompensation, String industry, Place jobLocation, String occupationalCategory, String qualifications, String responsibilities, String salaryCurrency, String skills, String specialCommitments, String title, String workHours, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected JobPosting(NumberOrPriceSpecification baseSalary, String jobBenefits, java.util.Date datePosted, String educationRequirements, String employmentType, String experienceRequirements, Organization hiringOrganization, String incentiveCompensation, String industry, Place jobLocation, String occupationalCategory, String qualifications, String responsibilities, String salaryCurrency, String skills, String specialCommitments, String title, String workHours, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myBaseSalary = baseSalary;
     myJobBenefits = jobBenefits;
     myDatePosted = datePosted;

@@ -96,7 +96,7 @@ public class ExerciseAction extends PlayAction {
      * Creates new {@link ExerciseAction} instance.
      */
     public ExerciseAction build() {
-      return new ExerciseAction(exerciseCourse, exerciseRelatedDiet, distance, exercisePlan, exerciseType, fromLocation, opponent, sportsActivityLocation, sportsEvent, sportsTeam, toLocation, audience, event, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ExerciseAction(exerciseCourse, exerciseRelatedDiet, distance, exercisePlan, exerciseType, fromLocation, opponent, sportsActivityLocation, sportsEvent, sportsTeam, toLocation, audience, event, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A sub property of location. The course where this action was taken.
@@ -363,6 +363,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Place exerciseCourse;
     private Diet exerciseRelatedDiet;
     private Distance distance;
@@ -390,10 +394,11 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ExerciseAction(Place exerciseCourse, Diet exerciseRelatedDiet, Distance distance, ExercisePlan exercisePlan, String exerciseType, Place fromLocation, Person opponent, SportsActivityLocation sportsActivityLocation, SportsEvent sportsEvent, SportsTeam sportsTeam, Place toLocation, Audience audience, Event event, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(audience, event, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ExerciseAction(Place exerciseCourse, Diet exerciseRelatedDiet, Distance distance, ExercisePlan exercisePlan, String exerciseType, Place fromLocation, Person opponent, SportsActivityLocation sportsActivityLocation, SportsEvent sportsEvent, SportsTeam sportsTeam, Place toLocation, Audience audience, Event event, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(audience, event, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myExerciseCourse = exerciseCourse;
     myExerciseRelatedDiet = exerciseRelatedDiet;
     myDistance = distance;

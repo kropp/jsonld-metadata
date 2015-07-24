@@ -30,7 +30,7 @@ public class TaxiService extends Service {
      * Creates new {@link TaxiService} instance.
      */
     public TaxiService build() {
-      return new TaxiService(aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new TaxiService(aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
@@ -209,6 +209,10 @@ public class TaxiService extends Service {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private AggregateRating aggregateRating;
     private ServiceChannel availableChannel;
     private Thing serviceOutput;
@@ -224,9 +228,10 @@ public class TaxiService extends Service {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected TaxiService(AggregateRating aggregateRating, ServiceChannel availableChannel, Thing serviceOutput, Review review, AdministrativeArea serviceArea, String serviceType, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected TaxiService(AggregateRating aggregateRating, ServiceChannel availableChannel, Thing serviceOutput, Review review, AdministrativeArea serviceArea, String serviceType, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

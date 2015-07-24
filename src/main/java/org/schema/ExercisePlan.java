@@ -79,7 +79,7 @@ public class ExercisePlan extends PhysicalActivity {
      * Creates new {@link ExercisePlan} instance.
      */
     public ExercisePlan build() {
-      return new ExercisePlan(activityDuration, activityFrequency, additionalVariable, exerciseType, intensity, repetitions, restPeriods, workload, associatedAnatomy, category, epidemiology, pathophysiology, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ExercisePlan(activityDuration, activityFrequency, additionalVariable, exerciseType, intensity, repetitions, restPeriods, workload, associatedAnatomy, category, epidemiology, pathophysiology, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Length of time to engage in the activity.
@@ -395,6 +395,10 @@ public class ExercisePlan extends PhysicalActivity {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Duration activityDuration;
     private String activityFrequency;
     private String additionalVariable;
@@ -426,10 +430,11 @@ public class ExercisePlan extends PhysicalActivity {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ExercisePlan(Duration activityDuration, String activityFrequency, String additionalVariable, String exerciseType, String intensity, Number repetitions, String restPeriods, Energy workload, AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, PhysicalActivityCategoryOrStringOrThing category, String epidemiology, String pathophysiology, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(associatedAnatomy, category, epidemiology, pathophysiology, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ExercisePlan(Duration activityDuration, String activityFrequency, String additionalVariable, String exerciseType, String intensity, Number repetitions, String restPeriods, Energy workload, AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, PhysicalActivityCategoryOrStringOrThing category, String epidemiology, String pathophysiology, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(associatedAnatomy, category, epidemiology, pathophysiology, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myActivityDuration = activityDuration;
     myActivityFrequency = activityFrequency;
     myAdditionalVariable = additionalVariable;

@@ -54,7 +54,7 @@ public class DoseSchedule extends MedicalIntangible {
      * Creates new {@link DoseSchedule} instance.
      */
     public DoseSchedule build() {
-      return new DoseSchedule(doseUnit, doseValue, frequency, targetPopulation, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new DoseSchedule(doseUnit, doseValue, frequency, targetPopulation, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The unit of the dose, e.g. 'mg'.
@@ -245,6 +245,10 @@ public class DoseSchedule extends MedicalIntangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String doseUnit;
     private Number doseValue;
     private String frequency;
@@ -263,10 +267,11 @@ public class DoseSchedule extends MedicalIntangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected DoseSchedule(String doseUnit, Number doseValue, String frequency, String targetPopulation, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected DoseSchedule(String doseUnit, Number doseValue, String frequency, String targetPopulation, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myDoseUnit = doseUnit;
     myDoseValue = doseValue;
     myFrequency = frequency;

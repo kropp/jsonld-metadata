@@ -66,7 +66,7 @@ public class DrugCost extends MedicalIntangible {
      * Creates new {@link DrugCost} instance.
      */
     public DrugCost build() {
-      return new DrugCost(applicableLocation, costCategory, costCurrency, costOrigin, costPerUnit, drugUnit, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new DrugCost(applicableLocation, costCategory, costCurrency, costOrigin, costPerUnit, drugUnit, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The location in which the status applies.
@@ -280,6 +280,10 @@ public class DrugCost extends MedicalIntangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private AdministrativeArea applicableLocation;
     private DrugCostCategory costCategory;
     private String costCurrency;
@@ -300,10 +304,11 @@ public class DrugCost extends MedicalIntangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected DrugCost(AdministrativeArea applicableLocation, DrugCostCategory costCategory, String costCurrency, String costOrigin, NumberOrString costPerUnit, String drugUnit, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected DrugCost(AdministrativeArea applicableLocation, DrugCostCategory costCategory, String costCurrency, String costOrigin, NumberOrString costPerUnit, String drugUnit, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myApplicableLocation = applicableLocation;
     myCostCategory = costCategory;
     myCostCurrency = costCurrency;

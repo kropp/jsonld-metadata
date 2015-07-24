@@ -61,7 +61,7 @@ public class AnatomicalSystem extends MedicalEntity {
      * Creates new {@link AnatomicalSystem} instance.
      */
     public AnatomicalSystem build() {
-      return new AnatomicalSystem(associatedPathophysiology, comprisedOf, relatedCondition, relatedStructure, relatedTherapy, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new AnatomicalSystem(associatedPathophysiology, comprisedOf, relatedCondition, relatedStructure, relatedTherapy, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
@@ -268,6 +268,10 @@ public class AnatomicalSystem extends MedicalEntity {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String associatedPathophysiology;
     private AnatomicalStructureOrAnatomicalSystem comprisedOf;
     private MedicalCondition relatedCondition;
@@ -287,10 +291,11 @@ public class AnatomicalSystem extends MedicalEntity {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected AnatomicalSystem(String associatedPathophysiology, AnatomicalStructureOrAnatomicalSystem comprisedOf, MedicalCondition relatedCondition, AnatomicalStructure relatedStructure, MedicalTherapy relatedTherapy, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected AnatomicalSystem(String associatedPathophysiology, AnatomicalStructureOrAnatomicalSystem comprisedOf, MedicalCondition relatedCondition, AnatomicalStructure relatedStructure, MedicalTherapy relatedTherapy, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAssociatedPathophysiology = associatedPathophysiology;
     myComprisedOf = comprisedOf;
     myRelatedCondition = relatedCondition;

@@ -36,7 +36,7 @@ public class ReturnAction extends TransferAction {
      * Creates new {@link ReturnAction} instance.
      */
     public ReturnAction build() {
-      return new ReturnAction(recipient, fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ReturnAction(recipient, fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
@@ -250,6 +250,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private AudienceOrOrganizationOrPerson recipient;
     private Place fromLocation;
     private Place toLocation;
@@ -267,10 +271,11 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ReturnAction(AudienceOrOrganizationOrPerson recipient, Place fromLocation, Place toLocation, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ReturnAction(AudienceOrOrganizationOrPerson recipient, Place fromLocation, Place toLocation, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myRecipient = recipient;
   }
   private AudienceOrOrganizationOrPerson myRecipient;

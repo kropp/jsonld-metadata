@@ -49,7 +49,7 @@ public class Brand extends Intangible {
      * Creates new {@link Brand} instance.
      */
     public Brand build() {
-      return new Brand(aggregateRating, logo, review, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Brand(aggregateRating, logo, review, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
@@ -200,6 +200,10 @@ public class Brand extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private AggregateRating aggregateRating;
     private ImageObjectOrString logo;
     private Review review;
@@ -211,10 +215,11 @@ public class Brand extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Brand(AggregateRating aggregateRating, ImageObjectOrString logo, Review review, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Brand(AggregateRating aggregateRating, ImageObjectOrString logo, Review review, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAggregateRating = aggregateRating;
     myLogo = logo;
     myReview = review;

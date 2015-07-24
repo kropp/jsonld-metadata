@@ -116,7 +116,7 @@ public class Invoice extends Intangible {
      * Creates new {@link Invoice} instance.
      */
     public Invoice build() {
-      return new Invoice(confirmationNumber, customer, paymentDue, paymentMethod, paymentMethodId, provider, broker, totalPaymentDue, minimumPaymentDue, accountId, scheduledPaymentDate, billingPeriod, paymentStatus, referencesOrder, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Invoice(confirmationNumber, customer, paymentDue, paymentMethod, paymentMethodId, provider, broker, totalPaymentDue, minimumPaymentDue, accountId, scheduledPaymentDate, billingPeriod, paymentStatus, referencesOrder, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A number that confirms the given order or payment has been received.
@@ -362,6 +362,10 @@ public class Invoice extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String confirmationNumber;
     private OrganizationOrPerson customer;
     private java.util.Date paymentDue;
@@ -384,10 +388,11 @@ public class Invoice extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Invoice(String confirmationNumber, OrganizationOrPerson customer, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, OrganizationOrPerson provider, OrganizationOrPerson broker, PriceSpecification totalPaymentDue, PriceSpecification minimumPaymentDue, String accountId, java.util.Date scheduledPaymentDate, Duration billingPeriod, String paymentStatus, Order referencesOrder, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Invoice(String confirmationNumber, OrganizationOrPerson customer, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, OrganizationOrPerson provider, OrganizationOrPerson broker, PriceSpecification totalPaymentDue, PriceSpecification minimumPaymentDue, String accountId, java.util.Date scheduledPaymentDate, Duration billingPeriod, String paymentStatus, Order referencesOrder, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myConfirmationNumber = confirmationNumber;
     myCustomer = customer;
     myPaymentDue = paymentDue;

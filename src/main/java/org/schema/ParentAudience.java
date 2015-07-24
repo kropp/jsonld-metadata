@@ -42,7 +42,7 @@ public class ParentAudience extends PeopleAudience {
      * Creates new {@link ParentAudience} instance.
      */
     public ParentAudience build() {
-      return new ParentAudience(childMaxAge, childMinAge, healthCondition, requiredGender, requiredMaxAge, requiredMinAge, suggestedGender, suggestedMaxAge, suggestedMinAge, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ParentAudience(childMaxAge, childMinAge, healthCondition, requiredGender, requiredMaxAge, requiredMinAge, suggestedGender, suggestedMaxAge, suggestedMinAge, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Maximal age of the child.
@@ -240,6 +240,10 @@ public class ParentAudience extends PeopleAudience {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Number childMaxAge;
     private Number childMinAge;
     private MedicalCondition healthCondition;
@@ -259,10 +263,11 @@ public class ParentAudience extends PeopleAudience {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ParentAudience(Number childMaxAge, Number childMinAge, MedicalCondition healthCondition, String requiredGender, Integer requiredMaxAge, Integer requiredMinAge, String suggestedGender, Number suggestedMaxAge, Number suggestedMinAge, String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(healthCondition, requiredGender, requiredMaxAge, requiredMinAge, suggestedGender, suggestedMaxAge, suggestedMinAge, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ParentAudience(Number childMaxAge, Number childMinAge, MedicalCondition healthCondition, String requiredGender, Integer requiredMaxAge, Integer requiredMinAge, String suggestedGender, Number suggestedMaxAge, Number suggestedMinAge, String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(healthCondition, requiredGender, requiredMaxAge, requiredMinAge, suggestedGender, suggestedMaxAge, suggestedMinAge, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myChildMaxAge = childMaxAge;
     myChildMinAge = childMinAge;
   }

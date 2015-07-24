@@ -66,7 +66,7 @@ public class PostalAddress extends ContactPoint {
      * Creates new {@link PostalAddress} instance.
      */
     public PostalAddress build() {
-      return new PostalAddress(addressCountry, addressLocality, addressRegion, postalCode, postOfficeBoxNumber, streetAddress, areaServed, availableLanguage, contactOption, contactType, email, faxNumber, hoursAvailable, productSupported, telephone, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new PostalAddress(addressCountry, addressLocality, addressRegion, postalCode, postOfficeBoxNumber, streetAddress, areaServed, availableLanguage, contactOption, contactType, email, faxNumber, hoursAvailable, productSupported, telephone, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The country. For example, USA. You can also provide the two-letter <a href='http://en.wikipedia.org/wiki/ISO_3166-1'>ISO 3166-1 alpha-2 country code</a>.
@@ -301,6 +301,10 @@ public class PostalAddress extends ContactPoint {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Country addressCountry;
     private String addressLocality;
     private String addressRegion;
@@ -324,10 +328,11 @@ public class PostalAddress extends ContactPoint {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected PostalAddress(Country addressCountry, String addressLocality, String addressRegion, String postalCode, String postOfficeBoxNumber, String streetAddress, AdministrativeArea areaServed, Language availableLanguage, ContactPointOption contactOption, String contactType, String email, String faxNumber, OpeningHoursSpecification hoursAvailable, ProductOrString productSupported, String telephone, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(areaServed, availableLanguage, contactOption, contactType, email, faxNumber, hoursAvailable, productSupported, telephone, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected PostalAddress(Country addressCountry, String addressLocality, String addressRegion, String postalCode, String postOfficeBoxNumber, String streetAddress, AdministrativeArea areaServed, Language availableLanguage, ContactPointOption contactOption, String contactType, String email, String faxNumber, OpeningHoursSpecification hoursAvailable, ProductOrString productSupported, String telephone, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(areaServed, availableLanguage, contactOption, contactType, email, faxNumber, hoursAvailable, productSupported, telephone, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAddressCountry = addressCountry;
     myAddressLocality = addressLocality;
     myAddressRegion = addressRegion;

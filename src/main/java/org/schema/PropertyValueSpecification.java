@@ -91,7 +91,7 @@ public class PropertyValueSpecification extends Intangible {
      * Creates new {@link PropertyValueSpecification} instance.
      */
     public PropertyValueSpecification build() {
-      return new PropertyValueSpecification(minValue, valueName, valueRequired, defaultValue, readonlyValue, multipleValues, valueMinLength, valueMaxLength, valuePattern, stepValue, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new PropertyValueSpecification(minValue, valueName, valueRequired, defaultValue, readonlyValue, multipleValues, valueMinLength, valueMaxLength, valuePattern, stepValue, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The lower value of some characteristic or property.
@@ -291,6 +291,10 @@ public class PropertyValueSpecification extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Number minValue;
     private String valueName;
     private Boolean valueRequired;
@@ -309,10 +313,11 @@ public class PropertyValueSpecification extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected PropertyValueSpecification(Number minValue, String valueName, Boolean valueRequired, StringOrThing defaultValue, Boolean readonlyValue, Boolean multipleValues, Number valueMinLength, Number valueMaxLength, String valuePattern, Number stepValue, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected PropertyValueSpecification(Number minValue, String valueName, Boolean valueRequired, StringOrThing defaultValue, Boolean readonlyValue, Boolean multipleValues, Number valueMinLength, Number valueMaxLength, String valuePattern, Number stepValue, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myMinValue = minValue;
     myValueName = valueName;
     myValueRequired = valueRequired;

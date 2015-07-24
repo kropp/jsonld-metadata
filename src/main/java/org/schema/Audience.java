@@ -42,7 +42,7 @@ public class Audience extends Intangible {
      * Creates new {@link Audience} instance.
      */
     public Audience build() {
-      return new Audience(audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Audience(audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).
@@ -177,6 +177,10 @@ public class Audience extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String audienceType;
     private AdministrativeArea geographicArea;
     private String additionalType;
@@ -187,10 +191,11 @@ public class Audience extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Audience(String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Audience(String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAudienceType = audienceType;
     myGeographicArea = geographicArea;
   }

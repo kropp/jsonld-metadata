@@ -61,7 +61,7 @@ public class EntryPoint extends Intangible {
      * Creates new {@link EntryPoint} instance.
      */
     public EntryPoint build() {
-      return new EntryPoint(httpMethod, encodingType, contentType, actionApplication, urlTemplate, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new EntryPoint(httpMethod, encodingType, contentType, actionApplication, urlTemplate, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * An HTTP method that specifies the appropriate HTTP method for a request to an HTTP EntryPoint. Values are capitalized strings as used in HTTP.
@@ -217,6 +217,10 @@ public class EntryPoint extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String httpMethod;
     private String encodingType;
     private String contentType;
@@ -230,10 +234,11 @@ public class EntryPoint extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected EntryPoint(String httpMethod, String encodingType, String contentType, SoftwareApplication actionApplication, String urlTemplate, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected EntryPoint(String httpMethod, String encodingType, String contentType, SoftwareApplication actionApplication, String urlTemplate, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myHttpMethod = httpMethod;
     myEncodingType = encodingType;
     myContentType = contentType;

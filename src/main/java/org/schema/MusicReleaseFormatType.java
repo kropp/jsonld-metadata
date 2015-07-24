@@ -31,7 +31,7 @@ public class MusicReleaseFormatType extends Enumeration {
      * Creates new {@link MusicReleaseFormatType} instance.
      */
     public MusicReleaseFormatType build() {
-      return new MusicReleaseFormatType(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MusicReleaseFormatType(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
@@ -168,6 +168,10 @@ public class MusicReleaseFormatType extends Enumeration {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private EnumerationOrProperty supersededBy;
     private String additionalType;
     private String alternateName;
@@ -177,9 +181,10 @@ public class MusicReleaseFormatType extends Enumeration {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MusicReleaseFormatType(EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MusicReleaseFormatType(EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

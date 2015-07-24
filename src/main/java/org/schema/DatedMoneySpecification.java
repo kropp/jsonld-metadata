@@ -56,7 +56,7 @@ public class DatedMoneySpecification extends StructuredValue {
      * Creates new {@link DatedMoneySpecification} instance.
      */
     public DatedMoneySpecification build() {
-      return new DatedMoneySpecification(amount, currency, startDate, endDate, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new DatedMoneySpecification(amount, currency, startDate, endDate, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The amount of money.
@@ -205,6 +205,10 @@ public class DatedMoneySpecification extends StructuredValue {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Number amount;
     private String currency;
     private java.util.Date startDate;
@@ -217,10 +221,11 @@ public class DatedMoneySpecification extends StructuredValue {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected DatedMoneySpecification(Number amount, String currency, java.util.Date startDate, java.util.Date endDate, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected DatedMoneySpecification(Number amount, String currency, java.util.Date startDate, java.util.Date endDate, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAmount = amount;
     myCurrency = currency;
     myStartDate = startDate;

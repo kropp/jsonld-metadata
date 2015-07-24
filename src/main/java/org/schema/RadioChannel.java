@@ -30,7 +30,7 @@ public class RadioChannel extends BroadcastChannel {
      * Creates new {@link RadioChannel} instance.
      */
     public RadioChannel build() {
-      return new RadioChannel(broadcastChannelId, inBroadcastLineup, broadcastServiceTier, providesBroadcastService, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new RadioChannel(broadcastChannelId, inBroadcastLineup, broadcastServiceTier, providesBroadcastService, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The unique address by which the BroadcastService can be identified in a provider lineup. In US, this is typically a number.
@@ -179,6 +179,10 @@ public class RadioChannel extends BroadcastChannel {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String broadcastChannelId;
     private CableOrSatelliteService inBroadcastLineup;
     private String broadcastServiceTier;
@@ -191,9 +195,10 @@ public class RadioChannel extends BroadcastChannel {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected RadioChannel(String broadcastChannelId, CableOrSatelliteService inBroadcastLineup, String broadcastServiceTier, BroadcastService providesBroadcastService, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(broadcastChannelId, inBroadcastLineup, broadcastServiceTier, providesBroadcastService, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected RadioChannel(String broadcastChannelId, CableOrSatelliteService inBroadcastLineup, String broadcastServiceTier, BroadcastService providesBroadcastService, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(broadcastChannelId, inBroadcastLineup, broadcastServiceTier, providesBroadcastService, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

@@ -42,7 +42,7 @@ public class PayAction extends TradeAction {
      * Creates new {@link PayAction} instance.
      */
     public PayAction build() {
-      return new PayAction(purpose, recipient, price, priceSpecification, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new PayAction(purpose, recipient, price, priceSpecification, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A goal towards an action is taken. Can be concrete or abstract.
@@ -321,6 +321,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private MedicalDevicePurposeOrThing purpose;
     private AudienceOrOrganizationOrPerson recipient;
     private NumberOrString price;
@@ -339,10 +343,11 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected PayAction(MedicalDevicePurposeOrThing purpose, AudienceOrOrganizationOrPerson recipient, NumberOrString price, PriceSpecification priceSpecification, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(price, priceSpecification, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected PayAction(MedicalDevicePurposeOrThing purpose, AudienceOrOrganizationOrPerson recipient, NumberOrString price, PriceSpecification priceSpecification, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(price, priceSpecification, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myPurpose = purpose;
     myRecipient = recipient;
   }

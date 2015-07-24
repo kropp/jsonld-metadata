@@ -67,7 +67,7 @@ public class MedicalStudy extends MedicalEntity {
      * Creates new {@link MedicalStudy} instance.
      */
     public MedicalStudy build() {
-      return new MedicalStudy(outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalStudy(outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Expected or actual outcomes of the study.
@@ -272,6 +272,10 @@ public class MedicalStudy extends MedicalEntity {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String outcome;
     private String population;
     private Organization sponsor;
@@ -292,10 +296,11 @@ public class MedicalStudy extends MedicalEntity {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalStudy(String outcome, String population, Organization sponsor, MedicalStudyStatus status, AdministrativeArea studyLocation, MedicalEntity studySubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalStudy(String outcome, String population, Organization sponsor, MedicalStudyStatus status, AdministrativeArea studyLocation, MedicalEntity studySubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myOutcome = outcome;
     myPopulation = population;
     mySponsor = sponsor;

@@ -48,7 +48,7 @@ public class CommunicateAction extends InteractAction {
      * Creates new {@link CommunicateAction} instance.
      */
     public CommunicateAction build() {
-      return new CommunicateAction(about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new CommunicateAction(about, inLanguage, recipient, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The subject matter of the content.
@@ -271,6 +271,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Thing about;
     private LanguageOrString inLanguage;
     private AudienceOrOrganizationOrPerson recipient;
@@ -288,10 +292,11 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected CommunicateAction(Thing about, LanguageOrString inLanguage, AudienceOrOrganizationOrPerson recipient, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected CommunicateAction(Thing about, LanguageOrString inLanguage, AudienceOrOrganizationOrPerson recipient, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAbout = about;
     myInLanguage = inLanguage;
     myRecipient = recipient;

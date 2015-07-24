@@ -77,7 +77,7 @@ Note: Publishers should be aware that applications designed to use specific sche
      * Creates new {@link QuantitativeValue} instance.
      */
     public QuantitativeValue build() {
-      return new QuantitativeValue(maxValue, minValue, unitCode, value, valueReference, additionalProperty, unitText, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new QuantitativeValue(maxValue, minValue, unitCode, value, valueReference, additionalProperty, unitText, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The upper value of some characteristic or property.
@@ -309,6 +309,10 @@ Note: Publishers should be aware that applications designed to use specific sche
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Number maxValue;
     private Number minValue;
     private String unitCode;
@@ -324,10 +328,11 @@ Note: Publishers should be aware that applications designed to use specific sche
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected QuantitativeValue(Number maxValue, Number minValue, String unitCode, BooleanOrNumberOrStringOrStructuredValue value, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, PropertyValue additionalProperty, String unitText, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected QuantitativeValue(Number maxValue, Number minValue, String unitCode, BooleanOrNumberOrStringOrStructuredValue value, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, PropertyValue additionalProperty, String unitText, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myMaxValue = maxValue;
     myMinValue = minValue;
     myUnitCode = unitCode;

@@ -102,7 +102,7 @@ public class NutritionInformation extends StructuredValue {
      * Creates new {@link NutritionInformation} instance.
      */
     public NutritionInformation build() {
-      return new NutritionInformation(calories, carbohydrateContent, cholesterolContent, fatContent, fiberContent, proteinContent, saturatedFatContent, servingSize, sodiumContent, sugarContent, transFatContent, unsaturatedFatContent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new NutritionInformation(calories, carbohydrateContent, cholesterolContent, fatContent, fiberContent, proteinContent, saturatedFatContent, servingSize, sodiumContent, sugarContent, transFatContent, unsaturatedFatContent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The number of calories.
@@ -307,6 +307,10 @@ public class NutritionInformation extends StructuredValue {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Energy calories;
     private Mass carbohydrateContent;
     private Mass cholesterolContent;
@@ -327,10 +331,11 @@ public class NutritionInformation extends StructuredValue {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected NutritionInformation(Energy calories, Mass carbohydrateContent, Mass cholesterolContent, Mass fatContent, Mass fiberContent, Mass proteinContent, Mass saturatedFatContent, String servingSize, Mass sodiumContent, Mass sugarContent, Mass transFatContent, Mass unsaturatedFatContent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected NutritionInformation(Energy calories, Mass carbohydrateContent, Mass cholesterolContent, Mass fatContent, Mass fiberContent, Mass proteinContent, Mass saturatedFatContent, String servingSize, Mass sodiumContent, Mass sugarContent, Mass transFatContent, Mass unsaturatedFatContent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myCalories = calories;
     myCarbohydrateContent = carbohydrateContent;
     myCholesterolContent = cholesterolContent;

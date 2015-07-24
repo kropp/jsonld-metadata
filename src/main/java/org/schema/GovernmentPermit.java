@@ -30,7 +30,7 @@ public class GovernmentPermit extends Permit {
      * Creates new {@link GovernmentPermit} instance.
      */
     public GovernmentPermit build() {
-      return new GovernmentPermit(issuedThrough, permitAudience, validFor, validFrom, validIn, validUntil, issuedBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new GovernmentPermit(issuedThrough, permitAudience, validFor, validFrom, validIn, validUntil, issuedBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The service through with the permit was granted.
@@ -200,6 +200,10 @@ public class GovernmentPermit extends Permit {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Service issuedThrough;
     private Audience permitAudience;
     private Duration validFor;
@@ -215,9 +219,10 @@ public class GovernmentPermit extends Permit {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected GovernmentPermit(Service issuedThrough, Audience permitAudience, Duration validFor, java.util.Date validFrom, AdministrativeArea validIn, java.util.Date validUntil, Organization issuedBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(issuedThrough, permitAudience, validFor, validFrom, validIn, validUntil, issuedBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected GovernmentPermit(Service issuedThrough, Audience permitAudience, Duration validFor, java.util.Date validFrom, AdministrativeArea validIn, java.util.Date validUntil, Organization issuedBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(issuedThrough, permitAudience, validFor, validFrom, validIn, validUntil, issuedBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

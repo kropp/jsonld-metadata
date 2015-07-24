@@ -54,7 +54,7 @@ public class Seat extends Intangible {
      * Creates new {@link Seat} instance.
      */
     public Seat build() {
-      return new Seat(seatNumber, seatRow, seatSection, seatingType, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Seat(seatNumber, seatRow, seatSection, seatingType, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The location of the reserved seat (e.g., 27).
@@ -212,6 +212,10 @@ public class Seat extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String seatNumber;
     private String seatRow;
     private String seatSection;
@@ -224,10 +228,11 @@ public class Seat extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Seat(String seatNumber, String seatRow, String seatSection, QualitativeValueOrString seatingType, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Seat(String seatNumber, String seatRow, String seatSection, QualitativeValueOrString seatingType, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     mySeatNumber = seatNumber;
     mySeatRow = seatRow;
     mySeatSection = seatSection;

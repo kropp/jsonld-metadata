@@ -56,7 +56,7 @@ public class UnitPriceSpecification extends PriceSpecification {
      * Creates new {@link UnitPriceSpecification} instance.
      */
     public UnitPriceSpecification build() {
-      return new UnitPriceSpecification(billingIncrement, priceType, unitCode, unitText, eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new UnitPriceSpecification(billingIncrement, priceType, unitCode, unitText, eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
@@ -318,6 +318,10 @@ public class UnitPriceSpecification extends PriceSpecification {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Number billingIncrement;
     private String priceType;
     private String unitCode;
@@ -339,10 +343,11 @@ public class UnitPriceSpecification extends PriceSpecification {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected UnitPriceSpecification(Number billingIncrement, String priceType, String unitCode, String unitText, QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, NumberOrString price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected UnitPriceSpecification(Number billingIncrement, String priceType, String unitCode, String unitText, QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, NumberOrString price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myBillingIncrement = billingIncrement;
     myPriceType = priceType;
     myUnitCode = unitCode;

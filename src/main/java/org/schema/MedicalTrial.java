@@ -43,7 +43,7 @@ public class MedicalTrial extends MedicalStudy {
      * Creates new {@link MedicalTrial} instance.
      */
     public MedicalTrial build() {
-      return new MedicalTrial(phase, trialDesign, outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalTrial(phase, trialDesign, outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The phase of the trial.
@@ -262,6 +262,10 @@ public class MedicalTrial extends MedicalStudy {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String phase;
     private MedicalTrialDesign trialDesign;
     private String outcome;
@@ -284,10 +288,11 @@ public class MedicalTrial extends MedicalStudy {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalTrial(String phase, MedicalTrialDesign trialDesign, String outcome, String population, Organization sponsor, MedicalStudyStatus status, AdministrativeArea studyLocation, MedicalEntity studySubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalTrial(String phase, MedicalTrialDesign trialDesign, String outcome, String population, Organization sponsor, MedicalStudyStatus status, AdministrativeArea studyLocation, MedicalEntity studySubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myPhase = phase;
     myTrialDesign = trialDesign;
   }

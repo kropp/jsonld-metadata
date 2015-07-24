@@ -55,7 +55,7 @@ public class MedicalProcedure extends MedicalEntity {
      * Creates new {@link MedicalProcedure} instance.
      */
     public MedicalProcedure build() {
-      return new MedicalProcedure(followup, howPerformed, preparation, procedureType, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalProcedure(followup, howPerformed, preparation, procedureType, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Typical or recommended followup care after the procedure is performed.
@@ -246,6 +246,10 @@ public class MedicalProcedure extends MedicalEntity {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String followup;
     private String howPerformed;
     private String preparation;
@@ -264,10 +268,11 @@ public class MedicalProcedure extends MedicalEntity {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalProcedure(String followup, String howPerformed, String preparation, MedicalProcedureType procedureType, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalProcedure(String followup, String howPerformed, String preparation, MedicalProcedureType procedureType, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myFollowup = followup;
     myHowPerformed = howPerformed;
     myPreparation = preparation;

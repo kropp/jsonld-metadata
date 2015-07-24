@@ -152,7 +152,7 @@ public class Order extends Intangible {
      * Creates new {@link Order} instance.
      */
     public Order build() {
-      return new Order(orderDelivery, acceptedOffer, billingAddress, confirmationNumber, customer, discount, discountCode, discountCurrency, isGift, orderDate, orderedItem, orderNumber, orderStatus, partOfInvoice, paymentDue, paymentMethod, paymentMethodId, paymentUrl, seller, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Order(orderDelivery, acceptedOffer, billingAddress, confirmationNumber, customer, discount, discountCode, discountCurrency, isGift, orderDate, orderedItem, orderNumber, orderStatus, partOfInvoice, paymentDue, paymentMethod, paymentMethodId, paymentUrl, seller, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The delivery of the parcel related to this order or order item.
@@ -449,6 +449,10 @@ public class Order extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private ParcelDelivery orderDelivery;
     private Offer acceptedOffer;
     private PostalAddress billingAddress;
@@ -477,10 +481,11 @@ public class Order extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Order(ParcelDelivery orderDelivery, Offer acceptedOffer, PostalAddress billingAddress, String confirmationNumber, OrganizationOrPerson customer, NumberOrString discount, String discountCode, String discountCurrency, Boolean isGift, java.util.Date orderDate, OrderItemOrProduct orderedItem, String orderNumber, OrderStatus orderStatus, Invoice partOfInvoice, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, String paymentUrl, Participant seller, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Order(ParcelDelivery orderDelivery, Offer acceptedOffer, PostalAddress billingAddress, String confirmationNumber, OrganizationOrPerson customer, NumberOrString discount, String discountCode, String discountCurrency, Boolean isGift, java.util.Date orderDate, OrderItemOrProduct orderedItem, String orderNumber, OrderStatus orderStatus, Invoice partOfInvoice, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, String paymentUrl, Participant seller, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myOrderDelivery = orderDelivery;
     myAcceptedOffer = acceptedOffer;
     myBillingAddress = billingAddress;

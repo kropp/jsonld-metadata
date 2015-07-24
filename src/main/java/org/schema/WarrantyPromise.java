@@ -43,7 +43,7 @@ public class WarrantyPromise extends StructuredValue {
      * Creates new {@link WarrantyPromise} instance.
      */
     public WarrantyPromise build() {
-      return new WarrantyPromise(durationOfWarranty, warrantyScope, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new WarrantyPromise(durationOfWarranty, warrantyScope, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The duration of the warranty promise. Common unitCode values are ANN for year, MON for months, or DAY for days.
@@ -178,6 +178,10 @@ public class WarrantyPromise extends StructuredValue {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private QuantitativeValue durationOfWarranty;
     private WarrantyScope warrantyScope;
     private String additionalType;
@@ -188,10 +192,11 @@ public class WarrantyPromise extends StructuredValue {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected WarrantyPromise(QuantitativeValue durationOfWarranty, WarrantyScope warrantyScope, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected WarrantyPromise(QuantitativeValue durationOfWarranty, WarrantyScope warrantyScope, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myDurationOfWarranty = durationOfWarranty;
     myWarrantyScope = warrantyScope;
   }

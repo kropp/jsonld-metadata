@@ -30,7 +30,7 @@ public class FastFoodRestaurant extends FoodEstablishment {
      * Creates new {@link FastFoodRestaurant} instance.
      */
     public FastFoodRestaurant build() {
-      return new FastFoodRestaurant(acceptsReservations, menu, servesCuisine, parentOrganization, currenciesAccepted, openingHours, paymentAccepted, priceRange, address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new FastFoodRestaurant(acceptsReservations, menu, servesCuisine, parentOrganization, currenciesAccepted, openingHours, paymentAccepted, priceRange, address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Indicates whether a FoodEstablishment accepts reservations. Values can be Boolean, an URL at which reservations can be made or (for backwards compatibility) the strings <code>Yes</code> or <code>No</code>.
@@ -360,6 +360,10 @@ Note: Publishers should be aware that applications designed to use specific sche
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private BooleanOrString acceptsReservations;
     private String menu;
     private String servesCuisine;
@@ -391,9 +395,10 @@ Note: Publishers should be aware that applications designed to use specific sche
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected FastFoodRestaurant(BooleanOrString acceptsReservations, String menu, String servesCuisine, Organization parentOrganization, String currenciesAccepted, String openingHours, String paymentAccepted, String priceRange, PostalAddress address, AggregateRating aggregateRating, Place containedIn, Event event, String faxNumber, GeoCoordinatesOrGeoShape geo, String globalLocationNumber, String isicV4, ImageObjectOrString logo, MapOrString hasMap, OpeningHoursSpecification openingHoursSpecification, ImageObjectOrPhotograph photo, Review review, String telephone, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(acceptsReservations, menu, servesCuisine, parentOrganization, currenciesAccepted, openingHours, paymentAccepted, priceRange, address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected FastFoodRestaurant(BooleanOrString acceptsReservations, String menu, String servesCuisine, Organization parentOrganization, String currenciesAccepted, String openingHours, String paymentAccepted, String priceRange, PostalAddress address, AggregateRating aggregateRating, Place containedIn, Event event, String faxNumber, GeoCoordinatesOrGeoShape geo, String globalLocationNumber, String isicV4, ImageObjectOrString logo, MapOrString hasMap, OpeningHoursSpecification openingHoursSpecification, ImageObjectOrPhotograph photo, Review review, String telephone, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(acceptsReservations, menu, servesCuisine, parentOrganization, currenciesAccepted, openingHours, paymentAccepted, priceRange, address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

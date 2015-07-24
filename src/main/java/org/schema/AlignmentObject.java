@@ -61,7 +61,7 @@ public class AlignmentObject extends Intangible {
      * Creates new {@link AlignmentObject} instance.
      */
     public AlignmentObject build() {
-      return new AlignmentObject(alignmentType, educationalFramework, targetDescription, targetName, targetUrl, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new AlignmentObject(alignmentType, educationalFramework, targetDescription, targetName, targetUrl, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationLevel'.
@@ -217,6 +217,10 @@ public class AlignmentObject extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String alignmentType;
     private String educationalFramework;
     private String targetDescription;
@@ -230,10 +234,11 @@ public class AlignmentObject extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected AlignmentObject(String alignmentType, String educationalFramework, String targetDescription, String targetName, String targetUrl, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected AlignmentObject(String alignmentType, String educationalFramework, String targetDescription, String targetName, String targetUrl, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAlignmentType = alignmentType;
     myEducationalFramework = educationalFramework;
     myTargetDescription = targetDescription;

@@ -37,7 +37,7 @@ public class ImagingTest extends MedicalTest {
      * Creates new {@link ImagingTest} instance.
      */
     public ImagingTest build() {
-      return new ImagingTest(imagingTechnique, affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new ImagingTest(imagingTechnique, affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * Imaging technique used.
@@ -242,6 +242,10 @@ public class ImagingTest extends MedicalTest {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private MedicalImagingTechnique imagingTechnique;
     private Drug affectedBy;
     private String normalRange;
@@ -262,10 +266,11 @@ public class ImagingTest extends MedicalTest {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected ImagingTest(MedicalImagingTechnique imagingTechnique, Drug affectedBy, String normalRange, MedicalSign signDetected, MedicalCondition usedToDiagnose, MedicalDevice usesDevice, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected ImagingTest(MedicalImagingTechnique imagingTechnique, Drug affectedBy, String normalRange, MedicalSign signDetected, MedicalCondition usedToDiagnose, MedicalDevice usesDevice, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myImagingTechnique = imagingTechnique;
   }
   private MedicalImagingTechnique myImagingTechnique;

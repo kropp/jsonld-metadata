@@ -57,7 +57,7 @@ public class OwnershipInfo extends StructuredValue {
      * Creates new {@link OwnershipInfo} instance.
      */
     public OwnershipInfo build() {
-      return new OwnershipInfo(acquiredFrom, ownedFrom, ownedThrough, typeOfGood, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new OwnershipInfo(acquiredFrom, ownedFrom, ownedThrough, typeOfGood, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The organization or person from which the product was acquired.
@@ -215,6 +215,10 @@ public class OwnershipInfo extends StructuredValue {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private OrganizationOrPerson acquiredFrom;
     private java.util.Date ownedFrom;
     private java.util.Date ownedThrough;
@@ -227,10 +231,11 @@ public class OwnershipInfo extends StructuredValue {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected OwnershipInfo(OrganizationOrPerson acquiredFrom, java.util.Date ownedFrom, java.util.Date ownedThrough, Product typeOfGood, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected OwnershipInfo(OrganizationOrPerson acquiredFrom, java.util.Date ownedFrom, java.util.Date ownedThrough, Product typeOfGood, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAcquiredFrom = acquiredFrom;
     myOwnedFrom = ownedFrom;
     myOwnedThrough = ownedThrough;

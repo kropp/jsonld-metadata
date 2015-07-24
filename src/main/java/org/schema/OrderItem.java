@@ -60,7 +60,7 @@ public class OrderItem extends Intangible {
      * Creates new {@link OrderItem} instance.
      */
     public OrderItem build() {
-      return new OrderItem(orderQuantity, orderItemStatus, orderItemNumber, orderDelivery, orderedItem, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new OrderItem(orderQuantity, orderItemStatus, orderItemNumber, orderDelivery, orderedItem, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The number of the item ordered. If the property is not set, assume the quantity is one.
@@ -225,6 +225,10 @@ public class OrderItem extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private Number orderQuantity;
     private OrderStatus orderItemStatus;
     private String orderItemNumber;
@@ -238,10 +242,11 @@ public class OrderItem extends Intangible {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected OrderItem(Number orderQuantity, OrderStatus orderItemStatus, String orderItemNumber, ParcelDelivery orderDelivery, OrderItemOrProduct orderedItem, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected OrderItem(Number orderQuantity, OrderStatus orderItemStatus, String orderItemNumber, ParcelDelivery orderDelivery, OrderItemOrProduct orderedItem, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myOrderQuantity = orderQuantity;
     myOrderItemStatus = orderItemStatus;
     myOrderItemNumber = orderItemNumber;

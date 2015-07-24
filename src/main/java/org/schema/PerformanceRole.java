@@ -36,7 +36,7 @@ public class PerformanceRole extends Role {
      * Creates new {@link PerformanceRole} instance.
      */
     public PerformanceRole build() {
-      return new PerformanceRole(characterName, startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new PerformanceRole(characterName, startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The name of a character played in some acting or performing role, i.e. in a PerformanceRole.
@@ -178,6 +178,10 @@ public class PerformanceRole extends Role {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String characterName;
     private java.util.Date startDate;
     private String roleName;
@@ -189,10 +193,11 @@ public class PerformanceRole extends Role {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected PerformanceRole(String characterName, java.util.Date startDate, String roleName, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected PerformanceRole(String characterName, java.util.Date startDate, String roleName, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myCharacterName = characterName;
   }
   private String myCharacterName;

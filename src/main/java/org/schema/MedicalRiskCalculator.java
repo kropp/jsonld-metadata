@@ -31,7 +31,7 @@ public class MedicalRiskCalculator extends MedicalRiskEstimator {
      * Creates new {@link MedicalRiskCalculator} instance.
      */
     public MedicalRiskCalculator build() {
-      return new MedicalRiskCalculator(estimatesRiskOf, includedRiskFactor, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new MedicalRiskCalculator(estimatesRiskOf, includedRiskFactor, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The condition, complication, or symptom whose risk is being estimated.
@@ -208,6 +208,10 @@ public class MedicalRiskCalculator extends MedicalRiskEstimator {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private MedicalEntity estimatesRiskOf;
     private MedicalRiskFactor includedRiskFactor;
     private MedicalCode code;
@@ -224,9 +228,10 @@ public class MedicalRiskCalculator extends MedicalRiskEstimator {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected MedicalRiskCalculator(MedicalEntity estimatesRiskOf, MedicalRiskFactor includedRiskFactor, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(estimatesRiskOf, includedRiskFactor, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected MedicalRiskCalculator(MedicalEntity estimatesRiskOf, MedicalRiskFactor includedRiskFactor, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(estimatesRiskOf, includedRiskFactor, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
 }

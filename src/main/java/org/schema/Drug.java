@@ -187,7 +187,7 @@ public class Drug extends MedicalTherapy {
      * Creates new {@link Drug} instance.
      */
     public Drug build() {
-      return new Drug(activeIngredient, administrationRoute, alcoholWarning, availableStrength, breastfeedingWarning, clinicalPharmacology, cost, dosageForm, doseSchedule, drugClass, foodWarning, interactingDrug, isAvailableGenerically, isProprietary, labelDetails, legalStatus, manufacturer, mechanismOfAction, nonProprietaryName, overdosage, pregnancyCategory, pregnancyWarning, prescribingInfo, prescriptionStatus, relatedDrug, warning, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+      return new Drug(activeIngredient, administrationRoute, alcoholWarning, availableStrength, breastfeedingWarning, clinicalPharmacology, cost, dosageForm, doseSchedule, drugClass, foodWarning, interactingDrug, isAvailableGenerically, isProprietary, labelDetails, legalStatus, manufacturer, mechanismOfAction, nonProprietaryName, overdosage, pregnancyCategory, pregnancyWarning, prescribingInfo, prescriptionStatus, relatedDrug, warning, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * An active ingredient, typically chemical compounds and/or biologic substances.
@@ -567,6 +567,10 @@ public class Drug extends MedicalTherapy {
       this.potentialAction = action;
       return this;
     }
+    public Builder id(String id) {
+      this.id = id;
+      return this;
+    }
     private String activeIngredient;
     private String administrationRoute;
     private String alcoholWarning;
@@ -612,10 +616,11 @@ public class Drug extends MedicalTherapy {
     private String sameAs;
     private String url;
     private Action potentialAction;
+    private String id;
   }
 
-  protected Drug(String activeIngredient, String administrationRoute, String alcoholWarning, DrugStrength availableStrength, String breastfeedingWarning, String clinicalPharmacology, DrugCost cost, String dosageForm, DoseSchedule doseSchedule, DrugClass drugClass, String foodWarning, Drug interactingDrug, Boolean isAvailableGenerically, Boolean isProprietary, String labelDetails, DrugLegalStatus legalStatus, Organization manufacturer, String mechanismOfAction, String nonProprietaryName, String overdosage, DrugPregnancyCategory pregnancyCategory, String pregnancyWarning, String prescribingInfo, DrugPrescriptionStatus prescriptionStatus, Drug relatedDrug, String warning, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction) {
-    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction);
+  protected Drug(String activeIngredient, String administrationRoute, String alcoholWarning, DrugStrength availableStrength, String breastfeedingWarning, String clinicalPharmacology, DrugCost cost, String dosageForm, DoseSchedule doseSchedule, DrugClass drugClass, String foodWarning, Drug interactingDrug, Boolean isAvailableGenerically, Boolean isProprietary, String labelDetails, DrugLegalStatus legalStatus, Organization manufacturer, String mechanismOfAction, String nonProprietaryName, String overdosage, DrugPregnancyCategory pregnancyCategory, String pregnancyWarning, String prescribingInfo, DrugPrescriptionStatus prescriptionStatus, Drug relatedDrug, String warning, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myActiveIngredient = activeIngredient;
     myAdministrationRoute = administrationRoute;
     myAlcoholWarning = alcoholWarning;
