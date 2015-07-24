@@ -43,10 +43,10 @@ class Type() {
     val interfaces: MutableList<String> = ArrayList()
     var isField = false
     val dataTypes: MutableList<String> = ArrayList()
-}
 
-val Type.classOrInterface: String
-    get() = when(isInterface) { true -> "interface"; else -> "class" }
+    val classOrInterface: String
+        get() = when(isInterface) { true -> "interface"; else -> "class" }
+}
 
 private val BANNER = """/*
  * Copyright 2015 JetBrains s.r.o.
@@ -72,7 +72,6 @@ class GeneratorSink : TripleSink {
     private val types = HashMap<String, Type>()
 
     override fun setProperty(key: String, value: Any): Boolean {
-        println("Property: $key=$value")
         return true
     }
 
@@ -266,7 +265,7 @@ class GeneratorSink : TripleSink {
                     appendln("   * $it")
                     appendln("   */")
                 }
-                appendln("  public static ${typeName}.Builder ${typeName.decapitalize()}() { return new ${typeName}.Builder(); }")
+                appendln("  public static $typeName.Builder ${typeName.decapitalize()}() { return new $typeName.Builder(); }")
             }
             appendln("}")
 
@@ -348,8 +347,8 @@ class GeneratorSink : TripleSink {
                     appendln("    /**")
                     appendln("     * Creates new {@link $typeName} instance.")
                     appendln("     */")
-                    appendln("    public ${typeName} build() {")
-                    append("      return new ${typeName}(")
+                    appendln("    public $typeName build() {")
+                    append("      return new $typeName(")
                     append(getAllFields(type).map { it.name?.decapitalize() }.filterNotNull().join(", "))
                     appendln(");")
                     appendln("    }")
@@ -410,7 +409,7 @@ class GeneratorSink : TripleSink {
 
                 appendln("}")
 
-                File(packageDir, typeName + ".java").writeText(toString())
+                File(packageDir, "$typeName.java").writeText(toString())
             }
         }
     }
