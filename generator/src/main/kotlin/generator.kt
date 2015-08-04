@@ -76,6 +76,9 @@ class GeneratorSink : TripleSink {
     }
 
     override fun endStream() {
+    }
+
+    public fun postProcess() {
         for (type in types.values()) {
             if (type.isField && type.isInterface) {
                 type.isField = false
@@ -458,9 +461,13 @@ class GeneratorSink : TripleSink {
 
 fun main(args: Array<String>) {
     val generator = GeneratorSink()
-    val sp = StreamProcessor(RdfaParser.connect(generator))
-    val stream = FileInputStream("generator/resources/schema.rdfa")
-    sp.process(stream, "http://schema.org/")
+    val processor = StreamProcessor(RdfaParser.connect(generator))
+
+    File("generator/resources").listFiles { it.extension == "rdfa" }?.forEach {
+        println("Processing ${it.name}")
+        processor.process(FileInputStream(it), "http://schema.org/")
+    }
+    generator.postProcess()
 
     generator.writeJava(File("src/main/java"), "org.schema")
 }
