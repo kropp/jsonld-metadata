@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JetBrains specific schemas</title>
+    <meta charset="UTF-8" />
+    <style type="text/css">
+      span.h {
+        padding-left: 0px;
+        font-weight: bold;
+      }
+      span {
+        display: block;
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>JetBrains core schema</h1>
+
+    <p>This is an extension to the schema.org vocabulary.</p>
+
+    <hr />
+
+    <div typeof="rdfs:Class" resource="http://jetbrains.org/schema/Project">
+      <span class="h" property="rdfs:label">Project</span>
+      <span property="rdfs:comment">Project</span>
+       <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/Thing">Thing</a></span>
+    </div>
+
+    <div typeof="rdfs:Class" resource="http://jetbrains.org/schema/SoftwareApplicationBuild">
+      <span class="h" property="rdfs:label">SoftwareApplicationBuild</span>
+      <span property="rdfs:comment">Specific build of a software applicaton</span>
+       <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/SoftwareApplication">SoftwareApplication</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://schema.org/softwareApplication">
+        <span class="h" property="rdfs:label">softwareApplication</span>
+        <span property="rdfs:comment">Software application product this build belongs to.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/SoftwareApplication">SoftwareApplication</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/project">
+        <span class="h" property="rdfs:label">project</span>
+        <span property="rdfs:comment">Project this build belongs to.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://jetbrains.org/schema/Project">Project</a></span>
+    </div>
+
+</body>
+
+</html>
