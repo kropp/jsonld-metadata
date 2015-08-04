@@ -42,8 +42,33 @@ public class ReportedDoseSchedule extends DoseSchedule {
     /**
      * The value of the dose, e.g. 500.
      */
-    public Builder doseValue(Number number) {
-      this.doseValue = number;
+    public Builder doseValue(Integer integer) {
+      if(this.doseValue == null) this.doseValue = new Number();
+      this.doseValue.setInteger(integer);
+      return this;
+    }
+    /**
+     * The value of the dose, e.g. 500.
+     */
+    public Builder doseValue(Long doseValue) {
+      if(this.doseValue == null) this.doseValue = new Number();
+      this.doseValue.setLong(doseValue);
+      return this;
+    }
+    /**
+     * The value of the dose, e.g. 500.
+     */
+    public Builder doseValue(Float doseValue) {
+      if(this.doseValue == null) this.doseValue = new Number();
+      this.doseValue.setFloat(doseValue);
+      return this;
+    }
+    /**
+     * The value of the dose, e.g. 500.
+     */
+    public Builder doseValue(Double doseValue) {
+      if(this.doseValue == null) this.doseValue = new Number();
+      this.doseValue.setDouble(doseValue);
       return this;
     }
     /**

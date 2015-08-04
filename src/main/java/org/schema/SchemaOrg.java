@@ -952,6 +952,10 @@ public class SchemaOrg {
    */
   public static Invoice.Builder invoice() { return new Invoice.Builder(); }
   /**
+   * Project
+   */
+  public static Project.Builder project() { return new Project.Builder(); }
+  /**
    * A recycling center.
    */
   public static RecyclingCenter.Builder recyclingCenter() { return new RecyclingCenter.Builder(); }
@@ -2099,6 +2103,10 @@ public class SchemaOrg {
    * An event involving the delivery of an item.
    */
   public static DeliveryEvent.Builder deliveryEvent() { return new DeliveryEvent.Builder(); }
+  /**
+   * Specific build of a software applicaton
+   */
+  public static SoftwareApplicationBuild.Builder softwareApplicationBuild() { return new SoftwareApplicationBuild.Builder(); }
   /**
    * A campground.
    */
@@ -3449,10 +3457,6 @@ public class SchemaOrg {
    * A church.
    */
   public static Church.Builder church() { return new Church.Builder(); }
-  /**
-   * Data type: Number.
-   */
-  public static Number.Builder number() { return new Number.Builder(); }
   /**
    * A music store.
    */

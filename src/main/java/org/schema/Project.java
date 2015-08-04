@@ -19,111 +19,18 @@
 package org.schema;
 
 /**
- * A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
+ * Project
  */
-public class TypeAndQuantityNode extends StructuredValue {
+public class Project extends Thing {
   /**
-   * The quantity of the goods included in the offer.
-   */
-  public Number getAmountOfThisGood() {
-    return myAmountOfThisGood;
-  }
-  /**
-   * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
-   */
-  public BusinessFunction getBusinessFunction() {
-    return myBusinessFunction;
-  }
-  /**
-   * The product that this structured value is referring to.
-   */
-  public Product getTypeOfGood() {
-    return myTypeOfGood;
-  }
-  /**
-   * The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
-   */
-  public String getUnitCode() {
-    return myUnitCode;
-  }
-  /**
-   * A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
-<a href='unitCode'>unitCode</a>.
-   */
-  public String getUnitText() {
-    return myUnitText;
-  }
-  /**
-   * Builder for {@link TypeAndQuantityNode}
+   * Builder for {@link Project}
    */
   public static final class Builder {
     /**
-     * Creates new {@link TypeAndQuantityNode} instance.
+     * Creates new {@link Project} instance.
      */
-    public TypeAndQuantityNode build() {
-      return new TypeAndQuantityNode(amountOfThisGood, businessFunction, typeOfGood, unitCode, unitText, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    }
-    /**
-     * The quantity of the goods included in the offer.
-     */
-    public Builder amountOfThisGood(Integer integer) {
-      if(this.amountOfThisGood == null) this.amountOfThisGood = new Number();
-      this.amountOfThisGood.setInteger(integer);
-      return this;
-    }
-    /**
-     * The quantity of the goods included in the offer.
-     */
-    public Builder amountOfThisGood(Long amountOfThisGood) {
-      if(this.amountOfThisGood == null) this.amountOfThisGood = new Number();
-      this.amountOfThisGood.setLong(amountOfThisGood);
-      return this;
-    }
-    /**
-     * The quantity of the goods included in the offer.
-     */
-    public Builder amountOfThisGood(Float amountOfThisGood) {
-      if(this.amountOfThisGood == null) this.amountOfThisGood = new Number();
-      this.amountOfThisGood.setFloat(amountOfThisGood);
-      return this;
-    }
-    /**
-     * The quantity of the goods included in the offer.
-     */
-    public Builder amountOfThisGood(Double amountOfThisGood) {
-      if(this.amountOfThisGood == null) this.amountOfThisGood = new Number();
-      this.amountOfThisGood.setDouble(amountOfThisGood);
-      return this;
-    }
-    /**
-     * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
-     */
-    public Builder businessFunction(BusinessFunction businessFunction) {
-      this.businessFunction = businessFunction;
-      return this;
-    }
-    /**
-     * The product that this structured value is referring to.
-     */
-    public Builder typeOfGood(Product product) {
-      this.typeOfGood = product;
-      return this;
-    }
-    /**
-     * The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
-     */
-    public Builder unitCode(String unitCode) {
-      this.unitCode = unitCode;
-      return this;
-    }
-    /**
-     * A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
-<a href='unitCode'>unitCode</a>.
-     */
-    public Builder unitText(String unitText) {
-      this.unitText = unitText;
-      return this;
+    public Project build() {
+      return new Project(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
@@ -248,11 +155,6 @@ public class TypeAndQuantityNode extends StructuredValue {
       this.id = id;
       return this;
     }
-    private Number amountOfThisGood;
-    private BusinessFunction businessFunction;
-    private Product typeOfGood;
-    private String unitCode;
-    private String unitText;
     private String additionalType;
     private String alternateName;
     private String description;
@@ -264,17 +166,7 @@ public class TypeAndQuantityNode extends StructuredValue {
     private String id;
   }
 
-  protected TypeAndQuantityNode(Number amountOfThisGood, BusinessFunction businessFunction, Product typeOfGood, String unitCode, String unitText, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected Project(String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAmountOfThisGood = amountOfThisGood;
-    myBusinessFunction = businessFunction;
-    myTypeOfGood = typeOfGood;
-    myUnitCode = unitCode;
-    myUnitText = unitText;
   }
-  private Number myAmountOfThisGood;
-  private BusinessFunction myBusinessFunction;
-  private Product myTypeOfGood;
-  private String myUnitCode;
-  private String myUnitText;
 }

@@ -81,8 +81,33 @@ public class DrugStrength extends MedicalIntangible {
     /**
      * The value of an active ingredient's strength, e.g. 325.
      */
-    public Builder strengthValue(Number number) {
-      this.strengthValue = number;
+    public Builder strengthValue(Integer integer) {
+      if(this.strengthValue == null) this.strengthValue = new Number();
+      this.strengthValue.setInteger(integer);
+      return this;
+    }
+    /**
+     * The value of an active ingredient's strength, e.g. 325.
+     */
+    public Builder strengthValue(Long strengthValue) {
+      if(this.strengthValue == null) this.strengthValue = new Number();
+      this.strengthValue.setLong(strengthValue);
+      return this;
+    }
+    /**
+     * The value of an active ingredient's strength, e.g. 325.
+     */
+    public Builder strengthValue(Float strengthValue) {
+      if(this.strengthValue == null) this.strengthValue = new Number();
+      this.strengthValue.setFloat(strengthValue);
+      return this;
+    }
+    /**
+     * The value of an active ingredient's strength, e.g. 325.
+     */
+    public Builder strengthValue(Double strengthValue) {
+      if(this.strengthValue == null) this.strengthValue = new Number();
+      this.strengthValue.setDouble(strengthValue);
       return this;
     }
     /**

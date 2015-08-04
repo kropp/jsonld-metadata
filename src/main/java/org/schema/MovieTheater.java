@@ -41,8 +41,33 @@ public class MovieTheater extends EntertainmentBusiness {
     /**
      * The number of screens in the movie theater.
      */
-    public Builder screenCount(Number number) {
-      this.screenCount = number;
+    public Builder screenCount(Integer integer) {
+      if(this.screenCount == null) this.screenCount = new Number();
+      this.screenCount.setInteger(integer);
+      return this;
+    }
+    /**
+     * The number of screens in the movie theater.
+     */
+    public Builder screenCount(Long screenCount) {
+      if(this.screenCount == null) this.screenCount = new Number();
+      this.screenCount.setLong(screenCount);
+      return this;
+    }
+    /**
+     * The number of screens in the movie theater.
+     */
+    public Builder screenCount(Float screenCount) {
+      if(this.screenCount == null) this.screenCount = new Number();
+      this.screenCount.setFloat(screenCount);
+      return this;
+    }
+    /**
+     * The number of screens in the movie theater.
+     */
+    public Builder screenCount(Double screenCount) {
+      if(this.screenCount == null) this.screenCount = new Number();
+      this.screenCount.setDouble(screenCount);
       return this;
     }
     /**

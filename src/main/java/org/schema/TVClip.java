@@ -269,8 +269,33 @@ public class TVClip extends Clip {
     /**
      * The year during which the claimed copyright for the CreativeWork was first asserted.
      */
-    public Builder copyrightYear(Number number) {
-      this.copyrightYear = number;
+    public Builder copyrightYear(Integer integer) {
+      if(this.copyrightYear == null) this.copyrightYear = new Number();
+      this.copyrightYear.setInteger(integer);
+      return this;
+    }
+    /**
+     * The year during which the claimed copyright for the CreativeWork was first asserted.
+     */
+    public Builder copyrightYear(Long copyrightYear) {
+      if(this.copyrightYear == null) this.copyrightYear = new Number();
+      this.copyrightYear.setLong(copyrightYear);
+      return this;
+    }
+    /**
+     * The year during which the claimed copyright for the CreativeWork was first asserted.
+     */
+    public Builder copyrightYear(Float copyrightYear) {
+      if(this.copyrightYear == null) this.copyrightYear = new Number();
+      this.copyrightYear.setFloat(copyrightYear);
+      return this;
+    }
+    /**
+     * The year during which the claimed copyright for the CreativeWork was first asserted.
+     */
+    public Builder copyrightYear(Double copyrightYear) {
+      if(this.copyrightYear == null) this.copyrightYear = new Number();
+      this.copyrightYear.setDouble(copyrightYear);
       return this;
     }
     /**
@@ -536,8 +561,33 @@ public class TVClip extends Clip {
     /**
      * The version of the CreativeWork embodied by a specified resource.
      */
-    public Builder version(Number number) {
-      this.version = number;
+    public Builder version(Integer integer) {
+      if(this.version == null) this.version = new Number();
+      this.version.setInteger(integer);
+      return this;
+    }
+    /**
+     * The version of the CreativeWork embodied by a specified resource.
+     */
+    public Builder version(Long version) {
+      if(this.version == null) this.version = new Number();
+      this.version.setLong(version);
+      return this;
+    }
+    /**
+     * The version of the CreativeWork embodied by a specified resource.
+     */
+    public Builder version(Float version) {
+      if(this.version == null) this.version = new Number();
+      this.version.setFloat(version);
+      return this;
+    }
+    /**
+     * The version of the CreativeWork embodied by a specified resource.
+     */
+    public Builder version(Double version) {
+      if(this.version == null) this.version = new Number();
+      this.version.setDouble(version);
       return this;
     }
     /**

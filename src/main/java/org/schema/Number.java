@@ -18,22 +18,32 @@
 
 package org.schema;
 
-/**
- * Data type: Number.
- */
-public class Number {
-  /**
-   * Builder for {@link Number}
-   */
-  public static final class Builder {
-    /**
-     * Creates new {@link Number} instance.
-     */
-    public Number build() {
-      return new Number();
-    }
+@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+class Number {
+  @com.fasterxml.jackson.annotation.JsonValue
+  public Object getJsonLdValue() {
+    if (myInteger != null) return myInteger;
+    if (myLong != null) return myLong;
+    if (myFloat != null) return myFloat;
+    if (myDouble != null) return myDouble;
+    return null;
   }
-
-  protected Number() {
+  public void setInteger(Integer integer) { clear(); myInteger = integer; }
+  public Integer getInteger() { return myInteger; }
+  private Integer myInteger;
+  public void setLong(Long value) { clear(); myLong = value; }
+  public Long getLong() { return myLong; }
+  private Long myLong;
+  public void setFloat(Float value) { clear(); myFloat = value; }
+  public Float getFloat() { return myFloat; }
+  private Float myFloat;
+  public void setDouble(Double value) { clear(); myDouble = value; }
+  public Double getDouble() { return myDouble; }
+  private Double myDouble;
+  private void clear() {
+    myInteger = null;
+    myLong = null;
+    myFloat = null;
+    myDouble = null;
   }
 }

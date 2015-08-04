@@ -65,8 +65,33 @@ public class OrderItem extends Intangible {
     /**
      * The number of the item ordered. If the property is not set, assume the quantity is one.
      */
-    public Builder orderQuantity(Number number) {
-      this.orderQuantity = number;
+    public Builder orderQuantity(Integer integer) {
+      if(this.orderQuantity == null) this.orderQuantity = new Number();
+      this.orderQuantity.setInteger(integer);
+      return this;
+    }
+    /**
+     * The number of the item ordered. If the property is not set, assume the quantity is one.
+     */
+    public Builder orderQuantity(Long orderQuantity) {
+      if(this.orderQuantity == null) this.orderQuantity = new Number();
+      this.orderQuantity.setLong(orderQuantity);
+      return this;
+    }
+    /**
+     * The number of the item ordered. If the property is not set, assume the quantity is one.
+     */
+    public Builder orderQuantity(Float orderQuantity) {
+      if(this.orderQuantity == null) this.orderQuantity = new Number();
+      this.orderQuantity.setFloat(orderQuantity);
+      return this;
+    }
+    /**
+     * The number of the item ordered. If the property is not set, assume the quantity is one.
+     */
+    public Builder orderQuantity(Double orderQuantity) {
+      if(this.orderQuantity == null) this.orderQuantity = new Number();
+      this.orderQuantity.setDouble(orderQuantity);
       return this;
     }
     /**

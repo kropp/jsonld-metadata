@@ -41,8 +41,33 @@ public class OrganizationRole extends Role {
     /**
      * A number associated with a role in an organization, for example, the number on an athlete's jersey.
      */
-    public Builder numberedPosition(Number number) {
-      this.numberedPosition = number;
+    public Builder numberedPosition(Integer integer) {
+      if(this.numberedPosition == null) this.numberedPosition = new Number();
+      this.numberedPosition.setInteger(integer);
+      return this;
+    }
+    /**
+     * A number associated with a role in an organization, for example, the number on an athlete's jersey.
+     */
+    public Builder numberedPosition(Long numberedPosition) {
+      if(this.numberedPosition == null) this.numberedPosition = new Number();
+      this.numberedPosition.setLong(numberedPosition);
+      return this;
+    }
+    /**
+     * A number associated with a role in an organization, for example, the number on an athlete's jersey.
+     */
+    public Builder numberedPosition(Float numberedPosition) {
+      if(this.numberedPosition == null) this.numberedPosition = new Number();
+      this.numberedPosition.setFloat(numberedPosition);
+      return this;
+    }
+    /**
+     * A number associated with a role in an organization, for example, the number on an athlete's jersey.
+     */
+    public Builder numberedPosition(Double numberedPosition) {
+      if(this.numberedPosition == null) this.numberedPosition = new Number();
+      this.numberedPosition.setDouble(numberedPosition);
       return this;
     }
     /**

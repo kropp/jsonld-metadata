@@ -123,15 +123,65 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     /**
      * The highest price if the price is a range.
      */
-    public Builder maxPrice(Number number) {
-      this.maxPrice = number;
+    public Builder maxPrice(Integer integer) {
+      if(this.maxPrice == null) this.maxPrice = new Number();
+      this.maxPrice.setInteger(integer);
+      return this;
+    }
+    /**
+     * The highest price if the price is a range.
+     */
+    public Builder maxPrice(Long maxPrice) {
+      if(this.maxPrice == null) this.maxPrice = new Number();
+      this.maxPrice.setLong(maxPrice);
+      return this;
+    }
+    /**
+     * The highest price if the price is a range.
+     */
+    public Builder maxPrice(Float maxPrice) {
+      if(this.maxPrice == null) this.maxPrice = new Number();
+      this.maxPrice.setFloat(maxPrice);
+      return this;
+    }
+    /**
+     * The highest price if the price is a range.
+     */
+    public Builder maxPrice(Double maxPrice) {
+      if(this.maxPrice == null) this.maxPrice = new Number();
+      this.maxPrice.setDouble(maxPrice);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
-    public Builder minPrice(Number number) {
-      this.minPrice = number;
+    public Builder minPrice(Integer integer) {
+      if(this.minPrice == null) this.minPrice = new Number();
+      this.minPrice.setInteger(integer);
+      return this;
+    }
+    /**
+     * The lowest price if the price is a range.
+     */
+    public Builder minPrice(Long minPrice) {
+      if(this.minPrice == null) this.minPrice = new Number();
+      this.minPrice.setLong(minPrice);
+      return this;
+    }
+    /**
+     * The lowest price if the price is a range.
+     */
+    public Builder minPrice(Float minPrice) {
+      if(this.minPrice == null) this.minPrice = new Number();
+      this.minPrice.setFloat(minPrice);
+      return this;
+    }
+    /**
+     * The lowest price if the price is a range.
+     */
+    public Builder minPrice(Double minPrice) {
+      if(this.minPrice == null) this.minPrice = new Number();
+      this.minPrice.setDouble(minPrice);
       return this;
     }
     /**

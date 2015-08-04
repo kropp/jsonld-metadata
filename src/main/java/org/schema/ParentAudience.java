@@ -47,15 +47,65 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Maximal age of the child.
      */
-    public Builder childMaxAge(Number number) {
-      this.childMaxAge = number;
+    public Builder childMaxAge(Integer integer) {
+      if(this.childMaxAge == null) this.childMaxAge = new Number();
+      this.childMaxAge.setInteger(integer);
+      return this;
+    }
+    /**
+     * Maximal age of the child.
+     */
+    public Builder childMaxAge(Long childMaxAge) {
+      if(this.childMaxAge == null) this.childMaxAge = new Number();
+      this.childMaxAge.setLong(childMaxAge);
+      return this;
+    }
+    /**
+     * Maximal age of the child.
+     */
+    public Builder childMaxAge(Float childMaxAge) {
+      if(this.childMaxAge == null) this.childMaxAge = new Number();
+      this.childMaxAge.setFloat(childMaxAge);
+      return this;
+    }
+    /**
+     * Maximal age of the child.
+     */
+    public Builder childMaxAge(Double childMaxAge) {
+      if(this.childMaxAge == null) this.childMaxAge = new Number();
+      this.childMaxAge.setDouble(childMaxAge);
       return this;
     }
     /**
      * Minimal age of the child.
      */
-    public Builder childMinAge(Number number) {
-      this.childMinAge = number;
+    public Builder childMinAge(Integer integer) {
+      if(this.childMinAge == null) this.childMinAge = new Number();
+      this.childMinAge.setInteger(integer);
+      return this;
+    }
+    /**
+     * Minimal age of the child.
+     */
+    public Builder childMinAge(Long childMinAge) {
+      if(this.childMinAge == null) this.childMinAge = new Number();
+      this.childMinAge.setLong(childMinAge);
+      return this;
+    }
+    /**
+     * Minimal age of the child.
+     */
+    public Builder childMinAge(Float childMinAge) {
+      if(this.childMinAge == null) this.childMinAge = new Number();
+      this.childMinAge.setFloat(childMinAge);
+      return this;
+    }
+    /**
+     * Minimal age of the child.
+     */
+    public Builder childMinAge(Double childMinAge) {
+      if(this.childMinAge == null) this.childMinAge = new Number();
+      this.childMinAge.setDouble(childMinAge);
       return this;
     }
     /**
@@ -96,15 +146,65 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Maximal age recommended for viewing content.
      */
-    public Builder suggestedMaxAge(Number number) {
-      this.suggestedMaxAge = number;
+    public Builder suggestedMaxAge(Integer integer) {
+      if(this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
+      this.suggestedMaxAge.setInteger(integer);
+      return this;
+    }
+    /**
+     * Maximal age recommended for viewing content.
+     */
+    public Builder suggestedMaxAge(Long suggestedMaxAge) {
+      if(this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
+      this.suggestedMaxAge.setLong(suggestedMaxAge);
+      return this;
+    }
+    /**
+     * Maximal age recommended for viewing content.
+     */
+    public Builder suggestedMaxAge(Float suggestedMaxAge) {
+      if(this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
+      this.suggestedMaxAge.setFloat(suggestedMaxAge);
+      return this;
+    }
+    /**
+     * Maximal age recommended for viewing content.
+     */
+    public Builder suggestedMaxAge(Double suggestedMaxAge) {
+      if(this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
+      this.suggestedMaxAge.setDouble(suggestedMaxAge);
       return this;
     }
     /**
      * Minimal age recommended for viewing content.
      */
-    public Builder suggestedMinAge(Number number) {
-      this.suggestedMinAge = number;
+    public Builder suggestedMinAge(Integer integer) {
+      if(this.suggestedMinAge == null) this.suggestedMinAge = new Number();
+      this.suggestedMinAge.setInteger(integer);
+      return this;
+    }
+    /**
+     * Minimal age recommended for viewing content.
+     */
+    public Builder suggestedMinAge(Long suggestedMinAge) {
+      if(this.suggestedMinAge == null) this.suggestedMinAge = new Number();
+      this.suggestedMinAge.setLong(suggestedMinAge);
+      return this;
+    }
+    /**
+     * Minimal age recommended for viewing content.
+     */
+    public Builder suggestedMinAge(Float suggestedMinAge) {
+      if(this.suggestedMinAge == null) this.suggestedMinAge = new Number();
+      this.suggestedMinAge.setFloat(suggestedMinAge);
+      return this;
+    }
+    /**
+     * Minimal age recommended for viewing content.
+     */
+    public Builder suggestedMinAge(Double suggestedMinAge) {
+      if(this.suggestedMinAge == null) this.suggestedMinAge = new Number();
+      this.suggestedMinAge.setDouble(suggestedMinAge);
       return this;
     }
     /**

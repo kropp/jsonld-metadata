@@ -245,6 +245,9 @@ public class Thing {
       this.id = id;
       return this;
     }
+    public Builder id(long id) {
+      return id(Long.toString(id));
+    }
     private String additionalType;
     private String alternateName;
     private String description;

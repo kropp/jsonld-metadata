@@ -119,8 +119,33 @@ public class ExercisePlan extends PhysicalActivity {
     /**
      * Number of times one should repeat the activity.
      */
-    public Builder repetitions(Number number) {
-      this.repetitions = number;
+    public Builder repetitions(Integer integer) {
+      if(this.repetitions == null) this.repetitions = new Number();
+      this.repetitions.setInteger(integer);
+      return this;
+    }
+    /**
+     * Number of times one should repeat the activity.
+     */
+    public Builder repetitions(Long repetitions) {
+      if(this.repetitions == null) this.repetitions = new Number();
+      this.repetitions.setLong(repetitions);
+      return this;
+    }
+    /**
+     * Number of times one should repeat the activity.
+     */
+    public Builder repetitions(Float repetitions) {
+      if(this.repetitions == null) this.repetitions = new Number();
+      this.repetitions.setFloat(repetitions);
+      return this;
+    }
+    /**
+     * Number of times one should repeat the activity.
+     */
+    public Builder repetitions(Double repetitions) {
+      if(this.repetitions == null) this.repetitions = new Number();
+      this.repetitions.setDouble(repetitions);
       return this;
     }
     /**

@@ -79,8 +79,33 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The lower value of some characteristic or property.
      */
-    public Builder minValue(Number number) {
-      this.minValue = number;
+    public Builder minValue(Integer integer) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setInteger(integer);
+      return this;
+    }
+    /**
+     * The lower value of some characteristic or property.
+     */
+    public Builder minValue(Long minValue) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setLong(minValue);
+      return this;
+    }
+    /**
+     * The lower value of some characteristic or property.
+     */
+    public Builder minValue(Float minValue) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setFloat(minValue);
+      return this;
+    }
+    /**
+     * The lower value of some characteristic or property.
+     */
+    public Builder minValue(Double minValue) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setDouble(minValue);
       return this;
     }
     /**

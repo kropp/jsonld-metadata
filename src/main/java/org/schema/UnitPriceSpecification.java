@@ -61,8 +61,33 @@ public class UnitPriceSpecification extends PriceSpecification {
     /**
      * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
      */
-    public Builder billingIncrement(Number number) {
-      this.billingIncrement = number;
+    public Builder billingIncrement(Integer integer) {
+      if(this.billingIncrement == null) this.billingIncrement = new Number();
+      this.billingIncrement.setInteger(integer);
+      return this;
+    }
+    /**
+     * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+     */
+    public Builder billingIncrement(Long billingIncrement) {
+      if(this.billingIncrement == null) this.billingIncrement = new Number();
+      this.billingIncrement.setLong(billingIncrement);
+      return this;
+    }
+    /**
+     * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+     */
+    public Builder billingIncrement(Float billingIncrement) {
+      if(this.billingIncrement == null) this.billingIncrement = new Number();
+      this.billingIncrement.setFloat(billingIncrement);
+      return this;
+    }
+    /**
+     * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+     */
+    public Builder billingIncrement(Double billingIncrement) {
+      if(this.billingIncrement == null) this.billingIncrement = new Number();
+      this.billingIncrement.setDouble(billingIncrement);
       return this;
     }
     /**
@@ -104,15 +129,65 @@ public class UnitPriceSpecification extends PriceSpecification {
     /**
      * The highest price if the price is a range.
      */
-    public Builder maxPrice(Number number) {
-      this.maxPrice = number;
+    public Builder maxPrice(Integer integer) {
+      if(this.maxPrice == null) this.maxPrice = new Number();
+      this.maxPrice.setInteger(integer);
+      return this;
+    }
+    /**
+     * The highest price if the price is a range.
+     */
+    public Builder maxPrice(Long maxPrice) {
+      if(this.maxPrice == null) this.maxPrice = new Number();
+      this.maxPrice.setLong(maxPrice);
+      return this;
+    }
+    /**
+     * The highest price if the price is a range.
+     */
+    public Builder maxPrice(Float maxPrice) {
+      if(this.maxPrice == null) this.maxPrice = new Number();
+      this.maxPrice.setFloat(maxPrice);
+      return this;
+    }
+    /**
+     * The highest price if the price is a range.
+     */
+    public Builder maxPrice(Double maxPrice) {
+      if(this.maxPrice == null) this.maxPrice = new Number();
+      this.maxPrice.setDouble(maxPrice);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
-    public Builder minPrice(Number number) {
-      this.minPrice = number;
+    public Builder minPrice(Integer integer) {
+      if(this.minPrice == null) this.minPrice = new Number();
+      this.minPrice.setInteger(integer);
+      return this;
+    }
+    /**
+     * The lowest price if the price is a range.
+     */
+    public Builder minPrice(Long minPrice) {
+      if(this.minPrice == null) this.minPrice = new Number();
+      this.minPrice.setLong(minPrice);
+      return this;
+    }
+    /**
+     * The lowest price if the price is a range.
+     */
+    public Builder minPrice(Float minPrice) {
+      if(this.minPrice == null) this.minPrice = new Number();
+      this.minPrice.setFloat(minPrice);
+      return this;
+    }
+    /**
+     * The lowest price if the price is a range.
+     */
+    public Builder minPrice(Double minPrice) {
+      if(this.minPrice == null) this.minPrice = new Number();
+      this.minPrice.setDouble(minPrice);
       return this;
     }
     /**

@@ -61,8 +61,33 @@ public class DatedMoneySpecification extends StructuredValue {
     /**
      * The amount of money.
      */
-    public Builder amount(Number number) {
-      this.amount = number;
+    public Builder amount(Integer integer) {
+      if(this.amount == null) this.amount = new Number();
+      this.amount.setInteger(integer);
+      return this;
+    }
+    /**
+     * The amount of money.
+     */
+    public Builder amount(Long amount) {
+      if(this.amount == null) this.amount = new Number();
+      this.amount.setLong(amount);
+      return this;
+    }
+    /**
+     * The amount of money.
+     */
+    public Builder amount(Float amount) {
+      if(this.amount == null) this.amount = new Number();
+      this.amount.setFloat(amount);
+      return this;
+    }
+    /**
+     * The amount of money.
+     */
+    public Builder amount(Double amount) {
+      if(this.amount == null) this.amount = new Number();
+      this.amount.setDouble(amount);
       return this;
     }
     /**

@@ -96,8 +96,33 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The lower value of some characteristic or property.
      */
-    public Builder minValue(Number number) {
-      this.minValue = number;
+    public Builder minValue(Integer integer) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setInteger(integer);
+      return this;
+    }
+    /**
+     * The lower value of some characteristic or property.
+     */
+    public Builder minValue(Long minValue) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setLong(minValue);
+      return this;
+    }
+    /**
+     * The lower value of some characteristic or property.
+     */
+    public Builder minValue(Float minValue) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setFloat(minValue);
+      return this;
+    }
+    /**
+     * The lower value of some characteristic or property.
+     */
+    public Builder minValue(Double minValue) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setDouble(minValue);
       return this;
     }
     /**
@@ -147,15 +172,65 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * Specifies the minimum allowed range for number of characters in a literal value.
      */
-    public Builder valueMinLength(Number number) {
-      this.valueMinLength = number;
+    public Builder valueMinLength(Integer integer) {
+      if(this.valueMinLength == null) this.valueMinLength = new Number();
+      this.valueMinLength.setInteger(integer);
+      return this;
+    }
+    /**
+     * Specifies the minimum allowed range for number of characters in a literal value.
+     */
+    public Builder valueMinLength(Long valueMinLength) {
+      if(this.valueMinLength == null) this.valueMinLength = new Number();
+      this.valueMinLength.setLong(valueMinLength);
+      return this;
+    }
+    /**
+     * Specifies the minimum allowed range for number of characters in a literal value.
+     */
+    public Builder valueMinLength(Float valueMinLength) {
+      if(this.valueMinLength == null) this.valueMinLength = new Number();
+      this.valueMinLength.setFloat(valueMinLength);
+      return this;
+    }
+    /**
+     * Specifies the minimum allowed range for number of characters in a literal value.
+     */
+    public Builder valueMinLength(Double valueMinLength) {
+      if(this.valueMinLength == null) this.valueMinLength = new Number();
+      this.valueMinLength.setDouble(valueMinLength);
       return this;
     }
     /**
      * Specifies the allowed range for number of characters in a literal value.
      */
-    public Builder valueMaxLength(Number number) {
-      this.valueMaxLength = number;
+    public Builder valueMaxLength(Integer integer) {
+      if(this.valueMaxLength == null) this.valueMaxLength = new Number();
+      this.valueMaxLength.setInteger(integer);
+      return this;
+    }
+    /**
+     * Specifies the allowed range for number of characters in a literal value.
+     */
+    public Builder valueMaxLength(Long valueMaxLength) {
+      if(this.valueMaxLength == null) this.valueMaxLength = new Number();
+      this.valueMaxLength.setLong(valueMaxLength);
+      return this;
+    }
+    /**
+     * Specifies the allowed range for number of characters in a literal value.
+     */
+    public Builder valueMaxLength(Float valueMaxLength) {
+      if(this.valueMaxLength == null) this.valueMaxLength = new Number();
+      this.valueMaxLength.setFloat(valueMaxLength);
+      return this;
+    }
+    /**
+     * Specifies the allowed range for number of characters in a literal value.
+     */
+    public Builder valueMaxLength(Double valueMaxLength) {
+      if(this.valueMaxLength == null) this.valueMaxLength = new Number();
+      this.valueMaxLength.setDouble(valueMaxLength);
       return this;
     }
     /**
@@ -168,8 +243,33 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The stepValue attribute indicates the granularity that is expected (and required) of the value in a PropertyValueSpecification.
      */
-    public Builder stepValue(Number number) {
-      this.stepValue = number;
+    public Builder stepValue(Integer integer) {
+      if(this.stepValue == null) this.stepValue = new Number();
+      this.stepValue.setInteger(integer);
+      return this;
+    }
+    /**
+     * The stepValue attribute indicates the granularity that is expected (and required) of the value in a PropertyValueSpecification.
+     */
+    public Builder stepValue(Long stepValue) {
+      if(this.stepValue == null) this.stepValue = new Number();
+      this.stepValue.setLong(stepValue);
+      return this;
+    }
+    /**
+     * The stepValue attribute indicates the granularity that is expected (and required) of the value in a PropertyValueSpecification.
+     */
+    public Builder stepValue(Float stepValue) {
+      if(this.stepValue == null) this.stepValue = new Number();
+      this.stepValue.setFloat(stepValue);
+      return this;
+    }
+    /**
+     * The stepValue attribute indicates the granularity that is expected (and required) of the value in a PropertyValueSpecification.
+     */
+    public Builder stepValue(Double stepValue) {
+      if(this.stepValue == null) this.stepValue = new Number();
+      this.stepValue.setDouble(stepValue);
       return this;
     }
     /**

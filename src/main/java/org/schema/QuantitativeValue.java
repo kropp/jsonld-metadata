@@ -82,15 +82,65 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The upper value of some characteristic or property.
      */
-    public Builder maxValue(Number number) {
-      this.maxValue = number;
+    public Builder maxValue(Integer integer) {
+      if(this.maxValue == null) this.maxValue = new Number();
+      this.maxValue.setInteger(integer);
+      return this;
+    }
+    /**
+     * The upper value of some characteristic or property.
+     */
+    public Builder maxValue(Long maxValue) {
+      if(this.maxValue == null) this.maxValue = new Number();
+      this.maxValue.setLong(maxValue);
+      return this;
+    }
+    /**
+     * The upper value of some characteristic or property.
+     */
+    public Builder maxValue(Float maxValue) {
+      if(this.maxValue == null) this.maxValue = new Number();
+      this.maxValue.setFloat(maxValue);
+      return this;
+    }
+    /**
+     * The upper value of some characteristic or property.
+     */
+    public Builder maxValue(Double maxValue) {
+      if(this.maxValue == null) this.maxValue = new Number();
+      this.maxValue.setDouble(maxValue);
       return this;
     }
     /**
      * The lower value of some characteristic or property.
      */
-    public Builder minValue(Number number) {
-      this.minValue = number;
+    public Builder minValue(Integer integer) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setInteger(integer);
+      return this;
+    }
+    /**
+     * The lower value of some characteristic or property.
+     */
+    public Builder minValue(Long minValue) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setLong(minValue);
+      return this;
+    }
+    /**
+     * The lower value of some characteristic or property.
+     */
+    public Builder minValue(Float minValue) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setFloat(minValue);
+      return this;
+    }
+    /**
+     * The lower value of some characteristic or property.
+     */
+    public Builder minValue(Double minValue) {
+      if(this.minValue == null) this.minValue = new Number();
+      this.minValue.setDouble(minValue);
       return this;
     }
     /**

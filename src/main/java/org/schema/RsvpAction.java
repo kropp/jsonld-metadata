@@ -53,8 +53,33 @@ public class RsvpAction extends InformAction {
     /**
      * If responding yes, the number of guests who will attend in addition to the invitee.
      */
-    public Builder additionalNumberOfGuests(Number number) {
-      this.additionalNumberOfGuests = number;
+    public Builder additionalNumberOfGuests(Integer integer) {
+      if(this.additionalNumberOfGuests == null) this.additionalNumberOfGuests = new Number();
+      this.additionalNumberOfGuests.setInteger(integer);
+      return this;
+    }
+    /**
+     * If responding yes, the number of guests who will attend in addition to the invitee.
+     */
+    public Builder additionalNumberOfGuests(Long additionalNumberOfGuests) {
+      if(this.additionalNumberOfGuests == null) this.additionalNumberOfGuests = new Number();
+      this.additionalNumberOfGuests.setLong(additionalNumberOfGuests);
+      return this;
+    }
+    /**
+     * If responding yes, the number of guests who will attend in addition to the invitee.
+     */
+    public Builder additionalNumberOfGuests(Float additionalNumberOfGuests) {
+      if(this.additionalNumberOfGuests == null) this.additionalNumberOfGuests = new Number();
+      this.additionalNumberOfGuests.setFloat(additionalNumberOfGuests);
+      return this;
+    }
+    /**
+     * If responding yes, the number of guests who will attend in addition to the invitee.
+     */
+    public Builder additionalNumberOfGuests(Double additionalNumberOfGuests) {
+      if(this.additionalNumberOfGuests == null) this.additionalNumberOfGuests = new Number();
+      this.additionalNumberOfGuests.setDouble(additionalNumberOfGuests);
       return this;
     }
     /**

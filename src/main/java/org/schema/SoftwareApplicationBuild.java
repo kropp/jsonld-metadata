@@ -19,145 +19,206 @@
 package org.schema;
 
 /**
- * A work of art that is primarily visual in character.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_VisualArtworkClass
+ * Specific build of a software applicaton
  */
-public class VisualArtwork extends CreativeWork {
+public class SoftwareApplicationBuild extends SoftwareApplication {
   /**
-   * e.g. Painting, Drawing, Sculpture, Print, Photograph, Assemblage, Collage, etc.
+   * Software application product this build belongs to.
    */
-  public String getArtform() {
-    return myArtform;
+  public SoftwareApplication getSoftwareApplication() {
+    return mySoftwareApplication;
   }
   /**
-   * The material used. (e.g. Oil, Watercolour, Acrylic, Linoprint, Marble, Cyanotype, Digital, Lithograph, DryPoint, Intaglio, Pastel, Woodcut, Pencil, Mixed Media, etc.)
+   * Project this build belongs to.
    */
-  public String getArtMedium() {
-    return myArtMedium;
+  public Project getProject() {
+    return myProject;
   }
   /**
-   * The supporting materials for the artwork, e.g. Canvas, Paper, Wood, Board, etc.
-   */
-  public String getArtworkSurface() {
-    return myArtworkSurface;
-  }
-  /**
-   * The width of the item.
-   */
-  public DistanceOrQuantitativeValue getWidth() {
-    return myWidth;
-  }
-  /**
-   * The height of the item.
-   */
-  public DistanceOrQuantitativeValue getHeight() {
-    return myHeight;
-  }
-  /**
-   * The depth of the item.
-   */
-  public DistanceOrQuantitativeValue getDepth() {
-    return myDepth;
-  }
-  /**
-   * The number of copies when multiple copies of a piece of artwork are produced - e.g. for a limited edition of 20 prints, 'artEdition' refers to the total number of copies (in this example "20").
-   */
-  public IntegerOrString getArtEdition() {
-    return myArtEdition;
-  }
-  /**
-   * Builder for {@link VisualArtwork}
+   * Builder for {@link SoftwareApplicationBuild}
    */
   public static final class Builder {
     /**
-     * Creates new {@link VisualArtwork} instance.
+     * Creates new {@link SoftwareApplicationBuild} instance.
      */
-    public VisualArtwork build() {
-      return new VisualArtwork(artform, artMedium, artworkSurface, width, height, depth, artEdition, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    public SoftwareApplicationBuild build() {
+      return new SoftwareApplicationBuild(softwareApplication, project, applicationCategory, applicationSubCategory, applicationSuite, countriesNotSupported, countriesSupported, availableOnDevice, downloadUrl, featureList, fileFormat, fileSize, installUrl, memoryRequirements, operatingSystem, permissions, processorRequirements, releaseNotes, softwareRequirements, screenshot, softwareVersion, storageRequirements, softwareAddOn, softwareHelp, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
-     * e.g. Painting, Drawing, Sculpture, Print, Photograph, Assemblage, Collage, etc.
+     * Software application product this build belongs to.
      */
-    public Builder artform(String artform) {
-      this.artform = artform;
+    public Builder softwareApplication(SoftwareApplication softwareApplication) {
+      this.softwareApplication = softwareApplication;
       return this;
     }
     /**
-     * The material used. (e.g. Oil, Watercolour, Acrylic, Linoprint, Marble, Cyanotype, Digital, Lithograph, DryPoint, Intaglio, Pastel, Woodcut, Pencil, Mixed Media, etc.)
+     * Project this build belongs to.
      */
-    public Builder artMedium(String artMedium) {
-      this.artMedium = artMedium;
+    public Builder project(Project project) {
+      this.project = project;
       return this;
     }
     /**
-     * The supporting materials for the artwork, e.g. Canvas, Paper, Wood, Board, etc.
+     * Type of software application, e.g. "Game, Multimedia".
      */
-    public Builder artworkSurface(String artworkSurface) {
-      this.artworkSurface = artworkSurface;
+    public Builder applicationCategory(String applicationCategory) {
+      this.applicationCategory = applicationCategory;
       return this;
     }
     /**
-     * The width of the item.
+     * Subcategory of the application, e.g. "Arcade Game".
      */
-    public Builder width(Distance distance) {
-      if(this.width == null) this.width = new DistanceOrQuantitativeValue();
-      this.width.setDistance(distance);
+    public Builder applicationSubCategory(String applicationSubCategory) {
+      this.applicationSubCategory = applicationSubCategory;
       return this;
     }
     /**
-     * The width of the item.
+     * The name of the application suite to which the application belongs (e.g. Excel belongs to Office).
      */
-    public Builder width(QuantitativeValue quantitativeValue) {
-      if(this.width == null) this.width = new DistanceOrQuantitativeValue();
-      this.width.setQuantitativeValue(quantitativeValue);
+    public Builder applicationSuite(String applicationSuite) {
+      this.applicationSuite = applicationSuite;
       return this;
     }
     /**
-     * The height of the item.
+     * Countries for which the application is not supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
      */
-    public Builder height(Distance distance) {
-      if(this.height == null) this.height = new DistanceOrQuantitativeValue();
-      this.height.setDistance(distance);
+    public Builder countriesNotSupported(String countriesNotSupported) {
+      this.countriesNotSupported = countriesNotSupported;
       return this;
     }
     /**
-     * The height of the item.
+     * Countries for which the application is supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
      */
-    public Builder height(QuantitativeValue quantitativeValue) {
-      if(this.height == null) this.height = new DistanceOrQuantitativeValue();
-      this.height.setQuantitativeValue(quantitativeValue);
+    public Builder countriesSupported(String countriesSupported) {
+      this.countriesSupported = countriesSupported;
       return this;
     }
     /**
-     * The depth of the item.
+     * Device required to run the application. Used in cases where a specific make/model is required to run the application.
      */
-    public Builder depth(Distance distance) {
-      if(this.depth == null) this.depth = new DistanceOrQuantitativeValue();
-      this.depth.setDistance(distance);
+    public Builder availableOnDevice(String availableOnDevice) {
+      this.availableOnDevice = availableOnDevice;
       return this;
     }
     /**
-     * The depth of the item.
+     * If the file can be downloaded, URL to download the binary.
      */
-    public Builder depth(QuantitativeValue quantitativeValue) {
-      if(this.depth == null) this.depth = new DistanceOrQuantitativeValue();
-      this.depth.setQuantitativeValue(quantitativeValue);
+    public Builder downloadUrl(String downloadUrl) {
+      this.downloadUrl = downloadUrl;
       return this;
     }
     /**
-     * The number of copies when multiple copies of a piece of artwork are produced - e.g. for a limited edition of 20 prints, 'artEdition' refers to the total number of copies (in this example "20").
+     * Features or modules provided by this application (and possibly required by other applications).
      */
-    public Builder artEdition(Integer integer) {
-      if(this.artEdition == null) this.artEdition = new IntegerOrString();
-      this.artEdition.setInteger(integer);
+    public Builder featureList(String featureList) {
+      this.featureList = featureList;
       return this;
     }
     /**
-     * The number of copies when multiple copies of a piece of artwork are produced - e.g. for a limited edition of 20 prints, 'artEdition' refers to the total number of copies (in this example "20").
+     * MIME format of the binary (e.g. application/zip).
      */
-    public Builder artEdition(String artEdition) {
-      if(this.artEdition == null) this.artEdition = new IntegerOrString();
-      this.artEdition.setString(artEdition);
+    public Builder fileFormat(String fileFormat) {
+      this.fileFormat = fileFormat;
+      return this;
+    }
+    /**
+     * Size of the application / package (e.g. 18MB). In the absence of a unit (MB, KB etc.), KB will be assumed.
+     */
+    public Builder fileSize(Integer integer) {
+      this.fileSize = integer;
+      return this;
+    }
+    /**
+     * URL at which the app may be installed, if different from the URL of the item.
+     */
+    public Builder installUrl(String installUrl) {
+      this.installUrl = installUrl;
+      return this;
+    }
+    /**
+     * Minimum memory requirements.
+     */
+    public Builder memoryRequirements(String memoryRequirements) {
+      this.memoryRequirements = memoryRequirements;
+      return this;
+    }
+    /**
+     * Operating systems supported (Windows 7, OSX 10.6, Android 1.6).
+     */
+    public Builder operatingSystem(String operatingSystem) {
+      this.operatingSystem = operatingSystem;
+      return this;
+    }
+    /**
+     * Permission(s) required to run the app (for example, a mobile app may require full internet access or may run only on wifi).
+     */
+    public Builder permissions(String permissions) {
+      this.permissions = permissions;
+      return this;
+    }
+    /**
+     * Processor architecture required to run the application (e.g. IA64).
+     */
+    public Builder processorRequirements(String processorRequirements) {
+      this.processorRequirements = processorRequirements;
+      return this;
+    }
+    /**
+     * Description of what changed in this version.
+     */
+    public Builder releaseNotes(String releaseNotes) {
+      this.releaseNotes = releaseNotes;
+      return this;
+    }
+    /**
+     * Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime).
+     */
+    public Builder softwareRequirements(String softwareRequirements) {
+      this.softwareRequirements = softwareRequirements;
+      return this;
+    }
+    /**
+     * A link to a screenshot image of the app.
+     */
+    public Builder screenshot(ImageObject imageObject) {
+      if(this.screenshot == null) this.screenshot = new ImageObjectOrString();
+      this.screenshot.setImageObject(imageObject);
+      return this;
+    }
+    /**
+     * A link to a screenshot image of the app.
+     */
+    public Builder screenshot(String screenshot) {
+      if(this.screenshot == null) this.screenshot = new ImageObjectOrString();
+      this.screenshot.setString(screenshot);
+      return this;
+    }
+    /**
+     * Version of the software instance.
+     */
+    public Builder softwareVersion(String softwareVersion) {
+      this.softwareVersion = softwareVersion;
+      return this;
+    }
+    /**
+     * Storage requirements (free space required).
+     */
+    public Builder storageRequirements(String storageRequirements) {
+      this.storageRequirements = storageRequirements;
+      return this;
+    }
+    /**
+     * Additional content for a software application.
+     */
+    public Builder softwareAddOn(SoftwareApplication softwareApplication) {
+      this.softwareAddOn = softwareApplication;
+      return this;
+    }
+    /**
+     * Software application help.
+     */
+    public Builder softwareHelp(CreativeWork creativeWork) {
+      this.softwareHelp = creativeWork;
       return this;
     }
     /**
@@ -864,13 +925,30 @@ public class VisualArtwork extends CreativeWork {
       this.id = id;
       return this;
     }
-    private String artform;
-    private String artMedium;
-    private String artworkSurface;
-    private DistanceOrQuantitativeValue width;
-    private DistanceOrQuantitativeValue height;
-    private DistanceOrQuantitativeValue depth;
-    private IntegerOrString artEdition;
+    private SoftwareApplication softwareApplication;
+    private Project project;
+    private String applicationCategory;
+    private String applicationSubCategory;
+    private String applicationSuite;
+    private String countriesNotSupported;
+    private String countriesSupported;
+    private String availableOnDevice;
+    private String downloadUrl;
+    private String featureList;
+    private String fileFormat;
+    private Integer fileSize;
+    private String installUrl;
+    private String memoryRequirements;
+    private String operatingSystem;
+    private String permissions;
+    private String processorRequirements;
+    private String releaseNotes;
+    private String softwareRequirements;
+    private ImageObjectOrString screenshot;
+    private String softwareVersion;
+    private String storageRequirements;
+    private SoftwareApplication softwareAddOn;
+    private CreativeWork softwareHelp;
     private String schemaVersion;
     private Thing about;
     private String accessibilityAPI;
@@ -945,21 +1023,11 @@ public class VisualArtwork extends CreativeWork {
     private String id;
   }
 
-  protected VisualArtwork(String artform, String artMedium, String artworkSurface, DistanceOrQuantitativeValue width, DistanceOrQuantitativeValue height, DistanceOrQuantitativeValue depth, IntegerOrString artEdition, String schemaVersion, Thing about, String accessibilityAPI, String accessibilityControl, String accessibilityFeature, String accessibilityHazard, Person accountablePerson, AggregateRating aggregateRating, String alternativeHeadline, MediaObject associatedMedia, Audience audience, AudioObject audio, OrganizationOrPerson author, String award, CreativeWorkOrString citation, Comment comment, Place contentLocation, String contentRating, OrganizationOrPerson contributor, OrganizationOrPerson copyrightHolder, Number copyrightYear, OrganizationOrPerson creator, java.util.Date dateCreated, java.util.Date dateModified, java.util.Date datePublished, String discussionUrl, Person editor, AlignmentObject educationalAlignment, String educationalUse, MediaObject encoding, String genre, String headline, LanguageOrString inLanguage, String interactivityType, String isBasedOnUrl, Boolean isFamilyFriendly, String keywords, CreativeWorkOrString license, String learningResourceType, Thing mainEntity, Thing mentions, Offer offers, OrganizationOrPerson producer, PublicationEvent publication, Organization publisher, String publishingPrinciples, Event recordedAt, Review review, Organization sourceOrganization, String text, String thumbnailUrl, Duration timeRequired, String typicalAgeRange, Number version, VideoObject video, OrganizationOrPerson provider, Integer commentCount, HasPart hasPart, CreativeWork workExample, CreativeWork exampleOfWork, Person character, OrganizationOrPerson translator, PublicationEvent releasedEvent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myArtform = artform;
-    myArtMedium = artMedium;
-    myArtworkSurface = artworkSurface;
-    myWidth = width;
-    myHeight = height;
-    myDepth = depth;
-    myArtEdition = artEdition;
+  protected SoftwareApplicationBuild(SoftwareApplication softwareApplication, Project project, String applicationCategory, String applicationSubCategory, String applicationSuite, String countriesNotSupported, String countriesSupported, String availableOnDevice, String downloadUrl, String featureList, String fileFormat, Integer fileSize, String installUrl, String memoryRequirements, String operatingSystem, String permissions, String processorRequirements, String releaseNotes, String softwareRequirements, ImageObjectOrString screenshot, String softwareVersion, String storageRequirements, SoftwareApplication softwareAddOn, CreativeWork softwareHelp, String schemaVersion, Thing about, String accessibilityAPI, String accessibilityControl, String accessibilityFeature, String accessibilityHazard, Person accountablePerson, AggregateRating aggregateRating, String alternativeHeadline, MediaObject associatedMedia, Audience audience, AudioObject audio, OrganizationOrPerson author, String award, CreativeWorkOrString citation, Comment comment, Place contentLocation, String contentRating, OrganizationOrPerson contributor, OrganizationOrPerson copyrightHolder, Number copyrightYear, OrganizationOrPerson creator, java.util.Date dateCreated, java.util.Date dateModified, java.util.Date datePublished, String discussionUrl, Person editor, AlignmentObject educationalAlignment, String educationalUse, MediaObject encoding, String genre, String headline, LanguageOrString inLanguage, String interactivityType, String isBasedOnUrl, Boolean isFamilyFriendly, String keywords, CreativeWorkOrString license, String learningResourceType, Thing mainEntity, Thing mentions, Offer offers, OrganizationOrPerson producer, PublicationEvent publication, Organization publisher, String publishingPrinciples, Event recordedAt, Review review, Organization sourceOrganization, String text, String thumbnailUrl, Duration timeRequired, String typicalAgeRange, Number version, VideoObject video, OrganizationOrPerson provider, Integer commentCount, HasPart hasPart, CreativeWork workExample, CreativeWork exampleOfWork, Person character, OrganizationOrPerson translator, PublicationEvent releasedEvent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(applicationCategory, applicationSubCategory, applicationSuite, countriesNotSupported, countriesSupported, availableOnDevice, downloadUrl, featureList, fileFormat, fileSize, installUrl, memoryRequirements, operatingSystem, permissions, processorRequirements, releaseNotes, softwareRequirements, screenshot, softwareVersion, storageRequirements, softwareAddOn, softwareHelp, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    mySoftwareApplication = softwareApplication;
+    myProject = project;
   }
-  private String myArtform;
-  private String myArtMedium;
-  private String myArtworkSurface;
-  private DistanceOrQuantitativeValue myWidth;
-  private DistanceOrQuantitativeValue myHeight;
-  private DistanceOrQuantitativeValue myDepth;
-  private IntegerOrString myArtEdition;
+  private SoftwareApplication mySoftwareApplication;
+  private Project myProject;
 }

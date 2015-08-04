@@ -48,8 +48,33 @@ public class MedicalConditionStage extends MedicalIntangible {
     /**
      * The stage represented as a number, e.g. 3.
      */
-    public Builder stageAsNumber(Number number) {
-      this.stageAsNumber = number;
+    public Builder stageAsNumber(Integer integer) {
+      if(this.stageAsNumber == null) this.stageAsNumber = new Number();
+      this.stageAsNumber.setInteger(integer);
+      return this;
+    }
+    /**
+     * The stage represented as a number, e.g. 3.
+     */
+    public Builder stageAsNumber(Long stageAsNumber) {
+      if(this.stageAsNumber == null) this.stageAsNumber = new Number();
+      this.stageAsNumber.setLong(stageAsNumber);
+      return this;
+    }
+    /**
+     * The stage represented as a number, e.g. 3.
+     */
+    public Builder stageAsNumber(Float stageAsNumber) {
+      if(this.stageAsNumber == null) this.stageAsNumber = new Number();
+      this.stageAsNumber.setFloat(stageAsNumber);
+      return this;
+    }
+    /**
+     * The stage represented as a number, e.g. 3.
+     */
+    public Builder stageAsNumber(Double stageAsNumber) {
+      if(this.stageAsNumber == null) this.stageAsNumber = new Number();
+      this.stageAsNumber.setDouble(stageAsNumber);
       return this;
     }
     /**

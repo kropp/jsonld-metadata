@@ -112,15 +112,65 @@ public class PeopleAudience extends Audience {
     /**
      * Maximal age recommended for viewing content.
      */
-    public Builder suggestedMaxAge(Number number) {
-      this.suggestedMaxAge = number;
+    public Builder suggestedMaxAge(Integer integer) {
+      if(this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
+      this.suggestedMaxAge.setInteger(integer);
+      return this;
+    }
+    /**
+     * Maximal age recommended for viewing content.
+     */
+    public Builder suggestedMaxAge(Long suggestedMaxAge) {
+      if(this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
+      this.suggestedMaxAge.setLong(suggestedMaxAge);
+      return this;
+    }
+    /**
+     * Maximal age recommended for viewing content.
+     */
+    public Builder suggestedMaxAge(Float suggestedMaxAge) {
+      if(this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
+      this.suggestedMaxAge.setFloat(suggestedMaxAge);
+      return this;
+    }
+    /**
+     * Maximal age recommended for viewing content.
+     */
+    public Builder suggestedMaxAge(Double suggestedMaxAge) {
+      if(this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
+      this.suggestedMaxAge.setDouble(suggestedMaxAge);
       return this;
     }
     /**
      * Minimal age recommended for viewing content.
      */
-    public Builder suggestedMinAge(Number number) {
-      this.suggestedMinAge = number;
+    public Builder suggestedMinAge(Integer integer) {
+      if(this.suggestedMinAge == null) this.suggestedMinAge = new Number();
+      this.suggestedMinAge.setInteger(integer);
+      return this;
+    }
+    /**
+     * Minimal age recommended for viewing content.
+     */
+    public Builder suggestedMinAge(Long suggestedMinAge) {
+      if(this.suggestedMinAge == null) this.suggestedMinAge = new Number();
+      this.suggestedMinAge.setLong(suggestedMinAge);
+      return this;
+    }
+    /**
+     * Minimal age recommended for viewing content.
+     */
+    public Builder suggestedMinAge(Float suggestedMinAge) {
+      if(this.suggestedMinAge == null) this.suggestedMinAge = new Number();
+      this.suggestedMinAge.setFloat(suggestedMinAge);
+      return this;
+    }
+    /**
+     * Minimal age recommended for viewing content.
+     */
+    public Builder suggestedMinAge(Double suggestedMinAge) {
+      if(this.suggestedMinAge == null) this.suggestedMinAge = new Number();
+      this.suggestedMinAge.setDouble(suggestedMinAge);
       return this;
     }
     /**
