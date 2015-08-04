@@ -14,16 +14,12 @@
  * limitations under the License.
  */
 
-import GeneratorSink
-import Type
 import org.semarglproject.rdf.rdfa.RdfaParser
 import org.semarglproject.sink.TripleSink
 import org.semarglproject.source.StreamProcessor
 import java.io.File
 import java.io.FileInputStream
-import java.text.DateFormat
 import java.util.ArrayList
-import java.util.Date
 import java.util.HashMap
 import kotlin.text.Regex
 
@@ -67,6 +63,8 @@ private val BANNER = """/*
  */"""
 
 private val ID_TYPE = "http://schema.org/@id"
+
+private val NUMBER_UNDERLYING_TYPES = listOf("Integer", "Long", "Float", "Double")
 
 class GeneratorSink : TripleSink {
     private var uri: String = "http://schema.org/"
@@ -186,8 +184,13 @@ class GeneratorSink : TripleSink {
         if (field.isInterface && field.name != null)
             return listOf(field.name!!.capitalize())
 
-        if (field.dataTypes.size() < 2)
-            return listOf(getFieldType(field) ?: "")
+        if (field.dataTypes.size() < 2) {
+            val fieldType = getFieldType(field) ?: ""
+            if (fieldType == "Number")
+                return NUMBER_UNDERLYING_TYPES
+            else
+                return listOf(fieldType)
+        }
 
         val interfaceName = field.dataTypes.firstOrNull { types.get(it)!!.isInterface }
         if (interfaceName != null)
@@ -197,7 +200,7 @@ class GeneratorSink : TripleSink {
     }
 
     private fun shouldSkip(name: String): Boolean {
-        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Float", "Double", "URL", "True", "False", "Class", "Object").contains(name) ||
+        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Number", "Int", "Long", "Float", "Double", "URL", "True", "False", "Class", "Object").contains(name) ||
                 name.contains("#") || name.contains("/")
     }
 
@@ -209,7 +212,7 @@ class GeneratorSink : TripleSink {
     }
 
     private fun generateEither(ns: String, packageDir: File, types: Collection<String>): String {
-        val eitherName = types.join("Or")
+        val eitherName = if (types == NUMBER_UNDERLYING_TYPES) "Number" else types.join("Or")
         val file = File(packageDir, "$eitherName.java")
         if (!file.exists()) {
             with(StringBuilder()) {
@@ -432,7 +435,7 @@ class GeneratorSink : TripleSink {
         if (indexOfDot > 0) {
             return typeName.substring(indexOfDot+1).decapitalize()
         }
-        if (entityName != null && (typeName == "Boolean" || typeName == "String" || typeName == "Class")) {
+        if (entityName != null && arrayOf("Boolean", "String", "Class", "Long", "Int", "Double", "Float").contains(typeName)) {
             return entityName.decapitalize()
         }
         return typeName.decapitalize()
