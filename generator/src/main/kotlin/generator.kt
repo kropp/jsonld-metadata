@@ -393,11 +393,12 @@ class GeneratorSink : TripleSink {
                             }
                         }
                     }
-                    if (type.name == "Thing") {
-                        appendln("    public Builder id(long id) {")
-                        appendln("      return id(Long.toString(id));")
-                        appendln("    }")
-                    }
+
+                    // support for integer id on all builders
+                    appendln("    public Builder id(long id) {")
+                    appendln("      return id(Long.toString(id));")
+                    appendln("    }")
+
                     getAllFields(type).forEach { appendln("    private ${getEitherFieldType(ns, packageDir, it)} ${getVariableName(it.name!!)};") }
                     appendln("  }")
                     appendln()
