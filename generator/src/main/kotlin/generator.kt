@@ -64,12 +64,12 @@ private val BANNER = """/*
 
 private val ID_TYPE = "http://schema.org/@id"
 
-private val NUMBER_UNDERLYING_TYPES = listOf("Integer", "Long", "Float", "Double")
+private val NUMBER_UNDERLYING_TYPES = listOf("Integer", "Long", "Float", "Double", "String")
 
 class GeneratorSink : TripleSink {
     private var uri: String = "http://schema.org/"
 
-    private val types = HashMap<String, Type>()
+    private val types = hashMapOf<String, Type>()
 
     override fun setProperty(key: String, value: Any): Boolean {
         return true
@@ -234,8 +234,8 @@ class GeneratorSink : TripleSink {
                 appendln("    return null;")
                 appendln("  }")
 
-                val filteredTypes = types.filterNot { shouldSkip(it) || it == "String" || it == "Boolean" || it == "Number" || it == "Integer" }
-                if (filteredTypes.any() && !filteredTypes.contains("Thing")) {
+                val filteredTypes = types.filterNot { shouldSkip(it) || it == "Boolean" || it == "Number" || it == "Integer" }
+                if (filteredTypes.any() && !filteredTypes.contains("Thing") && !filteredTypes.contains("String")) {
                     appendln("  public Thing getThing() {")
                     filteredTypes.forEach {
                         appendln("    if (my$it != null) return my$it;")
@@ -402,7 +402,7 @@ public interface ThingBuilder<T> {
                                 appendln("    }")
 
                                 // add overload accepting ThingBuilder<T>
-                                if (!shouldSkip(fieldType) && fieldType != "String" && fieldType != "java.util.Date" && fieldType != "HasPart") {
+                                if (!shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && fieldType != "String" && fieldType != "Integer" && fieldType != "java.util.Date" && fieldType != "HasPart") {
                                     field.comment?.let {
                                         appendln("    /**")
                                         appendln("     * $it")
@@ -466,6 +466,8 @@ public interface ThingBuilder<T> {
             }
         }
     }
+
+    private fun findType(fieldType: String): Type? = types.values.firstOrNull { it.name == fieldType }
 
     private fun getVariableName(typeName: String, entityName: String? = null): String {
         val indexOfDot = typeName.lastIndexOf('.')
