@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,11 +25,6 @@ class PlaceOrPostalAddressOrString {
     if (myPlace != null) return myPlace;
     if (myPostalAddress != null) return myPostalAddress;
     if (myString != null) return myString;
-    return null;
-  }
-  public Thing getThing() {
-    if (myPlace != null) return myPlace;
-    if (myPostalAddress != null) return myPostalAddress;
     return null;
   }
   public void setPlace(Place place) { clear(); myPlace = place; }

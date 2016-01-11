@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ public class EducationalOrganization extends Organization {
   /**
    * Builder for {@link EducationalOrganization}
    */
-  public static final class Builder {
+  public static final class EducationalOrganizationThingBuilder implements Builder {
     /**
      * Creates new {@link EducationalOrganization} instance.
      */
@@ -46,6 +46,12 @@ public class EducationalOrganization extends Organization {
       return this;
     }
     /**
+     * Alumni of educational organization.
+     */
+    public Builder alumni(Person.Builder person) {
+      return this.alumni(person.build());
+    }
+    /**
      * Physical address of the item.
      */
     public Builder address(PostalAddress postalAddress) {
@@ -53,11 +59,23 @@ public class EducationalOrganization extends Organization {
       return this;
     }
     /**
+     * Physical address of the item.
+     */
+    public Builder address(PostalAddress.Builder postalAddress) {
+      return this.address(postalAddress.build());
+    }
+    /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     public Builder aggregateRating(AggregateRating aggregateRating) {
       this.aggregateRating = aggregateRating;
       return this;
+    }
+    /**
+     * The overall rating, based on a collection of reviews or ratings, of the item.
+     */
+    public Builder aggregateRating(AggregateRating.Builder aggregateRating) {
+      return this.aggregateRating(aggregateRating.build());
     }
     /**
      * An award won by or for this item.
@@ -70,17 +88,29 @@ public class EducationalOrganization extends Organization {
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     public Builder brand(Brand brand) {
-      if(this.brand == null) this.brand = new BrandOrOrganization();
+      if (this.brand == null) this.brand = new BrandOrOrganization();
       this.brand.setBrand(brand);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
+    public Builder brand(Brand.Builder brand) {
+      return this.brand(brand.build());
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
     public Builder brand(Organization organization) {
-      if(this.brand == null) this.brand = new BrandOrOrganization();
+      if (this.brand == null) this.brand = new BrandOrOrganization();
       this.brand.setOrganization(organization);
       return this;
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
+    public Builder brand(Organization.Builder organization) {
+      return this.brand(organization.build());
     }
     /**
      * A contact point for a person or organization.
@@ -90,11 +120,23 @@ public class EducationalOrganization extends Organization {
       return this;
     }
     /**
+     * A contact point for a person or organization.
+     */
+    public Builder contactPoint(ContactPoint.Builder contactPoint) {
+      return this.contactPoint(contactPoint.build());
+    }
+    /**
      * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
      */
     public Builder department(Organization organization) {
       this.department = organization;
       return this;
+    }
+    /**
+     * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
+     */
+    public Builder department(Organization.Builder organization) {
+      return this.department(organization.build());
     }
     /**
      * The Dun & Bradstreet DUNS number for identifying an organization or business person.
@@ -118,11 +160,23 @@ public class EducationalOrganization extends Organization {
       return this;
     }
     /**
+     * Someone working for this organization.
+     */
+    public Builder employee(Person.Builder person) {
+      return this.employee(person.build());
+    }
+    /**
      * Upcoming or past event associated with this place, organization, or action.
      */
     public Builder event(Event event) {
       this.event = event;
       return this;
+    }
+    /**
+     * Upcoming or past event associated with this place, organization, or action.
+     */
+    public Builder event(Event.Builder event) {
+      return this.event(event.build());
     }
     /**
      * The fax number.
@@ -137,6 +191,12 @@ public class EducationalOrganization extends Organization {
     public Builder founder(Person person) {
       this.founder = person;
       return this;
+    }
+    /**
+     * A person who founded this organization.
+     */
+    public Builder founder(Person.Builder person) {
+      return this.founder(person.build());
     }
     /**
      * The date that this organization was dissolved.
@@ -167,6 +227,12 @@ public class EducationalOrganization extends Organization {
       return this;
     }
     /**
+     * Points-of-Sales operated by the organization or person.
+     */
+    public Builder hasPOS(Place.Builder place) {
+      return this.hasPOS(place.build());
+    }
+    /**
      * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
      */
     public Builder isicV4(String isicV4) {
@@ -184,15 +250,21 @@ public class EducationalOrganization extends Organization {
      * An associated logo.
      */
     public Builder logo(ImageObject imageObject) {
-      if(this.logo == null) this.logo = new ImageObjectOrString();
+      if (this.logo == null) this.logo = new ImageObjectOrString();
       this.logo.setImageObject(imageObject);
       return this;
     }
     /**
      * An associated logo.
      */
+    public Builder logo(ImageObject.Builder imageObject) {
+      return this.logo(imageObject.build());
+    }
+    /**
+     * An associated logo.
+     */
     public Builder logo(String logo) {
-      if(this.logo == null) this.logo = new ImageObjectOrString();
+      if (this.logo == null) this.logo = new ImageObjectOrString();
       this.logo.setString(logo);
       return this;
     }
@@ -204,36 +276,66 @@ public class EducationalOrganization extends Organization {
       return this;
     }
     /**
+     * A pointer to products or services offered by the organization or person.
+     */
+    public Builder makesOffer(Offer.Builder offer) {
+      return this.makesOffer(offer.build());
+    }
+    /**
      * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
     public Builder member(Organization organization) {
-      if(this.member == null) this.member = new OrganizationOrPerson();
+      if (this.member == null) this.member = new OrganizationOrPerson();
       this.member.setOrganization(organization);
       return this;
     }
     /**
      * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
+    public Builder member(Organization.Builder organization) {
+      return this.member(organization.build());
+    }
+    /**
+     * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
+     */
     public Builder member(Person person) {
-      if(this.member == null) this.member = new OrganizationOrPerson();
+      if (this.member == null) this.member = new OrganizationOrPerson();
       this.member.setPerson(person);
       return this;
+    }
+    /**
+     * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
+     */
+    public Builder member(Person.Builder person) {
+      return this.member(person.build());
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
     public Builder memberOf(Organization organization) {
-      if(this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
+      if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
       this.memberOf.setOrganization(organization);
       return this;
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
+    public Builder memberOf(Organization.Builder organization) {
+      return this.memberOf(organization.build());
+    }
+    /**
+     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+     */
     public Builder memberOf(ProgramMembership programMembership) {
-      if(this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
+      if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
       this.memberOf.setProgramMembership(programMembership);
       return this;
+    }
+    /**
+     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+     */
+    public Builder memberOf(ProgramMembership.Builder programMembership) {
+      return this.memberOf(programMembership.build());
     }
     /**
      * The North American Industry Classification System (NAICS) code for a particular organization or business person.
@@ -250,20 +352,38 @@ public class EducationalOrganization extends Organization {
       return this;
     }
     /**
+     * The number of employees in an organization e.g. business.
+     */
+    public Builder numberOfEmployees(QuantitativeValue.Builder quantitativeValue) {
+      return this.numberOfEmployees(quantitativeValue.build());
+    }
+    /**
      * Products owned by the organization or person.
      */
     public Builder owns(OwnershipInfo ownershipInfo) {
-      if(this.owns == null) this.owns = new OwnershipInfoOrProduct();
+      if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
       this.owns.setOwnershipInfo(ownershipInfo);
       return this;
     }
     /**
      * Products owned by the organization or person.
      */
+    public Builder owns(OwnershipInfo.Builder ownershipInfo) {
+      return this.owns(ownershipInfo.build());
+    }
+    /**
+     * Products owned by the organization or person.
+     */
     public Builder owns(Product product) {
-      if(this.owns == null) this.owns = new OwnershipInfoOrProduct();
+      if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
       this.owns.setProduct(product);
       return this;
+    }
+    /**
+     * Products owned by the organization or person.
+     */
+    public Builder owns(Product.Builder product) {
+      return this.owns(product.build());
     }
     /**
      * A review of the item.
@@ -273,6 +393,12 @@ public class EducationalOrganization extends Organization {
       return this;
     }
     /**
+     * A review of the item.
+     */
+    public Builder review(Review.Builder review) {
+      return this.review(review.build());
+    }
+    /**
      * A pointer to products or services sought by the organization or person (demand).
      */
     public Builder seeks(Demand demand) {
@@ -280,11 +406,23 @@ public class EducationalOrganization extends Organization {
       return this;
     }
     /**
+     * A pointer to products or services sought by the organization or person (demand).
+     */
+    public Builder seeks(Demand.Builder demand) {
+      return this.seeks(demand.build());
+    }
+    /**
      * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
      */
     public Builder subOrganization(Organization organization) {
       this.subOrganization = organization;
       return this;
+    }
+    /**
+     * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
+     */
+    public Builder subOrganization(Organization.Builder organization) {
+      return this.subOrganization(organization.build());
     }
     /**
      * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
@@ -313,6 +451,12 @@ public class EducationalOrganization extends Organization {
     public Builder foundingLocation(Place place) {
       this.foundingLocation = place;
       return this;
+    }
+    /**
+     * The place where the Organization was founded.
+     */
+    public Builder foundingLocation(Place.Builder place) {
+      return this.foundingLocation(place.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
@@ -366,7 +510,7 @@ public class EducationalOrganization extends Organization {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
@@ -400,8 +544,41 @@ public class EducationalOrganization extends Organization {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
+    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+      return this.mainEntityOfPage(creativeWork.build());
+    }
+    /**
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
+     */
     public Builder mainEntityOfPage(String mainEntityOfPage) {
-      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
@@ -433,9 +610,18 @@ public class EducationalOrganization extends Organization {
       this.potentialAction = action;
       return this;
     }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action.Builder action) {
+      return this.potentialAction(action.build());
+    }
     public Builder id(String id) {
       this.id = id;
       return this;
+    }
+    public Builder id(long id) {
+      return id(Long.toString(id));
     }
     private Person alumni;
     private PostalAddress address;
@@ -479,6 +665,82 @@ public class EducationalOrganization extends Organization {
     private String url;
     private Action potentialAction;
     private String id;
+  }
+  public interface Builder extends ThingBuilder<EducationalOrganization> {
+  Builder alumni(Person person);
+  Builder alumni(Person.Builder person);
+  Builder address(PostalAddress postalAddress);
+  Builder address(PostalAddress.Builder postalAddress);
+  Builder aggregateRating(AggregateRating aggregateRating);
+  Builder aggregateRating(AggregateRating.Builder aggregateRating);
+  Builder award(String award);
+  Builder brand(Brand brand);
+  Builder brand(Brand.Builder brand);
+  Builder brand(Organization organization);
+  Builder brand(Organization.Builder organization);
+  Builder contactPoint(ContactPoint contactPoint);
+  Builder contactPoint(ContactPoint.Builder contactPoint);
+  Builder department(Organization organization);
+  Builder department(Organization.Builder organization);
+  Builder duns(String duns);
+  Builder email(String email);
+  Builder employee(Person person);
+  Builder employee(Person.Builder person);
+  Builder event(Event event);
+  Builder event(Event.Builder event);
+  Builder faxNumber(String faxNumber);
+  Builder founder(Person person);
+  Builder founder(Person.Builder person);
+  Builder dissolutionDate(java.util.Date date);
+  Builder foundingDate(java.util.Date date);
+  Builder globalLocationNumber(String globalLocationNumber);
+  Builder hasPOS(Place place);
+  Builder hasPOS(Place.Builder place);
+  Builder isicV4(String isicV4);
+  Builder legalName(String legalName);
+  Builder logo(ImageObject imageObject);
+  Builder logo(ImageObject.Builder imageObject);
+  Builder logo(String logo);
+  Builder makesOffer(Offer offer);
+  Builder makesOffer(Offer.Builder offer);
+  Builder member(Organization organization);
+  Builder member(Organization.Builder organization);
+  Builder member(Person person);
+  Builder member(Person.Builder person);
+  Builder memberOf(Organization organization);
+  Builder memberOf(Organization.Builder organization);
+  Builder memberOf(ProgramMembership programMembership);
+  Builder memberOf(ProgramMembership.Builder programMembership);
+  Builder naics(String naics);
+  Builder numberOfEmployees(QuantitativeValue quantitativeValue);
+  Builder numberOfEmployees(QuantitativeValue.Builder quantitativeValue);
+  Builder owns(OwnershipInfo ownershipInfo);
+  Builder owns(OwnershipInfo.Builder ownershipInfo);
+  Builder owns(Product product);
+  Builder owns(Product.Builder product);
+  Builder review(Review review);
+  Builder review(Review.Builder review);
+  Builder seeks(Demand demand);
+  Builder seeks(Demand.Builder demand);
+  Builder subOrganization(Organization organization);
+  Builder subOrganization(Organization.Builder organization);
+  Builder taxID(String taxID);
+  Builder telephone(String telephone);
+  Builder vatID(String vatID);
+  Builder foundingLocation(Place place);
+  Builder foundingLocation(Place.Builder place);
+  Builder additionalType(String additionalType);
+  Builder alternateName(String alternateName);
+  Builder description(String description);
+  Builder mainEntityOfPage(CreativeWork creativeWork);
+  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+  Builder mainEntityOfPage(String mainEntityOfPage);
+  Builder name(String name);
+  Builder sameAs(String sameAs);
+  Builder url(String url);
+  Builder potentialAction(Action action);
+  Builder potentialAction(Action.Builder action);
+  Builder id(String id);
   }
 
   protected EducationalOrganization(Person alumni, PostalAddress address, AggregateRating aggregateRating, String award, BrandOrOrganization brand, ContactPoint contactPoint, Organization department, String duns, String email, Person employee, Event event, String faxNumber, Person founder, java.util.Date dissolutionDate, java.util.Date foundingDate, String globalLocationNumber, Place hasPOS, String isicV4, String legalName, ImageObjectOrString logo, Offer makesOffer, OrganizationOrPerson member, OrganizationOrProgramMembership memberOf, String naics, QuantitativeValue numberOfEmployees, OwnershipInfoOrProduct owns, Review review, Demand seeks, Organization subOrganization, String taxID, String telephone, String vatID, Place foundingLocation, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

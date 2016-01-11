@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,16 @@ public class NotYetRecruiting {
   /**
    * Builder for {@link NotYetRecruiting}
    */
-  public static final class Builder {
+  public static final class NotYetRecruitingThingBuilder implements Builder {
     /**
      * Creates new {@link NotYetRecruiting} instance.
      */
     public NotYetRecruiting build() {
       return new NotYetRecruiting();
     }
+  }
+  public interface Builder extends ThingBuilder<NotYetRecruiting> {
+  
   }
 
   protected NotYetRecruiting() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +23,6 @@ class StringOrVehicle {
   @com.fasterxml.jackson.annotation.JsonValue
   public Object getJsonLdValue() {
     if (myString != null) return myString;
-    if (myVehicle != null) return myVehicle;
-    return null;
-  }
-  public Thing getThing() {
     if (myVehicle != null) return myVehicle;
     return null;
   }

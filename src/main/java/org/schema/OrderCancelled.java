@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,16 @@ public class OrderCancelled {
   /**
    * Builder for {@link OrderCancelled}
    */
-  public static final class Builder {
+  public static final class OrderCancelledThingBuilder implements Builder {
     /**
      * Creates new {@link OrderCancelled} instance.
      */
     public OrderCancelled build() {
       return new OrderCancelled();
     }
+  }
+  public interface Builder extends ThingBuilder<OrderCancelled> {
+  
   }
 
   protected OrderCancelled() {

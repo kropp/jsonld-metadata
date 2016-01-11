@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ class Number {
     if (myLong != null) return myLong;
     if (myFloat != null) return myFloat;
     if (myDouble != null) return myDouble;
+    if (myString != null) return myString;
     return null;
   }
   public void setInteger(Integer integer) { clear(); myInteger = integer; }
@@ -40,10 +41,14 @@ class Number {
   public void setDouble(Double value) { clear(); myDouble = value; }
   public Double getDouble() { return myDouble; }
   private Double myDouble;
+  public void setString(String value) { clear(); myString = value; }
+  public String getString() { return myString; }
+  private String myString;
   private void clear() {
     myInteger = null;
     myLong = null;
     myFloat = null;
     myDouble = null;
+    myString = null;
   }
 }

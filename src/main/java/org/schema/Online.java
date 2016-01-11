@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,16 @@ public class Online {
   /**
    * Builder for {@link Online}
    */
-  public static final class Builder {
+  public static final class OnlineThingBuilder implements Builder {
     /**
      * Creates new {@link Online} instance.
      */
     public Online build() {
       return new Online();
     }
+  }
+  public interface Builder extends ThingBuilder<Online> {
+  
   }
 
   protected Online() {

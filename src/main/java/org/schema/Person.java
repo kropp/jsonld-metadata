@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -311,7 +311,7 @@ public class Person extends Thing implements Competitor {
   /**
    * Builder for {@link Person}
    */
-  public static final class Builder {
+  public static final class PersonThingBuilder implements Builder {
     /**
      * Creates new {@link Person} instance.
      */
@@ -333,6 +333,12 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * Physical address of the item.
+     */
+    public Builder address(PostalAddress.Builder postalAddress) {
+      return this.address(postalAddress.build());
+    }
+    /**
      * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
      */
     public Builder affiliation(Organization organization) {
@@ -340,11 +346,23 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+     */
+    public Builder affiliation(Organization.Builder organization) {
+      return this.affiliation(organization.build());
+    }
+    /**
      * An educational organizations that the person is an alumni of.
      */
     public Builder alumniOf(EducationalOrganization educationalOrganization) {
       this.alumniOf = educationalOrganization;
       return this;
+    }
+    /**
+     * An educational organizations that the person is an alumni of.
+     */
+    public Builder alumniOf(EducationalOrganization.Builder educationalOrganization) {
+      return this.alumniOf(educationalOrganization.build());
     }
     /**
      * An award won by or for this item.
@@ -364,17 +382,29 @@ public class Person extends Thing implements Competitor {
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     public Builder brand(Brand brand) {
-      if(this.brand == null) this.brand = new BrandOrOrganization();
+      if (this.brand == null) this.brand = new BrandOrOrganization();
       this.brand.setBrand(brand);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
+    public Builder brand(Brand.Builder brand) {
+      return this.brand(brand.build());
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
     public Builder brand(Organization organization) {
-      if(this.brand == null) this.brand = new BrandOrOrganization();
+      if (this.brand == null) this.brand = new BrandOrOrganization();
       this.brand.setOrganization(organization);
       return this;
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
+    public Builder brand(Organization.Builder organization) {
+      return this.brand(organization.build());
     }
     /**
      * A child of the person.
@@ -384,6 +414,12 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * A child of the person.
+     */
+    public Builder children(Person.Builder person) {
+      return this.children(person.build());
+    }
+    /**
      * A colleague of the person.
      */
     public Builder colleague(Person person) {
@@ -391,11 +427,23 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * A colleague of the person.
+     */
+    public Builder colleague(Person.Builder person) {
+      return this.colleague(person.build());
+    }
+    /**
      * A contact point for a person or organization.
      */
     public Builder contactPoint(ContactPoint contactPoint) {
       this.contactPoint = contactPoint;
       return this;
+    }
+    /**
+     * A contact point for a person or organization.
+     */
+    public Builder contactPoint(ContactPoint.Builder contactPoint) {
+      return this.contactPoint(contactPoint.build());
     }
     /**
      * Date of death.
@@ -440,6 +488,12 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * The most generic uni-directional social relation.
+     */
+    public Builder follows(Person.Builder person) {
+      return this.follows(person.build());
+    }
+    /**
      * Gender of the person.
      */
     public Builder gender(String gender) {
@@ -468,36 +522,66 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * Points-of-Sales operated by the organization or person.
+     */
+    public Builder hasPOS(Place.Builder place) {
+      return this.hasPOS(place.build());
+    }
+    /**
      * The height of the item.
      */
     public Builder height(Distance distance) {
-      if(this.height == null) this.height = new DistanceOrQuantitativeValue();
+      if (this.height == null) this.height = new DistanceOrQuantitativeValue();
       this.height.setDistance(distance);
       return this;
     }
     /**
      * The height of the item.
      */
+    public Builder height(Distance.Builder distance) {
+      return this.height(distance.build());
+    }
+    /**
+     * The height of the item.
+     */
     public Builder height(QuantitativeValue quantitativeValue) {
-      if(this.height == null) this.height = new DistanceOrQuantitativeValue();
+      if (this.height == null) this.height = new DistanceOrQuantitativeValue();
       this.height.setQuantitativeValue(quantitativeValue);
       return this;
+    }
+    /**
+     * The height of the item.
+     */
+    public Builder height(QuantitativeValue.Builder quantitativeValue) {
+      return this.height(quantitativeValue.build());
     }
     /**
      * A contact location for a person's residence.
      */
     public Builder homeLocation(ContactPoint contactPoint) {
-      if(this.homeLocation == null) this.homeLocation = new ContactPointOrPlace();
+      if (this.homeLocation == null) this.homeLocation = new ContactPointOrPlace();
       this.homeLocation.setContactPoint(contactPoint);
       return this;
     }
     /**
      * A contact location for a person's residence.
      */
+    public Builder homeLocation(ContactPoint.Builder contactPoint) {
+      return this.homeLocation(contactPoint.build());
+    }
+    /**
+     * A contact location for a person's residence.
+     */
     public Builder homeLocation(Place place) {
-      if(this.homeLocation == null) this.homeLocation = new ContactPointOrPlace();
+      if (this.homeLocation == null) this.homeLocation = new ContactPointOrPlace();
       this.homeLocation.setPlace(place);
       return this;
+    }
+    /**
+     * A contact location for a person's residence.
+     */
+    public Builder homeLocation(Place.Builder place) {
+      return this.homeLocation(place.build());
     }
     /**
      * An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.
@@ -535,6 +619,12 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * The most generic bi-directional social/work relation.
+     */
+    public Builder knows(Person.Builder person) {
+      return this.knows(person.build());
+    }
+    /**
      * A pointer to products or services offered by the organization or person.
      */
     public Builder makesOffer(Offer offer) {
@@ -542,20 +632,38 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * A pointer to products or services offered by the organization or person.
+     */
+    public Builder makesOffer(Offer.Builder offer) {
+      return this.makesOffer(offer.build());
+    }
+    /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
     public Builder memberOf(Organization organization) {
-      if(this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
+      if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
       this.memberOf.setOrganization(organization);
       return this;
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
+    public Builder memberOf(Organization.Builder organization) {
+      return this.memberOf(organization.build());
+    }
+    /**
+     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+     */
     public Builder memberOf(ProgramMembership programMembership) {
-      if(this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
+      if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
       this.memberOf.setProgramMembership(programMembership);
       return this;
+    }
+    /**
+     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+     */
+    public Builder memberOf(ProgramMembership.Builder programMembership) {
+      return this.memberOf(programMembership.build());
     }
     /**
      * The North American Industry Classification System (NAICS) code for a particular organization or business person.
@@ -572,6 +680,12 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * Nationality of the person.
+     */
+    public Builder nationality(Country.Builder country) {
+      return this.nationality(country.build());
+    }
+    /**
      * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
      */
     public Builder netWorth(PriceSpecification priceSpecification) {
@@ -579,20 +693,38 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
+     */
+    public Builder netWorth(PriceSpecification.Builder priceSpecification) {
+      return this.netWorth(priceSpecification.build());
+    }
+    /**
      * Products owned by the organization or person.
      */
     public Builder owns(OwnershipInfo ownershipInfo) {
-      if(this.owns == null) this.owns = new OwnershipInfoOrProduct();
+      if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
       this.owns.setOwnershipInfo(ownershipInfo);
       return this;
     }
     /**
      * Products owned by the organization or person.
      */
+    public Builder owns(OwnershipInfo.Builder ownershipInfo) {
+      return this.owns(ownershipInfo.build());
+    }
+    /**
+     * Products owned by the organization or person.
+     */
     public Builder owns(Product product) {
-      if(this.owns == null) this.owns = new OwnershipInfoOrProduct();
+      if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
       this.owns.setProduct(product);
       return this;
+    }
+    /**
+     * Products owned by the organization or person.
+     */
+    public Builder owns(Product.Builder product) {
+      return this.owns(product.build());
     }
     /**
      * A parent of this person.
@@ -602,11 +734,23 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * A parent of this person.
+     */
+    public Builder parent(Person.Builder person) {
+      return this.parent(person.build());
+    }
+    /**
      * Event that this person is a performer or participant in.
      */
     public Builder performerIn(Event event) {
       this.performerIn = event;
       return this;
+    }
+    /**
+     * Event that this person is a performer or participant in.
+     */
+    public Builder performerIn(Event.Builder event) {
+      return this.performerIn(event.build());
     }
     /**
      * The most generic familial relation.
@@ -616,11 +760,23 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * The most generic familial relation.
+     */
+    public Builder relatedTo(Person.Builder person) {
+      return this.relatedTo(person.build());
+    }
+    /**
      * A pointer to products or services sought by the organization or person (demand).
      */
     public Builder seeks(Demand demand) {
       this.seeks = demand;
       return this;
+    }
+    /**
+     * A pointer to products or services sought by the organization or person (demand).
+     */
+    public Builder seeks(Demand.Builder demand) {
+      return this.seeks(demand.build());
     }
     /**
      * A sibling of the person.
@@ -630,11 +786,23 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * A sibling of the person.
+     */
+    public Builder sibling(Person.Builder person) {
+      return this.sibling(person.build());
+    }
+    /**
      * The person's spouse.
      */
     public Builder spouse(Person person) {
       this.spouse = person;
       return this;
+    }
+    /**
+     * The person's spouse.
+     */
+    public Builder spouse(Person.Builder person) {
+      return this.spouse(person.build());
     }
     /**
      * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
@@ -665,20 +833,38 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * The weight of the product or person.
+     */
+    public Builder weight(QuantitativeValue.Builder quantitativeValue) {
+      return this.weight(quantitativeValue.build());
+    }
+    /**
      * A contact location for a person's place of work.
      */
     public Builder workLocation(ContactPoint contactPoint) {
-      if(this.workLocation == null) this.workLocation = new ContactPointOrPlace();
+      if (this.workLocation == null) this.workLocation = new ContactPointOrPlace();
       this.workLocation.setContactPoint(contactPoint);
       return this;
     }
     /**
      * A contact location for a person's place of work.
      */
+    public Builder workLocation(ContactPoint.Builder contactPoint) {
+      return this.workLocation(contactPoint.build());
+    }
+    /**
+     * A contact location for a person's place of work.
+     */
     public Builder workLocation(Place place) {
-      if(this.workLocation == null) this.workLocation = new ContactPointOrPlace();
+      if (this.workLocation == null) this.workLocation = new ContactPointOrPlace();
       this.workLocation.setPlace(place);
       return this;
+    }
+    /**
+     * A contact location for a person's place of work.
+     */
+    public Builder workLocation(Place.Builder place) {
+      return this.workLocation(place.build());
     }
     /**
      * Organizations that the person works for.
@@ -688,6 +874,12 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * Organizations that the person works for.
+     */
+    public Builder worksFor(Organization.Builder organization) {
+      return this.worksFor(organization.build());
+    }
+    /**
      * The place where the person was born.
      */
     public Builder birthPlace(Place place) {
@@ -695,11 +887,23 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * The place where the person was born.
+     */
+    public Builder birthPlace(Place.Builder place) {
+      return this.birthPlace(place.build());
+    }
+    /**
      * The place where the person died.
      */
     public Builder deathPlace(Place place) {
       this.deathPlace = place;
       return this;
+    }
+    /**
+     * The place where the person died.
+     */
+    public Builder deathPlace(Place.Builder place) {
+      return this.deathPlace(place.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
@@ -753,7 +957,7 @@ public class Person extends Thing implements Competitor {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
@@ -787,8 +991,41 @@ public class Person extends Thing implements Competitor {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
+    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+      return this.mainEntityOfPage(creativeWork.build());
+    }
+    /**
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
+     */
     public Builder mainEntityOfPage(String mainEntityOfPage) {
-      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
@@ -820,9 +1057,18 @@ public class Person extends Thing implements Competitor {
       this.potentialAction = action;
       return this;
     }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action.Builder action) {
+      return this.potentialAction(action.build());
+    }
     public Builder id(String id) {
       this.id = id;
       return this;
+    }
+    public Builder id(long id) {
+      return id(Long.toString(id));
     }
     private String additionalName;
     private PostalAddress address;
@@ -880,6 +1126,107 @@ public class Person extends Thing implements Competitor {
     private String url;
     private Action potentialAction;
     private String id;
+  }
+  public interface Builder extends ThingBuilder<Person> {
+  Builder additionalName(String additionalName);
+  Builder address(PostalAddress postalAddress);
+  Builder address(PostalAddress.Builder postalAddress);
+  Builder affiliation(Organization organization);
+  Builder affiliation(Organization.Builder organization);
+  Builder alumniOf(EducationalOrganization educationalOrganization);
+  Builder alumniOf(EducationalOrganization.Builder educationalOrganization);
+  Builder award(String award);
+  Builder birthDate(java.util.Date date);
+  Builder brand(Brand brand);
+  Builder brand(Brand.Builder brand);
+  Builder brand(Organization organization);
+  Builder brand(Organization.Builder organization);
+  Builder children(Person person);
+  Builder children(Person.Builder person);
+  Builder colleague(Person person);
+  Builder colleague(Person.Builder person);
+  Builder contactPoint(ContactPoint contactPoint);
+  Builder contactPoint(ContactPoint.Builder contactPoint);
+  Builder deathDate(java.util.Date date);
+  Builder duns(String duns);
+  Builder email(String email);
+  Builder familyName(String familyName);
+  Builder faxNumber(String faxNumber);
+  Builder follows(Person person);
+  Builder follows(Person.Builder person);
+  Builder gender(String gender);
+  Builder givenName(String givenName);
+  Builder globalLocationNumber(String globalLocationNumber);
+  Builder hasPOS(Place place);
+  Builder hasPOS(Place.Builder place);
+  Builder height(Distance distance);
+  Builder height(Distance.Builder distance);
+  Builder height(QuantitativeValue quantitativeValue);
+  Builder height(QuantitativeValue.Builder quantitativeValue);
+  Builder homeLocation(ContactPoint contactPoint);
+  Builder homeLocation(ContactPoint.Builder contactPoint);
+  Builder homeLocation(Place place);
+  Builder homeLocation(Place.Builder place);
+  Builder honorificPrefix(String honorificPrefix);
+  Builder honorificSuffix(String honorificSuffix);
+  Builder isicV4(String isicV4);
+  Builder jobTitle(String jobTitle);
+  Builder knows(Person person);
+  Builder knows(Person.Builder person);
+  Builder makesOffer(Offer offer);
+  Builder makesOffer(Offer.Builder offer);
+  Builder memberOf(Organization organization);
+  Builder memberOf(Organization.Builder organization);
+  Builder memberOf(ProgramMembership programMembership);
+  Builder memberOf(ProgramMembership.Builder programMembership);
+  Builder naics(String naics);
+  Builder nationality(Country country);
+  Builder nationality(Country.Builder country);
+  Builder netWorth(PriceSpecification priceSpecification);
+  Builder netWorth(PriceSpecification.Builder priceSpecification);
+  Builder owns(OwnershipInfo ownershipInfo);
+  Builder owns(OwnershipInfo.Builder ownershipInfo);
+  Builder owns(Product product);
+  Builder owns(Product.Builder product);
+  Builder parent(Person person);
+  Builder parent(Person.Builder person);
+  Builder performerIn(Event event);
+  Builder performerIn(Event.Builder event);
+  Builder relatedTo(Person person);
+  Builder relatedTo(Person.Builder person);
+  Builder seeks(Demand demand);
+  Builder seeks(Demand.Builder demand);
+  Builder sibling(Person person);
+  Builder sibling(Person.Builder person);
+  Builder spouse(Person person);
+  Builder spouse(Person.Builder person);
+  Builder taxID(String taxID);
+  Builder telephone(String telephone);
+  Builder vatID(String vatID);
+  Builder weight(QuantitativeValue quantitativeValue);
+  Builder weight(QuantitativeValue.Builder quantitativeValue);
+  Builder workLocation(ContactPoint contactPoint);
+  Builder workLocation(ContactPoint.Builder contactPoint);
+  Builder workLocation(Place place);
+  Builder workLocation(Place.Builder place);
+  Builder worksFor(Organization organization);
+  Builder worksFor(Organization.Builder organization);
+  Builder birthPlace(Place place);
+  Builder birthPlace(Place.Builder place);
+  Builder deathPlace(Place place);
+  Builder deathPlace(Place.Builder place);
+  Builder additionalType(String additionalType);
+  Builder alternateName(String alternateName);
+  Builder description(String description);
+  Builder mainEntityOfPage(CreativeWork creativeWork);
+  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+  Builder mainEntityOfPage(String mainEntityOfPage);
+  Builder name(String name);
+  Builder sameAs(String sameAs);
+  Builder url(String url);
+  Builder potentialAction(Action action);
+  Builder potentialAction(Action.Builder action);
+  Builder id(String id);
   }
 
   protected Person(String additionalName, PostalAddress address, Organization affiliation, EducationalOrganization alumniOf, String award, java.util.Date birthDate, BrandOrOrganization brand, Person children, Person colleague, ContactPoint contactPoint, java.util.Date deathDate, String duns, String email, String familyName, String faxNumber, Person follows, String gender, String givenName, String globalLocationNumber, Place hasPOS, DistanceOrQuantitativeValue height, ContactPointOrPlace homeLocation, String honorificPrefix, String honorificSuffix, String isicV4, String jobTitle, Person knows, Offer makesOffer, OrganizationOrProgramMembership memberOf, String naics, Country nationality, PriceSpecification netWorth, OwnershipInfoOrProduct owns, Person parent, Event performerIn, Person relatedTo, Demand seeks, Person sibling, Person spouse, String taxID, String telephone, String vatID, QuantitativeValue weight, ContactPointOrPlace workLocation, Organization worksFor, Place birthPlace, Place deathPlace, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

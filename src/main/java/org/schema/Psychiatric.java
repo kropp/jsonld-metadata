@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,16 @@ public class Psychiatric {
   /**
    * Builder for {@link Psychiatric}
    */
-  public static final class Builder {
+  public static final class PsychiatricThingBuilder implements Builder {
     /**
      * Creates new {@link Psychiatric} instance.
      */
     public Psychiatric build() {
       return new Psychiatric();
     }
+  }
+  public interface Builder extends ThingBuilder<Psychiatric> {
+  
   }
 
   protected Psychiatric() {

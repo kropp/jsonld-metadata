@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -130,7 +130,7 @@ public class Flight extends Intangible {
   /**
    * Builder for {@link Flight}
    */
-  public static final class Builder {
+  public static final class FlightThingBuilder implements Builder {
     /**
      * Creates new {@link Flight} instance.
      */
@@ -148,17 +148,29 @@ public class Flight extends Intangible {
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     public Builder provider(Organization organization) {
-      if(this.provider == null) this.provider = new OrganizationOrPerson();
+      if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setOrganization(organization);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
+    public Builder provider(Organization.Builder organization) {
+      return this.provider(organization.build());
+    }
+    /**
+     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+     */
     public Builder provider(Person person) {
-      if(this.provider == null) this.provider = new OrganizationOrPerson();
+      if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setPerson(person);
       return this;
+    }
+    /**
+     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+     */
+    public Builder provider(Person.Builder person) {
+      return this.provider(person.build());
     }
     /**
      * The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
@@ -189,11 +201,23 @@ public class Flight extends Intangible {
       return this;
     }
     /**
+     * The airport where the flight originates.
+     */
+    public Builder departureAirport(Airport.Builder airport) {
+      return this.departureAirport(airport.build());
+    }
+    /**
      * The airport where the flight terminates.
      */
     public Builder arrivalAirport(Airport airport) {
       this.arrivalAirport = airport;
       return this;
+    }
+    /**
+     * The airport where the flight terminates.
+     */
+    public Builder arrivalAirport(Airport.Builder airport) {
+      return this.arrivalAirport(airport.build());
     }
     /**
      * Identifier of the flight's departure gate.
@@ -217,6 +241,12 @@ public class Flight extends Intangible {
       return this;
     }
     /**
+     * The type of boarding policy used by the airline (e.g. zone-based or group-based).
+     */
+    public Builder boardingPolicy(BoardingPolicyType.Builder boardingPolicyType) {
+      return this.boardingPolicy(boardingPolicyType.build());
+    }
+    /**
      * Identifier of the flight's departure terminal.
      */
     public Builder departureTerminal(String departureTerminal) {
@@ -234,7 +264,7 @@ public class Flight extends Intangible {
      * The kind of aircraft (e.g., "Boeing 747").
      */
     public Builder aircraft(String aircraft) {
-      if(this.aircraft == null) this.aircraft = new StringOrVehicle();
+      if (this.aircraft == null) this.aircraft = new StringOrVehicle();
       this.aircraft.setString(aircraft);
       return this;
     }
@@ -242,9 +272,15 @@ public class Flight extends Intangible {
      * The kind of aircraft (e.g., "Boeing 747").
      */
     public Builder aircraft(Vehicle vehicle) {
-      if(this.aircraft == null) this.aircraft = new StringOrVehicle();
+      if (this.aircraft == null) this.aircraft = new StringOrVehicle();
       this.aircraft.setVehicle(vehicle);
       return this;
+    }
+    /**
+     * The kind of aircraft (e.g., "Boeing 747").
+     */
+    public Builder aircraft(Vehicle.Builder vehicle) {
+      return this.aircraft(vehicle.build());
     }
     /**
      * Description of the meals that will be provided or available for purchase.
@@ -257,15 +293,21 @@ public class Flight extends Intangible {
      * The estimated time the flight will take.
      */
     public Builder estimatedFlightDuration(Duration duration) {
-      if(this.estimatedFlightDuration == null) this.estimatedFlightDuration = new DurationOrString();
+      if (this.estimatedFlightDuration == null) this.estimatedFlightDuration = new DurationOrString();
       this.estimatedFlightDuration.setDuration(duration);
       return this;
     }
     /**
      * The estimated time the flight will take.
      */
+    public Builder estimatedFlightDuration(Duration.Builder duration) {
+      return this.estimatedFlightDuration(duration.build());
+    }
+    /**
+     * The estimated time the flight will take.
+     */
     public Builder estimatedFlightDuration(String estimatedFlightDuration) {
-      if(this.estimatedFlightDuration == null) this.estimatedFlightDuration = new DurationOrString();
+      if (this.estimatedFlightDuration == null) this.estimatedFlightDuration = new DurationOrString();
       this.estimatedFlightDuration.setString(estimatedFlightDuration);
       return this;
     }
@@ -273,15 +315,21 @@ public class Flight extends Intangible {
      * The distance of the flight.
      */
     public Builder flightDistance(Distance distance) {
-      if(this.flightDistance == null) this.flightDistance = new DistanceOrString();
+      if (this.flightDistance == null) this.flightDistance = new DistanceOrString();
       this.flightDistance.setDistance(distance);
       return this;
     }
     /**
      * The distance of the flight.
      */
+    public Builder flightDistance(Distance.Builder distance) {
+      return this.flightDistance(distance.build());
+    }
+    /**
+     * The distance of the flight.
+     */
     public Builder flightDistance(String flightDistance) {
-      if(this.flightDistance == null) this.flightDistance = new DistanceOrString();
+      if (this.flightDistance == null) this.flightDistance = new DistanceOrString();
       this.flightDistance.setString(flightDistance);
       return this;
     }
@@ -344,7 +392,7 @@ public class Flight extends Intangible {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
@@ -378,8 +426,41 @@ public class Flight extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
+    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+      return this.mainEntityOfPage(creativeWork.build());
+    }
+    /**
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
+     */
     public Builder mainEntityOfPage(String mainEntityOfPage) {
-      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
@@ -411,9 +492,18 @@ public class Flight extends Intangible {
       this.potentialAction = action;
       return this;
     }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action.Builder action) {
+      return this.potentialAction(action.build());
+    }
     public Builder id(String id) {
       this.id = id;
       return this;
+    }
+    public Builder id(long id) {
+      return id(Long.toString(id));
     }
     private Participant seller;
     private OrganizationOrPerson provider;
@@ -441,6 +531,49 @@ public class Flight extends Intangible {
     private String url;
     private Action potentialAction;
     private String id;
+  }
+  public interface Builder extends ThingBuilder<Flight> {
+  Builder seller(Participant participant);
+  Builder provider(Organization organization);
+  Builder provider(Organization.Builder organization);
+  Builder provider(Person person);
+  Builder provider(Person.Builder person);
+  Builder flightNumber(String flightNumber);
+  Builder departureTime(java.util.Date date);
+  Builder arrivalTime(java.util.Date date);
+  Builder departureAirport(Airport airport);
+  Builder departureAirport(Airport.Builder airport);
+  Builder arrivalAirport(Airport airport);
+  Builder arrivalAirport(Airport.Builder airport);
+  Builder departureGate(String departureGate);
+  Builder arrivalGate(String arrivalGate);
+  Builder boardingPolicy(BoardingPolicyType boardingPolicyType);
+  Builder boardingPolicy(BoardingPolicyType.Builder boardingPolicyType);
+  Builder departureTerminal(String departureTerminal);
+  Builder arrivalTerminal(String arrivalTerminal);
+  Builder aircraft(String aircraft);
+  Builder aircraft(Vehicle vehicle);
+  Builder aircraft(Vehicle.Builder vehicle);
+  Builder mealService(String mealService);
+  Builder estimatedFlightDuration(Duration duration);
+  Builder estimatedFlightDuration(Duration.Builder duration);
+  Builder estimatedFlightDuration(String estimatedFlightDuration);
+  Builder flightDistance(Distance distance);
+  Builder flightDistance(Distance.Builder distance);
+  Builder flightDistance(String flightDistance);
+  Builder webCheckinTime(java.util.Date date);
+  Builder additionalType(String additionalType);
+  Builder alternateName(String alternateName);
+  Builder description(String description);
+  Builder mainEntityOfPage(CreativeWork creativeWork);
+  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+  Builder mainEntityOfPage(String mainEntityOfPage);
+  Builder name(String name);
+  Builder sameAs(String sameAs);
+  Builder url(String url);
+  Builder potentialAction(Action action);
+  Builder potentialAction(Action.Builder action);
+  Builder id(String id);
   }
 
   protected Flight(Participant seller, OrganizationOrPerson provider, String flightNumber, java.util.Date departureTime, java.util.Date arrivalTime, Airport departureAirport, Airport arrivalAirport, String departureGate, String arrivalGate, BoardingPolicyType boardingPolicy, String departureTerminal, String arrivalTerminal, StringOrVehicle aircraft, String mealService, DurationOrString estimatedFlightDuration, DistanceOrString flightDistance, java.util.Date webCheckinTime, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

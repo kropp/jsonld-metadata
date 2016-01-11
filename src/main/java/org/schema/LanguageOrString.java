@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,10 +24,6 @@ class LanguageOrString {
   public Object getJsonLdValue() {
     if (myLanguage != null) return myLanguage;
     if (myString != null) return myString;
-    return null;
-  }
-  public Thing getThing() {
-    if (myLanguage != null) return myLanguage;
     return null;
   }
   public void setLanguage(Language language) { clear(); myLanguage = language; }

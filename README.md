@@ -7,12 +7,15 @@ All classes are auto generated from schema.rdfa
 
 Example usage:
 ```
-final Article article = SchemaOrg.article()
-        .name("World Cup starts today!")
-        .text("Full text")
-        .author(SchemaOrg.sportsOrganization().name("FIFA").build())
+import static org.schema.SchemaOrg.*;
+
+final Article article = SchemaOrg.article() // with static import you can skip `SchemaOrg.`, left here for clarity
+        .name("88th Oscars ceremony will be held on February 28th")
+        .text("Lorem ipsum")
+        .author(nGO().name("The Academy of Motion Picture Arts and Sciences").build())
         .comment(
-                SchemaOrg.comment().text("Hooray!").author(SchemaOrg.person().name("Max Mustermann").build()).build()
+                // note that you may provide Builder instead of object where it is unambiguous
+                comment().text("Hooray!").author(person().name("Max Mustermann"))
         ).build();
 ```
 

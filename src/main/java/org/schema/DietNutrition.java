@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,16 @@ public class DietNutrition {
   /**
    * Builder for {@link DietNutrition}
    */
-  public static final class Builder {
+  public static final class DietNutritionThingBuilder implements Builder {
     /**
      * Creates new {@link DietNutrition} instance.
      */
     public DietNutrition build() {
       return new DietNutrition();
     }
+  }
+  public interface Builder extends ThingBuilder<DietNutrition> {
+  
   }
 
   protected DietNutrition() {

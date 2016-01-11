@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,16 @@ public class OutOfStock {
   /**
    * Builder for {@link OutOfStock}
    */
-  public static final class Builder {
+  public static final class OutOfStockThingBuilder implements Builder {
     /**
      * Creates new {@link OutOfStock} instance.
      */
     public OutOfStock build() {
       return new OutOfStock();
     }
+  }
+  public interface Builder extends ThingBuilder<OutOfStock> {
+  
   }
 
   protected OutOfStock() {

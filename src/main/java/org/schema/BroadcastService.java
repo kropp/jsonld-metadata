@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,7 +55,7 @@ public class BroadcastService extends Thing {
   /**
    * Builder for {@link BroadcastService}
    */
-  public static final class Builder {
+  public static final class BroadcastServiceThingBuilder implements Builder {
     /**
      * Creates new {@link BroadcastService} instance.
      */
@@ -70,6 +70,12 @@ public class BroadcastService extends Thing {
       return this;
     }
     /**
+     * The organization owning or operating the broadcast service.
+     */
+    public Builder broadcaster(Organization.Builder organization) {
+      return this.broadcaster(organization.build());
+    }
+    /**
      * A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
      */
     public Builder parentService(BroadcastService broadcastService) {
@@ -77,11 +83,23 @@ public class BroadcastService extends Thing {
       return this;
     }
     /**
+     * A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
+     */
+    public Builder parentService(BroadcastService.Builder broadcastService) {
+      return this.parentService(broadcastService.build());
+    }
+    /**
      * The media network(s) whose content is broadcast on this station.
      */
     public Builder broadcastAffiliateOf(Organization organization) {
       this.broadcastAffiliateOf = organization;
       return this;
+    }
+    /**
+     * The media network(s) whose content is broadcast on this station.
+     */
+    public Builder broadcastAffiliateOf(Organization.Builder organization) {
+      return this.broadcastAffiliateOf(organization.build());
     }
     /**
      * The name displayed in the channel guide. For many US affiliates, it is the network name.
@@ -149,7 +167,7 @@ public class BroadcastService extends Thing {
       
      */
     public Builder mainEntityOfPage(CreativeWork creativeWork) {
-      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
     }
@@ -183,8 +201,41 @@ public class BroadcastService extends Thing {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
+    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+      return this.mainEntityOfPage(creativeWork.build());
+    }
+    /**
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
+      <br /><br />
+      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+      between the page and the primary entity.
+      <br /><br />
+
+      Related properties include sameAs, about, and url.
+      <br /><br />
+
+      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+      serves more to clarify which of several entities is the main one for that page.
+      <br /><br />
+
+      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+      <br /><br />
+
+      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+      describes some other entity. For example, one web page may display a news article about a particular person.
+      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+      
+     */
     public Builder mainEntityOfPage(String mainEntityOfPage) {
-      if(this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
+      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
     }
@@ -216,9 +267,18 @@ public class BroadcastService extends Thing {
       this.potentialAction = action;
       return this;
     }
+    /**
+     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
+     */
+    public Builder potentialAction(Action.Builder action) {
+      return this.potentialAction(action.build());
+    }
     public Builder id(String id) {
       this.id = id;
       return this;
+    }
+    public Builder id(long id) {
+      return id(Long.toString(id));
     }
     private Organization broadcaster;
     private BroadcastService parentService;
@@ -234,6 +294,28 @@ public class BroadcastService extends Thing {
     private String url;
     private Action potentialAction;
     private String id;
+  }
+  public interface Builder extends ThingBuilder<BroadcastService> {
+  Builder broadcaster(Organization organization);
+  Builder broadcaster(Organization.Builder organization);
+  Builder parentService(BroadcastService broadcastService);
+  Builder parentService(BroadcastService.Builder broadcastService);
+  Builder broadcastAffiliateOf(Organization organization);
+  Builder broadcastAffiliateOf(Organization.Builder organization);
+  Builder broadcastDisplayName(String broadcastDisplayName);
+  Builder timezone(String timezone);
+  Builder additionalType(String additionalType);
+  Builder alternateName(String alternateName);
+  Builder description(String description);
+  Builder mainEntityOfPage(CreativeWork creativeWork);
+  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+  Builder mainEntityOfPage(String mainEntityOfPage);
+  Builder name(String name);
+  Builder sameAs(String sameAs);
+  Builder url(String url);
+  Builder potentialAction(Action action);
+  Builder potentialAction(Action.Builder action);
+  Builder id(String id);
   }
 
   protected BroadcastService(Organization broadcaster, BroadcastService parentService, Organization broadcastAffiliateOf, String broadcastDisplayName, String timezone, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

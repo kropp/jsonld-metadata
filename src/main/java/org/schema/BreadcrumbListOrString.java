@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,10 +24,6 @@ class BreadcrumbListOrString {
   public Object getJsonLdValue() {
     if (myBreadcrumbList != null) return myBreadcrumbList;
     if (myString != null) return myString;
-    return null;
-  }
-  public Thing getThing() {
-    if (myBreadcrumbList != null) return myBreadcrumbList;
     return null;
   }
   public void setBreadcrumbList(BreadcrumbList breadcrumbList) { clear(); myBreadcrumbList = breadcrumbList; }

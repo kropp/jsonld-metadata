@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 JetBrains s.r.o.
+ * Copyright 2015-2016 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,16 @@ public class Nose {
   /**
    * Builder for {@link Nose}
    */
-  public static final class Builder {
+  public static final class NoseThingBuilder implements Builder {
     /**
      * Creates new {@link Nose} instance.
      */
     public Nose build() {
       return new Nose();
     }
+  }
+  public interface Builder extends ThingBuilder<Nose> {
+  
   }
 
   protected Nose() {
