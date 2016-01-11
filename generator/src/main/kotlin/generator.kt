@@ -281,7 +281,7 @@ class GeneratorSink : TripleSink {
                     appendln("   * $it")
                     appendln("   */")
                 }
-                appendln("  public static $typeName.Builder ${typeName.decapitalize()}() { return new $typeName.Builder(); }")
+                appendln("  public static $typeName.Builder ${typeName.decapitalize()}() { return new $typeName.${typeName}ThingBuilder(); }")
             }
             appendln("}")
 
@@ -293,7 +293,7 @@ class GeneratorSink : TripleSink {
 package $ns;
 
 public interface ThingBuilder<T> {
- T build();
+  T build();
 }""")
     }
 
@@ -370,7 +370,7 @@ public interface ThingBuilder<T> {
                     appendln("  /**")
                     appendln("   * Builder for {@link $typeName}")
                     appendln("   */")
-                    appendln("  public static final class Builder implements ThingBuilder<$typeName> {")
+                    appendln("  public static final class ${typeName}ThingBuilder implements Builder {")
                     appendln("    /**")
                     appendln("     * Creates new {@link $typeName} instance.")
                     appendln("     */")
@@ -379,6 +379,7 @@ public interface ThingBuilder<T> {
                     append(getAllFields(type).map { it.name?.decapitalize() }.filterNotNull().joinToString(", "))
                     appendln(");")
                     appendln("    }")
+                    val interfaceMethods = arrayListOf<String>()
                     for (field in getAllFields(type)) {
                         if (field.name != null) {
                             val name = field.name!!.capitalize()
@@ -389,6 +390,7 @@ public interface ThingBuilder<T> {
                                     appendln("     * $it")
                                     appendln("     */")
                                 }
+                                interfaceMethods += "Builder ${name.decapitalize()}($fieldType ${getVariableName(fieldType, name)});"
                                 appendln("    public Builder ${name.decapitalize()}($fieldType ${getVariableName(fieldType, name)}) {")
                                 if (eitherTypes.size < 2) {
                                     appendln("      this.${name.decapitalize()} = ${getVariableName(fieldType, name)};")
@@ -398,6 +400,19 @@ public interface ThingBuilder<T> {
                                 }
                                 appendln("      return this;")
                                 appendln("    }")
+
+                                // add overload accepting ThingBuilder<T>
+                                if (!shouldSkip(fieldType) && fieldType != "String" && fieldType != "java.util.Date" && fieldType != "HasPart") {
+                                    field.comment?.let {
+                                        appendln("    /**")
+                                        appendln("     * $it")
+                                        appendln("     */")
+                                    }
+                                    interfaceMethods += "Builder ${name.decapitalize()}($fieldType.Builder ${getVariableName(fieldType, name)});"
+                                    appendln("    public Builder ${name.decapitalize()}($fieldType.Builder ${getVariableName(fieldType, name)}) {")
+                                    appendln("      return this.${name.decapitalize()}(${getVariableName(fieldType, name)}.build());")
+                                    appendln("    }")
+                                }
                             }
                         }
                     }
@@ -410,6 +425,9 @@ public interface ThingBuilder<T> {
                     }
 
                     getAllFields(type).forEach { appendln("    private ${getEitherFieldType(ns, packageDir, it)} ${getVariableName(it.name!!)};") }
+                    appendln("  }")
+                    appendln("  public interface Builder extends ThingBuilder<$typeName> {")
+                    appendln("  " + interfaceMethods.joinToString("\n  "))
                     appendln("  }")
                     appendln()
                 }
