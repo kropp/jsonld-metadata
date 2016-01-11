@@ -287,6 +287,14 @@ class GeneratorSink : TripleSink {
 
             File(packageDir, "SchemaOrg.java").writeText(toString())
         }
+
+        File(packageDir, "ThingBuilder.java").writeText("""$BANNER
+
+package $ns;
+
+public interface ThingBuilder<T> {
+ T build();
+}""")
     }
 
     private fun generateTypes(ns: String, packageDir: File) {
@@ -362,7 +370,7 @@ class GeneratorSink : TripleSink {
                     appendln("  /**")
                     appendln("   * Builder for {@link $typeName}")
                     appendln("   */")
-                    appendln("  public static final class Builder {")
+                    appendln("  public static final class Builder implements ThingBuilder<$typeName> {")
                     appendln("    /**")
                     appendln("     * Creates new {@link $typeName} instance.")
                     appendln("     */")
