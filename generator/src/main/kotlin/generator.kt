@@ -19,9 +19,9 @@ import org.semarglproject.sink.TripleSink
 import org.semarglproject.source.StreamProcessor
 import java.io.File
 import java.io.FileInputStream
-import java.util.ArrayList
-import java.util.HashMap
-import kotlin.text.Regex
+import java.util.*
+import kotlin.collections.*
+import kotlin.text.*
 
 /**
  * @author Victor Kropp
@@ -79,10 +79,10 @@ class GeneratorSink : TripleSink {
     }
 
     public fun postProcess() {
-        for (type in types.values()) {
+        for (type in types.values) {
             if (type.isField && type.isInterface) {
                 type.isField = false
-                type.dataTypes.forEach { types.get(it)!!.interfaces.add(type.name!!.capitalize()) }
+                type.dataTypes.forEach { types[it]!!.interfaces.add(type.name!!.capitalize()) }
             }
             if (type.name == "Thing") {
                 type.subTypes.add(ID_TYPE)
@@ -105,12 +105,12 @@ class GeneratorSink : TripleSink {
     override fun addNonLiteral(subj: String, pred: String, obj: String) {
         when(pred) {
             "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" -> { if(!types.containsKey(subj)) types.put(subj, Type()) }
-            "http://www.w3.org/2000/01/rdf-schema#subClassOf" -> types.get(subj)!!.parentType = obj
+            "http://www.w3.org/2000/01/rdf-schema#subClassOf" -> types[subj]!!.parentType = obj
             "http://schema.org/domainIncludes" -> {
-                val objType = types.get(obj)
+                val objType = types[obj]
 
                 if (objType != null) {
-                    val subjType = types.get(subj)!!
+                    val subjType = types[subj]!!
                     subjType.isField = true
                     if (!objType.subTypes.contains(subj)) {
                         objType.subTypes.add(subj)
@@ -121,12 +121,12 @@ class GeneratorSink : TripleSink {
                     types.put(obj, type)
                 }
             }
-            "http://schema.org/rangeIncludes" -> types.get(subj)!!.dataTypes.add(obj)
-            "http://purl.org/dc/terms/source" -> types.get(subj)!!.source = obj
-            "http://www.w3.org/2002/07/owl#equivalentClass" -> types.get(subj)!!.equivalent = obj
-            "http://www.w3.org/2002/07/owl#equivalentProperty" -> types.get(subj)!!.equivalent = obj
+            "http://schema.org/rangeIncludes" -> types[subj]!!.dataTypes.add(obj)
+            "http://purl.org/dc/terms/source" -> types[subj]!!.source = obj
+            "http://www.w3.org/2002/07/owl#equivalentClass" -> types[subj]!!.equivalent = obj
+            "http://www.w3.org/2002/07/owl#equivalentProperty" -> types[subj]!!.equivalent = obj
             "http://schema.org/inverseOf" -> { /* ignore */ }
-            "http://schema.org/supersededBy" -> { types.get(subj)!!.isSuperseded = true }
+            "http://schema.org/supersededBy" -> { types[subj]!!.isSuperseded = true }
             "http://www.w3.org/2000/01/rdf-schema#subPropertyOf" -> {
                 val interfaceType = Type()
                 interfaceType.name = getInterfaceName(obj)
@@ -134,7 +134,7 @@ class GeneratorSink : TripleSink {
                 types.put(obj, interfaceType)
 
                 if (!types.containsKey(subj)) types.put(subj, Type())
-                val type = types.get(subj)!!
+                val type = types[subj]!!
                 if (type.isField) {
                     type.dataTypes.add(obj)
                 } else {
@@ -145,12 +145,12 @@ class GeneratorSink : TripleSink {
         }
     }
 
-    private fun getInterfaceName(obj: String): String = obj.substring(uri.length()).capitalize()
+    private fun getInterfaceName(obj: String): String = obj.substring(uri.length).capitalize()
 
     override fun addPlainLiteral(subj: String, pred: String, content: String, lang: String?) {
         when(pred) {
-            "http://www.w3.org/2000/01/rdf-schema#label" -> types.get(subj)!!.name = content.replace(" ", "").replace(".", "").capitalize()
-            "http://www.w3.org/2000/01/rdf-schema#comment" -> types.get(subj)!!.comment = content
+            "http://www.w3.org/2000/01/rdf-schema#label" -> types[subj]!!.name = content.replace(" ", "").replace(".", "").capitalize()
+            "http://www.w3.org/2000/01/rdf-schema#comment" -> types[subj]!!.comment = content
             else -> System.err.println("Unknown plain literal: $pred")
         }
     }
@@ -172,13 +172,13 @@ class GeneratorSink : TripleSink {
         if (field.isInterface && field.name != null)
             return field.name!!.capitalize()
 
-        val name = field.dataTypes.firstOrNull { types.get(it)!!.isInterface } ?: field.dataTypes.firstOrNull()
-        return getBasicTypeName(types.get(name)?.name)
+        val name = field.dataTypes.firstOrNull { types[it]!!.isInterface } ?: field.dataTypes.firstOrNull()
+        return getBasicTypeName(types[name]?.name)
     }
 
     private fun getEitherFieldType(ns: String, packageDir: File, field: Type): String? {
         val names = getEitherTypes(field)
-        if (names.size() < 2)
+        if (names.size < 2)
             return names.firstOrNull()
         return generateEither(ns, packageDir, names)
     }
@@ -187,7 +187,7 @@ class GeneratorSink : TripleSink {
         if (field.isInterface && field.name != null)
             return listOf(field.name!!.capitalize())
 
-        if (field.dataTypes.size() < 2) {
+        if (field.dataTypes.size < 2) {
             val fieldType = getFieldType(field) ?: ""
             if (fieldType == "Number")
                 return NUMBER_UNDERLYING_TYPES
@@ -195,11 +195,11 @@ class GeneratorSink : TripleSink {
                 return listOf(fieldType)
         }
 
-        val interfaceName = field.dataTypes.firstOrNull { types.get(it)!!.isInterface }
+        val interfaceName = field.dataTypes.firstOrNull { types[it]!!.isInterface }
         if (interfaceName != null)
-            return listOf(types.get(interfaceName)!!.name!!)
+            return listOf(types[interfaceName]!!.name!!)
 
-        return field.dataTypes.map { getBasicTypeName(types.get(it)?.name) }.filterNotNull().toHashSet().sort()
+        return field.dataTypes.map { getBasicTypeName(types[it]?.name) }.filterNotNull().distinct().sorted()
     }
 
     private fun shouldSkip(name: String): Boolean {
@@ -215,7 +215,7 @@ class GeneratorSink : TripleSink {
     }
 
     private fun generateEither(ns: String, packageDir: File, types: Collection<String>): String {
-        val eitherName = if (types == NUMBER_UNDERLYING_TYPES) "Number" else types.join("Or")
+        val eitherName = if (types == NUMBER_UNDERLYING_TYPES) "Number" else types.joinToString("Or")
         val file = File(packageDir, "$eitherName.java")
         if (!file.exists()) {
             with(StringBuilder()) {
@@ -270,7 +270,7 @@ class GeneratorSink : TripleSink {
             appendln()
             appendln("public class SchemaOrg {")
 
-            for (type in types.values()) {
+            for (type in types.values) {
                 if (type.name.isNullOrEmpty() || type.isField || type.isInterface || shouldSkip(type.name!!))
                     continue
 
@@ -290,7 +290,7 @@ class GeneratorSink : TripleSink {
     }
 
     private fun generateTypes(ns: String, packageDir: File) {
-        for (type in types.values()) {
+        for (type in types.values) {
             if (type.name.isNullOrEmpty() || (type.isField && !type.isInterface) || shouldSkip(type.name!!))
                 continue
 
@@ -312,11 +312,11 @@ class GeneratorSink : TripleSink {
                     appendln("@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)")
                 }
                 append("public ${type.classOrInterface} $typeName")
-                type.parentType?.let { types.get(it)?.let { append(" extends ${it.name}") } }
-                val interfaces = type.interfaces.filter { i -> types.values().any { it.name == i && !it.isField } }
+                type.parentType?.let { types[it]?.let { append(" extends ${it.name}") } }
+                val interfaces = type.interfaces.filter { i -> types.values.any { it.name == i && !it.isField } }
                 if (interfaces.any()) {
                     append(" implements ")
-                    append(interfaces.join(", "))
+                    append(interfaces.joinToString(", "))
                 }
                 appendln(" {")
 
@@ -335,7 +335,7 @@ class GeneratorSink : TripleSink {
 
                 // getters
                 for (field in type.subTypes) {
-                    types.get(field)?.let {
+                    types[field]?.let {
                         if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
                             val fieldType = getEitherFieldType(ns, packageDir, it)
                             val name = it.name!!.capitalize()
@@ -368,7 +368,7 @@ class GeneratorSink : TripleSink {
                     appendln("     */")
                     appendln("    public $typeName build() {")
                     append("      return new $typeName(")
-                    append(getAllFields(type).map { it.name?.decapitalize() }.filterNotNull().join(", "))
+                    append(getAllFields(type).map { it.name?.decapitalize() }.filterNotNull().joinToString(", "))
                     appendln(");")
                     appendln("    }")
                     for (field in getAllFields(type)) {
@@ -382,10 +382,10 @@ class GeneratorSink : TripleSink {
                                     appendln("     */")
                                 }
                                 appendln("    public Builder ${name.decapitalize()}($fieldType ${getVariableName(fieldType, name)}) {")
-                                if (eitherTypes.size() < 2) {
+                                if (eitherTypes.size < 2) {
                                     appendln("      this.${name.decapitalize()} = ${getVariableName(fieldType, name)};")
                                 } else {
-                                    appendln("      if(this.${name.decapitalize()} == null) this.${name.decapitalize()} = new ${getEitherFieldType(ns, packageDir, field)}();")
+                                    appendln("      if (this.${name.decapitalize()} == null) this.${name.decapitalize()} = new ${getEitherFieldType(ns, packageDir, field)}();")
                                     appendln("      this.${name.decapitalize()}.set$fieldType(${getVariableName(fieldType, name)});")
                                 }
                                 appendln("      return this;")
@@ -407,15 +407,15 @@ class GeneratorSink : TripleSink {
                 // package-local constructor and private fields
                 if (!type.isInterface) {
                     append("  protected $typeName(")
-                    append(getAllFields(type).map { "${getEitherFieldType(ns, packageDir, it)} ${it.name!!.decapitalize()}" }.join(", "))
+                    append(getAllFields(type).map { "${getEitherFieldType(ns, packageDir, it)} ${it.name!!.decapitalize()}" }.joinToString(", "))
                     appendln(") {")
                     type.parentType?.let {
                         append("    super(")
-                        append(getAllFields(types.get(type.parentType)).map { it.name!!.decapitalize() }.join(", "))
+                        append(getAllFields(types[it]).map { it.name!!.decapitalize() }.joinToString(", "))
                         appendln(");")
                     }
                     for (field in type.subTypes) {
-                        types.get(field)?.let {
+                        types[field]?.let {
                             if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
                                 appendln("    my${it.name!!.capitalize()} = ${it.name!!.decapitalize()};")
                             }
@@ -424,7 +424,7 @@ class GeneratorSink : TripleSink {
                     appendln("  }")
                 }
                 for (field in type.subTypes) {
-                    types.get(field)?.let {
+                    types[field]?.let {
                         if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
                             appendln("  private ${getEitherFieldType(ns, packageDir, it)} my${it.name!!.capitalize()};")
                         }
@@ -454,8 +454,8 @@ class GeneratorSink : TripleSink {
         if (type == null) {
             return emptyList()
         }
-        val fieldTypes = type.subTypes.map { types.get(it) }.filterNotNull().filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.toArrayList()
-        getAllFields(types.get(type.parentType)).filterNot { i -> fieldTypes.any { it.name == i.name} }.forEach { fieldTypes.add(it) }
+        val fieldTypes = type.subTypes.map { types[it] }.filterNotNull().filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.toArrayList()
+        getAllFields(types[type.parentType]).filterNot { i -> fieldTypes.any { it.name == i.name} }.forEach { fieldTypes.add(it) }
         return fieldTypes
     }
 }
@@ -464,7 +464,7 @@ fun main(args: Array<String>) {
     val generator = GeneratorSink()
     val processor = StreamProcessor(RdfaParser.connect(generator))
 
-    File("generator/resources").listFiles { it.extension == "rdfa" }?.forEach {
+    File("generator/resources").listFiles { f -> f.extension == "rdfa" }?.forEach {
         println("Processing ${it.name}")
         processor.process(FileInputStream(it), "http://schema.org/")
     }
