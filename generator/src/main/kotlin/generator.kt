@@ -381,9 +381,9 @@ public interface ThingBuilder<T> {
                     appendln("    }")
                     for (field in getAllFields(type)) {
                         if (field.name != null) {
+                            val name = field.name!!.capitalize()
                             val eitherTypes = getEitherTypes(field)
                             eitherTypes.forEachIndexed { i, fieldType ->
-                                val name = field.name!!.capitalize()
                                 field.comment?.let {
                                     appendln("    /**")
                                     appendln("     * $it")
@@ -402,10 +402,12 @@ public interface ThingBuilder<T> {
                         }
                     }
 
-                    // support for integer id on all builders
-                    appendln("    public Builder id(long id) {")
-                    appendln("      return id(Long.toString(id));")
-                    appendln("    }")
+                    // support for integer id on all builders that have id
+                    if (getAllFields(type).any { it.name?.equals("id", true) ?: false }) {
+                        appendln("    public Builder id(long id) {")
+                        appendln("      return id(Long.toString(id));")
+                        appendln("    }")
+                    }
 
                     getAllFields(type).forEach { appendln("    private ${getEitherFieldType(ns, packageDir, it)} ${getVariableName(it.name!!)};") }
                     appendln("  }")
