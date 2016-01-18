@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates the usage of the vehicle as a rental car.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
@@ -26,7 +30,7 @@ public class RentalVehicleUsage {
   /**
    * Builder for {@link RentalVehicleUsage}
    */
-  public static final class RentalVehicleUsageThingBuilder implements Builder {
+  static final class RentalVehicleUsageThingBuilder implements Builder {
     /**
      * Creates new {@link RentalVehicleUsage} instance.
      */
@@ -35,7 +39,7 @@ public class RentalVehicleUsage {
     }
   }
   public interface Builder extends ThingBuilder<RentalVehicleUsage> {
-  
+    
   }
 
   protected RentalVehicleUsage() {

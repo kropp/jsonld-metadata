@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates that the item is available for pre-order.
  */
@@ -25,7 +29,7 @@ public class PreOrder {
   /**
    * Builder for {@link PreOrder}
    */
-  public static final class PreOrderThingBuilder implements Builder {
+  static final class PreOrderThingBuilder implements Builder {
     /**
      * Creates new {@link PreOrder} instance.
      */
@@ -34,7 +38,7 @@ public class PreOrder {
     }
   }
   public interface Builder extends ThingBuilder<PreOrder> {
-  
+    
   }
 
   protected PreOrder() {

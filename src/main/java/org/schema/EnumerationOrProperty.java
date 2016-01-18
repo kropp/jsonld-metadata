@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class EnumerationOrProperty {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myEnumeration != null) return myEnumeration;
     if (myProperty != null) return myProperty;
@@ -33,9 +36,9 @@ class EnumerationOrProperty {
   }
   public void setEnumeration(Enumeration enumeration) { clear(); myEnumeration = enumeration; }
   public Enumeration getEnumeration() { return myEnumeration; }
-  private Enumeration myEnumeration;
   public void setProperty(Property property) { clear(); myProperty = property; }
   public Property getProperty() { return myProperty; }
+  private Enumeration myEnumeration;
   private Property myProperty;
   private void clear() {
     myEnumeration = null;

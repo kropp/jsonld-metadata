@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates a CreativeWork that is (in some sense) a part of this CreativeWork.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibex

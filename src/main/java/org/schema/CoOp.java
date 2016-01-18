@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Play mode: CoOp. Co-operative games, where you play on the same team with friends.
  */
@@ -25,7 +29,7 @@ public class CoOp {
   /**
    * Builder for {@link CoOp}
    */
-  public static final class CoOpThingBuilder implements Builder {
+  static final class CoOpThingBuilder implements Builder {
     /**
      * Creates new {@link CoOp} instance.
      */
@@ -34,7 +38,7 @@ public class CoOp {
     }
   }
   public interface Builder extends ThingBuilder<CoOp> {
-  
+    
   }
 
   protected CoOp() {

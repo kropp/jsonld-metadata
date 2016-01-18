@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class OwnershipInfoOrProduct {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myOwnershipInfo != null) return myOwnershipInfo;
     if (myProduct != null) return myProduct;
@@ -33,9 +36,9 @@ class OwnershipInfoOrProduct {
   }
   public void setOwnershipInfo(OwnershipInfo ownershipInfo) { clear(); myOwnershipInfo = ownershipInfo; }
   public OwnershipInfo getOwnershipInfo() { return myOwnershipInfo; }
-  private OwnershipInfo myOwnershipInfo;
   public void setProduct(Product product) { clear(); myProduct = product; }
   public Product getProduct() { return myProduct; }
+  private OwnershipInfo myOwnershipInfo;
   private Product myProduct;
   private void clear() {
     myOwnershipInfo = null;

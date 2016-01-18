@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A trial that takes place at multiple centers.
  */
@@ -25,7 +29,7 @@ public class MultiCenterTrial {
   /**
    * Builder for {@link MultiCenterTrial}
    */
-  public static final class MultiCenterTrialThingBuilder implements Builder {
+  static final class MultiCenterTrialThingBuilder implements Builder {
     /**
      * Creates new {@link MultiCenterTrial} instance.
      */
@@ -34,7 +38,7 @@ public class MultiCenterTrial {
     }
   }
   public interface Builder extends ThingBuilder<MultiCenterTrial> {
-  
+    
   }
 
   protected MultiCenterTrial() {

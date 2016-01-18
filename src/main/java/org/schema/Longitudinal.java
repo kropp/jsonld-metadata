@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Unlike cross-sectional studies, longitudinal studies track the same people, and therefore the differences observed in those people are less likely to be the result of cultural differences across generations. Longitudinal studies are also used in medicine to uncover predictors of certain diseases.
  */
@@ -25,7 +29,7 @@ public class Longitudinal {
   /**
    * Builder for {@link Longitudinal}
    */
-  public static final class LongitudinalThingBuilder implements Builder {
+  static final class LongitudinalThingBuilder implements Builder {
     /**
      * Creates new {@link Longitudinal} instance.
      */
@@ -34,7 +38,7 @@ public class Longitudinal {
     }
   }
   public interface Builder extends ThingBuilder<Longitudinal> {
-  
+    
   }
 
   protected Longitudinal() {

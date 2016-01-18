@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Play mode: MultiPlayer. Requiring or allowing multiple human players to play simultaneously.
  */
@@ -25,7 +29,7 @@ public class MultiPlayer {
   /**
    * Builder for {@link MultiPlayer}
    */
-  public static final class MultiPlayerThingBuilder implements Builder {
+  static final class MultiPlayerThingBuilder implements Builder {
     /**
      * Creates new {@link MultiPlayer} instance.
      */
@@ -34,7 +38,7 @@ public class MultiPlayer {
     }
   }
   public interface Builder extends ThingBuilder<MultiPlayer> {
-  
+    
   }
 
   protected MultiPlayer() {

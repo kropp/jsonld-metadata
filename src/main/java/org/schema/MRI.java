@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Magnetic resonance imaging.
  */
@@ -25,7 +29,7 @@ public class MRI {
   /**
    * Builder for {@link MRI}
    */
-  public static final class MRIThingBuilder implements Builder {
+  static final class MRIThingBuilder implements Builder {
     /**
      * Creates new {@link MRI} instance.
      */
@@ -34,7 +38,7 @@ public class MRI {
     }
   }
   public interface Builder extends ThingBuilder<MRI> {
-  
+    
   }
 
   protected MRI() {

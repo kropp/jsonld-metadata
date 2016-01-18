@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Cardiovascular.
  */
@@ -25,7 +29,7 @@ public class CardiovascularExam {
   /**
    * Builder for {@link CardiovascularExam}
    */
-  public static final class CardiovascularExamThingBuilder implements Builder {
+  static final class CardiovascularExamThingBuilder implements Builder {
     /**
      * Creates new {@link CardiovascularExam} instance.
      */
@@ -34,7 +38,7 @@ public class CardiovascularExam {
     }
   }
   public interface Builder extends ThingBuilder<CardiovascularExam> {
-  
+    
   }
 
   protected CardiovascularExam() {

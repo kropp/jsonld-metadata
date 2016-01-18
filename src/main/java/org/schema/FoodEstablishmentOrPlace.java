@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class FoodEstablishmentOrPlace {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myFoodEstablishment != null) return myFoodEstablishment;
     if (myPlace != null) return myPlace;
@@ -33,9 +36,9 @@ class FoodEstablishmentOrPlace {
   }
   public void setFoodEstablishment(FoodEstablishment foodEstablishment) { clear(); myFoodEstablishment = foodEstablishment; }
   public FoodEstablishment getFoodEstablishment() { return myFoodEstablishment; }
-  private FoodEstablishment myFoodEstablishment;
   public void setPlace(Place place) { clear(); myPlace = place; }
   public Place getPlace() { return myPlace; }
+  private FoodEstablishment myFoodEstablishment;
   private Place myPlace;
   private void clear() {
     myFoodEstablishment = null;

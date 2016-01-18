@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The associated telephone number is toll free.
  */
@@ -25,7 +29,7 @@ public class TollFree {
   /**
    * Builder for {@link TollFree}
    */
-  public static final class TollFreeThingBuilder implements Builder {
+  static final class TollFreeThingBuilder implements Builder {
     /**
      * Creates new {@link TollFree} instance.
      */
@@ -34,7 +38,7 @@ public class TollFree {
     }
   }
   public interface Builder extends ThingBuilder<TollFree> {
-  
+    
   }
 
   protected TollFree() {

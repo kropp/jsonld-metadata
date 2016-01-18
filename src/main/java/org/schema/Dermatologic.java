@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to diagnosis and treatment of disorders of skin.
  */
@@ -25,7 +29,7 @@ public class Dermatologic {
   /**
    * Builder for {@link Dermatologic}
    */
-  public static final class DermatologicThingBuilder implements Builder {
+  static final class DermatologicThingBuilder implements Builder {
     /**
      * Creates new {@link Dermatologic} instance.
      */
@@ -34,7 +38,7 @@ public class Dermatologic {
     }
   }
   public interface Builder extends ThingBuilder<Dermatologic> {
-  
+    
   }
 
   protected Dermatologic() {

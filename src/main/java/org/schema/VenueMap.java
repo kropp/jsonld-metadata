@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A venue map (e.g. for malls, auditoriums, museums, etc.).
  */
@@ -25,7 +29,7 @@ public class VenueMap {
   /**
    * Builder for {@link VenueMap}
    */
-  public static final class VenueMapThingBuilder implements Builder {
+  static final class VenueMapThingBuilder implements Builder {
     /**
      * Creates new {@link VenueMap} instance.
      */
@@ -34,7 +38,7 @@ public class VenueMap {
     }
   }
   public interface Builder extends ThingBuilder<VenueMap> {
-  
+    
   }
 
   protected VenueMap() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Head.
  */
@@ -25,7 +29,7 @@ public class Head {
   /**
    * Builder for {@link Head}
    */
-  public static final class HeadThingBuilder implements Builder {
+  static final class HeadThingBuilder implements Builder {
     /**
      * Creates new {@link Head} instance.
      */
@@ -34,7 +38,7 @@ public class Head {
     }
   }
   public interface Builder extends ThingBuilder<Head> {
-  
+    
   }
 
   protected Head() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The event has been postponed and no new date has been set. The event's previousStartDate should be set.
  */
@@ -25,7 +29,7 @@ public class EventPostponed {
   /**
    * Builder for {@link EventPostponed}
    */
-  public static final class EventPostponedThingBuilder implements Builder {
+  static final class EventPostponedThingBuilder implements Builder {
     /**
      * Creates new {@link EventPostponed} instance.
      */
@@ -34,7 +38,7 @@ public class EventPostponed {
     }
   }
   public interface Builder extends ThingBuilder<EventPostponed> {
-  
+    
   }
 
   protected EventPostponed() {

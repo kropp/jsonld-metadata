@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The status of a reservation when a request has been sent, but not confirmed.
  */
@@ -25,7 +29,7 @@ public class ReservationPending {
   /**
    * Builder for {@link ReservationPending}
    */
-  public static final class ReservationPendingThingBuilder implements Builder {
+  static final class ReservationPendingThingBuilder implements Builder {
     /**
      * Creates new {@link ReservationPending} instance.
      */
@@ -34,7 +38,7 @@ public class ReservationPending {
     }
   }
   public interface Builder extends ThingBuilder<ReservationPending> {
-  
+    
   }
 
   protected ReservationPending() {

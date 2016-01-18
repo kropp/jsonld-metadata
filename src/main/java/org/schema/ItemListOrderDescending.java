@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * An ItemList ordered with higher values listed first.
  */
@@ -25,7 +29,7 @@ public class ItemListOrderDescending {
   /**
    * Builder for {@link ItemListOrderDescending}
    */
-  public static final class ItemListOrderDescendingThingBuilder implements Builder {
+  static final class ItemListOrderDescendingThingBuilder implements Builder {
     /**
      * Creates new {@link ItemListOrderDescending} instance.
      */
@@ -34,7 +38,7 @@ public class ItemListOrderDescending {
     }
   }
   public interface Builder extends ThingBuilder<ItemListOrderDescending> {
-  
+    
   }
 
   protected ItemListOrderDescending() {

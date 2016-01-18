@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A designation that the drug in question has not been assigned a pregnancy category designation by the US FDA.
  */
@@ -25,7 +29,7 @@ public class FDAnotEvaluated {
   /**
    * Builder for {@link FDAnotEvaluated}
    */
-  public static final class FDAnotEvaluatedThingBuilder implements Builder {
+  static final class FDAnotEvaluatedThingBuilder implements Builder {
     /**
      * Creates new {@link FDAnotEvaluated} instance.
      */
@@ -34,7 +38,7 @@ public class FDAnotEvaluated {
     }
   }
   public interface Builder extends ThingBuilder<FDAnotEvaluated> {
-  
+    
   }
 
   protected FDAnotEvaluated() {

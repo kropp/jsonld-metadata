@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A registry-based study design.
  */
@@ -25,7 +29,7 @@ public class Registry {
   /**
    * Builder for {@link Registry}
    */
-  public static final class RegistryThingBuilder implements Builder {
+  static final class RegistryThingBuilder implements Builder {
     /**
      * Creates new {@link Registry} instance.
      */
@@ -34,7 +38,7 @@ public class Registry {
     }
   }
   public interface Builder extends ThingBuilder<Registry> {
-  
+    
   }
 
   protected Registry() {

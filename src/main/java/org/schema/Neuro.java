@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Neuro.
  */
@@ -25,7 +29,7 @@ public class Neuro {
   /**
    * Builder for {@link Neuro}
    */
-  public static final class NeuroThingBuilder implements Builder {
+  static final class NeuroThingBuilder implements Builder {
     /**
      * Creates new {@link Neuro} instance.
      */
@@ -34,7 +38,7 @@ public class Neuro {
     }
   }
   public interface Builder extends ThingBuilder<Neuro> {
-  
+    
   }
 
   protected Neuro() {

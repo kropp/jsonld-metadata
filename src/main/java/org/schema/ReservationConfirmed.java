@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The status of a confirmed reservation.
  */
@@ -25,7 +29,7 @@ public class ReservationConfirmed {
   /**
    * Builder for {@link ReservationConfirmed}
    */
-  public static final class ReservationConfirmedThingBuilder implements Builder {
+  static final class ReservationConfirmedThingBuilder implements Builder {
     /**
      * Creates new {@link ReservationConfirmed} instance.
      */
@@ -34,7 +38,7 @@ public class ReservationConfirmed {
     }
   }
   public interface Builder extends ThingBuilder<ReservationConfirmed> {
-  
+    
   }
 
   protected ReservationConfirmed() {

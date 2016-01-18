@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The invitee may or may not attend.
  */
@@ -25,7 +29,7 @@ public class RsvpResponseMaybe {
   /**
    * Builder for {@link RsvpResponseMaybe}
    */
-  public static final class RsvpResponseMaybeThingBuilder implements Builder {
+  static final class RsvpResponseMaybeThingBuilder implements Builder {
     /**
      * Creates new {@link RsvpResponseMaybe} instance.
      */
@@ -34,7 +38,7 @@ public class RsvpResponseMaybe {
     }
   }
   public interface Builder extends ThingBuilder<RsvpResponseMaybe> {
-  
+    
   }
 
   protected RsvpResponseMaybe() {

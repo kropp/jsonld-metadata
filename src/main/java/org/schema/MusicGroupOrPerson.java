@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class MusicGroupOrPerson {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myMusicGroup != null) return myMusicGroup;
     if (myPerson != null) return myPerson;
@@ -33,9 +36,9 @@ class MusicGroupOrPerson {
   }
   public void setMusicGroup(MusicGroup musicGroup) { clear(); myMusicGroup = musicGroup; }
   public MusicGroup getMusicGroup() { return myMusicGroup; }
-  private MusicGroup myMusicGroup;
   public void setPerson(Person person) { clear(); myPerson = person; }
   public Person getPerson() { return myPerson; }
+  private MusicGroup myMusicGroup;
   private Person myPerson;
   private void clear() {
     myMusicGroup = null;

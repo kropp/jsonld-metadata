@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class QualitativeValueOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myQualitativeValue != null) return myQualitativeValue;
     if (myString != null) return myString;
@@ -28,9 +31,9 @@ class QualitativeValueOrString {
   }
   public void setQualitativeValue(QualitativeValue qualitativeValue) { clear(); myQualitativeValue = qualitativeValue; }
   public QualitativeValue getQualitativeValue() { return myQualitativeValue; }
-  private QualitativeValue myQualitativeValue;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private QualitativeValue myQualitativeValue;
   private String myString;
   private void clear() {
     myQualitativeValue = null;

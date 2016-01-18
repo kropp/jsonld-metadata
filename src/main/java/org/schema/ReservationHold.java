@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The status of a reservation on hold pending an update like credit card number or flight changes.
  */
@@ -25,7 +29,7 @@ public class ReservationHold {
   /**
    * Builder for {@link ReservationHold}
    */
-  public static final class ReservationHoldThingBuilder implements Builder {
+  static final class ReservationHoldThingBuilder implements Builder {
     /**
      * Creates new {@link ReservationHold} instance.
      */
@@ -34,7 +38,7 @@ public class ReservationHold {
     }
   }
   public interface Builder extends ThingBuilder<ReservationHold> {
-  
+    
   }
 
   protected ReservationHold() {

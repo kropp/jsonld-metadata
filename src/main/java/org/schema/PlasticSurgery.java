@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to therapeutic or cosmetic repair or re-formation of missing, injured or malformed tissues or body parts by manual and instrumental means.
  */
@@ -25,7 +29,7 @@ public class PlasticSurgery {
   /**
    * Builder for {@link PlasticSurgery}
    */
-  public static final class PlasticSurgeryThingBuilder implements Builder {
+  static final class PlasticSurgeryThingBuilder implements Builder {
     /**
      * Creates new {@link PlasticSurgery} instance.
      */
@@ -34,7 +38,7 @@ public class PlasticSurgery {
     }
   }
   public interface Builder extends ThingBuilder<PlasticSurgery> {
-  
+    
   }
 
   protected PlasticSurgery() {

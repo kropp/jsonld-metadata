@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Terminated.
  */
@@ -25,7 +29,7 @@ public class Terminated {
   /**
    * Builder for {@link Terminated}
    */
-  public static final class TerminatedThingBuilder implements Builder {
+  static final class TerminatedThingBuilder implements Builder {
     /**
      * Creates new {@link Terminated} instance.
      */
@@ -34,7 +38,7 @@ public class Terminated {
     }
   }
   public interface Builder extends ThingBuilder<Terminated> {
-  
+    
   }
 
   protected Terminated() {

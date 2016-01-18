@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific strength in which a medical drug is available in a specific country.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -50,7 +54,7 @@ public class DrugStrength extends MedicalIntangible {
   /**
    * Builder for {@link DrugStrength}
    */
-  public static final class DrugStrengthThingBuilder implements Builder {
+  static final class DrugStrengthThingBuilder implements Builder {
     /**
      * Creates new {@link DrugStrength} instance.
      */
@@ -60,42 +64,42 @@ public class DrugStrength extends MedicalIntangible {
     /**
      * An active ingredient, typically chemical compounds and/or biologic substances.
      */
-    public Builder activeIngredient(String activeIngredient) {
+    @NotNull public Builder activeIngredient(String activeIngredient) {
       this.activeIngredient = activeIngredient;
       return this;
     }
     /**
      * The location in which the strength is available.
      */
-    public Builder availableIn(AdministrativeArea administrativeArea) {
+    @NotNull public Builder availableIn(AdministrativeArea administrativeArea) {
       this.availableIn = administrativeArea;
       return this;
     }
     /**
      * The location in which the strength is available.
      */
-    public Builder availableIn(AdministrativeArea.Builder administrativeArea) {
+    @NotNull public Builder availableIn(AdministrativeArea.Builder administrativeArea) {
       return this.availableIn(administrativeArea.build());
     }
     /**
      * The units of an active ingredient's strength, e.g. mg.
      */
-    public Builder strengthUnit(String strengthUnit) {
+    @NotNull public Builder strengthUnit(String strengthUnit) {
       this.strengthUnit = strengthUnit;
       return this;
     }
     /**
      * The value of an active ingredient's strength, e.g. 325.
      */
-    public Builder strengthValue(Integer integer) {
+    @NotNull public Builder strengthValue(int strengthValue) {
       if (this.strengthValue == null) this.strengthValue = new Number();
-      this.strengthValue.setInteger(integer);
+      this.strengthValue.setInt(strengthValue);
       return this;
     }
     /**
      * The value of an active ingredient's strength, e.g. 325.
      */
-    public Builder strengthValue(Long strengthValue) {
+    @NotNull public Builder strengthValue(long strengthValue) {
       if (this.strengthValue == null) this.strengthValue = new Number();
       this.strengthValue.setLong(strengthValue);
       return this;
@@ -103,7 +107,7 @@ public class DrugStrength extends MedicalIntangible {
     /**
      * The value of an active ingredient's strength, e.g. 325.
      */
-    public Builder strengthValue(Float strengthValue) {
+    @NotNull public Builder strengthValue(float strengthValue) {
       if (this.strengthValue == null) this.strengthValue = new Number();
       this.strengthValue.setFloat(strengthValue);
       return this;
@@ -111,7 +115,7 @@ public class DrugStrength extends MedicalIntangible {
     /**
      * The value of an active ingredient's strength, e.g. 325.
      */
-    public Builder strengthValue(Double strengthValue) {
+    @NotNull public Builder strengthValue(double strengthValue) {
       if (this.strengthValue == null) this.strengthValue = new Number();
       this.strengthValue.setDouble(strengthValue);
       return this;
@@ -119,7 +123,7 @@ public class DrugStrength extends MedicalIntangible {
     /**
      * The value of an active ingredient's strength, e.g. 325.
      */
-    public Builder strengthValue(String strengthValue) {
+    @NotNull public Builder strengthValue(String strengthValue) {
       if (this.strengthValue == null) this.strengthValue = new Number();
       this.strengthValue.setString(strengthValue);
       return this;
@@ -127,99 +131,99 @@ public class DrugStrength extends MedicalIntangible {
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
-    public Builder code(MedicalCode medicalCode) {
+    @NotNull public Builder code(MedicalCode medicalCode) {
       this.code = medicalCode;
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
-    public Builder code(MedicalCode.Builder medicalCode) {
+    @NotNull public Builder code(MedicalCode.Builder medicalCode) {
       return this.code(medicalCode.build());
     }
     /**
      * A medical guideline related to this entity.
      */
-    public Builder guideline(MedicalGuideline medicalGuideline) {
+    @NotNull public Builder guideline(MedicalGuideline medicalGuideline) {
       this.guideline = medicalGuideline;
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
-    public Builder guideline(MedicalGuideline.Builder medicalGuideline) {
+    @NotNull public Builder guideline(MedicalGuideline.Builder medicalGuideline) {
       return this.guideline(medicalGuideline.build());
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
-    public Builder medicineSystem(MedicineSystem medicineSystem) {
+    @NotNull public Builder medicineSystem(MedicineSystem medicineSystem) {
       this.medicineSystem = medicineSystem;
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
-    public Builder medicineSystem(MedicineSystem.Builder medicineSystem) {
+    @NotNull public Builder medicineSystem(MedicineSystem.Builder medicineSystem) {
       return this.medicineSystem(medicineSystem.build());
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    public Builder recognizingAuthority(Organization organization) {
+    @NotNull public Builder recognizingAuthority(Organization organization) {
       this.recognizingAuthority = organization;
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    public Builder recognizingAuthority(Organization.Builder organization) {
+    @NotNull public Builder recognizingAuthority(Organization.Builder organization) {
       return this.recognizingAuthority(organization.build());
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
-    public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
+    @NotNull public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
       this.relevantSpecialty = medicalSpecialty;
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
-    public Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty) {
+    @NotNull public Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty) {
       return this.relevantSpecialty(medicalSpecialty.build());
     }
     /**
      * A medical study or trial related to this entity.
      */
-    public Builder study(MedicalStudy medicalStudy) {
+    @NotNull public Builder study(MedicalStudy medicalStudy) {
       this.study = medicalStudy;
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
-    public Builder study(MedicalStudy.Builder medicalStudy) {
+    @NotNull public Builder study(MedicalStudy.Builder medicalStudy) {
       return this.study(medicalStudy.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -253,7 +257,7 @@ public class DrugStrength extends MedicalIntangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -288,7 +292,7 @@ public class DrugStrength extends MedicalIntangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -321,7 +325,7 @@ public class DrugStrength extends MedicalIntangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -329,38 +333,38 @@ public class DrugStrength extends MedicalIntangible {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -388,39 +392,39 @@ public class DrugStrength extends MedicalIntangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<DrugStrength> {
-  Builder activeIngredient(String activeIngredient);
-  Builder availableIn(AdministrativeArea administrativeArea);
-  Builder availableIn(AdministrativeArea.Builder administrativeArea);
-  Builder strengthUnit(String strengthUnit);
-  Builder strengthValue(Integer integer);
-  Builder strengthValue(Long strengthValue);
-  Builder strengthValue(Float strengthValue);
-  Builder strengthValue(Double strengthValue);
-  Builder strengthValue(String strengthValue);
-  Builder code(MedicalCode medicalCode);
-  Builder code(MedicalCode.Builder medicalCode);
-  Builder guideline(MedicalGuideline medicalGuideline);
-  Builder guideline(MedicalGuideline.Builder medicalGuideline);
-  Builder medicineSystem(MedicineSystem medicineSystem);
-  Builder medicineSystem(MedicineSystem.Builder medicineSystem);
-  Builder recognizingAuthority(Organization organization);
-  Builder recognizingAuthority(Organization.Builder organization);
-  Builder relevantSpecialty(MedicalSpecialty medicalSpecialty);
-  Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty);
-  Builder study(MedicalStudy medicalStudy);
-  Builder study(MedicalStudy.Builder medicalStudy);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder activeIngredient(String activeIngredient);
+    @NotNull Builder availableIn(AdministrativeArea administrativeArea);
+    @NotNull Builder availableIn(AdministrativeArea.Builder administrativeArea);
+    @NotNull Builder strengthUnit(String strengthUnit);
+    @NotNull Builder strengthValue(int strengthValue);
+    @NotNull Builder strengthValue(long strengthValue);
+    @NotNull Builder strengthValue(float strengthValue);
+    @NotNull Builder strengthValue(double strengthValue);
+    @NotNull Builder strengthValue(String strengthValue);
+    @NotNull Builder code(MedicalCode medicalCode);
+    @NotNull Builder code(MedicalCode.Builder medicalCode);
+    @NotNull Builder guideline(MedicalGuideline medicalGuideline);
+    @NotNull Builder guideline(MedicalGuideline.Builder medicalGuideline);
+    @NotNull Builder medicineSystem(MedicineSystem medicineSystem);
+    @NotNull Builder medicineSystem(MedicineSystem.Builder medicineSystem);
+    @NotNull Builder recognizingAuthority(Organization organization);
+    @NotNull Builder recognizingAuthority(Organization.Builder organization);
+    @NotNull Builder relevantSpecialty(MedicalSpecialty medicalSpecialty);
+    @NotNull Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty);
+    @NotNull Builder study(MedicalStudy medicalStudy);
+    @NotNull Builder study(MedicalStudy.Builder medicalStudy);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected DrugStrength(String activeIngredient, AdministrativeArea availableIn, String strengthUnit, Number strengthValue, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

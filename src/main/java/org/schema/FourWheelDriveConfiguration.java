@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Four-wheel drive is a transmission layout where the engine primarily drives two wheels with a part-time four-wheel drive capability.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
@@ -26,7 +30,7 @@ public class FourWheelDriveConfiguration {
   /**
    * Builder for {@link FourWheelDriveConfiguration}
    */
-  public static final class FourWheelDriveConfigurationThingBuilder implements Builder {
+  static final class FourWheelDriveConfigurationThingBuilder implements Builder {
     /**
      * Creates new {@link FourWheelDriveConfiguration} instance.
      */
@@ -35,7 +39,7 @@ public class FourWheelDriveConfiguration {
     }
   }
   public interface Builder extends ThingBuilder<FourWheelDriveConfiguration> {
-  
+    
   }
 
   protected FourWheelDriveConfiguration() {

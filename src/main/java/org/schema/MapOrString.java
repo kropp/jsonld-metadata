@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class MapOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myMap != null) return myMap;
     if (myString != null) return myString;
@@ -28,9 +31,9 @@ class MapOrString {
   }
   public void setMap(Map map) { clear(); myMap = map; }
   public Map getMap() { return myMap; }
-  private Map myMap;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private Map myMap;
   private String myString;
   private void clear() {
     myMap = null;

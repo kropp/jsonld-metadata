@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Book format: Ebook.
  */
@@ -25,7 +29,7 @@ public class EBook {
   /**
    * Builder for {@link EBook}
    */
-  public static final class EBookThingBuilder implements Builder {
+  static final class EBookThingBuilder implements Builder {
     /**
      * Creates new {@link EBook} instance.
      */
@@ -34,7 +38,7 @@ public class EBook {
     }
   }
   public interface Builder extends ThingBuilder<EBook> {
-  
+    
   }
 
   protected EBook() {

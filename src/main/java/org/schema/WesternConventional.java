@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The conventional Western system of medicine, that aims to apply the best available evidence gained from the scientific method to clinical decision making. Also known as conventional or Western medicine.
  */
@@ -25,7 +29,7 @@ public class WesternConventional {
   /**
    * Builder for {@link WesternConventional}
    */
-  public static final class WesternConventionalThingBuilder implements Builder {
+  static final class WesternConventionalThingBuilder implements Builder {
     /**
      * Creates new {@link WesternConventional} instance.
      */
@@ -34,7 +38,7 @@ public class WesternConventional {
     }
   }
   public interface Builder extends ThingBuilder<WesternConventional> {
-  
+    
   }
 
   protected WesternConventional() {

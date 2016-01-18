@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * VitalSign.
  */
@@ -25,7 +29,7 @@ public class VitalSign {
   /**
    * Builder for {@link VitalSign}
    */
-  public static final class VitalSignThingBuilder implements Builder {
+  static final class VitalSignThingBuilder implements Builder {
     /**
      * Creates new {@link VitalSign} instance.
      */
@@ -34,7 +38,7 @@ public class VitalSign {
     }
   }
   public interface Builder extends ThingBuilder<VitalSign> {
-  
+    
   }
 
   protected VitalSign() {

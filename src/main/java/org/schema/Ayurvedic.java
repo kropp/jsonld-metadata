@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A system of medicine that originated in India over thousands of years and that focuses on integrating and balancing the body, mind, and spirit.
  */
@@ -25,7 +29,7 @@ public class Ayurvedic {
   /**
    * Builder for {@link Ayurvedic}
    */
-  public static final class AyurvedicThingBuilder implements Builder {
+  static final class AyurvedicThingBuilder implements Builder {
     /**
      * Creates new {@link Ayurvedic} instance.
      */
@@ -34,7 +38,7 @@ public class Ayurvedic {
     }
   }
   public interface Builder extends ThingBuilder<Ayurvedic> {
-  
+    
   }
 
   protected Ayurvedic() {

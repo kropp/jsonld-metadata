@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * This class is based on the work of the LRMI project, see lrmi.net for details.
  */
@@ -25,7 +29,7 @@ public class LRMIClass {
   /**
    * Builder for {@link LRMIClass}
    */
-  public static final class LRMIClassThingBuilder implements Builder {
+  static final class LRMIClassThingBuilder implements Builder {
     /**
      * Creates new {@link LRMIClass} instance.
      */
@@ -34,7 +38,7 @@ public class LRMIClass {
     }
   }
   public interface Builder extends ThingBuilder<LRMIClass> {
-  
+    
   }
 
   protected LRMIClass() {

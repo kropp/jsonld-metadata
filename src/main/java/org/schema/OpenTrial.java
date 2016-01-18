@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A trial design in which the researcher knows the full details of the treatment, and so does the patient.
  */
@@ -25,7 +29,7 @@ public class OpenTrial {
   /**
    * Builder for {@link OpenTrial}
    */
-  public static final class OpenTrialThingBuilder implements Builder {
+  static final class OpenTrialThingBuilder implements Builder {
     /**
      * Creates new {@link OpenTrial} instance.
      */
@@ -34,7 +38,7 @@ public class OpenTrial {
     }
   }
   public interface Builder extends ThingBuilder<OpenTrial> {
-  
+    
   }
 
   protected OpenTrial() {

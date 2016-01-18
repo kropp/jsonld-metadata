@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates that the item has sold out.
  */
@@ -25,7 +29,7 @@ public class SoldOut {
   /**
    * Builder for {@link SoldOut}
    */
-  public static final class SoldOutThingBuilder implements Builder {
+  static final class SoldOutThingBuilder implements Builder {
     /**
      * Creates new {@link SoldOut} instance.
      */
@@ -34,7 +38,7 @@ public class SoldOut {
     }
   }
   public interface Builder extends ThingBuilder<SoldOut> {
-  
+    
   }
 
   protected SoldOut() {

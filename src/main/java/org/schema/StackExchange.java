@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The Question/Answer types were <a href="https://www.w3.org/wiki/WebSchemas/QASchemaResearch">based on</a> the Stack Overflow API.
  */
@@ -25,7 +29,7 @@ public class StackExchange {
   /**
    * Builder for {@link StackExchange}
    */
-  public static final class StackExchangeThingBuilder implements Builder {
+  static final class StackExchangeThingBuilder implements Builder {
     /**
      * Creates new {@link StackExchange} instance.
      */
@@ -34,7 +38,7 @@ public class StackExchange {
     }
   }
   public interface Builder extends ThingBuilder<StackExchange> {
-  
+    
   }
 
   protected StackExchange() {

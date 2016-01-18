@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A set of characteristics describing parents, who can be interested in viewing some content.
  */
@@ -37,7 +41,7 @@ public class ParentAudience extends PeopleAudience {
   /**
    * Builder for {@link ParentAudience}
    */
-  public static final class ParentAudienceThingBuilder implements Builder {
+  static final class ParentAudienceThingBuilder implements Builder {
     /**
      * Creates new {@link ParentAudience} instance.
      */
@@ -47,15 +51,15 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Maximal age of the child.
      */
-    public Builder childMaxAge(Integer integer) {
+    @NotNull public Builder childMaxAge(int childMaxAge) {
       if (this.childMaxAge == null) this.childMaxAge = new Number();
-      this.childMaxAge.setInteger(integer);
+      this.childMaxAge.setInt(childMaxAge);
       return this;
     }
     /**
      * Maximal age of the child.
      */
-    public Builder childMaxAge(Long childMaxAge) {
+    @NotNull public Builder childMaxAge(long childMaxAge) {
       if (this.childMaxAge == null) this.childMaxAge = new Number();
       this.childMaxAge.setLong(childMaxAge);
       return this;
@@ -63,7 +67,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Maximal age of the child.
      */
-    public Builder childMaxAge(Float childMaxAge) {
+    @NotNull public Builder childMaxAge(float childMaxAge) {
       if (this.childMaxAge == null) this.childMaxAge = new Number();
       this.childMaxAge.setFloat(childMaxAge);
       return this;
@@ -71,7 +75,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Maximal age of the child.
      */
-    public Builder childMaxAge(Double childMaxAge) {
+    @NotNull public Builder childMaxAge(double childMaxAge) {
       if (this.childMaxAge == null) this.childMaxAge = new Number();
       this.childMaxAge.setDouble(childMaxAge);
       return this;
@@ -79,7 +83,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Maximal age of the child.
      */
-    public Builder childMaxAge(String childMaxAge) {
+    @NotNull public Builder childMaxAge(String childMaxAge) {
       if (this.childMaxAge == null) this.childMaxAge = new Number();
       this.childMaxAge.setString(childMaxAge);
       return this;
@@ -87,15 +91,15 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Minimal age of the child.
      */
-    public Builder childMinAge(Integer integer) {
+    @NotNull public Builder childMinAge(int childMinAge) {
       if (this.childMinAge == null) this.childMinAge = new Number();
-      this.childMinAge.setInteger(integer);
+      this.childMinAge.setInt(childMinAge);
       return this;
     }
     /**
      * Minimal age of the child.
      */
-    public Builder childMinAge(Long childMinAge) {
+    @NotNull public Builder childMinAge(long childMinAge) {
       if (this.childMinAge == null) this.childMinAge = new Number();
       this.childMinAge.setLong(childMinAge);
       return this;
@@ -103,7 +107,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Minimal age of the child.
      */
-    public Builder childMinAge(Float childMinAge) {
+    @NotNull public Builder childMinAge(float childMinAge) {
       if (this.childMinAge == null) this.childMinAge = new Number();
       this.childMinAge.setFloat(childMinAge);
       return this;
@@ -111,7 +115,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Minimal age of the child.
      */
-    public Builder childMinAge(Double childMinAge) {
+    @NotNull public Builder childMinAge(double childMinAge) {
       if (this.childMinAge == null) this.childMinAge = new Number();
       this.childMinAge.setDouble(childMinAge);
       return this;
@@ -119,7 +123,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Minimal age of the child.
      */
-    public Builder childMinAge(String childMinAge) {
+    @NotNull public Builder childMinAge(String childMinAge) {
       if (this.childMinAge == null) this.childMinAge = new Number();
       this.childMinAge.setString(childMinAge);
       return this;
@@ -127,56 +131,56 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Expectations for health conditions of target audience.
      */
-    public Builder healthCondition(MedicalCondition medicalCondition) {
+    @NotNull public Builder healthCondition(MedicalCondition medicalCondition) {
       this.healthCondition = medicalCondition;
       return this;
     }
     /**
      * Expectations for health conditions of target audience.
      */
-    public Builder healthCondition(MedicalCondition.Builder medicalCondition) {
+    @NotNull public Builder healthCondition(MedicalCondition.Builder medicalCondition) {
       return this.healthCondition(medicalCondition.build());
     }
     /**
      * Audiences defined by a person's gender.
      */
-    public Builder requiredGender(String requiredGender) {
+    @NotNull public Builder requiredGender(String requiredGender) {
       this.requiredGender = requiredGender;
       return this;
     }
     /**
      * Audiences defined by a person's maximum age.
      */
-    public Builder requiredMaxAge(Integer integer) {
-      this.requiredMaxAge = integer;
+    @NotNull public Builder requiredMaxAge(int requiredMaxAge) {
+      this.requiredMaxAge = requiredMaxAge;
       return this;
     }
     /**
      * Audiences defined by a person's minimum age.
      */
-    public Builder requiredMinAge(Integer integer) {
-      this.requiredMinAge = integer;
+    @NotNull public Builder requiredMinAge(int requiredMinAge) {
+      this.requiredMinAge = requiredMinAge;
       return this;
     }
     /**
      * The gender of the person or audience.
      */
-    public Builder suggestedGender(String suggestedGender) {
+    @NotNull public Builder suggestedGender(String suggestedGender) {
       this.suggestedGender = suggestedGender;
       return this;
     }
     /**
      * Maximal age recommended for viewing content.
      */
-    public Builder suggestedMaxAge(Integer integer) {
+    @NotNull public Builder suggestedMaxAge(int suggestedMaxAge) {
       if (this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
-      this.suggestedMaxAge.setInteger(integer);
+      this.suggestedMaxAge.setInt(suggestedMaxAge);
       return this;
     }
     /**
      * Maximal age recommended for viewing content.
      */
-    public Builder suggestedMaxAge(Long suggestedMaxAge) {
+    @NotNull public Builder suggestedMaxAge(long suggestedMaxAge) {
       if (this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
       this.suggestedMaxAge.setLong(suggestedMaxAge);
       return this;
@@ -184,7 +188,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Maximal age recommended for viewing content.
      */
-    public Builder suggestedMaxAge(Float suggestedMaxAge) {
+    @NotNull public Builder suggestedMaxAge(float suggestedMaxAge) {
       if (this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
       this.suggestedMaxAge.setFloat(suggestedMaxAge);
       return this;
@@ -192,7 +196,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Maximal age recommended for viewing content.
      */
-    public Builder suggestedMaxAge(Double suggestedMaxAge) {
+    @NotNull public Builder suggestedMaxAge(double suggestedMaxAge) {
       if (this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
       this.suggestedMaxAge.setDouble(suggestedMaxAge);
       return this;
@@ -200,7 +204,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Maximal age recommended for viewing content.
      */
-    public Builder suggestedMaxAge(String suggestedMaxAge) {
+    @NotNull public Builder suggestedMaxAge(String suggestedMaxAge) {
       if (this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
       this.suggestedMaxAge.setString(suggestedMaxAge);
       return this;
@@ -208,15 +212,15 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Minimal age recommended for viewing content.
      */
-    public Builder suggestedMinAge(Integer integer) {
+    @NotNull public Builder suggestedMinAge(int suggestedMinAge) {
       if (this.suggestedMinAge == null) this.suggestedMinAge = new Number();
-      this.suggestedMinAge.setInteger(integer);
+      this.suggestedMinAge.setInt(suggestedMinAge);
       return this;
     }
     /**
      * Minimal age recommended for viewing content.
      */
-    public Builder suggestedMinAge(Long suggestedMinAge) {
+    @NotNull public Builder suggestedMinAge(long suggestedMinAge) {
       if (this.suggestedMinAge == null) this.suggestedMinAge = new Number();
       this.suggestedMinAge.setLong(suggestedMinAge);
       return this;
@@ -224,7 +228,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Minimal age recommended for viewing content.
      */
-    public Builder suggestedMinAge(Float suggestedMinAge) {
+    @NotNull public Builder suggestedMinAge(float suggestedMinAge) {
       if (this.suggestedMinAge == null) this.suggestedMinAge = new Number();
       this.suggestedMinAge.setFloat(suggestedMinAge);
       return this;
@@ -232,7 +236,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Minimal age recommended for viewing content.
      */
-    public Builder suggestedMinAge(Double suggestedMinAge) {
+    @NotNull public Builder suggestedMinAge(double suggestedMinAge) {
       if (this.suggestedMinAge == null) this.suggestedMinAge = new Number();
       this.suggestedMinAge.setDouble(suggestedMinAge);
       return this;
@@ -240,7 +244,7 @@ public class ParentAudience extends PeopleAudience {
     /**
      * Minimal age recommended for viewing content.
      */
-    public Builder suggestedMinAge(String suggestedMinAge) {
+    @NotNull public Builder suggestedMinAge(String suggestedMinAge) {
       if (this.suggestedMinAge == null) this.suggestedMinAge = new Number();
       this.suggestedMinAge.setString(suggestedMinAge);
       return this;
@@ -248,41 +252,41 @@ public class ParentAudience extends PeopleAudience {
     /**
      * The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).
      */
-    public Builder audienceType(String audienceType) {
+    @NotNull public Builder audienceType(String audienceType) {
       this.audienceType = audienceType;
       return this;
     }
     /**
      * The geographic area associated with the audience.
      */
-    public Builder geographicArea(AdministrativeArea administrativeArea) {
+    @NotNull public Builder geographicArea(AdministrativeArea administrativeArea) {
       this.geographicArea = administrativeArea;
       return this;
     }
     /**
      * The geographic area associated with the audience.
      */
-    public Builder geographicArea(AdministrativeArea.Builder administrativeArea) {
+    @NotNull public Builder geographicArea(AdministrativeArea.Builder administrativeArea) {
       return this.geographicArea(administrativeArea.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -316,7 +320,7 @@ public class ParentAudience extends PeopleAudience {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -351,7 +355,7 @@ public class ParentAudience extends PeopleAudience {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -384,7 +388,7 @@ public class ParentAudience extends PeopleAudience {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -392,38 +396,38 @@ public class ParentAudience extends PeopleAudience {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -434,8 +438,8 @@ public class ParentAudience extends PeopleAudience {
     private Number childMinAge;
     private MedicalCondition healthCondition;
     private String requiredGender;
-    private Integer requiredMaxAge;
-    private Integer requiredMinAge;
+    private int requiredMaxAge;
+    private int requiredMinAge;
     private String suggestedGender;
     private Number suggestedMaxAge;
     private Number suggestedMinAge;
@@ -452,50 +456,50 @@ public class ParentAudience extends PeopleAudience {
     private String id;
   }
   public interface Builder extends ThingBuilder<ParentAudience> {
-  Builder childMaxAge(Integer integer);
-  Builder childMaxAge(Long childMaxAge);
-  Builder childMaxAge(Float childMaxAge);
-  Builder childMaxAge(Double childMaxAge);
-  Builder childMaxAge(String childMaxAge);
-  Builder childMinAge(Integer integer);
-  Builder childMinAge(Long childMinAge);
-  Builder childMinAge(Float childMinAge);
-  Builder childMinAge(Double childMinAge);
-  Builder childMinAge(String childMinAge);
-  Builder healthCondition(MedicalCondition medicalCondition);
-  Builder healthCondition(MedicalCondition.Builder medicalCondition);
-  Builder requiredGender(String requiredGender);
-  Builder requiredMaxAge(Integer integer);
-  Builder requiredMinAge(Integer integer);
-  Builder suggestedGender(String suggestedGender);
-  Builder suggestedMaxAge(Integer integer);
-  Builder suggestedMaxAge(Long suggestedMaxAge);
-  Builder suggestedMaxAge(Float suggestedMaxAge);
-  Builder suggestedMaxAge(Double suggestedMaxAge);
-  Builder suggestedMaxAge(String suggestedMaxAge);
-  Builder suggestedMinAge(Integer integer);
-  Builder suggestedMinAge(Long suggestedMinAge);
-  Builder suggestedMinAge(Float suggestedMinAge);
-  Builder suggestedMinAge(Double suggestedMinAge);
-  Builder suggestedMinAge(String suggestedMinAge);
-  Builder audienceType(String audienceType);
-  Builder geographicArea(AdministrativeArea administrativeArea);
-  Builder geographicArea(AdministrativeArea.Builder administrativeArea);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder childMaxAge(int childMaxAge);
+    @NotNull Builder childMaxAge(long childMaxAge);
+    @NotNull Builder childMaxAge(float childMaxAge);
+    @NotNull Builder childMaxAge(double childMaxAge);
+    @NotNull Builder childMaxAge(String childMaxAge);
+    @NotNull Builder childMinAge(int childMinAge);
+    @NotNull Builder childMinAge(long childMinAge);
+    @NotNull Builder childMinAge(float childMinAge);
+    @NotNull Builder childMinAge(double childMinAge);
+    @NotNull Builder childMinAge(String childMinAge);
+    @NotNull Builder healthCondition(MedicalCondition medicalCondition);
+    @NotNull Builder healthCondition(MedicalCondition.Builder medicalCondition);
+    @NotNull Builder requiredGender(String requiredGender);
+    @NotNull Builder requiredMaxAge(int requiredMaxAge);
+    @NotNull Builder requiredMinAge(int requiredMinAge);
+    @NotNull Builder suggestedGender(String suggestedGender);
+    @NotNull Builder suggestedMaxAge(int suggestedMaxAge);
+    @NotNull Builder suggestedMaxAge(long suggestedMaxAge);
+    @NotNull Builder suggestedMaxAge(float suggestedMaxAge);
+    @NotNull Builder suggestedMaxAge(double suggestedMaxAge);
+    @NotNull Builder suggestedMaxAge(String suggestedMaxAge);
+    @NotNull Builder suggestedMinAge(int suggestedMinAge);
+    @NotNull Builder suggestedMinAge(long suggestedMinAge);
+    @NotNull Builder suggestedMinAge(float suggestedMinAge);
+    @NotNull Builder suggestedMinAge(double suggestedMinAge);
+    @NotNull Builder suggestedMinAge(String suggestedMinAge);
+    @NotNull Builder audienceType(String audienceType);
+    @NotNull Builder geographicArea(AdministrativeArea administrativeArea);
+    @NotNull Builder geographicArea(AdministrativeArea.Builder administrativeArea);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
-  protected ParentAudience(Number childMaxAge, Number childMinAge, MedicalCondition healthCondition, String requiredGender, Integer requiredMaxAge, Integer requiredMinAge, String suggestedGender, Number suggestedMaxAge, Number suggestedMinAge, String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected ParentAudience(Number childMaxAge, Number childMinAge, MedicalCondition healthCondition, String requiredGender, int requiredMaxAge, int requiredMinAge, String suggestedGender, Number suggestedMaxAge, Number suggestedMinAge, String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(healthCondition, requiredGender, requiredMaxAge, requiredMinAge, suggestedGender, suggestedMaxAge, suggestedMinAge, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myChildMaxAge = childMaxAge;
     myChildMinAge = childMinAge;

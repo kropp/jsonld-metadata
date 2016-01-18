@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * X-ray computed tomography imaging.
  */
@@ -25,7 +29,7 @@ public class CT {
   /**
    * Builder for {@link CT}
    */
-  public static final class CTThingBuilder implements Builder {
+  static final class CTThingBuilder implements Builder {
     /**
      * Creates new {@link CT} instance.
      */
@@ -34,7 +38,7 @@ public class CT {
     }
   }
   public interface Builder extends ThingBuilder<CT> {
-  
+    
   }
 
   protected CT() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * OrderStatus representing availability of an order for pickup.
  */
@@ -25,7 +29,7 @@ public class OrderPickupAvailable {
   /**
    * Builder for {@link OrderPickupAvailable}
    */
-  public static final class OrderPickupAvailableThingBuilder implements Builder {
+  static final class OrderPickupAvailableThingBuilder implements Builder {
     /**
      * Creates new {@link OrderPickupAvailable} instance.
      */
@@ -34,7 +38,7 @@ public class OrderPickupAvailable {
     }
   }
   public interface Builder extends ThingBuilder<OrderPickupAvailable> {
-  
+    
   }
 
   protected OrderPickupAvailable() {

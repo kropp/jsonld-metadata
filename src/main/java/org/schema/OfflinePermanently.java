@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Game server status: OfflinePermanently. Server is offline and not available.
  */
@@ -25,7 +29,7 @@ public class OfflinePermanently {
   /**
    * Builder for {@link OfflinePermanently}
    */
-  public static final class OfflinePermanentlyThingBuilder implements Builder {
+  static final class OfflinePermanentlyThingBuilder implements Builder {
     /**
      * Creates new {@link OfflinePermanently} instance.
      */
@@ -34,7 +38,7 @@ public class OfflinePermanently {
     }
   }
   public interface Builder extends ThingBuilder<OfflinePermanently> {
-  
+    
   }
 
   protected OfflinePermanently() {

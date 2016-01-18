@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A system of medicine focused on promoting the body's innate ability to heal itself.
  */
@@ -25,7 +29,7 @@ public class Osteopathic {
   /**
    * Builder for {@link Osteopathic}
    */
-  public static final class OsteopathicThingBuilder implements Builder {
+  static final class OsteopathicThingBuilder implements Builder {
     /**
      * Creates new {@link Osteopathic} instance.
      */
@@ -34,7 +38,7 @@ public class Osteopathic {
     }
   }
   public interface Builder extends ThingBuilder<Osteopathic> {
-  
+    
   }
 
   protected Osteopathic() {

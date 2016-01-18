@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * An observational study design.
  */
@@ -25,7 +29,7 @@ public class Observational {
   /**
    * Builder for {@link Observational}
    */
-  public static final class ObservationalThingBuilder implements Builder {
+  static final class ObservationalThingBuilder implements Builder {
     /**
      * Creates new {@link Observational} instance.
      */
@@ -34,7 +38,7 @@ public class Observational {
     }
   }
   public interface Builder extends ThingBuilder<Observational> {
-  
+    
   }
 
   protected Observational() {

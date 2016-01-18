@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * SingleRelease.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -26,7 +30,7 @@ public class SingleRelease {
   /**
    * Builder for {@link SingleRelease}
    */
-  public static final class SingleReleaseThingBuilder implements Builder {
+  static final class SingleReleaseThingBuilder implements Builder {
     /**
      * Creates new {@link SingleRelease} instance.
      */
@@ -35,7 +39,7 @@ public class SingleRelease {
     }
   }
   public interface Builder extends ThingBuilder<SingleRelease> {
-  
+    
   }
 
   protected SingleRelease() {

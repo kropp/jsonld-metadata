@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Only consensus opinion of experts, case studies, or standard-of-care.
  */
@@ -25,7 +29,7 @@ public class EvidenceLevelC {
   /**
    * Builder for {@link EvidenceLevelC}
    */
-  public static final class EvidenceLevelCThingBuilder implements Builder {
+  static final class EvidenceLevelCThingBuilder implements Builder {
     /**
      * Creates new {@link EvidenceLevelC} instance.
      */
@@ -34,7 +38,7 @@ public class EvidenceLevelC {
     }
   }
   public interface Builder extends ThingBuilder<EvidenceLevelC> {
-  
+    
   }
 
   protected EvidenceLevelC() {

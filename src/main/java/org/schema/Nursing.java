@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Nursing.
  */
@@ -25,7 +29,7 @@ public class Nursing {
   /**
    * Builder for {@link Nursing}
    */
-  public static final class NursingThingBuilder implements Builder {
+  static final class NursingThingBuilder implements Builder {
     /**
      * Creates new {@link Nursing} instance.
      */
@@ -34,7 +38,7 @@ public class Nursing {
     }
   }
   public interface Builder extends ThingBuilder<Nursing> {
-  
+    
   }
 
   protected Nursing() {

@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class MedicalDevicePurposeOrThing {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myMedicalDevicePurpose != null) return myMedicalDevicePurpose;
     if (myThing != null) return myThing;
@@ -28,9 +31,9 @@ class MedicalDevicePurposeOrThing {
   }
   public void setMedicalDevicePurpose(MedicalDevicePurpose medicalDevicePurpose) { clear(); myMedicalDevicePurpose = medicalDevicePurpose; }
   public MedicalDevicePurpose getMedicalDevicePurpose() { return myMedicalDevicePurpose; }
-  private MedicalDevicePurpose myMedicalDevicePurpose;
   public void setThing(Thing thing) { clear(); myThing = thing; }
   public Thing getThing() { return myThing; }
+  private MedicalDevicePurpose myMedicalDevicePurpose;
   private Thing myThing;
   private void clear() {
     myMedicalDevicePurpose = null;

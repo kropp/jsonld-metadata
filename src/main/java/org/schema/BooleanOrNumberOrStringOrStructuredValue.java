@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class BooleanOrNumberOrStringOrStructuredValue {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myBoolean != null) return myBoolean;
     if (myNumber != null) return myNumber;
@@ -30,15 +33,15 @@ class BooleanOrNumberOrStringOrStructuredValue {
   }
   public void setBoolean(Boolean value) { clear(); myBoolean = value; }
   public Boolean getBoolean() { return myBoolean; }
-  private Boolean myBoolean;
   public void setNumber(Number number) { clear(); myNumber = number; }
   public Number getNumber() { return myNumber; }
-  private Number myNumber;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private String myString;
   public void setStructuredValue(StructuredValue structuredValue) { clear(); myStructuredValue = structuredValue; }
   public StructuredValue getStructuredValue() { return myStructuredValue; }
+  private Boolean myBoolean;
+  private Number myNumber;
+  private String myString;
   private StructuredValue myStructuredValue;
   private void clear() {
     myBoolean = null;

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Primary care.
  */
@@ -25,7 +29,7 @@ public class PrimaryCare {
   /**
    * Builder for {@link PrimaryCare}
    */
-  public static final class PrimaryCareThingBuilder implements Builder {
+  static final class PrimaryCareThingBuilder implements Builder {
     /**
      * Creates new {@link PrimaryCare} instance.
      */
@@ -34,7 +38,7 @@ public class PrimaryCare {
     }
   }
   public interface Builder extends ThingBuilder<PrimaryCare> {
-  
+    
   }
 
   protected PrimaryCare() {

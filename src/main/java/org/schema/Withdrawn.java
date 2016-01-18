@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Withdrawn.
  */
@@ -25,7 +29,7 @@ public class Withdrawn {
   /**
    * Builder for {@link Withdrawn}
    */
-  public static final class WithdrawnThingBuilder implements Builder {
+  static final class WithdrawnThingBuilder implements Builder {
     /**
      * Creates new {@link Withdrawn} instance.
      */
@@ -34,7 +38,7 @@ public class Withdrawn {
     }
   }
   public interface Builder extends ThingBuilder<Withdrawn> {
-  
+    
   }
 
   protected Withdrawn() {

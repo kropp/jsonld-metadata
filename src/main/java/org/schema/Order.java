@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * An order is a confirmation of a transaction (a receipt), which can contain multiple line items, each represented by an Offer that has been accepted by the customer.
  */
@@ -79,7 +83,7 @@ public class Order extends Intangible {
   /**
    * Date order was placed.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getOrderDate() {
     return myOrderDate;
   }
@@ -110,7 +114,7 @@ public class Order extends Intangible {
   /**
    * The date that payment is due.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getPaymentDue() {
     return myPaymentDue;
   }
@@ -147,7 +151,7 @@ public class Order extends Intangible {
   /**
    * Builder for {@link Order}
    */
-  public static final class OrderThingBuilder implements Builder {
+  static final class OrderThingBuilder implements Builder {
     /**
      * Creates new {@link Order} instance.
      */
@@ -157,53 +161,53 @@ public class Order extends Intangible {
     /**
      * The delivery of the parcel related to this order or order item.
      */
-    public Builder orderDelivery(ParcelDelivery parcelDelivery) {
+    @NotNull public Builder orderDelivery(ParcelDelivery parcelDelivery) {
       this.orderDelivery = parcelDelivery;
       return this;
     }
     /**
      * The delivery of the parcel related to this order or order item.
      */
-    public Builder orderDelivery(ParcelDelivery.Builder parcelDelivery) {
+    @NotNull public Builder orderDelivery(ParcelDelivery.Builder parcelDelivery) {
       return this.orderDelivery(parcelDelivery.build());
     }
     /**
      * The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
      */
-    public Builder acceptedOffer(Offer offer) {
+    @NotNull public Builder acceptedOffer(Offer offer) {
       this.acceptedOffer = offer;
       return this;
     }
     /**
      * The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
      */
-    public Builder acceptedOffer(Offer.Builder offer) {
+    @NotNull public Builder acceptedOffer(Offer.Builder offer) {
       return this.acceptedOffer(offer.build());
     }
     /**
      * The billing address for the order.
      */
-    public Builder billingAddress(PostalAddress postalAddress) {
+    @NotNull public Builder billingAddress(PostalAddress postalAddress) {
       this.billingAddress = postalAddress;
       return this;
     }
     /**
      * The billing address for the order.
      */
-    public Builder billingAddress(PostalAddress.Builder postalAddress) {
+    @NotNull public Builder billingAddress(PostalAddress.Builder postalAddress) {
       return this.billingAddress(postalAddress.build());
     }
     /**
      * A number that confirms the given order or payment has been received.
      */
-    public Builder confirmationNumber(String confirmationNumber) {
+    @NotNull public Builder confirmationNumber(String confirmationNumber) {
       this.confirmationNumber = confirmationNumber;
       return this;
     }
     /**
      * Party placing the order or paying the invoice.
      */
-    public Builder customer(Organization organization) {
+    @NotNull public Builder customer(Organization organization) {
       if (this.customer == null) this.customer = new OrganizationOrPerson();
       this.customer.setOrganization(organization);
       return this;
@@ -211,13 +215,13 @@ public class Order extends Intangible {
     /**
      * Party placing the order or paying the invoice.
      */
-    public Builder customer(Organization.Builder organization) {
+    @NotNull public Builder customer(Organization.Builder organization) {
       return this.customer(organization.build());
     }
     /**
      * Party placing the order or paying the invoice.
      */
-    public Builder customer(Person person) {
+    @NotNull public Builder customer(Person person) {
       if (this.customer == null) this.customer = new OrganizationOrPerson();
       this.customer.setPerson(person);
       return this;
@@ -225,13 +229,13 @@ public class Order extends Intangible {
     /**
      * Party placing the order or paying the invoice.
      */
-    public Builder customer(Person.Builder person) {
+    @NotNull public Builder customer(Person.Builder person) {
       return this.customer(person.build());
     }
     /**
      * Any discount applied (to an Order).
      */
-    public Builder discount(Number number) {
+    @NotNull public Builder discount(Number number) {
       if (this.discount == null) this.discount = new NumberOrString();
       this.discount.setNumber(number);
       return this;
@@ -239,7 +243,7 @@ public class Order extends Intangible {
     /**
      * Any discount applied (to an Order).
      */
-    public Builder discount(String discount) {
+    @NotNull public Builder discount(String discount) {
       if (this.discount == null) this.discount = new NumberOrString();
       this.discount.setString(discount);
       return this;
@@ -247,35 +251,35 @@ public class Order extends Intangible {
     /**
      * Code used to redeem a discount.
      */
-    public Builder discountCode(String discountCode) {
+    @NotNull public Builder discountCode(String discountCode) {
       this.discountCode = discountCode;
       return this;
     }
     /**
      * The currency (in 3-letter ISO 4217 format) of the discount.
      */
-    public Builder discountCurrency(String discountCurrency) {
+    @NotNull public Builder discountCurrency(String discountCurrency) {
       this.discountCurrency = discountCurrency;
       return this;
     }
     /**
      * Was the offer accepted as a gift for someone other than the buyer.
      */
-    public Builder isGift(Boolean isGift) {
+    @NotNull public Builder isGift(Boolean isGift) {
       this.isGift = isGift;
       return this;
     }
     /**
      * Date order was placed.
      */
-    public Builder orderDate(java.util.Date date) {
+    @NotNull public Builder orderDate(java.util.Date date) {
       this.orderDate = date;
       return this;
     }
     /**
      * The item ordered.
      */
-    public Builder orderedItem(OrderItem orderItem) {
+    @NotNull public Builder orderedItem(OrderItem orderItem) {
       if (this.orderedItem == null) this.orderedItem = new OrderItemOrProduct();
       this.orderedItem.setOrderItem(orderItem);
       return this;
@@ -283,13 +287,13 @@ public class Order extends Intangible {
     /**
      * The item ordered.
      */
-    public Builder orderedItem(OrderItem.Builder orderItem) {
+    @NotNull public Builder orderedItem(OrderItem.Builder orderItem) {
       return this.orderedItem(orderItem.build());
     }
     /**
      * The item ordered.
      */
-    public Builder orderedItem(Product product) {
+    @NotNull public Builder orderedItem(Product product) {
       if (this.orderedItem == null) this.orderedItem = new OrderItemOrProduct();
       this.orderedItem.setProduct(product);
       return this;
@@ -297,87 +301,87 @@ public class Order extends Intangible {
     /**
      * The item ordered.
      */
-    public Builder orderedItem(Product.Builder product) {
+    @NotNull public Builder orderedItem(Product.Builder product) {
       return this.orderedItem(product.build());
     }
     /**
      * The identifier of the transaction.
      */
-    public Builder orderNumber(String orderNumber) {
+    @NotNull public Builder orderNumber(String orderNumber) {
       this.orderNumber = orderNumber;
       return this;
     }
     /**
      * The current status of the order.
      */
-    public Builder orderStatus(OrderStatus orderStatus) {
+    @NotNull public Builder orderStatus(OrderStatus orderStatus) {
       this.orderStatus = orderStatus;
       return this;
     }
     /**
      * The current status of the order.
      */
-    public Builder orderStatus(OrderStatus.Builder orderStatus) {
+    @NotNull public Builder orderStatus(OrderStatus.Builder orderStatus) {
       return this.orderStatus(orderStatus.build());
     }
     /**
      * The order is being paid as part of the referenced Invoice.
      */
-    public Builder partOfInvoice(Invoice invoice) {
+    @NotNull public Builder partOfInvoice(Invoice invoice) {
       this.partOfInvoice = invoice;
       return this;
     }
     /**
      * The order is being paid as part of the referenced Invoice.
      */
-    public Builder partOfInvoice(Invoice.Builder invoice) {
+    @NotNull public Builder partOfInvoice(Invoice.Builder invoice) {
       return this.partOfInvoice(invoice.build());
     }
     /**
      * The date that payment is due.
      */
-    public Builder paymentDue(java.util.Date date) {
+    @NotNull public Builder paymentDue(java.util.Date date) {
       this.paymentDue = date;
       return this;
     }
     /**
      * The name of the credit card or other method of payment for the order.
      */
-    public Builder paymentMethod(PaymentMethod paymentMethod) {
+    @NotNull public Builder paymentMethod(PaymentMethod paymentMethod) {
       this.paymentMethod = paymentMethod;
       return this;
     }
     /**
      * The name of the credit card or other method of payment for the order.
      */
-    public Builder paymentMethod(PaymentMethod.Builder paymentMethod) {
+    @NotNull public Builder paymentMethod(PaymentMethod.Builder paymentMethod) {
       return this.paymentMethod(paymentMethod.build());
     }
     /**
      * An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
      */
-    public Builder paymentMethodId(String paymentMethodId) {
+    @NotNull public Builder paymentMethodId(String paymentMethodId) {
       this.paymentMethodId = paymentMethodId;
       return this;
     }
     /**
      * The URL for sending a payment.
      */
-    public Builder paymentUrl(String paymentUrl) {
+    @NotNull public Builder paymentUrl(String paymentUrl) {
       this.paymentUrl = paymentUrl;
       return this;
     }
     /**
      * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
      */
-    public Builder seller(Participant participant) {
+    @NotNull public Builder seller(Participant participant) {
       this.seller = participant;
       return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    public Builder broker(Organization organization) {
+    @NotNull public Builder broker(Organization organization) {
       if (this.broker == null) this.broker = new OrganizationOrPerson();
       this.broker.setOrganization(organization);
       return this;
@@ -385,13 +389,13 @@ public class Order extends Intangible {
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    public Builder broker(Organization.Builder organization) {
+    @NotNull public Builder broker(Organization.Builder organization) {
       return this.broker(organization.build());
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    public Builder broker(Person person) {
+    @NotNull public Builder broker(Person person) {
       if (this.broker == null) this.broker = new OrganizationOrPerson();
       this.broker.setPerson(person);
       return this;
@@ -399,27 +403,27 @@ public class Order extends Intangible {
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    public Builder broker(Person.Builder person) {
+    @NotNull public Builder broker(Person.Builder person) {
       return this.broker(person.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -453,7 +457,7 @@ public class Order extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -488,7 +492,7 @@ public class Order extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -521,7 +525,7 @@ public class Order extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -529,38 +533,38 @@ public class Order extends Intangible {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -598,54 +602,54 @@ public class Order extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<Order> {
-  Builder orderDelivery(ParcelDelivery parcelDelivery);
-  Builder orderDelivery(ParcelDelivery.Builder parcelDelivery);
-  Builder acceptedOffer(Offer offer);
-  Builder acceptedOffer(Offer.Builder offer);
-  Builder billingAddress(PostalAddress postalAddress);
-  Builder billingAddress(PostalAddress.Builder postalAddress);
-  Builder confirmationNumber(String confirmationNumber);
-  Builder customer(Organization organization);
-  Builder customer(Organization.Builder organization);
-  Builder customer(Person person);
-  Builder customer(Person.Builder person);
-  Builder discount(Number number);
-  Builder discount(String discount);
-  Builder discountCode(String discountCode);
-  Builder discountCurrency(String discountCurrency);
-  Builder isGift(Boolean isGift);
-  Builder orderDate(java.util.Date date);
-  Builder orderedItem(OrderItem orderItem);
-  Builder orderedItem(OrderItem.Builder orderItem);
-  Builder orderedItem(Product product);
-  Builder orderedItem(Product.Builder product);
-  Builder orderNumber(String orderNumber);
-  Builder orderStatus(OrderStatus orderStatus);
-  Builder orderStatus(OrderStatus.Builder orderStatus);
-  Builder partOfInvoice(Invoice invoice);
-  Builder partOfInvoice(Invoice.Builder invoice);
-  Builder paymentDue(java.util.Date date);
-  Builder paymentMethod(PaymentMethod paymentMethod);
-  Builder paymentMethod(PaymentMethod.Builder paymentMethod);
-  Builder paymentMethodId(String paymentMethodId);
-  Builder paymentUrl(String paymentUrl);
-  Builder seller(Participant participant);
-  Builder broker(Organization organization);
-  Builder broker(Organization.Builder organization);
-  Builder broker(Person person);
-  Builder broker(Person.Builder person);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder orderDelivery(ParcelDelivery parcelDelivery);
+    @NotNull Builder orderDelivery(ParcelDelivery.Builder parcelDelivery);
+    @NotNull Builder acceptedOffer(Offer offer);
+    @NotNull Builder acceptedOffer(Offer.Builder offer);
+    @NotNull Builder billingAddress(PostalAddress postalAddress);
+    @NotNull Builder billingAddress(PostalAddress.Builder postalAddress);
+    @NotNull Builder confirmationNumber(String confirmationNumber);
+    @NotNull Builder customer(Organization organization);
+    @NotNull Builder customer(Organization.Builder organization);
+    @NotNull Builder customer(Person person);
+    @NotNull Builder customer(Person.Builder person);
+    @NotNull Builder discount(Number number);
+    @NotNull Builder discount(String discount);
+    @NotNull Builder discountCode(String discountCode);
+    @NotNull Builder discountCurrency(String discountCurrency);
+    @NotNull Builder isGift(Boolean isGift);
+    @NotNull Builder orderDate(java.util.Date date);
+    @NotNull Builder orderedItem(OrderItem orderItem);
+    @NotNull Builder orderedItem(OrderItem.Builder orderItem);
+    @NotNull Builder orderedItem(Product product);
+    @NotNull Builder orderedItem(Product.Builder product);
+    @NotNull Builder orderNumber(String orderNumber);
+    @NotNull Builder orderStatus(OrderStatus orderStatus);
+    @NotNull Builder orderStatus(OrderStatus.Builder orderStatus);
+    @NotNull Builder partOfInvoice(Invoice invoice);
+    @NotNull Builder partOfInvoice(Invoice.Builder invoice);
+    @NotNull Builder paymentDue(java.util.Date date);
+    @NotNull Builder paymentMethod(PaymentMethod paymentMethod);
+    @NotNull Builder paymentMethod(PaymentMethod.Builder paymentMethod);
+    @NotNull Builder paymentMethodId(String paymentMethodId);
+    @NotNull Builder paymentUrl(String paymentUrl);
+    @NotNull Builder seller(Participant participant);
+    @NotNull Builder broker(Organization organization);
+    @NotNull Builder broker(Organization.Builder organization);
+    @NotNull Builder broker(Person person);
+    @NotNull Builder broker(Person.Builder person);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected Order(ParcelDelivery orderDelivery, Offer acceptedOffer, PostalAddress billingAddress, String confirmationNumber, OrganizationOrPerson customer, NumberOrString discount, String discountCode, String discountCurrency, Boolean isGift, java.util.Date orderDate, OrderItemOrProduct orderedItem, String orderNumber, OrderStatus orderStatus, Invoice partOfInvoice, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, String paymentUrl, Participant seller, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A system of medicine focused on the relationship between the body's structure, mainly the spine, and its functioning.
  */
@@ -25,7 +29,7 @@ public class Chiropractic {
   /**
    * Builder for {@link Chiropractic}
    */
-  public static final class ChiropracticThingBuilder implements Builder {
+  static final class ChiropracticThingBuilder implements Builder {
     /**
      * Creates new {@link Chiropractic} instance.
      */
@@ -34,7 +38,7 @@ public class Chiropractic {
     }
   }
   public interface Builder extends ThingBuilder<Chiropractic> {
-  
+    
   }
 
   protected Chiropractic() {

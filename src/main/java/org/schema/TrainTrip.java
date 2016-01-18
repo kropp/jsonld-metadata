@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A trip on a commercial train line.
  */
@@ -31,14 +35,14 @@ public class TrainTrip extends Intangible {
   /**
    * The expected departure time.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getDepartureTime() {
     return myDepartureTime;
   }
   /**
    * The expected arrival time.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getArrivalTime() {
     return myArrivalTime;
   }
@@ -81,7 +85,7 @@ public class TrainTrip extends Intangible {
   /**
    * Builder for {@link TrainTrip}
    */
-  public static final class TrainTripThingBuilder implements Builder {
+  static final class TrainTripThingBuilder implements Builder {
     /**
      * Creates new {@link TrainTrip} instance.
      */
@@ -91,7 +95,7 @@ public class TrainTrip extends Intangible {
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Organization organization) {
+    @NotNull public Builder provider(Organization organization) {
       if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setOrganization(organization);
       return this;
@@ -99,13 +103,13 @@ public class TrainTrip extends Intangible {
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Organization.Builder organization) {
+    @NotNull public Builder provider(Organization.Builder organization) {
       return this.provider(organization.build());
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Person person) {
+    @NotNull public Builder provider(Person person) {
       if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setPerson(person);
       return this;
@@ -113,95 +117,95 @@ public class TrainTrip extends Intangible {
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Person.Builder person) {
+    @NotNull public Builder provider(Person.Builder person) {
       return this.provider(person.build());
     }
     /**
      * The expected departure time.
      */
-    public Builder departureTime(java.util.Date date) {
+    @NotNull public Builder departureTime(java.util.Date date) {
       this.departureTime = date;
       return this;
     }
     /**
      * The expected arrival time.
      */
-    public Builder arrivalTime(java.util.Date date) {
+    @NotNull public Builder arrivalTime(java.util.Date date) {
       this.arrivalTime = date;
       return this;
     }
     /**
      * The unique identifier for the train.
      */
-    public Builder trainNumber(String trainNumber) {
+    @NotNull public Builder trainNumber(String trainNumber) {
       this.trainNumber = trainNumber;
       return this;
     }
     /**
      * The name of the train (e.g. The Orient Express).
      */
-    public Builder trainName(String trainName) {
+    @NotNull public Builder trainName(String trainName) {
       this.trainName = trainName;
       return this;
     }
     /**
      * The station from which the train departs.
      */
-    public Builder departureStation(TrainStation trainStation) {
+    @NotNull public Builder departureStation(TrainStation trainStation) {
       this.departureStation = trainStation;
       return this;
     }
     /**
      * The station from which the train departs.
      */
-    public Builder departureStation(TrainStation.Builder trainStation) {
+    @NotNull public Builder departureStation(TrainStation.Builder trainStation) {
       return this.departureStation(trainStation.build());
     }
     /**
      * The station where the train trip ends.
      */
-    public Builder arrivalStation(TrainStation trainStation) {
+    @NotNull public Builder arrivalStation(TrainStation trainStation) {
       this.arrivalStation = trainStation;
       return this;
     }
     /**
      * The station where the train trip ends.
      */
-    public Builder arrivalStation(TrainStation.Builder trainStation) {
+    @NotNull public Builder arrivalStation(TrainStation.Builder trainStation) {
       return this.arrivalStation(trainStation.build());
     }
     /**
      * The platform from which the train departs.
      */
-    public Builder departurePlatform(String departurePlatform) {
+    @NotNull public Builder departurePlatform(String departurePlatform) {
       this.departurePlatform = departurePlatform;
       return this;
     }
     /**
      * The platform where the train arrives.
      */
-    public Builder arrivalPlatform(String arrivalPlatform) {
+    @NotNull public Builder arrivalPlatform(String arrivalPlatform) {
       this.arrivalPlatform = arrivalPlatform;
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -235,7 +239,7 @@ public class TrainTrip extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -270,7 +274,7 @@ public class TrainTrip extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -303,7 +307,7 @@ public class TrainTrip extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -311,38 +315,38 @@ public class TrainTrip extends Intangible {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -369,32 +373,32 @@ public class TrainTrip extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<TrainTrip> {
-  Builder provider(Organization organization);
-  Builder provider(Organization.Builder organization);
-  Builder provider(Person person);
-  Builder provider(Person.Builder person);
-  Builder departureTime(java.util.Date date);
-  Builder arrivalTime(java.util.Date date);
-  Builder trainNumber(String trainNumber);
-  Builder trainName(String trainName);
-  Builder departureStation(TrainStation trainStation);
-  Builder departureStation(TrainStation.Builder trainStation);
-  Builder arrivalStation(TrainStation trainStation);
-  Builder arrivalStation(TrainStation.Builder trainStation);
-  Builder departurePlatform(String departurePlatform);
-  Builder arrivalPlatform(String arrivalPlatform);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder provider(Organization organization);
+    @NotNull Builder provider(Organization.Builder organization);
+    @NotNull Builder provider(Person person);
+    @NotNull Builder provider(Person.Builder person);
+    @NotNull Builder departureTime(java.util.Date date);
+    @NotNull Builder arrivalTime(java.util.Date date);
+    @NotNull Builder trainNumber(String trainNumber);
+    @NotNull Builder trainName(String trainName);
+    @NotNull Builder departureStation(TrainStation trainStation);
+    @NotNull Builder departureStation(TrainStation.Builder trainStation);
+    @NotNull Builder arrivalStation(TrainStation trainStation);
+    @NotNull Builder arrivalStation(TrainStation.Builder trainStation);
+    @NotNull Builder departurePlatform(String departurePlatform);
+    @NotNull Builder arrivalPlatform(String arrivalPlatform);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected TrainTrip(OrganizationOrPerson provider, java.util.Date departureTime, java.util.Date arrivalTime, String trainNumber, String trainName, TrainStation departureStation, TrainStation arrivalStation, String departurePlatform, String arrivalPlatform, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

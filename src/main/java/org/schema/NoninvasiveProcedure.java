@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A type of medical procedure that involves noninvasive techniques.
  */
@@ -25,7 +29,7 @@ public class NoninvasiveProcedure {
   /**
    * Builder for {@link NoninvasiveProcedure}
    */
-  public static final class NoninvasiveProcedureThingBuilder implements Builder {
+  static final class NoninvasiveProcedureThingBuilder implements Builder {
     /**
      * Creates new {@link NoninvasiveProcedure} instance.
      */
@@ -34,7 +38,7 @@ public class NoninvasiveProcedure {
     }
   }
   public interface Builder extends ThingBuilder<NoninvasiveProcedure> {
-  
+    
   }
 
   protected NoninvasiveProcedure() {

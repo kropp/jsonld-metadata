@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that is deals with the evaluation and initial treatment of medical conditions caused by trauma or sudden illness.
  */
@@ -25,7 +29,7 @@ public class Emergency {
   /**
    * Builder for {@link Emergency}
    */
-  public static final class EmergencyThingBuilder implements Builder {
+  static final class EmergencyThingBuilder implements Builder {
     /**
      * Creates new {@link Emergency} instance.
      */
@@ -34,7 +38,7 @@ public class Emergency {
     }
   }
   public interface Builder extends ThingBuilder<Emergency> {
-  
+    
   }
 
   protected Emergency() {

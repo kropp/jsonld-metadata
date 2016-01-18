@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * OrderStatus representing that an order is in transit.
  */
@@ -25,7 +29,7 @@ public class OrderInTransit {
   /**
    * Builder for {@link OrderInTransit}
    */
-  public static final class OrderInTransitThingBuilder implements Builder {
+  static final class OrderInTransitThingBuilder implements Builder {
     /**
      * Creates new {@link OrderInTransit} instance.
      */
@@ -34,7 +38,7 @@ public class OrderInTransit {
     }
   }
   public interface Builder extends ThingBuilder<OrderInTransit> {
-  
+    
   }
 
   protected OrderInTransit() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * OrderStatus representing that an order has been returned.
  */
@@ -25,7 +29,7 @@ public class OrderReturned {
   /**
    * Builder for {@link OrderReturned}
    */
-  public static final class OrderReturnedThingBuilder implements Builder {
+  static final class OrderReturnedThingBuilder implements Builder {
     /**
      * Creates new {@link OrderReturned} instance.
      */
@@ -34,7 +38,7 @@ public class OrderReturned {
     }
   }
   public interface Builder extends ThingBuilder<OrderReturned> {
-  
+    
   }
 
   protected OrderReturned() {

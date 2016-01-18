@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A randomized trial design.
  */
@@ -25,7 +29,7 @@ public class RandomizedTrial {
   /**
    * Builder for {@link RandomizedTrial}
    */
-  public static final class RandomizedTrialThingBuilder implements Builder {
+  static final class RandomizedTrialThingBuilder implements Builder {
     /**
      * Creates new {@link RandomizedTrial} instance.
      */
@@ -34,7 +38,7 @@ public class RandomizedTrial {
     }
   }
   public interface Builder extends ThingBuilder<RandomizedTrial> {
-  
+    
   }
 
   protected RandomizedTrial() {

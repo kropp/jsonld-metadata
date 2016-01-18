@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Suspended.
  */
@@ -25,7 +29,7 @@ public class Suspended {
   /**
    * Builder for {@link Suspended}
    */
-  public static final class SuspendedThingBuilder implements Builder {
+  static final class SuspendedThingBuilder implements Builder {
     /**
      * Creates new {@link Suspended} instance.
      */
@@ -34,7 +38,7 @@ public class Suspended {
     }
   }
   public interface Builder extends ThingBuilder<Suspended> {
-  
+    
   }
 
   protected Suspended() {

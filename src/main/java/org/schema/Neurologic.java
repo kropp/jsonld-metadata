@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that studies the nerves and nervous system and its respective disease states.
  */
@@ -25,7 +29,7 @@ public class Neurologic {
   /**
    * Builder for {@link Neurologic}
    */
-  public static final class NeurologicThingBuilder implements Builder {
+  static final class NeurologicThingBuilder implements Builder {
     /**
      * Creates new {@link Neurologic} instance.
      */
@@ -34,7 +38,7 @@ public class Neurologic {
     }
   }
   public interface Builder extends ThingBuilder<Neurologic> {
-  
+    
   }
 
   protected Neurologic() {

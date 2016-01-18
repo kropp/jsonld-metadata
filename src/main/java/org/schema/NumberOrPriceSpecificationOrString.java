@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class NumberOrPriceSpecificationOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myNumber != null) return myNumber;
     if (myPriceSpecification != null) return myPriceSpecification;
@@ -29,12 +32,12 @@ class NumberOrPriceSpecificationOrString {
   }
   public void setNumber(Number number) { clear(); myNumber = number; }
   public Number getNumber() { return myNumber; }
-  private Number myNumber;
   public void setPriceSpecification(PriceSpecification priceSpecification) { clear(); myPriceSpecification = priceSpecification; }
   public PriceSpecification getPriceSpecification() { return myPriceSpecification; }
-  private PriceSpecification myPriceSpecification;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private Number myNumber;
+  private PriceSpecification myPriceSpecification;
   private String myString;
   private void clear() {
     myNumber = null;

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates that the item is damaged.
  */
@@ -25,7 +29,7 @@ public class DamagedCondition {
   /**
    * Builder for {@link DamagedCondition}
    */
-  public static final class DamagedConditionThingBuilder implements Builder {
+  static final class DamagedConditionThingBuilder implements Builder {
     /**
      * Creates new {@link DamagedCondition} instance.
      */
@@ -34,7 +38,7 @@ public class DamagedCondition {
     }
   }
   public interface Builder extends ThingBuilder<DamagedCondition> {
-  
+    
   }
 
   protected DamagedCondition() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Studies carried out on pre-existing data (usually from 'snapshot' surveys), such as that collected by the Census Bureau. Sometimes called Prevalence Studies.
  */
@@ -25,7 +29,7 @@ public class CrossSectional {
   /**
    * Builder for {@link CrossSectional}
    */
-  public static final class CrossSectionalThingBuilder implements Builder {
+  static final class CrossSectionalThingBuilder implements Builder {
     /**
      * Creates new {@link CrossSectional} instance.
      */
@@ -34,7 +38,7 @@ public class CrossSectional {
     }
   }
   public interface Builder extends ThingBuilder<CrossSectional> {
-  
+    
   }
 
   protected CrossSectional() {

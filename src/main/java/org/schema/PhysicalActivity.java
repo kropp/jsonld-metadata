@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Any bodily activity that enhances or maintains physical fitness and overall health and wellness. Includes activity that is part of daily living and routine, structured exercise, and exercise prescribed as part of a medical treatment or recovery plan.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -50,7 +54,7 @@ public class PhysicalActivity extends LifestyleModification {
   /**
    * Builder for {@link PhysicalActivity}
    */
-  public static final class PhysicalActivityThingBuilder implements Builder {
+  static final class PhysicalActivityThingBuilder implements Builder {
     /**
      * Creates new {@link PhysicalActivity} instance.
      */
@@ -60,7 +64,7 @@ public class PhysicalActivity extends LifestyleModification {
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
-    public Builder associatedAnatomy(AnatomicalStructure anatomicalStructure) {
+    @NotNull public Builder associatedAnatomy(AnatomicalStructure anatomicalStructure) {
       if (this.associatedAnatomy == null) this.associatedAnatomy = new AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy();
       this.associatedAnatomy.setAnatomicalStructure(anatomicalStructure);
       return this;
@@ -68,13 +72,13 @@ public class PhysicalActivity extends LifestyleModification {
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
-    public Builder associatedAnatomy(AnatomicalStructure.Builder anatomicalStructure) {
+    @NotNull public Builder associatedAnatomy(AnatomicalStructure.Builder anatomicalStructure) {
       return this.associatedAnatomy(anatomicalStructure.build());
     }
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
-    public Builder associatedAnatomy(AnatomicalSystem anatomicalSystem) {
+    @NotNull public Builder associatedAnatomy(AnatomicalSystem anatomicalSystem) {
       if (this.associatedAnatomy == null) this.associatedAnatomy = new AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy();
       this.associatedAnatomy.setAnatomicalSystem(anatomicalSystem);
       return this;
@@ -82,13 +86,13 @@ public class PhysicalActivity extends LifestyleModification {
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
-    public Builder associatedAnatomy(AnatomicalSystem.Builder anatomicalSystem) {
+    @NotNull public Builder associatedAnatomy(AnatomicalSystem.Builder anatomicalSystem) {
       return this.associatedAnatomy(anatomicalSystem.build());
     }
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
-    public Builder associatedAnatomy(SuperficialAnatomy superficialAnatomy) {
+    @NotNull public Builder associatedAnatomy(SuperficialAnatomy superficialAnatomy) {
       if (this.associatedAnatomy == null) this.associatedAnatomy = new AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy();
       this.associatedAnatomy.setSuperficialAnatomy(superficialAnatomy);
       return this;
@@ -96,13 +100,13 @@ public class PhysicalActivity extends LifestyleModification {
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
-    public Builder associatedAnatomy(SuperficialAnatomy.Builder superficialAnatomy) {
+    @NotNull public Builder associatedAnatomy(SuperficialAnatomy.Builder superficialAnatomy) {
       return this.associatedAnatomy(superficialAnatomy.build());
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
-    public Builder category(PhysicalActivityCategory physicalActivityCategory) {
+    @NotNull public Builder category(PhysicalActivityCategory physicalActivityCategory) {
       if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
       this.category.setPhysicalActivityCategory(physicalActivityCategory);
       return this;
@@ -110,13 +114,13 @@ public class PhysicalActivity extends LifestyleModification {
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
-    public Builder category(PhysicalActivityCategory.Builder physicalActivityCategory) {
+    @NotNull public Builder category(PhysicalActivityCategory.Builder physicalActivityCategory) {
       return this.category(physicalActivityCategory.build());
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
-    public Builder category(String category) {
+    @NotNull public Builder category(String category) {
       if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
       this.category.setString(category);
       return this;
@@ -124,7 +128,7 @@ public class PhysicalActivity extends LifestyleModification {
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
-    public Builder category(Thing thing) {
+    @NotNull public Builder category(Thing thing) {
       if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
       this.category.setThing(thing);
       return this;
@@ -132,184 +136,184 @@ public class PhysicalActivity extends LifestyleModification {
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
-    public Builder category(Thing.Builder thing) {
+    @NotNull public Builder category(Thing.Builder thing) {
       return this.category(thing.build());
     }
     /**
      * The characteristics of associated patients, such as age, gender, race etc.
      */
-    public Builder epidemiology(String epidemiology) {
+    @NotNull public Builder epidemiology(String epidemiology) {
       this.epidemiology = epidemiology;
       return this;
     }
     /**
      * Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.
      */
-    public Builder pathophysiology(String pathophysiology) {
+    @NotNull public Builder pathophysiology(String pathophysiology) {
       this.pathophysiology = pathophysiology;
       return this;
     }
     /**
      * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
      */
-    public Builder adverseOutcome(MedicalEntity medicalEntity) {
+    @NotNull public Builder adverseOutcome(MedicalEntity medicalEntity) {
       this.adverseOutcome = medicalEntity;
       return this;
     }
     /**
      * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
      */
-    public Builder adverseOutcome(MedicalEntity.Builder medicalEntity) {
+    @NotNull public Builder adverseOutcome(MedicalEntity.Builder medicalEntity) {
       return this.adverseOutcome(medicalEntity.build());
     }
     /**
      * A contraindication for this therapy.
      */
-    public Builder contraindication(MedicalContraindication medicalContraindication) {
+    @NotNull public Builder contraindication(MedicalContraindication medicalContraindication) {
       this.contraindication = medicalContraindication;
       return this;
     }
     /**
      * A contraindication for this therapy.
      */
-    public Builder contraindication(MedicalContraindication.Builder medicalContraindication) {
+    @NotNull public Builder contraindication(MedicalContraindication.Builder medicalContraindication) {
       return this.contraindication(medicalContraindication.build());
     }
     /**
      * A therapy that duplicates or overlaps this one.
      */
-    public Builder duplicateTherapy(MedicalTherapy medicalTherapy) {
+    @NotNull public Builder duplicateTherapy(MedicalTherapy medicalTherapy) {
       this.duplicateTherapy = medicalTherapy;
       return this;
     }
     /**
      * A therapy that duplicates or overlaps this one.
      */
-    public Builder duplicateTherapy(MedicalTherapy.Builder medicalTherapy) {
+    @NotNull public Builder duplicateTherapy(MedicalTherapy.Builder medicalTherapy) {
       return this.duplicateTherapy(medicalTherapy.build());
     }
     /**
      * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
      */
-    public Builder indication(MedicalIndication medicalIndication) {
+    @NotNull public Builder indication(MedicalIndication medicalIndication) {
       this.indication = medicalIndication;
       return this;
     }
     /**
      * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
      */
-    public Builder indication(MedicalIndication.Builder medicalIndication) {
+    @NotNull public Builder indication(MedicalIndication.Builder medicalIndication) {
       return this.indication(medicalIndication.build());
     }
     /**
      * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
      */
-    public Builder seriousAdverseOutcome(MedicalEntity medicalEntity) {
+    @NotNull public Builder seriousAdverseOutcome(MedicalEntity medicalEntity) {
       this.seriousAdverseOutcome = medicalEntity;
       return this;
     }
     /**
      * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
      */
-    public Builder seriousAdverseOutcome(MedicalEntity.Builder medicalEntity) {
+    @NotNull public Builder seriousAdverseOutcome(MedicalEntity.Builder medicalEntity) {
       return this.seriousAdverseOutcome(medicalEntity.build());
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
-    public Builder code(MedicalCode medicalCode) {
+    @NotNull public Builder code(MedicalCode medicalCode) {
       this.code = medicalCode;
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
-    public Builder code(MedicalCode.Builder medicalCode) {
+    @NotNull public Builder code(MedicalCode.Builder medicalCode) {
       return this.code(medicalCode.build());
     }
     /**
      * A medical guideline related to this entity.
      */
-    public Builder guideline(MedicalGuideline medicalGuideline) {
+    @NotNull public Builder guideline(MedicalGuideline medicalGuideline) {
       this.guideline = medicalGuideline;
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
-    public Builder guideline(MedicalGuideline.Builder medicalGuideline) {
+    @NotNull public Builder guideline(MedicalGuideline.Builder medicalGuideline) {
       return this.guideline(medicalGuideline.build());
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
-    public Builder medicineSystem(MedicineSystem medicineSystem) {
+    @NotNull public Builder medicineSystem(MedicineSystem medicineSystem) {
       this.medicineSystem = medicineSystem;
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
-    public Builder medicineSystem(MedicineSystem.Builder medicineSystem) {
+    @NotNull public Builder medicineSystem(MedicineSystem.Builder medicineSystem) {
       return this.medicineSystem(medicineSystem.build());
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    public Builder recognizingAuthority(Organization organization) {
+    @NotNull public Builder recognizingAuthority(Organization organization) {
       this.recognizingAuthority = organization;
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    public Builder recognizingAuthority(Organization.Builder organization) {
+    @NotNull public Builder recognizingAuthority(Organization.Builder organization) {
       return this.recognizingAuthority(organization.build());
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
-    public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
+    @NotNull public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
       this.relevantSpecialty = medicalSpecialty;
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
-    public Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty) {
+    @NotNull public Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty) {
       return this.relevantSpecialty(medicalSpecialty.build());
     }
     /**
      * A medical study or trial related to this entity.
      */
-    public Builder study(MedicalStudy medicalStudy) {
+    @NotNull public Builder study(MedicalStudy medicalStudy) {
       this.study = medicalStudy;
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
-    public Builder study(MedicalStudy.Builder medicalStudy) {
+    @NotNull public Builder study(MedicalStudy.Builder medicalStudy) {
       return this.study(medicalStudy.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -343,7 +347,7 @@ public class PhysicalActivity extends LifestyleModification {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -378,7 +382,7 @@ public class PhysicalActivity extends LifestyleModification {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -411,7 +415,7 @@ public class PhysicalActivity extends LifestyleModification {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -419,38 +423,38 @@ public class PhysicalActivity extends LifestyleModification {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -483,53 +487,53 @@ public class PhysicalActivity extends LifestyleModification {
     private String id;
   }
   public interface Builder extends ThingBuilder<PhysicalActivity> {
-  Builder associatedAnatomy(AnatomicalStructure anatomicalStructure);
-  Builder associatedAnatomy(AnatomicalStructure.Builder anatomicalStructure);
-  Builder associatedAnatomy(AnatomicalSystem anatomicalSystem);
-  Builder associatedAnatomy(AnatomicalSystem.Builder anatomicalSystem);
-  Builder associatedAnatomy(SuperficialAnatomy superficialAnatomy);
-  Builder associatedAnatomy(SuperficialAnatomy.Builder superficialAnatomy);
-  Builder category(PhysicalActivityCategory physicalActivityCategory);
-  Builder category(PhysicalActivityCategory.Builder physicalActivityCategory);
-  Builder category(String category);
-  Builder category(Thing thing);
-  Builder category(Thing.Builder thing);
-  Builder epidemiology(String epidemiology);
-  Builder pathophysiology(String pathophysiology);
-  Builder adverseOutcome(MedicalEntity medicalEntity);
-  Builder adverseOutcome(MedicalEntity.Builder medicalEntity);
-  Builder contraindication(MedicalContraindication medicalContraindication);
-  Builder contraindication(MedicalContraindication.Builder medicalContraindication);
-  Builder duplicateTherapy(MedicalTherapy medicalTherapy);
-  Builder duplicateTherapy(MedicalTherapy.Builder medicalTherapy);
-  Builder indication(MedicalIndication medicalIndication);
-  Builder indication(MedicalIndication.Builder medicalIndication);
-  Builder seriousAdverseOutcome(MedicalEntity medicalEntity);
-  Builder seriousAdverseOutcome(MedicalEntity.Builder medicalEntity);
-  Builder code(MedicalCode medicalCode);
-  Builder code(MedicalCode.Builder medicalCode);
-  Builder guideline(MedicalGuideline medicalGuideline);
-  Builder guideline(MedicalGuideline.Builder medicalGuideline);
-  Builder medicineSystem(MedicineSystem medicineSystem);
-  Builder medicineSystem(MedicineSystem.Builder medicineSystem);
-  Builder recognizingAuthority(Organization organization);
-  Builder recognizingAuthority(Organization.Builder organization);
-  Builder relevantSpecialty(MedicalSpecialty medicalSpecialty);
-  Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty);
-  Builder study(MedicalStudy medicalStudy);
-  Builder study(MedicalStudy.Builder medicalStudy);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder associatedAnatomy(AnatomicalStructure anatomicalStructure);
+    @NotNull Builder associatedAnatomy(AnatomicalStructure.Builder anatomicalStructure);
+    @NotNull Builder associatedAnatomy(AnatomicalSystem anatomicalSystem);
+    @NotNull Builder associatedAnatomy(AnatomicalSystem.Builder anatomicalSystem);
+    @NotNull Builder associatedAnatomy(SuperficialAnatomy superficialAnatomy);
+    @NotNull Builder associatedAnatomy(SuperficialAnatomy.Builder superficialAnatomy);
+    @NotNull Builder category(PhysicalActivityCategory physicalActivityCategory);
+    @NotNull Builder category(PhysicalActivityCategory.Builder physicalActivityCategory);
+    @NotNull Builder category(String category);
+    @NotNull Builder category(Thing thing);
+    @NotNull Builder category(Thing.Builder thing);
+    @NotNull Builder epidemiology(String epidemiology);
+    @NotNull Builder pathophysiology(String pathophysiology);
+    @NotNull Builder adverseOutcome(MedicalEntity medicalEntity);
+    @NotNull Builder adverseOutcome(MedicalEntity.Builder medicalEntity);
+    @NotNull Builder contraindication(MedicalContraindication medicalContraindication);
+    @NotNull Builder contraindication(MedicalContraindication.Builder medicalContraindication);
+    @NotNull Builder duplicateTherapy(MedicalTherapy medicalTherapy);
+    @NotNull Builder duplicateTherapy(MedicalTherapy.Builder medicalTherapy);
+    @NotNull Builder indication(MedicalIndication medicalIndication);
+    @NotNull Builder indication(MedicalIndication.Builder medicalIndication);
+    @NotNull Builder seriousAdverseOutcome(MedicalEntity medicalEntity);
+    @NotNull Builder seriousAdverseOutcome(MedicalEntity.Builder medicalEntity);
+    @NotNull Builder code(MedicalCode medicalCode);
+    @NotNull Builder code(MedicalCode.Builder medicalCode);
+    @NotNull Builder guideline(MedicalGuideline medicalGuideline);
+    @NotNull Builder guideline(MedicalGuideline.Builder medicalGuideline);
+    @NotNull Builder medicineSystem(MedicineSystem medicineSystem);
+    @NotNull Builder medicineSystem(MedicineSystem.Builder medicineSystem);
+    @NotNull Builder recognizingAuthority(Organization organization);
+    @NotNull Builder recognizingAuthority(Organization.Builder organization);
+    @NotNull Builder relevantSpecialty(MedicalSpecialty medicalSpecialty);
+    @NotNull Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty);
+    @NotNull Builder study(MedicalStudy medicalStudy);
+    @NotNull Builder study(MedicalStudy.Builder medicalStudy);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected PhysicalActivity(AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, PhysicalActivityCategoryOrStringOrThing category, String epidemiology, String pathophysiology, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

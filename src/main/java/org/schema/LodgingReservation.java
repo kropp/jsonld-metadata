@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A reservation for lodging at a hotel, motel, inn, etc.Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
  */
@@ -25,14 +29,14 @@ public class LodgingReservation extends Reservation {
   /**
    * The earliest someone may check into a lodging establishment.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getCheckinTime() {
     return myCheckinTime;
   }
   /**
    * The latest someone may check out of a lodging establishment.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getCheckoutTime() {
     return myCheckoutTime;
   }
@@ -51,19 +55,19 @@ public class LodgingReservation extends Reservation {
   /**
    * The number of adults staying in the unit.
    */
-  public IntegerOrQuantitativeValue getNumAdults() {
+  public QuantitativeValueOrInt getNumAdults() {
     return myNumAdults;
   }
   /**
    * The number of children staying in the unit.
    */
-  public IntegerOrQuantitativeValue getNumChildren() {
+  public QuantitativeValueOrInt getNumChildren() {
     return myNumChildren;
   }
   /**
    * Builder for {@link LodgingReservation}
    */
-  public static final class LodgingReservationThingBuilder implements Builder {
+  static final class LodgingReservationThingBuilder implements Builder {
     /**
      * Creates new {@link LodgingReservation} instance.
      */
@@ -73,21 +77,21 @@ public class LodgingReservation extends Reservation {
     /**
      * The earliest someone may check into a lodging establishment.
      */
-    public Builder checkinTime(java.util.Date date) {
+    @NotNull public Builder checkinTime(java.util.Date date) {
       this.checkinTime = date;
       return this;
     }
     /**
      * The latest someone may check out of a lodging establishment.
      */
-    public Builder checkoutTime(java.util.Date date) {
+    @NotNull public Builder checkoutTime(java.util.Date date) {
       this.checkoutTime = date;
       return this;
     }
     /**
      * Textual description of the unit type (including suite vs. room, size of bed, etc.).
      */
-    public Builder lodgingUnitType(QualitativeValue qualitativeValue) {
+    @NotNull public Builder lodgingUnitType(QualitativeValue qualitativeValue) {
       if (this.lodgingUnitType == null) this.lodgingUnitType = new QualitativeValueOrString();
       this.lodgingUnitType.setQualitativeValue(qualitativeValue);
       return this;
@@ -95,13 +99,13 @@ public class LodgingReservation extends Reservation {
     /**
      * Textual description of the unit type (including suite vs. room, size of bed, etc.).
      */
-    public Builder lodgingUnitType(QualitativeValue.Builder qualitativeValue) {
+    @NotNull public Builder lodgingUnitType(QualitativeValue.Builder qualitativeValue) {
       return this.lodgingUnitType(qualitativeValue.build());
     }
     /**
      * Textual description of the unit type (including suite vs. room, size of bed, etc.).
      */
-    public Builder lodgingUnitType(String lodgingUnitType) {
+    @NotNull public Builder lodgingUnitType(String lodgingUnitType) {
       if (this.lodgingUnitType == null) this.lodgingUnitType = new QualitativeValueOrString();
       this.lodgingUnitType.setString(lodgingUnitType);
       return this;
@@ -109,91 +113,91 @@ public class LodgingReservation extends Reservation {
     /**
      * A full description of the lodging unit.
      */
-    public Builder lodgingUnitDescription(String lodgingUnitDescription) {
+    @NotNull public Builder lodgingUnitDescription(String lodgingUnitDescription) {
       this.lodgingUnitDescription = lodgingUnitDescription;
       return this;
     }
     /**
      * The number of adults staying in the unit.
      */
-    public Builder numAdults(Integer integer) {
-      if (this.numAdults == null) this.numAdults = new IntegerOrQuantitativeValue();
-      this.numAdults.setInteger(integer);
-      return this;
-    }
-    /**
-     * The number of adults staying in the unit.
-     */
-    public Builder numAdults(QuantitativeValue quantitativeValue) {
-      if (this.numAdults == null) this.numAdults = new IntegerOrQuantitativeValue();
+    @NotNull public Builder numAdults(QuantitativeValue quantitativeValue) {
+      if (this.numAdults == null) this.numAdults = new QuantitativeValueOrInt();
       this.numAdults.setQuantitativeValue(quantitativeValue);
       return this;
     }
     /**
      * The number of adults staying in the unit.
      */
-    public Builder numAdults(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder numAdults(QuantitativeValue.Builder quantitativeValue) {
       return this.numAdults(quantitativeValue.build());
     }
     /**
-     * The number of children staying in the unit.
+     * The number of adults staying in the unit.
      */
-    public Builder numChildren(Integer integer) {
-      if (this.numChildren == null) this.numChildren = new IntegerOrQuantitativeValue();
-      this.numChildren.setInteger(integer);
+    @NotNull public Builder numAdults(int numAdults) {
+      if (this.numAdults == null) this.numAdults = new QuantitativeValueOrInt();
+      this.numAdults.setInt(numAdults);
       return this;
     }
     /**
      * The number of children staying in the unit.
      */
-    public Builder numChildren(QuantitativeValue quantitativeValue) {
-      if (this.numChildren == null) this.numChildren = new IntegerOrQuantitativeValue();
+    @NotNull public Builder numChildren(QuantitativeValue quantitativeValue) {
+      if (this.numChildren == null) this.numChildren = new QuantitativeValueOrInt();
       this.numChildren.setQuantitativeValue(quantitativeValue);
       return this;
     }
     /**
      * The number of children staying in the unit.
      */
-    public Builder numChildren(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder numChildren(QuantitativeValue.Builder quantitativeValue) {
       return this.numChildren(quantitativeValue.build());
+    }
+    /**
+     * The number of children staying in the unit.
+     */
+    @NotNull public Builder numChildren(int numChildren) {
+      if (this.numChildren == null) this.numChildren = new QuantitativeValueOrInt();
+      this.numChildren.setInt(numChildren);
+      return this;
     }
     /**
      * A unique identifier for the reservation.
      */
-    public Builder reservationId(String reservationId) {
+    @NotNull public Builder reservationId(String reservationId) {
       this.reservationId = reservationId;
       return this;
     }
     /**
      * The current status of the reservation.
      */
-    public Builder reservationStatus(ReservationStatusType reservationStatusType) {
+    @NotNull public Builder reservationStatus(ReservationStatusType reservationStatusType) {
       this.reservationStatus = reservationStatusType;
       return this;
     }
     /**
      * The current status of the reservation.
      */
-    public Builder reservationStatus(ReservationStatusType.Builder reservationStatusType) {
+    @NotNull public Builder reservationStatus(ReservationStatusType.Builder reservationStatusType) {
       return this.reservationStatus(reservationStatusType.build());
     }
     /**
      * The thing -- flight, event, restaurant,etc. being reserved.
      */
-    public Builder reservationFor(Thing thing) {
+    @NotNull public Builder reservationFor(Thing thing) {
       this.reservationFor = thing;
       return this;
     }
     /**
      * The thing -- flight, event, restaurant,etc. being reserved.
      */
-    public Builder reservationFor(Thing.Builder thing) {
+    @NotNull public Builder reservationFor(Thing.Builder thing) {
       return this.reservationFor(thing.build());
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
-    public Builder underName(Organization organization) {
+    @NotNull public Builder underName(Organization organization) {
       if (this.underName == null) this.underName = new OrganizationOrPerson();
       this.underName.setOrganization(organization);
       return this;
@@ -201,13 +205,13 @@ public class LodgingReservation extends Reservation {
     /**
      * The person or organization the reservation or ticket is for.
      */
-    public Builder underName(Organization.Builder organization) {
+    @NotNull public Builder underName(Organization.Builder organization) {
       return this.underName(organization.build());
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
-    public Builder underName(Person person) {
+    @NotNull public Builder underName(Person person) {
       if (this.underName == null) this.underName = new OrganizationOrPerson();
       this.underName.setPerson(person);
       return this;
@@ -215,13 +219,13 @@ public class LodgingReservation extends Reservation {
     /**
      * The person or organization the reservation or ticket is for.
      */
-    public Builder underName(Person.Builder person) {
+    @NotNull public Builder underName(Person.Builder person) {
       return this.underName(person.build());
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Organization organization) {
+    @NotNull public Builder provider(Organization organization) {
       if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setOrganization(organization);
       return this;
@@ -229,13 +233,13 @@ public class LodgingReservation extends Reservation {
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Organization.Builder organization) {
+    @NotNull public Builder provider(Organization.Builder organization) {
       return this.provider(organization.build());
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Person person) {
+    @NotNull public Builder provider(Person person) {
       if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setPerson(person);
       return this;
@@ -243,53 +247,53 @@ public class LodgingReservation extends Reservation {
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Person.Builder person) {
+    @NotNull public Builder provider(Person.Builder person) {
       return this.provider(person.build());
     }
     /**
      * The date and time the reservation was booked.
      */
-    public Builder bookingTime(java.util.Date date) {
+    @NotNull public Builder bookingTime(java.util.Date date) {
       this.bookingTime = date;
       return this;
     }
     /**
      * The date and time the reservation was modified.
      */
-    public Builder modifiedTime(java.util.Date date) {
+    @NotNull public Builder modifiedTime(java.util.Date date) {
       this.modifiedTime = date;
       return this;
     }
     /**
      * Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.
      */
-    public Builder programMembershipUsed(ProgramMembership programMembership) {
+    @NotNull public Builder programMembershipUsed(ProgramMembership programMembership) {
       this.programMembershipUsed = programMembership;
       return this;
     }
     /**
      * Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.
      */
-    public Builder programMembershipUsed(ProgramMembership.Builder programMembership) {
+    @NotNull public Builder programMembershipUsed(ProgramMembership.Builder programMembership) {
       return this.programMembershipUsed(programMembership.build());
     }
     /**
      * A ticket associated with the reservation.
      */
-    public Builder reservedTicket(Ticket ticket) {
+    @NotNull public Builder reservedTicket(Ticket ticket) {
       this.reservedTicket = ticket;
       return this;
     }
     /**
      * A ticket associated with the reservation.
      */
-    public Builder reservedTicket(Ticket.Builder ticket) {
+    @NotNull public Builder reservedTicket(Ticket.Builder ticket) {
       return this.reservedTicket(ticket.build());
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    public Builder totalPrice(Number number) {
+    @NotNull public Builder totalPrice(Number number) {
       if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
       this.totalPrice.setNumber(number);
       return this;
@@ -297,7 +301,7 @@ public class LodgingReservation extends Reservation {
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    public Builder totalPrice(PriceSpecification priceSpecification) {
+    @NotNull public Builder totalPrice(PriceSpecification priceSpecification) {
       if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
       this.totalPrice.setPriceSpecification(priceSpecification);
       return this;
@@ -305,13 +309,13 @@ public class LodgingReservation extends Reservation {
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    public Builder totalPrice(PriceSpecification.Builder priceSpecification) {
+    @NotNull public Builder totalPrice(PriceSpecification.Builder priceSpecification) {
       return this.totalPrice(priceSpecification.build());
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    public Builder totalPrice(String totalPrice) {
+    @NotNull public Builder totalPrice(String totalPrice) {
       if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
       this.totalPrice.setString(totalPrice);
       return this;
@@ -319,14 +323,14 @@ public class LodgingReservation extends Reservation {
     /**
      * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
      */
-    public Builder priceCurrency(String priceCurrency) {
+    @NotNull public Builder priceCurrency(String priceCurrency) {
       this.priceCurrency = priceCurrency;
       return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    public Builder broker(Organization organization) {
+    @NotNull public Builder broker(Organization organization) {
       if (this.broker == null) this.broker = new OrganizationOrPerson();
       this.broker.setOrganization(organization);
       return this;
@@ -334,13 +338,13 @@ public class LodgingReservation extends Reservation {
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    public Builder broker(Organization.Builder organization) {
+    @NotNull public Builder broker(Organization.Builder organization) {
       return this.broker(organization.build());
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    public Builder broker(Person person) {
+    @NotNull public Builder broker(Person person) {
       if (this.broker == null) this.broker = new OrganizationOrPerson();
       this.broker.setPerson(person);
       return this;
@@ -348,27 +352,27 @@ public class LodgingReservation extends Reservation {
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    public Builder broker(Person.Builder person) {
+    @NotNull public Builder broker(Person.Builder person) {
       return this.broker(person.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -402,7 +406,7 @@ public class LodgingReservation extends Reservation {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -437,7 +441,7 @@ public class LodgingReservation extends Reservation {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -470,7 +474,7 @@ public class LodgingReservation extends Reservation {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -478,38 +482,38 @@ public class LodgingReservation extends Reservation {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -520,8 +524,8 @@ public class LodgingReservation extends Reservation {
     private java.util.Date checkoutTime;
     private QualitativeValueOrString lodgingUnitType;
     private String lodgingUnitDescription;
-    private IntegerOrQuantitativeValue numAdults;
-    private IntegerOrQuantitativeValue numChildren;
+    private QuantitativeValueOrInt numAdults;
+    private QuantitativeValueOrInt numChildren;
     private String reservationId;
     private ReservationStatusType reservationStatus;
     private Thing reservationFor;
@@ -545,61 +549,61 @@ public class LodgingReservation extends Reservation {
     private String id;
   }
   public interface Builder extends ThingBuilder<LodgingReservation> {
-  Builder checkinTime(java.util.Date date);
-  Builder checkoutTime(java.util.Date date);
-  Builder lodgingUnitType(QualitativeValue qualitativeValue);
-  Builder lodgingUnitType(QualitativeValue.Builder qualitativeValue);
-  Builder lodgingUnitType(String lodgingUnitType);
-  Builder lodgingUnitDescription(String lodgingUnitDescription);
-  Builder numAdults(Integer integer);
-  Builder numAdults(QuantitativeValue quantitativeValue);
-  Builder numAdults(QuantitativeValue.Builder quantitativeValue);
-  Builder numChildren(Integer integer);
-  Builder numChildren(QuantitativeValue quantitativeValue);
-  Builder numChildren(QuantitativeValue.Builder quantitativeValue);
-  Builder reservationId(String reservationId);
-  Builder reservationStatus(ReservationStatusType reservationStatusType);
-  Builder reservationStatus(ReservationStatusType.Builder reservationStatusType);
-  Builder reservationFor(Thing thing);
-  Builder reservationFor(Thing.Builder thing);
-  Builder underName(Organization organization);
-  Builder underName(Organization.Builder organization);
-  Builder underName(Person person);
-  Builder underName(Person.Builder person);
-  Builder provider(Organization organization);
-  Builder provider(Organization.Builder organization);
-  Builder provider(Person person);
-  Builder provider(Person.Builder person);
-  Builder bookingTime(java.util.Date date);
-  Builder modifiedTime(java.util.Date date);
-  Builder programMembershipUsed(ProgramMembership programMembership);
-  Builder programMembershipUsed(ProgramMembership.Builder programMembership);
-  Builder reservedTicket(Ticket ticket);
-  Builder reservedTicket(Ticket.Builder ticket);
-  Builder totalPrice(Number number);
-  Builder totalPrice(PriceSpecification priceSpecification);
-  Builder totalPrice(PriceSpecification.Builder priceSpecification);
-  Builder totalPrice(String totalPrice);
-  Builder priceCurrency(String priceCurrency);
-  Builder broker(Organization organization);
-  Builder broker(Organization.Builder organization);
-  Builder broker(Person person);
-  Builder broker(Person.Builder person);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder checkinTime(java.util.Date date);
+    @NotNull Builder checkoutTime(java.util.Date date);
+    @NotNull Builder lodgingUnitType(QualitativeValue qualitativeValue);
+    @NotNull Builder lodgingUnitType(QualitativeValue.Builder qualitativeValue);
+    @NotNull Builder lodgingUnitType(String lodgingUnitType);
+    @NotNull Builder lodgingUnitDescription(String lodgingUnitDescription);
+    @NotNull Builder numAdults(QuantitativeValue quantitativeValue);
+    @NotNull Builder numAdults(QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder numAdults(int numAdults);
+    @NotNull Builder numChildren(QuantitativeValue quantitativeValue);
+    @NotNull Builder numChildren(QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder numChildren(int numChildren);
+    @NotNull Builder reservationId(String reservationId);
+    @NotNull Builder reservationStatus(ReservationStatusType reservationStatusType);
+    @NotNull Builder reservationStatus(ReservationStatusType.Builder reservationStatusType);
+    @NotNull Builder reservationFor(Thing thing);
+    @NotNull Builder reservationFor(Thing.Builder thing);
+    @NotNull Builder underName(Organization organization);
+    @NotNull Builder underName(Organization.Builder organization);
+    @NotNull Builder underName(Person person);
+    @NotNull Builder underName(Person.Builder person);
+    @NotNull Builder provider(Organization organization);
+    @NotNull Builder provider(Organization.Builder organization);
+    @NotNull Builder provider(Person person);
+    @NotNull Builder provider(Person.Builder person);
+    @NotNull Builder bookingTime(java.util.Date date);
+    @NotNull Builder modifiedTime(java.util.Date date);
+    @NotNull Builder programMembershipUsed(ProgramMembership programMembership);
+    @NotNull Builder programMembershipUsed(ProgramMembership.Builder programMembership);
+    @NotNull Builder reservedTicket(Ticket ticket);
+    @NotNull Builder reservedTicket(Ticket.Builder ticket);
+    @NotNull Builder totalPrice(Number number);
+    @NotNull Builder totalPrice(PriceSpecification priceSpecification);
+    @NotNull Builder totalPrice(PriceSpecification.Builder priceSpecification);
+    @NotNull Builder totalPrice(String totalPrice);
+    @NotNull Builder priceCurrency(String priceCurrency);
+    @NotNull Builder broker(Organization organization);
+    @NotNull Builder broker(Organization.Builder organization);
+    @NotNull Builder broker(Person person);
+    @NotNull Builder broker(Person.Builder person);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
-  protected LodgingReservation(java.util.Date checkinTime, java.util.Date checkoutTime, QualitativeValueOrString lodgingUnitType, String lodgingUnitDescription, IntegerOrQuantitativeValue numAdults, IntegerOrQuantitativeValue numChildren, String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected LodgingReservation(java.util.Date checkinTime, java.util.Date checkoutTime, QualitativeValueOrString lodgingUnitType, String lodgingUnitDescription, QuantitativeValueOrInt numAdults, QuantitativeValueOrInt numChildren, String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myCheckinTime = checkinTime;
     myCheckoutTime = checkoutTime;
@@ -612,6 +616,6 @@ public class LodgingReservation extends Reservation {
   private java.util.Date myCheckoutTime;
   private QualitativeValueOrString myLodgingUnitType;
   private String myLodgingUnitDescription;
-  private IntegerOrQuantitativeValue myNumAdults;
-  private IntegerOrQuantitativeValue myNumChildren;
+  private QuantitativeValueOrInt myNumAdults;
+  private QuantitativeValueOrInt myNumChildren;
 }

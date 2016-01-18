@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Speech pathology.
  */
@@ -25,7 +29,7 @@ public class SpeechPathology {
   /**
    * Builder for {@link SpeechPathology}
    */
-  public static final class SpeechPathologyThingBuilder implements Builder {
+  static final class SpeechPathologyThingBuilder implements Builder {
     /**
      * Creates new {@link SpeechPathology} instance.
      */
@@ -34,7 +38,7 @@ public class SpeechPathology {
     }
   }
   public interface Builder extends ThingBuilder<SpeechPathology> {
-  
+    
   }
 
   protected SpeechPathology() {

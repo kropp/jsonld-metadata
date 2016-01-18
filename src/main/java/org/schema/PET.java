@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Positron emission tomography imaging.
  */
@@ -25,7 +29,7 @@ public class PET {
   /**
    * Builder for {@link PET}
    */
-  public static final class PETThingBuilder implements Builder {
+  static final class PETThingBuilder implements Builder {
     /**
      * Creates new {@link PET} instance.
      */
@@ -34,7 +38,7 @@ public class PET {
     }
   }
   public interface Builder extends ThingBuilder<PET> {
-  
+    
   }
 
   protected PET() {

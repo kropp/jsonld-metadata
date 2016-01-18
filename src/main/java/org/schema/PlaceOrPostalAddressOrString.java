@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class PlaceOrPostalAddressOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myPlace != null) return myPlace;
     if (myPostalAddress != null) return myPostalAddress;
@@ -29,12 +32,12 @@ class PlaceOrPostalAddressOrString {
   }
   public void setPlace(Place place) { clear(); myPlace = place; }
   public Place getPlace() { return myPlace; }
-  private Place myPlace;
   public void setPostalAddress(PostalAddress postalAddress) { clear(); myPostalAddress = postalAddress; }
   public PostalAddress getPostalAddress() { return myPostalAddress; }
-  private PostalAddress myPostalAddress;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private Place myPlace;
+  private PostalAddress myPostalAddress;
   private String myString;
   private void clear() {
     myPlace = null;

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A prion is an infectious agent composed of protein in a misfolded form.
  */
@@ -25,7 +29,7 @@ public class Prion {
   /**
    * Builder for {@link Prion}
    */
-  public static final class PrionThingBuilder implements Builder {
+  static final class PrionThingBuilder implements Builder {
     /**
      * Creates new {@link Prion} instance.
      */
@@ -34,7 +38,7 @@ public class Prion {
     }
   }
   public interface Builder extends ThingBuilder<Prion> {
-  
+    
   }
 
   protected Prion() {

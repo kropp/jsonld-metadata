@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * An order item is a line of an order. It includes the quantity and shipping details of a bought offer.
  */
@@ -55,7 +59,7 @@ public class OrderItem extends Intangible {
   /**
    * Builder for {@link OrderItem}
    */
-  public static final class OrderItemThingBuilder implements Builder {
+  static final class OrderItemThingBuilder implements Builder {
     /**
      * Creates new {@link OrderItem} instance.
      */
@@ -65,15 +69,15 @@ public class OrderItem extends Intangible {
     /**
      * The number of the item ordered. If the property is not set, assume the quantity is one.
      */
-    public Builder orderQuantity(Integer integer) {
+    @NotNull public Builder orderQuantity(int orderQuantity) {
       if (this.orderQuantity == null) this.orderQuantity = new Number();
-      this.orderQuantity.setInteger(integer);
+      this.orderQuantity.setInt(orderQuantity);
       return this;
     }
     /**
      * The number of the item ordered. If the property is not set, assume the quantity is one.
      */
-    public Builder orderQuantity(Long orderQuantity) {
+    @NotNull public Builder orderQuantity(long orderQuantity) {
       if (this.orderQuantity == null) this.orderQuantity = new Number();
       this.orderQuantity.setLong(orderQuantity);
       return this;
@@ -81,7 +85,7 @@ public class OrderItem extends Intangible {
     /**
      * The number of the item ordered. If the property is not set, assume the quantity is one.
      */
-    public Builder orderQuantity(Float orderQuantity) {
+    @NotNull public Builder orderQuantity(float orderQuantity) {
       if (this.orderQuantity == null) this.orderQuantity = new Number();
       this.orderQuantity.setFloat(orderQuantity);
       return this;
@@ -89,7 +93,7 @@ public class OrderItem extends Intangible {
     /**
      * The number of the item ordered. If the property is not set, assume the quantity is one.
      */
-    public Builder orderQuantity(Double orderQuantity) {
+    @NotNull public Builder orderQuantity(double orderQuantity) {
       if (this.orderQuantity == null) this.orderQuantity = new Number();
       this.orderQuantity.setDouble(orderQuantity);
       return this;
@@ -97,7 +101,7 @@ public class OrderItem extends Intangible {
     /**
      * The number of the item ordered. If the property is not set, assume the quantity is one.
      */
-    public Builder orderQuantity(String orderQuantity) {
+    @NotNull public Builder orderQuantity(String orderQuantity) {
       if (this.orderQuantity == null) this.orderQuantity = new Number();
       this.orderQuantity.setString(orderQuantity);
       return this;
@@ -105,40 +109,40 @@ public class OrderItem extends Intangible {
     /**
      * The current status of the order item.
      */
-    public Builder orderItemStatus(OrderStatus orderStatus) {
+    @NotNull public Builder orderItemStatus(OrderStatus orderStatus) {
       this.orderItemStatus = orderStatus;
       return this;
     }
     /**
      * The current status of the order item.
      */
-    public Builder orderItemStatus(OrderStatus.Builder orderStatus) {
+    @NotNull public Builder orderItemStatus(OrderStatus.Builder orderStatus) {
       return this.orderItemStatus(orderStatus.build());
     }
     /**
      * The identifier of the order item.
      */
-    public Builder orderItemNumber(String orderItemNumber) {
+    @NotNull public Builder orderItemNumber(String orderItemNumber) {
       this.orderItemNumber = orderItemNumber;
       return this;
     }
     /**
      * The delivery of the parcel related to this order or order item.
      */
-    public Builder orderDelivery(ParcelDelivery parcelDelivery) {
+    @NotNull public Builder orderDelivery(ParcelDelivery parcelDelivery) {
       this.orderDelivery = parcelDelivery;
       return this;
     }
     /**
      * The delivery of the parcel related to this order or order item.
      */
-    public Builder orderDelivery(ParcelDelivery.Builder parcelDelivery) {
+    @NotNull public Builder orderDelivery(ParcelDelivery.Builder parcelDelivery) {
       return this.orderDelivery(parcelDelivery.build());
     }
     /**
      * The item ordered.
      */
-    public Builder orderedItem(OrderItem orderItem) {
+    @NotNull public Builder orderedItem(OrderItem orderItem) {
       if (this.orderedItem == null) this.orderedItem = new OrderItemOrProduct();
       this.orderedItem.setOrderItem(orderItem);
       return this;
@@ -146,13 +150,13 @@ public class OrderItem extends Intangible {
     /**
      * The item ordered.
      */
-    public Builder orderedItem(OrderItem.Builder orderItem) {
+    @NotNull public Builder orderedItem(OrderItem.Builder orderItem) {
       return this.orderedItem(orderItem.build());
     }
     /**
      * The item ordered.
      */
-    public Builder orderedItem(Product product) {
+    @NotNull public Builder orderedItem(Product product) {
       if (this.orderedItem == null) this.orderedItem = new OrderItemOrProduct();
       this.orderedItem.setProduct(product);
       return this;
@@ -160,27 +164,27 @@ public class OrderItem extends Intangible {
     /**
      * The item ordered.
      */
-    public Builder orderedItem(Product.Builder product) {
+    @NotNull public Builder orderedItem(Product.Builder product) {
       return this.orderedItem(product.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -214,7 +218,7 @@ public class OrderItem extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -249,7 +253,7 @@ public class OrderItem extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -282,7 +286,7 @@ public class OrderItem extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -290,38 +294,38 @@ public class OrderItem extends Intangible {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -344,32 +348,32 @@ public class OrderItem extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<OrderItem> {
-  Builder orderQuantity(Integer integer);
-  Builder orderQuantity(Long orderQuantity);
-  Builder orderQuantity(Float orderQuantity);
-  Builder orderQuantity(Double orderQuantity);
-  Builder orderQuantity(String orderQuantity);
-  Builder orderItemStatus(OrderStatus orderStatus);
-  Builder orderItemStatus(OrderStatus.Builder orderStatus);
-  Builder orderItemNumber(String orderItemNumber);
-  Builder orderDelivery(ParcelDelivery parcelDelivery);
-  Builder orderDelivery(ParcelDelivery.Builder parcelDelivery);
-  Builder orderedItem(OrderItem orderItem);
-  Builder orderedItem(OrderItem.Builder orderItem);
-  Builder orderedItem(Product product);
-  Builder orderedItem(Product.Builder product);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder orderQuantity(int orderQuantity);
+    @NotNull Builder orderQuantity(long orderQuantity);
+    @NotNull Builder orderQuantity(float orderQuantity);
+    @NotNull Builder orderQuantity(double orderQuantity);
+    @NotNull Builder orderQuantity(String orderQuantity);
+    @NotNull Builder orderItemStatus(OrderStatus orderStatus);
+    @NotNull Builder orderItemStatus(OrderStatus.Builder orderStatus);
+    @NotNull Builder orderItemNumber(String orderItemNumber);
+    @NotNull Builder orderDelivery(ParcelDelivery parcelDelivery);
+    @NotNull Builder orderDelivery(ParcelDelivery.Builder parcelDelivery);
+    @NotNull Builder orderedItem(OrderItem orderItem);
+    @NotNull Builder orderedItem(OrderItem.Builder orderItem);
+    @NotNull Builder orderedItem(Product product);
+    @NotNull Builder orderedItem(Product.Builder product);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected OrderItem(Number orderQuantity, OrderStatus orderItemStatus, String orderItemNumber, ParcelDelivery orderDelivery, OrderItemOrProduct orderedItem, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

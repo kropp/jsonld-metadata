@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * This class contains information contributed by <a href=http://wikidoc.org>WikiDoc</a>.
  */
@@ -25,7 +29,7 @@ public class WikiDoc {
   /**
    * Builder for {@link WikiDoc}
    */
-  public static final class WikiDocThingBuilder implements Builder {
+  static final class WikiDocThingBuilder implements Builder {
     /**
      * Creates new {@link WikiDoc} instance.
      */
@@ -34,7 +38,7 @@ public class WikiDoc {
     }
   }
   public interface Builder extends ThingBuilder<WikiDoc> {
-  
+    
   }
 
   protected WikiDoc() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A description of an action that is supported.
  */
@@ -25,7 +29,7 @@ public class PotentialActionStatus {
   /**
    * Builder for {@link PotentialActionStatus}
    */
-  public static final class PotentialActionStatusThingBuilder implements Builder {
+  static final class PotentialActionStatusThingBuilder implements Builder {
     /**
      * Creates new {@link PotentialActionStatus} instance.
      */
@@ -34,7 +38,7 @@ public class PotentialActionStatus {
     }
   }
   public interface Builder extends ThingBuilder<PotentialActionStatus> {
-  
+    
   }
 
   protected PotentialActionStatus() {

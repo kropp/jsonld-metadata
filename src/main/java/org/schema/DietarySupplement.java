@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A product taken by mouth that contains a dietary ingredient intended to supplement the diet. Dietary ingredients may include vitamins, minerals, herbs or other botanicals, amino acids, and substances such as enzymes, organ tissues, glandulars and metabolites.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -98,7 +102,7 @@ public class DietarySupplement extends MedicalTherapy {
   /**
    * Builder for {@link DietarySupplement}
    */
-  public static final class DietarySupplementThingBuilder implements Builder {
+  static final class DietarySupplementThingBuilder implements Builder {
     /**
      * Creates new {@link DietarySupplement} instance.
      */
@@ -108,272 +112,272 @@ public class DietarySupplement extends MedicalTherapy {
     /**
      * An active ingredient, typically chemical compounds and/or biologic substances.
      */
-    public Builder activeIngredient(String activeIngredient) {
+    @NotNull public Builder activeIngredient(String activeIngredient) {
       this.activeIngredient = activeIngredient;
       return this;
     }
     /**
      * Descriptive information establishing a historical perspective on the supplement. May include the rationale for the name, the population where the supplement first came to prominence, etc.
      */
-    public Builder background(String background) {
+    @NotNull public Builder background(String background) {
       this.background = background;
       return this;
     }
     /**
      * A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension', 'injection'.
      */
-    public Builder dosageForm(String dosageForm) {
+    @NotNull public Builder dosageForm(String dosageForm) {
       this.dosageForm = dosageForm;
       return this;
     }
     /**
      * True if this item's name is a proprietary/brand name (vs. generic name).
      */
-    public Builder isProprietary(Boolean isProprietary) {
+    @NotNull public Builder isProprietary(Boolean isProprietary) {
       this.isProprietary = isProprietary;
       return this;
     }
     /**
      * The drug or supplement's legal status, including any controlled substance schedules that apply.
      */
-    public Builder legalStatus(DrugLegalStatus drugLegalStatus) {
+    @NotNull public Builder legalStatus(DrugLegalStatus drugLegalStatus) {
       this.legalStatus = drugLegalStatus;
       return this;
     }
     /**
      * The drug or supplement's legal status, including any controlled substance schedules that apply.
      */
-    public Builder legalStatus(DrugLegalStatus.Builder drugLegalStatus) {
+    @NotNull public Builder legalStatus(DrugLegalStatus.Builder drugLegalStatus) {
       return this.legalStatus(drugLegalStatus.build());
     }
     /**
      * The manufacturer of the product.
      */
-    public Builder manufacturer(Organization organization) {
+    @NotNull public Builder manufacturer(Organization organization) {
       this.manufacturer = organization;
       return this;
     }
     /**
      * The manufacturer of the product.
      */
-    public Builder manufacturer(Organization.Builder organization) {
+    @NotNull public Builder manufacturer(Organization.Builder organization) {
       return this.manufacturer(organization.build());
     }
     /**
      * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
      */
-    public Builder maximumIntake(MaximumDoseSchedule maximumDoseSchedule) {
+    @NotNull public Builder maximumIntake(MaximumDoseSchedule maximumDoseSchedule) {
       this.maximumIntake = maximumDoseSchedule;
       return this;
     }
     /**
      * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
      */
-    public Builder maximumIntake(MaximumDoseSchedule.Builder maximumDoseSchedule) {
+    @NotNull public Builder maximumIntake(MaximumDoseSchedule.Builder maximumDoseSchedule) {
       return this.maximumIntake(maximumDoseSchedule.build());
     }
     /**
      * The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
      */
-    public Builder mechanismOfAction(String mechanismOfAction) {
+    @NotNull public Builder mechanismOfAction(String mechanismOfAction) {
       this.mechanismOfAction = mechanismOfAction;
       return this;
     }
     /**
      * The generic name of this drug or supplement.
      */
-    public Builder nonProprietaryName(String nonProprietaryName) {
+    @NotNull public Builder nonProprietaryName(String nonProprietaryName) {
       this.nonProprietaryName = nonProprietaryName;
       return this;
     }
     /**
      * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
      */
-    public Builder recommendedIntake(RecommendedDoseSchedule recommendedDoseSchedule) {
+    @NotNull public Builder recommendedIntake(RecommendedDoseSchedule recommendedDoseSchedule) {
       this.recommendedIntake = recommendedDoseSchedule;
       return this;
     }
     /**
      * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
      */
-    public Builder recommendedIntake(RecommendedDoseSchedule.Builder recommendedDoseSchedule) {
+    @NotNull public Builder recommendedIntake(RecommendedDoseSchedule.Builder recommendedDoseSchedule) {
       return this.recommendedIntake(recommendedDoseSchedule.build());
     }
     /**
      * Any potential safety concern associated with the supplement. May include interactions with other drugs and foods, pregnancy, breastfeeding, known adverse reactions, and documented efficacy of the supplement.
      */
-    public Builder safetyConsideration(String safetyConsideration) {
+    @NotNull public Builder safetyConsideration(String safetyConsideration) {
       this.safetyConsideration = safetyConsideration;
       return this;
     }
     /**
      * Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.
      */
-    public Builder targetPopulation(String targetPopulation) {
+    @NotNull public Builder targetPopulation(String targetPopulation) {
       this.targetPopulation = targetPopulation;
       return this;
     }
     /**
      * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
      */
-    public Builder adverseOutcome(MedicalEntity medicalEntity) {
+    @NotNull public Builder adverseOutcome(MedicalEntity medicalEntity) {
       this.adverseOutcome = medicalEntity;
       return this;
     }
     /**
      * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
      */
-    public Builder adverseOutcome(MedicalEntity.Builder medicalEntity) {
+    @NotNull public Builder adverseOutcome(MedicalEntity.Builder medicalEntity) {
       return this.adverseOutcome(medicalEntity.build());
     }
     /**
      * A contraindication for this therapy.
      */
-    public Builder contraindication(MedicalContraindication medicalContraindication) {
+    @NotNull public Builder contraindication(MedicalContraindication medicalContraindication) {
       this.contraindication = medicalContraindication;
       return this;
     }
     /**
      * A contraindication for this therapy.
      */
-    public Builder contraindication(MedicalContraindication.Builder medicalContraindication) {
+    @NotNull public Builder contraindication(MedicalContraindication.Builder medicalContraindication) {
       return this.contraindication(medicalContraindication.build());
     }
     /**
      * A therapy that duplicates or overlaps this one.
      */
-    public Builder duplicateTherapy(MedicalTherapy medicalTherapy) {
+    @NotNull public Builder duplicateTherapy(MedicalTherapy medicalTherapy) {
       this.duplicateTherapy = medicalTherapy;
       return this;
     }
     /**
      * A therapy that duplicates or overlaps this one.
      */
-    public Builder duplicateTherapy(MedicalTherapy.Builder medicalTherapy) {
+    @NotNull public Builder duplicateTherapy(MedicalTherapy.Builder medicalTherapy) {
       return this.duplicateTherapy(medicalTherapy.build());
     }
     /**
      * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
      */
-    public Builder indication(MedicalIndication medicalIndication) {
+    @NotNull public Builder indication(MedicalIndication medicalIndication) {
       this.indication = medicalIndication;
       return this;
     }
     /**
      * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
      */
-    public Builder indication(MedicalIndication.Builder medicalIndication) {
+    @NotNull public Builder indication(MedicalIndication.Builder medicalIndication) {
       return this.indication(medicalIndication.build());
     }
     /**
      * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
      */
-    public Builder seriousAdverseOutcome(MedicalEntity medicalEntity) {
+    @NotNull public Builder seriousAdverseOutcome(MedicalEntity medicalEntity) {
       this.seriousAdverseOutcome = medicalEntity;
       return this;
     }
     /**
      * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
      */
-    public Builder seriousAdverseOutcome(MedicalEntity.Builder medicalEntity) {
+    @NotNull public Builder seriousAdverseOutcome(MedicalEntity.Builder medicalEntity) {
       return this.seriousAdverseOutcome(medicalEntity.build());
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
-    public Builder code(MedicalCode medicalCode) {
+    @NotNull public Builder code(MedicalCode medicalCode) {
       this.code = medicalCode;
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
-    public Builder code(MedicalCode.Builder medicalCode) {
+    @NotNull public Builder code(MedicalCode.Builder medicalCode) {
       return this.code(medicalCode.build());
     }
     /**
      * A medical guideline related to this entity.
      */
-    public Builder guideline(MedicalGuideline medicalGuideline) {
+    @NotNull public Builder guideline(MedicalGuideline medicalGuideline) {
       this.guideline = medicalGuideline;
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
-    public Builder guideline(MedicalGuideline.Builder medicalGuideline) {
+    @NotNull public Builder guideline(MedicalGuideline.Builder medicalGuideline) {
       return this.guideline(medicalGuideline.build());
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
-    public Builder medicineSystem(MedicineSystem medicineSystem) {
+    @NotNull public Builder medicineSystem(MedicineSystem medicineSystem) {
       this.medicineSystem = medicineSystem;
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
-    public Builder medicineSystem(MedicineSystem.Builder medicineSystem) {
+    @NotNull public Builder medicineSystem(MedicineSystem.Builder medicineSystem) {
       return this.medicineSystem(medicineSystem.build());
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    public Builder recognizingAuthority(Organization organization) {
+    @NotNull public Builder recognizingAuthority(Organization organization) {
       this.recognizingAuthority = organization;
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    public Builder recognizingAuthority(Organization.Builder organization) {
+    @NotNull public Builder recognizingAuthority(Organization.Builder organization) {
       return this.recognizingAuthority(organization.build());
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
-    public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
+    @NotNull public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
       this.relevantSpecialty = medicalSpecialty;
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
-    public Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty) {
+    @NotNull public Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty) {
       return this.relevantSpecialty(medicalSpecialty.build());
     }
     /**
      * A medical study or trial related to this entity.
      */
-    public Builder study(MedicalStudy medicalStudy) {
+    @NotNull public Builder study(MedicalStudy medicalStudy) {
       this.study = medicalStudy;
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
-    public Builder study(MedicalStudy.Builder medicalStudy) {
+    @NotNull public Builder study(MedicalStudy.Builder medicalStudy) {
       return this.study(medicalStudy.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -407,7 +411,7 @@ public class DietarySupplement extends MedicalTherapy {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -442,7 +446,7 @@ public class DietarySupplement extends MedicalTherapy {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -475,7 +479,7 @@ public class DietarySupplement extends MedicalTherapy {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -483,38 +487,38 @@ public class DietarySupplement extends MedicalTherapy {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -555,56 +559,56 @@ public class DietarySupplement extends MedicalTherapy {
     private String id;
   }
   public interface Builder extends ThingBuilder<DietarySupplement> {
-  Builder activeIngredient(String activeIngredient);
-  Builder background(String background);
-  Builder dosageForm(String dosageForm);
-  Builder isProprietary(Boolean isProprietary);
-  Builder legalStatus(DrugLegalStatus drugLegalStatus);
-  Builder legalStatus(DrugLegalStatus.Builder drugLegalStatus);
-  Builder manufacturer(Organization organization);
-  Builder manufacturer(Organization.Builder organization);
-  Builder maximumIntake(MaximumDoseSchedule maximumDoseSchedule);
-  Builder maximumIntake(MaximumDoseSchedule.Builder maximumDoseSchedule);
-  Builder mechanismOfAction(String mechanismOfAction);
-  Builder nonProprietaryName(String nonProprietaryName);
-  Builder recommendedIntake(RecommendedDoseSchedule recommendedDoseSchedule);
-  Builder recommendedIntake(RecommendedDoseSchedule.Builder recommendedDoseSchedule);
-  Builder safetyConsideration(String safetyConsideration);
-  Builder targetPopulation(String targetPopulation);
-  Builder adverseOutcome(MedicalEntity medicalEntity);
-  Builder adverseOutcome(MedicalEntity.Builder medicalEntity);
-  Builder contraindication(MedicalContraindication medicalContraindication);
-  Builder contraindication(MedicalContraindication.Builder medicalContraindication);
-  Builder duplicateTherapy(MedicalTherapy medicalTherapy);
-  Builder duplicateTherapy(MedicalTherapy.Builder medicalTherapy);
-  Builder indication(MedicalIndication medicalIndication);
-  Builder indication(MedicalIndication.Builder medicalIndication);
-  Builder seriousAdverseOutcome(MedicalEntity medicalEntity);
-  Builder seriousAdverseOutcome(MedicalEntity.Builder medicalEntity);
-  Builder code(MedicalCode medicalCode);
-  Builder code(MedicalCode.Builder medicalCode);
-  Builder guideline(MedicalGuideline medicalGuideline);
-  Builder guideline(MedicalGuideline.Builder medicalGuideline);
-  Builder medicineSystem(MedicineSystem medicineSystem);
-  Builder medicineSystem(MedicineSystem.Builder medicineSystem);
-  Builder recognizingAuthority(Organization organization);
-  Builder recognizingAuthority(Organization.Builder organization);
-  Builder relevantSpecialty(MedicalSpecialty medicalSpecialty);
-  Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty);
-  Builder study(MedicalStudy medicalStudy);
-  Builder study(MedicalStudy.Builder medicalStudy);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder activeIngredient(String activeIngredient);
+    @NotNull Builder background(String background);
+    @NotNull Builder dosageForm(String dosageForm);
+    @NotNull Builder isProprietary(Boolean isProprietary);
+    @NotNull Builder legalStatus(DrugLegalStatus drugLegalStatus);
+    @NotNull Builder legalStatus(DrugLegalStatus.Builder drugLegalStatus);
+    @NotNull Builder manufacturer(Organization organization);
+    @NotNull Builder manufacturer(Organization.Builder organization);
+    @NotNull Builder maximumIntake(MaximumDoseSchedule maximumDoseSchedule);
+    @NotNull Builder maximumIntake(MaximumDoseSchedule.Builder maximumDoseSchedule);
+    @NotNull Builder mechanismOfAction(String mechanismOfAction);
+    @NotNull Builder nonProprietaryName(String nonProprietaryName);
+    @NotNull Builder recommendedIntake(RecommendedDoseSchedule recommendedDoseSchedule);
+    @NotNull Builder recommendedIntake(RecommendedDoseSchedule.Builder recommendedDoseSchedule);
+    @NotNull Builder safetyConsideration(String safetyConsideration);
+    @NotNull Builder targetPopulation(String targetPopulation);
+    @NotNull Builder adverseOutcome(MedicalEntity medicalEntity);
+    @NotNull Builder adverseOutcome(MedicalEntity.Builder medicalEntity);
+    @NotNull Builder contraindication(MedicalContraindication medicalContraindication);
+    @NotNull Builder contraindication(MedicalContraindication.Builder medicalContraindication);
+    @NotNull Builder duplicateTherapy(MedicalTherapy medicalTherapy);
+    @NotNull Builder duplicateTherapy(MedicalTherapy.Builder medicalTherapy);
+    @NotNull Builder indication(MedicalIndication medicalIndication);
+    @NotNull Builder indication(MedicalIndication.Builder medicalIndication);
+    @NotNull Builder seriousAdverseOutcome(MedicalEntity medicalEntity);
+    @NotNull Builder seriousAdverseOutcome(MedicalEntity.Builder medicalEntity);
+    @NotNull Builder code(MedicalCode medicalCode);
+    @NotNull Builder code(MedicalCode.Builder medicalCode);
+    @NotNull Builder guideline(MedicalGuideline medicalGuideline);
+    @NotNull Builder guideline(MedicalGuideline.Builder medicalGuideline);
+    @NotNull Builder medicineSystem(MedicineSystem medicineSystem);
+    @NotNull Builder medicineSystem(MedicineSystem.Builder medicineSystem);
+    @NotNull Builder recognizingAuthority(Organization organization);
+    @NotNull Builder recognizingAuthority(Organization.Builder organization);
+    @NotNull Builder relevantSpecialty(MedicalSpecialty medicalSpecialty);
+    @NotNull Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty);
+    @NotNull Builder study(MedicalStudy medicalStudy);
+    @NotNull Builder study(MedicalStudy.Builder medicalStudy);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected DietarySupplement(String activeIngredient, String background, String dosageForm, Boolean isProprietary, DrugLegalStatus legalStatus, Organization manufacturer, MaximumDoseSchedule maximumIntake, String mechanismOfAction, String nonProprietaryName, RecommendedDoseSchedule recommendedIntake, String safetyConsideration, String targetPopulation, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

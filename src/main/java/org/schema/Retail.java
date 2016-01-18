@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The drug's cost represents the retail cost of the drug.
  */
@@ -25,7 +29,7 @@ public class Retail {
   /**
    * Builder for {@link Retail}
    */
-  public static final class RetailThingBuilder implements Builder {
+  static final class RetailThingBuilder implements Builder {
     /**
      * Creates new {@link Retail} instance.
      */
@@ -34,7 +38,7 @@ public class Retail {
     }
   }
   public interface Builder extends ThingBuilder<Retail> {
-  
+    
   }
 
   protected Retail() {

@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class BreadcrumbListOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myBreadcrumbList != null) return myBreadcrumbList;
     if (myString != null) return myString;
@@ -28,9 +31,9 @@ class BreadcrumbListOrString {
   }
   public void setBreadcrumbList(BreadcrumbList breadcrumbList) { clear(); myBreadcrumbList = breadcrumbList; }
   public BreadcrumbList getBreadcrumbList() { return myBreadcrumbList; }
-  private BreadcrumbList myBreadcrumbList;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private BreadcrumbList myBreadcrumbList;
   private String myString;
   private void clear() {
     myBreadcrumbList = null;

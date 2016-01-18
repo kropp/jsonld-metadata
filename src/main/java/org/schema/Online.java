@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Game server status: Online. Server is available.
  */
@@ -25,7 +29,7 @@ public class Online {
   /**
    * Builder for {@link Online}
    */
-  public static final class OnlineThingBuilder implements Builder {
+  static final class OnlineThingBuilder implements Builder {
     /**
      * Creates new {@link Online} instance.
      */
@@ -34,7 +38,7 @@ public class Online {
     }
   }
   public interface Builder extends ThingBuilder<Online> {
-  
+    
   }
 
   protected Online() {

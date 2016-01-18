@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to the study of the respiratory system and its respective disease states.
  */
@@ -25,7 +29,7 @@ public class Pulmonary {
   /**
    * Builder for {@link Pulmonary}
    */
-  public static final class PulmonaryThingBuilder implements Builder {
+  static final class PulmonaryThingBuilder implements Builder {
     /**
      * Creates new {@link Pulmonary} instance.
      */
@@ -34,7 +38,7 @@ public class Pulmonary {
     }
   }
   public interface Builder extends ThingBuilder<Pulmonary> {
-  
+    
   }
 
   protected Pulmonary() {

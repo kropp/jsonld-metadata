@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A seating map.
  */
@@ -25,7 +29,7 @@ public class SeatingMap {
   /**
    * Builder for {@link SeatingMap}
    */
-  public static final class SeatingMapThingBuilder implements Builder {
+  static final class SeatingMapThingBuilder implements Builder {
     /**
      * Creates new {@link SeatingMap} instance.
      */
@@ -34,7 +38,7 @@ public class SeatingMap {
     }
   }
   public interface Builder extends ThingBuilder<SeatingMap> {
-  
+    
   }
 
   protected SeatingMap() {

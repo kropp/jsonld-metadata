@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class PropertyValueOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myPropertyValue != null) return myPropertyValue;
     if (myString != null) return myString;
@@ -28,9 +31,9 @@ class PropertyValueOrString {
   }
   public void setPropertyValue(PropertyValue propertyValue) { clear(); myPropertyValue = propertyValue; }
   public PropertyValue getPropertyValue() { return myPropertyValue; }
-  private PropertyValue myPropertyValue;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private PropertyValue myPropertyValue;
   private String myString;
   private void clear() {
     myPropertyValue = null;

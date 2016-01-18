@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates that the item is in stock.
  */
@@ -25,7 +29,7 @@ public class InStock {
   /**
    * Builder for {@link InStock}
    */
-  public static final class InStockThingBuilder implements Builder {
+  static final class InStockThingBuilder implements Builder {
     /**
      * Creates new {@link InStock} instance.
      */
@@ -34,7 +38,7 @@ public class InStock {
     }
   }
   public interface Builder extends ThingBuilder<InStock> {
-  
+    
   }
 
   protected InStock() {

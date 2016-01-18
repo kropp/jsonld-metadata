@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A designation by the US FDA signifying that adequate and well-controlled studies have failed to demonstrate a risk to the fetus in the first trimester of pregnancy (and there is no evidence of risk in later trimesters).
  */
@@ -25,7 +29,7 @@ public class FDAcategoryA {
   /**
    * Builder for {@link FDAcategoryA}
    */
-  public static final class FDAcategoryAThingBuilder implements Builder {
+  static final class FDAcategoryAThingBuilder implements Builder {
     /**
      * Creates new {@link FDAcategoryA} instance.
      */
@@ -34,7 +38,7 @@ public class FDAcategoryA {
     }
   }
   public interface Builder extends ThingBuilder<FDAcategoryA> {
-  
+    
   }
 
   protected FDAcategoryA() {

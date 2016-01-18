@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Pathogenic fungus.
  */
@@ -25,7 +29,7 @@ public class Fungus {
   /**
    * Builder for {@link Fungus}
    */
-  public static final class FungusThingBuilder implements Builder {
+  static final class FungusThingBuilder implements Builder {
     /**
      * Creates new {@link Fungus} instance.
      */
@@ -34,7 +38,7 @@ public class Fungus {
     }
   }
   public interface Builder extends ThingBuilder<Fungus> {
-  
+    
   }
 
   protected Fungus() {

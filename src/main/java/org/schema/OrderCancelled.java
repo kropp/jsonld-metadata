@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * OrderStatus representing cancellation of an order.
  */
@@ -25,7 +29,7 @@ public class OrderCancelled {
   /**
    * Builder for {@link OrderCancelled}
    */
-  public static final class OrderCancelledThingBuilder implements Builder {
+  static final class OrderCancelledThingBuilder implements Builder {
     /**
      * Creates new {@link OrderCancelled} instance.
      */
@@ -34,7 +38,7 @@ public class OrderCancelled {
     }
   }
   public interface Builder extends ThingBuilder<OrderCancelled> {
-  
+    
   }
 
   protected OrderCancelled() {

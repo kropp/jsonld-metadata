@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * DemoAlbum.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -26,7 +30,7 @@ public class DemoAlbum {
   /**
    * Builder for {@link DemoAlbum}
    */
-  public static final class DemoAlbumThingBuilder implements Builder {
+  static final class DemoAlbumThingBuilder implements Builder {
     /**
      * Creates new {@link DemoAlbum} instance.
      */
@@ -35,7 +39,7 @@ public class DemoAlbum {
     }
   }
   public interface Builder extends ThingBuilder<DemoAlbum> {
-  
+    
   }
 
   protected DemoAlbum() {

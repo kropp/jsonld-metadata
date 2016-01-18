@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to diagnosis and treatment of disorders of digestive system.
  */
@@ -25,7 +29,7 @@ public class Gastroenterologic {
   /**
    * Builder for {@link Gastroenterologic}
    */
-  public static final class GastroenterologicThingBuilder implements Builder {
+  static final class GastroenterologicThingBuilder implements Builder {
     /**
      * Creates new {@link Gastroenterologic} instance.
      */
@@ -34,7 +38,7 @@ public class Gastroenterologic {
     }
   }
   public interface Builder extends ThingBuilder<Gastroenterologic> {
-  
+    
   }
 
   protected Gastroenterologic() {

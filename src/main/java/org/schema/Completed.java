@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Completed.
  */
@@ -25,7 +29,7 @@ public class Completed {
   /**
    * Builder for {@link Completed}
    */
-  public static final class CompletedThingBuilder implements Builder {
+  static final class CompletedThingBuilder implements Builder {
     /**
      * Creates new {@link Completed} instance.
      */
@@ -34,7 +38,7 @@ public class Completed {
     }
   }
   public interface Builder extends ThingBuilder<Completed> {
-  
+    
   }
 
   protected Completed() {

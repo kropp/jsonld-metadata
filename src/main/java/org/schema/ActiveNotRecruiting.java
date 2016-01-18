@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Active, but not recruiting new participants.
  */
@@ -25,7 +29,7 @@ public class ActiveNotRecruiting {
   /**
    * Builder for {@link ActiveNotRecruiting}
    */
-  public static final class ActiveNotRecruitingThingBuilder implements Builder {
+  static final class ActiveNotRecruitingThingBuilder implements Builder {
     /**
      * Creates new {@link ActiveNotRecruiting} instance.
      */
@@ -34,7 +38,7 @@ public class ActiveNotRecruiting {
     }
   }
   public interface Builder extends ThingBuilder<ActiveNotRecruiting> {
-  
+    
   }
 
   protected ActiveNotRecruiting() {

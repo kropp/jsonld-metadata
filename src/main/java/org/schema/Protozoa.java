@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Single-celled organism that causes an infection.
  */
@@ -25,7 +29,7 @@ public class Protozoa {
   /**
    * Builder for {@link Protozoa}
    */
-  public static final class ProtozoaThingBuilder implements Builder {
+  static final class ProtozoaThingBuilder implements Builder {
     /**
      * Creates new {@link Protozoa} instance.
      */
@@ -34,7 +38,7 @@ public class Protozoa {
     }
   }
   public interface Builder extends ThingBuilder<Protozoa> {
-  
+    
   }
 
   protected Protozoa() {

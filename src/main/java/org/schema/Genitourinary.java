@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Genitourinary.
  */
@@ -25,7 +29,7 @@ public class Genitourinary {
   /**
    * Builder for {@link Genitourinary}
    */
-  public static final class GenitourinaryThingBuilder implements Builder {
+  static final class GenitourinaryThingBuilder implements Builder {
     /**
      * Creates new {@link Genitourinary} instance.
      */
@@ -34,7 +38,7 @@ public class Genitourinary {
     }
   }
   public interface Builder extends ThingBuilder<Genitourinary> {
-  
+    
   }
 
   protected Genitourinary() {

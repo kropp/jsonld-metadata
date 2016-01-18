@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A DeliveryMethod in which an item is collected on site, e.g. in a store or at a box office.
  */
@@ -25,7 +29,7 @@ public class OnSitePickup {
   /**
    * Builder for {@link OnSitePickup}
    */
-  public static final class OnSitePickupThingBuilder implements Builder {
+  static final class OnSitePickupThingBuilder implements Builder {
     /**
      * Creates new {@link OnSitePickup} instance.
      */
@@ -34,7 +38,7 @@ public class OnSitePickup {
     }
   }
   public interface Builder extends ThingBuilder<OnSitePickup> {
-  
+    
   }
 
   protected OnSitePickup() {

@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class ItemListOrderTypeOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myItemListOrderType != null) return myItemListOrderType;
     if (myString != null) return myString;
@@ -28,9 +31,9 @@ class ItemListOrderTypeOrString {
   }
   public void setItemListOrderType(ItemListOrderType itemListOrderType) { clear(); myItemListOrderType = itemListOrderType; }
   public ItemListOrderType getItemListOrderType() { return myItemListOrderType; }
-  private ItemListOrderType myItemListOrderType;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private ItemListOrderType myItemListOrderType;
   private String myString;
   private void clear() {
     myItemListOrderType = null;

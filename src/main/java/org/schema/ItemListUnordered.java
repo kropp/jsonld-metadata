@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * An ItemList ordered with no explicit order.
  */
@@ -25,7 +29,7 @@ public class ItemListUnordered {
   /**
    * Builder for {@link ItemListUnordered}
    */
-  public static final class ItemListUnorderedThingBuilder implements Builder {
+  static final class ItemListUnorderedThingBuilder implements Builder {
     /**
      * Creates new {@link ItemListUnordered} instance.
      */
@@ -34,7 +38,7 @@ public class ItemListUnordered {
     }
   }
   public interface Builder extends ThingBuilder<ItemListUnordered> {
-  
+    
   }
 
   protected ItemListUnordered() {

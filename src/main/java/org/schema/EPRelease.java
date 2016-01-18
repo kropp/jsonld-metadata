@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * EPRelease.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -26,7 +30,7 @@ public class EPRelease {
   /**
    * Builder for {@link EPRelease}
    */
-  public static final class EPReleaseThingBuilder implements Builder {
+  static final class EPReleaseThingBuilder implements Builder {
     /**
      * Creates new {@link EPRelease} instance.
      */
@@ -35,7 +39,7 @@ public class EPRelease {
     }
   }
   public interface Builder extends ThingBuilder<EPRelease> {
-  
+    
   }
 
   protected EPRelease() {

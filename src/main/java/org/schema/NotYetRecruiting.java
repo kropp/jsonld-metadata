@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Not yet recruiting.
  */
@@ -25,7 +29,7 @@ public class NotYetRecruiting {
   /**
    * Builder for {@link NotYetRecruiting}
    */
-  public static final class NotYetRecruitingThingBuilder implements Builder {
+  static final class NotYetRecruitingThingBuilder implements Builder {
     /**
      * Creates new {@link NotYetRecruiting} instance.
      */
@@ -34,7 +38,7 @@ public class NotYetRecruiting {
     }
   }
   public interface Builder extends ThingBuilder<NotYetRecruiting> {
-  
+    
   }
 
   protected NotYetRecruiting() {

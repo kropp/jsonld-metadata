@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class DriveWheelConfigurationValueOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myDriveWheelConfigurationValue != null) return myDriveWheelConfigurationValue;
     if (myString != null) return myString;
@@ -28,9 +31,9 @@ class DriveWheelConfigurationValueOrString {
   }
   public void setDriveWheelConfigurationValue(DriveWheelConfigurationValue driveWheelConfigurationValue) { clear(); myDriveWheelConfigurationValue = driveWheelConfigurationValue; }
   public DriveWheelConfigurationValue getDriveWheelConfigurationValue() { return myDriveWheelConfigurationValue; }
-  private DriveWheelConfigurationValue myDriveWheelConfigurationValue;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private DriveWheelConfigurationValue myDriveWheelConfigurationValue;
   private String myString;
   private void clear() {
     myDriveWheelConfigurationValue = null;

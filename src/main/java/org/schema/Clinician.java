@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Medical clinicians, including practicing physicians and other medical professionals involved in clinical practice.
  */
@@ -25,7 +29,7 @@ public class Clinician {
   /**
    * Builder for {@link Clinician}
    */
-  public static final class ClinicianThingBuilder implements Builder {
+  static final class ClinicianThingBuilder implements Builder {
     /**
      * Creates new {@link Clinician} instance.
      */
@@ -34,7 +38,7 @@ public class Clinician {
     }
   }
   public interface Builder extends ThingBuilder<Clinician> {
-  
+    
   }
 
   protected Clinician() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Available by prescription only.
  */
@@ -25,7 +29,7 @@ public class PrescriptionOnly {
   /**
    * Builder for {@link PrescriptionOnly}
    */
-  public static final class PrescriptionOnlyThingBuilder implements Builder {
+  static final class PrescriptionOnlyThingBuilder implements Builder {
     /**
      * Creates new {@link PrescriptionOnly} instance.
      */
@@ -34,7 +38,7 @@ public class PrescriptionOnly {
     }
   }
   public interface Builder extends ThingBuilder<PrescriptionOnly> {
-  
+    
   }
 
   protected PrescriptionOnly() {

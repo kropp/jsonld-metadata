@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Musculoskeletal.
  */
@@ -25,7 +29,7 @@ public class MusculoskeletalExam {
   /**
    * Builder for {@link MusculoskeletalExam}
    */
-  public static final class MusculoskeletalExamThingBuilder implements Builder {
+  static final class MusculoskeletalExamThingBuilder implements Builder {
     /**
      * Creates new {@link MusculoskeletalExam} instance.
      */
@@ -34,7 +38,7 @@ public class MusculoskeletalExam {
     }
   }
   public interface Builder extends ThingBuilder<MusculoskeletalExam> {
-  
+    
   }
 
   protected MusculoskeletalExam() {

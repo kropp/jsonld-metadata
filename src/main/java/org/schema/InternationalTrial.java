@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * An international trial.
  */
@@ -25,7 +29,7 @@ public class InternationalTrial {
   /**
    * Builder for {@link InternationalTrial}
    */
-  public static final class InternationalTrialThingBuilder implements Builder {
+  static final class InternationalTrialThingBuilder implements Builder {
     /**
      * Creates new {@link InternationalTrial} instance.
      */
@@ -34,7 +38,7 @@ public class InternationalTrial {
     }
   }
   public interface Builder extends ThingBuilder<InternationalTrial> {
-  
+    
   }
 
   protected InternationalTrial() {

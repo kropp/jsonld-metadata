@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Lung.
  */
@@ -25,7 +29,7 @@ public class Lung {
   /**
    * Builder for {@link Lung}
    */
-  public static final class LungThingBuilder implements Builder {
+  static final class LungThingBuilder implements Builder {
     /**
      * Creates new {@link Lung} instance.
      */
@@ -34,7 +38,7 @@ public class Lung {
     }
   }
   public interface Builder extends ThingBuilder<Lung> {
-  
+    
   }
 
   protected Lung() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Physical activity that is engaged in to improve joint and muscle flexibility.
  */
@@ -25,7 +29,7 @@ public class Flexibility {
   /**
    * Builder for {@link Flexibility}
    */
-  public static final class FlexibilityThingBuilder implements Builder {
+  static final class FlexibilityThingBuilder implements Builder {
     /**
      * Creates new {@link Flexibility} instance.
      */
@@ -34,7 +38,7 @@ public class Flexibility {
     }
   }
   public interface Builder extends ThingBuilder<Flexibility> {
-  
+    
   }
 
   protected Flexibility() {

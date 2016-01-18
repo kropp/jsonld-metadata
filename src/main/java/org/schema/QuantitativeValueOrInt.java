@@ -18,26 +18,29 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
-class IntegerOrQuantitativeValue {
-  @com.fasterxml.jackson.annotation.JsonValue
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+class QuantitativeValueOrInt {
+  @JsonValue
   public Object getJsonLdValue() {
-    if (myInteger != null) return myInteger;
     if (myQuantitativeValue != null) return myQuantitativeValue;
+    if (myInt != null) return myInt;
     return null;
   }
   public Thing getThing() {
     if (myQuantitativeValue != null) return myQuantitativeValue;
     return null;
   }
-  public void setInteger(Integer integer) { clear(); myInteger = integer; }
-  public Integer getInteger() { return myInteger; }
-  private Integer myInteger;
   public void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
   public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
+  public void setInt(int value) { clear(); myInt = value; }
+  public int getInt() { return myInt; }
   private QuantitativeValue myQuantitativeValue;
+  private Integer myInt;
   private void clear() {
-    myInteger = null;
     myQuantitativeValue = null;
+    myInt = null;
   }
 }

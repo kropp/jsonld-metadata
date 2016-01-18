@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * This class contains derivatives of IPTC rNews properties. rNews is a data model of publishing metadata with serializations currently available for RDFa as well as HTML5 Microdata. More information about the IPTC and rNews can be found at <a href=http://rnews.org>rnews.org</a>.
  */
@@ -25,7 +29,7 @@ public class RNews {
   /**
    * Builder for {@link RNews}
    */
-  public static final class RNewsThingBuilder implements Builder {
+  static final class RNewsThingBuilder implements Builder {
     /**
      * Creates new {@link RNews} instance.
      */
@@ -34,7 +38,7 @@ public class RNews {
     }
   }
   public interface Builder extends ThingBuilder<RNews> {
-  
+    
   }
 
   protected RNews() {

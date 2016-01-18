@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Book format: Hardcover.
  */
@@ -25,7 +29,7 @@ public class Hardcover {
   /**
    * Builder for {@link Hardcover}
    */
-  public static final class HardcoverThingBuilder implements Builder {
+  static final class HardcoverThingBuilder implements Builder {
     /**
      * Creates new {@link Hardcover} instance.
      */
@@ -34,7 +38,7 @@ public class Hardcover {
     }
   }
   public interface Builder extends ThingBuilder<Hardcover> {
-  
+    
   }
 
   protected Hardcover() {

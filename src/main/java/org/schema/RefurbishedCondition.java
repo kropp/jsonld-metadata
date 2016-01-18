@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates that the item is refurbished.
  */
@@ -25,7 +29,7 @@ public class RefurbishedCondition {
   /**
    * Builder for {@link RefurbishedCondition}
    */
-  public static final class RefurbishedConditionThingBuilder implements Builder {
+  static final class RefurbishedConditionThingBuilder implements Builder {
     /**
      * Creates new {@link RefurbishedCondition} instance.
      */
@@ -34,7 +38,7 @@ public class RefurbishedCondition {
     }
   }
   public interface Builder extends ThingBuilder<RefurbishedCondition> {
-  
+    
   }
 
   protected RefurbishedCondition() {

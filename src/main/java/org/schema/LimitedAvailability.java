@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates that the item has limited availability.
  */
@@ -25,7 +29,7 @@ public class LimitedAvailability {
   /**
    * Builder for {@link LimitedAvailability}
    */
-  public static final class LimitedAvailabilityThingBuilder implements Builder {
+  static final class LimitedAvailabilityThingBuilder implements Builder {
     /**
      * Creates new {@link LimitedAvailability} instance.
      */
@@ -34,7 +38,7 @@ public class LimitedAvailability {
     }
   }
   public interface Builder extends ThingBuilder<LimitedAvailability> {
-  
+    
   }
 
   protected LimitedAvailability() {

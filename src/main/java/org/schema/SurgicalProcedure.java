@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A type of medical procedure that involves invasive surgical techniques.
  */
@@ -25,7 +29,7 @@ public class SurgicalProcedure {
   /**
    * Builder for {@link SurgicalProcedure}
    */
-  public static final class SurgicalProcedureThingBuilder implements Builder {
+  static final class SurgicalProcedureThingBuilder implements Builder {
     /**
      * Creates new {@link SurgicalProcedure} instance.
      */
@@ -34,7 +38,7 @@ public class SurgicalProcedure {
     }
   }
   public interface Builder extends ThingBuilder<SurgicalProcedure> {
-  
+    
   }
 
   protected SurgicalProcedure() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Multicellular parasite that causes an infection.
  */
@@ -25,7 +29,7 @@ public class MulticellularParasite {
   /**
    * Builder for {@link MulticellularParasite}
    */
-  public static final class MulticellularParasiteThingBuilder implements Builder {
+  static final class MulticellularParasiteThingBuilder implements Builder {
     /**
      * Creates new {@link MulticellularParasite} instance.
      */
@@ -34,7 +38,7 @@ public class MulticellularParasite {
     }
   }
   public interface Builder extends ThingBuilder<MulticellularParasite> {
-  
+    
   }
 
   protected MulticellularParasite() {

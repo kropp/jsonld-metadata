@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * An airline flight.
  */
@@ -43,14 +47,14 @@ public class Flight extends Intangible {
   /**
    * The expected departure time.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getDepartureTime() {
     return myDepartureTime;
   }
   /**
    * The expected arrival time.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getArrivalTime() {
     return myArrivalTime;
   }
@@ -123,14 +127,14 @@ public class Flight extends Intangible {
   /**
    * The time when a passenger can check into the flight online.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getWebCheckinTime() {
     return myWebCheckinTime;
   }
   /**
    * Builder for {@link Flight}
    */
-  public static final class FlightThingBuilder implements Builder {
+  static final class FlightThingBuilder implements Builder {
     /**
      * Creates new {@link Flight} instance.
      */
@@ -140,14 +144,14 @@ public class Flight extends Intangible {
     /**
      * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
      */
-    public Builder seller(Participant participant) {
+    @NotNull public Builder seller(Participant participant) {
       this.seller = participant;
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Organization organization) {
+    @NotNull public Builder provider(Organization organization) {
       if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setOrganization(organization);
       return this;
@@ -155,13 +159,13 @@ public class Flight extends Intangible {
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Organization.Builder organization) {
+    @NotNull public Builder provider(Organization.Builder organization) {
       return this.provider(organization.build());
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Person person) {
+    @NotNull public Builder provider(Person person) {
       if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setPerson(person);
       return this;
@@ -169,101 +173,101 @@ public class Flight extends Intangible {
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    public Builder provider(Person.Builder person) {
+    @NotNull public Builder provider(Person.Builder person) {
       return this.provider(person.build());
     }
     /**
      * The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
      */
-    public Builder flightNumber(String flightNumber) {
+    @NotNull public Builder flightNumber(String flightNumber) {
       this.flightNumber = flightNumber;
       return this;
     }
     /**
      * The expected departure time.
      */
-    public Builder departureTime(java.util.Date date) {
+    @NotNull public Builder departureTime(java.util.Date date) {
       this.departureTime = date;
       return this;
     }
     /**
      * The expected arrival time.
      */
-    public Builder arrivalTime(java.util.Date date) {
+    @NotNull public Builder arrivalTime(java.util.Date date) {
       this.arrivalTime = date;
       return this;
     }
     /**
      * The airport where the flight originates.
      */
-    public Builder departureAirport(Airport airport) {
+    @NotNull public Builder departureAirport(Airport airport) {
       this.departureAirport = airport;
       return this;
     }
     /**
      * The airport where the flight originates.
      */
-    public Builder departureAirport(Airport.Builder airport) {
+    @NotNull public Builder departureAirport(Airport.Builder airport) {
       return this.departureAirport(airport.build());
     }
     /**
      * The airport where the flight terminates.
      */
-    public Builder arrivalAirport(Airport airport) {
+    @NotNull public Builder arrivalAirport(Airport airport) {
       this.arrivalAirport = airport;
       return this;
     }
     /**
      * The airport where the flight terminates.
      */
-    public Builder arrivalAirport(Airport.Builder airport) {
+    @NotNull public Builder arrivalAirport(Airport.Builder airport) {
       return this.arrivalAirport(airport.build());
     }
     /**
      * Identifier of the flight's departure gate.
      */
-    public Builder departureGate(String departureGate) {
+    @NotNull public Builder departureGate(String departureGate) {
       this.departureGate = departureGate;
       return this;
     }
     /**
      * Identifier of the flight's arrival gate.
      */
-    public Builder arrivalGate(String arrivalGate) {
+    @NotNull public Builder arrivalGate(String arrivalGate) {
       this.arrivalGate = arrivalGate;
       return this;
     }
     /**
      * The type of boarding policy used by the airline (e.g. zone-based or group-based).
      */
-    public Builder boardingPolicy(BoardingPolicyType boardingPolicyType) {
+    @NotNull public Builder boardingPolicy(BoardingPolicyType boardingPolicyType) {
       this.boardingPolicy = boardingPolicyType;
       return this;
     }
     /**
      * The type of boarding policy used by the airline (e.g. zone-based or group-based).
      */
-    public Builder boardingPolicy(BoardingPolicyType.Builder boardingPolicyType) {
+    @NotNull public Builder boardingPolicy(BoardingPolicyType.Builder boardingPolicyType) {
       return this.boardingPolicy(boardingPolicyType.build());
     }
     /**
      * Identifier of the flight's departure terminal.
      */
-    public Builder departureTerminal(String departureTerminal) {
+    @NotNull public Builder departureTerminal(String departureTerminal) {
       this.departureTerminal = departureTerminal;
       return this;
     }
     /**
      * Identifier of the flight's arrival terminal.
      */
-    public Builder arrivalTerminal(String arrivalTerminal) {
+    @NotNull public Builder arrivalTerminal(String arrivalTerminal) {
       this.arrivalTerminal = arrivalTerminal;
       return this;
     }
     /**
      * The kind of aircraft (e.g., "Boeing 747").
      */
-    public Builder aircraft(String aircraft) {
+    @NotNull public Builder aircraft(String aircraft) {
       if (this.aircraft == null) this.aircraft = new StringOrVehicle();
       this.aircraft.setString(aircraft);
       return this;
@@ -271,7 +275,7 @@ public class Flight extends Intangible {
     /**
      * The kind of aircraft (e.g., "Boeing 747").
      */
-    public Builder aircraft(Vehicle vehicle) {
+    @NotNull public Builder aircraft(Vehicle vehicle) {
       if (this.aircraft == null) this.aircraft = new StringOrVehicle();
       this.aircraft.setVehicle(vehicle);
       return this;
@@ -279,20 +283,20 @@ public class Flight extends Intangible {
     /**
      * The kind of aircraft (e.g., "Boeing 747").
      */
-    public Builder aircraft(Vehicle.Builder vehicle) {
+    @NotNull public Builder aircraft(Vehicle.Builder vehicle) {
       return this.aircraft(vehicle.build());
     }
     /**
      * Description of the meals that will be provided or available for purchase.
      */
-    public Builder mealService(String mealService) {
+    @NotNull public Builder mealService(String mealService) {
       this.mealService = mealService;
       return this;
     }
     /**
      * The estimated time the flight will take.
      */
-    public Builder estimatedFlightDuration(Duration duration) {
+    @NotNull public Builder estimatedFlightDuration(Duration duration) {
       if (this.estimatedFlightDuration == null) this.estimatedFlightDuration = new DurationOrString();
       this.estimatedFlightDuration.setDuration(duration);
       return this;
@@ -300,13 +304,13 @@ public class Flight extends Intangible {
     /**
      * The estimated time the flight will take.
      */
-    public Builder estimatedFlightDuration(Duration.Builder duration) {
+    @NotNull public Builder estimatedFlightDuration(Duration.Builder duration) {
       return this.estimatedFlightDuration(duration.build());
     }
     /**
      * The estimated time the flight will take.
      */
-    public Builder estimatedFlightDuration(String estimatedFlightDuration) {
+    @NotNull public Builder estimatedFlightDuration(String estimatedFlightDuration) {
       if (this.estimatedFlightDuration == null) this.estimatedFlightDuration = new DurationOrString();
       this.estimatedFlightDuration.setString(estimatedFlightDuration);
       return this;
@@ -314,7 +318,7 @@ public class Flight extends Intangible {
     /**
      * The distance of the flight.
      */
-    public Builder flightDistance(Distance distance) {
+    @NotNull public Builder flightDistance(Distance distance) {
       if (this.flightDistance == null) this.flightDistance = new DistanceOrString();
       this.flightDistance.setDistance(distance);
       return this;
@@ -322,13 +326,13 @@ public class Flight extends Intangible {
     /**
      * The distance of the flight.
      */
-    public Builder flightDistance(Distance.Builder distance) {
+    @NotNull public Builder flightDistance(Distance.Builder distance) {
       return this.flightDistance(distance.build());
     }
     /**
      * The distance of the flight.
      */
-    public Builder flightDistance(String flightDistance) {
+    @NotNull public Builder flightDistance(String flightDistance) {
       if (this.flightDistance == null) this.flightDistance = new DistanceOrString();
       this.flightDistance.setString(flightDistance);
       return this;
@@ -336,28 +340,28 @@ public class Flight extends Intangible {
     /**
      * The time when a passenger can check into the flight online.
      */
-    public Builder webCheckinTime(java.util.Date date) {
+    @NotNull public Builder webCheckinTime(java.util.Date date) {
       this.webCheckinTime = date;
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -391,7 +395,7 @@ public class Flight extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -426,7 +430,7 @@ public class Flight extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -459,7 +463,7 @@ public class Flight extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -467,38 +471,38 @@ public class Flight extends Intangible {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -533,47 +537,47 @@ public class Flight extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<Flight> {
-  Builder seller(Participant participant);
-  Builder provider(Organization organization);
-  Builder provider(Organization.Builder organization);
-  Builder provider(Person person);
-  Builder provider(Person.Builder person);
-  Builder flightNumber(String flightNumber);
-  Builder departureTime(java.util.Date date);
-  Builder arrivalTime(java.util.Date date);
-  Builder departureAirport(Airport airport);
-  Builder departureAirport(Airport.Builder airport);
-  Builder arrivalAirport(Airport airport);
-  Builder arrivalAirport(Airport.Builder airport);
-  Builder departureGate(String departureGate);
-  Builder arrivalGate(String arrivalGate);
-  Builder boardingPolicy(BoardingPolicyType boardingPolicyType);
-  Builder boardingPolicy(BoardingPolicyType.Builder boardingPolicyType);
-  Builder departureTerminal(String departureTerminal);
-  Builder arrivalTerminal(String arrivalTerminal);
-  Builder aircraft(String aircraft);
-  Builder aircraft(Vehicle vehicle);
-  Builder aircraft(Vehicle.Builder vehicle);
-  Builder mealService(String mealService);
-  Builder estimatedFlightDuration(Duration duration);
-  Builder estimatedFlightDuration(Duration.Builder duration);
-  Builder estimatedFlightDuration(String estimatedFlightDuration);
-  Builder flightDistance(Distance distance);
-  Builder flightDistance(Distance.Builder distance);
-  Builder flightDistance(String flightDistance);
-  Builder webCheckinTime(java.util.Date date);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder seller(Participant participant);
+    @NotNull Builder provider(Organization organization);
+    @NotNull Builder provider(Organization.Builder organization);
+    @NotNull Builder provider(Person person);
+    @NotNull Builder provider(Person.Builder person);
+    @NotNull Builder flightNumber(String flightNumber);
+    @NotNull Builder departureTime(java.util.Date date);
+    @NotNull Builder arrivalTime(java.util.Date date);
+    @NotNull Builder departureAirport(Airport airport);
+    @NotNull Builder departureAirport(Airport.Builder airport);
+    @NotNull Builder arrivalAirport(Airport airport);
+    @NotNull Builder arrivalAirport(Airport.Builder airport);
+    @NotNull Builder departureGate(String departureGate);
+    @NotNull Builder arrivalGate(String arrivalGate);
+    @NotNull Builder boardingPolicy(BoardingPolicyType boardingPolicyType);
+    @NotNull Builder boardingPolicy(BoardingPolicyType.Builder boardingPolicyType);
+    @NotNull Builder departureTerminal(String departureTerminal);
+    @NotNull Builder arrivalTerminal(String arrivalTerminal);
+    @NotNull Builder aircraft(String aircraft);
+    @NotNull Builder aircraft(Vehicle vehicle);
+    @NotNull Builder aircraft(Vehicle.Builder vehicle);
+    @NotNull Builder mealService(String mealService);
+    @NotNull Builder estimatedFlightDuration(Duration duration);
+    @NotNull Builder estimatedFlightDuration(Duration.Builder duration);
+    @NotNull Builder estimatedFlightDuration(String estimatedFlightDuration);
+    @NotNull Builder flightDistance(Distance distance);
+    @NotNull Builder flightDistance(Distance.Builder distance);
+    @NotNull Builder flightDistance(String flightDistance);
+    @NotNull Builder webCheckinTime(java.util.Date date);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected Flight(Participant seller, OrganizationOrPerson provider, String flightNumber, java.util.Date departureTime, java.util.Date arrivalTime, Airport departureAirport, Airport arrivalAirport, String departureGate, String arrivalGate, BoardingPolicyType boardingPolicy, String departureTerminal, String arrivalTerminal, StringOrVehicle aircraft, String mealService, DurationOrString estimatedFlightDuration, DistanceOrString flightDistance, java.util.Date webCheckinTime, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

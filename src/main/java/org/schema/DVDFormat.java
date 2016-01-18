@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * DVDFormat.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -26,7 +30,7 @@ public class DVDFormat {
   /**
    * Builder for {@link DVDFormat}
    */
-  public static final class DVDFormatThingBuilder implements Builder {
+  static final class DVDFormatThingBuilder implements Builder {
     /**
      * Creates new {@link DVDFormat} instance.
      */
@@ -35,7 +39,7 @@ public class DVDFormat {
     }
   }
   public interface Builder extends ThingBuilder<DVDFormat> {
-  
+    
   }
 
   protected DVDFormat() {

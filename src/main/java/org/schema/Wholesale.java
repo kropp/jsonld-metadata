@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The drug's cost represents the wholesale acquisition cost of the drug.
  */
@@ -25,7 +29,7 @@ public class Wholesale {
   /**
    * Builder for {@link Wholesale}
    */
-  public static final class WholesaleThingBuilder implements Builder {
+  static final class WholesaleThingBuilder implements Builder {
     /**
      * Creates new {@link Wholesale} instance.
      */
@@ -34,7 +38,7 @@ public class Wholesale {
     }
   }
   public interface Builder extends ThingBuilder<Wholesale> {
-  
+    
   }
 
   protected Wholesale() {

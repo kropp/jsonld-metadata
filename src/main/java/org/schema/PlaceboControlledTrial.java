@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A placebo-controlled trial design.
  */
@@ -25,7 +29,7 @@ public class PlaceboControlledTrial {
   /**
    * Builder for {@link PlaceboControlledTrial}
    */
-  public static final class PlaceboControlledTrialThingBuilder implements Builder {
+  static final class PlaceboControlledTrialThingBuilder implements Builder {
     /**
      * Creates new {@link PlaceboControlledTrial} instance.
      */
@@ -34,7 +38,7 @@ public class PlaceboControlledTrial {
     }
   }
   public interface Builder extends ThingBuilder<PlaceboControlledTrial> {
-  
+    
   }
 
   protected PlaceboControlledTrial() {

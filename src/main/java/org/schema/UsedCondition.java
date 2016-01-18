@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates that the item is used.
  */
@@ -25,7 +29,7 @@ public class UsedCondition {
   /**
    * Builder for {@link UsedCondition}
    */
-  public static final class UsedConditionThingBuilder implements Builder {
+  static final class UsedConditionThingBuilder implements Builder {
     /**
      * Creates new {@link UsedCondition} instance.
      */
@@ -34,7 +38,7 @@ public class UsedCondition {
     }
   }
   public interface Builder extends ThingBuilder<UsedCondition> {
-  
+    
   }
 
   protected UsedCondition() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsProperties
@@ -164,7 +168,7 @@ public class Product extends Thing {
   /**
    * The release date of a product or product model. This can be used to distinguish the exact variant of a product.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getReleaseDate() {
     return myReleaseDate;
   }
@@ -204,21 +208,21 @@ Note: Publishers should be aware that applications designed to use specific sche
   /**
    * The date of production of the item, e.g. vehicle.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getProductionDate() {
     return myProductionDate;
   }
   /**
    * The date the item e.g. vehicle was purchased by the current owner.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getPurchaseDate() {
     return myPurchaseDate;
   }
   /**
    * Builder for {@link Product}
    */
-  public static final class ProductThingBuilder implements Builder {
+  static final class ProductThingBuilder implements Builder {
     /**
      * Creates new {@link Product} instance.
      */
@@ -228,40 +232,40 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    public Builder aggregateRating(AggregateRating aggregateRating) {
+    @NotNull public Builder aggregateRating(AggregateRating aggregateRating) {
       this.aggregateRating = aggregateRating;
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    public Builder aggregateRating(AggregateRating.Builder aggregateRating) {
+    @NotNull public Builder aggregateRating(AggregateRating.Builder aggregateRating) {
       return this.aggregateRating(aggregateRating.build());
     }
     /**
      * An intended audience, i.e. a group for whom something was created.
      */
-    public Builder audience(Audience audience) {
+    @NotNull public Builder audience(Audience audience) {
       this.audience = audience;
       return this;
     }
     /**
      * An intended audience, i.e. a group for whom something was created.
      */
-    public Builder audience(Audience.Builder audience) {
+    @NotNull public Builder audience(Audience.Builder audience) {
       return this.audience(audience.build());
     }
     /**
      * An award won by or for this item.
      */
-    public Builder award(String award) {
+    @NotNull public Builder award(String award) {
       this.award = award;
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    public Builder brand(Brand brand) {
+    @NotNull public Builder brand(Brand brand) {
       if (this.brand == null) this.brand = new BrandOrOrganization();
       this.brand.setBrand(brand);
       return this;
@@ -269,13 +273,13 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    public Builder brand(Brand.Builder brand) {
+    @NotNull public Builder brand(Brand.Builder brand) {
       return this.brand(brand.build());
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    public Builder brand(Organization organization) {
+    @NotNull public Builder brand(Organization organization) {
       if (this.brand == null) this.brand = new BrandOrOrganization();
       this.brand.setOrganization(organization);
       return this;
@@ -283,13 +287,13 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    public Builder brand(Organization.Builder organization) {
+    @NotNull public Builder brand(Organization.Builder organization) {
       return this.brand(organization.build());
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
-    public Builder category(PhysicalActivityCategory physicalActivityCategory) {
+    @NotNull public Builder category(PhysicalActivityCategory physicalActivityCategory) {
       if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
       this.category.setPhysicalActivityCategory(physicalActivityCategory);
       return this;
@@ -297,13 +301,13 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
-    public Builder category(PhysicalActivityCategory.Builder physicalActivityCategory) {
+    @NotNull public Builder category(PhysicalActivityCategory.Builder physicalActivityCategory) {
       return this.category(physicalActivityCategory.build());
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
-    public Builder category(String category) {
+    @NotNull public Builder category(String category) {
       if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
       this.category.setString(category);
       return this;
@@ -311,7 +315,7 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
-    public Builder category(Thing thing) {
+    @NotNull public Builder category(Thing thing) {
       if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
       this.category.setThing(thing);
       return this;
@@ -319,20 +323,20 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
-    public Builder category(Thing.Builder thing) {
+    @NotNull public Builder category(Thing.Builder thing) {
       return this.category(thing.build());
     }
     /**
      * The color of the product.
      */
-    public Builder color(String color) {
+    @NotNull public Builder color(String color) {
       this.color = color;
       return this;
     }
     /**
      * The depth of the item.
      */
-    public Builder depth(Distance distance) {
+    @NotNull public Builder depth(Distance distance) {
       if (this.depth == null) this.depth = new DistanceOrQuantitativeValue();
       this.depth.setDistance(distance);
       return this;
@@ -340,13 +344,13 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The depth of the item.
      */
-    public Builder depth(Distance.Builder distance) {
+    @NotNull public Builder depth(Distance.Builder distance) {
       return this.depth(distance.build());
     }
     /**
      * The depth of the item.
      */
-    public Builder depth(QuantitativeValue quantitativeValue) {
+    @NotNull public Builder depth(QuantitativeValue quantitativeValue) {
       if (this.depth == null) this.depth = new DistanceOrQuantitativeValue();
       this.depth.setQuantitativeValue(quantitativeValue);
       return this;
@@ -354,41 +358,41 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The depth of the item.
      */
-    public Builder depth(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder depth(QuantitativeValue.Builder quantitativeValue) {
       return this.depth(quantitativeValue.build());
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-12.aspx">GTIN-12</a> code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
-    public Builder gtin12(String gtin12) {
+    @NotNull public Builder gtin12(String gtin12) {
       this.gtin12 = gtin12;
       return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-13.aspx">GTIN-13</a> code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
-    public Builder gtin13(String gtin13) {
+    @NotNull public Builder gtin13(String gtin13) {
       this.gtin13 = gtin13;
       return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-14.aspx">GTIN-14</a> code of the product, or the product to which the offer refers. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
-    public Builder gtin14(String gtin14) {
+    @NotNull public Builder gtin14(String gtin14) {
       this.gtin14 = gtin14;
       return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-8.aspx">GTIN-8</a> code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
-    public Builder gtin8(String gtin8) {
+    @NotNull public Builder gtin8(String gtin8) {
       this.gtin8 = gtin8;
       return this;
     }
     /**
      * The height of the item.
      */
-    public Builder height(Distance distance) {
+    @NotNull public Builder height(Distance distance) {
       if (this.height == null) this.height = new DistanceOrQuantitativeValue();
       this.height.setDistance(distance);
       return this;
@@ -396,13 +400,13 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The height of the item.
      */
-    public Builder height(Distance.Builder distance) {
+    @NotNull public Builder height(Distance.Builder distance) {
       return this.height(distance.build());
     }
     /**
      * The height of the item.
      */
-    public Builder height(QuantitativeValue quantitativeValue) {
+    @NotNull public Builder height(QuantitativeValue quantitativeValue) {
       if (this.height == null) this.height = new DistanceOrQuantitativeValue();
       this.height.setQuantitativeValue(quantitativeValue);
       return this;
@@ -410,78 +414,78 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The height of the item.
      */
-    public Builder height(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder height(QuantitativeValue.Builder quantitativeValue) {
       return this.height(quantitativeValue.build());
     }
     /**
      * A pointer to another product (or multiple products) for which this product is an accessory or spare part.
      */
-    public Builder isAccessoryOrSparePartFor(Product product) {
+    @NotNull public Builder isAccessoryOrSparePartFor(Product product) {
       this.isAccessoryOrSparePartFor = product;
       return this;
     }
     /**
      * A pointer to another product (or multiple products) for which this product is an accessory or spare part.
      */
-    public Builder isAccessoryOrSparePartFor(Product.Builder product) {
+    @NotNull public Builder isAccessoryOrSparePartFor(Product.Builder product) {
       return this.isAccessoryOrSparePartFor(product.build());
     }
     /**
      * A pointer to another product (or multiple products) for which this product is a consumable.
      */
-    public Builder isConsumableFor(Product product) {
+    @NotNull public Builder isConsumableFor(Product product) {
       this.isConsumableFor = product;
       return this;
     }
     /**
      * A pointer to another product (or multiple products) for which this product is a consumable.
      */
-    public Builder isConsumableFor(Product.Builder product) {
+    @NotNull public Builder isConsumableFor(Product.Builder product) {
       return this.isConsumableFor(product.build());
     }
     /**
      * A pointer to another, somehow related product (or multiple products).
      */
-    public Builder isRelatedTo(Product product) {
+    @NotNull public Builder isRelatedTo(Product product) {
       this.isRelatedTo = product;
       return this;
     }
     /**
      * A pointer to another, somehow related product (or multiple products).
      */
-    public Builder isRelatedTo(Product.Builder product) {
+    @NotNull public Builder isRelatedTo(Product.Builder product) {
       return this.isRelatedTo(product.build());
     }
     /**
      * A pointer to another, functionally similar product (or multiple products).
      */
-    public Builder isSimilarTo(Product product) {
+    @NotNull public Builder isSimilarTo(Product product) {
       this.isSimilarTo = product;
       return this;
     }
     /**
      * A pointer to another, functionally similar product (or multiple products).
      */
-    public Builder isSimilarTo(Product.Builder product) {
+    @NotNull public Builder isSimilarTo(Product.Builder product) {
       return this.isSimilarTo(product.build());
     }
     /**
      * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
      */
-    public Builder itemCondition(OfferItemCondition offerItemCondition) {
+    @NotNull public Builder itemCondition(OfferItemCondition offerItemCondition) {
       this.itemCondition = offerItemCondition;
       return this;
     }
     /**
      * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
      */
-    public Builder itemCondition(OfferItemCondition.Builder offerItemCondition) {
+    @NotNull public Builder itemCondition(OfferItemCondition.Builder offerItemCondition) {
       return this.itemCondition(offerItemCondition.build());
     }
     /**
      * An associated logo.
      */
-    public Builder logo(ImageObject imageObject) {
+    @NotNull public Builder logo(ImageObject imageObject) {
       if (this.logo == null) this.logo = new ImageObjectOrString();
       this.logo.setImageObject(imageObject);
       return this;
@@ -489,13 +493,13 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * An associated logo.
      */
-    public Builder logo(ImageObject.Builder imageObject) {
+    @NotNull public Builder logo(ImageObject.Builder imageObject) {
       return this.logo(imageObject.build());
     }
     /**
      * An associated logo.
      */
-    public Builder logo(String logo) {
+    @NotNull public Builder logo(String logo) {
       if (this.logo == null) this.logo = new ImageObjectOrString();
       this.logo.setString(logo);
       return this;
@@ -503,20 +507,20 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The manufacturer of the product.
      */
-    public Builder manufacturer(Organization organization) {
+    @NotNull public Builder manufacturer(Organization organization) {
       this.manufacturer = organization;
       return this;
     }
     /**
      * The manufacturer of the product.
      */
-    public Builder manufacturer(Organization.Builder organization) {
+    @NotNull public Builder manufacturer(Organization.Builder organization) {
       return this.manufacturer(organization.build());
     }
     /**
      * The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
      */
-    public Builder model(ProductModel productModel) {
+    @NotNull public Builder model(ProductModel productModel) {
       if (this.model == null) this.model = new ProductModelOrString();
       this.model.setProductModel(productModel);
       return this;
@@ -524,13 +528,13 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
      */
-    public Builder model(ProductModel.Builder productModel) {
+    @NotNull public Builder model(ProductModel.Builder productModel) {
       return this.model(productModel.build());
     }
     /**
      * The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
      */
-    public Builder model(String model) {
+    @NotNull public Builder model(String model) {
       if (this.model == null) this.model = new ProductModelOrString();
       this.model.setString(model);
       return this;
@@ -538,74 +542,74 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
      */
-    public Builder mpn(String mpn) {
+    @NotNull public Builder mpn(String mpn) {
       this.mpn = mpn;
       return this;
     }
     /**
      * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
      */
-    public Builder offers(Offer offer) {
+    @NotNull public Builder offers(Offer offer) {
       this.offers = offer;
       return this;
     }
     /**
      * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
      */
-    public Builder offers(Offer.Builder offer) {
+    @NotNull public Builder offers(Offer.Builder offer) {
       return this.offers(offer.build());
     }
     /**
      * The product identifier, such as ISBN. For example: <code>&lt;meta itemprop='productID' content='isbn:123-456-789'/&gt;</code>.
      */
-    public Builder productID(String productID) {
+    @NotNull public Builder productID(String productID) {
       this.productID = productID;
       return this;
     }
     /**
      * The release date of a product or product model. This can be used to distinguish the exact variant of a product.
      */
-    public Builder releaseDate(java.util.Date date) {
+    @NotNull public Builder releaseDate(java.util.Date date) {
       this.releaseDate = date;
       return this;
     }
     /**
      * A review of the item.
      */
-    public Builder review(Review review) {
+    @NotNull public Builder review(Review review) {
       this.review = review;
       return this;
     }
     /**
      * A review of the item.
      */
-    public Builder review(Review.Builder review) {
+    @NotNull public Builder review(Review.Builder review) {
       return this.review(review.build());
     }
     /**
      * The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
      */
-    public Builder sku(String sku) {
+    @NotNull public Builder sku(String sku) {
       this.sku = sku;
       return this;
     }
     /**
      * The weight of the product or person.
      */
-    public Builder weight(QuantitativeValue quantitativeValue) {
+    @NotNull public Builder weight(QuantitativeValue quantitativeValue) {
       this.weight = quantitativeValue;
       return this;
     }
     /**
      * The weight of the product or person.
      */
-    public Builder weight(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder weight(QuantitativeValue.Builder quantitativeValue) {
       return this.weight(quantitativeValue.build());
     }
     /**
      * The width of the item.
      */
-    public Builder width(Distance distance) {
+    @NotNull public Builder width(Distance distance) {
       if (this.width == null) this.width = new DistanceOrQuantitativeValue();
       this.width.setDistance(distance);
       return this;
@@ -613,13 +617,13 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The width of the item.
      */
-    public Builder width(Distance.Builder distance) {
+    @NotNull public Builder width(Distance.Builder distance) {
       return this.width(distance.build());
     }
     /**
      * The width of the item.
      */
-    public Builder width(QuantitativeValue quantitativeValue) {
+    @NotNull public Builder width(QuantitativeValue quantitativeValue) {
       if (this.width == null) this.width = new DistanceOrQuantitativeValue();
       this.width.setQuantitativeValue(quantitativeValue);
       return this;
@@ -627,7 +631,7 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The width of the item.
      */
-    public Builder width(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder width(QuantitativeValue.Builder quantitativeValue) {
       return this.width(quantitativeValue.build());
     }
     /**
@@ -636,7 +640,7 @@ Note: Publishers should be aware that applications designed to use specific sche
 Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
 
      */
-    public Builder additionalProperty(PropertyValue propertyValue) {
+    @NotNull public Builder additionalProperty(PropertyValue propertyValue) {
       this.additionalProperty = propertyValue;
       return this;
     }
@@ -646,41 +650,41 @@ Note: Publishers should be aware that applications designed to use specific sche
 Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
 
      */
-    public Builder additionalProperty(PropertyValue.Builder propertyValue) {
+    @NotNull public Builder additionalProperty(PropertyValue.Builder propertyValue) {
       return this.additionalProperty(propertyValue.build());
     }
     /**
      * The date of production of the item, e.g. vehicle.
      */
-    public Builder productionDate(java.util.Date date) {
+    @NotNull public Builder productionDate(java.util.Date date) {
       this.productionDate = date;
       return this;
     }
     /**
      * The date the item e.g. vehicle was purchased by the current owner.
      */
-    public Builder purchaseDate(java.util.Date date) {
+    @NotNull public Builder purchaseDate(java.util.Date date) {
       this.purchaseDate = date;
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -714,7 +718,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -749,7 +753,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -782,7 +786,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -790,38 +794,38 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -870,81 +874,81 @@ Note: Publishers should be aware that applications designed to use specific sche
     private String id;
   }
   public interface Builder extends ThingBuilder<Product> {
-  Builder aggregateRating(AggregateRating aggregateRating);
-  Builder aggregateRating(AggregateRating.Builder aggregateRating);
-  Builder audience(Audience audience);
-  Builder audience(Audience.Builder audience);
-  Builder award(String award);
-  Builder brand(Brand brand);
-  Builder brand(Brand.Builder brand);
-  Builder brand(Organization organization);
-  Builder brand(Organization.Builder organization);
-  Builder category(PhysicalActivityCategory physicalActivityCategory);
-  Builder category(PhysicalActivityCategory.Builder physicalActivityCategory);
-  Builder category(String category);
-  Builder category(Thing thing);
-  Builder category(Thing.Builder thing);
-  Builder color(String color);
-  Builder depth(Distance distance);
-  Builder depth(Distance.Builder distance);
-  Builder depth(QuantitativeValue quantitativeValue);
-  Builder depth(QuantitativeValue.Builder quantitativeValue);
-  Builder gtin12(String gtin12);
-  Builder gtin13(String gtin13);
-  Builder gtin14(String gtin14);
-  Builder gtin8(String gtin8);
-  Builder height(Distance distance);
-  Builder height(Distance.Builder distance);
-  Builder height(QuantitativeValue quantitativeValue);
-  Builder height(QuantitativeValue.Builder quantitativeValue);
-  Builder isAccessoryOrSparePartFor(Product product);
-  Builder isAccessoryOrSparePartFor(Product.Builder product);
-  Builder isConsumableFor(Product product);
-  Builder isConsumableFor(Product.Builder product);
-  Builder isRelatedTo(Product product);
-  Builder isRelatedTo(Product.Builder product);
-  Builder isSimilarTo(Product product);
-  Builder isSimilarTo(Product.Builder product);
-  Builder itemCondition(OfferItemCondition offerItemCondition);
-  Builder itemCondition(OfferItemCondition.Builder offerItemCondition);
-  Builder logo(ImageObject imageObject);
-  Builder logo(ImageObject.Builder imageObject);
-  Builder logo(String logo);
-  Builder manufacturer(Organization organization);
-  Builder manufacturer(Organization.Builder organization);
-  Builder model(ProductModel productModel);
-  Builder model(ProductModel.Builder productModel);
-  Builder model(String model);
-  Builder mpn(String mpn);
-  Builder offers(Offer offer);
-  Builder offers(Offer.Builder offer);
-  Builder productID(String productID);
-  Builder releaseDate(java.util.Date date);
-  Builder review(Review review);
-  Builder review(Review.Builder review);
-  Builder sku(String sku);
-  Builder weight(QuantitativeValue quantitativeValue);
-  Builder weight(QuantitativeValue.Builder quantitativeValue);
-  Builder width(Distance distance);
-  Builder width(Distance.Builder distance);
-  Builder width(QuantitativeValue quantitativeValue);
-  Builder width(QuantitativeValue.Builder quantitativeValue);
-  Builder additionalProperty(PropertyValue propertyValue);
-  Builder additionalProperty(PropertyValue.Builder propertyValue);
-  Builder productionDate(java.util.Date date);
-  Builder purchaseDate(java.util.Date date);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder aggregateRating(AggregateRating aggregateRating);
+    @NotNull Builder aggregateRating(AggregateRating.Builder aggregateRating);
+    @NotNull Builder audience(Audience audience);
+    @NotNull Builder audience(Audience.Builder audience);
+    @NotNull Builder award(String award);
+    @NotNull Builder brand(Brand brand);
+    @NotNull Builder brand(Brand.Builder brand);
+    @NotNull Builder brand(Organization organization);
+    @NotNull Builder brand(Organization.Builder organization);
+    @NotNull Builder category(PhysicalActivityCategory physicalActivityCategory);
+    @NotNull Builder category(PhysicalActivityCategory.Builder physicalActivityCategory);
+    @NotNull Builder category(String category);
+    @NotNull Builder category(Thing thing);
+    @NotNull Builder category(Thing.Builder thing);
+    @NotNull Builder color(String color);
+    @NotNull Builder depth(Distance distance);
+    @NotNull Builder depth(Distance.Builder distance);
+    @NotNull Builder depth(QuantitativeValue quantitativeValue);
+    @NotNull Builder depth(QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder gtin12(String gtin12);
+    @NotNull Builder gtin13(String gtin13);
+    @NotNull Builder gtin14(String gtin14);
+    @NotNull Builder gtin8(String gtin8);
+    @NotNull Builder height(Distance distance);
+    @NotNull Builder height(Distance.Builder distance);
+    @NotNull Builder height(QuantitativeValue quantitativeValue);
+    @NotNull Builder height(QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder isAccessoryOrSparePartFor(Product product);
+    @NotNull Builder isAccessoryOrSparePartFor(Product.Builder product);
+    @NotNull Builder isConsumableFor(Product product);
+    @NotNull Builder isConsumableFor(Product.Builder product);
+    @NotNull Builder isRelatedTo(Product product);
+    @NotNull Builder isRelatedTo(Product.Builder product);
+    @NotNull Builder isSimilarTo(Product product);
+    @NotNull Builder isSimilarTo(Product.Builder product);
+    @NotNull Builder itemCondition(OfferItemCondition offerItemCondition);
+    @NotNull Builder itemCondition(OfferItemCondition.Builder offerItemCondition);
+    @NotNull Builder logo(ImageObject imageObject);
+    @NotNull Builder logo(ImageObject.Builder imageObject);
+    @NotNull Builder logo(String logo);
+    @NotNull Builder manufacturer(Organization organization);
+    @NotNull Builder manufacturer(Organization.Builder organization);
+    @NotNull Builder model(ProductModel productModel);
+    @NotNull Builder model(ProductModel.Builder productModel);
+    @NotNull Builder model(String model);
+    @NotNull Builder mpn(String mpn);
+    @NotNull Builder offers(Offer offer);
+    @NotNull Builder offers(Offer.Builder offer);
+    @NotNull Builder productID(String productID);
+    @NotNull Builder releaseDate(java.util.Date date);
+    @NotNull Builder review(Review review);
+    @NotNull Builder review(Review.Builder review);
+    @NotNull Builder sku(String sku);
+    @NotNull Builder weight(QuantitativeValue quantitativeValue);
+    @NotNull Builder weight(QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder width(Distance distance);
+    @NotNull Builder width(Distance.Builder distance);
+    @NotNull Builder width(QuantitativeValue quantitativeValue);
+    @NotNull Builder width(QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder additionalProperty(PropertyValue propertyValue);
+    @NotNull Builder additionalProperty(PropertyValue.Builder propertyValue);
+    @NotNull Builder productionDate(java.util.Date date);
+    @NotNull Builder purchaseDate(java.util.Date date);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected Product(AggregateRating aggregateRating, Audience audience, String award, BrandOrOrganization brand, PhysicalActivityCategoryOrStringOrThing category, String color, DistanceOrQuantitativeValue depth, String gtin12, String gtin13, String gtin14, String gtin8, DistanceOrQuantitativeValue height, Product isAccessoryOrSparePartFor, Product isConsumableFor, Product isRelatedTo, Product isSimilarTo, OfferItemCondition itemCondition, ImageObjectOrString logo, Organization manufacturer, ProductModelOrString model, String mpn, Offer offers, String productID, java.util.Date releaseDate, Review review, String sku, QuantitativeValue weight, DistanceOrQuantitativeValue width, PropertyValue additionalProperty, java.util.Date productionDate, java.util.Date purchaseDate, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

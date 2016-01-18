@@ -1290,10 +1290,6 @@ public class SchemaOrg {
    */
   public static OrderStatus.Builder orderStatus() { return new OrderStatus.OrderStatusThingBuilder(); }
   /**
-   * Data type: Integer.
-   */
-  public static Integer.Builder integer() { return new Integer.IntegerThingBuilder(); }
-  /**
    * A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.
    */
   public static TypeAndQuantityNode.Builder typeAndQuantityNode() { return new TypeAndQuantityNode.TypeAndQuantityNodeThingBuilder(); }

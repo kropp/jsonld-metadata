@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * SpokenWordAlbum.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -26,7 +30,7 @@ public class SpokenWordAlbum {
   /**
    * Builder for {@link SpokenWordAlbum}
    */
-  public static final class SpokenWordAlbumThingBuilder implements Builder {
+  static final class SpokenWordAlbumThingBuilder implements Builder {
     /**
      * Creates new {@link SpokenWordAlbum} instance.
      */
@@ -35,7 +39,7 @@ public class SpokenWordAlbum {
     }
   }
   public interface Builder extends ThingBuilder<SpokenWordAlbum> {
-  
+    
   }
 
   protected SpokenWordAlbum() {

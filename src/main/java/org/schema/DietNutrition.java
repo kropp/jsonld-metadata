@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Diet and nutrition.
  */
@@ -25,7 +29,7 @@ public class DietNutrition {
   /**
    * Builder for {@link DietNutrition}
    */
-  public static final class DietNutritionThingBuilder implements Builder {
+  static final class DietNutritionThingBuilder implements Builder {
     /**
      * Creates new {@link DietNutrition} instance.
      */
@@ -34,7 +38,7 @@ public class DietNutrition {
     }
   }
   public interface Builder extends ThingBuilder<DietNutrition> {
-  
+    
   }
 
   protected DietNutrition() {

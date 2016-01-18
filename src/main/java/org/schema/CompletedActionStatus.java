@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * An action that has already taken place.
  */
@@ -25,7 +29,7 @@ public class CompletedActionStatus {
   /**
    * Builder for {@link CompletedActionStatus}
    */
-  public static final class CompletedActionStatusThingBuilder implements Builder {
+  static final class CompletedActionStatusThingBuilder implements Builder {
     /**
      * Creates new {@link CompletedActionStatus} instance.
      */
@@ -34,7 +38,7 @@ public class CompletedActionStatus {
     }
   }
   public interface Builder extends ThingBuilder<CompletedActionStatus> {
-  
+    
   }
 
   protected CompletedActionStatus() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A listing that describes a job opening in a certain organization.
  */
@@ -37,7 +41,7 @@ public class JobPosting extends Intangible {
   /**
    * Publication date for the job posting.
    */
-    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
   public java.util.Date getDatePosted() {
     return myDatePosted;
   }
@@ -134,7 +138,7 @@ public class JobPosting extends Intangible {
   /**
    * Builder for {@link JobPosting}
    */
-  public static final class JobPostingThingBuilder implements Builder {
+  static final class JobPostingThingBuilder implements Builder {
     /**
      * Creates new {@link JobPosting} instance.
      */
@@ -144,7 +148,7 @@ public class JobPosting extends Intangible {
     /**
      * The base salary of the job or of an employee in an EmployeeRole.
      */
-    public Builder baseSalary(Number number) {
+    @NotNull public Builder baseSalary(Number number) {
       if (this.baseSalary == null) this.baseSalary = new NumberOrPriceSpecification();
       this.baseSalary.setNumber(number);
       return this;
@@ -152,7 +156,7 @@ public class JobPosting extends Intangible {
     /**
      * The base salary of the job or of an employee in an EmployeeRole.
      */
-    public Builder baseSalary(PriceSpecification priceSpecification) {
+    @NotNull public Builder baseSalary(PriceSpecification priceSpecification) {
       if (this.baseSalary == null) this.baseSalary = new NumberOrPriceSpecification();
       this.baseSalary.setPriceSpecification(priceSpecification);
       return this;
@@ -160,158 +164,158 @@ public class JobPosting extends Intangible {
     /**
      * The base salary of the job or of an employee in an EmployeeRole.
      */
-    public Builder baseSalary(PriceSpecification.Builder priceSpecification) {
+    @NotNull public Builder baseSalary(PriceSpecification.Builder priceSpecification) {
       return this.baseSalary(priceSpecification.build());
     }
     /**
      * Description of benefits associated with the job.
      */
-    public Builder jobBenefits(String jobBenefits) {
+    @NotNull public Builder jobBenefits(String jobBenefits) {
       this.jobBenefits = jobBenefits;
       return this;
     }
     /**
      * Publication date for the job posting.
      */
-    public Builder datePosted(java.util.Date date) {
+    @NotNull public Builder datePosted(java.util.Date date) {
       this.datePosted = date;
       return this;
     }
     /**
      * Educational background needed for the position.
      */
-    public Builder educationRequirements(String educationRequirements) {
+    @NotNull public Builder educationRequirements(String educationRequirements) {
       this.educationRequirements = educationRequirements;
       return this;
     }
     /**
      * Type of employment (e.g. full-time, part-time, contract, temporary, seasonal, internship).
      */
-    public Builder employmentType(String employmentType) {
+    @NotNull public Builder employmentType(String employmentType) {
       this.employmentType = employmentType;
       return this;
     }
     /**
      * Description of skills and experience needed for the position.
      */
-    public Builder experienceRequirements(String experienceRequirements) {
+    @NotNull public Builder experienceRequirements(String experienceRequirements) {
       this.experienceRequirements = experienceRequirements;
       return this;
     }
     /**
      * Organization offering the job position.
      */
-    public Builder hiringOrganization(Organization organization) {
+    @NotNull public Builder hiringOrganization(Organization organization) {
       this.hiringOrganization = organization;
       return this;
     }
     /**
      * Organization offering the job position.
      */
-    public Builder hiringOrganization(Organization.Builder organization) {
+    @NotNull public Builder hiringOrganization(Organization.Builder organization) {
       return this.hiringOrganization(organization.build());
     }
     /**
      * Description of bonus and commission compensation aspects of the job.
      */
-    public Builder incentiveCompensation(String incentiveCompensation) {
+    @NotNull public Builder incentiveCompensation(String incentiveCompensation) {
       this.incentiveCompensation = incentiveCompensation;
       return this;
     }
     /**
      * The industry associated with the job position.
      */
-    public Builder industry(String industry) {
+    @NotNull public Builder industry(String industry) {
       this.industry = industry;
       return this;
     }
     /**
      * A (typically single) geographic location associated with the job position.
      */
-    public Builder jobLocation(Place place) {
+    @NotNull public Builder jobLocation(Place place) {
       this.jobLocation = place;
       return this;
     }
     /**
      * A (typically single) geographic location associated with the job position.
      */
-    public Builder jobLocation(Place.Builder place) {
+    @NotNull public Builder jobLocation(Place.Builder place) {
       return this.jobLocation(place.build());
     }
     /**
      * Category or categories describing the job. Use BLS O*NET-SOC taxonomy: http://www.onetcenter.org/taxonomy.html. Ideally includes textual label and formal code, with the property repeated for each applicable value.
      */
-    public Builder occupationalCategory(String occupationalCategory) {
+    @NotNull public Builder occupationalCategory(String occupationalCategory) {
       this.occupationalCategory = occupationalCategory;
       return this;
     }
     /**
      * Specific qualifications required for this role.
      */
-    public Builder qualifications(String qualifications) {
+    @NotNull public Builder qualifications(String qualifications) {
       this.qualifications = qualifications;
       return this;
     }
     /**
      * Responsibilities associated with this role.
      */
-    public Builder responsibilities(String responsibilities) {
+    @NotNull public Builder responsibilities(String responsibilities) {
       this.responsibilities = responsibilities;
       return this;
     }
     /**
      * The currency (coded using ISO 4217, http://en.wikipedia.org/wiki/ISO_4217 ) used for the main salary information in this job posting or for this employee.
      */
-    public Builder salaryCurrency(String salaryCurrency) {
+    @NotNull public Builder salaryCurrency(String salaryCurrency) {
       this.salaryCurrency = salaryCurrency;
       return this;
     }
     /**
      * Skills required to fulfill this role.
      */
-    public Builder skills(String skills) {
+    @NotNull public Builder skills(String skills) {
       this.skills = skills;
       return this;
     }
     /**
      * Any special commitments associated with this job posting. Valid entries include VeteranCommit, MilitarySpouseCommit, etc.
      */
-    public Builder specialCommitments(String specialCommitments) {
+    @NotNull public Builder specialCommitments(String specialCommitments) {
       this.specialCommitments = specialCommitments;
       return this;
     }
     /**
      * The title of the job.
      */
-    public Builder title(String title) {
+    @NotNull public Builder title(String title) {
       this.title = title;
       return this;
     }
     /**
      * The typical working hours for this job (e.g. 1st shift, night shift, 8am-5pm).
      */
-    public Builder workHours(String workHours) {
+    @NotNull public Builder workHours(String workHours) {
       this.workHours = workHours;
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -345,7 +349,7 @@ public class JobPosting extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -380,7 +384,7 @@ public class JobPosting extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -413,7 +417,7 @@ public class JobPosting extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -421,38 +425,38 @@ public class JobPosting extends Intangible {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -488,40 +492,40 @@ public class JobPosting extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<JobPosting> {
-  Builder baseSalary(Number number);
-  Builder baseSalary(PriceSpecification priceSpecification);
-  Builder baseSalary(PriceSpecification.Builder priceSpecification);
-  Builder jobBenefits(String jobBenefits);
-  Builder datePosted(java.util.Date date);
-  Builder educationRequirements(String educationRequirements);
-  Builder employmentType(String employmentType);
-  Builder experienceRequirements(String experienceRequirements);
-  Builder hiringOrganization(Organization organization);
-  Builder hiringOrganization(Organization.Builder organization);
-  Builder incentiveCompensation(String incentiveCompensation);
-  Builder industry(String industry);
-  Builder jobLocation(Place place);
-  Builder jobLocation(Place.Builder place);
-  Builder occupationalCategory(String occupationalCategory);
-  Builder qualifications(String qualifications);
-  Builder responsibilities(String responsibilities);
-  Builder salaryCurrency(String salaryCurrency);
-  Builder skills(String skills);
-  Builder specialCommitments(String specialCommitments);
-  Builder title(String title);
-  Builder workHours(String workHours);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder baseSalary(Number number);
+    @NotNull Builder baseSalary(PriceSpecification priceSpecification);
+    @NotNull Builder baseSalary(PriceSpecification.Builder priceSpecification);
+    @NotNull Builder jobBenefits(String jobBenefits);
+    @NotNull Builder datePosted(java.util.Date date);
+    @NotNull Builder educationRequirements(String educationRequirements);
+    @NotNull Builder employmentType(String employmentType);
+    @NotNull Builder experienceRequirements(String experienceRequirements);
+    @NotNull Builder hiringOrganization(Organization organization);
+    @NotNull Builder hiringOrganization(Organization.Builder organization);
+    @NotNull Builder incentiveCompensation(String incentiveCompensation);
+    @NotNull Builder industry(String industry);
+    @NotNull Builder jobLocation(Place place);
+    @NotNull Builder jobLocation(Place.Builder place);
+    @NotNull Builder occupationalCategory(String occupationalCategory);
+    @NotNull Builder qualifications(String qualifications);
+    @NotNull Builder responsibilities(String responsibilities);
+    @NotNull Builder salaryCurrency(String salaryCurrency);
+    @NotNull Builder skills(String skills);
+    @NotNull Builder specialCommitments(String specialCommitments);
+    @NotNull Builder title(String title);
+    @NotNull Builder workHours(String workHours);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected JobPosting(NumberOrPriceSpecification baseSalary, String jobBenefits, java.util.Date datePosted, String educationRequirements, String employmentType, String experienceRequirements, Organization hiringOrganization, String incentiveCompensation, String industry, Place jobLocation, String occupationalCategory, String qualifications, String responsibilities, String salaryCurrency, String skills, String specialCommitments, String title, String workHours, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

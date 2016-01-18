@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Data derived from multiple randomized clinical trials or meta-analyses.
  */
@@ -25,7 +29,7 @@ public class EvidenceLevelA {
   /**
    * Builder for {@link EvidenceLevelA}
    */
-  public static final class EvidenceLevelAThingBuilder implements Builder {
+  static final class EvidenceLevelAThingBuilder implements Builder {
     /**
      * Creates new {@link EvidenceLevelA} instance.
      */
@@ -34,7 +38,7 @@ public class EvidenceLevelA {
     }
   }
   public interface Builder extends ThingBuilder<EvidenceLevelA> {
-  
+    
   }
 
   protected EvidenceLevelA() {

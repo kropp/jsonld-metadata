@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A trial that takes place at a single center.
  */
@@ -25,7 +29,7 @@ public class SingleCenterTrial {
   /**
    * Builder for {@link SingleCenterTrial}
    */
-  public static final class SingleCenterTrialThingBuilder implements Builder {
+  static final class SingleCenterTrialThingBuilder implements Builder {
     /**
      * Creates new {@link SingleCenterTrial} instance.
      */
@@ -34,7 +38,7 @@ public class SingleCenterTrial {
     }
   }
   public interface Builder extends ThingBuilder<SingleCenterTrial> {
-  
+    
   }
 
   protected SingleCenterTrial() {

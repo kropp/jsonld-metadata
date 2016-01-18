@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The W3C <a href="http://www.w3.org/community/schemabibex/">Schema Bib Extend</a> (BibEx) group led the work to improve schema.org for bibliographic information, including terms for periodicals, articles and multi-volume works. The design was inspired in places (e.g. pageStart, pageEnd, pagination) by the <a href="http://bibliontology.com/">Bibliographic Ontology</a>, 'bibo'.
  */
@@ -25,7 +29,7 @@ public class BibExTerm {
   /**
    * Builder for {@link BibExTerm}
    */
-  public static final class BibExTermThingBuilder implements Builder {
+  static final class BibExTermThingBuilder implements Builder {
     /**
      * Creates new {@link BibExTerm} instance.
      */
@@ -34,7 +38,7 @@ public class BibExTerm {
     }
   }
   public interface Builder extends ThingBuilder<BibExTerm> {
-  
+    
   }
 
   protected BibExTerm() {

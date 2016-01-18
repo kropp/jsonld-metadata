@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to treating diseases, injuries and deformities by manual and instrumental means.
  */
@@ -25,7 +29,7 @@ public class Surgical {
   /**
    * Builder for {@link Surgical}
    */
-  public static final class SurgicalThingBuilder implements Builder {
+  static final class SurgicalThingBuilder implements Builder {
     /**
      * Creates new {@link Surgical} instance.
      */
@@ -34,7 +38,7 @@ public class Surgical {
     }
   }
   public interface Builder extends ThingBuilder<Surgical> {
-  
+    
   }
 
   protected Surgical() {

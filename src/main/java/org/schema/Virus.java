@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Pathogenic virus that causes viral infection.
  */
@@ -25,7 +29,7 @@ public class Virus {
   /**
    * Builder for {@link Virus}
    */
-  public static final class VirusThingBuilder implements Builder {
+  static final class VirusThingBuilder implements Builder {
     /**
      * Creates new {@link Virus} instance.
      */
@@ -34,7 +38,7 @@ public class Virus {
     }
   }
   public interface Builder extends ThingBuilder<Virus> {
-  
+    
   }
 
   protected Virus() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A parking map.
  */
@@ -25,7 +29,7 @@ public class ParkingMap {
   /**
    * Builder for {@link ParkingMap}
    */
-  public static final class ParkingMapThingBuilder implements Builder {
+  static final class ParkingMapThingBuilder implements Builder {
     /**
      * Creates new {@link ParkingMap} instance.
      */
@@ -34,7 +38,7 @@ public class ParkingMap {
     }
   }
   public interface Builder extends ThingBuilder<ParkingMap> {
-  
+    
   }
 
   protected ParkingMap() {

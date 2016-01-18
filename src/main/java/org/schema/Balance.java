@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Physical activity that is engaged to help maintain posture and balance.
  */
@@ -25,7 +29,7 @@ public class Balance {
   /**
    * Builder for {@link Balance}
    */
-  public static final class BalanceThingBuilder implements Builder {
+  static final class BalanceThingBuilder implements Builder {
     /**
      * Creates new {@link Balance} instance.
      */
@@ -34,7 +38,7 @@ public class Balance {
     }
   }
   public interface Builder extends ThingBuilder<Balance> {
-  
+    
   }
 
   protected Balance() {

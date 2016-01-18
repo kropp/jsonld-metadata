@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Pathogenic bacteria that cause bacterial infection.
  */
@@ -25,7 +29,7 @@ public class Bacteria {
   /**
    * Builder for {@link Bacteria}
    */
-  public static final class BacteriaThingBuilder implements Builder {
+  static final class BacteriaThingBuilder implements Builder {
     /**
      * Creates new {@link Bacteria} instance.
      */
@@ -34,7 +38,7 @@ public class Bacteria {
     }
   }
   public interface Builder extends ThingBuilder<Bacteria> {
-  
+    
   }
 
   protected Bacteria() {

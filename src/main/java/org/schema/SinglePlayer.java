@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Play mode: SinglePlayer. Which is played by a lone player.
  */
@@ -25,7 +29,7 @@ public class SinglePlayer {
   /**
    * Builder for {@link SinglePlayer}
    */
-  public static final class SinglePlayerThingBuilder implements Builder {
+  static final class SinglePlayerThingBuilder implements Builder {
     /**
      * Creates new {@link SinglePlayer} instance.
      */
@@ -34,7 +38,7 @@ public class SinglePlayer {
     }
   }
   public interface Builder extends ThingBuilder<SinglePlayer> {
-  
+    
   }
 
   protected SinglePlayer() {

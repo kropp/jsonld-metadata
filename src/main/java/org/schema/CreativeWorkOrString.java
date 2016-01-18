@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class CreativeWorkOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myCreativeWork != null) return myCreativeWork;
     if (myString != null) return myString;
@@ -28,9 +31,9 @@ class CreativeWorkOrString {
   }
   public void setCreativeWork(CreativeWork creativeWork) { clear(); myCreativeWork = creativeWork; }
   public CreativeWork getCreativeWork() { return myCreativeWork; }
-  private CreativeWork myCreativeWork;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private CreativeWork myCreativeWork;
   private String myString;
   private void clear() {
     myCreativeWork = null;

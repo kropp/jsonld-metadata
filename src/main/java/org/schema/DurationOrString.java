@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class DurationOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myDuration != null) return myDuration;
     if (myString != null) return myString;
@@ -28,9 +31,9 @@ class DurationOrString {
   }
   public void setDuration(Duration duration) { clear(); myDuration = duration; }
   public Duration getDuration() { return myDuration; }
-  private Duration myDuration;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private Duration myDuration;
   private String myString;
   private void clear() {
     myDuration = null;

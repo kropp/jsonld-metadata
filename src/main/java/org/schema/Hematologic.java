@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to diagnosis and treatment of disorders of blood and blood producing organs.
  */
@@ -25,7 +29,7 @@ public class Hematologic {
   /**
    * Builder for {@link Hematologic}
    */
-  public static final class HematologicThingBuilder implements Builder {
+  static final class HematologicThingBuilder implements Builder {
     /**
      * Creates new {@link Hematologic} instance.
      */
@@ -34,7 +38,7 @@ public class Hematologic {
     }
   }
   public interface Builder extends ThingBuilder<Hematologic> {
-  
+    
   }
 
   protected Hematologic() {

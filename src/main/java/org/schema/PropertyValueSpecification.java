@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A Property value specification.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass
@@ -86,7 +90,7 @@ public class PropertyValueSpecification extends Intangible {
   /**
    * Builder for {@link PropertyValueSpecification}
    */
-  public static final class PropertyValueSpecificationThingBuilder implements Builder {
+  static final class PropertyValueSpecificationThingBuilder implements Builder {
     /**
      * Creates new {@link PropertyValueSpecification} instance.
      */
@@ -96,15 +100,15 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The lower value of some characteristic or property.
      */
-    public Builder minValue(Integer integer) {
+    @NotNull public Builder minValue(int minValue) {
       if (this.minValue == null) this.minValue = new Number();
-      this.minValue.setInteger(integer);
+      this.minValue.setInt(minValue);
       return this;
     }
     /**
      * The lower value of some characteristic or property.
      */
-    public Builder minValue(Long minValue) {
+    @NotNull public Builder minValue(long minValue) {
       if (this.minValue == null) this.minValue = new Number();
       this.minValue.setLong(minValue);
       return this;
@@ -112,7 +116,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The lower value of some characteristic or property.
      */
-    public Builder minValue(Float minValue) {
+    @NotNull public Builder minValue(float minValue) {
       if (this.minValue == null) this.minValue = new Number();
       this.minValue.setFloat(minValue);
       return this;
@@ -120,7 +124,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The lower value of some characteristic or property.
      */
-    public Builder minValue(Double minValue) {
+    @NotNull public Builder minValue(double minValue) {
       if (this.minValue == null) this.minValue = new Number();
       this.minValue.setDouble(minValue);
       return this;
@@ -128,7 +132,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The lower value of some characteristic or property.
      */
-    public Builder minValue(String minValue) {
+    @NotNull public Builder minValue(String minValue) {
       if (this.minValue == null) this.minValue = new Number();
       this.minValue.setString(minValue);
       return this;
@@ -136,21 +140,21 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * Indicates the name of the PropertyValueSpecification to be used in URL templates and form encoding in a manner analogous to HTML's input@name.
      */
-    public Builder valueName(String valueName) {
+    @NotNull public Builder valueName(String valueName) {
       this.valueName = valueName;
       return this;
     }
     /**
      * Whether the property must be filled in to complete the action.  Default is false.
      */
-    public Builder valueRequired(Boolean valueRequired) {
+    @NotNull public Builder valueRequired(Boolean valueRequired) {
       this.valueRequired = valueRequired;
       return this;
     }
     /**
      * The default value of the input.  For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values.
      */
-    public Builder defaultValue(String defaultValue) {
+    @NotNull public Builder defaultValue(String defaultValue) {
       if (this.defaultValue == null) this.defaultValue = new StringOrThing();
       this.defaultValue.setString(defaultValue);
       return this;
@@ -158,7 +162,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The default value of the input.  For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values.
      */
-    public Builder defaultValue(Thing thing) {
+    @NotNull public Builder defaultValue(Thing thing) {
       if (this.defaultValue == null) this.defaultValue = new StringOrThing();
       this.defaultValue.setThing(thing);
       return this;
@@ -166,35 +170,35 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The default value of the input.  For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values.
      */
-    public Builder defaultValue(Thing.Builder thing) {
+    @NotNull public Builder defaultValue(Thing.Builder thing) {
       return this.defaultValue(thing.build());
     }
     /**
      * Whether or not a property is mutable.  Default is false. Specifying this for a property that also has a value makes it act similar to a "hidden" input in an HTML form.
      */
-    public Builder readonlyValue(Boolean readonlyValue) {
+    @NotNull public Builder readonlyValue(Boolean readonlyValue) {
       this.readonlyValue = readonlyValue;
       return this;
     }
     /**
      * Whether multiple values are allowed for the property.  Default is false.
      */
-    public Builder multipleValues(Boolean multipleValues) {
+    @NotNull public Builder multipleValues(Boolean multipleValues) {
       this.multipleValues = multipleValues;
       return this;
     }
     /**
      * Specifies the minimum allowed range for number of characters in a literal value.
      */
-    public Builder valueMinLength(Integer integer) {
+    @NotNull public Builder valueMinLength(int valueMinLength) {
       if (this.valueMinLength == null) this.valueMinLength = new Number();
-      this.valueMinLength.setInteger(integer);
+      this.valueMinLength.setInt(valueMinLength);
       return this;
     }
     /**
      * Specifies the minimum allowed range for number of characters in a literal value.
      */
-    public Builder valueMinLength(Long valueMinLength) {
+    @NotNull public Builder valueMinLength(long valueMinLength) {
       if (this.valueMinLength == null) this.valueMinLength = new Number();
       this.valueMinLength.setLong(valueMinLength);
       return this;
@@ -202,7 +206,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * Specifies the minimum allowed range for number of characters in a literal value.
      */
-    public Builder valueMinLength(Float valueMinLength) {
+    @NotNull public Builder valueMinLength(float valueMinLength) {
       if (this.valueMinLength == null) this.valueMinLength = new Number();
       this.valueMinLength.setFloat(valueMinLength);
       return this;
@@ -210,7 +214,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * Specifies the minimum allowed range for number of characters in a literal value.
      */
-    public Builder valueMinLength(Double valueMinLength) {
+    @NotNull public Builder valueMinLength(double valueMinLength) {
       if (this.valueMinLength == null) this.valueMinLength = new Number();
       this.valueMinLength.setDouble(valueMinLength);
       return this;
@@ -218,7 +222,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * Specifies the minimum allowed range for number of characters in a literal value.
      */
-    public Builder valueMinLength(String valueMinLength) {
+    @NotNull public Builder valueMinLength(String valueMinLength) {
       if (this.valueMinLength == null) this.valueMinLength = new Number();
       this.valueMinLength.setString(valueMinLength);
       return this;
@@ -226,15 +230,15 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * Specifies the allowed range for number of characters in a literal value.
      */
-    public Builder valueMaxLength(Integer integer) {
+    @NotNull public Builder valueMaxLength(int valueMaxLength) {
       if (this.valueMaxLength == null) this.valueMaxLength = new Number();
-      this.valueMaxLength.setInteger(integer);
+      this.valueMaxLength.setInt(valueMaxLength);
       return this;
     }
     /**
      * Specifies the allowed range for number of characters in a literal value.
      */
-    public Builder valueMaxLength(Long valueMaxLength) {
+    @NotNull public Builder valueMaxLength(long valueMaxLength) {
       if (this.valueMaxLength == null) this.valueMaxLength = new Number();
       this.valueMaxLength.setLong(valueMaxLength);
       return this;
@@ -242,7 +246,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * Specifies the allowed range for number of characters in a literal value.
      */
-    public Builder valueMaxLength(Float valueMaxLength) {
+    @NotNull public Builder valueMaxLength(float valueMaxLength) {
       if (this.valueMaxLength == null) this.valueMaxLength = new Number();
       this.valueMaxLength.setFloat(valueMaxLength);
       return this;
@@ -250,7 +254,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * Specifies the allowed range for number of characters in a literal value.
      */
-    public Builder valueMaxLength(Double valueMaxLength) {
+    @NotNull public Builder valueMaxLength(double valueMaxLength) {
       if (this.valueMaxLength == null) this.valueMaxLength = new Number();
       this.valueMaxLength.setDouble(valueMaxLength);
       return this;
@@ -258,7 +262,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * Specifies the allowed range for number of characters in a literal value.
      */
-    public Builder valueMaxLength(String valueMaxLength) {
+    @NotNull public Builder valueMaxLength(String valueMaxLength) {
       if (this.valueMaxLength == null) this.valueMaxLength = new Number();
       this.valueMaxLength.setString(valueMaxLength);
       return this;
@@ -266,22 +270,22 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * Specifies a regular expression for testing literal values according to the HTML spec.
      */
-    public Builder valuePattern(String valuePattern) {
+    @NotNull public Builder valuePattern(String valuePattern) {
       this.valuePattern = valuePattern;
       return this;
     }
     /**
      * The stepValue attribute indicates the granularity that is expected (and required) of the value in a PropertyValueSpecification.
      */
-    public Builder stepValue(Integer integer) {
+    @NotNull public Builder stepValue(int stepValue) {
       if (this.stepValue == null) this.stepValue = new Number();
-      this.stepValue.setInteger(integer);
+      this.stepValue.setInt(stepValue);
       return this;
     }
     /**
      * The stepValue attribute indicates the granularity that is expected (and required) of the value in a PropertyValueSpecification.
      */
-    public Builder stepValue(Long stepValue) {
+    @NotNull public Builder stepValue(long stepValue) {
       if (this.stepValue == null) this.stepValue = new Number();
       this.stepValue.setLong(stepValue);
       return this;
@@ -289,7 +293,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The stepValue attribute indicates the granularity that is expected (and required) of the value in a PropertyValueSpecification.
      */
-    public Builder stepValue(Float stepValue) {
+    @NotNull public Builder stepValue(float stepValue) {
       if (this.stepValue == null) this.stepValue = new Number();
       this.stepValue.setFloat(stepValue);
       return this;
@@ -297,7 +301,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The stepValue attribute indicates the granularity that is expected (and required) of the value in a PropertyValueSpecification.
      */
-    public Builder stepValue(Double stepValue) {
+    @NotNull public Builder stepValue(double stepValue) {
       if (this.stepValue == null) this.stepValue = new Number();
       this.stepValue.setDouble(stepValue);
       return this;
@@ -305,7 +309,7 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The stepValue attribute indicates the granularity that is expected (and required) of the value in a PropertyValueSpecification.
      */
-    public Builder stepValue(String stepValue) {
+    @NotNull public Builder stepValue(String stepValue) {
       if (this.stepValue == null) this.stepValue = new Number();
       this.stepValue.setString(stepValue);
       return this;
@@ -313,21 +317,21 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -361,7 +365,7 @@ public class PropertyValueSpecification extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -396,7 +400,7 @@ public class PropertyValueSpecification extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -429,7 +433,7 @@ public class PropertyValueSpecification extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -437,38 +441,38 @@ public class PropertyValueSpecification extends Intangible {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -496,46 +500,46 @@ public class PropertyValueSpecification extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<PropertyValueSpecification> {
-  Builder minValue(Integer integer);
-  Builder minValue(Long minValue);
-  Builder minValue(Float minValue);
-  Builder minValue(Double minValue);
-  Builder minValue(String minValue);
-  Builder valueName(String valueName);
-  Builder valueRequired(Boolean valueRequired);
-  Builder defaultValue(String defaultValue);
-  Builder defaultValue(Thing thing);
-  Builder defaultValue(Thing.Builder thing);
-  Builder readonlyValue(Boolean readonlyValue);
-  Builder multipleValues(Boolean multipleValues);
-  Builder valueMinLength(Integer integer);
-  Builder valueMinLength(Long valueMinLength);
-  Builder valueMinLength(Float valueMinLength);
-  Builder valueMinLength(Double valueMinLength);
-  Builder valueMinLength(String valueMinLength);
-  Builder valueMaxLength(Integer integer);
-  Builder valueMaxLength(Long valueMaxLength);
-  Builder valueMaxLength(Float valueMaxLength);
-  Builder valueMaxLength(Double valueMaxLength);
-  Builder valueMaxLength(String valueMaxLength);
-  Builder valuePattern(String valuePattern);
-  Builder stepValue(Integer integer);
-  Builder stepValue(Long stepValue);
-  Builder stepValue(Float stepValue);
-  Builder stepValue(Double stepValue);
-  Builder stepValue(String stepValue);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder minValue(int minValue);
+    @NotNull Builder minValue(long minValue);
+    @NotNull Builder minValue(float minValue);
+    @NotNull Builder minValue(double minValue);
+    @NotNull Builder minValue(String minValue);
+    @NotNull Builder valueName(String valueName);
+    @NotNull Builder valueRequired(Boolean valueRequired);
+    @NotNull Builder defaultValue(String defaultValue);
+    @NotNull Builder defaultValue(Thing thing);
+    @NotNull Builder defaultValue(Thing.Builder thing);
+    @NotNull Builder readonlyValue(Boolean readonlyValue);
+    @NotNull Builder multipleValues(Boolean multipleValues);
+    @NotNull Builder valueMinLength(int valueMinLength);
+    @NotNull Builder valueMinLength(long valueMinLength);
+    @NotNull Builder valueMinLength(float valueMinLength);
+    @NotNull Builder valueMinLength(double valueMinLength);
+    @NotNull Builder valueMinLength(String valueMinLength);
+    @NotNull Builder valueMaxLength(int valueMaxLength);
+    @NotNull Builder valueMaxLength(long valueMaxLength);
+    @NotNull Builder valueMaxLength(float valueMaxLength);
+    @NotNull Builder valueMaxLength(double valueMaxLength);
+    @NotNull Builder valueMaxLength(String valueMaxLength);
+    @NotNull Builder valuePattern(String valuePattern);
+    @NotNull Builder stepValue(int stepValue);
+    @NotNull Builder stepValue(long stepValue);
+    @NotNull Builder stepValue(float stepValue);
+    @NotNull Builder stepValue(double stepValue);
+    @NotNull Builder stepValue(String stepValue);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected PropertyValueSpecification(Number minValue, String valueName, Boolean valueRequired, StringOrThing defaultValue, Boolean readonlyValue, Boolean multipleValues, Number valueMinLength, Number valueMaxLength, String valuePattern, Number stepValue, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

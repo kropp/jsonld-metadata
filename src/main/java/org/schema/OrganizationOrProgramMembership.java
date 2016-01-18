@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class OrganizationOrProgramMembership {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myOrganization != null) return myOrganization;
     if (myProgramMembership != null) return myProgramMembership;
@@ -33,9 +36,9 @@ class OrganizationOrProgramMembership {
   }
   public void setOrganization(Organization organization) { clear(); myOrganization = organization; }
   public Organization getOrganization() { return myOrganization; }
-  private Organization myOrganization;
   public void setProgramMembership(ProgramMembership programMembership) { clear(); myProgramMembership = programMembership; }
   public ProgramMembership getProgramMembership() { return myProgramMembership; }
+  private Organization myOrganization;
   private ProgramMembership myProgramMembership;
   private void clear() {
     myOrganization = null;

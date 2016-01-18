@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Available over the counter.
  */
@@ -25,7 +29,7 @@ public class OTC {
   /**
    * Builder for {@link OTC}
    */
-  public static final class OTCThingBuilder implements Builder {
+  static final class OTCThingBuilder implements Builder {
     /**
      * Creates new {@link OTC} instance.
      */
@@ -34,7 +38,7 @@ public class OTC {
     }
   }
   public interface Builder extends ThingBuilder<OTC> {
-  
+    
   }
 
   protected OTC() {

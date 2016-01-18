@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * OrderStatus representing that payment is due on an order.
  */
@@ -25,7 +29,7 @@ public class OrderPaymentDue {
   /**
    * Builder for {@link OrderPaymentDue}
    */
-  public static final class OrderPaymentDueThingBuilder implements Builder {
+  static final class OrderPaymentDueThingBuilder implements Builder {
     /**
      * Creates new {@link OrderPaymentDue} instance.
      */
@@ -34,7 +38,7 @@ public class OrderPaymentDue {
     }
   }
   public interface Builder extends ThingBuilder<OrderPaymentDue> {
-  
+    
   }
 
   protected OrderPaymentDue() {

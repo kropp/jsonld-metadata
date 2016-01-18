@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Enrolling participants by invitation only.
  */
@@ -25,7 +29,7 @@ public class EnrollingByInvitation {
   /**
    * Builder for {@link EnrollingByInvitation}
    */
-  public static final class EnrollingByInvitationThingBuilder implements Builder {
+  static final class EnrollingByInvitationThingBuilder implements Builder {
     /**
      * Creates new {@link EnrollingByInvitation} instance.
      */
@@ -34,7 +38,7 @@ public class EnrollingByInvitation {
     }
   }
   public interface Builder extends ThingBuilder<EnrollingByInvitation> {
-  
+    
   }
 
   protected EnrollingByInvitation() {

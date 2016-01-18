@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Ear.
  */
@@ -25,7 +29,7 @@ public class Ear {
   /**
    * Builder for {@link Ear}
    */
-  public static final class EarThingBuilder implements Builder {
+  static final class EarThingBuilder implements Builder {
     /**
      * Creates new {@link Ear} instance.
      */
@@ -34,7 +38,7 @@ public class Ear {
     }
   }
   public interface Builder extends ThingBuilder<Ear> {
-  
+    
   }
 
   protected Ear() {

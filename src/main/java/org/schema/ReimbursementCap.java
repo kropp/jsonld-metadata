@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The drug's cost represents the maximum reimbursement paid by an insurer for the drug.
  */
@@ -25,7 +29,7 @@ public class ReimbursementCap {
   /**
    * Builder for {@link ReimbursementCap}
    */
-  public static final class ReimbursementCapThingBuilder implements Builder {
+  static final class ReimbursementCapThingBuilder implements Builder {
     /**
      * Creates new {@link ReimbursementCap} instance.
      */
@@ -34,7 +38,7 @@ public class ReimbursementCap {
     }
   }
   public interface Builder extends ThingBuilder<ReimbursementCap> {
-  
+    
   }
 
   protected ReimbursementCap() {

@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class ImageObjectOrPhotograph {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myImageObject != null) return myImageObject;
     if (myPhotograph != null) return myPhotograph;
@@ -33,9 +36,9 @@ class ImageObjectOrPhotograph {
   }
   public void setImageObject(ImageObject imageObject) { clear(); myImageObject = imageObject; }
   public ImageObject getImageObject() { return myImageObject; }
-  private ImageObject myImageObject;
   public void setPhotograph(Photograph photograph) { clear(); myPhotograph = photograph; }
   public Photograph getPhotograph() { return myPhotograph; }
+  private ImageObject myImageObject;
   private Photograph myPhotograph;
   private void clear() {
     myImageObject = null;

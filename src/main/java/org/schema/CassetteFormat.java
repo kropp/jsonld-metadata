@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * CassetteFormat.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -26,7 +30,7 @@ public class CassetteFormat {
   /**
    * Builder for {@link CassetteFormat}
    */
-  public static final class CassetteFormatThingBuilder implements Builder {
+  static final class CassetteFormatThingBuilder implements Builder {
     /**
      * Creates new {@link CassetteFormat} instance.
      */
@@ -35,7 +39,7 @@ public class CassetteFormat {
     }
   }
   public interface Builder extends ThingBuilder<CassetteFormat> {
-  
+    
   }
 
   protected CassetteFormat() {

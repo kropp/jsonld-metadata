@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The act of notifying an event organizer as to whether you expect to attend the event.
  */
@@ -43,7 +47,7 @@ public class RsvpAction extends InformAction {
   /**
    * Builder for {@link RsvpAction}
    */
-  public static final class RsvpActionThingBuilder implements Builder {
+  static final class RsvpActionThingBuilder implements Builder {
     /**
      * Creates new {@link RsvpAction} instance.
      */
@@ -53,15 +57,15 @@ public class RsvpAction extends InformAction {
     /**
      * If responding yes, the number of guests who will attend in addition to the invitee.
      */
-    public Builder additionalNumberOfGuests(Integer integer) {
+    @NotNull public Builder additionalNumberOfGuests(int additionalNumberOfGuests) {
       if (this.additionalNumberOfGuests == null) this.additionalNumberOfGuests = new Number();
-      this.additionalNumberOfGuests.setInteger(integer);
+      this.additionalNumberOfGuests.setInt(additionalNumberOfGuests);
       return this;
     }
     /**
      * If responding yes, the number of guests who will attend in addition to the invitee.
      */
-    public Builder additionalNumberOfGuests(Long additionalNumberOfGuests) {
+    @NotNull public Builder additionalNumberOfGuests(long additionalNumberOfGuests) {
       if (this.additionalNumberOfGuests == null) this.additionalNumberOfGuests = new Number();
       this.additionalNumberOfGuests.setLong(additionalNumberOfGuests);
       return this;
@@ -69,7 +73,7 @@ public class RsvpAction extends InformAction {
     /**
      * If responding yes, the number of guests who will attend in addition to the invitee.
      */
-    public Builder additionalNumberOfGuests(Float additionalNumberOfGuests) {
+    @NotNull public Builder additionalNumberOfGuests(float additionalNumberOfGuests) {
       if (this.additionalNumberOfGuests == null) this.additionalNumberOfGuests = new Number();
       this.additionalNumberOfGuests.setFloat(additionalNumberOfGuests);
       return this;
@@ -77,7 +81,7 @@ public class RsvpAction extends InformAction {
     /**
      * If responding yes, the number of guests who will attend in addition to the invitee.
      */
-    public Builder additionalNumberOfGuests(Double additionalNumberOfGuests) {
+    @NotNull public Builder additionalNumberOfGuests(double additionalNumberOfGuests) {
       if (this.additionalNumberOfGuests == null) this.additionalNumberOfGuests = new Number();
       this.additionalNumberOfGuests.setDouble(additionalNumberOfGuests);
       return this;
@@ -85,7 +89,7 @@ public class RsvpAction extends InformAction {
     /**
      * If responding yes, the number of guests who will attend in addition to the invitee.
      */
-    public Builder additionalNumberOfGuests(String additionalNumberOfGuests) {
+    @NotNull public Builder additionalNumberOfGuests(String additionalNumberOfGuests) {
       if (this.additionalNumberOfGuests == null) this.additionalNumberOfGuests = new Number();
       this.additionalNumberOfGuests.setString(additionalNumberOfGuests);
       return this;
@@ -93,59 +97,59 @@ public class RsvpAction extends InformAction {
     /**
      * The response (yes, no, maybe) to the RSVP.
      */
-    public Builder rsvpResponse(RsvpResponseType rsvpResponseType) {
+    @NotNull public Builder rsvpResponse(RsvpResponseType rsvpResponseType) {
       this.rsvpResponse = rsvpResponseType;
       return this;
     }
     /**
      * The response (yes, no, maybe) to the RSVP.
      */
-    public Builder rsvpResponse(RsvpResponseType.Builder rsvpResponseType) {
+    @NotNull public Builder rsvpResponse(RsvpResponseType.Builder rsvpResponseType) {
       return this.rsvpResponse(rsvpResponseType.build());
     }
     /**
      * Comments, typically from users.
      */
-    public Builder comment(Comment comment) {
+    @NotNull public Builder comment(Comment comment) {
       this.comment = comment;
       return this;
     }
     /**
      * Comments, typically from users.
      */
-    public Builder comment(Comment.Builder comment) {
+    @NotNull public Builder comment(Comment.Builder comment) {
       return this.comment(comment.build());
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
-    public Builder event(Event event) {
+    @NotNull public Builder event(Event event) {
       this.event = event;
       return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
-    public Builder event(Event.Builder event) {
+    @NotNull public Builder event(Event.Builder event) {
       return this.event(event.build());
     }
     /**
      * The subject matter of the content.
      */
-    public Builder about(Thing thing) {
+    @NotNull public Builder about(Thing thing) {
       this.about = thing;
       return this;
     }
     /**
      * The subject matter of the content.
      */
-    public Builder about(Thing.Builder thing) {
+    @NotNull public Builder about(Thing.Builder thing) {
       return this.about(thing.build());
     }
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
-    public Builder inLanguage(Language language) {
+    @NotNull public Builder inLanguage(Language language) {
       if (this.inLanguage == null) this.inLanguage = new LanguageOrString();
       this.inLanguage.setLanguage(language);
       return this;
@@ -153,13 +157,13 @@ public class RsvpAction extends InformAction {
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
-    public Builder inLanguage(Language.Builder language) {
+    @NotNull public Builder inLanguage(Language.Builder language) {
       return this.inLanguage(language.build());
     }
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
-    public Builder inLanguage(String inLanguage) {
+    @NotNull public Builder inLanguage(String inLanguage) {
       if (this.inLanguage == null) this.inLanguage = new LanguageOrString();
       this.inLanguage.setString(inLanguage);
       return this;
@@ -167,7 +171,7 @@ public class RsvpAction extends InformAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Audience audience) {
+    @NotNull public Builder recipient(Audience audience) {
       if (this.recipient == null) this.recipient = new AudienceOrOrganizationOrPerson();
       this.recipient.setAudience(audience);
       return this;
@@ -175,13 +179,13 @@ public class RsvpAction extends InformAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Audience.Builder audience) {
+    @NotNull public Builder recipient(Audience.Builder audience) {
       return this.recipient(audience.build());
     }
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Organization organization) {
+    @NotNull public Builder recipient(Organization organization) {
       if (this.recipient == null) this.recipient = new AudienceOrOrganizationOrPerson();
       this.recipient.setOrganization(organization);
       return this;
@@ -189,13 +193,13 @@ public class RsvpAction extends InformAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Organization.Builder organization) {
+    @NotNull public Builder recipient(Organization.Builder organization) {
       return this.recipient(organization.build());
     }
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Person person) {
+    @NotNull public Builder recipient(Person person) {
       if (this.recipient == null) this.recipient = new AudienceOrOrganizationOrPerson();
       this.recipient.setPerson(person);
       return this;
@@ -203,13 +207,13 @@ public class RsvpAction extends InformAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Person.Builder person) {
+    @NotNull public Builder recipient(Person.Builder person) {
       return this.recipient(person.build());
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Organization organization) {
+    @NotNull public Builder agent(Organization organization) {
       if (this.agent == null) this.agent = new OrganizationOrPerson();
       this.agent.setOrganization(organization);
       return this;
@@ -217,13 +221,13 @@ public class RsvpAction extends InformAction {
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Organization.Builder organization) {
+    @NotNull public Builder agent(Organization.Builder organization) {
       return this.agent(organization.build());
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Person person) {
+    @NotNull public Builder agent(Person person) {
       if (this.agent == null) this.agent = new OrganizationOrPerson();
       this.agent.setPerson(person);
       return this;
@@ -231,7 +235,7 @@ public class RsvpAction extends InformAction {
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Person.Builder person) {
+    @NotNull public Builder agent(Person.Builder person) {
       return this.agent(person.build());
     }
     /**
@@ -239,7 +243,7 @@ public class RsvpAction extends InformAction {
 
 Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
-    public Builder endTime(java.util.Date date) {
+    @NotNull public Builder endTime(java.util.Date date) {
       this.endTime = date;
       return this;
     }
@@ -248,67 +252,67 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
 
 Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
-    public Builder startTime(java.util.Date date) {
+    @NotNull public Builder startTime(java.util.Date date) {
       this.startTime = date;
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
-    public Builder actionStatus(ActionStatusType actionStatusType) {
+    @NotNull public Builder actionStatus(ActionStatusType actionStatusType) {
       this.actionStatus = actionStatusType;
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
-    public Builder actionStatus(ActionStatusType.Builder actionStatusType) {
+    @NotNull public Builder actionStatus(ActionStatusType.Builder actionStatusType) {
       return this.actionStatus(actionStatusType.build());
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
-    public Builder error(Thing thing) {
+    @NotNull public Builder error(Thing thing) {
       this.error = thing;
       return this;
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
-    public Builder error(Thing.Builder thing) {
+    @NotNull public Builder error(Thing.Builder thing) {
       return this.error(thing.build());
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
-    public Builder target(EntryPoint entryPoint) {
+    @NotNull public Builder target(EntryPoint entryPoint) {
       this.target = entryPoint;
       return this;
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
-    public Builder target(EntryPoint.Builder entryPoint) {
+    @NotNull public Builder target(EntryPoint.Builder entryPoint) {
       return this.target(entryPoint.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -342,7 +346,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -377,7 +381,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -410,7 +414,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -418,38 +422,38 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -480,52 +484,52 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String id;
   }
   public interface Builder extends ThingBuilder<RsvpAction> {
-  Builder additionalNumberOfGuests(Integer integer);
-  Builder additionalNumberOfGuests(Long additionalNumberOfGuests);
-  Builder additionalNumberOfGuests(Float additionalNumberOfGuests);
-  Builder additionalNumberOfGuests(Double additionalNumberOfGuests);
-  Builder additionalNumberOfGuests(String additionalNumberOfGuests);
-  Builder rsvpResponse(RsvpResponseType rsvpResponseType);
-  Builder rsvpResponse(RsvpResponseType.Builder rsvpResponseType);
-  Builder comment(Comment comment);
-  Builder comment(Comment.Builder comment);
-  Builder event(Event event);
-  Builder event(Event.Builder event);
-  Builder about(Thing thing);
-  Builder about(Thing.Builder thing);
-  Builder inLanguage(Language language);
-  Builder inLanguage(Language.Builder language);
-  Builder inLanguage(String inLanguage);
-  Builder recipient(Audience audience);
-  Builder recipient(Audience.Builder audience);
-  Builder recipient(Organization organization);
-  Builder recipient(Organization.Builder organization);
-  Builder recipient(Person person);
-  Builder recipient(Person.Builder person);
-  Builder agent(Organization organization);
-  Builder agent(Organization.Builder organization);
-  Builder agent(Person person);
-  Builder agent(Person.Builder person);
-  Builder endTime(java.util.Date date);
-  Builder startTime(java.util.Date date);
-  Builder actionStatus(ActionStatusType actionStatusType);
-  Builder actionStatus(ActionStatusType.Builder actionStatusType);
-  Builder error(Thing thing);
-  Builder error(Thing.Builder thing);
-  Builder target(EntryPoint entryPoint);
-  Builder target(EntryPoint.Builder entryPoint);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder additionalNumberOfGuests(int additionalNumberOfGuests);
+    @NotNull Builder additionalNumberOfGuests(long additionalNumberOfGuests);
+    @NotNull Builder additionalNumberOfGuests(float additionalNumberOfGuests);
+    @NotNull Builder additionalNumberOfGuests(double additionalNumberOfGuests);
+    @NotNull Builder additionalNumberOfGuests(String additionalNumberOfGuests);
+    @NotNull Builder rsvpResponse(RsvpResponseType rsvpResponseType);
+    @NotNull Builder rsvpResponse(RsvpResponseType.Builder rsvpResponseType);
+    @NotNull Builder comment(Comment comment);
+    @NotNull Builder comment(Comment.Builder comment);
+    @NotNull Builder event(Event event);
+    @NotNull Builder event(Event.Builder event);
+    @NotNull Builder about(Thing thing);
+    @NotNull Builder about(Thing.Builder thing);
+    @NotNull Builder inLanguage(Language language);
+    @NotNull Builder inLanguage(Language.Builder language);
+    @NotNull Builder inLanguage(String inLanguage);
+    @NotNull Builder recipient(Audience audience);
+    @NotNull Builder recipient(Audience.Builder audience);
+    @NotNull Builder recipient(Organization organization);
+    @NotNull Builder recipient(Organization.Builder organization);
+    @NotNull Builder recipient(Person person);
+    @NotNull Builder recipient(Person.Builder person);
+    @NotNull Builder agent(Organization organization);
+    @NotNull Builder agent(Organization.Builder organization);
+    @NotNull Builder agent(Person person);
+    @NotNull Builder agent(Person.Builder person);
+    @NotNull Builder endTime(java.util.Date date);
+    @NotNull Builder startTime(java.util.Date date);
+    @NotNull Builder actionStatus(ActionStatusType actionStatusType);
+    @NotNull Builder actionStatus(ActionStatusType.Builder actionStatusType);
+    @NotNull Builder error(Thing thing);
+    @NotNull Builder error(Thing.Builder thing);
+    @NotNull Builder target(EntryPoint entryPoint);
+    @NotNull Builder target(EntryPoint.Builder entryPoint);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected RsvpAction(Number additionalNumberOfGuests, RsvpResponseType rsvpResponse, Comment comment, Event event, Thing about, LanguageOrString inLanguage, AudienceOrOrganizationOrPerson recipient, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

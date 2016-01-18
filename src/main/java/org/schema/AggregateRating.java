@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The average rating based on multiple ratings or reviews.
  */
@@ -31,19 +35,19 @@ public class AggregateRating extends Rating {
   /**
    * The count of total number of ratings.
    */
-  public Integer getRatingCount() {
+  public int getRatingCount() {
     return myRatingCount;
   }
   /**
    * The count of total number of reviews.
    */
-  public Integer getReviewCount() {
+  public int getReviewCount() {
     return myReviewCount;
   }
   /**
    * Builder for {@link AggregateRating}
    */
-  public static final class AggregateRatingThingBuilder implements Builder {
+  static final class AggregateRatingThingBuilder implements Builder {
     /**
      * Creates new {@link AggregateRating} instance.
      */
@@ -53,34 +57,34 @@ public class AggregateRating extends Rating {
     /**
      * The item that is being reviewed/rated.
      */
-    public Builder itemReviewed(Thing thing) {
+    @NotNull public Builder itemReviewed(Thing thing) {
       this.itemReviewed = thing;
       return this;
     }
     /**
      * The item that is being reviewed/rated.
      */
-    public Builder itemReviewed(Thing.Builder thing) {
+    @NotNull public Builder itemReviewed(Thing.Builder thing) {
       return this.itemReviewed(thing.build());
     }
     /**
      * The count of total number of ratings.
      */
-    public Builder ratingCount(Integer integer) {
-      this.ratingCount = integer;
+    @NotNull public Builder ratingCount(int ratingCount) {
+      this.ratingCount = ratingCount;
       return this;
     }
     /**
      * The count of total number of reviews.
      */
-    public Builder reviewCount(Integer integer) {
-      this.reviewCount = integer;
+    @NotNull public Builder reviewCount(int reviewCount) {
+      this.reviewCount = reviewCount;
       return this;
     }
     /**
      * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
      */
-    public Builder bestRating(Number number) {
+    @NotNull public Builder bestRating(Number number) {
       if (this.bestRating == null) this.bestRating = new NumberOrString();
       this.bestRating.setNumber(number);
       return this;
@@ -88,7 +92,7 @@ public class AggregateRating extends Rating {
     /**
      * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
      */
-    public Builder bestRating(String bestRating) {
+    @NotNull public Builder bestRating(String bestRating) {
       if (this.bestRating == null) this.bestRating = new NumberOrString();
       this.bestRating.setString(bestRating);
       return this;
@@ -96,14 +100,14 @@ public class AggregateRating extends Rating {
     /**
      * The rating for the content.
      */
-    public Builder ratingValue(String ratingValue) {
+    @NotNull public Builder ratingValue(String ratingValue) {
       this.ratingValue = ratingValue;
       return this;
     }
     /**
      * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
      */
-    public Builder worstRating(Number number) {
+    @NotNull public Builder worstRating(Number number) {
       if (this.worstRating == null) this.worstRating = new NumberOrString();
       this.worstRating.setNumber(number);
       return this;
@@ -111,7 +115,7 @@ public class AggregateRating extends Rating {
     /**
      * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
      */
-    public Builder worstRating(String worstRating) {
+    @NotNull public Builder worstRating(String worstRating) {
       if (this.worstRating == null) this.worstRating = new NumberOrString();
       this.worstRating.setString(worstRating);
       return this;
@@ -119,21 +123,21 @@ public class AggregateRating extends Rating {
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -167,7 +171,7 @@ public class AggregateRating extends Rating {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -202,7 +206,7 @@ public class AggregateRating extends Rating {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -235,7 +239,7 @@ public class AggregateRating extends Rating {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -243,38 +247,38 @@ public class AggregateRating extends Rating {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -282,8 +286,8 @@ public class AggregateRating extends Rating {
       return id(Long.toString(id));
     }
     private Thing itemReviewed;
-    private Integer ratingCount;
-    private Integer reviewCount;
+    private int ratingCount;
+    private int reviewCount;
     private NumberOrString bestRating;
     private String ratingValue;
     private NumberOrString worstRating;
@@ -298,36 +302,36 @@ public class AggregateRating extends Rating {
     private String id;
   }
   public interface Builder extends ThingBuilder<AggregateRating> {
-  Builder itemReviewed(Thing thing);
-  Builder itemReviewed(Thing.Builder thing);
-  Builder ratingCount(Integer integer);
-  Builder reviewCount(Integer integer);
-  Builder bestRating(Number number);
-  Builder bestRating(String bestRating);
-  Builder ratingValue(String ratingValue);
-  Builder worstRating(Number number);
-  Builder worstRating(String worstRating);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder itemReviewed(Thing thing);
+    @NotNull Builder itemReviewed(Thing.Builder thing);
+    @NotNull Builder ratingCount(int ratingCount);
+    @NotNull Builder reviewCount(int reviewCount);
+    @NotNull Builder bestRating(Number number);
+    @NotNull Builder bestRating(String bestRating);
+    @NotNull Builder ratingValue(String ratingValue);
+    @NotNull Builder worstRating(Number number);
+    @NotNull Builder worstRating(String worstRating);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
-  protected AggregateRating(Thing itemReviewed, Integer ratingCount, Integer reviewCount, NumberOrString bestRating, String ratingValue, NumberOrString worstRating, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected AggregateRating(Thing itemReviewed, int ratingCount, int reviewCount, NumberOrString bestRating, String ratingValue, NumberOrString worstRating, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myItemReviewed = itemReviewed;
     myRatingCount = ratingCount;
     myReviewCount = reviewCount;
   }
   private Thing myItemReviewed;
-  private Integer myRatingCount;
-  private Integer myReviewCount;
+  private int myRatingCount;
+  private int myReviewCount;
 }

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The event has been rescheduled. The event's previousStartDate should be set to the old date and the startDate should be set to the event's new date. (If the event has been rescheduled multiple times, the previousStartDate property may be repeated).
  */
@@ -25,7 +29,7 @@ public class EventRescheduled {
   /**
    * Builder for {@link EventRescheduled}
    */
-  public static final class EventRescheduledThingBuilder implements Builder {
+  static final class EventRescheduledThingBuilder implements Builder {
     /**
      * Creates new {@link EventRescheduled} instance.
      */
@@ -34,7 +38,7 @@ public class EventRescheduled {
     }
   }
   public interface Builder extends ThingBuilder<EventRescheduled> {
-  
+    
   }
 
   protected EventRescheduled() {

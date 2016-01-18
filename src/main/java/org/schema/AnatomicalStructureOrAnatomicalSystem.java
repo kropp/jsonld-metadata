@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class AnatomicalStructureOrAnatomicalSystem {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myAnatomicalStructure != null) return myAnatomicalStructure;
     if (myAnatomicalSystem != null) return myAnatomicalSystem;
@@ -33,9 +36,9 @@ class AnatomicalStructureOrAnatomicalSystem {
   }
   public void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
   public AnatomicalStructure getAnatomicalStructure() { return myAnatomicalStructure; }
-  private AnatomicalStructure myAnatomicalStructure;
   public void setAnatomicalSystem(AnatomicalSystem anatomicalSystem) { clear(); myAnatomicalSystem = anatomicalSystem; }
   public AnatomicalSystem getAnatomicalSystem() { return myAnatomicalSystem; }
+  private AnatomicalStructure myAnatomicalStructure;
   private AnatomicalSystem myAnatomicalSystem;
   private void clear() {
     myAnatomicalStructure = null;

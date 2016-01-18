@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Game server status: OfflineTemporarily. Server is offline now but it can be online soon.
  */
@@ -25,7 +29,7 @@ public class OfflineTemporarily {
   /**
    * Builder for {@link OfflineTemporarily}
    */
-  public static final class OfflineTemporarilyThingBuilder implements Builder {
+  static final class OfflineTemporarilyThingBuilder implements Builder {
     /**
      * Creates new {@link OfflineTemporarily} instance.
      */
@@ -34,7 +38,7 @@ public class OfflineTemporarily {
     }
   }
   public interface Builder extends ThingBuilder<OfflineTemporarily> {
-  
+    
   }
 
   protected OfflineTemporarily() {

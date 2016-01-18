@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that deals with benign and malignant tumors, including the study of their development, diagnosis, treatment and prevention.
  */
@@ -25,7 +29,7 @@ public class Oncologic {
   /**
    * Builder for {@link Oncologic}
    */
-  public static final class OncologicThingBuilder implements Builder {
+  static final class OncologicThingBuilder implements Builder {
     /**
      * Creates new {@link Oncologic} instance.
      */
@@ -34,7 +38,7 @@ public class Oncologic {
     }
   }
   public interface Builder extends ThingBuilder<Oncologic> {
-  
+    
   }
 
   protected Oncologic() {

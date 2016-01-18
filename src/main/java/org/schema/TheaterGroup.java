@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A theater group or company, for example, the Royal Shakespeare Company or Druid Theatre.
  */
@@ -25,7 +29,7 @@ public class TheaterGroup extends PerformingGroup {
   /**
    * Builder for {@link TheaterGroup}
    */
-  public static final class TheaterGroupThingBuilder implements Builder {
+  static final class TheaterGroupThingBuilder implements Builder {
     /**
      * Creates new {@link TheaterGroup} instance.
      */
@@ -35,40 +39,40 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * Physical address of the item.
      */
-    public Builder address(PostalAddress postalAddress) {
+    @NotNull public Builder address(PostalAddress postalAddress) {
       this.address = postalAddress;
       return this;
     }
     /**
      * Physical address of the item.
      */
-    public Builder address(PostalAddress.Builder postalAddress) {
+    @NotNull public Builder address(PostalAddress.Builder postalAddress) {
       return this.address(postalAddress.build());
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    public Builder aggregateRating(AggregateRating aggregateRating) {
+    @NotNull public Builder aggregateRating(AggregateRating aggregateRating) {
       this.aggregateRating = aggregateRating;
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    public Builder aggregateRating(AggregateRating.Builder aggregateRating) {
+    @NotNull public Builder aggregateRating(AggregateRating.Builder aggregateRating) {
       return this.aggregateRating(aggregateRating.build());
     }
     /**
      * An award won by or for this item.
      */
-    public Builder award(String award) {
+    @NotNull public Builder award(String award) {
       this.award = award;
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    public Builder brand(Brand brand) {
+    @NotNull public Builder brand(Brand brand) {
       if (this.brand == null) this.brand = new BrandOrOrganization();
       this.brand.setBrand(brand);
       return this;
@@ -76,13 +80,13 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    public Builder brand(Brand.Builder brand) {
+    @NotNull public Builder brand(Brand.Builder brand) {
       return this.brand(brand.build());
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    public Builder brand(Organization organization) {
+    @NotNull public Builder brand(Organization organization) {
       if (this.brand == null) this.brand = new BrandOrOrganization();
       this.brand.setOrganization(organization);
       return this;
@@ -90,147 +94,147 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    public Builder brand(Organization.Builder organization) {
+    @NotNull public Builder brand(Organization.Builder organization) {
       return this.brand(organization.build());
     }
     /**
      * A contact point for a person or organization.
      */
-    public Builder contactPoint(ContactPoint contactPoint) {
+    @NotNull public Builder contactPoint(ContactPoint contactPoint) {
       this.contactPoint = contactPoint;
       return this;
     }
     /**
      * A contact point for a person or organization.
      */
-    public Builder contactPoint(ContactPoint.Builder contactPoint) {
+    @NotNull public Builder contactPoint(ContactPoint.Builder contactPoint) {
       return this.contactPoint(contactPoint.build());
     }
     /**
      * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
      */
-    public Builder department(Organization organization) {
+    @NotNull public Builder department(Organization organization) {
       this.department = organization;
       return this;
     }
     /**
      * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
      */
-    public Builder department(Organization.Builder organization) {
+    @NotNull public Builder department(Organization.Builder organization) {
       return this.department(organization.build());
     }
     /**
      * The Dun & Bradstreet DUNS number for identifying an organization or business person.
      */
-    public Builder duns(String duns) {
+    @NotNull public Builder duns(String duns) {
       this.duns = duns;
       return this;
     }
     /**
      * Email address.
      */
-    public Builder email(String email) {
+    @NotNull public Builder email(String email) {
       this.email = email;
       return this;
     }
     /**
      * Someone working for this organization.
      */
-    public Builder employee(Person person) {
+    @NotNull public Builder employee(Person person) {
       this.employee = person;
       return this;
     }
     /**
      * Someone working for this organization.
      */
-    public Builder employee(Person.Builder person) {
+    @NotNull public Builder employee(Person.Builder person) {
       return this.employee(person.build());
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
-    public Builder event(Event event) {
+    @NotNull public Builder event(Event event) {
       this.event = event;
       return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
-    public Builder event(Event.Builder event) {
+    @NotNull public Builder event(Event.Builder event) {
       return this.event(event.build());
     }
     /**
      * The fax number.
      */
-    public Builder faxNumber(String faxNumber) {
+    @NotNull public Builder faxNumber(String faxNumber) {
       this.faxNumber = faxNumber;
       return this;
     }
     /**
      * A person who founded this organization.
      */
-    public Builder founder(Person person) {
+    @NotNull public Builder founder(Person person) {
       this.founder = person;
       return this;
     }
     /**
      * A person who founded this organization.
      */
-    public Builder founder(Person.Builder person) {
+    @NotNull public Builder founder(Person.Builder person) {
       return this.founder(person.build());
     }
     /**
      * The date that this organization was dissolved.
      */
-    public Builder dissolutionDate(java.util.Date date) {
+    @NotNull public Builder dissolutionDate(java.util.Date date) {
       this.dissolutionDate = date;
       return this;
     }
     /**
      * The date that this organization was founded.
      */
-    public Builder foundingDate(java.util.Date date) {
+    @NotNull public Builder foundingDate(java.util.Date date) {
       this.foundingDate = date;
       return this;
     }
     /**
      * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
-    public Builder globalLocationNumber(String globalLocationNumber) {
+    @NotNull public Builder globalLocationNumber(String globalLocationNumber) {
       this.globalLocationNumber = globalLocationNumber;
       return this;
     }
     /**
      * Points-of-Sales operated by the organization or person.
      */
-    public Builder hasPOS(Place place) {
+    @NotNull public Builder hasPOS(Place place) {
       this.hasPOS = place;
       return this;
     }
     /**
      * Points-of-Sales operated by the organization or person.
      */
-    public Builder hasPOS(Place.Builder place) {
+    @NotNull public Builder hasPOS(Place.Builder place) {
       return this.hasPOS(place.build());
     }
     /**
      * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
      */
-    public Builder isicV4(String isicV4) {
+    @NotNull public Builder isicV4(String isicV4) {
       this.isicV4 = isicV4;
       return this;
     }
     /**
      * The official name of the organization, e.g. the registered company name.
      */
-    public Builder legalName(String legalName) {
+    @NotNull public Builder legalName(String legalName) {
       this.legalName = legalName;
       return this;
     }
     /**
      * An associated logo.
      */
-    public Builder logo(ImageObject imageObject) {
+    @NotNull public Builder logo(ImageObject imageObject) {
       if (this.logo == null) this.logo = new ImageObjectOrString();
       this.logo.setImageObject(imageObject);
       return this;
@@ -238,13 +242,13 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * An associated logo.
      */
-    public Builder logo(ImageObject.Builder imageObject) {
+    @NotNull public Builder logo(ImageObject.Builder imageObject) {
       return this.logo(imageObject.build());
     }
     /**
      * An associated logo.
      */
-    public Builder logo(String logo) {
+    @NotNull public Builder logo(String logo) {
       if (this.logo == null) this.logo = new ImageObjectOrString();
       this.logo.setString(logo);
       return this;
@@ -252,20 +256,20 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * A pointer to products or services offered by the organization or person.
      */
-    public Builder makesOffer(Offer offer) {
+    @NotNull public Builder makesOffer(Offer offer) {
       this.makesOffer = offer;
       return this;
     }
     /**
      * A pointer to products or services offered by the organization or person.
      */
-    public Builder makesOffer(Offer.Builder offer) {
+    @NotNull public Builder makesOffer(Offer.Builder offer) {
       return this.makesOffer(offer.build());
     }
     /**
      * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
-    public Builder member(Organization organization) {
+    @NotNull public Builder member(Organization organization) {
       if (this.member == null) this.member = new OrganizationOrPerson();
       this.member.setOrganization(organization);
       return this;
@@ -273,13 +277,13 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
-    public Builder member(Organization.Builder organization) {
+    @NotNull public Builder member(Organization.Builder organization) {
       return this.member(organization.build());
     }
     /**
      * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
-    public Builder member(Person person) {
+    @NotNull public Builder member(Person person) {
       if (this.member == null) this.member = new OrganizationOrPerson();
       this.member.setPerson(person);
       return this;
@@ -287,13 +291,13 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
-    public Builder member(Person.Builder person) {
+    @NotNull public Builder member(Person.Builder person) {
       return this.member(person.build());
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    public Builder memberOf(Organization organization) {
+    @NotNull public Builder memberOf(Organization organization) {
       if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
       this.memberOf.setOrganization(organization);
       return this;
@@ -301,13 +305,13 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    public Builder memberOf(Organization.Builder organization) {
+    @NotNull public Builder memberOf(Organization.Builder organization) {
       return this.memberOf(organization.build());
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    public Builder memberOf(ProgramMembership programMembership) {
+    @NotNull public Builder memberOf(ProgramMembership programMembership) {
       if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
       this.memberOf.setProgramMembership(programMembership);
       return this;
@@ -315,33 +319,33 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    public Builder memberOf(ProgramMembership.Builder programMembership) {
+    @NotNull public Builder memberOf(ProgramMembership.Builder programMembership) {
       return this.memberOf(programMembership.build());
     }
     /**
      * The North American Industry Classification System (NAICS) code for a particular organization or business person.
      */
-    public Builder naics(String naics) {
+    @NotNull public Builder naics(String naics) {
       this.naics = naics;
       return this;
     }
     /**
      * The number of employees in an organization e.g. business.
      */
-    public Builder numberOfEmployees(QuantitativeValue quantitativeValue) {
+    @NotNull public Builder numberOfEmployees(QuantitativeValue quantitativeValue) {
       this.numberOfEmployees = quantitativeValue;
       return this;
     }
     /**
      * The number of employees in an organization e.g. business.
      */
-    public Builder numberOfEmployees(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder numberOfEmployees(QuantitativeValue.Builder quantitativeValue) {
       return this.numberOfEmployees(quantitativeValue.build());
     }
     /**
      * Products owned by the organization or person.
      */
-    public Builder owns(OwnershipInfo ownershipInfo) {
+    @NotNull public Builder owns(OwnershipInfo ownershipInfo) {
       if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
       this.owns.setOwnershipInfo(ownershipInfo);
       return this;
@@ -349,13 +353,13 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * Products owned by the organization or person.
      */
-    public Builder owns(OwnershipInfo.Builder ownershipInfo) {
+    @NotNull public Builder owns(OwnershipInfo.Builder ownershipInfo) {
       return this.owns(ownershipInfo.build());
     }
     /**
      * Products owned by the organization or person.
      */
-    public Builder owns(Product product) {
+    @NotNull public Builder owns(Product product) {
       if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
       this.owns.setProduct(product);
       return this;
@@ -363,100 +367,100 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * Products owned by the organization or person.
      */
-    public Builder owns(Product.Builder product) {
+    @NotNull public Builder owns(Product.Builder product) {
       return this.owns(product.build());
     }
     /**
      * A review of the item.
      */
-    public Builder review(Review review) {
+    @NotNull public Builder review(Review review) {
       this.review = review;
       return this;
     }
     /**
      * A review of the item.
      */
-    public Builder review(Review.Builder review) {
+    @NotNull public Builder review(Review.Builder review) {
       return this.review(review.build());
     }
     /**
      * A pointer to products or services sought by the organization or person (demand).
      */
-    public Builder seeks(Demand demand) {
+    @NotNull public Builder seeks(Demand demand) {
       this.seeks = demand;
       return this;
     }
     /**
      * A pointer to products or services sought by the organization or person (demand).
      */
-    public Builder seeks(Demand.Builder demand) {
+    @NotNull public Builder seeks(Demand.Builder demand) {
       return this.seeks(demand.build());
     }
     /**
      * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
      */
-    public Builder subOrganization(Organization organization) {
+    @NotNull public Builder subOrganization(Organization organization) {
       this.subOrganization = organization;
       return this;
     }
     /**
      * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
      */
-    public Builder subOrganization(Organization.Builder organization) {
+    @NotNull public Builder subOrganization(Organization.Builder organization) {
       return this.subOrganization(organization.build());
     }
     /**
      * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
      */
-    public Builder taxID(String taxID) {
+    @NotNull public Builder taxID(String taxID) {
       this.taxID = taxID;
       return this;
     }
     /**
      * The telephone number.
      */
-    public Builder telephone(String telephone) {
+    @NotNull public Builder telephone(String telephone) {
       this.telephone = telephone;
       return this;
     }
     /**
      * The Value-added Tax ID of the organization or person.
      */
-    public Builder vatID(String vatID) {
+    @NotNull public Builder vatID(String vatID) {
       this.vatID = vatID;
       return this;
     }
     /**
      * The place where the Organization was founded.
      */
-    public Builder foundingLocation(Place place) {
+    @NotNull public Builder foundingLocation(Place place) {
       this.foundingLocation = place;
       return this;
     }
     /**
      * The place where the Organization was founded.
      */
-    public Builder foundingLocation(Place.Builder place) {
+    @NotNull public Builder foundingLocation(Place.Builder place) {
       return this.foundingLocation(place.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -490,7 +494,7 @@ public class TheaterGroup extends PerformingGroup {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -525,7 +529,7 @@ public class TheaterGroup extends PerformingGroup {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -558,7 +562,7 @@ public class TheaterGroup extends PerformingGroup {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -566,38 +570,38 @@ public class TheaterGroup extends PerformingGroup {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -647,78 +651,78 @@ public class TheaterGroup extends PerformingGroup {
     private String id;
   }
   public interface Builder extends ThingBuilder<TheaterGroup> {
-  Builder address(PostalAddress postalAddress);
-  Builder address(PostalAddress.Builder postalAddress);
-  Builder aggregateRating(AggregateRating aggregateRating);
-  Builder aggregateRating(AggregateRating.Builder aggregateRating);
-  Builder award(String award);
-  Builder brand(Brand brand);
-  Builder brand(Brand.Builder brand);
-  Builder brand(Organization organization);
-  Builder brand(Organization.Builder organization);
-  Builder contactPoint(ContactPoint contactPoint);
-  Builder contactPoint(ContactPoint.Builder contactPoint);
-  Builder department(Organization organization);
-  Builder department(Organization.Builder organization);
-  Builder duns(String duns);
-  Builder email(String email);
-  Builder employee(Person person);
-  Builder employee(Person.Builder person);
-  Builder event(Event event);
-  Builder event(Event.Builder event);
-  Builder faxNumber(String faxNumber);
-  Builder founder(Person person);
-  Builder founder(Person.Builder person);
-  Builder dissolutionDate(java.util.Date date);
-  Builder foundingDate(java.util.Date date);
-  Builder globalLocationNumber(String globalLocationNumber);
-  Builder hasPOS(Place place);
-  Builder hasPOS(Place.Builder place);
-  Builder isicV4(String isicV4);
-  Builder legalName(String legalName);
-  Builder logo(ImageObject imageObject);
-  Builder logo(ImageObject.Builder imageObject);
-  Builder logo(String logo);
-  Builder makesOffer(Offer offer);
-  Builder makesOffer(Offer.Builder offer);
-  Builder member(Organization organization);
-  Builder member(Organization.Builder organization);
-  Builder member(Person person);
-  Builder member(Person.Builder person);
-  Builder memberOf(Organization organization);
-  Builder memberOf(Organization.Builder organization);
-  Builder memberOf(ProgramMembership programMembership);
-  Builder memberOf(ProgramMembership.Builder programMembership);
-  Builder naics(String naics);
-  Builder numberOfEmployees(QuantitativeValue quantitativeValue);
-  Builder numberOfEmployees(QuantitativeValue.Builder quantitativeValue);
-  Builder owns(OwnershipInfo ownershipInfo);
-  Builder owns(OwnershipInfo.Builder ownershipInfo);
-  Builder owns(Product product);
-  Builder owns(Product.Builder product);
-  Builder review(Review review);
-  Builder review(Review.Builder review);
-  Builder seeks(Demand demand);
-  Builder seeks(Demand.Builder demand);
-  Builder subOrganization(Organization organization);
-  Builder subOrganization(Organization.Builder organization);
-  Builder taxID(String taxID);
-  Builder telephone(String telephone);
-  Builder vatID(String vatID);
-  Builder foundingLocation(Place place);
-  Builder foundingLocation(Place.Builder place);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder address(PostalAddress postalAddress);
+    @NotNull Builder address(PostalAddress.Builder postalAddress);
+    @NotNull Builder aggregateRating(AggregateRating aggregateRating);
+    @NotNull Builder aggregateRating(AggregateRating.Builder aggregateRating);
+    @NotNull Builder award(String award);
+    @NotNull Builder brand(Brand brand);
+    @NotNull Builder brand(Brand.Builder brand);
+    @NotNull Builder brand(Organization organization);
+    @NotNull Builder brand(Organization.Builder organization);
+    @NotNull Builder contactPoint(ContactPoint contactPoint);
+    @NotNull Builder contactPoint(ContactPoint.Builder contactPoint);
+    @NotNull Builder department(Organization organization);
+    @NotNull Builder department(Organization.Builder organization);
+    @NotNull Builder duns(String duns);
+    @NotNull Builder email(String email);
+    @NotNull Builder employee(Person person);
+    @NotNull Builder employee(Person.Builder person);
+    @NotNull Builder event(Event event);
+    @NotNull Builder event(Event.Builder event);
+    @NotNull Builder faxNumber(String faxNumber);
+    @NotNull Builder founder(Person person);
+    @NotNull Builder founder(Person.Builder person);
+    @NotNull Builder dissolutionDate(java.util.Date date);
+    @NotNull Builder foundingDate(java.util.Date date);
+    @NotNull Builder globalLocationNumber(String globalLocationNumber);
+    @NotNull Builder hasPOS(Place place);
+    @NotNull Builder hasPOS(Place.Builder place);
+    @NotNull Builder isicV4(String isicV4);
+    @NotNull Builder legalName(String legalName);
+    @NotNull Builder logo(ImageObject imageObject);
+    @NotNull Builder logo(ImageObject.Builder imageObject);
+    @NotNull Builder logo(String logo);
+    @NotNull Builder makesOffer(Offer offer);
+    @NotNull Builder makesOffer(Offer.Builder offer);
+    @NotNull Builder member(Organization organization);
+    @NotNull Builder member(Organization.Builder organization);
+    @NotNull Builder member(Person person);
+    @NotNull Builder member(Person.Builder person);
+    @NotNull Builder memberOf(Organization organization);
+    @NotNull Builder memberOf(Organization.Builder organization);
+    @NotNull Builder memberOf(ProgramMembership programMembership);
+    @NotNull Builder memberOf(ProgramMembership.Builder programMembership);
+    @NotNull Builder naics(String naics);
+    @NotNull Builder numberOfEmployees(QuantitativeValue quantitativeValue);
+    @NotNull Builder numberOfEmployees(QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder owns(OwnershipInfo ownershipInfo);
+    @NotNull Builder owns(OwnershipInfo.Builder ownershipInfo);
+    @NotNull Builder owns(Product product);
+    @NotNull Builder owns(Product.Builder product);
+    @NotNull Builder review(Review review);
+    @NotNull Builder review(Review.Builder review);
+    @NotNull Builder seeks(Demand demand);
+    @NotNull Builder seeks(Demand.Builder demand);
+    @NotNull Builder subOrganization(Organization organization);
+    @NotNull Builder subOrganization(Organization.Builder organization);
+    @NotNull Builder taxID(String taxID);
+    @NotNull Builder telephone(String telephone);
+    @NotNull Builder vatID(String vatID);
+    @NotNull Builder foundingLocation(Place place);
+    @NotNull Builder foundingLocation(Place.Builder place);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected TheaterGroup(PostalAddress address, AggregateRating aggregateRating, String award, BrandOrOrganization brand, ContactPoint contactPoint, Organization department, String duns, String email, Person employee, Event event, String faxNumber, Person founder, java.util.Date dissolutionDate, java.util.Date foundingDate, String globalLocationNumber, Place hasPOS, String isicV4, String legalName, ImageObjectOrString logo, Offer makesOffer, OrganizationOrPerson member, OrganizationOrProgramMembership memberOf, String naics, QuantitativeValue numberOfEmployees, OwnershipInfoOrProduct owns, Review review, Demand seeks, Organization subOrganization, String taxID, String telephone, String vatID, Place foundingLocation, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

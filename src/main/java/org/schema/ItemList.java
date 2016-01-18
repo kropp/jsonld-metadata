@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A list of items of any sort&#x2014;for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.
  */
@@ -25,7 +29,7 @@ public class ItemList extends Intangible {
   /**
    * The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list.
    */
-  public Integer getNumberOfItems() {
+  public int getNumberOfItems() {
     return myNumberOfItems;
   }
   /**
@@ -47,7 +51,7 @@ public class ItemList extends Intangible {
   /**
    * Builder for {@link ItemList}
    */
-  public static final class ItemListThingBuilder implements Builder {
+  static final class ItemListThingBuilder implements Builder {
     /**
      * Creates new {@link ItemList} instance.
      */
@@ -57,14 +61,14 @@ public class ItemList extends Intangible {
     /**
      * The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list.
      */
-    public Builder numberOfItems(Integer integer) {
-      this.numberOfItems = integer;
+    @NotNull public Builder numberOfItems(int numberOfItems) {
+      this.numberOfItems = numberOfItems;
       return this;
     }
     /**
      * Type of ordering (e.g. Ascending, Descending, Unordered).
      */
-    public Builder itemListOrder(ItemListOrderType itemListOrderType) {
+    @NotNull public Builder itemListOrder(ItemListOrderType itemListOrderType) {
       if (this.itemListOrder == null) this.itemListOrder = new ItemListOrderTypeOrString();
       this.itemListOrder.setItemListOrderType(itemListOrderType);
       return this;
@@ -72,13 +76,13 @@ public class ItemList extends Intangible {
     /**
      * Type of ordering (e.g. Ascending, Descending, Unordered).
      */
-    public Builder itemListOrder(ItemListOrderType.Builder itemListOrderType) {
+    @NotNull public Builder itemListOrder(ItemListOrderType.Builder itemListOrderType) {
       return this.itemListOrder(itemListOrderType.build());
     }
     /**
      * Type of ordering (e.g. Ascending, Descending, Unordered).
      */
-    public Builder itemListOrder(String itemListOrder) {
+    @NotNull public Builder itemListOrder(String itemListOrder) {
       if (this.itemListOrder == null) this.itemListOrder = new ItemListOrderTypeOrString();
       this.itemListOrder.setString(itemListOrder);
       return this;
@@ -90,7 +94,7 @@ public class ItemList extends Intangible {
     <br/><br/>
     Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
-    public Builder itemListElement(ListItem listItem) {
+    @NotNull public Builder itemListElement(ListItem listItem) {
       if (this.itemListElement == null) this.itemListElement = new ListItemOrStringOrThing();
       this.itemListElement.setListItem(listItem);
       return this;
@@ -102,7 +106,7 @@ public class ItemList extends Intangible {
     <br/><br/>
     Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
-    public Builder itemListElement(ListItem.Builder listItem) {
+    @NotNull public Builder itemListElement(ListItem.Builder listItem) {
       return this.itemListElement(listItem.build());
     }
     /**
@@ -112,7 +116,7 @@ public class ItemList extends Intangible {
     <br/><br/>
     Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
-    public Builder itemListElement(String itemListElement) {
+    @NotNull public Builder itemListElement(String itemListElement) {
       if (this.itemListElement == null) this.itemListElement = new ListItemOrStringOrThing();
       this.itemListElement.setString(itemListElement);
       return this;
@@ -124,7 +128,7 @@ public class ItemList extends Intangible {
     <br/><br/>
     Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
-    public Builder itemListElement(Thing thing) {
+    @NotNull public Builder itemListElement(Thing thing) {
       if (this.itemListElement == null) this.itemListElement = new ListItemOrStringOrThing();
       this.itemListElement.setThing(thing);
       return this;
@@ -136,27 +140,27 @@ public class ItemList extends Intangible {
     <br/><br/>
     Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
-    public Builder itemListElement(Thing.Builder thing) {
+    @NotNull public Builder itemListElement(Thing.Builder thing) {
       return this.itemListElement(thing.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -190,7 +194,7 @@ public class ItemList extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -225,7 +229,7 @@ public class ItemList extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -258,7 +262,7 @@ public class ItemList extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -266,45 +270,45 @@ public class ItemList extends Intangible {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    private Integer numberOfItems;
+    private int numberOfItems;
     private ItemListOrderTypeOrString itemListOrder;
     private ListItemOrStringOrThing itemListElement;
     private String additionalType;
@@ -318,36 +322,36 @@ public class ItemList extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<ItemList> {
-  Builder numberOfItems(Integer integer);
-  Builder itemListOrder(ItemListOrderType itemListOrderType);
-  Builder itemListOrder(ItemListOrderType.Builder itemListOrderType);
-  Builder itemListOrder(String itemListOrder);
-  Builder itemListElement(ListItem listItem);
-  Builder itemListElement(ListItem.Builder listItem);
-  Builder itemListElement(String itemListElement);
-  Builder itemListElement(Thing thing);
-  Builder itemListElement(Thing.Builder thing);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder numberOfItems(int numberOfItems);
+    @NotNull Builder itemListOrder(ItemListOrderType itemListOrderType);
+    @NotNull Builder itemListOrder(ItemListOrderType.Builder itemListOrderType);
+    @NotNull Builder itemListOrder(String itemListOrder);
+    @NotNull Builder itemListElement(ListItem listItem);
+    @NotNull Builder itemListElement(ListItem.Builder listItem);
+    @NotNull Builder itemListElement(String itemListElement);
+    @NotNull Builder itemListElement(Thing thing);
+    @NotNull Builder itemListElement(Thing.Builder thing);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
-  protected ItemList(Integer numberOfItems, ItemListOrderTypeOrString itemListOrder, ListItemOrStringOrThing itemListElement, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected ItemList(int numberOfItems, ItemListOrderTypeOrString itemListOrder, ListItemOrStringOrThing itemListElement, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myNumberOfItems = numberOfItems;
     myItemListOrder = itemListOrder;
     myItemListElement = itemListElement;
   }
-  private Integer myNumberOfItems;
+  private int myNumberOfItems;
   private ItemListOrderTypeOrString myItemListOrder;
   private ListItemOrStringOrThing myItemListElement;
 }

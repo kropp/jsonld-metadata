@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * AlbumRelease.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -26,7 +30,7 @@ public class AlbumRelease {
   /**
    * Builder for {@link AlbumRelease}
    */
-  public static final class AlbumReleaseThingBuilder implements Builder {
+  static final class AlbumReleaseThingBuilder implements Builder {
     /**
      * Creates new {@link AlbumRelease} instance.
      */
@@ -35,7 +39,7 @@ public class AlbumRelease {
     }
   }
   public interface Builder extends ThingBuilder<AlbumRelease> {
-  
+    
   }
 
   protected AlbumRelease() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Nose.
  */
@@ -25,7 +29,7 @@ public class Nose {
   /**
    * Builder for {@link Nose}
    */
-  public static final class NoseThingBuilder implements Builder {
+  static final class NoseThingBuilder implements Builder {
     /**
      * Creates new {@link Nose} instance.
      */
@@ -34,7 +38,7 @@ public class Nose {
     }
   }
   public interface Builder extends ThingBuilder<Nose> {
-  
+    
   }
 
   protected Nose() {

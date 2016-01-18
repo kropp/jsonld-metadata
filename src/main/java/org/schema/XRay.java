@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * X-ray imaging.
  */
@@ -25,7 +29,7 @@ public class XRay {
   /**
    * Builder for {@link XRay}
    */
-  public static final class XRayThingBuilder implements Builder {
+  static final class XRayThingBuilder implements Builder {
     /**
      * Creates new {@link XRay} instance.
      */
@@ -34,7 +38,7 @@ public class XRay {
     }
   }
   public interface Builder extends ThingBuilder<XRay> {
-  
+    
   }
 
   protected XRay() {

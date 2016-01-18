@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The status for a previously confirmed reservation that is now cancelled.
  */
@@ -25,7 +29,7 @@ public class ReservationCancelled {
   /**
    * Builder for {@link ReservationCancelled}
    */
-  public static final class ReservationCancelledThingBuilder implements Builder {
+  static final class ReservationCancelledThingBuilder implements Builder {
     /**
      * Creates new {@link ReservationCancelled} instance.
      */
@@ -34,7 +38,7 @@ public class ReservationCancelled {
     }
   }
   public interface Builder extends ThingBuilder<ReservationCancelled> {
-  
+    
   }
 
   protected ReservationCancelled() {

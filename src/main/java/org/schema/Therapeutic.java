@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A medical device used for therapeutic purposes.
  */
@@ -25,7 +29,7 @@ public class Therapeutic {
   /**
    * Builder for {@link Therapeutic}
    */
-  public static final class TherapeuticThingBuilder implements Builder {
+  static final class TherapeuticThingBuilder implements Builder {
     /**
      * Creates new {@link Therapeutic} instance.
      */
@@ -34,7 +38,7 @@ public class Therapeutic {
     }
   }
   public interface Builder extends ThingBuilder<Therapeutic> {
-  
+    
   }
 
   protected Therapeutic() {

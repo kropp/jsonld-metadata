@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A designation by the US FDA signifying that animal reproduction studies have failed to demonstrate a risk to the fetus and there are no adequate and well-controlled studies in pregnant women.
  */
@@ -25,7 +29,7 @@ public class FDAcategoryB {
   /**
    * Builder for {@link FDAcategoryB}
    */
-  public static final class FDAcategoryBThingBuilder implements Builder {
+  static final class FDAcategoryBThingBuilder implements Builder {
     /**
      * Creates new {@link FDAcategoryB} instance.
      */
@@ -34,7 +38,7 @@ public class FDAcategoryB {
     }
   }
   public interface Builder extends ThingBuilder<FDAcategoryB> {
-  
+    
   }
 
   protected FDAcategoryB() {

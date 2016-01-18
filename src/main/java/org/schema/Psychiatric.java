@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that is concerned with the study, treatment, and prevention of mental illness, using both medical and psychological therapies.
  */
@@ -25,7 +29,7 @@ public class Psychiatric {
   /**
    * Builder for {@link Psychiatric}
    */
-  public static final class PsychiatricThingBuilder implements Builder {
+  static final class PsychiatricThingBuilder implements Builder {
     /**
      * Creates new {@link Psychiatric} instance.
      */
@@ -34,7 +38,7 @@ public class Psychiatric {
     }
   }
   public interface Builder extends ThingBuilder<Psychiatric> {
-  
+    
   }
 
   protected Psychiatric() {

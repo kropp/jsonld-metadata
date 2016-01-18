@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates whether the vehicle has been used for special purposes, like commercial rental, driving school, or as a taxi. The legislation in many countries requires this information to be revealed when offering a car for sale.
  */
@@ -25,7 +29,7 @@ public class VehicleSpecialUsage {
   /**
    * Builder for {@link VehicleSpecialUsage}
    */
-  public static final class VehicleSpecialUsageThingBuilder implements Builder {
+  static final class VehicleSpecialUsageThingBuilder implements Builder {
     /**
      * Creates new {@link VehicleSpecialUsage} instance.
      */
@@ -34,7 +38,7 @@ public class VehicleSpecialUsage {
     }
   }
   public interface Builder extends ThingBuilder<VehicleSpecialUsage> {
-  
+    
   }
 
   protected VehicleSpecialUsage() {

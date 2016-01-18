@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Laboratory science.
  */
@@ -25,7 +29,7 @@ public class LaboratoryScience {
   /**
    * Builder for {@link LaboratoryScience}
    */
-  public static final class LaboratoryScienceThingBuilder implements Builder {
+  static final class LaboratoryScienceThingBuilder implements Builder {
     /**
      * Creates new {@link LaboratoryScience} instance.
      */
@@ -34,7 +38,7 @@ public class LaboratoryScience {
     }
   }
   public interface Builder extends ThingBuilder<LaboratoryScience> {
-  
+    
   }
 
   protected LaboratoryScience() {

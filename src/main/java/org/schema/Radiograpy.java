@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Radiography.
  */
@@ -25,7 +29,7 @@ public class Radiograpy {
   /**
    * Builder for {@link Radiograpy}
    */
-  public static final class RadiograpyThingBuilder implements Builder {
+  static final class RadiograpyThingBuilder implements Builder {
     /**
      * Creates new {@link Radiograpy} instance.
      */
@@ -34,7 +38,7 @@ public class Radiograpy {
     }
   }
   public interface Builder extends ThingBuilder<Radiograpy> {
-  
+    
   }
 
   protected Radiograpy() {

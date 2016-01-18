@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A designation by the US FDA signifying that animal reproduction studies have shown an adverse effect on the fetus and there are no adequate and well-controlled studies in humans, but potential benefits may warrant use of the drug in pregnant women despite potential risks.
  */
@@ -25,7 +29,7 @@ public class FDAcategoryC {
   /**
    * Builder for {@link FDAcategoryC}
    */
-  public static final class FDAcategoryCThingBuilder implements Builder {
+  static final class FDAcategoryCThingBuilder implements Builder {
     /**
      * Creates new {@link FDAcategoryC} instance.
      */
@@ -34,7 +38,7 @@ public class FDAcategoryC {
     }
   }
   public interface Builder extends ThingBuilder<FDAcategoryC> {
-  
+    
   }
 
   protected FDAcategoryC() {

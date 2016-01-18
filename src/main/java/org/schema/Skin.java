@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Skin.
  */
@@ -25,7 +29,7 @@ public class Skin {
   /**
    * Builder for {@link Skin}
    */
-  public static final class SkinThingBuilder implements Builder {
+  static final class SkinThingBuilder implements Builder {
     /**
      * Creates new {@link Skin} instance.
      */
@@ -34,7 +38,7 @@ public class Skin {
     }
   }
   public interface Builder extends ThingBuilder<Skin> {
-  
+    
   }
 
   protected Skin() {

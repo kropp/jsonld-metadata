@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A trial design in which neither the researcher nor the patient knows the details of the treatment the patient was randomly assigned to.
  */
@@ -25,7 +29,7 @@ public class DoubleBlindedTrial {
   /**
    * Builder for {@link DoubleBlindedTrial}
    */
-  public static final class DoubleBlindedTrialThingBuilder implements Builder {
+  static final class DoubleBlindedTrialThingBuilder implements Builder {
     /**
      * Creates new {@link DoubleBlindedTrial} instance.
      */
@@ -34,7 +38,7 @@ public class DoubleBlindedTrial {
     }
   }
   public interface Builder extends ThingBuilder<DoubleBlindedTrial> {
-  
+    
   }
 
   protected DoubleBlindedTrial() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * This vocabulary was improved through collaboration with the MusicBrainz project
   *     (<a href="http://www.musicbrainz.org">www.musicbrainz.org</a>), and is partially inspired by the MusicBrainz and
@@ -27,7 +31,7 @@ public class MBZ {
   /**
    * Builder for {@link MBZ}
    */
-  public static final class MBZThingBuilder implements Builder {
+  static final class MBZThingBuilder implements Builder {
     /**
      * Creates new {@link MBZ} instance.
      */
@@ -36,7 +40,7 @@ public class MBZ {
     }
   }
   public interface Builder extends ThingBuilder<MBZ> {
-  
+    
   }
 
   protected MBZ() {

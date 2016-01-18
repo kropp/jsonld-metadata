@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Pharmacy.
  */
@@ -25,7 +29,7 @@ public class PharmacySpecialty {
   /**
    * Builder for {@link PharmacySpecialty}
    */
-  public static final class PharmacySpecialtyThingBuilder implements Builder {
+  static final class PharmacySpecialtyThingBuilder implements Builder {
     /**
      * Creates new {@link PharmacySpecialty} instance.
      */
@@ -34,7 +38,7 @@ public class PharmacySpecialty {
     }
   }
   public interface Builder extends ThingBuilder<PharmacySpecialty> {
-  
+    
   }
 
   protected PharmacySpecialty() {

@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class BooleanOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myBoolean != null) return myBoolean;
     if (myString != null) return myString;
@@ -28,9 +31,9 @@ class BooleanOrString {
   }
   public void setBoolean(Boolean value) { clear(); myBoolean = value; }
   public Boolean getBoolean() { return myBoolean; }
-  private Boolean myBoolean;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private Boolean myBoolean;
   private String myString;
   private void clear() {
     myBoolean = null;

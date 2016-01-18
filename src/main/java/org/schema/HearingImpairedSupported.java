@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Uses devices to support users with hearing impairments.
  */
@@ -25,7 +29,7 @@ public class HearingImpairedSupported {
   /**
    * Builder for {@link HearingImpairedSupported}
    */
-  public static final class HearingImpairedSupportedThingBuilder implements Builder {
+  static final class HearingImpairedSupportedThingBuilder implements Builder {
     /**
      * Creates new {@link HearingImpairedSupported} instance.
      */
@@ -34,7 +38,7 @@ public class HearingImpairedSupported {
     }
   }
   public interface Builder extends ThingBuilder<HearingImpairedSupported> {
-  
+    
   }
 
   protected HearingImpairedSupported() {

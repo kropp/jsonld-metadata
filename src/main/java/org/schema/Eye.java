@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Eye.
  */
@@ -25,7 +29,7 @@ public class Eye {
   /**
    * Builder for {@link Eye}
    */
-  public static final class EyeThingBuilder implements Builder {
+  static final class EyeThingBuilder implements Builder {
     /**
      * Creates new {@link Eye} instance.
      */
@@ -34,7 +38,7 @@ public class Eye {
     }
   }
   public interface Builder extends ThingBuilder<Eye> {
-  
+    
   }
 
   protected Eye() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A patient-reported or observed dosing schedule for a drug or supplement.
  */
@@ -25,7 +29,7 @@ public class ReportedDoseSchedule extends DoseSchedule {
   /**
    * Builder for {@link ReportedDoseSchedule}
    */
-  public static final class ReportedDoseScheduleThingBuilder implements Builder {
+  static final class ReportedDoseScheduleThingBuilder implements Builder {
     /**
      * Creates new {@link ReportedDoseSchedule} instance.
      */
@@ -35,22 +39,22 @@ public class ReportedDoseSchedule extends DoseSchedule {
     /**
      * The unit of the dose, e.g. 'mg'.
      */
-    public Builder doseUnit(String doseUnit) {
+    @NotNull public Builder doseUnit(String doseUnit) {
       this.doseUnit = doseUnit;
       return this;
     }
     /**
      * The value of the dose, e.g. 500.
      */
-    public Builder doseValue(Integer integer) {
+    @NotNull public Builder doseValue(int doseValue) {
       if (this.doseValue == null) this.doseValue = new Number();
-      this.doseValue.setInteger(integer);
+      this.doseValue.setInt(doseValue);
       return this;
     }
     /**
      * The value of the dose, e.g. 500.
      */
-    public Builder doseValue(Long doseValue) {
+    @NotNull public Builder doseValue(long doseValue) {
       if (this.doseValue == null) this.doseValue = new Number();
       this.doseValue.setLong(doseValue);
       return this;
@@ -58,7 +62,7 @@ public class ReportedDoseSchedule extends DoseSchedule {
     /**
      * The value of the dose, e.g. 500.
      */
-    public Builder doseValue(Float doseValue) {
+    @NotNull public Builder doseValue(float doseValue) {
       if (this.doseValue == null) this.doseValue = new Number();
       this.doseValue.setFloat(doseValue);
       return this;
@@ -66,7 +70,7 @@ public class ReportedDoseSchedule extends DoseSchedule {
     /**
      * The value of the dose, e.g. 500.
      */
-    public Builder doseValue(Double doseValue) {
+    @NotNull public Builder doseValue(double doseValue) {
       if (this.doseValue == null) this.doseValue = new Number();
       this.doseValue.setDouble(doseValue);
       return this;
@@ -74,7 +78,7 @@ public class ReportedDoseSchedule extends DoseSchedule {
     /**
      * The value of the dose, e.g. 500.
      */
-    public Builder doseValue(String doseValue) {
+    @NotNull public Builder doseValue(String doseValue) {
       if (this.doseValue == null) this.doseValue = new Number();
       this.doseValue.setString(doseValue);
       return this;
@@ -82,113 +86,113 @@ public class ReportedDoseSchedule extends DoseSchedule {
     /**
      * How often the dose is taken, e.g. 'daily'.
      */
-    public Builder frequency(String frequency) {
+    @NotNull public Builder frequency(String frequency) {
       this.frequency = frequency;
       return this;
     }
     /**
      * Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.
      */
-    public Builder targetPopulation(String targetPopulation) {
+    @NotNull public Builder targetPopulation(String targetPopulation) {
       this.targetPopulation = targetPopulation;
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
-    public Builder code(MedicalCode medicalCode) {
+    @NotNull public Builder code(MedicalCode medicalCode) {
       this.code = medicalCode;
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
-    public Builder code(MedicalCode.Builder medicalCode) {
+    @NotNull public Builder code(MedicalCode.Builder medicalCode) {
       return this.code(medicalCode.build());
     }
     /**
      * A medical guideline related to this entity.
      */
-    public Builder guideline(MedicalGuideline medicalGuideline) {
+    @NotNull public Builder guideline(MedicalGuideline medicalGuideline) {
       this.guideline = medicalGuideline;
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
-    public Builder guideline(MedicalGuideline.Builder medicalGuideline) {
+    @NotNull public Builder guideline(MedicalGuideline.Builder medicalGuideline) {
       return this.guideline(medicalGuideline.build());
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
-    public Builder medicineSystem(MedicineSystem medicineSystem) {
+    @NotNull public Builder medicineSystem(MedicineSystem medicineSystem) {
       this.medicineSystem = medicineSystem;
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
-    public Builder medicineSystem(MedicineSystem.Builder medicineSystem) {
+    @NotNull public Builder medicineSystem(MedicineSystem.Builder medicineSystem) {
       return this.medicineSystem(medicineSystem.build());
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    public Builder recognizingAuthority(Organization organization) {
+    @NotNull public Builder recognizingAuthority(Organization organization) {
       this.recognizingAuthority = organization;
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    public Builder recognizingAuthority(Organization.Builder organization) {
+    @NotNull public Builder recognizingAuthority(Organization.Builder organization) {
       return this.recognizingAuthority(organization.build());
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
-    public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
+    @NotNull public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
       this.relevantSpecialty = medicalSpecialty;
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
-    public Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty) {
+    @NotNull public Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty) {
       return this.relevantSpecialty(medicalSpecialty.build());
     }
     /**
      * A medical study or trial related to this entity.
      */
-    public Builder study(MedicalStudy medicalStudy) {
+    @NotNull public Builder study(MedicalStudy medicalStudy) {
       this.study = medicalStudy;
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
-    public Builder study(MedicalStudy.Builder medicalStudy) {
+    @NotNull public Builder study(MedicalStudy.Builder medicalStudy) {
       return this.study(medicalStudy.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -222,7 +226,7 @@ public class ReportedDoseSchedule extends DoseSchedule {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -257,7 +261,7 @@ public class ReportedDoseSchedule extends DoseSchedule {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -290,7 +294,7 @@ public class ReportedDoseSchedule extends DoseSchedule {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -298,38 +302,38 @@ public class ReportedDoseSchedule extends DoseSchedule {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -357,38 +361,38 @@ public class ReportedDoseSchedule extends DoseSchedule {
     private String id;
   }
   public interface Builder extends ThingBuilder<ReportedDoseSchedule> {
-  Builder doseUnit(String doseUnit);
-  Builder doseValue(Integer integer);
-  Builder doseValue(Long doseValue);
-  Builder doseValue(Float doseValue);
-  Builder doseValue(Double doseValue);
-  Builder doseValue(String doseValue);
-  Builder frequency(String frequency);
-  Builder targetPopulation(String targetPopulation);
-  Builder code(MedicalCode medicalCode);
-  Builder code(MedicalCode.Builder medicalCode);
-  Builder guideline(MedicalGuideline medicalGuideline);
-  Builder guideline(MedicalGuideline.Builder medicalGuideline);
-  Builder medicineSystem(MedicineSystem medicineSystem);
-  Builder medicineSystem(MedicineSystem.Builder medicineSystem);
-  Builder recognizingAuthority(Organization organization);
-  Builder recognizingAuthority(Organization.Builder organization);
-  Builder relevantSpecialty(MedicalSpecialty medicalSpecialty);
-  Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty);
-  Builder study(MedicalStudy medicalStudy);
-  Builder study(MedicalStudy.Builder medicalStudy);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder doseUnit(String doseUnit);
+    @NotNull Builder doseValue(int doseValue);
+    @NotNull Builder doseValue(long doseValue);
+    @NotNull Builder doseValue(float doseValue);
+    @NotNull Builder doseValue(double doseValue);
+    @NotNull Builder doseValue(String doseValue);
+    @NotNull Builder frequency(String frequency);
+    @NotNull Builder targetPopulation(String targetPopulation);
+    @NotNull Builder code(MedicalCode medicalCode);
+    @NotNull Builder code(MedicalCode.Builder medicalCode);
+    @NotNull Builder guideline(MedicalGuideline medicalGuideline);
+    @NotNull Builder guideline(MedicalGuideline.Builder medicalGuideline);
+    @NotNull Builder medicineSystem(MedicineSystem medicineSystem);
+    @NotNull Builder medicineSystem(MedicineSystem.Builder medicineSystem);
+    @NotNull Builder recognizingAuthority(Organization organization);
+    @NotNull Builder recognizingAuthority(Organization.Builder organization);
+    @NotNull Builder relevantSpecialty(MedicalSpecialty medicalSpecialty);
+    @NotNull Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty);
+    @NotNull Builder study(MedicalStudy medicalStudy);
+    @NotNull Builder study(MedicalStudy.Builder medicalStudy);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected ReportedDoseSchedule(String doseUnit, Number doseValue, String frequency, String targetPopulation, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

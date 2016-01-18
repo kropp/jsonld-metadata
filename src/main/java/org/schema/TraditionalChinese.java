@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A system of medicine based on common theoretical concepts that originated in China and evolved over thousands of years, that uses herbs, acupuncture, exercise, massage, dietary therapy, and other methods to treat a wide range of conditions.
  */
@@ -25,7 +29,7 @@ public class TraditionalChinese {
   /**
    * Builder for {@link TraditionalChinese}
    */
-  public static final class TraditionalChineseThingBuilder implements Builder {
+  static final class TraditionalChineseThingBuilder implements Builder {
     /**
      * Creates new {@link TraditionalChinese} instance.
      */
@@ -34,7 +38,7 @@ public class TraditionalChinese {
     }
   }
   public interface Builder extends ThingBuilder<TraditionalChinese> {
-  
+    
   }
 
   protected TraditionalChinese() {

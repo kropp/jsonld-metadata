@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * VinylFormat.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -26,7 +30,7 @@ public class VinylFormat {
   /**
    * Builder for {@link VinylFormat}
    */
-  public static final class VinylFormatThingBuilder implements Builder {
+  static final class VinylFormatThingBuilder implements Builder {
     /**
      * Creates new {@link VinylFormat} instance.
      */
@@ -35,7 +39,7 @@ public class VinylFormat {
     }
   }
   public interface Builder extends ThingBuilder<VinylFormat> {
-  
+    
   }
 
   protected VinylFormat() {

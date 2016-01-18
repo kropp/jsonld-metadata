@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that is concerned with poisons, their nature, effects and detection and involved in the treatment of poisoning.
  */
@@ -25,7 +29,7 @@ public class Toxicologic {
   /**
    * Builder for {@link Toxicologic}
    */
-  public static final class ToxicologicThingBuilder implements Builder {
+  static final class ToxicologicThingBuilder implements Builder {
     /**
      * Creates new {@link Toxicologic} instance.
      */
@@ -34,7 +38,7 @@ public class Toxicologic {
     }
   }
   public interface Builder extends ThingBuilder<Toxicologic> {
-  
+    
   }
 
   protected Toxicologic() {

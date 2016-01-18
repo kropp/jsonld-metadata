@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * CDFormat.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -26,7 +30,7 @@ public class CDFormat {
   /**
    * Builder for {@link CDFormat}
    */
-  public static final class CDFormatThingBuilder implements Builder {
+  static final class CDFormatThingBuilder implements Builder {
     /**
      * Creates new {@link CDFormat} instance.
      */
@@ -35,7 +39,7 @@ public class CDFormat {
     }
   }
   public interface Builder extends ThingBuilder<CDFormat> {
-  
+    
   }
 
   protected CDFormat() {

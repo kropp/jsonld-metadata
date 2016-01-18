@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates the usage of the vehicle for driving school.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
@@ -26,7 +30,7 @@ public class DrivingSchoolVehicleUsage {
   /**
    * Builder for {@link DrivingSchoolVehicleUsage}
    */
-  public static final class DrivingSchoolVehicleUsageThingBuilder implements Builder {
+  static final class DrivingSchoolVehicleUsageThingBuilder implements Builder {
     /**
      * Creates new {@link DrivingSchoolVehicleUsage} instance.
      */
@@ -35,7 +39,7 @@ public class DrivingSchoolVehicleUsage {
     }
   }
   public interface Builder extends ThingBuilder<DrivingSchoolVehicleUsage> {
-  
+    
   }
 
   protected DrivingSchoolVehicleUsage() {

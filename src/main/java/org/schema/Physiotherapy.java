@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Physiotherapy.
  */
@@ -25,7 +29,7 @@ public class Physiotherapy {
   /**
    * Builder for {@link Physiotherapy}
    */
-  public static final class PhysiotherapyThingBuilder implements Builder {
+  static final class PhysiotherapyThingBuilder implements Builder {
     /**
      * Creates new {@link Physiotherapy} instance.
      */
@@ -34,7 +38,7 @@ public class Physiotherapy {
     }
   }
   public interface Builder extends ThingBuilder<Physiotherapy> {
-  
+    
   }
 
   protected Physiotherapy() {

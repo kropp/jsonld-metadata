@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * This class is based upon W3C DCAT work, and benefits from collaboration around the DCAT, ADMS and VoID vocabularies. See http://www.w3.org/wiki/WebSchemas/Datasets for full details and mappings.
  */
@@ -25,7 +29,7 @@ public class DatasetClass {
   /**
    * Builder for {@link DatasetClass}
    */
-  public static final class DatasetClassThingBuilder implements Builder {
+  static final class DatasetClassThingBuilder implements Builder {
     /**
      * Creates new {@link DatasetClass} instance.
      */
@@ -34,7 +38,7 @@ public class DatasetClass {
     }
   }
   public interface Builder extends ThingBuilder<DatasetClass> {
-  
+    
   }
 
   protected DatasetClass() {

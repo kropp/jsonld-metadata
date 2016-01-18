@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Community health.
  */
@@ -25,7 +29,7 @@ public class CommunityHealth {
   /**
    * Builder for {@link CommunityHealth}
    */
-  public static final class CommunityHealthThingBuilder implements Builder {
+  static final class CommunityHealthThingBuilder implements Builder {
     /**
      * Creates new {@link CommunityHealth} instance.
      */
@@ -34,7 +38,7 @@ public class CommunityHealth {
     }
   }
   public interface Builder extends ThingBuilder<CommunityHealth> {
-  
+    
   }
 
   protected CommunityHealth() {

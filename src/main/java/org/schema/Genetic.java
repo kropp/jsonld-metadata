@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to hereditary transmission and the variation of inherited characteristics and disorders.
  */
@@ -25,7 +29,7 @@ public class Genetic {
   /**
    * Builder for {@link Genetic}
    */
-  public static final class GeneticThingBuilder implements Builder {
+  static final class GeneticThingBuilder implements Builder {
     /**
      * Creates new {@link Genetic} instance.
      */
@@ -34,7 +38,7 @@ public class Genetic {
     }
   }
   public interface Builder extends ThingBuilder<Genetic> {
-  
+    
   }
 
   protected Genetic() {

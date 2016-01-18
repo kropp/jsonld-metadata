@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * BroadcastRelease.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -26,7 +30,7 @@ public class BroadcastRelease {
   /**
    * Builder for {@link BroadcastRelease}
    */
-  public static final class BroadcastReleaseThingBuilder implements Builder {
+  static final class BroadcastReleaseThingBuilder implements Builder {
     /**
      * Creates new {@link BroadcastRelease} instance.
      */
@@ -35,7 +39,7 @@ public class BroadcastRelease {
     }
   }
   public interface Builder extends ThingBuilder<BroadcastRelease> {
-  
+    
   }
 
   protected BroadcastRelease() {

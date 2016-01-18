@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * An in-progress action (e.g, while watching the movie, or driving to a location).
  */
@@ -25,7 +29,7 @@ public class ActiveActionStatus {
   /**
    * Builder for {@link ActiveActionStatus}
    */
-  public static final class ActiveActionStatusThingBuilder implements Builder {
+  static final class ActiveActionStatusThingBuilder implements Builder {
     /**
      * Creates new {@link ActiveActionStatus} instance.
      */
@@ -34,7 +38,7 @@ public class ActiveActionStatus {
     }
   }
   public interface Builder extends ThingBuilder<ActiveActionStatus> {
-  
+    
   }
 
   protected ActiveActionStatus() {

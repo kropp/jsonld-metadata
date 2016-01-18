@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class ListItemOrStringOrThing {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myListItem != null) return myListItem;
     if (myString != null) return myString;
@@ -29,12 +32,12 @@ class ListItemOrStringOrThing {
   }
   public void setListItem(ListItem listItem) { clear(); myListItem = listItem; }
   public ListItem getListItem() { return myListItem; }
-  private ListItem myListItem;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private String myString;
   public void setThing(Thing thing) { clear(); myThing = thing; }
   public Thing getThing() { return myThing; }
+  private ListItem myListItem;
+  private String myString;
   private Thing myThing;
   private void clear() {
     myListItem = null;

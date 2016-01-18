@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Physical activity of relatively low intensity that depends primarily on the aerobic energy-generating process; during activity, the aerobic metabolism uses oxygen to adequately meet energy demands during exercise.
  */
@@ -25,7 +29,7 @@ public class AerobicActivity {
   /**
    * Builder for {@link AerobicActivity}
    */
-  public static final class AerobicActivityThingBuilder implements Builder {
+  static final class AerobicActivityThingBuilder implements Builder {
     /**
      * Creates new {@link AerobicActivity} instance.
      */
@@ -34,7 +38,7 @@ public class AerobicActivity {
     }
   }
   public interface Builder extends ThingBuilder<AerobicActivity> {
-  
+    
   }
 
   protected AerobicActivity() {

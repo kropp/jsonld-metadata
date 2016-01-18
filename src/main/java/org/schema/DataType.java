@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The basic data types such as Integers, Strings, etc.
  */
@@ -25,7 +29,7 @@ public class DataType {
   /**
    * Builder for {@link DataType}
    */
-  public static final class DataTypeThingBuilder implements Builder {
+  static final class DataTypeThingBuilder implements Builder {
     /**
      * Creates new {@link DataType} instance.
      */
@@ -34,7 +38,7 @@ public class DataType {
     }
   }
   public interface Builder extends ThingBuilder<DataType> {
-  
+    
   }
 
   protected DataType() {

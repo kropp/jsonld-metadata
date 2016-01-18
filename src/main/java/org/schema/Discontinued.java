@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates that the item has been discontinued.
  */
@@ -25,7 +29,7 @@ public class Discontinued {
   /**
    * Builder for {@link Discontinued}
    */
-  public static final class DiscontinuedThingBuilder implements Builder {
+  static final class DiscontinuedThingBuilder implements Builder {
     /**
      * Creates new {@link Discontinued} instance.
      */
@@ -34,7 +38,7 @@ public class Discontinued {
     }
   }
   public interface Builder extends ThingBuilder<Discontinued> {
-  
+    
   }
 
   protected Discontinued() {

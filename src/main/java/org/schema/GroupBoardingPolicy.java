@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The airline boards by groups based on check-in time, priority, etc.
  */
@@ -25,7 +29,7 @@ public class GroupBoardingPolicy {
   /**
    * Builder for {@link GroupBoardingPolicy}
    */
-  public static final class GroupBoardingPolicyThingBuilder implements Builder {
+  static final class GroupBoardingPolicyThingBuilder implements Builder {
     /**
      * Creates new {@link GroupBoardingPolicy} instance.
      */
@@ -34,7 +38,7 @@ public class GroupBoardingPolicy {
     }
   }
   public interface Builder extends ThingBuilder<GroupBoardingPolicy> {
-  
+    
   }
 
   protected GroupBoardingPolicy() {

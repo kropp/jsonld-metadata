@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Results are available.
  */
@@ -25,7 +29,7 @@ public class ResultsAvailable {
   /**
    * Builder for {@link ResultsAvailable}
    */
-  public static final class ResultsAvailableThingBuilder implements Builder {
+  static final class ResultsAvailableThingBuilder implements Builder {
     /**
      * Creates new {@link ResultsAvailable} instance.
      */
@@ -34,7 +38,7 @@ public class ResultsAvailable {
     }
   }
   public interface Builder extends ThingBuilder<ResultsAvailable> {
-  
+    
   }
 
   protected ResultsAvailable() {

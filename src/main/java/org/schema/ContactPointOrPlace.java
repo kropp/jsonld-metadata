@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class ContactPointOrPlace {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myContactPoint != null) return myContactPoint;
     if (myPlace != null) return myPlace;
@@ -33,9 +36,9 @@ class ContactPointOrPlace {
   }
   public void setContactPoint(ContactPoint contactPoint) { clear(); myContactPoint = contactPoint; }
   public ContactPoint getContactPoint() { return myContactPoint; }
-  private ContactPoint myContactPoint;
   public void setPlace(Place place) { clear(); myPlace = place; }
   public Place getPlace() { return myPlace; }
+  private ContactPoint myContactPoint;
   private Place myPlace;
   private void clear() {
     myContactPoint = null;

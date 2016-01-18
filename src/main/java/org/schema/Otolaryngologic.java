@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that is concerned with the ear, nose and throat and their respective disease states.
  */
@@ -25,7 +29,7 @@ public class Otolaryngologic {
   /**
    * Builder for {@link Otolaryngologic}
    */
-  public static final class OtolaryngologicThingBuilder implements Builder {
+  static final class OtolaryngologicThingBuilder implements Builder {
     /**
      * Creates new {@link Otolaryngologic} instance.
      */
@@ -34,7 +38,7 @@ public class Otolaryngologic {
     }
   }
   public interface Builder extends ThingBuilder<Otolaryngologic> {
-  
+    
   }
 
   protected Otolaryngologic() {

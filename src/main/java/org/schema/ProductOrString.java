@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class ProductOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myProduct != null) return myProduct;
     if (myString != null) return myString;
@@ -28,9 +31,9 @@ class ProductOrString {
   }
   public void setProduct(Product product) { clear(); myProduct = product; }
   public Product getProduct() { return myProduct; }
-  private Product myProduct;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private Product myProduct;
   private String myString;
   private void clear() {
     myProduct = null;

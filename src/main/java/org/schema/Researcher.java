@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Researchers.
  */
@@ -25,7 +29,7 @@ public class Researcher {
   /**
    * Builder for {@link Researcher}
    */
-  public static final class ResearcherThingBuilder implements Builder {
+  static final class ResearcherThingBuilder implements Builder {
     /**
      * Creates new {@link Researcher} instance.
      */
@@ -34,7 +38,7 @@ public class Researcher {
     }
   }
   public interface Builder extends ThingBuilder<Researcher> {
-  
+    
   }
 
   protected Researcher() {

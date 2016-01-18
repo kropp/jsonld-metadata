@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates the usage of the car as a taxi.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
@@ -26,7 +30,7 @@ public class TaxiVehicleUsage {
   /**
    * Builder for {@link TaxiVehicleUsage}
    */
-  public static final class TaxiVehicleUsageThingBuilder implements Builder {
+  static final class TaxiVehicleUsageThingBuilder implements Builder {
     /**
      * Creates new {@link TaxiVehicleUsage} instance.
      */
@@ -35,7 +39,7 @@ public class TaxiVehicleUsage {
     }
   }
   public interface Builder extends ThingBuilder<TaxiVehicleUsage> {
-  
+    
   }
 
   protected TaxiVehicleUsage() {

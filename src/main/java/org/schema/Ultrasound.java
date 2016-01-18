@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Ultrasound imaging.
  */
@@ -25,7 +29,7 @@ public class Ultrasound {
   /**
    * Builder for {@link Ultrasound}
    */
-  public static final class UltrasoundThingBuilder implements Builder {
+  static final class UltrasoundThingBuilder implements Builder {
     /**
      * Creates new {@link Ultrasound} instance.
      */
@@ -34,7 +38,7 @@ public class Ultrasound {
     }
   }
   public interface Builder extends ThingBuilder<Ultrasound> {
-  
+    
   }
 
   protected Ultrasound() {

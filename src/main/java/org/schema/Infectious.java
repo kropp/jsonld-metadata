@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to diagnosis and treatment of bacterial, viral, fungal and parasitic infections.
  */
@@ -25,7 +29,7 @@ public class Infectious {
   /**
    * Builder for {@link Infectious}
    */
-  public static final class InfectiousThingBuilder implements Builder {
+  static final class InfectiousThingBuilder implements Builder {
     /**
      * Creates new {@link Infectious} instance.
      */
@@ -34,7 +38,7 @@ public class Infectious {
     }
   }
   public interface Builder extends ThingBuilder<Infectious> {
-  
+    
   }
 
   protected Infectious() {

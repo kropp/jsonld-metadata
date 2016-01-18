@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to study of anesthetics and their application.
  */
@@ -25,7 +29,7 @@ public class Anesthesia {
   /**
    * Builder for {@link Anesthesia}
    */
-  public static final class AnesthesiaThingBuilder implements Builder {
+  static final class AnesthesiaThingBuilder implements Builder {
     /**
      * Creates new {@link Anesthesia} instance.
      */
@@ -34,7 +38,7 @@ public class Anesthesia {
     }
   }
   public interface Builder extends ThingBuilder<Anesthesia> {
-  
+    
   }
 
   protected Anesthesia() {

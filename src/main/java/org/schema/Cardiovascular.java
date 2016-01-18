@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to diagnosis and treatment of disorders of heart and vasculature.
  */
@@ -25,7 +29,7 @@ public class Cardiovascular {
   /**
    * Builder for {@link Cardiovascular}
    */
-  public static final class CardiovascularThingBuilder implements Builder {
+  static final class CardiovascularThingBuilder implements Builder {
     /**
      * Creates new {@link Cardiovascular} instance.
      */
@@ -34,7 +38,7 @@ public class Cardiovascular {
     }
   }
   public interface Builder extends ThingBuilder<Cardiovascular> {
-  
+    
   }
 
   protected Cardiovascular() {

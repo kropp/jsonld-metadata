@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Appearance.
  */
@@ -25,7 +29,7 @@ public class Appearance {
   /**
    * Builder for {@link Appearance}
    */
-  public static final class AppearanceThingBuilder implements Builder {
+  static final class AppearanceThingBuilder implements Builder {
     /**
      * Creates new {@link Appearance} instance.
      */
@@ -34,7 +38,7 @@ public class Appearance {
     }
   }
   public interface Builder extends ThingBuilder<Appearance> {
-  
+    
   }
 
   protected Appearance() {

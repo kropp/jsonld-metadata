@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A designation by the US FDA signifying that there is positive evidence of human fetal risk based on adverse reaction data from investigational or marketing experience or studies in humans, but potential benefits may warrant use of the drug in pregnant women despite potential risks.
  */
@@ -25,7 +29,7 @@ public class FDAcategoryD {
   /**
    * Builder for {@link FDAcategoryD}
    */
-  public static final class FDAcategoryDThingBuilder implements Builder {
+  static final class FDAcategoryDThingBuilder implements Builder {
     /**
      * Creates new {@link FDAcategoryD} instance.
      */
@@ -34,7 +38,7 @@ public class FDAcategoryD {
     }
   }
   public interface Builder extends ThingBuilder<FDAcategoryD> {
-  
+    
   }
 
   protected FDAcategoryD() {

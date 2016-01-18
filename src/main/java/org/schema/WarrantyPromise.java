@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A structured value representing the duration and scope of services that will be provided to a customer free of charge in case of a defect or malfunction of a product.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -38,7 +42,7 @@ public class WarrantyPromise extends StructuredValue {
   /**
    * Builder for {@link WarrantyPromise}
    */
-  public static final class WarrantyPromiseThingBuilder implements Builder {
+  static final class WarrantyPromiseThingBuilder implements Builder {
     /**
      * Creates new {@link WarrantyPromise} instance.
      */
@@ -48,47 +52,47 @@ public class WarrantyPromise extends StructuredValue {
     /**
      * The duration of the warranty promise. Common unitCode values are ANN for year, MON for months, or DAY for days.
      */
-    public Builder durationOfWarranty(QuantitativeValue quantitativeValue) {
+    @NotNull public Builder durationOfWarranty(QuantitativeValue quantitativeValue) {
       this.durationOfWarranty = quantitativeValue;
       return this;
     }
     /**
      * The duration of the warranty promise. Common unitCode values are ANN for year, MON for months, or DAY for days.
      */
-    public Builder durationOfWarranty(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder durationOfWarranty(QuantitativeValue.Builder quantitativeValue) {
       return this.durationOfWarranty(quantitativeValue.build());
     }
     /**
      * The scope of the warranty promise.
      */
-    public Builder warrantyScope(WarrantyScope warrantyScope) {
+    @NotNull public Builder warrantyScope(WarrantyScope warrantyScope) {
       this.warrantyScope = warrantyScope;
       return this;
     }
     /**
      * The scope of the warranty promise.
      */
-    public Builder warrantyScope(WarrantyScope.Builder warrantyScope) {
+    @NotNull public Builder warrantyScope(WarrantyScope.Builder warrantyScope) {
       return this.warrantyScope(warrantyScope.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -122,7 +126,7 @@ public class WarrantyPromise extends StructuredValue {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -157,7 +161,7 @@ public class WarrantyPromise extends StructuredValue {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -190,7 +194,7 @@ public class WarrantyPromise extends StructuredValue {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -198,38 +202,38 @@ public class WarrantyPromise extends StructuredValue {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -249,22 +253,22 @@ public class WarrantyPromise extends StructuredValue {
     private String id;
   }
   public interface Builder extends ThingBuilder<WarrantyPromise> {
-  Builder durationOfWarranty(QuantitativeValue quantitativeValue);
-  Builder durationOfWarranty(QuantitativeValue.Builder quantitativeValue);
-  Builder warrantyScope(WarrantyScope warrantyScope);
-  Builder warrantyScope(WarrantyScope.Builder warrantyScope);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder durationOfWarranty(QuantitativeValue quantitativeValue);
+    @NotNull Builder durationOfWarranty(QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder warrantyScope(WarrantyScope warrantyScope);
+    @NotNull Builder warrantyScope(WarrantyScope.Builder warrantyScope);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected WarrantyPromise(QuantitativeValue durationOfWarranty, WarrantyScope warrantyScope, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

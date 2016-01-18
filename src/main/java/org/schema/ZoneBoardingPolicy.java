@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The airline boards by zones of the plane.
  */
@@ -25,7 +29,7 @@ public class ZoneBoardingPolicy {
   /**
    * Builder for {@link ZoneBoardingPolicy}
    */
-  public static final class ZoneBoardingPolicyThingBuilder implements Builder {
+  static final class ZoneBoardingPolicyThingBuilder implements Builder {
     /**
      * Creates new {@link ZoneBoardingPolicy} instance.
      */
@@ -34,7 +38,7 @@ public class ZoneBoardingPolicy {
     }
   }
   public interface Builder extends ThingBuilder<ZoneBoardingPolicy> {
-  
+    
   }
 
   protected ZoneBoardingPolicy() {

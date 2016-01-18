@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Physical activity that is engaged in to improve muscle and bone strength. Also referred to as resistance training.
  */
@@ -25,7 +29,7 @@ public class StrengthTraining {
   /**
    * Builder for {@link StrengthTraining}
    */
-  public static final class StrengthTrainingThingBuilder implements Builder {
+  static final class StrengthTrainingThingBuilder implements Builder {
     /**
      * Creates new {@link StrengthTraining} instance.
      */
@@ -34,7 +38,7 @@ public class StrengthTraining {
     }
   }
   public interface Builder extends ThingBuilder<StrengthTraining> {
-  
+    
   }
 
   protected StrengthTraining() {

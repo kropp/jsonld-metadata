@@ -25,7 +25,7 @@ public class Abdomen {
   /**
    * Builder for {@link Abdomen}
    */
-  public static final class AbdomenThingBuilder implements Builder {
+  static final class AbdomenThingBuilder implements Builder {
     /**
      * Creates new {@link Abdomen} instance.
      */
@@ -34,7 +34,7 @@ public class Abdomen {
     }
   }
   public interface Builder extends ThingBuilder<Abdomen> {
-  
+    
   }
 
   protected Abdomen() {

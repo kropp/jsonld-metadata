@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A type of medical procedure that involves percutaneous techniques, where access to organs or tissue is achieved via needle-puncture of the skin. For example, catheter-based procedures like stent delivery.
  */
@@ -25,7 +29,7 @@ public class PercutaneousProcedure {
   /**
    * Builder for {@link PercutaneousProcedure}
    */
-  public static final class PercutaneousProcedureThingBuilder implements Builder {
+  static final class PercutaneousProcedureThingBuilder implements Builder {
     /**
      * Creates new {@link PercutaneousProcedure} instance.
      */
@@ -34,7 +38,7 @@ public class PercutaneousProcedure {
     }
   }
   public interface Builder extends ThingBuilder<PercutaneousProcedure> {
-  
+    
   }
 
   protected PercutaneousProcedure() {

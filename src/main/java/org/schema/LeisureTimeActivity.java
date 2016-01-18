@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Any physical activity engaged in for recreational purposes. Examples may include ballroom dancing, roller skating, canoeing, fishing, etc.
  */
@@ -25,7 +29,7 @@ public class LeisureTimeActivity {
   /**
    * Builder for {@link LeisureTimeActivity}
    */
-  public static final class LeisureTimeActivityThingBuilder implements Builder {
+  static final class LeisureTimeActivityThingBuilder implements Builder {
     /**
      * Creates new {@link LeisureTimeActivity} instance.
      */
@@ -34,7 +38,7 @@ public class LeisureTimeActivity {
     }
   }
   public interface Builder extends ThingBuilder<LeisureTimeActivity> {
-  
+    
   }
 
   protected LeisureTimeActivity() {

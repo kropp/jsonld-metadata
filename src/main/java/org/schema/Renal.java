@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to the study of the kidneys and its respective disease states.
  */
@@ -25,7 +29,7 @@ public class Renal {
   /**
    * Builder for {@link Renal}
    */
-  public static final class RenalThingBuilder implements Builder {
+  static final class RenalThingBuilder implements Builder {
     /**
      * Creates new {@link Renal} instance.
      */
@@ -34,7 +38,7 @@ public class Renal {
     }
   }
   public interface Builder extends ThingBuilder<Renal> {
-  
+    
   }
 
   protected Renal() {

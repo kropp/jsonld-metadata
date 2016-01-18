@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * DJMixAlbum.
  * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -26,7 +30,7 @@ public class DJMixAlbum {
   /**
    * Builder for {@link DJMixAlbum}
    */
-  public static final class DJMixAlbumThingBuilder implements Builder {
+  static final class DJMixAlbumThingBuilder implements Builder {
     /**
      * Creates new {@link DJMixAlbum} instance.
      */
@@ -35,7 +39,7 @@ public class DJMixAlbum {
     }
   }
   public interface Builder extends ThingBuilder<DJMixAlbum> {
-  
+    
   }
 
   protected DJMixAlbum() {

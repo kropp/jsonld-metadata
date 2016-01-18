@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The act of physically/electronically taking delivery of an object thathas been transferred from an origin to a destination. Reciprocal of SendAction.<p>Related actions:</p><ul><li><a href="http://schema.org/SendAction">SendAction</a>: The reciprocal of ReceiveAction.</li><li><a href="http://schema.org/TakeAction">TakeAction</a>: Unlike TakeAction, ReceiveAction does not imply that the ownership has been transfered (e.g. I can receive a package, but it does not mean the package is now mine)</li></ul>.
  */
@@ -37,7 +41,7 @@ public class ReceiveAction extends TransferAction {
   /**
    * Builder for {@link ReceiveAction}
    */
-  public static final class ReceiveActionThingBuilder implements Builder {
+  static final class ReceiveActionThingBuilder implements Builder {
     /**
      * Creates new {@link ReceiveAction} instance.
      */
@@ -47,20 +51,20 @@ public class ReceiveAction extends TransferAction {
     /**
      * A sub property of instrument. The method of delivery.
      */
-    public Builder deliveryMethod(DeliveryMethod deliveryMethod) {
+    @NotNull public Builder deliveryMethod(DeliveryMethod deliveryMethod) {
       this.deliveryMethod = deliveryMethod;
       return this;
     }
     /**
      * A sub property of instrument. The method of delivery.
      */
-    public Builder deliveryMethod(DeliveryMethod.Builder deliveryMethod) {
+    @NotNull public Builder deliveryMethod(DeliveryMethod.Builder deliveryMethod) {
       return this.deliveryMethod(deliveryMethod.build());
     }
     /**
      * A sub property of participant. The participant who is at the sending end of the action.
      */
-    public Builder sender(Audience audience) {
+    @NotNull public Builder sender(Audience audience) {
       if (this.sender == null) this.sender = new AudienceOrOrganizationOrPerson();
       this.sender.setAudience(audience);
       return this;
@@ -68,13 +72,13 @@ public class ReceiveAction extends TransferAction {
     /**
      * A sub property of participant. The participant who is at the sending end of the action.
      */
-    public Builder sender(Audience.Builder audience) {
+    @NotNull public Builder sender(Audience.Builder audience) {
       return this.sender(audience.build());
     }
     /**
      * A sub property of participant. The participant who is at the sending end of the action.
      */
-    public Builder sender(Organization organization) {
+    @NotNull public Builder sender(Organization organization) {
       if (this.sender == null) this.sender = new AudienceOrOrganizationOrPerson();
       this.sender.setOrganization(organization);
       return this;
@@ -82,13 +86,13 @@ public class ReceiveAction extends TransferAction {
     /**
      * A sub property of participant. The participant who is at the sending end of the action.
      */
-    public Builder sender(Organization.Builder organization) {
+    @NotNull public Builder sender(Organization.Builder organization) {
       return this.sender(organization.build());
     }
     /**
      * A sub property of participant. The participant who is at the sending end of the action.
      */
-    public Builder sender(Person person) {
+    @NotNull public Builder sender(Person person) {
       if (this.sender == null) this.sender = new AudienceOrOrganizationOrPerson();
       this.sender.setPerson(person);
       return this;
@@ -96,39 +100,39 @@ public class ReceiveAction extends TransferAction {
     /**
      * A sub property of participant. The participant who is at the sending end of the action.
      */
-    public Builder sender(Person.Builder person) {
+    @NotNull public Builder sender(Person.Builder person) {
       return this.sender(person.build());
     }
     /**
      * A sub property of location. The original location of the object or the agent before the action.
      */
-    public Builder fromLocation(Place place) {
+    @NotNull public Builder fromLocation(Place place) {
       this.fromLocation = place;
       return this;
     }
     /**
      * A sub property of location. The original location of the object or the agent before the action.
      */
-    public Builder fromLocation(Place.Builder place) {
+    @NotNull public Builder fromLocation(Place.Builder place) {
       return this.fromLocation(place.build());
     }
     /**
      * A sub property of location. The final location of the object or the agent after the action.
      */
-    public Builder toLocation(Place place) {
+    @NotNull public Builder toLocation(Place place) {
       this.toLocation = place;
       return this;
     }
     /**
      * A sub property of location. The final location of the object or the agent after the action.
      */
-    public Builder toLocation(Place.Builder place) {
+    @NotNull public Builder toLocation(Place.Builder place) {
       return this.toLocation(place.build());
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Organization organization) {
+    @NotNull public Builder agent(Organization organization) {
       if (this.agent == null) this.agent = new OrganizationOrPerson();
       this.agent.setOrganization(organization);
       return this;
@@ -136,13 +140,13 @@ public class ReceiveAction extends TransferAction {
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Organization.Builder organization) {
+    @NotNull public Builder agent(Organization.Builder organization) {
       return this.agent(organization.build());
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Person person) {
+    @NotNull public Builder agent(Person person) {
       if (this.agent == null) this.agent = new OrganizationOrPerson();
       this.agent.setPerson(person);
       return this;
@@ -150,7 +154,7 @@ public class ReceiveAction extends TransferAction {
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Person.Builder person) {
+    @NotNull public Builder agent(Person.Builder person) {
       return this.agent(person.build());
     }
     /**
@@ -158,7 +162,7 @@ public class ReceiveAction extends TransferAction {
 
 Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
-    public Builder endTime(java.util.Date date) {
+    @NotNull public Builder endTime(java.util.Date date) {
       this.endTime = date;
       return this;
     }
@@ -167,67 +171,67 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
 
 Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
-    public Builder startTime(java.util.Date date) {
+    @NotNull public Builder startTime(java.util.Date date) {
       this.startTime = date;
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
-    public Builder actionStatus(ActionStatusType actionStatusType) {
+    @NotNull public Builder actionStatus(ActionStatusType actionStatusType) {
       this.actionStatus = actionStatusType;
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
-    public Builder actionStatus(ActionStatusType.Builder actionStatusType) {
+    @NotNull public Builder actionStatus(ActionStatusType.Builder actionStatusType) {
       return this.actionStatus(actionStatusType.build());
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
-    public Builder error(Thing thing) {
+    @NotNull public Builder error(Thing thing) {
       this.error = thing;
       return this;
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
-    public Builder error(Thing.Builder thing) {
+    @NotNull public Builder error(Thing.Builder thing) {
       return this.error(thing.build());
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
-    public Builder target(EntryPoint entryPoint) {
+    @NotNull public Builder target(EntryPoint entryPoint) {
       this.target = entryPoint;
       return this;
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
-    public Builder target(EntryPoint.Builder entryPoint) {
+    @NotNull public Builder target(EntryPoint.Builder entryPoint) {
       return this.target(entryPoint.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -261,7 +265,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -296,7 +300,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -329,7 +333,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -337,38 +341,38 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -396,42 +400,42 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String id;
   }
   public interface Builder extends ThingBuilder<ReceiveAction> {
-  Builder deliveryMethod(DeliveryMethod deliveryMethod);
-  Builder deliveryMethod(DeliveryMethod.Builder deliveryMethod);
-  Builder sender(Audience audience);
-  Builder sender(Audience.Builder audience);
-  Builder sender(Organization organization);
-  Builder sender(Organization.Builder organization);
-  Builder sender(Person person);
-  Builder sender(Person.Builder person);
-  Builder fromLocation(Place place);
-  Builder fromLocation(Place.Builder place);
-  Builder toLocation(Place place);
-  Builder toLocation(Place.Builder place);
-  Builder agent(Organization organization);
-  Builder agent(Organization.Builder organization);
-  Builder agent(Person person);
-  Builder agent(Person.Builder person);
-  Builder endTime(java.util.Date date);
-  Builder startTime(java.util.Date date);
-  Builder actionStatus(ActionStatusType actionStatusType);
-  Builder actionStatus(ActionStatusType.Builder actionStatusType);
-  Builder error(Thing thing);
-  Builder error(Thing.Builder thing);
-  Builder target(EntryPoint entryPoint);
-  Builder target(EntryPoint.Builder entryPoint);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder deliveryMethod(DeliveryMethod deliveryMethod);
+    @NotNull Builder deliveryMethod(DeliveryMethod.Builder deliveryMethod);
+    @NotNull Builder sender(Audience audience);
+    @NotNull Builder sender(Audience.Builder audience);
+    @NotNull Builder sender(Organization organization);
+    @NotNull Builder sender(Organization.Builder organization);
+    @NotNull Builder sender(Person person);
+    @NotNull Builder sender(Person.Builder person);
+    @NotNull Builder fromLocation(Place place);
+    @NotNull Builder fromLocation(Place.Builder place);
+    @NotNull Builder toLocation(Place place);
+    @NotNull Builder toLocation(Place.Builder place);
+    @NotNull Builder agent(Organization organization);
+    @NotNull Builder agent(Organization.Builder organization);
+    @NotNull Builder agent(Person person);
+    @NotNull Builder agent(Person.Builder person);
+    @NotNull Builder endTime(java.util.Date date);
+    @NotNull Builder startTime(java.util.Date date);
+    @NotNull Builder actionStatus(ActionStatusType actionStatusType);
+    @NotNull Builder actionStatus(ActionStatusType.Builder actionStatusType);
+    @NotNull Builder error(Thing thing);
+    @NotNull Builder error(Thing.Builder thing);
+    @NotNull Builder target(EntryPoint entryPoint);
+    @NotNull Builder target(EntryPoint.Builder entryPoint);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected ReceiveAction(DeliveryMethod deliveryMethod, AudienceOrOrganizationOrPerson sender, Place fromLocation, Place toLocation, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

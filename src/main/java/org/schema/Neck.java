@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Neck.
  */
@@ -25,7 +29,7 @@ public class Neck {
   /**
    * Builder for {@link Neck}
    */
-  public static final class NeckThingBuilder implements Builder {
+  static final class NeckThingBuilder implements Builder {
     /**
      * Creates new {@link Neck} instance.
      */
@@ -34,7 +38,7 @@ public class Neck {
     }
   }
   public interface Builder extends ThingBuilder<Neck> {
-  
+    
   }
 
   protected Neck() {

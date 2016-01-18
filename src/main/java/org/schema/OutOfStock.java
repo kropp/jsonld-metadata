@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates that the item is out of stock.
  */
@@ -25,7 +29,7 @@ public class OutOfStock {
   /**
    * Builder for {@link OutOfStock}
    */
-  public static final class OutOfStockThingBuilder implements Builder {
+  static final class OutOfStockThingBuilder implements Builder {
     /**
      * Creates new {@link OutOfStock} instance.
      */
@@ -34,7 +38,7 @@ public class OutOfStock {
     }
   }
   public interface Builder extends ThingBuilder<OutOfStock> {
-  
+    
   }
 
   protected OutOfStock() {

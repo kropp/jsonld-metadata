@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that specializes in the care of infants, children and adolescents.
  */
@@ -25,7 +29,7 @@ public class Pediatric {
   /**
    * Builder for {@link Pediatric}
    */
-  public static final class PediatricThingBuilder implements Builder {
+  static final class PediatricThingBuilder implements Builder {
     /**
      * Creates new {@link Pediatric} instance.
      */
@@ -34,7 +38,7 @@ public class Pediatric {
     }
   }
   public interface Builder extends ThingBuilder<Pediatric> {
-  
+    
   }
 
   protected Pediatric() {

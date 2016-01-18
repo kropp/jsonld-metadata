@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Any physical activity engaged in for job-related purposes. Examples may include waiting tables, maid service, carrying a mailbag, picking fruits or vegetables, construction work, etc.
  */
@@ -25,7 +29,7 @@ public class OccupationalActivity {
   /**
    * Builder for {@link OccupationalActivity}
    */
-  public static final class OccupationalActivityThingBuilder implements Builder {
+  static final class OccupationalActivityThingBuilder implements Builder {
     /**
      * Creates new {@link OccupationalActivity} instance.
      */
@@ -34,7 +38,7 @@ public class OccupationalActivity {
     }
   }
   public interface Builder extends ThingBuilder<OccupationalActivity> {
-  
+    
   }
 
   protected OccupationalActivity() {

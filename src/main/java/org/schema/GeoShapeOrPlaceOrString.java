@@ -18,9 +18,12 @@
 
 package org.schema;
 
-@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 class GeoShapeOrPlaceOrString {
-  @com.fasterxml.jackson.annotation.JsonValue
+  @JsonValue
   public Object getJsonLdValue() {
     if (myGeoShape != null) return myGeoShape;
     if (myPlace != null) return myPlace;
@@ -29,12 +32,12 @@ class GeoShapeOrPlaceOrString {
   }
   public void setGeoShape(GeoShape geoShape) { clear(); myGeoShape = geoShape; }
   public GeoShape getGeoShape() { return myGeoShape; }
-  private GeoShape myGeoShape;
   public void setPlace(Place place) { clear(); myPlace = place; }
   public Place getPlace() { return myPlace; }
-  private Place myPlace;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private GeoShape myGeoShape;
+  private Place myPlace;
   private String myString;
   private void clear() {
     myGeoShape = null;

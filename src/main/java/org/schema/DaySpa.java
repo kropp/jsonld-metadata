@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A day spa.
  */
@@ -25,7 +29,7 @@ public class DaySpa extends HealthAndBeautyBusiness {
   /**
    * Builder for {@link DaySpa}
    */
-  public static final class DaySpaThingBuilder implements Builder {
+  static final class DaySpaThingBuilder implements Builder {
     /**
      * Creates new {@link DaySpa} instance.
      */
@@ -35,107 +39,107 @@ public class DaySpa extends HealthAndBeautyBusiness {
     /**
      * The larger organization that this local business is a branch of, if any.
      */
-    public Builder parentOrganization(Organization organization) {
+    @NotNull public Builder parentOrganization(Organization organization) {
       this.parentOrganization = organization;
       return this;
     }
     /**
      * The larger organization that this local business is a branch of, if any.
      */
-    public Builder parentOrganization(Organization.Builder organization) {
+    @NotNull public Builder parentOrganization(Organization.Builder organization) {
       return this.parentOrganization(organization.build());
     }
     /**
      * The currency accepted (in <a href='http://en.wikipedia.org/wiki/ISO_4217'>ISO 4217 currency format</a>).
      */
-    public Builder currenciesAccepted(String currenciesAccepted) {
+    @NotNull public Builder currenciesAccepted(String currenciesAccepted) {
       this.currenciesAccepted = currenciesAccepted;
       return this;
     }
     /**
      * The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.<br />- Days are specified using the following two-letter combinations: <code>Mo</code>, <code>Tu</code>, <code>We</code>, <code>Th</code>, <code>Fr</code>, <code>Sa</code>, <code>Su</code>.<br />- Times are specified using 24:00 time. For example, 3pm is specified as <code>15:00</code>. <br />- Here is an example: <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Tu,Th 16:00-20:00&quot;&gt;Tuesdays and Thursdays 4-8pm&lt;/time&gt;</code>. <br />- If a business is open 7 days a week, then it can be specified as <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Mo-Su&quot;&gt;Monday through Sunday, all day&lt;/time&gt;</code>.
      */
-    public Builder openingHours(String openingHours) {
+    @NotNull public Builder openingHours(String openingHours) {
       this.openingHours = openingHours;
       return this;
     }
     /**
      * Cash, credit card, etc.
      */
-    public Builder paymentAccepted(String paymentAccepted) {
+    @NotNull public Builder paymentAccepted(String paymentAccepted) {
       this.paymentAccepted = paymentAccepted;
       return this;
     }
     /**
      * The price range of the business, for example <code>$$$</code>.
      */
-    public Builder priceRange(String priceRange) {
+    @NotNull public Builder priceRange(String priceRange) {
       this.priceRange = priceRange;
       return this;
     }
     /**
      * Physical address of the item.
      */
-    public Builder address(PostalAddress postalAddress) {
+    @NotNull public Builder address(PostalAddress postalAddress) {
       this.address = postalAddress;
       return this;
     }
     /**
      * Physical address of the item.
      */
-    public Builder address(PostalAddress.Builder postalAddress) {
+    @NotNull public Builder address(PostalAddress.Builder postalAddress) {
       return this.address(postalAddress.build());
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    public Builder aggregateRating(AggregateRating aggregateRating) {
+    @NotNull public Builder aggregateRating(AggregateRating aggregateRating) {
       this.aggregateRating = aggregateRating;
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    public Builder aggregateRating(AggregateRating.Builder aggregateRating) {
+    @NotNull public Builder aggregateRating(AggregateRating.Builder aggregateRating) {
       return this.aggregateRating(aggregateRating.build());
     }
     /**
      * The basic containment relation between places.
      */
-    public Builder containedIn(Place place) {
+    @NotNull public Builder containedIn(Place place) {
       this.containedIn = place;
       return this;
     }
     /**
      * The basic containment relation between places.
      */
-    public Builder containedIn(Place.Builder place) {
+    @NotNull public Builder containedIn(Place.Builder place) {
       return this.containedIn(place.build());
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
-    public Builder event(Event event) {
+    @NotNull public Builder event(Event event) {
       this.event = event;
       return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
-    public Builder event(Event.Builder event) {
+    @NotNull public Builder event(Event.Builder event) {
       return this.event(event.build());
     }
     /**
      * The fax number.
      */
-    public Builder faxNumber(String faxNumber) {
+    @NotNull public Builder faxNumber(String faxNumber) {
       this.faxNumber = faxNumber;
       return this;
     }
     /**
      * The geo coordinates of the place.
      */
-    public Builder geo(GeoCoordinates geoCoordinates) {
+    @NotNull public Builder geo(GeoCoordinates geoCoordinates) {
       if (this.geo == null) this.geo = new GeoCoordinatesOrGeoShape();
       this.geo.setGeoCoordinates(geoCoordinates);
       return this;
@@ -143,13 +147,13 @@ public class DaySpa extends HealthAndBeautyBusiness {
     /**
      * The geo coordinates of the place.
      */
-    public Builder geo(GeoCoordinates.Builder geoCoordinates) {
+    @NotNull public Builder geo(GeoCoordinates.Builder geoCoordinates) {
       return this.geo(geoCoordinates.build());
     }
     /**
      * The geo coordinates of the place.
      */
-    public Builder geo(GeoShape geoShape) {
+    @NotNull public Builder geo(GeoShape geoShape) {
       if (this.geo == null) this.geo = new GeoCoordinatesOrGeoShape();
       this.geo.setGeoShape(geoShape);
       return this;
@@ -157,27 +161,27 @@ public class DaySpa extends HealthAndBeautyBusiness {
     /**
      * The geo coordinates of the place.
      */
-    public Builder geo(GeoShape.Builder geoShape) {
+    @NotNull public Builder geo(GeoShape.Builder geoShape) {
       return this.geo(geoShape.build());
     }
     /**
      * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
-    public Builder globalLocationNumber(String globalLocationNumber) {
+    @NotNull public Builder globalLocationNumber(String globalLocationNumber) {
       this.globalLocationNumber = globalLocationNumber;
       return this;
     }
     /**
      * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
      */
-    public Builder isicV4(String isicV4) {
+    @NotNull public Builder isicV4(String isicV4) {
       this.isicV4 = isicV4;
       return this;
     }
     /**
      * An associated logo.
      */
-    public Builder logo(ImageObject imageObject) {
+    @NotNull public Builder logo(ImageObject imageObject) {
       if (this.logo == null) this.logo = new ImageObjectOrString();
       this.logo.setImageObject(imageObject);
       return this;
@@ -185,13 +189,13 @@ public class DaySpa extends HealthAndBeautyBusiness {
     /**
      * An associated logo.
      */
-    public Builder logo(ImageObject.Builder imageObject) {
+    @NotNull public Builder logo(ImageObject.Builder imageObject) {
       return this.logo(imageObject.build());
     }
     /**
      * An associated logo.
      */
-    public Builder logo(String logo) {
+    @NotNull public Builder logo(String logo) {
       if (this.logo == null) this.logo = new ImageObjectOrString();
       this.logo.setString(logo);
       return this;
@@ -199,7 +203,7 @@ public class DaySpa extends HealthAndBeautyBusiness {
     /**
      * A URL to a map of the place.
      */
-    public Builder hasMap(Map map) {
+    @NotNull public Builder hasMap(Map map) {
       if (this.hasMap == null) this.hasMap = new MapOrString();
       this.hasMap.setMap(map);
       return this;
@@ -207,13 +211,13 @@ public class DaySpa extends HealthAndBeautyBusiness {
     /**
      * A URL to a map of the place.
      */
-    public Builder hasMap(Map.Builder map) {
+    @NotNull public Builder hasMap(Map.Builder map) {
       return this.hasMap(map.build());
     }
     /**
      * A URL to a map of the place.
      */
-    public Builder hasMap(String hasMap) {
+    @NotNull public Builder hasMap(String hasMap) {
       if (this.hasMap == null) this.hasMap = new MapOrString();
       this.hasMap.setString(hasMap);
       return this;
@@ -221,20 +225,20 @@ public class DaySpa extends HealthAndBeautyBusiness {
     /**
      * The opening hours of a certain place.
      */
-    public Builder openingHoursSpecification(OpeningHoursSpecification openingHoursSpecification) {
+    @NotNull public Builder openingHoursSpecification(OpeningHoursSpecification openingHoursSpecification) {
       this.openingHoursSpecification = openingHoursSpecification;
       return this;
     }
     /**
      * The opening hours of a certain place.
      */
-    public Builder openingHoursSpecification(OpeningHoursSpecification.Builder openingHoursSpecification) {
+    @NotNull public Builder openingHoursSpecification(OpeningHoursSpecification.Builder openingHoursSpecification) {
       return this.openingHoursSpecification(openingHoursSpecification.build());
     }
     /**
      * A photograph of this place.
      */
-    public Builder photo(ImageObject imageObject) {
+    @NotNull public Builder photo(ImageObject imageObject) {
       if (this.photo == null) this.photo = new ImageObjectOrPhotograph();
       this.photo.setImageObject(imageObject);
       return this;
@@ -242,13 +246,13 @@ public class DaySpa extends HealthAndBeautyBusiness {
     /**
      * A photograph of this place.
      */
-    public Builder photo(ImageObject.Builder imageObject) {
+    @NotNull public Builder photo(ImageObject.Builder imageObject) {
       return this.photo(imageObject.build());
     }
     /**
      * A photograph of this place.
      */
-    public Builder photo(Photograph photograph) {
+    @NotNull public Builder photo(Photograph photograph) {
       if (this.photo == null) this.photo = new ImageObjectOrPhotograph();
       this.photo.setPhotograph(photograph);
       return this;
@@ -256,26 +260,26 @@ public class DaySpa extends HealthAndBeautyBusiness {
     /**
      * A photograph of this place.
      */
-    public Builder photo(Photograph.Builder photograph) {
+    @NotNull public Builder photo(Photograph.Builder photograph) {
       return this.photo(photograph.build());
     }
     /**
      * A review of the item.
      */
-    public Builder review(Review review) {
+    @NotNull public Builder review(Review review) {
       this.review = review;
       return this;
     }
     /**
      * A review of the item.
      */
-    public Builder review(Review.Builder review) {
+    @NotNull public Builder review(Review.Builder review) {
       return this.review(review.build());
     }
     /**
      * The telephone number.
      */
-    public Builder telephone(String telephone) {
+    @NotNull public Builder telephone(String telephone) {
       this.telephone = telephone;
       return this;
     }
@@ -285,7 +289,7 @@ public class DaySpa extends HealthAndBeautyBusiness {
 Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
 
      */
-    public Builder additionalProperty(PropertyValue propertyValue) {
+    @NotNull public Builder additionalProperty(PropertyValue propertyValue) {
       this.additionalProperty = propertyValue;
       return this;
     }
@@ -295,27 +299,27 @@ Note: Publishers should be aware that applications designed to use specific sche
 Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
 
      */
-    public Builder additionalProperty(PropertyValue.Builder propertyValue) {
+    @NotNull public Builder additionalProperty(PropertyValue.Builder propertyValue) {
       return this.additionalProperty(propertyValue.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -349,7 +353,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -384,7 +388,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -417,7 +421,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -425,38 +429,38 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -494,56 +498,56 @@ Note: Publishers should be aware that applications designed to use specific sche
     private String id;
   }
   public interface Builder extends ThingBuilder<DaySpa> {
-  Builder parentOrganization(Organization organization);
-  Builder parentOrganization(Organization.Builder organization);
-  Builder currenciesAccepted(String currenciesAccepted);
-  Builder openingHours(String openingHours);
-  Builder paymentAccepted(String paymentAccepted);
-  Builder priceRange(String priceRange);
-  Builder address(PostalAddress postalAddress);
-  Builder address(PostalAddress.Builder postalAddress);
-  Builder aggregateRating(AggregateRating aggregateRating);
-  Builder aggregateRating(AggregateRating.Builder aggregateRating);
-  Builder containedIn(Place place);
-  Builder containedIn(Place.Builder place);
-  Builder event(Event event);
-  Builder event(Event.Builder event);
-  Builder faxNumber(String faxNumber);
-  Builder geo(GeoCoordinates geoCoordinates);
-  Builder geo(GeoCoordinates.Builder geoCoordinates);
-  Builder geo(GeoShape geoShape);
-  Builder geo(GeoShape.Builder geoShape);
-  Builder globalLocationNumber(String globalLocationNumber);
-  Builder isicV4(String isicV4);
-  Builder logo(ImageObject imageObject);
-  Builder logo(ImageObject.Builder imageObject);
-  Builder logo(String logo);
-  Builder hasMap(Map map);
-  Builder hasMap(Map.Builder map);
-  Builder hasMap(String hasMap);
-  Builder openingHoursSpecification(OpeningHoursSpecification openingHoursSpecification);
-  Builder openingHoursSpecification(OpeningHoursSpecification.Builder openingHoursSpecification);
-  Builder photo(ImageObject imageObject);
-  Builder photo(ImageObject.Builder imageObject);
-  Builder photo(Photograph photograph);
-  Builder photo(Photograph.Builder photograph);
-  Builder review(Review review);
-  Builder review(Review.Builder review);
-  Builder telephone(String telephone);
-  Builder additionalProperty(PropertyValue propertyValue);
-  Builder additionalProperty(PropertyValue.Builder propertyValue);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder parentOrganization(Organization organization);
+    @NotNull Builder parentOrganization(Organization.Builder organization);
+    @NotNull Builder currenciesAccepted(String currenciesAccepted);
+    @NotNull Builder openingHours(String openingHours);
+    @NotNull Builder paymentAccepted(String paymentAccepted);
+    @NotNull Builder priceRange(String priceRange);
+    @NotNull Builder address(PostalAddress postalAddress);
+    @NotNull Builder address(PostalAddress.Builder postalAddress);
+    @NotNull Builder aggregateRating(AggregateRating aggregateRating);
+    @NotNull Builder aggregateRating(AggregateRating.Builder aggregateRating);
+    @NotNull Builder containedIn(Place place);
+    @NotNull Builder containedIn(Place.Builder place);
+    @NotNull Builder event(Event event);
+    @NotNull Builder event(Event.Builder event);
+    @NotNull Builder faxNumber(String faxNumber);
+    @NotNull Builder geo(GeoCoordinates geoCoordinates);
+    @NotNull Builder geo(GeoCoordinates.Builder geoCoordinates);
+    @NotNull Builder geo(GeoShape geoShape);
+    @NotNull Builder geo(GeoShape.Builder geoShape);
+    @NotNull Builder globalLocationNumber(String globalLocationNumber);
+    @NotNull Builder isicV4(String isicV4);
+    @NotNull Builder logo(ImageObject imageObject);
+    @NotNull Builder logo(ImageObject.Builder imageObject);
+    @NotNull Builder logo(String logo);
+    @NotNull Builder hasMap(Map map);
+    @NotNull Builder hasMap(Map.Builder map);
+    @NotNull Builder hasMap(String hasMap);
+    @NotNull Builder openingHoursSpecification(OpeningHoursSpecification openingHoursSpecification);
+    @NotNull Builder openingHoursSpecification(OpeningHoursSpecification.Builder openingHoursSpecification);
+    @NotNull Builder photo(ImageObject imageObject);
+    @NotNull Builder photo(ImageObject.Builder imageObject);
+    @NotNull Builder photo(Photograph photograph);
+    @NotNull Builder photo(Photograph.Builder photograph);
+    @NotNull Builder review(Review review);
+    @NotNull Builder review(Review.Builder review);
+    @NotNull Builder telephone(String telephone);
+    @NotNull Builder additionalProperty(PropertyValue propertyValue);
+    @NotNull Builder additionalProperty(PropertyValue.Builder propertyValue);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected DaySpa(Organization parentOrganization, String currenciesAccepted, String openingHours, String paymentAccepted, String priceRange, PostalAddress address, AggregateRating aggregateRating, Place containedIn, Event event, String faxNumber, GeoCoordinatesOrGeoShape geo, String globalLocationNumber, String isicV4, ImageObjectOrString logo, MapOrString hasMap, OpeningHoursSpecification openingHoursSpecification, ImageObjectOrPhotograph photo, Review review, String telephone, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

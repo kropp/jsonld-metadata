@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Midwifery.
  */
@@ -25,7 +29,7 @@ public class Midwifery {
   /**
    * Builder for {@link Midwifery}
    */
-  public static final class MidwiferyThingBuilder implements Builder {
+  static final class MidwiferyThingBuilder implements Builder {
     /**
      * Creates new {@link Midwifery} instance.
      */
@@ -34,7 +38,7 @@ public class Midwifery {
     }
   }
   public interface Builder extends ThingBuilder<Midwifery> {
-  
+    
   }
 
   protected Midwifery() {

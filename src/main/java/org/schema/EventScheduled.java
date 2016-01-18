@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The event is taking place or has taken place on the startDate as scheduled. Use of this value is optional, as it is assumed by default.
  */
@@ -25,7 +29,7 @@ public class EventScheduled {
   /**
    * Builder for {@link EventScheduled}
    */
-  public static final class EventScheduledThingBuilder implements Builder {
+  static final class EventScheduledThingBuilder implements Builder {
     /**
      * Creates new {@link EventScheduled} instance.
      */
@@ -34,7 +38,7 @@ public class EventScheduled {
     }
   }
   public interface Builder extends ThingBuilder<EventScheduled> {
-  
+    
   }
 
   protected EventScheduled() {

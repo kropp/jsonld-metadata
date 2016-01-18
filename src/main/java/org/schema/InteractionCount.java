@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * This property is deprecated, alongside the UserInteraction types on which it depended.
  */
@@ -25,7 +29,7 @@ public class InteractionCount {
   /**
    * Builder for {@link InteractionCount}
    */
-  public static final class InteractionCountThingBuilder implements Builder {
+  static final class InteractionCountThingBuilder implements Builder {
     /**
      * Creates new {@link InteractionCount} instance.
      */
@@ -34,7 +38,7 @@ public class InteractionCount {
     }
   }
   public interface Builder extends ThingBuilder<InteractionCount> {
-  
+    
   }
 
   protected InteractionCount() {

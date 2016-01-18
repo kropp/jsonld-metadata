@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * An action that failed to complete. The action's error property and the HTTP return code contain more information about the failure.
  */
@@ -25,7 +29,7 @@ public class FailedActionStatus {
   /**
    * Builder for {@link FailedActionStatus}
    */
-  public static final class FailedActionStatusThingBuilder implements Builder {
+  static final class FailedActionStatusThingBuilder implements Builder {
     /**
      * Creates new {@link FailedActionStatus} instance.
      */
@@ -34,7 +38,7 @@ public class FailedActionStatus {
     }
   }
   public interface Builder extends ThingBuilder<FailedActionStatus> {
-  
+    
   }
 
   protected FailedActionStatus() {

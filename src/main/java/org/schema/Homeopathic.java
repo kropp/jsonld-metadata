@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A system of medicine based on the principle that a disease can be cured by a substance that produces similar symptoms in healthy people.
  */
@@ -25,7 +29,7 @@ public class Homeopathic {
   /**
    * Builder for {@link Homeopathic}
    */
-  public static final class HomeopathicThingBuilder implements Builder {
+  static final class HomeopathicThingBuilder implements Builder {
     /**
      * Creates new {@link Homeopathic} instance.
      */
@@ -34,7 +38,7 @@ public class Homeopathic {
     }
   }
   public interface Builder extends ThingBuilder<Homeopathic> {
-  
+    
   }
 
   protected Homeopathic() {

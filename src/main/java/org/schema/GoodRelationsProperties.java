@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * This class contains derivatives of properties from the GoodRelations Vocabulary for E-Commerce, created by Martin Hepp. GoodRelations is a data model for sharing e-commerce data on the Web that can be expressed in a variety of syntaxes, including RDFa and HTML5 Microdata. More information about GoodRelations can be found at <a href="http://purl.org/goodrelations/">http://purl.org/goodrelations/</a>.
  */
@@ -25,7 +29,7 @@ public class GoodRelationsProperties {
   /**
    * Builder for {@link GoodRelationsProperties}
    */
-  public static final class GoodRelationsPropertiesThingBuilder implements Builder {
+  static final class GoodRelationsPropertiesThingBuilder implements Builder {
     /**
      * Creates new {@link GoodRelationsProperties} instance.
      */
@@ -34,7 +38,7 @@ public class GoodRelationsProperties {
     }
   }
   public interface Builder extends ThingBuilder<GoodRelationsProperties> {
-  
+    
   }
 
   protected GoodRelationsProperties() {

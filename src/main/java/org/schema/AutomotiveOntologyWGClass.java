@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * This element is based on the work of the Automotive Ontology Working Group, see <a href="http://www.automotive-ontology.org">http://www.automotive-ontology.org</a> for details. Many class and property definitions are inspired by or based on abstracts from Wikipedia, the free encyclopedia.
  */
@@ -25,7 +29,7 @@ public class AutomotiveOntologyWGClass {
   /**
    * Builder for {@link AutomotiveOntologyWGClass}
    */
-  public static final class AutomotiveOntologyWGClassThingBuilder implements Builder {
+  static final class AutomotiveOntologyWGClassThingBuilder implements Builder {
     /**
      * Creates new {@link AutomotiveOntologyWGClass} instance.
      */
@@ -34,7 +38,7 @@ public class AutomotiveOntologyWGClass {
     }
   }
   public interface Builder extends ThingBuilder<AutomotiveOntologyWGClass> {
-  
+    
   }
 
   protected AutomotiveOntologyWGClass() {

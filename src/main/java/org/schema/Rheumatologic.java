@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that deals with the study and treatment of rheumatic, autoimmune or joint diseases.
  */
@@ -25,7 +29,7 @@ public class Rheumatologic {
   /**
    * Builder for {@link Rheumatologic}
    */
-  public static final class RheumatologicThingBuilder implements Builder {
+  static final class RheumatologicThingBuilder implements Builder {
     /**
      * Creates new {@link Rheumatologic} instance.
      */
@@ -34,7 +38,7 @@ public class Rheumatologic {
     }
   }
   public interface Builder extends ThingBuilder<Rheumatologic> {
-  
+    
   }
 
   protected Rheumatologic() {

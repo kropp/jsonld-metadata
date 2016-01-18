@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Optometry.
  */
@@ -25,7 +29,7 @@ public class Optometic {
   /**
    * Builder for {@link Optometic}
    */
-  public static final class OptometicThingBuilder implements Builder {
+  static final class OptometicThingBuilder implements Builder {
     /**
      * Creates new {@link Optometic} instance.
      */
@@ -34,7 +38,7 @@ public class Optometic {
     }
   }
   public interface Builder extends ThingBuilder<Optometic> {
-  
+    
   }
 
   protected Optometic() {

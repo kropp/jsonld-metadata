@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Nutritional information about the recipe.
  */
@@ -97,7 +101,7 @@ public class NutritionInformation extends StructuredValue {
   /**
    * Builder for {@link NutritionInformation}
    */
-  public static final class NutritionInformationThingBuilder implements Builder {
+  static final class NutritionInformationThingBuilder implements Builder {
     /**
      * Creates new {@link NutritionInformation} instance.
      */
@@ -107,171 +111,171 @@ public class NutritionInformation extends StructuredValue {
     /**
      * The number of calories.
      */
-    public Builder calories(Energy energy) {
+    @NotNull public Builder calories(Energy energy) {
       this.calories = energy;
       return this;
     }
     /**
      * The number of calories.
      */
-    public Builder calories(Energy.Builder energy) {
+    @NotNull public Builder calories(Energy.Builder energy) {
       return this.calories(energy.build());
     }
     /**
      * The number of grams of carbohydrates.
      */
-    public Builder carbohydrateContent(Mass mass) {
+    @NotNull public Builder carbohydrateContent(Mass mass) {
       this.carbohydrateContent = mass;
       return this;
     }
     /**
      * The number of grams of carbohydrates.
      */
-    public Builder carbohydrateContent(Mass.Builder mass) {
+    @NotNull public Builder carbohydrateContent(Mass.Builder mass) {
       return this.carbohydrateContent(mass.build());
     }
     /**
      * The number of milligrams of cholesterol.
      */
-    public Builder cholesterolContent(Mass mass) {
+    @NotNull public Builder cholesterolContent(Mass mass) {
       this.cholesterolContent = mass;
       return this;
     }
     /**
      * The number of milligrams of cholesterol.
      */
-    public Builder cholesterolContent(Mass.Builder mass) {
+    @NotNull public Builder cholesterolContent(Mass.Builder mass) {
       return this.cholesterolContent(mass.build());
     }
     /**
      * The number of grams of fat.
      */
-    public Builder fatContent(Mass mass) {
+    @NotNull public Builder fatContent(Mass mass) {
       this.fatContent = mass;
       return this;
     }
     /**
      * The number of grams of fat.
      */
-    public Builder fatContent(Mass.Builder mass) {
+    @NotNull public Builder fatContent(Mass.Builder mass) {
       return this.fatContent(mass.build());
     }
     /**
      * The number of grams of fiber.
      */
-    public Builder fiberContent(Mass mass) {
+    @NotNull public Builder fiberContent(Mass mass) {
       this.fiberContent = mass;
       return this;
     }
     /**
      * The number of grams of fiber.
      */
-    public Builder fiberContent(Mass.Builder mass) {
+    @NotNull public Builder fiberContent(Mass.Builder mass) {
       return this.fiberContent(mass.build());
     }
     /**
      * The number of grams of protein.
      */
-    public Builder proteinContent(Mass mass) {
+    @NotNull public Builder proteinContent(Mass mass) {
       this.proteinContent = mass;
       return this;
     }
     /**
      * The number of grams of protein.
      */
-    public Builder proteinContent(Mass.Builder mass) {
+    @NotNull public Builder proteinContent(Mass.Builder mass) {
       return this.proteinContent(mass.build());
     }
     /**
      * The number of grams of saturated fat.
      */
-    public Builder saturatedFatContent(Mass mass) {
+    @NotNull public Builder saturatedFatContent(Mass mass) {
       this.saturatedFatContent = mass;
       return this;
     }
     /**
      * The number of grams of saturated fat.
      */
-    public Builder saturatedFatContent(Mass.Builder mass) {
+    @NotNull public Builder saturatedFatContent(Mass.Builder mass) {
       return this.saturatedFatContent(mass.build());
     }
     /**
      * The serving size, in terms of the number of volume or mass.
      */
-    public Builder servingSize(String servingSize) {
+    @NotNull public Builder servingSize(String servingSize) {
       this.servingSize = servingSize;
       return this;
     }
     /**
      * The number of milligrams of sodium.
      */
-    public Builder sodiumContent(Mass mass) {
+    @NotNull public Builder sodiumContent(Mass mass) {
       this.sodiumContent = mass;
       return this;
     }
     /**
      * The number of milligrams of sodium.
      */
-    public Builder sodiumContent(Mass.Builder mass) {
+    @NotNull public Builder sodiumContent(Mass.Builder mass) {
       return this.sodiumContent(mass.build());
     }
     /**
      * The number of grams of sugar.
      */
-    public Builder sugarContent(Mass mass) {
+    @NotNull public Builder sugarContent(Mass mass) {
       this.sugarContent = mass;
       return this;
     }
     /**
      * The number of grams of sugar.
      */
-    public Builder sugarContent(Mass.Builder mass) {
+    @NotNull public Builder sugarContent(Mass.Builder mass) {
       return this.sugarContent(mass.build());
     }
     /**
      * The number of grams of trans fat.
      */
-    public Builder transFatContent(Mass mass) {
+    @NotNull public Builder transFatContent(Mass mass) {
       this.transFatContent = mass;
       return this;
     }
     /**
      * The number of grams of trans fat.
      */
-    public Builder transFatContent(Mass.Builder mass) {
+    @NotNull public Builder transFatContent(Mass.Builder mass) {
       return this.transFatContent(mass.build());
     }
     /**
      * The number of grams of unsaturated fat.
      */
-    public Builder unsaturatedFatContent(Mass mass) {
+    @NotNull public Builder unsaturatedFatContent(Mass mass) {
       this.unsaturatedFatContent = mass;
       return this;
     }
     /**
      * The number of grams of unsaturated fat.
      */
-    public Builder unsaturatedFatContent(Mass.Builder mass) {
+    @NotNull public Builder unsaturatedFatContent(Mass.Builder mass) {
       return this.unsaturatedFatContent(mass.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -305,7 +309,7 @@ public class NutritionInformation extends StructuredValue {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -340,7 +344,7 @@ public class NutritionInformation extends StructuredValue {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -373,7 +377,7 @@ public class NutritionInformation extends StructuredValue {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -381,38 +385,38 @@ public class NutritionInformation extends StructuredValue {
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -442,41 +446,41 @@ public class NutritionInformation extends StructuredValue {
     private String id;
   }
   public interface Builder extends ThingBuilder<NutritionInformation> {
-  Builder calories(Energy energy);
-  Builder calories(Energy.Builder energy);
-  Builder carbohydrateContent(Mass mass);
-  Builder carbohydrateContent(Mass.Builder mass);
-  Builder cholesterolContent(Mass mass);
-  Builder cholesterolContent(Mass.Builder mass);
-  Builder fatContent(Mass mass);
-  Builder fatContent(Mass.Builder mass);
-  Builder fiberContent(Mass mass);
-  Builder fiberContent(Mass.Builder mass);
-  Builder proteinContent(Mass mass);
-  Builder proteinContent(Mass.Builder mass);
-  Builder saturatedFatContent(Mass mass);
-  Builder saturatedFatContent(Mass.Builder mass);
-  Builder servingSize(String servingSize);
-  Builder sodiumContent(Mass mass);
-  Builder sodiumContent(Mass.Builder mass);
-  Builder sugarContent(Mass mass);
-  Builder sugarContent(Mass.Builder mass);
-  Builder transFatContent(Mass mass);
-  Builder transFatContent(Mass.Builder mass);
-  Builder unsaturatedFatContent(Mass mass);
-  Builder unsaturatedFatContent(Mass.Builder mass);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder calories(Energy energy);
+    @NotNull Builder calories(Energy.Builder energy);
+    @NotNull Builder carbohydrateContent(Mass mass);
+    @NotNull Builder carbohydrateContent(Mass.Builder mass);
+    @NotNull Builder cholesterolContent(Mass mass);
+    @NotNull Builder cholesterolContent(Mass.Builder mass);
+    @NotNull Builder fatContent(Mass mass);
+    @NotNull Builder fatContent(Mass.Builder mass);
+    @NotNull Builder fiberContent(Mass mass);
+    @NotNull Builder fiberContent(Mass.Builder mass);
+    @NotNull Builder proteinContent(Mass mass);
+    @NotNull Builder proteinContent(Mass.Builder mass);
+    @NotNull Builder saturatedFatContent(Mass mass);
+    @NotNull Builder saturatedFatContent(Mass.Builder mass);
+    @NotNull Builder servingSize(String servingSize);
+    @NotNull Builder sodiumContent(Mass mass);
+    @NotNull Builder sodiumContent(Mass.Builder mass);
+    @NotNull Builder sugarContent(Mass mass);
+    @NotNull Builder sugarContent(Mass.Builder mass);
+    @NotNull Builder transFatContent(Mass mass);
+    @NotNull Builder transFatContent(Mass.Builder mass);
+    @NotNull Builder unsaturatedFatContent(Mass mass);
+    @NotNull Builder unsaturatedFatContent(Mass.Builder mass);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected NutritionInformation(Energy calories, Mass carbohydrateContent, Mass cholesterolContent, Mass fatContent, Mass fiberContent, Mass proteinContent, Mass saturatedFatContent, String servingSize, Mass sodiumContent, Mass sugarContent, Mass transFatContent, Mass unsaturatedFatContent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

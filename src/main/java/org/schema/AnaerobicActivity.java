@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Physical activity that is of high-intensity which utilizes the anaerobic metabolism of the body.
  */
@@ -25,7 +29,7 @@ public class AnaerobicActivity {
   /**
    * Builder for {@link AnaerobicActivity}
    */
-  public static final class AnaerobicActivityThingBuilder implements Builder {
+  static final class AnaerobicActivityThingBuilder implements Builder {
     /**
      * Creates new {@link AnaerobicActivity} instance.
      */
@@ -34,7 +38,7 @@ public class AnaerobicActivity {
     }
   }
   public interface Builder extends ThingBuilder<AnaerobicActivity> {
-  
+    
   }
 
   protected AnaerobicActivity() {

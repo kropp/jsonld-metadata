@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to diagnosis and treatment of disorders of endocrine glands and their secretions.
  */
@@ -25,7 +29,7 @@ public class Endocrine {
   /**
    * Builder for {@link Endocrine}
    */
-  public static final class EndocrineThingBuilder implements Builder {
+  static final class EndocrineThingBuilder implements Builder {
     /**
      * Creates new {@link Endocrine} instance.
      */
@@ -34,7 +38,7 @@ public class Endocrine {
     }
   }
   public interface Builder extends ThingBuilder<Endocrine> {
-  
+    
   }
 
   protected Endocrine() {

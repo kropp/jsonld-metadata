@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates that the item is new.
  */
@@ -25,7 +29,7 @@ public class NewCondition {
   /**
    * Builder for {@link NewCondition}
    */
-  public static final class NewConditionThingBuilder implements Builder {
+  static final class NewConditionThingBuilder implements Builder {
     /**
      * Creates new {@link NewCondition} instance.
      */
@@ -34,7 +38,7 @@ public class NewCondition {
     }
   }
   public interface Builder extends ThingBuilder<NewCondition> {
-  
+    
   }
 
   protected NewCondition() {

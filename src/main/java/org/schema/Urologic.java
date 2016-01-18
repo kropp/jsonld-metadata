@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that is concerned with the diagnosis and treatment of diseases pertaining to the urinary tract and the urogenital system.
  */
@@ -25,7 +29,7 @@ public class Urologic {
   /**
    * Builder for {@link Urologic}
    */
-  public static final class UrologicThingBuilder implements Builder {
+  static final class UrologicThingBuilder implements Builder {
     /**
      * Creates new {@link Urologic} instance.
      */
@@ -34,7 +38,7 @@ public class Urologic {
     }
   }
   public interface Builder extends ThingBuilder<Urologic> {
-  
+    
   }
 
   protected Urologic() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The event has been cancelled. If the event has multiple startDate values, all are assumed to be cancelled. Either startDate or previousStartDate may be used to specify the event's cancelled date(s).
  */
@@ -25,7 +29,7 @@ public class EventCancelled {
   /**
    * Builder for {@link EventCancelled}
    */
-  public static final class EventCancelledThingBuilder implements Builder {
+  static final class EventCancelledThingBuilder implements Builder {
     /**
      * Creates new {@link EventCancelled} instance.
      */
@@ -34,7 +38,7 @@ public class EventCancelled {
     }
   }
   public interface Builder extends ThingBuilder<EventCancelled> {
-  
+    
   }
 
   protected EventCancelled() {

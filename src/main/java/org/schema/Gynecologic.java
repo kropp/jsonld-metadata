@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to the health care of women, particularly in the diagnosis and treatment of disorders affecting the female reproductive system.
  */
@@ -25,7 +29,7 @@ public class Gynecologic {
   /**
    * Builder for {@link Gynecologic}
    */
-  public static final class GynecologicThingBuilder implements Builder {
+  static final class GynecologicThingBuilder implements Builder {
     /**
      * Creates new {@link Gynecologic} instance.
      */
@@ -34,7 +38,7 @@ public class Gynecologic {
     }
   }
   public interface Builder extends ThingBuilder<Gynecologic> {
-  
+    
   }
 
   protected Gynecologic() {

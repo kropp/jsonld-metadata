@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * OrderStatus representing that there is a problem with the order.
  */
@@ -25,7 +29,7 @@ public class OrderProblem {
   /**
    * Builder for {@link OrderProblem}
    */
-  public static final class OrderProblemThingBuilder implements Builder {
+  static final class OrderProblemThingBuilder implements Builder {
     /**
      * Creates new {@link OrderProblem} instance.
      */
@@ -34,7 +38,7 @@ public class OrderProblem {
     }
   }
   public interface Builder extends ThingBuilder<OrderProblem> {
-  
+    
   }
 
   protected OrderProblem() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Game server status: OnlineFull. Server is online but unavailable. The maximum number of players has reached.
  */
@@ -25,7 +29,7 @@ public class OnlineFull {
   /**
    * Builder for {@link OnlineFull}
    */
-  public static final class OnlineFullThingBuilder implements Builder {
+  static final class OnlineFullThingBuilder implements Builder {
     /**
      * Creates new {@link OnlineFull} instance.
      */
@@ -34,7 +38,7 @@ public class OnlineFull {
     }
   }
   public interface Builder extends ThingBuilder<OnlineFull> {
-  
+    
   }
 
   protected OnlineFull() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The act of participating in exertive activity for the purposes of improving health and fitness.
  */
@@ -91,7 +95,7 @@ public class ExerciseAction extends PlayAction {
   /**
    * Builder for {@link ExerciseAction}
    */
-  public static final class ExerciseActionThingBuilder implements Builder {
+  static final class ExerciseActionThingBuilder implements Builder {
     /**
      * Creates new {@link ExerciseAction} instance.
      */
@@ -101,170 +105,170 @@ public class ExerciseAction extends PlayAction {
     /**
      * A sub property of location. The course where this action was taken.
      */
-    public Builder exerciseCourse(Place place) {
+    @NotNull public Builder exerciseCourse(Place place) {
       this.exerciseCourse = place;
       return this;
     }
     /**
      * A sub property of location. The course where this action was taken.
      */
-    public Builder exerciseCourse(Place.Builder place) {
+    @NotNull public Builder exerciseCourse(Place.Builder place) {
       return this.exerciseCourse(place.build());
     }
     /**
      * A sub property of instrument. The diet used in this action.
      */
-    public Builder exerciseRelatedDiet(Diet diet) {
+    @NotNull public Builder exerciseRelatedDiet(Diet diet) {
       this.exerciseRelatedDiet = diet;
       return this;
     }
     /**
      * A sub property of instrument. The diet used in this action.
      */
-    public Builder exerciseRelatedDiet(Diet.Builder diet) {
+    @NotNull public Builder exerciseRelatedDiet(Diet.Builder diet) {
       return this.exerciseRelatedDiet(diet.build());
     }
     /**
      * The distance travelled, e.g. exercising or travelling.
      */
-    public Builder distance(Distance distance) {
+    @NotNull public Builder distance(Distance distance) {
       this.distance = distance;
       return this;
     }
     /**
      * The distance travelled, e.g. exercising or travelling.
      */
-    public Builder distance(Distance.Builder distance) {
+    @NotNull public Builder distance(Distance.Builder distance) {
       return this.distance(distance.build());
     }
     /**
      * A sub property of instrument. The exercise plan used on this action.
      */
-    public Builder exercisePlan(ExercisePlan exercisePlan) {
+    @NotNull public Builder exercisePlan(ExercisePlan exercisePlan) {
       this.exercisePlan = exercisePlan;
       return this;
     }
     /**
      * A sub property of instrument. The exercise plan used on this action.
      */
-    public Builder exercisePlan(ExercisePlan.Builder exercisePlan) {
+    @NotNull public Builder exercisePlan(ExercisePlan.Builder exercisePlan) {
       return this.exercisePlan(exercisePlan.build());
     }
     /**
      * Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
      */
-    public Builder exerciseType(String exerciseType) {
+    @NotNull public Builder exerciseType(String exerciseType) {
       this.exerciseType = exerciseType;
       return this;
     }
     /**
      * A sub property of location. The original location of the object or the agent before the action.
      */
-    public Builder fromLocation(Place place) {
+    @NotNull public Builder fromLocation(Place place) {
       this.fromLocation = place;
       return this;
     }
     /**
      * A sub property of location. The original location of the object or the agent before the action.
      */
-    public Builder fromLocation(Place.Builder place) {
+    @NotNull public Builder fromLocation(Place.Builder place) {
       return this.fromLocation(place.build());
     }
     /**
      * A sub property of participant. The opponent on this action.
      */
-    public Builder opponent(Person person) {
+    @NotNull public Builder opponent(Person person) {
       this.opponent = person;
       return this;
     }
     /**
      * A sub property of participant. The opponent on this action.
      */
-    public Builder opponent(Person.Builder person) {
+    @NotNull public Builder opponent(Person.Builder person) {
       return this.opponent(person.build());
     }
     /**
      * A sub property of location. The sports activity location where this action occurred.
      */
-    public Builder sportsActivityLocation(SportsActivityLocation sportsActivityLocation) {
+    @NotNull public Builder sportsActivityLocation(SportsActivityLocation sportsActivityLocation) {
       this.sportsActivityLocation = sportsActivityLocation;
       return this;
     }
     /**
      * A sub property of location. The sports activity location where this action occurred.
      */
-    public Builder sportsActivityLocation(SportsActivityLocation.Builder sportsActivityLocation) {
+    @NotNull public Builder sportsActivityLocation(SportsActivityLocation.Builder sportsActivityLocation) {
       return this.sportsActivityLocation(sportsActivityLocation.build());
     }
     /**
      * A sub property of location. The sports event where this action occurred.
      */
-    public Builder sportsEvent(SportsEvent sportsEvent) {
+    @NotNull public Builder sportsEvent(SportsEvent sportsEvent) {
       this.sportsEvent = sportsEvent;
       return this;
     }
     /**
      * A sub property of location. The sports event where this action occurred.
      */
-    public Builder sportsEvent(SportsEvent.Builder sportsEvent) {
+    @NotNull public Builder sportsEvent(SportsEvent.Builder sportsEvent) {
       return this.sportsEvent(sportsEvent.build());
     }
     /**
      * A sub property of participant. The sports team that participated on this action.
      */
-    public Builder sportsTeam(SportsTeam sportsTeam) {
+    @NotNull public Builder sportsTeam(SportsTeam sportsTeam) {
       this.sportsTeam = sportsTeam;
       return this;
     }
     /**
      * A sub property of participant. The sports team that participated on this action.
      */
-    public Builder sportsTeam(SportsTeam.Builder sportsTeam) {
+    @NotNull public Builder sportsTeam(SportsTeam.Builder sportsTeam) {
       return this.sportsTeam(sportsTeam.build());
     }
     /**
      * A sub property of location. The final location of the object or the agent after the action.
      */
-    public Builder toLocation(Place place) {
+    @NotNull public Builder toLocation(Place place) {
       this.toLocation = place;
       return this;
     }
     /**
      * A sub property of location. The final location of the object or the agent after the action.
      */
-    public Builder toLocation(Place.Builder place) {
+    @NotNull public Builder toLocation(Place.Builder place) {
       return this.toLocation(place.build());
     }
     /**
      * An intended audience, i.e. a group for whom something was created.
      */
-    public Builder audience(Audience audience) {
+    @NotNull public Builder audience(Audience audience) {
       this.audience = audience;
       return this;
     }
     /**
      * An intended audience, i.e. a group for whom something was created.
      */
-    public Builder audience(Audience.Builder audience) {
+    @NotNull public Builder audience(Audience.Builder audience) {
       return this.audience(audience.build());
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
-    public Builder event(Event event) {
+    @NotNull public Builder event(Event event) {
       this.event = event;
       return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
-    public Builder event(Event.Builder event) {
+    @NotNull public Builder event(Event.Builder event) {
       return this.event(event.build());
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Organization organization) {
+    @NotNull public Builder agent(Organization organization) {
       if (this.agent == null) this.agent = new OrganizationOrPerson();
       this.agent.setOrganization(organization);
       return this;
@@ -272,13 +276,13 @@ public class ExerciseAction extends PlayAction {
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Organization.Builder organization) {
+    @NotNull public Builder agent(Organization.Builder organization) {
       return this.agent(organization.build());
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Person person) {
+    @NotNull public Builder agent(Person person) {
       if (this.agent == null) this.agent = new OrganizationOrPerson();
       this.agent.setPerson(person);
       return this;
@@ -286,7 +290,7 @@ public class ExerciseAction extends PlayAction {
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Person.Builder person) {
+    @NotNull public Builder agent(Person.Builder person) {
       return this.agent(person.build());
     }
     /**
@@ -294,7 +298,7 @@ public class ExerciseAction extends PlayAction {
 
 Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
-    public Builder endTime(java.util.Date date) {
+    @NotNull public Builder endTime(java.util.Date date) {
       this.endTime = date;
       return this;
     }
@@ -303,67 +307,67 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
 
 Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
-    public Builder startTime(java.util.Date date) {
+    @NotNull public Builder startTime(java.util.Date date) {
       this.startTime = date;
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
-    public Builder actionStatus(ActionStatusType actionStatusType) {
+    @NotNull public Builder actionStatus(ActionStatusType actionStatusType) {
       this.actionStatus = actionStatusType;
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
-    public Builder actionStatus(ActionStatusType.Builder actionStatusType) {
+    @NotNull public Builder actionStatus(ActionStatusType.Builder actionStatusType) {
       return this.actionStatus(actionStatusType.build());
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
-    public Builder error(Thing thing) {
+    @NotNull public Builder error(Thing thing) {
       this.error = thing;
       return this;
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
-    public Builder error(Thing.Builder thing) {
+    @NotNull public Builder error(Thing.Builder thing) {
       return this.error(thing.build());
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
-    public Builder target(EntryPoint entryPoint) {
+    @NotNull public Builder target(EntryPoint entryPoint) {
       this.target = entryPoint;
       return this;
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
-    public Builder target(EntryPoint.Builder entryPoint) {
+    @NotNull public Builder target(EntryPoint.Builder entryPoint) {
       return this.target(entryPoint.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -397,7 +401,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -432,7 +436,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -465,7 +469,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -473,38 +477,38 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -541,55 +545,55 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String id;
   }
   public interface Builder extends ThingBuilder<ExerciseAction> {
-  Builder exerciseCourse(Place place);
-  Builder exerciseCourse(Place.Builder place);
-  Builder exerciseRelatedDiet(Diet diet);
-  Builder exerciseRelatedDiet(Diet.Builder diet);
-  Builder distance(Distance distance);
-  Builder distance(Distance.Builder distance);
-  Builder exercisePlan(ExercisePlan exercisePlan);
-  Builder exercisePlan(ExercisePlan.Builder exercisePlan);
-  Builder exerciseType(String exerciseType);
-  Builder fromLocation(Place place);
-  Builder fromLocation(Place.Builder place);
-  Builder opponent(Person person);
-  Builder opponent(Person.Builder person);
-  Builder sportsActivityLocation(SportsActivityLocation sportsActivityLocation);
-  Builder sportsActivityLocation(SportsActivityLocation.Builder sportsActivityLocation);
-  Builder sportsEvent(SportsEvent sportsEvent);
-  Builder sportsEvent(SportsEvent.Builder sportsEvent);
-  Builder sportsTeam(SportsTeam sportsTeam);
-  Builder sportsTeam(SportsTeam.Builder sportsTeam);
-  Builder toLocation(Place place);
-  Builder toLocation(Place.Builder place);
-  Builder audience(Audience audience);
-  Builder audience(Audience.Builder audience);
-  Builder event(Event event);
-  Builder event(Event.Builder event);
-  Builder agent(Organization organization);
-  Builder agent(Organization.Builder organization);
-  Builder agent(Person person);
-  Builder agent(Person.Builder person);
-  Builder endTime(java.util.Date date);
-  Builder startTime(java.util.Date date);
-  Builder actionStatus(ActionStatusType actionStatusType);
-  Builder actionStatus(ActionStatusType.Builder actionStatusType);
-  Builder error(Thing thing);
-  Builder error(Thing.Builder thing);
-  Builder target(EntryPoint entryPoint);
-  Builder target(EntryPoint.Builder entryPoint);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder exerciseCourse(Place place);
+    @NotNull Builder exerciseCourse(Place.Builder place);
+    @NotNull Builder exerciseRelatedDiet(Diet diet);
+    @NotNull Builder exerciseRelatedDiet(Diet.Builder diet);
+    @NotNull Builder distance(Distance distance);
+    @NotNull Builder distance(Distance.Builder distance);
+    @NotNull Builder exercisePlan(ExercisePlan exercisePlan);
+    @NotNull Builder exercisePlan(ExercisePlan.Builder exercisePlan);
+    @NotNull Builder exerciseType(String exerciseType);
+    @NotNull Builder fromLocation(Place place);
+    @NotNull Builder fromLocation(Place.Builder place);
+    @NotNull Builder opponent(Person person);
+    @NotNull Builder opponent(Person.Builder person);
+    @NotNull Builder sportsActivityLocation(SportsActivityLocation sportsActivityLocation);
+    @NotNull Builder sportsActivityLocation(SportsActivityLocation.Builder sportsActivityLocation);
+    @NotNull Builder sportsEvent(SportsEvent sportsEvent);
+    @NotNull Builder sportsEvent(SportsEvent.Builder sportsEvent);
+    @NotNull Builder sportsTeam(SportsTeam sportsTeam);
+    @NotNull Builder sportsTeam(SportsTeam.Builder sportsTeam);
+    @NotNull Builder toLocation(Place place);
+    @NotNull Builder toLocation(Place.Builder place);
+    @NotNull Builder audience(Audience audience);
+    @NotNull Builder audience(Audience.Builder audience);
+    @NotNull Builder event(Event event);
+    @NotNull Builder event(Event.Builder event);
+    @NotNull Builder agent(Organization organization);
+    @NotNull Builder agent(Organization.Builder organization);
+    @NotNull Builder agent(Person person);
+    @NotNull Builder agent(Person.Builder person);
+    @NotNull Builder endTime(java.util.Date date);
+    @NotNull Builder startTime(java.util.Date date);
+    @NotNull Builder actionStatus(ActionStatusType actionStatusType);
+    @NotNull Builder actionStatus(ActionStatusType.Builder actionStatusType);
+    @NotNull Builder error(Thing thing);
+    @NotNull Builder error(Thing.Builder thing);
+    @NotNull Builder target(EntryPoint entryPoint);
+    @NotNull Builder target(EntryPoint.Builder entryPoint);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected ExerciseAction(Place exerciseCourse, Diet exerciseRelatedDiet, Distance distance, ExercisePlan exercisePlan, String exerciseType, Place fromLocation, Person opponent, SportsActivityLocation sportsActivityLocation, SportsEvent sportsEvent, SportsTeam sportsTeam, Place toLocation, Audience audience, Event event, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

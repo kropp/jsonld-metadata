@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A specific branch of medical science that pertains to diagnosis and treatment of disorders of muscles, ligaments and skeletal system.
  */
@@ -25,7 +29,7 @@ public class Musculoskeletal {
   /**
    * Builder for {@link Musculoskeletal}
    */
-  public static final class MusculoskeletalThingBuilder implements Builder {
+  static final class MusculoskeletalThingBuilder implements Builder {
     /**
      * Creates new {@link Musculoskeletal} instance.
      */
@@ -34,7 +38,7 @@ public class Musculoskeletal {
     }
   }
   public interface Builder extends ThingBuilder<Musculoskeletal> {
-  
+    
   }
 
   protected Musculoskeletal() {

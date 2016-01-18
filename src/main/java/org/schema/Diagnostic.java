@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A medical device used for diagnostic purposes.
  */
@@ -25,7 +29,7 @@ public class Diagnostic {
   /**
    * Builder for {@link Diagnostic}
    */
-  public static final class DiagnosticThingBuilder implements Builder {
+  static final class DiagnosticThingBuilder implements Builder {
     /**
      * Creates new {@link Diagnostic} instance.
      */
@@ -34,7 +38,7 @@ public class Diagnostic {
     }
   }
   public interface Builder extends ThingBuilder<Diagnostic> {
-  
+    
   }
 
   protected Diagnostic() {

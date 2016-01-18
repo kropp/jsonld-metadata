@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * The act of providing goods, services, or money without compensation, often for philanthropic reasons.
  */
@@ -31,7 +35,7 @@ public class DonateAction extends TradeAction {
   /**
    * Builder for {@link DonateAction}
    */
-  public static final class DonateActionThingBuilder implements Builder {
+  static final class DonateActionThingBuilder implements Builder {
     /**
      * Creates new {@link DonateAction} instance.
      */
@@ -41,7 +45,7 @@ public class DonateAction extends TradeAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Audience audience) {
+    @NotNull public Builder recipient(Audience audience) {
       if (this.recipient == null) this.recipient = new AudienceOrOrganizationOrPerson();
       this.recipient.setAudience(audience);
       return this;
@@ -49,13 +53,13 @@ public class DonateAction extends TradeAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Audience.Builder audience) {
+    @NotNull public Builder recipient(Audience.Builder audience) {
       return this.recipient(audience.build());
     }
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Organization organization) {
+    @NotNull public Builder recipient(Organization organization) {
       if (this.recipient == null) this.recipient = new AudienceOrOrganizationOrPerson();
       this.recipient.setOrganization(organization);
       return this;
@@ -63,13 +67,13 @@ public class DonateAction extends TradeAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Organization.Builder organization) {
+    @NotNull public Builder recipient(Organization.Builder organization) {
       return this.recipient(organization.build());
     }
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Person person) {
+    @NotNull public Builder recipient(Person person) {
       if (this.recipient == null) this.recipient = new AudienceOrOrganizationOrPerson();
       this.recipient.setPerson(person);
       return this;
@@ -77,7 +81,7 @@ public class DonateAction extends TradeAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    public Builder recipient(Person.Builder person) {
+    @NotNull public Builder recipient(Person.Builder person) {
       return this.recipient(person.build());
     }
     /**
@@ -103,7 +107,7 @@ public class DonateAction extends TradeAction {
 </ul>
       
      */
-    public Builder price(Number number) {
+    @NotNull public Builder price(Number number) {
       if (this.price == null) this.price = new NumberOrString();
       this.price.setNumber(number);
       return this;
@@ -131,7 +135,7 @@ public class DonateAction extends TradeAction {
 </ul>
       
      */
-    public Builder price(String price) {
+    @NotNull public Builder price(String price) {
       if (this.price == null) this.price = new NumberOrString();
       this.price.setString(price);
       return this;
@@ -139,20 +143,20 @@ public class DonateAction extends TradeAction {
     /**
      * One or more detailed price specifications, indicating the unit price and delivery or payment charges.
      */
-    public Builder priceSpecification(PriceSpecification priceSpecification) {
+    @NotNull public Builder priceSpecification(PriceSpecification priceSpecification) {
       this.priceSpecification = priceSpecification;
       return this;
     }
     /**
      * One or more detailed price specifications, indicating the unit price and delivery or payment charges.
      */
-    public Builder priceSpecification(PriceSpecification.Builder priceSpecification) {
+    @NotNull public Builder priceSpecification(PriceSpecification.Builder priceSpecification) {
       return this.priceSpecification(priceSpecification.build());
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Organization organization) {
+    @NotNull public Builder agent(Organization organization) {
       if (this.agent == null) this.agent = new OrganizationOrPerson();
       this.agent.setOrganization(organization);
       return this;
@@ -160,13 +164,13 @@ public class DonateAction extends TradeAction {
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Organization.Builder organization) {
+    @NotNull public Builder agent(Organization.Builder organization) {
       return this.agent(organization.build());
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Person person) {
+    @NotNull public Builder agent(Person person) {
       if (this.agent == null) this.agent = new OrganizationOrPerson();
       this.agent.setPerson(person);
       return this;
@@ -174,7 +178,7 @@ public class DonateAction extends TradeAction {
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    public Builder agent(Person.Builder person) {
+    @NotNull public Builder agent(Person.Builder person) {
       return this.agent(person.build());
     }
     /**
@@ -182,7 +186,7 @@ public class DonateAction extends TradeAction {
 
 Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
-    public Builder endTime(java.util.Date date) {
+    @NotNull public Builder endTime(java.util.Date date) {
       this.endTime = date;
       return this;
     }
@@ -191,67 +195,67 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
 
 Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
-    public Builder startTime(java.util.Date date) {
+    @NotNull public Builder startTime(java.util.Date date) {
       this.startTime = date;
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
-    public Builder actionStatus(ActionStatusType actionStatusType) {
+    @NotNull public Builder actionStatus(ActionStatusType actionStatusType) {
       this.actionStatus = actionStatusType;
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
-    public Builder actionStatus(ActionStatusType.Builder actionStatusType) {
+    @NotNull public Builder actionStatus(ActionStatusType.Builder actionStatusType) {
       return this.actionStatus(actionStatusType.build());
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
-    public Builder error(Thing thing) {
+    @NotNull public Builder error(Thing thing) {
       this.error = thing;
       return this;
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
-    public Builder error(Thing.Builder thing) {
+    @NotNull public Builder error(Thing.Builder thing) {
       return this.error(thing.build());
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
-    public Builder target(EntryPoint entryPoint) {
+    @NotNull public Builder target(EntryPoint entryPoint) {
       this.target = entryPoint;
       return this;
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
-    public Builder target(EntryPoint.Builder entryPoint) {
+    @NotNull public Builder target(EntryPoint.Builder entryPoint) {
       return this.target(entryPoint.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    public Builder description(String description) {
+    @NotNull public Builder description(String description) {
       this.description = description;
       return this;
     }
@@ -285,7 +289,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -320,7 +324,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -353,7 +357,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -361,38 +365,38 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     /**
      * The name of the item.
      */
-    public Builder name(String name) {
+    @NotNull public Builder name(String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    public Builder url(String url) {
+    @NotNull public Builder url(String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    public Builder id(String id) {
+    @NotNull public Builder id(String id) {
       this.id = id;
       return this;
     }
@@ -419,40 +423,40 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String id;
   }
   public interface Builder extends ThingBuilder<DonateAction> {
-  Builder recipient(Audience audience);
-  Builder recipient(Audience.Builder audience);
-  Builder recipient(Organization organization);
-  Builder recipient(Organization.Builder organization);
-  Builder recipient(Person person);
-  Builder recipient(Person.Builder person);
-  Builder price(Number number);
-  Builder price(String price);
-  Builder priceSpecification(PriceSpecification priceSpecification);
-  Builder priceSpecification(PriceSpecification.Builder priceSpecification);
-  Builder agent(Organization organization);
-  Builder agent(Organization.Builder organization);
-  Builder agent(Person person);
-  Builder agent(Person.Builder person);
-  Builder endTime(java.util.Date date);
-  Builder startTime(java.util.Date date);
-  Builder actionStatus(ActionStatusType actionStatusType);
-  Builder actionStatus(ActionStatusType.Builder actionStatusType);
-  Builder error(Thing thing);
-  Builder error(Thing.Builder thing);
-  Builder target(EntryPoint entryPoint);
-  Builder target(EntryPoint.Builder entryPoint);
-  Builder additionalType(String additionalType);
-  Builder alternateName(String alternateName);
-  Builder description(String description);
-  Builder mainEntityOfPage(CreativeWork creativeWork);
-  Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-  Builder mainEntityOfPage(String mainEntityOfPage);
-  Builder name(String name);
-  Builder sameAs(String sameAs);
-  Builder url(String url);
-  Builder potentialAction(Action action);
-  Builder potentialAction(Action.Builder action);
-  Builder id(String id);
+    @NotNull Builder recipient(Audience audience);
+    @NotNull Builder recipient(Audience.Builder audience);
+    @NotNull Builder recipient(Organization organization);
+    @NotNull Builder recipient(Organization.Builder organization);
+    @NotNull Builder recipient(Person person);
+    @NotNull Builder recipient(Person.Builder person);
+    @NotNull Builder price(Number number);
+    @NotNull Builder price(String price);
+    @NotNull Builder priceSpecification(PriceSpecification priceSpecification);
+    @NotNull Builder priceSpecification(PriceSpecification.Builder priceSpecification);
+    @NotNull Builder agent(Organization organization);
+    @NotNull Builder agent(Organization.Builder organization);
+    @NotNull Builder agent(Person person);
+    @NotNull Builder agent(Person.Builder person);
+    @NotNull Builder endTime(java.util.Date date);
+    @NotNull Builder startTime(java.util.Date date);
+    @NotNull Builder actionStatus(ActionStatusType actionStatusType);
+    @NotNull Builder actionStatus(ActionStatusType.Builder actionStatusType);
+    @NotNull Builder error(Thing thing);
+    @NotNull Builder error(Thing.Builder thing);
+    @NotNull Builder target(EntryPoint entryPoint);
+    @NotNull Builder target(EntryPoint.Builder entryPoint);
+    @NotNull Builder additionalType(String additionalType);
+    @NotNull Builder alternateName(String alternateName);
+    @NotNull Builder description(String description);
+    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
+    @NotNull Builder name(String name);
+    @NotNull Builder sameAs(String sameAs);
+    @NotNull Builder url(String url);
+    @NotNull Builder potentialAction(Action action);
+    @NotNull Builder potentialAction(Action.Builder action);
+    @NotNull Builder id(String id);
   }
 
   protected DonateAction(AudienceOrOrganizationOrPerson recipient, NumberOrString price, PriceSpecification priceSpecification, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

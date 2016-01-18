@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * A transit map.
  */
@@ -25,7 +29,7 @@ public class TransitMap {
   /**
    * Builder for {@link TransitMap}
    */
-  public static final class TransitMapThingBuilder implements Builder {
+  static final class TransitMapThingBuilder implements Builder {
     /**
      * Creates new {@link TransitMap} instance.
      */
@@ -34,7 +38,7 @@ public class TransitMap {
     }
   }
   public interface Builder extends ThingBuilder<TransitMap> {
-  
+    
   }
 
   protected TransitMap() {

@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Indicates that the item is available only online.
  */
@@ -25,7 +29,7 @@ public class OnlineOnly {
   /**
    * Builder for {@link OnlineOnly}
    */
-  public static final class OnlineOnlyThingBuilder implements Builder {
+  static final class OnlineOnlyThingBuilder implements Builder {
     /**
      * Creates new {@link OnlineOnly} instance.
      */
@@ -34,7 +38,7 @@ public class OnlineOnly {
     }
   }
   public interface Builder extends ThingBuilder<OnlineOnly> {
-  
+    
   }
 
   protected OnlineOnly() {

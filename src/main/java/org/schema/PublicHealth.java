@@ -18,6 +18,10 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.databind.annotation.*;
+import com.fasterxml.jackson.annotation.*;
+import org.jetbrains.annotations.*;
+
 /**
  * Environment and public health.
  */
@@ -25,7 +29,7 @@ public class PublicHealth {
   /**
    * Builder for {@link PublicHealth}
    */
-  public static final class PublicHealthThingBuilder implements Builder {
+  static final class PublicHealthThingBuilder implements Builder {
     /**
      * Creates new {@link PublicHealth} instance.
      */
@@ -34,7 +38,7 @@ public class PublicHealth {
     }
   }
   public interface Builder extends ThingBuilder<PublicHealth> {
-  
+    
   }
 
   protected PublicHealth() {
