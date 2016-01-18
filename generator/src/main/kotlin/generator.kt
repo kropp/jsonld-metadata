@@ -312,6 +312,8 @@ public interface ThingBuilder<T> {
                 appendln()
                 appendln("import com.fasterxml.jackson.databind.annotation.*;")
                 appendln("import com.fasterxml.jackson.annotation.*;")
+                appendln("import org.jetbrains.annotations.*;")
+                appendln()
 
                 appendln("/**")
                 type.comment?.let { appendln(" * ${it.replace("\n", "\n  * ")}") }
@@ -373,7 +375,7 @@ public interface ThingBuilder<T> {
                     appendln("  /**")
                     appendln("   * Builder for {@link $typeName}")
                     appendln("   */")
-                    appendln("  public static final class ${typeName}ThingBuilder implements Builder {")
+                    appendln("  static final class ${typeName}ThingBuilder implements Builder {")
                     appendln("    /**")
                     appendln("     * Creates new {@link $typeName} instance.")
                     appendln("     */")
@@ -393,8 +395,8 @@ public interface ThingBuilder<T> {
                                     appendln("     * $it")
                                     appendln("     */")
                                 }
-                                interfaceMethods += "Builder ${name.decapitalize()}($fieldType ${getVariableName(fieldType, name)});"
-                                appendln("    public Builder ${name.decapitalize()}($fieldType ${getVariableName(fieldType, name)}) {")
+                                interfaceMethods += "@NotNull Builder ${name.decapitalize()}(@NotNull $fieldType ${getVariableName(fieldType, name)});"
+                                appendln("    @NotNull public Builder ${name.decapitalize()}(@NotNull $fieldType ${getVariableName(fieldType, name)}) {")
                                 if (eitherTypes.size < 2) {
                                     appendln("      this.${name.decapitalize()} = ${getVariableName(fieldType, name)};")
                                 } else {
@@ -411,8 +413,8 @@ public interface ThingBuilder<T> {
                                         appendln("     * $it")
                                         appendln("     */")
                                     }
-                                    interfaceMethods += "Builder ${name.decapitalize()}($fieldType.Builder ${getVariableName(fieldType, name)});"
-                                    appendln("    public Builder ${name.decapitalize()}($fieldType.Builder ${getVariableName(fieldType, name)}) {")
+                                    interfaceMethods += "@NotNull Builder ${name.decapitalize()}(@NotNull $fieldType.Builder ${getVariableName(fieldType, name)});"
+                                    appendln("    @NotNull public Builder ${name.decapitalize()}(@NotNull $fieldType.Builder ${getVariableName(fieldType, name)}) {")
                                     appendln("      return this.${name.decapitalize()}(${getVariableName(fieldType, name)}.build());")
                                     appendln("    }")
                                 }
@@ -430,7 +432,7 @@ public interface ThingBuilder<T> {
                     getAllFields(type).forEach { appendln("    private ${getEitherFieldType(ns, packageDir, it)} ${getVariableName(it.name!!)};") }
                     appendln("  }")
                     appendln("  public interface Builder extends ThingBuilder<$typeName> {")
-                    appendln("  " + interfaceMethods.joinToString("\n  "))
+                    appendln("    " + interfaceMethods.joinToString("\n    "))
                     appendln("  }")
                     appendln()
                 }
