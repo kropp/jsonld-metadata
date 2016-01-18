@@ -20,8 +20,6 @@ import org.semarglproject.source.StreamProcessor
 import java.io.File
 import java.io.FileInputStream
 import java.util.*
-import kotlin.collections.*
-import kotlin.text.*
 
 /**
  * @author Victor Kropp
@@ -223,10 +221,13 @@ class GeneratorSink : TripleSink {
                 appendln()
                 appendln("package $ns;")
                 appendln()
-                appendln("@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)")
+                appendln("import com.fasterxml.jackson.databind.annotation.*;")
+                appendln("import com.fasterxml.jackson.annotation.*;")
+                appendln()
+                appendln("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)")
                 appendln("class $eitherName {")
 
-                appendln("  @com.fasterxml.jackson.annotation.JsonValue")
+                appendln("  @JsonValue")
                 appendln("  public Object getJsonLdValue() {")
                 types.forEach {
                     appendln("    if (my$it != null) return my$it;")
@@ -309,6 +310,8 @@ public interface ThingBuilder<T> {
                 appendln()
                 appendln("package $ns;")
                 appendln()
+                appendln("import com.fasterxml.jackson.databind.annotation.*;")
+                appendln("import com.fasterxml.jackson.annotation.*;")
 
                 appendln("/**")
                 type.comment?.let { appendln(" * ${it.replace("\n", "\n  * ")}") }
@@ -317,7 +320,7 @@ public interface ThingBuilder<T> {
                 appendln(" */")
 
                 if (typeName == "Thing") {
-                    appendln("@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)")
+                    appendln("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)")
                 }
                 append("public ${type.classOrInterface} $typeName")
                 type.parentType?.let { types[it]?.let { append(" extends ${it.name}") } }
@@ -329,12 +332,12 @@ public interface ThingBuilder<T> {
                 appendln(" {")
 
                 if (typeName == "Thing") {
-                    appendln("""  @com.fasterxml.jackson.annotation.JsonProperty("@type")
+                    appendln("""  @JsonProperty("@type")
   public String getJsonLdType() {
     return getClass().getSimpleName();
   }
 
-  @com.fasterxml.jackson.annotation.JsonProperty("@context")
+  @JsonProperty("@context")
   public String getJsonLdContext() {
     return "http://schema.org/";
   }
@@ -353,10 +356,10 @@ public interface ThingBuilder<T> {
                                 appendln("   */")
                             }
                             if (fieldType == "java.util.Date") {
-                                appendln("    @com.fasterxml.jackson.annotation.JsonFormat(shape = com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")")
+                                appendln("    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")")
                             }
                             if (name == "Id") {
-                                appendln("  @com.fasterxml.jackson.annotation.JsonProperty(\"@id\")");
+                                appendln("  @JsonProperty(\"@id\")");
                             }
                             appendln("  public $fieldType get$name() {")
                             appendln("    return my$name;")
