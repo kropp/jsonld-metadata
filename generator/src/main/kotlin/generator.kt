@@ -62,7 +62,7 @@ private val BANNER = """/*
 
 private val ID_TYPE = "http://schema.org/@id"
 
-private val NUMBER_UNDERLYING_TYPES = listOf("Integer", "Long", "Float", "Double", "String")
+private val NUMBER_UNDERLYING_TYPES = listOf("int", "long", "float", "double", "String")
 
 class GeneratorSink : TripleSink {
     private var uri: String = "http://schema.org/"
@@ -160,6 +160,10 @@ class GeneratorSink : TripleSink {
     private fun getBasicTypeName(name: String?): String? {
         return when(name) {
             "Text", "URL" -> "String"
+            "Integer" -> "int"
+            "Long" -> "long"
+            "Float" -> "float"
+            "Double" -> "double"
             "DateTime", "Date", "Time" -> "java.util.Date"
             "Class" -> null
             else -> name?.capitalize()
@@ -201,7 +205,7 @@ class GeneratorSink : TripleSink {
     }
 
     private fun shouldSkip(name: String): Boolean {
-        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Number", "Int", "Long", "Float", "Double", "URL", "True", "False", "Class", "Object").contains(name) ||
+        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Number", "Integer", "Float", "int", "long", "float", "double", "URL", "True", "False", "Class", "Object").contains(name) ||
                 name.contains("#") || name.contains("/")
     }
 
@@ -213,7 +217,7 @@ class GeneratorSink : TripleSink {
     }
 
     private fun generateEither(ns: String, packageDir: File, types: Collection<String>): String {
-        val eitherName = if (types == NUMBER_UNDERLYING_TYPES) "Number" else types.joinToString("Or")
+        val eitherName = if (types == NUMBER_UNDERLYING_TYPES) "Number" else types.map { it.capitalize() }.joinToString("Or")
         val file = File(packageDir, "$eitherName.java")
         if (!file.exists()) {
             with(StringBuilder()) {
@@ -230,7 +234,7 @@ class GeneratorSink : TripleSink {
                 appendln("  @JsonValue")
                 appendln("  public Object getJsonLdValue() {")
                 types.forEach {
-                    appendln("    if (my$it != null) return my$it;")
+                    appendln("    if (my${getBasicTypeName(it)!!.capitalize()} != null) return my${getBasicTypeName(it)!!.capitalize()};")
                 }
                 appendln("    return null;")
                 appendln("  }")
@@ -245,13 +249,17 @@ class GeneratorSink : TripleSink {
                     appendln("  }")
                 }
                 types.forEach {
-                    appendln("  public void set$it($it ${getVariableName(it, "value")}) { clear(); my$it = ${getVariableName(it, "value")}; }")
-                    appendln("  public $it get$it() { return my$it; }")
-                    appendln("  private $it my$it;")
+                    appendln("  public void set${getBasicTypeName(it)!!.capitalize()}($it ${getVariableName(it, "value")}) { clear(); my${getBasicTypeName(it)!!.capitalize()} = ${getVariableName(it, "value")}; }")
+                    appendln("  public $it get${getBasicTypeName(it)!!.capitalize()}() { return my${getBasicTypeName(it)!!.capitalize()}; }")
+                }
+                (if (eitherName == "Number") listOf("Integer", "Long", "Float", "Double", "String") else types).forEach {
+                    val fieldName = getBasicTypeName(it)!!.capitalize()
+                    val typeName = if (fieldName == "Int") "Integer" else fieldName
+                    appendln("  private $typeName my$fieldName;")
                 }
                 appendln("  private void clear() {")
                 types.forEach {
-                    appendln("    my$it = null;")
+                    appendln("    my${getBasicTypeName(it)!!.capitalize()} = null;")
                 }
                 appendln("  }")
                 appendln("}")
@@ -395,26 +403,27 @@ public interface ThingBuilder<T> {
                                     appendln("     * $it")
                                     appendln("     */")
                                 }
-                                interfaceMethods += "@NotNull Builder ${name.decapitalize()}(@NotNull $fieldType ${getVariableName(fieldType, name)});"
-                                appendln("    @NotNull public Builder ${name.decapitalize()}(@NotNull $fieldType ${getVariableName(fieldType, name)}) {")
+                                val annotation = if (field.name == "Number") "@NotNull " else ""
+                                interfaceMethods += "@NotNull Builder ${name.decapitalize()}($annotation$fieldType ${getVariableName(fieldType, name)});"
+                                appendln("    @NotNull public Builder ${name.decapitalize()}($annotation$fieldType ${getVariableName(fieldType, name)}) {")
                                 if (eitherTypes.size < 2) {
                                     appendln("      this.${name.decapitalize()} = ${getVariableName(fieldType, name)};")
                                 } else {
                                     appendln("      if (this.${name.decapitalize()} == null) this.${name.decapitalize()} = new ${getEitherFieldType(ns, packageDir, field)}();")
-                                    appendln("      this.${name.decapitalize()}.set$fieldType(${getVariableName(fieldType, name)});")
+                                    appendln("      this.${name.decapitalize()}.set${fieldType.capitalize()}(${getVariableName(fieldType, name)});")
                                 }
                                 appendln("      return this;")
                                 appendln("    }")
 
                                 // add overload accepting ThingBuilder<T>
-                                if (!shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && fieldType != "String" && fieldType != "Integer" && fieldType != "java.util.Date" && fieldType != "HasPart") {
+                                if (!shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && fieldType != "String" && fieldType != "java.util.Date" && fieldType != "HasPart") {
                                     field.comment?.let {
                                         appendln("    /**")
                                         appendln("     * $it")
                                         appendln("     */")
                                     }
-                                    interfaceMethods += "@NotNull Builder ${name.decapitalize()}(@NotNull $fieldType.Builder ${getVariableName(fieldType, name)});"
-                                    appendln("    @NotNull public Builder ${name.decapitalize()}(@NotNull $fieldType.Builder ${getVariableName(fieldType, name)}) {")
+                                    interfaceMethods += "@NotNull Builder ${name.decapitalize()}($annotation$fieldType.Builder ${getVariableName(fieldType, name)});"
+                                    appendln("    @NotNull public Builder ${name.decapitalize()}($annotation$fieldType.Builder ${getVariableName(fieldType, name)}) {")
                                     appendln("      return this.${name.decapitalize()}(${getVariableName(fieldType, name)}.build());")
                                     appendln("    }")
                                 }
@@ -479,7 +488,7 @@ public interface ThingBuilder<T> {
         if (indexOfDot > 0) {
             return typeName.substring(indexOfDot+1).decapitalize()
         }
-        if (entityName != null && arrayOf("Boolean", "String", "Class", "Long", "Int", "Double", "Float").contains(typeName)) {
+        if (entityName != null && arrayOf("Boolean", "String", "Class", "long", "int", "double", "float").contains(typeName)) {
             return entityName.decapitalize()
         }
         return typeName.decapitalize()
