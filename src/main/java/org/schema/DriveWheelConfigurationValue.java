@@ -40,85 +40,85 @@ public class DriveWheelConfigurationValue extends QualitativeValue {
     /**
      * This ordering relation for qualitative values indicates that the subject is equal to the object.
      */
-    @NotNull public Builder equal(QualitativeValue qualitativeValue) {
+    @NotNull public Builder equal(@NotNull QualitativeValue qualitativeValue) {
       this.equal = qualitativeValue;
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is equal to the object.
      */
-    @NotNull public Builder equal(QualitativeValue.Builder qualitativeValue) {
+    @NotNull public Builder equal(@NotNull QualitativeValue.Builder qualitativeValue) {
       return this.equal(qualitativeValue.build());
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is greater than the object.
      */
-    @NotNull public Builder greater(QualitativeValue qualitativeValue) {
+    @NotNull public Builder greater(@NotNull QualitativeValue qualitativeValue) {
       this.greater = qualitativeValue;
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is greater than the object.
      */
-    @NotNull public Builder greater(QualitativeValue.Builder qualitativeValue) {
+    @NotNull public Builder greater(@NotNull QualitativeValue.Builder qualitativeValue) {
       return this.greater(qualitativeValue.build());
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is greater than or equal to the object.
      */
-    @NotNull public Builder greaterOrEqual(QualitativeValue qualitativeValue) {
+    @NotNull public Builder greaterOrEqual(@NotNull QualitativeValue qualitativeValue) {
       this.greaterOrEqual = qualitativeValue;
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is greater than or equal to the object.
      */
-    @NotNull public Builder greaterOrEqual(QualitativeValue.Builder qualitativeValue) {
+    @NotNull public Builder greaterOrEqual(@NotNull QualitativeValue.Builder qualitativeValue) {
       return this.greaterOrEqual(qualitativeValue.build());
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is lesser than the object.
      */
-    @NotNull public Builder lesser(QualitativeValue qualitativeValue) {
+    @NotNull public Builder lesser(@NotNull QualitativeValue qualitativeValue) {
       this.lesser = qualitativeValue;
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is lesser than the object.
      */
-    @NotNull public Builder lesser(QualitativeValue.Builder qualitativeValue) {
+    @NotNull public Builder lesser(@NotNull QualitativeValue.Builder qualitativeValue) {
       return this.lesser(qualitativeValue.build());
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is lesser than or equal to the object.
      */
-    @NotNull public Builder lesserOrEqual(QualitativeValue qualitativeValue) {
+    @NotNull public Builder lesserOrEqual(@NotNull QualitativeValue qualitativeValue) {
       this.lesserOrEqual = qualitativeValue;
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is lesser than or equal to the object.
      */
-    @NotNull public Builder lesserOrEqual(QualitativeValue.Builder qualitativeValue) {
+    @NotNull public Builder lesserOrEqual(@NotNull QualitativeValue.Builder qualitativeValue) {
       return this.lesserOrEqual(qualitativeValue.build());
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is not equal to the object.
      */
-    @NotNull public Builder nonEqual(QualitativeValue qualitativeValue) {
+    @NotNull public Builder nonEqual(@NotNull QualitativeValue qualitativeValue) {
       this.nonEqual = qualitativeValue;
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is not equal to the object.
      */
-    @NotNull public Builder nonEqual(QualitativeValue.Builder qualitativeValue) {
+    @NotNull public Builder nonEqual(@NotNull QualitativeValue.Builder qualitativeValue) {
       return this.nonEqual(qualitativeValue.build());
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(Enumeration enumeration) {
+    @NotNull public Builder valueReference(@NotNull Enumeration enumeration) {
       if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setEnumeration(enumeration);
       return this;
@@ -126,13 +126,13 @@ public class DriveWheelConfigurationValue extends QualitativeValue {
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(Enumeration.Builder enumeration) {
+    @NotNull public Builder valueReference(@NotNull Enumeration.Builder enumeration) {
       return this.valueReference(enumeration.build());
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(PropertyValue propertyValue) {
+    @NotNull public Builder valueReference(@NotNull PropertyValue propertyValue) {
       if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setPropertyValue(propertyValue);
       return this;
@@ -140,13 +140,13 @@ public class DriveWheelConfigurationValue extends QualitativeValue {
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(PropertyValue.Builder propertyValue) {
+    @NotNull public Builder valueReference(@NotNull PropertyValue.Builder propertyValue) {
       return this.valueReference(propertyValue.build());
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(QualitativeValue qualitativeValue) {
+    @NotNull public Builder valueReference(@NotNull QualitativeValue qualitativeValue) {
       if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setQualitativeValue(qualitativeValue);
       return this;
@@ -154,13 +154,13 @@ public class DriveWheelConfigurationValue extends QualitativeValue {
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(QualitativeValue.Builder qualitativeValue) {
+    @NotNull public Builder valueReference(@NotNull QualitativeValue.Builder qualitativeValue) {
       return this.valueReference(qualitativeValue.build());
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(QuantitativeValue quantitativeValue) {
+    @NotNull public Builder valueReference(@NotNull QuantitativeValue quantitativeValue) {
       if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setQuantitativeValue(quantitativeValue);
       return this;
@@ -168,13 +168,13 @@ public class DriveWheelConfigurationValue extends QualitativeValue {
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder valueReference(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.valueReference(quantitativeValue.build());
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(StructuredValue structuredValue) {
+    @NotNull public Builder valueReference(@NotNull StructuredValue structuredValue) {
       if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setStructuredValue(structuredValue);
       return this;
@@ -182,7 +182,7 @@ public class DriveWheelConfigurationValue extends QualitativeValue {
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(StructuredValue.Builder structuredValue) {
+    @NotNull public Builder valueReference(@NotNull StructuredValue.Builder structuredValue) {
       return this.valueReference(structuredValue.build());
     }
     /**
@@ -191,7 +191,7 @@ public class DriveWheelConfigurationValue extends QualitativeValue {
 Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
 
      */
-    @NotNull public Builder additionalProperty(PropertyValue propertyValue) {
+    @NotNull public Builder additionalProperty(@NotNull PropertyValue propertyValue) {
       this.additionalProperty = propertyValue;
       return this;
     }
@@ -201,13 +201,13 @@ Note: Publishers should be aware that applications designed to use specific sche
 Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
 
      */
-    @NotNull public Builder additionalProperty(PropertyValue.Builder propertyValue) {
+    @NotNull public Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue) {
       return this.additionalProperty(propertyValue.build());
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
-    @NotNull public Builder supersededBy(Enumeration enumeration) {
+    @NotNull public Builder supersededBy(@NotNull Enumeration enumeration) {
       if (this.supersededBy == null) this.supersededBy = new EnumerationOrProperty();
       this.supersededBy.setEnumeration(enumeration);
       return this;
@@ -215,13 +215,13 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
-    @NotNull public Builder supersededBy(Enumeration.Builder enumeration) {
+    @NotNull public Builder supersededBy(@NotNull Enumeration.Builder enumeration) {
       return this.supersededBy(enumeration.build());
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
-    @NotNull public Builder supersededBy(Property property) {
+    @NotNull public Builder supersededBy(@NotNull Property property) {
       if (this.supersededBy == null) this.supersededBy = new EnumerationOrProperty();
       this.supersededBy.setProperty(property);
       return this;
@@ -229,27 +229,27 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
-    @NotNull public Builder supersededBy(Property.Builder property) {
+    @NotNull public Builder supersededBy(@NotNull Property.Builder property) {
       return this.supersededBy(property.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    @NotNull public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(@NotNull String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    @NotNull public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(@NotNull String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    @NotNull public Builder description(String description) {
+    @NotNull public Builder description(@NotNull String description) {
       this.description = description;
       return this;
     }
@@ -283,7 +283,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -318,7 +318,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -351,7 +351,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -359,43 +359,75 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The name of the item.
      */
-    @NotNull public Builder name(String name) {
+    @NotNull public Builder name(@NotNull String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    @NotNull public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(@NotNull String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    @NotNull public Builder url(String url) {
+    @NotNull public Builder url(@NotNull String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(@NotNull Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    @NotNull public Builder id(String id) {
+    @NotNull public Builder id(@NotNull String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
+    }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        if ("equal".equals(key) && value instanceof QualitativeValue) { equal((QualitativeValue)value); continue; }
+        if ("greater".equals(key) && value instanceof QualitativeValue) { greater((QualitativeValue)value); continue; }
+        if ("greaterOrEqual".equals(key) && value instanceof QualitativeValue) { greaterOrEqual((QualitativeValue)value); continue; }
+        if ("lesser".equals(key) && value instanceof QualitativeValue) { lesser((QualitativeValue)value); continue; }
+        if ("lesserOrEqual".equals(key) && value instanceof QualitativeValue) { lesserOrEqual((QualitativeValue)value); continue; }
+        if ("nonEqual".equals(key) && value instanceof QualitativeValue) { nonEqual((QualitativeValue)value); continue; }
+        if ("valueReference".equals(key) && value instanceof Enumeration) { valueReference((Enumeration)value); continue; }
+        if ("valueReference".equals(key) && value instanceof PropertyValue) { valueReference((PropertyValue)value); continue; }
+        if ("valueReference".equals(key) && value instanceof QualitativeValue) { valueReference((QualitativeValue)value); continue; }
+        if ("valueReference".equals(key) && value instanceof QuantitativeValue) { valueReference((QuantitativeValue)value); continue; }
+        if ("valueReference".equals(key) && value instanceof StructuredValue) { valueReference((StructuredValue)value); continue; }
+        if ("additionalProperty".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); continue; }
+        if ("supersededBy".equals(key) && value instanceof Enumeration) { supersededBy((Enumeration)value); continue; }
+        if ("supersededBy".equals(key) && value instanceof Property) { supersededBy((Property)value); continue; }
+        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
+        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
+        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
+        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
+        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
+        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
+        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
+        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+      }
     }
     private QualitativeValue equal;
     private QualitativeValue greater;
@@ -417,46 +449,46 @@ Note: Publishers should be aware that applications designed to use specific sche
     private String id;
   }
   public interface Builder extends ThingBuilder<DriveWheelConfigurationValue> {
-    @NotNull Builder equal(QualitativeValue qualitativeValue);
-    @NotNull Builder equal(QualitativeValue.Builder qualitativeValue);
-    @NotNull Builder greater(QualitativeValue qualitativeValue);
-    @NotNull Builder greater(QualitativeValue.Builder qualitativeValue);
-    @NotNull Builder greaterOrEqual(QualitativeValue qualitativeValue);
-    @NotNull Builder greaterOrEqual(QualitativeValue.Builder qualitativeValue);
-    @NotNull Builder lesser(QualitativeValue qualitativeValue);
-    @NotNull Builder lesser(QualitativeValue.Builder qualitativeValue);
-    @NotNull Builder lesserOrEqual(QualitativeValue qualitativeValue);
-    @NotNull Builder lesserOrEqual(QualitativeValue.Builder qualitativeValue);
-    @NotNull Builder nonEqual(QualitativeValue qualitativeValue);
-    @NotNull Builder nonEqual(QualitativeValue.Builder qualitativeValue);
-    @NotNull Builder valueReference(Enumeration enumeration);
-    @NotNull Builder valueReference(Enumeration.Builder enumeration);
-    @NotNull Builder valueReference(PropertyValue propertyValue);
-    @NotNull Builder valueReference(PropertyValue.Builder propertyValue);
-    @NotNull Builder valueReference(QualitativeValue qualitativeValue);
-    @NotNull Builder valueReference(QualitativeValue.Builder qualitativeValue);
-    @NotNull Builder valueReference(QuantitativeValue quantitativeValue);
-    @NotNull Builder valueReference(QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder valueReference(StructuredValue structuredValue);
-    @NotNull Builder valueReference(StructuredValue.Builder structuredValue);
-    @NotNull Builder additionalProperty(PropertyValue propertyValue);
-    @NotNull Builder additionalProperty(PropertyValue.Builder propertyValue);
-    @NotNull Builder supersededBy(Enumeration enumeration);
-    @NotNull Builder supersededBy(Enumeration.Builder enumeration);
-    @NotNull Builder supersededBy(Property property);
-    @NotNull Builder supersededBy(Property.Builder property);
-    @NotNull Builder additionalType(String additionalType);
-    @NotNull Builder alternateName(String alternateName);
-    @NotNull Builder description(String description);
-    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
-    @NotNull Builder name(String name);
-    @NotNull Builder sameAs(String sameAs);
-    @NotNull Builder url(String url);
-    @NotNull Builder potentialAction(Action action);
-    @NotNull Builder potentialAction(Action.Builder action);
-    @NotNull Builder id(String id);
+    @NotNull Builder equal(@NotNull QualitativeValue qualitativeValue);
+    @NotNull Builder equal(@NotNull QualitativeValue.Builder qualitativeValue);
+    @NotNull Builder greater(@NotNull QualitativeValue qualitativeValue);
+    @NotNull Builder greater(@NotNull QualitativeValue.Builder qualitativeValue);
+    @NotNull Builder greaterOrEqual(@NotNull QualitativeValue qualitativeValue);
+    @NotNull Builder greaterOrEqual(@NotNull QualitativeValue.Builder qualitativeValue);
+    @NotNull Builder lesser(@NotNull QualitativeValue qualitativeValue);
+    @NotNull Builder lesser(@NotNull QualitativeValue.Builder qualitativeValue);
+    @NotNull Builder lesserOrEqual(@NotNull QualitativeValue qualitativeValue);
+    @NotNull Builder lesserOrEqual(@NotNull QualitativeValue.Builder qualitativeValue);
+    @NotNull Builder nonEqual(@NotNull QualitativeValue qualitativeValue);
+    @NotNull Builder nonEqual(@NotNull QualitativeValue.Builder qualitativeValue);
+    @NotNull Builder valueReference(@NotNull Enumeration enumeration);
+    @NotNull Builder valueReference(@NotNull Enumeration.Builder enumeration);
+    @NotNull Builder valueReference(@NotNull PropertyValue propertyValue);
+    @NotNull Builder valueReference(@NotNull PropertyValue.Builder propertyValue);
+    @NotNull Builder valueReference(@NotNull QualitativeValue qualitativeValue);
+    @NotNull Builder valueReference(@NotNull QualitativeValue.Builder qualitativeValue);
+    @NotNull Builder valueReference(@NotNull QuantitativeValue quantitativeValue);
+    @NotNull Builder valueReference(@NotNull QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder valueReference(@NotNull StructuredValue structuredValue);
+    @NotNull Builder valueReference(@NotNull StructuredValue.Builder structuredValue);
+    @NotNull Builder additionalProperty(@NotNull PropertyValue propertyValue);
+    @NotNull Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue);
+    @NotNull Builder supersededBy(@NotNull Enumeration enumeration);
+    @NotNull Builder supersededBy(@NotNull Enumeration.Builder enumeration);
+    @NotNull Builder supersededBy(@NotNull Property property);
+    @NotNull Builder supersededBy(@NotNull Property.Builder property);
+    @NotNull Builder additionalType(@NotNull String additionalType);
+    @NotNull Builder alternateName(@NotNull String alternateName);
+    @NotNull Builder description(@NotNull String description);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
+    @NotNull Builder name(@NotNull String name);
+    @NotNull Builder sameAs(@NotNull String sameAs);
+    @NotNull Builder url(@NotNull String url);
+    @NotNull Builder potentialAction(@NotNull Action action);
+    @NotNull Builder potentialAction(@NotNull Action.Builder action);
+    @NotNull Builder id(@NotNull String id);
   }
 
   protected DriveWheelConfigurationValue(QualitativeValue equal, QualitativeValue greater, QualitativeValue greaterOrEqual, QualitativeValue lesser, QualitativeValue lesserOrEqual, QualitativeValue nonEqual, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, PropertyValue additionalProperty, EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

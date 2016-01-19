@@ -31,9 +31,9 @@ class StringOrThing {
   }
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private String myString;
   public void setThing(Thing thing) { clear(); myThing = thing; }
   public Thing getThing() { return myThing; }
-  private String myString;
   private Thing myThing;
   private void clear() {
     myString = null;

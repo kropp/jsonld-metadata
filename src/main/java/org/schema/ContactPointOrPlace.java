@@ -36,9 +36,9 @@ class ContactPointOrPlace {
   }
   public void setContactPoint(ContactPoint contactPoint) { clear(); myContactPoint = contactPoint; }
   public ContactPoint getContactPoint() { return myContactPoint; }
+  private ContactPoint myContactPoint;
   public void setPlace(Place place) { clear(); myPlace = place; }
   public Place getPlace() { return myPlace; }
-  private ContactPoint myContactPoint;
   private Place myPlace;
   private void clear() {
     myContactPoint = null;

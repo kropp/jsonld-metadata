@@ -36,9 +36,9 @@ class OrderItemOrProduct {
   }
   public void setOrderItem(OrderItem orderItem) { clear(); myOrderItem = orderItem; }
   public OrderItem getOrderItem() { return myOrderItem; }
+  private OrderItem myOrderItem;
   public void setProduct(Product product) { clear(); myProduct = product; }
   public Product getProduct() { return myProduct; }
-  private OrderItem myOrderItem;
   private Product myProduct;
   private void clear() {
     myOrderItem = null;

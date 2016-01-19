@@ -36,9 +36,9 @@ class EnumerationOrProperty {
   }
   public void setEnumeration(Enumeration enumeration) { clear(); myEnumeration = enumeration; }
   public Enumeration getEnumeration() { return myEnumeration; }
+  private Enumeration myEnumeration;
   public void setProperty(Property property) { clear(); myProperty = property; }
   public Property getProperty() { return myProperty; }
-  private Enumeration myEnumeration;
   private Property myProperty;
   private void clear() {
     myEnumeration = null;

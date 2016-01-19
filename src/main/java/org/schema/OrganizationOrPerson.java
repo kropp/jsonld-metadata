@@ -36,9 +36,9 @@ class OrganizationOrPerson {
   }
   public void setOrganization(Organization organization) { clear(); myOrganization = organization; }
   public Organization getOrganization() { return myOrganization; }
+  private Organization myOrganization;
   public void setPerson(Person person) { clear(); myPerson = person; }
   public Person getPerson() { return myPerson; }
-  private Organization myOrganization;
   private Person myPerson;
   private void clear() {
     myOrganization = null;

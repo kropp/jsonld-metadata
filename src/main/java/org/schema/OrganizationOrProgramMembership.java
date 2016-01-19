@@ -36,9 +36,9 @@ class OrganizationOrProgramMembership {
   }
   public void setOrganization(Organization organization) { clear(); myOrganization = organization; }
   public Organization getOrganization() { return myOrganization; }
+  private Organization myOrganization;
   public void setProgramMembership(ProgramMembership programMembership) { clear(); myProgramMembership = programMembership; }
   public ProgramMembership getProgramMembership() { return myProgramMembership; }
-  private Organization myOrganization;
   private ProgramMembership myProgramMembership;
   private void clear() {
     myOrganization = null;

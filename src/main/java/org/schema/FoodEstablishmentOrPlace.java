@@ -36,9 +36,9 @@ class FoodEstablishmentOrPlace {
   }
   public void setFoodEstablishment(FoodEstablishment foodEstablishment) { clear(); myFoodEstablishment = foodEstablishment; }
   public FoodEstablishment getFoodEstablishment() { return myFoodEstablishment; }
+  private FoodEstablishment myFoodEstablishment;
   public void setPlace(Place place) { clear(); myPlace = place; }
   public Place getPlace() { return myPlace; }
-  private FoodEstablishment myFoodEstablishment;
   private Place myPlace;
   private void clear() {
     myFoodEstablishment = null;

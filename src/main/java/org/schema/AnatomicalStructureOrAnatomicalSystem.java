@@ -36,9 +36,9 @@ class AnatomicalStructureOrAnatomicalSystem {
   }
   public void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
   public AnatomicalStructure getAnatomicalStructure() { return myAnatomicalStructure; }
+  private AnatomicalStructure myAnatomicalStructure;
   public void setAnatomicalSystem(AnatomicalSystem anatomicalSystem) { clear(); myAnatomicalSystem = anatomicalSystem; }
   public AnatomicalSystem getAnatomicalSystem() { return myAnatomicalSystem; }
-  private AnatomicalStructure myAnatomicalStructure;
   private AnatomicalSystem myAnatomicalSystem;
   private void clear() {
     myAnatomicalStructure = null;

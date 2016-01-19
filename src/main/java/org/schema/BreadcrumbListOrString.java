@@ -31,9 +31,9 @@ class BreadcrumbListOrString {
   }
   public void setBreadcrumbList(BreadcrumbList breadcrumbList) { clear(); myBreadcrumbList = breadcrumbList; }
   public BreadcrumbList getBreadcrumbList() { return myBreadcrumbList; }
+  private BreadcrumbList myBreadcrumbList;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private BreadcrumbList myBreadcrumbList;
   private String myString;
   private void clear() {
     myBreadcrumbList = null;

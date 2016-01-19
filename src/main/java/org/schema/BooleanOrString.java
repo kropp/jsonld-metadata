@@ -31,9 +31,9 @@ class BooleanOrString {
   }
   public void setBoolean(Boolean value) { clear(); myBoolean = value; }
   public Boolean getBoolean() { return myBoolean; }
+  private Boolean myBoolean;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private Boolean myBoolean;
   private String myString;
   private void clear() {
     myBoolean = null;

@@ -32,12 +32,12 @@ class PhysicalActivityCategoryOrStringOrThing {
   }
   public void setPhysicalActivityCategory(PhysicalActivityCategory physicalActivityCategory) { clear(); myPhysicalActivityCategory = physicalActivityCategory; }
   public PhysicalActivityCategory getPhysicalActivityCategory() { return myPhysicalActivityCategory; }
+  private PhysicalActivityCategory myPhysicalActivityCategory;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private String myString;
   public void setThing(Thing thing) { clear(); myThing = thing; }
   public Thing getThing() { return myThing; }
-  private PhysicalActivityCategory myPhysicalActivityCategory;
-  private String myString;
   private Thing myThing;
   private void clear() {
     myPhysicalActivityCategory = null;

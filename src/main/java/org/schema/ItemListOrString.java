@@ -31,9 +31,9 @@ class ItemListOrString {
   }
   public void setItemList(ItemList itemList) { clear(); myItemList = itemList; }
   public ItemList getItemList() { return myItemList; }
+  private ItemList myItemList;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private ItemList myItemList;
   private String myString;
   private void clear() {
     myItemList = null;

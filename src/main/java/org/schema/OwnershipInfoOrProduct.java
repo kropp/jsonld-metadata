@@ -36,9 +36,9 @@ class OwnershipInfoOrProduct {
   }
   public void setOwnershipInfo(OwnershipInfo ownershipInfo) { clear(); myOwnershipInfo = ownershipInfo; }
   public OwnershipInfo getOwnershipInfo() { return myOwnershipInfo; }
+  private OwnershipInfo myOwnershipInfo;
   public void setProduct(Product product) { clear(); myProduct = product; }
   public Product getProduct() { return myProduct; }
-  private OwnershipInfo myOwnershipInfo;
   private Product myProduct;
   private void clear() {
     myOwnershipInfo = null;

@@ -36,9 +36,9 @@ class DistanceOrQuantitativeValue {
   }
   public void setDistance(Distance distance) { clear(); myDistance = distance; }
   public Distance getDistance() { return myDistance; }
+  private Distance myDistance;
   public void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
   public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
-  private Distance myDistance;
   private QuantitativeValue myQuantitativeValue;
   private void clear() {
     myDistance = null;

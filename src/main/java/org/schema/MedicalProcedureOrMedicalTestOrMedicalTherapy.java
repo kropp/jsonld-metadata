@@ -38,12 +38,12 @@ class MedicalProcedureOrMedicalTestOrMedicalTherapy {
   }
   public void setMedicalProcedure(MedicalProcedure medicalProcedure) { clear(); myMedicalProcedure = medicalProcedure; }
   public MedicalProcedure getMedicalProcedure() { return myMedicalProcedure; }
+  private MedicalProcedure myMedicalProcedure;
   public void setMedicalTest(MedicalTest medicalTest) { clear(); myMedicalTest = medicalTest; }
   public MedicalTest getMedicalTest() { return myMedicalTest; }
+  private MedicalTest myMedicalTest;
   public void setMedicalTherapy(MedicalTherapy medicalTherapy) { clear(); myMedicalTherapy = medicalTherapy; }
   public MedicalTherapy getMedicalTherapy() { return myMedicalTherapy; }
-  private MedicalProcedure myMedicalProcedure;
-  private MedicalTest myMedicalTest;
   private MedicalTherapy myMedicalTherapy;
   private void clear() {
     myMedicalProcedure = null;

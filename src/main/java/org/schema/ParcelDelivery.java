@@ -107,107 +107,107 @@ public class ParcelDelivery extends Intangible {
     /**
      * Destination address.
      */
-    @NotNull public Builder deliveryAddress(PostalAddress postalAddress) {
+    @NotNull public Builder deliveryAddress(@NotNull PostalAddress postalAddress) {
       this.deliveryAddress = postalAddress;
       return this;
     }
     /**
      * Destination address.
      */
-    @NotNull public Builder deliveryAddress(PostalAddress.Builder postalAddress) {
+    @NotNull public Builder deliveryAddress(@NotNull PostalAddress.Builder postalAddress) {
       return this.deliveryAddress(postalAddress.build());
     }
     /**
      * New entry added as the package passes through each leg of its journey (from shipment to final delivery).
      */
-    @NotNull public Builder deliveryStatus(DeliveryEvent deliveryEvent) {
+    @NotNull public Builder deliveryStatus(@NotNull DeliveryEvent deliveryEvent) {
       this.deliveryStatus = deliveryEvent;
       return this;
     }
     /**
      * New entry added as the package passes through each leg of its journey (from shipment to final delivery).
      */
-    @NotNull public Builder deliveryStatus(DeliveryEvent.Builder deliveryEvent) {
+    @NotNull public Builder deliveryStatus(@NotNull DeliveryEvent.Builder deliveryEvent) {
       return this.deliveryStatus(deliveryEvent.build());
     }
     /**
      * The earliest date the package may arrive.
      */
-    @NotNull public Builder expectedArrivalFrom(java.util.Date date) {
+    @NotNull public Builder expectedArrivalFrom(@NotNull java.util.Date date) {
       this.expectedArrivalFrom = date;
       return this;
     }
     /**
      * The latest date the package may arrive.
      */
-    @NotNull public Builder expectedArrivalUntil(java.util.Date date) {
+    @NotNull public Builder expectedArrivalUntil(@NotNull java.util.Date date) {
       this.expectedArrivalUntil = date;
       return this;
     }
     /**
      * Method used for delivery or shipping.
      */
-    @NotNull public Builder hasDeliveryMethod(DeliveryMethod deliveryMethod) {
+    @NotNull public Builder hasDeliveryMethod(@NotNull DeliveryMethod deliveryMethod) {
       this.hasDeliveryMethod = deliveryMethod;
       return this;
     }
     /**
      * Method used for delivery or shipping.
      */
-    @NotNull public Builder hasDeliveryMethod(DeliveryMethod.Builder deliveryMethod) {
+    @NotNull public Builder hasDeliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod) {
       return this.hasDeliveryMethod(deliveryMethod.build());
     }
     /**
      * Item(s) being shipped.
      */
-    @NotNull public Builder itemShipped(Product product) {
+    @NotNull public Builder itemShipped(@NotNull Product product) {
       this.itemShipped = product;
       return this;
     }
     /**
      * Item(s) being shipped.
      */
-    @NotNull public Builder itemShipped(Product.Builder product) {
+    @NotNull public Builder itemShipped(@NotNull Product.Builder product) {
       return this.itemShipped(product.build());
     }
     /**
      * Shipper's address.
      */
-    @NotNull public Builder originAddress(PostalAddress postalAddress) {
+    @NotNull public Builder originAddress(@NotNull PostalAddress postalAddress) {
       this.originAddress = postalAddress;
       return this;
     }
     /**
      * Shipper's address.
      */
-    @NotNull public Builder originAddress(PostalAddress.Builder postalAddress) {
+    @NotNull public Builder originAddress(@NotNull PostalAddress.Builder postalAddress) {
       return this.originAddress(postalAddress.build());
     }
     /**
      * The overall order the items in this delivery were included in.
      */
-    @NotNull public Builder partOfOrder(IsPartOf isPartOf) {
+    @NotNull public Builder partOfOrder(@NotNull IsPartOf isPartOf) {
       this.partOfOrder = isPartOf;
       return this;
     }
     /**
      * Shipper tracking number.
      */
-    @NotNull public Builder trackingNumber(String trackingNumber) {
+    @NotNull public Builder trackingNumber(@NotNull String trackingNumber) {
       this.trackingNumber = trackingNumber;
       return this;
     }
     /**
      * Tracking url for the parcel delivery.
      */
-    @NotNull public Builder trackingUrl(String trackingUrl) {
+    @NotNull public Builder trackingUrl(@NotNull String trackingUrl) {
       this.trackingUrl = trackingUrl;
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    @NotNull public Builder provider(Organization organization) {
+    @NotNull public Builder provider(@NotNull Organization organization) {
       if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setOrganization(organization);
       return this;
@@ -215,13 +215,13 @@ public class ParcelDelivery extends Intangible {
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    @NotNull public Builder provider(Organization.Builder organization) {
+    @NotNull public Builder provider(@NotNull Organization.Builder organization) {
       return this.provider(organization.build());
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    @NotNull public Builder provider(Person person) {
+    @NotNull public Builder provider(@NotNull Person person) {
       if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setPerson(person);
       return this;
@@ -229,27 +229,27 @@ public class ParcelDelivery extends Intangible {
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    @NotNull public Builder provider(Person.Builder person) {
+    @NotNull public Builder provider(@NotNull Person.Builder person) {
       return this.provider(person.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    @NotNull public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(@NotNull String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    @NotNull public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(@NotNull String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    @NotNull public Builder description(String description) {
+    @NotNull public Builder description(@NotNull String description) {
       this.description = description;
       return this;
     }
@@ -283,7 +283,7 @@ public class ParcelDelivery extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -318,7 +318,7 @@ public class ParcelDelivery extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -351,7 +351,7 @@ public class ParcelDelivery extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -359,43 +359,73 @@ public class ParcelDelivery extends Intangible {
     /**
      * The name of the item.
      */
-    @NotNull public Builder name(String name) {
+    @NotNull public Builder name(@NotNull String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    @NotNull public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(@NotNull String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    @NotNull public Builder url(String url) {
+    @NotNull public Builder url(@NotNull String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(@NotNull Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    @NotNull public Builder id(String id) {
+    @NotNull public Builder id(@NotNull String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
+    }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        if ("deliveryAddress".equals(key) && value instanceof PostalAddress) { deliveryAddress((PostalAddress)value); continue; }
+        if ("deliveryStatus".equals(key) && value instanceof DeliveryEvent) { deliveryStatus((DeliveryEvent)value); continue; }
+        if ("expectedArrivalFrom".equals(key) && value instanceof java.util.Date) { expectedArrivalFrom((java.util.Date)value); continue; }
+        if ("expectedArrivalUntil".equals(key) && value instanceof java.util.Date) { expectedArrivalUntil((java.util.Date)value); continue; }
+        if ("hasDeliveryMethod".equals(key) && value instanceof DeliveryMethod) { hasDeliveryMethod((DeliveryMethod)value); continue; }
+        if ("itemShipped".equals(key) && value instanceof Product) { itemShipped((Product)value); continue; }
+        if ("originAddress".equals(key) && value instanceof PostalAddress) { originAddress((PostalAddress)value); continue; }
+        if ("partOfOrder".equals(key) && value instanceof IsPartOf) { partOfOrder((IsPartOf)value); continue; }
+        if ("trackingNumber".equals(key) && value instanceof String) { trackingNumber((String)value); continue; }
+        if ("trackingUrl".equals(key) && value instanceof String) { trackingUrl((String)value); continue; }
+        if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); continue; }
+        if ("provider".equals(key) && value instanceof Person) { provider((Person)value); continue; }
+        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
+        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
+        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
+        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
+        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
+        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
+        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
+        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+      }
     }
     private PostalAddress deliveryAddress;
     private DeliveryEvent deliveryStatus;
@@ -419,37 +449,37 @@ public class ParcelDelivery extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<ParcelDelivery> {
-    @NotNull Builder deliveryAddress(PostalAddress postalAddress);
-    @NotNull Builder deliveryAddress(PostalAddress.Builder postalAddress);
-    @NotNull Builder deliveryStatus(DeliveryEvent deliveryEvent);
-    @NotNull Builder deliveryStatus(DeliveryEvent.Builder deliveryEvent);
-    @NotNull Builder expectedArrivalFrom(java.util.Date date);
-    @NotNull Builder expectedArrivalUntil(java.util.Date date);
-    @NotNull Builder hasDeliveryMethod(DeliveryMethod deliveryMethod);
-    @NotNull Builder hasDeliveryMethod(DeliveryMethod.Builder deliveryMethod);
-    @NotNull Builder itemShipped(Product product);
-    @NotNull Builder itemShipped(Product.Builder product);
-    @NotNull Builder originAddress(PostalAddress postalAddress);
-    @NotNull Builder originAddress(PostalAddress.Builder postalAddress);
-    @NotNull Builder partOfOrder(IsPartOf isPartOf);
-    @NotNull Builder trackingNumber(String trackingNumber);
-    @NotNull Builder trackingUrl(String trackingUrl);
-    @NotNull Builder provider(Organization organization);
-    @NotNull Builder provider(Organization.Builder organization);
-    @NotNull Builder provider(Person person);
-    @NotNull Builder provider(Person.Builder person);
-    @NotNull Builder additionalType(String additionalType);
-    @NotNull Builder alternateName(String alternateName);
-    @NotNull Builder description(String description);
-    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
-    @NotNull Builder name(String name);
-    @NotNull Builder sameAs(String sameAs);
-    @NotNull Builder url(String url);
-    @NotNull Builder potentialAction(Action action);
-    @NotNull Builder potentialAction(Action.Builder action);
-    @NotNull Builder id(String id);
+    @NotNull Builder deliveryAddress(@NotNull PostalAddress postalAddress);
+    @NotNull Builder deliveryAddress(@NotNull PostalAddress.Builder postalAddress);
+    @NotNull Builder deliveryStatus(@NotNull DeliveryEvent deliveryEvent);
+    @NotNull Builder deliveryStatus(@NotNull DeliveryEvent.Builder deliveryEvent);
+    @NotNull Builder expectedArrivalFrom(@NotNull java.util.Date date);
+    @NotNull Builder expectedArrivalUntil(@NotNull java.util.Date date);
+    @NotNull Builder hasDeliveryMethod(@NotNull DeliveryMethod deliveryMethod);
+    @NotNull Builder hasDeliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod);
+    @NotNull Builder itemShipped(@NotNull Product product);
+    @NotNull Builder itemShipped(@NotNull Product.Builder product);
+    @NotNull Builder originAddress(@NotNull PostalAddress postalAddress);
+    @NotNull Builder originAddress(@NotNull PostalAddress.Builder postalAddress);
+    @NotNull Builder partOfOrder(@NotNull IsPartOf isPartOf);
+    @NotNull Builder trackingNumber(@NotNull String trackingNumber);
+    @NotNull Builder trackingUrl(@NotNull String trackingUrl);
+    @NotNull Builder provider(@NotNull Organization organization);
+    @NotNull Builder provider(@NotNull Organization.Builder organization);
+    @NotNull Builder provider(@NotNull Person person);
+    @NotNull Builder provider(@NotNull Person.Builder person);
+    @NotNull Builder additionalType(@NotNull String additionalType);
+    @NotNull Builder alternateName(@NotNull String alternateName);
+    @NotNull Builder description(@NotNull String description);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
+    @NotNull Builder name(@NotNull String name);
+    @NotNull Builder sameAs(@NotNull String sameAs);
+    @NotNull Builder url(@NotNull String url);
+    @NotNull Builder potentialAction(@NotNull Action action);
+    @NotNull Builder potentialAction(@NotNull Action.Builder action);
+    @NotNull Builder id(@NotNull String id);
   }
 
   protected ParcelDelivery(PostalAddress deliveryAddress, DeliveryEvent deliveryStatus, java.util.Date expectedArrivalFrom, java.util.Date expectedArrivalUntil, DeliveryMethod hasDeliveryMethod, Product itemShipped, PostalAddress originAddress, IsPartOf partOfOrder, String trackingNumber, String trackingUrl, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

@@ -31,9 +31,9 @@ class DriveWheelConfigurationValueOrString {
   }
   public void setDriveWheelConfigurationValue(DriveWheelConfigurationValue driveWheelConfigurationValue) { clear(); myDriveWheelConfigurationValue = driveWheelConfigurationValue; }
   public DriveWheelConfigurationValue getDriveWheelConfigurationValue() { return myDriveWheelConfigurationValue; }
+  private DriveWheelConfigurationValue myDriveWheelConfigurationValue;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private DriveWheelConfigurationValue myDriveWheelConfigurationValue;
   private String myString;
   private void clear() {
     myDriveWheelConfigurationValue = null;

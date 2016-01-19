@@ -83,15 +83,15 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The lower value of some characteristic or property.
      */
-    @NotNull public Builder minValue(int minValue) {
+    @NotNull public Builder minValue(@NotNull Integer integer) {
       if (this.minValue == null) this.minValue = new Number();
-      this.minValue.setInt(minValue);
+      this.minValue.setInteger(integer);
       return this;
     }
     /**
      * The lower value of some characteristic or property.
      */
-    @NotNull public Builder minValue(long minValue) {
+    @NotNull public Builder minValue(@NotNull Long minValue) {
       if (this.minValue == null) this.minValue = new Number();
       this.minValue.setLong(minValue);
       return this;
@@ -99,7 +99,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The lower value of some characteristic or property.
      */
-    @NotNull public Builder minValue(float minValue) {
+    @NotNull public Builder minValue(@NotNull Float minValue) {
       if (this.minValue == null) this.minValue = new Number();
       this.minValue.setFloat(minValue);
       return this;
@@ -107,7 +107,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The lower value of some characteristic or property.
      */
-    @NotNull public Builder minValue(double minValue) {
+    @NotNull public Builder minValue(@NotNull Double minValue) {
       if (this.minValue == null) this.minValue = new Number();
       this.minValue.setDouble(minValue);
       return this;
@@ -115,7 +115,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The lower value of some characteristic or property.
      */
-    @NotNull public Builder minValue(String minValue) {
+    @NotNull public Builder minValue(@NotNull String minValue) {
       if (this.minValue == null) this.minValue = new Number();
       this.minValue.setString(minValue);
       return this;
@@ -123,14 +123,14 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
      */
-    @NotNull public Builder unitCode(String unitCode) {
+    @NotNull public Builder unitCode(@NotNull String unitCode) {
       this.unitCode = unitCode;
       return this;
     }
     /**
      * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
      */
-    @NotNull public Builder value(Boolean value) {
+    @NotNull public Builder value(@NotNull Boolean value) {
       if (this.value == null) this.value = new BooleanOrNumberOrStringOrStructuredValue();
       this.value.setBoolean(value);
       return this;
@@ -138,7 +138,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
      */
-    @NotNull public Builder value(Number number) {
+    @NotNull public Builder value(@NotNull Number number) {
       if (this.value == null) this.value = new BooleanOrNumberOrStringOrStructuredValue();
       this.value.setNumber(number);
       return this;
@@ -146,7 +146,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
      */
-    @NotNull public Builder value(String value) {
+    @NotNull public Builder value(@NotNull String value) {
       if (this.value == null) this.value = new BooleanOrNumberOrStringOrStructuredValue();
       this.value.setString(value);
       return this;
@@ -154,7 +154,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
      */
-    @NotNull public Builder value(StructuredValue structuredValue) {
+    @NotNull public Builder value(@NotNull StructuredValue structuredValue) {
       if (this.value == null) this.value = new BooleanOrNumberOrStringOrStructuredValue();
       this.value.setStructuredValue(structuredValue);
       return this;
@@ -162,13 +162,13 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
      */
-    @NotNull public Builder value(StructuredValue.Builder structuredValue) {
+    @NotNull public Builder value(@NotNull StructuredValue.Builder structuredValue) {
       return this.value(structuredValue.build());
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(Enumeration enumeration) {
+    @NotNull public Builder valueReference(@NotNull Enumeration enumeration) {
       if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setEnumeration(enumeration);
       return this;
@@ -176,13 +176,13 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(Enumeration.Builder enumeration) {
+    @NotNull public Builder valueReference(@NotNull Enumeration.Builder enumeration) {
       return this.valueReference(enumeration.build());
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(PropertyValue propertyValue) {
+    @NotNull public Builder valueReference(@NotNull PropertyValue propertyValue) {
       if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setPropertyValue(propertyValue);
       return this;
@@ -190,13 +190,13 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(PropertyValue.Builder propertyValue) {
+    @NotNull public Builder valueReference(@NotNull PropertyValue.Builder propertyValue) {
       return this.valueReference(propertyValue.build());
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(QualitativeValue qualitativeValue) {
+    @NotNull public Builder valueReference(@NotNull QualitativeValue qualitativeValue) {
       if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setQualitativeValue(qualitativeValue);
       return this;
@@ -204,13 +204,13 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(QualitativeValue.Builder qualitativeValue) {
+    @NotNull public Builder valueReference(@NotNull QualitativeValue.Builder qualitativeValue) {
       return this.valueReference(qualitativeValue.build());
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(QuantitativeValue quantitativeValue) {
+    @NotNull public Builder valueReference(@NotNull QuantitativeValue quantitativeValue) {
       if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setQuantitativeValue(quantitativeValue);
       return this;
@@ -218,13 +218,13 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder valueReference(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.valueReference(quantitativeValue.build());
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(StructuredValue structuredValue) {
+    @NotNull public Builder valueReference(@NotNull StructuredValue structuredValue) {
       if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
       this.valueReference.setStructuredValue(structuredValue);
       return this;
@@ -232,14 +232,14 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
-    @NotNull public Builder valueReference(StructuredValue.Builder structuredValue) {
+    @NotNull public Builder valueReference(@NotNull StructuredValue.Builder structuredValue) {
       return this.valueReference(structuredValue.build());
     }
     /**
      * A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
 <a href='unitCode'>unitCode</a>.
      */
-    @NotNull public Builder unitText(String unitText) {
+    @NotNull public Builder unitText(@NotNull String unitText) {
       this.unitText = unitText;
       return this;
     }
@@ -249,28 +249,28 @@ Standards bodies should promote a standard prefix for the identifiers of propert
 a URL indicating the type of the property, either pointing to an external vocabulary, or a Web resource that describes the property (e.g. a glossary entry).
 Standards bodies should promote a standard prefix for the identifiers of properties from their standards.
      */
-    @NotNull public Builder propertyID(String propertyID) {
+    @NotNull public Builder propertyID(@NotNull String propertyID) {
       this.propertyID = propertyID;
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    @NotNull public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(@NotNull String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    @NotNull public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(@NotNull String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    @NotNull public Builder description(String description) {
+    @NotNull public Builder description(@NotNull String description) {
       this.description = description;
       return this;
     }
@@ -304,7 +304,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -339,7 +339,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -372,7 +372,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -380,43 +380,78 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The name of the item.
      */
-    @NotNull public Builder name(String name) {
+    @NotNull public Builder name(@NotNull String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    @NotNull public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(@NotNull String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    @NotNull public Builder url(String url) {
+    @NotNull public Builder url(@NotNull String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(@NotNull Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    @NotNull public Builder id(String id) {
+    @NotNull public Builder id(@NotNull String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
+    }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        if ("minValue".equals(key) && value instanceof Integer) { minValue((Integer)value); continue; }
+        if ("minValue".equals(key) && value instanceof Long) { minValue((Long)value); continue; }
+        if ("minValue".equals(key) && value instanceof Float) { minValue((Float)value); continue; }
+        if ("minValue".equals(key) && value instanceof Double) { minValue((Double)value); continue; }
+        if ("minValue".equals(key) && value instanceof String) { minValue((String)value); continue; }
+        if ("unitCode".equals(key) && value instanceof String) { unitCode((String)value); continue; }
+        if ("value".equals(key) && value instanceof Boolean) { value((Boolean)value); continue; }
+        if ("value".equals(key) && value instanceof Number) { value((Number)value); continue; }
+        if ("value".equals(key) && value instanceof String) { value((String)value); continue; }
+        if ("value".equals(key) && value instanceof StructuredValue) { value((StructuredValue)value); continue; }
+        if ("valueReference".equals(key) && value instanceof Enumeration) { valueReference((Enumeration)value); continue; }
+        if ("valueReference".equals(key) && value instanceof PropertyValue) { valueReference((PropertyValue)value); continue; }
+        if ("valueReference".equals(key) && value instanceof QualitativeValue) { valueReference((QualitativeValue)value); continue; }
+        if ("valueReference".equals(key) && value instanceof QuantitativeValue) { valueReference((QuantitativeValue)value); continue; }
+        if ("valueReference".equals(key) && value instanceof StructuredValue) { valueReference((StructuredValue)value); continue; }
+        if ("unitText".equals(key) && value instanceof String) { unitText((String)value); continue; }
+        if ("propertyID".equals(key) && value instanceof String) { propertyID((String)value); continue; }
+        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
+        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
+        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
+        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
+        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
+        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
+        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
+        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+      }
     }
     private Number minValue;
     private String unitCode;
@@ -435,41 +470,41 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     private String id;
   }
   public interface Builder extends ThingBuilder<PropertyValue> {
-    @NotNull Builder minValue(int minValue);
-    @NotNull Builder minValue(long minValue);
-    @NotNull Builder minValue(float minValue);
-    @NotNull Builder minValue(double minValue);
-    @NotNull Builder minValue(String minValue);
-    @NotNull Builder unitCode(String unitCode);
-    @NotNull Builder value(Boolean value);
-    @NotNull Builder value(Number number);
-    @NotNull Builder value(String value);
-    @NotNull Builder value(StructuredValue structuredValue);
-    @NotNull Builder value(StructuredValue.Builder structuredValue);
-    @NotNull Builder valueReference(Enumeration enumeration);
-    @NotNull Builder valueReference(Enumeration.Builder enumeration);
-    @NotNull Builder valueReference(PropertyValue propertyValue);
-    @NotNull Builder valueReference(PropertyValue.Builder propertyValue);
-    @NotNull Builder valueReference(QualitativeValue qualitativeValue);
-    @NotNull Builder valueReference(QualitativeValue.Builder qualitativeValue);
-    @NotNull Builder valueReference(QuantitativeValue quantitativeValue);
-    @NotNull Builder valueReference(QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder valueReference(StructuredValue structuredValue);
-    @NotNull Builder valueReference(StructuredValue.Builder structuredValue);
-    @NotNull Builder unitText(String unitText);
-    @NotNull Builder propertyID(String propertyID);
-    @NotNull Builder additionalType(String additionalType);
-    @NotNull Builder alternateName(String alternateName);
-    @NotNull Builder description(String description);
-    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
-    @NotNull Builder name(String name);
-    @NotNull Builder sameAs(String sameAs);
-    @NotNull Builder url(String url);
-    @NotNull Builder potentialAction(Action action);
-    @NotNull Builder potentialAction(Action.Builder action);
-    @NotNull Builder id(String id);
+    @NotNull Builder minValue(@NotNull Integer integer);
+    @NotNull Builder minValue(@NotNull Long minValue);
+    @NotNull Builder minValue(@NotNull Float minValue);
+    @NotNull Builder minValue(@NotNull Double minValue);
+    @NotNull Builder minValue(@NotNull String minValue);
+    @NotNull Builder unitCode(@NotNull String unitCode);
+    @NotNull Builder value(@NotNull Boolean value);
+    @NotNull Builder value(@NotNull Number number);
+    @NotNull Builder value(@NotNull String value);
+    @NotNull Builder value(@NotNull StructuredValue structuredValue);
+    @NotNull Builder value(@NotNull StructuredValue.Builder structuredValue);
+    @NotNull Builder valueReference(@NotNull Enumeration enumeration);
+    @NotNull Builder valueReference(@NotNull Enumeration.Builder enumeration);
+    @NotNull Builder valueReference(@NotNull PropertyValue propertyValue);
+    @NotNull Builder valueReference(@NotNull PropertyValue.Builder propertyValue);
+    @NotNull Builder valueReference(@NotNull QualitativeValue qualitativeValue);
+    @NotNull Builder valueReference(@NotNull QualitativeValue.Builder qualitativeValue);
+    @NotNull Builder valueReference(@NotNull QuantitativeValue quantitativeValue);
+    @NotNull Builder valueReference(@NotNull QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder valueReference(@NotNull StructuredValue structuredValue);
+    @NotNull Builder valueReference(@NotNull StructuredValue.Builder structuredValue);
+    @NotNull Builder unitText(@NotNull String unitText);
+    @NotNull Builder propertyID(@NotNull String propertyID);
+    @NotNull Builder additionalType(@NotNull String additionalType);
+    @NotNull Builder alternateName(@NotNull String alternateName);
+    @NotNull Builder description(@NotNull String description);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
+    @NotNull Builder name(@NotNull String name);
+    @NotNull Builder sameAs(@NotNull String sameAs);
+    @NotNull Builder url(@NotNull String url);
+    @NotNull Builder potentialAction(@NotNull Action action);
+    @NotNull Builder potentialAction(@NotNull Action.Builder action);
+    @NotNull Builder id(@NotNull String id);
   }
 
   protected PropertyValue(Number minValue, String unitCode, BooleanOrNumberOrStringOrStructuredValue value, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, String unitText, String propertyID, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

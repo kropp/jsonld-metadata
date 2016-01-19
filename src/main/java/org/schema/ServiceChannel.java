@@ -87,119 +87,119 @@ public class ServiceChannel extends Intangible {
     /**
      * A language someone may use with the item.
      */
-    @NotNull public Builder availableLanguage(Language language) {
+    @NotNull public Builder availableLanguage(@NotNull Language language) {
       this.availableLanguage = language;
       return this;
     }
     /**
      * A language someone may use with the item.
      */
-    @NotNull public Builder availableLanguage(Language.Builder language) {
+    @NotNull public Builder availableLanguage(@NotNull Language.Builder language) {
       return this.availableLanguage(language.build());
     }
     /**
      * Estimated processing time for the service using this channel.
      */
-    @NotNull public Builder processingTime(Duration duration) {
+    @NotNull public Builder processingTime(@NotNull Duration duration) {
       this.processingTime = duration;
       return this;
     }
     /**
      * Estimated processing time for the service using this channel.
      */
-    @NotNull public Builder processingTime(Duration.Builder duration) {
+    @NotNull public Builder processingTime(@NotNull Duration.Builder duration) {
       return this.processingTime(duration.build());
     }
     /**
      * The service provided by this channel.
      */
-    @NotNull public Builder providesService(Service service) {
+    @NotNull public Builder providesService(@NotNull Service service) {
       this.providesService = service;
       return this;
     }
     /**
      * The service provided by this channel.
      */
-    @NotNull public Builder providesService(Service.Builder service) {
+    @NotNull public Builder providesService(@NotNull Service.Builder service) {
       return this.providesService(service.build());
     }
     /**
      * The location (e.g. civic structure, local business, etc.) where a person can go to access the service.
      */
-    @NotNull public Builder serviceLocation(Place place) {
+    @NotNull public Builder serviceLocation(@NotNull Place place) {
       this.serviceLocation = place;
       return this;
     }
     /**
      * The location (e.g. civic structure, local business, etc.) where a person can go to access the service.
      */
-    @NotNull public Builder serviceLocation(Place.Builder place) {
+    @NotNull public Builder serviceLocation(@NotNull Place.Builder place) {
       return this.serviceLocation(place.build());
     }
     /**
      * The phone number to use to access the service.
      */
-    @NotNull public Builder servicePhone(ContactPoint contactPoint) {
+    @NotNull public Builder servicePhone(@NotNull ContactPoint contactPoint) {
       this.servicePhone = contactPoint;
       return this;
     }
     /**
      * The phone number to use to access the service.
      */
-    @NotNull public Builder servicePhone(ContactPoint.Builder contactPoint) {
+    @NotNull public Builder servicePhone(@NotNull ContactPoint.Builder contactPoint) {
       return this.servicePhone(contactPoint.build());
     }
     /**
      * The address for accessing the service by mail.
      */
-    @NotNull public Builder servicePostalAddress(PostalAddress postalAddress) {
+    @NotNull public Builder servicePostalAddress(@NotNull PostalAddress postalAddress) {
       this.servicePostalAddress = postalAddress;
       return this;
     }
     /**
      * The address for accessing the service by mail.
      */
-    @NotNull public Builder servicePostalAddress(PostalAddress.Builder postalAddress) {
+    @NotNull public Builder servicePostalAddress(@NotNull PostalAddress.Builder postalAddress) {
       return this.servicePostalAddress(postalAddress.build());
     }
     /**
      * The number to access the service by text message.
      */
-    @NotNull public Builder serviceSmsNumber(ContactPoint contactPoint) {
+    @NotNull public Builder serviceSmsNumber(@NotNull ContactPoint contactPoint) {
       this.serviceSmsNumber = contactPoint;
       return this;
     }
     /**
      * The number to access the service by text message.
      */
-    @NotNull public Builder serviceSmsNumber(ContactPoint.Builder contactPoint) {
+    @NotNull public Builder serviceSmsNumber(@NotNull ContactPoint.Builder contactPoint) {
       return this.serviceSmsNumber(contactPoint.build());
     }
     /**
      * The website to access the service.
      */
-    @NotNull public Builder serviceUrl(String serviceUrl) {
+    @NotNull public Builder serviceUrl(@NotNull String serviceUrl) {
       this.serviceUrl = serviceUrl;
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    @NotNull public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(@NotNull String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    @NotNull public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(@NotNull String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    @NotNull public Builder description(String description) {
+    @NotNull public Builder description(@NotNull String description) {
       this.description = description;
       return this;
     }
@@ -233,7 +233,7 @@ public class ServiceChannel extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -268,7 +268,7 @@ public class ServiceChannel extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -301,7 +301,7 @@ public class ServiceChannel extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -309,43 +309,69 @@ public class ServiceChannel extends Intangible {
     /**
      * The name of the item.
      */
-    @NotNull public Builder name(String name) {
+    @NotNull public Builder name(@NotNull String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    @NotNull public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(@NotNull String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    @NotNull public Builder url(String url) {
+    @NotNull public Builder url(@NotNull String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(@NotNull Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    @NotNull public Builder id(String id) {
+    @NotNull public Builder id(@NotNull String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
+    }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        if ("availableLanguage".equals(key) && value instanceof Language) { availableLanguage((Language)value); continue; }
+        if ("processingTime".equals(key) && value instanceof Duration) { processingTime((Duration)value); continue; }
+        if ("providesService".equals(key) && value instanceof Service) { providesService((Service)value); continue; }
+        if ("serviceLocation".equals(key) && value instanceof Place) { serviceLocation((Place)value); continue; }
+        if ("servicePhone".equals(key) && value instanceof ContactPoint) { servicePhone((ContactPoint)value); continue; }
+        if ("servicePostalAddress".equals(key) && value instanceof PostalAddress) { servicePostalAddress((PostalAddress)value); continue; }
+        if ("serviceSmsNumber".equals(key) && value instanceof ContactPoint) { serviceSmsNumber((ContactPoint)value); continue; }
+        if ("serviceUrl".equals(key) && value instanceof String) { serviceUrl((String)value); continue; }
+        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
+        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
+        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
+        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
+        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
+        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
+        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
+        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+      }
     }
     private Language availableLanguage;
     private Duration processingTime;
@@ -366,33 +392,33 @@ public class ServiceChannel extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<ServiceChannel> {
-    @NotNull Builder availableLanguage(Language language);
-    @NotNull Builder availableLanguage(Language.Builder language);
-    @NotNull Builder processingTime(Duration duration);
-    @NotNull Builder processingTime(Duration.Builder duration);
-    @NotNull Builder providesService(Service service);
-    @NotNull Builder providesService(Service.Builder service);
-    @NotNull Builder serviceLocation(Place place);
-    @NotNull Builder serviceLocation(Place.Builder place);
-    @NotNull Builder servicePhone(ContactPoint contactPoint);
-    @NotNull Builder servicePhone(ContactPoint.Builder contactPoint);
-    @NotNull Builder servicePostalAddress(PostalAddress postalAddress);
-    @NotNull Builder servicePostalAddress(PostalAddress.Builder postalAddress);
-    @NotNull Builder serviceSmsNumber(ContactPoint contactPoint);
-    @NotNull Builder serviceSmsNumber(ContactPoint.Builder contactPoint);
-    @NotNull Builder serviceUrl(String serviceUrl);
-    @NotNull Builder additionalType(String additionalType);
-    @NotNull Builder alternateName(String alternateName);
-    @NotNull Builder description(String description);
-    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
-    @NotNull Builder name(String name);
-    @NotNull Builder sameAs(String sameAs);
-    @NotNull Builder url(String url);
-    @NotNull Builder potentialAction(Action action);
-    @NotNull Builder potentialAction(Action.Builder action);
-    @NotNull Builder id(String id);
+    @NotNull Builder availableLanguage(@NotNull Language language);
+    @NotNull Builder availableLanguage(@NotNull Language.Builder language);
+    @NotNull Builder processingTime(@NotNull Duration duration);
+    @NotNull Builder processingTime(@NotNull Duration.Builder duration);
+    @NotNull Builder providesService(@NotNull Service service);
+    @NotNull Builder providesService(@NotNull Service.Builder service);
+    @NotNull Builder serviceLocation(@NotNull Place place);
+    @NotNull Builder serviceLocation(@NotNull Place.Builder place);
+    @NotNull Builder servicePhone(@NotNull ContactPoint contactPoint);
+    @NotNull Builder servicePhone(@NotNull ContactPoint.Builder contactPoint);
+    @NotNull Builder servicePostalAddress(@NotNull PostalAddress postalAddress);
+    @NotNull Builder servicePostalAddress(@NotNull PostalAddress.Builder postalAddress);
+    @NotNull Builder serviceSmsNumber(@NotNull ContactPoint contactPoint);
+    @NotNull Builder serviceSmsNumber(@NotNull ContactPoint.Builder contactPoint);
+    @NotNull Builder serviceUrl(@NotNull String serviceUrl);
+    @NotNull Builder additionalType(@NotNull String additionalType);
+    @NotNull Builder alternateName(@NotNull String alternateName);
+    @NotNull Builder description(@NotNull String description);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
+    @NotNull Builder name(@NotNull String name);
+    @NotNull Builder sameAs(@NotNull String sameAs);
+    @NotNull Builder url(@NotNull String url);
+    @NotNull Builder potentialAction(@NotNull Action action);
+    @NotNull Builder potentialAction(@NotNull Action.Builder action);
+    @NotNull Builder id(@NotNull String id);
   }
 
   protected ServiceChannel(Language availableLanguage, Duration processingTime, Service providesService, Place serviceLocation, ContactPoint servicePhone, PostalAddress servicePostalAddress, ContactPoint serviceSmsNumber, String serviceUrl, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

@@ -31,9 +31,9 @@ class DurationOrString {
   }
   public void setDuration(Duration duration) { clear(); myDuration = duration; }
   public Duration getDuration() { return myDuration; }
+  private Duration myDuration;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private Duration myDuration;
   private String myString;
   private void clear() {
     myDuration = null;

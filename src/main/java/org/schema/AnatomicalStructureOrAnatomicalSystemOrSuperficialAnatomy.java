@@ -38,12 +38,12 @@ class AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy {
   }
   public void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
   public AnatomicalStructure getAnatomicalStructure() { return myAnatomicalStructure; }
+  private AnatomicalStructure myAnatomicalStructure;
   public void setAnatomicalSystem(AnatomicalSystem anatomicalSystem) { clear(); myAnatomicalSystem = anatomicalSystem; }
   public AnatomicalSystem getAnatomicalSystem() { return myAnatomicalSystem; }
+  private AnatomicalSystem myAnatomicalSystem;
   public void setSuperficialAnatomy(SuperficialAnatomy superficialAnatomy) { clear(); mySuperficialAnatomy = superficialAnatomy; }
   public SuperficialAnatomy getSuperficialAnatomy() { return mySuperficialAnatomy; }
-  private AnatomicalStructure myAnatomicalStructure;
-  private AnatomicalSystem myAnatomicalSystem;
   private SuperficialAnatomy mySuperficialAnatomy;
   private void clear() {
     myAnatomicalStructure = null;

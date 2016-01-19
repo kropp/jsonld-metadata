@@ -325,67 +325,67 @@ public class Person extends Thing implements Competitor {
     /**
      * An additional name for a Person, can be used for a middle name.
      */
-    @NotNull public Builder additionalName(String additionalName) {
+    @NotNull public Builder additionalName(@NotNull String additionalName) {
       this.additionalName = additionalName;
       return this;
     }
     /**
      * Physical address of the item.
      */
-    @NotNull public Builder address(PostalAddress postalAddress) {
+    @NotNull public Builder address(@NotNull PostalAddress postalAddress) {
       this.address = postalAddress;
       return this;
     }
     /**
      * Physical address of the item.
      */
-    @NotNull public Builder address(PostalAddress.Builder postalAddress) {
+    @NotNull public Builder address(@NotNull PostalAddress.Builder postalAddress) {
       return this.address(postalAddress.build());
     }
     /**
      * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
      */
-    @NotNull public Builder affiliation(Organization organization) {
+    @NotNull public Builder affiliation(@NotNull Organization organization) {
       this.affiliation = organization;
       return this;
     }
     /**
      * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
      */
-    @NotNull public Builder affiliation(Organization.Builder organization) {
+    @NotNull public Builder affiliation(@NotNull Organization.Builder organization) {
       return this.affiliation(organization.build());
     }
     /**
      * An educational organizations that the person is an alumni of.
      */
-    @NotNull public Builder alumniOf(EducationalOrganization educationalOrganization) {
+    @NotNull public Builder alumniOf(@NotNull EducationalOrganization educationalOrganization) {
       this.alumniOf = educationalOrganization;
       return this;
     }
     /**
      * An educational organizations that the person is an alumni of.
      */
-    @NotNull public Builder alumniOf(EducationalOrganization.Builder educationalOrganization) {
+    @NotNull public Builder alumniOf(@NotNull EducationalOrganization.Builder educationalOrganization) {
       return this.alumniOf(educationalOrganization.build());
     }
     /**
      * An award won by or for this item.
      */
-    @NotNull public Builder award(String award) {
+    @NotNull public Builder award(@NotNull String award) {
       this.award = award;
       return this;
     }
     /**
      * Date of birth.
      */
-    @NotNull public Builder birthDate(java.util.Date date) {
+    @NotNull public Builder birthDate(@NotNull java.util.Date date) {
       this.birthDate = date;
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    @NotNull public Builder brand(Brand brand) {
+    @NotNull public Builder brand(@NotNull Brand brand) {
       if (this.brand == null) this.brand = new BrandOrOrganization();
       this.brand.setBrand(brand);
       return this;
@@ -393,13 +393,13 @@ public class Person extends Thing implements Competitor {
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    @NotNull public Builder brand(Brand.Builder brand) {
+    @NotNull public Builder brand(@NotNull Brand.Builder brand) {
       return this.brand(brand.build());
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    @NotNull public Builder brand(Organization organization) {
+    @NotNull public Builder brand(@NotNull Organization organization) {
       if (this.brand == null) this.brand = new BrandOrOrganization();
       this.brand.setOrganization(organization);
       return this;
@@ -407,134 +407,134 @@ public class Person extends Thing implements Competitor {
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
-    @NotNull public Builder brand(Organization.Builder organization) {
+    @NotNull public Builder brand(@NotNull Organization.Builder organization) {
       return this.brand(organization.build());
     }
     /**
      * A child of the person.
      */
-    @NotNull public Builder children(Person person) {
+    @NotNull public Builder children(@NotNull Person person) {
       this.children = person;
       return this;
     }
     /**
      * A child of the person.
      */
-    @NotNull public Builder children(Person.Builder person) {
+    @NotNull public Builder children(@NotNull Person.Builder person) {
       return this.children(person.build());
     }
     /**
      * A colleague of the person.
      */
-    @NotNull public Builder colleague(Person person) {
+    @NotNull public Builder colleague(@NotNull Person person) {
       this.colleague = person;
       return this;
     }
     /**
      * A colleague of the person.
      */
-    @NotNull public Builder colleague(Person.Builder person) {
+    @NotNull public Builder colleague(@NotNull Person.Builder person) {
       return this.colleague(person.build());
     }
     /**
      * A contact point for a person or organization.
      */
-    @NotNull public Builder contactPoint(ContactPoint contactPoint) {
+    @NotNull public Builder contactPoint(@NotNull ContactPoint contactPoint) {
       this.contactPoint = contactPoint;
       return this;
     }
     /**
      * A contact point for a person or organization.
      */
-    @NotNull public Builder contactPoint(ContactPoint.Builder contactPoint) {
+    @NotNull public Builder contactPoint(@NotNull ContactPoint.Builder contactPoint) {
       return this.contactPoint(contactPoint.build());
     }
     /**
      * Date of death.
      */
-    @NotNull public Builder deathDate(java.util.Date date) {
+    @NotNull public Builder deathDate(@NotNull java.util.Date date) {
       this.deathDate = date;
       return this;
     }
     /**
      * The Dun & Bradstreet DUNS number for identifying an organization or business person.
      */
-    @NotNull public Builder duns(String duns) {
+    @NotNull public Builder duns(@NotNull String duns) {
       this.duns = duns;
       return this;
     }
     /**
      * Email address.
      */
-    @NotNull public Builder email(String email) {
+    @NotNull public Builder email(@NotNull String email) {
       this.email = email;
       return this;
     }
     /**
      * Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the name property.
      */
-    @NotNull public Builder familyName(String familyName) {
+    @NotNull public Builder familyName(@NotNull String familyName) {
       this.familyName = familyName;
       return this;
     }
     /**
      * The fax number.
      */
-    @NotNull public Builder faxNumber(String faxNumber) {
+    @NotNull public Builder faxNumber(@NotNull String faxNumber) {
       this.faxNumber = faxNumber;
       return this;
     }
     /**
      * The most generic uni-directional social relation.
      */
-    @NotNull public Builder follows(Person person) {
+    @NotNull public Builder follows(@NotNull Person person) {
       this.follows = person;
       return this;
     }
     /**
      * The most generic uni-directional social relation.
      */
-    @NotNull public Builder follows(Person.Builder person) {
+    @NotNull public Builder follows(@NotNull Person.Builder person) {
       return this.follows(person.build());
     }
     /**
      * Gender of the person.
      */
-    @NotNull public Builder gender(String gender) {
+    @NotNull public Builder gender(@NotNull String gender) {
       this.gender = gender;
       return this;
     }
     /**
      * Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property.
      */
-    @NotNull public Builder givenName(String givenName) {
+    @NotNull public Builder givenName(@NotNull String givenName) {
       this.givenName = givenName;
       return this;
     }
     /**
      * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
-    @NotNull public Builder globalLocationNumber(String globalLocationNumber) {
+    @NotNull public Builder globalLocationNumber(@NotNull String globalLocationNumber) {
       this.globalLocationNumber = globalLocationNumber;
       return this;
     }
     /**
      * Points-of-Sales operated by the organization or person.
      */
-    @NotNull public Builder hasPOS(Place place) {
+    @NotNull public Builder hasPOS(@NotNull Place place) {
       this.hasPOS = place;
       return this;
     }
     /**
      * Points-of-Sales operated by the organization or person.
      */
-    @NotNull public Builder hasPOS(Place.Builder place) {
+    @NotNull public Builder hasPOS(@NotNull Place.Builder place) {
       return this.hasPOS(place.build());
     }
     /**
      * The height of the item.
      */
-    @NotNull public Builder height(Distance distance) {
+    @NotNull public Builder height(@NotNull Distance distance) {
       if (this.height == null) this.height = new DistanceOrQuantitativeValue();
       this.height.setDistance(distance);
       return this;
@@ -542,13 +542,13 @@ public class Person extends Thing implements Competitor {
     /**
      * The height of the item.
      */
-    @NotNull public Builder height(Distance.Builder distance) {
+    @NotNull public Builder height(@NotNull Distance.Builder distance) {
       return this.height(distance.build());
     }
     /**
      * The height of the item.
      */
-    @NotNull public Builder height(QuantitativeValue quantitativeValue) {
+    @NotNull public Builder height(@NotNull QuantitativeValue quantitativeValue) {
       if (this.height == null) this.height = new DistanceOrQuantitativeValue();
       this.height.setQuantitativeValue(quantitativeValue);
       return this;
@@ -556,13 +556,13 @@ public class Person extends Thing implements Competitor {
     /**
      * The height of the item.
      */
-    @NotNull public Builder height(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder height(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.height(quantitativeValue.build());
     }
     /**
      * A contact location for a person's residence.
      */
-    @NotNull public Builder homeLocation(ContactPoint contactPoint) {
+    @NotNull public Builder homeLocation(@NotNull ContactPoint contactPoint) {
       if (this.homeLocation == null) this.homeLocation = new ContactPointOrPlace();
       this.homeLocation.setContactPoint(contactPoint);
       return this;
@@ -570,13 +570,13 @@ public class Person extends Thing implements Competitor {
     /**
      * A contact location for a person's residence.
      */
-    @NotNull public Builder homeLocation(ContactPoint.Builder contactPoint) {
+    @NotNull public Builder homeLocation(@NotNull ContactPoint.Builder contactPoint) {
       return this.homeLocation(contactPoint.build());
     }
     /**
      * A contact location for a person's residence.
      */
-    @NotNull public Builder homeLocation(Place place) {
+    @NotNull public Builder homeLocation(@NotNull Place place) {
       if (this.homeLocation == null) this.homeLocation = new ContactPointOrPlace();
       this.homeLocation.setPlace(place);
       return this;
@@ -584,67 +584,67 @@ public class Person extends Thing implements Competitor {
     /**
      * A contact location for a person's residence.
      */
-    @NotNull public Builder homeLocation(Place.Builder place) {
+    @NotNull public Builder homeLocation(@NotNull Place.Builder place) {
       return this.homeLocation(place.build());
     }
     /**
      * An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.
      */
-    @NotNull public Builder honorificPrefix(String honorificPrefix) {
+    @NotNull public Builder honorificPrefix(@NotNull String honorificPrefix) {
       this.honorificPrefix = honorificPrefix;
       return this;
     }
     /**
      * An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.
      */
-    @NotNull public Builder honorificSuffix(String honorificSuffix) {
+    @NotNull public Builder honorificSuffix(@NotNull String honorificSuffix) {
       this.honorificSuffix = honorificSuffix;
       return this;
     }
     /**
      * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
      */
-    @NotNull public Builder isicV4(String isicV4) {
+    @NotNull public Builder isicV4(@NotNull String isicV4) {
       this.isicV4 = isicV4;
       return this;
     }
     /**
      * The job title of the person (for example, Financial Manager).
      */
-    @NotNull public Builder jobTitle(String jobTitle) {
+    @NotNull public Builder jobTitle(@NotNull String jobTitle) {
       this.jobTitle = jobTitle;
       return this;
     }
     /**
      * The most generic bi-directional social/work relation.
      */
-    @NotNull public Builder knows(Person person) {
+    @NotNull public Builder knows(@NotNull Person person) {
       this.knows = person;
       return this;
     }
     /**
      * The most generic bi-directional social/work relation.
      */
-    @NotNull public Builder knows(Person.Builder person) {
+    @NotNull public Builder knows(@NotNull Person.Builder person) {
       return this.knows(person.build());
     }
     /**
      * A pointer to products or services offered by the organization or person.
      */
-    @NotNull public Builder makesOffer(Offer offer) {
+    @NotNull public Builder makesOffer(@NotNull Offer offer) {
       this.makesOffer = offer;
       return this;
     }
     /**
      * A pointer to products or services offered by the organization or person.
      */
-    @NotNull public Builder makesOffer(Offer.Builder offer) {
+    @NotNull public Builder makesOffer(@NotNull Offer.Builder offer) {
       return this.makesOffer(offer.build());
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    @NotNull public Builder memberOf(Organization organization) {
+    @NotNull public Builder memberOf(@NotNull Organization organization) {
       if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
       this.memberOf.setOrganization(organization);
       return this;
@@ -652,13 +652,13 @@ public class Person extends Thing implements Competitor {
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    @NotNull public Builder memberOf(Organization.Builder organization) {
+    @NotNull public Builder memberOf(@NotNull Organization.Builder organization) {
       return this.memberOf(organization.build());
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    @NotNull public Builder memberOf(ProgramMembership programMembership) {
+    @NotNull public Builder memberOf(@NotNull ProgramMembership programMembership) {
       if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
       this.memberOf.setProgramMembership(programMembership);
       return this;
@@ -666,46 +666,46 @@ public class Person extends Thing implements Competitor {
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    @NotNull public Builder memberOf(ProgramMembership.Builder programMembership) {
+    @NotNull public Builder memberOf(@NotNull ProgramMembership.Builder programMembership) {
       return this.memberOf(programMembership.build());
     }
     /**
      * The North American Industry Classification System (NAICS) code for a particular organization or business person.
      */
-    @NotNull public Builder naics(String naics) {
+    @NotNull public Builder naics(@NotNull String naics) {
       this.naics = naics;
       return this;
     }
     /**
      * Nationality of the person.
      */
-    @NotNull public Builder nationality(Country country) {
+    @NotNull public Builder nationality(@NotNull Country country) {
       this.nationality = country;
       return this;
     }
     /**
      * Nationality of the person.
      */
-    @NotNull public Builder nationality(Country.Builder country) {
+    @NotNull public Builder nationality(@NotNull Country.Builder country) {
       return this.nationality(country.build());
     }
     /**
      * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
      */
-    @NotNull public Builder netWorth(PriceSpecification priceSpecification) {
+    @NotNull public Builder netWorth(@NotNull PriceSpecification priceSpecification) {
       this.netWorth = priceSpecification;
       return this;
     }
     /**
      * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
      */
-    @NotNull public Builder netWorth(PriceSpecification.Builder priceSpecification) {
+    @NotNull public Builder netWorth(@NotNull PriceSpecification.Builder priceSpecification) {
       return this.netWorth(priceSpecification.build());
     }
     /**
      * Products owned by the organization or person.
      */
-    @NotNull public Builder owns(OwnershipInfo ownershipInfo) {
+    @NotNull public Builder owns(@NotNull OwnershipInfo ownershipInfo) {
       if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
       this.owns.setOwnershipInfo(ownershipInfo);
       return this;
@@ -713,13 +713,13 @@ public class Person extends Thing implements Competitor {
     /**
      * Products owned by the organization or person.
      */
-    @NotNull public Builder owns(OwnershipInfo.Builder ownershipInfo) {
+    @NotNull public Builder owns(@NotNull OwnershipInfo.Builder ownershipInfo) {
       return this.owns(ownershipInfo.build());
     }
     /**
      * Products owned by the organization or person.
      */
-    @NotNull public Builder owns(Product product) {
+    @NotNull public Builder owns(@NotNull Product product) {
       if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
       this.owns.setProduct(product);
       return this;
@@ -727,125 +727,125 @@ public class Person extends Thing implements Competitor {
     /**
      * Products owned by the organization or person.
      */
-    @NotNull public Builder owns(Product.Builder product) {
+    @NotNull public Builder owns(@NotNull Product.Builder product) {
       return this.owns(product.build());
     }
     /**
      * A parent of this person.
      */
-    @NotNull public Builder parent(Person person) {
+    @NotNull public Builder parent(@NotNull Person person) {
       this.parent = person;
       return this;
     }
     /**
      * A parent of this person.
      */
-    @NotNull public Builder parent(Person.Builder person) {
+    @NotNull public Builder parent(@NotNull Person.Builder person) {
       return this.parent(person.build());
     }
     /**
      * Event that this person is a performer or participant in.
      */
-    @NotNull public Builder performerIn(Event event) {
+    @NotNull public Builder performerIn(@NotNull Event event) {
       this.performerIn = event;
       return this;
     }
     /**
      * Event that this person is a performer or participant in.
      */
-    @NotNull public Builder performerIn(Event.Builder event) {
+    @NotNull public Builder performerIn(@NotNull Event.Builder event) {
       return this.performerIn(event.build());
     }
     /**
      * The most generic familial relation.
      */
-    @NotNull public Builder relatedTo(Person person) {
+    @NotNull public Builder relatedTo(@NotNull Person person) {
       this.relatedTo = person;
       return this;
     }
     /**
      * The most generic familial relation.
      */
-    @NotNull public Builder relatedTo(Person.Builder person) {
+    @NotNull public Builder relatedTo(@NotNull Person.Builder person) {
       return this.relatedTo(person.build());
     }
     /**
      * A pointer to products or services sought by the organization or person (demand).
      */
-    @NotNull public Builder seeks(Demand demand) {
+    @NotNull public Builder seeks(@NotNull Demand demand) {
       this.seeks = demand;
       return this;
     }
     /**
      * A pointer to products or services sought by the organization or person (demand).
      */
-    @NotNull public Builder seeks(Demand.Builder demand) {
+    @NotNull public Builder seeks(@NotNull Demand.Builder demand) {
       return this.seeks(demand.build());
     }
     /**
      * A sibling of the person.
      */
-    @NotNull public Builder sibling(Person person) {
+    @NotNull public Builder sibling(@NotNull Person person) {
       this.sibling = person;
       return this;
     }
     /**
      * A sibling of the person.
      */
-    @NotNull public Builder sibling(Person.Builder person) {
+    @NotNull public Builder sibling(@NotNull Person.Builder person) {
       return this.sibling(person.build());
     }
     /**
      * The person's spouse.
      */
-    @NotNull public Builder spouse(Person person) {
+    @NotNull public Builder spouse(@NotNull Person person) {
       this.spouse = person;
       return this;
     }
     /**
      * The person's spouse.
      */
-    @NotNull public Builder spouse(Person.Builder person) {
+    @NotNull public Builder spouse(@NotNull Person.Builder person) {
       return this.spouse(person.build());
     }
     /**
      * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
      */
-    @NotNull public Builder taxID(String taxID) {
+    @NotNull public Builder taxID(@NotNull String taxID) {
       this.taxID = taxID;
       return this;
     }
     /**
      * The telephone number.
      */
-    @NotNull public Builder telephone(String telephone) {
+    @NotNull public Builder telephone(@NotNull String telephone) {
       this.telephone = telephone;
       return this;
     }
     /**
      * The Value-added Tax ID of the organization or person.
      */
-    @NotNull public Builder vatID(String vatID) {
+    @NotNull public Builder vatID(@NotNull String vatID) {
       this.vatID = vatID;
       return this;
     }
     /**
      * The weight of the product or person.
      */
-    @NotNull public Builder weight(QuantitativeValue quantitativeValue) {
+    @NotNull public Builder weight(@NotNull QuantitativeValue quantitativeValue) {
       this.weight = quantitativeValue;
       return this;
     }
     /**
      * The weight of the product or person.
      */
-    @NotNull public Builder weight(QuantitativeValue.Builder quantitativeValue) {
+    @NotNull public Builder weight(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.weight(quantitativeValue.build());
     }
     /**
      * A contact location for a person's place of work.
      */
-    @NotNull public Builder workLocation(ContactPoint contactPoint) {
+    @NotNull public Builder workLocation(@NotNull ContactPoint contactPoint) {
       if (this.workLocation == null) this.workLocation = new ContactPointOrPlace();
       this.workLocation.setContactPoint(contactPoint);
       return this;
@@ -853,13 +853,13 @@ public class Person extends Thing implements Competitor {
     /**
      * A contact location for a person's place of work.
      */
-    @NotNull public Builder workLocation(ContactPoint.Builder contactPoint) {
+    @NotNull public Builder workLocation(@NotNull ContactPoint.Builder contactPoint) {
       return this.workLocation(contactPoint.build());
     }
     /**
      * A contact location for a person's place of work.
      */
-    @NotNull public Builder workLocation(Place place) {
+    @NotNull public Builder workLocation(@NotNull Place place) {
       if (this.workLocation == null) this.workLocation = new ContactPointOrPlace();
       this.workLocation.setPlace(place);
       return this;
@@ -867,66 +867,66 @@ public class Person extends Thing implements Competitor {
     /**
      * A contact location for a person's place of work.
      */
-    @NotNull public Builder workLocation(Place.Builder place) {
+    @NotNull public Builder workLocation(@NotNull Place.Builder place) {
       return this.workLocation(place.build());
     }
     /**
      * Organizations that the person works for.
      */
-    @NotNull public Builder worksFor(Organization organization) {
+    @NotNull public Builder worksFor(@NotNull Organization organization) {
       this.worksFor = organization;
       return this;
     }
     /**
      * Organizations that the person works for.
      */
-    @NotNull public Builder worksFor(Organization.Builder organization) {
+    @NotNull public Builder worksFor(@NotNull Organization.Builder organization) {
       return this.worksFor(organization.build());
     }
     /**
      * The place where the person was born.
      */
-    @NotNull public Builder birthPlace(Place place) {
+    @NotNull public Builder birthPlace(@NotNull Place place) {
       this.birthPlace = place;
       return this;
     }
     /**
      * The place where the person was born.
      */
-    @NotNull public Builder birthPlace(Place.Builder place) {
+    @NotNull public Builder birthPlace(@NotNull Place.Builder place) {
       return this.birthPlace(place.build());
     }
     /**
      * The place where the person died.
      */
-    @NotNull public Builder deathPlace(Place place) {
+    @NotNull public Builder deathPlace(@NotNull Place place) {
       this.deathPlace = place;
       return this;
     }
     /**
      * The place where the person died.
      */
-    @NotNull public Builder deathPlace(Place.Builder place) {
+    @NotNull public Builder deathPlace(@NotNull Place.Builder place) {
       return this.deathPlace(place.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    @NotNull public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(@NotNull String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    @NotNull public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(@NotNull String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    @NotNull public Builder description(String description) {
+    @NotNull public Builder description(@NotNull String description) {
       this.description = description;
       return this;
     }
@@ -960,7 +960,7 @@ public class Person extends Thing implements Competitor {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -995,7 +995,7 @@ public class Person extends Thing implements Competitor {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -1028,7 +1028,7 @@ public class Person extends Thing implements Competitor {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -1036,43 +1036,114 @@ public class Person extends Thing implements Competitor {
     /**
      * The name of the item.
      */
-    @NotNull public Builder name(String name) {
+    @NotNull public Builder name(@NotNull String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    @NotNull public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(@NotNull String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    @NotNull public Builder url(String url) {
+    @NotNull public Builder url(@NotNull String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(@NotNull Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    @NotNull public Builder id(String id) {
+    @NotNull public Builder id(@NotNull String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
+    }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        if ("additionalName".equals(key) && value instanceof String) { additionalName((String)value); continue; }
+        if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); continue; }
+        if ("affiliation".equals(key) && value instanceof Organization) { affiliation((Organization)value); continue; }
+        if ("alumniOf".equals(key) && value instanceof EducationalOrganization) { alumniOf((EducationalOrganization)value); continue; }
+        if ("award".equals(key) && value instanceof String) { award((String)value); continue; }
+        if ("birthDate".equals(key) && value instanceof java.util.Date) { birthDate((java.util.Date)value); continue; }
+        if ("brand".equals(key) && value instanceof Brand) { brand((Brand)value); continue; }
+        if ("brand".equals(key) && value instanceof Organization) { brand((Organization)value); continue; }
+        if ("children".equals(key) && value instanceof Person) { children((Person)value); continue; }
+        if ("colleague".equals(key) && value instanceof Person) { colleague((Person)value); continue; }
+        if ("contactPoint".equals(key) && value instanceof ContactPoint) { contactPoint((ContactPoint)value); continue; }
+        if ("deathDate".equals(key) && value instanceof java.util.Date) { deathDate((java.util.Date)value); continue; }
+        if ("duns".equals(key) && value instanceof String) { duns((String)value); continue; }
+        if ("email".equals(key) && value instanceof String) { email((String)value); continue; }
+        if ("familyName".equals(key) && value instanceof String) { familyName((String)value); continue; }
+        if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); continue; }
+        if ("follows".equals(key) && value instanceof Person) { follows((Person)value); continue; }
+        if ("gender".equals(key) && value instanceof String) { gender((String)value); continue; }
+        if ("givenName".equals(key) && value instanceof String) { givenName((String)value); continue; }
+        if ("globalLocationNumber".equals(key) && value instanceof String) { globalLocationNumber((String)value); continue; }
+        if ("hasPOS".equals(key) && value instanceof Place) { hasPOS((Place)value); continue; }
+        if ("height".equals(key) && value instanceof Distance) { height((Distance)value); continue; }
+        if ("height".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); continue; }
+        if ("homeLocation".equals(key) && value instanceof ContactPoint) { homeLocation((ContactPoint)value); continue; }
+        if ("homeLocation".equals(key) && value instanceof Place) { homeLocation((Place)value); continue; }
+        if ("honorificPrefix".equals(key) && value instanceof String) { honorificPrefix((String)value); continue; }
+        if ("honorificSuffix".equals(key) && value instanceof String) { honorificSuffix((String)value); continue; }
+        if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); continue; }
+        if ("jobTitle".equals(key) && value instanceof String) { jobTitle((String)value); continue; }
+        if ("knows".equals(key) && value instanceof Person) { knows((Person)value); continue; }
+        if ("makesOffer".equals(key) && value instanceof Offer) { makesOffer((Offer)value); continue; }
+        if ("memberOf".equals(key) && value instanceof Organization) { memberOf((Organization)value); continue; }
+        if ("memberOf".equals(key) && value instanceof ProgramMembership) { memberOf((ProgramMembership)value); continue; }
+        if ("naics".equals(key) && value instanceof String) { naics((String)value); continue; }
+        if ("nationality".equals(key) && value instanceof Country) { nationality((Country)value); continue; }
+        if ("netWorth".equals(key) && value instanceof PriceSpecification) { netWorth((PriceSpecification)value); continue; }
+        if ("owns".equals(key) && value instanceof OwnershipInfo) { owns((OwnershipInfo)value); continue; }
+        if ("owns".equals(key) && value instanceof Product) { owns((Product)value); continue; }
+        if ("parent".equals(key) && value instanceof Person) { parent((Person)value); continue; }
+        if ("performerIn".equals(key) && value instanceof Event) { performerIn((Event)value); continue; }
+        if ("relatedTo".equals(key) && value instanceof Person) { relatedTo((Person)value); continue; }
+        if ("seeks".equals(key) && value instanceof Demand) { seeks((Demand)value); continue; }
+        if ("sibling".equals(key) && value instanceof Person) { sibling((Person)value); continue; }
+        if ("spouse".equals(key) && value instanceof Person) { spouse((Person)value); continue; }
+        if ("taxID".equals(key) && value instanceof String) { taxID((String)value); continue; }
+        if ("telephone".equals(key) && value instanceof String) { telephone((String)value); continue; }
+        if ("vatID".equals(key) && value instanceof String) { vatID((String)value); continue; }
+        if ("weight".equals(key) && value instanceof QuantitativeValue) { weight((QuantitativeValue)value); continue; }
+        if ("workLocation".equals(key) && value instanceof ContactPoint) { workLocation((ContactPoint)value); continue; }
+        if ("workLocation".equals(key) && value instanceof Place) { workLocation((Place)value); continue; }
+        if ("worksFor".equals(key) && value instanceof Organization) { worksFor((Organization)value); continue; }
+        if ("birthPlace".equals(key) && value instanceof Place) { birthPlace((Place)value); continue; }
+        if ("deathPlace".equals(key) && value instanceof Place) { deathPlace((Place)value); continue; }
+        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
+        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
+        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
+        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
+        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
+        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
+        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
+        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+      }
     }
     private String additionalName;
     private PostalAddress address;
@@ -1132,105 +1203,105 @@ public class Person extends Thing implements Competitor {
     private String id;
   }
   public interface Builder extends ThingBuilder<Person> {
-    @NotNull Builder additionalName(String additionalName);
-    @NotNull Builder address(PostalAddress postalAddress);
-    @NotNull Builder address(PostalAddress.Builder postalAddress);
-    @NotNull Builder affiliation(Organization organization);
-    @NotNull Builder affiliation(Organization.Builder organization);
-    @NotNull Builder alumniOf(EducationalOrganization educationalOrganization);
-    @NotNull Builder alumniOf(EducationalOrganization.Builder educationalOrganization);
-    @NotNull Builder award(String award);
-    @NotNull Builder birthDate(java.util.Date date);
-    @NotNull Builder brand(Brand brand);
-    @NotNull Builder brand(Brand.Builder brand);
-    @NotNull Builder brand(Organization organization);
-    @NotNull Builder brand(Organization.Builder organization);
-    @NotNull Builder children(Person person);
-    @NotNull Builder children(Person.Builder person);
-    @NotNull Builder colleague(Person person);
-    @NotNull Builder colleague(Person.Builder person);
-    @NotNull Builder contactPoint(ContactPoint contactPoint);
-    @NotNull Builder contactPoint(ContactPoint.Builder contactPoint);
-    @NotNull Builder deathDate(java.util.Date date);
-    @NotNull Builder duns(String duns);
-    @NotNull Builder email(String email);
-    @NotNull Builder familyName(String familyName);
-    @NotNull Builder faxNumber(String faxNumber);
-    @NotNull Builder follows(Person person);
-    @NotNull Builder follows(Person.Builder person);
-    @NotNull Builder gender(String gender);
-    @NotNull Builder givenName(String givenName);
-    @NotNull Builder globalLocationNumber(String globalLocationNumber);
-    @NotNull Builder hasPOS(Place place);
-    @NotNull Builder hasPOS(Place.Builder place);
-    @NotNull Builder height(Distance distance);
-    @NotNull Builder height(Distance.Builder distance);
-    @NotNull Builder height(QuantitativeValue quantitativeValue);
-    @NotNull Builder height(QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder homeLocation(ContactPoint contactPoint);
-    @NotNull Builder homeLocation(ContactPoint.Builder contactPoint);
-    @NotNull Builder homeLocation(Place place);
-    @NotNull Builder homeLocation(Place.Builder place);
-    @NotNull Builder honorificPrefix(String honorificPrefix);
-    @NotNull Builder honorificSuffix(String honorificSuffix);
-    @NotNull Builder isicV4(String isicV4);
-    @NotNull Builder jobTitle(String jobTitle);
-    @NotNull Builder knows(Person person);
-    @NotNull Builder knows(Person.Builder person);
-    @NotNull Builder makesOffer(Offer offer);
-    @NotNull Builder makesOffer(Offer.Builder offer);
-    @NotNull Builder memberOf(Organization organization);
-    @NotNull Builder memberOf(Organization.Builder organization);
-    @NotNull Builder memberOf(ProgramMembership programMembership);
-    @NotNull Builder memberOf(ProgramMembership.Builder programMembership);
-    @NotNull Builder naics(String naics);
-    @NotNull Builder nationality(Country country);
-    @NotNull Builder nationality(Country.Builder country);
-    @NotNull Builder netWorth(PriceSpecification priceSpecification);
-    @NotNull Builder netWorth(PriceSpecification.Builder priceSpecification);
-    @NotNull Builder owns(OwnershipInfo ownershipInfo);
-    @NotNull Builder owns(OwnershipInfo.Builder ownershipInfo);
-    @NotNull Builder owns(Product product);
-    @NotNull Builder owns(Product.Builder product);
-    @NotNull Builder parent(Person person);
-    @NotNull Builder parent(Person.Builder person);
-    @NotNull Builder performerIn(Event event);
-    @NotNull Builder performerIn(Event.Builder event);
-    @NotNull Builder relatedTo(Person person);
-    @NotNull Builder relatedTo(Person.Builder person);
-    @NotNull Builder seeks(Demand demand);
-    @NotNull Builder seeks(Demand.Builder demand);
-    @NotNull Builder sibling(Person person);
-    @NotNull Builder sibling(Person.Builder person);
-    @NotNull Builder spouse(Person person);
-    @NotNull Builder spouse(Person.Builder person);
-    @NotNull Builder taxID(String taxID);
-    @NotNull Builder telephone(String telephone);
-    @NotNull Builder vatID(String vatID);
-    @NotNull Builder weight(QuantitativeValue quantitativeValue);
-    @NotNull Builder weight(QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder workLocation(ContactPoint contactPoint);
-    @NotNull Builder workLocation(ContactPoint.Builder contactPoint);
-    @NotNull Builder workLocation(Place place);
-    @NotNull Builder workLocation(Place.Builder place);
-    @NotNull Builder worksFor(Organization organization);
-    @NotNull Builder worksFor(Organization.Builder organization);
-    @NotNull Builder birthPlace(Place place);
-    @NotNull Builder birthPlace(Place.Builder place);
-    @NotNull Builder deathPlace(Place place);
-    @NotNull Builder deathPlace(Place.Builder place);
-    @NotNull Builder additionalType(String additionalType);
-    @NotNull Builder alternateName(String alternateName);
-    @NotNull Builder description(String description);
-    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
-    @NotNull Builder name(String name);
-    @NotNull Builder sameAs(String sameAs);
-    @NotNull Builder url(String url);
-    @NotNull Builder potentialAction(Action action);
-    @NotNull Builder potentialAction(Action.Builder action);
-    @NotNull Builder id(String id);
+    @NotNull Builder additionalName(@NotNull String additionalName);
+    @NotNull Builder address(@NotNull PostalAddress postalAddress);
+    @NotNull Builder address(@NotNull PostalAddress.Builder postalAddress);
+    @NotNull Builder affiliation(@NotNull Organization organization);
+    @NotNull Builder affiliation(@NotNull Organization.Builder organization);
+    @NotNull Builder alumniOf(@NotNull EducationalOrganization educationalOrganization);
+    @NotNull Builder alumniOf(@NotNull EducationalOrganization.Builder educationalOrganization);
+    @NotNull Builder award(@NotNull String award);
+    @NotNull Builder birthDate(@NotNull java.util.Date date);
+    @NotNull Builder brand(@NotNull Brand brand);
+    @NotNull Builder brand(@NotNull Brand.Builder brand);
+    @NotNull Builder brand(@NotNull Organization organization);
+    @NotNull Builder brand(@NotNull Organization.Builder organization);
+    @NotNull Builder children(@NotNull Person person);
+    @NotNull Builder children(@NotNull Person.Builder person);
+    @NotNull Builder colleague(@NotNull Person person);
+    @NotNull Builder colleague(@NotNull Person.Builder person);
+    @NotNull Builder contactPoint(@NotNull ContactPoint contactPoint);
+    @NotNull Builder contactPoint(@NotNull ContactPoint.Builder contactPoint);
+    @NotNull Builder deathDate(@NotNull java.util.Date date);
+    @NotNull Builder duns(@NotNull String duns);
+    @NotNull Builder email(@NotNull String email);
+    @NotNull Builder familyName(@NotNull String familyName);
+    @NotNull Builder faxNumber(@NotNull String faxNumber);
+    @NotNull Builder follows(@NotNull Person person);
+    @NotNull Builder follows(@NotNull Person.Builder person);
+    @NotNull Builder gender(@NotNull String gender);
+    @NotNull Builder givenName(@NotNull String givenName);
+    @NotNull Builder globalLocationNumber(@NotNull String globalLocationNumber);
+    @NotNull Builder hasPOS(@NotNull Place place);
+    @NotNull Builder hasPOS(@NotNull Place.Builder place);
+    @NotNull Builder height(@NotNull Distance distance);
+    @NotNull Builder height(@NotNull Distance.Builder distance);
+    @NotNull Builder height(@NotNull QuantitativeValue quantitativeValue);
+    @NotNull Builder height(@NotNull QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder homeLocation(@NotNull ContactPoint contactPoint);
+    @NotNull Builder homeLocation(@NotNull ContactPoint.Builder contactPoint);
+    @NotNull Builder homeLocation(@NotNull Place place);
+    @NotNull Builder homeLocation(@NotNull Place.Builder place);
+    @NotNull Builder honorificPrefix(@NotNull String honorificPrefix);
+    @NotNull Builder honorificSuffix(@NotNull String honorificSuffix);
+    @NotNull Builder isicV4(@NotNull String isicV4);
+    @NotNull Builder jobTitle(@NotNull String jobTitle);
+    @NotNull Builder knows(@NotNull Person person);
+    @NotNull Builder knows(@NotNull Person.Builder person);
+    @NotNull Builder makesOffer(@NotNull Offer offer);
+    @NotNull Builder makesOffer(@NotNull Offer.Builder offer);
+    @NotNull Builder memberOf(@NotNull Organization organization);
+    @NotNull Builder memberOf(@NotNull Organization.Builder organization);
+    @NotNull Builder memberOf(@NotNull ProgramMembership programMembership);
+    @NotNull Builder memberOf(@NotNull ProgramMembership.Builder programMembership);
+    @NotNull Builder naics(@NotNull String naics);
+    @NotNull Builder nationality(@NotNull Country country);
+    @NotNull Builder nationality(@NotNull Country.Builder country);
+    @NotNull Builder netWorth(@NotNull PriceSpecification priceSpecification);
+    @NotNull Builder netWorth(@NotNull PriceSpecification.Builder priceSpecification);
+    @NotNull Builder owns(@NotNull OwnershipInfo ownershipInfo);
+    @NotNull Builder owns(@NotNull OwnershipInfo.Builder ownershipInfo);
+    @NotNull Builder owns(@NotNull Product product);
+    @NotNull Builder owns(@NotNull Product.Builder product);
+    @NotNull Builder parent(@NotNull Person person);
+    @NotNull Builder parent(@NotNull Person.Builder person);
+    @NotNull Builder performerIn(@NotNull Event event);
+    @NotNull Builder performerIn(@NotNull Event.Builder event);
+    @NotNull Builder relatedTo(@NotNull Person person);
+    @NotNull Builder relatedTo(@NotNull Person.Builder person);
+    @NotNull Builder seeks(@NotNull Demand demand);
+    @NotNull Builder seeks(@NotNull Demand.Builder demand);
+    @NotNull Builder sibling(@NotNull Person person);
+    @NotNull Builder sibling(@NotNull Person.Builder person);
+    @NotNull Builder spouse(@NotNull Person person);
+    @NotNull Builder spouse(@NotNull Person.Builder person);
+    @NotNull Builder taxID(@NotNull String taxID);
+    @NotNull Builder telephone(@NotNull String telephone);
+    @NotNull Builder vatID(@NotNull String vatID);
+    @NotNull Builder weight(@NotNull QuantitativeValue quantitativeValue);
+    @NotNull Builder weight(@NotNull QuantitativeValue.Builder quantitativeValue);
+    @NotNull Builder workLocation(@NotNull ContactPoint contactPoint);
+    @NotNull Builder workLocation(@NotNull ContactPoint.Builder contactPoint);
+    @NotNull Builder workLocation(@NotNull Place place);
+    @NotNull Builder workLocation(@NotNull Place.Builder place);
+    @NotNull Builder worksFor(@NotNull Organization organization);
+    @NotNull Builder worksFor(@NotNull Organization.Builder organization);
+    @NotNull Builder birthPlace(@NotNull Place place);
+    @NotNull Builder birthPlace(@NotNull Place.Builder place);
+    @NotNull Builder deathPlace(@NotNull Place place);
+    @NotNull Builder deathPlace(@NotNull Place.Builder place);
+    @NotNull Builder additionalType(@NotNull String additionalType);
+    @NotNull Builder alternateName(@NotNull String alternateName);
+    @NotNull Builder description(@NotNull String description);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
+    @NotNull Builder name(@NotNull String name);
+    @NotNull Builder sameAs(@NotNull String sameAs);
+    @NotNull Builder url(@NotNull String url);
+    @NotNull Builder potentialAction(@NotNull Action action);
+    @NotNull Builder potentialAction(@NotNull Action.Builder action);
+    @NotNull Builder id(@NotNull String id);
   }
 
   protected Person(String additionalName, PostalAddress address, Organization affiliation, EducationalOrganization alumniOf, String award, java.util.Date birthDate, BrandOrOrganization brand, Person children, Person colleague, ContactPoint contactPoint, java.util.Date deathDate, String duns, String email, String familyName, String faxNumber, Person follows, String gender, String givenName, String globalLocationNumber, Place hasPOS, DistanceOrQuantitativeValue height, ContactPointOrPlace homeLocation, String honorificPrefix, String honorificSuffix, String isicV4, String jobTitle, Person knows, Offer makesOffer, OrganizationOrProgramMembership memberOf, String naics, Country nationality, PriceSpecification netWorth, OwnershipInfoOrProduct owns, Person parent, Event performerIn, Person relatedTo, Demand seeks, Person sibling, Person spouse, String taxID, String telephone, String vatID, QuantitativeValue weight, ContactPointOrPlace workLocation, Organization worksFor, Place birthPlace, Place deathPlace, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

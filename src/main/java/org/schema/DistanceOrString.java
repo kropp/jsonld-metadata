@@ -31,9 +31,9 @@ class DistanceOrString {
   }
   public void setDistance(Distance distance) { clear(); myDistance = distance; }
   public Distance getDistance() { return myDistance; }
+  private Distance myDistance;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private Distance myDistance;
   private String myString;
   private void clear() {
     myDistance = null;

@@ -36,9 +36,9 @@ class BusStationOrBusStop {
   }
   public void setBusStation(BusStation busStation) { clear(); myBusStation = busStation; }
   public BusStation getBusStation() { return myBusStation; }
+  private BusStation myBusStation;
   public void setBusStop(BusStop busStop) { clear(); myBusStop = busStop; }
   public BusStop getBusStop() { return myBusStop; }
-  private BusStation myBusStation;
   private BusStop myBusStop;
   private void clear() {
     myBusStation = null;

@@ -31,9 +31,9 @@ class CreativeWorkOrString {
   }
   public void setCreativeWork(CreativeWork creativeWork) { clear(); myCreativeWork = creativeWork; }
   public CreativeWork getCreativeWork() { return myCreativeWork; }
+  private CreativeWork myCreativeWork;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private CreativeWork myCreativeWork;
   private String myString;
   private void clear() {
     myCreativeWork = null;

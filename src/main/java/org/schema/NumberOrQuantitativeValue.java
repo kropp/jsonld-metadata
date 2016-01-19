@@ -35,9 +35,9 @@ class NumberOrQuantitativeValue {
   }
   public void setNumber(Number number) { clear(); myNumber = number; }
   public Number getNumber() { return myNumber; }
+  private Number myNumber;
   public void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
   public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
-  private Number myNumber;
   private QuantitativeValue myQuantitativeValue;
   private void clear() {
     myNumber = null;

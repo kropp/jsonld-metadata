@@ -42,18 +42,18 @@ class EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructure
   }
   public void setEnumeration(Enumeration enumeration) { clear(); myEnumeration = enumeration; }
   public Enumeration getEnumeration() { return myEnumeration; }
+  private Enumeration myEnumeration;
   public void setPropertyValue(PropertyValue propertyValue) { clear(); myPropertyValue = propertyValue; }
   public PropertyValue getPropertyValue() { return myPropertyValue; }
+  private PropertyValue myPropertyValue;
   public void setQualitativeValue(QualitativeValue qualitativeValue) { clear(); myQualitativeValue = qualitativeValue; }
   public QualitativeValue getQualitativeValue() { return myQualitativeValue; }
+  private QualitativeValue myQualitativeValue;
   public void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
   public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
+  private QuantitativeValue myQuantitativeValue;
   public void setStructuredValue(StructuredValue structuredValue) { clear(); myStructuredValue = structuredValue; }
   public StructuredValue getStructuredValue() { return myStructuredValue; }
-  private Enumeration myEnumeration;
-  private PropertyValue myPropertyValue;
-  private QualitativeValue myQualitativeValue;
-  private QuantitativeValue myQuantitativeValue;
   private StructuredValue myStructuredValue;
   private void clear() {
     myEnumeration = null;

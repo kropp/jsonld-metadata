@@ -88,7 +88,7 @@ public class Ticket extends Intangible {
     /**
      * The person or organization the reservation or ticket is for.
      */
-    @NotNull public Builder underName(Organization organization) {
+    @NotNull public Builder underName(@NotNull Organization organization) {
       if (this.underName == null) this.underName = new OrganizationOrPerson();
       this.underName.setOrganization(organization);
       return this;
@@ -96,13 +96,13 @@ public class Ticket extends Intangible {
     /**
      * The person or organization the reservation or ticket is for.
      */
-    @NotNull public Builder underName(Organization.Builder organization) {
+    @NotNull public Builder underName(@NotNull Organization.Builder organization) {
       return this.underName(organization.build());
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
-    @NotNull public Builder underName(Person person) {
+    @NotNull public Builder underName(@NotNull Person person) {
       if (this.underName == null) this.underName = new OrganizationOrPerson();
       this.underName.setPerson(person);
       return this;
@@ -110,13 +110,13 @@ public class Ticket extends Intangible {
     /**
      * The person or organization the reservation or ticket is for.
      */
-    @NotNull public Builder underName(Person.Builder person) {
+    @NotNull public Builder underName(@NotNull Person.Builder person) {
       return this.underName(person.build());
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(Number number) {
+    @NotNull public Builder totalPrice(@NotNull Number number) {
       if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
       this.totalPrice.setNumber(number);
       return this;
@@ -124,7 +124,7 @@ public class Ticket extends Intangible {
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(PriceSpecification priceSpecification) {
+    @NotNull public Builder totalPrice(@NotNull PriceSpecification priceSpecification) {
       if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
       this.totalPrice.setPriceSpecification(priceSpecification);
       return this;
@@ -132,13 +132,13 @@ public class Ticket extends Intangible {
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(PriceSpecification.Builder priceSpecification) {
+    @NotNull public Builder totalPrice(@NotNull PriceSpecification.Builder priceSpecification) {
       return this.totalPrice(priceSpecification.build());
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(String totalPrice) {
+    @NotNull public Builder totalPrice(@NotNull String totalPrice) {
       if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
       this.totalPrice.setString(totalPrice);
       return this;
@@ -146,75 +146,75 @@ public class Ticket extends Intangible {
     /**
      * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
      */
-    @NotNull public Builder priceCurrency(String priceCurrency) {
+    @NotNull public Builder priceCurrency(@NotNull String priceCurrency) {
       this.priceCurrency = priceCurrency;
       return this;
     }
     /**
      * The organization issuing the ticket or permit.
      */
-    @NotNull public Builder issuedBy(Organization organization) {
+    @NotNull public Builder issuedBy(@NotNull Organization organization) {
       this.issuedBy = organization;
       return this;
     }
     /**
      * The organization issuing the ticket or permit.
      */
-    @NotNull public Builder issuedBy(Organization.Builder organization) {
+    @NotNull public Builder issuedBy(@NotNull Organization.Builder organization) {
       return this.issuedBy(organization.build());
     }
     /**
      * The date the ticket was issued.
      */
-    @NotNull public Builder dateIssued(java.util.Date date) {
+    @NotNull public Builder dateIssued(@NotNull java.util.Date date) {
       this.dateIssued = date;
       return this;
     }
     /**
      * The seat associated with the ticket.
      */
-    @NotNull public Builder ticketedSeat(Seat seat) {
+    @NotNull public Builder ticketedSeat(@NotNull Seat seat) {
       this.ticketedSeat = seat;
       return this;
     }
     /**
      * The seat associated with the ticket.
      */
-    @NotNull public Builder ticketedSeat(Seat.Builder seat) {
+    @NotNull public Builder ticketedSeat(@NotNull Seat.Builder seat) {
       return this.ticketedSeat(seat.build());
     }
     /**
      * The unique identifier for the ticket.
      */
-    @NotNull public Builder ticketNumber(String ticketNumber) {
+    @NotNull public Builder ticketNumber(@NotNull String ticketNumber) {
       this.ticketNumber = ticketNumber;
       return this;
     }
     /**
      * Reference to an asset (e.g., Barcode, QR code image or PDF) usable for entrance.
      */
-    @NotNull public Builder ticketToken(String ticketToken) {
+    @NotNull public Builder ticketToken(@NotNull String ticketToken) {
       this.ticketToken = ticketToken;
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    @NotNull public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(@NotNull String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    @NotNull public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(@NotNull String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    @NotNull public Builder description(String description) {
+    @NotNull public Builder description(@NotNull String description) {
       this.description = description;
       return this;
     }
@@ -248,7 +248,7 @@ public class Ticket extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -283,7 +283,7 @@ public class Ticket extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -316,7 +316,7 @@ public class Ticket extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -324,43 +324,72 @@ public class Ticket extends Intangible {
     /**
      * The name of the item.
      */
-    @NotNull public Builder name(String name) {
+    @NotNull public Builder name(@NotNull String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    @NotNull public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(@NotNull String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    @NotNull public Builder url(String url) {
+    @NotNull public Builder url(@NotNull String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(@NotNull Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    @NotNull public Builder id(String id) {
+    @NotNull public Builder id(@NotNull String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
+    }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        if ("underName".equals(key) && value instanceof Organization) { underName((Organization)value); continue; }
+        if ("underName".equals(key) && value instanceof Person) { underName((Person)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Number) { totalPrice((Number)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof PriceSpecification) { totalPrice((PriceSpecification)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof String) { totalPrice((String)value); continue; }
+        if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); continue; }
+        if ("issuedBy".equals(key) && value instanceof Organization) { issuedBy((Organization)value); continue; }
+        if ("dateIssued".equals(key) && value instanceof java.util.Date) { dateIssued((java.util.Date)value); continue; }
+        if ("ticketedSeat".equals(key) && value instanceof Seat) { ticketedSeat((Seat)value); continue; }
+        if ("ticketNumber".equals(key) && value instanceof String) { ticketNumber((String)value); continue; }
+        if ("ticketToken".equals(key) && value instanceof String) { ticketToken((String)value); continue; }
+        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
+        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
+        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
+        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
+        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
+        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
+        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
+        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+      }
     }
     private OrganizationOrPerson underName;
     private NumberOrPriceSpecificationOrString totalPrice;
@@ -381,34 +410,34 @@ public class Ticket extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<Ticket> {
-    @NotNull Builder underName(Organization organization);
-    @NotNull Builder underName(Organization.Builder organization);
-    @NotNull Builder underName(Person person);
-    @NotNull Builder underName(Person.Builder person);
-    @NotNull Builder totalPrice(Number number);
-    @NotNull Builder totalPrice(PriceSpecification priceSpecification);
-    @NotNull Builder totalPrice(PriceSpecification.Builder priceSpecification);
-    @NotNull Builder totalPrice(String totalPrice);
-    @NotNull Builder priceCurrency(String priceCurrency);
-    @NotNull Builder issuedBy(Organization organization);
-    @NotNull Builder issuedBy(Organization.Builder organization);
-    @NotNull Builder dateIssued(java.util.Date date);
-    @NotNull Builder ticketedSeat(Seat seat);
-    @NotNull Builder ticketedSeat(Seat.Builder seat);
-    @NotNull Builder ticketNumber(String ticketNumber);
-    @NotNull Builder ticketToken(String ticketToken);
-    @NotNull Builder additionalType(String additionalType);
-    @NotNull Builder alternateName(String alternateName);
-    @NotNull Builder description(String description);
-    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
-    @NotNull Builder name(String name);
-    @NotNull Builder sameAs(String sameAs);
-    @NotNull Builder url(String url);
-    @NotNull Builder potentialAction(Action action);
-    @NotNull Builder potentialAction(Action.Builder action);
-    @NotNull Builder id(String id);
+    @NotNull Builder underName(@NotNull Organization organization);
+    @NotNull Builder underName(@NotNull Organization.Builder organization);
+    @NotNull Builder underName(@NotNull Person person);
+    @NotNull Builder underName(@NotNull Person.Builder person);
+    @NotNull Builder totalPrice(@NotNull Number number);
+    @NotNull Builder totalPrice(@NotNull PriceSpecification priceSpecification);
+    @NotNull Builder totalPrice(@NotNull PriceSpecification.Builder priceSpecification);
+    @NotNull Builder totalPrice(@NotNull String totalPrice);
+    @NotNull Builder priceCurrency(@NotNull String priceCurrency);
+    @NotNull Builder issuedBy(@NotNull Organization organization);
+    @NotNull Builder issuedBy(@NotNull Organization.Builder organization);
+    @NotNull Builder dateIssued(@NotNull java.util.Date date);
+    @NotNull Builder ticketedSeat(@NotNull Seat seat);
+    @NotNull Builder ticketedSeat(@NotNull Seat.Builder seat);
+    @NotNull Builder ticketNumber(@NotNull String ticketNumber);
+    @NotNull Builder ticketToken(@NotNull String ticketToken);
+    @NotNull Builder additionalType(@NotNull String additionalType);
+    @NotNull Builder alternateName(@NotNull String alternateName);
+    @NotNull Builder description(@NotNull String description);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
+    @NotNull Builder name(@NotNull String name);
+    @NotNull Builder sameAs(@NotNull String sameAs);
+    @NotNull Builder url(@NotNull String url);
+    @NotNull Builder potentialAction(@NotNull Action action);
+    @NotNull Builder potentialAction(@NotNull Action.Builder action);
+    @NotNull Builder id(@NotNull String id);
   }
 
   protected Ticket(OrganizationOrPerson underName, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, Organization issuedBy, java.util.Date dateIssued, Seat ticketedSeat, String ticketNumber, String ticketToken, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

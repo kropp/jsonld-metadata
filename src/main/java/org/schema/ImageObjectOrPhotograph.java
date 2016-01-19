@@ -36,9 +36,9 @@ class ImageObjectOrPhotograph {
   }
   public void setImageObject(ImageObject imageObject) { clear(); myImageObject = imageObject; }
   public ImageObject getImageObject() { return myImageObject; }
+  private ImageObject myImageObject;
   public void setPhotograph(Photograph photograph) { clear(); myPhotograph = photograph; }
   public Photograph getPhotograph() { return myPhotograph; }
-  private ImageObject myImageObject;
   private Photograph myPhotograph;
   private void clear() {
     myImageObject = null;

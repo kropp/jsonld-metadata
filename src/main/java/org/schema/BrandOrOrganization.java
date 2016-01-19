@@ -36,9 +36,9 @@ class BrandOrOrganization {
   }
   public void setBrand(Brand brand) { clear(); myBrand = brand; }
   public Brand getBrand() { return myBrand; }
+  private Brand myBrand;
   public void setOrganization(Organization organization) { clear(); myOrganization = organization; }
   public Organization getOrganization() { return myOrganization; }
-  private Brand myBrand;
   private Organization myOrganization;
   private void clear() {
     myBrand = null;

@@ -31,9 +31,9 @@ class MedicalDevicePurposeOrThing {
   }
   public void setMedicalDevicePurpose(MedicalDevicePurpose medicalDevicePurpose) { clear(); myMedicalDevicePurpose = medicalDevicePurpose; }
   public MedicalDevicePurpose getMedicalDevicePurpose() { return myMedicalDevicePurpose; }
+  private MedicalDevicePurpose myMedicalDevicePurpose;
   public void setThing(Thing thing) { clear(); myThing = thing; }
   public Thing getThing() { return myThing; }
-  private MedicalDevicePurpose myMedicalDevicePurpose;
   private Thing myThing;
   private void clear() {
     myMedicalDevicePurpose = null;

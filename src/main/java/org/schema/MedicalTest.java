@@ -70,158 +70,158 @@ public class MedicalTest extends MedicalEntity {
     /**
      * Drugs that affect the test's results.
      */
-    @NotNull public Builder affectedBy(Drug drug) {
+    @NotNull public Builder affectedBy(@NotNull Drug drug) {
       this.affectedBy = drug;
       return this;
     }
     /**
      * Drugs that affect the test's results.
      */
-    @NotNull public Builder affectedBy(Drug.Builder drug) {
+    @NotNull public Builder affectedBy(@NotNull Drug.Builder drug) {
       return this.affectedBy(drug.build());
     }
     /**
      * Range of acceptable values for a typical patient, when applicable.
      */
-    @NotNull public Builder normalRange(String normalRange) {
+    @NotNull public Builder normalRange(@NotNull String normalRange) {
       this.normalRange = normalRange;
       return this;
     }
     /**
      * A sign detected by the test.
      */
-    @NotNull public Builder signDetected(MedicalSign medicalSign) {
+    @NotNull public Builder signDetected(@NotNull MedicalSign medicalSign) {
       this.signDetected = medicalSign;
       return this;
     }
     /**
      * A sign detected by the test.
      */
-    @NotNull public Builder signDetected(MedicalSign.Builder medicalSign) {
+    @NotNull public Builder signDetected(@NotNull MedicalSign.Builder medicalSign) {
       return this.signDetected(medicalSign.build());
     }
     /**
      * A condition the test is used to diagnose.
      */
-    @NotNull public Builder usedToDiagnose(MedicalCondition medicalCondition) {
+    @NotNull public Builder usedToDiagnose(@NotNull MedicalCondition medicalCondition) {
       this.usedToDiagnose = medicalCondition;
       return this;
     }
     /**
      * A condition the test is used to diagnose.
      */
-    @NotNull public Builder usedToDiagnose(MedicalCondition.Builder medicalCondition) {
+    @NotNull public Builder usedToDiagnose(@NotNull MedicalCondition.Builder medicalCondition) {
       return this.usedToDiagnose(medicalCondition.build());
     }
     /**
      * Device used to perform the test.
      */
-    @NotNull public Builder usesDevice(MedicalDevice medicalDevice) {
+    @NotNull public Builder usesDevice(@NotNull MedicalDevice medicalDevice) {
       this.usesDevice = medicalDevice;
       return this;
     }
     /**
      * Device used to perform the test.
      */
-    @NotNull public Builder usesDevice(MedicalDevice.Builder medicalDevice) {
+    @NotNull public Builder usesDevice(@NotNull MedicalDevice.Builder medicalDevice) {
       return this.usesDevice(medicalDevice.build());
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
-    @NotNull public Builder code(MedicalCode medicalCode) {
+    @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
       this.code = medicalCode;
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
-    @NotNull public Builder code(MedicalCode.Builder medicalCode) {
+    @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
       return this.code(medicalCode.build());
     }
     /**
      * A medical guideline related to this entity.
      */
-    @NotNull public Builder guideline(MedicalGuideline medicalGuideline) {
+    @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
       this.guideline = medicalGuideline;
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
-    @NotNull public Builder guideline(MedicalGuideline.Builder medicalGuideline) {
+    @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
       return this.guideline(medicalGuideline.build());
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
-    @NotNull public Builder medicineSystem(MedicineSystem medicineSystem) {
+    @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
       this.medicineSystem = medicineSystem;
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
-    @NotNull public Builder medicineSystem(MedicineSystem.Builder medicineSystem) {
+    @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
       return this.medicineSystem(medicineSystem.build());
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    @NotNull public Builder recognizingAuthority(Organization organization) {
+    @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
       this.recognizingAuthority = organization;
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
-    @NotNull public Builder recognizingAuthority(Organization.Builder organization) {
+    @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
       return this.recognizingAuthority(organization.build());
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
-    @NotNull public Builder relevantSpecialty(MedicalSpecialty medicalSpecialty) {
+    @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
       this.relevantSpecialty = medicalSpecialty;
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
-    @NotNull public Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty) {
+    @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
       return this.relevantSpecialty(medicalSpecialty.build());
     }
     /**
      * A medical study or trial related to this entity.
      */
-    @NotNull public Builder study(MedicalStudy medicalStudy) {
+    @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
       this.study = medicalStudy;
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
-    @NotNull public Builder study(MedicalStudy.Builder medicalStudy) {
+    @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
       return this.study(medicalStudy.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    @NotNull public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(@NotNull String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    @NotNull public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(@NotNull String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    @NotNull public Builder description(String description) {
+    @NotNull public Builder description(@NotNull String description) {
       this.description = description;
       return this;
     }
@@ -255,7 +255,7 @@ public class MedicalTest extends MedicalEntity {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -290,7 +290,7 @@ public class MedicalTest extends MedicalEntity {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -323,7 +323,7 @@ public class MedicalTest extends MedicalEntity {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -331,43 +331,72 @@ public class MedicalTest extends MedicalEntity {
     /**
      * The name of the item.
      */
-    @NotNull public Builder name(String name) {
+    @NotNull public Builder name(@NotNull String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    @NotNull public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(@NotNull String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    @NotNull public Builder url(String url) {
+    @NotNull public Builder url(@NotNull String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(@NotNull Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    @NotNull public Builder id(String id) {
+    @NotNull public Builder id(@NotNull String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
+    }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        if ("affectedBy".equals(key) && value instanceof Drug) { affectedBy((Drug)value); continue; }
+        if ("normalRange".equals(key) && value instanceof String) { normalRange((String)value); continue; }
+        if ("signDetected".equals(key) && value instanceof MedicalSign) { signDetected((MedicalSign)value); continue; }
+        if ("usedToDiagnose".equals(key) && value instanceof MedicalCondition) { usedToDiagnose((MedicalCondition)value); continue; }
+        if ("usesDevice".equals(key) && value instanceof MedicalDevice) { usesDevice((MedicalDevice)value); continue; }
+        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
+        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
+        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
+        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
+        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
+        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
+        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
+        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
+        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
+        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
+        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
+        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
+        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
+        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+      }
     }
     private Drug affectedBy;
     private String normalRange;
@@ -391,39 +420,39 @@ public class MedicalTest extends MedicalEntity {
     private String id;
   }
   public interface Builder extends ThingBuilder<MedicalTest> {
-    @NotNull Builder affectedBy(Drug drug);
-    @NotNull Builder affectedBy(Drug.Builder drug);
-    @NotNull Builder normalRange(String normalRange);
-    @NotNull Builder signDetected(MedicalSign medicalSign);
-    @NotNull Builder signDetected(MedicalSign.Builder medicalSign);
-    @NotNull Builder usedToDiagnose(MedicalCondition medicalCondition);
-    @NotNull Builder usedToDiagnose(MedicalCondition.Builder medicalCondition);
-    @NotNull Builder usesDevice(MedicalDevice medicalDevice);
-    @NotNull Builder usesDevice(MedicalDevice.Builder medicalDevice);
-    @NotNull Builder code(MedicalCode medicalCode);
-    @NotNull Builder code(MedicalCode.Builder medicalCode);
-    @NotNull Builder guideline(MedicalGuideline medicalGuideline);
-    @NotNull Builder guideline(MedicalGuideline.Builder medicalGuideline);
-    @NotNull Builder medicineSystem(MedicineSystem medicineSystem);
-    @NotNull Builder medicineSystem(MedicineSystem.Builder medicineSystem);
-    @NotNull Builder recognizingAuthority(Organization organization);
-    @NotNull Builder recognizingAuthority(Organization.Builder organization);
-    @NotNull Builder relevantSpecialty(MedicalSpecialty medicalSpecialty);
-    @NotNull Builder relevantSpecialty(MedicalSpecialty.Builder medicalSpecialty);
-    @NotNull Builder study(MedicalStudy medicalStudy);
-    @NotNull Builder study(MedicalStudy.Builder medicalStudy);
-    @NotNull Builder additionalType(String additionalType);
-    @NotNull Builder alternateName(String alternateName);
-    @NotNull Builder description(String description);
-    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
-    @NotNull Builder name(String name);
-    @NotNull Builder sameAs(String sameAs);
-    @NotNull Builder url(String url);
-    @NotNull Builder potentialAction(Action action);
-    @NotNull Builder potentialAction(Action.Builder action);
-    @NotNull Builder id(String id);
+    @NotNull Builder affectedBy(@NotNull Drug drug);
+    @NotNull Builder affectedBy(@NotNull Drug.Builder drug);
+    @NotNull Builder normalRange(@NotNull String normalRange);
+    @NotNull Builder signDetected(@NotNull MedicalSign medicalSign);
+    @NotNull Builder signDetected(@NotNull MedicalSign.Builder medicalSign);
+    @NotNull Builder usedToDiagnose(@NotNull MedicalCondition medicalCondition);
+    @NotNull Builder usedToDiagnose(@NotNull MedicalCondition.Builder medicalCondition);
+    @NotNull Builder usesDevice(@NotNull MedicalDevice medicalDevice);
+    @NotNull Builder usesDevice(@NotNull MedicalDevice.Builder medicalDevice);
+    @NotNull Builder code(@NotNull MedicalCode medicalCode);
+    @NotNull Builder code(@NotNull MedicalCode.Builder medicalCode);
+    @NotNull Builder guideline(@NotNull MedicalGuideline medicalGuideline);
+    @NotNull Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline);
+    @NotNull Builder medicineSystem(@NotNull MedicineSystem medicineSystem);
+    @NotNull Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem);
+    @NotNull Builder recognizingAuthority(@NotNull Organization organization);
+    @NotNull Builder recognizingAuthority(@NotNull Organization.Builder organization);
+    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty);
+    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty);
+    @NotNull Builder study(@NotNull MedicalStudy medicalStudy);
+    @NotNull Builder study(@NotNull MedicalStudy.Builder medicalStudy);
+    @NotNull Builder additionalType(@NotNull String additionalType);
+    @NotNull Builder alternateName(@NotNull String alternateName);
+    @NotNull Builder description(@NotNull String description);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
+    @NotNull Builder name(@NotNull String name);
+    @NotNull Builder sameAs(@NotNull String sameAs);
+    @NotNull Builder url(@NotNull String url);
+    @NotNull Builder potentialAction(@NotNull Action action);
+    @NotNull Builder potentialAction(@NotNull Action.Builder action);
+    @NotNull Builder id(@NotNull String id);
   }
 
   protected MedicalTest(Drug affectedBy, String normalRange, MedicalSign signDetected, MedicalCondition usedToDiagnose, MedicalDevice usesDevice, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

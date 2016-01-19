@@ -19,5 +19,6 @@
 package org.schema;
 
 public interface ThingBuilder<T> {
+  void fromMap(java.util.Map<String,Object> map);
   T build();
 }

@@ -31,9 +31,9 @@ class QualitativeValueOrString {
   }
   public void setQualitativeValue(QualitativeValue qualitativeValue) { clear(); myQualitativeValue = qualitativeValue; }
   public QualitativeValue getQualitativeValue() { return myQualitativeValue; }
+  private QualitativeValue myQualitativeValue;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private QualitativeValue myQualitativeValue;
   private String myString;
   private void clear() {
     myQualitativeValue = null;

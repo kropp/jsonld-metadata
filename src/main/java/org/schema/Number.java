@@ -25,30 +25,30 @@ import com.fasterxml.jackson.annotation.*;
 class Number {
   @JsonValue
   public Object getJsonLdValue() {
-    if (myInt != null) return myInt;
+    if (myInteger != null) return myInteger;
     if (myLong != null) return myLong;
     if (myFloat != null) return myFloat;
     if (myDouble != null) return myDouble;
     if (myString != null) return myString;
     return null;
   }
-  public void setInt(int value) { clear(); myInt = value; }
-  public int getInt() { return myInt; }
-  public void setLong(long value) { clear(); myLong = value; }
-  public long getLong() { return myLong; }
-  public void setFloat(float value) { clear(); myFloat = value; }
-  public float getFloat() { return myFloat; }
-  public void setDouble(double value) { clear(); myDouble = value; }
-  public double getDouble() { return myDouble; }
+  public void setInteger(Integer integer) { clear(); myInteger = integer; }
+  public Integer getInteger() { return myInteger; }
+  private Integer myInteger;
+  public void setLong(Long value) { clear(); myLong = value; }
+  public Long getLong() { return myLong; }
+  private Long myLong;
+  public void setFloat(Float value) { clear(); myFloat = value; }
+  public Float getFloat() { return myFloat; }
+  private Float myFloat;
+  public void setDouble(Double value) { clear(); myDouble = value; }
+  public Double getDouble() { return myDouble; }
+  private Double myDouble;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private Integer myInt;
-  private Long myLong;
-  private Float myFloat;
-  private Double myDouble;
   private String myString;
   private void clear() {
-    myInt = null;
+    myInteger = null;
     myLong = null;
     myFloat = null;
     myDouble = null;

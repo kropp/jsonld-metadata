@@ -32,12 +32,12 @@ class NumberOrPriceSpecificationOrString {
   }
   public void setNumber(Number number) { clear(); myNumber = number; }
   public Number getNumber() { return myNumber; }
+  private Number myNumber;
   public void setPriceSpecification(PriceSpecification priceSpecification) { clear(); myPriceSpecification = priceSpecification; }
   public PriceSpecification getPriceSpecification() { return myPriceSpecification; }
+  private PriceSpecification myPriceSpecification;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private Number myNumber;
-  private PriceSpecification myPriceSpecification;
   private String myString;
   private void clear() {
     myNumber = null;

@@ -35,9 +35,9 @@ class NumberOrPriceSpecification {
   }
   public void setNumber(Number number) { clear(); myNumber = number; }
   public Number getNumber() { return myNumber; }
+  private Number myNumber;
   public void setPriceSpecification(PriceSpecification priceSpecification) { clear(); myPriceSpecification = priceSpecification; }
   public PriceSpecification getPriceSpecification() { return myPriceSpecification; }
-  private Number myNumber;
   private PriceSpecification myPriceSpecification;
   private void clear() {
     myNumber = null;

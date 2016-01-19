@@ -22,21 +22,21 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class StringOrInt {
+class IntegerOrString {
   @JsonValue
   public Object getJsonLdValue() {
+    if (myInteger != null) return myInteger;
     if (myString != null) return myString;
-    if (myInt != null) return myInt;
     return null;
   }
+  public void setInteger(Integer integer) { clear(); myInteger = integer; }
+  public Integer getInteger() { return myInteger; }
+  private Integer myInteger;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  public void setInt(int value) { clear(); myInt = value; }
-  public int getInt() { return myInt; }
   private String myString;
-  private Integer myInt;
   private void clear() {
+    myInteger = null;
     myString = null;
-    myInt = null;
   }
 }

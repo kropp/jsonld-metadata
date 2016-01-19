@@ -70,21 +70,21 @@ public class GeoShape extends StructuredValue {
     /**
      * A box is the area enclosed by the rectangle formed by two points. The first point is the lower corner, the second point is the upper corner. A box is expressed as two points separated by a space character.
      */
-    @NotNull public Builder box(String box) {
+    @NotNull public Builder box(@NotNull String box) {
       this.box = box;
       return this;
     }
     /**
      * A circle is the circular region of a specified radius centered at a specified latitude and longitude. A circle is expressed as a pair followed by a radius in meters.
      */
-    @NotNull public Builder circle(String circle) {
+    @NotNull public Builder circle(@NotNull String circle) {
       this.circle = circle;
       return this;
     }
     /**
      * The elevation of a location.
      */
-    @NotNull public Builder elevation(Number number) {
+    @NotNull public Builder elevation(@NotNull Number number) {
       if (this.elevation == null) this.elevation = new NumberOrString();
       this.elevation.setNumber(number);
       return this;
@@ -92,7 +92,7 @@ public class GeoShape extends StructuredValue {
     /**
      * The elevation of a location.
      */
-    @NotNull public Builder elevation(String elevation) {
+    @NotNull public Builder elevation(@NotNull String elevation) {
       if (this.elevation == null) this.elevation = new NumberOrString();
       this.elevation.setString(elevation);
       return this;
@@ -100,35 +100,35 @@ public class GeoShape extends StructuredValue {
     /**
      * A line is a point-to-point path consisting of two or more points. A line is expressed as a series of two or more point objects separated by space.
      */
-    @NotNull public Builder line(String line) {
+    @NotNull public Builder line(@NotNull String line) {
       this.line = line;
       return this;
     }
     /**
      * A polygon is the area enclosed by a point-to-point path for which the starting and ending points are the same. A polygon is expressed as a series of four or more space delimited points where the first and final points are identical.
      */
-    @NotNull public Builder polygon(String polygon) {
+    @NotNull public Builder polygon(@NotNull String polygon) {
       this.polygon = polygon;
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    @NotNull public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(@NotNull String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    @NotNull public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(@NotNull String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    @NotNull public Builder description(String description) {
+    @NotNull public Builder description(@NotNull String description) {
       this.description = description;
       return this;
     }
@@ -162,7 +162,7 @@ public class GeoShape extends StructuredValue {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -197,7 +197,7 @@ public class GeoShape extends StructuredValue {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -230,7 +230,7 @@ public class GeoShape extends StructuredValue {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -238,43 +238,67 @@ public class GeoShape extends StructuredValue {
     /**
      * The name of the item.
      */
-    @NotNull public Builder name(String name) {
+    @NotNull public Builder name(@NotNull String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    @NotNull public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(@NotNull String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    @NotNull public Builder url(String url) {
+    @NotNull public Builder url(@NotNull String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(@NotNull Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    @NotNull public Builder id(String id) {
+    @NotNull public Builder id(@NotNull String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
+    }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        if ("box".equals(key) && value instanceof String) { box((String)value); continue; }
+        if ("circle".equals(key) && value instanceof String) { circle((String)value); continue; }
+        if ("elevation".equals(key) && value instanceof Number) { elevation((Number)value); continue; }
+        if ("elevation".equals(key) && value instanceof String) { elevation((String)value); continue; }
+        if ("line".equals(key) && value instanceof String) { line((String)value); continue; }
+        if ("polygon".equals(key) && value instanceof String) { polygon((String)value); continue; }
+        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
+        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
+        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
+        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
+        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
+        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
+        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
+        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+      }
     }
     private String box;
     private String circle;
@@ -292,24 +316,24 @@ public class GeoShape extends StructuredValue {
     private String id;
   }
   public interface Builder extends ThingBuilder<GeoShape> {
-    @NotNull Builder box(String box);
-    @NotNull Builder circle(String circle);
-    @NotNull Builder elevation(Number number);
-    @NotNull Builder elevation(String elevation);
-    @NotNull Builder line(String line);
-    @NotNull Builder polygon(String polygon);
-    @NotNull Builder additionalType(String additionalType);
-    @NotNull Builder alternateName(String alternateName);
-    @NotNull Builder description(String description);
-    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
-    @NotNull Builder name(String name);
-    @NotNull Builder sameAs(String sameAs);
-    @NotNull Builder url(String url);
-    @NotNull Builder potentialAction(Action action);
-    @NotNull Builder potentialAction(Action.Builder action);
-    @NotNull Builder id(String id);
+    @NotNull Builder box(@NotNull String box);
+    @NotNull Builder circle(@NotNull String circle);
+    @NotNull Builder elevation(@NotNull Number number);
+    @NotNull Builder elevation(@NotNull String elevation);
+    @NotNull Builder line(@NotNull String line);
+    @NotNull Builder polygon(@NotNull String polygon);
+    @NotNull Builder additionalType(@NotNull String additionalType);
+    @NotNull Builder alternateName(@NotNull String alternateName);
+    @NotNull Builder description(@NotNull String description);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
+    @NotNull Builder name(@NotNull String name);
+    @NotNull Builder sameAs(@NotNull String sameAs);
+    @NotNull Builder url(@NotNull String url);
+    @NotNull Builder potentialAction(@NotNull Action action);
+    @NotNull Builder potentialAction(@NotNull Action.Builder action);
+    @NotNull Builder id(@NotNull String id);
   }
 
   protected GeoShape(String box, String circle, NumberOrString elevation, String line, String polygon, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

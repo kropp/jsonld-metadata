@@ -36,9 +36,9 @@ class AnatomicalStructureOrSuperficialAnatomy {
   }
   public void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
   public AnatomicalStructure getAnatomicalStructure() { return myAnatomicalStructure; }
+  private AnatomicalStructure myAnatomicalStructure;
   public void setSuperficialAnatomy(SuperficialAnatomy superficialAnatomy) { clear(); mySuperficialAnatomy = superficialAnatomy; }
   public SuperficialAnatomy getSuperficialAnatomy() { return mySuperficialAnatomy; }
-  private AnatomicalStructure myAnatomicalStructure;
   private SuperficialAnatomy mySuperficialAnatomy;
   private void clear() {
     myAnatomicalStructure = null;

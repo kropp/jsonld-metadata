@@ -125,14 +125,14 @@ public class Invoice extends Intangible {
     /**
      * A number that confirms the given order or payment has been received.
      */
-    @NotNull public Builder confirmationNumber(String confirmationNumber) {
+    @NotNull public Builder confirmationNumber(@NotNull String confirmationNumber) {
       this.confirmationNumber = confirmationNumber;
       return this;
     }
     /**
      * Party placing the order or paying the invoice.
      */
-    @NotNull public Builder customer(Organization organization) {
+    @NotNull public Builder customer(@NotNull Organization organization) {
       if (this.customer == null) this.customer = new OrganizationOrPerson();
       this.customer.setOrganization(organization);
       return this;
@@ -140,13 +140,13 @@ public class Invoice extends Intangible {
     /**
      * Party placing the order or paying the invoice.
      */
-    @NotNull public Builder customer(Organization.Builder organization) {
+    @NotNull public Builder customer(@NotNull Organization.Builder organization) {
       return this.customer(organization.build());
     }
     /**
      * Party placing the order or paying the invoice.
      */
-    @NotNull public Builder customer(Person person) {
+    @NotNull public Builder customer(@NotNull Person person) {
       if (this.customer == null) this.customer = new OrganizationOrPerson();
       this.customer.setPerson(person);
       return this;
@@ -154,40 +154,40 @@ public class Invoice extends Intangible {
     /**
      * Party placing the order or paying the invoice.
      */
-    @NotNull public Builder customer(Person.Builder person) {
+    @NotNull public Builder customer(@NotNull Person.Builder person) {
       return this.customer(person.build());
     }
     /**
      * The date that payment is due.
      */
-    @NotNull public Builder paymentDue(java.util.Date date) {
+    @NotNull public Builder paymentDue(@NotNull java.util.Date date) {
       this.paymentDue = date;
       return this;
     }
     /**
      * The name of the credit card or other method of payment for the order.
      */
-    @NotNull public Builder paymentMethod(PaymentMethod paymentMethod) {
+    @NotNull public Builder paymentMethod(@NotNull PaymentMethod paymentMethod) {
       this.paymentMethod = paymentMethod;
       return this;
     }
     /**
      * The name of the credit card or other method of payment for the order.
      */
-    @NotNull public Builder paymentMethod(PaymentMethod.Builder paymentMethod) {
+    @NotNull public Builder paymentMethod(@NotNull PaymentMethod.Builder paymentMethod) {
       return this.paymentMethod(paymentMethod.build());
     }
     /**
      * An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
      */
-    @NotNull public Builder paymentMethodId(String paymentMethodId) {
+    @NotNull public Builder paymentMethodId(@NotNull String paymentMethodId) {
       this.paymentMethodId = paymentMethodId;
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    @NotNull public Builder provider(Organization organization) {
+    @NotNull public Builder provider(@NotNull Organization organization) {
       if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setOrganization(organization);
       return this;
@@ -195,13 +195,13 @@ public class Invoice extends Intangible {
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    @NotNull public Builder provider(Organization.Builder organization) {
+    @NotNull public Builder provider(@NotNull Organization.Builder organization) {
       return this.provider(organization.build());
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    @NotNull public Builder provider(Person person) {
+    @NotNull public Builder provider(@NotNull Person person) {
       if (this.provider == null) this.provider = new OrganizationOrPerson();
       this.provider.setPerson(person);
       return this;
@@ -209,13 +209,13 @@ public class Invoice extends Intangible {
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
-    @NotNull public Builder provider(Person.Builder person) {
+    @NotNull public Builder provider(@NotNull Person.Builder person) {
       return this.provider(person.build());
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    @NotNull public Builder broker(Organization organization) {
+    @NotNull public Builder broker(@NotNull Organization organization) {
       if (this.broker == null) this.broker = new OrganizationOrPerson();
       this.broker.setOrganization(organization);
       return this;
@@ -223,13 +223,13 @@ public class Invoice extends Intangible {
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    @NotNull public Builder broker(Organization.Builder organization) {
+    @NotNull public Builder broker(@NotNull Organization.Builder organization) {
       return this.broker(organization.build());
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    @NotNull public Builder broker(Person person) {
+    @NotNull public Builder broker(@NotNull Person person) {
       if (this.broker == null) this.broker = new OrganizationOrPerson();
       this.broker.setPerson(person);
       return this;
@@ -237,100 +237,100 @@ public class Invoice extends Intangible {
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
-    @NotNull public Builder broker(Person.Builder person) {
+    @NotNull public Builder broker(@NotNull Person.Builder person) {
       return this.broker(person.build());
     }
     /**
      * The total amount due.
      */
-    @NotNull public Builder totalPaymentDue(PriceSpecification priceSpecification) {
+    @NotNull public Builder totalPaymentDue(@NotNull PriceSpecification priceSpecification) {
       this.totalPaymentDue = priceSpecification;
       return this;
     }
     /**
      * The total amount due.
      */
-    @NotNull public Builder totalPaymentDue(PriceSpecification.Builder priceSpecification) {
+    @NotNull public Builder totalPaymentDue(@NotNull PriceSpecification.Builder priceSpecification) {
       return this.totalPaymentDue(priceSpecification.build());
     }
     /**
      * The minimum payment required at this time.
      */
-    @NotNull public Builder minimumPaymentDue(PriceSpecification priceSpecification) {
+    @NotNull public Builder minimumPaymentDue(@NotNull PriceSpecification priceSpecification) {
       this.minimumPaymentDue = priceSpecification;
       return this;
     }
     /**
      * The minimum payment required at this time.
      */
-    @NotNull public Builder minimumPaymentDue(PriceSpecification.Builder priceSpecification) {
+    @NotNull public Builder minimumPaymentDue(@NotNull PriceSpecification.Builder priceSpecification) {
       return this.minimumPaymentDue(priceSpecification.build());
     }
     /**
      * The identifier for the account the payment will be applied to.
      */
-    @NotNull public Builder accountId(String accountId) {
+    @NotNull public Builder accountId(@NotNull String accountId) {
       this.accountId = accountId;
       return this;
     }
     /**
      * The date the invoice is scheduled to be paid.
      */
-    @NotNull public Builder scheduledPaymentDate(java.util.Date date) {
+    @NotNull public Builder scheduledPaymentDate(@NotNull java.util.Date date) {
       this.scheduledPaymentDate = date;
       return this;
     }
     /**
      * The time interval used to compute the invoice.
      */
-    @NotNull public Builder billingPeriod(Duration duration) {
+    @NotNull public Builder billingPeriod(@NotNull Duration duration) {
       this.billingPeriod = duration;
       return this;
     }
     /**
      * The time interval used to compute the invoice.
      */
-    @NotNull public Builder billingPeriod(Duration.Builder duration) {
+    @NotNull public Builder billingPeriod(@NotNull Duration.Builder duration) {
       return this.billingPeriod(duration.build());
     }
     /**
      * The status of payment; whether the invoice has been paid or not.
      */
-    @NotNull public Builder paymentStatus(String paymentStatus) {
+    @NotNull public Builder paymentStatus(@NotNull String paymentStatus) {
       this.paymentStatus = paymentStatus;
       return this;
     }
     /**
      * The Order(s) related to this Invoice. One or more Orders may be combined into a single Invoice.
      */
-    @NotNull public Builder referencesOrder(Order order) {
+    @NotNull public Builder referencesOrder(@NotNull Order order) {
       this.referencesOrder = order;
       return this;
     }
     /**
      * The Order(s) related to this Invoice. One or more Orders may be combined into a single Invoice.
      */
-    @NotNull public Builder referencesOrder(Order.Builder order) {
+    @NotNull public Builder referencesOrder(@NotNull Order.Builder order) {
       return this.referencesOrder(order.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    @NotNull public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(@NotNull String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    @NotNull public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(@NotNull String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    @NotNull public Builder description(String description) {
+    @NotNull public Builder description(@NotNull String description) {
       this.description = description;
       return this;
     }
@@ -364,7 +364,7 @@ public class Invoice extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -399,7 +399,7 @@ public class Invoice extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -432,7 +432,7 @@ public class Invoice extends Intangible {
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -440,43 +440,78 @@ public class Invoice extends Intangible {
     /**
      * The name of the item.
      */
-    @NotNull public Builder name(String name) {
+    @NotNull public Builder name(@NotNull String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    @NotNull public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(@NotNull String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    @NotNull public Builder url(String url) {
+    @NotNull public Builder url(@NotNull String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(@NotNull Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    @NotNull public Builder id(String id) {
+    @NotNull public Builder id(@NotNull String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
+    }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        if ("confirmationNumber".equals(key) && value instanceof String) { confirmationNumber((String)value); continue; }
+        if ("customer".equals(key) && value instanceof Organization) { customer((Organization)value); continue; }
+        if ("customer".equals(key) && value instanceof Person) { customer((Person)value); continue; }
+        if ("paymentDue".equals(key) && value instanceof java.util.Date) { paymentDue((java.util.Date)value); continue; }
+        if ("paymentMethod".equals(key) && value instanceof PaymentMethod) { paymentMethod((PaymentMethod)value); continue; }
+        if ("paymentMethodId".equals(key) && value instanceof String) { paymentMethodId((String)value); continue; }
+        if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); continue; }
+        if ("provider".equals(key) && value instanceof Person) { provider((Person)value); continue; }
+        if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); continue; }
+        if ("broker".equals(key) && value instanceof Person) { broker((Person)value); continue; }
+        if ("totalPaymentDue".equals(key) && value instanceof PriceSpecification) { totalPaymentDue((PriceSpecification)value); continue; }
+        if ("minimumPaymentDue".equals(key) && value instanceof PriceSpecification) { minimumPaymentDue((PriceSpecification)value); continue; }
+        if ("accountId".equals(key) && value instanceof String) { accountId((String)value); continue; }
+        if ("scheduledPaymentDate".equals(key) && value instanceof java.util.Date) { scheduledPaymentDate((java.util.Date)value); continue; }
+        if ("billingPeriod".equals(key) && value instanceof Duration) { billingPeriod((Duration)value); continue; }
+        if ("paymentStatus".equals(key) && value instanceof String) { paymentStatus((String)value); continue; }
+        if ("referencesOrder".equals(key) && value instanceof Order) { referencesOrder((Order)value); continue; }
+        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
+        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
+        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
+        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
+        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
+        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
+        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
+        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+      }
     }
     private String confirmationNumber;
     private OrganizationOrPerson customer;
@@ -503,46 +538,46 @@ public class Invoice extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<Invoice> {
-    @NotNull Builder confirmationNumber(String confirmationNumber);
-    @NotNull Builder customer(Organization organization);
-    @NotNull Builder customer(Organization.Builder organization);
-    @NotNull Builder customer(Person person);
-    @NotNull Builder customer(Person.Builder person);
-    @NotNull Builder paymentDue(java.util.Date date);
-    @NotNull Builder paymentMethod(PaymentMethod paymentMethod);
-    @NotNull Builder paymentMethod(PaymentMethod.Builder paymentMethod);
-    @NotNull Builder paymentMethodId(String paymentMethodId);
-    @NotNull Builder provider(Organization organization);
-    @NotNull Builder provider(Organization.Builder organization);
-    @NotNull Builder provider(Person person);
-    @NotNull Builder provider(Person.Builder person);
-    @NotNull Builder broker(Organization organization);
-    @NotNull Builder broker(Organization.Builder organization);
-    @NotNull Builder broker(Person person);
-    @NotNull Builder broker(Person.Builder person);
-    @NotNull Builder totalPaymentDue(PriceSpecification priceSpecification);
-    @NotNull Builder totalPaymentDue(PriceSpecification.Builder priceSpecification);
-    @NotNull Builder minimumPaymentDue(PriceSpecification priceSpecification);
-    @NotNull Builder minimumPaymentDue(PriceSpecification.Builder priceSpecification);
-    @NotNull Builder accountId(String accountId);
-    @NotNull Builder scheduledPaymentDate(java.util.Date date);
-    @NotNull Builder billingPeriod(Duration duration);
-    @NotNull Builder billingPeriod(Duration.Builder duration);
-    @NotNull Builder paymentStatus(String paymentStatus);
-    @NotNull Builder referencesOrder(Order order);
-    @NotNull Builder referencesOrder(Order.Builder order);
-    @NotNull Builder additionalType(String additionalType);
-    @NotNull Builder alternateName(String alternateName);
-    @NotNull Builder description(String description);
-    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
-    @NotNull Builder name(String name);
-    @NotNull Builder sameAs(String sameAs);
-    @NotNull Builder url(String url);
-    @NotNull Builder potentialAction(Action action);
-    @NotNull Builder potentialAction(Action.Builder action);
-    @NotNull Builder id(String id);
+    @NotNull Builder confirmationNumber(@NotNull String confirmationNumber);
+    @NotNull Builder customer(@NotNull Organization organization);
+    @NotNull Builder customer(@NotNull Organization.Builder organization);
+    @NotNull Builder customer(@NotNull Person person);
+    @NotNull Builder customer(@NotNull Person.Builder person);
+    @NotNull Builder paymentDue(@NotNull java.util.Date date);
+    @NotNull Builder paymentMethod(@NotNull PaymentMethod paymentMethod);
+    @NotNull Builder paymentMethod(@NotNull PaymentMethod.Builder paymentMethod);
+    @NotNull Builder paymentMethodId(@NotNull String paymentMethodId);
+    @NotNull Builder provider(@NotNull Organization organization);
+    @NotNull Builder provider(@NotNull Organization.Builder organization);
+    @NotNull Builder provider(@NotNull Person person);
+    @NotNull Builder provider(@NotNull Person.Builder person);
+    @NotNull Builder broker(@NotNull Organization organization);
+    @NotNull Builder broker(@NotNull Organization.Builder organization);
+    @NotNull Builder broker(@NotNull Person person);
+    @NotNull Builder broker(@NotNull Person.Builder person);
+    @NotNull Builder totalPaymentDue(@NotNull PriceSpecification priceSpecification);
+    @NotNull Builder totalPaymentDue(@NotNull PriceSpecification.Builder priceSpecification);
+    @NotNull Builder minimumPaymentDue(@NotNull PriceSpecification priceSpecification);
+    @NotNull Builder minimumPaymentDue(@NotNull PriceSpecification.Builder priceSpecification);
+    @NotNull Builder accountId(@NotNull String accountId);
+    @NotNull Builder scheduledPaymentDate(@NotNull java.util.Date date);
+    @NotNull Builder billingPeriod(@NotNull Duration duration);
+    @NotNull Builder billingPeriod(@NotNull Duration.Builder duration);
+    @NotNull Builder paymentStatus(@NotNull String paymentStatus);
+    @NotNull Builder referencesOrder(@NotNull Order order);
+    @NotNull Builder referencesOrder(@NotNull Order.Builder order);
+    @NotNull Builder additionalType(@NotNull String additionalType);
+    @NotNull Builder alternateName(@NotNull String alternateName);
+    @NotNull Builder description(@NotNull String description);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
+    @NotNull Builder name(@NotNull String name);
+    @NotNull Builder sameAs(@NotNull String sameAs);
+    @NotNull Builder url(@NotNull String url);
+    @NotNull Builder potentialAction(@NotNull Action action);
+    @NotNull Builder potentialAction(@NotNull Action.Builder action);
+    @NotNull Builder id(@NotNull String id);
   }
 
   protected Invoice(String confirmationNumber, OrganizationOrPerson customer, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, OrganizationOrPerson provider, OrganizationOrPerson broker, PriceSpecification totalPaymentDue, PriceSpecification minimumPaymentDue, String accountId, java.util.Date scheduledPaymentDate, Duration billingPeriod, String paymentStatus, Order referencesOrder, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

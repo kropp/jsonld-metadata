@@ -36,9 +36,9 @@ class ItemListOrMusicRecording {
   }
   public void setItemList(ItemList itemList) { clear(); myItemList = itemList; }
   public ItemList getItemList() { return myItemList; }
+  private ItemList myItemList;
   public void setMusicRecording(MusicRecording musicRecording) { clear(); myMusicRecording = musicRecording; }
   public MusicRecording getMusicRecording() { return myMusicRecording; }
-  private ItemList myItemList;
   private MusicRecording myMusicRecording;
   private void clear() {
     myItemList = null;

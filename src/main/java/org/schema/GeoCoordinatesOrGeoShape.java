@@ -36,9 +36,9 @@ class GeoCoordinatesOrGeoShape {
   }
   public void setGeoCoordinates(GeoCoordinates geoCoordinates) { clear(); myGeoCoordinates = geoCoordinates; }
   public GeoCoordinates getGeoCoordinates() { return myGeoCoordinates; }
+  private GeoCoordinates myGeoCoordinates;
   public void setGeoShape(GeoShape geoShape) { clear(); myGeoShape = geoShape; }
   public GeoShape getGeoShape() { return myGeoShape; }
-  private GeoCoordinates myGeoCoordinates;
   private GeoShape myGeoShape;
   private void clear() {
     myGeoCoordinates = null;

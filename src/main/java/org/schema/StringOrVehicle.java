@@ -31,9 +31,9 @@ class StringOrVehicle {
   }
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private String myString;
   public void setVehicle(Vehicle vehicle) { clear(); myVehicle = vehicle; }
   public Vehicle getVehicle() { return myVehicle; }
-  private String myString;
   private Vehicle myVehicle;
   private void clear() {
     myString = null;

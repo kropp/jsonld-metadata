@@ -36,6 +36,15 @@ public class Dentistry {
     public Dentistry build() {
       return new Dentistry();
     }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        
+      }
+    }
   }
   public interface Builder extends ThingBuilder<Dentistry> {
     

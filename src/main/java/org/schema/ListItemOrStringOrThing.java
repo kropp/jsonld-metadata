@@ -32,12 +32,12 @@ class ListItemOrStringOrThing {
   }
   public void setListItem(ListItem listItem) { clear(); myListItem = listItem; }
   public ListItem getListItem() { return myListItem; }
+  private ListItem myListItem;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
+  private String myString;
   public void setThing(Thing thing) { clear(); myThing = thing; }
   public Thing getThing() { return myThing; }
-  private ListItem myListItem;
-  private String myString;
   private Thing myThing;
   private void clear() {
     myListItem = null;

@@ -31,9 +31,9 @@ class MapOrString {
   }
   public void setMap(Map map) { clear(); myMap = map; }
   public Map getMap() { return myMap; }
+  private Map myMap;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private Map myMap;
   private String myString;
   private void clear() {
     myMap = null;

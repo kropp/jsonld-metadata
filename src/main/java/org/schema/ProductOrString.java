@@ -31,9 +31,9 @@ class ProductOrString {
   }
   public void setProduct(Product product) { clear(); myProduct = product; }
   public Product getProduct() { return myProduct; }
+  private Product myProduct;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private Product myProduct;
   private String myString;
   private void clear() {
     myProduct = null;

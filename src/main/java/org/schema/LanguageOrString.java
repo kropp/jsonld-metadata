@@ -31,9 +31,9 @@ class LanguageOrString {
   }
   public void setLanguage(Language language) { clear(); myLanguage = language; }
   public Language getLanguage() { return myLanguage; }
+  private Language myLanguage;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private Language myLanguage;
   private String myString;
   private void clear() {
     myLanguage = null;

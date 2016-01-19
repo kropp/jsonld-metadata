@@ -31,9 +31,9 @@ class ImageObjectOrString {
   }
   public void setImageObject(ImageObject imageObject) { clear(); myImageObject = imageObject; }
   public ImageObject getImageObject() { return myImageObject; }
+  private ImageObject myImageObject;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private ImageObject myImageObject;
   private String myString;
   private void clear() {
     myImageObject = null;

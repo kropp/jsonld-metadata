@@ -39,66 +39,66 @@ public class Reservoir extends BodyOfWater {
     /**
      * Physical address of the item.
      */
-    @NotNull public Builder address(PostalAddress postalAddress) {
+    @NotNull public Builder address(@NotNull PostalAddress postalAddress) {
       this.address = postalAddress;
       return this;
     }
     /**
      * Physical address of the item.
      */
-    @NotNull public Builder address(PostalAddress.Builder postalAddress) {
+    @NotNull public Builder address(@NotNull PostalAddress.Builder postalAddress) {
       return this.address(postalAddress.build());
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    @NotNull public Builder aggregateRating(AggregateRating aggregateRating) {
+    @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
       this.aggregateRating = aggregateRating;
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
-    @NotNull public Builder aggregateRating(AggregateRating.Builder aggregateRating) {
+    @NotNull public Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating) {
       return this.aggregateRating(aggregateRating.build());
     }
     /**
      * The basic containment relation between places.
      */
-    @NotNull public Builder containedIn(Place place) {
+    @NotNull public Builder containedIn(@NotNull Place place) {
       this.containedIn = place;
       return this;
     }
     /**
      * The basic containment relation between places.
      */
-    @NotNull public Builder containedIn(Place.Builder place) {
+    @NotNull public Builder containedIn(@NotNull Place.Builder place) {
       return this.containedIn(place.build());
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
-    @NotNull public Builder event(Event event) {
+    @NotNull public Builder event(@NotNull Event event) {
       this.event = event;
       return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
-    @NotNull public Builder event(Event.Builder event) {
+    @NotNull public Builder event(@NotNull Event.Builder event) {
       return this.event(event.build());
     }
     /**
      * The fax number.
      */
-    @NotNull public Builder faxNumber(String faxNumber) {
+    @NotNull public Builder faxNumber(@NotNull String faxNumber) {
       this.faxNumber = faxNumber;
       return this;
     }
     /**
      * The geo coordinates of the place.
      */
-    @NotNull public Builder geo(GeoCoordinates geoCoordinates) {
+    @NotNull public Builder geo(@NotNull GeoCoordinates geoCoordinates) {
       if (this.geo == null) this.geo = new GeoCoordinatesOrGeoShape();
       this.geo.setGeoCoordinates(geoCoordinates);
       return this;
@@ -106,13 +106,13 @@ public class Reservoir extends BodyOfWater {
     /**
      * The geo coordinates of the place.
      */
-    @NotNull public Builder geo(GeoCoordinates.Builder geoCoordinates) {
+    @NotNull public Builder geo(@NotNull GeoCoordinates.Builder geoCoordinates) {
       return this.geo(geoCoordinates.build());
     }
     /**
      * The geo coordinates of the place.
      */
-    @NotNull public Builder geo(GeoShape geoShape) {
+    @NotNull public Builder geo(@NotNull GeoShape geoShape) {
       if (this.geo == null) this.geo = new GeoCoordinatesOrGeoShape();
       this.geo.setGeoShape(geoShape);
       return this;
@@ -120,27 +120,27 @@ public class Reservoir extends BodyOfWater {
     /**
      * The geo coordinates of the place.
      */
-    @NotNull public Builder geo(GeoShape.Builder geoShape) {
+    @NotNull public Builder geo(@NotNull GeoShape.Builder geoShape) {
       return this.geo(geoShape.build());
     }
     /**
      * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
-    @NotNull public Builder globalLocationNumber(String globalLocationNumber) {
+    @NotNull public Builder globalLocationNumber(@NotNull String globalLocationNumber) {
       this.globalLocationNumber = globalLocationNumber;
       return this;
     }
     /**
      * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
      */
-    @NotNull public Builder isicV4(String isicV4) {
+    @NotNull public Builder isicV4(@NotNull String isicV4) {
       this.isicV4 = isicV4;
       return this;
     }
     /**
      * An associated logo.
      */
-    @NotNull public Builder logo(ImageObject imageObject) {
+    @NotNull public Builder logo(@NotNull ImageObject imageObject) {
       if (this.logo == null) this.logo = new ImageObjectOrString();
       this.logo.setImageObject(imageObject);
       return this;
@@ -148,13 +148,13 @@ public class Reservoir extends BodyOfWater {
     /**
      * An associated logo.
      */
-    @NotNull public Builder logo(ImageObject.Builder imageObject) {
+    @NotNull public Builder logo(@NotNull ImageObject.Builder imageObject) {
       return this.logo(imageObject.build());
     }
     /**
      * An associated logo.
      */
-    @NotNull public Builder logo(String logo) {
+    @NotNull public Builder logo(@NotNull String logo) {
       if (this.logo == null) this.logo = new ImageObjectOrString();
       this.logo.setString(logo);
       return this;
@@ -162,7 +162,7 @@ public class Reservoir extends BodyOfWater {
     /**
      * A URL to a map of the place.
      */
-    @NotNull public Builder hasMap(Map map) {
+    @NotNull public Builder hasMap(@NotNull Map map) {
       if (this.hasMap == null) this.hasMap = new MapOrString();
       this.hasMap.setMap(map);
       return this;
@@ -170,13 +170,13 @@ public class Reservoir extends BodyOfWater {
     /**
      * A URL to a map of the place.
      */
-    @NotNull public Builder hasMap(Map.Builder map) {
+    @NotNull public Builder hasMap(@NotNull Map.Builder map) {
       return this.hasMap(map.build());
     }
     /**
      * A URL to a map of the place.
      */
-    @NotNull public Builder hasMap(String hasMap) {
+    @NotNull public Builder hasMap(@NotNull String hasMap) {
       if (this.hasMap == null) this.hasMap = new MapOrString();
       this.hasMap.setString(hasMap);
       return this;
@@ -184,20 +184,20 @@ public class Reservoir extends BodyOfWater {
     /**
      * The opening hours of a certain place.
      */
-    @NotNull public Builder openingHoursSpecification(OpeningHoursSpecification openingHoursSpecification) {
+    @NotNull public Builder openingHoursSpecification(@NotNull OpeningHoursSpecification openingHoursSpecification) {
       this.openingHoursSpecification = openingHoursSpecification;
       return this;
     }
     /**
      * The opening hours of a certain place.
      */
-    @NotNull public Builder openingHoursSpecification(OpeningHoursSpecification.Builder openingHoursSpecification) {
+    @NotNull public Builder openingHoursSpecification(@NotNull OpeningHoursSpecification.Builder openingHoursSpecification) {
       return this.openingHoursSpecification(openingHoursSpecification.build());
     }
     /**
      * A photograph of this place.
      */
-    @NotNull public Builder photo(ImageObject imageObject) {
+    @NotNull public Builder photo(@NotNull ImageObject imageObject) {
       if (this.photo == null) this.photo = new ImageObjectOrPhotograph();
       this.photo.setImageObject(imageObject);
       return this;
@@ -205,13 +205,13 @@ public class Reservoir extends BodyOfWater {
     /**
      * A photograph of this place.
      */
-    @NotNull public Builder photo(ImageObject.Builder imageObject) {
+    @NotNull public Builder photo(@NotNull ImageObject.Builder imageObject) {
       return this.photo(imageObject.build());
     }
     /**
      * A photograph of this place.
      */
-    @NotNull public Builder photo(Photograph photograph) {
+    @NotNull public Builder photo(@NotNull Photograph photograph) {
       if (this.photo == null) this.photo = new ImageObjectOrPhotograph();
       this.photo.setPhotograph(photograph);
       return this;
@@ -219,26 +219,26 @@ public class Reservoir extends BodyOfWater {
     /**
      * A photograph of this place.
      */
-    @NotNull public Builder photo(Photograph.Builder photograph) {
+    @NotNull public Builder photo(@NotNull Photograph.Builder photograph) {
       return this.photo(photograph.build());
     }
     /**
      * A review of the item.
      */
-    @NotNull public Builder review(Review review) {
+    @NotNull public Builder review(@NotNull Review review) {
       this.review = review;
       return this;
     }
     /**
      * A review of the item.
      */
-    @NotNull public Builder review(Review.Builder review) {
+    @NotNull public Builder review(@NotNull Review.Builder review) {
       return this.review(review.build());
     }
     /**
      * The telephone number.
      */
-    @NotNull public Builder telephone(String telephone) {
+    @NotNull public Builder telephone(@NotNull String telephone) {
       this.telephone = telephone;
       return this;
     }
@@ -248,7 +248,7 @@ public class Reservoir extends BodyOfWater {
 Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
 
      */
-    @NotNull public Builder additionalProperty(PropertyValue propertyValue) {
+    @NotNull public Builder additionalProperty(@NotNull PropertyValue propertyValue) {
       this.additionalProperty = propertyValue;
       return this;
     }
@@ -258,27 +258,27 @@ Note: Publishers should be aware that applications designed to use specific sche
 Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
 
      */
-    @NotNull public Builder additionalProperty(PropertyValue.Builder propertyValue) {
+    @NotNull public Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue) {
       return this.additionalProperty(propertyValue.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    @NotNull public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(@NotNull String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    @NotNull public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(@NotNull String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    @NotNull public Builder description(String description) {
+    @NotNull public Builder description(@NotNull String description) {
       this.description = description;
       return this;
     }
@@ -312,7 +312,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -347,7 +347,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -380,7 +380,7 @@ Note: Publishers should be aware that applications designed to use specific sche
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -388,43 +388,80 @@ Note: Publishers should be aware that applications designed to use specific sche
     /**
      * The name of the item.
      */
-    @NotNull public Builder name(String name) {
+    @NotNull public Builder name(@NotNull String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    @NotNull public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(@NotNull String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    @NotNull public Builder url(String url) {
+    @NotNull public Builder url(@NotNull String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(@NotNull Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    @NotNull public Builder id(String id) {
+    @NotNull public Builder id(@NotNull String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
+    }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); continue; }
+        if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); continue; }
+        if ("containedIn".equals(key) && value instanceof Place) { containedIn((Place)value); continue; }
+        if ("event".equals(key) && value instanceof Event) { event((Event)value); continue; }
+        if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); continue; }
+        if ("geo".equals(key) && value instanceof GeoCoordinates) { geo((GeoCoordinates)value); continue; }
+        if ("geo".equals(key) && value instanceof GeoShape) { geo((GeoShape)value); continue; }
+        if ("globalLocationNumber".equals(key) && value instanceof String) { globalLocationNumber((String)value); continue; }
+        if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); continue; }
+        if ("logo".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); continue; }
+        if ("logo".equals(key) && value instanceof String) { logo((String)value); continue; }
+        if ("hasMap".equals(key) && value instanceof Map) { hasMap((Map)value); continue; }
+        if ("hasMap".equals(key) && value instanceof String) { hasMap((String)value); continue; }
+        if ("openingHoursSpecification".equals(key) && value instanceof OpeningHoursSpecification) { openingHoursSpecification((OpeningHoursSpecification)value); continue; }
+        if ("photo".equals(key) && value instanceof ImageObject) { photo((ImageObject)value); continue; }
+        if ("photo".equals(key) && value instanceof Photograph) { photo((Photograph)value); continue; }
+        if ("review".equals(key) && value instanceof Review) { review((Review)value); continue; }
+        if ("telephone".equals(key) && value instanceof String) { telephone((String)value); continue; }
+        if ("additionalProperty".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); continue; }
+        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
+        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
+        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
+        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
+        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
+        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
+        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
+        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+      }
     }
     private PostalAddress address;
     private AggregateRating aggregateRating;
@@ -452,50 +489,50 @@ Note: Publishers should be aware that applications designed to use specific sche
     private String id;
   }
   public interface Builder extends ThingBuilder<Reservoir> {
-    @NotNull Builder address(PostalAddress postalAddress);
-    @NotNull Builder address(PostalAddress.Builder postalAddress);
-    @NotNull Builder aggregateRating(AggregateRating aggregateRating);
-    @NotNull Builder aggregateRating(AggregateRating.Builder aggregateRating);
-    @NotNull Builder containedIn(Place place);
-    @NotNull Builder containedIn(Place.Builder place);
-    @NotNull Builder event(Event event);
-    @NotNull Builder event(Event.Builder event);
-    @NotNull Builder faxNumber(String faxNumber);
-    @NotNull Builder geo(GeoCoordinates geoCoordinates);
-    @NotNull Builder geo(GeoCoordinates.Builder geoCoordinates);
-    @NotNull Builder geo(GeoShape geoShape);
-    @NotNull Builder geo(GeoShape.Builder geoShape);
-    @NotNull Builder globalLocationNumber(String globalLocationNumber);
-    @NotNull Builder isicV4(String isicV4);
-    @NotNull Builder logo(ImageObject imageObject);
-    @NotNull Builder logo(ImageObject.Builder imageObject);
-    @NotNull Builder logo(String logo);
-    @NotNull Builder hasMap(Map map);
-    @NotNull Builder hasMap(Map.Builder map);
-    @NotNull Builder hasMap(String hasMap);
-    @NotNull Builder openingHoursSpecification(OpeningHoursSpecification openingHoursSpecification);
-    @NotNull Builder openingHoursSpecification(OpeningHoursSpecification.Builder openingHoursSpecification);
-    @NotNull Builder photo(ImageObject imageObject);
-    @NotNull Builder photo(ImageObject.Builder imageObject);
-    @NotNull Builder photo(Photograph photograph);
-    @NotNull Builder photo(Photograph.Builder photograph);
-    @NotNull Builder review(Review review);
-    @NotNull Builder review(Review.Builder review);
-    @NotNull Builder telephone(String telephone);
-    @NotNull Builder additionalProperty(PropertyValue propertyValue);
-    @NotNull Builder additionalProperty(PropertyValue.Builder propertyValue);
-    @NotNull Builder additionalType(String additionalType);
-    @NotNull Builder alternateName(String alternateName);
-    @NotNull Builder description(String description);
-    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
-    @NotNull Builder name(String name);
-    @NotNull Builder sameAs(String sameAs);
-    @NotNull Builder url(String url);
-    @NotNull Builder potentialAction(Action action);
-    @NotNull Builder potentialAction(Action.Builder action);
-    @NotNull Builder id(String id);
+    @NotNull Builder address(@NotNull PostalAddress postalAddress);
+    @NotNull Builder address(@NotNull PostalAddress.Builder postalAddress);
+    @NotNull Builder aggregateRating(@NotNull AggregateRating aggregateRating);
+    @NotNull Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating);
+    @NotNull Builder containedIn(@NotNull Place place);
+    @NotNull Builder containedIn(@NotNull Place.Builder place);
+    @NotNull Builder event(@NotNull Event event);
+    @NotNull Builder event(@NotNull Event.Builder event);
+    @NotNull Builder faxNumber(@NotNull String faxNumber);
+    @NotNull Builder geo(@NotNull GeoCoordinates geoCoordinates);
+    @NotNull Builder geo(@NotNull GeoCoordinates.Builder geoCoordinates);
+    @NotNull Builder geo(@NotNull GeoShape geoShape);
+    @NotNull Builder geo(@NotNull GeoShape.Builder geoShape);
+    @NotNull Builder globalLocationNumber(@NotNull String globalLocationNumber);
+    @NotNull Builder isicV4(@NotNull String isicV4);
+    @NotNull Builder logo(@NotNull ImageObject imageObject);
+    @NotNull Builder logo(@NotNull ImageObject.Builder imageObject);
+    @NotNull Builder logo(@NotNull String logo);
+    @NotNull Builder hasMap(@NotNull Map map);
+    @NotNull Builder hasMap(@NotNull Map.Builder map);
+    @NotNull Builder hasMap(@NotNull String hasMap);
+    @NotNull Builder openingHoursSpecification(@NotNull OpeningHoursSpecification openingHoursSpecification);
+    @NotNull Builder openingHoursSpecification(@NotNull OpeningHoursSpecification.Builder openingHoursSpecification);
+    @NotNull Builder photo(@NotNull ImageObject imageObject);
+    @NotNull Builder photo(@NotNull ImageObject.Builder imageObject);
+    @NotNull Builder photo(@NotNull Photograph photograph);
+    @NotNull Builder photo(@NotNull Photograph.Builder photograph);
+    @NotNull Builder review(@NotNull Review review);
+    @NotNull Builder review(@NotNull Review.Builder review);
+    @NotNull Builder telephone(@NotNull String telephone);
+    @NotNull Builder additionalProperty(@NotNull PropertyValue propertyValue);
+    @NotNull Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue);
+    @NotNull Builder additionalType(@NotNull String additionalType);
+    @NotNull Builder alternateName(@NotNull String alternateName);
+    @NotNull Builder description(@NotNull String description);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
+    @NotNull Builder name(@NotNull String name);
+    @NotNull Builder sameAs(@NotNull String sameAs);
+    @NotNull Builder url(@NotNull String url);
+    @NotNull Builder potentialAction(@NotNull Action action);
+    @NotNull Builder potentialAction(@NotNull Action.Builder action);
+    @NotNull Builder id(@NotNull String id);
   }
 
   protected Reservoir(PostalAddress address, AggregateRating aggregateRating, Place containedIn, Event event, String faxNumber, GeoCoordinatesOrGeoShape geo, String globalLocationNumber, String isicV4, ImageObjectOrString logo, MapOrString hasMap, OpeningHoursSpecification openingHoursSpecification, ImageObjectOrPhotograph photo, Review review, String telephone, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {

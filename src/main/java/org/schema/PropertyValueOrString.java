@@ -31,9 +31,9 @@ class PropertyValueOrString {
   }
   public void setPropertyValue(PropertyValue propertyValue) { clear(); myPropertyValue = propertyValue; }
   public PropertyValue getPropertyValue() { return myPropertyValue; }
+  private PropertyValue myPropertyValue;
   public void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
-  private PropertyValue myPropertyValue;
   private String myString;
   private void clear() {
     myPropertyValue = null;

@@ -45,33 +45,33 @@ public class AskAction extends CommunicateAction {
     /**
      * A sub property of object. A question.
      */
-    @NotNull public Builder question(Question question) {
+    @NotNull public Builder question(@NotNull Question question) {
       this.question = question;
       return this;
     }
     /**
      * A sub property of object. A question.
      */
-    @NotNull public Builder question(Question.Builder question) {
+    @NotNull public Builder question(@NotNull Question.Builder question) {
       return this.question(question.build());
     }
     /**
      * The subject matter of the content.
      */
-    @NotNull public Builder about(Thing thing) {
+    @NotNull public Builder about(@NotNull Thing thing) {
       this.about = thing;
       return this;
     }
     /**
      * The subject matter of the content.
      */
-    @NotNull public Builder about(Thing.Builder thing) {
+    @NotNull public Builder about(@NotNull Thing.Builder thing) {
       return this.about(thing.build());
     }
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
-    @NotNull public Builder inLanguage(Language language) {
+    @NotNull public Builder inLanguage(@NotNull Language language) {
       if (this.inLanguage == null) this.inLanguage = new LanguageOrString();
       this.inLanguage.setLanguage(language);
       return this;
@@ -79,13 +79,13 @@ public class AskAction extends CommunicateAction {
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
-    @NotNull public Builder inLanguage(Language.Builder language) {
+    @NotNull public Builder inLanguage(@NotNull Language.Builder language) {
       return this.inLanguage(language.build());
     }
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
-    @NotNull public Builder inLanguage(String inLanguage) {
+    @NotNull public Builder inLanguage(@NotNull String inLanguage) {
       if (this.inLanguage == null) this.inLanguage = new LanguageOrString();
       this.inLanguage.setString(inLanguage);
       return this;
@@ -93,7 +93,7 @@ public class AskAction extends CommunicateAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    @NotNull public Builder recipient(Audience audience) {
+    @NotNull public Builder recipient(@NotNull Audience audience) {
       if (this.recipient == null) this.recipient = new AudienceOrOrganizationOrPerson();
       this.recipient.setAudience(audience);
       return this;
@@ -101,13 +101,13 @@ public class AskAction extends CommunicateAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    @NotNull public Builder recipient(Audience.Builder audience) {
+    @NotNull public Builder recipient(@NotNull Audience.Builder audience) {
       return this.recipient(audience.build());
     }
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    @NotNull public Builder recipient(Organization organization) {
+    @NotNull public Builder recipient(@NotNull Organization organization) {
       if (this.recipient == null) this.recipient = new AudienceOrOrganizationOrPerson();
       this.recipient.setOrganization(organization);
       return this;
@@ -115,13 +115,13 @@ public class AskAction extends CommunicateAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    @NotNull public Builder recipient(Organization.Builder organization) {
+    @NotNull public Builder recipient(@NotNull Organization.Builder organization) {
       return this.recipient(organization.build());
     }
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    @NotNull public Builder recipient(Person person) {
+    @NotNull public Builder recipient(@NotNull Person person) {
       if (this.recipient == null) this.recipient = new AudienceOrOrganizationOrPerson();
       this.recipient.setPerson(person);
       return this;
@@ -129,13 +129,13 @@ public class AskAction extends CommunicateAction {
     /**
      * A sub property of participant. The participant who is at the receiving end of the action.
      */
-    @NotNull public Builder recipient(Person.Builder person) {
+    @NotNull public Builder recipient(@NotNull Person.Builder person) {
       return this.recipient(person.build());
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    @NotNull public Builder agent(Organization organization) {
+    @NotNull public Builder agent(@NotNull Organization organization) {
       if (this.agent == null) this.agent = new OrganizationOrPerson();
       this.agent.setOrganization(organization);
       return this;
@@ -143,13 +143,13 @@ public class AskAction extends CommunicateAction {
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    @NotNull public Builder agent(Organization.Builder organization) {
+    @NotNull public Builder agent(@NotNull Organization.Builder organization) {
       return this.agent(organization.build());
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    @NotNull public Builder agent(Person person) {
+    @NotNull public Builder agent(@NotNull Person person) {
       if (this.agent == null) this.agent = new OrganizationOrPerson();
       this.agent.setPerson(person);
       return this;
@@ -157,7 +157,7 @@ public class AskAction extends CommunicateAction {
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
-    @NotNull public Builder agent(Person.Builder person) {
+    @NotNull public Builder agent(@NotNull Person.Builder person) {
       return this.agent(person.build());
     }
     /**
@@ -165,7 +165,7 @@ public class AskAction extends CommunicateAction {
 
 Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
-    @NotNull public Builder endTime(java.util.Date date) {
+    @NotNull public Builder endTime(@NotNull java.util.Date date) {
       this.endTime = date;
       return this;
     }
@@ -174,67 +174,67 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
 
 Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
-    @NotNull public Builder startTime(java.util.Date date) {
+    @NotNull public Builder startTime(@NotNull java.util.Date date) {
       this.startTime = date;
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
-    @NotNull public Builder actionStatus(ActionStatusType actionStatusType) {
+    @NotNull public Builder actionStatus(@NotNull ActionStatusType actionStatusType) {
       this.actionStatus = actionStatusType;
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
-    @NotNull public Builder actionStatus(ActionStatusType.Builder actionStatusType) {
+    @NotNull public Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType) {
       return this.actionStatus(actionStatusType.build());
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
-    @NotNull public Builder error(Thing thing) {
+    @NotNull public Builder error(@NotNull Thing thing) {
       this.error = thing;
       return this;
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
-    @NotNull public Builder error(Thing.Builder thing) {
+    @NotNull public Builder error(@NotNull Thing.Builder thing) {
       return this.error(thing.build());
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
-    @NotNull public Builder target(EntryPoint entryPoint) {
+    @NotNull public Builder target(@NotNull EntryPoint entryPoint) {
       this.target = entryPoint;
       return this;
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
-    @NotNull public Builder target(EntryPoint.Builder entryPoint) {
+    @NotNull public Builder target(@NotNull EntryPoint.Builder entryPoint) {
       return this.target(entryPoint.build());
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
-    @NotNull public Builder additionalType(String additionalType) {
+    @NotNull public Builder additionalType(@NotNull String additionalType) {
       this.additionalType = additionalType;
       return this;
     }
     /**
      * An alias for the item.
      */
-    @NotNull public Builder alternateName(String alternateName) {
+    @NotNull public Builder alternateName(@NotNull String alternateName) {
       this.alternateName = alternateName;
       return this;
     }
     /**
      * A short description of the item.
      */
-    @NotNull public Builder description(String description) {
+    @NotNull public Builder description(@NotNull String description) {
       this.description = description;
       return this;
     }
@@ -268,7 +268,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setCreativeWork(creativeWork);
       return this;
@@ -303,7 +303,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(CreativeWork.Builder creativeWork) {
+    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
@@ -336,7 +336,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
       
      */
-    @NotNull public Builder mainEntityOfPage(String mainEntityOfPage) {
+    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
       this.mainEntityOfPage.setString(mainEntityOfPage);
       return this;
@@ -344,43 +344,75 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     /**
      * The name of the item.
      */
-    @NotNull public Builder name(String name) {
+    @NotNull public Builder name(@NotNull String name) {
       this.name = name;
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
-    @NotNull public Builder sameAs(String sameAs) {
+    @NotNull public Builder sameAs(@NotNull String sameAs) {
       this.sameAs = sameAs;
       return this;
     }
     /**
      * URL of the item.
      */
-    @NotNull public Builder url(String url) {
+    @NotNull public Builder url(@NotNull String url) {
       this.url = url;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action action) {
+    @NotNull public Builder potentialAction(@NotNull Action action) {
       this.potentialAction = action;
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
-    @NotNull public Builder potentialAction(Action.Builder action) {
+    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
       return this.potentialAction(action.build());
     }
-    @NotNull public Builder id(String id) {
+    @NotNull public Builder id(@NotNull String id) {
       this.id = id;
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
+    }
+
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+        if ("question".equals(key) && value instanceof Question) { question((Question)value); continue; }
+        if ("about".equals(key) && value instanceof Thing) { about((Thing)value); continue; }
+        if ("inLanguage".equals(key) && value instanceof Language) { inLanguage((Language)value); continue; }
+        if ("inLanguage".equals(key) && value instanceof String) { inLanguage((String)value); continue; }
+        if ("recipient".equals(key) && value instanceof Audience) { recipient((Audience)value); continue; }
+        if ("recipient".equals(key) && value instanceof Organization) { recipient((Organization)value); continue; }
+        if ("recipient".equals(key) && value instanceof Person) { recipient((Person)value); continue; }
+        if ("agent".equals(key) && value instanceof Organization) { agent((Organization)value); continue; }
+        if ("agent".equals(key) && value instanceof Person) { agent((Person)value); continue; }
+        if ("endTime".equals(key) && value instanceof java.util.Date) { endTime((java.util.Date)value); continue; }
+        if ("startTime".equals(key) && value instanceof java.util.Date) { startTime((java.util.Date)value); continue; }
+        if ("actionStatus".equals(key) && value instanceof ActionStatusType) { actionStatus((ActionStatusType)value); continue; }
+        if ("error".equals(key) && value instanceof Thing) { error((Thing)value); continue; }
+        if ("target".equals(key) && value instanceof EntryPoint) { target((EntryPoint)value); continue; }
+        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
+        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
+        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
+        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
+        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
+        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
+        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
+        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
+        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+      }
     }
     private Question question;
     private Thing about;
@@ -403,43 +435,43 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private String id;
   }
   public interface Builder extends ThingBuilder<AskAction> {
-    @NotNull Builder question(Question question);
-    @NotNull Builder question(Question.Builder question);
-    @NotNull Builder about(Thing thing);
-    @NotNull Builder about(Thing.Builder thing);
-    @NotNull Builder inLanguage(Language language);
-    @NotNull Builder inLanguage(Language.Builder language);
-    @NotNull Builder inLanguage(String inLanguage);
-    @NotNull Builder recipient(Audience audience);
-    @NotNull Builder recipient(Audience.Builder audience);
-    @NotNull Builder recipient(Organization organization);
-    @NotNull Builder recipient(Organization.Builder organization);
-    @NotNull Builder recipient(Person person);
-    @NotNull Builder recipient(Person.Builder person);
-    @NotNull Builder agent(Organization organization);
-    @NotNull Builder agent(Organization.Builder organization);
-    @NotNull Builder agent(Person person);
-    @NotNull Builder agent(Person.Builder person);
-    @NotNull Builder endTime(java.util.Date date);
-    @NotNull Builder startTime(java.util.Date date);
-    @NotNull Builder actionStatus(ActionStatusType actionStatusType);
-    @NotNull Builder actionStatus(ActionStatusType.Builder actionStatusType);
-    @NotNull Builder error(Thing thing);
-    @NotNull Builder error(Thing.Builder thing);
-    @NotNull Builder target(EntryPoint entryPoint);
-    @NotNull Builder target(EntryPoint.Builder entryPoint);
-    @NotNull Builder additionalType(String additionalType);
-    @NotNull Builder alternateName(String alternateName);
-    @NotNull Builder description(String description);
-    @NotNull Builder mainEntityOfPage(CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(String mainEntityOfPage);
-    @NotNull Builder name(String name);
-    @NotNull Builder sameAs(String sameAs);
-    @NotNull Builder url(String url);
-    @NotNull Builder potentialAction(Action action);
-    @NotNull Builder potentialAction(Action.Builder action);
-    @NotNull Builder id(String id);
+    @NotNull Builder question(@NotNull Question question);
+    @NotNull Builder question(@NotNull Question.Builder question);
+    @NotNull Builder about(@NotNull Thing thing);
+    @NotNull Builder about(@NotNull Thing.Builder thing);
+    @NotNull Builder inLanguage(@NotNull Language language);
+    @NotNull Builder inLanguage(@NotNull Language.Builder language);
+    @NotNull Builder inLanguage(@NotNull String inLanguage);
+    @NotNull Builder recipient(@NotNull Audience audience);
+    @NotNull Builder recipient(@NotNull Audience.Builder audience);
+    @NotNull Builder recipient(@NotNull Organization organization);
+    @NotNull Builder recipient(@NotNull Organization.Builder organization);
+    @NotNull Builder recipient(@NotNull Person person);
+    @NotNull Builder recipient(@NotNull Person.Builder person);
+    @NotNull Builder agent(@NotNull Organization organization);
+    @NotNull Builder agent(@NotNull Organization.Builder organization);
+    @NotNull Builder agent(@NotNull Person person);
+    @NotNull Builder agent(@NotNull Person.Builder person);
+    @NotNull Builder endTime(@NotNull java.util.Date date);
+    @NotNull Builder startTime(@NotNull java.util.Date date);
+    @NotNull Builder actionStatus(@NotNull ActionStatusType actionStatusType);
+    @NotNull Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType);
+    @NotNull Builder error(@NotNull Thing thing);
+    @NotNull Builder error(@NotNull Thing.Builder thing);
+    @NotNull Builder target(@NotNull EntryPoint entryPoint);
+    @NotNull Builder target(@NotNull EntryPoint.Builder entryPoint);
+    @NotNull Builder additionalType(@NotNull String additionalType);
+    @NotNull Builder alternateName(@NotNull String alternateName);
+    @NotNull Builder description(@NotNull String description);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
+    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
+    @NotNull Builder name(@NotNull String name);
+    @NotNull Builder sameAs(@NotNull String sameAs);
+    @NotNull Builder url(@NotNull String url);
+    @NotNull Builder potentialAction(@NotNull Action action);
+    @NotNull Builder potentialAction(@NotNull Action.Builder action);
+    @NotNull Builder id(@NotNull String id);
   }
 
   protected AskAction(Question question, Thing about, LanguageOrString inLanguage, AudienceOrOrganizationOrPerson recipient, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
