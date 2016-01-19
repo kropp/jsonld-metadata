@@ -616,7 +616,7 @@ public class MedicalCondition extends MedicalEntity {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy;
@@ -727,6 +727,52 @@ public class MedicalCondition extends MedicalEntity {
     mySubtype = subtype;
     myTypicalTest = typicalTest;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAssociatedAnatomy != null ? myAssociatedAnatomy.hashCode() : 0);
+    result = 31 * result + (myCause != null ? myCause.hashCode() : 0);
+    result = 31 * result + (myDifferentialDiagnosis != null ? myDifferentialDiagnosis.hashCode() : 0);
+    result = 31 * result + (myEpidemiology != null ? myEpidemiology.hashCode() : 0);
+    result = 31 * result + (myExpectedPrognosis != null ? myExpectedPrognosis.hashCode() : 0);
+    result = 31 * result + (myNaturalProgression != null ? myNaturalProgression.hashCode() : 0);
+    result = 31 * result + (myPathophysiology != null ? myPathophysiology.hashCode() : 0);
+    result = 31 * result + (myPossibleComplication != null ? myPossibleComplication.hashCode() : 0);
+    result = 31 * result + (myPossibleTreatment != null ? myPossibleTreatment.hashCode() : 0);
+    result = 31 * result + (myPrimaryPrevention != null ? myPrimaryPrevention.hashCode() : 0);
+    result = 31 * result + (myRiskFactor != null ? myRiskFactor.hashCode() : 0);
+    result = 31 * result + (mySecondaryPrevention != null ? mySecondaryPrevention.hashCode() : 0);
+    result = 31 * result + (mySignOrSymptom != null ? mySignOrSymptom.hashCode() : 0);
+    result = 31 * result + (myStage != null ? myStage.hashCode() : 0);
+    result = 31 * result + (mySubtype != null ? mySubtype.hashCode() : 0);
+    result = 31 * result + (myTypicalTest != null ? myTypicalTest.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalCondition medicalCondition = (MedicalCondition) o;
+    if (!super.equals(o)) return false;
+    if (myAssociatedAnatomy != null ? !myAssociatedAnatomy.equals(medicalCondition.myAssociatedAnatomy) : medicalCondition.myAssociatedAnatomy != null) return false;
+    if (myCause != null ? !myCause.equals(medicalCondition.myCause) : medicalCondition.myCause != null) return false;
+    if (myDifferentialDiagnosis != null ? !myDifferentialDiagnosis.equals(medicalCondition.myDifferentialDiagnosis) : medicalCondition.myDifferentialDiagnosis != null) return false;
+    if (myEpidemiology != null ? !myEpidemiology.equals(medicalCondition.myEpidemiology) : medicalCondition.myEpidemiology != null) return false;
+    if (myExpectedPrognosis != null ? !myExpectedPrognosis.equals(medicalCondition.myExpectedPrognosis) : medicalCondition.myExpectedPrognosis != null) return false;
+    if (myNaturalProgression != null ? !myNaturalProgression.equals(medicalCondition.myNaturalProgression) : medicalCondition.myNaturalProgression != null) return false;
+    if (myPathophysiology != null ? !myPathophysiology.equals(medicalCondition.myPathophysiology) : medicalCondition.myPathophysiology != null) return false;
+    if (myPossibleComplication != null ? !myPossibleComplication.equals(medicalCondition.myPossibleComplication) : medicalCondition.myPossibleComplication != null) return false;
+    if (myPossibleTreatment != null ? !myPossibleTreatment.equals(medicalCondition.myPossibleTreatment) : medicalCondition.myPossibleTreatment != null) return false;
+    if (myPrimaryPrevention != null ? !myPrimaryPrevention.equals(medicalCondition.myPrimaryPrevention) : medicalCondition.myPrimaryPrevention != null) return false;
+    if (myRiskFactor != null ? !myRiskFactor.equals(medicalCondition.myRiskFactor) : medicalCondition.myRiskFactor != null) return false;
+    if (mySecondaryPrevention != null ? !mySecondaryPrevention.equals(medicalCondition.mySecondaryPrevention) : medicalCondition.mySecondaryPrevention != null) return false;
+    if (mySignOrSymptom != null ? !mySignOrSymptom.equals(medicalCondition.mySignOrSymptom) : medicalCondition.mySignOrSymptom != null) return false;
+    if (myStage != null ? !myStage.equals(medicalCondition.myStage) : medicalCondition.myStage != null) return false;
+    if (mySubtype != null ? !mySubtype.equals(medicalCondition.mySubtype) : medicalCondition.mySubtype != null) return false;
+    if (myTypicalTest != null ? !myTypicalTest.equals(medicalCondition.myTypicalTest) : medicalCondition.myTypicalTest != null) return false;
+    return true;
+  }
+
   private AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy myAssociatedAnatomy;
   private MedicalCause myCause;
   private DDxElement myDifferentialDiagnosis;

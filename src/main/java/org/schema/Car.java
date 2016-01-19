@@ -65,16 +65,40 @@ Typical unit code(s): C62
     /**
      * The number or type of airbags in the vehicle.
      */
-    @NotNull public Builder numberOfAirbags(@NotNull Number number) {
-      if (this.numberOfAirbags == null) this.numberOfAirbags = new NumberOrString();
-      this.numberOfAirbags.setNumber(number);
+    @NotNull public Builder numberOfAirbags(@NotNull Integer integer) {
+      if (this.numberOfAirbags == null) this.numberOfAirbags = new Number();
+      this.numberOfAirbags.setInteger(integer);
+      return this;
+    }
+    /**
+     * The number or type of airbags in the vehicle.
+     */
+    @NotNull public Builder numberOfAirbags(@NotNull Long numberOfAirbags) {
+      if (this.numberOfAirbags == null) this.numberOfAirbags = new Number();
+      this.numberOfAirbags.setLong(numberOfAirbags);
+      return this;
+    }
+    /**
+     * The number or type of airbags in the vehicle.
+     */
+    @NotNull public Builder numberOfAirbags(@NotNull Float numberOfAirbags) {
+      if (this.numberOfAirbags == null) this.numberOfAirbags = new Number();
+      this.numberOfAirbags.setFloat(numberOfAirbags);
+      return this;
+    }
+    /**
+     * The number or type of airbags in the vehicle.
+     */
+    @NotNull public Builder numberOfAirbags(@NotNull Double numberOfAirbags) {
+      if (this.numberOfAirbags == null) this.numberOfAirbags = new Number();
+      this.numberOfAirbags.setDouble(numberOfAirbags);
       return this;
     }
     /**
      * The number or type of airbags in the vehicle.
      */
     @NotNull public Builder numberOfAirbags(@NotNull String numberOfAirbags) {
-      if (this.numberOfAirbags == null) this.numberOfAirbags = new NumberOrString();
+      if (this.numberOfAirbags == null) this.numberOfAirbags = new Number();
       this.numberOfAirbags.setString(numberOfAirbags);
       return this;
     }
@@ -1006,7 +1030,10 @@ Note: Publishers should be aware that applications designed to use specific sche
         if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
         if ("numberOfDoors".equals(key) && value instanceof Number) { numberOfDoors((Number)value); continue; }
         if ("numberOfDoors".equals(key) && value instanceof QuantitativeValue) { numberOfDoors((QuantitativeValue)value); continue; }
-        if ("numberOfAirbags".equals(key) && value instanceof Number) { numberOfAirbags((Number)value); continue; }
+        if ("numberOfAirbags".equals(key) && value instanceof Integer) { numberOfAirbags((Integer)value); continue; }
+        if ("numberOfAirbags".equals(key) && value instanceof Long) { numberOfAirbags((Long)value); continue; }
+        if ("numberOfAirbags".equals(key) && value instanceof Float) { numberOfAirbags((Float)value); continue; }
+        if ("numberOfAirbags".equals(key) && value instanceof Double) { numberOfAirbags((Double)value); continue; }
         if ("numberOfAirbags".equals(key) && value instanceof String) { numberOfAirbags((String)value); continue; }
         if ("numberOfAxles".equals(key) && value instanceof Number) { numberOfAxles((Number)value); continue; }
         if ("numberOfAxles".equals(key) && value instanceof QuantitativeValue) { numberOfAxles((QuantitativeValue)value); continue; }
@@ -1083,11 +1110,11 @@ Note: Publishers should be aware that applications designed to use specific sche
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private NumberOrQuantitativeValue numberOfDoors;
-    private NumberOrString numberOfAirbags;
+    private Number numberOfAirbags;
     private NumberOrQuantitativeValue numberOfAxles;
     private EngineSpecification vehicleEngine;
     private QuantitativeValue fuelConsumption;
@@ -1153,7 +1180,10 @@ Note: Publishers should be aware that applications designed to use specific sche
     @NotNull Builder numberOfDoors(@NotNull Number number);
     @NotNull Builder numberOfDoors(@NotNull QuantitativeValue quantitativeValue);
     @NotNull Builder numberOfDoors(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder numberOfAirbags(@NotNull Number number);
+    @NotNull Builder numberOfAirbags(@NotNull Integer integer);
+    @NotNull Builder numberOfAirbags(@NotNull Long numberOfAirbags);
+    @NotNull Builder numberOfAirbags(@NotNull Float numberOfAirbags);
+    @NotNull Builder numberOfAirbags(@NotNull Double numberOfAirbags);
     @NotNull Builder numberOfAirbags(@NotNull String numberOfAirbags);
     @NotNull Builder numberOfAxles(@NotNull Number number);
     @NotNull Builder numberOfAxles(@NotNull QuantitativeValue quantitativeValue);
@@ -1272,7 +1302,21 @@ Note: Publishers should be aware that applications designed to use specific sche
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected Car(NumberOrQuantitativeValue numberOfDoors, NumberOrString numberOfAirbags, NumberOrQuantitativeValue numberOfAxles, EngineSpecification vehicleEngine, QuantitativeValue fuelConsumption, QuantitativeValue fuelEfficiency, NumberOrQuantitativeValue numberOfForwardGears, String vin, QuantitativeValue cargoVolume, String vehicleConfiguration, String knownVehicleDamages, java.util.Date dateVehicleFirstRegistered, DriveWheelConfigurationValueOrString driveWheelConfiguration, QualitativeValueOrString fuelType, String vehicleInteriorColor, String vehicleInteriorType, QuantitativeValue mileageFromOdometer, java.util.Date vehicleModelDate, NumberOrQuantitativeValue numberOfPreviousOwners, java.util.Date productionDate, java.util.Date purchaseDate, NumberOrQuantitativeValue vehicleSeatingCapacity, QualitativeValueOrString vehicleTransmission, SteeringPositionValue steeringPosition, AggregateRating aggregateRating, Audience audience, String award, BrandOrOrganization brand, PhysicalActivityCategoryOrStringOrThing category, String color, DistanceOrQuantitativeValue depth, String gtin12, String gtin13, String gtin14, String gtin8, DistanceOrQuantitativeValue height, Product isAccessoryOrSparePartFor, Product isConsumableFor, Product isRelatedTo, Product isSimilarTo, OfferItemCondition itemCondition, ImageObjectOrString logo, Organization manufacturer, ProductModelOrString model, String mpn, Offer offers, String productID, java.util.Date releaseDate, Review review, String sku, QuantitativeValue weight, DistanceOrQuantitativeValue width, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected Car(NumberOrQuantitativeValue numberOfDoors, Number numberOfAirbags, NumberOrQuantitativeValue numberOfAxles, EngineSpecification vehicleEngine, QuantitativeValue fuelConsumption, QuantitativeValue fuelEfficiency, NumberOrQuantitativeValue numberOfForwardGears, String vin, QuantitativeValue cargoVolume, String vehicleConfiguration, String knownVehicleDamages, java.util.Date dateVehicleFirstRegistered, DriveWheelConfigurationValueOrString driveWheelConfiguration, QualitativeValueOrString fuelType, String vehicleInteriorColor, String vehicleInteriorType, QuantitativeValue mileageFromOdometer, java.util.Date vehicleModelDate, NumberOrQuantitativeValue numberOfPreviousOwners, java.util.Date productionDate, java.util.Date purchaseDate, NumberOrQuantitativeValue vehicleSeatingCapacity, QualitativeValueOrString vehicleTransmission, SteeringPositionValue steeringPosition, AggregateRating aggregateRating, Audience audience, String award, BrandOrOrganization brand, PhysicalActivityCategoryOrStringOrThing category, String color, DistanceOrQuantitativeValue depth, String gtin12, String gtin13, String gtin14, String gtin8, DistanceOrQuantitativeValue height, Product isAccessoryOrSparePartFor, Product isConsumableFor, Product isRelatedTo, Product isSimilarTo, OfferItemCondition itemCondition, ImageObjectOrString logo, Organization manufacturer, ProductModelOrString model, String mpn, Offer offers, String productID, java.util.Date releaseDate, Review review, String sku, QuantitativeValue weight, DistanceOrQuantitativeValue width, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(numberOfDoors, numberOfAirbags, numberOfAxles, vehicleEngine, fuelConsumption, fuelEfficiency, numberOfForwardGears, vin, cargoVolume, vehicleConfiguration, knownVehicleDamages, dateVehicleFirstRegistered, driveWheelConfiguration, fuelType, vehicleInteriorColor, vehicleInteriorType, mileageFromOdometer, vehicleModelDate, numberOfPreviousOwners, productionDate, purchaseDate, vehicleSeatingCapacity, vehicleTransmission, steeringPosition, aggregateRating, audience, award, brand, category, color, depth, gtin12, gtin13, gtin14, gtin8, height, isAccessoryOrSparePartFor, isConsumableFor, isRelatedTo, isSimilarTo, itemCondition, logo, manufacturer, model, mpn, offers, productID, releaseDate, review, sku, weight, width, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Car car = (Car) o;
+    if (!super.equals(o)) return false;
+    return true;
+  }
+
 }

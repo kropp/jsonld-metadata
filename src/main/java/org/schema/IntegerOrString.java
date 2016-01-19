@@ -39,4 +39,21 @@ class IntegerOrString {
     myInteger = null;
     myString = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myInteger != null ? myInteger.hashCode() : 0);
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    IntegerOrString integerOrString = (IntegerOrString) o;
+    if (myInteger != null ? !myInteger.equals(integerOrString.myInteger) : integerOrString.myInteger != null) return false;
+    if (myString != null ? !myString.equals(integerOrString.myString) : integerOrString.myString != null) return false;
+    return true;
+  }
+
 }

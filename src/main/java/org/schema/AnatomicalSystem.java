@@ -411,7 +411,7 @@ public class AnatomicalSystem extends MedicalEntity {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String associatedPathophysiology;
@@ -481,6 +481,30 @@ public class AnatomicalSystem extends MedicalEntity {
     myRelatedStructure = relatedStructure;
     myRelatedTherapy = relatedTherapy;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAssociatedPathophysiology != null ? myAssociatedPathophysiology.hashCode() : 0);
+    result = 31 * result + (myComprisedOf != null ? myComprisedOf.hashCode() : 0);
+    result = 31 * result + (myRelatedCondition != null ? myRelatedCondition.hashCode() : 0);
+    result = 31 * result + (myRelatedStructure != null ? myRelatedStructure.hashCode() : 0);
+    result = 31 * result + (myRelatedTherapy != null ? myRelatedTherapy.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AnatomicalSystem anatomicalSystem = (AnatomicalSystem) o;
+    if (!super.equals(o)) return false;
+    if (myAssociatedPathophysiology != null ? !myAssociatedPathophysiology.equals(anatomicalSystem.myAssociatedPathophysiology) : anatomicalSystem.myAssociatedPathophysiology != null) return false;
+    if (myComprisedOf != null ? !myComprisedOf.equals(anatomicalSystem.myComprisedOf) : anatomicalSystem.myComprisedOf != null) return false;
+    if (myRelatedCondition != null ? !myRelatedCondition.equals(anatomicalSystem.myRelatedCondition) : anatomicalSystem.myRelatedCondition != null) return false;
+    if (myRelatedStructure != null ? !myRelatedStructure.equals(anatomicalSystem.myRelatedStructure) : anatomicalSystem.myRelatedStructure != null) return false;
+    if (myRelatedTherapy != null ? !myRelatedTherapy.equals(anatomicalSystem.myRelatedTherapy) : anatomicalSystem.myRelatedTherapy != null) return false;
+    return true;
+  }
+
   private String myAssociatedPathophysiology;
   private AnatomicalStructureOrAnatomicalSystem myComprisedOf;
   private MedicalCondition myRelatedCondition;

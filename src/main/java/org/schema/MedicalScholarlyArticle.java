@@ -1228,7 +1228,7 @@ public class MedicalScholarlyArticle extends ScholarlyArticle {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String publicationType;
@@ -1462,5 +1462,21 @@ public class MedicalScholarlyArticle extends ScholarlyArticle {
     super(articleBody, articleSection, wordCount, pageEnd, pageStart, pagination, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myPublicationType = publicationType;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myPublicationType != null ? myPublicationType.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalScholarlyArticle medicalScholarlyArticle = (MedicalScholarlyArticle) o;
+    if (!super.equals(o)) return false;
+    if (myPublicationType != null ? !myPublicationType.equals(medicalScholarlyArticle.myPublicationType) : medicalScholarlyArticle.myPublicationType != null) return false;
+    return true;
+  }
+
   private String myPublicationType;
 }

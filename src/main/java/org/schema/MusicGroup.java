@@ -730,7 +730,7 @@ public class MusicGroup extends PerformingGroup {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MusicAlbum album;
@@ -866,6 +866,26 @@ public class MusicGroup extends PerformingGroup {
     myTrack = track;
     myGenre = genre;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAlbum != null ? myAlbum.hashCode() : 0);
+    result = 31 * result + (myTrack != null ? myTrack.hashCode() : 0);
+    result = 31 * result + (myGenre != null ? myGenre.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MusicGroup musicGroup = (MusicGroup) o;
+    if (!super.equals(o)) return false;
+    if (myAlbum != null ? !myAlbum.equals(musicGroup.myAlbum) : musicGroup.myAlbum != null) return false;
+    if (myTrack != null ? !myTrack.equals(musicGroup.myTrack) : musicGroup.myTrack != null) return false;
+    if (myGenre != null ? !myGenre.equals(musicGroup.myGenre) : musicGroup.myGenre != null) return false;
+    return true;
+  }
+
   private MusicAlbum myAlbum;
   private ItemListOrMusicRecording myTrack;
   private String myGenre;

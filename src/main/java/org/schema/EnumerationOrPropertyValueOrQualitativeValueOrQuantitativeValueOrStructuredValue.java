@@ -62,4 +62,27 @@ class EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructure
     myQuantitativeValue = null;
     myStructuredValue = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myEnumeration != null ? myEnumeration.hashCode() : 0);
+    result = 31 * result + (myPropertyValue != null ? myPropertyValue.hashCode() : 0);
+    result = 31 * result + (myQualitativeValue != null ? myQualitativeValue.hashCode() : 0);
+    result = 31 * result + (myQuantitativeValue != null ? myQuantitativeValue.hashCode() : 0);
+    result = 31 * result + (myStructuredValue != null ? myStructuredValue.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue = (EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue) o;
+    if (myEnumeration != null ? !myEnumeration.equals(enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myEnumeration) : enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myEnumeration != null) return false;
+    if (myPropertyValue != null ? !myPropertyValue.equals(enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myPropertyValue) : enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myPropertyValue != null) return false;
+    if (myQualitativeValue != null ? !myQualitativeValue.equals(enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myQualitativeValue) : enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myQualitativeValue != null) return false;
+    if (myQuantitativeValue != null ? !myQuantitativeValue.equals(enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myQuantitativeValue) : enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myQuantitativeValue != null) return false;
+    if (myStructuredValue != null ? !myStructuredValue.equals(enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myStructuredValue) : enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myStructuredValue != null) return false;
+    return true;
+  }
+
 }

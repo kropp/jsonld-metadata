@@ -44,4 +44,23 @@ class PlaceOrPostalAddressOrString {
     myPostalAddress = null;
     myString = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myPlace != null ? myPlace.hashCode() : 0);
+    result = 31 * result + (myPostalAddress != null ? myPostalAddress.hashCode() : 0);
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PlaceOrPostalAddressOrString placeOrPostalAddressOrString = (PlaceOrPostalAddressOrString) o;
+    if (myPlace != null ? !myPlace.equals(placeOrPostalAddressOrString.myPlace) : placeOrPostalAddressOrString.myPlace != null) return false;
+    if (myPostalAddress != null ? !myPostalAddress.equals(placeOrPostalAddressOrString.myPostalAddress) : placeOrPostalAddressOrString.myPostalAddress != null) return false;
+    if (myString != null ? !myString.equals(placeOrPostalAddressOrString.myString) : placeOrPostalAddressOrString.myString != null) return false;
+    return true;
+  }
+
 }

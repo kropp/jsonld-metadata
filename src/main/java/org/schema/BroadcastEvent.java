@@ -532,7 +532,7 @@ public class BroadcastEvent extends PublicationEvent {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Boolean isLiveBroadcast;
@@ -627,5 +627,21 @@ public class BroadcastEvent extends PublicationEvent {
     super(isAccessibleForFree, publishedOn, aggregateRating, organizer, attendee, doorTime, duration, endDate, eventStatus, inLanguage, offers, performer, previousStartDate, recordedIn, review, startDate, subEvent, superEvent, typicalAgeRange, workPerformed, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myIsLiveBroadcast = isLiveBroadcast;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myIsLiveBroadcast != null ? myIsLiveBroadcast.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BroadcastEvent broadcastEvent = (BroadcastEvent) o;
+    if (!super.equals(o)) return false;
+    if (myIsLiveBroadcast != null ? !myIsLiveBroadcast.equals(broadcastEvent.myIsLiveBroadcast) : broadcastEvent.myIsLiveBroadcast != null) return false;
+    return true;
+  }
+
   private Boolean myIsLiveBroadcast;
 }

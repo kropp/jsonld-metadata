@@ -805,7 +805,7 @@ public class Demand extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private PaymentMethod acceptedPaymentMethod;
@@ -951,6 +951,80 @@ public class Demand extends Intangible {
     myValidThrough = validThrough;
     myWarranty = warranty;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAcceptedPaymentMethod != null ? myAcceptedPaymentMethod.hashCode() : 0);
+    result = 31 * result + (myAdvanceBookingRequirement != null ? myAdvanceBookingRequirement.hashCode() : 0);
+    result = 31 * result + (myAvailability != null ? myAvailability.hashCode() : 0);
+    result = 31 * result + (myAvailabilityEnds != null ? myAvailabilityEnds.hashCode() : 0);
+    result = 31 * result + (myAvailabilityStarts != null ? myAvailabilityStarts.hashCode() : 0);
+    result = 31 * result + (myAvailableAtOrFrom != null ? myAvailableAtOrFrom.hashCode() : 0);
+    result = 31 * result + (myAvailableDeliveryMethod != null ? myAvailableDeliveryMethod.hashCode() : 0);
+    result = 31 * result + (myBusinessFunction != null ? myBusinessFunction.hashCode() : 0);
+    result = 31 * result + (myDeliveryLeadTime != null ? myDeliveryLeadTime.hashCode() : 0);
+    result = 31 * result + (myEligibleCustomerType != null ? myEligibleCustomerType.hashCode() : 0);
+    result = 31 * result + (myEligibleDuration != null ? myEligibleDuration.hashCode() : 0);
+    result = 31 * result + (myEligibleQuantity != null ? myEligibleQuantity.hashCode() : 0);
+    result = 31 * result + (myEligibleRegion != null ? myEligibleRegion.hashCode() : 0);
+    result = 31 * result + (myIneligibleRegion != null ? myIneligibleRegion.hashCode() : 0);
+    result = 31 * result + (myEligibleTransactionVolume != null ? myEligibleTransactionVolume.hashCode() : 0);
+    result = 31 * result + (myGtin12 != null ? myGtin12.hashCode() : 0);
+    result = 31 * result + (myGtin13 != null ? myGtin13.hashCode() : 0);
+    result = 31 * result + (myGtin14 != null ? myGtin14.hashCode() : 0);
+    result = 31 * result + (myGtin8 != null ? myGtin8.hashCode() : 0);
+    result = 31 * result + (myIncludesObject != null ? myIncludesObject.hashCode() : 0);
+    result = 31 * result + (myInventoryLevel != null ? myInventoryLevel.hashCode() : 0);
+    result = 31 * result + (myItemCondition != null ? myItemCondition.hashCode() : 0);
+    result = 31 * result + (myItemOffered != null ? myItemOffered.hashCode() : 0);
+    result = 31 * result + (myMpn != null ? myMpn.hashCode() : 0);
+    result = 31 * result + (myPriceSpecification != null ? myPriceSpecification.hashCode() : 0);
+    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
+    result = 31 * result + (mySku != null ? mySku.hashCode() : 0);
+    result = 31 * result + (myValidFrom != null ? myValidFrom.hashCode() : 0);
+    result = 31 * result + (myValidThrough != null ? myValidThrough.hashCode() : 0);
+    result = 31 * result + (myWarranty != null ? myWarranty.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Demand demand = (Demand) o;
+    if (!super.equals(o)) return false;
+    if (myAcceptedPaymentMethod != null ? !myAcceptedPaymentMethod.equals(demand.myAcceptedPaymentMethod) : demand.myAcceptedPaymentMethod != null) return false;
+    if (myAdvanceBookingRequirement != null ? !myAdvanceBookingRequirement.equals(demand.myAdvanceBookingRequirement) : demand.myAdvanceBookingRequirement != null) return false;
+    if (myAvailability != null ? !myAvailability.equals(demand.myAvailability) : demand.myAvailability != null) return false;
+    if (myAvailabilityEnds != null ? !myAvailabilityEnds.equals(demand.myAvailabilityEnds) : demand.myAvailabilityEnds != null) return false;
+    if (myAvailabilityStarts != null ? !myAvailabilityStarts.equals(demand.myAvailabilityStarts) : demand.myAvailabilityStarts != null) return false;
+    if (myAvailableAtOrFrom != null ? !myAvailableAtOrFrom.equals(demand.myAvailableAtOrFrom) : demand.myAvailableAtOrFrom != null) return false;
+    if (myAvailableDeliveryMethod != null ? !myAvailableDeliveryMethod.equals(demand.myAvailableDeliveryMethod) : demand.myAvailableDeliveryMethod != null) return false;
+    if (myBusinessFunction != null ? !myBusinessFunction.equals(demand.myBusinessFunction) : demand.myBusinessFunction != null) return false;
+    if (myDeliveryLeadTime != null ? !myDeliveryLeadTime.equals(demand.myDeliveryLeadTime) : demand.myDeliveryLeadTime != null) return false;
+    if (myEligibleCustomerType != null ? !myEligibleCustomerType.equals(demand.myEligibleCustomerType) : demand.myEligibleCustomerType != null) return false;
+    if (myEligibleDuration != null ? !myEligibleDuration.equals(demand.myEligibleDuration) : demand.myEligibleDuration != null) return false;
+    if (myEligibleQuantity != null ? !myEligibleQuantity.equals(demand.myEligibleQuantity) : demand.myEligibleQuantity != null) return false;
+    if (myEligibleRegion != null ? !myEligibleRegion.equals(demand.myEligibleRegion) : demand.myEligibleRegion != null) return false;
+    if (myIneligibleRegion != null ? !myIneligibleRegion.equals(demand.myIneligibleRegion) : demand.myIneligibleRegion != null) return false;
+    if (myEligibleTransactionVolume != null ? !myEligibleTransactionVolume.equals(demand.myEligibleTransactionVolume) : demand.myEligibleTransactionVolume != null) return false;
+    if (myGtin12 != null ? !myGtin12.equals(demand.myGtin12) : demand.myGtin12 != null) return false;
+    if (myGtin13 != null ? !myGtin13.equals(demand.myGtin13) : demand.myGtin13 != null) return false;
+    if (myGtin14 != null ? !myGtin14.equals(demand.myGtin14) : demand.myGtin14 != null) return false;
+    if (myGtin8 != null ? !myGtin8.equals(demand.myGtin8) : demand.myGtin8 != null) return false;
+    if (myIncludesObject != null ? !myIncludesObject.equals(demand.myIncludesObject) : demand.myIncludesObject != null) return false;
+    if (myInventoryLevel != null ? !myInventoryLevel.equals(demand.myInventoryLevel) : demand.myInventoryLevel != null) return false;
+    if (myItemCondition != null ? !myItemCondition.equals(demand.myItemCondition) : demand.myItemCondition != null) return false;
+    if (myItemOffered != null ? !myItemOffered.equals(demand.myItemOffered) : demand.myItemOffered != null) return false;
+    if (myMpn != null ? !myMpn.equals(demand.myMpn) : demand.myMpn != null) return false;
+    if (myPriceSpecification != null ? !myPriceSpecification.equals(demand.myPriceSpecification) : demand.myPriceSpecification != null) return false;
+    if (mySeller != null ? !mySeller.equals(demand.mySeller) : demand.mySeller != null) return false;
+    if (mySku != null ? !mySku.equals(demand.mySku) : demand.mySku != null) return false;
+    if (myValidFrom != null ? !myValidFrom.equals(demand.myValidFrom) : demand.myValidFrom != null) return false;
+    if (myValidThrough != null ? !myValidThrough.equals(demand.myValidThrough) : demand.myValidThrough != null) return false;
+    if (myWarranty != null ? !myWarranty.equals(demand.myWarranty) : demand.myWarranty != null) return false;
+    return true;
+  }
+
   private PaymentMethod myAcceptedPaymentMethod;
   private QuantitativeValue myAdvanceBookingRequirement;
   private ItemAvailability myAvailability;

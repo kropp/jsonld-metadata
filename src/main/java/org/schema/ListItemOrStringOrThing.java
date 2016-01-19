@@ -44,4 +44,23 @@ class ListItemOrStringOrThing {
     myString = null;
     myThing = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myListItem != null ? myListItem.hashCode() : 0);
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    result = 31 * result + (myThing != null ? myThing.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ListItemOrStringOrThing listItemOrStringOrThing = (ListItemOrStringOrThing) o;
+    if (myListItem != null ? !myListItem.equals(listItemOrStringOrThing.myListItem) : listItemOrStringOrThing.myListItem != null) return false;
+    if (myString != null ? !myString.equals(listItemOrStringOrThing.myString) : listItemOrStringOrThing.myString != null) return false;
+    if (myThing != null ? !myThing.equals(listItemOrStringOrThing.myThing) : listItemOrStringOrThing.myThing != null) return false;
+    return true;
+  }
+
 }

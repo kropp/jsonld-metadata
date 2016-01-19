@@ -369,7 +369,7 @@ public class MaximumDoseSchedule extends DoseSchedule {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String doseUnit;
@@ -430,4 +430,18 @@ public class MaximumDoseSchedule extends DoseSchedule {
   protected MaximumDoseSchedule(String doseUnit, Number doseValue, String frequency, String targetPopulation, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(doseUnit, doseValue, frequency, targetPopulation, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MaximumDoseSchedule maximumDoseSchedule = (MaximumDoseSchedule) o;
+    if (!super.equals(o)) return false;
+    return true;
+  }
+
 }

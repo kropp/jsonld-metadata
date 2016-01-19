@@ -1223,7 +1223,7 @@ public class Question extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Integer upvoteCount;
@@ -1456,6 +1456,30 @@ public class Question extends CreativeWork {
     myAcceptedAnswer = acceptedAnswer;
     mySuggestedAnswer = suggestedAnswer;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myUpvoteCount != null ? myUpvoteCount.hashCode() : 0);
+    result = 31 * result + (myDownvoteCount != null ? myDownvoteCount.hashCode() : 0);
+    result = 31 * result + (myAnswerCount != null ? myAnswerCount.hashCode() : 0);
+    result = 31 * result + (myAcceptedAnswer != null ? myAcceptedAnswer.hashCode() : 0);
+    result = 31 * result + (mySuggestedAnswer != null ? mySuggestedAnswer.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Question question = (Question) o;
+    if (!super.equals(o)) return false;
+    if (myUpvoteCount != null ? !myUpvoteCount.equals(question.myUpvoteCount) : question.myUpvoteCount != null) return false;
+    if (myDownvoteCount != null ? !myDownvoteCount.equals(question.myDownvoteCount) : question.myDownvoteCount != null) return false;
+    if (myAnswerCount != null ? !myAnswerCount.equals(question.myAnswerCount) : question.myAnswerCount != null) return false;
+    if (myAcceptedAnswer != null ? !myAcceptedAnswer.equals(question.myAcceptedAnswer) : question.myAcceptedAnswer != null) return false;
+    if (mySuggestedAnswer != null ? !mySuggestedAnswer.equals(question.mySuggestedAnswer) : question.mySuggestedAnswer != null) return false;
+    return true;
+  }
+
   private Integer myUpvoteCount;
   private Integer myDownvoteCount;
   private Integer myAnswerCount;

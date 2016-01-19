@@ -337,7 +337,7 @@ public class MedicalEntity extends Thing {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MedicalCode code;
@@ -392,6 +392,32 @@ public class MedicalEntity extends Thing {
     myRelevantSpecialty = relevantSpecialty;
     myStudy = study;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myCode != null ? myCode.hashCode() : 0);
+    result = 31 * result + (myGuideline != null ? myGuideline.hashCode() : 0);
+    result = 31 * result + (myMedicineSystem != null ? myMedicineSystem.hashCode() : 0);
+    result = 31 * result + (myRecognizingAuthority != null ? myRecognizingAuthority.hashCode() : 0);
+    result = 31 * result + (myRelevantSpecialty != null ? myRelevantSpecialty.hashCode() : 0);
+    result = 31 * result + (myStudy != null ? myStudy.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalEntity medicalEntity = (MedicalEntity) o;
+    if (!super.equals(o)) return false;
+    if (myCode != null ? !myCode.equals(medicalEntity.myCode) : medicalEntity.myCode != null) return false;
+    if (myGuideline != null ? !myGuideline.equals(medicalEntity.myGuideline) : medicalEntity.myGuideline != null) return false;
+    if (myMedicineSystem != null ? !myMedicineSystem.equals(medicalEntity.myMedicineSystem) : medicalEntity.myMedicineSystem != null) return false;
+    if (myRecognizingAuthority != null ? !myRecognizingAuthority.equals(medicalEntity.myRecognizingAuthority) : medicalEntity.myRecognizingAuthority != null) return false;
+    if (myRelevantSpecialty != null ? !myRelevantSpecialty.equals(medicalEntity.myRelevantSpecialty) : medicalEntity.myRelevantSpecialty != null) return false;
+    if (myStudy != null ? !myStudy.equals(medicalEntity.myStudy) : medicalEntity.myStudy != null) return false;
+    return true;
+  }
+
   private MedicalCode myCode;
   private MedicalGuideline myGuideline;
   private MedicineSystem myMedicineSystem;

@@ -477,7 +477,7 @@ Note: Publishers should be aware that applications designed to use specific sche
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private QualitativeValue equal;
@@ -553,6 +553,36 @@ Note: Publishers should be aware that applications designed to use specific sche
     myValueReference = valueReference;
     myAdditionalProperty = additionalProperty;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myEqual != null ? myEqual.hashCode() : 0);
+    result = 31 * result + (myGreater != null ? myGreater.hashCode() : 0);
+    result = 31 * result + (myGreaterOrEqual != null ? myGreaterOrEqual.hashCode() : 0);
+    result = 31 * result + (myLesser != null ? myLesser.hashCode() : 0);
+    result = 31 * result + (myLesserOrEqual != null ? myLesserOrEqual.hashCode() : 0);
+    result = 31 * result + (myNonEqual != null ? myNonEqual.hashCode() : 0);
+    result = 31 * result + (myValueReference != null ? myValueReference.hashCode() : 0);
+    result = 31 * result + (myAdditionalProperty != null ? myAdditionalProperty.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QualitativeValue qualitativeValue = (QualitativeValue) o;
+    if (!super.equals(o)) return false;
+    if (myEqual != null ? !myEqual.equals(qualitativeValue.myEqual) : qualitativeValue.myEqual != null) return false;
+    if (myGreater != null ? !myGreater.equals(qualitativeValue.myGreater) : qualitativeValue.myGreater != null) return false;
+    if (myGreaterOrEqual != null ? !myGreaterOrEqual.equals(qualitativeValue.myGreaterOrEqual) : qualitativeValue.myGreaterOrEqual != null) return false;
+    if (myLesser != null ? !myLesser.equals(qualitativeValue.myLesser) : qualitativeValue.myLesser != null) return false;
+    if (myLesserOrEqual != null ? !myLesserOrEqual.equals(qualitativeValue.myLesserOrEqual) : qualitativeValue.myLesserOrEqual != null) return false;
+    if (myNonEqual != null ? !myNonEqual.equals(qualitativeValue.myNonEqual) : qualitativeValue.myNonEqual != null) return false;
+    if (myValueReference != null ? !myValueReference.equals(qualitativeValue.myValueReference) : qualitativeValue.myValueReference != null) return false;
+    if (myAdditionalProperty != null ? !myAdditionalProperty.equals(qualitativeValue.myAdditionalProperty) : qualitativeValue.myAdditionalProperty != null) return false;
+    return true;
+  }
+
   private QualitativeValue myEqual;
   private QualitativeValue myGreater;
   private QualitativeValue myGreaterOrEqual;

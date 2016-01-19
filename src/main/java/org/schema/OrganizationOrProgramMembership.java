@@ -44,4 +44,21 @@ class OrganizationOrProgramMembership {
     myOrganization = null;
     myProgramMembership = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myOrganization != null ? myOrganization.hashCode() : 0);
+    result = 31 * result + (myProgramMembership != null ? myProgramMembership.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OrganizationOrProgramMembership organizationOrProgramMembership = (OrganizationOrProgramMembership) o;
+    if (myOrganization != null ? !myOrganization.equals(organizationOrProgramMembership.myOrganization) : organizationOrProgramMembership.myOrganization != null) return false;
+    if (myProgramMembership != null ? !myProgramMembership.equals(organizationOrProgramMembership.myProgramMembership) : organizationOrProgramMembership.myProgramMembership != null) return false;
+    return true;
+  }
+
 }

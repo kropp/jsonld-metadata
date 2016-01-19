@@ -1325,7 +1325,7 @@ public class MusicComposition extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MusicComposition musicArrangement;
@@ -1577,6 +1577,38 @@ public class MusicComposition extends CreativeWork {
     myMusicalKey = musicalKey;
     myRecordedAs = recordedAs;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myMusicArrangement != null ? myMusicArrangement.hashCode() : 0);
+    result = 31 * result + (myComposer != null ? myComposer.hashCode() : 0);
+    result = 31 * result + (myFirstPerformance != null ? myFirstPerformance.hashCode() : 0);
+    result = 31 * result + (myIncludedComposition != null ? myIncludedComposition.hashCode() : 0);
+    result = 31 * result + (myIswcCode != null ? myIswcCode.hashCode() : 0);
+    result = 31 * result + (myLyricist != null ? myLyricist.hashCode() : 0);
+    result = 31 * result + (myMusicCompositionForm != null ? myMusicCompositionForm.hashCode() : 0);
+    result = 31 * result + (myMusicalKey != null ? myMusicalKey.hashCode() : 0);
+    result = 31 * result + (myRecordedAs != null ? myRecordedAs.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MusicComposition musicComposition = (MusicComposition) o;
+    if (!super.equals(o)) return false;
+    if (myMusicArrangement != null ? !myMusicArrangement.equals(musicComposition.myMusicArrangement) : musicComposition.myMusicArrangement != null) return false;
+    if (myComposer != null ? !myComposer.equals(musicComposition.myComposer) : musicComposition.myComposer != null) return false;
+    if (myFirstPerformance != null ? !myFirstPerformance.equals(musicComposition.myFirstPerformance) : musicComposition.myFirstPerformance != null) return false;
+    if (myIncludedComposition != null ? !myIncludedComposition.equals(musicComposition.myIncludedComposition) : musicComposition.myIncludedComposition != null) return false;
+    if (myIswcCode != null ? !myIswcCode.equals(musicComposition.myIswcCode) : musicComposition.myIswcCode != null) return false;
+    if (myLyricist != null ? !myLyricist.equals(musicComposition.myLyricist) : musicComposition.myLyricist != null) return false;
+    if (myMusicCompositionForm != null ? !myMusicCompositionForm.equals(musicComposition.myMusicCompositionForm) : musicComposition.myMusicCompositionForm != null) return false;
+    if (myMusicalKey != null ? !myMusicalKey.equals(musicComposition.myMusicalKey) : musicComposition.myMusicalKey != null) return false;
+    if (myRecordedAs != null ? !myRecordedAs.equals(musicComposition.myRecordedAs) : musicComposition.myRecordedAs != null) return false;
+    return true;
+  }
+
   private MusicComposition myMusicArrangement;
   private OrganizationOrPerson myComposer;
   private Event myFirstPerformance;

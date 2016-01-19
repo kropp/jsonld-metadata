@@ -714,7 +714,7 @@ Note: Publishers should be aware that applications designed to use specific sche
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private QuantitativeValue inventoryLevel;
@@ -843,5 +843,21 @@ Note: Publishers should be aware that applications designed to use specific sche
     super(aggregateRating, audience, award, brand, category, color, depth, gtin12, gtin13, gtin14, gtin8, height, isAccessoryOrSparePartFor, isConsumableFor, isRelatedTo, isSimilarTo, itemCondition, logo, manufacturer, model, mpn, offers, productID, releaseDate, review, sku, weight, width, additionalProperty, productionDate, purchaseDate, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myInventoryLevel = inventoryLevel;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myInventoryLevel != null ? myInventoryLevel.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SomeProducts someProducts = (SomeProducts) o;
+    if (!super.equals(o)) return false;
+    if (myInventoryLevel != null ? !myInventoryLevel.equals(someProducts.myInventoryLevel) : someProducts.myInventoryLevel != null) return false;
+    return true;
+  }
+
   private QuantitativeValue myInventoryLevel;
 }

@@ -84,16 +84,40 @@ public class AggregateRating extends Rating {
     /**
      * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
      */
-    @NotNull public Builder bestRating(@NotNull Number number) {
-      if (this.bestRating == null) this.bestRating = new NumberOrString();
-      this.bestRating.setNumber(number);
+    @NotNull public Builder bestRating(@NotNull Integer integer) {
+      if (this.bestRating == null) this.bestRating = new Number();
+      this.bestRating.setInteger(integer);
+      return this;
+    }
+    /**
+     * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
+     */
+    @NotNull public Builder bestRating(@NotNull Long bestRating) {
+      if (this.bestRating == null) this.bestRating = new Number();
+      this.bestRating.setLong(bestRating);
+      return this;
+    }
+    /**
+     * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
+     */
+    @NotNull public Builder bestRating(@NotNull Float bestRating) {
+      if (this.bestRating == null) this.bestRating = new Number();
+      this.bestRating.setFloat(bestRating);
+      return this;
+    }
+    /**
+     * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
+     */
+    @NotNull public Builder bestRating(@NotNull Double bestRating) {
+      if (this.bestRating == null) this.bestRating = new Number();
+      this.bestRating.setDouble(bestRating);
       return this;
     }
     /**
      * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
      */
     @NotNull public Builder bestRating(@NotNull String bestRating) {
-      if (this.bestRating == null) this.bestRating = new NumberOrString();
+      if (this.bestRating == null) this.bestRating = new Number();
       this.bestRating.setString(bestRating);
       return this;
     }
@@ -107,16 +131,40 @@ public class AggregateRating extends Rating {
     /**
      * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
      */
-    @NotNull public Builder worstRating(@NotNull Number number) {
-      if (this.worstRating == null) this.worstRating = new NumberOrString();
-      this.worstRating.setNumber(number);
+    @NotNull public Builder worstRating(@NotNull Integer integer) {
+      if (this.worstRating == null) this.worstRating = new Number();
+      this.worstRating.setInteger(integer);
+      return this;
+    }
+    /**
+     * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
+     */
+    @NotNull public Builder worstRating(@NotNull Long worstRating) {
+      if (this.worstRating == null) this.worstRating = new Number();
+      this.worstRating.setLong(worstRating);
+      return this;
+    }
+    /**
+     * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
+     */
+    @NotNull public Builder worstRating(@NotNull Float worstRating) {
+      if (this.worstRating == null) this.worstRating = new Number();
+      this.worstRating.setFloat(worstRating);
+      return this;
+    }
+    /**
+     * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
+     */
+    @NotNull public Builder worstRating(@NotNull Double worstRating) {
+      if (this.worstRating == null) this.worstRating = new Number();
+      this.worstRating.setDouble(worstRating);
       return this;
     }
     /**
      * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
      */
     @NotNull public Builder worstRating(@NotNull String worstRating) {
-      if (this.worstRating == null) this.worstRating = new NumberOrString();
+      if (this.worstRating == null) this.worstRating = new Number();
       this.worstRating.setString(worstRating);
       return this;
     }
@@ -294,10 +342,16 @@ public class AggregateRating extends Rating {
         if ("itemReviewed".equals(key) && value instanceof Thing) { itemReviewed((Thing)value); continue; }
         if ("ratingCount".equals(key) && value instanceof Integer) { ratingCount((Integer)value); continue; }
         if ("reviewCount".equals(key) && value instanceof Integer) { reviewCount((Integer)value); continue; }
-        if ("bestRating".equals(key) && value instanceof Number) { bestRating((Number)value); continue; }
+        if ("bestRating".equals(key) && value instanceof Integer) { bestRating((Integer)value); continue; }
+        if ("bestRating".equals(key) && value instanceof Long) { bestRating((Long)value); continue; }
+        if ("bestRating".equals(key) && value instanceof Float) { bestRating((Float)value); continue; }
+        if ("bestRating".equals(key) && value instanceof Double) { bestRating((Double)value); continue; }
         if ("bestRating".equals(key) && value instanceof String) { bestRating((String)value); continue; }
         if ("ratingValue".equals(key) && value instanceof String) { ratingValue((String)value); continue; }
-        if ("worstRating".equals(key) && value instanceof Number) { worstRating((Number)value); continue; }
+        if ("worstRating".equals(key) && value instanceof Integer) { worstRating((Integer)value); continue; }
+        if ("worstRating".equals(key) && value instanceof Long) { worstRating((Long)value); continue; }
+        if ("worstRating".equals(key) && value instanceof Float) { worstRating((Float)value); continue; }
+        if ("worstRating".equals(key) && value instanceof Double) { worstRating((Double)value); continue; }
         if ("worstRating".equals(key) && value instanceof String) { worstRating((String)value); continue; }
         if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
         if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
@@ -308,15 +362,15 @@ public class AggregateRating extends Rating {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Thing itemReviewed;
     private Integer ratingCount;
     private Integer reviewCount;
-    private NumberOrString bestRating;
+    private Number bestRating;
     private String ratingValue;
-    private NumberOrString worstRating;
+    private Number worstRating;
     private String additionalType;
     private String alternateName;
     private String description;
@@ -332,10 +386,16 @@ public class AggregateRating extends Rating {
     @NotNull Builder itemReviewed(@NotNull Thing.Builder thing);
     @NotNull Builder ratingCount(@NotNull Integer integer);
     @NotNull Builder reviewCount(@NotNull Integer integer);
-    @NotNull Builder bestRating(@NotNull Number number);
+    @NotNull Builder bestRating(@NotNull Integer integer);
+    @NotNull Builder bestRating(@NotNull Long bestRating);
+    @NotNull Builder bestRating(@NotNull Float bestRating);
+    @NotNull Builder bestRating(@NotNull Double bestRating);
     @NotNull Builder bestRating(@NotNull String bestRating);
     @NotNull Builder ratingValue(@NotNull String ratingValue);
-    @NotNull Builder worstRating(@NotNull Number number);
+    @NotNull Builder worstRating(@NotNull Integer integer);
+    @NotNull Builder worstRating(@NotNull Long worstRating);
+    @NotNull Builder worstRating(@NotNull Float worstRating);
+    @NotNull Builder worstRating(@NotNull Double worstRating);
     @NotNull Builder worstRating(@NotNull String worstRating);
     @NotNull Builder additionalType(@NotNull String additionalType);
     @NotNull Builder alternateName(@NotNull String alternateName);
@@ -351,12 +411,32 @@ public class AggregateRating extends Rating {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected AggregateRating(Thing itemReviewed, Integer ratingCount, Integer reviewCount, NumberOrString bestRating, String ratingValue, NumberOrString worstRating, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected AggregateRating(Thing itemReviewed, Integer ratingCount, Integer reviewCount, Number bestRating, String ratingValue, Number worstRating, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myItemReviewed = itemReviewed;
     myRatingCount = ratingCount;
     myReviewCount = reviewCount;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myItemReviewed != null ? myItemReviewed.hashCode() : 0);
+    result = 31 * result + (myRatingCount != null ? myRatingCount.hashCode() : 0);
+    result = 31 * result + (myReviewCount != null ? myReviewCount.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AggregateRating aggregateRating = (AggregateRating) o;
+    if (!super.equals(o)) return false;
+    if (myItemReviewed != null ? !myItemReviewed.equals(aggregateRating.myItemReviewed) : aggregateRating.myItemReviewed != null) return false;
+    if (myRatingCount != null ? !myRatingCount.equals(aggregateRating.myRatingCount) : aggregateRating.myRatingCount != null) return false;
+    if (myReviewCount != null ? !myReviewCount.equals(aggregateRating.myReviewCount) : aggregateRating.myReviewCount != null) return false;
+    return true;
+  }
+
   private Thing myItemReviewed;
   private Integer myRatingCount;
   private Integer myReviewCount;

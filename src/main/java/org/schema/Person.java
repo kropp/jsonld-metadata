@@ -1142,7 +1142,7 @@ public class Person extends Thing implements Competitor {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String additionalName;
@@ -1354,6 +1354,114 @@ public class Person extends Thing implements Competitor {
     myBirthPlace = birthPlace;
     myDeathPlace = deathPlace;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAdditionalName != null ? myAdditionalName.hashCode() : 0);
+    result = 31 * result + (myAddress != null ? myAddress.hashCode() : 0);
+    result = 31 * result + (myAffiliation != null ? myAffiliation.hashCode() : 0);
+    result = 31 * result + (myAlumniOf != null ? myAlumniOf.hashCode() : 0);
+    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
+    result = 31 * result + (myBirthDate != null ? myBirthDate.hashCode() : 0);
+    result = 31 * result + (myBrand != null ? myBrand.hashCode() : 0);
+    result = 31 * result + (myChildren != null ? myChildren.hashCode() : 0);
+    result = 31 * result + (myColleague != null ? myColleague.hashCode() : 0);
+    result = 31 * result + (myContactPoint != null ? myContactPoint.hashCode() : 0);
+    result = 31 * result + (myDeathDate != null ? myDeathDate.hashCode() : 0);
+    result = 31 * result + (myDuns != null ? myDuns.hashCode() : 0);
+    result = 31 * result + (myEmail != null ? myEmail.hashCode() : 0);
+    result = 31 * result + (myFamilyName != null ? myFamilyName.hashCode() : 0);
+    result = 31 * result + (myFaxNumber != null ? myFaxNumber.hashCode() : 0);
+    result = 31 * result + (myFollows != null ? myFollows.hashCode() : 0);
+    result = 31 * result + (myGender != null ? myGender.hashCode() : 0);
+    result = 31 * result + (myGivenName != null ? myGivenName.hashCode() : 0);
+    result = 31 * result + (myGlobalLocationNumber != null ? myGlobalLocationNumber.hashCode() : 0);
+    result = 31 * result + (myHasPOS != null ? myHasPOS.hashCode() : 0);
+    result = 31 * result + (myHeight != null ? myHeight.hashCode() : 0);
+    result = 31 * result + (myHomeLocation != null ? myHomeLocation.hashCode() : 0);
+    result = 31 * result + (myHonorificPrefix != null ? myHonorificPrefix.hashCode() : 0);
+    result = 31 * result + (myHonorificSuffix != null ? myHonorificSuffix.hashCode() : 0);
+    result = 31 * result + (myIsicV4 != null ? myIsicV4.hashCode() : 0);
+    result = 31 * result + (myJobTitle != null ? myJobTitle.hashCode() : 0);
+    result = 31 * result + (myKnows != null ? myKnows.hashCode() : 0);
+    result = 31 * result + (myMakesOffer != null ? myMakesOffer.hashCode() : 0);
+    result = 31 * result + (myMemberOf != null ? myMemberOf.hashCode() : 0);
+    result = 31 * result + (myNaics != null ? myNaics.hashCode() : 0);
+    result = 31 * result + (myNationality != null ? myNationality.hashCode() : 0);
+    result = 31 * result + (myNetWorth != null ? myNetWorth.hashCode() : 0);
+    result = 31 * result + (myOwns != null ? myOwns.hashCode() : 0);
+    result = 31 * result + (myParent != null ? myParent.hashCode() : 0);
+    result = 31 * result + (myPerformerIn != null ? myPerformerIn.hashCode() : 0);
+    result = 31 * result + (myRelatedTo != null ? myRelatedTo.hashCode() : 0);
+    result = 31 * result + (mySeeks != null ? mySeeks.hashCode() : 0);
+    result = 31 * result + (mySibling != null ? mySibling.hashCode() : 0);
+    result = 31 * result + (mySpouse != null ? mySpouse.hashCode() : 0);
+    result = 31 * result + (myTaxID != null ? myTaxID.hashCode() : 0);
+    result = 31 * result + (myTelephone != null ? myTelephone.hashCode() : 0);
+    result = 31 * result + (myVatID != null ? myVatID.hashCode() : 0);
+    result = 31 * result + (myWeight != null ? myWeight.hashCode() : 0);
+    result = 31 * result + (myWorkLocation != null ? myWorkLocation.hashCode() : 0);
+    result = 31 * result + (myWorksFor != null ? myWorksFor.hashCode() : 0);
+    result = 31 * result + (myBirthPlace != null ? myBirthPlace.hashCode() : 0);
+    result = 31 * result + (myDeathPlace != null ? myDeathPlace.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Person person = (Person) o;
+    if (!super.equals(o)) return false;
+    if (myAdditionalName != null ? !myAdditionalName.equals(person.myAdditionalName) : person.myAdditionalName != null) return false;
+    if (myAddress != null ? !myAddress.equals(person.myAddress) : person.myAddress != null) return false;
+    if (myAffiliation != null ? !myAffiliation.equals(person.myAffiliation) : person.myAffiliation != null) return false;
+    if (myAlumniOf != null ? !myAlumniOf.equals(person.myAlumniOf) : person.myAlumniOf != null) return false;
+    if (myAward != null ? !myAward.equals(person.myAward) : person.myAward != null) return false;
+    if (myBirthDate != null ? !myBirthDate.equals(person.myBirthDate) : person.myBirthDate != null) return false;
+    if (myBrand != null ? !myBrand.equals(person.myBrand) : person.myBrand != null) return false;
+    if (myChildren != null ? !myChildren.equals(person.myChildren) : person.myChildren != null) return false;
+    if (myColleague != null ? !myColleague.equals(person.myColleague) : person.myColleague != null) return false;
+    if (myContactPoint != null ? !myContactPoint.equals(person.myContactPoint) : person.myContactPoint != null) return false;
+    if (myDeathDate != null ? !myDeathDate.equals(person.myDeathDate) : person.myDeathDate != null) return false;
+    if (myDuns != null ? !myDuns.equals(person.myDuns) : person.myDuns != null) return false;
+    if (myEmail != null ? !myEmail.equals(person.myEmail) : person.myEmail != null) return false;
+    if (myFamilyName != null ? !myFamilyName.equals(person.myFamilyName) : person.myFamilyName != null) return false;
+    if (myFaxNumber != null ? !myFaxNumber.equals(person.myFaxNumber) : person.myFaxNumber != null) return false;
+    if (myFollows != null ? !myFollows.equals(person.myFollows) : person.myFollows != null) return false;
+    if (myGender != null ? !myGender.equals(person.myGender) : person.myGender != null) return false;
+    if (myGivenName != null ? !myGivenName.equals(person.myGivenName) : person.myGivenName != null) return false;
+    if (myGlobalLocationNumber != null ? !myGlobalLocationNumber.equals(person.myGlobalLocationNumber) : person.myGlobalLocationNumber != null) return false;
+    if (myHasPOS != null ? !myHasPOS.equals(person.myHasPOS) : person.myHasPOS != null) return false;
+    if (myHeight != null ? !myHeight.equals(person.myHeight) : person.myHeight != null) return false;
+    if (myHomeLocation != null ? !myHomeLocation.equals(person.myHomeLocation) : person.myHomeLocation != null) return false;
+    if (myHonorificPrefix != null ? !myHonorificPrefix.equals(person.myHonorificPrefix) : person.myHonorificPrefix != null) return false;
+    if (myHonorificSuffix != null ? !myHonorificSuffix.equals(person.myHonorificSuffix) : person.myHonorificSuffix != null) return false;
+    if (myIsicV4 != null ? !myIsicV4.equals(person.myIsicV4) : person.myIsicV4 != null) return false;
+    if (myJobTitle != null ? !myJobTitle.equals(person.myJobTitle) : person.myJobTitle != null) return false;
+    if (myKnows != null ? !myKnows.equals(person.myKnows) : person.myKnows != null) return false;
+    if (myMakesOffer != null ? !myMakesOffer.equals(person.myMakesOffer) : person.myMakesOffer != null) return false;
+    if (myMemberOf != null ? !myMemberOf.equals(person.myMemberOf) : person.myMemberOf != null) return false;
+    if (myNaics != null ? !myNaics.equals(person.myNaics) : person.myNaics != null) return false;
+    if (myNationality != null ? !myNationality.equals(person.myNationality) : person.myNationality != null) return false;
+    if (myNetWorth != null ? !myNetWorth.equals(person.myNetWorth) : person.myNetWorth != null) return false;
+    if (myOwns != null ? !myOwns.equals(person.myOwns) : person.myOwns != null) return false;
+    if (myParent != null ? !myParent.equals(person.myParent) : person.myParent != null) return false;
+    if (myPerformerIn != null ? !myPerformerIn.equals(person.myPerformerIn) : person.myPerformerIn != null) return false;
+    if (myRelatedTo != null ? !myRelatedTo.equals(person.myRelatedTo) : person.myRelatedTo != null) return false;
+    if (mySeeks != null ? !mySeeks.equals(person.mySeeks) : person.mySeeks != null) return false;
+    if (mySibling != null ? !mySibling.equals(person.mySibling) : person.mySibling != null) return false;
+    if (mySpouse != null ? !mySpouse.equals(person.mySpouse) : person.mySpouse != null) return false;
+    if (myTaxID != null ? !myTaxID.equals(person.myTaxID) : person.myTaxID != null) return false;
+    if (myTelephone != null ? !myTelephone.equals(person.myTelephone) : person.myTelephone != null) return false;
+    if (myVatID != null ? !myVatID.equals(person.myVatID) : person.myVatID != null) return false;
+    if (myWeight != null ? !myWeight.equals(person.myWeight) : person.myWeight != null) return false;
+    if (myWorkLocation != null ? !myWorkLocation.equals(person.myWorkLocation) : person.myWorkLocation != null) return false;
+    if (myWorksFor != null ? !myWorksFor.equals(person.myWorksFor) : person.myWorksFor != null) return false;
+    if (myBirthPlace != null ? !myBirthPlace.equals(person.myBirthPlace) : person.myBirthPlace != null) return false;
+    if (myDeathPlace != null ? !myDeathPlace.equals(person.myDeathPlace) : person.myDeathPlace != null) return false;
+    return true;
+  }
+
   private String myAdditionalName;
   private PostalAddress myAddress;
   private Organization myAffiliation;

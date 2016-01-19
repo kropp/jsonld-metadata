@@ -553,7 +553,7 @@ Note: Publishers should be aware that applications designed to use specific sche
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private PostalAddress address;
@@ -646,6 +646,50 @@ Note: Publishers should be aware that applications designed to use specific sche
     myTelephone = telephone;
     myAdditionalProperty = additionalProperty;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAddress != null ? myAddress.hashCode() : 0);
+    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
+    result = 31 * result + (myContainedIn != null ? myContainedIn.hashCode() : 0);
+    result = 31 * result + (myEvent != null ? myEvent.hashCode() : 0);
+    result = 31 * result + (myFaxNumber != null ? myFaxNumber.hashCode() : 0);
+    result = 31 * result + (myGeo != null ? myGeo.hashCode() : 0);
+    result = 31 * result + (myGlobalLocationNumber != null ? myGlobalLocationNumber.hashCode() : 0);
+    result = 31 * result + (myIsicV4 != null ? myIsicV4.hashCode() : 0);
+    result = 31 * result + (myLogo != null ? myLogo.hashCode() : 0);
+    result = 31 * result + (myHasMap != null ? myHasMap.hashCode() : 0);
+    result = 31 * result + (myOpeningHoursSpecification != null ? myOpeningHoursSpecification.hashCode() : 0);
+    result = 31 * result + (myPhoto != null ? myPhoto.hashCode() : 0);
+    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
+    result = 31 * result + (myTelephone != null ? myTelephone.hashCode() : 0);
+    result = 31 * result + (myAdditionalProperty != null ? myAdditionalProperty.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Place place = (Place) o;
+    if (!super.equals(o)) return false;
+    if (myAddress != null ? !myAddress.equals(place.myAddress) : place.myAddress != null) return false;
+    if (myAggregateRating != null ? !myAggregateRating.equals(place.myAggregateRating) : place.myAggregateRating != null) return false;
+    if (myContainedIn != null ? !myContainedIn.equals(place.myContainedIn) : place.myContainedIn != null) return false;
+    if (myEvent != null ? !myEvent.equals(place.myEvent) : place.myEvent != null) return false;
+    if (myFaxNumber != null ? !myFaxNumber.equals(place.myFaxNumber) : place.myFaxNumber != null) return false;
+    if (myGeo != null ? !myGeo.equals(place.myGeo) : place.myGeo != null) return false;
+    if (myGlobalLocationNumber != null ? !myGlobalLocationNumber.equals(place.myGlobalLocationNumber) : place.myGlobalLocationNumber != null) return false;
+    if (myIsicV4 != null ? !myIsicV4.equals(place.myIsicV4) : place.myIsicV4 != null) return false;
+    if (myLogo != null ? !myLogo.equals(place.myLogo) : place.myLogo != null) return false;
+    if (myHasMap != null ? !myHasMap.equals(place.myHasMap) : place.myHasMap != null) return false;
+    if (myOpeningHoursSpecification != null ? !myOpeningHoursSpecification.equals(place.myOpeningHoursSpecification) : place.myOpeningHoursSpecification != null) return false;
+    if (myPhoto != null ? !myPhoto.equals(place.myPhoto) : place.myPhoto != null) return false;
+    if (myReview != null ? !myReview.equals(place.myReview) : place.myReview != null) return false;
+    if (myTelephone != null ? !myTelephone.equals(place.myTelephone) : place.myTelephone != null) return false;
+    if (myAdditionalProperty != null ? !myAdditionalProperty.equals(place.myAdditionalProperty) : place.myAdditionalProperty != null) return false;
+    return true;
+  }
+
   private PostalAddress myAddress;
   private AggregateRating myAggregateRating;
   private Place myContainedIn;

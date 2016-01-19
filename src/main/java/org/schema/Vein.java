@@ -479,7 +479,7 @@ public class Vein extends Vessel {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Vessel drainsTo;
@@ -565,6 +565,26 @@ public class Vein extends Vessel {
     myRegionDrained = regionDrained;
     myTributary = tributary;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDrainsTo != null ? myDrainsTo.hashCode() : 0);
+    result = 31 * result + (myRegionDrained != null ? myRegionDrained.hashCode() : 0);
+    result = 31 * result + (myTributary != null ? myTributary.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Vein vein = (Vein) o;
+    if (!super.equals(o)) return false;
+    if (myDrainsTo != null ? !myDrainsTo.equals(vein.myDrainsTo) : vein.myDrainsTo != null) return false;
+    if (myRegionDrained != null ? !myRegionDrained.equals(vein.myRegionDrained) : vein.myRegionDrained != null) return false;
+    if (myTributary != null ? !myTributary.equals(vein.myTributary) : vein.myTributary != null) return false;
+    return true;
+  }
+
   private Vessel myDrainsTo;
   private AnatomicalStructureOrAnatomicalSystem myRegionDrained;
   private AnatomicalStructure myTributary;

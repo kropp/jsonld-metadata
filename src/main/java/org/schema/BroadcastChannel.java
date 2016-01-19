@@ -284,7 +284,7 @@ public class BroadcastChannel extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String broadcastChannelId;
@@ -329,6 +329,28 @@ public class BroadcastChannel extends Intangible {
     myBroadcastServiceTier = broadcastServiceTier;
     myProvidesBroadcastService = providesBroadcastService;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myBroadcastChannelId != null ? myBroadcastChannelId.hashCode() : 0);
+    result = 31 * result + (myInBroadcastLineup != null ? myInBroadcastLineup.hashCode() : 0);
+    result = 31 * result + (myBroadcastServiceTier != null ? myBroadcastServiceTier.hashCode() : 0);
+    result = 31 * result + (myProvidesBroadcastService != null ? myProvidesBroadcastService.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BroadcastChannel broadcastChannel = (BroadcastChannel) o;
+    if (!super.equals(o)) return false;
+    if (myBroadcastChannelId != null ? !myBroadcastChannelId.equals(broadcastChannel.myBroadcastChannelId) : broadcastChannel.myBroadcastChannelId != null) return false;
+    if (myInBroadcastLineup != null ? !myInBroadcastLineup.equals(broadcastChannel.myInBroadcastLineup) : broadcastChannel.myInBroadcastLineup != null) return false;
+    if (myBroadcastServiceTier != null ? !myBroadcastServiceTier.equals(broadcastChannel.myBroadcastServiceTier) : broadcastChannel.myBroadcastServiceTier != null) return false;
+    if (myProvidesBroadcastService != null ? !myProvidesBroadcastService.equals(broadcastChannel.myProvidesBroadcastService) : broadcastChannel.myProvidesBroadcastService != null) return false;
+    return true;
+  }
+
   private String myBroadcastChannelId;
   private CableOrSatelliteService myInBroadcastLineup;
   private String myBroadcastServiceTier;

@@ -316,7 +316,7 @@ public class BreadcrumbList extends ItemList {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Integer numberOfItems;
@@ -359,4 +359,18 @@ public class BreadcrumbList extends ItemList {
   protected BreadcrumbList(Integer numberOfItems, ItemListOrderTypeOrString itemListOrder, ListItemOrStringOrThing itemListElement, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(numberOfItems, itemListOrder, itemListElement, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BreadcrumbList breadcrumbList = (BreadcrumbList) o;
+    if (!super.equals(o)) return false;
+    return true;
+  }
+
 }

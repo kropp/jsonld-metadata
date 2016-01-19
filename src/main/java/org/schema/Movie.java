@@ -1312,7 +1312,7 @@ public class Movie extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Person actor;
@@ -1560,6 +1560,34 @@ public class Movie extends CreativeWork {
     mySubtitleLanguage = subtitleLanguage;
     myTrailer = trailer;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActor != null ? myActor.hashCode() : 0);
+    result = 31 * result + (myDirector != null ? myDirector.hashCode() : 0);
+    result = 31 * result + (myDuration != null ? myDuration.hashCode() : 0);
+    result = 31 * result + (myMusicBy != null ? myMusicBy.hashCode() : 0);
+    result = 31 * result + (myProductionCompany != null ? myProductionCompany.hashCode() : 0);
+    result = 31 * result + (mySubtitleLanguage != null ? mySubtitleLanguage.hashCode() : 0);
+    result = 31 * result + (myTrailer != null ? myTrailer.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Movie movie = (Movie) o;
+    if (!super.equals(o)) return false;
+    if (myActor != null ? !myActor.equals(movie.myActor) : movie.myActor != null) return false;
+    if (myDirector != null ? !myDirector.equals(movie.myDirector) : movie.myDirector != null) return false;
+    if (myDuration != null ? !myDuration.equals(movie.myDuration) : movie.myDuration != null) return false;
+    if (myMusicBy != null ? !myMusicBy.equals(movie.myMusicBy) : movie.myMusicBy != null) return false;
+    if (myProductionCompany != null ? !myProductionCompany.equals(movie.myProductionCompany) : movie.myProductionCompany != null) return false;
+    if (mySubtitleLanguage != null ? !mySubtitleLanguage.equals(movie.mySubtitleLanguage) : movie.mySubtitleLanguage != null) return false;
+    if (myTrailer != null ? !myTrailer.equals(movie.myTrailer) : movie.myTrailer != null) return false;
+    return true;
+  }
+
   private Person myActor;
   private Person myDirector;
   private Duration myDuration;

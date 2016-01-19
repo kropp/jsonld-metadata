@@ -854,7 +854,7 @@ public class Organization extends Thing {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private PostalAddress address;
@@ -1009,6 +1009,84 @@ public class Organization extends Thing {
     myVatID = vatID;
     myFoundingLocation = foundingLocation;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAddress != null ? myAddress.hashCode() : 0);
+    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
+    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
+    result = 31 * result + (myBrand != null ? myBrand.hashCode() : 0);
+    result = 31 * result + (myContactPoint != null ? myContactPoint.hashCode() : 0);
+    result = 31 * result + (myDepartment != null ? myDepartment.hashCode() : 0);
+    result = 31 * result + (myDuns != null ? myDuns.hashCode() : 0);
+    result = 31 * result + (myEmail != null ? myEmail.hashCode() : 0);
+    result = 31 * result + (myEmployee != null ? myEmployee.hashCode() : 0);
+    result = 31 * result + (myEvent != null ? myEvent.hashCode() : 0);
+    result = 31 * result + (myFaxNumber != null ? myFaxNumber.hashCode() : 0);
+    result = 31 * result + (myFounder != null ? myFounder.hashCode() : 0);
+    result = 31 * result + (myDissolutionDate != null ? myDissolutionDate.hashCode() : 0);
+    result = 31 * result + (myFoundingDate != null ? myFoundingDate.hashCode() : 0);
+    result = 31 * result + (myGlobalLocationNumber != null ? myGlobalLocationNumber.hashCode() : 0);
+    result = 31 * result + (myHasPOS != null ? myHasPOS.hashCode() : 0);
+    result = 31 * result + (myIsicV4 != null ? myIsicV4.hashCode() : 0);
+    result = 31 * result + (myLegalName != null ? myLegalName.hashCode() : 0);
+    result = 31 * result + (myLogo != null ? myLogo.hashCode() : 0);
+    result = 31 * result + (myMakesOffer != null ? myMakesOffer.hashCode() : 0);
+    result = 31 * result + (myMember != null ? myMember.hashCode() : 0);
+    result = 31 * result + (myMemberOf != null ? myMemberOf.hashCode() : 0);
+    result = 31 * result + (myNaics != null ? myNaics.hashCode() : 0);
+    result = 31 * result + (myNumberOfEmployees != null ? myNumberOfEmployees.hashCode() : 0);
+    result = 31 * result + (myOwns != null ? myOwns.hashCode() : 0);
+    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
+    result = 31 * result + (mySeeks != null ? mySeeks.hashCode() : 0);
+    result = 31 * result + (mySubOrganization != null ? mySubOrganization.hashCode() : 0);
+    result = 31 * result + (myTaxID != null ? myTaxID.hashCode() : 0);
+    result = 31 * result + (myTelephone != null ? myTelephone.hashCode() : 0);
+    result = 31 * result + (myVatID != null ? myVatID.hashCode() : 0);
+    result = 31 * result + (myFoundingLocation != null ? myFoundingLocation.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Organization organization = (Organization) o;
+    if (!super.equals(o)) return false;
+    if (myAddress != null ? !myAddress.equals(organization.myAddress) : organization.myAddress != null) return false;
+    if (myAggregateRating != null ? !myAggregateRating.equals(organization.myAggregateRating) : organization.myAggregateRating != null) return false;
+    if (myAward != null ? !myAward.equals(organization.myAward) : organization.myAward != null) return false;
+    if (myBrand != null ? !myBrand.equals(organization.myBrand) : organization.myBrand != null) return false;
+    if (myContactPoint != null ? !myContactPoint.equals(organization.myContactPoint) : organization.myContactPoint != null) return false;
+    if (myDepartment != null ? !myDepartment.equals(organization.myDepartment) : organization.myDepartment != null) return false;
+    if (myDuns != null ? !myDuns.equals(organization.myDuns) : organization.myDuns != null) return false;
+    if (myEmail != null ? !myEmail.equals(organization.myEmail) : organization.myEmail != null) return false;
+    if (myEmployee != null ? !myEmployee.equals(organization.myEmployee) : organization.myEmployee != null) return false;
+    if (myEvent != null ? !myEvent.equals(organization.myEvent) : organization.myEvent != null) return false;
+    if (myFaxNumber != null ? !myFaxNumber.equals(organization.myFaxNumber) : organization.myFaxNumber != null) return false;
+    if (myFounder != null ? !myFounder.equals(organization.myFounder) : organization.myFounder != null) return false;
+    if (myDissolutionDate != null ? !myDissolutionDate.equals(organization.myDissolutionDate) : organization.myDissolutionDate != null) return false;
+    if (myFoundingDate != null ? !myFoundingDate.equals(organization.myFoundingDate) : organization.myFoundingDate != null) return false;
+    if (myGlobalLocationNumber != null ? !myGlobalLocationNumber.equals(organization.myGlobalLocationNumber) : organization.myGlobalLocationNumber != null) return false;
+    if (myHasPOS != null ? !myHasPOS.equals(organization.myHasPOS) : organization.myHasPOS != null) return false;
+    if (myIsicV4 != null ? !myIsicV4.equals(organization.myIsicV4) : organization.myIsicV4 != null) return false;
+    if (myLegalName != null ? !myLegalName.equals(organization.myLegalName) : organization.myLegalName != null) return false;
+    if (myLogo != null ? !myLogo.equals(organization.myLogo) : organization.myLogo != null) return false;
+    if (myMakesOffer != null ? !myMakesOffer.equals(organization.myMakesOffer) : organization.myMakesOffer != null) return false;
+    if (myMember != null ? !myMember.equals(organization.myMember) : organization.myMember != null) return false;
+    if (myMemberOf != null ? !myMemberOf.equals(organization.myMemberOf) : organization.myMemberOf != null) return false;
+    if (myNaics != null ? !myNaics.equals(organization.myNaics) : organization.myNaics != null) return false;
+    if (myNumberOfEmployees != null ? !myNumberOfEmployees.equals(organization.myNumberOfEmployees) : organization.myNumberOfEmployees != null) return false;
+    if (myOwns != null ? !myOwns.equals(organization.myOwns) : organization.myOwns != null) return false;
+    if (myReview != null ? !myReview.equals(organization.myReview) : organization.myReview != null) return false;
+    if (mySeeks != null ? !mySeeks.equals(organization.mySeeks) : organization.mySeeks != null) return false;
+    if (mySubOrganization != null ? !mySubOrganization.equals(organization.mySubOrganization) : organization.mySubOrganization != null) return false;
+    if (myTaxID != null ? !myTaxID.equals(organization.myTaxID) : organization.myTaxID != null) return false;
+    if (myTelephone != null ? !myTelephone.equals(organization.myTelephone) : organization.myTelephone != null) return false;
+    if (myVatID != null ? !myVatID.equals(organization.myVatID) : organization.myVatID != null) return false;
+    if (myFoundingLocation != null ? !myFoundingLocation.equals(organization.myFoundingLocation) : organization.myFoundingLocation != null) return false;
+    return true;
+  }
+
   private PostalAddress myAddress;
   private AggregateRating myAggregateRating;
   private String myAward;

@@ -675,7 +675,7 @@ public class Corporation extends Organization {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String tickerSymbol;
@@ -801,5 +801,21 @@ public class Corporation extends Organization {
     super(address, aggregateRating, award, brand, contactPoint, department, duns, email, employee, event, faxNumber, founder, dissolutionDate, foundingDate, globalLocationNumber, hasPOS, isicV4, legalName, logo, makesOffer, member, memberOf, naics, numberOfEmployees, owns, review, seeks, subOrganization, taxID, telephone, vatID, foundingLocation, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myTickerSymbol = tickerSymbol;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myTickerSymbol != null ? myTickerSymbol.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Corporation corporation = (Corporation) o;
+    if (!super.equals(o)) return false;
+    if (myTickerSymbol != null ? !myTickerSymbol.equals(corporation.myTickerSymbol) : corporation.myTickerSymbol != null) return false;
+    return true;
+  }
+
   private String myTickerSymbol;
 }

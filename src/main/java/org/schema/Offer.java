@@ -219,7 +219,7 @@ public class Offer extends Intangible {
 </ul>
       
    */
-  public NumberOrString getPrice() {
+  public Number getPrice() {
     return myPrice;
   }
   /**
@@ -690,9 +690,93 @@ public class Offer extends Intangible {
 </ul>
       
      */
-    @NotNull public Builder price(@NotNull Number number) {
-      if (this.price == null) this.price = new NumberOrString();
-      this.price.setNumber(number);
+    @NotNull public Builder price(@NotNull Integer integer) {
+      if (this.price == null) this.price = new Number();
+      this.price.setInteger(integer);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Long price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setLong(price);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Float price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setFloat(price);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Double price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setDouble(price);
       return this;
     }
     /**
@@ -719,7 +803,7 @@ public class Offer extends Intangible {
       
      */
     @NotNull public Builder price(@NotNull String price) {
-      if (this.price == null) this.price = new NumberOrString();
+      if (this.price == null) this.price = new Number();
       this.price.setString(price);
       return this;
     }
@@ -1008,7 +1092,10 @@ public class Offer extends Intangible {
         if ("itemCondition".equals(key) && value instanceof OfferItemCondition) { itemCondition((OfferItemCondition)value); continue; }
         if ("itemOffered".equals(key) && value instanceof Product) { itemOffered((Product)value); continue; }
         if ("mpn".equals(key) && value instanceof String) { mpn((String)value); continue; }
-        if ("price".equals(key) && value instanceof Number) { price((Number)value); continue; }
+        if ("price".equals(key) && value instanceof Integer) { price((Integer)value); continue; }
+        if ("price".equals(key) && value instanceof Long) { price((Long)value); continue; }
+        if ("price".equals(key) && value instanceof Float) { price((Float)value); continue; }
+        if ("price".equals(key) && value instanceof Double) { price((Double)value); continue; }
         if ("price".equals(key) && value instanceof String) { price((String)value); continue; }
         if ("priceSpecification".equals(key) && value instanceof PriceSpecification) { priceSpecification((PriceSpecification)value); continue; }
         if ("priceValidUntil".equals(key) && value instanceof java.util.Date) { priceValidUntil((java.util.Date)value); continue; }
@@ -1028,7 +1115,7 @@ public class Offer extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private PaymentMethod acceptedPaymentMethod;
@@ -1058,7 +1145,7 @@ public class Offer extends Intangible {
     private OfferItemCondition itemCondition;
     private Product itemOffered;
     private String mpn;
-    private NumberOrString price;
+    private Number price;
     private PriceSpecification priceSpecification;
     private java.util.Date priceValidUntil;
     private Review review;
@@ -1135,7 +1222,10 @@ public class Offer extends Intangible {
     @NotNull Builder itemOffered(@NotNull Product product);
     @NotNull Builder itemOffered(@NotNull Product.Builder product);
     @NotNull Builder mpn(@NotNull String mpn);
-    @NotNull Builder price(@NotNull Number number);
+    @NotNull Builder price(@NotNull Integer integer);
+    @NotNull Builder price(@NotNull Long price);
+    @NotNull Builder price(@NotNull Float price);
+    @NotNull Builder price(@NotNull Double price);
     @NotNull Builder price(@NotNull String price);
     @NotNull Builder priceSpecification(@NotNull PriceSpecification priceSpecification);
     @NotNull Builder priceSpecification(@NotNull PriceSpecification.Builder priceSpecification);
@@ -1163,7 +1253,7 @@ public class Offer extends Intangible {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected Offer(PaymentMethod acceptedPaymentMethod, Offer addOn, QuantitativeValue advanceBookingRequirement, AggregateRating aggregateRating, ItemAvailability availability, java.util.Date availabilityEnds, java.util.Date availabilityStarts, Place availableAtOrFrom, DeliveryMethod availableDeliveryMethod, BusinessFunction businessFunction, PhysicalActivityCategoryOrStringOrThing category, QuantitativeValue deliveryLeadTime, BusinessEntityType eligibleCustomerType, QuantitativeValue eligibleDuration, QuantitativeValue eligibleQuantity, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, PriceSpecification eligibleTransactionVolume, String gtin12, String gtin13, String gtin14, String gtin8, TypeAndQuantityNode includesObject, QuantitativeValue inventoryLevel, OfferItemCondition itemCondition, Product itemOffered, String mpn, NumberOrString price, PriceSpecification priceSpecification, java.util.Date priceValidUntil, Review review, Participant seller, String sku, java.util.Date validFrom, java.util.Date validThrough, WarrantyPromise warranty, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected Offer(PaymentMethod acceptedPaymentMethod, Offer addOn, QuantitativeValue advanceBookingRequirement, AggregateRating aggregateRating, ItemAvailability availability, java.util.Date availabilityEnds, java.util.Date availabilityStarts, Place availableAtOrFrom, DeliveryMethod availableDeliveryMethod, BusinessFunction businessFunction, PhysicalActivityCategoryOrStringOrThing category, QuantitativeValue deliveryLeadTime, BusinessEntityType eligibleCustomerType, QuantitativeValue eligibleDuration, QuantitativeValue eligibleQuantity, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, PriceSpecification eligibleTransactionVolume, String gtin12, String gtin13, String gtin14, String gtin8, TypeAndQuantityNode includesObject, QuantitativeValue inventoryLevel, OfferItemCondition itemCondition, Product itemOffered, String mpn, Number price, PriceSpecification priceSpecification, java.util.Date priceValidUntil, Review review, Participant seller, String sku, java.util.Date validFrom, java.util.Date validThrough, WarrantyPromise warranty, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAcceptedPaymentMethod = acceptedPaymentMethod;
     myAddOn = addOn;
@@ -1203,6 +1293,94 @@ public class Offer extends Intangible {
     myWarranty = warranty;
     myPriceCurrency = priceCurrency;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAcceptedPaymentMethod != null ? myAcceptedPaymentMethod.hashCode() : 0);
+    result = 31 * result + (myAddOn != null ? myAddOn.hashCode() : 0);
+    result = 31 * result + (myAdvanceBookingRequirement != null ? myAdvanceBookingRequirement.hashCode() : 0);
+    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
+    result = 31 * result + (myAvailability != null ? myAvailability.hashCode() : 0);
+    result = 31 * result + (myAvailabilityEnds != null ? myAvailabilityEnds.hashCode() : 0);
+    result = 31 * result + (myAvailabilityStarts != null ? myAvailabilityStarts.hashCode() : 0);
+    result = 31 * result + (myAvailableAtOrFrom != null ? myAvailableAtOrFrom.hashCode() : 0);
+    result = 31 * result + (myAvailableDeliveryMethod != null ? myAvailableDeliveryMethod.hashCode() : 0);
+    result = 31 * result + (myBusinessFunction != null ? myBusinessFunction.hashCode() : 0);
+    result = 31 * result + (myCategory != null ? myCategory.hashCode() : 0);
+    result = 31 * result + (myDeliveryLeadTime != null ? myDeliveryLeadTime.hashCode() : 0);
+    result = 31 * result + (myEligibleCustomerType != null ? myEligibleCustomerType.hashCode() : 0);
+    result = 31 * result + (myEligibleDuration != null ? myEligibleDuration.hashCode() : 0);
+    result = 31 * result + (myEligibleQuantity != null ? myEligibleQuantity.hashCode() : 0);
+    result = 31 * result + (myEligibleRegion != null ? myEligibleRegion.hashCode() : 0);
+    result = 31 * result + (myIneligibleRegion != null ? myIneligibleRegion.hashCode() : 0);
+    result = 31 * result + (myEligibleTransactionVolume != null ? myEligibleTransactionVolume.hashCode() : 0);
+    result = 31 * result + (myGtin12 != null ? myGtin12.hashCode() : 0);
+    result = 31 * result + (myGtin13 != null ? myGtin13.hashCode() : 0);
+    result = 31 * result + (myGtin14 != null ? myGtin14.hashCode() : 0);
+    result = 31 * result + (myGtin8 != null ? myGtin8.hashCode() : 0);
+    result = 31 * result + (myIncludesObject != null ? myIncludesObject.hashCode() : 0);
+    result = 31 * result + (myInventoryLevel != null ? myInventoryLevel.hashCode() : 0);
+    result = 31 * result + (myItemCondition != null ? myItemCondition.hashCode() : 0);
+    result = 31 * result + (myItemOffered != null ? myItemOffered.hashCode() : 0);
+    result = 31 * result + (myMpn != null ? myMpn.hashCode() : 0);
+    result = 31 * result + (myPrice != null ? myPrice.hashCode() : 0);
+    result = 31 * result + (myPriceSpecification != null ? myPriceSpecification.hashCode() : 0);
+    result = 31 * result + (myPriceValidUntil != null ? myPriceValidUntil.hashCode() : 0);
+    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
+    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
+    result = 31 * result + (mySku != null ? mySku.hashCode() : 0);
+    result = 31 * result + (myValidFrom != null ? myValidFrom.hashCode() : 0);
+    result = 31 * result + (myValidThrough != null ? myValidThrough.hashCode() : 0);
+    result = 31 * result + (myWarranty != null ? myWarranty.hashCode() : 0);
+    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Offer offer = (Offer) o;
+    if (!super.equals(o)) return false;
+    if (myAcceptedPaymentMethod != null ? !myAcceptedPaymentMethod.equals(offer.myAcceptedPaymentMethod) : offer.myAcceptedPaymentMethod != null) return false;
+    if (myAddOn != null ? !myAddOn.equals(offer.myAddOn) : offer.myAddOn != null) return false;
+    if (myAdvanceBookingRequirement != null ? !myAdvanceBookingRequirement.equals(offer.myAdvanceBookingRequirement) : offer.myAdvanceBookingRequirement != null) return false;
+    if (myAggregateRating != null ? !myAggregateRating.equals(offer.myAggregateRating) : offer.myAggregateRating != null) return false;
+    if (myAvailability != null ? !myAvailability.equals(offer.myAvailability) : offer.myAvailability != null) return false;
+    if (myAvailabilityEnds != null ? !myAvailabilityEnds.equals(offer.myAvailabilityEnds) : offer.myAvailabilityEnds != null) return false;
+    if (myAvailabilityStarts != null ? !myAvailabilityStarts.equals(offer.myAvailabilityStarts) : offer.myAvailabilityStarts != null) return false;
+    if (myAvailableAtOrFrom != null ? !myAvailableAtOrFrom.equals(offer.myAvailableAtOrFrom) : offer.myAvailableAtOrFrom != null) return false;
+    if (myAvailableDeliveryMethod != null ? !myAvailableDeliveryMethod.equals(offer.myAvailableDeliveryMethod) : offer.myAvailableDeliveryMethod != null) return false;
+    if (myBusinessFunction != null ? !myBusinessFunction.equals(offer.myBusinessFunction) : offer.myBusinessFunction != null) return false;
+    if (myCategory != null ? !myCategory.equals(offer.myCategory) : offer.myCategory != null) return false;
+    if (myDeliveryLeadTime != null ? !myDeliveryLeadTime.equals(offer.myDeliveryLeadTime) : offer.myDeliveryLeadTime != null) return false;
+    if (myEligibleCustomerType != null ? !myEligibleCustomerType.equals(offer.myEligibleCustomerType) : offer.myEligibleCustomerType != null) return false;
+    if (myEligibleDuration != null ? !myEligibleDuration.equals(offer.myEligibleDuration) : offer.myEligibleDuration != null) return false;
+    if (myEligibleQuantity != null ? !myEligibleQuantity.equals(offer.myEligibleQuantity) : offer.myEligibleQuantity != null) return false;
+    if (myEligibleRegion != null ? !myEligibleRegion.equals(offer.myEligibleRegion) : offer.myEligibleRegion != null) return false;
+    if (myIneligibleRegion != null ? !myIneligibleRegion.equals(offer.myIneligibleRegion) : offer.myIneligibleRegion != null) return false;
+    if (myEligibleTransactionVolume != null ? !myEligibleTransactionVolume.equals(offer.myEligibleTransactionVolume) : offer.myEligibleTransactionVolume != null) return false;
+    if (myGtin12 != null ? !myGtin12.equals(offer.myGtin12) : offer.myGtin12 != null) return false;
+    if (myGtin13 != null ? !myGtin13.equals(offer.myGtin13) : offer.myGtin13 != null) return false;
+    if (myGtin14 != null ? !myGtin14.equals(offer.myGtin14) : offer.myGtin14 != null) return false;
+    if (myGtin8 != null ? !myGtin8.equals(offer.myGtin8) : offer.myGtin8 != null) return false;
+    if (myIncludesObject != null ? !myIncludesObject.equals(offer.myIncludesObject) : offer.myIncludesObject != null) return false;
+    if (myInventoryLevel != null ? !myInventoryLevel.equals(offer.myInventoryLevel) : offer.myInventoryLevel != null) return false;
+    if (myItemCondition != null ? !myItemCondition.equals(offer.myItemCondition) : offer.myItemCondition != null) return false;
+    if (myItemOffered != null ? !myItemOffered.equals(offer.myItemOffered) : offer.myItemOffered != null) return false;
+    if (myMpn != null ? !myMpn.equals(offer.myMpn) : offer.myMpn != null) return false;
+    if (myPrice != null ? !myPrice.equals(offer.myPrice) : offer.myPrice != null) return false;
+    if (myPriceSpecification != null ? !myPriceSpecification.equals(offer.myPriceSpecification) : offer.myPriceSpecification != null) return false;
+    if (myPriceValidUntil != null ? !myPriceValidUntil.equals(offer.myPriceValidUntil) : offer.myPriceValidUntil != null) return false;
+    if (myReview != null ? !myReview.equals(offer.myReview) : offer.myReview != null) return false;
+    if (mySeller != null ? !mySeller.equals(offer.mySeller) : offer.mySeller != null) return false;
+    if (mySku != null ? !mySku.equals(offer.mySku) : offer.mySku != null) return false;
+    if (myValidFrom != null ? !myValidFrom.equals(offer.myValidFrom) : offer.myValidFrom != null) return false;
+    if (myValidThrough != null ? !myValidThrough.equals(offer.myValidThrough) : offer.myValidThrough != null) return false;
+    if (myWarranty != null ? !myWarranty.equals(offer.myWarranty) : offer.myWarranty != null) return false;
+    if (myPriceCurrency != null ? !myPriceCurrency.equals(offer.myPriceCurrency) : offer.myPriceCurrency != null) return false;
+    return true;
+  }
+
   private PaymentMethod myAcceptedPaymentMethod;
   private Offer myAddOn;
   private QuantitativeValue myAdvanceBookingRequirement;
@@ -1230,7 +1408,7 @@ public class Offer extends Intangible {
   private OfferItemCondition myItemCondition;
   private Product myItemOffered;
   private String myMpn;
-  private NumberOrString myPrice;
+  private Number myPrice;
   private PriceSpecification myPriceSpecification;
   private java.util.Date myPriceValidUntil;
   private Review myReview;

@@ -39,4 +39,21 @@ class PropertyValueOrString {
     myPropertyValue = null;
     myString = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myPropertyValue != null ? myPropertyValue.hashCode() : 0);
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PropertyValueOrString propertyValueOrString = (PropertyValueOrString) o;
+    if (myPropertyValue != null ? !myPropertyValue.equals(propertyValueOrString.myPropertyValue) : propertyValueOrString.myPropertyValue != null) return false;
+    if (myString != null ? !myString.equals(propertyValueOrString.myString) : propertyValueOrString.myString != null) return false;
+    return true;
+  }
+
 }

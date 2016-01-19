@@ -306,7 +306,7 @@ public class Thing {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String additionalType;
@@ -345,6 +345,37 @@ public class Thing {
     myPotentialAction = potentialAction;
     myId = id;
   }
+
+  @Override public int hashCode() {
+    int result = 0;
+    result = 31 * result + (myAdditionalType != null ? myAdditionalType.hashCode() : 0);
+    result = 31 * result + (myAlternateName != null ? myAlternateName.hashCode() : 0);
+    result = 31 * result + (myDescription != null ? myDescription.hashCode() : 0);
+    result = 31 * result + (myMainEntityOfPage != null ? myMainEntityOfPage.hashCode() : 0);
+    result = 31 * result + (myName != null ? myName.hashCode() : 0);
+    result = 31 * result + (mySameAs != null ? mySameAs.hashCode() : 0);
+    result = 31 * result + (myUrl != null ? myUrl.hashCode() : 0);
+    result = 31 * result + (myPotentialAction != null ? myPotentialAction.hashCode() : 0);
+    result = 31 * result + (myId != null ? myId.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Thing thing = (Thing) o;
+    if (myAdditionalType != null ? !myAdditionalType.equals(thing.myAdditionalType) : thing.myAdditionalType != null) return false;
+    if (myAlternateName != null ? !myAlternateName.equals(thing.myAlternateName) : thing.myAlternateName != null) return false;
+    if (myDescription != null ? !myDescription.equals(thing.myDescription) : thing.myDescription != null) return false;
+    if (myMainEntityOfPage != null ? !myMainEntityOfPage.equals(thing.myMainEntityOfPage) : thing.myMainEntityOfPage != null) return false;
+    if (myName != null ? !myName.equals(thing.myName) : thing.myName != null) return false;
+    if (mySameAs != null ? !mySameAs.equals(thing.mySameAs) : thing.mySameAs != null) return false;
+    if (myUrl != null ? !myUrl.equals(thing.myUrl) : thing.myUrl != null) return false;
+    if (myPotentialAction != null ? !myPotentialAction.equals(thing.myPotentialAction) : thing.myPotentialAction != null) return false;
+    if (myId != null ? !myId.equals(thing.myId) : thing.myId != null) return false;
+    return true;
+  }
+
   private String myAdditionalType;
   private String myAlternateName;
   private String myDescription;

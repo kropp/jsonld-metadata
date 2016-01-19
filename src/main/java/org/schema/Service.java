@@ -366,7 +366,7 @@ public class Service extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private AggregateRating aggregateRating;
@@ -426,6 +426,34 @@ public class Service extends Intangible {
     myServiceType = serviceType;
     myProvider = provider;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
+    result = 31 * result + (myAvailableChannel != null ? myAvailableChannel.hashCode() : 0);
+    result = 31 * result + (myServiceOutput != null ? myServiceOutput.hashCode() : 0);
+    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
+    result = 31 * result + (myServiceArea != null ? myServiceArea.hashCode() : 0);
+    result = 31 * result + (myServiceType != null ? myServiceType.hashCode() : 0);
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Service service = (Service) o;
+    if (!super.equals(o)) return false;
+    if (myAggregateRating != null ? !myAggregateRating.equals(service.myAggregateRating) : service.myAggregateRating != null) return false;
+    if (myAvailableChannel != null ? !myAvailableChannel.equals(service.myAvailableChannel) : service.myAvailableChannel != null) return false;
+    if (myServiceOutput != null ? !myServiceOutput.equals(service.myServiceOutput) : service.myServiceOutput != null) return false;
+    if (myReview != null ? !myReview.equals(service.myReview) : service.myReview != null) return false;
+    if (myServiceArea != null ? !myServiceArea.equals(service.myServiceArea) : service.myServiceArea != null) return false;
+    if (myServiceType != null ? !myServiceType.equals(service.myServiceType) : service.myServiceType != null) return false;
+    if (myProvider != null ? !myProvider.equals(service.myProvider) : service.myProvider != null) return false;
+    return true;
+  }
+
   private AggregateRating myAggregateRating;
   private ServiceChannel myAvailableChannel;
   private Thing myServiceOutput;

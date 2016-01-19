@@ -344,7 +344,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MedicalDevicePurposeOrThing purpose;
@@ -399,5 +399,21 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     super(agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myPurpose = purpose;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myPurpose != null ? myPurpose.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AllocateAction allocateAction = (AllocateAction) o;
+    if (!super.equals(o)) return false;
+    if (myPurpose != null ? !myPurpose.equals(allocateAction.myPurpose) : allocateAction.myPurpose != null) return false;
+    return true;
+  }
+
   private MedicalDevicePurposeOrThing myPurpose;
 }

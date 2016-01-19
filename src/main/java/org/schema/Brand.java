@@ -287,7 +287,7 @@ public class Brand extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private AggregateRating aggregateRating;
@@ -331,6 +331,26 @@ public class Brand extends Intangible {
     myLogo = logo;
     myReview = review;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
+    result = 31 * result + (myLogo != null ? myLogo.hashCode() : 0);
+    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Brand brand = (Brand) o;
+    if (!super.equals(o)) return false;
+    if (myAggregateRating != null ? !myAggregateRating.equals(brand.myAggregateRating) : brand.myAggregateRating != null) return false;
+    if (myLogo != null ? !myLogo.equals(brand.myLogo) : brand.myLogo != null) return false;
+    if (myReview != null ? !myReview.equals(brand.myReview) : brand.myReview != null) return false;
+    return true;
+  }
+
   private AggregateRating myAggregateRating;
   private ImageObjectOrString myLogo;
   private Review myReview;

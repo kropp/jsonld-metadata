@@ -260,7 +260,7 @@ public class RadioChannel extends BroadcastChannel {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String broadcastChannelId;
@@ -301,4 +301,18 @@ public class RadioChannel extends BroadcastChannel {
   protected RadioChannel(String broadcastChannelId, CableOrSatelliteService inBroadcastLineup, String broadcastServiceTier, BroadcastService providesBroadcastService, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(broadcastChannelId, inBroadcastLineup, broadcastServiceTier, providesBroadcastService, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    RadioChannel radioChannel = (RadioChannel) o;
+    if (!super.equals(o)) return false;
+    return true;
+  }
+
 }

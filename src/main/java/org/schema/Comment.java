@@ -1194,7 +1194,7 @@ public class Comment extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Integer upvoteCount;
@@ -1421,6 +1421,26 @@ public class Comment extends CreativeWork {
     myDownvoteCount = downvoteCount;
     myParentItem = parentItem;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myUpvoteCount != null ? myUpvoteCount.hashCode() : 0);
+    result = 31 * result + (myDownvoteCount != null ? myDownvoteCount.hashCode() : 0);
+    result = 31 * result + (myParentItem != null ? myParentItem.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Comment comment = (Comment) o;
+    if (!super.equals(o)) return false;
+    if (myUpvoteCount != null ? !myUpvoteCount.equals(comment.myUpvoteCount) : comment.myUpvoteCount != null) return false;
+    if (myDownvoteCount != null ? !myDownvoteCount.equals(comment.myDownvoteCount) : comment.myDownvoteCount != null) return false;
+    if (myParentItem != null ? !myParentItem.equals(comment.myParentItem) : comment.myParentItem != null) return false;
+    return true;
+  }
+
   private Integer myUpvoteCount;
   private Integer myDownvoteCount;
   private Question myParentItem;

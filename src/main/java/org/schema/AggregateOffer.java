@@ -29,13 +29,13 @@ public class AggregateOffer extends Offer {
   /**
    * The highest price of all offers available.
    */
-  public NumberOrString getHighPrice() {
+  public Number getHighPrice() {
     return myHighPrice;
   }
   /**
    * The lowest price of all offers available.
    */
-  public NumberOrString getLowPrice() {
+  public Number getLowPrice() {
     return myLowPrice;
   }
   /**
@@ -63,32 +63,80 @@ public class AggregateOffer extends Offer {
     /**
      * The highest price of all offers available.
      */
-    @NotNull public Builder highPrice(@NotNull Number number) {
-      if (this.highPrice == null) this.highPrice = new NumberOrString();
-      this.highPrice.setNumber(number);
+    @NotNull public Builder highPrice(@NotNull Integer integer) {
+      if (this.highPrice == null) this.highPrice = new Number();
+      this.highPrice.setInteger(integer);
+      return this;
+    }
+    /**
+     * The highest price of all offers available.
+     */
+    @NotNull public Builder highPrice(@NotNull Long highPrice) {
+      if (this.highPrice == null) this.highPrice = new Number();
+      this.highPrice.setLong(highPrice);
+      return this;
+    }
+    /**
+     * The highest price of all offers available.
+     */
+    @NotNull public Builder highPrice(@NotNull Float highPrice) {
+      if (this.highPrice == null) this.highPrice = new Number();
+      this.highPrice.setFloat(highPrice);
+      return this;
+    }
+    /**
+     * The highest price of all offers available.
+     */
+    @NotNull public Builder highPrice(@NotNull Double highPrice) {
+      if (this.highPrice == null) this.highPrice = new Number();
+      this.highPrice.setDouble(highPrice);
       return this;
     }
     /**
      * The highest price of all offers available.
      */
     @NotNull public Builder highPrice(@NotNull String highPrice) {
-      if (this.highPrice == null) this.highPrice = new NumberOrString();
+      if (this.highPrice == null) this.highPrice = new Number();
       this.highPrice.setString(highPrice);
       return this;
     }
     /**
      * The lowest price of all offers available.
      */
-    @NotNull public Builder lowPrice(@NotNull Number number) {
-      if (this.lowPrice == null) this.lowPrice = new NumberOrString();
-      this.lowPrice.setNumber(number);
+    @NotNull public Builder lowPrice(@NotNull Integer integer) {
+      if (this.lowPrice == null) this.lowPrice = new Number();
+      this.lowPrice.setInteger(integer);
+      return this;
+    }
+    /**
+     * The lowest price of all offers available.
+     */
+    @NotNull public Builder lowPrice(@NotNull Long lowPrice) {
+      if (this.lowPrice == null) this.lowPrice = new Number();
+      this.lowPrice.setLong(lowPrice);
+      return this;
+    }
+    /**
+     * The lowest price of all offers available.
+     */
+    @NotNull public Builder lowPrice(@NotNull Float lowPrice) {
+      if (this.lowPrice == null) this.lowPrice = new Number();
+      this.lowPrice.setFloat(lowPrice);
+      return this;
+    }
+    /**
+     * The lowest price of all offers available.
+     */
+    @NotNull public Builder lowPrice(@NotNull Double lowPrice) {
+      if (this.lowPrice == null) this.lowPrice = new Number();
+      this.lowPrice.setDouble(lowPrice);
       return this;
     }
     /**
      * The lowest price of all offers available.
      */
     @NotNull public Builder lowPrice(@NotNull String lowPrice) {
-      if (this.lowPrice == null) this.lowPrice = new NumberOrString();
+      if (this.lowPrice == null) this.lowPrice = new Number();
       this.lowPrice.setString(lowPrice);
       return this;
     }
@@ -513,9 +561,93 @@ public class AggregateOffer extends Offer {
 </ul>
       
      */
-    @NotNull public Builder price(@NotNull Number number) {
-      if (this.price == null) this.price = new NumberOrString();
-      this.price.setNumber(number);
+    @NotNull public Builder price(@NotNull Integer integer) {
+      if (this.price == null) this.price = new Number();
+      this.price.setInteger(integer);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Long price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setLong(price);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Float price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setFloat(price);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Double price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setDouble(price);
       return this;
     }
     /**
@@ -542,7 +674,7 @@ public class AggregateOffer extends Offer {
       
      */
     @NotNull public Builder price(@NotNull String price) {
-      if (this.price == null) this.price = new NumberOrString();
+      if (this.price == null) this.price = new Number();
       this.price.setString(price);
       return this;
     }
@@ -798,9 +930,15 @@ public class AggregateOffer extends Offer {
         final String key = entry.getKey();
         Object value = entry.getValue();
         if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("highPrice".equals(key) && value instanceof Number) { highPrice((Number)value); continue; }
+        if ("highPrice".equals(key) && value instanceof Integer) { highPrice((Integer)value); continue; }
+        if ("highPrice".equals(key) && value instanceof Long) { highPrice((Long)value); continue; }
+        if ("highPrice".equals(key) && value instanceof Float) { highPrice((Float)value); continue; }
+        if ("highPrice".equals(key) && value instanceof Double) { highPrice((Double)value); continue; }
         if ("highPrice".equals(key) && value instanceof String) { highPrice((String)value); continue; }
-        if ("lowPrice".equals(key) && value instanceof Number) { lowPrice((Number)value); continue; }
+        if ("lowPrice".equals(key) && value instanceof Integer) { lowPrice((Integer)value); continue; }
+        if ("lowPrice".equals(key) && value instanceof Long) { lowPrice((Long)value); continue; }
+        if ("lowPrice".equals(key) && value instanceof Float) { lowPrice((Float)value); continue; }
+        if ("lowPrice".equals(key) && value instanceof Double) { lowPrice((Double)value); continue; }
         if ("lowPrice".equals(key) && value instanceof String) { lowPrice((String)value); continue; }
         if ("offerCount".equals(key) && value instanceof Integer) { offerCount((Integer)value); continue; }
         if ("offers".equals(key) && value instanceof Offer) { offers((Offer)value); continue; }
@@ -837,7 +975,10 @@ public class AggregateOffer extends Offer {
         if ("itemCondition".equals(key) && value instanceof OfferItemCondition) { itemCondition((OfferItemCondition)value); continue; }
         if ("itemOffered".equals(key) && value instanceof Product) { itemOffered((Product)value); continue; }
         if ("mpn".equals(key) && value instanceof String) { mpn((String)value); continue; }
-        if ("price".equals(key) && value instanceof Number) { price((Number)value); continue; }
+        if ("price".equals(key) && value instanceof Integer) { price((Integer)value); continue; }
+        if ("price".equals(key) && value instanceof Long) { price((Long)value); continue; }
+        if ("price".equals(key) && value instanceof Float) { price((Float)value); continue; }
+        if ("price".equals(key) && value instanceof Double) { price((Double)value); continue; }
         if ("price".equals(key) && value instanceof String) { price((String)value); continue; }
         if ("priceSpecification".equals(key) && value instanceof PriceSpecification) { priceSpecification((PriceSpecification)value); continue; }
         if ("priceValidUntil".equals(key) && value instanceof java.util.Date) { priceValidUntil((java.util.Date)value); continue; }
@@ -857,11 +998,11 @@ public class AggregateOffer extends Offer {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
-    private NumberOrString highPrice;
-    private NumberOrString lowPrice;
+    private Number highPrice;
+    private Number lowPrice;
     private Integer offerCount;
     private Offer offers;
     private PaymentMethod acceptedPaymentMethod;
@@ -891,7 +1032,7 @@ public class AggregateOffer extends Offer {
     private OfferItemCondition itemCondition;
     private Product itemOffered;
     private String mpn;
-    private NumberOrString price;
+    private Number price;
     private PriceSpecification priceSpecification;
     private java.util.Date priceValidUntil;
     private Review review;
@@ -912,9 +1053,15 @@ public class AggregateOffer extends Offer {
     private String id;
   }
   public interface Builder extends ThingBuilder<AggregateOffer> {
-    @NotNull Builder highPrice(@NotNull Number number);
+    @NotNull Builder highPrice(@NotNull Integer integer);
+    @NotNull Builder highPrice(@NotNull Long highPrice);
+    @NotNull Builder highPrice(@NotNull Float highPrice);
+    @NotNull Builder highPrice(@NotNull Double highPrice);
     @NotNull Builder highPrice(@NotNull String highPrice);
-    @NotNull Builder lowPrice(@NotNull Number number);
+    @NotNull Builder lowPrice(@NotNull Integer integer);
+    @NotNull Builder lowPrice(@NotNull Long lowPrice);
+    @NotNull Builder lowPrice(@NotNull Float lowPrice);
+    @NotNull Builder lowPrice(@NotNull Double lowPrice);
     @NotNull Builder lowPrice(@NotNull String lowPrice);
     @NotNull Builder offerCount(@NotNull Integer integer);
     @NotNull Builder offers(@NotNull Offer offer);
@@ -975,7 +1122,10 @@ public class AggregateOffer extends Offer {
     @NotNull Builder itemOffered(@NotNull Product product);
     @NotNull Builder itemOffered(@NotNull Product.Builder product);
     @NotNull Builder mpn(@NotNull String mpn);
-    @NotNull Builder price(@NotNull Number number);
+    @NotNull Builder price(@NotNull Integer integer);
+    @NotNull Builder price(@NotNull Long price);
+    @NotNull Builder price(@NotNull Float price);
+    @NotNull Builder price(@NotNull Double price);
     @NotNull Builder price(@NotNull String price);
     @NotNull Builder priceSpecification(@NotNull PriceSpecification priceSpecification);
     @NotNull Builder priceSpecification(@NotNull PriceSpecification.Builder priceSpecification);
@@ -1003,15 +1153,37 @@ public class AggregateOffer extends Offer {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected AggregateOffer(NumberOrString highPrice, NumberOrString lowPrice, Integer offerCount, Offer offers, PaymentMethod acceptedPaymentMethod, Offer addOn, QuantitativeValue advanceBookingRequirement, AggregateRating aggregateRating, ItemAvailability availability, java.util.Date availabilityEnds, java.util.Date availabilityStarts, Place availableAtOrFrom, DeliveryMethod availableDeliveryMethod, BusinessFunction businessFunction, PhysicalActivityCategoryOrStringOrThing category, QuantitativeValue deliveryLeadTime, BusinessEntityType eligibleCustomerType, QuantitativeValue eligibleDuration, QuantitativeValue eligibleQuantity, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, PriceSpecification eligibleTransactionVolume, String gtin12, String gtin13, String gtin14, String gtin8, TypeAndQuantityNode includesObject, QuantitativeValue inventoryLevel, OfferItemCondition itemCondition, Product itemOffered, String mpn, NumberOrString price, PriceSpecification priceSpecification, java.util.Date priceValidUntil, Review review, Participant seller, String sku, java.util.Date validFrom, java.util.Date validThrough, WarrantyPromise warranty, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected AggregateOffer(Number highPrice, Number lowPrice, Integer offerCount, Offer offers, PaymentMethod acceptedPaymentMethod, Offer addOn, QuantitativeValue advanceBookingRequirement, AggregateRating aggregateRating, ItemAvailability availability, java.util.Date availabilityEnds, java.util.Date availabilityStarts, Place availableAtOrFrom, DeliveryMethod availableDeliveryMethod, BusinessFunction businessFunction, PhysicalActivityCategoryOrStringOrThing category, QuantitativeValue deliveryLeadTime, BusinessEntityType eligibleCustomerType, QuantitativeValue eligibleDuration, QuantitativeValue eligibleQuantity, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, PriceSpecification eligibleTransactionVolume, String gtin12, String gtin13, String gtin14, String gtin8, TypeAndQuantityNode includesObject, QuantitativeValue inventoryLevel, OfferItemCondition itemCondition, Product itemOffered, String mpn, Number price, PriceSpecification priceSpecification, java.util.Date priceValidUntil, Review review, Participant seller, String sku, java.util.Date validFrom, java.util.Date validThrough, WarrantyPromise warranty, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(acceptedPaymentMethod, addOn, advanceBookingRequirement, aggregateRating, availability, availabilityEnds, availabilityStarts, availableAtOrFrom, availableDeliveryMethod, businessFunction, category, deliveryLeadTime, eligibleCustomerType, eligibleDuration, eligibleQuantity, eligibleRegion, ineligibleRegion, eligibleTransactionVolume, gtin12, gtin13, gtin14, gtin8, includesObject, inventoryLevel, itemCondition, itemOffered, mpn, price, priceSpecification, priceValidUntil, review, seller, sku, validFrom, validThrough, warranty, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myHighPrice = highPrice;
     myLowPrice = lowPrice;
     myOfferCount = offerCount;
     myOffers = offers;
   }
-  private NumberOrString myHighPrice;
-  private NumberOrString myLowPrice;
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myHighPrice != null ? myHighPrice.hashCode() : 0);
+    result = 31 * result + (myLowPrice != null ? myLowPrice.hashCode() : 0);
+    result = 31 * result + (myOfferCount != null ? myOfferCount.hashCode() : 0);
+    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AggregateOffer aggregateOffer = (AggregateOffer) o;
+    if (!super.equals(o)) return false;
+    if (myHighPrice != null ? !myHighPrice.equals(aggregateOffer.myHighPrice) : aggregateOffer.myHighPrice != null) return false;
+    if (myLowPrice != null ? !myLowPrice.equals(aggregateOffer.myLowPrice) : aggregateOffer.myLowPrice != null) return false;
+    if (myOfferCount != null ? !myOfferCount.equals(aggregateOffer.myOfferCount) : aggregateOffer.myOfferCount != null) return false;
+    if (myOffers != null ? !myOffers.equals(aggregateOffer.myOffers) : aggregateOffer.myOffers != null) return false;
+    return true;
+  }
+
+  private Number myHighPrice;
+  private Number myLowPrice;
   private Integer myOfferCount;
   private Offer myOffers;
 }

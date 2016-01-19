@@ -424,7 +424,7 @@ public class ParcelDelivery extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private PostalAddress deliveryAddress;
@@ -496,6 +496,42 @@ public class ParcelDelivery extends Intangible {
     myTrackingUrl = trackingUrl;
     myProvider = provider;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDeliveryAddress != null ? myDeliveryAddress.hashCode() : 0);
+    result = 31 * result + (myDeliveryStatus != null ? myDeliveryStatus.hashCode() : 0);
+    result = 31 * result + (myExpectedArrivalFrom != null ? myExpectedArrivalFrom.hashCode() : 0);
+    result = 31 * result + (myExpectedArrivalUntil != null ? myExpectedArrivalUntil.hashCode() : 0);
+    result = 31 * result + (myHasDeliveryMethod != null ? myHasDeliveryMethod.hashCode() : 0);
+    result = 31 * result + (myItemShipped != null ? myItemShipped.hashCode() : 0);
+    result = 31 * result + (myOriginAddress != null ? myOriginAddress.hashCode() : 0);
+    result = 31 * result + (myPartOfOrder != null ? myPartOfOrder.hashCode() : 0);
+    result = 31 * result + (myTrackingNumber != null ? myTrackingNumber.hashCode() : 0);
+    result = 31 * result + (myTrackingUrl != null ? myTrackingUrl.hashCode() : 0);
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ParcelDelivery parcelDelivery = (ParcelDelivery) o;
+    if (!super.equals(o)) return false;
+    if (myDeliveryAddress != null ? !myDeliveryAddress.equals(parcelDelivery.myDeliveryAddress) : parcelDelivery.myDeliveryAddress != null) return false;
+    if (myDeliveryStatus != null ? !myDeliveryStatus.equals(parcelDelivery.myDeliveryStatus) : parcelDelivery.myDeliveryStatus != null) return false;
+    if (myExpectedArrivalFrom != null ? !myExpectedArrivalFrom.equals(parcelDelivery.myExpectedArrivalFrom) : parcelDelivery.myExpectedArrivalFrom != null) return false;
+    if (myExpectedArrivalUntil != null ? !myExpectedArrivalUntil.equals(parcelDelivery.myExpectedArrivalUntil) : parcelDelivery.myExpectedArrivalUntil != null) return false;
+    if (myHasDeliveryMethod != null ? !myHasDeliveryMethod.equals(parcelDelivery.myHasDeliveryMethod) : parcelDelivery.myHasDeliveryMethod != null) return false;
+    if (myItemShipped != null ? !myItemShipped.equals(parcelDelivery.myItemShipped) : parcelDelivery.myItemShipped != null) return false;
+    if (myOriginAddress != null ? !myOriginAddress.equals(parcelDelivery.myOriginAddress) : parcelDelivery.myOriginAddress != null) return false;
+    if (myPartOfOrder != null ? !myPartOfOrder.equals(parcelDelivery.myPartOfOrder) : parcelDelivery.myPartOfOrder != null) return false;
+    if (myTrackingNumber != null ? !myTrackingNumber.equals(parcelDelivery.myTrackingNumber) : parcelDelivery.myTrackingNumber != null) return false;
+    if (myTrackingUrl != null ? !myTrackingUrl.equals(parcelDelivery.myTrackingUrl) : parcelDelivery.myTrackingUrl != null) return false;
+    if (myProvider != null ? !myProvider.equals(parcelDelivery.myProvider) : parcelDelivery.myProvider != null) return false;
+    return true;
+  }
+
   private PostalAddress myDeliveryAddress;
   private DeliveryEvent myDeliveryStatus;
   private java.util.Date myExpectedArrivalFrom;

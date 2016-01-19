@@ -1314,7 +1314,7 @@ public class Episode extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Person actor;
@@ -1563,6 +1563,36 @@ public class Episode extends CreativeWork {
     myProductionCompany = productionCompany;
     myTrailer = trailer;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActor != null ? myActor.hashCode() : 0);
+    result = 31 * result + (myDirector != null ? myDirector.hashCode() : 0);
+    result = 31 * result + (myEpisodeNumber != null ? myEpisodeNumber.hashCode() : 0);
+    result = 31 * result + (myMusicBy != null ? myMusicBy.hashCode() : 0);
+    result = 31 * result + (myPartOfSeason != null ? myPartOfSeason.hashCode() : 0);
+    result = 31 * result + (myPartOfSeries != null ? myPartOfSeries.hashCode() : 0);
+    result = 31 * result + (myProductionCompany != null ? myProductionCompany.hashCode() : 0);
+    result = 31 * result + (myTrailer != null ? myTrailer.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Episode episode = (Episode) o;
+    if (!super.equals(o)) return false;
+    if (myActor != null ? !myActor.equals(episode.myActor) : episode.myActor != null) return false;
+    if (myDirector != null ? !myDirector.equals(episode.myDirector) : episode.myDirector != null) return false;
+    if (myEpisodeNumber != null ? !myEpisodeNumber.equals(episode.myEpisodeNumber) : episode.myEpisodeNumber != null) return false;
+    if (myMusicBy != null ? !myMusicBy.equals(episode.myMusicBy) : episode.myMusicBy != null) return false;
+    if (myPartOfSeason != null ? !myPartOfSeason.equals(episode.myPartOfSeason) : episode.myPartOfSeason != null) return false;
+    if (myPartOfSeries != null ? !myPartOfSeries.equals(episode.myPartOfSeries) : episode.myPartOfSeries != null) return false;
+    if (myProductionCompany != null ? !myProductionCompany.equals(episode.myProductionCompany) : episode.myProductionCompany != null) return false;
+    if (myTrailer != null ? !myTrailer.equals(episode.myTrailer) : episode.myTrailer != null) return false;
+    return true;
+  }
+
   private Person myActor;
   private Person myDirector;
   private IntegerOrString myEpisodeNumber;

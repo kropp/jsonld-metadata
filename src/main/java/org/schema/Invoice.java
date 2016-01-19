@@ -510,7 +510,7 @@ public class Invoice extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String confirmationNumber;
@@ -597,6 +597,48 @@ public class Invoice extends Intangible {
     myPaymentStatus = paymentStatus;
     myReferencesOrder = referencesOrder;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myConfirmationNumber != null ? myConfirmationNumber.hashCode() : 0);
+    result = 31 * result + (myCustomer != null ? myCustomer.hashCode() : 0);
+    result = 31 * result + (myPaymentDue != null ? myPaymentDue.hashCode() : 0);
+    result = 31 * result + (myPaymentMethod != null ? myPaymentMethod.hashCode() : 0);
+    result = 31 * result + (myPaymentMethodId != null ? myPaymentMethodId.hashCode() : 0);
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    result = 31 * result + (myBroker != null ? myBroker.hashCode() : 0);
+    result = 31 * result + (myTotalPaymentDue != null ? myTotalPaymentDue.hashCode() : 0);
+    result = 31 * result + (myMinimumPaymentDue != null ? myMinimumPaymentDue.hashCode() : 0);
+    result = 31 * result + (myAccountId != null ? myAccountId.hashCode() : 0);
+    result = 31 * result + (myScheduledPaymentDate != null ? myScheduledPaymentDate.hashCode() : 0);
+    result = 31 * result + (myBillingPeriod != null ? myBillingPeriod.hashCode() : 0);
+    result = 31 * result + (myPaymentStatus != null ? myPaymentStatus.hashCode() : 0);
+    result = 31 * result + (myReferencesOrder != null ? myReferencesOrder.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Invoice invoice = (Invoice) o;
+    if (!super.equals(o)) return false;
+    if (myConfirmationNumber != null ? !myConfirmationNumber.equals(invoice.myConfirmationNumber) : invoice.myConfirmationNumber != null) return false;
+    if (myCustomer != null ? !myCustomer.equals(invoice.myCustomer) : invoice.myCustomer != null) return false;
+    if (myPaymentDue != null ? !myPaymentDue.equals(invoice.myPaymentDue) : invoice.myPaymentDue != null) return false;
+    if (myPaymentMethod != null ? !myPaymentMethod.equals(invoice.myPaymentMethod) : invoice.myPaymentMethod != null) return false;
+    if (myPaymentMethodId != null ? !myPaymentMethodId.equals(invoice.myPaymentMethodId) : invoice.myPaymentMethodId != null) return false;
+    if (myProvider != null ? !myProvider.equals(invoice.myProvider) : invoice.myProvider != null) return false;
+    if (myBroker != null ? !myBroker.equals(invoice.myBroker) : invoice.myBroker != null) return false;
+    if (myTotalPaymentDue != null ? !myTotalPaymentDue.equals(invoice.myTotalPaymentDue) : invoice.myTotalPaymentDue != null) return false;
+    if (myMinimumPaymentDue != null ? !myMinimumPaymentDue.equals(invoice.myMinimumPaymentDue) : invoice.myMinimumPaymentDue != null) return false;
+    if (myAccountId != null ? !myAccountId.equals(invoice.myAccountId) : invoice.myAccountId != null) return false;
+    if (myScheduledPaymentDate != null ? !myScheduledPaymentDate.equals(invoice.myScheduledPaymentDate) : invoice.myScheduledPaymentDate != null) return false;
+    if (myBillingPeriod != null ? !myBillingPeriod.equals(invoice.myBillingPeriod) : invoice.myBillingPeriod != null) return false;
+    if (myPaymentStatus != null ? !myPaymentStatus.equals(invoice.myPaymentStatus) : invoice.myPaymentStatus != null) return false;
+    if (myReferencesOrder != null ? !myReferencesOrder.equals(invoice.myReferencesOrder) : invoice.myReferencesOrder != null) return false;
+    return true;
+  }
+
   private String myConfirmationNumber;
   private OrganizationOrPerson myCustomer;
   private java.util.Date myPaymentDue;

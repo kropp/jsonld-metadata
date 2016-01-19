@@ -53,7 +53,7 @@ public class DrugCost extends MedicalIntangible {
   /**
    * The cost per unit of the drug.
    */
-  public NumberOrString getCostPerUnit() {
+  public Number getCostPerUnit() {
     return myCostPerUnit;
   }
   /**
@@ -115,16 +115,40 @@ public class DrugCost extends MedicalIntangible {
     /**
      * The cost per unit of the drug.
      */
-    @NotNull public Builder costPerUnit(@NotNull Number number) {
-      if (this.costPerUnit == null) this.costPerUnit = new NumberOrString();
-      this.costPerUnit.setNumber(number);
+    @NotNull public Builder costPerUnit(@NotNull Integer integer) {
+      if (this.costPerUnit == null) this.costPerUnit = new Number();
+      this.costPerUnit.setInteger(integer);
+      return this;
+    }
+    /**
+     * The cost per unit of the drug.
+     */
+    @NotNull public Builder costPerUnit(@NotNull Long costPerUnit) {
+      if (this.costPerUnit == null) this.costPerUnit = new Number();
+      this.costPerUnit.setLong(costPerUnit);
+      return this;
+    }
+    /**
+     * The cost per unit of the drug.
+     */
+    @NotNull public Builder costPerUnit(@NotNull Float costPerUnit) {
+      if (this.costPerUnit == null) this.costPerUnit = new Number();
+      this.costPerUnit.setFloat(costPerUnit);
+      return this;
+    }
+    /**
+     * The cost per unit of the drug.
+     */
+    @NotNull public Builder costPerUnit(@NotNull Double costPerUnit) {
+      if (this.costPerUnit == null) this.costPerUnit = new Number();
+      this.costPerUnit.setDouble(costPerUnit);
       return this;
     }
     /**
      * The cost per unit of the drug.
      */
     @NotNull public Builder costPerUnit(@NotNull String costPerUnit) {
-      if (this.costPerUnit == null) this.costPerUnit = new NumberOrString();
+      if (this.costPerUnit == null) this.costPerUnit = new Number();
       this.costPerUnit.setString(costPerUnit);
       return this;
     }
@@ -388,7 +412,10 @@ public class DrugCost extends MedicalIntangible {
         if ("costCategory".equals(key) && value instanceof DrugCostCategory) { costCategory((DrugCostCategory)value); continue; }
         if ("costCurrency".equals(key) && value instanceof String) { costCurrency((String)value); continue; }
         if ("costOrigin".equals(key) && value instanceof String) { costOrigin((String)value); continue; }
-        if ("costPerUnit".equals(key) && value instanceof Number) { costPerUnit((Number)value); continue; }
+        if ("costPerUnit".equals(key) && value instanceof Integer) { costPerUnit((Integer)value); continue; }
+        if ("costPerUnit".equals(key) && value instanceof Long) { costPerUnit((Long)value); continue; }
+        if ("costPerUnit".equals(key) && value instanceof Float) { costPerUnit((Float)value); continue; }
+        if ("costPerUnit".equals(key) && value instanceof Double) { costPerUnit((Double)value); continue; }
         if ("costPerUnit".equals(key) && value instanceof String) { costPerUnit((String)value); continue; }
         if ("drugUnit".equals(key) && value instanceof String) { drugUnit((String)value); continue; }
         if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
@@ -406,14 +433,14 @@ public class DrugCost extends MedicalIntangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private AdministrativeArea applicableLocation;
     private DrugCostCategory costCategory;
     private String costCurrency;
     private String costOrigin;
-    private NumberOrString costPerUnit;
+    private Number costPerUnit;
     private String drugUnit;
     private MedicalCode code;
     private MedicalGuideline guideline;
@@ -438,7 +465,10 @@ public class DrugCost extends MedicalIntangible {
     @NotNull Builder costCategory(@NotNull DrugCostCategory.Builder drugCostCategory);
     @NotNull Builder costCurrency(@NotNull String costCurrency);
     @NotNull Builder costOrigin(@NotNull String costOrigin);
-    @NotNull Builder costPerUnit(@NotNull Number number);
+    @NotNull Builder costPerUnit(@NotNull Integer integer);
+    @NotNull Builder costPerUnit(@NotNull Long costPerUnit);
+    @NotNull Builder costPerUnit(@NotNull Float costPerUnit);
+    @NotNull Builder costPerUnit(@NotNull Double costPerUnit);
     @NotNull Builder costPerUnit(@NotNull String costPerUnit);
     @NotNull Builder drugUnit(@NotNull String drugUnit);
     @NotNull Builder code(@NotNull MedicalCode medicalCode);
@@ -467,7 +497,7 @@ public class DrugCost extends MedicalIntangible {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected DrugCost(AdministrativeArea applicableLocation, DrugCostCategory costCategory, String costCurrency, String costOrigin, NumberOrString costPerUnit, String drugUnit, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected DrugCost(AdministrativeArea applicableLocation, DrugCostCategory costCategory, String costCurrency, String costOrigin, Number costPerUnit, String drugUnit, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myApplicableLocation = applicableLocation;
     myCostCategory = costCategory;
@@ -476,10 +506,36 @@ public class DrugCost extends MedicalIntangible {
     myCostPerUnit = costPerUnit;
     myDrugUnit = drugUnit;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myApplicableLocation != null ? myApplicableLocation.hashCode() : 0);
+    result = 31 * result + (myCostCategory != null ? myCostCategory.hashCode() : 0);
+    result = 31 * result + (myCostCurrency != null ? myCostCurrency.hashCode() : 0);
+    result = 31 * result + (myCostOrigin != null ? myCostOrigin.hashCode() : 0);
+    result = 31 * result + (myCostPerUnit != null ? myCostPerUnit.hashCode() : 0);
+    result = 31 * result + (myDrugUnit != null ? myDrugUnit.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DrugCost drugCost = (DrugCost) o;
+    if (!super.equals(o)) return false;
+    if (myApplicableLocation != null ? !myApplicableLocation.equals(drugCost.myApplicableLocation) : drugCost.myApplicableLocation != null) return false;
+    if (myCostCategory != null ? !myCostCategory.equals(drugCost.myCostCategory) : drugCost.myCostCategory != null) return false;
+    if (myCostCurrency != null ? !myCostCurrency.equals(drugCost.myCostCurrency) : drugCost.myCostCurrency != null) return false;
+    if (myCostOrigin != null ? !myCostOrigin.equals(drugCost.myCostOrigin) : drugCost.myCostOrigin != null) return false;
+    if (myCostPerUnit != null ? !myCostPerUnit.equals(drugCost.myCostPerUnit) : drugCost.myCostPerUnit != null) return false;
+    if (myDrugUnit != null ? !myDrugUnit.equals(drugCost.myDrugUnit) : drugCost.myDrugUnit != null) return false;
+    return true;
+  }
+
   private AdministrativeArea myApplicableLocation;
   private DrugCostCategory myCostCategory;
   private String myCostCurrency;
   private String myCostOrigin;
-  private NumberOrString myCostPerUnit;
+  private Number myCostPerUnit;
   private String myDrugUnit;
 }

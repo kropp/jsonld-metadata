@@ -39,4 +39,21 @@ class BooleanOrString {
     myBoolean = null;
     myString = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myBoolean != null ? myBoolean.hashCode() : 0);
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BooleanOrString booleanOrString = (BooleanOrString) o;
+    if (myBoolean != null ? !myBoolean.equals(booleanOrString.myBoolean) : booleanOrString.myBoolean != null) return false;
+    if (myString != null ? !myString.equals(booleanOrString.myString) : booleanOrString.myString != null) return false;
+    return true;
+  }
+
 }

@@ -29,7 +29,7 @@ public class JobPosting extends Intangible {
   /**
    * The base salary of the job or of an employee in an EmployeeRole.
    */
-  public NumberOrPriceSpecification getBaseSalary() {
+  public Number getBaseSalary() {
     return myBaseSalary;
   }
   /**
@@ -148,24 +148,42 @@ public class JobPosting extends Intangible {
     /**
      * The base salary of the job or of an employee in an EmployeeRole.
      */
-    @NotNull public Builder baseSalary(@NotNull Number number) {
-      if (this.baseSalary == null) this.baseSalary = new NumberOrPriceSpecification();
-      this.baseSalary.setNumber(number);
+    @NotNull public Builder baseSalary(@NotNull Integer integer) {
+      if (this.baseSalary == null) this.baseSalary = new Number();
+      this.baseSalary.setInteger(integer);
       return this;
     }
     /**
      * The base salary of the job or of an employee in an EmployeeRole.
      */
-    @NotNull public Builder baseSalary(@NotNull PriceSpecification priceSpecification) {
-      if (this.baseSalary == null) this.baseSalary = new NumberOrPriceSpecification();
-      this.baseSalary.setPriceSpecification(priceSpecification);
+    @NotNull public Builder baseSalary(@NotNull Long baseSalary) {
+      if (this.baseSalary == null) this.baseSalary = new Number();
+      this.baseSalary.setLong(baseSalary);
       return this;
     }
     /**
      * The base salary of the job or of an employee in an EmployeeRole.
      */
-    @NotNull public Builder baseSalary(@NotNull PriceSpecification.Builder priceSpecification) {
-      return this.baseSalary(priceSpecification.build());
+    @NotNull public Builder baseSalary(@NotNull Float baseSalary) {
+      if (this.baseSalary == null) this.baseSalary = new Number();
+      this.baseSalary.setFloat(baseSalary);
+      return this;
+    }
+    /**
+     * The base salary of the job or of an employee in an EmployeeRole.
+     */
+    @NotNull public Builder baseSalary(@NotNull Double baseSalary) {
+      if (this.baseSalary == null) this.baseSalary = new Number();
+      this.baseSalary.setDouble(baseSalary);
+      return this;
+    }
+    /**
+     * The base salary of the job or of an employee in an EmployeeRole.
+     */
+    @NotNull public Builder baseSalary(@NotNull String baseSalary) {
+      if (this.baseSalary == null) this.baseSalary = new Number();
+      this.baseSalary.setString(baseSalary);
+      return this;
     }
     /**
      * Description of benefits associated with the job.
@@ -469,8 +487,11 @@ public class JobPosting extends Intangible {
         final String key = entry.getKey();
         Object value = entry.getValue();
         if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("baseSalary".equals(key) && value instanceof Number) { baseSalary((Number)value); continue; }
-        if ("baseSalary".equals(key) && value instanceof PriceSpecification) { baseSalary((PriceSpecification)value); continue; }
+        if ("baseSalary".equals(key) && value instanceof Integer) { baseSalary((Integer)value); continue; }
+        if ("baseSalary".equals(key) && value instanceof Long) { baseSalary((Long)value); continue; }
+        if ("baseSalary".equals(key) && value instanceof Float) { baseSalary((Float)value); continue; }
+        if ("baseSalary".equals(key) && value instanceof Double) { baseSalary((Double)value); continue; }
+        if ("baseSalary".equals(key) && value instanceof String) { baseSalary((String)value); continue; }
         if ("jobBenefits".equals(key) && value instanceof String) { jobBenefits((String)value); continue; }
         if ("datePosted".equals(key) && value instanceof java.util.Date) { datePosted((java.util.Date)value); continue; }
         if ("educationRequirements".equals(key) && value instanceof String) { educationRequirements((String)value); continue; }
@@ -497,10 +518,10 @@ public class JobPosting extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
-    private NumberOrPriceSpecification baseSalary;
+    private Number baseSalary;
     private String jobBenefits;
     private java.util.Date datePosted;
     private String educationRequirements;
@@ -529,9 +550,11 @@ public class JobPosting extends Intangible {
     private String id;
   }
   public interface Builder extends ThingBuilder<JobPosting> {
-    @NotNull Builder baseSalary(@NotNull Number number);
-    @NotNull Builder baseSalary(@NotNull PriceSpecification priceSpecification);
-    @NotNull Builder baseSalary(@NotNull PriceSpecification.Builder priceSpecification);
+    @NotNull Builder baseSalary(@NotNull Integer integer);
+    @NotNull Builder baseSalary(@NotNull Long baseSalary);
+    @NotNull Builder baseSalary(@NotNull Float baseSalary);
+    @NotNull Builder baseSalary(@NotNull Double baseSalary);
+    @NotNull Builder baseSalary(@NotNull String baseSalary);
     @NotNull Builder jobBenefits(@NotNull String jobBenefits);
     @NotNull Builder datePosted(@NotNull java.util.Date date);
     @NotNull Builder educationRequirements(@NotNull String educationRequirements);
@@ -565,7 +588,7 @@ public class JobPosting extends Intangible {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected JobPosting(NumberOrPriceSpecification baseSalary, String jobBenefits, java.util.Date datePosted, String educationRequirements, String employmentType, String experienceRequirements, Organization hiringOrganization, String incentiveCompensation, String industry, Place jobLocation, String occupationalCategory, String qualifications, String responsibilities, String salaryCurrency, String skills, String specialCommitments, String title, String workHours, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected JobPosting(Number baseSalary, String jobBenefits, java.util.Date datePosted, String educationRequirements, String employmentType, String experienceRequirements, Organization hiringOrganization, String incentiveCompensation, String industry, Place jobLocation, String occupationalCategory, String qualifications, String responsibilities, String salaryCurrency, String skills, String specialCommitments, String title, String workHours, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myBaseSalary = baseSalary;
     myJobBenefits = jobBenefits;
@@ -586,7 +609,57 @@ public class JobPosting extends Intangible {
     myTitle = title;
     myWorkHours = workHours;
   }
-  private NumberOrPriceSpecification myBaseSalary;
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myBaseSalary != null ? myBaseSalary.hashCode() : 0);
+    result = 31 * result + (myJobBenefits != null ? myJobBenefits.hashCode() : 0);
+    result = 31 * result + (myDatePosted != null ? myDatePosted.hashCode() : 0);
+    result = 31 * result + (myEducationRequirements != null ? myEducationRequirements.hashCode() : 0);
+    result = 31 * result + (myEmploymentType != null ? myEmploymentType.hashCode() : 0);
+    result = 31 * result + (myExperienceRequirements != null ? myExperienceRequirements.hashCode() : 0);
+    result = 31 * result + (myHiringOrganization != null ? myHiringOrganization.hashCode() : 0);
+    result = 31 * result + (myIncentiveCompensation != null ? myIncentiveCompensation.hashCode() : 0);
+    result = 31 * result + (myIndustry != null ? myIndustry.hashCode() : 0);
+    result = 31 * result + (myJobLocation != null ? myJobLocation.hashCode() : 0);
+    result = 31 * result + (myOccupationalCategory != null ? myOccupationalCategory.hashCode() : 0);
+    result = 31 * result + (myQualifications != null ? myQualifications.hashCode() : 0);
+    result = 31 * result + (myResponsibilities != null ? myResponsibilities.hashCode() : 0);
+    result = 31 * result + (mySalaryCurrency != null ? mySalaryCurrency.hashCode() : 0);
+    result = 31 * result + (mySkills != null ? mySkills.hashCode() : 0);
+    result = 31 * result + (mySpecialCommitments != null ? mySpecialCommitments.hashCode() : 0);
+    result = 31 * result + (myTitle != null ? myTitle.hashCode() : 0);
+    result = 31 * result + (myWorkHours != null ? myWorkHours.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    JobPosting jobPosting = (JobPosting) o;
+    if (!super.equals(o)) return false;
+    if (myBaseSalary != null ? !myBaseSalary.equals(jobPosting.myBaseSalary) : jobPosting.myBaseSalary != null) return false;
+    if (myJobBenefits != null ? !myJobBenefits.equals(jobPosting.myJobBenefits) : jobPosting.myJobBenefits != null) return false;
+    if (myDatePosted != null ? !myDatePosted.equals(jobPosting.myDatePosted) : jobPosting.myDatePosted != null) return false;
+    if (myEducationRequirements != null ? !myEducationRequirements.equals(jobPosting.myEducationRequirements) : jobPosting.myEducationRequirements != null) return false;
+    if (myEmploymentType != null ? !myEmploymentType.equals(jobPosting.myEmploymentType) : jobPosting.myEmploymentType != null) return false;
+    if (myExperienceRequirements != null ? !myExperienceRequirements.equals(jobPosting.myExperienceRequirements) : jobPosting.myExperienceRequirements != null) return false;
+    if (myHiringOrganization != null ? !myHiringOrganization.equals(jobPosting.myHiringOrganization) : jobPosting.myHiringOrganization != null) return false;
+    if (myIncentiveCompensation != null ? !myIncentiveCompensation.equals(jobPosting.myIncentiveCompensation) : jobPosting.myIncentiveCompensation != null) return false;
+    if (myIndustry != null ? !myIndustry.equals(jobPosting.myIndustry) : jobPosting.myIndustry != null) return false;
+    if (myJobLocation != null ? !myJobLocation.equals(jobPosting.myJobLocation) : jobPosting.myJobLocation != null) return false;
+    if (myOccupationalCategory != null ? !myOccupationalCategory.equals(jobPosting.myOccupationalCategory) : jobPosting.myOccupationalCategory != null) return false;
+    if (myQualifications != null ? !myQualifications.equals(jobPosting.myQualifications) : jobPosting.myQualifications != null) return false;
+    if (myResponsibilities != null ? !myResponsibilities.equals(jobPosting.myResponsibilities) : jobPosting.myResponsibilities != null) return false;
+    if (mySalaryCurrency != null ? !mySalaryCurrency.equals(jobPosting.mySalaryCurrency) : jobPosting.mySalaryCurrency != null) return false;
+    if (mySkills != null ? !mySkills.equals(jobPosting.mySkills) : jobPosting.mySkills != null) return false;
+    if (mySpecialCommitments != null ? !mySpecialCommitments.equals(jobPosting.mySpecialCommitments) : jobPosting.mySpecialCommitments != null) return false;
+    if (myTitle != null ? !myTitle.equals(jobPosting.myTitle) : jobPosting.myTitle != null) return false;
+    if (myWorkHours != null ? !myWorkHours.equals(jobPosting.myWorkHours) : jobPosting.myWorkHours != null) return false;
+    return true;
+  }
+
+  private Number myBaseSalary;
   private String myJobBenefits;
   private java.util.Date myDatePosted;
   private String myEducationRequirements;

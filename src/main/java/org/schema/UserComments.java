@@ -598,7 +598,7 @@ public class UserComments extends UserInteraction {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String commentText;
@@ -704,6 +704,30 @@ public class UserComments extends UserInteraction {
     myDiscusses = discusses;
     myReplyToUrl = replyToUrl;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myCommentText != null ? myCommentText.hashCode() : 0);
+    result = 31 * result + (myCommentTime != null ? myCommentTime.hashCode() : 0);
+    result = 31 * result + (myCreator != null ? myCreator.hashCode() : 0);
+    result = 31 * result + (myDiscusses != null ? myDiscusses.hashCode() : 0);
+    result = 31 * result + (myReplyToUrl != null ? myReplyToUrl.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    UserComments userComments = (UserComments) o;
+    if (!super.equals(o)) return false;
+    if (myCommentText != null ? !myCommentText.equals(userComments.myCommentText) : userComments.myCommentText != null) return false;
+    if (myCommentTime != null ? !myCommentTime.equals(userComments.myCommentTime) : userComments.myCommentTime != null) return false;
+    if (myCreator != null ? !myCreator.equals(userComments.myCreator) : userComments.myCreator != null) return false;
+    if (myDiscusses != null ? !myDiscusses.equals(userComments.myDiscusses) : userComments.myDiscusses != null) return false;
+    if (myReplyToUrl != null ? !myReplyToUrl.equals(userComments.myReplyToUrl) : userComments.myReplyToUrl != null) return false;
+    return true;
+  }
+
   private String myCommentText;
   private java.util.Date myCommentTime;
   private OrganizationOrPerson myCreator;

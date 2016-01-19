@@ -382,7 +382,7 @@ public class ContactPoint extends StructuredValue {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private AdministrativeArea areaServed;
@@ -446,6 +446,38 @@ public class ContactPoint extends StructuredValue {
     myProductSupported = productSupported;
     myTelephone = telephone;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAreaServed != null ? myAreaServed.hashCode() : 0);
+    result = 31 * result + (myAvailableLanguage != null ? myAvailableLanguage.hashCode() : 0);
+    result = 31 * result + (myContactOption != null ? myContactOption.hashCode() : 0);
+    result = 31 * result + (myContactType != null ? myContactType.hashCode() : 0);
+    result = 31 * result + (myEmail != null ? myEmail.hashCode() : 0);
+    result = 31 * result + (myFaxNumber != null ? myFaxNumber.hashCode() : 0);
+    result = 31 * result + (myHoursAvailable != null ? myHoursAvailable.hashCode() : 0);
+    result = 31 * result + (myProductSupported != null ? myProductSupported.hashCode() : 0);
+    result = 31 * result + (myTelephone != null ? myTelephone.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactPoint contactPoint = (ContactPoint) o;
+    if (!super.equals(o)) return false;
+    if (myAreaServed != null ? !myAreaServed.equals(contactPoint.myAreaServed) : contactPoint.myAreaServed != null) return false;
+    if (myAvailableLanguage != null ? !myAvailableLanguage.equals(contactPoint.myAvailableLanguage) : contactPoint.myAvailableLanguage != null) return false;
+    if (myContactOption != null ? !myContactOption.equals(contactPoint.myContactOption) : contactPoint.myContactOption != null) return false;
+    if (myContactType != null ? !myContactType.equals(contactPoint.myContactType) : contactPoint.myContactType != null) return false;
+    if (myEmail != null ? !myEmail.equals(contactPoint.myEmail) : contactPoint.myEmail != null) return false;
+    if (myFaxNumber != null ? !myFaxNumber.equals(contactPoint.myFaxNumber) : contactPoint.myFaxNumber != null) return false;
+    if (myHoursAvailable != null ? !myHoursAvailable.equals(contactPoint.myHoursAvailable) : contactPoint.myHoursAvailable != null) return false;
+    if (myProductSupported != null ? !myProductSupported.equals(contactPoint.myProductSupported) : contactPoint.myProductSupported != null) return false;
+    if (myTelephone != null ? !myTelephone.equals(contactPoint.myTelephone) : contactPoint.myTelephone != null) return false;
+    return true;
+  }
+
   private AdministrativeArea myAreaServed;
   private Language myAvailableLanguage;
   private ContactPointOption myContactOption;

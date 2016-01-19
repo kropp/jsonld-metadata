@@ -521,7 +521,7 @@ public class PropertyValueSpecification extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Number minValue;
@@ -600,6 +600,40 @@ public class PropertyValueSpecification extends Intangible {
     myValuePattern = valuePattern;
     myStepValue = stepValue;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myMinValue != null ? myMinValue.hashCode() : 0);
+    result = 31 * result + (myValueName != null ? myValueName.hashCode() : 0);
+    result = 31 * result + (myValueRequired != null ? myValueRequired.hashCode() : 0);
+    result = 31 * result + (myDefaultValue != null ? myDefaultValue.hashCode() : 0);
+    result = 31 * result + (myReadonlyValue != null ? myReadonlyValue.hashCode() : 0);
+    result = 31 * result + (myMultipleValues != null ? myMultipleValues.hashCode() : 0);
+    result = 31 * result + (myValueMinLength != null ? myValueMinLength.hashCode() : 0);
+    result = 31 * result + (myValueMaxLength != null ? myValueMaxLength.hashCode() : 0);
+    result = 31 * result + (myValuePattern != null ? myValuePattern.hashCode() : 0);
+    result = 31 * result + (myStepValue != null ? myStepValue.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PropertyValueSpecification propertyValueSpecification = (PropertyValueSpecification) o;
+    if (!super.equals(o)) return false;
+    if (myMinValue != null ? !myMinValue.equals(propertyValueSpecification.myMinValue) : propertyValueSpecification.myMinValue != null) return false;
+    if (myValueName != null ? !myValueName.equals(propertyValueSpecification.myValueName) : propertyValueSpecification.myValueName != null) return false;
+    if (myValueRequired != null ? !myValueRequired.equals(propertyValueSpecification.myValueRequired) : propertyValueSpecification.myValueRequired != null) return false;
+    if (myDefaultValue != null ? !myDefaultValue.equals(propertyValueSpecification.myDefaultValue) : propertyValueSpecification.myDefaultValue != null) return false;
+    if (myReadonlyValue != null ? !myReadonlyValue.equals(propertyValueSpecification.myReadonlyValue) : propertyValueSpecification.myReadonlyValue != null) return false;
+    if (myMultipleValues != null ? !myMultipleValues.equals(propertyValueSpecification.myMultipleValues) : propertyValueSpecification.myMultipleValues != null) return false;
+    if (myValueMinLength != null ? !myValueMinLength.equals(propertyValueSpecification.myValueMinLength) : propertyValueSpecification.myValueMinLength != null) return false;
+    if (myValueMaxLength != null ? !myValueMaxLength.equals(propertyValueSpecification.myValueMaxLength) : propertyValueSpecification.myValueMaxLength != null) return false;
+    if (myValuePattern != null ? !myValuePattern.equals(propertyValueSpecification.myValuePattern) : propertyValueSpecification.myValuePattern != null) return false;
+    if (myStepValue != null ? !myStepValue.equals(propertyValueSpecification.myStepValue) : propertyValueSpecification.myStepValue != null) return false;
+    return true;
+  }
+
   private Number myMinValue;
   private String myValueName;
   private Boolean myValueRequired;

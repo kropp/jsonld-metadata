@@ -54,4 +54,27 @@ class Number {
     myDouble = null;
     myString = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myInteger != null ? myInteger.hashCode() : 0);
+    result = 31 * result + (myLong != null ? myLong.hashCode() : 0);
+    result = 31 * result + (myFloat != null ? myFloat.hashCode() : 0);
+    result = 31 * result + (myDouble != null ? myDouble.hashCode() : 0);
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Number number = (Number) o;
+    if (myInteger != null ? !myInteger.equals(number.myInteger) : number.myInteger != null) return false;
+    if (myLong != null ? !myLong.equals(number.myLong) : number.myLong != null) return false;
+    if (myFloat != null ? !myFloat.equals(number.myFloat) : number.myFloat != null) return false;
+    if (myDouble != null ? !myDouble.equals(number.myDouble) : number.myDouble != null) return false;
+    if (myString != null ? !myString.equals(number.myString) : number.myString != null) return false;
+    return true;
+  }
+
 }

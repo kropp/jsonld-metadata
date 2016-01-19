@@ -892,10 +892,6 @@ public class SchemaOrg {
    */
   public static Notary.Builder notary() { return new Notary.NotaryThingBuilder(); }
   /**
-   * The basic data types such as Integers, Strings, etc.
-   */
-  public static DataType.Builder dataType() { return new DataType.DataTypeThingBuilder(); }
-  /**
    * Properties that take Mass as values are of the form '&lt;Number&gt; &lt;Mass unit of measure&gt;'. E.g., '7 kg'.
    */
   public static Mass.Builder mass() { return new Mass.MassThingBuilder(); }
@@ -1293,10 +1289,6 @@ public class SchemaOrg {
    * Enumerated status values for Order.
    */
   public static OrderStatus.Builder orderStatus() { return new OrderStatus.OrderStatusThingBuilder(); }
-  /**
-   * Data type: Integer.
-   */
-  public static Integer.Builder integer() { return new Integer.IntegerThingBuilder(); }
   /**
    * A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.
    */
@@ -3817,7 +3809,6 @@ public class SchemaOrg {
     if ("Artery".equals(type)) { return new Artery.ArteryThingBuilder(); }
     if ("OrderDelivered".equals(type)) { return new OrderDelivered.OrderDeliveredThingBuilder(); }
     if ("Notary".equals(type)) { return new Notary.NotaryThingBuilder(); }
-    if ("DataType".equals(type)) { return new DataType.DataTypeThingBuilder(); }
     if ("Mass".equals(type)) { return new Mass.MassThingBuilder(); }
     if ("Demand".equals(type)) { return new Demand.DemandThingBuilder(); }
     if ("FoodEstablishmentReservation".equals(type)) { return new FoodEstablishmentReservation.FoodEstablishmentReservationThingBuilder(); }
@@ -3914,7 +3905,6 @@ public class SchemaOrg {
     if ("EmergencyService".equals(type)) { return new EmergencyService.EmergencyServiceThingBuilder(); }
     if ("Map".equals(type)) { return new Map.MapThingBuilder(); }
     if ("OrderStatus".equals(type)) { return new OrderStatus.OrderStatusThingBuilder(); }
-    if ("Integer".equals(type)) { return new Integer.IntegerThingBuilder(); }
     if ("TypeAndQuantityNode".equals(type)) { return new TypeAndQuantityNode.TypeAndQuantityNodeThingBuilder(); }
     if ("CarUsageType".equals(type)) { return new CarUsageType.CarUsageTypeThingBuilder(); }
     if ("VideoGallery".equals(type)) { return new VideoGallery.VideoGalleryThingBuilder(); }

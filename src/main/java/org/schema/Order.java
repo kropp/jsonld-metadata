@@ -59,7 +59,7 @@ public class Order extends Intangible {
   /**
    * Any discount applied (to an Order).
    */
-  public NumberOrString getDiscount() {
+  public Number getDiscount() {
     return myDiscount;
   }
   /**
@@ -235,16 +235,40 @@ public class Order extends Intangible {
     /**
      * Any discount applied (to an Order).
      */
-    @NotNull public Builder discount(@NotNull Number number) {
-      if (this.discount == null) this.discount = new NumberOrString();
-      this.discount.setNumber(number);
+    @NotNull public Builder discount(@NotNull Integer integer) {
+      if (this.discount == null) this.discount = new Number();
+      this.discount.setInteger(integer);
+      return this;
+    }
+    /**
+     * Any discount applied (to an Order).
+     */
+    @NotNull public Builder discount(@NotNull Long discount) {
+      if (this.discount == null) this.discount = new Number();
+      this.discount.setLong(discount);
+      return this;
+    }
+    /**
+     * Any discount applied (to an Order).
+     */
+    @NotNull public Builder discount(@NotNull Float discount) {
+      if (this.discount == null) this.discount = new Number();
+      this.discount.setFloat(discount);
+      return this;
+    }
+    /**
+     * Any discount applied (to an Order).
+     */
+    @NotNull public Builder discount(@NotNull Double discount) {
+      if (this.discount == null) this.discount = new Number();
+      this.discount.setDouble(discount);
       return this;
     }
     /**
      * Any discount applied (to an Order).
      */
     @NotNull public Builder discount(@NotNull String discount) {
-      if (this.discount == null) this.discount = new NumberOrString();
+      if (this.discount == null) this.discount = new Number();
       this.discount.setString(discount);
       return this;
     }
@@ -583,7 +607,10 @@ public class Order extends Intangible {
         if ("confirmationNumber".equals(key) && value instanceof String) { confirmationNumber((String)value); continue; }
         if ("customer".equals(key) && value instanceof Organization) { customer((Organization)value); continue; }
         if ("customer".equals(key) && value instanceof Person) { customer((Person)value); continue; }
-        if ("discount".equals(key) && value instanceof Number) { discount((Number)value); continue; }
+        if ("discount".equals(key) && value instanceof Integer) { discount((Integer)value); continue; }
+        if ("discount".equals(key) && value instanceof Long) { discount((Long)value); continue; }
+        if ("discount".equals(key) && value instanceof Float) { discount((Float)value); continue; }
+        if ("discount".equals(key) && value instanceof Double) { discount((Double)value); continue; }
         if ("discount".equals(key) && value instanceof String) { discount((String)value); continue; }
         if ("discountCode".equals(key) && value instanceof String) { discountCode((String)value); continue; }
         if ("discountCurrency".equals(key) && value instanceof String) { discountCurrency((String)value); continue; }
@@ -610,7 +637,7 @@ public class Order extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private ParcelDelivery orderDelivery;
@@ -618,7 +645,7 @@ public class Order extends Intangible {
     private PostalAddress billingAddress;
     private String confirmationNumber;
     private OrganizationOrPerson customer;
-    private NumberOrString discount;
+    private Number discount;
     private String discountCode;
     private String discountCurrency;
     private Boolean isGift;
@@ -655,7 +682,10 @@ public class Order extends Intangible {
     @NotNull Builder customer(@NotNull Organization.Builder organization);
     @NotNull Builder customer(@NotNull Person person);
     @NotNull Builder customer(@NotNull Person.Builder person);
-    @NotNull Builder discount(@NotNull Number number);
+    @NotNull Builder discount(@NotNull Integer integer);
+    @NotNull Builder discount(@NotNull Long discount);
+    @NotNull Builder discount(@NotNull Float discount);
+    @NotNull Builder discount(@NotNull Double discount);
     @NotNull Builder discount(@NotNull String discount);
     @NotNull Builder discountCode(@NotNull String discountCode);
     @NotNull Builder discountCurrency(@NotNull String discountCurrency);
@@ -694,7 +724,7 @@ public class Order extends Intangible {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected Order(ParcelDelivery orderDelivery, Offer acceptedOffer, PostalAddress billingAddress, String confirmationNumber, OrganizationOrPerson customer, NumberOrString discount, String discountCode, String discountCurrency, Boolean isGift, java.util.Date orderDate, OrderItemOrProduct orderedItem, String orderNumber, OrderStatus orderStatus, Invoice partOfInvoice, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, String paymentUrl, Participant seller, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected Order(ParcelDelivery orderDelivery, Offer acceptedOffer, PostalAddress billingAddress, String confirmationNumber, OrganizationOrPerson customer, Number discount, String discountCode, String discountCurrency, Boolean isGift, java.util.Date orderDate, OrderItemOrProduct orderedItem, String orderNumber, OrderStatus orderStatus, Invoice partOfInvoice, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, String paymentUrl, Participant seller, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myOrderDelivery = orderDelivery;
     myAcceptedOffer = acceptedOffer;
@@ -717,12 +747,66 @@ public class Order extends Intangible {
     mySeller = seller;
     myBroker = broker;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myOrderDelivery != null ? myOrderDelivery.hashCode() : 0);
+    result = 31 * result + (myAcceptedOffer != null ? myAcceptedOffer.hashCode() : 0);
+    result = 31 * result + (myBillingAddress != null ? myBillingAddress.hashCode() : 0);
+    result = 31 * result + (myConfirmationNumber != null ? myConfirmationNumber.hashCode() : 0);
+    result = 31 * result + (myCustomer != null ? myCustomer.hashCode() : 0);
+    result = 31 * result + (myDiscount != null ? myDiscount.hashCode() : 0);
+    result = 31 * result + (myDiscountCode != null ? myDiscountCode.hashCode() : 0);
+    result = 31 * result + (myDiscountCurrency != null ? myDiscountCurrency.hashCode() : 0);
+    result = 31 * result + (myIsGift != null ? myIsGift.hashCode() : 0);
+    result = 31 * result + (myOrderDate != null ? myOrderDate.hashCode() : 0);
+    result = 31 * result + (myOrderedItem != null ? myOrderedItem.hashCode() : 0);
+    result = 31 * result + (myOrderNumber != null ? myOrderNumber.hashCode() : 0);
+    result = 31 * result + (myOrderStatus != null ? myOrderStatus.hashCode() : 0);
+    result = 31 * result + (myPartOfInvoice != null ? myPartOfInvoice.hashCode() : 0);
+    result = 31 * result + (myPaymentDue != null ? myPaymentDue.hashCode() : 0);
+    result = 31 * result + (myPaymentMethod != null ? myPaymentMethod.hashCode() : 0);
+    result = 31 * result + (myPaymentMethodId != null ? myPaymentMethodId.hashCode() : 0);
+    result = 31 * result + (myPaymentUrl != null ? myPaymentUrl.hashCode() : 0);
+    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
+    result = 31 * result + (myBroker != null ? myBroker.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Order order = (Order) o;
+    if (!super.equals(o)) return false;
+    if (myOrderDelivery != null ? !myOrderDelivery.equals(order.myOrderDelivery) : order.myOrderDelivery != null) return false;
+    if (myAcceptedOffer != null ? !myAcceptedOffer.equals(order.myAcceptedOffer) : order.myAcceptedOffer != null) return false;
+    if (myBillingAddress != null ? !myBillingAddress.equals(order.myBillingAddress) : order.myBillingAddress != null) return false;
+    if (myConfirmationNumber != null ? !myConfirmationNumber.equals(order.myConfirmationNumber) : order.myConfirmationNumber != null) return false;
+    if (myCustomer != null ? !myCustomer.equals(order.myCustomer) : order.myCustomer != null) return false;
+    if (myDiscount != null ? !myDiscount.equals(order.myDiscount) : order.myDiscount != null) return false;
+    if (myDiscountCode != null ? !myDiscountCode.equals(order.myDiscountCode) : order.myDiscountCode != null) return false;
+    if (myDiscountCurrency != null ? !myDiscountCurrency.equals(order.myDiscountCurrency) : order.myDiscountCurrency != null) return false;
+    if (myIsGift != null ? !myIsGift.equals(order.myIsGift) : order.myIsGift != null) return false;
+    if (myOrderDate != null ? !myOrderDate.equals(order.myOrderDate) : order.myOrderDate != null) return false;
+    if (myOrderedItem != null ? !myOrderedItem.equals(order.myOrderedItem) : order.myOrderedItem != null) return false;
+    if (myOrderNumber != null ? !myOrderNumber.equals(order.myOrderNumber) : order.myOrderNumber != null) return false;
+    if (myOrderStatus != null ? !myOrderStatus.equals(order.myOrderStatus) : order.myOrderStatus != null) return false;
+    if (myPartOfInvoice != null ? !myPartOfInvoice.equals(order.myPartOfInvoice) : order.myPartOfInvoice != null) return false;
+    if (myPaymentDue != null ? !myPaymentDue.equals(order.myPaymentDue) : order.myPaymentDue != null) return false;
+    if (myPaymentMethod != null ? !myPaymentMethod.equals(order.myPaymentMethod) : order.myPaymentMethod != null) return false;
+    if (myPaymentMethodId != null ? !myPaymentMethodId.equals(order.myPaymentMethodId) : order.myPaymentMethodId != null) return false;
+    if (myPaymentUrl != null ? !myPaymentUrl.equals(order.myPaymentUrl) : order.myPaymentUrl != null) return false;
+    if (mySeller != null ? !mySeller.equals(order.mySeller) : order.mySeller != null) return false;
+    if (myBroker != null ? !myBroker.equals(order.myBroker) : order.myBroker != null) return false;
+    return true;
+  }
+
   private ParcelDelivery myOrderDelivery;
   private Offer myAcceptedOffer;
   private PostalAddress myBillingAddress;
   private String myConfirmationNumber;
   private OrganizationOrPerson myCustomer;
-  private NumberOrString myDiscount;
+  private Number myDiscount;
   private String myDiscountCode;
   private String myDiscountCurrency;
   private Boolean myIsGift;

@@ -363,7 +363,7 @@ public class MedicalProcedure extends MedicalEntity {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String followup;
@@ -425,6 +425,28 @@ public class MedicalProcedure extends MedicalEntity {
     myPreparation = preparation;
     myProcedureType = procedureType;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myFollowup != null ? myFollowup.hashCode() : 0);
+    result = 31 * result + (myHowPerformed != null ? myHowPerformed.hashCode() : 0);
+    result = 31 * result + (myPreparation != null ? myPreparation.hashCode() : 0);
+    result = 31 * result + (myProcedureType != null ? myProcedureType.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalProcedure medicalProcedure = (MedicalProcedure) o;
+    if (!super.equals(o)) return false;
+    if (myFollowup != null ? !myFollowup.equals(medicalProcedure.myFollowup) : medicalProcedure.myFollowup != null) return false;
+    if (myHowPerformed != null ? !myHowPerformed.equals(medicalProcedure.myHowPerformed) : medicalProcedure.myHowPerformed != null) return false;
+    if (myPreparation != null ? !myPreparation.equals(medicalProcedure.myPreparation) : medicalProcedure.myPreparation != null) return false;
+    if (myProcedureType != null ? !myProcedureType.equals(medicalProcedure.myProcedureType) : medicalProcedure.myProcedureType != null) return false;
+    return true;
+  }
+
   private String myFollowup;
   private String myHowPerformed;
   private String myPreparation;

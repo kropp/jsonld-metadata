@@ -74,7 +74,7 @@ public class PriceSpecification extends StructuredValue {
 </ul>
       
    */
-  public NumberOrString getPrice() {
+  public Number getPrice() {
     return myPrice;
   }
   /**
@@ -242,9 +242,93 @@ public class PriceSpecification extends StructuredValue {
 </ul>
       
      */
-    @NotNull public Builder price(@NotNull Number number) {
-      if (this.price == null) this.price = new NumberOrString();
-      this.price.setNumber(number);
+    @NotNull public Builder price(@NotNull Integer integer) {
+      if (this.price == null) this.price = new Number();
+      this.price.setInteger(integer);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Long price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setLong(price);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Float price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setFloat(price);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Double price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setDouble(price);
       return this;
     }
     /**
@@ -271,7 +355,7 @@ public class PriceSpecification extends StructuredValue {
       
      */
     @NotNull public Builder price(@NotNull String price) {
-      if (this.price == null) this.price = new NumberOrString();
+      if (this.price == null) this.price = new Number();
       this.price.setString(price);
       return this;
     }
@@ -486,7 +570,10 @@ public class PriceSpecification extends StructuredValue {
         if ("minPrice".equals(key) && value instanceof Float) { minPrice((Float)value); continue; }
         if ("minPrice".equals(key) && value instanceof Double) { minPrice((Double)value); continue; }
         if ("minPrice".equals(key) && value instanceof String) { minPrice((String)value); continue; }
-        if ("price".equals(key) && value instanceof Number) { price((Number)value); continue; }
+        if ("price".equals(key) && value instanceof Integer) { price((Integer)value); continue; }
+        if ("price".equals(key) && value instanceof Long) { price((Long)value); continue; }
+        if ("price".equals(key) && value instanceof Float) { price((Float)value); continue; }
+        if ("price".equals(key) && value instanceof Double) { price((Double)value); continue; }
         if ("price".equals(key) && value instanceof String) { price((String)value); continue; }
         if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); continue; }
         if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); continue; }
@@ -501,14 +588,14 @@ public class PriceSpecification extends StructuredValue {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private QuantitativeValue eligibleQuantity;
     private PriceSpecification eligibleTransactionVolume;
     private Number maxPrice;
     private Number minPrice;
-    private NumberOrString price;
+    private Number price;
     private java.util.Date validFrom;
     private java.util.Date validThrough;
     private Boolean valueAddedTaxIncluded;
@@ -538,7 +625,10 @@ public class PriceSpecification extends StructuredValue {
     @NotNull Builder minPrice(@NotNull Float minPrice);
     @NotNull Builder minPrice(@NotNull Double minPrice);
     @NotNull Builder minPrice(@NotNull String minPrice);
-    @NotNull Builder price(@NotNull Number number);
+    @NotNull Builder price(@NotNull Integer integer);
+    @NotNull Builder price(@NotNull Long price);
+    @NotNull Builder price(@NotNull Float price);
+    @NotNull Builder price(@NotNull Double price);
     @NotNull Builder price(@NotNull String price);
     @NotNull Builder validFrom(@NotNull java.util.Date date);
     @NotNull Builder validThrough(@NotNull java.util.Date date);
@@ -558,7 +648,7 @@ public class PriceSpecification extends StructuredValue {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected PriceSpecification(QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, NumberOrString price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected PriceSpecification(QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, Number price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myEligibleQuantity = eligibleQuantity;
     myEligibleTransactionVolume = eligibleTransactionVolume;
@@ -570,11 +660,43 @@ public class PriceSpecification extends StructuredValue {
     myValueAddedTaxIncluded = valueAddedTaxIncluded;
     myPriceCurrency = priceCurrency;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myEligibleQuantity != null ? myEligibleQuantity.hashCode() : 0);
+    result = 31 * result + (myEligibleTransactionVolume != null ? myEligibleTransactionVolume.hashCode() : 0);
+    result = 31 * result + (myMaxPrice != null ? myMaxPrice.hashCode() : 0);
+    result = 31 * result + (myMinPrice != null ? myMinPrice.hashCode() : 0);
+    result = 31 * result + (myPrice != null ? myPrice.hashCode() : 0);
+    result = 31 * result + (myValidFrom != null ? myValidFrom.hashCode() : 0);
+    result = 31 * result + (myValidThrough != null ? myValidThrough.hashCode() : 0);
+    result = 31 * result + (myValueAddedTaxIncluded != null ? myValueAddedTaxIncluded.hashCode() : 0);
+    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PriceSpecification priceSpecification = (PriceSpecification) o;
+    if (!super.equals(o)) return false;
+    if (myEligibleQuantity != null ? !myEligibleQuantity.equals(priceSpecification.myEligibleQuantity) : priceSpecification.myEligibleQuantity != null) return false;
+    if (myEligibleTransactionVolume != null ? !myEligibleTransactionVolume.equals(priceSpecification.myEligibleTransactionVolume) : priceSpecification.myEligibleTransactionVolume != null) return false;
+    if (myMaxPrice != null ? !myMaxPrice.equals(priceSpecification.myMaxPrice) : priceSpecification.myMaxPrice != null) return false;
+    if (myMinPrice != null ? !myMinPrice.equals(priceSpecification.myMinPrice) : priceSpecification.myMinPrice != null) return false;
+    if (myPrice != null ? !myPrice.equals(priceSpecification.myPrice) : priceSpecification.myPrice != null) return false;
+    if (myValidFrom != null ? !myValidFrom.equals(priceSpecification.myValidFrom) : priceSpecification.myValidFrom != null) return false;
+    if (myValidThrough != null ? !myValidThrough.equals(priceSpecification.myValidThrough) : priceSpecification.myValidThrough != null) return false;
+    if (myValueAddedTaxIncluded != null ? !myValueAddedTaxIncluded.equals(priceSpecification.myValueAddedTaxIncluded) : priceSpecification.myValueAddedTaxIncluded != null) return false;
+    if (myPriceCurrency != null ? !myPriceCurrency.equals(priceSpecification.myPriceCurrency) : priceSpecification.myPriceCurrency != null) return false;
+    return true;
+  }
+
   private QuantitativeValue myEligibleQuantity;
   private PriceSpecification myEligibleTransactionVolume;
   private Number myMaxPrice;
   private Number myMinPrice;
-  private NumberOrString myPrice;
+  private Number myPrice;
   private java.util.Date myValidFrom;
   private java.util.Date myValidThrough;
   private Boolean myValueAddedTaxIncluded;

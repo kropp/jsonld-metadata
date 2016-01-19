@@ -43,4 +43,21 @@ class IntegerOrQuantitativeValue {
     myInteger = null;
     myQuantitativeValue = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myInteger != null ? myInteger.hashCode() : 0);
+    result = 31 * result + (myQuantitativeValue != null ? myQuantitativeValue.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    IntegerOrQuantitativeValue integerOrQuantitativeValue = (IntegerOrQuantitativeValue) o;
+    if (myInteger != null ? !myInteger.equals(integerOrQuantitativeValue.myInteger) : integerOrQuantitativeValue.myInteger != null) return false;
+    if (myQuantitativeValue != null ? !myQuantitativeValue.equals(integerOrQuantitativeValue.myQuantitativeValue) : integerOrQuantitativeValue.myQuantitativeValue != null) return false;
+    return true;
+  }
+
 }

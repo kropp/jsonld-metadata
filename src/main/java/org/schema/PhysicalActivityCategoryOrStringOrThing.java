@@ -44,4 +44,23 @@ class PhysicalActivityCategoryOrStringOrThing {
     myString = null;
     myThing = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myPhysicalActivityCategory != null ? myPhysicalActivityCategory.hashCode() : 0);
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    result = 31 * result + (myThing != null ? myThing.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PhysicalActivityCategoryOrStringOrThing physicalActivityCategoryOrStringOrThing = (PhysicalActivityCategoryOrStringOrThing) o;
+    if (myPhysicalActivityCategory != null ? !myPhysicalActivityCategory.equals(physicalActivityCategoryOrStringOrThing.myPhysicalActivityCategory) : physicalActivityCategoryOrStringOrThing.myPhysicalActivityCategory != null) return false;
+    if (myString != null ? !myString.equals(physicalActivityCategoryOrStringOrThing.myString) : physicalActivityCategoryOrStringOrThing.myString != null) return false;
+    if (myThing != null ? !myThing.equals(physicalActivityCategoryOrStringOrThing.myThing) : physicalActivityCategoryOrStringOrThing.myThing != null) return false;
+    return true;
+  }
+
 }

@@ -1236,7 +1236,7 @@ public class PublicationIssue extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private IntegerOrString issueNumber;
@@ -1468,6 +1468,28 @@ public class PublicationIssue extends CreativeWork {
     myPageStart = pageStart;
     myPagination = pagination;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myIssueNumber != null ? myIssueNumber.hashCode() : 0);
+    result = 31 * result + (myPageEnd != null ? myPageEnd.hashCode() : 0);
+    result = 31 * result + (myPageStart != null ? myPageStart.hashCode() : 0);
+    result = 31 * result + (myPagination != null ? myPagination.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PublicationIssue publicationIssue = (PublicationIssue) o;
+    if (!super.equals(o)) return false;
+    if (myIssueNumber != null ? !myIssueNumber.equals(publicationIssue.myIssueNumber) : publicationIssue.myIssueNumber != null) return false;
+    if (myPageEnd != null ? !myPageEnd.equals(publicationIssue.myPageEnd) : publicationIssue.myPageEnd != null) return false;
+    if (myPageStart != null ? !myPageStart.equals(publicationIssue.myPageStart) : publicationIssue.myPageStart != null) return false;
+    if (myPagination != null ? !myPagination.equals(publicationIssue.myPagination) : publicationIssue.myPagination != null) return false;
+    return true;
+  }
+
   private IntegerOrString myIssueNumber;
   private IntegerOrString myPageEnd;
   private IntegerOrString myPageStart;

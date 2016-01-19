@@ -39,4 +39,21 @@ class DistanceOrString {
     myDistance = null;
     myString = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDistance != null ? myDistance.hashCode() : 0);
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DistanceOrString distanceOrString = (DistanceOrString) o;
+    if (myDistance != null ? !myDistance.equals(distanceOrString.myDistance) : distanceOrString.myDistance != null) return false;
+    if (myString != null ? !myString.equals(distanceOrString.myString) : distanceOrString.myString != null) return false;
+    return true;
+  }
+
 }

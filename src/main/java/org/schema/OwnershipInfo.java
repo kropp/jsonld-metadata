@@ -303,7 +303,7 @@ public class OwnershipInfo extends StructuredValue {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private OrganizationOrPerson acquiredFrom;
@@ -350,6 +350,28 @@ public class OwnershipInfo extends StructuredValue {
     myOwnedThrough = ownedThrough;
     myTypeOfGood = typeOfGood;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAcquiredFrom != null ? myAcquiredFrom.hashCode() : 0);
+    result = 31 * result + (myOwnedFrom != null ? myOwnedFrom.hashCode() : 0);
+    result = 31 * result + (myOwnedThrough != null ? myOwnedThrough.hashCode() : 0);
+    result = 31 * result + (myTypeOfGood != null ? myTypeOfGood.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OwnershipInfo ownershipInfo = (OwnershipInfo) o;
+    if (!super.equals(o)) return false;
+    if (myAcquiredFrom != null ? !myAcquiredFrom.equals(ownershipInfo.myAcquiredFrom) : ownershipInfo.myAcquiredFrom != null) return false;
+    if (myOwnedFrom != null ? !myOwnedFrom.equals(ownershipInfo.myOwnedFrom) : ownershipInfo.myOwnedFrom != null) return false;
+    if (myOwnedThrough != null ? !myOwnedThrough.equals(ownershipInfo.myOwnedThrough) : ownershipInfo.myOwnedThrough != null) return false;
+    if (myTypeOfGood != null ? !myTypeOfGood.equals(ownershipInfo.myTypeOfGood) : ownershipInfo.myTypeOfGood != null) return false;
+    return true;
+  }
+
   private OrganizationOrPerson myAcquiredFrom;
   private java.util.Date myOwnedFrom;
   private java.util.Date myOwnedThrough;

@@ -53,4 +53,18 @@ public class DigitalFormat {
 
   protected DigitalFormat() {
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DigitalFormat digitalFormat = (DigitalFormat) o;
+    if (!super.equals(o)) return false;
+    return true;
+  }
+
 }

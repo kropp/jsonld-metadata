@@ -39,4 +39,21 @@ class DriveWheelConfigurationValueOrString {
     myDriveWheelConfigurationValue = null;
     myString = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDriveWheelConfigurationValue != null ? myDriveWheelConfigurationValue.hashCode() : 0);
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DriveWheelConfigurationValueOrString driveWheelConfigurationValueOrString = (DriveWheelConfigurationValueOrString) o;
+    if (myDriveWheelConfigurationValue != null ? !myDriveWheelConfigurationValue.equals(driveWheelConfigurationValueOrString.myDriveWheelConfigurationValue) : driveWheelConfigurationValueOrString.myDriveWheelConfigurationValue != null) return false;
+    if (myString != null ? !myString.equals(driveWheelConfigurationValueOrString.myString) : driveWheelConfigurationValueOrString.myString != null) return false;
+    return true;
+  }
+
 }

@@ -1364,7 +1364,7 @@ public class WebApplication extends SoftwareApplication {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String browserRequirements;
@@ -1632,5 +1632,21 @@ public class WebApplication extends SoftwareApplication {
     super(applicationCategory, applicationSubCategory, applicationSuite, countriesNotSupported, countriesSupported, availableOnDevice, downloadUrl, featureList, fileFormat, fileSize, installUrl, memoryRequirements, operatingSystem, permissions, processorRequirements, releaseNotes, softwareRequirements, screenshot, softwareVersion, storageRequirements, softwareAddOn, softwareHelp, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myBrowserRequirements = browserRequirements;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myBrowserRequirements != null ? myBrowserRequirements.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    WebApplication webApplication = (WebApplication) o;
+    if (!super.equals(o)) return false;
+    if (myBrowserRequirements != null ? !myBrowserRequirements.equals(webApplication.myBrowserRequirements) : webApplication.myBrowserRequirements != null) return false;
+    return true;
+  }
+
   private String myBrowserRequirements;
 }

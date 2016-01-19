@@ -338,7 +338,7 @@ public class TypeAndQuantityNode extends StructuredValue {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Number amountOfThisGood;
@@ -390,6 +390,30 @@ public class TypeAndQuantityNode extends StructuredValue {
     myUnitCode = unitCode;
     myUnitText = unitText;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAmountOfThisGood != null ? myAmountOfThisGood.hashCode() : 0);
+    result = 31 * result + (myBusinessFunction != null ? myBusinessFunction.hashCode() : 0);
+    result = 31 * result + (myTypeOfGood != null ? myTypeOfGood.hashCode() : 0);
+    result = 31 * result + (myUnitCode != null ? myUnitCode.hashCode() : 0);
+    result = 31 * result + (myUnitText != null ? myUnitText.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TypeAndQuantityNode typeAndQuantityNode = (TypeAndQuantityNode) o;
+    if (!super.equals(o)) return false;
+    if (myAmountOfThisGood != null ? !myAmountOfThisGood.equals(typeAndQuantityNode.myAmountOfThisGood) : typeAndQuantityNode.myAmountOfThisGood != null) return false;
+    if (myBusinessFunction != null ? !myBusinessFunction.equals(typeAndQuantityNode.myBusinessFunction) : typeAndQuantityNode.myBusinessFunction != null) return false;
+    if (myTypeOfGood != null ? !myTypeOfGood.equals(typeAndQuantityNode.myTypeOfGood) : typeAndQuantityNode.myTypeOfGood != null) return false;
+    if (myUnitCode != null ? !myUnitCode.equals(typeAndQuantityNode.myUnitCode) : typeAndQuantityNode.myUnitCode != null) return false;
+    if (myUnitText != null ? !myUnitText.equals(typeAndQuantityNode.myUnitText) : typeAndQuantityNode.myUnitText != null) return false;
+    return true;
+  }
+
   private Number myAmountOfThisGood;
   private BusinessFunction myBusinessFunction;
   private Product myTypeOfGood;

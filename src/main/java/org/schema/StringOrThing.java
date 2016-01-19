@@ -39,4 +39,21 @@ class StringOrThing {
     myString = null;
     myThing = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    result = 31 * result + (myThing != null ? myThing.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    StringOrThing stringOrThing = (StringOrThing) o;
+    if (myString != null ? !myString.equals(stringOrThing.myString) : stringOrThing.myString != null) return false;
+    if (myThing != null ? !myThing.equals(stringOrThing.myThing) : stringOrThing.myThing != null) return false;
+    return true;
+  }
+
 }

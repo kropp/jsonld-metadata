@@ -344,7 +344,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private OrganizationOrPerson followee;
@@ -399,5 +399,21 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     super(agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myFollowee = followee;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myFollowee != null ? myFollowee.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    FollowAction followAction = (FollowAction) o;
+    if (!super.equals(o)) return false;
+    if (myFollowee != null ? !myFollowee.equals(followAction.myFollowee) : followAction.myFollowee != null) return false;
+    return true;
+  }
+
   private OrganizationOrPerson myFollowee;
 }

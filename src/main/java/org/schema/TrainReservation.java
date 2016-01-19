@@ -168,30 +168,40 @@ public class TrainReservation extends Reservation {
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(@NotNull Number number) {
-      if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
-      this.totalPrice.setNumber(number);
+    @NotNull public Builder totalPrice(@NotNull Integer integer) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setInteger(integer);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(@NotNull PriceSpecification priceSpecification) {
-      if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
-      this.totalPrice.setPriceSpecification(priceSpecification);
+    @NotNull public Builder totalPrice(@NotNull Long totalPrice) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setLong(totalPrice);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(@NotNull PriceSpecification.Builder priceSpecification) {
-      return this.totalPrice(priceSpecification.build());
+    @NotNull public Builder totalPrice(@NotNull Float totalPrice) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setFloat(totalPrice);
+      return this;
+    }
+    /**
+     * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
+     */
+    @NotNull public Builder totalPrice(@NotNull Double totalPrice) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setDouble(totalPrice);
+      return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull String totalPrice) {
-      if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
+      if (this.totalPrice == null) this.totalPrice = new Number();
       this.totalPrice.setString(totalPrice);
       return this;
     }
@@ -412,8 +422,10 @@ public class TrainReservation extends Reservation {
         if ("modifiedTime".equals(key) && value instanceof java.util.Date) { modifiedTime((java.util.Date)value); continue; }
         if ("programMembershipUsed".equals(key) && value instanceof ProgramMembership) { programMembershipUsed((ProgramMembership)value); continue; }
         if ("reservedTicket".equals(key) && value instanceof Ticket) { reservedTicket((Ticket)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof Number) { totalPrice((Number)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof PriceSpecification) { totalPrice((PriceSpecification)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Integer) { totalPrice((Integer)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Long) { totalPrice((Long)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Float) { totalPrice((Float)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Double) { totalPrice((Double)value); continue; }
         if ("totalPrice".equals(key) && value instanceof String) { totalPrice((String)value); continue; }
         if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); continue; }
         if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); continue; }
@@ -427,7 +439,7 @@ public class TrainReservation extends Reservation {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String reservationId;
@@ -439,7 +451,7 @@ public class TrainReservation extends Reservation {
     private java.util.Date modifiedTime;
     private ProgramMembership programMembershipUsed;
     private Ticket reservedTicket;
-    private NumberOrPriceSpecificationOrString totalPrice;
+    private Number totalPrice;
     private String priceCurrency;
     private OrganizationOrPerson broker;
     private String additionalType;
@@ -472,9 +484,10 @@ public class TrainReservation extends Reservation {
     @NotNull Builder programMembershipUsed(@NotNull ProgramMembership.Builder programMembership);
     @NotNull Builder reservedTicket(@NotNull Ticket ticket);
     @NotNull Builder reservedTicket(@NotNull Ticket.Builder ticket);
-    @NotNull Builder totalPrice(@NotNull Number number);
-    @NotNull Builder totalPrice(@NotNull PriceSpecification priceSpecification);
-    @NotNull Builder totalPrice(@NotNull PriceSpecification.Builder priceSpecification);
+    @NotNull Builder totalPrice(@NotNull Integer integer);
+    @NotNull Builder totalPrice(@NotNull Long totalPrice);
+    @NotNull Builder totalPrice(@NotNull Float totalPrice);
+    @NotNull Builder totalPrice(@NotNull Double totalPrice);
     @NotNull Builder totalPrice(@NotNull String totalPrice);
     @NotNull Builder priceCurrency(@NotNull String priceCurrency);
     @NotNull Builder broker(@NotNull Organization organization);
@@ -495,7 +508,21 @@ public class TrainReservation extends Reservation {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected TrainReservation(String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected TrainReservation(String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, Number totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TrainReservation trainReservation = (TrainReservation) o;
+    if (!super.equals(o)) return false;
+    return true;
+  }
+
 }

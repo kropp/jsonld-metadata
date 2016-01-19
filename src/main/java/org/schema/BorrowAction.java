@@ -356,7 +356,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Person lender;
@@ -415,5 +415,21 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     super(fromLocation, toLocation, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myLender = lender;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myLender != null ? myLender.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BorrowAction borrowAction = (BorrowAction) o;
+    if (!super.equals(o)) return false;
+    if (myLender != null ? !myLender.equals(borrowAction.myLender) : borrowAction.myLender != null) return false;
+    return true;
+  }
+
   private Person myLender;
 }

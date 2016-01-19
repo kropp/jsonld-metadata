@@ -370,7 +370,7 @@ public class ServiceChannel extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Language availableLanguage;
@@ -432,6 +432,36 @@ public class ServiceChannel extends Intangible {
     myServiceSmsNumber = serviceSmsNumber;
     myServiceUrl = serviceUrl;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAvailableLanguage != null ? myAvailableLanguage.hashCode() : 0);
+    result = 31 * result + (myProcessingTime != null ? myProcessingTime.hashCode() : 0);
+    result = 31 * result + (myProvidesService != null ? myProvidesService.hashCode() : 0);
+    result = 31 * result + (myServiceLocation != null ? myServiceLocation.hashCode() : 0);
+    result = 31 * result + (myServicePhone != null ? myServicePhone.hashCode() : 0);
+    result = 31 * result + (myServicePostalAddress != null ? myServicePostalAddress.hashCode() : 0);
+    result = 31 * result + (myServiceSmsNumber != null ? myServiceSmsNumber.hashCode() : 0);
+    result = 31 * result + (myServiceUrl != null ? myServiceUrl.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ServiceChannel serviceChannel = (ServiceChannel) o;
+    if (!super.equals(o)) return false;
+    if (myAvailableLanguage != null ? !myAvailableLanguage.equals(serviceChannel.myAvailableLanguage) : serviceChannel.myAvailableLanguage != null) return false;
+    if (myProcessingTime != null ? !myProcessingTime.equals(serviceChannel.myProcessingTime) : serviceChannel.myProcessingTime != null) return false;
+    if (myProvidesService != null ? !myProvidesService.equals(serviceChannel.myProvidesService) : serviceChannel.myProvidesService != null) return false;
+    if (myServiceLocation != null ? !myServiceLocation.equals(serviceChannel.myServiceLocation) : serviceChannel.myServiceLocation != null) return false;
+    if (myServicePhone != null ? !myServicePhone.equals(serviceChannel.myServicePhone) : serviceChannel.myServicePhone != null) return false;
+    if (myServicePostalAddress != null ? !myServicePostalAddress.equals(serviceChannel.myServicePostalAddress) : serviceChannel.myServicePostalAddress != null) return false;
+    if (myServiceSmsNumber != null ? !myServiceSmsNumber.equals(serviceChannel.myServiceSmsNumber) : serviceChannel.myServiceSmsNumber != null) return false;
+    if (myServiceUrl != null ? !myServiceUrl.equals(serviceChannel.myServiceUrl) : serviceChannel.myServiceUrl != null) return false;
+    return true;
+  }
+
   private Language myAvailableLanguage;
   private Duration myProcessingTime;
   private Service myProvidesService;

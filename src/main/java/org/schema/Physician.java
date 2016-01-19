@@ -597,7 +597,7 @@ Note: Publishers should be aware that applications designed to use specific sche
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MedicalProcedureOrMedicalTestOrMedicalTherapy availableService;
@@ -702,6 +702,26 @@ Note: Publishers should be aware that applications designed to use specific sche
     myHospitalAffiliation = hospitalAffiliation;
     myMedicalSpecialty = medicalSpecialty;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAvailableService != null ? myAvailableService.hashCode() : 0);
+    result = 31 * result + (myHospitalAffiliation != null ? myHospitalAffiliation.hashCode() : 0);
+    result = 31 * result + (myMedicalSpecialty != null ? myMedicalSpecialty.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Physician physician = (Physician) o;
+    if (!super.equals(o)) return false;
+    if (myAvailableService != null ? !myAvailableService.equals(physician.myAvailableService) : physician.myAvailableService != null) return false;
+    if (myHospitalAffiliation != null ? !myHospitalAffiliation.equals(physician.myHospitalAffiliation) : physician.myHospitalAffiliation != null) return false;
+    if (myMedicalSpecialty != null ? !myMedicalSpecialty.equals(physician.myMedicalSpecialty) : physician.myMedicalSpecialty != null) return false;
+    return true;
+  }
+
   private MedicalProcedureOrMedicalTestOrMedicalTherapy myAvailableService;
   private Hospital myHospitalAffiliation;
   private MedicalSpecialty myMedicalSpecialty;

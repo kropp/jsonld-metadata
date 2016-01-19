@@ -385,7 +385,7 @@ public class MedicalTestPanel extends MedicalTest {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MedicalTest subTest;
@@ -452,5 +452,21 @@ public class MedicalTestPanel extends MedicalTest {
     super(affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     mySubTest = subTest;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (mySubTest != null ? mySubTest.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalTestPanel medicalTestPanel = (MedicalTestPanel) o;
+    if (!super.equals(o)) return false;
+    if (mySubTest != null ? !mySubTest.equals(medicalTestPanel.mySubTest) : medicalTestPanel.mySubTest != null) return false;
+    return true;
+  }
+
   private MedicalTest mySubTest;
 }

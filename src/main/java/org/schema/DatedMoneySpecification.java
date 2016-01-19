@@ -311,7 +311,7 @@ public class DatedMoneySpecification extends StructuredValue {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Number amount;
@@ -358,6 +358,28 @@ public class DatedMoneySpecification extends StructuredValue {
     myStartDate = startDate;
     myEndDate = endDate;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAmount != null ? myAmount.hashCode() : 0);
+    result = 31 * result + (myCurrency != null ? myCurrency.hashCode() : 0);
+    result = 31 * result + (myStartDate != null ? myStartDate.hashCode() : 0);
+    result = 31 * result + (myEndDate != null ? myEndDate.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DatedMoneySpecification datedMoneySpecification = (DatedMoneySpecification) o;
+    if (!super.equals(o)) return false;
+    if (myAmount != null ? !myAmount.equals(datedMoneySpecification.myAmount) : datedMoneySpecification.myAmount != null) return false;
+    if (myCurrency != null ? !myCurrency.equals(datedMoneySpecification.myCurrency) : datedMoneySpecification.myCurrency != null) return false;
+    if (myStartDate != null ? !myStartDate.equals(datedMoneySpecification.myStartDate) : datedMoneySpecification.myStartDate != null) return false;
+    if (myEndDate != null ? !myEndDate.equals(datedMoneySpecification.myEndDate) : datedMoneySpecification.myEndDate != null) return false;
+    return true;
+  }
+
   private Number myAmount;
   private String myCurrency;
   private java.util.Date myStartDate;

@@ -39,4 +39,21 @@ class QualitativeValueOrString {
     myQualitativeValue = null;
     myString = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myQualitativeValue != null ? myQualitativeValue.hashCode() : 0);
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QualitativeValueOrString qualitativeValueOrString = (QualitativeValueOrString) o;
+    if (myQualitativeValue != null ? !myQualitativeValue.equals(qualitativeValueOrString.myQualitativeValue) : qualitativeValueOrString.myQualitativeValue != null) return false;
+    if (myString != null ? !myString.equals(qualitativeValueOrString.myString) : qualitativeValueOrString.myString != null) return false;
+    return true;
+  }
+
 }

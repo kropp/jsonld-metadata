@@ -694,7 +694,7 @@ public class Airline extends Organization {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private BoardingPolicyType boardingPolicy;
@@ -824,6 +824,24 @@ public class Airline extends Organization {
     myBoardingPolicy = boardingPolicy;
     myIataCode = iataCode;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myBoardingPolicy != null ? myBoardingPolicy.hashCode() : 0);
+    result = 31 * result + (myIataCode != null ? myIataCode.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Airline airline = (Airline) o;
+    if (!super.equals(o)) return false;
+    if (myBoardingPolicy != null ? !myBoardingPolicy.equals(airline.myBoardingPolicy) : airline.myBoardingPolicy != null) return false;
+    if (myIataCode != null ? !myIataCode.equals(airline.myIataCode) : airline.myIataCode != null) return false;
+    return true;
+  }
+
   private BoardingPolicyType myBoardingPolicy;
   private String myIataCode;
 }

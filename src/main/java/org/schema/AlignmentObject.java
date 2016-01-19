@@ -287,7 +287,7 @@ public class AlignmentObject extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String alignmentType;
@@ -333,6 +333,30 @@ public class AlignmentObject extends Intangible {
     myTargetName = targetName;
     myTargetUrl = targetUrl;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAlignmentType != null ? myAlignmentType.hashCode() : 0);
+    result = 31 * result + (myEducationalFramework != null ? myEducationalFramework.hashCode() : 0);
+    result = 31 * result + (myTargetDescription != null ? myTargetDescription.hashCode() : 0);
+    result = 31 * result + (myTargetName != null ? myTargetName.hashCode() : 0);
+    result = 31 * result + (myTargetUrl != null ? myTargetUrl.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AlignmentObject alignmentObject = (AlignmentObject) o;
+    if (!super.equals(o)) return false;
+    if (myAlignmentType != null ? !myAlignmentType.equals(alignmentObject.myAlignmentType) : alignmentObject.myAlignmentType != null) return false;
+    if (myEducationalFramework != null ? !myEducationalFramework.equals(alignmentObject.myEducationalFramework) : alignmentObject.myEducationalFramework != null) return false;
+    if (myTargetDescription != null ? !myTargetDescription.equals(alignmentObject.myTargetDescription) : alignmentObject.myTargetDescription != null) return false;
+    if (myTargetName != null ? !myTargetName.equals(alignmentObject.myTargetName) : alignmentObject.myTargetName != null) return false;
+    if (myTargetUrl != null ? !myTargetUrl.equals(alignmentObject.myTargetUrl) : alignmentObject.myTargetUrl != null) return false;
+    return true;
+  }
+
   private String myAlignmentType;
   private String myEducationalFramework;
   private String myTargetDescription;

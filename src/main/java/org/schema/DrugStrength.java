@@ -400,7 +400,7 @@ public class DrugStrength extends MedicalIntangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String activeIngredient;
@@ -466,6 +466,28 @@ public class DrugStrength extends MedicalIntangible {
     myStrengthUnit = strengthUnit;
     myStrengthValue = strengthValue;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActiveIngredient != null ? myActiveIngredient.hashCode() : 0);
+    result = 31 * result + (myAvailableIn != null ? myAvailableIn.hashCode() : 0);
+    result = 31 * result + (myStrengthUnit != null ? myStrengthUnit.hashCode() : 0);
+    result = 31 * result + (myStrengthValue != null ? myStrengthValue.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DrugStrength drugStrength = (DrugStrength) o;
+    if (!super.equals(o)) return false;
+    if (myActiveIngredient != null ? !myActiveIngredient.equals(drugStrength.myActiveIngredient) : drugStrength.myActiveIngredient != null) return false;
+    if (myAvailableIn != null ? !myAvailableIn.equals(drugStrength.myAvailableIn) : drugStrength.myAvailableIn != null) return false;
+    if (myStrengthUnit != null ? !myStrengthUnit.equals(drugStrength.myStrengthUnit) : drugStrength.myStrengthUnit != null) return false;
+    if (myStrengthValue != null ? !myStrengthValue.equals(drugStrength.myStrengthValue) : drugStrength.myStrengthValue != null) return false;
+    return true;
+  }
+
   private String myActiveIngredient;
   private AdministrativeArea myAvailableIn;
   private String myStrengthUnit;

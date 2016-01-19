@@ -479,7 +479,7 @@ public class LymphaticVessel extends Vessel {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Vessel originatesFrom;
@@ -565,6 +565,26 @@ public class LymphaticVessel extends Vessel {
     myRegionDrained = regionDrained;
     myRunsTo = runsTo;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myOriginatesFrom != null ? myOriginatesFrom.hashCode() : 0);
+    result = 31 * result + (myRegionDrained != null ? myRegionDrained.hashCode() : 0);
+    result = 31 * result + (myRunsTo != null ? myRunsTo.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    LymphaticVessel lymphaticVessel = (LymphaticVessel) o;
+    if (!super.equals(o)) return false;
+    if (myOriginatesFrom != null ? !myOriginatesFrom.equals(lymphaticVessel.myOriginatesFrom) : lymphaticVessel.myOriginatesFrom != null) return false;
+    if (myRegionDrained != null ? !myRegionDrained.equals(lymphaticVessel.myRegionDrained) : lymphaticVessel.myRegionDrained != null) return false;
+    if (myRunsTo != null ? !myRunsTo.equals(lymphaticVessel.myRunsTo) : lymphaticVessel.myRunsTo != null) return false;
+    return true;
+  }
+
   private Vessel myOriginatesFrom;
   private AnatomicalStructureOrAnatomicalSystem myRegionDrained;
   private Vessel myRunsTo;

@@ -288,7 +288,7 @@ public class Seat extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String seatNumber;
@@ -333,6 +333,28 @@ public class Seat extends Intangible {
     mySeatSection = seatSection;
     mySeatingType = seatingType;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (mySeatNumber != null ? mySeatNumber.hashCode() : 0);
+    result = 31 * result + (mySeatRow != null ? mySeatRow.hashCode() : 0);
+    result = 31 * result + (mySeatSection != null ? mySeatSection.hashCode() : 0);
+    result = 31 * result + (mySeatingType != null ? mySeatingType.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Seat seat = (Seat) o;
+    if (!super.equals(o)) return false;
+    if (mySeatNumber != null ? !mySeatNumber.equals(seat.mySeatNumber) : seat.mySeatNumber != null) return false;
+    if (mySeatRow != null ? !mySeatRow.equals(seat.mySeatRow) : seat.mySeatRow != null) return false;
+    if (mySeatSection != null ? !mySeatSection.equals(seat.mySeatSection) : seat.mySeatSection != null) return false;
+    if (mySeatingType != null ? !mySeatingType.equals(seat.mySeatingType) : seat.mySeatingType != null) return false;
+    return true;
+  }
+
   private String mySeatNumber;
   private String mySeatRow;
   private String mySeatSection;

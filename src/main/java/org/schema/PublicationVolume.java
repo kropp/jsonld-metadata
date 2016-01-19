@@ -1235,7 +1235,7 @@ public class PublicationVolume extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private IntegerOrString pageEnd;
@@ -1467,6 +1467,28 @@ public class PublicationVolume extends CreativeWork {
     myPagination = pagination;
     myVolumeNumber = volumeNumber;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myPageEnd != null ? myPageEnd.hashCode() : 0);
+    result = 31 * result + (myPageStart != null ? myPageStart.hashCode() : 0);
+    result = 31 * result + (myPagination != null ? myPagination.hashCode() : 0);
+    result = 31 * result + (myVolumeNumber != null ? myVolumeNumber.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PublicationVolume publicationVolume = (PublicationVolume) o;
+    if (!super.equals(o)) return false;
+    if (myPageEnd != null ? !myPageEnd.equals(publicationVolume.myPageEnd) : publicationVolume.myPageEnd != null) return false;
+    if (myPageStart != null ? !myPageStart.equals(publicationVolume.myPageStart) : publicationVolume.myPageStart != null) return false;
+    if (myPagination != null ? !myPagination.equals(publicationVolume.myPagination) : publicationVolume.myPagination != null) return false;
+    if (myVolumeNumber != null ? !myVolumeNumber.equals(publicationVolume.myVolumeNumber) : publicationVolume.myVolumeNumber != null) return false;
+    return true;
+  }
+
   private IntegerOrString myPageEnd;
   private IntegerOrString myPageStart;
   private String myPagination;

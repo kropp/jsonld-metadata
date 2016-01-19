@@ -517,7 +517,7 @@ public class Muscle extends AnatomicalStructure {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String muscleAction;
@@ -612,6 +612,32 @@ public class Muscle extends AnatomicalStructure {
     myNerve = nerve;
     myOrigin = origin;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myMuscleAction != null ? myMuscleAction.hashCode() : 0);
+    result = 31 * result + (myAntagonist != null ? myAntagonist.hashCode() : 0);
+    result = 31 * result + (myBloodSupply != null ? myBloodSupply.hashCode() : 0);
+    result = 31 * result + (myInsertion != null ? myInsertion.hashCode() : 0);
+    result = 31 * result + (myNerve != null ? myNerve.hashCode() : 0);
+    result = 31 * result + (myOrigin != null ? myOrigin.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Muscle muscle = (Muscle) o;
+    if (!super.equals(o)) return false;
+    if (myMuscleAction != null ? !myMuscleAction.equals(muscle.myMuscleAction) : muscle.myMuscleAction != null) return false;
+    if (myAntagonist != null ? !myAntagonist.equals(muscle.myAntagonist) : muscle.myAntagonist != null) return false;
+    if (myBloodSupply != null ? !myBloodSupply.equals(muscle.myBloodSupply) : muscle.myBloodSupply != null) return false;
+    if (myInsertion != null ? !myInsertion.equals(muscle.myInsertion) : muscle.myInsertion != null) return false;
+    if (myNerve != null ? !myNerve.equals(muscle.myNerve) : muscle.myNerve != null) return false;
+    if (myOrigin != null ? !myOrigin.equals(muscle.myOrigin) : muscle.myOrigin != null) return false;
+    return true;
+  }
+
   private String myMuscleAction;
   private Muscle myAntagonist;
   private Vessel myBloodSupply;

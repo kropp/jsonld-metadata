@@ -44,4 +44,21 @@ class EnumerationOrProperty {
     myEnumeration = null;
     myProperty = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myEnumeration != null ? myEnumeration.hashCode() : 0);
+    result = 31 * result + (myProperty != null ? myProperty.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EnumerationOrProperty enumerationOrProperty = (EnumerationOrProperty) o;
+    if (myEnumeration != null ? !myEnumeration.equals(enumerationOrProperty.myEnumeration) : enumerationOrProperty.myEnumeration != null) return false;
+    if (myProperty != null ? !myProperty.equals(enumerationOrProperty.myProperty) : enumerationOrProperty.myProperty != null) return false;
+    return true;
+  }
+
 }

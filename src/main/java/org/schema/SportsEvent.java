@@ -538,7 +538,7 @@ public class SportsEvent extends Event {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Competitor homeTeam;
@@ -634,6 +634,26 @@ public class SportsEvent extends Event {
     myAwayTeam = awayTeam;
     myCompetitor = competitor;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myHomeTeam != null ? myHomeTeam.hashCode() : 0);
+    result = 31 * result + (myAwayTeam != null ? myAwayTeam.hashCode() : 0);
+    result = 31 * result + (myCompetitor != null ? myCompetitor.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SportsEvent sportsEvent = (SportsEvent) o;
+    if (!super.equals(o)) return false;
+    if (myHomeTeam != null ? !myHomeTeam.equals(sportsEvent.myHomeTeam) : sportsEvent.myHomeTeam != null) return false;
+    if (myAwayTeam != null ? !myAwayTeam.equals(sportsEvent.myAwayTeam) : sportsEvent.myAwayTeam != null) return false;
+    if (myCompetitor != null ? !myCompetitor.equals(sportsEvent.myCompetitor) : sportsEvent.myCompetitor != null) return false;
+    return true;
+  }
+
   private Competitor myHomeTeam;
   private Competitor myAwayTeam;
   private Competitor myCompetitor;

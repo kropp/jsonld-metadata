@@ -1427,7 +1427,7 @@ public class ImageObject extends MediaObject {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String caption;
@@ -1702,6 +1702,28 @@ public class ImageObject extends MediaObject {
     myRepresentativeOfPage = representativeOfPage;
     myThumbnail = thumbnail;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myCaption != null ? myCaption.hashCode() : 0);
+    result = 31 * result + (myExifData != null ? myExifData.hashCode() : 0);
+    result = 31 * result + (myRepresentativeOfPage != null ? myRepresentativeOfPage.hashCode() : 0);
+    result = 31 * result + (myThumbnail != null ? myThumbnail.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ImageObject imageObject = (ImageObject) o;
+    if (!super.equals(o)) return false;
+    if (myCaption != null ? !myCaption.equals(imageObject.myCaption) : imageObject.myCaption != null) return false;
+    if (myExifData != null ? !myExifData.equals(imageObject.myExifData) : imageObject.myExifData != null) return false;
+    if (myRepresentativeOfPage != null ? !myRepresentativeOfPage.equals(imageObject.myRepresentativeOfPage) : imageObject.myRepresentativeOfPage != null) return false;
+    if (myThumbnail != null ? !myThumbnail.equals(imageObject.myThumbnail) : imageObject.myThumbnail != null) return false;
+    return true;
+  }
+
   private String myCaption;
   private PropertyValueOrString myExifData;
   private Boolean myRepresentativeOfPage;

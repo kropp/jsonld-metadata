@@ -378,7 +378,7 @@ public class TrainTrip extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private OrganizationOrPerson provider;
@@ -441,6 +441,38 @@ public class TrainTrip extends Intangible {
     myDeparturePlatform = departurePlatform;
     myArrivalPlatform = arrivalPlatform;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    result = 31 * result + (myDepartureTime != null ? myDepartureTime.hashCode() : 0);
+    result = 31 * result + (myArrivalTime != null ? myArrivalTime.hashCode() : 0);
+    result = 31 * result + (myTrainNumber != null ? myTrainNumber.hashCode() : 0);
+    result = 31 * result + (myTrainName != null ? myTrainName.hashCode() : 0);
+    result = 31 * result + (myDepartureStation != null ? myDepartureStation.hashCode() : 0);
+    result = 31 * result + (myArrivalStation != null ? myArrivalStation.hashCode() : 0);
+    result = 31 * result + (myDeparturePlatform != null ? myDeparturePlatform.hashCode() : 0);
+    result = 31 * result + (myArrivalPlatform != null ? myArrivalPlatform.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TrainTrip trainTrip = (TrainTrip) o;
+    if (!super.equals(o)) return false;
+    if (myProvider != null ? !myProvider.equals(trainTrip.myProvider) : trainTrip.myProvider != null) return false;
+    if (myDepartureTime != null ? !myDepartureTime.equals(trainTrip.myDepartureTime) : trainTrip.myDepartureTime != null) return false;
+    if (myArrivalTime != null ? !myArrivalTime.equals(trainTrip.myArrivalTime) : trainTrip.myArrivalTime != null) return false;
+    if (myTrainNumber != null ? !myTrainNumber.equals(trainTrip.myTrainNumber) : trainTrip.myTrainNumber != null) return false;
+    if (myTrainName != null ? !myTrainName.equals(trainTrip.myTrainName) : trainTrip.myTrainName != null) return false;
+    if (myDepartureStation != null ? !myDepartureStation.equals(trainTrip.myDepartureStation) : trainTrip.myDepartureStation != null) return false;
+    if (myArrivalStation != null ? !myArrivalStation.equals(trainTrip.myArrivalStation) : trainTrip.myArrivalStation != null) return false;
+    if (myDeparturePlatform != null ? !myDeparturePlatform.equals(trainTrip.myDeparturePlatform) : trainTrip.myDeparturePlatform != null) return false;
+    if (myArrivalPlatform != null ? !myArrivalPlatform.equals(trainTrip.myArrivalPlatform) : trainTrip.myArrivalPlatform != null) return false;
+    return true;
+  }
+
   private OrganizationOrPerson myProvider;
   private java.util.Date myDepartureTime;
   private java.util.Date myArrivalTime;

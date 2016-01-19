@@ -393,7 +393,7 @@ public class MedicalObservationalStudy extends MedicalStudy {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MedicalObservationalStudyDesign studyDesign;
@@ -462,5 +462,21 @@ public class MedicalObservationalStudy extends MedicalStudy {
     super(outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myStudyDesign = studyDesign;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myStudyDesign != null ? myStudyDesign.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalObservationalStudy medicalObservationalStudy = (MedicalObservationalStudy) o;
+    if (!super.equals(o)) return false;
+    if (myStudyDesign != null ? !myStudyDesign.equals(medicalObservationalStudy.myStudyDesign) : medicalObservationalStudy.myStudyDesign != null) return false;
+    return true;
+  }
+
   private MedicalObservationalStudyDesign myStudyDesign;
 }

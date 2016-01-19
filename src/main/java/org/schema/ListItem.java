@@ -276,7 +276,7 @@ public class ListItem extends Intangible implements Position {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Thing item;
@@ -319,6 +319,26 @@ public class ListItem extends Intangible implements Position {
     myPreviousItem = previousItem;
     myNextItem = nextItem;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myItem != null ? myItem.hashCode() : 0);
+    result = 31 * result + (myPreviousItem != null ? myPreviousItem.hashCode() : 0);
+    result = 31 * result + (myNextItem != null ? myNextItem.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ListItem listItem = (ListItem) o;
+    if (!super.equals(o)) return false;
+    if (myItem != null ? !myItem.equals(listItem.myItem) : listItem.myItem != null) return false;
+    if (myPreviousItem != null ? !myPreviousItem.equals(listItem.myPreviousItem) : listItem.myPreviousItem != null) return false;
+    if (myNextItem != null ? !myNextItem.equals(listItem.myNextItem) : listItem.myNextItem != null) return false;
+    return true;
+  }
+
   private Thing myItem;
   private ListItem myPreviousItem;
   private ListItem myNextItem;

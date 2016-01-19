@@ -1501,7 +1501,7 @@ public class VideoObject extends MediaObject {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Person actor;
@@ -1791,6 +1791,36 @@ public class VideoObject extends MediaObject {
     myVideoFrameSize = videoFrameSize;
     myVideoQuality = videoQuality;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActor != null ? myActor.hashCode() : 0);
+    result = 31 * result + (myCaption != null ? myCaption.hashCode() : 0);
+    result = 31 * result + (myDirector != null ? myDirector.hashCode() : 0);
+    result = 31 * result + (myMusicBy != null ? myMusicBy.hashCode() : 0);
+    result = 31 * result + (myThumbnail != null ? myThumbnail.hashCode() : 0);
+    result = 31 * result + (myTranscript != null ? myTranscript.hashCode() : 0);
+    result = 31 * result + (myVideoFrameSize != null ? myVideoFrameSize.hashCode() : 0);
+    result = 31 * result + (myVideoQuality != null ? myVideoQuality.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    VideoObject videoObject = (VideoObject) o;
+    if (!super.equals(o)) return false;
+    if (myActor != null ? !myActor.equals(videoObject.myActor) : videoObject.myActor != null) return false;
+    if (myCaption != null ? !myCaption.equals(videoObject.myCaption) : videoObject.myCaption != null) return false;
+    if (myDirector != null ? !myDirector.equals(videoObject.myDirector) : videoObject.myDirector != null) return false;
+    if (myMusicBy != null ? !myMusicBy.equals(videoObject.myMusicBy) : videoObject.myMusicBy != null) return false;
+    if (myThumbnail != null ? !myThumbnail.equals(videoObject.myThumbnail) : videoObject.myThumbnail != null) return false;
+    if (myTranscript != null ? !myTranscript.equals(videoObject.myTranscript) : videoObject.myTranscript != null) return false;
+    if (myVideoFrameSize != null ? !myVideoFrameSize.equals(videoObject.myVideoFrameSize) : videoObject.myVideoFrameSize != null) return false;
+    if (myVideoQuality != null ? !myVideoQuality.equals(videoObject.myVideoQuality) : videoObject.myVideoQuality != null) return false;
+    return true;
+  }
+
   private Person myActor;
   private String myCaption;
   private Person myDirector;

@@ -536,7 +536,7 @@ Note: Publishers should be aware that applications designed to use specific sche
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Organization parentOrganization;
@@ -630,6 +630,30 @@ Note: Publishers should be aware that applications designed to use specific sche
     myPaymentAccepted = paymentAccepted;
     myPriceRange = priceRange;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myParentOrganization != null ? myParentOrganization.hashCode() : 0);
+    result = 31 * result + (myCurrenciesAccepted != null ? myCurrenciesAccepted.hashCode() : 0);
+    result = 31 * result + (myOpeningHours != null ? myOpeningHours.hashCode() : 0);
+    result = 31 * result + (myPaymentAccepted != null ? myPaymentAccepted.hashCode() : 0);
+    result = 31 * result + (myPriceRange != null ? myPriceRange.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    LocalBusiness localBusiness = (LocalBusiness) o;
+    if (!super.equals(o)) return false;
+    if (myParentOrganization != null ? !myParentOrganization.equals(localBusiness.myParentOrganization) : localBusiness.myParentOrganization != null) return false;
+    if (myCurrenciesAccepted != null ? !myCurrenciesAccepted.equals(localBusiness.myCurrenciesAccepted) : localBusiness.myCurrenciesAccepted != null) return false;
+    if (myOpeningHours != null ? !myOpeningHours.equals(localBusiness.myOpeningHours) : localBusiness.myOpeningHours != null) return false;
+    if (myPaymentAccepted != null ? !myPaymentAccepted.equals(localBusiness.myPaymentAccepted) : localBusiness.myPaymentAccepted != null) return false;
+    if (myPriceRange != null ? !myPriceRange.equals(localBusiness.myPriceRange) : localBusiness.myPriceRange != null) return false;
+    return true;
+  }
+
   private Organization myParentOrganization;
   private String myCurrenciesAccepted;
   private String myOpeningHours;

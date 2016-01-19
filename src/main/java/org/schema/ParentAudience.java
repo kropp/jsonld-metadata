@@ -476,7 +476,7 @@ public class ParentAudience extends PeopleAudience {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Number childMaxAge;
@@ -549,6 +549,24 @@ public class ParentAudience extends PeopleAudience {
     myChildMaxAge = childMaxAge;
     myChildMinAge = childMinAge;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myChildMaxAge != null ? myChildMaxAge.hashCode() : 0);
+    result = 31 * result + (myChildMinAge != null ? myChildMinAge.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ParentAudience parentAudience = (ParentAudience) o;
+    if (!super.equals(o)) return false;
+    if (myChildMaxAge != null ? !myChildMaxAge.equals(parentAudience.myChildMaxAge) : parentAudience.myChildMaxAge != null) return false;
+    if (myChildMinAge != null ? !myChildMinAge.equals(parentAudience.myChildMinAge) : parentAudience.myChildMinAge != null) return false;
+    return true;
+  }
+
   private Number myChildMaxAge;
   private Number myChildMinAge;
 }

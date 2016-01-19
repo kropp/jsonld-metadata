@@ -795,7 +795,7 @@ public class Drug extends MedicalTherapy {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String activeIngredient;
@@ -947,6 +947,72 @@ public class Drug extends MedicalTherapy {
     myRelatedDrug = relatedDrug;
     myWarning = warning;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActiveIngredient != null ? myActiveIngredient.hashCode() : 0);
+    result = 31 * result + (myAdministrationRoute != null ? myAdministrationRoute.hashCode() : 0);
+    result = 31 * result + (myAlcoholWarning != null ? myAlcoholWarning.hashCode() : 0);
+    result = 31 * result + (myAvailableStrength != null ? myAvailableStrength.hashCode() : 0);
+    result = 31 * result + (myBreastfeedingWarning != null ? myBreastfeedingWarning.hashCode() : 0);
+    result = 31 * result + (myClinicalPharmacology != null ? myClinicalPharmacology.hashCode() : 0);
+    result = 31 * result + (myCost != null ? myCost.hashCode() : 0);
+    result = 31 * result + (myDosageForm != null ? myDosageForm.hashCode() : 0);
+    result = 31 * result + (myDoseSchedule != null ? myDoseSchedule.hashCode() : 0);
+    result = 31 * result + (myDrugClass != null ? myDrugClass.hashCode() : 0);
+    result = 31 * result + (myFoodWarning != null ? myFoodWarning.hashCode() : 0);
+    result = 31 * result + (myInteractingDrug != null ? myInteractingDrug.hashCode() : 0);
+    result = 31 * result + (myIsAvailableGenerically != null ? myIsAvailableGenerically.hashCode() : 0);
+    result = 31 * result + (myIsProprietary != null ? myIsProprietary.hashCode() : 0);
+    result = 31 * result + (myLabelDetails != null ? myLabelDetails.hashCode() : 0);
+    result = 31 * result + (myLegalStatus != null ? myLegalStatus.hashCode() : 0);
+    result = 31 * result + (myManufacturer != null ? myManufacturer.hashCode() : 0);
+    result = 31 * result + (myMechanismOfAction != null ? myMechanismOfAction.hashCode() : 0);
+    result = 31 * result + (myNonProprietaryName != null ? myNonProprietaryName.hashCode() : 0);
+    result = 31 * result + (myOverdosage != null ? myOverdosage.hashCode() : 0);
+    result = 31 * result + (myPregnancyCategory != null ? myPregnancyCategory.hashCode() : 0);
+    result = 31 * result + (myPregnancyWarning != null ? myPregnancyWarning.hashCode() : 0);
+    result = 31 * result + (myPrescribingInfo != null ? myPrescribingInfo.hashCode() : 0);
+    result = 31 * result + (myPrescriptionStatus != null ? myPrescriptionStatus.hashCode() : 0);
+    result = 31 * result + (myRelatedDrug != null ? myRelatedDrug.hashCode() : 0);
+    result = 31 * result + (myWarning != null ? myWarning.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Drug drug = (Drug) o;
+    if (!super.equals(o)) return false;
+    if (myActiveIngredient != null ? !myActiveIngredient.equals(drug.myActiveIngredient) : drug.myActiveIngredient != null) return false;
+    if (myAdministrationRoute != null ? !myAdministrationRoute.equals(drug.myAdministrationRoute) : drug.myAdministrationRoute != null) return false;
+    if (myAlcoholWarning != null ? !myAlcoholWarning.equals(drug.myAlcoholWarning) : drug.myAlcoholWarning != null) return false;
+    if (myAvailableStrength != null ? !myAvailableStrength.equals(drug.myAvailableStrength) : drug.myAvailableStrength != null) return false;
+    if (myBreastfeedingWarning != null ? !myBreastfeedingWarning.equals(drug.myBreastfeedingWarning) : drug.myBreastfeedingWarning != null) return false;
+    if (myClinicalPharmacology != null ? !myClinicalPharmacology.equals(drug.myClinicalPharmacology) : drug.myClinicalPharmacology != null) return false;
+    if (myCost != null ? !myCost.equals(drug.myCost) : drug.myCost != null) return false;
+    if (myDosageForm != null ? !myDosageForm.equals(drug.myDosageForm) : drug.myDosageForm != null) return false;
+    if (myDoseSchedule != null ? !myDoseSchedule.equals(drug.myDoseSchedule) : drug.myDoseSchedule != null) return false;
+    if (myDrugClass != null ? !myDrugClass.equals(drug.myDrugClass) : drug.myDrugClass != null) return false;
+    if (myFoodWarning != null ? !myFoodWarning.equals(drug.myFoodWarning) : drug.myFoodWarning != null) return false;
+    if (myInteractingDrug != null ? !myInteractingDrug.equals(drug.myInteractingDrug) : drug.myInteractingDrug != null) return false;
+    if (myIsAvailableGenerically != null ? !myIsAvailableGenerically.equals(drug.myIsAvailableGenerically) : drug.myIsAvailableGenerically != null) return false;
+    if (myIsProprietary != null ? !myIsProprietary.equals(drug.myIsProprietary) : drug.myIsProprietary != null) return false;
+    if (myLabelDetails != null ? !myLabelDetails.equals(drug.myLabelDetails) : drug.myLabelDetails != null) return false;
+    if (myLegalStatus != null ? !myLegalStatus.equals(drug.myLegalStatus) : drug.myLegalStatus != null) return false;
+    if (myManufacturer != null ? !myManufacturer.equals(drug.myManufacturer) : drug.myManufacturer != null) return false;
+    if (myMechanismOfAction != null ? !myMechanismOfAction.equals(drug.myMechanismOfAction) : drug.myMechanismOfAction != null) return false;
+    if (myNonProprietaryName != null ? !myNonProprietaryName.equals(drug.myNonProprietaryName) : drug.myNonProprietaryName != null) return false;
+    if (myOverdosage != null ? !myOverdosage.equals(drug.myOverdosage) : drug.myOverdosage != null) return false;
+    if (myPregnancyCategory != null ? !myPregnancyCategory.equals(drug.myPregnancyCategory) : drug.myPregnancyCategory != null) return false;
+    if (myPregnancyWarning != null ? !myPregnancyWarning.equals(drug.myPregnancyWarning) : drug.myPregnancyWarning != null) return false;
+    if (myPrescribingInfo != null ? !myPrescribingInfo.equals(drug.myPrescribingInfo) : drug.myPrescribingInfo != null) return false;
+    if (myPrescriptionStatus != null ? !myPrescriptionStatus.equals(drug.myPrescriptionStatus) : drug.myPrescriptionStatus != null) return false;
+    if (myRelatedDrug != null ? !myRelatedDrug.equals(drug.myRelatedDrug) : drug.myRelatedDrug != null) return false;
+    if (myWarning != null ? !myWarning.equals(drug.myWarning) : drug.myWarning != null) return false;
+    return true;
+  }
+
   private String myActiveIngredient;
   private String myAdministrationRoute;
   private String myAlcoholWarning;

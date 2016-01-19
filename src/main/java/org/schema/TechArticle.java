@@ -1242,7 +1242,7 @@ public class TechArticle extends Article {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String dependencies;
@@ -1479,6 +1479,24 @@ public class TechArticle extends Article {
     myDependencies = dependencies;
     myProficiencyLevel = proficiencyLevel;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDependencies != null ? myDependencies.hashCode() : 0);
+    result = 31 * result + (myProficiencyLevel != null ? myProficiencyLevel.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    TechArticle techArticle = (TechArticle) o;
+    if (!super.equals(o)) return false;
+    if (myDependencies != null ? !myDependencies.equals(techArticle.myDependencies) : techArticle.myDependencies != null) return false;
+    if (myProficiencyLevel != null ? !myProficiencyLevel.equals(techArticle.myProficiencyLevel) : techArticle.myProficiencyLevel != null) return false;
+    return true;
+  }
+
   private String myDependencies;
   private String myProficiencyLevel;
 }

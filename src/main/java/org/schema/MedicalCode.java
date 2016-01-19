@@ -329,7 +329,7 @@ public class MedicalCode extends MedicalIntangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String codeValue;
@@ -384,6 +384,24 @@ public class MedicalCode extends MedicalIntangible {
     myCodeValue = codeValue;
     myCodingSystem = codingSystem;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myCodeValue != null ? myCodeValue.hashCode() : 0);
+    result = 31 * result + (myCodingSystem != null ? myCodingSystem.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalCode medicalCode = (MedicalCode) o;
+    if (!super.equals(o)) return false;
+    if (myCodeValue != null ? !myCodeValue.equals(medicalCode.myCodeValue) : medicalCode.myCodeValue != null) return false;
+    if (myCodingSystem != null ? !myCodingSystem.equals(medicalCode.myCodingSystem) : medicalCode.myCodingSystem != null) return false;
+    return true;
+  }
+
   private String myCodeValue;
   private String myCodingSystem;
 }

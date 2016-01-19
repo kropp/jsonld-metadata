@@ -1278,7 +1278,7 @@ public class Clip extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Person actor;
@@ -1521,6 +1521,34 @@ public class Clip extends CreativeWork {
     myPartOfSeason = partOfSeason;
     myPartOfSeries = partOfSeries;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActor != null ? myActor.hashCode() : 0);
+    result = 31 * result + (myClipNumber != null ? myClipNumber.hashCode() : 0);
+    result = 31 * result + (myDirector != null ? myDirector.hashCode() : 0);
+    result = 31 * result + (myMusicBy != null ? myMusicBy.hashCode() : 0);
+    result = 31 * result + (myPartOfEpisode != null ? myPartOfEpisode.hashCode() : 0);
+    result = 31 * result + (myPartOfSeason != null ? myPartOfSeason.hashCode() : 0);
+    result = 31 * result + (myPartOfSeries != null ? myPartOfSeries.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Clip clip = (Clip) o;
+    if (!super.equals(o)) return false;
+    if (myActor != null ? !myActor.equals(clip.myActor) : clip.myActor != null) return false;
+    if (myClipNumber != null ? !myClipNumber.equals(clip.myClipNumber) : clip.myClipNumber != null) return false;
+    if (myDirector != null ? !myDirector.equals(clip.myDirector) : clip.myDirector != null) return false;
+    if (myMusicBy != null ? !myMusicBy.equals(clip.myMusicBy) : clip.myMusicBy != null) return false;
+    if (myPartOfEpisode != null ? !myPartOfEpisode.equals(clip.myPartOfEpisode) : clip.myPartOfEpisode != null) return false;
+    if (myPartOfSeason != null ? !myPartOfSeason.equals(clip.myPartOfSeason) : clip.myPartOfSeason != null) return false;
+    if (myPartOfSeries != null ? !myPartOfSeries.equals(clip.myPartOfSeries) : clip.myPartOfSeries != null) return false;
+    return true;
+  }
+
   private Person myActor;
   private Position myClipNumber;
   private Person myDirector;

@@ -1223,7 +1223,7 @@ public class Dataset extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private DataCatalog includedDataCatalog;
@@ -1455,6 +1455,28 @@ public class Dataset extends CreativeWork {
     mySpatial = spatial;
     myDatasetTimeInterval = datasetTimeInterval;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myIncludedDataCatalog != null ? myIncludedDataCatalog.hashCode() : 0);
+    result = 31 * result + (myDistribution != null ? myDistribution.hashCode() : 0);
+    result = 31 * result + (mySpatial != null ? mySpatial.hashCode() : 0);
+    result = 31 * result + (myDatasetTimeInterval != null ? myDatasetTimeInterval.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Dataset dataset = (Dataset) o;
+    if (!super.equals(o)) return false;
+    if (myIncludedDataCatalog != null ? !myIncludedDataCatalog.equals(dataset.myIncludedDataCatalog) : dataset.myIncludedDataCatalog != null) return false;
+    if (myDistribution != null ? !myDistribution.equals(dataset.myDistribution) : dataset.myDistribution != null) return false;
+    if (mySpatial != null ? !mySpatial.equals(dataset.mySpatial) : dataset.mySpatial != null) return false;
+    if (myDatasetTimeInterval != null ? !myDatasetTimeInterval.equals(dataset.myDatasetTimeInterval) : dataset.myDatasetTimeInterval != null) return false;
+    return true;
+  }
+
   private DataCatalog myIncludedDataCatalog;
   private DataDownload myDistribution;
   private Place mySpatial;

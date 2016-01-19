@@ -112,9 +112,93 @@ public class RentAction extends TradeAction {
 </ul>
       
      */
-    @NotNull public Builder price(@NotNull Number number) {
-      if (this.price == null) this.price = new NumberOrString();
-      this.price.setNumber(number);
+    @NotNull public Builder price(@NotNull Integer integer) {
+      if (this.price == null) this.price = new Number();
+      this.price.setInteger(integer);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Long price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setLong(price);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Float price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setFloat(price);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Double price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setDouble(price);
       return this;
     }
     /**
@@ -141,7 +225,7 @@ public class RentAction extends TradeAction {
       
      */
     @NotNull public Builder price(@NotNull String price) {
-      if (this.price == null) this.price = new NumberOrString();
+      if (this.price == null) this.price = new Number();
       this.price.setString(price);
       return this;
     }
@@ -417,7 +501,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("landlord".equals(key) && value instanceof Organization) { landlord((Organization)value); continue; }
         if ("landlord".equals(key) && value instanceof Person) { landlord((Person)value); continue; }
         if ("realEstateAgent".equals(key) && value instanceof RealEstateAgent) { realEstateAgent((RealEstateAgent)value); continue; }
-        if ("price".equals(key) && value instanceof Number) { price((Number)value); continue; }
+        if ("price".equals(key) && value instanceof Integer) { price((Integer)value); continue; }
+        if ("price".equals(key) && value instanceof Long) { price((Long)value); continue; }
+        if ("price".equals(key) && value instanceof Float) { price((Float)value); continue; }
+        if ("price".equals(key) && value instanceof Double) { price((Double)value); continue; }
         if ("price".equals(key) && value instanceof String) { price((String)value); continue; }
         if ("priceSpecification".equals(key) && value instanceof PriceSpecification) { priceSpecification((PriceSpecification)value); continue; }
         if ("agent".equals(key) && value instanceof Organization) { agent((Organization)value); continue; }
@@ -436,12 +523,12 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private OrganizationOrPerson landlord;
     private RealEstateAgent realEstateAgent;
-    private NumberOrString price;
+    private Number price;
     private PriceSpecification priceSpecification;
     private OrganizationOrPerson agent;
     private java.util.Date endTime;
@@ -466,7 +553,10 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     @NotNull Builder landlord(@NotNull Person.Builder person);
     @NotNull Builder realEstateAgent(@NotNull RealEstateAgent realEstateAgent);
     @NotNull Builder realEstateAgent(@NotNull RealEstateAgent.Builder realEstateAgent);
-    @NotNull Builder price(@NotNull Number number);
+    @NotNull Builder price(@NotNull Integer integer);
+    @NotNull Builder price(@NotNull Long price);
+    @NotNull Builder price(@NotNull Float price);
+    @NotNull Builder price(@NotNull Double price);
     @NotNull Builder price(@NotNull String price);
     @NotNull Builder priceSpecification(@NotNull PriceSpecification priceSpecification);
     @NotNull Builder priceSpecification(@NotNull PriceSpecification.Builder priceSpecification);
@@ -496,11 +586,29 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected RentAction(OrganizationOrPerson landlord, RealEstateAgent realEstateAgent, NumberOrString price, PriceSpecification priceSpecification, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected RentAction(OrganizationOrPerson landlord, RealEstateAgent realEstateAgent, Number price, PriceSpecification priceSpecification, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(price, priceSpecification, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myLandlord = landlord;
     myRealEstateAgent = realEstateAgent;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myLandlord != null ? myLandlord.hashCode() : 0);
+    result = 31 * result + (myRealEstateAgent != null ? myRealEstateAgent.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    RentAction rentAction = (RentAction) o;
+    if (!super.equals(o)) return false;
+    if (myLandlord != null ? !myLandlord.equals(rentAction.myLandlord) : rentAction.myLandlord != null) return false;
+    if (myRealEstateAgent != null ? !myRealEstateAgent.equals(rentAction.myRealEstateAgent) : rentAction.myRealEstateAgent != null) return false;
+    return true;
+  }
+
   private OrganizationOrPerson myLandlord;
   private RealEstateAgent myRealEstateAgent;
 }

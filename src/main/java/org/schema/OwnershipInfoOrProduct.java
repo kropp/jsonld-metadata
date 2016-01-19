@@ -44,4 +44,21 @@ class OwnershipInfoOrProduct {
     myOwnershipInfo = null;
     myProduct = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myOwnershipInfo != null ? myOwnershipInfo.hashCode() : 0);
+    result = 31 * result + (myProduct != null ? myProduct.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OwnershipInfoOrProduct ownershipInfoOrProduct = (OwnershipInfoOrProduct) o;
+    if (myOwnershipInfo != null ? !myOwnershipInfo.equals(ownershipInfoOrProduct.myOwnershipInfo) : ownershipInfoOrProduct.myOwnershipInfo != null) return false;
+    if (myProduct != null ? !myProduct.equals(ownershipInfoOrProduct.myProduct) : ownershipInfoOrProduct.myProduct != null) return false;
+    return true;
+  }
+
 }

@@ -247,7 +247,7 @@ public class EngineSpecification extends StructuredValue {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private QualitativeValueOrString fuelType;
@@ -283,5 +283,21 @@ public class EngineSpecification extends StructuredValue {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myFuelType = fuelType;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myFuelType != null ? myFuelType.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EngineSpecification engineSpecification = (EngineSpecification) o;
+    if (!super.equals(o)) return false;
+    if (myFuelType != null ? !myFuelType.equals(engineSpecification.myFuelType) : engineSpecification.myFuelType != null) return false;
+    return true;
+  }
+
   private QualitativeValueOrString myFuelType;
 }

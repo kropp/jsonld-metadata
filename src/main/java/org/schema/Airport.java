@@ -496,7 +496,7 @@ Note: Publishers should be aware that applications designed to use specific sche
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String iataCode;
@@ -582,6 +582,24 @@ Note: Publishers should be aware that applications designed to use specific sche
     myIataCode = iataCode;
     myIacoCode = iacoCode;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myIataCode != null ? myIataCode.hashCode() : 0);
+    result = 31 * result + (myIacoCode != null ? myIacoCode.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Airport airport = (Airport) o;
+    if (!super.equals(o)) return false;
+    if (myIataCode != null ? !myIataCode.equals(airport.myIataCode) : airport.myIataCode != null) return false;
+    if (myIacoCode != null ? !myIacoCode.equals(airport.myIacoCode) : airport.myIacoCode != null) return false;
+    return true;
+  }
+
   private String myIataCode;
   private String myIacoCode;
 }

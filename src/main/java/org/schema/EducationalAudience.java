@@ -253,7 +253,7 @@ public class EducationalAudience extends Audience {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String educationalRole;
@@ -292,5 +292,21 @@ public class EducationalAudience extends Audience {
     super(audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myEducationalRole = educationalRole;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myEducationalRole != null ? myEducationalRole.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EducationalAudience educationalAudience = (EducationalAudience) o;
+    if (!super.equals(o)) return false;
+    if (myEducationalRole != null ? !myEducationalRole.equals(educationalAudience.myEducationalRole) : educationalAudience.myEducationalRole != null) return false;
+    return true;
+  }
+
   private String myEducationalRole;
 }

@@ -1482,7 +1482,7 @@ public class SoftwareApplication extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String applicationCategory;
@@ -1769,6 +1769,64 @@ public class SoftwareApplication extends CreativeWork {
     mySoftwareAddOn = softwareAddOn;
     mySoftwareHelp = softwareHelp;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myApplicationCategory != null ? myApplicationCategory.hashCode() : 0);
+    result = 31 * result + (myApplicationSubCategory != null ? myApplicationSubCategory.hashCode() : 0);
+    result = 31 * result + (myApplicationSuite != null ? myApplicationSuite.hashCode() : 0);
+    result = 31 * result + (myCountriesNotSupported != null ? myCountriesNotSupported.hashCode() : 0);
+    result = 31 * result + (myCountriesSupported != null ? myCountriesSupported.hashCode() : 0);
+    result = 31 * result + (myAvailableOnDevice != null ? myAvailableOnDevice.hashCode() : 0);
+    result = 31 * result + (myDownloadUrl != null ? myDownloadUrl.hashCode() : 0);
+    result = 31 * result + (myFeatureList != null ? myFeatureList.hashCode() : 0);
+    result = 31 * result + (myFileFormat != null ? myFileFormat.hashCode() : 0);
+    result = 31 * result + (myFileSize != null ? myFileSize.hashCode() : 0);
+    result = 31 * result + (myInstallUrl != null ? myInstallUrl.hashCode() : 0);
+    result = 31 * result + (myMemoryRequirements != null ? myMemoryRequirements.hashCode() : 0);
+    result = 31 * result + (myOperatingSystem != null ? myOperatingSystem.hashCode() : 0);
+    result = 31 * result + (myPermissions != null ? myPermissions.hashCode() : 0);
+    result = 31 * result + (myProcessorRequirements != null ? myProcessorRequirements.hashCode() : 0);
+    result = 31 * result + (myReleaseNotes != null ? myReleaseNotes.hashCode() : 0);
+    result = 31 * result + (mySoftwareRequirements != null ? mySoftwareRequirements.hashCode() : 0);
+    result = 31 * result + (myScreenshot != null ? myScreenshot.hashCode() : 0);
+    result = 31 * result + (mySoftwareVersion != null ? mySoftwareVersion.hashCode() : 0);
+    result = 31 * result + (myStorageRequirements != null ? myStorageRequirements.hashCode() : 0);
+    result = 31 * result + (mySoftwareAddOn != null ? mySoftwareAddOn.hashCode() : 0);
+    result = 31 * result + (mySoftwareHelp != null ? mySoftwareHelp.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SoftwareApplication softwareApplication = (SoftwareApplication) o;
+    if (!super.equals(o)) return false;
+    if (myApplicationCategory != null ? !myApplicationCategory.equals(softwareApplication.myApplicationCategory) : softwareApplication.myApplicationCategory != null) return false;
+    if (myApplicationSubCategory != null ? !myApplicationSubCategory.equals(softwareApplication.myApplicationSubCategory) : softwareApplication.myApplicationSubCategory != null) return false;
+    if (myApplicationSuite != null ? !myApplicationSuite.equals(softwareApplication.myApplicationSuite) : softwareApplication.myApplicationSuite != null) return false;
+    if (myCountriesNotSupported != null ? !myCountriesNotSupported.equals(softwareApplication.myCountriesNotSupported) : softwareApplication.myCountriesNotSupported != null) return false;
+    if (myCountriesSupported != null ? !myCountriesSupported.equals(softwareApplication.myCountriesSupported) : softwareApplication.myCountriesSupported != null) return false;
+    if (myAvailableOnDevice != null ? !myAvailableOnDevice.equals(softwareApplication.myAvailableOnDevice) : softwareApplication.myAvailableOnDevice != null) return false;
+    if (myDownloadUrl != null ? !myDownloadUrl.equals(softwareApplication.myDownloadUrl) : softwareApplication.myDownloadUrl != null) return false;
+    if (myFeatureList != null ? !myFeatureList.equals(softwareApplication.myFeatureList) : softwareApplication.myFeatureList != null) return false;
+    if (myFileFormat != null ? !myFileFormat.equals(softwareApplication.myFileFormat) : softwareApplication.myFileFormat != null) return false;
+    if (myFileSize != null ? !myFileSize.equals(softwareApplication.myFileSize) : softwareApplication.myFileSize != null) return false;
+    if (myInstallUrl != null ? !myInstallUrl.equals(softwareApplication.myInstallUrl) : softwareApplication.myInstallUrl != null) return false;
+    if (myMemoryRequirements != null ? !myMemoryRequirements.equals(softwareApplication.myMemoryRequirements) : softwareApplication.myMemoryRequirements != null) return false;
+    if (myOperatingSystem != null ? !myOperatingSystem.equals(softwareApplication.myOperatingSystem) : softwareApplication.myOperatingSystem != null) return false;
+    if (myPermissions != null ? !myPermissions.equals(softwareApplication.myPermissions) : softwareApplication.myPermissions != null) return false;
+    if (myProcessorRequirements != null ? !myProcessorRequirements.equals(softwareApplication.myProcessorRequirements) : softwareApplication.myProcessorRequirements != null) return false;
+    if (myReleaseNotes != null ? !myReleaseNotes.equals(softwareApplication.myReleaseNotes) : softwareApplication.myReleaseNotes != null) return false;
+    if (mySoftwareRequirements != null ? !mySoftwareRequirements.equals(softwareApplication.mySoftwareRequirements) : softwareApplication.mySoftwareRequirements != null) return false;
+    if (myScreenshot != null ? !myScreenshot.equals(softwareApplication.myScreenshot) : softwareApplication.myScreenshot != null) return false;
+    if (mySoftwareVersion != null ? !mySoftwareVersion.equals(softwareApplication.mySoftwareVersion) : softwareApplication.mySoftwareVersion != null) return false;
+    if (myStorageRequirements != null ? !myStorageRequirements.equals(softwareApplication.myStorageRequirements) : softwareApplication.myStorageRequirements != null) return false;
+    if (mySoftwareAddOn != null ? !mySoftwareAddOn.equals(softwareApplication.mySoftwareAddOn) : softwareApplication.mySoftwareAddOn != null) return false;
+    if (mySoftwareHelp != null ? !mySoftwareHelp.equals(softwareApplication.mySoftwareHelp) : softwareApplication.mySoftwareHelp != null) return false;
+    return true;
+  }
+
   private String myApplicationCategory;
   private String myApplicationSubCategory;
   private String myApplicationSuite;

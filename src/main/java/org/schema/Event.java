@@ -609,7 +609,7 @@ public class Event extends Thing {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private AggregateRating aggregateRating;
@@ -714,6 +714,56 @@ public class Event extends Thing {
     myTypicalAgeRange = typicalAgeRange;
     myWorkPerformed = workPerformed;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
+    result = 31 * result + (myOrganizer != null ? myOrganizer.hashCode() : 0);
+    result = 31 * result + (myAttendee != null ? myAttendee.hashCode() : 0);
+    result = 31 * result + (myDoorTime != null ? myDoorTime.hashCode() : 0);
+    result = 31 * result + (myDuration != null ? myDuration.hashCode() : 0);
+    result = 31 * result + (myEndDate != null ? myEndDate.hashCode() : 0);
+    result = 31 * result + (myEventStatus != null ? myEventStatus.hashCode() : 0);
+    result = 31 * result + (myInLanguage != null ? myInLanguage.hashCode() : 0);
+    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
+    result = 31 * result + (myPerformer != null ? myPerformer.hashCode() : 0);
+    result = 31 * result + (myPreviousStartDate != null ? myPreviousStartDate.hashCode() : 0);
+    result = 31 * result + (myRecordedIn != null ? myRecordedIn.hashCode() : 0);
+    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
+    result = 31 * result + (myStartDate != null ? myStartDate.hashCode() : 0);
+    result = 31 * result + (mySubEvent != null ? mySubEvent.hashCode() : 0);
+    result = 31 * result + (mySuperEvent != null ? mySuperEvent.hashCode() : 0);
+    result = 31 * result + (myTypicalAgeRange != null ? myTypicalAgeRange.hashCode() : 0);
+    result = 31 * result + (myWorkPerformed != null ? myWorkPerformed.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Event event = (Event) o;
+    if (!super.equals(o)) return false;
+    if (myAggregateRating != null ? !myAggregateRating.equals(event.myAggregateRating) : event.myAggregateRating != null) return false;
+    if (myOrganizer != null ? !myOrganizer.equals(event.myOrganizer) : event.myOrganizer != null) return false;
+    if (myAttendee != null ? !myAttendee.equals(event.myAttendee) : event.myAttendee != null) return false;
+    if (myDoorTime != null ? !myDoorTime.equals(event.myDoorTime) : event.myDoorTime != null) return false;
+    if (myDuration != null ? !myDuration.equals(event.myDuration) : event.myDuration != null) return false;
+    if (myEndDate != null ? !myEndDate.equals(event.myEndDate) : event.myEndDate != null) return false;
+    if (myEventStatus != null ? !myEventStatus.equals(event.myEventStatus) : event.myEventStatus != null) return false;
+    if (myInLanguage != null ? !myInLanguage.equals(event.myInLanguage) : event.myInLanguage != null) return false;
+    if (myOffers != null ? !myOffers.equals(event.myOffers) : event.myOffers != null) return false;
+    if (myPerformer != null ? !myPerformer.equals(event.myPerformer) : event.myPerformer != null) return false;
+    if (myPreviousStartDate != null ? !myPreviousStartDate.equals(event.myPreviousStartDate) : event.myPreviousStartDate != null) return false;
+    if (myRecordedIn != null ? !myRecordedIn.equals(event.myRecordedIn) : event.myRecordedIn != null) return false;
+    if (myReview != null ? !myReview.equals(event.myReview) : event.myReview != null) return false;
+    if (myStartDate != null ? !myStartDate.equals(event.myStartDate) : event.myStartDate != null) return false;
+    if (mySubEvent != null ? !mySubEvent.equals(event.mySubEvent) : event.mySubEvent != null) return false;
+    if (mySuperEvent != null ? !mySuperEvent.equals(event.mySuperEvent) : event.mySuperEvent != null) return false;
+    if (myTypicalAgeRange != null ? !myTypicalAgeRange.equals(event.myTypicalAgeRange) : event.myTypicalAgeRange != null) return false;
+    if (myWorkPerformed != null ? !myWorkPerformed.equals(event.myWorkPerformed) : event.myWorkPerformed != null) return false;
+    return true;
+  }
+
   private AggregateRating myAggregateRating;
   private OrganizationOrPerson myOrganizer;
   private OrganizationOrPerson myAttendee;

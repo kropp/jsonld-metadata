@@ -1271,7 +1271,7 @@ public class Game extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private QuantitativeValue numberOfPlayers;
@@ -1511,6 +1511,30 @@ public class Game extends CreativeWork {
     myCharacterAttribute = characterAttribute;
     myGameLocation = gameLocation;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myNumberOfPlayers != null ? myNumberOfPlayers.hashCode() : 0);
+    result = 31 * result + (myQuest != null ? myQuest.hashCode() : 0);
+    result = 31 * result + (myGameItem != null ? myGameItem.hashCode() : 0);
+    result = 31 * result + (myCharacterAttribute != null ? myCharacterAttribute.hashCode() : 0);
+    result = 31 * result + (myGameLocation != null ? myGameLocation.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Game game = (Game) o;
+    if (!super.equals(o)) return false;
+    if (myNumberOfPlayers != null ? !myNumberOfPlayers.equals(game.myNumberOfPlayers) : game.myNumberOfPlayers != null) return false;
+    if (myQuest != null ? !myQuest.equals(game.myQuest) : game.myQuest != null) return false;
+    if (myGameItem != null ? !myGameItem.equals(game.myGameItem) : game.myGameItem != null) return false;
+    if (myCharacterAttribute != null ? !myCharacterAttribute.equals(game.myCharacterAttribute) : game.myCharacterAttribute != null) return false;
+    if (myGameLocation != null ? !myGameLocation.equals(game.myGameLocation) : game.myGameLocation != null) return false;
+    return true;
+  }
+
   private QuantitativeValue myNumberOfPlayers;
   private Thing myQuest;
   private Thing myGameItem;

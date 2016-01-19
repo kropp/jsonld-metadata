@@ -1446,7 +1446,7 @@ public class MediaObject extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private NewsArticle associatedArticle;
@@ -1722,6 +1722,52 @@ public class MediaObject extends CreativeWork {
     myUploadDate = uploadDate;
     myWidth = width;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAssociatedArticle != null ? myAssociatedArticle.hashCode() : 0);
+    result = 31 * result + (myBitrate != null ? myBitrate.hashCode() : 0);
+    result = 31 * result + (myContentSize != null ? myContentSize.hashCode() : 0);
+    result = 31 * result + (myContentUrl != null ? myContentUrl.hashCode() : 0);
+    result = 31 * result + (myDuration != null ? myDuration.hashCode() : 0);
+    result = 31 * result + (myEmbedUrl != null ? myEmbedUrl.hashCode() : 0);
+    result = 31 * result + (myEncodesCreativeWork != null ? myEncodesCreativeWork.hashCode() : 0);
+    result = 31 * result + (myEncodingFormat != null ? myEncodingFormat.hashCode() : 0);
+    result = 31 * result + (myExpires != null ? myExpires.hashCode() : 0);
+    result = 31 * result + (myHeight != null ? myHeight.hashCode() : 0);
+    result = 31 * result + (myPlayerType != null ? myPlayerType.hashCode() : 0);
+    result = 31 * result + (myProductionCompany != null ? myProductionCompany.hashCode() : 0);
+    result = 31 * result + (myRegionsAllowed != null ? myRegionsAllowed.hashCode() : 0);
+    result = 31 * result + (myRequiresSubscription != null ? myRequiresSubscription.hashCode() : 0);
+    result = 31 * result + (myUploadDate != null ? myUploadDate.hashCode() : 0);
+    result = 31 * result + (myWidth != null ? myWidth.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MediaObject mediaObject = (MediaObject) o;
+    if (!super.equals(o)) return false;
+    if (myAssociatedArticle != null ? !myAssociatedArticle.equals(mediaObject.myAssociatedArticle) : mediaObject.myAssociatedArticle != null) return false;
+    if (myBitrate != null ? !myBitrate.equals(mediaObject.myBitrate) : mediaObject.myBitrate != null) return false;
+    if (myContentSize != null ? !myContentSize.equals(mediaObject.myContentSize) : mediaObject.myContentSize != null) return false;
+    if (myContentUrl != null ? !myContentUrl.equals(mediaObject.myContentUrl) : mediaObject.myContentUrl != null) return false;
+    if (myDuration != null ? !myDuration.equals(mediaObject.myDuration) : mediaObject.myDuration != null) return false;
+    if (myEmbedUrl != null ? !myEmbedUrl.equals(mediaObject.myEmbedUrl) : mediaObject.myEmbedUrl != null) return false;
+    if (myEncodesCreativeWork != null ? !myEncodesCreativeWork.equals(mediaObject.myEncodesCreativeWork) : mediaObject.myEncodesCreativeWork != null) return false;
+    if (myEncodingFormat != null ? !myEncodingFormat.equals(mediaObject.myEncodingFormat) : mediaObject.myEncodingFormat != null) return false;
+    if (myExpires != null ? !myExpires.equals(mediaObject.myExpires) : mediaObject.myExpires != null) return false;
+    if (myHeight != null ? !myHeight.equals(mediaObject.myHeight) : mediaObject.myHeight != null) return false;
+    if (myPlayerType != null ? !myPlayerType.equals(mediaObject.myPlayerType) : mediaObject.myPlayerType != null) return false;
+    if (myProductionCompany != null ? !myProductionCompany.equals(mediaObject.myProductionCompany) : mediaObject.myProductionCompany != null) return false;
+    if (myRegionsAllowed != null ? !myRegionsAllowed.equals(mediaObject.myRegionsAllowed) : mediaObject.myRegionsAllowed != null) return false;
+    if (myRequiresSubscription != null ? !myRequiresSubscription.equals(mediaObject.myRequiresSubscription) : mediaObject.myRequiresSubscription != null) return false;
+    if (myUploadDate != null ? !myUploadDate.equals(mediaObject.myUploadDate) : mediaObject.myUploadDate != null) return false;
+    if (myWidth != null ? !myWidth.equals(mediaObject.myWidth) : mediaObject.myWidth != null) return false;
+    return true;
+  }
+
   private NewsArticle myAssociatedArticle;
   private String myBitrate;
   private String myContentSize;

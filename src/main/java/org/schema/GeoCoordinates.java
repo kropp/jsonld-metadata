@@ -29,19 +29,19 @@ public class GeoCoordinates extends StructuredValue {
   /**
    * The elevation of a location.
    */
-  public NumberOrString getElevation() {
+  public Number getElevation() {
     return myElevation;
   }
   /**
    * The latitude of a location. For example <code>37.42242</code>.
    */
-  public NumberOrString getLatitude() {
+  public Number getLatitude() {
     return myLatitude;
   }
   /**
    * The longitude of a location. For example <code>-122.08585</code>.
    */
-  public NumberOrString getLongitude() {
+  public Number getLongitude() {
     return myLongitude;
   }
   /**
@@ -57,48 +57,120 @@ public class GeoCoordinates extends StructuredValue {
     /**
      * The elevation of a location.
      */
-    @NotNull public Builder elevation(@NotNull Number number) {
-      if (this.elevation == null) this.elevation = new NumberOrString();
-      this.elevation.setNumber(number);
+    @NotNull public Builder elevation(@NotNull Integer integer) {
+      if (this.elevation == null) this.elevation = new Number();
+      this.elevation.setInteger(integer);
+      return this;
+    }
+    /**
+     * The elevation of a location.
+     */
+    @NotNull public Builder elevation(@NotNull Long elevation) {
+      if (this.elevation == null) this.elevation = new Number();
+      this.elevation.setLong(elevation);
+      return this;
+    }
+    /**
+     * The elevation of a location.
+     */
+    @NotNull public Builder elevation(@NotNull Float elevation) {
+      if (this.elevation == null) this.elevation = new Number();
+      this.elevation.setFloat(elevation);
+      return this;
+    }
+    /**
+     * The elevation of a location.
+     */
+    @NotNull public Builder elevation(@NotNull Double elevation) {
+      if (this.elevation == null) this.elevation = new Number();
+      this.elevation.setDouble(elevation);
       return this;
     }
     /**
      * The elevation of a location.
      */
     @NotNull public Builder elevation(@NotNull String elevation) {
-      if (this.elevation == null) this.elevation = new NumberOrString();
+      if (this.elevation == null) this.elevation = new Number();
       this.elevation.setString(elevation);
       return this;
     }
     /**
      * The latitude of a location. For example <code>37.42242</code>.
      */
-    @NotNull public Builder latitude(@NotNull Number number) {
-      if (this.latitude == null) this.latitude = new NumberOrString();
-      this.latitude.setNumber(number);
+    @NotNull public Builder latitude(@NotNull Integer integer) {
+      if (this.latitude == null) this.latitude = new Number();
+      this.latitude.setInteger(integer);
+      return this;
+    }
+    /**
+     * The latitude of a location. For example <code>37.42242</code>.
+     */
+    @NotNull public Builder latitude(@NotNull Long latitude) {
+      if (this.latitude == null) this.latitude = new Number();
+      this.latitude.setLong(latitude);
+      return this;
+    }
+    /**
+     * The latitude of a location. For example <code>37.42242</code>.
+     */
+    @NotNull public Builder latitude(@NotNull Float latitude) {
+      if (this.latitude == null) this.latitude = new Number();
+      this.latitude.setFloat(latitude);
+      return this;
+    }
+    /**
+     * The latitude of a location. For example <code>37.42242</code>.
+     */
+    @NotNull public Builder latitude(@NotNull Double latitude) {
+      if (this.latitude == null) this.latitude = new Number();
+      this.latitude.setDouble(latitude);
       return this;
     }
     /**
      * The latitude of a location. For example <code>37.42242</code>.
      */
     @NotNull public Builder latitude(@NotNull String latitude) {
-      if (this.latitude == null) this.latitude = new NumberOrString();
+      if (this.latitude == null) this.latitude = new Number();
       this.latitude.setString(latitude);
       return this;
     }
     /**
      * The longitude of a location. For example <code>-122.08585</code>.
      */
-    @NotNull public Builder longitude(@NotNull Number number) {
-      if (this.longitude == null) this.longitude = new NumberOrString();
-      this.longitude.setNumber(number);
+    @NotNull public Builder longitude(@NotNull Integer integer) {
+      if (this.longitude == null) this.longitude = new Number();
+      this.longitude.setInteger(integer);
+      return this;
+    }
+    /**
+     * The longitude of a location. For example <code>-122.08585</code>.
+     */
+    @NotNull public Builder longitude(@NotNull Long longitude) {
+      if (this.longitude == null) this.longitude = new Number();
+      this.longitude.setLong(longitude);
+      return this;
+    }
+    /**
+     * The longitude of a location. For example <code>-122.08585</code>.
+     */
+    @NotNull public Builder longitude(@NotNull Float longitude) {
+      if (this.longitude == null) this.longitude = new Number();
+      this.longitude.setFloat(longitude);
+      return this;
+    }
+    /**
+     * The longitude of a location. For example <code>-122.08585</code>.
+     */
+    @NotNull public Builder longitude(@NotNull Double longitude) {
+      if (this.longitude == null) this.longitude = new Number();
+      this.longitude.setDouble(longitude);
       return this;
     }
     /**
      * The longitude of a location. For example <code>-122.08585</code>.
      */
     @NotNull public Builder longitude(@NotNull String longitude) {
-      if (this.longitude == null) this.longitude = new NumberOrString();
+      if (this.longitude == null) this.longitude = new Number();
       this.longitude.setString(longitude);
       return this;
     }
@@ -273,11 +345,20 @@ public class GeoCoordinates extends StructuredValue {
         final String key = entry.getKey();
         Object value = entry.getValue();
         if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("elevation".equals(key) && value instanceof Number) { elevation((Number)value); continue; }
+        if ("elevation".equals(key) && value instanceof Integer) { elevation((Integer)value); continue; }
+        if ("elevation".equals(key) && value instanceof Long) { elevation((Long)value); continue; }
+        if ("elevation".equals(key) && value instanceof Float) { elevation((Float)value); continue; }
+        if ("elevation".equals(key) && value instanceof Double) { elevation((Double)value); continue; }
         if ("elevation".equals(key) && value instanceof String) { elevation((String)value); continue; }
-        if ("latitude".equals(key) && value instanceof Number) { latitude((Number)value); continue; }
+        if ("latitude".equals(key) && value instanceof Integer) { latitude((Integer)value); continue; }
+        if ("latitude".equals(key) && value instanceof Long) { latitude((Long)value); continue; }
+        if ("latitude".equals(key) && value instanceof Float) { latitude((Float)value); continue; }
+        if ("latitude".equals(key) && value instanceof Double) { latitude((Double)value); continue; }
         if ("latitude".equals(key) && value instanceof String) { latitude((String)value); continue; }
-        if ("longitude".equals(key) && value instanceof Number) { longitude((Number)value); continue; }
+        if ("longitude".equals(key) && value instanceof Integer) { longitude((Integer)value); continue; }
+        if ("longitude".equals(key) && value instanceof Long) { longitude((Long)value); continue; }
+        if ("longitude".equals(key) && value instanceof Float) { longitude((Float)value); continue; }
+        if ("longitude".equals(key) && value instanceof Double) { longitude((Double)value); continue; }
         if ("longitude".equals(key) && value instanceof String) { longitude((String)value); continue; }
         if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
         if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
@@ -288,12 +369,12 @@ public class GeoCoordinates extends StructuredValue {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
-    private NumberOrString elevation;
-    private NumberOrString latitude;
-    private NumberOrString longitude;
+    private Number elevation;
+    private Number latitude;
+    private Number longitude;
     private String additionalType;
     private String alternateName;
     private String description;
@@ -305,11 +386,20 @@ public class GeoCoordinates extends StructuredValue {
     private String id;
   }
   public interface Builder extends ThingBuilder<GeoCoordinates> {
-    @NotNull Builder elevation(@NotNull Number number);
+    @NotNull Builder elevation(@NotNull Integer integer);
+    @NotNull Builder elevation(@NotNull Long elevation);
+    @NotNull Builder elevation(@NotNull Float elevation);
+    @NotNull Builder elevation(@NotNull Double elevation);
     @NotNull Builder elevation(@NotNull String elevation);
-    @NotNull Builder latitude(@NotNull Number number);
+    @NotNull Builder latitude(@NotNull Integer integer);
+    @NotNull Builder latitude(@NotNull Long latitude);
+    @NotNull Builder latitude(@NotNull Float latitude);
+    @NotNull Builder latitude(@NotNull Double latitude);
     @NotNull Builder latitude(@NotNull String latitude);
-    @NotNull Builder longitude(@NotNull Number number);
+    @NotNull Builder longitude(@NotNull Integer integer);
+    @NotNull Builder longitude(@NotNull Long longitude);
+    @NotNull Builder longitude(@NotNull Float longitude);
+    @NotNull Builder longitude(@NotNull Double longitude);
     @NotNull Builder longitude(@NotNull String longitude);
     @NotNull Builder additionalType(@NotNull String additionalType);
     @NotNull Builder alternateName(@NotNull String alternateName);
@@ -325,13 +415,33 @@ public class GeoCoordinates extends StructuredValue {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected GeoCoordinates(NumberOrString elevation, NumberOrString latitude, NumberOrString longitude, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected GeoCoordinates(Number elevation, Number latitude, Number longitude, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myElevation = elevation;
     myLatitude = latitude;
     myLongitude = longitude;
   }
-  private NumberOrString myElevation;
-  private NumberOrString myLatitude;
-  private NumberOrString myLongitude;
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myElevation != null ? myElevation.hashCode() : 0);
+    result = 31 * result + (myLatitude != null ? myLatitude.hashCode() : 0);
+    result = 31 * result + (myLongitude != null ? myLongitude.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GeoCoordinates geoCoordinates = (GeoCoordinates) o;
+    if (!super.equals(o)) return false;
+    if (myElevation != null ? !myElevation.equals(geoCoordinates.myElevation) : geoCoordinates.myElevation != null) return false;
+    if (myLatitude != null ? !myLatitude.equals(geoCoordinates.myLatitude) : geoCoordinates.myLatitude != null) return false;
+    if (myLongitude != null ? !myLongitude.equals(geoCoordinates.myLongitude) : geoCoordinates.myLongitude != null) return false;
+    return true;
+  }
+
+  private Number myElevation;
+  private Number myLatitude;
+  private Number myLongitude;
 }

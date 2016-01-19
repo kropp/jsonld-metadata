@@ -302,7 +302,7 @@ public class GovernmentPermit extends Permit {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Service issuedThrough;
@@ -352,4 +352,18 @@ public class GovernmentPermit extends Permit {
   protected GovernmentPermit(Service issuedThrough, Audience permitAudience, Duration validFor, java.util.Date validFrom, AdministrativeArea validIn, java.util.Date validUntil, Organization issuedBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(issuedThrough, permitAudience, validFor, validFrom, validIn, validUntil, issuedBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GovernmentPermit governmentPermit = (GovernmentPermit) o;
+    if (!super.equals(o)) return false;
+    return true;
+  }
+
 }

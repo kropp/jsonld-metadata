@@ -1326,7 +1326,7 @@ public class Recipe extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String cookingMethod;
@@ -1579,6 +1579,40 @@ public class Recipe extends CreativeWork {
     myRecipeYield = recipeYield;
     myTotalTime = totalTime;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myCookingMethod != null ? myCookingMethod.hashCode() : 0);
+    result = 31 * result + (myCookTime != null ? myCookTime.hashCode() : 0);
+    result = 31 * result + (myRecipeIngredient != null ? myRecipeIngredient.hashCode() : 0);
+    result = 31 * result + (myNutrition != null ? myNutrition.hashCode() : 0);
+    result = 31 * result + (myPrepTime != null ? myPrepTime.hashCode() : 0);
+    result = 31 * result + (myRecipeCategory != null ? myRecipeCategory.hashCode() : 0);
+    result = 31 * result + (myRecipeCuisine != null ? myRecipeCuisine.hashCode() : 0);
+    result = 31 * result + (myRecipeInstructions != null ? myRecipeInstructions.hashCode() : 0);
+    result = 31 * result + (myRecipeYield != null ? myRecipeYield.hashCode() : 0);
+    result = 31 * result + (myTotalTime != null ? myTotalTime.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Recipe recipe = (Recipe) o;
+    if (!super.equals(o)) return false;
+    if (myCookingMethod != null ? !myCookingMethod.equals(recipe.myCookingMethod) : recipe.myCookingMethod != null) return false;
+    if (myCookTime != null ? !myCookTime.equals(recipe.myCookTime) : recipe.myCookTime != null) return false;
+    if (myRecipeIngredient != null ? !myRecipeIngredient.equals(recipe.myRecipeIngredient) : recipe.myRecipeIngredient != null) return false;
+    if (myNutrition != null ? !myNutrition.equals(recipe.myNutrition) : recipe.myNutrition != null) return false;
+    if (myPrepTime != null ? !myPrepTime.equals(recipe.myPrepTime) : recipe.myPrepTime != null) return false;
+    if (myRecipeCategory != null ? !myRecipeCategory.equals(recipe.myRecipeCategory) : recipe.myRecipeCategory != null) return false;
+    if (myRecipeCuisine != null ? !myRecipeCuisine.equals(recipe.myRecipeCuisine) : recipe.myRecipeCuisine != null) return false;
+    if (myRecipeInstructions != null ? !myRecipeInstructions.equals(recipe.myRecipeInstructions) : recipe.myRecipeInstructions != null) return false;
+    if (myRecipeYield != null ? !myRecipeYield.equals(recipe.myRecipeYield) : recipe.myRecipeYield != null) return false;
+    if (myTotalTime != null ? !myTotalTime.equals(recipe.myTotalTime) : recipe.myTotalTime != null) return false;
+    return true;
+  }
+
   private String myCookingMethod;
   private Duration myCookTime;
   private String myRecipeIngredient;

@@ -44,4 +44,21 @@ class DistanceOrQuantitativeValue {
     myDistance = null;
     myQuantitativeValue = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDistance != null ? myDistance.hashCode() : 0);
+    result = 31 * result + (myQuantitativeValue != null ? myQuantitativeValue.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DistanceOrQuantitativeValue distanceOrQuantitativeValue = (DistanceOrQuantitativeValue) o;
+    if (myDistance != null ? !myDistance.equals(distanceOrQuantitativeValue.myDistance) : distanceOrQuantitativeValue.myDistance != null) return false;
+    if (myQuantitativeValue != null ? !myQuantitativeValue.equals(distanceOrQuantitativeValue.myQuantitativeValue) : distanceOrQuantitativeValue.myQuantitativeValue != null) return false;
+    return true;
+  }
+
 }

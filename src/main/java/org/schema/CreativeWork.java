@@ -1528,7 +1528,7 @@ public class CreativeWork extends Thing implements HasPart {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String schemaVersion;
@@ -1808,6 +1808,146 @@ public class CreativeWork extends Thing implements HasPart {
     myTranslator = translator;
     myReleasedEvent = releasedEvent;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (mySchemaVersion != null ? mySchemaVersion.hashCode() : 0);
+    result = 31 * result + (myAbout != null ? myAbout.hashCode() : 0);
+    result = 31 * result + (myAccessibilityAPI != null ? myAccessibilityAPI.hashCode() : 0);
+    result = 31 * result + (myAccessibilityControl != null ? myAccessibilityControl.hashCode() : 0);
+    result = 31 * result + (myAccessibilityFeature != null ? myAccessibilityFeature.hashCode() : 0);
+    result = 31 * result + (myAccessibilityHazard != null ? myAccessibilityHazard.hashCode() : 0);
+    result = 31 * result + (myAccountablePerson != null ? myAccountablePerson.hashCode() : 0);
+    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
+    result = 31 * result + (myAlternativeHeadline != null ? myAlternativeHeadline.hashCode() : 0);
+    result = 31 * result + (myAssociatedMedia != null ? myAssociatedMedia.hashCode() : 0);
+    result = 31 * result + (myAudience != null ? myAudience.hashCode() : 0);
+    result = 31 * result + (myAudio != null ? myAudio.hashCode() : 0);
+    result = 31 * result + (myAuthor != null ? myAuthor.hashCode() : 0);
+    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
+    result = 31 * result + (myCitation != null ? myCitation.hashCode() : 0);
+    result = 31 * result + (myComment != null ? myComment.hashCode() : 0);
+    result = 31 * result + (myContentLocation != null ? myContentLocation.hashCode() : 0);
+    result = 31 * result + (myContentRating != null ? myContentRating.hashCode() : 0);
+    result = 31 * result + (myContributor != null ? myContributor.hashCode() : 0);
+    result = 31 * result + (myCopyrightHolder != null ? myCopyrightHolder.hashCode() : 0);
+    result = 31 * result + (myCopyrightYear != null ? myCopyrightYear.hashCode() : 0);
+    result = 31 * result + (myCreator != null ? myCreator.hashCode() : 0);
+    result = 31 * result + (myDateCreated != null ? myDateCreated.hashCode() : 0);
+    result = 31 * result + (myDateModified != null ? myDateModified.hashCode() : 0);
+    result = 31 * result + (myDatePublished != null ? myDatePublished.hashCode() : 0);
+    result = 31 * result + (myDiscussionUrl != null ? myDiscussionUrl.hashCode() : 0);
+    result = 31 * result + (myEditor != null ? myEditor.hashCode() : 0);
+    result = 31 * result + (myEducationalAlignment != null ? myEducationalAlignment.hashCode() : 0);
+    result = 31 * result + (myEducationalUse != null ? myEducationalUse.hashCode() : 0);
+    result = 31 * result + (myEncoding != null ? myEncoding.hashCode() : 0);
+    result = 31 * result + (myGenre != null ? myGenre.hashCode() : 0);
+    result = 31 * result + (myHeadline != null ? myHeadline.hashCode() : 0);
+    result = 31 * result + (myInLanguage != null ? myInLanguage.hashCode() : 0);
+    result = 31 * result + (myInteractivityType != null ? myInteractivityType.hashCode() : 0);
+    result = 31 * result + (myIsBasedOnUrl != null ? myIsBasedOnUrl.hashCode() : 0);
+    result = 31 * result + (myIsFamilyFriendly != null ? myIsFamilyFriendly.hashCode() : 0);
+    result = 31 * result + (myKeywords != null ? myKeywords.hashCode() : 0);
+    result = 31 * result + (myLicense != null ? myLicense.hashCode() : 0);
+    result = 31 * result + (myLearningResourceType != null ? myLearningResourceType.hashCode() : 0);
+    result = 31 * result + (myMainEntity != null ? myMainEntity.hashCode() : 0);
+    result = 31 * result + (myMentions != null ? myMentions.hashCode() : 0);
+    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
+    result = 31 * result + (myProducer != null ? myProducer.hashCode() : 0);
+    result = 31 * result + (myPublication != null ? myPublication.hashCode() : 0);
+    result = 31 * result + (myPublisher != null ? myPublisher.hashCode() : 0);
+    result = 31 * result + (myPublishingPrinciples != null ? myPublishingPrinciples.hashCode() : 0);
+    result = 31 * result + (myRecordedAt != null ? myRecordedAt.hashCode() : 0);
+    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
+    result = 31 * result + (mySourceOrganization != null ? mySourceOrganization.hashCode() : 0);
+    result = 31 * result + (myText != null ? myText.hashCode() : 0);
+    result = 31 * result + (myThumbnailUrl != null ? myThumbnailUrl.hashCode() : 0);
+    result = 31 * result + (myTimeRequired != null ? myTimeRequired.hashCode() : 0);
+    result = 31 * result + (myTypicalAgeRange != null ? myTypicalAgeRange.hashCode() : 0);
+    result = 31 * result + (myVersion != null ? myVersion.hashCode() : 0);
+    result = 31 * result + (myVideo != null ? myVideo.hashCode() : 0);
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    result = 31 * result + (myCommentCount != null ? myCommentCount.hashCode() : 0);
+    result = 31 * result + (myHasPart != null ? myHasPart.hashCode() : 0);
+    result = 31 * result + (myWorkExample != null ? myWorkExample.hashCode() : 0);
+    result = 31 * result + (myExampleOfWork != null ? myExampleOfWork.hashCode() : 0);
+    result = 31 * result + (myCharacter != null ? myCharacter.hashCode() : 0);
+    result = 31 * result + (myTranslator != null ? myTranslator.hashCode() : 0);
+    result = 31 * result + (myReleasedEvent != null ? myReleasedEvent.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CreativeWork creativeWork = (CreativeWork) o;
+    if (!super.equals(o)) return false;
+    if (mySchemaVersion != null ? !mySchemaVersion.equals(creativeWork.mySchemaVersion) : creativeWork.mySchemaVersion != null) return false;
+    if (myAbout != null ? !myAbout.equals(creativeWork.myAbout) : creativeWork.myAbout != null) return false;
+    if (myAccessibilityAPI != null ? !myAccessibilityAPI.equals(creativeWork.myAccessibilityAPI) : creativeWork.myAccessibilityAPI != null) return false;
+    if (myAccessibilityControl != null ? !myAccessibilityControl.equals(creativeWork.myAccessibilityControl) : creativeWork.myAccessibilityControl != null) return false;
+    if (myAccessibilityFeature != null ? !myAccessibilityFeature.equals(creativeWork.myAccessibilityFeature) : creativeWork.myAccessibilityFeature != null) return false;
+    if (myAccessibilityHazard != null ? !myAccessibilityHazard.equals(creativeWork.myAccessibilityHazard) : creativeWork.myAccessibilityHazard != null) return false;
+    if (myAccountablePerson != null ? !myAccountablePerson.equals(creativeWork.myAccountablePerson) : creativeWork.myAccountablePerson != null) return false;
+    if (myAggregateRating != null ? !myAggregateRating.equals(creativeWork.myAggregateRating) : creativeWork.myAggregateRating != null) return false;
+    if (myAlternativeHeadline != null ? !myAlternativeHeadline.equals(creativeWork.myAlternativeHeadline) : creativeWork.myAlternativeHeadline != null) return false;
+    if (myAssociatedMedia != null ? !myAssociatedMedia.equals(creativeWork.myAssociatedMedia) : creativeWork.myAssociatedMedia != null) return false;
+    if (myAudience != null ? !myAudience.equals(creativeWork.myAudience) : creativeWork.myAudience != null) return false;
+    if (myAudio != null ? !myAudio.equals(creativeWork.myAudio) : creativeWork.myAudio != null) return false;
+    if (myAuthor != null ? !myAuthor.equals(creativeWork.myAuthor) : creativeWork.myAuthor != null) return false;
+    if (myAward != null ? !myAward.equals(creativeWork.myAward) : creativeWork.myAward != null) return false;
+    if (myCitation != null ? !myCitation.equals(creativeWork.myCitation) : creativeWork.myCitation != null) return false;
+    if (myComment != null ? !myComment.equals(creativeWork.myComment) : creativeWork.myComment != null) return false;
+    if (myContentLocation != null ? !myContentLocation.equals(creativeWork.myContentLocation) : creativeWork.myContentLocation != null) return false;
+    if (myContentRating != null ? !myContentRating.equals(creativeWork.myContentRating) : creativeWork.myContentRating != null) return false;
+    if (myContributor != null ? !myContributor.equals(creativeWork.myContributor) : creativeWork.myContributor != null) return false;
+    if (myCopyrightHolder != null ? !myCopyrightHolder.equals(creativeWork.myCopyrightHolder) : creativeWork.myCopyrightHolder != null) return false;
+    if (myCopyrightYear != null ? !myCopyrightYear.equals(creativeWork.myCopyrightYear) : creativeWork.myCopyrightYear != null) return false;
+    if (myCreator != null ? !myCreator.equals(creativeWork.myCreator) : creativeWork.myCreator != null) return false;
+    if (myDateCreated != null ? !myDateCreated.equals(creativeWork.myDateCreated) : creativeWork.myDateCreated != null) return false;
+    if (myDateModified != null ? !myDateModified.equals(creativeWork.myDateModified) : creativeWork.myDateModified != null) return false;
+    if (myDatePublished != null ? !myDatePublished.equals(creativeWork.myDatePublished) : creativeWork.myDatePublished != null) return false;
+    if (myDiscussionUrl != null ? !myDiscussionUrl.equals(creativeWork.myDiscussionUrl) : creativeWork.myDiscussionUrl != null) return false;
+    if (myEditor != null ? !myEditor.equals(creativeWork.myEditor) : creativeWork.myEditor != null) return false;
+    if (myEducationalAlignment != null ? !myEducationalAlignment.equals(creativeWork.myEducationalAlignment) : creativeWork.myEducationalAlignment != null) return false;
+    if (myEducationalUse != null ? !myEducationalUse.equals(creativeWork.myEducationalUse) : creativeWork.myEducationalUse != null) return false;
+    if (myEncoding != null ? !myEncoding.equals(creativeWork.myEncoding) : creativeWork.myEncoding != null) return false;
+    if (myGenre != null ? !myGenre.equals(creativeWork.myGenre) : creativeWork.myGenre != null) return false;
+    if (myHeadline != null ? !myHeadline.equals(creativeWork.myHeadline) : creativeWork.myHeadline != null) return false;
+    if (myInLanguage != null ? !myInLanguage.equals(creativeWork.myInLanguage) : creativeWork.myInLanguage != null) return false;
+    if (myInteractivityType != null ? !myInteractivityType.equals(creativeWork.myInteractivityType) : creativeWork.myInteractivityType != null) return false;
+    if (myIsBasedOnUrl != null ? !myIsBasedOnUrl.equals(creativeWork.myIsBasedOnUrl) : creativeWork.myIsBasedOnUrl != null) return false;
+    if (myIsFamilyFriendly != null ? !myIsFamilyFriendly.equals(creativeWork.myIsFamilyFriendly) : creativeWork.myIsFamilyFriendly != null) return false;
+    if (myKeywords != null ? !myKeywords.equals(creativeWork.myKeywords) : creativeWork.myKeywords != null) return false;
+    if (myLicense != null ? !myLicense.equals(creativeWork.myLicense) : creativeWork.myLicense != null) return false;
+    if (myLearningResourceType != null ? !myLearningResourceType.equals(creativeWork.myLearningResourceType) : creativeWork.myLearningResourceType != null) return false;
+    if (myMainEntity != null ? !myMainEntity.equals(creativeWork.myMainEntity) : creativeWork.myMainEntity != null) return false;
+    if (myMentions != null ? !myMentions.equals(creativeWork.myMentions) : creativeWork.myMentions != null) return false;
+    if (myOffers != null ? !myOffers.equals(creativeWork.myOffers) : creativeWork.myOffers != null) return false;
+    if (myProducer != null ? !myProducer.equals(creativeWork.myProducer) : creativeWork.myProducer != null) return false;
+    if (myPublication != null ? !myPublication.equals(creativeWork.myPublication) : creativeWork.myPublication != null) return false;
+    if (myPublisher != null ? !myPublisher.equals(creativeWork.myPublisher) : creativeWork.myPublisher != null) return false;
+    if (myPublishingPrinciples != null ? !myPublishingPrinciples.equals(creativeWork.myPublishingPrinciples) : creativeWork.myPublishingPrinciples != null) return false;
+    if (myRecordedAt != null ? !myRecordedAt.equals(creativeWork.myRecordedAt) : creativeWork.myRecordedAt != null) return false;
+    if (myReview != null ? !myReview.equals(creativeWork.myReview) : creativeWork.myReview != null) return false;
+    if (mySourceOrganization != null ? !mySourceOrganization.equals(creativeWork.mySourceOrganization) : creativeWork.mySourceOrganization != null) return false;
+    if (myText != null ? !myText.equals(creativeWork.myText) : creativeWork.myText != null) return false;
+    if (myThumbnailUrl != null ? !myThumbnailUrl.equals(creativeWork.myThumbnailUrl) : creativeWork.myThumbnailUrl != null) return false;
+    if (myTimeRequired != null ? !myTimeRequired.equals(creativeWork.myTimeRequired) : creativeWork.myTimeRequired != null) return false;
+    if (myTypicalAgeRange != null ? !myTypicalAgeRange.equals(creativeWork.myTypicalAgeRange) : creativeWork.myTypicalAgeRange != null) return false;
+    if (myVersion != null ? !myVersion.equals(creativeWork.myVersion) : creativeWork.myVersion != null) return false;
+    if (myVideo != null ? !myVideo.equals(creativeWork.myVideo) : creativeWork.myVideo != null) return false;
+    if (myProvider != null ? !myProvider.equals(creativeWork.myProvider) : creativeWork.myProvider != null) return false;
+    if (myCommentCount != null ? !myCommentCount.equals(creativeWork.myCommentCount) : creativeWork.myCommentCount != null) return false;
+    if (myHasPart != null ? !myHasPart.equals(creativeWork.myHasPart) : creativeWork.myHasPart != null) return false;
+    if (myWorkExample != null ? !myWorkExample.equals(creativeWork.myWorkExample) : creativeWork.myWorkExample != null) return false;
+    if (myExampleOfWork != null ? !myExampleOfWork.equals(creativeWork.myExampleOfWork) : creativeWork.myExampleOfWork != null) return false;
+    if (myCharacter != null ? !myCharacter.equals(creativeWork.myCharacter) : creativeWork.myCharacter != null) return false;
+    if (myTranslator != null ? !myTranslator.equals(creativeWork.myTranslator) : creativeWork.myTranslator != null) return false;
+    if (myReleasedEvent != null ? !myReleasedEvent.equals(creativeWork.myReleasedEvent) : creativeWork.myReleasedEvent != null) return false;
+    return true;
+  }
+
   private String mySchemaVersion;
   private Thing myAbout;
   private String myAccessibilityAPI;

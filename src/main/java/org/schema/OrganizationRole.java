@@ -283,7 +283,7 @@ public class OrganizationRole extends Role {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Number numberedPosition;
@@ -325,5 +325,21 @@ public class OrganizationRole extends Role {
     super(startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myNumberedPosition = numberedPosition;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myNumberedPosition != null ? myNumberedPosition.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OrganizationRole organizationRole = (OrganizationRole) o;
+    if (!super.equals(o)) return false;
+    if (myNumberedPosition != null ? !myNumberedPosition.equals(organizationRole.myNumberedPosition) : organizationRole.myNumberedPosition != null) return false;
+    return true;
+  }
+
   private Number myNumberedPosition;
 }

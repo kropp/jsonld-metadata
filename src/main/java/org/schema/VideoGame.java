@@ -1427,7 +1427,7 @@ public class VideoGame extends Game {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Person director;
@@ -1697,6 +1697,36 @@ public class VideoGame extends Game {
     myGamePlatform = gamePlatform;
     myGameServer = gameServer;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDirector != null ? myDirector.hashCode() : 0);
+    result = 31 * result + (myMusicBy != null ? myMusicBy.hashCode() : 0);
+    result = 31 * result + (myTrailer != null ? myTrailer.hashCode() : 0);
+    result = 31 * result + (myPlayMode != null ? myPlayMode.hashCode() : 0);
+    result = 31 * result + (myCheatCode != null ? myCheatCode.hashCode() : 0);
+    result = 31 * result + (myGameTip != null ? myGameTip.hashCode() : 0);
+    result = 31 * result + (myGamePlatform != null ? myGamePlatform.hashCode() : 0);
+    result = 31 * result + (myGameServer != null ? myGameServer.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    VideoGame videoGame = (VideoGame) o;
+    if (!super.equals(o)) return false;
+    if (myDirector != null ? !myDirector.equals(videoGame.myDirector) : videoGame.myDirector != null) return false;
+    if (myMusicBy != null ? !myMusicBy.equals(videoGame.myMusicBy) : videoGame.myMusicBy != null) return false;
+    if (myTrailer != null ? !myTrailer.equals(videoGame.myTrailer) : videoGame.myTrailer != null) return false;
+    if (myPlayMode != null ? !myPlayMode.equals(videoGame.myPlayMode) : videoGame.myPlayMode != null) return false;
+    if (myCheatCode != null ? !myCheatCode.equals(videoGame.myCheatCode) : videoGame.myCheatCode != null) return false;
+    if (myGameTip != null ? !myGameTip.equals(videoGame.myGameTip) : videoGame.myGameTip != null) return false;
+    if (myGamePlatform != null ? !myGamePlatform.equals(videoGame.myGamePlatform) : videoGame.myGamePlatform != null) return false;
+    if (myGameServer != null ? !myGameServer.equals(videoGame.myGameServer) : videoGame.myGameServer != null) return false;
+    return true;
+  }
+
   private Person myDirector;
   private MusicGroupOrPerson myMusicBy;
   private VideoObject myTrailer;

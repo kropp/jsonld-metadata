@@ -409,7 +409,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Thing about;
@@ -475,6 +475,26 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     myInLanguage = inLanguage;
     myRecipient = recipient;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAbout != null ? myAbout.hashCode() : 0);
+    result = 31 * result + (myInLanguage != null ? myInLanguage.hashCode() : 0);
+    result = 31 * result + (myRecipient != null ? myRecipient.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CommunicateAction communicateAction = (CommunicateAction) o;
+    if (!super.equals(o)) return false;
+    if (myAbout != null ? !myAbout.equals(communicateAction.myAbout) : communicateAction.myAbout != null) return false;
+    if (myInLanguage != null ? !myInLanguage.equals(communicateAction.myInLanguage) : communicateAction.myInLanguage != null) return false;
+    if (myRecipient != null ? !myRecipient.equals(communicateAction.myRecipient) : communicateAction.myRecipient != null) return false;
+    return true;
+  }
+
   private Thing myAbout;
   private LanguageOrString myInLanguage;
   private AudienceOrOrganizationOrPerson myRecipient;

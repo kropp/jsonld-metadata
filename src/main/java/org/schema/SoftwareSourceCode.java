@@ -1228,7 +1228,7 @@ public class SoftwareSourceCode extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String codeRepository;
@@ -1462,6 +1462,30 @@ public class SoftwareSourceCode extends CreativeWork {
     myCodeSampleType = codeSampleType;
     myTargetProduct = targetProduct;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myCodeRepository != null ? myCodeRepository.hashCode() : 0);
+    result = 31 * result + (myProgrammingLanguage != null ? myProgrammingLanguage.hashCode() : 0);
+    result = 31 * result + (myRuntimePlatform != null ? myRuntimePlatform.hashCode() : 0);
+    result = 31 * result + (myCodeSampleType != null ? myCodeSampleType.hashCode() : 0);
+    result = 31 * result + (myTargetProduct != null ? myTargetProduct.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SoftwareSourceCode softwareSourceCode = (SoftwareSourceCode) o;
+    if (!super.equals(o)) return false;
+    if (myCodeRepository != null ? !myCodeRepository.equals(softwareSourceCode.myCodeRepository) : softwareSourceCode.myCodeRepository != null) return false;
+    if (myProgrammingLanguage != null ? !myProgrammingLanguage.equals(softwareSourceCode.myProgrammingLanguage) : softwareSourceCode.myProgrammingLanguage != null) return false;
+    if (myRuntimePlatform != null ? !myRuntimePlatform.equals(softwareSourceCode.myRuntimePlatform) : softwareSourceCode.myRuntimePlatform != null) return false;
+    if (myCodeSampleType != null ? !myCodeSampleType.equals(softwareSourceCode.myCodeSampleType) : softwareSourceCode.myCodeSampleType != null) return false;
+    if (myTargetProduct != null ? !myTargetProduct.equals(softwareSourceCode.myTargetProduct) : softwareSourceCode.myTargetProduct != null) return false;
+    return true;
+  }
+
   private String myCodeRepository;
   private Language myProgrammingLanguage;
   private String myRuntimePlatform;

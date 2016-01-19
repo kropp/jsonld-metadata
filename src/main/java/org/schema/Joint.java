@@ -445,7 +445,7 @@ public class Joint extends AnatomicalStructure {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String biomechnicalClass;
@@ -526,6 +526,26 @@ public class Joint extends AnatomicalStructure {
     myFunctionalClass = functionalClass;
     myStructuralClass = structuralClass;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myBiomechnicalClass != null ? myBiomechnicalClass.hashCode() : 0);
+    result = 31 * result + (myFunctionalClass != null ? myFunctionalClass.hashCode() : 0);
+    result = 31 * result + (myStructuralClass != null ? myStructuralClass.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Joint joint = (Joint) o;
+    if (!super.equals(o)) return false;
+    if (myBiomechnicalClass != null ? !myBiomechnicalClass.equals(joint.myBiomechnicalClass) : joint.myBiomechnicalClass != null) return false;
+    if (myFunctionalClass != null ? !myFunctionalClass.equals(joint.myFunctionalClass) : joint.myFunctionalClass != null) return false;
+    if (myStructuralClass != null ? !myStructuralClass.equals(joint.myStructuralClass) : joint.myStructuralClass != null) return false;
+    return true;
+  }
+
   private String myBiomechnicalClass;
   private String myFunctionalClass;
   private String myStructuralClass;

@@ -450,7 +450,7 @@ public class NutritionInformation extends StructuredValue {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Energy calories;
@@ -528,6 +528,44 @@ public class NutritionInformation extends StructuredValue {
     myTransFatContent = transFatContent;
     myUnsaturatedFatContent = unsaturatedFatContent;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myCalories != null ? myCalories.hashCode() : 0);
+    result = 31 * result + (myCarbohydrateContent != null ? myCarbohydrateContent.hashCode() : 0);
+    result = 31 * result + (myCholesterolContent != null ? myCholesterolContent.hashCode() : 0);
+    result = 31 * result + (myFatContent != null ? myFatContent.hashCode() : 0);
+    result = 31 * result + (myFiberContent != null ? myFiberContent.hashCode() : 0);
+    result = 31 * result + (myProteinContent != null ? myProteinContent.hashCode() : 0);
+    result = 31 * result + (mySaturatedFatContent != null ? mySaturatedFatContent.hashCode() : 0);
+    result = 31 * result + (myServingSize != null ? myServingSize.hashCode() : 0);
+    result = 31 * result + (mySodiumContent != null ? mySodiumContent.hashCode() : 0);
+    result = 31 * result + (mySugarContent != null ? mySugarContent.hashCode() : 0);
+    result = 31 * result + (myTransFatContent != null ? myTransFatContent.hashCode() : 0);
+    result = 31 * result + (myUnsaturatedFatContent != null ? myUnsaturatedFatContent.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    NutritionInformation nutritionInformation = (NutritionInformation) o;
+    if (!super.equals(o)) return false;
+    if (myCalories != null ? !myCalories.equals(nutritionInformation.myCalories) : nutritionInformation.myCalories != null) return false;
+    if (myCarbohydrateContent != null ? !myCarbohydrateContent.equals(nutritionInformation.myCarbohydrateContent) : nutritionInformation.myCarbohydrateContent != null) return false;
+    if (myCholesterolContent != null ? !myCholesterolContent.equals(nutritionInformation.myCholesterolContent) : nutritionInformation.myCholesterolContent != null) return false;
+    if (myFatContent != null ? !myFatContent.equals(nutritionInformation.myFatContent) : nutritionInformation.myFatContent != null) return false;
+    if (myFiberContent != null ? !myFiberContent.equals(nutritionInformation.myFiberContent) : nutritionInformation.myFiberContent != null) return false;
+    if (myProteinContent != null ? !myProteinContent.equals(nutritionInformation.myProteinContent) : nutritionInformation.myProteinContent != null) return false;
+    if (mySaturatedFatContent != null ? !mySaturatedFatContent.equals(nutritionInformation.mySaturatedFatContent) : nutritionInformation.mySaturatedFatContent != null) return false;
+    if (myServingSize != null ? !myServingSize.equals(nutritionInformation.myServingSize) : nutritionInformation.myServingSize != null) return false;
+    if (mySodiumContent != null ? !mySodiumContent.equals(nutritionInformation.mySodiumContent) : nutritionInformation.mySodiumContent != null) return false;
+    if (mySugarContent != null ? !mySugarContent.equals(nutritionInformation.mySugarContent) : nutritionInformation.mySugarContent != null) return false;
+    if (myTransFatContent != null ? !myTransFatContent.equals(nutritionInformation.myTransFatContent) : nutritionInformation.myTransFatContent != null) return false;
+    if (myUnsaturatedFatContent != null ? !myUnsaturatedFatContent.equals(nutritionInformation.myUnsaturatedFatContent) : nutritionInformation.myUnsaturatedFatContent != null) return false;
+    return true;
+  }
+
   private Energy myCalories;
   private Mass myCarbohydrateContent;
   private Mass myCholesterolContent;

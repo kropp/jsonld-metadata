@@ -50,4 +50,23 @@ class AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy {
     myAnatomicalSystem = null;
     mySuperficialAnatomy = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAnatomicalStructure != null ? myAnatomicalStructure.hashCode() : 0);
+    result = 31 * result + (myAnatomicalSystem != null ? myAnatomicalSystem.hashCode() : 0);
+    result = 31 * result + (mySuperficialAnatomy != null ? mySuperficialAnatomy.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy anatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy = (AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy) o;
+    if (myAnatomicalStructure != null ? !myAnatomicalStructure.equals(anatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy.myAnatomicalStructure) : anatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy.myAnatomicalStructure != null) return false;
+    if (myAnatomicalSystem != null ? !myAnatomicalSystem.equals(anatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy.myAnatomicalSystem) : anatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy.myAnatomicalSystem != null) return false;
+    if (mySuperficialAnatomy != null ? !mySuperficialAnatomy.equals(anatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy.mySuperficialAnatomy) : anatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy.mySuperficialAnatomy != null) return false;
+    return true;
+  }
+
 }

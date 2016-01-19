@@ -250,7 +250,7 @@ public class Audience extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String audienceType;
@@ -288,6 +288,24 @@ public class Audience extends Intangible {
     myAudienceType = audienceType;
     myGeographicArea = geographicArea;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAudienceType != null ? myAudienceType.hashCode() : 0);
+    result = 31 * result + (myGeographicArea != null ? myGeographicArea.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Audience audience = (Audience) o;
+    if (!super.equals(o)) return false;
+    if (myAudienceType != null ? !myAudienceType.equals(audience.myAudienceType) : audience.myAudienceType != null) return false;
+    if (myGeographicArea != null ? !myGeographicArea.equals(audience.myGeographicArea) : audience.myGeographicArea != null) return false;
+    return true;
+  }
+
   private String myAudienceType;
   private AdministrativeArea myGeographicArea;
 }

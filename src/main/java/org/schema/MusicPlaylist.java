@@ -1196,7 +1196,7 @@ public class MusicPlaylist extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Integer numTracks;
@@ -1422,6 +1422,24 @@ public class MusicPlaylist extends CreativeWork {
     myNumTracks = numTracks;
     myTrack = track;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myNumTracks != null ? myNumTracks.hashCode() : 0);
+    result = 31 * result + (myTrack != null ? myTrack.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MusicPlaylist musicPlaylist = (MusicPlaylist) o;
+    if (!super.equals(o)) return false;
+    if (myNumTracks != null ? !myNumTracks.equals(musicPlaylist.myNumTracks) : musicPlaylist.myNumTracks != null) return false;
+    if (myTrack != null ? !myTrack.equals(musicPlaylist.myTrack) : musicPlaylist.myTrack != null) return false;
+    return true;
+  }
+
   private Integer myNumTracks;
   private ItemListOrMusicRecording myTrack;
 }

@@ -44,4 +44,21 @@ class ItemListOrMusicRecording {
     myItemList = null;
     myMusicRecording = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myItemList != null ? myItemList.hashCode() : 0);
+    result = 31 * result + (myMusicRecording != null ? myMusicRecording.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ItemListOrMusicRecording itemListOrMusicRecording = (ItemListOrMusicRecording) o;
+    if (myItemList != null ? !myItemList.equals(itemListOrMusicRecording.myItemList) : itemListOrMusicRecording.myItemList != null) return false;
+    if (myMusicRecording != null ? !myMusicRecording.equals(itemListOrMusicRecording.myMusicRecording) : itemListOrMusicRecording.myMusicRecording != null) return false;
+    return true;
+  }
+
 }

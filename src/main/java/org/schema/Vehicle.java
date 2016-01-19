@@ -36,7 +36,7 @@ Typical unit code(s): C62
   /**
    * The number or type of airbags in the vehicle.
    */
-  public NumberOrString getNumberOfAirbags() {
+  public Number getNumberOfAirbags() {
     return myNumberOfAirbags;
   }
   /**
@@ -229,16 +229,40 @@ Typical unit code(s): C62
     /**
      * The number or type of airbags in the vehicle.
      */
-    @NotNull public Builder numberOfAirbags(@NotNull Number number) {
-      if (this.numberOfAirbags == null) this.numberOfAirbags = new NumberOrString();
-      this.numberOfAirbags.setNumber(number);
+    @NotNull public Builder numberOfAirbags(@NotNull Integer integer) {
+      if (this.numberOfAirbags == null) this.numberOfAirbags = new Number();
+      this.numberOfAirbags.setInteger(integer);
+      return this;
+    }
+    /**
+     * The number or type of airbags in the vehicle.
+     */
+    @NotNull public Builder numberOfAirbags(@NotNull Long numberOfAirbags) {
+      if (this.numberOfAirbags == null) this.numberOfAirbags = new Number();
+      this.numberOfAirbags.setLong(numberOfAirbags);
+      return this;
+    }
+    /**
+     * The number or type of airbags in the vehicle.
+     */
+    @NotNull public Builder numberOfAirbags(@NotNull Float numberOfAirbags) {
+      if (this.numberOfAirbags == null) this.numberOfAirbags = new Number();
+      this.numberOfAirbags.setFloat(numberOfAirbags);
+      return this;
+    }
+    /**
+     * The number or type of airbags in the vehicle.
+     */
+    @NotNull public Builder numberOfAirbags(@NotNull Double numberOfAirbags) {
+      if (this.numberOfAirbags == null) this.numberOfAirbags = new Number();
+      this.numberOfAirbags.setDouble(numberOfAirbags);
       return this;
     }
     /**
      * The number or type of airbags in the vehicle.
      */
     @NotNull public Builder numberOfAirbags(@NotNull String numberOfAirbags) {
-      if (this.numberOfAirbags == null) this.numberOfAirbags = new NumberOrString();
+      if (this.numberOfAirbags == null) this.numberOfAirbags = new Number();
       this.numberOfAirbags.setString(numberOfAirbags);
       return this;
     }
@@ -1170,7 +1194,10 @@ Note: Publishers should be aware that applications designed to use specific sche
         if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
         if ("numberOfDoors".equals(key) && value instanceof Number) { numberOfDoors((Number)value); continue; }
         if ("numberOfDoors".equals(key) && value instanceof QuantitativeValue) { numberOfDoors((QuantitativeValue)value); continue; }
-        if ("numberOfAirbags".equals(key) && value instanceof Number) { numberOfAirbags((Number)value); continue; }
+        if ("numberOfAirbags".equals(key) && value instanceof Integer) { numberOfAirbags((Integer)value); continue; }
+        if ("numberOfAirbags".equals(key) && value instanceof Long) { numberOfAirbags((Long)value); continue; }
+        if ("numberOfAirbags".equals(key) && value instanceof Float) { numberOfAirbags((Float)value); continue; }
+        if ("numberOfAirbags".equals(key) && value instanceof Double) { numberOfAirbags((Double)value); continue; }
         if ("numberOfAirbags".equals(key) && value instanceof String) { numberOfAirbags((String)value); continue; }
         if ("numberOfAxles".equals(key) && value instanceof Number) { numberOfAxles((Number)value); continue; }
         if ("numberOfAxles".equals(key) && value instanceof QuantitativeValue) { numberOfAxles((QuantitativeValue)value); continue; }
@@ -1247,11 +1274,11 @@ Note: Publishers should be aware that applications designed to use specific sche
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private NumberOrQuantitativeValue numberOfDoors;
-    private NumberOrString numberOfAirbags;
+    private Number numberOfAirbags;
     private NumberOrQuantitativeValue numberOfAxles;
     private EngineSpecification vehicleEngine;
     private QuantitativeValue fuelConsumption;
@@ -1317,7 +1344,10 @@ Note: Publishers should be aware that applications designed to use specific sche
     @NotNull Builder numberOfDoors(@NotNull Number number);
     @NotNull Builder numberOfDoors(@NotNull QuantitativeValue quantitativeValue);
     @NotNull Builder numberOfDoors(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder numberOfAirbags(@NotNull Number number);
+    @NotNull Builder numberOfAirbags(@NotNull Integer integer);
+    @NotNull Builder numberOfAirbags(@NotNull Long numberOfAirbags);
+    @NotNull Builder numberOfAirbags(@NotNull Float numberOfAirbags);
+    @NotNull Builder numberOfAirbags(@NotNull Double numberOfAirbags);
     @NotNull Builder numberOfAirbags(@NotNull String numberOfAirbags);
     @NotNull Builder numberOfAxles(@NotNull Number number);
     @NotNull Builder numberOfAxles(@NotNull QuantitativeValue quantitativeValue);
@@ -1436,7 +1466,7 @@ Note: Publishers should be aware that applications designed to use specific sche
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected Vehicle(NumberOrQuantitativeValue numberOfDoors, NumberOrString numberOfAirbags, NumberOrQuantitativeValue numberOfAxles, EngineSpecification vehicleEngine, QuantitativeValue fuelConsumption, QuantitativeValue fuelEfficiency, NumberOrQuantitativeValue numberOfForwardGears, String vin, QuantitativeValue cargoVolume, String vehicleConfiguration, String knownVehicleDamages, java.util.Date dateVehicleFirstRegistered, DriveWheelConfigurationValueOrString driveWheelConfiguration, QualitativeValueOrString fuelType, String vehicleInteriorColor, String vehicleInteriorType, QuantitativeValue mileageFromOdometer, java.util.Date vehicleModelDate, NumberOrQuantitativeValue numberOfPreviousOwners, java.util.Date productionDate, java.util.Date purchaseDate, NumberOrQuantitativeValue vehicleSeatingCapacity, QualitativeValueOrString vehicleTransmission, SteeringPositionValue steeringPosition, AggregateRating aggregateRating, Audience audience, String award, BrandOrOrganization brand, PhysicalActivityCategoryOrStringOrThing category, String color, DistanceOrQuantitativeValue depth, String gtin12, String gtin13, String gtin14, String gtin8, DistanceOrQuantitativeValue height, Product isAccessoryOrSparePartFor, Product isConsumableFor, Product isRelatedTo, Product isSimilarTo, OfferItemCondition itemCondition, ImageObjectOrString logo, Organization manufacturer, ProductModelOrString model, String mpn, Offer offers, String productID, java.util.Date releaseDate, Review review, String sku, QuantitativeValue weight, DistanceOrQuantitativeValue width, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected Vehicle(NumberOrQuantitativeValue numberOfDoors, Number numberOfAirbags, NumberOrQuantitativeValue numberOfAxles, EngineSpecification vehicleEngine, QuantitativeValue fuelConsumption, QuantitativeValue fuelEfficiency, NumberOrQuantitativeValue numberOfForwardGears, String vin, QuantitativeValue cargoVolume, String vehicleConfiguration, String knownVehicleDamages, java.util.Date dateVehicleFirstRegistered, DriveWheelConfigurationValueOrString driveWheelConfiguration, QualitativeValueOrString fuelType, String vehicleInteriorColor, String vehicleInteriorType, QuantitativeValue mileageFromOdometer, java.util.Date vehicleModelDate, NumberOrQuantitativeValue numberOfPreviousOwners, java.util.Date productionDate, java.util.Date purchaseDate, NumberOrQuantitativeValue vehicleSeatingCapacity, QualitativeValueOrString vehicleTransmission, SteeringPositionValue steeringPosition, AggregateRating aggregateRating, Audience audience, String award, BrandOrOrganization brand, PhysicalActivityCategoryOrStringOrThing category, String color, DistanceOrQuantitativeValue depth, String gtin12, String gtin13, String gtin14, String gtin8, DistanceOrQuantitativeValue height, Product isAccessoryOrSparePartFor, Product isConsumableFor, Product isRelatedTo, Product isSimilarTo, OfferItemCondition itemCondition, ImageObjectOrString logo, Organization manufacturer, ProductModelOrString model, String mpn, Offer offers, String productID, java.util.Date releaseDate, Review review, String sku, QuantitativeValue weight, DistanceOrQuantitativeValue width, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(aggregateRating, audience, award, brand, category, color, depth, gtin12, gtin13, gtin14, gtin8, height, isAccessoryOrSparePartFor, isConsumableFor, isRelatedTo, isSimilarTo, itemCondition, logo, manufacturer, model, mpn, offers, productID, releaseDate, review, sku, weight, width, additionalProperty, productionDate, purchaseDate, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myNumberOfDoors = numberOfDoors;
     myNumberOfAirbags = numberOfAirbags;
@@ -1463,8 +1493,70 @@ Note: Publishers should be aware that applications designed to use specific sche
     myVehicleTransmission = vehicleTransmission;
     mySteeringPosition = steeringPosition;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myNumberOfDoors != null ? myNumberOfDoors.hashCode() : 0);
+    result = 31 * result + (myNumberOfAirbags != null ? myNumberOfAirbags.hashCode() : 0);
+    result = 31 * result + (myNumberOfAxles != null ? myNumberOfAxles.hashCode() : 0);
+    result = 31 * result + (myVehicleEngine != null ? myVehicleEngine.hashCode() : 0);
+    result = 31 * result + (myFuelConsumption != null ? myFuelConsumption.hashCode() : 0);
+    result = 31 * result + (myFuelEfficiency != null ? myFuelEfficiency.hashCode() : 0);
+    result = 31 * result + (myNumberOfForwardGears != null ? myNumberOfForwardGears.hashCode() : 0);
+    result = 31 * result + (myVin != null ? myVin.hashCode() : 0);
+    result = 31 * result + (myCargoVolume != null ? myCargoVolume.hashCode() : 0);
+    result = 31 * result + (myVehicleConfiguration != null ? myVehicleConfiguration.hashCode() : 0);
+    result = 31 * result + (myKnownVehicleDamages != null ? myKnownVehicleDamages.hashCode() : 0);
+    result = 31 * result + (myDateVehicleFirstRegistered != null ? myDateVehicleFirstRegistered.hashCode() : 0);
+    result = 31 * result + (myDriveWheelConfiguration != null ? myDriveWheelConfiguration.hashCode() : 0);
+    result = 31 * result + (myFuelType != null ? myFuelType.hashCode() : 0);
+    result = 31 * result + (myVehicleInteriorColor != null ? myVehicleInteriorColor.hashCode() : 0);
+    result = 31 * result + (myVehicleInteriorType != null ? myVehicleInteriorType.hashCode() : 0);
+    result = 31 * result + (myMileageFromOdometer != null ? myMileageFromOdometer.hashCode() : 0);
+    result = 31 * result + (myVehicleModelDate != null ? myVehicleModelDate.hashCode() : 0);
+    result = 31 * result + (myNumberOfPreviousOwners != null ? myNumberOfPreviousOwners.hashCode() : 0);
+    result = 31 * result + (myProductionDate != null ? myProductionDate.hashCode() : 0);
+    result = 31 * result + (myPurchaseDate != null ? myPurchaseDate.hashCode() : 0);
+    result = 31 * result + (myVehicleSeatingCapacity != null ? myVehicleSeatingCapacity.hashCode() : 0);
+    result = 31 * result + (myVehicleTransmission != null ? myVehicleTransmission.hashCode() : 0);
+    result = 31 * result + (mySteeringPosition != null ? mySteeringPosition.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Vehicle vehicle = (Vehicle) o;
+    if (!super.equals(o)) return false;
+    if (myNumberOfDoors != null ? !myNumberOfDoors.equals(vehicle.myNumberOfDoors) : vehicle.myNumberOfDoors != null) return false;
+    if (myNumberOfAirbags != null ? !myNumberOfAirbags.equals(vehicle.myNumberOfAirbags) : vehicle.myNumberOfAirbags != null) return false;
+    if (myNumberOfAxles != null ? !myNumberOfAxles.equals(vehicle.myNumberOfAxles) : vehicle.myNumberOfAxles != null) return false;
+    if (myVehicleEngine != null ? !myVehicleEngine.equals(vehicle.myVehicleEngine) : vehicle.myVehicleEngine != null) return false;
+    if (myFuelConsumption != null ? !myFuelConsumption.equals(vehicle.myFuelConsumption) : vehicle.myFuelConsumption != null) return false;
+    if (myFuelEfficiency != null ? !myFuelEfficiency.equals(vehicle.myFuelEfficiency) : vehicle.myFuelEfficiency != null) return false;
+    if (myNumberOfForwardGears != null ? !myNumberOfForwardGears.equals(vehicle.myNumberOfForwardGears) : vehicle.myNumberOfForwardGears != null) return false;
+    if (myVin != null ? !myVin.equals(vehicle.myVin) : vehicle.myVin != null) return false;
+    if (myCargoVolume != null ? !myCargoVolume.equals(vehicle.myCargoVolume) : vehicle.myCargoVolume != null) return false;
+    if (myVehicleConfiguration != null ? !myVehicleConfiguration.equals(vehicle.myVehicleConfiguration) : vehicle.myVehicleConfiguration != null) return false;
+    if (myKnownVehicleDamages != null ? !myKnownVehicleDamages.equals(vehicle.myKnownVehicleDamages) : vehicle.myKnownVehicleDamages != null) return false;
+    if (myDateVehicleFirstRegistered != null ? !myDateVehicleFirstRegistered.equals(vehicle.myDateVehicleFirstRegistered) : vehicle.myDateVehicleFirstRegistered != null) return false;
+    if (myDriveWheelConfiguration != null ? !myDriveWheelConfiguration.equals(vehicle.myDriveWheelConfiguration) : vehicle.myDriveWheelConfiguration != null) return false;
+    if (myFuelType != null ? !myFuelType.equals(vehicle.myFuelType) : vehicle.myFuelType != null) return false;
+    if (myVehicleInteriorColor != null ? !myVehicleInteriorColor.equals(vehicle.myVehicleInteriorColor) : vehicle.myVehicleInteriorColor != null) return false;
+    if (myVehicleInteriorType != null ? !myVehicleInteriorType.equals(vehicle.myVehicleInteriorType) : vehicle.myVehicleInteriorType != null) return false;
+    if (myMileageFromOdometer != null ? !myMileageFromOdometer.equals(vehicle.myMileageFromOdometer) : vehicle.myMileageFromOdometer != null) return false;
+    if (myVehicleModelDate != null ? !myVehicleModelDate.equals(vehicle.myVehicleModelDate) : vehicle.myVehicleModelDate != null) return false;
+    if (myNumberOfPreviousOwners != null ? !myNumberOfPreviousOwners.equals(vehicle.myNumberOfPreviousOwners) : vehicle.myNumberOfPreviousOwners != null) return false;
+    if (myProductionDate != null ? !myProductionDate.equals(vehicle.myProductionDate) : vehicle.myProductionDate != null) return false;
+    if (myPurchaseDate != null ? !myPurchaseDate.equals(vehicle.myPurchaseDate) : vehicle.myPurchaseDate != null) return false;
+    if (myVehicleSeatingCapacity != null ? !myVehicleSeatingCapacity.equals(vehicle.myVehicleSeatingCapacity) : vehicle.myVehicleSeatingCapacity != null) return false;
+    if (myVehicleTransmission != null ? !myVehicleTransmission.equals(vehicle.myVehicleTransmission) : vehicle.myVehicleTransmission != null) return false;
+    if (mySteeringPosition != null ? !mySteeringPosition.equals(vehicle.mySteeringPosition) : vehicle.mySteeringPosition != null) return false;
+    return true;
+  }
+
   private NumberOrQuantitativeValue myNumberOfDoors;
-  private NumberOrString myNumberOfAirbags;
+  private Number myNumberOfAirbags;
   private NumberOrQuantitativeValue myNumberOfAxles;
   private EngineSpecification myVehicleEngine;
   private QuantitativeValue myFuelConsumption;

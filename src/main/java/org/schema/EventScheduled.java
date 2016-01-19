@@ -52,4 +52,18 @@ public class EventScheduled {
 
   protected EventScheduled() {
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EventScheduled eventScheduled = (EventScheduled) o;
+    if (!super.equals(o)) return false;
+    return true;
+  }
+
 }

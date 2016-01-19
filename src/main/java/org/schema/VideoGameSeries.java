@@ -1529,7 +1529,7 @@ public class VideoGameSeries extends CreativeWorkSeries {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Person actor;
@@ -1820,6 +1820,54 @@ public class VideoGameSeries extends CreativeWorkSeries {
     myGamePlatform = gamePlatform;
     myGameLocation = gameLocation;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActor != null ? myActor.hashCode() : 0);
+    result = 31 * result + (myDirector != null ? myDirector.hashCode() : 0);
+    result = 31 * result + (myEpisode != null ? myEpisode.hashCode() : 0);
+    result = 31 * result + (myMusicBy != null ? myMusicBy.hashCode() : 0);
+    result = 31 * result + (myNumberOfEpisodes != null ? myNumberOfEpisodes.hashCode() : 0);
+    result = 31 * result + (myNumberOfSeasons != null ? myNumberOfSeasons.hashCode() : 0);
+    result = 31 * result + (myProductionCompany != null ? myProductionCompany.hashCode() : 0);
+    result = 31 * result + (myContainsSeason != null ? myContainsSeason.hashCode() : 0);
+    result = 31 * result + (myTrailer != null ? myTrailer.hashCode() : 0);
+    result = 31 * result + (myNumberOfPlayers != null ? myNumberOfPlayers.hashCode() : 0);
+    result = 31 * result + (myQuest != null ? myQuest.hashCode() : 0);
+    result = 31 * result + (myGameItem != null ? myGameItem.hashCode() : 0);
+    result = 31 * result + (myCharacterAttribute != null ? myCharacterAttribute.hashCode() : 0);
+    result = 31 * result + (myPlayMode != null ? myPlayMode.hashCode() : 0);
+    result = 31 * result + (myCheatCode != null ? myCheatCode.hashCode() : 0);
+    result = 31 * result + (myGamePlatform != null ? myGamePlatform.hashCode() : 0);
+    result = 31 * result + (myGameLocation != null ? myGameLocation.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    VideoGameSeries videoGameSeries = (VideoGameSeries) o;
+    if (!super.equals(o)) return false;
+    if (myActor != null ? !myActor.equals(videoGameSeries.myActor) : videoGameSeries.myActor != null) return false;
+    if (myDirector != null ? !myDirector.equals(videoGameSeries.myDirector) : videoGameSeries.myDirector != null) return false;
+    if (myEpisode != null ? !myEpisode.equals(videoGameSeries.myEpisode) : videoGameSeries.myEpisode != null) return false;
+    if (myMusicBy != null ? !myMusicBy.equals(videoGameSeries.myMusicBy) : videoGameSeries.myMusicBy != null) return false;
+    if (myNumberOfEpisodes != null ? !myNumberOfEpisodes.equals(videoGameSeries.myNumberOfEpisodes) : videoGameSeries.myNumberOfEpisodes != null) return false;
+    if (myNumberOfSeasons != null ? !myNumberOfSeasons.equals(videoGameSeries.myNumberOfSeasons) : videoGameSeries.myNumberOfSeasons != null) return false;
+    if (myProductionCompany != null ? !myProductionCompany.equals(videoGameSeries.myProductionCompany) : videoGameSeries.myProductionCompany != null) return false;
+    if (myContainsSeason != null ? !myContainsSeason.equals(videoGameSeries.myContainsSeason) : videoGameSeries.myContainsSeason != null) return false;
+    if (myTrailer != null ? !myTrailer.equals(videoGameSeries.myTrailer) : videoGameSeries.myTrailer != null) return false;
+    if (myNumberOfPlayers != null ? !myNumberOfPlayers.equals(videoGameSeries.myNumberOfPlayers) : videoGameSeries.myNumberOfPlayers != null) return false;
+    if (myQuest != null ? !myQuest.equals(videoGameSeries.myQuest) : videoGameSeries.myQuest != null) return false;
+    if (myGameItem != null ? !myGameItem.equals(videoGameSeries.myGameItem) : videoGameSeries.myGameItem != null) return false;
+    if (myCharacterAttribute != null ? !myCharacterAttribute.equals(videoGameSeries.myCharacterAttribute) : videoGameSeries.myCharacterAttribute != null) return false;
+    if (myPlayMode != null ? !myPlayMode.equals(videoGameSeries.myPlayMode) : videoGameSeries.myPlayMode != null) return false;
+    if (myCheatCode != null ? !myCheatCode.equals(videoGameSeries.myCheatCode) : videoGameSeries.myCheatCode != null) return false;
+    if (myGamePlatform != null ? !myGamePlatform.equals(videoGameSeries.myGamePlatform) : videoGameSeries.myGamePlatform != null) return false;
+    if (myGameLocation != null ? !myGameLocation.equals(videoGameSeries.myGameLocation) : videoGameSeries.myGameLocation != null) return false;
+    return true;
+  }
+
   private Person myActor;
   private Person myDirector;
   private HasPart myEpisode;

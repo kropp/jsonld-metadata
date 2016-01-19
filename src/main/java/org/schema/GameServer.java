@@ -270,7 +270,7 @@ public class GameServer extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private GameServerStatus serverStatus;
@@ -312,6 +312,26 @@ public class GameServer extends Intangible {
     myPlayersOnline = playersOnline;
     myGame = game;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myServerStatus != null ? myServerStatus.hashCode() : 0);
+    result = 31 * result + (myPlayersOnline != null ? myPlayersOnline.hashCode() : 0);
+    result = 31 * result + (myGame != null ? myGame.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GameServer gameServer = (GameServer) o;
+    if (!super.equals(o)) return false;
+    if (myServerStatus != null ? !myServerStatus.equals(gameServer.myServerStatus) : gameServer.myServerStatus != null) return false;
+    if (myPlayersOnline != null ? !myPlayersOnline.equals(gameServer.myPlayersOnline) : gameServer.myPlayersOnline != null) return false;
+    if (myGame != null ? !myGame.equals(gameServer.myGame) : gameServer.myGame != null) return false;
+    return true;
+  }
+
   private GameServerStatus myServerStatus;
   private Integer myPlayersOnline;
   private VideoGame myGame;

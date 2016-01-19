@@ -85,7 +85,7 @@ public class Reservation extends Intangible {
   /**
    * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
    */
-  public NumberOrPriceSpecificationOrString getTotalPrice() {
+  public Number getTotalPrice() {
     return myTotalPrice;
   }
   /**
@@ -242,30 +242,40 @@ public class Reservation extends Intangible {
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(@NotNull Number number) {
-      if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
-      this.totalPrice.setNumber(number);
+    @NotNull public Builder totalPrice(@NotNull Integer integer) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setInteger(integer);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(@NotNull PriceSpecification priceSpecification) {
-      if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
-      this.totalPrice.setPriceSpecification(priceSpecification);
+    @NotNull public Builder totalPrice(@NotNull Long totalPrice) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setLong(totalPrice);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(@NotNull PriceSpecification.Builder priceSpecification) {
-      return this.totalPrice(priceSpecification.build());
+    @NotNull public Builder totalPrice(@NotNull Float totalPrice) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setFloat(totalPrice);
+      return this;
+    }
+    /**
+     * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
+     */
+    @NotNull public Builder totalPrice(@NotNull Double totalPrice) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setDouble(totalPrice);
+      return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull String totalPrice) {
-      if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
+      if (this.totalPrice == null) this.totalPrice = new Number();
       this.totalPrice.setString(totalPrice);
       return this;
     }
@@ -486,8 +496,10 @@ public class Reservation extends Intangible {
         if ("modifiedTime".equals(key) && value instanceof java.util.Date) { modifiedTime((java.util.Date)value); continue; }
         if ("programMembershipUsed".equals(key) && value instanceof ProgramMembership) { programMembershipUsed((ProgramMembership)value); continue; }
         if ("reservedTicket".equals(key) && value instanceof Ticket) { reservedTicket((Ticket)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof Number) { totalPrice((Number)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof PriceSpecification) { totalPrice((PriceSpecification)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Integer) { totalPrice((Integer)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Long) { totalPrice((Long)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Float) { totalPrice((Float)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Double) { totalPrice((Double)value); continue; }
         if ("totalPrice".equals(key) && value instanceof String) { totalPrice((String)value); continue; }
         if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); continue; }
         if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); continue; }
@@ -501,7 +513,7 @@ public class Reservation extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String reservationId;
@@ -513,7 +525,7 @@ public class Reservation extends Intangible {
     private java.util.Date modifiedTime;
     private ProgramMembership programMembershipUsed;
     private Ticket reservedTicket;
-    private NumberOrPriceSpecificationOrString totalPrice;
+    private Number totalPrice;
     private String priceCurrency;
     private OrganizationOrPerson broker;
     private String additionalType;
@@ -546,9 +558,10 @@ public class Reservation extends Intangible {
     @NotNull Builder programMembershipUsed(@NotNull ProgramMembership.Builder programMembership);
     @NotNull Builder reservedTicket(@NotNull Ticket ticket);
     @NotNull Builder reservedTicket(@NotNull Ticket.Builder ticket);
-    @NotNull Builder totalPrice(@NotNull Number number);
-    @NotNull Builder totalPrice(@NotNull PriceSpecification priceSpecification);
-    @NotNull Builder totalPrice(@NotNull PriceSpecification.Builder priceSpecification);
+    @NotNull Builder totalPrice(@NotNull Integer integer);
+    @NotNull Builder totalPrice(@NotNull Long totalPrice);
+    @NotNull Builder totalPrice(@NotNull Float totalPrice);
+    @NotNull Builder totalPrice(@NotNull Double totalPrice);
     @NotNull Builder totalPrice(@NotNull String totalPrice);
     @NotNull Builder priceCurrency(@NotNull String priceCurrency);
     @NotNull Builder broker(@NotNull Organization organization);
@@ -569,7 +582,7 @@ public class Reservation extends Intangible {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected Reservation(String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected Reservation(String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, Number totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myReservationId = reservationId;
     myReservationStatus = reservationStatus;
@@ -584,6 +597,44 @@ public class Reservation extends Intangible {
     myPriceCurrency = priceCurrency;
     myBroker = broker;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myReservationId != null ? myReservationId.hashCode() : 0);
+    result = 31 * result + (myReservationStatus != null ? myReservationStatus.hashCode() : 0);
+    result = 31 * result + (myReservationFor != null ? myReservationFor.hashCode() : 0);
+    result = 31 * result + (myUnderName != null ? myUnderName.hashCode() : 0);
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    result = 31 * result + (myBookingTime != null ? myBookingTime.hashCode() : 0);
+    result = 31 * result + (myModifiedTime != null ? myModifiedTime.hashCode() : 0);
+    result = 31 * result + (myProgramMembershipUsed != null ? myProgramMembershipUsed.hashCode() : 0);
+    result = 31 * result + (myReservedTicket != null ? myReservedTicket.hashCode() : 0);
+    result = 31 * result + (myTotalPrice != null ? myTotalPrice.hashCode() : 0);
+    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
+    result = 31 * result + (myBroker != null ? myBroker.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Reservation reservation = (Reservation) o;
+    if (!super.equals(o)) return false;
+    if (myReservationId != null ? !myReservationId.equals(reservation.myReservationId) : reservation.myReservationId != null) return false;
+    if (myReservationStatus != null ? !myReservationStatus.equals(reservation.myReservationStatus) : reservation.myReservationStatus != null) return false;
+    if (myReservationFor != null ? !myReservationFor.equals(reservation.myReservationFor) : reservation.myReservationFor != null) return false;
+    if (myUnderName != null ? !myUnderName.equals(reservation.myUnderName) : reservation.myUnderName != null) return false;
+    if (myProvider != null ? !myProvider.equals(reservation.myProvider) : reservation.myProvider != null) return false;
+    if (myBookingTime != null ? !myBookingTime.equals(reservation.myBookingTime) : reservation.myBookingTime != null) return false;
+    if (myModifiedTime != null ? !myModifiedTime.equals(reservation.myModifiedTime) : reservation.myModifiedTime != null) return false;
+    if (myProgramMembershipUsed != null ? !myProgramMembershipUsed.equals(reservation.myProgramMembershipUsed) : reservation.myProgramMembershipUsed != null) return false;
+    if (myReservedTicket != null ? !myReservedTicket.equals(reservation.myReservedTicket) : reservation.myReservedTicket != null) return false;
+    if (myTotalPrice != null ? !myTotalPrice.equals(reservation.myTotalPrice) : reservation.myTotalPrice != null) return false;
+    if (myPriceCurrency != null ? !myPriceCurrency.equals(reservation.myPriceCurrency) : reservation.myPriceCurrency != null) return false;
+    if (myBroker != null ? !myBroker.equals(reservation.myBroker) : reservation.myBroker != null) return false;
+    return true;
+  }
+
   private String myReservationId;
   private ReservationStatusType myReservationStatus;
   private Thing myReservationFor;
@@ -593,7 +644,7 @@ public class Reservation extends Intangible {
   private java.util.Date myModifiedTime;
   private ProgramMembership myProgramMembershipUsed;
   private Ticket myReservedTicket;
-  private NumberOrPriceSpecificationOrString myTotalPrice;
+  private Number myTotalPrice;
   private String myPriceCurrency;
   private OrganizationOrPerson myBroker;
 }

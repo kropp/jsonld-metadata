@@ -23,15 +23,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import org.jetbrains.annotations.Nullable;
+import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.Map;
+import java.util.HashMap;
+import java.text.*;
 
 /**
  * Typed deserializer for {@link org.schema.Thing}
  */
 class ThingDeserializer extends JsonDeserializer<Thing> {
+    private static final DateFormat dateFormat = new ISO8601DateFormat();
+
     @Override
     public Thing deserialize(JsonParser p, DeserializationContext ctx) throws IOException {
         return fromMap(p.<HashMap<String, Object>>readValueAs(new TypeReference<HashMap<String, Object>>() {
@@ -52,6 +57,16 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
         final ThingBuilder builder = SchemaOrg.getBuilder((String) type);
         if (builder == null) {
             return null;
+        }
+
+        for (Map.Entry<String, Object> entry : result.entrySet()) {
+            if (entry.getValue() instanceof String) {
+                try {
+                    final Date date = dateFormat.parse((String) entry.getValue());
+                    result.put(entry.getKey(), date);
+                } catch (ParseException ignored) {
+                }
+            }
         }
 
         builder.fromMap(result);

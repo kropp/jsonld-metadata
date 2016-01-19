@@ -407,7 +407,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private DeliveryMethod deliveryMethod;
@@ -474,6 +474,24 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     myDeliveryMethod = deliveryMethod;
     mySender = sender;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDeliveryMethod != null ? myDeliveryMethod.hashCode() : 0);
+    result = 31 * result + (mySender != null ? mySender.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ReceiveAction receiveAction = (ReceiveAction) o;
+    if (!super.equals(o)) return false;
+    if (myDeliveryMethod != null ? !myDeliveryMethod.equals(receiveAction.myDeliveryMethod) : receiveAction.myDeliveryMethod != null) return false;
+    if (mySender != null ? !mySender.equals(receiveAction.mySender) : receiveAction.mySender != null) return false;
+    return true;
+  }
+
   private DeliveryMethod myDeliveryMethod;
   private AudienceOrOrganizationOrPerson mySender;
 }

@@ -384,7 +384,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private FoodEstablishmentOrPlace foodEstablishment;
@@ -447,6 +447,26 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     myFoodEvent = foodEvent;
     myRecipe = recipe;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myFoodEstablishment != null ? myFoodEstablishment.hashCode() : 0);
+    result = 31 * result + (myFoodEvent != null ? myFoodEvent.hashCode() : 0);
+    result = 31 * result + (myRecipe != null ? myRecipe.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CookAction cookAction = (CookAction) o;
+    if (!super.equals(o)) return false;
+    if (myFoodEstablishment != null ? !myFoodEstablishment.equals(cookAction.myFoodEstablishment) : cookAction.myFoodEstablishment != null) return false;
+    if (myFoodEvent != null ? !myFoodEvent.equals(cookAction.myFoodEvent) : cookAction.myFoodEvent != null) return false;
+    if (myRecipe != null ? !myRecipe.equals(cookAction.myRecipe) : cookAction.myRecipe != null) return false;
+    return true;
+  }
+
   private FoodEstablishmentOrPlace myFoodEstablishment;
   private FoodEvent myFoodEvent;
   private Recipe myRecipe;

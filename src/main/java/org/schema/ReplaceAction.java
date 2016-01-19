@@ -362,7 +362,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Thing replacee;
@@ -422,6 +422,24 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     myReplacee = replacee;
     myReplacer = replacer;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myReplacee != null ? myReplacee.hashCode() : 0);
+    result = 31 * result + (myReplacer != null ? myReplacer.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ReplaceAction replaceAction = (ReplaceAction) o;
+    if (!super.equals(o)) return false;
+    if (myReplacee != null ? !myReplacee.equals(replaceAction.myReplacee) : replaceAction.myReplacee != null) return false;
+    if (myReplacer != null ? !myReplacer.equals(replaceAction.myReplacer) : replaceAction.myReplacer != null) return false;
+    return true;
+  }
+
   private Thing myReplacee;
   private Thing myReplacer;
 }

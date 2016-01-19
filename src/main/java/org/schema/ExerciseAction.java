@@ -550,7 +550,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Place exerciseCourse;
@@ -648,6 +648,42 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     mySportsTeam = sportsTeam;
     myToLocation = toLocation;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myExerciseCourse != null ? myExerciseCourse.hashCode() : 0);
+    result = 31 * result + (myExerciseRelatedDiet != null ? myExerciseRelatedDiet.hashCode() : 0);
+    result = 31 * result + (myDistance != null ? myDistance.hashCode() : 0);
+    result = 31 * result + (myExercisePlan != null ? myExercisePlan.hashCode() : 0);
+    result = 31 * result + (myExerciseType != null ? myExerciseType.hashCode() : 0);
+    result = 31 * result + (myFromLocation != null ? myFromLocation.hashCode() : 0);
+    result = 31 * result + (myOpponent != null ? myOpponent.hashCode() : 0);
+    result = 31 * result + (mySportsActivityLocation != null ? mySportsActivityLocation.hashCode() : 0);
+    result = 31 * result + (mySportsEvent != null ? mySportsEvent.hashCode() : 0);
+    result = 31 * result + (mySportsTeam != null ? mySportsTeam.hashCode() : 0);
+    result = 31 * result + (myToLocation != null ? myToLocation.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ExerciseAction exerciseAction = (ExerciseAction) o;
+    if (!super.equals(o)) return false;
+    if (myExerciseCourse != null ? !myExerciseCourse.equals(exerciseAction.myExerciseCourse) : exerciseAction.myExerciseCourse != null) return false;
+    if (myExerciseRelatedDiet != null ? !myExerciseRelatedDiet.equals(exerciseAction.myExerciseRelatedDiet) : exerciseAction.myExerciseRelatedDiet != null) return false;
+    if (myDistance != null ? !myDistance.equals(exerciseAction.myDistance) : exerciseAction.myDistance != null) return false;
+    if (myExercisePlan != null ? !myExercisePlan.equals(exerciseAction.myExercisePlan) : exerciseAction.myExercisePlan != null) return false;
+    if (myExerciseType != null ? !myExerciseType.equals(exerciseAction.myExerciseType) : exerciseAction.myExerciseType != null) return false;
+    if (myFromLocation != null ? !myFromLocation.equals(exerciseAction.myFromLocation) : exerciseAction.myFromLocation != null) return false;
+    if (myOpponent != null ? !myOpponent.equals(exerciseAction.myOpponent) : exerciseAction.myOpponent != null) return false;
+    if (mySportsActivityLocation != null ? !mySportsActivityLocation.equals(exerciseAction.mySportsActivityLocation) : exerciseAction.mySportsActivityLocation != null) return false;
+    if (mySportsEvent != null ? !mySportsEvent.equals(exerciseAction.mySportsEvent) : exerciseAction.mySportsEvent != null) return false;
+    if (mySportsTeam != null ? !mySportsTeam.equals(exerciseAction.mySportsTeam) : exerciseAction.mySportsTeam != null) return false;
+    if (myToLocation != null ? !myToLocation.equals(exerciseAction.myToLocation) : exerciseAction.myToLocation != null) return false;
+    return true;
+  }
+
   private Place myExerciseCourse;
   private Diet myExerciseRelatedDiet;
   private Distance myDistance;

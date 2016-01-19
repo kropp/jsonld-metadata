@@ -50,4 +50,23 @@ class MedicalProcedureOrMedicalTestOrMedicalTherapy {
     myMedicalTest = null;
     myMedicalTherapy = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myMedicalProcedure != null ? myMedicalProcedure.hashCode() : 0);
+    result = 31 * result + (myMedicalTest != null ? myMedicalTest.hashCode() : 0);
+    result = 31 * result + (myMedicalTherapy != null ? myMedicalTherapy.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalProcedureOrMedicalTestOrMedicalTherapy medicalProcedureOrMedicalTestOrMedicalTherapy = (MedicalProcedureOrMedicalTestOrMedicalTherapy) o;
+    if (myMedicalProcedure != null ? !myMedicalProcedure.equals(medicalProcedureOrMedicalTestOrMedicalTherapy.myMedicalProcedure) : medicalProcedureOrMedicalTestOrMedicalTherapy.myMedicalProcedure != null) return false;
+    if (myMedicalTest != null ? !myMedicalTest.equals(medicalProcedureOrMedicalTestOrMedicalTherapy.myMedicalTest) : medicalProcedureOrMedicalTestOrMedicalTherapy.myMedicalTest != null) return false;
+    if (myMedicalTherapy != null ? !myMedicalTherapy.equals(medicalProcedureOrMedicalTestOrMedicalTherapy.myMedicalTherapy) : medicalProcedureOrMedicalTestOrMedicalTherapy.myMedicalTherapy != null) return false;
+    return true;
+  }
+
 }

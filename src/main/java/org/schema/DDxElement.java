@@ -341,7 +341,7 @@ public class DDxElement extends MedicalIntangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MedicalCondition diagnosis;
@@ -398,6 +398,24 @@ public class DDxElement extends MedicalIntangible {
     myDiagnosis = diagnosis;
     myDistinguishingSign = distinguishingSign;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDiagnosis != null ? myDiagnosis.hashCode() : 0);
+    result = 31 * result + (myDistinguishingSign != null ? myDistinguishingSign.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DDxElement dDxElement = (DDxElement) o;
+    if (!super.equals(o)) return false;
+    if (myDiagnosis != null ? !myDiagnosis.equals(dDxElement.myDiagnosis) : dDxElement.myDiagnosis != null) return false;
+    if (myDistinguishingSign != null ? !myDistinguishingSign.equals(dDxElement.myDistinguishingSign) : dDxElement.myDistinguishingSign != null) return false;
+    return true;
+  }
+
   private MedicalCondition myDiagnosis;
   private MedicalSignOrSymptom myDistinguishingSign;
 }

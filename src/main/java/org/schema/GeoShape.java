@@ -42,7 +42,7 @@ public class GeoShape extends StructuredValue {
   /**
    * The elevation of a location.
    */
-  public NumberOrString getElevation() {
+  public Number getElevation() {
     return myElevation;
   }
   /**
@@ -84,16 +84,40 @@ public class GeoShape extends StructuredValue {
     /**
      * The elevation of a location.
      */
-    @NotNull public Builder elevation(@NotNull Number number) {
-      if (this.elevation == null) this.elevation = new NumberOrString();
-      this.elevation.setNumber(number);
+    @NotNull public Builder elevation(@NotNull Integer integer) {
+      if (this.elevation == null) this.elevation = new Number();
+      this.elevation.setInteger(integer);
+      return this;
+    }
+    /**
+     * The elevation of a location.
+     */
+    @NotNull public Builder elevation(@NotNull Long elevation) {
+      if (this.elevation == null) this.elevation = new Number();
+      this.elevation.setLong(elevation);
+      return this;
+    }
+    /**
+     * The elevation of a location.
+     */
+    @NotNull public Builder elevation(@NotNull Float elevation) {
+      if (this.elevation == null) this.elevation = new Number();
+      this.elevation.setFloat(elevation);
+      return this;
+    }
+    /**
+     * The elevation of a location.
+     */
+    @NotNull public Builder elevation(@NotNull Double elevation) {
+      if (this.elevation == null) this.elevation = new Number();
+      this.elevation.setDouble(elevation);
       return this;
     }
     /**
      * The elevation of a location.
      */
     @NotNull public Builder elevation(@NotNull String elevation) {
-      if (this.elevation == null) this.elevation = new NumberOrString();
+      if (this.elevation == null) this.elevation = new Number();
       this.elevation.setString(elevation);
       return this;
     }
@@ -284,7 +308,10 @@ public class GeoShape extends StructuredValue {
         if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
         if ("box".equals(key) && value instanceof String) { box((String)value); continue; }
         if ("circle".equals(key) && value instanceof String) { circle((String)value); continue; }
-        if ("elevation".equals(key) && value instanceof Number) { elevation((Number)value); continue; }
+        if ("elevation".equals(key) && value instanceof Integer) { elevation((Integer)value); continue; }
+        if ("elevation".equals(key) && value instanceof Long) { elevation((Long)value); continue; }
+        if ("elevation".equals(key) && value instanceof Float) { elevation((Float)value); continue; }
+        if ("elevation".equals(key) && value instanceof Double) { elevation((Double)value); continue; }
         if ("elevation".equals(key) && value instanceof String) { elevation((String)value); continue; }
         if ("line".equals(key) && value instanceof String) { line((String)value); continue; }
         if ("polygon".equals(key) && value instanceof String) { polygon((String)value); continue; }
@@ -297,12 +324,12 @@ public class GeoShape extends StructuredValue {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String box;
     private String circle;
-    private NumberOrString elevation;
+    private Number elevation;
     private String line;
     private String polygon;
     private String additionalType;
@@ -318,7 +345,10 @@ public class GeoShape extends StructuredValue {
   public interface Builder extends ThingBuilder<GeoShape> {
     @NotNull Builder box(@NotNull String box);
     @NotNull Builder circle(@NotNull String circle);
-    @NotNull Builder elevation(@NotNull Number number);
+    @NotNull Builder elevation(@NotNull Integer integer);
+    @NotNull Builder elevation(@NotNull Long elevation);
+    @NotNull Builder elevation(@NotNull Float elevation);
+    @NotNull Builder elevation(@NotNull Double elevation);
     @NotNull Builder elevation(@NotNull String elevation);
     @NotNull Builder line(@NotNull String line);
     @NotNull Builder polygon(@NotNull String polygon);
@@ -336,7 +366,7 @@ public class GeoShape extends StructuredValue {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected GeoShape(String box, String circle, NumberOrString elevation, String line, String polygon, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected GeoShape(String box, String circle, Number elevation, String line, String polygon, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myBox = box;
     myCircle = circle;
@@ -344,9 +374,33 @@ public class GeoShape extends StructuredValue {
     myLine = line;
     myPolygon = polygon;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myBox != null ? myBox.hashCode() : 0);
+    result = 31 * result + (myCircle != null ? myCircle.hashCode() : 0);
+    result = 31 * result + (myElevation != null ? myElevation.hashCode() : 0);
+    result = 31 * result + (myLine != null ? myLine.hashCode() : 0);
+    result = 31 * result + (myPolygon != null ? myPolygon.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GeoShape geoShape = (GeoShape) o;
+    if (!super.equals(o)) return false;
+    if (myBox != null ? !myBox.equals(geoShape.myBox) : geoShape.myBox != null) return false;
+    if (myCircle != null ? !myCircle.equals(geoShape.myCircle) : geoShape.myCircle != null) return false;
+    if (myElevation != null ? !myElevation.equals(geoShape.myElevation) : geoShape.myElevation != null) return false;
+    if (myLine != null ? !myLine.equals(geoShape.myLine) : geoShape.myLine != null) return false;
+    if (myPolygon != null ? !myPolygon.equals(geoShape.myPolygon) : geoShape.myPolygon != null) return false;
+    return true;
+  }
+
   private String myBox;
   private String myCircle;
-  private NumberOrString myElevation;
+  private Number myElevation;
   private String myLine;
   private String myPolygon;
 }

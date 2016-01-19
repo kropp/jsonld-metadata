@@ -545,7 +545,7 @@ public class Flight extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Participant seller;
@@ -639,6 +639,54 @@ public class Flight extends Intangible {
     myFlightDistance = flightDistance;
     myWebCheckinTime = webCheckinTime;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    result = 31 * result + (myFlightNumber != null ? myFlightNumber.hashCode() : 0);
+    result = 31 * result + (myDepartureTime != null ? myDepartureTime.hashCode() : 0);
+    result = 31 * result + (myArrivalTime != null ? myArrivalTime.hashCode() : 0);
+    result = 31 * result + (myDepartureAirport != null ? myDepartureAirport.hashCode() : 0);
+    result = 31 * result + (myArrivalAirport != null ? myArrivalAirport.hashCode() : 0);
+    result = 31 * result + (myDepartureGate != null ? myDepartureGate.hashCode() : 0);
+    result = 31 * result + (myArrivalGate != null ? myArrivalGate.hashCode() : 0);
+    result = 31 * result + (myBoardingPolicy != null ? myBoardingPolicy.hashCode() : 0);
+    result = 31 * result + (myDepartureTerminal != null ? myDepartureTerminal.hashCode() : 0);
+    result = 31 * result + (myArrivalTerminal != null ? myArrivalTerminal.hashCode() : 0);
+    result = 31 * result + (myAircraft != null ? myAircraft.hashCode() : 0);
+    result = 31 * result + (myMealService != null ? myMealService.hashCode() : 0);
+    result = 31 * result + (myEstimatedFlightDuration != null ? myEstimatedFlightDuration.hashCode() : 0);
+    result = 31 * result + (myFlightDistance != null ? myFlightDistance.hashCode() : 0);
+    result = 31 * result + (myWebCheckinTime != null ? myWebCheckinTime.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Flight flight = (Flight) o;
+    if (!super.equals(o)) return false;
+    if (mySeller != null ? !mySeller.equals(flight.mySeller) : flight.mySeller != null) return false;
+    if (myProvider != null ? !myProvider.equals(flight.myProvider) : flight.myProvider != null) return false;
+    if (myFlightNumber != null ? !myFlightNumber.equals(flight.myFlightNumber) : flight.myFlightNumber != null) return false;
+    if (myDepartureTime != null ? !myDepartureTime.equals(flight.myDepartureTime) : flight.myDepartureTime != null) return false;
+    if (myArrivalTime != null ? !myArrivalTime.equals(flight.myArrivalTime) : flight.myArrivalTime != null) return false;
+    if (myDepartureAirport != null ? !myDepartureAirport.equals(flight.myDepartureAirport) : flight.myDepartureAirport != null) return false;
+    if (myArrivalAirport != null ? !myArrivalAirport.equals(flight.myArrivalAirport) : flight.myArrivalAirport != null) return false;
+    if (myDepartureGate != null ? !myDepartureGate.equals(flight.myDepartureGate) : flight.myDepartureGate != null) return false;
+    if (myArrivalGate != null ? !myArrivalGate.equals(flight.myArrivalGate) : flight.myArrivalGate != null) return false;
+    if (myBoardingPolicy != null ? !myBoardingPolicy.equals(flight.myBoardingPolicy) : flight.myBoardingPolicy != null) return false;
+    if (myDepartureTerminal != null ? !myDepartureTerminal.equals(flight.myDepartureTerminal) : flight.myDepartureTerminal != null) return false;
+    if (myArrivalTerminal != null ? !myArrivalTerminal.equals(flight.myArrivalTerminal) : flight.myArrivalTerminal != null) return false;
+    if (myAircraft != null ? !myAircraft.equals(flight.myAircraft) : flight.myAircraft != null) return false;
+    if (myMealService != null ? !myMealService.equals(flight.myMealService) : flight.myMealService != null) return false;
+    if (myEstimatedFlightDuration != null ? !myEstimatedFlightDuration.equals(flight.myEstimatedFlightDuration) : flight.myEstimatedFlightDuration != null) return false;
+    if (myFlightDistance != null ? !myFlightDistance.equals(flight.myFlightDistance) : flight.myFlightDistance != null) return false;
+    if (myWebCheckinTime != null ? !myWebCheckinTime.equals(flight.myWebCheckinTime) : flight.myWebCheckinTime != null) return false;
+    return true;
+  }
+
   private Participant mySeller;
   private OrganizationOrPerson myProvider;
   private String myFlightNumber;

@@ -391,7 +391,7 @@ public class DrugClass extends MedicalTherapy {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Drug drug;
@@ -459,5 +459,21 @@ public class DrugClass extends MedicalTherapy {
     super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myDrug = drug;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDrug != null ? myDrug.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DrugClass drugClass = (DrugClass) o;
+    if (!super.equals(o)) return false;
+    if (myDrug != null ? !myDrug.equals(drugClass.myDrug) : drugClass.myDrug != null) return false;
+    return true;
+  }
+
   private Drug myDrug;
 }

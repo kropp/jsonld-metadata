@@ -39,4 +39,21 @@ class StringOrVehicle {
     myString = null;
     myVehicle = null;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myString != null ? myString.hashCode() : 0);
+    result = 31 * result + (myVehicle != null ? myVehicle.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    StringOrVehicle stringOrVehicle = (StringOrVehicle) o;
+    if (myString != null ? !myString.equals(stringOrVehicle.myString) : stringOrVehicle.myString != null) return false;
+    if (myVehicle != null ? !myVehicle.equals(stringOrVehicle.myVehicle) : stringOrVehicle.myVehicle != null) return false;
+    return true;
+  }
+
 }

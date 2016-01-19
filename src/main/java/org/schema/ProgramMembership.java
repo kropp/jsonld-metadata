@@ -264,7 +264,7 @@ public class ProgramMembership extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String membershipNumber;
@@ -305,6 +305,26 @@ public class ProgramMembership extends Intangible {
     myProgramName = programName;
     myHostingOrganization = hostingOrganization;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myMembershipNumber != null ? myMembershipNumber.hashCode() : 0);
+    result = 31 * result + (myProgramName != null ? myProgramName.hashCode() : 0);
+    result = 31 * result + (myHostingOrganization != null ? myHostingOrganization.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ProgramMembership programMembership = (ProgramMembership) o;
+    if (!super.equals(o)) return false;
+    if (myMembershipNumber != null ? !myMembershipNumber.equals(programMembership.myMembershipNumber) : programMembership.myMembershipNumber != null) return false;
+    if (myProgramName != null ? !myProgramName.equals(programMembership.myProgramName) : programMembership.myProgramName != null) return false;
+    if (myHostingOrganization != null ? !myHostingOrganization.equals(programMembership.myHostingOrganization) : programMembership.myHostingOrganization != null) return false;
+    return true;
+  }
+
   private String myMembershipNumber;
   private String myProgramName;
   private Organization myHostingOrganization;

@@ -353,7 +353,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private OrganizationOrPerson agent;
@@ -408,6 +408,32 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     myError = error;
     myTarget = target;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAgent != null ? myAgent.hashCode() : 0);
+    result = 31 * result + (myEndTime != null ? myEndTime.hashCode() : 0);
+    result = 31 * result + (myStartTime != null ? myStartTime.hashCode() : 0);
+    result = 31 * result + (myActionStatus != null ? myActionStatus.hashCode() : 0);
+    result = 31 * result + (myError != null ? myError.hashCode() : 0);
+    result = 31 * result + (myTarget != null ? myTarget.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Action action = (Action) o;
+    if (!super.equals(o)) return false;
+    if (myAgent != null ? !myAgent.equals(action.myAgent) : action.myAgent != null) return false;
+    if (myEndTime != null ? !myEndTime.equals(action.myEndTime) : action.myEndTime != null) return false;
+    if (myStartTime != null ? !myStartTime.equals(action.myStartTime) : action.myStartTime != null) return false;
+    if (myActionStatus != null ? !myActionStatus.equals(action.myActionStatus) : action.myActionStatus != null) return false;
+    if (myError != null ? !myError.equals(action.myError) : action.myError != null) return false;
+    if (myTarget != null ? !myTarget.equals(action.myTarget) : action.myTarget != null) return false;
+    return true;
+  }
+
   private OrganizationOrPerson myAgent;
   private java.util.Date myEndTime;
   private java.util.Date myStartTime;

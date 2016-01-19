@@ -1322,7 +1322,7 @@ public class CreativeWorkSeason extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Person actor;
@@ -1574,6 +1574,40 @@ public class CreativeWorkSeason extends CreativeWork {
     myStartDate = startDate;
     myTrailer = trailer;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActor != null ? myActor.hashCode() : 0);
+    result = 31 * result + (myDirector != null ? myDirector.hashCode() : 0);
+    result = 31 * result + (myEndDate != null ? myEndDate.hashCode() : 0);
+    result = 31 * result + (myEpisode != null ? myEpisode.hashCode() : 0);
+    result = 31 * result + (myNumberOfEpisodes != null ? myNumberOfEpisodes.hashCode() : 0);
+    result = 31 * result + (myPartOfSeries != null ? myPartOfSeries.hashCode() : 0);
+    result = 31 * result + (myProductionCompany != null ? myProductionCompany.hashCode() : 0);
+    result = 31 * result + (mySeasonNumber != null ? mySeasonNumber.hashCode() : 0);
+    result = 31 * result + (myStartDate != null ? myStartDate.hashCode() : 0);
+    result = 31 * result + (myTrailer != null ? myTrailer.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CreativeWorkSeason creativeWorkSeason = (CreativeWorkSeason) o;
+    if (!super.equals(o)) return false;
+    if (myActor != null ? !myActor.equals(creativeWorkSeason.myActor) : creativeWorkSeason.myActor != null) return false;
+    if (myDirector != null ? !myDirector.equals(creativeWorkSeason.myDirector) : creativeWorkSeason.myDirector != null) return false;
+    if (myEndDate != null ? !myEndDate.equals(creativeWorkSeason.myEndDate) : creativeWorkSeason.myEndDate != null) return false;
+    if (myEpisode != null ? !myEpisode.equals(creativeWorkSeason.myEpisode) : creativeWorkSeason.myEpisode != null) return false;
+    if (myNumberOfEpisodes != null ? !myNumberOfEpisodes.equals(creativeWorkSeason.myNumberOfEpisodes) : creativeWorkSeason.myNumberOfEpisodes != null) return false;
+    if (myPartOfSeries != null ? !myPartOfSeries.equals(creativeWorkSeason.myPartOfSeries) : creativeWorkSeason.myPartOfSeries != null) return false;
+    if (myProductionCompany != null ? !myProductionCompany.equals(creativeWorkSeason.myProductionCompany) : creativeWorkSeason.myProductionCompany != null) return false;
+    if (mySeasonNumber != null ? !mySeasonNumber.equals(creativeWorkSeason.mySeasonNumber) : creativeWorkSeason.mySeasonNumber != null) return false;
+    if (myStartDate != null ? !myStartDate.equals(creativeWorkSeason.myStartDate) : creativeWorkSeason.myStartDate != null) return false;
+    if (myTrailer != null ? !myTrailer.equals(creativeWorkSeason.myTrailer) : creativeWorkSeason.myTrailer != null) return false;
+    return true;
+  }
+
   private Person myActor;
   private Person myDirector;
   private java.util.Date myEndDate;

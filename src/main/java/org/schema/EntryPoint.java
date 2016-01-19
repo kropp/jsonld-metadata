@@ -293,7 +293,7 @@ public class EntryPoint extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String httpMethod;
@@ -340,6 +340,30 @@ public class EntryPoint extends Intangible {
     myActionApplication = actionApplication;
     myUrlTemplate = urlTemplate;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myHttpMethod != null ? myHttpMethod.hashCode() : 0);
+    result = 31 * result + (myEncodingType != null ? myEncodingType.hashCode() : 0);
+    result = 31 * result + (myContentType != null ? myContentType.hashCode() : 0);
+    result = 31 * result + (myActionApplication != null ? myActionApplication.hashCode() : 0);
+    result = 31 * result + (myUrlTemplate != null ? myUrlTemplate.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    EntryPoint entryPoint = (EntryPoint) o;
+    if (!super.equals(o)) return false;
+    if (myHttpMethod != null ? !myHttpMethod.equals(entryPoint.myHttpMethod) : entryPoint.myHttpMethod != null) return false;
+    if (myEncodingType != null ? !myEncodingType.equals(entryPoint.myEncodingType) : entryPoint.myEncodingType != null) return false;
+    if (myContentType != null ? !myContentType.equals(entryPoint.myContentType) : entryPoint.myContentType != null) return false;
+    if (myActionApplication != null ? !myActionApplication.equals(entryPoint.myActionApplication) : entryPoint.myActionApplication != null) return false;
+    if (myUrlTemplate != null ? !myUrlTemplate.equals(entryPoint.myUrlTemplate) : entryPoint.myUrlTemplate != null) return false;
+    return true;
+  }
+
   private String myHttpMethod;
   private String myEncodingType;
   private String myContentType;

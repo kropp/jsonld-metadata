@@ -382,7 +382,7 @@ public class BusTrip extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private OrganizationOrPerson provider;
@@ -443,6 +443,34 @@ public class BusTrip extends Intangible {
     myDepartureBusStop = departureBusStop;
     myArrivalBusStop = arrivalBusStop;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    result = 31 * result + (myDepartureTime != null ? myDepartureTime.hashCode() : 0);
+    result = 31 * result + (myArrivalTime != null ? myArrivalTime.hashCode() : 0);
+    result = 31 * result + (myBusNumber != null ? myBusNumber.hashCode() : 0);
+    result = 31 * result + (myBusName != null ? myBusName.hashCode() : 0);
+    result = 31 * result + (myDepartureBusStop != null ? myDepartureBusStop.hashCode() : 0);
+    result = 31 * result + (myArrivalBusStop != null ? myArrivalBusStop.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BusTrip busTrip = (BusTrip) o;
+    if (!super.equals(o)) return false;
+    if (myProvider != null ? !myProvider.equals(busTrip.myProvider) : busTrip.myProvider != null) return false;
+    if (myDepartureTime != null ? !myDepartureTime.equals(busTrip.myDepartureTime) : busTrip.myDepartureTime != null) return false;
+    if (myArrivalTime != null ? !myArrivalTime.equals(busTrip.myArrivalTime) : busTrip.myArrivalTime != null) return false;
+    if (myBusNumber != null ? !myBusNumber.equals(busTrip.myBusNumber) : busTrip.myBusNumber != null) return false;
+    if (myBusName != null ? !myBusName.equals(busTrip.myBusName) : busTrip.myBusName != null) return false;
+    if (myDepartureBusStop != null ? !myDepartureBusStop.equals(busTrip.myDepartureBusStop) : busTrip.myDepartureBusStop != null) return false;
+    if (myArrivalBusStop != null ? !myArrivalBusStop.equals(busTrip.myArrivalBusStop) : busTrip.myArrivalBusStop != null) return false;
+    return true;
+  }
+
   private OrganizationOrPerson myProvider;
   private java.util.Date myDepartureTime;
   private java.util.Date myArrivalTime;

@@ -1315,7 +1315,7 @@ public class WebPage extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private BreadcrumbListOrString breadcrumb;
@@ -1564,6 +1564,36 @@ public class WebPage extends CreativeWork {
     mySignificantLink = significantLink;
     mySpecialty = specialty;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myBreadcrumb != null ? myBreadcrumb.hashCode() : 0);
+    result = 31 * result + (myLastReviewed != null ? myLastReviewed.hashCode() : 0);
+    result = 31 * result + (myMainContentOfPage != null ? myMainContentOfPage.hashCode() : 0);
+    result = 31 * result + (myPrimaryImageOfPage != null ? myPrimaryImageOfPage.hashCode() : 0);
+    result = 31 * result + (myRelatedLink != null ? myRelatedLink.hashCode() : 0);
+    result = 31 * result + (myReviewedBy != null ? myReviewedBy.hashCode() : 0);
+    result = 31 * result + (mySignificantLink != null ? mySignificantLink.hashCode() : 0);
+    result = 31 * result + (mySpecialty != null ? mySpecialty.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    WebPage webPage = (WebPage) o;
+    if (!super.equals(o)) return false;
+    if (myBreadcrumb != null ? !myBreadcrumb.equals(webPage.myBreadcrumb) : webPage.myBreadcrumb != null) return false;
+    if (myLastReviewed != null ? !myLastReviewed.equals(webPage.myLastReviewed) : webPage.myLastReviewed != null) return false;
+    if (myMainContentOfPage != null ? !myMainContentOfPage.equals(webPage.myMainContentOfPage) : webPage.myMainContentOfPage != null) return false;
+    if (myPrimaryImageOfPage != null ? !myPrimaryImageOfPage.equals(webPage.myPrimaryImageOfPage) : webPage.myPrimaryImageOfPage != null) return false;
+    if (myRelatedLink != null ? !myRelatedLink.equals(webPage.myRelatedLink) : webPage.myRelatedLink != null) return false;
+    if (myReviewedBy != null ? !myReviewedBy.equals(webPage.myReviewedBy) : webPage.myReviewedBy != null) return false;
+    if (mySignificantLink != null ? !mySignificantLink.equals(webPage.mySignificantLink) : webPage.mySignificantLink != null) return false;
+    if (mySpecialty != null ? !mySpecialty.equals(webPage.mySpecialty) : webPage.mySpecialty != null) return false;
+    return true;
+  }
+
   private BreadcrumbListOrString myBreadcrumb;
   private java.util.Date myLastReviewed;
   private WebPageElement myMainContentOfPage;

@@ -491,7 +491,7 @@ public class Diet extends LifestyleModification {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String dietFeatures;
@@ -579,6 +579,34 @@ public class Diet extends LifestyleModification {
     myProprietaryName = proprietaryName;
     myRisks = risks;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDietFeatures != null ? myDietFeatures.hashCode() : 0);
+    result = 31 * result + (myEndorsers != null ? myEndorsers.hashCode() : 0);
+    result = 31 * result + (myExpertConsiderations != null ? myExpertConsiderations.hashCode() : 0);
+    result = 31 * result + (myOverview != null ? myOverview.hashCode() : 0);
+    result = 31 * result + (myPhysiologicalBenefits != null ? myPhysiologicalBenefits.hashCode() : 0);
+    result = 31 * result + (myProprietaryName != null ? myProprietaryName.hashCode() : 0);
+    result = 31 * result + (myRisks != null ? myRisks.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Diet diet = (Diet) o;
+    if (!super.equals(o)) return false;
+    if (myDietFeatures != null ? !myDietFeatures.equals(diet.myDietFeatures) : diet.myDietFeatures != null) return false;
+    if (myEndorsers != null ? !myEndorsers.equals(diet.myEndorsers) : diet.myEndorsers != null) return false;
+    if (myExpertConsiderations != null ? !myExpertConsiderations.equals(diet.myExpertConsiderations) : diet.myExpertConsiderations != null) return false;
+    if (myOverview != null ? !myOverview.equals(diet.myOverview) : diet.myOverview != null) return false;
+    if (myPhysiologicalBenefits != null ? !myPhysiologicalBenefits.equals(diet.myPhysiologicalBenefits) : diet.myPhysiologicalBenefits != null) return false;
+    if (myProprietaryName != null ? !myProprietaryName.equals(diet.myProprietaryName) : diet.myProprietaryName != null) return false;
+    if (myRisks != null ? !myRisks.equals(diet.myRisks) : diet.myRisks != null) return false;
+    return true;
+  }
+
   private String myDietFeatures;
   private OrganizationOrPerson myEndorsers;
   private String myExpertConsiderations;

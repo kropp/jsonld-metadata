@@ -754,7 +754,7 @@ Note: Publishers should be aware that applications designed to use specific sche
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private ProductModel isVariantOf;
@@ -891,6 +891,26 @@ Note: Publishers should be aware that applications designed to use specific sche
     myPredecessorOf = predecessorOf;
     mySuccessorOf = successorOf;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myIsVariantOf != null ? myIsVariantOf.hashCode() : 0);
+    result = 31 * result + (myPredecessorOf != null ? myPredecessorOf.hashCode() : 0);
+    result = 31 * result + (mySuccessorOf != null ? mySuccessorOf.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ProductModel productModel = (ProductModel) o;
+    if (!super.equals(o)) return false;
+    if (myIsVariantOf != null ? !myIsVariantOf.equals(productModel.myIsVariantOf) : productModel.myIsVariantOf != null) return false;
+    if (myPredecessorOf != null ? !myPredecessorOf.equals(productModel.myPredecessorOf) : productModel.myPredecessorOf != null) return false;
+    if (mySuccessorOf != null ? !mySuccessorOf.equals(productModel.mySuccessorOf) : productModel.mySuccessorOf != null) return false;
+    return true;
+  }
+
   private ProductModel myIsVariantOf;
   private ProductModel myPredecessorOf;
   private ProductModel mySuccessorOf;

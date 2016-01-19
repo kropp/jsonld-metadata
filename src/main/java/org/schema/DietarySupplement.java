@@ -563,7 +563,7 @@ public class DietarySupplement extends MedicalTherapy {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String activeIngredient;
@@ -667,6 +667,44 @@ public class DietarySupplement extends MedicalTherapy {
     mySafetyConsideration = safetyConsideration;
     myTargetPopulation = targetPopulation;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActiveIngredient != null ? myActiveIngredient.hashCode() : 0);
+    result = 31 * result + (myBackground != null ? myBackground.hashCode() : 0);
+    result = 31 * result + (myDosageForm != null ? myDosageForm.hashCode() : 0);
+    result = 31 * result + (myIsProprietary != null ? myIsProprietary.hashCode() : 0);
+    result = 31 * result + (myLegalStatus != null ? myLegalStatus.hashCode() : 0);
+    result = 31 * result + (myManufacturer != null ? myManufacturer.hashCode() : 0);
+    result = 31 * result + (myMaximumIntake != null ? myMaximumIntake.hashCode() : 0);
+    result = 31 * result + (myMechanismOfAction != null ? myMechanismOfAction.hashCode() : 0);
+    result = 31 * result + (myNonProprietaryName != null ? myNonProprietaryName.hashCode() : 0);
+    result = 31 * result + (myRecommendedIntake != null ? myRecommendedIntake.hashCode() : 0);
+    result = 31 * result + (mySafetyConsideration != null ? mySafetyConsideration.hashCode() : 0);
+    result = 31 * result + (myTargetPopulation != null ? myTargetPopulation.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DietarySupplement dietarySupplement = (DietarySupplement) o;
+    if (!super.equals(o)) return false;
+    if (myActiveIngredient != null ? !myActiveIngredient.equals(dietarySupplement.myActiveIngredient) : dietarySupplement.myActiveIngredient != null) return false;
+    if (myBackground != null ? !myBackground.equals(dietarySupplement.myBackground) : dietarySupplement.myBackground != null) return false;
+    if (myDosageForm != null ? !myDosageForm.equals(dietarySupplement.myDosageForm) : dietarySupplement.myDosageForm != null) return false;
+    if (myIsProprietary != null ? !myIsProprietary.equals(dietarySupplement.myIsProprietary) : dietarySupplement.myIsProprietary != null) return false;
+    if (myLegalStatus != null ? !myLegalStatus.equals(dietarySupplement.myLegalStatus) : dietarySupplement.myLegalStatus != null) return false;
+    if (myManufacturer != null ? !myManufacturer.equals(dietarySupplement.myManufacturer) : dietarySupplement.myManufacturer != null) return false;
+    if (myMaximumIntake != null ? !myMaximumIntake.equals(dietarySupplement.myMaximumIntake) : dietarySupplement.myMaximumIntake != null) return false;
+    if (myMechanismOfAction != null ? !myMechanismOfAction.equals(dietarySupplement.myMechanismOfAction) : dietarySupplement.myMechanismOfAction != null) return false;
+    if (myNonProprietaryName != null ? !myNonProprietaryName.equals(dietarySupplement.myNonProprietaryName) : dietarySupplement.myNonProprietaryName != null) return false;
+    if (myRecommendedIntake != null ? !myRecommendedIntake.equals(dietarySupplement.myRecommendedIntake) : dietarySupplement.myRecommendedIntake != null) return false;
+    if (mySafetyConsideration != null ? !mySafetyConsideration.equals(dietarySupplement.mySafetyConsideration) : dietarySupplement.mySafetyConsideration != null) return false;
+    if (myTargetPopulation != null ? !myTargetPopulation.equals(dietarySupplement.myTargetPopulation) : dietarySupplement.myTargetPopulation != null) return false;
+    return true;
+  }
+
   private String myActiveIngredient;
   private String myBackground;
   private String myDosageForm;

@@ -1260,7 +1260,7 @@ public class MusicRecording extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MusicGroup byArtist;
@@ -1500,6 +1500,32 @@ public class MusicRecording extends CreativeWork {
     myIsrcCode = isrcCode;
     myRecordingOf = recordingOf;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myByArtist != null ? myByArtist.hashCode() : 0);
+    result = 31 * result + (myDuration != null ? myDuration.hashCode() : 0);
+    result = 31 * result + (myInAlbum != null ? myInAlbum.hashCode() : 0);
+    result = 31 * result + (myInPlaylist != null ? myInPlaylist.hashCode() : 0);
+    result = 31 * result + (myIsrcCode != null ? myIsrcCode.hashCode() : 0);
+    result = 31 * result + (myRecordingOf != null ? myRecordingOf.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MusicRecording musicRecording = (MusicRecording) o;
+    if (!super.equals(o)) return false;
+    if (myByArtist != null ? !myByArtist.equals(musicRecording.myByArtist) : musicRecording.myByArtist != null) return false;
+    if (myDuration != null ? !myDuration.equals(musicRecording.myDuration) : musicRecording.myDuration != null) return false;
+    if (myInAlbum != null ? !myInAlbum.equals(musicRecording.myInAlbum) : musicRecording.myInAlbum != null) return false;
+    if (myInPlaylist != null ? !myInPlaylist.equals(musicRecording.myInPlaylist) : musicRecording.myInPlaylist != null) return false;
+    if (myIsrcCode != null ? !myIsrcCode.equals(musicRecording.myIsrcCode) : musicRecording.myIsrcCode != null) return false;
+    if (myRecordingOf != null ? !myRecordingOf.equals(musicRecording.myRecordingOf) : musicRecording.myRecordingOf != null) return false;
+    return true;
+  }
+
   private MusicGroup myByArtist;
   private Duration myDuration;
   private MusicAlbum myInAlbum;

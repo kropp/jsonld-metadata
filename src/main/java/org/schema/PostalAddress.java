@@ -418,7 +418,7 @@ public class PostalAddress extends ContactPoint {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Country addressCountry;
@@ -492,6 +492,32 @@ public class PostalAddress extends ContactPoint {
     myPostOfficeBoxNumber = postOfficeBoxNumber;
     myStreetAddress = streetAddress;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAddressCountry != null ? myAddressCountry.hashCode() : 0);
+    result = 31 * result + (myAddressLocality != null ? myAddressLocality.hashCode() : 0);
+    result = 31 * result + (myAddressRegion != null ? myAddressRegion.hashCode() : 0);
+    result = 31 * result + (myPostalCode != null ? myPostalCode.hashCode() : 0);
+    result = 31 * result + (myPostOfficeBoxNumber != null ? myPostOfficeBoxNumber.hashCode() : 0);
+    result = 31 * result + (myStreetAddress != null ? myStreetAddress.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PostalAddress postalAddress = (PostalAddress) o;
+    if (!super.equals(o)) return false;
+    if (myAddressCountry != null ? !myAddressCountry.equals(postalAddress.myAddressCountry) : postalAddress.myAddressCountry != null) return false;
+    if (myAddressLocality != null ? !myAddressLocality.equals(postalAddress.myAddressLocality) : postalAddress.myAddressLocality != null) return false;
+    if (myAddressRegion != null ? !myAddressRegion.equals(postalAddress.myAddressRegion) : postalAddress.myAddressRegion != null) return false;
+    if (myPostalCode != null ? !myPostalCode.equals(postalAddress.myPostalCode) : postalAddress.myPostalCode != null) return false;
+    if (myPostOfficeBoxNumber != null ? !myPostOfficeBoxNumber.equals(postalAddress.myPostOfficeBoxNumber) : postalAddress.myPostOfficeBoxNumber != null) return false;
+    if (myStreetAddress != null ? !myStreetAddress.equals(postalAddress.myStreetAddress) : postalAddress.myStreetAddress != null) return false;
+    return true;
+  }
+
   private Country myAddressCountry;
   private String myAddressLocality;
   private String myAddressRegion;

@@ -459,7 +459,7 @@ public class MedicalDevice extends MedicalEntity {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MedicalEntity adverseOutcome;
@@ -539,6 +539,36 @@ public class MedicalDevice extends MedicalEntity {
     myPurpose = purpose;
     mySeriousAdverseOutcome = seriousAdverseOutcome;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAdverseOutcome != null ? myAdverseOutcome.hashCode() : 0);
+    result = 31 * result + (myContraindication != null ? myContraindication.hashCode() : 0);
+    result = 31 * result + (myIndication != null ? myIndication.hashCode() : 0);
+    result = 31 * result + (myPostOp != null ? myPostOp.hashCode() : 0);
+    result = 31 * result + (myPreOp != null ? myPreOp.hashCode() : 0);
+    result = 31 * result + (myProcedure != null ? myProcedure.hashCode() : 0);
+    result = 31 * result + (myPurpose != null ? myPurpose.hashCode() : 0);
+    result = 31 * result + (mySeriousAdverseOutcome != null ? mySeriousAdverseOutcome.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalDevice medicalDevice = (MedicalDevice) o;
+    if (!super.equals(o)) return false;
+    if (myAdverseOutcome != null ? !myAdverseOutcome.equals(medicalDevice.myAdverseOutcome) : medicalDevice.myAdverseOutcome != null) return false;
+    if (myContraindication != null ? !myContraindication.equals(medicalDevice.myContraindication) : medicalDevice.myContraindication != null) return false;
+    if (myIndication != null ? !myIndication.equals(medicalDevice.myIndication) : medicalDevice.myIndication != null) return false;
+    if (myPostOp != null ? !myPostOp.equals(medicalDevice.myPostOp) : medicalDevice.myPostOp != null) return false;
+    if (myPreOp != null ? !myPreOp.equals(medicalDevice.myPreOp) : medicalDevice.myPreOp != null) return false;
+    if (myProcedure != null ? !myProcedure.equals(medicalDevice.myProcedure) : medicalDevice.myProcedure != null) return false;
+    if (myPurpose != null ? !myPurpose.equals(medicalDevice.myPurpose) : medicalDevice.myPurpose != null) return false;
+    if (mySeriousAdverseOutcome != null ? !mySeriousAdverseOutcome.equals(medicalDevice.mySeriousAdverseOutcome) : medicalDevice.mySeriousAdverseOutcome != null) return false;
+    return true;
+  }
+
   private MedicalEntity myAdverseOutcome;
   private MedicalContraindication myContraindication;
   private MedicalIndication myIndication;

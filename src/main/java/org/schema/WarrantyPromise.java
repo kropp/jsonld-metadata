@@ -257,7 +257,7 @@ public class WarrantyPromise extends StructuredValue {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private QuantitativeValue durationOfWarranty;
@@ -296,6 +296,24 @@ public class WarrantyPromise extends StructuredValue {
     myDurationOfWarranty = durationOfWarranty;
     myWarrantyScope = warrantyScope;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDurationOfWarranty != null ? myDurationOfWarranty.hashCode() : 0);
+    result = 31 * result + (myWarrantyScope != null ? myWarrantyScope.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    WarrantyPromise warrantyPromise = (WarrantyPromise) o;
+    if (!super.equals(o)) return false;
+    if (myDurationOfWarranty != null ? !myDurationOfWarranty.equals(warrantyPromise.myDurationOfWarranty) : warrantyPromise.myDurationOfWarranty != null) return false;
+    if (myWarrantyScope != null ? !myWarrantyScope.equals(warrantyPromise.myWarrantyScope) : warrantyPromise.myWarrantyScope != null) return false;
+    return true;
+  }
+
   private QuantitativeValue myDurationOfWarranty;
   private WarrantyScope myWarrantyScope;
 }

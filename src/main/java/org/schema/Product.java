@@ -886,7 +886,7 @@ Note: Publishers should be aware that applications designed to use specific sche
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private AggregateRating aggregateRating;
@@ -1042,6 +1042,82 @@ Note: Publishers should be aware that applications designed to use specific sche
     myProductionDate = productionDate;
     myPurchaseDate = purchaseDate;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
+    result = 31 * result + (myAudience != null ? myAudience.hashCode() : 0);
+    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
+    result = 31 * result + (myBrand != null ? myBrand.hashCode() : 0);
+    result = 31 * result + (myCategory != null ? myCategory.hashCode() : 0);
+    result = 31 * result + (myColor != null ? myColor.hashCode() : 0);
+    result = 31 * result + (myDepth != null ? myDepth.hashCode() : 0);
+    result = 31 * result + (myGtin12 != null ? myGtin12.hashCode() : 0);
+    result = 31 * result + (myGtin13 != null ? myGtin13.hashCode() : 0);
+    result = 31 * result + (myGtin14 != null ? myGtin14.hashCode() : 0);
+    result = 31 * result + (myGtin8 != null ? myGtin8.hashCode() : 0);
+    result = 31 * result + (myHeight != null ? myHeight.hashCode() : 0);
+    result = 31 * result + (myIsAccessoryOrSparePartFor != null ? myIsAccessoryOrSparePartFor.hashCode() : 0);
+    result = 31 * result + (myIsConsumableFor != null ? myIsConsumableFor.hashCode() : 0);
+    result = 31 * result + (myIsRelatedTo != null ? myIsRelatedTo.hashCode() : 0);
+    result = 31 * result + (myIsSimilarTo != null ? myIsSimilarTo.hashCode() : 0);
+    result = 31 * result + (myItemCondition != null ? myItemCondition.hashCode() : 0);
+    result = 31 * result + (myLogo != null ? myLogo.hashCode() : 0);
+    result = 31 * result + (myManufacturer != null ? myManufacturer.hashCode() : 0);
+    result = 31 * result + (myModel != null ? myModel.hashCode() : 0);
+    result = 31 * result + (myMpn != null ? myMpn.hashCode() : 0);
+    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
+    result = 31 * result + (myProductID != null ? myProductID.hashCode() : 0);
+    result = 31 * result + (myReleaseDate != null ? myReleaseDate.hashCode() : 0);
+    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
+    result = 31 * result + (mySku != null ? mySku.hashCode() : 0);
+    result = 31 * result + (myWeight != null ? myWeight.hashCode() : 0);
+    result = 31 * result + (myWidth != null ? myWidth.hashCode() : 0);
+    result = 31 * result + (myAdditionalProperty != null ? myAdditionalProperty.hashCode() : 0);
+    result = 31 * result + (myProductionDate != null ? myProductionDate.hashCode() : 0);
+    result = 31 * result + (myPurchaseDate != null ? myPurchaseDate.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Product product = (Product) o;
+    if (!super.equals(o)) return false;
+    if (myAggregateRating != null ? !myAggregateRating.equals(product.myAggregateRating) : product.myAggregateRating != null) return false;
+    if (myAudience != null ? !myAudience.equals(product.myAudience) : product.myAudience != null) return false;
+    if (myAward != null ? !myAward.equals(product.myAward) : product.myAward != null) return false;
+    if (myBrand != null ? !myBrand.equals(product.myBrand) : product.myBrand != null) return false;
+    if (myCategory != null ? !myCategory.equals(product.myCategory) : product.myCategory != null) return false;
+    if (myColor != null ? !myColor.equals(product.myColor) : product.myColor != null) return false;
+    if (myDepth != null ? !myDepth.equals(product.myDepth) : product.myDepth != null) return false;
+    if (myGtin12 != null ? !myGtin12.equals(product.myGtin12) : product.myGtin12 != null) return false;
+    if (myGtin13 != null ? !myGtin13.equals(product.myGtin13) : product.myGtin13 != null) return false;
+    if (myGtin14 != null ? !myGtin14.equals(product.myGtin14) : product.myGtin14 != null) return false;
+    if (myGtin8 != null ? !myGtin8.equals(product.myGtin8) : product.myGtin8 != null) return false;
+    if (myHeight != null ? !myHeight.equals(product.myHeight) : product.myHeight != null) return false;
+    if (myIsAccessoryOrSparePartFor != null ? !myIsAccessoryOrSparePartFor.equals(product.myIsAccessoryOrSparePartFor) : product.myIsAccessoryOrSparePartFor != null) return false;
+    if (myIsConsumableFor != null ? !myIsConsumableFor.equals(product.myIsConsumableFor) : product.myIsConsumableFor != null) return false;
+    if (myIsRelatedTo != null ? !myIsRelatedTo.equals(product.myIsRelatedTo) : product.myIsRelatedTo != null) return false;
+    if (myIsSimilarTo != null ? !myIsSimilarTo.equals(product.myIsSimilarTo) : product.myIsSimilarTo != null) return false;
+    if (myItemCondition != null ? !myItemCondition.equals(product.myItemCondition) : product.myItemCondition != null) return false;
+    if (myLogo != null ? !myLogo.equals(product.myLogo) : product.myLogo != null) return false;
+    if (myManufacturer != null ? !myManufacturer.equals(product.myManufacturer) : product.myManufacturer != null) return false;
+    if (myModel != null ? !myModel.equals(product.myModel) : product.myModel != null) return false;
+    if (myMpn != null ? !myMpn.equals(product.myMpn) : product.myMpn != null) return false;
+    if (myOffers != null ? !myOffers.equals(product.myOffers) : product.myOffers != null) return false;
+    if (myProductID != null ? !myProductID.equals(product.myProductID) : product.myProductID != null) return false;
+    if (myReleaseDate != null ? !myReleaseDate.equals(product.myReleaseDate) : product.myReleaseDate != null) return false;
+    if (myReview != null ? !myReview.equals(product.myReview) : product.myReview != null) return false;
+    if (mySku != null ? !mySku.equals(product.mySku) : product.mySku != null) return false;
+    if (myWeight != null ? !myWeight.equals(product.myWeight) : product.myWeight != null) return false;
+    if (myWidth != null ? !myWidth.equals(product.myWidth) : product.myWidth != null) return false;
+    if (myAdditionalProperty != null ? !myAdditionalProperty.equals(product.myAdditionalProperty) : product.myAdditionalProperty != null) return false;
+    if (myProductionDate != null ? !myProductionDate.equals(product.myProductionDate) : product.myProductionDate != null) return false;
+    if (myPurchaseDate != null ? !myPurchaseDate.equals(product.myPurchaseDate) : product.myPurchaseDate != null) return false;
+    return true;
+  }
+
   private AggregateRating myAggregateRating;
   private Audience myAudience;
   private String myAward;

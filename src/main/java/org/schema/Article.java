@@ -1253,7 +1253,7 @@ public class Article extends CreativeWork {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String articleBody;
@@ -1490,6 +1490,32 @@ public class Article extends CreativeWork {
     myPageStart = pageStart;
     myPagination = pagination;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myArticleBody != null ? myArticleBody.hashCode() : 0);
+    result = 31 * result + (myArticleSection != null ? myArticleSection.hashCode() : 0);
+    result = 31 * result + (myWordCount != null ? myWordCount.hashCode() : 0);
+    result = 31 * result + (myPageEnd != null ? myPageEnd.hashCode() : 0);
+    result = 31 * result + (myPageStart != null ? myPageStart.hashCode() : 0);
+    result = 31 * result + (myPagination != null ? myPagination.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Article article = (Article) o;
+    if (!super.equals(o)) return false;
+    if (myArticleBody != null ? !myArticleBody.equals(article.myArticleBody) : article.myArticleBody != null) return false;
+    if (myArticleSection != null ? !myArticleSection.equals(article.myArticleSection) : article.myArticleSection != null) return false;
+    if (myWordCount != null ? !myWordCount.equals(article.myWordCount) : article.myWordCount != null) return false;
+    if (myPageEnd != null ? !myPageEnd.equals(article.myPageEnd) : article.myPageEnd != null) return false;
+    if (myPageStart != null ? !myPageStart.equals(article.myPageStart) : article.myPageStart != null) return false;
+    if (myPagination != null ? !myPagination.equals(article.myPagination) : article.myPagination != null) return false;
+    return true;
+  }
+
   private String myArticleBody;
   private String myArticleSection;
   private Integer myWordCount;

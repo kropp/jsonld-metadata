@@ -45,7 +45,7 @@ public class PropertyValue extends StructuredValue {
   /**
    * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
    */
-  public BooleanOrNumberOrStringOrStructuredValue getValue() {
+  public Number getValue() {
     return myValue;
   }
   /**
@@ -130,40 +130,42 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     /**
      * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
      */
-    @NotNull public Builder value(@NotNull Boolean value) {
-      if (this.value == null) this.value = new BooleanOrNumberOrStringOrStructuredValue();
-      this.value.setBoolean(value);
+    @NotNull public Builder value(@NotNull Integer integer) {
+      if (this.value == null) this.value = new Number();
+      this.value.setInteger(integer);
       return this;
     }
     /**
      * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
      */
-    @NotNull public Builder value(@NotNull Number number) {
-      if (this.value == null) this.value = new BooleanOrNumberOrStringOrStructuredValue();
-      this.value.setNumber(number);
+    @NotNull public Builder value(@NotNull Long value) {
+      if (this.value == null) this.value = new Number();
+      this.value.setLong(value);
+      return this;
+    }
+    /**
+     * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
+     */
+    @NotNull public Builder value(@NotNull Float value) {
+      if (this.value == null) this.value = new Number();
+      this.value.setFloat(value);
+      return this;
+    }
+    /**
+     * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
+     */
+    @NotNull public Builder value(@NotNull Double value) {
+      if (this.value == null) this.value = new Number();
+      this.value.setDouble(value);
       return this;
     }
     /**
      * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
      */
     @NotNull public Builder value(@NotNull String value) {
-      if (this.value == null) this.value = new BooleanOrNumberOrStringOrStructuredValue();
+      if (this.value == null) this.value = new Number();
       this.value.setString(value);
       return this;
-    }
-    /**
-     * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
-     */
-    @NotNull public Builder value(@NotNull StructuredValue structuredValue) {
-      if (this.value == null) this.value = new BooleanOrNumberOrStringOrStructuredValue();
-      this.value.setStructuredValue(structuredValue);
-      return this;
-    }
-    /**
-     * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
-     */
-    @NotNull public Builder value(@NotNull StructuredValue.Builder structuredValue) {
-      return this.value(structuredValue.build());
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
@@ -430,10 +432,11 @@ Standards bodies should promote a standard prefix for the identifiers of propert
         if ("minValue".equals(key) && value instanceof Double) { minValue((Double)value); continue; }
         if ("minValue".equals(key) && value instanceof String) { minValue((String)value); continue; }
         if ("unitCode".equals(key) && value instanceof String) { unitCode((String)value); continue; }
-        if ("value".equals(key) && value instanceof Boolean) { value((Boolean)value); continue; }
-        if ("value".equals(key) && value instanceof Number) { value((Number)value); continue; }
+        if ("value".equals(key) && value instanceof Integer) { value((Integer)value); continue; }
+        if ("value".equals(key) && value instanceof Long) { value((Long)value); continue; }
+        if ("value".equals(key) && value instanceof Float) { value((Float)value); continue; }
+        if ("value".equals(key) && value instanceof Double) { value((Double)value); continue; }
         if ("value".equals(key) && value instanceof String) { value((String)value); continue; }
-        if ("value".equals(key) && value instanceof StructuredValue) { value((StructuredValue)value); continue; }
         if ("valueReference".equals(key) && value instanceof Enumeration) { valueReference((Enumeration)value); continue; }
         if ("valueReference".equals(key) && value instanceof PropertyValue) { valueReference((PropertyValue)value); continue; }
         if ("valueReference".equals(key) && value instanceof QualitativeValue) { valueReference((QualitativeValue)value); continue; }
@@ -450,12 +453,12 @@ Standards bodies should promote a standard prefix for the identifiers of propert
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Number minValue;
     private String unitCode;
-    private BooleanOrNumberOrStringOrStructuredValue value;
+    private Number value;
     private EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference;
     private String unitText;
     private String propertyID;
@@ -476,11 +479,11 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     @NotNull Builder minValue(@NotNull Double minValue);
     @NotNull Builder minValue(@NotNull String minValue);
     @NotNull Builder unitCode(@NotNull String unitCode);
-    @NotNull Builder value(@NotNull Boolean value);
-    @NotNull Builder value(@NotNull Number number);
+    @NotNull Builder value(@NotNull Integer integer);
+    @NotNull Builder value(@NotNull Long value);
+    @NotNull Builder value(@NotNull Float value);
+    @NotNull Builder value(@NotNull Double value);
     @NotNull Builder value(@NotNull String value);
-    @NotNull Builder value(@NotNull StructuredValue structuredValue);
-    @NotNull Builder value(@NotNull StructuredValue.Builder structuredValue);
     @NotNull Builder valueReference(@NotNull Enumeration enumeration);
     @NotNull Builder valueReference(@NotNull Enumeration.Builder enumeration);
     @NotNull Builder valueReference(@NotNull PropertyValue propertyValue);
@@ -507,7 +510,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected PropertyValue(Number minValue, String unitCode, BooleanOrNumberOrStringOrStructuredValue value, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, String unitText, String propertyID, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected PropertyValue(Number minValue, String unitCode, Number value, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, String unitText, String propertyID, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myMinValue = minValue;
     myUnitCode = unitCode;
@@ -516,9 +519,35 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     myUnitText = unitText;
     myPropertyID = propertyID;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myMinValue != null ? myMinValue.hashCode() : 0);
+    result = 31 * result + (myUnitCode != null ? myUnitCode.hashCode() : 0);
+    result = 31 * result + (myValue != null ? myValue.hashCode() : 0);
+    result = 31 * result + (myValueReference != null ? myValueReference.hashCode() : 0);
+    result = 31 * result + (myUnitText != null ? myUnitText.hashCode() : 0);
+    result = 31 * result + (myPropertyID != null ? myPropertyID.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PropertyValue propertyValue = (PropertyValue) o;
+    if (!super.equals(o)) return false;
+    if (myMinValue != null ? !myMinValue.equals(propertyValue.myMinValue) : propertyValue.myMinValue != null) return false;
+    if (myUnitCode != null ? !myUnitCode.equals(propertyValue.myUnitCode) : propertyValue.myUnitCode != null) return false;
+    if (myValue != null ? !myValue.equals(propertyValue.myValue) : propertyValue.myValue != null) return false;
+    if (myValueReference != null ? !myValueReference.equals(propertyValue.myValueReference) : propertyValue.myValueReference != null) return false;
+    if (myUnitText != null ? !myUnitText.equals(propertyValue.myUnitText) : propertyValue.myUnitText != null) return false;
+    if (myPropertyID != null ? !myPropertyID.equals(propertyValue.myPropertyID) : propertyValue.myPropertyID != null) return false;
+    return true;
+  }
+
   private Number myMinValue;
   private String myUnitCode;
-  private BooleanOrNumberOrStringOrStructuredValue myValue;
+  private Number myValue;
   private EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue myValueReference;
   private String myUnitText;
   private String myPropertyID;

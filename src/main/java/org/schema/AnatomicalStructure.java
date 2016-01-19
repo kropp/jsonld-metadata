@@ -457,7 +457,7 @@ public class AnatomicalStructure extends MedicalEntity {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String associatedPathophysiology;
@@ -538,6 +538,38 @@ public class AnatomicalStructure extends MedicalEntity {
     myRelatedTherapy = relatedTherapy;
     mySubStructure = subStructure;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAssociatedPathophysiology != null ? myAssociatedPathophysiology.hashCode() : 0);
+    result = 31 * result + (myBodyLocation != null ? myBodyLocation.hashCode() : 0);
+    result = 31 * result + (myConnectedTo != null ? myConnectedTo.hashCode() : 0);
+    result = 31 * result + (myDiagram != null ? myDiagram.hashCode() : 0);
+    result = 31 * result + (myFunction != null ? myFunction.hashCode() : 0);
+    result = 31 * result + (myPartOfSystem != null ? myPartOfSystem.hashCode() : 0);
+    result = 31 * result + (myRelatedCondition != null ? myRelatedCondition.hashCode() : 0);
+    result = 31 * result + (myRelatedTherapy != null ? myRelatedTherapy.hashCode() : 0);
+    result = 31 * result + (mySubStructure != null ? mySubStructure.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AnatomicalStructure anatomicalStructure = (AnatomicalStructure) o;
+    if (!super.equals(o)) return false;
+    if (myAssociatedPathophysiology != null ? !myAssociatedPathophysiology.equals(anatomicalStructure.myAssociatedPathophysiology) : anatomicalStructure.myAssociatedPathophysiology != null) return false;
+    if (myBodyLocation != null ? !myBodyLocation.equals(anatomicalStructure.myBodyLocation) : anatomicalStructure.myBodyLocation != null) return false;
+    if (myConnectedTo != null ? !myConnectedTo.equals(anatomicalStructure.myConnectedTo) : anatomicalStructure.myConnectedTo != null) return false;
+    if (myDiagram != null ? !myDiagram.equals(anatomicalStructure.myDiagram) : anatomicalStructure.myDiagram != null) return false;
+    if (myFunction != null ? !myFunction.equals(anatomicalStructure.myFunction) : anatomicalStructure.myFunction != null) return false;
+    if (myPartOfSystem != null ? !myPartOfSystem.equals(anatomicalStructure.myPartOfSystem) : anatomicalStructure.myPartOfSystem != null) return false;
+    if (myRelatedCondition != null ? !myRelatedCondition.equals(anatomicalStructure.myRelatedCondition) : anatomicalStructure.myRelatedCondition != null) return false;
+    if (myRelatedTherapy != null ? !myRelatedTherapy.equals(anatomicalStructure.myRelatedTherapy) : anatomicalStructure.myRelatedTherapy != null) return false;
+    if (mySubStructure != null ? !mySubStructure.equals(anatomicalStructure.mySubStructure) : anatomicalStructure.mySubStructure != null) return false;
+    return true;
+  }
+
   private String myAssociatedPathophysiology;
   private String myBodyLocation;
   private AnatomicalStructure myConnectedTo;

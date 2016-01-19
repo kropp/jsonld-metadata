@@ -204,9 +204,93 @@ public class PaymentChargeSpecification extends PriceSpecification {
 </ul>
       
      */
-    @NotNull public Builder price(@NotNull Number number) {
-      if (this.price == null) this.price = new NumberOrString();
-      this.price.setNumber(number);
+    @NotNull public Builder price(@NotNull Integer integer) {
+      if (this.price == null) this.price = new Number();
+      this.price.setInteger(integer);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Long price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setLong(price);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Float price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setFloat(price);
+      return this;
+    }
+    /**
+     * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+<br />
+<br />
+      Usage guidelines:
+<br />
+<ul>
+<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+</li>
+<li>
+      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+</li>
+<li>
+      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+      alongside more human-friendly formatting.
+</li>
+<li>
+      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+</li>
+</ul>
+      
+     */
+    @NotNull public Builder price(@NotNull Double price) {
+      if (this.price == null) this.price = new Number();
+      this.price.setDouble(price);
       return this;
     }
     /**
@@ -233,7 +317,7 @@ public class PaymentChargeSpecification extends PriceSpecification {
       
      */
     @NotNull public Builder price(@NotNull String price) {
-      if (this.price == null) this.price = new NumberOrString();
+      if (this.price == null) this.price = new Number();
       this.price.setString(price);
       return this;
     }
@@ -450,7 +534,10 @@ public class PaymentChargeSpecification extends PriceSpecification {
         if ("minPrice".equals(key) && value instanceof Float) { minPrice((Float)value); continue; }
         if ("minPrice".equals(key) && value instanceof Double) { minPrice((Double)value); continue; }
         if ("minPrice".equals(key) && value instanceof String) { minPrice((String)value); continue; }
-        if ("price".equals(key) && value instanceof Number) { price((Number)value); continue; }
+        if ("price".equals(key) && value instanceof Integer) { price((Integer)value); continue; }
+        if ("price".equals(key) && value instanceof Long) { price((Long)value); continue; }
+        if ("price".equals(key) && value instanceof Float) { price((Float)value); continue; }
+        if ("price".equals(key) && value instanceof Double) { price((Double)value); continue; }
         if ("price".equals(key) && value instanceof String) { price((String)value); continue; }
         if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); continue; }
         if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); continue; }
@@ -465,7 +552,7 @@ public class PaymentChargeSpecification extends PriceSpecification {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private DeliveryMethod appliesToDeliveryMethod;
@@ -474,7 +561,7 @@ public class PaymentChargeSpecification extends PriceSpecification {
     private PriceSpecification eligibleTransactionVolume;
     private Number maxPrice;
     private Number minPrice;
-    private NumberOrString price;
+    private Number price;
     private java.util.Date validFrom;
     private java.util.Date validThrough;
     private Boolean valueAddedTaxIncluded;
@@ -508,7 +595,10 @@ public class PaymentChargeSpecification extends PriceSpecification {
     @NotNull Builder minPrice(@NotNull Float minPrice);
     @NotNull Builder minPrice(@NotNull Double minPrice);
     @NotNull Builder minPrice(@NotNull String minPrice);
-    @NotNull Builder price(@NotNull Number number);
+    @NotNull Builder price(@NotNull Integer integer);
+    @NotNull Builder price(@NotNull Long price);
+    @NotNull Builder price(@NotNull Float price);
+    @NotNull Builder price(@NotNull Double price);
     @NotNull Builder price(@NotNull String price);
     @NotNull Builder validFrom(@NotNull java.util.Date date);
     @NotNull Builder validThrough(@NotNull java.util.Date date);
@@ -528,11 +618,29 @@ public class PaymentChargeSpecification extends PriceSpecification {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected PaymentChargeSpecification(DeliveryMethod appliesToDeliveryMethod, PaymentMethod appliesToPaymentMethod, QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, NumberOrString price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected PaymentChargeSpecification(DeliveryMethod appliesToDeliveryMethod, PaymentMethod appliesToPaymentMethod, QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, Number price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myAppliesToDeliveryMethod = appliesToDeliveryMethod;
     myAppliesToPaymentMethod = appliesToPaymentMethod;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAppliesToDeliveryMethod != null ? myAppliesToDeliveryMethod.hashCode() : 0);
+    result = 31 * result + (myAppliesToPaymentMethod != null ? myAppliesToPaymentMethod.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PaymentChargeSpecification paymentChargeSpecification = (PaymentChargeSpecification) o;
+    if (!super.equals(o)) return false;
+    if (myAppliesToDeliveryMethod != null ? !myAppliesToDeliveryMethod.equals(paymentChargeSpecification.myAppliesToDeliveryMethod) : paymentChargeSpecification.myAppliesToDeliveryMethod != null) return false;
+    if (myAppliesToPaymentMethod != null ? !myAppliesToPaymentMethod.equals(paymentChargeSpecification.myAppliesToPaymentMethod) : paymentChargeSpecification.myAppliesToPaymentMethod != null) return false;
+    return true;
+  }
+
   private DeliveryMethod myAppliesToDeliveryMethod;
   private PaymentMethod myAppliesToPaymentMethod;
 }

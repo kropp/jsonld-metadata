@@ -401,7 +401,7 @@ public class MedicalTherapy extends MedicalEntity {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MedicalEntity adverseOutcome;
@@ -470,6 +470,30 @@ public class MedicalTherapy extends MedicalEntity {
     myIndication = indication;
     mySeriousAdverseOutcome = seriousAdverseOutcome;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAdverseOutcome != null ? myAdverseOutcome.hashCode() : 0);
+    result = 31 * result + (myContraindication != null ? myContraindication.hashCode() : 0);
+    result = 31 * result + (myDuplicateTherapy != null ? myDuplicateTherapy.hashCode() : 0);
+    result = 31 * result + (myIndication != null ? myIndication.hashCode() : 0);
+    result = 31 * result + (mySeriousAdverseOutcome != null ? mySeriousAdverseOutcome.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalTherapy medicalTherapy = (MedicalTherapy) o;
+    if (!super.equals(o)) return false;
+    if (myAdverseOutcome != null ? !myAdverseOutcome.equals(medicalTherapy.myAdverseOutcome) : medicalTherapy.myAdverseOutcome != null) return false;
+    if (myContraindication != null ? !myContraindication.equals(medicalTherapy.myContraindication) : medicalTherapy.myContraindication != null) return false;
+    if (myDuplicateTherapy != null ? !myDuplicateTherapy.equals(medicalTherapy.myDuplicateTherapy) : medicalTherapy.myDuplicateTherapy != null) return false;
+    if (myIndication != null ? !myIndication.equals(medicalTherapy.myIndication) : medicalTherapy.myIndication != null) return false;
+    if (mySeriousAdverseOutcome != null ? !mySeriousAdverseOutcome.equals(medicalTherapy.mySeriousAdverseOutcome) : medicalTherapy.mySeriousAdverseOutcome != null) return false;
+    return true;
+  }
+
   private MedicalEntity myAdverseOutcome;
   private MedicalContraindication myContraindication;
   private MedicalTherapy myDuplicateTherapy;

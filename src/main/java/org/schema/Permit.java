@@ -346,7 +346,7 @@ public class Permit extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Service issuedThrough;
@@ -403,6 +403,34 @@ public class Permit extends Intangible {
     myValidUntil = validUntil;
     myIssuedBy = issuedBy;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myIssuedThrough != null ? myIssuedThrough.hashCode() : 0);
+    result = 31 * result + (myPermitAudience != null ? myPermitAudience.hashCode() : 0);
+    result = 31 * result + (myValidFor != null ? myValidFor.hashCode() : 0);
+    result = 31 * result + (myValidFrom != null ? myValidFrom.hashCode() : 0);
+    result = 31 * result + (myValidIn != null ? myValidIn.hashCode() : 0);
+    result = 31 * result + (myValidUntil != null ? myValidUntil.hashCode() : 0);
+    result = 31 * result + (myIssuedBy != null ? myIssuedBy.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Permit permit = (Permit) o;
+    if (!super.equals(o)) return false;
+    if (myIssuedThrough != null ? !myIssuedThrough.equals(permit.myIssuedThrough) : permit.myIssuedThrough != null) return false;
+    if (myPermitAudience != null ? !myPermitAudience.equals(permit.myPermitAudience) : permit.myPermitAudience != null) return false;
+    if (myValidFor != null ? !myValidFor.equals(permit.myValidFor) : permit.myValidFor != null) return false;
+    if (myValidFrom != null ? !myValidFrom.equals(permit.myValidFrom) : permit.myValidFrom != null) return false;
+    if (myValidIn != null ? !myValidIn.equals(permit.myValidIn) : permit.myValidIn != null) return false;
+    if (myValidUntil != null ? !myValidUntil.equals(permit.myValidUntil) : permit.myValidUntil != null) return false;
+    if (myIssuedBy != null ? !myIssuedBy.equals(permit.myIssuedBy) : permit.myIssuedBy != null) return false;
+    return true;
+  }
+
   private Service myIssuedThrough;
   private Audience myPermitAudience;
   private Duration myValidFor;

@@ -393,7 +393,7 @@ public class DoseSchedule extends MedicalIntangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String doseUnit;
@@ -458,6 +458,28 @@ public class DoseSchedule extends MedicalIntangible {
     myFrequency = frequency;
     myTargetPopulation = targetPopulation;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDoseUnit != null ? myDoseUnit.hashCode() : 0);
+    result = 31 * result + (myDoseValue != null ? myDoseValue.hashCode() : 0);
+    result = 31 * result + (myFrequency != null ? myFrequency.hashCode() : 0);
+    result = 31 * result + (myTargetPopulation != null ? myTargetPopulation.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DoseSchedule doseSchedule = (DoseSchedule) o;
+    if (!super.equals(o)) return false;
+    if (myDoseUnit != null ? !myDoseUnit.equals(doseSchedule.myDoseUnit) : doseSchedule.myDoseUnit != null) return false;
+    if (myDoseValue != null ? !myDoseValue.equals(doseSchedule.myDoseValue) : doseSchedule.myDoseValue != null) return false;
+    if (myFrequency != null ? !myFrequency.equals(doseSchedule.myFrequency) : doseSchedule.myFrequency != null) return false;
+    if (myTargetPopulation != null ? !myTargetPopulation.equals(doseSchedule.myTargetPopulation) : doseSchedule.myTargetPopulation != null) return false;
+    return true;
+  }
+
   private String myDoseUnit;
   private Number myDoseValue;
   private String myFrequency;

@@ -568,7 +568,7 @@ public class InfectiousDisease extends MedicalCondition {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String infectiousAgent;
@@ -673,6 +673,26 @@ public class InfectiousDisease extends MedicalCondition {
     myInfectiousAgentClass = infectiousAgentClass;
     myTransmissionMethod = transmissionMethod;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myInfectiousAgent != null ? myInfectiousAgent.hashCode() : 0);
+    result = 31 * result + (myInfectiousAgentClass != null ? myInfectiousAgentClass.hashCode() : 0);
+    result = 31 * result + (myTransmissionMethod != null ? myTransmissionMethod.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InfectiousDisease infectiousDisease = (InfectiousDisease) o;
+    if (!super.equals(o)) return false;
+    if (myInfectiousAgent != null ? !myInfectiousAgent.equals(infectiousDisease.myInfectiousAgent) : infectiousDisease.myInfectiousAgent != null) return false;
+    if (myInfectiousAgentClass != null ? !myInfectiousAgentClass.equals(infectiousDisease.myInfectiousAgentClass) : infectiousDisease.myInfectiousAgentClass != null) return false;
+    if (myTransmissionMethod != null ? !myTransmissionMethod.equals(infectiousDisease.myTransmissionMethod) : infectiousDisease.myTransmissionMethod != null) return false;
+    return true;
+  }
+
   private String myInfectiousAgent;
   private InfectiousAgentClass myInfectiousAgentClass;
   private String myTransmissionMethod;

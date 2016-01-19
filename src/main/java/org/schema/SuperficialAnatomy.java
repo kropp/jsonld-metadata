@@ -405,7 +405,7 @@ public class SuperficialAnatomy extends MedicalEntity {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String associatedPathophysiology;
@@ -474,6 +474,30 @@ public class SuperficialAnatomy extends MedicalEntity {
     myRelatedTherapy = relatedTherapy;
     mySignificance = significance;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAssociatedPathophysiology != null ? myAssociatedPathophysiology.hashCode() : 0);
+    result = 31 * result + (myRelatedAnatomy != null ? myRelatedAnatomy.hashCode() : 0);
+    result = 31 * result + (myRelatedCondition != null ? myRelatedCondition.hashCode() : 0);
+    result = 31 * result + (myRelatedTherapy != null ? myRelatedTherapy.hashCode() : 0);
+    result = 31 * result + (mySignificance != null ? mySignificance.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SuperficialAnatomy superficialAnatomy = (SuperficialAnatomy) o;
+    if (!super.equals(o)) return false;
+    if (myAssociatedPathophysiology != null ? !myAssociatedPathophysiology.equals(superficialAnatomy.myAssociatedPathophysiology) : superficialAnatomy.myAssociatedPathophysiology != null) return false;
+    if (myRelatedAnatomy != null ? !myRelatedAnatomy.equals(superficialAnatomy.myRelatedAnatomy) : superficialAnatomy.myRelatedAnatomy != null) return false;
+    if (myRelatedCondition != null ? !myRelatedCondition.equals(superficialAnatomy.myRelatedCondition) : superficialAnatomy.myRelatedCondition != null) return false;
+    if (myRelatedTherapy != null ? !myRelatedTherapy.equals(superficialAnatomy.myRelatedTherapy) : superficialAnatomy.myRelatedTherapy != null) return false;
+    if (mySignificance != null ? !mySignificance.equals(superficialAnatomy.mySignificance) : superficialAnatomy.mySignificance != null) return false;
+    return true;
+  }
+
   private String myAssociatedPathophysiology;
   private AnatomicalStructureOrAnatomicalSystem myRelatedAnatomy;
   private MedicalCondition myRelatedCondition;

@@ -304,7 +304,7 @@ public class BroadcastService extends Thing {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Organization broadcaster;
@@ -353,6 +353,30 @@ public class BroadcastService extends Thing {
     myBroadcastDisplayName = broadcastDisplayName;
     myTimezone = timezone;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myBroadcaster != null ? myBroadcaster.hashCode() : 0);
+    result = 31 * result + (myParentService != null ? myParentService.hashCode() : 0);
+    result = 31 * result + (myBroadcastAffiliateOf != null ? myBroadcastAffiliateOf.hashCode() : 0);
+    result = 31 * result + (myBroadcastDisplayName != null ? myBroadcastDisplayName.hashCode() : 0);
+    result = 31 * result + (myTimezone != null ? myTimezone.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BroadcastService broadcastService = (BroadcastService) o;
+    if (!super.equals(o)) return false;
+    if (myBroadcaster != null ? !myBroadcaster.equals(broadcastService.myBroadcaster) : broadcastService.myBroadcaster != null) return false;
+    if (myParentService != null ? !myParentService.equals(broadcastService.myParentService) : broadcastService.myParentService != null) return false;
+    if (myBroadcastAffiliateOf != null ? !myBroadcastAffiliateOf.equals(broadcastService.myBroadcastAffiliateOf) : broadcastService.myBroadcastAffiliateOf != null) return false;
+    if (myBroadcastDisplayName != null ? !myBroadcastDisplayName.equals(broadcastService.myBroadcastDisplayName) : broadcastService.myBroadcastDisplayName != null) return false;
+    if (myTimezone != null ? !myTimezone.equals(broadcastService.myTimezone) : broadcastService.myTimezone != null) return false;
+    return true;
+  }
+
   private Organization myBroadcaster;
   private BroadcastService myParentService;
   private Organization myBroadcastAffiliateOf;

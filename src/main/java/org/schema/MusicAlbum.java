@@ -1264,7 +1264,7 @@ public class MusicAlbum extends MusicPlaylist {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private MusicGroup byArtist;
@@ -1504,6 +1504,28 @@ public class MusicAlbum extends MusicPlaylist {
     myAlbumReleaseType = albumReleaseType;
     myAlbumRelease = albumRelease;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myByArtist != null ? myByArtist.hashCode() : 0);
+    result = 31 * result + (myAlbumProductionType != null ? myAlbumProductionType.hashCode() : 0);
+    result = 31 * result + (myAlbumReleaseType != null ? myAlbumReleaseType.hashCode() : 0);
+    result = 31 * result + (myAlbumRelease != null ? myAlbumRelease.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MusicAlbum musicAlbum = (MusicAlbum) o;
+    if (!super.equals(o)) return false;
+    if (myByArtist != null ? !myByArtist.equals(musicAlbum.myByArtist) : musicAlbum.myByArtist != null) return false;
+    if (myAlbumProductionType != null ? !myAlbumProductionType.equals(musicAlbum.myAlbumProductionType) : musicAlbum.myAlbumProductionType != null) return false;
+    if (myAlbumReleaseType != null ? !myAlbumReleaseType.equals(musicAlbum.myAlbumReleaseType) : musicAlbum.myAlbumReleaseType != null) return false;
+    if (myAlbumRelease != null ? !myAlbumRelease.equals(musicAlbum.myAlbumRelease) : musicAlbum.myAlbumRelease != null) return false;
+    return true;
+  }
+
   private MusicGroup myByArtist;
   private MusicAlbumProductionType myAlbumProductionType;
   private MusicAlbumReleaseType myAlbumReleaseType;

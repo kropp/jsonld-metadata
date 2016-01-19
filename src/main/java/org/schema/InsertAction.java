@@ -342,7 +342,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Place toLocation;
@@ -398,5 +398,21 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     super(targetCollection, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myToLocation = toLocation;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myToLocation != null ? myToLocation.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    InsertAction insertAction = (InsertAction) o;
+    if (!super.equals(o)) return false;
+    if (myToLocation != null ? !myToLocation.equals(insertAction.myToLocation) : insertAction.myToLocation != null) return false;
+    return true;
+  }
+
   private Place myToLocation;
 }

@@ -35,7 +35,7 @@ public class Ticket extends Intangible {
   /**
    * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
    */
-  public NumberOrPriceSpecificationOrString getTotalPrice() {
+  public Number getTotalPrice() {
     return myTotalPrice;
   }
   /**
@@ -116,30 +116,40 @@ public class Ticket extends Intangible {
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(@NotNull Number number) {
-      if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
-      this.totalPrice.setNumber(number);
+    @NotNull public Builder totalPrice(@NotNull Integer integer) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setInteger(integer);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(@NotNull PriceSpecification priceSpecification) {
-      if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
-      this.totalPrice.setPriceSpecification(priceSpecification);
+    @NotNull public Builder totalPrice(@NotNull Long totalPrice) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setLong(totalPrice);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
-    @NotNull public Builder totalPrice(@NotNull PriceSpecification.Builder priceSpecification) {
-      return this.totalPrice(priceSpecification.build());
+    @NotNull public Builder totalPrice(@NotNull Float totalPrice) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setFloat(totalPrice);
+      return this;
+    }
+    /**
+     * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
+     */
+    @NotNull public Builder totalPrice(@NotNull Double totalPrice) {
+      if (this.totalPrice == null) this.totalPrice = new Number();
+      this.totalPrice.setDouble(totalPrice);
+      return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull String totalPrice) {
-      if (this.totalPrice == null) this.totalPrice = new NumberOrPriceSpecificationOrString();
+      if (this.totalPrice == null) this.totalPrice = new Number();
       this.totalPrice.setString(totalPrice);
       return this;
     }
@@ -370,8 +380,10 @@ public class Ticket extends Intangible {
         if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
         if ("underName".equals(key) && value instanceof Organization) { underName((Organization)value); continue; }
         if ("underName".equals(key) && value instanceof Person) { underName((Person)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof Number) { totalPrice((Number)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof PriceSpecification) { totalPrice((PriceSpecification)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Integer) { totalPrice((Integer)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Long) { totalPrice((Long)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Float) { totalPrice((Float)value); continue; }
+        if ("totalPrice".equals(key) && value instanceof Double) { totalPrice((Double)value); continue; }
         if ("totalPrice".equals(key) && value instanceof String) { totalPrice((String)value); continue; }
         if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); continue; }
         if ("issuedBy".equals(key) && value instanceof Organization) { issuedBy((Organization)value); continue; }
@@ -388,11 +400,11 @@ public class Ticket extends Intangible {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private OrganizationOrPerson underName;
-    private NumberOrPriceSpecificationOrString totalPrice;
+    private Number totalPrice;
     private String priceCurrency;
     private Organization issuedBy;
     private java.util.Date dateIssued;
@@ -414,9 +426,10 @@ public class Ticket extends Intangible {
     @NotNull Builder underName(@NotNull Organization.Builder organization);
     @NotNull Builder underName(@NotNull Person person);
     @NotNull Builder underName(@NotNull Person.Builder person);
-    @NotNull Builder totalPrice(@NotNull Number number);
-    @NotNull Builder totalPrice(@NotNull PriceSpecification priceSpecification);
-    @NotNull Builder totalPrice(@NotNull PriceSpecification.Builder priceSpecification);
+    @NotNull Builder totalPrice(@NotNull Integer integer);
+    @NotNull Builder totalPrice(@NotNull Long totalPrice);
+    @NotNull Builder totalPrice(@NotNull Float totalPrice);
+    @NotNull Builder totalPrice(@NotNull Double totalPrice);
     @NotNull Builder totalPrice(@NotNull String totalPrice);
     @NotNull Builder priceCurrency(@NotNull String priceCurrency);
     @NotNull Builder issuedBy(@NotNull Organization organization);
@@ -440,7 +453,7 @@ public class Ticket extends Intangible {
     @NotNull Builder id(@NotNull String id);
   }
 
-  protected Ticket(OrganizationOrPerson underName, NumberOrPriceSpecificationOrString totalPrice, String priceCurrency, Organization issuedBy, java.util.Date dateIssued, Seat ticketedSeat, String ticketNumber, String ticketToken, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  protected Ticket(OrganizationOrPerson underName, Number totalPrice, String priceCurrency, Organization issuedBy, java.util.Date dateIssued, Seat ticketedSeat, String ticketNumber, String ticketToken, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myUnderName = underName;
     myTotalPrice = totalPrice;
@@ -451,8 +464,38 @@ public class Ticket extends Intangible {
     myTicketNumber = ticketNumber;
     myTicketToken = ticketToken;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myUnderName != null ? myUnderName.hashCode() : 0);
+    result = 31 * result + (myTotalPrice != null ? myTotalPrice.hashCode() : 0);
+    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
+    result = 31 * result + (myIssuedBy != null ? myIssuedBy.hashCode() : 0);
+    result = 31 * result + (myDateIssued != null ? myDateIssued.hashCode() : 0);
+    result = 31 * result + (myTicketedSeat != null ? myTicketedSeat.hashCode() : 0);
+    result = 31 * result + (myTicketNumber != null ? myTicketNumber.hashCode() : 0);
+    result = 31 * result + (myTicketToken != null ? myTicketToken.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Ticket ticket = (Ticket) o;
+    if (!super.equals(o)) return false;
+    if (myUnderName != null ? !myUnderName.equals(ticket.myUnderName) : ticket.myUnderName != null) return false;
+    if (myTotalPrice != null ? !myTotalPrice.equals(ticket.myTotalPrice) : ticket.myTotalPrice != null) return false;
+    if (myPriceCurrency != null ? !myPriceCurrency.equals(ticket.myPriceCurrency) : ticket.myPriceCurrency != null) return false;
+    if (myIssuedBy != null ? !myIssuedBy.equals(ticket.myIssuedBy) : ticket.myIssuedBy != null) return false;
+    if (myDateIssued != null ? !myDateIssued.equals(ticket.myDateIssued) : ticket.myDateIssued != null) return false;
+    if (myTicketedSeat != null ? !myTicketedSeat.equals(ticket.myTicketedSeat) : ticket.myTicketedSeat != null) return false;
+    if (myTicketNumber != null ? !myTicketNumber.equals(ticket.myTicketNumber) : ticket.myTicketNumber != null) return false;
+    if (myTicketToken != null ? !myTicketToken.equals(ticket.myTicketToken) : ticket.myTicketToken != null) return false;
+    return true;
+  }
+
   private OrganizationOrPerson myUnderName;
-  private NumberOrPriceSpecificationOrString myTotalPrice;
+  private Number myTotalPrice;
   private String myPriceCurrency;
   private Organization myIssuedBy;
   private java.util.Date myDateIssued;

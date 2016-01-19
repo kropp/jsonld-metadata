@@ -496,7 +496,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private Number additionalNumberOfGuests;
@@ -577,6 +577,26 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     myRsvpResponse = rsvpResponse;
     myComment = comment;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAdditionalNumberOfGuests != null ? myAdditionalNumberOfGuests.hashCode() : 0);
+    result = 31 * result + (myRsvpResponse != null ? myRsvpResponse.hashCode() : 0);
+    result = 31 * result + (myComment != null ? myComment.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    RsvpAction rsvpAction = (RsvpAction) o;
+    if (!super.equals(o)) return false;
+    if (myAdditionalNumberOfGuests != null ? !myAdditionalNumberOfGuests.equals(rsvpAction.myAdditionalNumberOfGuests) : rsvpAction.myAdditionalNumberOfGuests != null) return false;
+    if (myRsvpResponse != null ? !myRsvpResponse.equals(rsvpAction.myRsvpResponse) : rsvpAction.myRsvpResponse != null) return false;
+    if (myComment != null ? !myComment.equals(rsvpAction.myComment) : rsvpAction.myComment != null) return false;
+    return true;
+  }
+
   private Number myAdditionalNumberOfGuests;
   private RsvpResponseType myRsvpResponse;
   private Comment myComment;

@@ -1315,7 +1315,7 @@ public class MusicRelease extends MusicPlaylist {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String catalogNumber;
@@ -1564,6 +1564,32 @@ public class MusicRelease extends MusicPlaylist {
     myRecordLabel = recordLabel;
     myReleaseOf = releaseOf;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myCatalogNumber != null ? myCatalogNumber.hashCode() : 0);
+    result = 31 * result + (myCreditedTo != null ? myCreditedTo.hashCode() : 0);
+    result = 31 * result + (myDuration != null ? myDuration.hashCode() : 0);
+    result = 31 * result + (myMusicReleaseFormat != null ? myMusicReleaseFormat.hashCode() : 0);
+    result = 31 * result + (myRecordLabel != null ? myRecordLabel.hashCode() : 0);
+    result = 31 * result + (myReleaseOf != null ? myReleaseOf.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MusicRelease musicRelease = (MusicRelease) o;
+    if (!super.equals(o)) return false;
+    if (myCatalogNumber != null ? !myCatalogNumber.equals(musicRelease.myCatalogNumber) : musicRelease.myCatalogNumber != null) return false;
+    if (myCreditedTo != null ? !myCreditedTo.equals(musicRelease.myCreditedTo) : musicRelease.myCreditedTo != null) return false;
+    if (myDuration != null ? !myDuration.equals(musicRelease.myDuration) : musicRelease.myDuration != null) return false;
+    if (myMusicReleaseFormat != null ? !myMusicReleaseFormat.equals(musicRelease.myMusicReleaseFormat) : musicRelease.myMusicReleaseFormat != null) return false;
+    if (myRecordLabel != null ? !myRecordLabel.equals(musicRelease.myRecordLabel) : musicRelease.myRecordLabel != null) return false;
+    if (myReleaseOf != null ? !myReleaseOf.equals(musicRelease.myReleaseOf) : musicRelease.myReleaseOf != null) return false;
+    return true;
+  }
+
   private String myCatalogNumber;
   private OrganizationOrPerson myCreditedTo;
   private Duration myDuration;

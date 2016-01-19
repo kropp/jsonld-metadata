@@ -356,7 +356,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private EntertainmentBusiness entertainmentBusiness;
@@ -415,5 +415,21 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     super(audience, event, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     myEntertainmentBusiness = entertainmentBusiness;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myEntertainmentBusiness != null ? myEntertainmentBusiness.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PerformAction performAction = (PerformAction) o;
+    if (!super.equals(o)) return false;
+    if (myEntertainmentBusiness != null ? !myEntertainmentBusiness.equals(performAction.myEntertainmentBusiness) : performAction.myEntertainmentBusiness != null) return false;
+    return true;
+  }
+
   private EntertainmentBusiness myEntertainmentBusiness;
 }

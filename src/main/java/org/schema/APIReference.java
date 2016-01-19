@@ -1286,7 +1286,7 @@ public class APIReference extends TechArticle {
         if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
         if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
         if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("id".equals(key) && value instanceof String) { id((String)value); continue; }
+        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
     private String executableLibraryName;
@@ -1533,6 +1533,28 @@ public class APIReference extends TechArticle {
     myProgrammingModel = programmingModel;
     myTargetPlatform = targetPlatform;
   }
+
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myExecutableLibraryName != null ? myExecutableLibraryName.hashCode() : 0);
+    result = 31 * result + (myAssemblyVersion != null ? myAssemblyVersion.hashCode() : 0);
+    result = 31 * result + (myProgrammingModel != null ? myProgrammingModel.hashCode() : 0);
+    result = 31 * result + (myTargetPlatform != null ? myTargetPlatform.hashCode() : 0);
+    return result;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    APIReference aPIReference = (APIReference) o;
+    if (!super.equals(o)) return false;
+    if (myExecutableLibraryName != null ? !myExecutableLibraryName.equals(aPIReference.myExecutableLibraryName) : aPIReference.myExecutableLibraryName != null) return false;
+    if (myAssemblyVersion != null ? !myAssemblyVersion.equals(aPIReference.myAssemblyVersion) : aPIReference.myAssemblyVersion != null) return false;
+    if (myProgrammingModel != null ? !myProgrammingModel.equals(aPIReference.myProgrammingModel) : aPIReference.myProgrammingModel != null) return false;
+    if (myTargetPlatform != null ? !myTargetPlatform.equals(aPIReference.myTargetPlatform) : aPIReference.myTargetPlatform != null) return false;
+    return true;
+  }
+
   private String myExecutableLibraryName;
   private String myAssemblyVersion;
   private String myProgrammingModel;
