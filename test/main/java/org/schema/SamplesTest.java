@@ -1,6 +1,5 @@
 package org.schema;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -24,10 +23,7 @@ public class SamplesTest {
                         // note that you may provide Builder instead of object where it is unambiguous
                         comment().text("Hooray!").author(person().name("Max Mustermann"))
                 ).build();
-
-        final ObjectMapper objectMapper = new ObjectMapper();
-
-        final String serialized = objectMapper.writeValueAsString(article);
+        final String serialized = SchemaOrg.writeJson(article);
 
 
         assertEquals(json, serialized);
@@ -35,10 +31,7 @@ public class SamplesTest {
 
     @Test
     public void deserializationSample() throws IOException {
-        final ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JsonLdModule());
-
-        final Article article = (Article) objectMapper.readValue(json, Thing.class);
+        final Article article = (Article) SchemaOrg.readJson(json);
 
 
         assertEquals("88th Oscars ceremony will be held on February 28th", article.getName());

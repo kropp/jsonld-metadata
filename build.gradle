@@ -28,6 +28,8 @@ jar {}
 dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.5.+'
     compile 'org.jetbrains:annotations:13.0'
+
+    testCompile 'junit:junit:4.11'
 }
 
 task wrapper(type: Wrapper) {
