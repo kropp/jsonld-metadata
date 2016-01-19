@@ -201,7 +201,7 @@ class GeneratorSink : TripleSink {
     }
 
     private fun shouldSkip(name: String): Boolean {
-        return arrayOf("Text", "DateTime", "Date", "Time", "Boolean", "Number", "Int", "Long", "Float", "Double", "URL", "True", "False", "Class", "Object").contains(name) ||
+        return arrayOf("Text", "DataType", "DateTime", "Date", "Time", "Boolean", "Number", "Integer", "Int", "Long", "Float", "Double", "URL", "True", "False", "Class", "Object").contains(name) ||
                 name.contains("#") || name.contains("/")
     }
 
@@ -210,6 +210,50 @@ class GeneratorSink : TripleSink {
         packageDir.mkdirs()
         generateTypes(ns, packageDir)
         generateBuilders(ns, packageDir)
+    }
+
+    fun writeTests(dir: File, ns: String) {
+        val packageDir = ns.split(Regex("\\.")).fold(dir) { d, s -> File(d, s) }
+        packageDir.mkdirs()
+
+        // public API
+        with(StringBuilder()) {
+            appendln(BANNER)
+            appendln()
+            appendln("package $ns;")
+            appendln()
+            appendln("import java.io.IOException;")
+            appendln("import org.junit.Test;")
+            appendln("import static org.junit.Assert.assertEquals;")
+            appendln()
+            appendln("public class SmokeTest {")
+
+            for (type in types.values) {
+                if (type.name.isNullOrEmpty() || type.isField || type.isInterface || type.parentType.isNullOrEmpty() || shouldSkip(type.name!!))
+                    continue
+
+                val typeName = type.name!!.capitalize()
+                val varName = typeName.decapitalize()
+
+                appendln("  @Test public void test$typeName() throws IOException {")
+                appendln("    final $typeName $varName = SchemaOrg.$varName()")
+                for (field in getAllFields(type)) {
+                    val eitherTypes = getEitherTypes(field)
+                    eitherTypes.forEachIndexed { i, fieldType ->
+                        if (!shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && fieldType != "String" && fieldType != "Integer" && fieldType != "java.util.Date" && fieldType != "HasPart") {
+                            appendln("      .${field.name!!.decapitalize()}(($fieldType)null)")
+                        }
+                    }
+                }
+                appendln("      .build();")
+                appendln("      final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson($varName));")
+                appendln("      assertEquals($varName, thing);")
+                appendln("  }")
+            }
+            appendln("}")
+
+            File(packageDir, "SmokeTest.java").writeText(toString())
+        }
     }
 
     private fun generateEither(ns: String, packageDir: File, types: Collection<String>): String {
@@ -636,5 +680,9 @@ fun main(args: Array<String>) {
     }
     generator.postProcess()
 
+    println("Generating classes")
     generator.writeJava(File("src/main/java"), "org.schema")
+
+    println("Generating tests")
+    generator.writeTests(File("test/main/java"), "org.schema")
 }
