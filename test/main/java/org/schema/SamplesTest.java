@@ -26,7 +26,8 @@ public class SamplesTest {
         final String serialized = SchemaOrg.writeJson(article);
 
 
-        assertEquals(json, serialized);
+        final Thing restored = SchemaOrg.readJson(serialized);
+        assertEquals(article, restored);
     }
 
     @Test

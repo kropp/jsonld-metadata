@@ -540,10 +540,10 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
                     append(allFields.map { it.name?.decapitalize() }.filterNotNull().joinToString(", "))
                     val fromMapIfStatements = allFields.map {
                         val varName = it.name!!.decapitalize()
-                        val fieldType = getFieldType(it)
-                        (if (fieldType == "Number") { NUMBER_UNDERLYING_TYPES } else if (varName == "acceptsReservations") { listOf("Boolean", "String") } else { listOf(fieldType) }).map {
+                        val fieldTypes = getEitherTypes(it)
+                        fieldTypes.map {
                             "if (\"${varName.let { if(it == "id") "@id" else it }}\".equals(key) && value instanceof $it) { $varName(($it)value); continue; }"
-                        }.joinToString("\n   ")
+                        }.joinToString("\n        ")
                     }
                     appendln(");")
                     appendln("    }")
