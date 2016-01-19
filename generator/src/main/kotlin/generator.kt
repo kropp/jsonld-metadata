@@ -185,12 +185,12 @@ class GeneratorSink : TripleSink {
         if (field.isInterface && field.name != null)
             return listOf(field.name!!.capitalize())
 
+        if (field.dataTypes[0] == "http://schema.org/Number") {
+            return NUMBER_UNDERLYING_TYPES
+        }
+
         if (field.dataTypes.size < 2) {
-            val fieldType = getFieldType(field) ?: ""
-            if (fieldType == "Number")
-                return NUMBER_UNDERLYING_TYPES
-            else
-                return listOf(fieldType)
+            return listOf(getFieldType(field) ?: "")
         }
 
         val interfaceName = field.dataTypes.firstOrNull { types[it]!!.isInterface }
@@ -224,9 +224,11 @@ class GeneratorSink : TripleSink {
             appendln()
             appendln("import java.io.IOException;")
             appendln("import org.junit.Test;")
+            appendln("import java.util.Date;")
             appendln("import static org.junit.Assert.assertEquals;")
             appendln()
             appendln("public class SmokeTest {")
+            appendln("  private static final Date NOW = new Date(new Date().toString()); // clear milliseconds")
 
             for (type in types.values) {
                 if (type.name.isNullOrEmpty() || type.isField || type.isInterface || type.parentType.isNullOrEmpty() || shouldSkip(type.name!!))
@@ -238,11 +240,17 @@ class GeneratorSink : TripleSink {
                 appendln("  @Test public void test$typeName() throws IOException {")
                 appendln("    final $typeName $varName = SchemaOrg.$varName()")
                 for (field in getAllFields(type)) {
-                    val eitherTypes = getEitherTypes(field)
-                    eitherTypes.forEachIndexed { i, fieldType ->
-                        if (!shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && fieldType != "String" && fieldType != "Integer" && fieldType != "java.util.Date" && fieldType != "HasPart") {
-                            appendln("      .${field.name!!.decapitalize()}(($fieldType)null)")
-                        }
+                    when (getEitherTypes(field).first()) {
+                        "String" -> "\"Test String\""
+                        "Float" -> ".1342"
+                        "Double" -> ".1342"
+                        "Integer" -> "42"
+                        "Long" -> "42L"
+                        "Boolean" -> "true"
+                        "java.util.Date" -> "NOW"
+                        else -> null //if (!shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && fieldType != "HasPart") "($fieldType)null" else null
+                    }?.let {
+                        appendln("      .${field.name!!.decapitalize()}($it)")
                     }
                 }
                 appendln("      .build();")
@@ -388,15 +396,20 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import org.jetbrains.annotations.Nullable;
+import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.Map;
+import java.util.HashMap;
+import java.text.*;
 
 /**
  * Typed deserializer for {@link org.schema.Thing}
  */
 class ThingDeserializer extends JsonDeserializer<Thing> {
+    private static final DateFormat dateFormat = new ISO8601DateFormat();
+
     @Override
     public Thing deserialize(JsonParser p, DeserializationContext ctx) throws IOException {
         return fromMap(p.<HashMap<String, Object>>readValueAs(new TypeReference<HashMap<String, Object>>() {
@@ -417,6 +430,16 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
         final ThingBuilder builder = SchemaOrg.getBuilder((String) type);
         if (builder == null) {
             return null;
+        }
+
+        for (Map.Entry<String, Object> entry : result.entrySet()) {
+            if (entry.getValue() instanceof String) {
+                try {
+                    final Date date = dateFormat.parse((String) entry.getValue());
+                    result.put(entry.getKey(), date);
+                } catch (ParseException ignored) {
+                }
+            }
         }
 
         builder.fromMap(result);
@@ -498,6 +521,7 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
                 }
 
                 // builder
+                val allFields = getAllFields(type)
                 if (!type.isInterface) {
                     appendln("  /**")
                     appendln("   * Builder for {@link $typeName}")
@@ -508,23 +532,27 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
                     appendln("     */")
                     appendln("    public $typeName build() {")
                     append("      return new $typeName(")
-                    append(getAllFields(type).map { it.name?.decapitalize() }.filterNotNull().joinToString(", "))
+                    append(allFields.map { it.name?.decapitalize() }.filterNotNull().joinToString(", "))
+                    val fromMapIfStatements = allFields.map {
+                        val varName = it.name!!.decapitalize()
+                        val fieldType = getFieldType(it)
+                        if (fieldType == "Number") { NUMBER_UNDERLYING_TYPES } else { listOf(fieldType) }.map {
+                            "if (\"${varName.let { if(it == "id") "@id" else it }}\".equals(key) && value instanceof $it) { $varName(($it)value); continue; }"
+                        }.joinToString("\n   ")
+                    }
                     appendln(");")
                     appendln("    }")
-                    val fromMapIfStatements = arrayListOf<String>()
                     val interfaceMethods = arrayListOf<String>()
-                    for (field in getAllFields(type)) {
+                    for (field in allFields) {
                         if (field.name != null) {
                             val name = field.name!!.capitalize()
                             val eitherTypes = getEitherTypes(field)
-                            eitherTypes.forEachIndexed { i, fieldType ->
+                            eitherTypes.forEach { fieldType ->
                                 field.comment?.let {
                                     appendln("    /**")
                                     appendln("     * $it")
                                     appendln("     */")
                                 }
-
-                                fromMapIfStatements += "if (\"${name.decapitalize()}\".equals(key) && value instanceof $fieldType) { ${name.decapitalize()}(($fieldType)value); continue; }"
 
                                 interfaceMethods += "@NotNull Builder ${name.decapitalize()}(@NotNull $fieldType ${getVariableName(fieldType, name)});"
                                 appendln("    @NotNull public Builder ${name.decapitalize()}(@NotNull $fieldType ${getVariableName(fieldType, name)}) {")
@@ -554,7 +582,7 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
                     }
 
                     // support for integer id on all builders that have id
-                    if (getAllFields(type).any { it.name?.equals("id", true) ?: false }) {
+                    if (allFields.any { it.name?.equals("id", true) ?: false }) {
                         appendln("    public Builder id(long id) {")
                         appendln("      return id(Long.toString(id));")
                         appendln("    }")
@@ -570,7 +598,7 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
                     appendln("      }")
                     appendln("    }")
 
-                    getAllFields(type).forEach { appendln("    private ${getEitherFieldType(ns, packageDir, it)} ${getVariableName(it.name!!)};") }
+                    allFields.forEach { appendln("    private ${getEitherFieldType(ns, packageDir, it)} ${getVariableName(it.name!!)};") }
                     appendln("  }")
                     appendln("  public interface Builder extends ThingBuilder<$typeName> {")
                     appendln("    " + interfaceMethods.joinToString("\n    "))
@@ -583,7 +611,7 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
                 // package-local constructor and private fields
                 if (!type.isInterface) {
                     append("  protected $typeName(")
-                    append(getAllFields(type).map { "${getEitherFieldType(ns, packageDir, it)} ${it.name!!.decapitalize()}" }.joinToString(", "))
+                    append(allFields.map { "${getEitherFieldType(ns, packageDir, it)} ${it.name!!.decapitalize()}" }.joinToString(", "))
                     appendln(") {")
                     type.parentType?.let {
                         append("    super(")
