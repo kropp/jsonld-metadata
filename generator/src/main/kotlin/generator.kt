@@ -228,7 +228,7 @@ class GeneratorSink : TripleSink {
             appendln("import static org.junit.Assert.assertEquals;")
             appendln()
             appendln("public class SmokeTest {")
-            appendln("  private static final Date NOW = new Date(new Date().toString()); // clear milliseconds")
+            appendln("  private static final Date NOW = new Date(1234567890000L);")
 
             for (type in types.values) {
                 if (type.name.isNullOrEmpty() || type.isField || type.isInterface || type.parentType.isNullOrEmpty() || shouldSkip(type.name!!))
@@ -306,6 +306,11 @@ class GeneratorSink : TripleSink {
                     appendln("    my$it = null;")
                 }
                 appendln("  }")
+                appendln()
+                generateHashCode(eitherName, types)
+                appendln()
+                generateEquals(eitherName, types, true)
+                appendln()
                 appendln("}")
 
                 file.writeText(toString())
@@ -536,7 +541,7 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
                     val fromMapIfStatements = allFields.map {
                         val varName = it.name!!.decapitalize()
                         val fieldType = getFieldType(it)
-                        if (fieldType == "Number") { NUMBER_UNDERLYING_TYPES } else { listOf(fieldType) }.map {
+                        (if (fieldType == "Number") { NUMBER_UNDERLYING_TYPES } else if (varName == "acceptsReservations") { listOf("Boolean", "String") } else { listOf(fieldType) }).map {
                             "if (\"${varName.let { if(it == "id") "@id" else it }}\".equals(key) && value instanceof $it) { $varName(($it)value); continue; }"
                         }.joinToString("\n   ")
                     }
@@ -627,10 +632,11 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
                     }
                     appendln("  }")
 
+                    val fieldsCapitalized = fields.map { it.name!!.capitalize() }
                     appendln()
-                    generateHashCode(typeName, fields)
+                    generateHashCode(typeName, fieldsCapitalized)
                     appendln()
-                    generateEquals(typeName, fields)
+                    generateEquals(typeName, fieldsCapitalized, typeName == "Thing")
                     appendln()
                 }
 
@@ -645,30 +651,30 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
         }
     }
 
-    private fun StringBuilder.generateHashCode(typeName: String, fields: List<Type>) {
+    private fun StringBuilder.generateHashCode(typeName: String, fields: Collection<String>) {
         appendln("  @Override public int hashCode() {")
         if (typeName == "Thing") {
             appendln("    int result = 0;")
         } else {
             appendln("    int result = super.hashCode();")
         }
-        fields.map { it.name!!.capitalize() }.forEach {
+        fields.forEach {
             appendln("    result = 31 * result + (my$it != null ? my$it.hashCode() : 0);")
         }
         appendln("    return result;")
         appendln("  }")
     }
 
-    private fun StringBuilder.generateEquals(typeName: String, fields: List<Type>) {
+    private fun StringBuilder.generateEquals(typeName: String, fields: Collection<String>, skipSuper: Boolean) {
         appendln("  @Override public boolean equals(Object o) {")
         appendln("    if (this == o) return true;")
         appendln("    if (o == null || getClass() != o.getClass()) return false;")
         val other = typeName.decapitalize()
         appendln("    $typeName $other = ($typeName) o;")
-        if (typeName != "Thing") {
+        if (!skipSuper) {
             appendln("    if (!super.equals(o)) return false;")
         }
-        fields.map { it.name!!.capitalize() }.forEach {
+        fields.forEach {
             appendln("    if (my$it != null ? !my$it.equals($other.my$it) : $other.my$it != null) return false;")
         }
         appendln("    return true;")
