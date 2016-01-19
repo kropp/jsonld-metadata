@@ -269,6 +269,10 @@ class GeneratorSink : TripleSink {
             appendln()
             appendln("package $ns;")
             appendln()
+            appendln("import com.fasterxml.jackson.core.JsonProcessingException;")
+            appendln("import com.fasterxml.jackson.databind.ObjectMapper;")
+            appendln("import org.jetbrains.annotations.NotNull;")
+            appendln()
             appendln("public class SchemaOrg {")
 
             for (type in types.values) {
@@ -284,6 +288,27 @@ class GeneratorSink : TripleSink {
                 }
                 appendln("  public static $typeName.Builder ${typeName.decapitalize()}() { return new $typeName.${typeName}ThingBuilder(); }")
             }
+            appendln()
+            appendln("  public static ThingBuilder getBuilder(@NotNull String type) {")
+            for (type in types.values) {
+                if (type.name.isNullOrEmpty() || type.isField || type.isInterface || shouldSkip(type.name!!))
+                    continue
+
+                val typeName = type.name!!.capitalize()
+
+                appendln("    if (\"$typeName\".equals(type)) { return new $typeName.${typeName}ThingBuilder(); }")
+            }
+            appendln("    return null;")
+            appendln("  }")
+            appendln()
+            appendln("  @NotNull public static String writeJson(@NotNull Thing thing) throws JsonProcessingException {")
+            appendln("    return new ObjectMapper().writeValueAsString(thing);")
+            appendln("  }")
+            appendln("  public static Thing readJson(String json) throws java.io.IOException {")
+            appendln("    final ObjectMapper objectMapper = new ObjectMapper();")
+            appendln("    objectMapper.registerModule(new JsonLdModule());")
+            appendln("    return objectMapper.readValue(json, Thing.class);")
+            appendln("  }")
             appendln("}")
 
             File(packageDir, "SchemaOrg.java").writeText(toString())
@@ -294,7 +319,65 @@ class GeneratorSink : TripleSink {
 package $ns;
 
 public interface ThingBuilder<T> {
+  void fromMap(java.util.Map<String,Object> map);
   T build();
+}""")
+        File(packageDir, "JsonLdModule.java").writeText("""$BANNER
+
+package $ns;
+
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+
+public class JsonLdModule extends SimpleModule {
+    public JsonLdModule() {
+        super("JsonLD Module", new Version(1, 0, 0, null, null, null));
+        addDeserializer(Thing.class, new ThingDeserializer());
+    }
+}""")
+        File(packageDir, "ThingDeserializer.java").writeText("""$BANNER
+
+package $ns;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import org.jetbrains.annotations.Nullable;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Typed deserializer for {@link org.schema.Thing}
+ */
+class ThingDeserializer extends JsonDeserializer<Thing> {
+    @Override
+    public Thing deserialize(JsonParser p, DeserializationContext ctx) throws IOException {
+        return fromMap(p.<HashMap<String, Object>>readValueAs(new TypeReference<HashMap<String, Object>>() {
+        }));
+    }
+
+    @Nullable
+    static Thing fromMap(Map<String, Object> result) {
+        if (!"http://schema.org/".equals(result.get("@context"))) {
+            return null;
+        }
+
+        final Object type = result.get("@type");
+        if (type == null || !(type instanceof String)) {
+            return null;
+        }
+
+        final ThingBuilder builder = SchemaOrg.getBuilder((String) type);
+        if (builder == null) {
+            return null;
+        }
+
+        builder.fromMap(result);
+        return (Thing) builder.build();
+    }
 }""")
     }
 
@@ -384,6 +467,7 @@ public interface ThingBuilder<T> {
                     append(getAllFields(type).map { it.name?.decapitalize() }.filterNotNull().joinToString(", "))
                     appendln(");")
                     appendln("    }")
+                    val fromMapIfStatements = arrayListOf<String>()
                     val interfaceMethods = arrayListOf<String>()
                     for (field in getAllFields(type)) {
                         if (field.name != null) {
@@ -395,6 +479,9 @@ public interface ThingBuilder<T> {
                                     appendln("     * $it")
                                     appendln("     */")
                                 }
+
+                                fromMapIfStatements += "if (\"${name.decapitalize()}\".equals(key) && value instanceof $fieldType) { ${name.decapitalize()}(($fieldType)value); continue; }"
+
                                 interfaceMethods += "@NotNull Builder ${name.decapitalize()}(@NotNull $fieldType ${getVariableName(fieldType, name)});"
                                 appendln("    @NotNull public Builder ${name.decapitalize()}(@NotNull $fieldType ${getVariableName(fieldType, name)}) {")
                                 if (eitherTypes.size < 2) {
@@ -428,6 +515,16 @@ public interface ThingBuilder<T> {
                         appendln("      return id(Long.toString(id));")
                         appendln("    }")
                     }
+
+                    appendln()
+                    appendln("    @Override public void fromMap(java.util.Map<String, Object> map) {")
+                    appendln("      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {")
+                    appendln("        final String key = entry.getKey();")
+                    appendln("        Object value = entry.getValue();")
+                    appendln("        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }")
+                    appendln("        " + fromMapIfStatements.joinToString("\n        "))
+                    appendln("      }")
+                    appendln("    }")
 
                     getAllFields(type).forEach { appendln("    private ${getEitherFieldType(ns, packageDir, it)} ${getVariableName(it.name!!)};") }
                     appendln("  }")
