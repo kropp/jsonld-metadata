@@ -534,6 +534,8 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
                     appendln()
                 }
 
+                val fields = type.subTypes.mapNotNull { types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }
+
                 // package-local constructor and private fields
                 if (!type.isInterface) {
                     append("  protected $typeName(")
@@ -552,21 +554,53 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
                         }
                     }
                     appendln("  }")
-                }
-                for (field in type.subTypes) {
-                    types[field]?.let {
-                        if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
-                            appendln("  private ${getEitherFieldType(ns, packageDir, it)} my${it.name!!.capitalize()};")
-                        }
-                    }
+
+                    appendln()
+                    generateHashCode(typeName, fields)
+                    appendln()
+                    generateEquals(typeName, fields)
+                    appendln()
                 }
 
+                fields.forEach {
+                    appendln("  private ${getEitherFieldType(ns, packageDir, it)} my${it.name!!.capitalize()};")
+                }
 
                 appendln("}")
 
                 File(packageDir, "$typeName.java").writeText(toString())
             }
         }
+    }
+
+    private fun StringBuilder.generateHashCode(typeName: String, fields: List<Type>) {
+        appendln("  @Override public int hashCode() {")
+        if (typeName == "Thing") {
+            appendln("    int result = 0;")
+        } else {
+            appendln("    int result = super.hashCode();")
+        }
+        fields.map { it.name!!.capitalize() }.forEach {
+            appendln("    result = 31 * result + (my$it != null ? my$it.hashCode() : 0);")
+        }
+        appendln("    return result;")
+        appendln("  }")
+    }
+
+    private fun StringBuilder.generateEquals(typeName: String, fields: List<Type>) {
+        appendln("  @Override public boolean equals(Object o) {")
+        appendln("    if (this == o) return true;")
+        appendln("    if (o == null || getClass() != o.getClass()) return false;")
+        val other = typeName.decapitalize()
+        appendln("    $typeName $other = ($typeName) o;")
+        if (typeName != "Thing") {
+            appendln("    if (!super.equals(o)) return false;")
+        }
+        fields.map { it.name!!.capitalize() }.forEach {
+            appendln("    if (my$it != null ? !my$it.equals($other.my$it) : $other.my$it != null) return false;")
+        }
+        appendln("    return true;")
+        appendln("  }")
     }
 
     private fun findType(fieldType: String): Type? = types.values.firstOrNull { it.name == fieldType }
