@@ -277,7 +277,7 @@ class GeneratorSink : TripleSink {
                 appendln("import com.fasterxml.jackson.annotation.*;")
                 appendln()
                 appendln("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)")
-                appendln("class $eitherName {")
+                appendln("public class $eitherName {")
 
                 appendln("  @JsonValue")
                 appendln("  public Object getJsonLdValue() {")
@@ -297,7 +297,7 @@ class GeneratorSink : TripleSink {
                     appendln("  }")
                 }
                 types.forEach {
-                    appendln("  public void set$it($it ${getVariableName(it, "value")}) { clear(); my$it = ${getVariableName(it, "value")}; }")
+                    appendln("  void set$it($it ${getVariableName(it, "value")}) { clear(); my$it = ${getVariableName(it, "value")}; }")
                     appendln("  public $it get$it() { return my$it; }")
                     appendln("  private $it my$it;")
                 }
@@ -327,6 +327,7 @@ class GeneratorSink : TripleSink {
             appendln("package $ns;")
             appendln()
             appendln("import com.fasterxml.jackson.core.JsonProcessingException;")
+            appendln("import com.fasterxml.jackson.databind.JsonNode;")
             appendln("import com.fasterxml.jackson.databind.ObjectMapper;")
             appendln("import org.jetbrains.annotations.NotNull;")
             appendln()
@@ -365,6 +366,10 @@ class GeneratorSink : TripleSink {
             appendln("    final ObjectMapper objectMapper = new ObjectMapper();")
             appendln("    objectMapper.registerModule(new JsonLdModule());")
             appendln("    return objectMapper.readValue(json, Thing.class);")
+            appendln("  }")
+            appendln("  public static Thing readJson(JsonNode node) {")
+            appendln("    final ObjectMapper objectMapper = new ObjectMapper();")
+            appendln("    return ThingDeserializer.fromMap(objectMapper.convertValue(node, java.util.Map.class));")
             appendln("  }")
             appendln("}")
 
