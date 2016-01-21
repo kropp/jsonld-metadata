@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class OwnershipInfoOrProduct {
+public class OwnershipInfoOrProduct {
   @JsonValue
   public Object getJsonLdValue() {
     if (myOwnershipInfo != null) return myOwnershipInfo;
@@ -34,10 +34,10 @@ class OwnershipInfoOrProduct {
     if (myProduct != null) return myProduct;
     return null;
   }
-  public void setOwnershipInfo(OwnershipInfo ownershipInfo) { clear(); myOwnershipInfo = ownershipInfo; }
+  void setOwnershipInfo(OwnershipInfo ownershipInfo) { clear(); myOwnershipInfo = ownershipInfo; }
   public OwnershipInfo getOwnershipInfo() { return myOwnershipInfo; }
   private OwnershipInfo myOwnershipInfo;
-  public void setProduct(Product product) { clear(); myProduct = product; }
+  void setProduct(Product product) { clear(); myProduct = product; }
   public Product getProduct() { return myProduct; }
   private Product myProduct;
   private void clear() {

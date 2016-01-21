@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class ItemListOrMusicRecording {
+public class ItemListOrMusicRecording {
   @JsonValue
   public Object getJsonLdValue() {
     if (myItemList != null) return myItemList;
@@ -34,10 +34,10 @@ class ItemListOrMusicRecording {
     if (myMusicRecording != null) return myMusicRecording;
     return null;
   }
-  public void setItemList(ItemList itemList) { clear(); myItemList = itemList; }
+  void setItemList(ItemList itemList) { clear(); myItemList = itemList; }
   public ItemList getItemList() { return myItemList; }
   private ItemList myItemList;
-  public void setMusicRecording(MusicRecording musicRecording) { clear(); myMusicRecording = musicRecording; }
+  void setMusicRecording(MusicRecording musicRecording) { clear(); myMusicRecording = musicRecording; }
   public MusicRecording getMusicRecording() { return myMusicRecording; }
   private MusicRecording myMusicRecording;
   private void clear() {

@@ -22,17 +22,17 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class MapOrString {
+public class MapOrString {
   @JsonValue
   public Object getJsonLdValue() {
     if (myMap != null) return myMap;
     if (myString != null) return myString;
     return null;
   }
-  public void setMap(Map map) { clear(); myMap = map; }
+  void setMap(Map map) { clear(); myMap = map; }
   public Map getMap() { return myMap; }
   private Map myMap;
-  public void setString(String value) { clear(); myString = value; }
+  void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
   private void clear() {

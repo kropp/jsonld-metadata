@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class GeoCoordinatesOrGeoShape {
+public class GeoCoordinatesOrGeoShape {
   @JsonValue
   public Object getJsonLdValue() {
     if (myGeoCoordinates != null) return myGeoCoordinates;
@@ -34,10 +34,10 @@ class GeoCoordinatesOrGeoShape {
     if (myGeoShape != null) return myGeoShape;
     return null;
   }
-  public void setGeoCoordinates(GeoCoordinates geoCoordinates) { clear(); myGeoCoordinates = geoCoordinates; }
+  void setGeoCoordinates(GeoCoordinates geoCoordinates) { clear(); myGeoCoordinates = geoCoordinates; }
   public GeoCoordinates getGeoCoordinates() { return myGeoCoordinates; }
   private GeoCoordinates myGeoCoordinates;
-  public void setGeoShape(GeoShape geoShape) { clear(); myGeoShape = geoShape; }
+  void setGeoShape(GeoShape geoShape) { clear(); myGeoShape = geoShape; }
   public GeoShape getGeoShape() { return myGeoShape; }
   private GeoShape myGeoShape;
   private void clear() {

@@ -22,17 +22,17 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class CreativeWorkOrString {
+public class CreativeWorkOrString {
   @JsonValue
   public Object getJsonLdValue() {
     if (myCreativeWork != null) return myCreativeWork;
     if (myString != null) return myString;
     return null;
   }
-  public void setCreativeWork(CreativeWork creativeWork) { clear(); myCreativeWork = creativeWork; }
+  void setCreativeWork(CreativeWork creativeWork) { clear(); myCreativeWork = creativeWork; }
   public CreativeWork getCreativeWork() { return myCreativeWork; }
   private CreativeWork myCreativeWork;
-  public void setString(String value) { clear(); myString = value; }
+  void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
   private void clear() {

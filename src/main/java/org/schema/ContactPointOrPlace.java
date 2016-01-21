@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class ContactPointOrPlace {
+public class ContactPointOrPlace {
   @JsonValue
   public Object getJsonLdValue() {
     if (myContactPoint != null) return myContactPoint;
@@ -34,10 +34,10 @@ class ContactPointOrPlace {
     if (myPlace != null) return myPlace;
     return null;
   }
-  public void setContactPoint(ContactPoint contactPoint) { clear(); myContactPoint = contactPoint; }
+  void setContactPoint(ContactPoint contactPoint) { clear(); myContactPoint = contactPoint; }
   public ContactPoint getContactPoint() { return myContactPoint; }
   private ContactPoint myContactPoint;
-  public void setPlace(Place place) { clear(); myPlace = place; }
+  void setPlace(Place place) { clear(); myPlace = place; }
   public Place getPlace() { return myPlace; }
   private Place myPlace;
   private void clear() {

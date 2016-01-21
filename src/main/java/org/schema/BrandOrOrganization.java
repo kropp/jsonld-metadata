@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class BrandOrOrganization {
+public class BrandOrOrganization {
   @JsonValue
   public Object getJsonLdValue() {
     if (myBrand != null) return myBrand;
@@ -34,10 +34,10 @@ class BrandOrOrganization {
     if (myOrganization != null) return myOrganization;
     return null;
   }
-  public void setBrand(Brand brand) { clear(); myBrand = brand; }
+  void setBrand(Brand brand) { clear(); myBrand = brand; }
   public Brand getBrand() { return myBrand; }
   private Brand myBrand;
-  public void setOrganization(Organization organization) { clear(); myOrganization = organization; }
+  void setOrganization(Organization organization) { clear(); myOrganization = organization; }
   public Organization getOrganization() { return myOrganization; }
   private Organization myOrganization;
   private void clear() {

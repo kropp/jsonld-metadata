@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class FoodEstablishmentOrPlace {
+public class FoodEstablishmentOrPlace {
   @JsonValue
   public Object getJsonLdValue() {
     if (myFoodEstablishment != null) return myFoodEstablishment;
@@ -34,10 +34,10 @@ class FoodEstablishmentOrPlace {
     if (myPlace != null) return myPlace;
     return null;
   }
-  public void setFoodEstablishment(FoodEstablishment foodEstablishment) { clear(); myFoodEstablishment = foodEstablishment; }
+  void setFoodEstablishment(FoodEstablishment foodEstablishment) { clear(); myFoodEstablishment = foodEstablishment; }
   public FoodEstablishment getFoodEstablishment() { return myFoodEstablishment; }
   private FoodEstablishment myFoodEstablishment;
-  public void setPlace(Place place) { clear(); myPlace = place; }
+  void setPlace(Place place) { clear(); myPlace = place; }
   public Place getPlace() { return myPlace; }
   private Place myPlace;
   private void clear() {

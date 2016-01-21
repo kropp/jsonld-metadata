@@ -22,17 +22,17 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class QualitativeValueOrString {
+public class QualitativeValueOrString {
   @JsonValue
   public Object getJsonLdValue() {
     if (myQualitativeValue != null) return myQualitativeValue;
     if (myString != null) return myString;
     return null;
   }
-  public void setQualitativeValue(QualitativeValue qualitativeValue) { clear(); myQualitativeValue = qualitativeValue; }
+  void setQualitativeValue(QualitativeValue qualitativeValue) { clear(); myQualitativeValue = qualitativeValue; }
   public QualitativeValue getQualitativeValue() { return myQualitativeValue; }
   private QualitativeValue myQualitativeValue;
-  public void setString(String value) { clear(); myString = value; }
+  void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
   private void clear() {

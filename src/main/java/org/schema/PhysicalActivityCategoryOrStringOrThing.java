@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class PhysicalActivityCategoryOrStringOrThing {
+public class PhysicalActivityCategoryOrStringOrThing {
   @JsonValue
   public Object getJsonLdValue() {
     if (myPhysicalActivityCategory != null) return myPhysicalActivityCategory;
@@ -30,13 +30,13 @@ class PhysicalActivityCategoryOrStringOrThing {
     if (myThing != null) return myThing;
     return null;
   }
-  public void setPhysicalActivityCategory(PhysicalActivityCategory physicalActivityCategory) { clear(); myPhysicalActivityCategory = physicalActivityCategory; }
+  void setPhysicalActivityCategory(PhysicalActivityCategory physicalActivityCategory) { clear(); myPhysicalActivityCategory = physicalActivityCategory; }
   public PhysicalActivityCategory getPhysicalActivityCategory() { return myPhysicalActivityCategory; }
   private PhysicalActivityCategory myPhysicalActivityCategory;
-  public void setString(String value) { clear(); myString = value; }
+  void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
-  public void setThing(Thing thing) { clear(); myThing = thing; }
+  void setThing(Thing thing) { clear(); myThing = thing; }
   public Thing getThing() { return myThing; }
   private Thing myThing;
   private void clear() {

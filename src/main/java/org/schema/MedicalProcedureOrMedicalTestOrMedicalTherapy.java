@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class MedicalProcedureOrMedicalTestOrMedicalTherapy {
+public class MedicalProcedureOrMedicalTestOrMedicalTherapy {
   @JsonValue
   public Object getJsonLdValue() {
     if (myMedicalProcedure != null) return myMedicalProcedure;
@@ -36,13 +36,13 @@ class MedicalProcedureOrMedicalTestOrMedicalTherapy {
     if (myMedicalTherapy != null) return myMedicalTherapy;
     return null;
   }
-  public void setMedicalProcedure(MedicalProcedure medicalProcedure) { clear(); myMedicalProcedure = medicalProcedure; }
+  void setMedicalProcedure(MedicalProcedure medicalProcedure) { clear(); myMedicalProcedure = medicalProcedure; }
   public MedicalProcedure getMedicalProcedure() { return myMedicalProcedure; }
   private MedicalProcedure myMedicalProcedure;
-  public void setMedicalTest(MedicalTest medicalTest) { clear(); myMedicalTest = medicalTest; }
+  void setMedicalTest(MedicalTest medicalTest) { clear(); myMedicalTest = medicalTest; }
   public MedicalTest getMedicalTest() { return myMedicalTest; }
   private MedicalTest myMedicalTest;
-  public void setMedicalTherapy(MedicalTherapy medicalTherapy) { clear(); myMedicalTherapy = medicalTherapy; }
+  void setMedicalTherapy(MedicalTherapy medicalTherapy) { clear(); myMedicalTherapy = medicalTherapy; }
   public MedicalTherapy getMedicalTherapy() { return myMedicalTherapy; }
   private MedicalTherapy myMedicalTherapy;
   private void clear() {

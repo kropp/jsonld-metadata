@@ -22,17 +22,17 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class BreadcrumbListOrString {
+public class BreadcrumbListOrString {
   @JsonValue
   public Object getJsonLdValue() {
     if (myBreadcrumbList != null) return myBreadcrumbList;
     if (myString != null) return myString;
     return null;
   }
-  public void setBreadcrumbList(BreadcrumbList breadcrumbList) { clear(); myBreadcrumbList = breadcrumbList; }
+  void setBreadcrumbList(BreadcrumbList breadcrumbList) { clear(); myBreadcrumbList = breadcrumbList; }
   public BreadcrumbList getBreadcrumbList() { return myBreadcrumbList; }
   private BreadcrumbList myBreadcrumbList;
-  public void setString(String value) { clear(); myString = value; }
+  void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
   private void clear() {

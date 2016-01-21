@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class IntegerOrQuantitativeValue {
+public class IntegerOrQuantitativeValue {
   @JsonValue
   public Object getJsonLdValue() {
     if (myInteger != null) return myInteger;
@@ -33,10 +33,10 @@ class IntegerOrQuantitativeValue {
     if (myQuantitativeValue != null) return myQuantitativeValue;
     return null;
   }
-  public void setInteger(Integer integer) { clear(); myInteger = integer; }
+  void setInteger(Integer integer) { clear(); myInteger = integer; }
   public Integer getInteger() { return myInteger; }
   private Integer myInteger;
-  public void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
+  void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
   public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
   private QuantitativeValue myQuantitativeValue;
   private void clear() {

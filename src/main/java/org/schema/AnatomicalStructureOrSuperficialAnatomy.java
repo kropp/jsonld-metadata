@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class AnatomicalStructureOrSuperficialAnatomy {
+public class AnatomicalStructureOrSuperficialAnatomy {
   @JsonValue
   public Object getJsonLdValue() {
     if (myAnatomicalStructure != null) return myAnatomicalStructure;
@@ -34,10 +34,10 @@ class AnatomicalStructureOrSuperficialAnatomy {
     if (mySuperficialAnatomy != null) return mySuperficialAnatomy;
     return null;
   }
-  public void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
+  void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
   public AnatomicalStructure getAnatomicalStructure() { return myAnatomicalStructure; }
   private AnatomicalStructure myAnatomicalStructure;
-  public void setSuperficialAnatomy(SuperficialAnatomy superficialAnatomy) { clear(); mySuperficialAnatomy = superficialAnatomy; }
+  void setSuperficialAnatomy(SuperficialAnatomy superficialAnatomy) { clear(); mySuperficialAnatomy = superficialAnatomy; }
   public SuperficialAnatomy getSuperficialAnatomy() { return mySuperficialAnatomy; }
   private SuperficialAnatomy mySuperficialAnatomy;
   private void clear() {

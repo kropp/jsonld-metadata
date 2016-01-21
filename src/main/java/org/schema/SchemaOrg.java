@@ -19,6 +19,7 @@
 package org.schema;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.jetbrains.annotations.NotNull;
 
@@ -4476,5 +4477,9 @@ public class SchemaOrg {
     final ObjectMapper objectMapper = new ObjectMapper();
     objectMapper.registerModule(new JsonLdModule());
     return objectMapper.readValue(json, Thing.class);
+  }
+  public static Thing readJson(JsonNode node) {
+    final ObjectMapper objectMapper = new ObjectMapper();
+    return ThingDeserializer.fromMap(objectMapper.convertValue(node, java.util.Map.class));
   }
 }

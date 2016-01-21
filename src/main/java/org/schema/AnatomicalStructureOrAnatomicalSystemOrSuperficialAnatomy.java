@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy {
+public class AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy {
   @JsonValue
   public Object getJsonLdValue() {
     if (myAnatomicalStructure != null) return myAnatomicalStructure;
@@ -36,13 +36,13 @@ class AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy {
     if (mySuperficialAnatomy != null) return mySuperficialAnatomy;
     return null;
   }
-  public void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
+  void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
   public AnatomicalStructure getAnatomicalStructure() { return myAnatomicalStructure; }
   private AnatomicalStructure myAnatomicalStructure;
-  public void setAnatomicalSystem(AnatomicalSystem anatomicalSystem) { clear(); myAnatomicalSystem = anatomicalSystem; }
+  void setAnatomicalSystem(AnatomicalSystem anatomicalSystem) { clear(); myAnatomicalSystem = anatomicalSystem; }
   public AnatomicalSystem getAnatomicalSystem() { return myAnatomicalSystem; }
   private AnatomicalSystem myAnatomicalSystem;
-  public void setSuperficialAnatomy(SuperficialAnatomy superficialAnatomy) { clear(); mySuperficialAnatomy = superficialAnatomy; }
+  void setSuperficialAnatomy(SuperficialAnatomy superficialAnatomy) { clear(); mySuperficialAnatomy = superficialAnatomy; }
   public SuperficialAnatomy getSuperficialAnatomy() { return mySuperficialAnatomy; }
   private SuperficialAnatomy mySuperficialAnatomy;
   private void clear() {

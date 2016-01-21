@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class DistanceOrQuantitativeValue {
+public class DistanceOrQuantitativeValue {
   @JsonValue
   public Object getJsonLdValue() {
     if (myDistance != null) return myDistance;
@@ -34,10 +34,10 @@ class DistanceOrQuantitativeValue {
     if (myQuantitativeValue != null) return myQuantitativeValue;
     return null;
   }
-  public void setDistance(Distance distance) { clear(); myDistance = distance; }
+  void setDistance(Distance distance) { clear(); myDistance = distance; }
   public Distance getDistance() { return myDistance; }
   private Distance myDistance;
-  public void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
+  void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
   public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
   private QuantitativeValue myQuantitativeValue;
   private void clear() {

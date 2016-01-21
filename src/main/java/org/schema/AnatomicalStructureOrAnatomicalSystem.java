@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class AnatomicalStructureOrAnatomicalSystem {
+public class AnatomicalStructureOrAnatomicalSystem {
   @JsonValue
   public Object getJsonLdValue() {
     if (myAnatomicalStructure != null) return myAnatomicalStructure;
@@ -34,10 +34,10 @@ class AnatomicalStructureOrAnatomicalSystem {
     if (myAnatomicalSystem != null) return myAnatomicalSystem;
     return null;
   }
-  public void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
+  void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
   public AnatomicalStructure getAnatomicalStructure() { return myAnatomicalStructure; }
   private AnatomicalStructure myAnatomicalStructure;
-  public void setAnatomicalSystem(AnatomicalSystem anatomicalSystem) { clear(); myAnatomicalSystem = anatomicalSystem; }
+  void setAnatomicalSystem(AnatomicalSystem anatomicalSystem) { clear(); myAnatomicalSystem = anatomicalSystem; }
   public AnatomicalSystem getAnatomicalSystem() { return myAnatomicalSystem; }
   private AnatomicalSystem myAnatomicalSystem;
   private void clear() {

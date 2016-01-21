@@ -22,17 +22,17 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class DriveWheelConfigurationValueOrString {
+public class DriveWheelConfigurationValueOrString {
   @JsonValue
   public Object getJsonLdValue() {
     if (myDriveWheelConfigurationValue != null) return myDriveWheelConfigurationValue;
     if (myString != null) return myString;
     return null;
   }
-  public void setDriveWheelConfigurationValue(DriveWheelConfigurationValue driveWheelConfigurationValue) { clear(); myDriveWheelConfigurationValue = driveWheelConfigurationValue; }
+  void setDriveWheelConfigurationValue(DriveWheelConfigurationValue driveWheelConfigurationValue) { clear(); myDriveWheelConfigurationValue = driveWheelConfigurationValue; }
   public DriveWheelConfigurationValue getDriveWheelConfigurationValue() { return myDriveWheelConfigurationValue; }
   private DriveWheelConfigurationValue myDriveWheelConfigurationValue;
-  public void setString(String value) { clear(); myString = value; }
+  void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
   private void clear() {

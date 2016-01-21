@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class ImageObjectOrPhotograph {
+public class ImageObjectOrPhotograph {
   @JsonValue
   public Object getJsonLdValue() {
     if (myImageObject != null) return myImageObject;
@@ -34,10 +34,10 @@ class ImageObjectOrPhotograph {
     if (myPhotograph != null) return myPhotograph;
     return null;
   }
-  public void setImageObject(ImageObject imageObject) { clear(); myImageObject = imageObject; }
+  void setImageObject(ImageObject imageObject) { clear(); myImageObject = imageObject; }
   public ImageObject getImageObject() { return myImageObject; }
   private ImageObject myImageObject;
-  public void setPhotograph(Photograph photograph) { clear(); myPhotograph = photograph; }
+  void setPhotograph(Photograph photograph) { clear(); myPhotograph = photograph; }
   public Photograph getPhotograph() { return myPhotograph; }
   private Photograph myPhotograph;
   private void clear() {

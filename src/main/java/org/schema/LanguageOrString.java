@@ -22,17 +22,17 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class LanguageOrString {
+public class LanguageOrString {
   @JsonValue
   public Object getJsonLdValue() {
     if (myLanguage != null) return myLanguage;
     if (myString != null) return myString;
     return null;
   }
-  public void setLanguage(Language language) { clear(); myLanguage = language; }
+  void setLanguage(Language language) { clear(); myLanguage = language; }
   public Language getLanguage() { return myLanguage; }
   private Language myLanguage;
-  public void setString(String value) { clear(); myString = value; }
+  void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
   private void clear() {

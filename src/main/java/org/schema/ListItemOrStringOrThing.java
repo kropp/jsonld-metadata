@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class ListItemOrStringOrThing {
+public class ListItemOrStringOrThing {
   @JsonValue
   public Object getJsonLdValue() {
     if (myListItem != null) return myListItem;
@@ -30,13 +30,13 @@ class ListItemOrStringOrThing {
     if (myThing != null) return myThing;
     return null;
   }
-  public void setListItem(ListItem listItem) { clear(); myListItem = listItem; }
+  void setListItem(ListItem listItem) { clear(); myListItem = listItem; }
   public ListItem getListItem() { return myListItem; }
   private ListItem myListItem;
-  public void setString(String value) { clear(); myString = value; }
+  void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
-  public void setThing(Thing thing) { clear(); myThing = thing; }
+  void setThing(Thing thing) { clear(); myThing = thing; }
   public Thing getThing() { return myThing; }
   private Thing myThing;
   private void clear() {

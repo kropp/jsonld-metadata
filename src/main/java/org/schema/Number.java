@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class Number {
+public class Number {
   @JsonValue
   public Object getJsonLdValue() {
     if (myInteger != null) return myInteger;
@@ -32,19 +32,19 @@ class Number {
     if (myString != null) return myString;
     return null;
   }
-  public void setInteger(Integer integer) { clear(); myInteger = integer; }
+  void setInteger(Integer integer) { clear(); myInteger = integer; }
   public Integer getInteger() { return myInteger; }
   private Integer myInteger;
-  public void setLong(Long value) { clear(); myLong = value; }
+  void setLong(Long value) { clear(); myLong = value; }
   public Long getLong() { return myLong; }
   private Long myLong;
-  public void setFloat(Float value) { clear(); myFloat = value; }
+  void setFloat(Float value) { clear(); myFloat = value; }
   public Float getFloat() { return myFloat; }
   private Float myFloat;
-  public void setDouble(Double value) { clear(); myDouble = value; }
+  void setDouble(Double value) { clear(); myDouble = value; }
   public Double getDouble() { return myDouble; }
   private Double myDouble;
-  public void setString(String value) { clear(); myString = value; }
+  void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
   private void clear() {

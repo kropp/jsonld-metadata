@@ -22,17 +22,17 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class DistanceOrString {
+public class DistanceOrString {
   @JsonValue
   public Object getJsonLdValue() {
     if (myDistance != null) return myDistance;
     if (myString != null) return myString;
     return null;
   }
-  public void setDistance(Distance distance) { clear(); myDistance = distance; }
+  void setDistance(Distance distance) { clear(); myDistance = distance; }
   public Distance getDistance() { return myDistance; }
   private Distance myDistance;
-  public void setString(String value) { clear(); myString = value; }
+  void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
   private void clear() {

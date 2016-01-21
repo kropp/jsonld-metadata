@@ -22,17 +22,17 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class MedicalDevicePurposeOrThing {
+public class MedicalDevicePurposeOrThing {
   @JsonValue
   public Object getJsonLdValue() {
     if (myMedicalDevicePurpose != null) return myMedicalDevicePurpose;
     if (myThing != null) return myThing;
     return null;
   }
-  public void setMedicalDevicePurpose(MedicalDevicePurpose medicalDevicePurpose) { clear(); myMedicalDevicePurpose = medicalDevicePurpose; }
+  void setMedicalDevicePurpose(MedicalDevicePurpose medicalDevicePurpose) { clear(); myMedicalDevicePurpose = medicalDevicePurpose; }
   public MedicalDevicePurpose getMedicalDevicePurpose() { return myMedicalDevicePurpose; }
   private MedicalDevicePurpose myMedicalDevicePurpose;
-  public void setThing(Thing thing) { clear(); myThing = thing; }
+  void setThing(Thing thing) { clear(); myThing = thing; }
   public Thing getThing() { return myThing; }
   private Thing myThing;
   private void clear() {

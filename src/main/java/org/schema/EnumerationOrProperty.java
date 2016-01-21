@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class EnumerationOrProperty {
+public class EnumerationOrProperty {
   @JsonValue
   public Object getJsonLdValue() {
     if (myEnumeration != null) return myEnumeration;
@@ -34,10 +34,10 @@ class EnumerationOrProperty {
     if (myProperty != null) return myProperty;
     return null;
   }
-  public void setEnumeration(Enumeration enumeration) { clear(); myEnumeration = enumeration; }
+  void setEnumeration(Enumeration enumeration) { clear(); myEnumeration = enumeration; }
   public Enumeration getEnumeration() { return myEnumeration; }
   private Enumeration myEnumeration;
-  public void setProperty(Property property) { clear(); myProperty = property; }
+  void setProperty(Property property) { clear(); myProperty = property; }
   public Property getProperty() { return myProperty; }
   private Property myProperty;
   private void clear() {

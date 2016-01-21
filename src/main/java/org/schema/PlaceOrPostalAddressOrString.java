@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class PlaceOrPostalAddressOrString {
+public class PlaceOrPostalAddressOrString {
   @JsonValue
   public Object getJsonLdValue() {
     if (myPlace != null) return myPlace;
@@ -30,13 +30,13 @@ class PlaceOrPostalAddressOrString {
     if (myString != null) return myString;
     return null;
   }
-  public void setPlace(Place place) { clear(); myPlace = place; }
+  void setPlace(Place place) { clear(); myPlace = place; }
   public Place getPlace() { return myPlace; }
   private Place myPlace;
-  public void setPostalAddress(PostalAddress postalAddress) { clear(); myPostalAddress = postalAddress; }
+  void setPostalAddress(PostalAddress postalAddress) { clear(); myPostalAddress = postalAddress; }
   public PostalAddress getPostalAddress() { return myPostalAddress; }
   private PostalAddress myPostalAddress;
-  public void setString(String value) { clear(); myString = value; }
+  void setString(String value) { clear(); myString = value; }
   public String getString() { return myString; }
   private String myString;
   private void clear() {

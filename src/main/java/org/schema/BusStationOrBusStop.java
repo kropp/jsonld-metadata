@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
-class BusStationOrBusStop {
+public class BusStationOrBusStop {
   @JsonValue
   public Object getJsonLdValue() {
     if (myBusStation != null) return myBusStation;
@@ -34,10 +34,10 @@ class BusStationOrBusStop {
     if (myBusStop != null) return myBusStop;
     return null;
   }
-  public void setBusStation(BusStation busStation) { clear(); myBusStation = busStation; }
+  void setBusStation(BusStation busStation) { clear(); myBusStation = busStation; }
   public BusStation getBusStation() { return myBusStation; }
   private BusStation myBusStation;
-  public void setBusStop(BusStop busStop) { clear(); myBusStop = busStop; }
+  void setBusStop(BusStop busStop) { clear(); myBusStop = busStop; }
   public BusStop getBusStop() { return myBusStop; }
   private BusStop myBusStop;
   private void clear() {
