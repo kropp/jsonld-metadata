@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import org.schema.generator.klass
 import org.semarglproject.rdf.rdfa.RdfaParser
 import org.semarglproject.sink.TripleSink
 import org.semarglproject.source.StreamProcessor
@@ -178,7 +179,7 @@ class GeneratorSink : TripleSink {
         val names = getEitherTypes(field)
         if (names.size < 2)
             return names.firstOrNull()
-        return generateEither(ns, packageDir, names)
+        return generateEither(ns, File("src/main/java"), names)
     }
 
     private fun getEitherTypes(field: Type): Collection<String> {
@@ -266,56 +267,41 @@ class GeneratorSink : TripleSink {
 
     private fun generateEither(ns: String, packageDir: File, types: Collection<String>): String {
         val eitherName = if (types == NUMBER_UNDERLYING_TYPES) "Number" else types.joinToString("Or")
-        val file = File(packageDir, "$eitherName.java")
-        if (!file.exists()) {
-            with(StringBuilder()) {
-                appendln(BANNER)
-                appendln()
-                appendln("package $ns;")
-                appendln()
-                appendln("import com.fasterxml.jackson.databind.annotation.*;")
-                appendln("import com.fasterxml.jackson.annotation.*;")
-                appendln()
-                appendln("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)")
-                appendln("public class $eitherName {")
 
-                appendln("  @JsonValue")
-                appendln("  public Object getJsonLdValue() {")
-                types.forEach {
-                    appendln("    if (my$it != null) return my$it;")
+        klass(packageDir, ns, eitherName, listOf("@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)"), BANNER) {
+            types.forEach {
+                field(it.decapitalize(), it) {
+                    setter("clear", false)
+                    getter()
                 }
-                appendln("    return null;")
-                appendln("  }")
-
-                val filteredTypes = types.filterNot { shouldSkip(it) || it == "Boolean" || it == "Number" || it == "Integer" }
-                if (filteredTypes.any() && !filteredTypes.contains("Thing") && !filteredTypes.contains("String")) {
-                    appendln("  public Thing getThing() {")
-                    filteredTypes.forEach {
-                        appendln("    if (my$it != null) return my$it;")
-                    }
-                    appendln("    return null;")
-                    appendln("  }")
-                }
-                types.forEach {
-                    appendln("  void set$it($it ${getVariableName(it, "value")}) { clear(); my$it = ${getVariableName(it, "value")}; }")
-                    appendln("  public $it get$it() { return my$it; }")
-                    appendln("  private $it my$it;")
-                }
-                appendln("  private void clear() {")
-                types.forEach {
-                    appendln("    my$it = null;")
-                }
-                appendln("  }")
-                appendln()
-                generateHashCode(eitherName, types)
-                appendln()
-                generateEquals(eitherName, types, true)
-                appendln()
-                appendln("}")
-
-                file.writeText(toString())
             }
+
+            method("getJsonLdValue", "Object", annotations = listOf("@com.fasterxml.jackson.annotation.JsonValue")) {
+                fields.forEach {
+                    line("if (my${it.name} != null) return my${it.name};")
+                }
+                line("return null;")
+            }
+
+            val filteredTypes = types.filterNot { shouldSkip(it) || it == "Boolean" || it == "Number" || it == "Integer" }
+            if (filteredTypes.any() && !filteredTypes.contains("Thing") && !filteredTypes.contains("String")) {
+                method("getThing", "Thing") {
+                    filteredTypes.forEach {
+                        line("if (my$it != null) return my$it;")
+                    }
+                    line("return null;")
+                }
+            }
+
+            method("clear") {
+                fields.forEach {
+                    line("my${it.name} = null;")
+                }
+            }
+
+            hashCodeAndEquals(callSuper = false)
         }
+
         return eitherName
     }
 
