@@ -14,34 +14,11 @@
  * limitations under the License.
  */
 
-import org.schema.generator.klass
-import org.semarglproject.rdf.rdfa.RdfaParser
+package org.schema.generator;
+
 import org.semarglproject.sink.TripleSink
-import org.semarglproject.source.StreamProcessor
 import java.io.File
-import java.io.FileInputStream
 import java.util.*
-
-/**
- * @author Victor Kropp
- */
-
-class Type() {
-    var isSuperseded: Boolean = false
-    var isInterface: Boolean = false
-    var name: String? = null
-    var parentType: String? = null
-    var comment: String? = null
-    var source: String? = null
-    var equivalent: String? = null
-    val subTypes: MutableList<String> = ArrayList()
-    val interfaces: MutableList<String> = ArrayList()
-    var isField = false
-    val dataTypes: MutableList<String> = ArrayList()
-
-    val classOrInterface: String
-        get() = when(isInterface) { true -> "interface"; else -> "class" }
-}
 
 private val BANNER = """/*
  * Copyright 2015-2016 JetBrains s.r.o.
@@ -64,6 +41,23 @@ private val BANNER = """/*
 private val ID_TYPE = "http://schema.org/@id"
 
 private val NUMBER_UNDERLYING_TYPES = listOf("Integer", "Long", "Float", "Double", "String")
+
+class Type() {
+    var isSuperseded: Boolean = false
+    var isInterface: Boolean = false
+    var name: String? = null
+    var parentType: String? = null
+    var comment: String? = null
+    var source: String? = null
+    var equivalent: String? = null
+    val subTypes: MutableList<String> = ArrayList()
+    val interfaces: MutableList<String> = ArrayList()
+    var isField = false
+    val dataTypes: MutableList<String> = ArrayList()
+
+    val classOrInterface: String
+        get() = when(isInterface) { true -> "interface"; else -> "class" }
+}
 
 class GeneratorSink : TripleSink {
     private var uri: String = "http://schema.org/"
@@ -677,21 +671,4 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
         getAllFields(types[type.parentType]).filterNot { i -> fieldTypes.any { it.name == i.name} }.forEach { fieldTypes.add(it) }
         return fieldTypes
     }
-}
-
-fun main(args: Array<String>) {
-    val generator = GeneratorSink()
-    val processor = StreamProcessor(RdfaParser.connect(generator))
-
-    File("generator/resources").listFiles { f -> f.extension == "rdfa" }?.forEach {
-        println("Processing ${it.name}")
-        processor.process(FileInputStream(it), "http://schema.org/")
-    }
-    generator.postProcess()
-
-    println("Generating classes")
-    generator.writeJava(File("src/main/java"), "org.schema")
-
-    println("Generating tests")
-    generator.writeTests(File("test/main/java"), "org.schema")
 }
