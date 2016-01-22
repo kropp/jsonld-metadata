@@ -214,22 +214,8 @@ class GeneratorSink : TripleSink {
     }
 
     fun writeTests(dir: File, ns: String) {
-        val packageDir = ns.split(Regex("\\.")).fold(dir) { d, s -> File(d, s) }
-        packageDir.mkdirs()
-
-        // public API
-        with(StringBuilder()) {
-            appendln(BANNER)
-            appendln()
-            appendln("package $ns;")
-            appendln()
-            appendln("import java.io.IOException;")
-            appendln("import org.junit.Test;")
-            appendln("import java.util.Date;")
-            appendln("import static org.junit.Assert.assertEquals;")
-            appendln()
-            appendln("public class SmokeTest {")
-            appendln("  private static final Date NOW = new Date(1234567890000L);")
+        klass(dir, ns, "SmokeTest", imports = listOf("java.io.IOException", "org.junit.Test", "java.util.Date", "static org.junit.Assert.assertEquals"), copyright = BANNER) {
+            constant("NOW", "Date", "new Date(1234567890000L)")
 
             for (type in types.values) {
                 if (type.name.isNullOrEmpty() || type.isField || type.isInterface || type.parentType.isNullOrEmpty() || shouldSkip(type.name!!))
@@ -238,37 +224,35 @@ class GeneratorSink : TripleSink {
                 val typeName = type.name!!.capitalize()
                 val varName = typeName.decapitalize()
 
-                appendln("  @Test public void test$typeName() throws IOException {")
-                appendln("    final $typeName $varName = SchemaOrg.$varName()")
-                for (field in getAllFields(type)) {
-                    when (getEitherTypes(field).first()) {
-                        "String" -> "\"Test String\""
-                        "Float" -> ".1342"
-                        "Double" -> ".1342"
-                        "Integer" -> "42"
-                        "Long" -> "42L"
-                        "Boolean" -> "true"
-                        "java.util.Date" -> "NOW"
-                        else -> null //if (!shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && fieldType != "HasPart") "($fieldType)null" else null
-                    }?.let {
-                        appendln("      .${field.name!!.decapitalize()}($it)")
-                    }
-                }
-                appendln("      .build();")
-                appendln("      final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson($varName));")
-                appendln("      assertEquals($varName, thing);")
-                appendln("  }")
-            }
-            appendln("}")
+                method("test$typeName", "void", throws = "IOException") {
+                    line("final $typeName $varName = SchemaOrg.$varName()")
 
-            File(packageDir, "SmokeTest.java").writeText(toString())
+                    for (field in getAllFields(type)) {
+                        when (getEitherTypes(field).first()) {
+                            "String" -> "\"Test String\""
+                            "Float" -> ".1342"
+                            "Double" -> ".1342"
+                            "Integer" -> "42"
+                            "Long" -> "42L"
+                            "Boolean" -> "true"
+                            "java.util.Date" -> "NOW"
+                            else -> null
+                        }?.let {
+                            line("  .${field.name!!.decapitalize()}($it)")
+                        }
+                    }
+                    line("  .build();")
+                    line("final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson($varName));")
+                    line("assertEquals($varName, thing);")
+                }
+            }
         }
     }
 
     private fun generateEither(ns: String, packageDir: File, types: Collection<String>): String {
         val eitherName = if (types == NUMBER_UNDERLYING_TYPES) "Number" else types.joinToString("Or")
 
-        klass(packageDir, ns, eitherName, listOf("@com.fasterxml.jackson.databind.annotation.JsonSerialize(include = com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion.NON_NULL)"), BANNER) {
+        klass(packageDir, ns, eitherName, listOf("com.fasterxml.jackson.databind.annotation.JsonSerialize"), listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)"), BANNER) {
             types.forEach {
                 field(it.decapitalize(), it) {
                     setter("clear", false)

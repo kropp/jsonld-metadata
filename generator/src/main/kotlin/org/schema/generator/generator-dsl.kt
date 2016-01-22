@@ -7,7 +7,7 @@ import java.io.File
  * @author Victor Kropp
  */
 
-class Klass(private val sourceDirectory: File, val namespace: String, val name: String, val annotations: Collection<String>?, val copyright: String?) {
+class Klass(private val sourceDirectory: File, val namespace: String, val name: String, val imports: Collection<String>?, val annotations: Collection<String>?, val copyright: String?) {
     internal val text = StringBuilder()
 
     val fields = arrayListOf<Field>()
@@ -21,8 +21,12 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
         text.appendln("  private $type my${field.name};")
     }
 
-    fun method(name: String, type: String = "void", annotations: Collection<String>? = null, body: Method.() -> Unit) {
-        Method(this, name, type, annotations).use { it.body() }
+    fun constant(name: String, type: String, value: String) {
+        text.appendln("  private static final $type $name = $value;");
+    }
+
+    fun method(name: String, type: String = "void", annotations: Collection<String>? = null, throws: String? = null, body: Method.() -> Unit) {
+        Method(this, name, type, annotations, throws).use { it.body() }
     }
 
     fun hashCodeAndEquals(callSuper: Boolean = true) {
@@ -65,6 +69,10 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
             }
             appendln("package $namespace;")
             appendln()
+            imports?.forEach {
+                appendln("import $it;")
+            }
+            appendln()
             annotations?.forEach {
                 appendln(it)
             }
@@ -85,8 +93,8 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
     }
 }
 
-fun klass(sourceDirectory: File, namespace: String, name: String, annotations: Collection<String>? = null, copyright: String? = null, body: Klass.() -> Unit) {
-    val c = Klass(sourceDirectory, namespace, name, annotations, copyright)
+fun klass(sourceDirectory: File, namespace: String, name: String, imports: Collection<String>? = null, annotations: Collection<String>? = null, copyright: String? = null, body: Klass.() -> Unit) {
+    val c = Klass(sourceDirectory, namespace, name, imports, annotations, copyright)
     c.body()
     c.save()
 }
@@ -114,12 +122,14 @@ class Field(val c: Klass, val name: String, val type: String) {
     }
 }
 
-class Method(val c: Klass, val name: String, val type: String, val annotations: Collection<String>?): Closeable {
+class Method(val c: Klass, val name: String, val type: String, val annotations: Collection<String>?, throws: String?): Closeable {
     init {
         annotations?.forEach {
             c.text.appendln("  $it")
         }
-        c.text.appendln("  public $type $name() {")
+        c.text.append("  public $type $name()")
+        throws?.let { c.text.append(" throws $it") }
+        c.text.appendln(" {")
     }
 
     fun line(line: String) {
