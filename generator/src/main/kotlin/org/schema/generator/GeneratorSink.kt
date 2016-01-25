@@ -20,24 +20,6 @@ import org.semarglproject.sink.TripleSink
 import java.io.File
 import java.util.*
 
-private val BANNER = """/*
- * Copyright 2015-2016 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * This is auto-generated file. Do not edit.
- */"""
-
 private val ID_TYPE = "http://schema.org/@id"
 
 private val NUMBER_UNDERLYING_TYPES = listOf("Integer", "Long", "Float", "Double", "String")
@@ -59,10 +41,10 @@ class Type() {
         get() = when(isInterface) { true -> "interface"; else -> "class" }
 }
 
-class GeneratorSink : TripleSink {
+class GeneratorSink(private val BANNER: String?) : TripleSink {
     private var uri: String = "http://schema.org/"
 
-    private val types = hashMapOf<String, Type>()
+    val types = hashMapOf<String, Type>()
 
     override fun setProperty(key: String, value: Any): Boolean {
         return true
@@ -176,7 +158,7 @@ class GeneratorSink : TripleSink {
         return generateEither(ns, File("src/main/java"), names)
     }
 
-    private fun getEitherTypes(field: Type): Collection<String> {
+    fun getEitherTypes(field: Type): Collection<String> {
         if (field.isInterface && field.name != null)
             return listOf(field.name!!.capitalize())
 
@@ -195,7 +177,7 @@ class GeneratorSink : TripleSink {
         return field.dataTypes.map { getBasicTypeName(types[it]?.name) }.filterNotNull().distinct().sorted()
     }
 
-    private fun shouldSkip(name: String): Boolean {
+    fun shouldSkip(name: String): Boolean {
         return arrayOf("Text", "DataType", "DateTime", "Date", "Time", "Boolean", "Number", "Integer", "Int", "Long", "Float", "Double", "URL", "True", "False", "Class", "Object").contains(name) ||
                 name.contains("#") || name.contains("/")
     }
@@ -207,41 +189,6 @@ class GeneratorSink : TripleSink {
         generateBuilders(ns, packageDir)
     }
 
-    fun writeTests(dir: File, ns: String) {
-        klass(dir, ns, "SmokeTest", imports = listOf("java.io.IOException", "org.junit.Test", "java.util.Date", "static org.junit.Assert.assertEquals"), copyright = BANNER) {
-            constant("NOW", "Date", "new Date(1234567890000L)")
-
-            for (type in types.values) {
-                if (type.name.isNullOrEmpty() || type.isField || type.isInterface || type.parentType.isNullOrEmpty() || shouldSkip(type.name!!))
-                    continue
-
-                val typeName = type.name!!.capitalize()
-                val varName = typeName.decapitalize()
-
-                method("test$typeName", "void", throws = "IOException") {
-                    line("final $typeName $varName = SchemaOrg.$varName()")
-
-                    for (field in getAllFields(type)) {
-                        when (getEitherTypes(field).first()) {
-                            "String" -> "\"Test String\""
-                            "Float" -> ".1342"
-                            "Double" -> ".1342"
-                            "Integer" -> "42"
-                            "Long" -> "42L"
-                            "Boolean" -> "true"
-                            "java.util.Date" -> "NOW"
-                            else -> null
-                        }?.let {
-                            line("  .${field.name!!.decapitalize()}($it)")
-                        }
-                    }
-                    line("  .build();")
-                    line("final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson($varName));")
-                    line("assertEquals($varName, thing);")
-                }
-            }
-        }
-    }
 
     private fun generateEither(ns: String, packageDir: File, types: Collection<String>): String {
         val eitherName = if (types == NUMBER_UNDERLYING_TYPES) "Number" else types.joinToString("Or")
@@ -663,7 +610,7 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
         return typeName.decapitalize()
     }
 
-    private fun getAllFields(type: Type?): Iterable<Type> {
+    fun getAllFields(type: Type?): Iterable<Type> {
         if (type == null) {
             return emptyList()
         }
