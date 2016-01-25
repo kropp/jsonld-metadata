@@ -66,7 +66,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                 for (field in type.subTypes) {
                     sink.types[field]?.let {
                         if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
-                            val fieldType = sink.getEitherFieldType(ns, packageDir, it)
+                            val fieldType = sink.getEitherFieldType(it)
                             val name = it.name!!.capitalize()
                             it.comment?.let {
                                 appendln("  /**")
@@ -125,7 +125,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                 if (eitherTypes.size < 2) {
                                     appendln("      this.${name.decapitalize()} = ${getVariableName(fieldType, name)};")
                                 } else {
-                                    appendln("      if (this.${name.decapitalize()} == null) this.${name.decapitalize()} = new ${sink.getEitherFieldType(ns, packageDir, field)}();")
+                                    appendln("      if (this.${name.decapitalize()} == null) this.${name.decapitalize()} = new ${sink.getEitherFieldType(field)}();")
                                     appendln("      this.${name.decapitalize()}.set$fieldType(${getVariableName(fieldType, name)});")
                                 }
                                 appendln("      return this;")
@@ -164,7 +164,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                     appendln("      }")
                     appendln("    }")
 
-                    allFields.forEach { appendln("    private ${sink.getEitherFieldType(ns, packageDir, it)} ${getVariableName(it.name!!)};") }
+                    allFields.forEach { appendln("    private ${sink.getEitherFieldType(it)} ${getVariableName(it.name!!)};") }
                     appendln("  }")
                     appendln("  public interface Builder extends ThingBuilder<$typeName> {")
                     appendln("    " + interfaceMethods.joinToString("\n    "))
@@ -177,7 +177,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                 // package-local constructor and private fields
                 if (!type.isInterface) {
                     append("  protected $typeName(")
-                    append(allFields.map { "${sink.getEitherFieldType(ns, packageDir, it)} ${it.name!!.decapitalize()}" }.joinToString(", "))
+                    append(allFields.map { "${sink.getEitherFieldType(it)} ${it.name!!.decapitalize()}" }.joinToString(", "))
                     appendln(") {")
                     type.parentType?.let {
                         append("    super(")
@@ -202,7 +202,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                 }
 
                 fields.forEach {
-                    appendln("  private ${sink.getEitherFieldType(ns, packageDir, it)} my${it.name!!.capitalize()};")
+                    appendln("  private ${sink.getEitherFieldType(it)} my${it.name!!.capitalize()};")
                 }
 
                 appendln("}")
@@ -381,7 +381,7 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
         appendln("  }")
     }
 
-    private fun findType(fieldType: String): Type? = sink.types.values.firstOrNull { it.name == fieldType }
+    private fun findType(fieldType: String): GeneratorSink.Type? = sink.types.values.firstOrNull { it.name == fieldType }
 
     private fun getVariableName(typeName: String, entityName: String? = null): String {
         val indexOfDot = typeName.lastIndexOf('.')

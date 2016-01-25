@@ -17,32 +17,31 @@
 package org.schema.generator;
 
 import org.semarglproject.sink.TripleSink
-import java.io.File
 import java.util.*
-
-private val ID_TYPE = "http://schema.org/@id"
-
-private val NUMBER_UNDERLYING_TYPES = listOf("Integer", "Long", "Float", "Double", "String")
-
-class Type() {
-    var isSuperseded: Boolean = false
-    var isInterface: Boolean = false
-    var name: String? = null
-    var parentType: String? = null
-    var comment: String? = null
-    var source: String? = null
-    var equivalent: String? = null
-    val subTypes: MutableList<String> = ArrayList()
-    val interfaces: MutableList<String> = ArrayList()
-    var isField = false
-    val dataTypes: MutableList<String> = ArrayList()
-
-    val classOrInterface: String
-        get() = when(isInterface) { true -> "interface"; else -> "class" }
-}
 
 class GeneratorSink : TripleSink {
     private var uri: String = "http://schema.org/"
+
+    private val ID_TYPE = "http://schema.org/@id"
+
+    private val NUMBER_UNDERLYING_TYPES = listOf("Integer", "Long", "Float", "Double", "String")
+
+    class Type() {
+        var isSuperseded: Boolean = false
+        var isInterface: Boolean = false
+        var name: String? = null
+        var parentType: String? = null
+        var comment: String? = null
+        var source: String? = null
+        var equivalent: String? = null
+        val subTypes: MutableList<String> = ArrayList()
+        val interfaces: MutableList<String> = ArrayList()
+        var isField = false
+        val dataTypes: MutableList<String> = ArrayList()
+
+        val classOrInterface: String
+            get() = when(isInterface) { true -> "interface"; else -> "class" }
+    }
 
     val types = hashMapOf<String, Type>()
     val eitherTypes = hashMapOf<String,Collection<String>>()
@@ -54,7 +53,7 @@ class GeneratorSink : TripleSink {
     override fun endStream() {
     }
 
-    public fun postProcess() {
+    fun postProcess() {
         for (type in types.values) {
             if (type.isField && type.isInterface) {
                 type.isField = false
@@ -152,7 +151,7 @@ class GeneratorSink : TripleSink {
         return getBasicTypeName(types[name]?.name)
     }
 
-    fun getEitherFieldType(ns: String, packageDir: File, field: Type): String? {
+    fun getEitherFieldType(field: Type): String? {
         val names = getEitherTypes(field)
         if (names.size < 2)
             return names.firstOrNull()
