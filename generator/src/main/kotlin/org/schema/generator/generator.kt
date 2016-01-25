@@ -43,19 +43,27 @@ private val BANNER = """/*
  * This is auto-generated file. Do not edit.
  */"""
 
+private val NAMESPACE = "org.schema"
+
 fun main(args: Array<String>) {
-    val generator = GeneratorSink(BANNER)
-    val processor = StreamProcessor(RdfaParser.connect(generator))
+    val sink = GeneratorSink()
+    val processor = StreamProcessor(RdfaParser.connect(sink))
 
     File("generator/resources").listFiles { f -> f.extension == "rdfa" }?.forEach {
         println("Processing ${it.name}")
         processor.process(FileInputStream(it), "http://schema.org/")
     }
-    generator.postProcess()
+    sink.postProcess()
+
+    val sourceDirectory = File("src/main/java")
+    val testDirectory = File("test/main/java")
 
     println("Generating classes")
-    generator.writeJava(File("src/main/java"), "org.schema")
+    ClassesGenerator(sink, BANNER).generate(sourceDirectory, NAMESPACE)
+
+    println("Generating 'either' types")
+    EitherTypesGenerator(sink, BANNER).generate(sourceDirectory, NAMESPACE)
 
     println("Generating tests")
-    TestsGenerator(generator, BANNER).generate(File("test/main/java"), "org.schema")
+    TestsGenerator(sink, BANNER).generate(testDirectory, NAMESPACE)
 }
