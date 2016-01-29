@@ -64,6 +64,9 @@ fun main(args: Array<String>) {
     println("Generating 'either' types")
     EitherTypesGenerator(sink, BANNER).generate(sourceDirectory, NAMESPACE)
 
+    println("Generating API")
+    ApiGenerator(sink, BANNER).generate(sourceDirectory, NAMESPACE)
+
     println("Generating tests")
     TestsGenerator(sink, BANNER).generate(testDirectory, NAMESPACE)
 }
