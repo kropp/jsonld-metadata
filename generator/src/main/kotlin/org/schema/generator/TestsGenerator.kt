@@ -1,13 +1,14 @@
 package org.schema.generator
 
-import java.io.File
-
 /**
  * @author Victor Kropp
  */
 class TestsGenerator (private val sink: GeneratorSink, private val banner: String? = null) {
-    fun generate(dir: File, ns: String) {
-        klass(dir, ns, "SmokeTest", imports = listOf("java.io.IOException", "org.junit.Test", "java.util.Date", "static org.junit.Assert.assertEquals"), copyright = banner) {
+    fun generate(p: Package) {
+        p.klass("SmokeTest") {
+            copyright = banner
+            imports = listOf("java.io.IOException", "org.junit.Test", "java.util.Date", "static org.junit.Assert.assertEquals")
+
             constant("NOW", "Date", "new Date(1234567890000L)")
 
             for (type in sink.types.values) {
@@ -17,7 +18,10 @@ class TestsGenerator (private val sink: GeneratorSink, private val banner: Strin
                 val typeName = type.name!!.capitalize()
                 val varName = typeName.decapitalize()
 
-                method("test$typeName", "void", annotations = listOf("@Test"), throws = "IOException") {
+                method("test$typeName", "void") {
+                    annotations = listOf("@Test")
+                    throws = "IOException"
+
                     line("final $typeName $varName = SchemaOrg.$varName()")
 
                     for (field in sink.getAllFields(type)) {

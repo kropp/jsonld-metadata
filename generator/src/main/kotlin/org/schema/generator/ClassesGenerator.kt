@@ -1,28 +1,34 @@
 package org.schema.generator
 
-import java.io.File
-
 /**
  * @author Victor Kropp
  */
 
 class ClassesGenerator(private val sink: GeneratorSink, private val banner: String? = null) {
-    fun generate(dir: File, ns: String) {
+    fun generate(p: Package) {
         for (type in sink.types.values) {
             if (type.name.isNullOrEmpty() || (type.isField && !type.isInterface) || sink.shouldSkip(type.name!!))
                 continue
 
             val typeName = type.name!!.capitalize()
 
-            val comment = (type.comment ?: "") + (type.source?.let { "Source: $it" } ?: "") + (type.equivalent?.let { "Equivalent class: $it" } ?: "")
-            val annotations = if (typeName == "Thing") { listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)") } else null
+            p.klass(typeName, type.classOrInterface) {
+                copyright = banner
+                extends = type.parentType?.let { sink.types[it]?.name }
+                implements = type.interfaces.filter { i -> sink.types.values.any { it.name == i && !it.isField } }
+                imports = listOf("com.fasterxml.jackson.databind.annotation.*", "com.fasterxml.jackson.annotation.*", "org.jetbrains.annotations.NotNull")
+                annotations = if (typeName == "Thing") { listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)") } else null
+                comment = (type.comment ?: "") + (type.source?.let { "Source: $it" } ?: "") + (type.equivalent?.let { "Equivalent class: $it" } ?: "")
 
-            klass(dir, ns, typeName, type.classOrInterface, type.parentType?.let { sink.types[it]?.name }, type.interfaces.filter { i -> sink.types.values.any { it.name == i && !it.isField } }, listOf("com.fasterxml.jackson.databind.annotation.*", "com.fasterxml.jackson.annotation.*", "org.jetbrains.annotations.NotNull"), annotations, comment, banner) {
                 if (typeName == "Thing") {
-                    method("getJsonLdType", "String", annotations = listOf("@JsonProperty(\"@type\")")) {
+                    method("getJsonLdType", "String") {
+                        annotations = listOf("@JsonProperty(\"@type\")")
+
                         line("return getClass().getSimpleName();")
                     }
-                    method("getJsonLdContext", "String", annotations = listOf("@JsonProperty(\"@context\")")) {
+                    method("getJsonLdContext", "String") {
+                        annotations = listOf("@JsonProperty(\"@context\")")
+
                         line("return \"http://schema.org/\";")
                     }
                 }

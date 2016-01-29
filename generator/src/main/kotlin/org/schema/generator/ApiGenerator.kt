@@ -7,15 +7,12 @@ import java.io.File
  */
 
 class ApiGenerator(private val sink: GeneratorSink, private val banner: String? = null) {
-    fun generate(dir: File, ns: String) {
-        val packageDir = ns.split(Regex("\\.")).fold(dir) { d, s -> File(d, s) }
-        packageDir.mkdirs()
-
+    fun generate(p: Package) {
         // public API
         with(StringBuilder()) {
             appendln(banner)
             appendln()
-            appendln("package $ns;")
+            appendln("package ${p.name};")
             appendln()
             appendln("import com.fasterxml.jackson.core.JsonProcessingException;")
             appendln("import com.fasterxml.jackson.databind.JsonNode;")
@@ -64,20 +61,20 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
             appendln("  }")
             appendln("}")
 
-            File(packageDir, "SchemaOrg.java").writeText(toString())
+            File(p.directory, "SchemaOrg.java").writeText(toString())
         }
 
-        File(packageDir, "ThingBuilder.java").writeText("""$banner
+        File(p.directory, "ThingBuilder.java").writeText("""$banner
 
-package $ns;
+package ${p.name};
 
 public interface ThingBuilder<T> {
   void fromMap(java.util.Map<String,Object> map);
   T build();
 }""")
-        File(packageDir, "JsonLdModule.java").writeText("""$banner
+        File(p.directory, "JsonLdModule.java").writeText("""$banner
 
-package $ns;
+package ${p.name};
 
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -88,9 +85,9 @@ public class JsonLdModule extends SimpleModule {
         addDeserializer(Thing.class, new ThingDeserializer());
     }
 }""")
-        File(packageDir, "ThingDeserializer.java").writeText("""$banner
+        File(p.directory, "ThingDeserializer.java").writeText("""$banner
 
-package $ns;
+package ${p.name};
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;

@@ -1,17 +1,19 @@
 package org.schema.generator
 
-import java.io.File
-
 /**
  * @author Victor Kropp
  */
 class EitherTypesGenerator(private val sink: GeneratorSink, private val banner: String? = null) {
-    fun generate(packageDir: File, ns: String) {
-        sink.eitherTypes.forEach { generateEither(ns, packageDir, it.key, it.value) }
+    fun generate(p: Package) {
+        sink.eitherTypes.forEach { generateEither(p, it.key, it.value) }
     }
 
-    private fun generateEither(ns: String, packageDir: File, eitherName: String, types: Collection<String>) {
-        klass(packageDir, ns, eitherName, imports = listOf("com.fasterxml.jackson.databind.annotation.JsonSerialize"), annotations = listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)"), copyright = banner) {
+    private fun generateEither(p: Package, eitherName: String, types: Collection<String>) {
+        p.klass(eitherName) {
+            copyright = banner
+            imports = listOf("com.fasterxml.jackson.databind.annotation.JsonSerialize")
+            annotations = listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)")
+
             types.forEach {
                 field(it.decapitalize(), it) {
                     setter("clear", false)
@@ -19,7 +21,9 @@ class EitherTypesGenerator(private val sink: GeneratorSink, private val banner: 
                 }
             }
 
-            method("getJsonLdValue", "Object", annotations = listOf("@com.fasterxml.jackson.annotation.JsonValue")) {
+            method("getJsonLdValue", "Object") {
+                annotations = listOf("@com.fasterxml.jackson.annotation.JsonValue")
+
                 fields.forEach {
                     line("if (my${it.name} != null) return my${it.name};")
                 }

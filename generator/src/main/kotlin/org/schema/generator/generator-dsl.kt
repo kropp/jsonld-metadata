@@ -23,7 +23,28 @@ import java.io.File
  * @author Victor Kropp
  */
 
-class Klass(private val sourceDirectory: File, val namespace: String, val name: String, private val classOrInterface: String?, private val extends : String?, private val implements: Collection<String>?, val imports: Collection<String>?, val annotations: Collection<String>?, val comment: String?, val copyright: String?) {
+class SourcesRoot(val directory: File) {}
+
+class Package(val directory: File, val name: String) {}
+
+fun sources(directory: File, body: SourcesRoot.() -> Unit) {
+    SourcesRoot(directory).body()
+}
+
+fun SourcesRoot.pakage(name: String, body: Package.() -> Unit) {
+    Package(this.directory, name).body()
+}
+
+
+
+class Klass(private val sourceDirectory: File, val namespace: String, val name: String, private val classOrInterface: String?) {
+    var extends : String? = null
+    var implements: Collection<String>? = null
+    var imports: Collection<String>? = null
+    var annotations: Collection<String>? = null
+    var comment: String? = null
+    var copyright: String? = null
+
     internal val text = StringBuilder()
 
     val fields = arrayListOf<Field>()
@@ -63,8 +84,8 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
         text.appendln("  }")
     }
 
-    fun method(name: String, type: String = "void", annotations: Collection<String>? = null, throws: String? = null, body: Method.() -> Unit) {
-        Method(this, name, type, annotations, throws).use { it.body() }
+    fun method(name: String, type: String = "void", body: Method.() -> Unit) {
+        Method(this, name, type).use { it.body() }
     }
 
     fun hashCodeAndEquals(callSuper: Boolean = true) {
@@ -99,8 +120,8 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
         }
     }
 
-    init {
-        with(text) {
+    private fun generate() {
+        text.insert(0, with(StringBuilder()) {
             copyright?.let {
                 appendln(it)
                 appendln()
@@ -127,20 +148,17 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
                 append(implements!!.joinToString(", "))
             }
             appendln(" {")
+        }.toString())
 
-
-        }
-    }
-
-    private fun finish() {
         fields.forEach {
             text.appendln("  private ${it.type} my${it.name};")
         }
+
         text.appendln("}")
     }
 
     fun save() {
-        finish()
+        generate()
 
         val packageDir = namespace.split(Regex("\\.")).fold(sourceDirectory) { d, s -> File(d, s) }
         packageDir.mkdirs()
@@ -148,8 +166,8 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
     }
 }
 
-fun klass(sourceDirectory: File, namespace: String, name: String, classOrInterface: String? = "class", extends : String? = null, implements: Collection<String>? = null, imports: Collection<String>? = null, annotations: Collection<String>? = null, comment: String? = null, copyright: String? = null, body: Klass.() -> Unit) {
-    val c = Klass(sourceDirectory, namespace, name, classOrInterface, extends, implements, imports, annotations, comment, copyright)
+fun Package.klass(name: String, classOrInterface: String? = "class", body: Klass.() -> Unit) {
+    val c = Klass(this.directory, this.name, name, classOrInterface)
     c.body()
     c.save()
 }
@@ -183,21 +201,26 @@ class Field(val c: Klass, val name: String, val type: String) {
     }
 }
 
-class Method(val c: Klass, val name: String, val type: String, val annotations: Collection<String>?, throws: String?): Closeable {
-    init {
+class Method(val c: Klass, val name: String, val type: String): Closeable {
+    var annotations: Collection<String>? = null
+    var throws: String? = null
+
+    private val body = StringBuilder()
+
+    fun line(line: String) {
+        body.appendln("    " + line)
+    }
+
+    override fun close() {
         annotations?.forEach {
             c.text.appendln("  $it")
         }
         c.text.append("  public $type $name()")
         throws?.let { c.text.append(" throws $it") }
         c.text.appendln(" {")
-    }
 
-    fun line(line: String) {
-        c.text.appendln("    " + line)
-    }
+        c.text.append(body.toString())
 
-    override fun close() {
         c.text.appendln("  }")
     }
 }

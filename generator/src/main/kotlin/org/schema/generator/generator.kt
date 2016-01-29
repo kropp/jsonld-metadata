@@ -58,15 +58,23 @@ fun main(args: Array<String>) {
     val sourceDirectory = File("src/main/java")
     val testDirectory = File("test/main/java")
 
-    println("Generating classes")
-    ClassesGenerator(sink, BANNER).generate(sourceDirectory, NAMESPACE)
+    sources(sourceDirectory) {
+        pakage(NAMESPACE) {
+            println("Generating classes")
+            ClassesGenerator(sink, BANNER).generate(this)
 
-    println("Generating 'either' types")
-    EitherTypesGenerator(sink, BANNER).generate(sourceDirectory, NAMESPACE)
+            println("Generating 'either' types")
+            EitherTypesGenerator(sink, BANNER).generate(this)
 
-    println("Generating API")
-    ApiGenerator(sink, BANNER).generate(sourceDirectory, NAMESPACE)
+            println("Generating API")
+            ApiGenerator(sink, BANNER).generate(this)
+        }
+    }
 
-    println("Generating tests")
-    TestsGenerator(sink, BANNER).generate(testDirectory, NAMESPACE)
+    sources(testDirectory) {
+        pakage(NAMESPACE) {
+            println("Generating tests")
+            TestsGenerator(sink, BANNER).generate(this)
+        }
+    }
 }
