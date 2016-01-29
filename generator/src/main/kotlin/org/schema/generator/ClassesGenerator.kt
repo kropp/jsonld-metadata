@@ -21,7 +21,46 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 
             val typeName = type.name!!.capitalize()
 
+            val annotations = if (typeName == "Thing") { listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)") } else null
+
+            klass(packageDir, ns, typeName, listOf("com.fasterxml.jackson.databind.annotation.*", "com.fasterxml.jackson.annotation.*", "org.jetbrains.annotations.NotNull"), annotations, banner) {
+                if (typeName == "Thing") {
+                    method("getJsonLdType", "String", annotations = listOf("@JsonProperty(\"@type\")")) {
+                        line("return getClass().getSimpleName();")
+                    }
+                    method("getJsonLdContext", "String", annotations = listOf("@JsonProperty(\"@context\")")) {
+                        line("return \"http://schema.org/\";")
+                    }
+                }
+
+                for (field in type.subTypes) {
+                    sink.types[field]?.let {
+                        if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
+                            val fieldType = sink.getEitherFieldType(it)!!
+                            val name = it.name!!.capitalize()
+//                            it.comment?
+                            val annotations = arrayListOf<String>()
+                            if (fieldType == "java.util.Date") {
+                                annotations += "@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")"
+                            }
+                            if (name == "Id") {
+                                annotations += "@JsonProperty(\"@id\")"
+                            }
+                            field(name, fieldType) {
+                                getter()
+                            }
+                        }
+                    }
+
+                    if (!type.isInterface) {
+                        konstructor("protected")
+                        hashCodeAndEquals(typeName != "Thing")
+                    }
+                }
+            }
+
             with(StringBuilder()) {
+/*
                 appendln(banner)
                 appendln()
                 appendln("package $ns;")
@@ -30,6 +69,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                 appendln("import com.fasterxml.jackson.annotation.*;")
                 appendln("import org.jetbrains.annotations.*;")
                 appendln()
+*/
 
                 appendln("/**")
                 type.comment?.let { appendln(" * ${it.replace("\n", "\n  * ")}") }
@@ -37,9 +77,11 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                 type.equivalent?.let { appendln(" * Equivalent class: $it") }
                 appendln(" */")
 
+/*
                 if (typeName == "Thing") {
                     appendln("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)")
                 }
+*/
                 append("public ${type.classOrInterface} $typeName")
                 type.parentType?.let { sink.types[it]?.let { append(" extends ${it.name}") } }
                 val interfaces = type.interfaces.filter { i -> sink.types.values.any { it.name == i && !it.isField } }
@@ -49,7 +91,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                 }
                 appendln(" {")
 
-                if (typeName == "Thing") {
+/*                if (typeName == "Thing") {
                     appendln("""  @JsonProperty("@type")
   public String getJsonLdType() {
     return getClass().getSimpleName();
@@ -60,7 +102,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
     return "http://schema.org/";
   }
 """)
-                }
+                }*/
 
                 // getters
                 for (field in type.subTypes) {
@@ -174,40 +216,10 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 
                 val fields = type.subTypes.mapNotNull { sink.types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }
 
-                // package-local constructor and private fields
-                if (!type.isInterface) {
-                    append("  protected $typeName(")
-                    append(allFields.map { "${sink.getEitherFieldType(it)} ${it.name!!.decapitalize()}" }.joinToString(", "))
-                    appendln(") {")
-                    type.parentType?.let {
-                        append("    super(")
-                        append(sink.getAllFields(sink.types[it]).map { it.name!!.decapitalize() }.joinToString(", "))
-                        appendln(");")
-                    }
-                    for (field in type.subTypes) {
-                        sink.types[field]?.let {
-                            if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
-                                appendln("    my${it.name!!.capitalize()} = ${it.name!!.decapitalize()};")
-                            }
-                        }
-                    }
-                    appendln("  }")
-
-                    val fieldsCapitalized = fields.map { it.name!!.capitalize() }
-                    appendln()
-                    generateHashCode(typeName, fieldsCapitalized)
-                    appendln()
-                    generateEquals(typeName, fieldsCapitalized, typeName == "Thing")
-                    appendln()
-                }
-
-                fields.forEach {
-                    appendln("  private ${sink.getEitherFieldType(it)} my${it.name!!.capitalize()};")
-                }
 
                 appendln("}")
 
-                File(packageDir, "$typeName.java").writeText(toString())
+                //File(packageDir, "$typeName.java").writeText(toString())
             }
         }
     }
@@ -349,36 +361,6 @@ class ThingDeserializer extends JsonDeserializer<Thing> {
         return (Thing) builder.build();
     }
 }""")
-    }
-
-    private fun StringBuilder.generateHashCode(typeName: String, fields: Collection<String>) {
-        appendln("  @Override public int hashCode() {")
-        if (typeName == "Thing") {
-            appendln("    int result = 0;")
-        } else {
-            appendln("    int result = super.hashCode();")
-        }
-        fields.forEach {
-            appendln("    result = 31 * result + (my$it != null ? my$it.hashCode() : 0);")
-        }
-        appendln("    return result;")
-        appendln("  }")
-    }
-
-    private fun StringBuilder.generateEquals(typeName: String, fields: Collection<String>, skipSuper: Boolean) {
-        appendln("  @Override public boolean equals(Object o) {")
-        appendln("    if (this == o) return true;")
-        appendln("    if (o == null || getClass() != o.getClass()) return false;")
-        val other = typeName.decapitalize()
-        appendln("    $typeName $other = ($typeName) o;")
-        if (!skipSuper) {
-            appendln("    if (!super.equals(o)) return false;")
-        }
-        fields.forEach {
-            appendln("    if (my$it != null ? !my$it.equals($other.my$it) : $other.my$it != null) return false;")
-        }
-        appendln("    return true;")
-        appendln("  }")
     }
 
     private fun findType(fieldType: String): GeneratorSink.Type? = sink.types.values.firstOrNull { it.name == fieldType }

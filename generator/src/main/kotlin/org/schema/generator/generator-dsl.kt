@@ -41,6 +41,30 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
         text.appendln("  private static final $type $name = $value;");
     }
 
+    fun konstructor(visibility: String = "public") {
+        text.append("  $visibility $name(")
+        text.append(fields.map { "${it.type} ${it.name}" }.joinToString(", "))
+        text.appendln(") {")
+/*
+        type.parentType?.let {
+            append("    super(")
+            append(sink.getAllFields(sink.types[it]).map { it.name!!.decapitalize() }.joinToString(", "))
+            appendln(");")
+        }
+        for (field in type.subTypes) {
+            sink.types[field]?.let {
+                if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
+                    appendln("    my${it.name!!.capitalize()} = ${it.name!!.decapitalize()};")
+                }
+            }
+        }
+*/
+        fields.forEach {
+            text.appendln("    my${it.name} = ${it.name};")
+        }
+        text.appendln("  }")
+    }
+
     fun method(name: String, type: String = "void", annotations: Collection<String>? = null, throws: String? = null, body: Method.() -> Unit) {
         Method(this, name, type, annotations, throws).use { it.body() }
     }
