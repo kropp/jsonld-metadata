@@ -23,7 +23,7 @@ import java.io.File
  * @author Victor Kropp
  */
 
-class Klass(private val sourceDirectory: File, val namespace: String, val name: String, val imports: Collection<String>?, val annotations: Collection<String>?, val copyright: String?) {
+class Klass(private val sourceDirectory: File, val namespace: String, val name: String, private val classOrInterface: String?, private val extends : String?, private val implements: Collection<String>?, val imports: Collection<String>?, val annotations: Collection<String>?, val comment: String?, val copyright: String?) {
     internal val text = StringBuilder()
 
     val fields = arrayListOf<Field>()
@@ -33,8 +33,6 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
         fields += field
 
         field.body()
-
-        text.appendln("  private $type my${field.name};")
     }
 
     fun constant(name: String, type: String, value: String) {
@@ -113,14 +111,31 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
                 appendln("import $it;")
             }
             appendln()
+            comment?.let {
+                appendln("/**")
+                it.split("\n").forEach { appendln(" * $it") }
+                appendln(" */")
+            }
             annotations?.forEach {
                 appendln(it)
             }
-            appendln("public class $name {")
+            append("public $classOrInterface $name")
+
+            extends?.let { append(" extends $it")}
+            if (implements?.any() == true) {
+                append(" implements ")
+                append(implements!!.joinToString(", "))
+            }
+            appendln(" {")
+
+
         }
     }
 
     private fun finish() {
+        fields.forEach {
+            text.appendln("  private ${it.type} my${it.name};")
+        }
         text.appendln("}")
     }
 
@@ -133,14 +148,20 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
     }
 }
 
-fun klass(sourceDirectory: File, namespace: String, name: String, imports: Collection<String>? = null, annotations: Collection<String>? = null, copyright: String? = null, body: Klass.() -> Unit) {
-    val c = Klass(sourceDirectory, namespace, name, imports, annotations, copyright)
+fun klass(sourceDirectory: File, namespace: String, name: String, classOrInterface: String? = "class", extends : String? = null, implements: Collection<String>? = null, imports: Collection<String>? = null, annotations: Collection<String>? = null, comment: String? = null, copyright: String? = null, body: Klass.() -> Unit) {
+    val c = Klass(sourceDirectory, namespace, name, classOrInterface, extends, implements, imports, annotations, comment, copyright)
     c.body()
     c.save()
 }
 
 class Field(val c: Klass, val name: String, val type: String) {
-    fun getter() {
+    fun getter(annotations: Collection<String>? = null, comment: String? = null) {
+        comment?.let {
+            c.text.appendln("  /**")
+            c.text.appendln("   * $it")
+            c.text.appendln("   */")
+        }
+        annotations?.forEach { c.text.appendln("  $it") }
         c.text.appendln("  public $type get$name() { return my$name; }")
     }
     fun setter(methodCallBefore: String? = null, isPublic: Boolean = true) {

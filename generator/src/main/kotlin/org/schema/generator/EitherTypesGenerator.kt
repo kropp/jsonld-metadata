@@ -11,7 +11,7 @@ class EitherTypesGenerator(private val sink: GeneratorSink, private val banner: 
     }
 
     private fun generateEither(ns: String, packageDir: File, eitherName: String, types: Collection<String>) {
-        klass(packageDir, ns, eitherName, listOf("com.fasterxml.jackson.databind.annotation.JsonSerialize"), listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)"), banner) {
+        klass(packageDir, ns, eitherName, imports = listOf("com.fasterxml.jackson.databind.annotation.JsonSerialize"), annotations = listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)"), copyright = banner) {
             types.forEach {
                 field(it.decapitalize(), it) {
                     setter("clear", false)

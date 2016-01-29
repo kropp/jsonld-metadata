@@ -8,21 +8,16 @@ import java.io.File
 
 class ClassesGenerator(private val sink: GeneratorSink, private val banner: String? = null) {
     fun generate(dir: File, ns: String) {
-        val packageDir = ns.split(Regex("\\.")).fold(dir) { d, s -> File(d, s) }
-        packageDir.mkdirs()
-        generateTypes(ns, packageDir)
-    }
-
-    private fun generateTypes(ns: String, packageDir: File) {
         for (type in sink.types.values) {
             if (type.name.isNullOrEmpty() || (type.isField && !type.isInterface) || sink.shouldSkip(type.name!!))
                 continue
 
             val typeName = type.name!!.capitalize()
 
+            val comment = (type.comment ?: "") + (type.source?.let { "Source: $it" } ?: "") + (type.equivalent?.let { "Equivalent class: $it" } ?: "")
             val annotations = if (typeName == "Thing") { listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)") } else null
 
-            klass(packageDir, ns, typeName, listOf("com.fasterxml.jackson.databind.annotation.*", "com.fasterxml.jackson.annotation.*", "org.jetbrains.annotations.NotNull"), annotations, banner) {
+            klass(dir, ns, typeName, type.classOrInterface, type.parentType?.let { sink.types[it]?.name }, type.interfaces.filter { i -> sink.types.values.any { it.name == i && !it.isField } }, listOf("com.fasterxml.jackson.databind.annotation.*", "com.fasterxml.jackson.annotation.*", "org.jetbrains.annotations.NotNull"), annotations, comment, banner) {
                 if (typeName == "Thing") {
                     method("getJsonLdType", "String", annotations = listOf("@JsonProperty(\"@type\")")) {
                         line("return getClass().getSimpleName();")
@@ -32,100 +27,38 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                     }
                 }
 
-                for (field in type.subTypes) {
-                    sink.types[field]?.let {
-                        if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
-                            val fieldType = sink.getEitherFieldType(it)!!
-                            val name = it.name!!.capitalize()
-//                            it.comment?
-                            val annotations = arrayListOf<String>()
-                            if (fieldType == "java.util.Date") {
-                                annotations += "@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")"
-                            }
-                            if (name == "Id") {
-                                annotations += "@JsonProperty(\"@id\")"
-                            }
-                            field(name, fieldType) {
-                                getter()
-                            }
+                type.subTypes.mapNotNull { sink.types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.forEach {
+//                sink.getAllFields(type).forEach {
+//                type.subTypes.mapNotNull { sink.types[it] }.forEach {
+                    if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
+                        val fieldType = sink.getEitherFieldType(it)!!
+                        val name = it.name!!.capitalize()
+
+                        val getterAnnotations = arrayListOf<String>()
+                        if (fieldType == "java.util.Date") {
+                            getterAnnotations += "@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")"
+                        }
+                        if (name == "Id") {
+                            getterAnnotations += "@JsonProperty(\"@id\")"
+                        }
+
+                        field(name, fieldType) {
+                            getter(getterAnnotations, comment = it.comment)
                         }
                     }
+                }
 
-                    if (!type.isInterface) {
-                        konstructor("protected")
-                        hashCodeAndEquals(typeName != "Thing")
-                    }
+                if (!type.isInterface) {
+                    konstructor("protected")
+                    hashCodeAndEquals(typeName != "Thing")
                 }
             }
 
             with(StringBuilder()) {
-/*
-                appendln(banner)
-                appendln()
-                appendln("package $ns;")
-                appendln()
-                appendln("import com.fasterxml.jackson.databind.annotation.*;")
-                appendln("import com.fasterxml.jackson.annotation.*;")
-                appendln("import org.jetbrains.annotations.*;")
-                appendln()
-*/
 
-                appendln("/**")
-                type.comment?.let { appendln(" * ${it.replace("\n", "\n  * ")}") }
-                type.source?.let { appendln(" * Source: $it") }
-                type.equivalent?.let { appendln(" * Equivalent class: $it") }
-                appendln(" */")
 
-/*
-                if (typeName == "Thing") {
-                    appendln("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)")
-                }
-*/
-                append("public ${type.classOrInterface} $typeName")
-                type.parentType?.let { sink.types[it]?.let { append(" extends ${it.name}") } }
-                val interfaces = type.interfaces.filter { i -> sink.types.values.any { it.name == i && !it.isField } }
-                if (interfaces.any()) {
-                    append(" implements ")
-                    append(interfaces.joinToString(", "))
-                }
-                appendln(" {")
 
-/*                if (typeName == "Thing") {
-                    appendln("""  @JsonProperty("@type")
-  public String getJsonLdType() {
-    return getClass().getSimpleName();
-  }
 
-  @JsonProperty("@context")
-  public String getJsonLdContext() {
-    return "http://schema.org/";
-  }
-""")
-                }*/
-
-                // getters
-                for (field in type.subTypes) {
-                    sink.types[field]?.let {
-                        if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
-                            val fieldType = sink.getEitherFieldType(it)
-                            val name = it.name!!.capitalize()
-                            it.comment?.let {
-                                appendln("  /**")
-                                appendln("   * $it")
-                                appendln("   */")
-                            }
-                            if (fieldType == "java.util.Date") {
-                                appendln("    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")")
-                            }
-                            if (name == "Id") {
-                                appendln("  @JsonProperty(\"@id\")");
-                            }
-                            appendln("  public $fieldType get$name() {")
-                            appendln("    return my$name;")
-                            appendln("  }")
-                        }
-                    }
-                }
 
                 // builder
                 val allFields = sink.getAllFields(type)
@@ -212,13 +145,6 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                     appendln("  }")
                     appendln()
                 }
-
-                val fields = type.subTypes.mapNotNull { sink.types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }
-
-
-                appendln("}")
-
-                //File(packageDir, "$typeName.java").writeText(toString())
             }
         }
     }
