@@ -20,19 +20,31 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A unique instance of a radio BroadcastService on a CableOrSatelliteService lineup.
  */
 public class RadioChannel extends BroadcastChannel {
+  protected RadioChannel(String broadcastChannelId, CableOrSatelliteService inBroadcastLineup, String broadcastServiceTier, BroadcastService providesBroadcastService, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(broadcastChannelId, inBroadcastLineup, broadcastServiceTier, providesBroadcastService, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+  }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    RadioChannel radioChannel = (RadioChannel) o;
+    if (!super.equals(o)) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link RadioChannel}
    */
-  static final class RadioChannelThingBuilder implements Builder {
-    /**
-     * Creates new {@link RadioChannel} instance.
-     */
+  public static class Builder implements ThingBuilder<RadioChannel> {
     public RadioChannel build() {
       return new RadioChannel(broadcastChannelId, inBroadcastLineup, broadcastServiceTier, providesBroadcastService, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -99,33 +111,33 @@ public class RadioChannel extends BroadcastChannel {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -134,66 +146,66 @@ public class RadioChannel extends BroadcastChannel {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -241,7 +253,6 @@ public class RadioChannel extends BroadcastChannel {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -277,42 +288,5 @@ public class RadioChannel extends BroadcastChannel {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<RadioChannel> {
-    @NotNull Builder broadcastChannelId(@NotNull String broadcastChannelId);
-    @NotNull Builder inBroadcastLineup(@NotNull CableOrSatelliteService cableOrSatelliteService);
-    @NotNull Builder inBroadcastLineup(@NotNull CableOrSatelliteService.Builder cableOrSatelliteService);
-    @NotNull Builder broadcastServiceTier(@NotNull String broadcastServiceTier);
-    @NotNull Builder providesBroadcastService(@NotNull BroadcastService broadcastService);
-    @NotNull Builder providesBroadcastService(@NotNull BroadcastService.Builder broadcastService);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected RadioChannel(String broadcastChannelId, CableOrSatelliteService inBroadcastLineup, String broadcastServiceTier, BroadcastService providesBroadcastService, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(broadcastChannelId, inBroadcastLineup, broadcastServiceTier, providesBroadcastService, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    RadioChannel radioChannel = (RadioChannel) o;
-    if (!super.equals(o)) return false;
-    return true;
-  }
-
+  
 }

@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Any physical activity engaged in for recreational purposes. Examples may include ballroom dancing, roller skating, canoeing, fishing, etc.
  */
 public class LeisureTimeActivity {
-  /**
-   * Builder for {@link LeisureTimeActivity}
-   */
-  static final class LeisureTimeActivityThingBuilder implements Builder {
-    /**
-     * Creates new {@link LeisureTimeActivity} instance.
-     */
-    public LeisureTimeActivity build() {
-      return new LeisureTimeActivity();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<LeisureTimeActivity> {
-    
-  }
-
   protected LeisureTimeActivity() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class LeisureTimeActivity {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link LeisureTimeActivity}
+   */
+  public static class Builder implements ThingBuilder<LeisureTimeActivity> {
+    public LeisureTimeActivity build() {
+      return new LeisureTimeActivity();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

@@ -18,13 +18,15 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class OrderItemOrProduct {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setOrderItem(OrderItem orderItem) { clear(); myOrderItem = orderItem; }
+  public OrderItem getOrderItem() { return myOrderItem; }
+  void setProduct(Product product) { clear(); myProduct = product; }
+  public Product getProduct() { return myProduct; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myOrderItem != null) return myOrderItem;
     if (myProduct != null) return myProduct;
     return null;
@@ -34,24 +36,16 @@ public class OrderItemOrProduct {
     if (myProduct != null) return myProduct;
     return null;
   }
-  void setOrderItem(OrderItem orderItem) { clear(); myOrderItem = orderItem; }
-  public OrderItem getOrderItem() { return myOrderItem; }
-  private OrderItem myOrderItem;
-  void setProduct(Product product) { clear(); myProduct = product; }
-  public Product getProduct() { return myProduct; }
-  private Product myProduct;
-  private void clear() {
+  public void clear() {
     myOrderItem = null;
     myProduct = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myOrderItem != null ? myOrderItem.hashCode() : 0);
     result = 31 * result + (myProduct != null ? myProduct.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -60,5 +54,6 @@ public class OrderItemOrProduct {
     if (myProduct != null ? !myProduct.equals(orderItemOrProduct.myProduct) : orderItemOrProduct.myProduct != null) return false;
     return true;
   }
-
+  private OrderItem myOrderItem;
+  private Product myProduct;
 }

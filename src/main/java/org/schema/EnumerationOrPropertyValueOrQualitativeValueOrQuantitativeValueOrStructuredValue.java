@@ -18,13 +18,21 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setEnumeration(Enumeration enumeration) { clear(); myEnumeration = enumeration; }
+  public Enumeration getEnumeration() { return myEnumeration; }
+  void setPropertyValue(PropertyValue propertyValue) { clear(); myPropertyValue = propertyValue; }
+  public PropertyValue getPropertyValue() { return myPropertyValue; }
+  void setQualitativeValue(QualitativeValue qualitativeValue) { clear(); myQualitativeValue = qualitativeValue; }
+  public QualitativeValue getQualitativeValue() { return myQualitativeValue; }
+  void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
+  public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
+  void setStructuredValue(StructuredValue structuredValue) { clear(); myStructuredValue = structuredValue; }
+  public StructuredValue getStructuredValue() { return myStructuredValue; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myEnumeration != null) return myEnumeration;
     if (myPropertyValue != null) return myPropertyValue;
     if (myQualitativeValue != null) return myQualitativeValue;
@@ -40,31 +48,15 @@ public class EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrSt
     if (myStructuredValue != null) return myStructuredValue;
     return null;
   }
-  void setEnumeration(Enumeration enumeration) { clear(); myEnumeration = enumeration; }
-  public Enumeration getEnumeration() { return myEnumeration; }
-  private Enumeration myEnumeration;
-  void setPropertyValue(PropertyValue propertyValue) { clear(); myPropertyValue = propertyValue; }
-  public PropertyValue getPropertyValue() { return myPropertyValue; }
-  private PropertyValue myPropertyValue;
-  void setQualitativeValue(QualitativeValue qualitativeValue) { clear(); myQualitativeValue = qualitativeValue; }
-  public QualitativeValue getQualitativeValue() { return myQualitativeValue; }
-  private QualitativeValue myQualitativeValue;
-  void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
-  public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
-  private QuantitativeValue myQuantitativeValue;
-  void setStructuredValue(StructuredValue structuredValue) { clear(); myStructuredValue = structuredValue; }
-  public StructuredValue getStructuredValue() { return myStructuredValue; }
-  private StructuredValue myStructuredValue;
-  private void clear() {
+  public void clear() {
     myEnumeration = null;
     myPropertyValue = null;
     myQualitativeValue = null;
     myQuantitativeValue = null;
     myStructuredValue = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myEnumeration != null ? myEnumeration.hashCode() : 0);
     result = 31 * result + (myPropertyValue != null ? myPropertyValue.hashCode() : 0);
     result = 31 * result + (myQualitativeValue != null ? myQualitativeValue.hashCode() : 0);
@@ -72,7 +64,6 @@ public class EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrSt
     result = 31 * result + (myStructuredValue != null ? myStructuredValue.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -84,5 +75,9 @@ public class EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrSt
     if (myStructuredValue != null ? !myStructuredValue.equals(enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myStructuredValue) : enumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue.myStructuredValue != null) return false;
     return true;
   }
-
+  private Enumeration myEnumeration;
+  private PropertyValue myPropertyValue;
+  private QualitativeValue myQualitativeValue;
+  private QuantitativeValue myQuantitativeValue;
+  private StructuredValue myStructuredValue;
 }

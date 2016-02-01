@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A contact point&#x2014;for example, a Customer Complaints department.
@@ -29,64 +29,94 @@ public class ContactPoint extends StructuredValue {
   /**
    * The location served by this contact point (e.g., a phone number intended for Europeans vs. North Americans or only within the United States).
    */
-  public AdministrativeArea getAreaServed() {
-    return myAreaServed;
-  }
+  public AdministrativeArea getAreaServed() { return myAreaServed; }
   /**
    * A language someone may use with the item.
    */
-  public Language getAvailableLanguage() {
-    return myAvailableLanguage;
-  }
+  public Language getAvailableLanguage() { return myAvailableLanguage; }
   /**
    * An option available on this contact point (e.g. a toll-free number or support for hearing-impaired callers).
    */
-  public ContactPointOption getContactOption() {
-    return myContactOption;
-  }
+  public ContactPointOption getContactOption() { return myContactOption; }
   /**
    * A person or organization can have different contact points, for different purposes. For example, a sales contact point, a PR contact point and so on. This property is used to specify the kind of contact point.
    */
-  public String getContactType() {
-    return myContactType;
-  }
+  public String getContactType() { return myContactType; }
   /**
    * Email address.
    */
-  public String getEmail() {
-    return myEmail;
-  }
+  public String getEmail() { return myEmail; }
   /**
    * The fax number.
    */
-  public String getFaxNumber() {
-    return myFaxNumber;
-  }
+  public String getFaxNumber() { return myFaxNumber; }
   /**
    * The hours during which this contact point is available.
    */
-  public OpeningHoursSpecification getHoursAvailable() {
-    return myHoursAvailable;
-  }
+  public OpeningHoursSpecification getHoursAvailable() { return myHoursAvailable; }
   /**
    * The product or service this support contact point is related to (such as product support for a particular product line). This can be a specific product or product line (e.g. "iPhone") or a general category of products or services (e.g. "smartphones").
    */
-  public ProductOrString getProductSupported() {
-    return myProductSupported;
-  }
+  public ProductOrString getProductSupported() { return myProductSupported; }
   /**
    * The telephone number.
    */
-  public String getTelephone() {
-    return myTelephone;
+  public String getTelephone() { return myTelephone; }
+  protected ContactPoint(AdministrativeArea areaServed, Language availableLanguage, ContactPointOption contactOption, String contactType, String email, String faxNumber, OpeningHoursSpecification hoursAvailable, ProductOrString productSupported, String telephone, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myAreaServed = areaServed;
+    myAvailableLanguage = availableLanguage;
+    myContactOption = contactOption;
+    myContactType = contactType;
+    myEmail = email;
+    myFaxNumber = faxNumber;
+    myHoursAvailable = hoursAvailable;
+    myProductSupported = productSupported;
+    myTelephone = telephone;
+    myAreaServed = areaServed;
+    myAvailableLanguage = availableLanguage;
+    myContactOption = contactOption;
+    myContactType = contactType;
+    myEmail = email;
+    myFaxNumber = faxNumber;
+    myHoursAvailable = hoursAvailable;
+    myProductSupported = productSupported;
+    myTelephone = telephone;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAreaServed != null ? myAreaServed.hashCode() : 0);
+    result = 31 * result + (myAvailableLanguage != null ? myAvailableLanguage.hashCode() : 0);
+    result = 31 * result + (myContactOption != null ? myContactOption.hashCode() : 0);
+    result = 31 * result + (myContactType != null ? myContactType.hashCode() : 0);
+    result = 31 * result + (myEmail != null ? myEmail.hashCode() : 0);
+    result = 31 * result + (myFaxNumber != null ? myFaxNumber.hashCode() : 0);
+    result = 31 * result + (myHoursAvailable != null ? myHoursAvailable.hashCode() : 0);
+    result = 31 * result + (myProductSupported != null ? myProductSupported.hashCode() : 0);
+    result = 31 * result + (myTelephone != null ? myTelephone.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactPoint contactPoint = (ContactPoint) o;
+    if (!super.equals(o)) return false;
+    if (myAreaServed != null ? !myAreaServed.equals(contactPoint.myAreaServed) : contactPoint.myAreaServed != null) return false;
+    if (myAvailableLanguage != null ? !myAvailableLanguage.equals(contactPoint.myAvailableLanguage) : contactPoint.myAvailableLanguage != null) return false;
+    if (myContactOption != null ? !myContactOption.equals(contactPoint.myContactOption) : contactPoint.myContactOption != null) return false;
+    if (myContactType != null ? !myContactType.equals(contactPoint.myContactType) : contactPoint.myContactType != null) return false;
+    if (myEmail != null ? !myEmail.equals(contactPoint.myEmail) : contactPoint.myEmail != null) return false;
+    if (myFaxNumber != null ? !myFaxNumber.equals(contactPoint.myFaxNumber) : contactPoint.myFaxNumber != null) return false;
+    if (myHoursAvailable != null ? !myHoursAvailable.equals(contactPoint.myHoursAvailable) : contactPoint.myHoursAvailable != null) return false;
+    if (myProductSupported != null ? !myProductSupported.equals(contactPoint.myProductSupported) : contactPoint.myProductSupported != null) return false;
+    if (myTelephone != null ? !myTelephone.equals(contactPoint.myTelephone) : contactPoint.myTelephone != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link ContactPoint}
    */
-  static final class ContactPointThingBuilder implements Builder {
-    /**
-     * Creates new {@link ContactPoint} instance.
-     */
+  public static class Builder implements ThingBuilder<ContactPoint> {
     public ContactPoint build() {
       return new ContactPoint(areaServed, availableLanguage, contactOption, contactType, email, faxNumber, hoursAvailable, productSupported, telephone, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -215,33 +245,33 @@ public class ContactPoint extends StructuredValue {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -250,66 +280,66 @@ public class ContactPoint extends StructuredValue {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -357,7 +387,6 @@ public class ContactPoint extends StructuredValue {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -404,80 +433,7 @@ public class ContactPoint extends StructuredValue {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<ContactPoint> {
-    @NotNull Builder areaServed(@NotNull AdministrativeArea administrativeArea);
-    @NotNull Builder areaServed(@NotNull AdministrativeArea.Builder administrativeArea);
-    @NotNull Builder availableLanguage(@NotNull Language language);
-    @NotNull Builder availableLanguage(@NotNull Language.Builder language);
-    @NotNull Builder contactOption(@NotNull ContactPointOption contactPointOption);
-    @NotNull Builder contactOption(@NotNull ContactPointOption.Builder contactPointOption);
-    @NotNull Builder contactType(@NotNull String contactType);
-    @NotNull Builder email(@NotNull String email);
-    @NotNull Builder faxNumber(@NotNull String faxNumber);
-    @NotNull Builder hoursAvailable(@NotNull OpeningHoursSpecification openingHoursSpecification);
-    @NotNull Builder hoursAvailable(@NotNull OpeningHoursSpecification.Builder openingHoursSpecification);
-    @NotNull Builder productSupported(@NotNull Product product);
-    @NotNull Builder productSupported(@NotNull Product.Builder product);
-    @NotNull Builder productSupported(@NotNull String productSupported);
-    @NotNull Builder telephone(@NotNull String telephone);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected ContactPoint(AdministrativeArea areaServed, Language availableLanguage, ContactPointOption contactOption, String contactType, String email, String faxNumber, OpeningHoursSpecification hoursAvailable, ProductOrString productSupported, String telephone, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAreaServed = areaServed;
-    myAvailableLanguage = availableLanguage;
-    myContactOption = contactOption;
-    myContactType = contactType;
-    myEmail = email;
-    myFaxNumber = faxNumber;
-    myHoursAvailable = hoursAvailable;
-    myProductSupported = productSupported;
-    myTelephone = telephone;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAreaServed != null ? myAreaServed.hashCode() : 0);
-    result = 31 * result + (myAvailableLanguage != null ? myAvailableLanguage.hashCode() : 0);
-    result = 31 * result + (myContactOption != null ? myContactOption.hashCode() : 0);
-    result = 31 * result + (myContactType != null ? myContactType.hashCode() : 0);
-    result = 31 * result + (myEmail != null ? myEmail.hashCode() : 0);
-    result = 31 * result + (myFaxNumber != null ? myFaxNumber.hashCode() : 0);
-    result = 31 * result + (myHoursAvailable != null ? myHoursAvailable.hashCode() : 0);
-    result = 31 * result + (myProductSupported != null ? myProductSupported.hashCode() : 0);
-    result = 31 * result + (myTelephone != null ? myTelephone.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactPoint contactPoint = (ContactPoint) o;
-    if (!super.equals(o)) return false;
-    if (myAreaServed != null ? !myAreaServed.equals(contactPoint.myAreaServed) : contactPoint.myAreaServed != null) return false;
-    if (myAvailableLanguage != null ? !myAvailableLanguage.equals(contactPoint.myAvailableLanguage) : contactPoint.myAvailableLanguage != null) return false;
-    if (myContactOption != null ? !myContactOption.equals(contactPoint.myContactOption) : contactPoint.myContactOption != null) return false;
-    if (myContactType != null ? !myContactType.equals(contactPoint.myContactType) : contactPoint.myContactType != null) return false;
-    if (myEmail != null ? !myEmail.equals(contactPoint.myEmail) : contactPoint.myEmail != null) return false;
-    if (myFaxNumber != null ? !myFaxNumber.equals(contactPoint.myFaxNumber) : contactPoint.myFaxNumber != null) return false;
-    if (myHoursAvailable != null ? !myHoursAvailable.equals(contactPoint.myHoursAvailable) : contactPoint.myHoursAvailable != null) return false;
-    if (myProductSupported != null ? !myProductSupported.equals(contactPoint.myProductSupported) : contactPoint.myProductSupported != null) return false;
-    if (myTelephone != null ? !myTelephone.equals(contactPoint.myTelephone) : contactPoint.myTelephone != null) return false;
-    return true;
-  }
-
+  
   private AdministrativeArea myAreaServed;
   private Language myAvailableLanguage;
   private ContactPointOption myContactOption;

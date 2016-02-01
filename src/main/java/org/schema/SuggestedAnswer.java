@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An answer (possibly one of several, possibly incorrect) to a Question, e.g. on a Question/Answer site.

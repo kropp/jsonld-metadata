@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An ItemList ordered with lower values listed first.
  */
 public class ItemListOrderAscending {
-  /**
-   * Builder for {@link ItemListOrderAscending}
-   */
-  static final class ItemListOrderAscendingThingBuilder implements Builder {
-    /**
-     * Creates new {@link ItemListOrderAscending} instance.
-     */
-    public ItemListOrderAscending build() {
-      return new ItemListOrderAscending();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<ItemListOrderAscending> {
-    
-  }
-
   protected ItemListOrderAscending() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class ItemListOrderAscending {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link ItemListOrderAscending}
+   */
+  public static class Builder implements ThingBuilder<ItemListOrderAscending> {
+    public ItemListOrderAscending build() {
+      return new ItemListOrderAscending();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

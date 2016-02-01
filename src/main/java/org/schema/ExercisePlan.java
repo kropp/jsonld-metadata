@@ -20,68 +20,95 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * Fitness-related activity designed for a specific health-related purpose, including defined exercise routines as well as activity prescribed by a clinician.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
+ * Fitness-related activity designed for a specific health-related purpose, including defined exercise routines as well as activity prescribed by a clinician.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
  */
 public class ExercisePlan extends PhysicalActivity {
   /**
    * Length of time to engage in the activity.
    */
-  public Duration getActivityDuration() {
-    return myActivityDuration;
-  }
+  public Duration getActivityDuration() { return myActivityDuration; }
   /**
    * How often one should engage in the activity.
    */
-  public String getActivityFrequency() {
-    return myActivityFrequency;
-  }
+  public String getActivityFrequency() { return myActivityFrequency; }
   /**
    * Any additional component of the exercise prescription that may need to be articulated to the patient. This may include the order of exercises, the number of repetitions of movement, quantitative distance, progressions over time, etc.
    */
-  public String getAdditionalVariable() {
-    return myAdditionalVariable;
-  }
+  public String getAdditionalVariable() { return myAdditionalVariable; }
   /**
    * Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
    */
-  public String getExerciseType() {
-    return myExerciseType;
-  }
+  public String getExerciseType() { return myExerciseType; }
   /**
    * Quantitative measure gauging the degree of force involved in the exercise, for example, heartbeats per minute. May include the velocity of the movement.
    */
-  public String getIntensity() {
-    return myIntensity;
-  }
+  public String getIntensity() { return myIntensity; }
   /**
    * Number of times one should repeat the activity.
    */
-  public Number getRepetitions() {
-    return myRepetitions;
-  }
+  public Number getRepetitions() { return myRepetitions; }
   /**
    * How often one should break from the activity.
    */
-  public String getRestPeriods() {
-    return myRestPeriods;
-  }
+  public String getRestPeriods() { return myRestPeriods; }
   /**
    * Quantitative measure of the physiologic output of the exercise; also referred to as energy expenditure.
    */
-  public Energy getWorkload() {
-    return myWorkload;
+  public Energy getWorkload() { return myWorkload; }
+  protected ExercisePlan(Duration activityDuration, String activityFrequency, String additionalVariable, String exerciseType, String intensity, Number repetitions, String restPeriods, Energy workload, AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, PhysicalActivityCategoryOrStringOrThing category, String epidemiology, String pathophysiology, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(associatedAnatomy, category, epidemiology, pathophysiology, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myActivityDuration = activityDuration;
+    myActivityFrequency = activityFrequency;
+    myAdditionalVariable = additionalVariable;
+    myExerciseType = exerciseType;
+    myIntensity = intensity;
+    myRepetitions = repetitions;
+    myRestPeriods = restPeriods;
+    myWorkload = workload;
+    myActivityDuration = activityDuration;
+    myActivityFrequency = activityFrequency;
+    myAdditionalVariable = additionalVariable;
+    myExerciseType = exerciseType;
+    myIntensity = intensity;
+    myRepetitions = repetitions;
+    myRestPeriods = restPeriods;
+    myWorkload = workload;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActivityDuration != null ? myActivityDuration.hashCode() : 0);
+    result = 31 * result + (myActivityFrequency != null ? myActivityFrequency.hashCode() : 0);
+    result = 31 * result + (myAdditionalVariable != null ? myAdditionalVariable.hashCode() : 0);
+    result = 31 * result + (myExerciseType != null ? myExerciseType.hashCode() : 0);
+    result = 31 * result + (myIntensity != null ? myIntensity.hashCode() : 0);
+    result = 31 * result + (myRepetitions != null ? myRepetitions.hashCode() : 0);
+    result = 31 * result + (myRestPeriods != null ? myRestPeriods.hashCode() : 0);
+    result = 31 * result + (myWorkload != null ? myWorkload.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ExercisePlan exercisePlan = (ExercisePlan) o;
+    if (!super.equals(o)) return false;
+    if (myActivityDuration != null ? !myActivityDuration.equals(exercisePlan.myActivityDuration) : exercisePlan.myActivityDuration != null) return false;
+    if (myActivityFrequency != null ? !myActivityFrequency.equals(exercisePlan.myActivityFrequency) : exercisePlan.myActivityFrequency != null) return false;
+    if (myAdditionalVariable != null ? !myAdditionalVariable.equals(exercisePlan.myAdditionalVariable) : exercisePlan.myAdditionalVariable != null) return false;
+    if (myExerciseType != null ? !myExerciseType.equals(exercisePlan.myExerciseType) : exercisePlan.myExerciseType != null) return false;
+    if (myIntensity != null ? !myIntensity.equals(exercisePlan.myIntensity) : exercisePlan.myIntensity != null) return false;
+    if (myRepetitions != null ? !myRepetitions.equals(exercisePlan.myRepetitions) : exercisePlan.myRepetitions != null) return false;
+    if (myRestPeriods != null ? !myRestPeriods.equals(exercisePlan.myRestPeriods) : exercisePlan.myRestPeriods != null) return false;
+    if (myWorkload != null ? !myWorkload.equals(exercisePlan.myWorkload) : exercisePlan.myWorkload != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link ExercisePlan}
    */
-  static final class ExercisePlanThingBuilder implements Builder {
-    /**
-     * Creates new {@link ExercisePlan} instance.
-     */
+  public static class Builder implements ThingBuilder<ExercisePlan> {
     public ExercisePlan build() {
       return new ExercisePlan(activityDuration, activityFrequency, additionalVariable, exerciseType, intensity, repetitions, restPeriods, workload, associatedAnatomy, category, epidemiology, pathophysiology, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -444,33 +471,33 @@ public class ExercisePlan extends PhysicalActivity {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -479,66 +506,66 @@ public class ExercisePlan extends PhysicalActivity {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -586,7 +613,6 @@ public class ExercisePlan extends PhysicalActivity {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -668,111 +694,7 @@ public class ExercisePlan extends PhysicalActivity {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<ExercisePlan> {
-    @NotNull Builder activityDuration(@NotNull Duration duration);
-    @NotNull Builder activityDuration(@NotNull Duration.Builder duration);
-    @NotNull Builder activityFrequency(@NotNull String activityFrequency);
-    @NotNull Builder additionalVariable(@NotNull String additionalVariable);
-    @NotNull Builder exerciseType(@NotNull String exerciseType);
-    @NotNull Builder intensity(@NotNull String intensity);
-    @NotNull Builder repetitions(@NotNull Integer integer);
-    @NotNull Builder repetitions(@NotNull Long repetitions);
-    @NotNull Builder repetitions(@NotNull Float repetitions);
-    @NotNull Builder repetitions(@NotNull Double repetitions);
-    @NotNull Builder repetitions(@NotNull String repetitions);
-    @NotNull Builder restPeriods(@NotNull String restPeriods);
-    @NotNull Builder workload(@NotNull Energy energy);
-    @NotNull Builder workload(@NotNull Energy.Builder energy);
-    @NotNull Builder associatedAnatomy(@NotNull AnatomicalStructure anatomicalStructure);
-    @NotNull Builder associatedAnatomy(@NotNull AnatomicalStructure.Builder anatomicalStructure);
-    @NotNull Builder associatedAnatomy(@NotNull AnatomicalSystem anatomicalSystem);
-    @NotNull Builder associatedAnatomy(@NotNull AnatomicalSystem.Builder anatomicalSystem);
-    @NotNull Builder associatedAnatomy(@NotNull SuperficialAnatomy superficialAnatomy);
-    @NotNull Builder associatedAnatomy(@NotNull SuperficialAnatomy.Builder superficialAnatomy);
-    @NotNull Builder category(@NotNull PhysicalActivityCategory physicalActivityCategory);
-    @NotNull Builder category(@NotNull PhysicalActivityCategory.Builder physicalActivityCategory);
-    @NotNull Builder category(@NotNull String category);
-    @NotNull Builder category(@NotNull Thing thing);
-    @NotNull Builder category(@NotNull Thing.Builder thing);
-    @NotNull Builder epidemiology(@NotNull String epidemiology);
-    @NotNull Builder pathophysiology(@NotNull String pathophysiology);
-    @NotNull Builder adverseOutcome(@NotNull MedicalEntity medicalEntity);
-    @NotNull Builder adverseOutcome(@NotNull MedicalEntity.Builder medicalEntity);
-    @NotNull Builder contraindication(@NotNull MedicalContraindication medicalContraindication);
-    @NotNull Builder contraindication(@NotNull MedicalContraindication.Builder medicalContraindication);
-    @NotNull Builder duplicateTherapy(@NotNull MedicalTherapy medicalTherapy);
-    @NotNull Builder duplicateTherapy(@NotNull MedicalTherapy.Builder medicalTherapy);
-    @NotNull Builder indication(@NotNull MedicalIndication medicalIndication);
-    @NotNull Builder indication(@NotNull MedicalIndication.Builder medicalIndication);
-    @NotNull Builder seriousAdverseOutcome(@NotNull MedicalEntity medicalEntity);
-    @NotNull Builder seriousAdverseOutcome(@NotNull MedicalEntity.Builder medicalEntity);
-    @NotNull Builder code(@NotNull MedicalCode medicalCode);
-    @NotNull Builder code(@NotNull MedicalCode.Builder medicalCode);
-    @NotNull Builder guideline(@NotNull MedicalGuideline medicalGuideline);
-    @NotNull Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem medicineSystem);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem);
-    @NotNull Builder recognizingAuthority(@NotNull Organization organization);
-    @NotNull Builder recognizingAuthority(@NotNull Organization.Builder organization);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty);
-    @NotNull Builder study(@NotNull MedicalStudy medicalStudy);
-    @NotNull Builder study(@NotNull MedicalStudy.Builder medicalStudy);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected ExercisePlan(Duration activityDuration, String activityFrequency, String additionalVariable, String exerciseType, String intensity, Number repetitions, String restPeriods, Energy workload, AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, PhysicalActivityCategoryOrStringOrThing category, String epidemiology, String pathophysiology, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(associatedAnatomy, category, epidemiology, pathophysiology, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myActivityDuration = activityDuration;
-    myActivityFrequency = activityFrequency;
-    myAdditionalVariable = additionalVariable;
-    myExerciseType = exerciseType;
-    myIntensity = intensity;
-    myRepetitions = repetitions;
-    myRestPeriods = restPeriods;
-    myWorkload = workload;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myActivityDuration != null ? myActivityDuration.hashCode() : 0);
-    result = 31 * result + (myActivityFrequency != null ? myActivityFrequency.hashCode() : 0);
-    result = 31 * result + (myAdditionalVariable != null ? myAdditionalVariable.hashCode() : 0);
-    result = 31 * result + (myExerciseType != null ? myExerciseType.hashCode() : 0);
-    result = 31 * result + (myIntensity != null ? myIntensity.hashCode() : 0);
-    result = 31 * result + (myRepetitions != null ? myRepetitions.hashCode() : 0);
-    result = 31 * result + (myRestPeriods != null ? myRestPeriods.hashCode() : 0);
-    result = 31 * result + (myWorkload != null ? myWorkload.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ExercisePlan exercisePlan = (ExercisePlan) o;
-    if (!super.equals(o)) return false;
-    if (myActivityDuration != null ? !myActivityDuration.equals(exercisePlan.myActivityDuration) : exercisePlan.myActivityDuration != null) return false;
-    if (myActivityFrequency != null ? !myActivityFrequency.equals(exercisePlan.myActivityFrequency) : exercisePlan.myActivityFrequency != null) return false;
-    if (myAdditionalVariable != null ? !myAdditionalVariable.equals(exercisePlan.myAdditionalVariable) : exercisePlan.myAdditionalVariable != null) return false;
-    if (myExerciseType != null ? !myExerciseType.equals(exercisePlan.myExerciseType) : exercisePlan.myExerciseType != null) return false;
-    if (myIntensity != null ? !myIntensity.equals(exercisePlan.myIntensity) : exercisePlan.myIntensity != null) return false;
-    if (myRepetitions != null ? !myRepetitions.equals(exercisePlan.myRepetitions) : exercisePlan.myRepetitions != null) return false;
-    if (myRestPeriods != null ? !myRestPeriods.equals(exercisePlan.myRestPeriods) : exercisePlan.myRestPeriods != null) return false;
-    if (myWorkload != null ? !myWorkload.equals(exercisePlan.myWorkload) : exercisePlan.myWorkload != null) return false;
-    return true;
-  }
-
+  
   private Duration myActivityDuration;
   private String myActivityFrequency;
   private String myAdditionalVariable;

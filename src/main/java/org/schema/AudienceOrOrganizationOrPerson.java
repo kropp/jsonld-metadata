@@ -18,13 +18,17 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class AudienceOrOrganizationOrPerson {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setAudience(Audience audience) { clear(); myAudience = audience; }
+  public Audience getAudience() { return myAudience; }
+  void setOrganization(Organization organization) { clear(); myOrganization = organization; }
+  public Organization getOrganization() { return myOrganization; }
+  void setPerson(Person person) { clear(); myPerson = person; }
+  public Person getPerson() { return myPerson; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myAudience != null) return myAudience;
     if (myOrganization != null) return myOrganization;
     if (myPerson != null) return myPerson;
@@ -36,29 +40,18 @@ public class AudienceOrOrganizationOrPerson {
     if (myPerson != null) return myPerson;
     return null;
   }
-  void setAudience(Audience audience) { clear(); myAudience = audience; }
-  public Audience getAudience() { return myAudience; }
-  private Audience myAudience;
-  void setOrganization(Organization organization) { clear(); myOrganization = organization; }
-  public Organization getOrganization() { return myOrganization; }
-  private Organization myOrganization;
-  void setPerson(Person person) { clear(); myPerson = person; }
-  public Person getPerson() { return myPerson; }
-  private Person myPerson;
-  private void clear() {
+  public void clear() {
     myAudience = null;
     myOrganization = null;
     myPerson = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myAudience != null ? myAudience.hashCode() : 0);
     result = 31 * result + (myOrganization != null ? myOrganization.hashCode() : 0);
     result = 31 * result + (myPerson != null ? myPerson.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -68,5 +61,7 @@ public class AudienceOrOrganizationOrPerson {
     if (myPerson != null ? !myPerson.equals(audienceOrOrganizationOrPerson.myPerson) : audienceOrOrganizationOrPerson.myPerson != null) return false;
     return true;
   }
-
+  private Audience myAudience;
+  private Organization myOrganization;
+  private Person myPerson;
 }

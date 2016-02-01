@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Enrolling participants by invitation only.
  */
 public class EnrollingByInvitation {
-  /**
-   * Builder for {@link EnrollingByInvitation}
-   */
-  static final class EnrollingByInvitationThingBuilder implements Builder {
-    /**
-     * Creates new {@link EnrollingByInvitation} instance.
-     */
-    public EnrollingByInvitation build() {
-      return new EnrollingByInvitation();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<EnrollingByInvitation> {
-    
-  }
-
   protected EnrollingByInvitation() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class EnrollingByInvitation {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link EnrollingByInvitation}
+   */
+  public static class Builder implements ThingBuilder<EnrollingByInvitation> {
+    public EnrollingByInvitation build() {
+      return new EnrollingByInvitation();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

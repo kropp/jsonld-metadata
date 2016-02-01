@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Used to describe a ticket to an event, a flight, a bus ride, etc.
@@ -29,59 +29,87 @@ public class Ticket extends Intangible {
   /**
    * The person or organization the reservation or ticket is for.
    */
-  public OrganizationOrPerson getUnderName() {
-    return myUnderName;
-  }
+  public OrganizationOrPerson getUnderName() { return myUnderName; }
   /**
    * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
    */
-  public Number getTotalPrice() {
-    return myTotalPrice;
-  }
+  public Number getTotalPrice() { return myTotalPrice; }
   /**
    * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
    */
-  public String getPriceCurrency() {
-    return myPriceCurrency;
-  }
+  public String getPriceCurrency() { return myPriceCurrency; }
   /**
    * The organization issuing the ticket or permit.
    */
-  public Organization getIssuedBy() {
-    return myIssuedBy;
-  }
+  public Organization getIssuedBy() { return myIssuedBy; }
   /**
    * The date the ticket was issued.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDateIssued() {
-    return myDateIssued;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getDateIssued() { return myDateIssued; }
   /**
    * The seat associated with the ticket.
    */
-  public Seat getTicketedSeat() {
-    return myTicketedSeat;
-  }
+  public Seat getTicketedSeat() { return myTicketedSeat; }
   /**
    * The unique identifier for the ticket.
    */
-  public String getTicketNumber() {
-    return myTicketNumber;
-  }
+  public String getTicketNumber() { return myTicketNumber; }
   /**
    * Reference to an asset (e.g., Barcode, QR code image or PDF) usable for entrance.
    */
-  public String getTicketToken() {
-    return myTicketToken;
+  public String getTicketToken() { return myTicketToken; }
+  protected Ticket(OrganizationOrPerson underName, Number totalPrice, String priceCurrency, Organization issuedBy, java.util.Date dateIssued, Seat ticketedSeat, String ticketNumber, String ticketToken, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myUnderName = underName;
+    myTotalPrice = totalPrice;
+    myPriceCurrency = priceCurrency;
+    myIssuedBy = issuedBy;
+    myDateIssued = dateIssued;
+    myTicketedSeat = ticketedSeat;
+    myTicketNumber = ticketNumber;
+    myTicketToken = ticketToken;
+    myUnderName = underName;
+    myTotalPrice = totalPrice;
+    myPriceCurrency = priceCurrency;
+    myIssuedBy = issuedBy;
+    myDateIssued = dateIssued;
+    myTicketedSeat = ticketedSeat;
+    myTicketNumber = ticketNumber;
+    myTicketToken = ticketToken;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myUnderName != null ? myUnderName.hashCode() : 0);
+    result = 31 * result + (myTotalPrice != null ? myTotalPrice.hashCode() : 0);
+    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
+    result = 31 * result + (myIssuedBy != null ? myIssuedBy.hashCode() : 0);
+    result = 31 * result + (myDateIssued != null ? myDateIssued.hashCode() : 0);
+    result = 31 * result + (myTicketedSeat != null ? myTicketedSeat.hashCode() : 0);
+    result = 31 * result + (myTicketNumber != null ? myTicketNumber.hashCode() : 0);
+    result = 31 * result + (myTicketToken != null ? myTicketToken.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Ticket ticket = (Ticket) o;
+    if (!super.equals(o)) return false;
+    if (myUnderName != null ? !myUnderName.equals(ticket.myUnderName) : ticket.myUnderName != null) return false;
+    if (myTotalPrice != null ? !myTotalPrice.equals(ticket.myTotalPrice) : ticket.myTotalPrice != null) return false;
+    if (myPriceCurrency != null ? !myPriceCurrency.equals(ticket.myPriceCurrency) : ticket.myPriceCurrency != null) return false;
+    if (myIssuedBy != null ? !myIssuedBy.equals(ticket.myIssuedBy) : ticket.myIssuedBy != null) return false;
+    if (myDateIssued != null ? !myDateIssued.equals(ticket.myDateIssued) : ticket.myDateIssued != null) return false;
+    if (myTicketedSeat != null ? !myTicketedSeat.equals(ticket.myTicketedSeat) : ticket.myTicketedSeat != null) return false;
+    if (myTicketNumber != null ? !myTicketNumber.equals(ticket.myTicketNumber) : ticket.myTicketNumber != null) return false;
+    if (myTicketToken != null ? !myTicketToken.equals(ticket.myTicketToken) : ticket.myTicketToken != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link Ticket}
    */
-  static final class TicketThingBuilder implements Builder {
-    /**
-     * Creates new {@link Ticket} instance.
-     */
+  public static class Builder implements ThingBuilder<Ticket> {
     public Ticket build() {
       return new Ticket(underName, totalPrice, priceCurrency, issuedBy, dateIssued, ticketedSeat, ticketNumber, ticketToken, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -230,33 +258,33 @@ public class Ticket extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -265,66 +293,66 @@ public class Ticket extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -372,7 +400,6 @@ public class Ticket extends Intangible {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -421,79 +448,7 @@ public class Ticket extends Intangible {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<Ticket> {
-    @NotNull Builder underName(@NotNull Organization organization);
-    @NotNull Builder underName(@NotNull Organization.Builder organization);
-    @NotNull Builder underName(@NotNull Person person);
-    @NotNull Builder underName(@NotNull Person.Builder person);
-    @NotNull Builder totalPrice(@NotNull Integer integer);
-    @NotNull Builder totalPrice(@NotNull Long totalPrice);
-    @NotNull Builder totalPrice(@NotNull Float totalPrice);
-    @NotNull Builder totalPrice(@NotNull Double totalPrice);
-    @NotNull Builder totalPrice(@NotNull String totalPrice);
-    @NotNull Builder priceCurrency(@NotNull String priceCurrency);
-    @NotNull Builder issuedBy(@NotNull Organization organization);
-    @NotNull Builder issuedBy(@NotNull Organization.Builder organization);
-    @NotNull Builder dateIssued(@NotNull java.util.Date date);
-    @NotNull Builder ticketedSeat(@NotNull Seat seat);
-    @NotNull Builder ticketedSeat(@NotNull Seat.Builder seat);
-    @NotNull Builder ticketNumber(@NotNull String ticketNumber);
-    @NotNull Builder ticketToken(@NotNull String ticketToken);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected Ticket(OrganizationOrPerson underName, Number totalPrice, String priceCurrency, Organization issuedBy, java.util.Date dateIssued, Seat ticketedSeat, String ticketNumber, String ticketToken, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myUnderName = underName;
-    myTotalPrice = totalPrice;
-    myPriceCurrency = priceCurrency;
-    myIssuedBy = issuedBy;
-    myDateIssued = dateIssued;
-    myTicketedSeat = ticketedSeat;
-    myTicketNumber = ticketNumber;
-    myTicketToken = ticketToken;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myUnderName != null ? myUnderName.hashCode() : 0);
-    result = 31 * result + (myTotalPrice != null ? myTotalPrice.hashCode() : 0);
-    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
-    result = 31 * result + (myIssuedBy != null ? myIssuedBy.hashCode() : 0);
-    result = 31 * result + (myDateIssued != null ? myDateIssued.hashCode() : 0);
-    result = 31 * result + (myTicketedSeat != null ? myTicketedSeat.hashCode() : 0);
-    result = 31 * result + (myTicketNumber != null ? myTicketNumber.hashCode() : 0);
-    result = 31 * result + (myTicketToken != null ? myTicketToken.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Ticket ticket = (Ticket) o;
-    if (!super.equals(o)) return false;
-    if (myUnderName != null ? !myUnderName.equals(ticket.myUnderName) : ticket.myUnderName != null) return false;
-    if (myTotalPrice != null ? !myTotalPrice.equals(ticket.myTotalPrice) : ticket.myTotalPrice != null) return false;
-    if (myPriceCurrency != null ? !myPriceCurrency.equals(ticket.myPriceCurrency) : ticket.myPriceCurrency != null) return false;
-    if (myIssuedBy != null ? !myIssuedBy.equals(ticket.myIssuedBy) : ticket.myIssuedBy != null) return false;
-    if (myDateIssued != null ? !myDateIssued.equals(ticket.myDateIssued) : ticket.myDateIssued != null) return false;
-    if (myTicketedSeat != null ? !myTicketedSeat.equals(ticket.myTicketedSeat) : ticket.myTicketedSeat != null) return false;
-    if (myTicketNumber != null ? !myTicketNumber.equals(ticket.myTicketNumber) : ticket.myTicketNumber != null) return false;
-    if (myTicketToken != null ? !myTicketToken.equals(ticket.myTicketToken) : ticket.myTicketToken != null) return false;
-    return true;
-  }
-
+  
   private OrganizationOrPerson myUnderName;
   private Number myTotalPrice;
   private String myPriceCurrency;

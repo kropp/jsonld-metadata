@@ -20,50 +20,71 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * Any medical intervention designed to prevent, treat, and cure human diseases and medical conditions, including both curative and palliative therapies. Medical therapies are typically processes of care relying upon pharmacotherapy, behavioral therapy, supportive therapy (with fluid or nutrition for example), or detoxification (e.g. hemodialysis) aimed at improving or preventing a health condition.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
+ * Any medical intervention designed to prevent, treat, and cure human diseases and medical conditions, including both curative and palliative therapies. Medical therapies are typically processes of care relying upon pharmacotherapy, behavioral therapy, supportive therapy (with fluid or nutrition for example), or detoxification (e.g. hemodialysis) aimed at improving or preventing a health condition.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
  */
 public class MedicalTherapy extends MedicalEntity {
   /**
    * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
    */
-  public MedicalEntity getAdverseOutcome() {
-    return myAdverseOutcome;
-  }
+  public MedicalEntity getAdverseOutcome() { return myAdverseOutcome; }
   /**
    * A contraindication for this therapy.
    */
-  public MedicalContraindication getContraindication() {
-    return myContraindication;
-  }
+  public MedicalContraindication getContraindication() { return myContraindication; }
   /**
    * A therapy that duplicates or overlaps this one.
    */
-  public MedicalTherapy getDuplicateTherapy() {
-    return myDuplicateTherapy;
-  }
+  public MedicalTherapy getDuplicateTherapy() { return myDuplicateTherapy; }
   /**
    * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
    */
-  public MedicalIndication getIndication() {
-    return myIndication;
-  }
+  public MedicalIndication getIndication() { return myIndication; }
   /**
    * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
    */
-  public MedicalEntity getSeriousAdverseOutcome() {
-    return mySeriousAdverseOutcome;
+  public MedicalEntity getSeriousAdverseOutcome() { return mySeriousAdverseOutcome; }
+  protected MedicalTherapy(MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myAdverseOutcome = adverseOutcome;
+    myContraindication = contraindication;
+    myDuplicateTherapy = duplicateTherapy;
+    myIndication = indication;
+    mySeriousAdverseOutcome = seriousAdverseOutcome;
+    myAdverseOutcome = adverseOutcome;
+    myContraindication = contraindication;
+    myDuplicateTherapy = duplicateTherapy;
+    myIndication = indication;
+    mySeriousAdverseOutcome = seriousAdverseOutcome;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAdverseOutcome != null ? myAdverseOutcome.hashCode() : 0);
+    result = 31 * result + (myContraindication != null ? myContraindication.hashCode() : 0);
+    result = 31 * result + (myDuplicateTherapy != null ? myDuplicateTherapy.hashCode() : 0);
+    result = 31 * result + (myIndication != null ? myIndication.hashCode() : 0);
+    result = 31 * result + (mySeriousAdverseOutcome != null ? mySeriousAdverseOutcome.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalTherapy medicalTherapy = (MedicalTherapy) o;
+    if (!super.equals(o)) return false;
+    if (myAdverseOutcome != null ? !myAdverseOutcome.equals(medicalTherapy.myAdverseOutcome) : medicalTherapy.myAdverseOutcome != null) return false;
+    if (myContraindication != null ? !myContraindication.equals(medicalTherapy.myContraindication) : medicalTherapy.myContraindication != null) return false;
+    if (myDuplicateTherapy != null ? !myDuplicateTherapy.equals(medicalTherapy.myDuplicateTherapy) : medicalTherapy.myDuplicateTherapy != null) return false;
+    if (myIndication != null ? !myIndication.equals(medicalTherapy.myIndication) : medicalTherapy.myIndication != null) return false;
+    if (mySeriousAdverseOutcome != null ? !mySeriousAdverseOutcome.equals(medicalTherapy.mySeriousAdverseOutcome) : medicalTherapy.mySeriousAdverseOutcome != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link MedicalTherapy}
    */
-  static final class MedicalTherapyThingBuilder implements Builder {
-    /**
-     * Creates new {@link MedicalTherapy} instance.
-     */
+  public static class Builder implements ThingBuilder<MedicalTherapy> {
     public MedicalTherapy build() {
       return new MedicalTherapy(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -233,33 +254,33 @@ public class MedicalTherapy extends MedicalEntity {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -268,66 +289,66 @@ public class MedicalTherapy extends MedicalEntity {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -375,7 +396,6 @@ public class MedicalTherapy extends MedicalEntity {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -425,75 +445,7 @@ public class MedicalTherapy extends MedicalEntity {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<MedicalTherapy> {
-    @NotNull Builder adverseOutcome(@NotNull MedicalEntity medicalEntity);
-    @NotNull Builder adverseOutcome(@NotNull MedicalEntity.Builder medicalEntity);
-    @NotNull Builder contraindication(@NotNull MedicalContraindication medicalContraindication);
-    @NotNull Builder contraindication(@NotNull MedicalContraindication.Builder medicalContraindication);
-    @NotNull Builder duplicateTherapy(@NotNull MedicalTherapy medicalTherapy);
-    @NotNull Builder duplicateTherapy(@NotNull MedicalTherapy.Builder medicalTherapy);
-    @NotNull Builder indication(@NotNull MedicalIndication medicalIndication);
-    @NotNull Builder indication(@NotNull MedicalIndication.Builder medicalIndication);
-    @NotNull Builder seriousAdverseOutcome(@NotNull MedicalEntity medicalEntity);
-    @NotNull Builder seriousAdverseOutcome(@NotNull MedicalEntity.Builder medicalEntity);
-    @NotNull Builder code(@NotNull MedicalCode medicalCode);
-    @NotNull Builder code(@NotNull MedicalCode.Builder medicalCode);
-    @NotNull Builder guideline(@NotNull MedicalGuideline medicalGuideline);
-    @NotNull Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem medicineSystem);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem);
-    @NotNull Builder recognizingAuthority(@NotNull Organization organization);
-    @NotNull Builder recognizingAuthority(@NotNull Organization.Builder organization);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty);
-    @NotNull Builder study(@NotNull MedicalStudy medicalStudy);
-    @NotNull Builder study(@NotNull MedicalStudy.Builder medicalStudy);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected MedicalTherapy(MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAdverseOutcome = adverseOutcome;
-    myContraindication = contraindication;
-    myDuplicateTherapy = duplicateTherapy;
-    myIndication = indication;
-    mySeriousAdverseOutcome = seriousAdverseOutcome;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAdverseOutcome != null ? myAdverseOutcome.hashCode() : 0);
-    result = 31 * result + (myContraindication != null ? myContraindication.hashCode() : 0);
-    result = 31 * result + (myDuplicateTherapy != null ? myDuplicateTherapy.hashCode() : 0);
-    result = 31 * result + (myIndication != null ? myIndication.hashCode() : 0);
-    result = 31 * result + (mySeriousAdverseOutcome != null ? mySeriousAdverseOutcome.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    MedicalTherapy medicalTherapy = (MedicalTherapy) o;
-    if (!super.equals(o)) return false;
-    if (myAdverseOutcome != null ? !myAdverseOutcome.equals(medicalTherapy.myAdverseOutcome) : medicalTherapy.myAdverseOutcome != null) return false;
-    if (myContraindication != null ? !myContraindication.equals(medicalTherapy.myContraindication) : medicalTherapy.myContraindication != null) return false;
-    if (myDuplicateTherapy != null ? !myDuplicateTherapy.equals(medicalTherapy.myDuplicateTherapy) : medicalTherapy.myDuplicateTherapy != null) return false;
-    if (myIndication != null ? !myIndication.equals(medicalTherapy.myIndication) : medicalTherapy.myIndication != null) return false;
-    if (mySeriousAdverseOutcome != null ? !mySeriousAdverseOutcome.equals(medicalTherapy.mySeriousAdverseOutcome) : medicalTherapy.mySeriousAdverseOutcome != null) return false;
-    return true;
-  }
-
+  
   private MedicalEntity myAdverseOutcome;
   private MedicalContraindication myContraindication;
   private MedicalTherapy myDuplicateTherapy;

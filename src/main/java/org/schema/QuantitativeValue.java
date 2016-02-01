@@ -20,66 +20,91 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- *  A point value or interval for product characteristics and other purposes.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
+ *  A point value or interval for product characteristics and other purposes.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
  */
 public class QuantitativeValue extends StructuredValue {
   /**
    * The upper value of some characteristic or property.
    */
-  public Number getMaxValue() {
-    return myMaxValue;
-  }
+  public Number getMaxValue() { return myMaxValue; }
   /**
    * The lower value of some characteristic or property.
    */
-  public Number getMinValue() {
-    return myMinValue;
-  }
+  public Number getMinValue() { return myMinValue; }
   /**
    * The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
    */
-  public String getUnitCode() {
-    return myUnitCode;
-  }
+  public String getUnitCode() { return myUnitCode; }
   /**
    * The value of the quantitative value or property value node. For QuantitativeValue, the recommended type for values is 'Number'. For PropertyValue, it can be 'Text;', 'Number', 'Boolean', or 'StructuredValue'.
    */
-  public Number getValue() {
-    return myValue;
-  }
+  public Number getValue() { return myValue; }
   /**
    * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
    */
-  public EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue getValueReference() {
-    return myValueReference;
-  }
+  public EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue getValueReference() { return myValueReference; }
   /**
    * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
 
 Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
 
    */
-  public PropertyValue getAdditionalProperty() {
-    return myAdditionalProperty;
-  }
+  public PropertyValue getAdditionalProperty() { return myAdditionalProperty; }
   /**
    * A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
 <a href='unitCode'>unitCode</a>.
    */
-  public String getUnitText() {
-    return myUnitText;
+  public String getUnitText() { return myUnitText; }
+  protected QuantitativeValue(Number maxValue, Number minValue, String unitCode, Number value, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, PropertyValue additionalProperty, String unitText, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myMaxValue = maxValue;
+    myMinValue = minValue;
+    myUnitCode = unitCode;
+    myValue = value;
+    myValueReference = valueReference;
+    myAdditionalProperty = additionalProperty;
+    myUnitText = unitText;
+    myMaxValue = maxValue;
+    myMinValue = minValue;
+    myUnitCode = unitCode;
+    myValue = value;
+    myValueReference = valueReference;
+    myAdditionalProperty = additionalProperty;
+    myUnitText = unitText;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myMaxValue != null ? myMaxValue.hashCode() : 0);
+    result = 31 * result + (myMinValue != null ? myMinValue.hashCode() : 0);
+    result = 31 * result + (myUnitCode != null ? myUnitCode.hashCode() : 0);
+    result = 31 * result + (myValue != null ? myValue.hashCode() : 0);
+    result = 31 * result + (myValueReference != null ? myValueReference.hashCode() : 0);
+    result = 31 * result + (myAdditionalProperty != null ? myAdditionalProperty.hashCode() : 0);
+    result = 31 * result + (myUnitText != null ? myUnitText.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    QuantitativeValue quantitativeValue = (QuantitativeValue) o;
+    if (!super.equals(o)) return false;
+    if (myMaxValue != null ? !myMaxValue.equals(quantitativeValue.myMaxValue) : quantitativeValue.myMaxValue != null) return false;
+    if (myMinValue != null ? !myMinValue.equals(quantitativeValue.myMinValue) : quantitativeValue.myMinValue != null) return false;
+    if (myUnitCode != null ? !myUnitCode.equals(quantitativeValue.myUnitCode) : quantitativeValue.myUnitCode != null) return false;
+    if (myValue != null ? !myValue.equals(quantitativeValue.myValue) : quantitativeValue.myValue != null) return false;
+    if (myValueReference != null ? !myValueReference.equals(quantitativeValue.myValueReference) : quantitativeValue.myValueReference != null) return false;
+    if (myAdditionalProperty != null ? !myAdditionalProperty.equals(quantitativeValue.myAdditionalProperty) : quantitativeValue.myAdditionalProperty != null) return false;
+    if (myUnitText != null ? !myUnitText.equals(quantitativeValue.myUnitText) : quantitativeValue.myUnitText != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link QuantitativeValue}
    */
-  static final class QuantitativeValueThingBuilder implements Builder {
-    /**
-     * Creates new {@link QuantitativeValue} instance.
-     */
+  public static class Builder implements ThingBuilder<QuantitativeValue> {
     public QuantitativeValue build() {
       return new QuantitativeValue(maxValue, minValue, unitCode, value, valueReference, additionalProperty, unitText, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -282,9 +307,9 @@ Note: Publishers should be aware that applications designed to use specific sche
     }
     /**
      * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
+     * 
+     * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+     * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue propertyValue) {
       this.additionalProperty = propertyValue;
@@ -292,16 +317,16 @@ Note: Publishers should be aware that applications designed to use specific sche
     }
     /**
      * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
+     * 
+     * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+     * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue) {
       return this.additionalProperty(propertyValue.build());
     }
     /**
      * A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
-<a href='unitCode'>unitCode</a>.
+     * <a href='unitCode'>unitCode</a>.
      */
     @NotNull public Builder unitText(@NotNull String unitText) {
       this.unitText = unitText;
@@ -330,33 +355,33 @@ Note: Publishers should be aware that applications designed to use specific sche
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -365,66 +390,66 @@ Note: Publishers should be aware that applications designed to use specific sche
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -472,7 +497,6 @@ Note: Publishers should be aware that applications designed to use specific sche
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -530,88 +554,7 @@ Note: Publishers should be aware that applications designed to use specific sche
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<QuantitativeValue> {
-    @NotNull Builder maxValue(@NotNull Integer integer);
-    @NotNull Builder maxValue(@NotNull Long maxValue);
-    @NotNull Builder maxValue(@NotNull Float maxValue);
-    @NotNull Builder maxValue(@NotNull Double maxValue);
-    @NotNull Builder maxValue(@NotNull String maxValue);
-    @NotNull Builder minValue(@NotNull Integer integer);
-    @NotNull Builder minValue(@NotNull Long minValue);
-    @NotNull Builder minValue(@NotNull Float minValue);
-    @NotNull Builder minValue(@NotNull Double minValue);
-    @NotNull Builder minValue(@NotNull String minValue);
-    @NotNull Builder unitCode(@NotNull String unitCode);
-    @NotNull Builder value(@NotNull Integer integer);
-    @NotNull Builder value(@NotNull Long value);
-    @NotNull Builder value(@NotNull Float value);
-    @NotNull Builder value(@NotNull Double value);
-    @NotNull Builder value(@NotNull String value);
-    @NotNull Builder valueReference(@NotNull Enumeration enumeration);
-    @NotNull Builder valueReference(@NotNull Enumeration.Builder enumeration);
-    @NotNull Builder valueReference(@NotNull PropertyValue propertyValue);
-    @NotNull Builder valueReference(@NotNull PropertyValue.Builder propertyValue);
-    @NotNull Builder valueReference(@NotNull QualitativeValue qualitativeValue);
-    @NotNull Builder valueReference(@NotNull QualitativeValue.Builder qualitativeValue);
-    @NotNull Builder valueReference(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder valueReference(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder valueReference(@NotNull StructuredValue structuredValue);
-    @NotNull Builder valueReference(@NotNull StructuredValue.Builder structuredValue);
-    @NotNull Builder additionalProperty(@NotNull PropertyValue propertyValue);
-    @NotNull Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue);
-    @NotNull Builder unitText(@NotNull String unitText);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected QuantitativeValue(Number maxValue, Number minValue, String unitCode, Number value, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, PropertyValue additionalProperty, String unitText, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myMaxValue = maxValue;
-    myMinValue = minValue;
-    myUnitCode = unitCode;
-    myValue = value;
-    myValueReference = valueReference;
-    myAdditionalProperty = additionalProperty;
-    myUnitText = unitText;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myMaxValue != null ? myMaxValue.hashCode() : 0);
-    result = 31 * result + (myMinValue != null ? myMinValue.hashCode() : 0);
-    result = 31 * result + (myUnitCode != null ? myUnitCode.hashCode() : 0);
-    result = 31 * result + (myValue != null ? myValue.hashCode() : 0);
-    result = 31 * result + (myValueReference != null ? myValueReference.hashCode() : 0);
-    result = 31 * result + (myAdditionalProperty != null ? myAdditionalProperty.hashCode() : 0);
-    result = 31 * result + (myUnitText != null ? myUnitText.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    QuantitativeValue quantitativeValue = (QuantitativeValue) o;
-    if (!super.equals(o)) return false;
-    if (myMaxValue != null ? !myMaxValue.equals(quantitativeValue.myMaxValue) : quantitativeValue.myMaxValue != null) return false;
-    if (myMinValue != null ? !myMinValue.equals(quantitativeValue.myMinValue) : quantitativeValue.myMinValue != null) return false;
-    if (myUnitCode != null ? !myUnitCode.equals(quantitativeValue.myUnitCode) : quantitativeValue.myUnitCode != null) return false;
-    if (myValue != null ? !myValue.equals(quantitativeValue.myValue) : quantitativeValue.myValue != null) return false;
-    if (myValueReference != null ? !myValueReference.equals(quantitativeValue.myValueReference) : quantitativeValue.myValueReference != null) return false;
-    if (myAdditionalProperty != null ? !myAdditionalProperty.equals(quantitativeValue.myAdditionalProperty) : quantitativeValue.myAdditionalProperty != null) return false;
-    if (myUnitText != null ? !myUnitText.equals(quantitativeValue.myUnitText) : quantitativeValue.myUnitText != null) return false;
-    return true;
-  }
-
+  
   private Number myMaxValue;
   private Number myMinValue;
   private String myUnitCode;

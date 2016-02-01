@@ -20,56 +20,79 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * A medical study is an umbrella type covering all kinds of research studies relating to human medicine or health, including observational studies and interventional trials and registries, randomized, controlled or not. When the specific type of study is known, use one of the extensions of this type, such as MedicalTrial or MedicalObservationalStudy. Also, note that this type should be used to mark up data that describes the study itself; to tag an article that publishes the results of a study, use MedicalScholarlyArticle. Note: use the code property of MedicalEntity to store study IDs, e.g. clinicaltrials.gov ID.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
+ * A medical study is an umbrella type covering all kinds of research studies relating to human medicine or health, including observational studies and interventional trials and registries, randomized, controlled or not. When the specific type of study is known, use one of the extensions of this type, such as MedicalTrial or MedicalObservationalStudy. Also, note that this type should be used to mark up data that describes the study itself; to tag an article that publishes the results of a study, use MedicalScholarlyArticle. Note: use the code property of MedicalEntity to store study IDs, e.g. clinicaltrials.gov ID.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
  */
 public class MedicalStudy extends MedicalEntity {
   /**
    * Expected or actual outcomes of the study.
    */
-  public String getOutcome() {
-    return myOutcome;
-  }
+  public String getOutcome() { return myOutcome; }
   /**
    * Any characteristics of the population used in the study, e.g. 'males under 65'.
    */
-  public String getPopulation() {
-    return myPopulation;
-  }
+  public String getPopulation() { return myPopulation; }
   /**
    * Sponsor of the study.
    */
-  public Organization getSponsor() {
-    return mySponsor;
-  }
+  public Organization getSponsor() { return mySponsor; }
   /**
    * The status of the study (enumerated).
    */
-  public MedicalStudyStatus getStatus() {
-    return myStatus;
-  }
+  public MedicalStudyStatus getStatus() { return myStatus; }
   /**
    * The location in which the study is taking/took place.
    */
-  public AdministrativeArea getStudyLocation() {
-    return myStudyLocation;
-  }
+  public AdministrativeArea getStudyLocation() { return myStudyLocation; }
   /**
    * A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
    */
-  public MedicalEntity getStudySubject() {
-    return myStudySubject;
+  public MedicalEntity getStudySubject() { return myStudySubject; }
+  protected MedicalStudy(String outcome, String population, Organization sponsor, MedicalStudyStatus status, AdministrativeArea studyLocation, MedicalEntity studySubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myOutcome = outcome;
+    myPopulation = population;
+    mySponsor = sponsor;
+    myStatus = status;
+    myStudyLocation = studyLocation;
+    myStudySubject = studySubject;
+    myOutcome = outcome;
+    myPopulation = population;
+    mySponsor = sponsor;
+    myStatus = status;
+    myStudyLocation = studyLocation;
+    myStudySubject = studySubject;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myOutcome != null ? myOutcome.hashCode() : 0);
+    result = 31 * result + (myPopulation != null ? myPopulation.hashCode() : 0);
+    result = 31 * result + (mySponsor != null ? mySponsor.hashCode() : 0);
+    result = 31 * result + (myStatus != null ? myStatus.hashCode() : 0);
+    result = 31 * result + (myStudyLocation != null ? myStudyLocation.hashCode() : 0);
+    result = 31 * result + (myStudySubject != null ? myStudySubject.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalStudy medicalStudy = (MedicalStudy) o;
+    if (!super.equals(o)) return false;
+    if (myOutcome != null ? !myOutcome.equals(medicalStudy.myOutcome) : medicalStudy.myOutcome != null) return false;
+    if (myPopulation != null ? !myPopulation.equals(medicalStudy.myPopulation) : medicalStudy.myPopulation != null) return false;
+    if (mySponsor != null ? !mySponsor.equals(medicalStudy.mySponsor) : medicalStudy.mySponsor != null) return false;
+    if (myStatus != null ? !myStatus.equals(medicalStudy.myStatus) : medicalStudy.myStatus != null) return false;
+    if (myStudyLocation != null ? !myStudyLocation.equals(medicalStudy.myStudyLocation) : medicalStudy.myStudyLocation != null) return false;
+    if (myStudySubject != null ? !myStudySubject.equals(medicalStudy.myStudySubject) : medicalStudy.myStudySubject != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link MedicalStudy}
    */
-  static final class MedicalStudyThingBuilder implements Builder {
-    /**
-     * Creates new {@link MedicalStudy} instance.
-     */
+  public static class Builder implements ThingBuilder<MedicalStudy> {
     public MedicalStudy build() {
       return new MedicalStudy(outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -240,33 +263,33 @@ public class MedicalStudy extends MedicalEntity {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -275,66 +298,66 @@ public class MedicalStudy extends MedicalEntity {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -382,7 +405,6 @@ public class MedicalStudy extends MedicalEntity {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -434,78 +456,7 @@ public class MedicalStudy extends MedicalEntity {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<MedicalStudy> {
-    @NotNull Builder outcome(@NotNull String outcome);
-    @NotNull Builder population(@NotNull String population);
-    @NotNull Builder sponsor(@NotNull Organization organization);
-    @NotNull Builder sponsor(@NotNull Organization.Builder organization);
-    @NotNull Builder status(@NotNull MedicalStudyStatus medicalStudyStatus);
-    @NotNull Builder status(@NotNull MedicalStudyStatus.Builder medicalStudyStatus);
-    @NotNull Builder studyLocation(@NotNull AdministrativeArea administrativeArea);
-    @NotNull Builder studyLocation(@NotNull AdministrativeArea.Builder administrativeArea);
-    @NotNull Builder studySubject(@NotNull MedicalEntity medicalEntity);
-    @NotNull Builder studySubject(@NotNull MedicalEntity.Builder medicalEntity);
-    @NotNull Builder code(@NotNull MedicalCode medicalCode);
-    @NotNull Builder code(@NotNull MedicalCode.Builder medicalCode);
-    @NotNull Builder guideline(@NotNull MedicalGuideline medicalGuideline);
-    @NotNull Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem medicineSystem);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem);
-    @NotNull Builder recognizingAuthority(@NotNull Organization organization);
-    @NotNull Builder recognizingAuthority(@NotNull Organization.Builder organization);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty);
-    @NotNull Builder study(@NotNull MedicalStudy medicalStudy);
-    @NotNull Builder study(@NotNull MedicalStudy.Builder medicalStudy);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected MedicalStudy(String outcome, String population, Organization sponsor, MedicalStudyStatus status, AdministrativeArea studyLocation, MedicalEntity studySubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myOutcome = outcome;
-    myPopulation = population;
-    mySponsor = sponsor;
-    myStatus = status;
-    myStudyLocation = studyLocation;
-    myStudySubject = studySubject;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myOutcome != null ? myOutcome.hashCode() : 0);
-    result = 31 * result + (myPopulation != null ? myPopulation.hashCode() : 0);
-    result = 31 * result + (mySponsor != null ? mySponsor.hashCode() : 0);
-    result = 31 * result + (myStatus != null ? myStatus.hashCode() : 0);
-    result = 31 * result + (myStudyLocation != null ? myStudyLocation.hashCode() : 0);
-    result = 31 * result + (myStudySubject != null ? myStudySubject.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    MedicalStudy medicalStudy = (MedicalStudy) o;
-    if (!super.equals(o)) return false;
-    if (myOutcome != null ? !myOutcome.equals(medicalStudy.myOutcome) : medicalStudy.myOutcome != null) return false;
-    if (myPopulation != null ? !myPopulation.equals(medicalStudy.myPopulation) : medicalStudy.myPopulation != null) return false;
-    if (mySponsor != null ? !mySponsor.equals(medicalStudy.mySponsor) : medicalStudy.mySponsor != null) return false;
-    if (myStatus != null ? !myStatus.equals(medicalStudy.myStatus) : medicalStudy.myStatus != null) return false;
-    if (myStudyLocation != null ? !myStudyLocation.equals(medicalStudy.myStudyLocation) : medicalStudy.myStudyLocation != null) return false;
-    if (myStudySubject != null ? !myStudySubject.equals(medicalStudy.myStudySubject) : medicalStudy.myStudySubject != null) return false;
-    return true;
-  }
-
+  
   private String myOutcome;
   private String myPopulation;
   private Organization mySponsor;

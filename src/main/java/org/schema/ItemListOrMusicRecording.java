@@ -18,13 +18,15 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ItemListOrMusicRecording {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setItemList(ItemList itemList) { clear(); myItemList = itemList; }
+  public ItemList getItemList() { return myItemList; }
+  void setMusicRecording(MusicRecording musicRecording) { clear(); myMusicRecording = musicRecording; }
+  public MusicRecording getMusicRecording() { return myMusicRecording; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myItemList != null) return myItemList;
     if (myMusicRecording != null) return myMusicRecording;
     return null;
@@ -34,24 +36,16 @@ public class ItemListOrMusicRecording {
     if (myMusicRecording != null) return myMusicRecording;
     return null;
   }
-  void setItemList(ItemList itemList) { clear(); myItemList = itemList; }
-  public ItemList getItemList() { return myItemList; }
-  private ItemList myItemList;
-  void setMusicRecording(MusicRecording musicRecording) { clear(); myMusicRecording = musicRecording; }
-  public MusicRecording getMusicRecording() { return myMusicRecording; }
-  private MusicRecording myMusicRecording;
-  private void clear() {
+  public void clear() {
     myItemList = null;
     myMusicRecording = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myItemList != null ? myItemList.hashCode() : 0);
     result = 31 * result + (myMusicRecording != null ? myMusicRecording.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -60,5 +54,6 @@ public class ItemListOrMusicRecording {
     if (myMusicRecording != null ? !myMusicRecording.equals(itemListOrMusicRecording.myMusicRecording) : itemListOrMusicRecording.myMusicRecording != null) return false;
     return true;
   }
-
+  private ItemList myItemList;
+  private MusicRecording myMusicRecording;
 }

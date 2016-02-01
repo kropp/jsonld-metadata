@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * This class is based on the work of the LRMI project, see lrmi.net for details.
  */
 public class LRMIClass {
-  /**
-   * Builder for {@link LRMIClass}
-   */
-  static final class LRMIClassThingBuilder implements Builder {
-    /**
-     * Creates new {@link LRMIClass} instance.
-     */
-    public LRMIClass build() {
-      return new LRMIClass();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<LRMIClass> {
-    
-  }
-
   protected LRMIClass() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class LRMIClass {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link LRMIClass}
+   */
+  public static class Builder implements ThingBuilder<LRMIClass> {
+    public LRMIClass build() {
+      return new LRMIClass();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

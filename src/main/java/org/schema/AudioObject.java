@@ -20,26 +20,39 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * An audio file.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
+ * An audio file.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
  */
 public class AudioObject extends MediaObject {
   /**
    * If this MediaObject is an AudioObject or VideoObject, the transcript of that object.
    */
-  public String getTranscript() {
-    return myTranscript;
+  public String getTranscript() { return myTranscript; }
+  protected AudioObject(String transcript, NewsArticle associatedArticle, String bitrate, String contentSize, String contentUrl, Duration duration, String embedUrl, CreativeWork encodesCreativeWork, String encodingFormat, java.util.Date expires, DistanceOrQuantitativeValue height, String playerType, Organization productionCompany, Place regionsAllowed, Boolean requiresSubscription, java.util.Date uploadDate, DistanceOrQuantitativeValue width, String schemaVersion, Thing about, String accessibilityAPI, String accessibilityControl, String accessibilityFeature, String accessibilityHazard, Person accountablePerson, AggregateRating aggregateRating, String alternativeHeadline, MediaObject associatedMedia, Audience audience, AudioObject audio, OrganizationOrPerson author, String award, CreativeWorkOrString citation, Comment comment, Place contentLocation, String contentRating, OrganizationOrPerson contributor, OrganizationOrPerson copyrightHolder, Number copyrightYear, OrganizationOrPerson creator, java.util.Date dateCreated, java.util.Date dateModified, java.util.Date datePublished, String discussionUrl, Person editor, AlignmentObject educationalAlignment, String educationalUse, MediaObject encoding, String genre, String headline, LanguageOrString inLanguage, String interactivityType, String isBasedOnUrl, Boolean isFamilyFriendly, String keywords, CreativeWorkOrString license, String learningResourceType, Thing mainEntity, Thing mentions, Offer offers, OrganizationOrPerson producer, PublicationEvent publication, Organization publisher, String publishingPrinciples, Event recordedAt, Review review, Organization sourceOrganization, String text, String thumbnailUrl, Duration timeRequired, String typicalAgeRange, Number version, VideoObject video, OrganizationOrPerson provider, Integer commentCount, HasPart hasPart, CreativeWork workExample, CreativeWork exampleOfWork, Person character, OrganizationOrPerson translator, PublicationEvent releasedEvent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(associatedArticle, bitrate, contentSize, contentUrl, duration, embedUrl, encodesCreativeWork, encodingFormat, expires, height, playerType, productionCompany, regionsAllowed, requiresSubscription, uploadDate, width, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myTranscript = transcript;
+    myTranscript = transcript;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myTranscript != null ? myTranscript.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AudioObject audioObject = (AudioObject) o;
+    if (!super.equals(o)) return false;
+    if (myTranscript != null ? !myTranscript.equals(audioObject.myTranscript) : audioObject.myTranscript != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link AudioObject}
    */
-  static final class AudioObjectThingBuilder implements Builder {
-    /**
-     * Creates new {@link AudioObject} instance.
-     */
+  public static class Builder implements ThingBuilder<AudioObject> {
     public AudioObject build() {
       return new AudioObject(transcript, associatedArticle, bitrate, contentSize, contentUrl, duration, embedUrl, encodesCreativeWork, encodingFormat, expires, height, playerType, productionCompany, regionsAllowed, requiresSubscription, uploadDate, width, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -1106,33 +1119,33 @@ public class AudioObject extends MediaObject {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -1141,66 +1154,66 @@ public class AudioObject extends MediaObject {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -1248,7 +1261,6 @@ public class AudioObject extends MediaObject {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -1456,191 +1468,6 @@ public class AudioObject extends MediaObject {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<AudioObject> {
-    @NotNull Builder transcript(@NotNull String transcript);
-    @NotNull Builder associatedArticle(@NotNull NewsArticle newsArticle);
-    @NotNull Builder associatedArticle(@NotNull NewsArticle.Builder newsArticle);
-    @NotNull Builder bitrate(@NotNull String bitrate);
-    @NotNull Builder contentSize(@NotNull String contentSize);
-    @NotNull Builder contentUrl(@NotNull String contentUrl);
-    @NotNull Builder duration(@NotNull Duration duration);
-    @NotNull Builder duration(@NotNull Duration.Builder duration);
-    @NotNull Builder embedUrl(@NotNull String embedUrl);
-    @NotNull Builder encodesCreativeWork(@NotNull CreativeWork creativeWork);
-    @NotNull Builder encodesCreativeWork(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder encodingFormat(@NotNull String encodingFormat);
-    @NotNull Builder expires(@NotNull java.util.Date date);
-    @NotNull Builder height(@NotNull Distance distance);
-    @NotNull Builder height(@NotNull Distance.Builder distance);
-    @NotNull Builder height(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder height(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder playerType(@NotNull String playerType);
-    @NotNull Builder productionCompany(@NotNull Organization organization);
-    @NotNull Builder productionCompany(@NotNull Organization.Builder organization);
-    @NotNull Builder regionsAllowed(@NotNull Place place);
-    @NotNull Builder regionsAllowed(@NotNull Place.Builder place);
-    @NotNull Builder requiresSubscription(@NotNull Boolean requiresSubscription);
-    @NotNull Builder uploadDate(@NotNull java.util.Date date);
-    @NotNull Builder width(@NotNull Distance distance);
-    @NotNull Builder width(@NotNull Distance.Builder distance);
-    @NotNull Builder width(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder width(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder schemaVersion(@NotNull String schemaVersion);
-    @NotNull Builder about(@NotNull Thing thing);
-    @NotNull Builder about(@NotNull Thing.Builder thing);
-    @NotNull Builder accessibilityAPI(@NotNull String accessibilityAPI);
-    @NotNull Builder accessibilityControl(@NotNull String accessibilityControl);
-    @NotNull Builder accessibilityFeature(@NotNull String accessibilityFeature);
-    @NotNull Builder accessibilityHazard(@NotNull String accessibilityHazard);
-    @NotNull Builder accountablePerson(@NotNull Person person);
-    @NotNull Builder accountablePerson(@NotNull Person.Builder person);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating aggregateRating);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating);
-    @NotNull Builder alternativeHeadline(@NotNull String alternativeHeadline);
-    @NotNull Builder associatedMedia(@NotNull MediaObject mediaObject);
-    @NotNull Builder associatedMedia(@NotNull MediaObject.Builder mediaObject);
-    @NotNull Builder audience(@NotNull Audience audience);
-    @NotNull Builder audience(@NotNull Audience.Builder audience);
-    @NotNull Builder audio(@NotNull AudioObject audioObject);
-    @NotNull Builder audio(@NotNull AudioObject.Builder audioObject);
-    @NotNull Builder author(@NotNull Organization organization);
-    @NotNull Builder author(@NotNull Organization.Builder organization);
-    @NotNull Builder author(@NotNull Person person);
-    @NotNull Builder author(@NotNull Person.Builder person);
-    @NotNull Builder award(@NotNull String award);
-    @NotNull Builder citation(@NotNull CreativeWork creativeWork);
-    @NotNull Builder citation(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder citation(@NotNull String citation);
-    @NotNull Builder comment(@NotNull Comment comment);
-    @NotNull Builder comment(@NotNull Comment.Builder comment);
-    @NotNull Builder contentLocation(@NotNull Place place);
-    @NotNull Builder contentLocation(@NotNull Place.Builder place);
-    @NotNull Builder contentRating(@NotNull String contentRating);
-    @NotNull Builder contributor(@NotNull Organization organization);
-    @NotNull Builder contributor(@NotNull Organization.Builder organization);
-    @NotNull Builder contributor(@NotNull Person person);
-    @NotNull Builder contributor(@NotNull Person.Builder person);
-    @NotNull Builder copyrightHolder(@NotNull Organization organization);
-    @NotNull Builder copyrightHolder(@NotNull Organization.Builder organization);
-    @NotNull Builder copyrightHolder(@NotNull Person person);
-    @NotNull Builder copyrightHolder(@NotNull Person.Builder person);
-    @NotNull Builder copyrightYear(@NotNull Integer integer);
-    @NotNull Builder copyrightYear(@NotNull Long copyrightYear);
-    @NotNull Builder copyrightYear(@NotNull Float copyrightYear);
-    @NotNull Builder copyrightYear(@NotNull Double copyrightYear);
-    @NotNull Builder copyrightYear(@NotNull String copyrightYear);
-    @NotNull Builder creator(@NotNull Organization organization);
-    @NotNull Builder creator(@NotNull Organization.Builder organization);
-    @NotNull Builder creator(@NotNull Person person);
-    @NotNull Builder creator(@NotNull Person.Builder person);
-    @NotNull Builder dateCreated(@NotNull java.util.Date date);
-    @NotNull Builder dateModified(@NotNull java.util.Date date);
-    @NotNull Builder datePublished(@NotNull java.util.Date date);
-    @NotNull Builder discussionUrl(@NotNull String discussionUrl);
-    @NotNull Builder editor(@NotNull Person person);
-    @NotNull Builder editor(@NotNull Person.Builder person);
-    @NotNull Builder educationalAlignment(@NotNull AlignmentObject alignmentObject);
-    @NotNull Builder educationalAlignment(@NotNull AlignmentObject.Builder alignmentObject);
-    @NotNull Builder educationalUse(@NotNull String educationalUse);
-    @NotNull Builder encoding(@NotNull MediaObject mediaObject);
-    @NotNull Builder encoding(@NotNull MediaObject.Builder mediaObject);
-    @NotNull Builder genre(@NotNull String genre);
-    @NotNull Builder headline(@NotNull String headline);
-    @NotNull Builder inLanguage(@NotNull Language language);
-    @NotNull Builder inLanguage(@NotNull Language.Builder language);
-    @NotNull Builder inLanguage(@NotNull String inLanguage);
-    @NotNull Builder interactivityType(@NotNull String interactivityType);
-    @NotNull Builder isBasedOnUrl(@NotNull String isBasedOnUrl);
-    @NotNull Builder isFamilyFriendly(@NotNull Boolean isFamilyFriendly);
-    @NotNull Builder keywords(@NotNull String keywords);
-    @NotNull Builder license(@NotNull CreativeWork creativeWork);
-    @NotNull Builder license(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder license(@NotNull String license);
-    @NotNull Builder learningResourceType(@NotNull String learningResourceType);
-    @NotNull Builder mainEntity(@NotNull Thing thing);
-    @NotNull Builder mainEntity(@NotNull Thing.Builder thing);
-    @NotNull Builder mentions(@NotNull Thing thing);
-    @NotNull Builder mentions(@NotNull Thing.Builder thing);
-    @NotNull Builder offers(@NotNull Offer offer);
-    @NotNull Builder offers(@NotNull Offer.Builder offer);
-    @NotNull Builder producer(@NotNull Organization organization);
-    @NotNull Builder producer(@NotNull Organization.Builder organization);
-    @NotNull Builder producer(@NotNull Person person);
-    @NotNull Builder producer(@NotNull Person.Builder person);
-    @NotNull Builder publication(@NotNull PublicationEvent publicationEvent);
-    @NotNull Builder publication(@NotNull PublicationEvent.Builder publicationEvent);
-    @NotNull Builder publisher(@NotNull Organization organization);
-    @NotNull Builder publisher(@NotNull Organization.Builder organization);
-    @NotNull Builder publishingPrinciples(@NotNull String publishingPrinciples);
-    @NotNull Builder recordedAt(@NotNull Event event);
-    @NotNull Builder recordedAt(@NotNull Event.Builder event);
-    @NotNull Builder review(@NotNull Review review);
-    @NotNull Builder review(@NotNull Review.Builder review);
-    @NotNull Builder sourceOrganization(@NotNull Organization organization);
-    @NotNull Builder sourceOrganization(@NotNull Organization.Builder organization);
-    @NotNull Builder text(@NotNull String text);
-    @NotNull Builder thumbnailUrl(@NotNull String thumbnailUrl);
-    @NotNull Builder timeRequired(@NotNull Duration duration);
-    @NotNull Builder timeRequired(@NotNull Duration.Builder duration);
-    @NotNull Builder typicalAgeRange(@NotNull String typicalAgeRange);
-    @NotNull Builder version(@NotNull Integer integer);
-    @NotNull Builder version(@NotNull Long version);
-    @NotNull Builder version(@NotNull Float version);
-    @NotNull Builder version(@NotNull Double version);
-    @NotNull Builder version(@NotNull String version);
-    @NotNull Builder video(@NotNull VideoObject videoObject);
-    @NotNull Builder video(@NotNull VideoObject.Builder videoObject);
-    @NotNull Builder provider(@NotNull Organization organization);
-    @NotNull Builder provider(@NotNull Organization.Builder organization);
-    @NotNull Builder provider(@NotNull Person person);
-    @NotNull Builder provider(@NotNull Person.Builder person);
-    @NotNull Builder commentCount(@NotNull Integer integer);
-    @NotNull Builder hasPart(@NotNull HasPart hasPart);
-    @NotNull Builder workExample(@NotNull CreativeWork creativeWork);
-    @NotNull Builder workExample(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder exampleOfWork(@NotNull CreativeWork creativeWork);
-    @NotNull Builder exampleOfWork(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder character(@NotNull Person person);
-    @NotNull Builder character(@NotNull Person.Builder person);
-    @NotNull Builder translator(@NotNull Organization organization);
-    @NotNull Builder translator(@NotNull Organization.Builder organization);
-    @NotNull Builder translator(@NotNull Person person);
-    @NotNull Builder translator(@NotNull Person.Builder person);
-    @NotNull Builder releasedEvent(@NotNull PublicationEvent publicationEvent);
-    @NotNull Builder releasedEvent(@NotNull PublicationEvent.Builder publicationEvent);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected AudioObject(String transcript, NewsArticle associatedArticle, String bitrate, String contentSize, String contentUrl, Duration duration, String embedUrl, CreativeWork encodesCreativeWork, String encodingFormat, java.util.Date expires, DistanceOrQuantitativeValue height, String playerType, Organization productionCompany, Place regionsAllowed, Boolean requiresSubscription, java.util.Date uploadDate, DistanceOrQuantitativeValue width, String schemaVersion, Thing about, String accessibilityAPI, String accessibilityControl, String accessibilityFeature, String accessibilityHazard, Person accountablePerson, AggregateRating aggregateRating, String alternativeHeadline, MediaObject associatedMedia, Audience audience, AudioObject audio, OrganizationOrPerson author, String award, CreativeWorkOrString citation, Comment comment, Place contentLocation, String contentRating, OrganizationOrPerson contributor, OrganizationOrPerson copyrightHolder, Number copyrightYear, OrganizationOrPerson creator, java.util.Date dateCreated, java.util.Date dateModified, java.util.Date datePublished, String discussionUrl, Person editor, AlignmentObject educationalAlignment, String educationalUse, MediaObject encoding, String genre, String headline, LanguageOrString inLanguage, String interactivityType, String isBasedOnUrl, Boolean isFamilyFriendly, String keywords, CreativeWorkOrString license, String learningResourceType, Thing mainEntity, Thing mentions, Offer offers, OrganizationOrPerson producer, PublicationEvent publication, Organization publisher, String publishingPrinciples, Event recordedAt, Review review, Organization sourceOrganization, String text, String thumbnailUrl, Duration timeRequired, String typicalAgeRange, Number version, VideoObject video, OrganizationOrPerson provider, Integer commentCount, HasPart hasPart, CreativeWork workExample, CreativeWork exampleOfWork, Person character, OrganizationOrPerson translator, PublicationEvent releasedEvent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(associatedArticle, bitrate, contentSize, contentUrl, duration, embedUrl, encodesCreativeWork, encodingFormat, expires, height, playerType, productionCompany, regionsAllowed, requiresSubscription, uploadDate, width, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myTranscript = transcript;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myTranscript != null ? myTranscript.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    AudioObject audioObject = (AudioObject) o;
-    if (!super.equals(o)) return false;
-    if (myTranscript != null ? !myTranscript.equals(audioObject.myTranscript) : audioObject.myTranscript != null) return false;
-    return true;
-  }
-
+  
   private String myTranscript;
 }

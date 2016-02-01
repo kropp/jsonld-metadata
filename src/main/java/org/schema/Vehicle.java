@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space.
@@ -30,28 +30,20 @@ public class Vehicle extends Product {
    * The number of doors.<br />
 Typical unit code(s): C62
    */
-  public NumberOrQuantitativeValue getNumberOfDoors() {
-    return myNumberOfDoors;
-  }
+  public NumberOrQuantitativeValue getNumberOfDoors() { return myNumberOfDoors; }
   /**
    * The number or type of airbags in the vehicle.
    */
-  public Number getNumberOfAirbags() {
-    return myNumberOfAirbags;
-  }
+  public Number getNumberOfAirbags() { return myNumberOfAirbags; }
   /**
    * The number of axles.<br />
 Typical unit code(s): C62
    */
-  public NumberOrQuantitativeValue getNumberOfAxles() {
-    return myNumberOfAxles;
-  }
+  public NumberOrQuantitativeValue getNumberOfAxles() { return myNumberOfAxles; }
   /**
    * Information about the engine or engines of the vehicle.
    */
-  public EngineSpecification getVehicleEngine() {
-    return myVehicleEngine;
-  }
+  public EngineSpecification getVehicleEngine() { return myVehicleEngine; }
   /**
    * The amount of fuel consumed for traveling a particular distance or temporal duration with the given vehicle (e.g. liters per 100 km).<br />
 Note 1: There are unfortunately no standard unit codes for liters per 100 km.<br />
@@ -59,9 +51,7 @@ Use <a href="unitText">unitText</a> to indicate the unit of measurement, e.g. L/
 Note 2: There are two ways of indicating the fuel consumption, <a href="fuelConsumption">fuelConsumption</a> (e.g. 8 liters per 100 km) and <a href="fuelEfficiency">fuelEfficiency</a> (e.g. 30 miles per gallon). They are reciprocal.<br />
 Note 3: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use <a href="valueReference">valueReference</a> to link the value for the fuel consumption to another value.
    */
-  public QuantitativeValue getFuelConsumption() {
-    return myFuelConsumption;
-  }
+  public QuantitativeValue getFuelConsumption() { return myFuelConsumption; }
   /**
    * The distance traveled per unit of fuel used; most commonly miles per gallon (mpg) or kilometers per liter (km/L).<br />
 Note 1: There are unfortunately no standard unit codes for miles per gallon or kilometers per liter.<br />
@@ -69,141 +59,209 @@ Use <a href="unitText">unitText</a> to indicate the unit of measurement, e.g. mp
 Note 2: There are two ways of indicating the fuel consumption, <a href="fuelConsumption">fuelConsumption</a> (e.g. 8 liters per 100 km) and <a href="fuelEfficiency">fuelEfficiency</a> (e.g. 30 miles per gallon). They are reciprocal.<br />
 Note 3: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use <a href="valueReference">valueReference</a> to link the value for the fuel economy to another value.
    */
-  public QuantitativeValue getFuelEfficiency() {
-    return myFuelEfficiency;
-  }
+  public QuantitativeValue getFuelEfficiency() { return myFuelEfficiency; }
   /**
    * The total number of forward gears available for the transmission system of the vehicle.<br />
 Typical unit code(s): C62
    */
-  public NumberOrQuantitativeValue getNumberOfForwardGears() {
-    return myNumberOfForwardGears;
-  }
+  public NumberOrQuantitativeValue getNumberOfForwardGears() { return myNumberOfForwardGears; }
   /**
    * The Vehicle Identification Number (VIN) is a unique serial number used by the automotive industry to identify individual motor vehicles.
    */
-  public String getVin() {
-    return myVin;
-  }
+  public String getVin() { return myVin; }
   /**
    * The available volume for cargo or luggage. For automobiles, this is usually the trunk volume.<br />
 Typical unit code(s): LTR for liters, FTQ for cubic foot/feet<br />
 
 Note: You can use <a href="minValue">minValue</a> and <a href="maxValue">maxValue</a> to indicate ranges.
    */
-  public QuantitativeValue getCargoVolume() {
-    return myCargoVolume;
-  }
+  public QuantitativeValue getCargoVolume() { return myCargoVolume; }
   /**
    * A short text indicating the configuration of the vehicle, e.g. '5dr hatchback ST 2.5 MT 225 hp' or 'limited edition'.
    */
-  public String getVehicleConfiguration() {
-    return myVehicleConfiguration;
-  }
+  public String getVehicleConfiguration() { return myVehicleConfiguration; }
   /**
    * A textual description of known damages, both repaired and unrepaired.
    */
-  public String getKnownVehicleDamages() {
-    return myKnownVehicleDamages;
-  }
+  public String getKnownVehicleDamages() { return myKnownVehicleDamages; }
   /**
    * The date of the first registration of the vehicle with the respective public authorities.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDateVehicleFirstRegistered() {
-    return myDateVehicleFirstRegistered;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getDateVehicleFirstRegistered() { return myDateVehicleFirstRegistered; }
   /**
    * The drive wheel configuration, i.e. which roadwheels will receive torque from the vehicle's engine via the drivetrain.
    */
-  public DriveWheelConfigurationValueOrString getDriveWheelConfiguration() {
-    return myDriveWheelConfiguration;
-  }
+  public DriveWheelConfigurationValueOrString getDriveWheelConfiguration() { return myDriveWheelConfiguration; }
   /**
    * The type of fuel suitable for the engine or engines of the vehicle. If the vehicle has only one engine, this property can be attached directly to the vehicle.
    */
-  public QualitativeValueOrString getFuelType() {
-    return myFuelType;
-  }
+  public QualitativeValueOrString getFuelType() { return myFuelType; }
   /**
    * The color or color combination of the interior of the vehicle.
    */
-  public String getVehicleInteriorColor() {
-    return myVehicleInteriorColor;
-  }
+  public String getVehicleInteriorColor() { return myVehicleInteriorColor; }
   /**
    * The type or material of the interior of the vehicle (e.g. synthetic fabric, leather, wood, etc.). While most interior types are characterized by the material used, an interior type can also be based on vehicle usage or target audience.
    */
-  public String getVehicleInteriorType() {
-    return myVehicleInteriorType;
-  }
+  public String getVehicleInteriorType() { return myVehicleInteriorType; }
   /**
    * The total distance travelled by the particular vehicle since its initial production, as read from its odometer.<br />
 Typical unit code(s): KMT for kilometers, SMI for statute miles
    */
-  public QuantitativeValue getMileageFromOdometer() {
-    return myMileageFromOdometer;
-  }
+  public QuantitativeValue getMileageFromOdometer() { return myMileageFromOdometer; }
   /**
    * The release date of a vehicle model (often used to differentiate versions of the same make and model).
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getVehicleModelDate() {
-    return myVehicleModelDate;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getVehicleModelDate() { return myVehicleModelDate; }
   /**
    * The number of owners of the vehicle, including the current one.<br />
 Typical unit code(s): C62
    */
-  public NumberOrQuantitativeValue getNumberOfPreviousOwners() {
-    return myNumberOfPreviousOwners;
-  }
+  public NumberOrQuantitativeValue getNumberOfPreviousOwners() { return myNumberOfPreviousOwners; }
   /**
    * The date of production of the item, e.g. vehicle.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getProductionDate() {
-    return myProductionDate;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getProductionDate() { return myProductionDate; }
   /**
    * The date the item e.g. vehicle was purchased by the current owner.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getPurchaseDate() {
-    return myPurchaseDate;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getPurchaseDate() { return myPurchaseDate; }
   /**
    * The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law.<br />
 Typical unit code(s): C62 for persons 
    */
-  public NumberOrQuantitativeValue getVehicleSeatingCapacity() {
-    return myVehicleSeatingCapacity;
-  }
+  public NumberOrQuantitativeValue getVehicleSeatingCapacity() { return myVehicleSeatingCapacity; }
   /**
    * The type of component used for transmitting the power from a rotating power source to the wheels or other relevant component(s) ("gearbox" for cars).
    */
-  public QualitativeValueOrString getVehicleTransmission() {
-    return myVehicleTransmission;
-  }
+  public QualitativeValueOrString getVehicleTransmission() { return myVehicleTransmission; }
   /**
    * The position of the steering wheel or similar device (mostly for cars).
    */
-  public SteeringPositionValue getSteeringPosition() {
-    return mySteeringPosition;
+  public SteeringPositionValue getSteeringPosition() { return mySteeringPosition; }
+  protected Vehicle(NumberOrQuantitativeValue numberOfDoors, Number numberOfAirbags, NumberOrQuantitativeValue numberOfAxles, EngineSpecification vehicleEngine, QuantitativeValue fuelConsumption, QuantitativeValue fuelEfficiency, NumberOrQuantitativeValue numberOfForwardGears, String vin, QuantitativeValue cargoVolume, String vehicleConfiguration, String knownVehicleDamages, java.util.Date dateVehicleFirstRegistered, DriveWheelConfigurationValueOrString driveWheelConfiguration, QualitativeValueOrString fuelType, String vehicleInteriorColor, String vehicleInteriorType, QuantitativeValue mileageFromOdometer, java.util.Date vehicleModelDate, NumberOrQuantitativeValue numberOfPreviousOwners, java.util.Date productionDate, java.util.Date purchaseDate, NumberOrQuantitativeValue vehicleSeatingCapacity, QualitativeValueOrString vehicleTransmission, SteeringPositionValue steeringPosition, AggregateRating aggregateRating, Audience audience, String award, BrandOrOrganization brand, PhysicalActivityCategoryOrStringOrThing category, String color, DistanceOrQuantitativeValue depth, String gtin12, String gtin13, String gtin14, String gtin8, DistanceOrQuantitativeValue height, Product isAccessoryOrSparePartFor, Product isConsumableFor, Product isRelatedTo, Product isSimilarTo, OfferItemCondition itemCondition, ImageObjectOrString logo, Organization manufacturer, ProductModelOrString model, String mpn, Offer offers, String productID, java.util.Date releaseDate, Review review, String sku, QuantitativeValue weight, DistanceOrQuantitativeValue width, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(aggregateRating, audience, award, brand, category, color, depth, gtin12, gtin13, gtin14, gtin8, height, isAccessoryOrSparePartFor, isConsumableFor, isRelatedTo, isSimilarTo, itemCondition, logo, manufacturer, model, mpn, offers, productID, releaseDate, review, sku, weight, width, additionalProperty, productionDate, purchaseDate, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myNumberOfDoors = numberOfDoors;
+    myNumberOfAirbags = numberOfAirbags;
+    myNumberOfAxles = numberOfAxles;
+    myVehicleEngine = vehicleEngine;
+    myFuelConsumption = fuelConsumption;
+    myFuelEfficiency = fuelEfficiency;
+    myNumberOfForwardGears = numberOfForwardGears;
+    myVin = vin;
+    myCargoVolume = cargoVolume;
+    myVehicleConfiguration = vehicleConfiguration;
+    myKnownVehicleDamages = knownVehicleDamages;
+    myDateVehicleFirstRegistered = dateVehicleFirstRegistered;
+    myDriveWheelConfiguration = driveWheelConfiguration;
+    myFuelType = fuelType;
+    myVehicleInteriorColor = vehicleInteriorColor;
+    myVehicleInteriorType = vehicleInteriorType;
+    myMileageFromOdometer = mileageFromOdometer;
+    myVehicleModelDate = vehicleModelDate;
+    myNumberOfPreviousOwners = numberOfPreviousOwners;
+    myVehicleSeatingCapacity = vehicleSeatingCapacity;
+    myVehicleTransmission = vehicleTransmission;
+    mySteeringPosition = steeringPosition;
+    myNumberOfDoors = numberOfDoors;
+    myNumberOfAirbags = numberOfAirbags;
+    myNumberOfAxles = numberOfAxles;
+    myVehicleEngine = vehicleEngine;
+    myFuelConsumption = fuelConsumption;
+    myFuelEfficiency = fuelEfficiency;
+    myNumberOfForwardGears = numberOfForwardGears;
+    myVin = vin;
+    myCargoVolume = cargoVolume;
+    myVehicleConfiguration = vehicleConfiguration;
+    myKnownVehicleDamages = knownVehicleDamages;
+    myDateVehicleFirstRegistered = dateVehicleFirstRegistered;
+    myDriveWheelConfiguration = driveWheelConfiguration;
+    myFuelType = fuelType;
+    myVehicleInteriorColor = vehicleInteriorColor;
+    myVehicleInteriorType = vehicleInteriorType;
+    myMileageFromOdometer = mileageFromOdometer;
+    myVehicleModelDate = vehicleModelDate;
+    myNumberOfPreviousOwners = numberOfPreviousOwners;
+    myProductionDate = productionDate;
+    myPurchaseDate = purchaseDate;
+    myVehicleSeatingCapacity = vehicleSeatingCapacity;
+    myVehicleTransmission = vehicleTransmission;
+    mySteeringPosition = steeringPosition;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myNumberOfDoors != null ? myNumberOfDoors.hashCode() : 0);
+    result = 31 * result + (myNumberOfAirbags != null ? myNumberOfAirbags.hashCode() : 0);
+    result = 31 * result + (myNumberOfAxles != null ? myNumberOfAxles.hashCode() : 0);
+    result = 31 * result + (myVehicleEngine != null ? myVehicleEngine.hashCode() : 0);
+    result = 31 * result + (myFuelConsumption != null ? myFuelConsumption.hashCode() : 0);
+    result = 31 * result + (myFuelEfficiency != null ? myFuelEfficiency.hashCode() : 0);
+    result = 31 * result + (myNumberOfForwardGears != null ? myNumberOfForwardGears.hashCode() : 0);
+    result = 31 * result + (myVin != null ? myVin.hashCode() : 0);
+    result = 31 * result + (myCargoVolume != null ? myCargoVolume.hashCode() : 0);
+    result = 31 * result + (myVehicleConfiguration != null ? myVehicleConfiguration.hashCode() : 0);
+    result = 31 * result + (myKnownVehicleDamages != null ? myKnownVehicleDamages.hashCode() : 0);
+    result = 31 * result + (myDateVehicleFirstRegistered != null ? myDateVehicleFirstRegistered.hashCode() : 0);
+    result = 31 * result + (myDriveWheelConfiguration != null ? myDriveWheelConfiguration.hashCode() : 0);
+    result = 31 * result + (myFuelType != null ? myFuelType.hashCode() : 0);
+    result = 31 * result + (myVehicleInteriorColor != null ? myVehicleInteriorColor.hashCode() : 0);
+    result = 31 * result + (myVehicleInteriorType != null ? myVehicleInteriorType.hashCode() : 0);
+    result = 31 * result + (myMileageFromOdometer != null ? myMileageFromOdometer.hashCode() : 0);
+    result = 31 * result + (myVehicleModelDate != null ? myVehicleModelDate.hashCode() : 0);
+    result = 31 * result + (myNumberOfPreviousOwners != null ? myNumberOfPreviousOwners.hashCode() : 0);
+    result = 31 * result + (myProductionDate != null ? myProductionDate.hashCode() : 0);
+    result = 31 * result + (myPurchaseDate != null ? myPurchaseDate.hashCode() : 0);
+    result = 31 * result + (myVehicleSeatingCapacity != null ? myVehicleSeatingCapacity.hashCode() : 0);
+    result = 31 * result + (myVehicleTransmission != null ? myVehicleTransmission.hashCode() : 0);
+    result = 31 * result + (mySteeringPosition != null ? mySteeringPosition.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Vehicle vehicle = (Vehicle) o;
+    if (!super.equals(o)) return false;
+    if (myNumberOfDoors != null ? !myNumberOfDoors.equals(vehicle.myNumberOfDoors) : vehicle.myNumberOfDoors != null) return false;
+    if (myNumberOfAirbags != null ? !myNumberOfAirbags.equals(vehicle.myNumberOfAirbags) : vehicle.myNumberOfAirbags != null) return false;
+    if (myNumberOfAxles != null ? !myNumberOfAxles.equals(vehicle.myNumberOfAxles) : vehicle.myNumberOfAxles != null) return false;
+    if (myVehicleEngine != null ? !myVehicleEngine.equals(vehicle.myVehicleEngine) : vehicle.myVehicleEngine != null) return false;
+    if (myFuelConsumption != null ? !myFuelConsumption.equals(vehicle.myFuelConsumption) : vehicle.myFuelConsumption != null) return false;
+    if (myFuelEfficiency != null ? !myFuelEfficiency.equals(vehicle.myFuelEfficiency) : vehicle.myFuelEfficiency != null) return false;
+    if (myNumberOfForwardGears != null ? !myNumberOfForwardGears.equals(vehicle.myNumberOfForwardGears) : vehicle.myNumberOfForwardGears != null) return false;
+    if (myVin != null ? !myVin.equals(vehicle.myVin) : vehicle.myVin != null) return false;
+    if (myCargoVolume != null ? !myCargoVolume.equals(vehicle.myCargoVolume) : vehicle.myCargoVolume != null) return false;
+    if (myVehicleConfiguration != null ? !myVehicleConfiguration.equals(vehicle.myVehicleConfiguration) : vehicle.myVehicleConfiguration != null) return false;
+    if (myKnownVehicleDamages != null ? !myKnownVehicleDamages.equals(vehicle.myKnownVehicleDamages) : vehicle.myKnownVehicleDamages != null) return false;
+    if (myDateVehicleFirstRegistered != null ? !myDateVehicleFirstRegistered.equals(vehicle.myDateVehicleFirstRegistered) : vehicle.myDateVehicleFirstRegistered != null) return false;
+    if (myDriveWheelConfiguration != null ? !myDriveWheelConfiguration.equals(vehicle.myDriveWheelConfiguration) : vehicle.myDriveWheelConfiguration != null) return false;
+    if (myFuelType != null ? !myFuelType.equals(vehicle.myFuelType) : vehicle.myFuelType != null) return false;
+    if (myVehicleInteriorColor != null ? !myVehicleInteriorColor.equals(vehicle.myVehicleInteriorColor) : vehicle.myVehicleInteriorColor != null) return false;
+    if (myVehicleInteriorType != null ? !myVehicleInteriorType.equals(vehicle.myVehicleInteriorType) : vehicle.myVehicleInteriorType != null) return false;
+    if (myMileageFromOdometer != null ? !myMileageFromOdometer.equals(vehicle.myMileageFromOdometer) : vehicle.myMileageFromOdometer != null) return false;
+    if (myVehicleModelDate != null ? !myVehicleModelDate.equals(vehicle.myVehicleModelDate) : vehicle.myVehicleModelDate != null) return false;
+    if (myNumberOfPreviousOwners != null ? !myNumberOfPreviousOwners.equals(vehicle.myNumberOfPreviousOwners) : vehicle.myNumberOfPreviousOwners != null) return false;
+    if (myProductionDate != null ? !myProductionDate.equals(vehicle.myProductionDate) : vehicle.myProductionDate != null) return false;
+    if (myPurchaseDate != null ? !myPurchaseDate.equals(vehicle.myPurchaseDate) : vehicle.myPurchaseDate != null) return false;
+    if (myVehicleSeatingCapacity != null ? !myVehicleSeatingCapacity.equals(vehicle.myVehicleSeatingCapacity) : vehicle.myVehicleSeatingCapacity != null) return false;
+    if (myVehicleTransmission != null ? !myVehicleTransmission.equals(vehicle.myVehicleTransmission) : vehicle.myVehicleTransmission != null) return false;
+    if (mySteeringPosition != null ? !mySteeringPosition.equals(vehicle.mySteeringPosition) : vehicle.mySteeringPosition != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link Vehicle}
    */
-  static final class VehicleThingBuilder implements Builder {
-    /**
-     * Creates new {@link Vehicle} instance.
-     */
+  public static class Builder implements ThingBuilder<Vehicle> {
     public Vehicle build() {
       return new Vehicle(numberOfDoors, numberOfAirbags, numberOfAxles, vehicleEngine, fuelConsumption, fuelEfficiency, numberOfForwardGears, vin, cargoVolume, vehicleConfiguration, knownVehicleDamages, dateVehicleFirstRegistered, driveWheelConfiguration, fuelType, vehicleInteriorColor, vehicleInteriorType, mileageFromOdometer, vehicleModelDate, numberOfPreviousOwners, productionDate, purchaseDate, vehicleSeatingCapacity, vehicleTransmission, steeringPosition, aggregateRating, audience, award, brand, category, color, depth, gtin12, gtin13, gtin14, gtin8, height, isAccessoryOrSparePartFor, isConsumableFor, isRelatedTo, isSimilarTo, itemCondition, logo, manufacturer, model, mpn, offers, productID, releaseDate, review, sku, weight, width, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
      * The number of doors.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfDoors(@NotNull Number number) {
       if (this.numberOfDoors == null) this.numberOfDoors = new NumberOrQuantitativeValue();
@@ -212,7 +270,7 @@ Typical unit code(s): C62
     }
     /**
      * The number of doors.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfDoors(@NotNull QuantitativeValue quantitativeValue) {
       if (this.numberOfDoors == null) this.numberOfDoors = new NumberOrQuantitativeValue();
@@ -221,7 +279,7 @@ Typical unit code(s): C62
     }
     /**
      * The number of doors.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfDoors(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.numberOfDoors(quantitativeValue.build());
@@ -268,7 +326,7 @@ Typical unit code(s): C62
     }
     /**
      * The number of axles.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfAxles(@NotNull Number number) {
       if (this.numberOfAxles == null) this.numberOfAxles = new NumberOrQuantitativeValue();
@@ -277,7 +335,7 @@ Typical unit code(s): C62
     }
     /**
      * The number of axles.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfAxles(@NotNull QuantitativeValue quantitativeValue) {
       if (this.numberOfAxles == null) this.numberOfAxles = new NumberOrQuantitativeValue();
@@ -286,7 +344,7 @@ Typical unit code(s): C62
     }
     /**
      * The number of axles.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfAxles(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.numberOfAxles(quantitativeValue.build());
@@ -306,10 +364,10 @@ Typical unit code(s): C62
     }
     /**
      * The amount of fuel consumed for traveling a particular distance or temporal duration with the given vehicle (e.g. liters per 100 km).<br />
-Note 1: There are unfortunately no standard unit codes for liters per 100 km.<br />
-Use <a href="unitText">unitText</a> to indicate the unit of measurement, e.g. L/100 km.
-Note 2: There are two ways of indicating the fuel consumption, <a href="fuelConsumption">fuelConsumption</a> (e.g. 8 liters per 100 km) and <a href="fuelEfficiency">fuelEfficiency</a> (e.g. 30 miles per gallon). They are reciprocal.<br />
-Note 3: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use <a href="valueReference">valueReference</a> to link the value for the fuel consumption to another value.
+     * Note 1: There are unfortunately no standard unit codes for liters per 100 km.<br />
+     * Use <a href="unitText">unitText</a> to indicate the unit of measurement, e.g. L/100 km.
+     * Note 2: There are two ways of indicating the fuel consumption, <a href="fuelConsumption">fuelConsumption</a> (e.g. 8 liters per 100 km) and <a href="fuelEfficiency">fuelEfficiency</a> (e.g. 30 miles per gallon). They are reciprocal.<br />
+     * Note 3: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use <a href="valueReference">valueReference</a> to link the value for the fuel consumption to another value.
      */
     @NotNull public Builder fuelConsumption(@NotNull QuantitativeValue quantitativeValue) {
       this.fuelConsumption = quantitativeValue;
@@ -317,20 +375,20 @@ Note 3: Often, the absolute value is useful only when related to driving speed (
     }
     /**
      * The amount of fuel consumed for traveling a particular distance or temporal duration with the given vehicle (e.g. liters per 100 km).<br />
-Note 1: There are unfortunately no standard unit codes for liters per 100 km.<br />
-Use <a href="unitText">unitText</a> to indicate the unit of measurement, e.g. L/100 km.
-Note 2: There are two ways of indicating the fuel consumption, <a href="fuelConsumption">fuelConsumption</a> (e.g. 8 liters per 100 km) and <a href="fuelEfficiency">fuelEfficiency</a> (e.g. 30 miles per gallon). They are reciprocal.<br />
-Note 3: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use <a href="valueReference">valueReference</a> to link the value for the fuel consumption to another value.
+     * Note 1: There are unfortunately no standard unit codes for liters per 100 km.<br />
+     * Use <a href="unitText">unitText</a> to indicate the unit of measurement, e.g. L/100 km.
+     * Note 2: There are two ways of indicating the fuel consumption, <a href="fuelConsumption">fuelConsumption</a> (e.g. 8 liters per 100 km) and <a href="fuelEfficiency">fuelEfficiency</a> (e.g. 30 miles per gallon). They are reciprocal.<br />
+     * Note 3: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use <a href="valueReference">valueReference</a> to link the value for the fuel consumption to another value.
      */
     @NotNull public Builder fuelConsumption(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.fuelConsumption(quantitativeValue.build());
     }
     /**
      * The distance traveled per unit of fuel used; most commonly miles per gallon (mpg) or kilometers per liter (km/L).<br />
-Note 1: There are unfortunately no standard unit codes for miles per gallon or kilometers per liter.<br />
-Use <a href="unitText">unitText</a> to indicate the unit of measurement, e.g. mpg or km/L.
-Note 2: There are two ways of indicating the fuel consumption, <a href="fuelConsumption">fuelConsumption</a> (e.g. 8 liters per 100 km) and <a href="fuelEfficiency">fuelEfficiency</a> (e.g. 30 miles per gallon). They are reciprocal.<br />
-Note 3: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use <a href="valueReference">valueReference</a> to link the value for the fuel economy to another value.
+     * Note 1: There are unfortunately no standard unit codes for miles per gallon or kilometers per liter.<br />
+     * Use <a href="unitText">unitText</a> to indicate the unit of measurement, e.g. mpg or km/L.
+     * Note 2: There are two ways of indicating the fuel consumption, <a href="fuelConsumption">fuelConsumption</a> (e.g. 8 liters per 100 km) and <a href="fuelEfficiency">fuelEfficiency</a> (e.g. 30 miles per gallon). They are reciprocal.<br />
+     * Note 3: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use <a href="valueReference">valueReference</a> to link the value for the fuel economy to another value.
      */
     @NotNull public Builder fuelEfficiency(@NotNull QuantitativeValue quantitativeValue) {
       this.fuelEfficiency = quantitativeValue;
@@ -338,17 +396,17 @@ Note 3: Often, the absolute value is useful only when related to driving speed (
     }
     /**
      * The distance traveled per unit of fuel used; most commonly miles per gallon (mpg) or kilometers per liter (km/L).<br />
-Note 1: There are unfortunately no standard unit codes for miles per gallon or kilometers per liter.<br />
-Use <a href="unitText">unitText</a> to indicate the unit of measurement, e.g. mpg or km/L.
-Note 2: There are two ways of indicating the fuel consumption, <a href="fuelConsumption">fuelConsumption</a> (e.g. 8 liters per 100 km) and <a href="fuelEfficiency">fuelEfficiency</a> (e.g. 30 miles per gallon). They are reciprocal.<br />
-Note 3: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use <a href="valueReference">valueReference</a> to link the value for the fuel economy to another value.
+     * Note 1: There are unfortunately no standard unit codes for miles per gallon or kilometers per liter.<br />
+     * Use <a href="unitText">unitText</a> to indicate the unit of measurement, e.g. mpg or km/L.
+     * Note 2: There are two ways of indicating the fuel consumption, <a href="fuelConsumption">fuelConsumption</a> (e.g. 8 liters per 100 km) and <a href="fuelEfficiency">fuelEfficiency</a> (e.g. 30 miles per gallon). They are reciprocal.<br />
+     * Note 3: Often, the absolute value is useful only when related to driving speed ("at 80 km/h") or usage pattern ("city traffic"). You can use <a href="valueReference">valueReference</a> to link the value for the fuel economy to another value.
      */
     @NotNull public Builder fuelEfficiency(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.fuelEfficiency(quantitativeValue.build());
     }
     /**
      * The total number of forward gears available for the transmission system of the vehicle.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfForwardGears(@NotNull Number number) {
       if (this.numberOfForwardGears == null) this.numberOfForwardGears = new NumberOrQuantitativeValue();
@@ -357,7 +415,7 @@ Typical unit code(s): C62
     }
     /**
      * The total number of forward gears available for the transmission system of the vehicle.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfForwardGears(@NotNull QuantitativeValue quantitativeValue) {
       if (this.numberOfForwardGears == null) this.numberOfForwardGears = new NumberOrQuantitativeValue();
@@ -366,7 +424,7 @@ Typical unit code(s): C62
     }
     /**
      * The total number of forward gears available for the transmission system of the vehicle.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfForwardGears(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.numberOfForwardGears(quantitativeValue.build());
@@ -380,9 +438,9 @@ Typical unit code(s): C62
     }
     /**
      * The available volume for cargo or luggage. For automobiles, this is usually the trunk volume.<br />
-Typical unit code(s): LTR for liters, FTQ for cubic foot/feet<br />
-
-Note: You can use <a href="minValue">minValue</a> and <a href="maxValue">maxValue</a> to indicate ranges.
+     * Typical unit code(s): LTR for liters, FTQ for cubic foot/feet<br />
+     * 
+     * Note: You can use <a href="minValue">minValue</a> and <a href="maxValue">maxValue</a> to indicate ranges.
      */
     @NotNull public Builder cargoVolume(@NotNull QuantitativeValue quantitativeValue) {
       this.cargoVolume = quantitativeValue;
@@ -390,9 +448,9 @@ Note: You can use <a href="minValue">minValue</a> and <a href="maxValue">maxValu
     }
     /**
      * The available volume for cargo or luggage. For automobiles, this is usually the trunk volume.<br />
-Typical unit code(s): LTR for liters, FTQ for cubic foot/feet<br />
-
-Note: You can use <a href="minValue">minValue</a> and <a href="maxValue">maxValue</a> to indicate ranges.
+     * Typical unit code(s): LTR for liters, FTQ for cubic foot/feet<br />
+     * 
+     * Note: You can use <a href="minValue">minValue</a> and <a href="maxValue">maxValue</a> to indicate ranges.
      */
     @NotNull public Builder cargoVolume(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.cargoVolume(quantitativeValue.build());
@@ -478,7 +536,7 @@ Note: You can use <a href="minValue">minValue</a> and <a href="maxValue">maxValu
     }
     /**
      * The total distance travelled by the particular vehicle since its initial production, as read from its odometer.<br />
-Typical unit code(s): KMT for kilometers, SMI for statute miles
+     * Typical unit code(s): KMT for kilometers, SMI for statute miles
      */
     @NotNull public Builder mileageFromOdometer(@NotNull QuantitativeValue quantitativeValue) {
       this.mileageFromOdometer = quantitativeValue;
@@ -486,7 +544,7 @@ Typical unit code(s): KMT for kilometers, SMI for statute miles
     }
     /**
      * The total distance travelled by the particular vehicle since its initial production, as read from its odometer.<br />
-Typical unit code(s): KMT for kilometers, SMI for statute miles
+     * Typical unit code(s): KMT for kilometers, SMI for statute miles
      */
     @NotNull public Builder mileageFromOdometer(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.mileageFromOdometer(quantitativeValue.build());
@@ -500,7 +558,7 @@ Typical unit code(s): KMT for kilometers, SMI for statute miles
     }
     /**
      * The number of owners of the vehicle, including the current one.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfPreviousOwners(@NotNull Number number) {
       if (this.numberOfPreviousOwners == null) this.numberOfPreviousOwners = new NumberOrQuantitativeValue();
@@ -509,7 +567,7 @@ Typical unit code(s): C62
     }
     /**
      * The number of owners of the vehicle, including the current one.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfPreviousOwners(@NotNull QuantitativeValue quantitativeValue) {
       if (this.numberOfPreviousOwners == null) this.numberOfPreviousOwners = new NumberOrQuantitativeValue();
@@ -518,7 +576,7 @@ Typical unit code(s): C62
     }
     /**
      * The number of owners of the vehicle, including the current one.<br />
-Typical unit code(s): C62
+     * Typical unit code(s): C62
      */
     @NotNull public Builder numberOfPreviousOwners(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.numberOfPreviousOwners(quantitativeValue.build());
@@ -539,7 +597,7 @@ Typical unit code(s): C62
     }
     /**
      * The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law.<br />
-Typical unit code(s): C62 for persons 
+     * Typical unit code(s): C62 for persons 
      */
     @NotNull public Builder vehicleSeatingCapacity(@NotNull Number number) {
       if (this.vehicleSeatingCapacity == null) this.vehicleSeatingCapacity = new NumberOrQuantitativeValue();
@@ -548,7 +606,7 @@ Typical unit code(s): C62 for persons
     }
     /**
      * The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law.<br />
-Typical unit code(s): C62 for persons 
+     * Typical unit code(s): C62 for persons 
      */
     @NotNull public Builder vehicleSeatingCapacity(@NotNull QuantitativeValue quantitativeValue) {
       if (this.vehicleSeatingCapacity == null) this.vehicleSeatingCapacity = new NumberOrQuantitativeValue();
@@ -557,7 +615,7 @@ Typical unit code(s): C62 for persons
     }
     /**
      * The number of passengers that can be seated in the vehicle, both in terms of the physical space available, and in terms of limitations set by law.<br />
-Typical unit code(s): C62 for persons 
+     * Typical unit code(s): C62 for persons 
      */
     @NotNull public Builder vehicleSeatingCapacity(@NotNull QuantitativeValue.Builder quantitativeValue) {
       return this.vehicleSeatingCapacity(quantitativeValue.build());
@@ -1004,9 +1062,9 @@ Typical unit code(s): C62 for persons
     }
     /**
      * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
+     * 
+     * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+     * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue propertyValue) {
       this.additionalProperty = propertyValue;
@@ -1014,9 +1072,9 @@ Note: Publishers should be aware that applications designed to use specific sche
     }
     /**
      * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
+     * 
+     * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+     * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue) {
       return this.additionalProperty(propertyValue.build());
@@ -1044,33 +1102,33 @@ Note: Publishers should be aware that applications designed to use specific sche
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -1079,66 +1137,66 @@ Note: Publishers should be aware that applications designed to use specific sche
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -1186,7 +1244,6 @@ Note: Publishers should be aware that applications designed to use specific sche
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -1340,221 +1397,7 @@ Note: Publishers should be aware that applications designed to use specific sche
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<Vehicle> {
-    @NotNull Builder numberOfDoors(@NotNull Number number);
-    @NotNull Builder numberOfDoors(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder numberOfDoors(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder numberOfAirbags(@NotNull Integer integer);
-    @NotNull Builder numberOfAirbags(@NotNull Long numberOfAirbags);
-    @NotNull Builder numberOfAirbags(@NotNull Float numberOfAirbags);
-    @NotNull Builder numberOfAirbags(@NotNull Double numberOfAirbags);
-    @NotNull Builder numberOfAirbags(@NotNull String numberOfAirbags);
-    @NotNull Builder numberOfAxles(@NotNull Number number);
-    @NotNull Builder numberOfAxles(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder numberOfAxles(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder vehicleEngine(@NotNull EngineSpecification engineSpecification);
-    @NotNull Builder vehicleEngine(@NotNull EngineSpecification.Builder engineSpecification);
-    @NotNull Builder fuelConsumption(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder fuelConsumption(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder fuelEfficiency(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder fuelEfficiency(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder numberOfForwardGears(@NotNull Number number);
-    @NotNull Builder numberOfForwardGears(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder numberOfForwardGears(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder vin(@NotNull String vin);
-    @NotNull Builder cargoVolume(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder cargoVolume(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder vehicleConfiguration(@NotNull String vehicleConfiguration);
-    @NotNull Builder knownVehicleDamages(@NotNull String knownVehicleDamages);
-    @NotNull Builder dateVehicleFirstRegistered(@NotNull java.util.Date date);
-    @NotNull Builder driveWheelConfiguration(@NotNull DriveWheelConfigurationValue driveWheelConfigurationValue);
-    @NotNull Builder driveWheelConfiguration(@NotNull DriveWheelConfigurationValue.Builder driveWheelConfigurationValue);
-    @NotNull Builder driveWheelConfiguration(@NotNull String driveWheelConfiguration);
-    @NotNull Builder fuelType(@NotNull QualitativeValue qualitativeValue);
-    @NotNull Builder fuelType(@NotNull QualitativeValue.Builder qualitativeValue);
-    @NotNull Builder fuelType(@NotNull String fuelType);
-    @NotNull Builder vehicleInteriorColor(@NotNull String vehicleInteriorColor);
-    @NotNull Builder vehicleInteriorType(@NotNull String vehicleInteriorType);
-    @NotNull Builder mileageFromOdometer(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder mileageFromOdometer(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder vehicleModelDate(@NotNull java.util.Date date);
-    @NotNull Builder numberOfPreviousOwners(@NotNull Number number);
-    @NotNull Builder numberOfPreviousOwners(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder numberOfPreviousOwners(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder productionDate(@NotNull java.util.Date date);
-    @NotNull Builder purchaseDate(@NotNull java.util.Date date);
-    @NotNull Builder vehicleSeatingCapacity(@NotNull Number number);
-    @NotNull Builder vehicleSeatingCapacity(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder vehicleSeatingCapacity(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder vehicleTransmission(@NotNull QualitativeValue qualitativeValue);
-    @NotNull Builder vehicleTransmission(@NotNull QualitativeValue.Builder qualitativeValue);
-    @NotNull Builder vehicleTransmission(@NotNull String vehicleTransmission);
-    @NotNull Builder steeringPosition(@NotNull SteeringPositionValue steeringPositionValue);
-    @NotNull Builder steeringPosition(@NotNull SteeringPositionValue.Builder steeringPositionValue);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating aggregateRating);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating);
-    @NotNull Builder audience(@NotNull Audience audience);
-    @NotNull Builder audience(@NotNull Audience.Builder audience);
-    @NotNull Builder award(@NotNull String award);
-    @NotNull Builder brand(@NotNull Brand brand);
-    @NotNull Builder brand(@NotNull Brand.Builder brand);
-    @NotNull Builder brand(@NotNull Organization organization);
-    @NotNull Builder brand(@NotNull Organization.Builder organization);
-    @NotNull Builder category(@NotNull PhysicalActivityCategory physicalActivityCategory);
-    @NotNull Builder category(@NotNull PhysicalActivityCategory.Builder physicalActivityCategory);
-    @NotNull Builder category(@NotNull String category);
-    @NotNull Builder category(@NotNull Thing thing);
-    @NotNull Builder category(@NotNull Thing.Builder thing);
-    @NotNull Builder color(@NotNull String color);
-    @NotNull Builder depth(@NotNull Distance distance);
-    @NotNull Builder depth(@NotNull Distance.Builder distance);
-    @NotNull Builder depth(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder depth(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder gtin12(@NotNull String gtin12);
-    @NotNull Builder gtin13(@NotNull String gtin13);
-    @NotNull Builder gtin14(@NotNull String gtin14);
-    @NotNull Builder gtin8(@NotNull String gtin8);
-    @NotNull Builder height(@NotNull Distance distance);
-    @NotNull Builder height(@NotNull Distance.Builder distance);
-    @NotNull Builder height(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder height(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder isAccessoryOrSparePartFor(@NotNull Product product);
-    @NotNull Builder isAccessoryOrSparePartFor(@NotNull Product.Builder product);
-    @NotNull Builder isConsumableFor(@NotNull Product product);
-    @NotNull Builder isConsumableFor(@NotNull Product.Builder product);
-    @NotNull Builder isRelatedTo(@NotNull Product product);
-    @NotNull Builder isRelatedTo(@NotNull Product.Builder product);
-    @NotNull Builder isSimilarTo(@NotNull Product product);
-    @NotNull Builder isSimilarTo(@NotNull Product.Builder product);
-    @NotNull Builder itemCondition(@NotNull OfferItemCondition offerItemCondition);
-    @NotNull Builder itemCondition(@NotNull OfferItemCondition.Builder offerItemCondition);
-    @NotNull Builder logo(@NotNull ImageObject imageObject);
-    @NotNull Builder logo(@NotNull ImageObject.Builder imageObject);
-    @NotNull Builder logo(@NotNull String logo);
-    @NotNull Builder manufacturer(@NotNull Organization organization);
-    @NotNull Builder manufacturer(@NotNull Organization.Builder organization);
-    @NotNull Builder model(@NotNull ProductModel productModel);
-    @NotNull Builder model(@NotNull ProductModel.Builder productModel);
-    @NotNull Builder model(@NotNull String model);
-    @NotNull Builder mpn(@NotNull String mpn);
-    @NotNull Builder offers(@NotNull Offer offer);
-    @NotNull Builder offers(@NotNull Offer.Builder offer);
-    @NotNull Builder productID(@NotNull String productID);
-    @NotNull Builder releaseDate(@NotNull java.util.Date date);
-    @NotNull Builder review(@NotNull Review review);
-    @NotNull Builder review(@NotNull Review.Builder review);
-    @NotNull Builder sku(@NotNull String sku);
-    @NotNull Builder weight(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder weight(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder width(@NotNull Distance distance);
-    @NotNull Builder width(@NotNull Distance.Builder distance);
-    @NotNull Builder width(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder width(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder additionalProperty(@NotNull PropertyValue propertyValue);
-    @NotNull Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected Vehicle(NumberOrQuantitativeValue numberOfDoors, Number numberOfAirbags, NumberOrQuantitativeValue numberOfAxles, EngineSpecification vehicleEngine, QuantitativeValue fuelConsumption, QuantitativeValue fuelEfficiency, NumberOrQuantitativeValue numberOfForwardGears, String vin, QuantitativeValue cargoVolume, String vehicleConfiguration, String knownVehicleDamages, java.util.Date dateVehicleFirstRegistered, DriveWheelConfigurationValueOrString driveWheelConfiguration, QualitativeValueOrString fuelType, String vehicleInteriorColor, String vehicleInteriorType, QuantitativeValue mileageFromOdometer, java.util.Date vehicleModelDate, NumberOrQuantitativeValue numberOfPreviousOwners, java.util.Date productionDate, java.util.Date purchaseDate, NumberOrQuantitativeValue vehicleSeatingCapacity, QualitativeValueOrString vehicleTransmission, SteeringPositionValue steeringPosition, AggregateRating aggregateRating, Audience audience, String award, BrandOrOrganization brand, PhysicalActivityCategoryOrStringOrThing category, String color, DistanceOrQuantitativeValue depth, String gtin12, String gtin13, String gtin14, String gtin8, DistanceOrQuantitativeValue height, Product isAccessoryOrSparePartFor, Product isConsumableFor, Product isRelatedTo, Product isSimilarTo, OfferItemCondition itemCondition, ImageObjectOrString logo, Organization manufacturer, ProductModelOrString model, String mpn, Offer offers, String productID, java.util.Date releaseDate, Review review, String sku, QuantitativeValue weight, DistanceOrQuantitativeValue width, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(aggregateRating, audience, award, brand, category, color, depth, gtin12, gtin13, gtin14, gtin8, height, isAccessoryOrSparePartFor, isConsumableFor, isRelatedTo, isSimilarTo, itemCondition, logo, manufacturer, model, mpn, offers, productID, releaseDate, review, sku, weight, width, additionalProperty, productionDate, purchaseDate, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myNumberOfDoors = numberOfDoors;
-    myNumberOfAirbags = numberOfAirbags;
-    myNumberOfAxles = numberOfAxles;
-    myVehicleEngine = vehicleEngine;
-    myFuelConsumption = fuelConsumption;
-    myFuelEfficiency = fuelEfficiency;
-    myNumberOfForwardGears = numberOfForwardGears;
-    myVin = vin;
-    myCargoVolume = cargoVolume;
-    myVehicleConfiguration = vehicleConfiguration;
-    myKnownVehicleDamages = knownVehicleDamages;
-    myDateVehicleFirstRegistered = dateVehicleFirstRegistered;
-    myDriveWheelConfiguration = driveWheelConfiguration;
-    myFuelType = fuelType;
-    myVehicleInteriorColor = vehicleInteriorColor;
-    myVehicleInteriorType = vehicleInteriorType;
-    myMileageFromOdometer = mileageFromOdometer;
-    myVehicleModelDate = vehicleModelDate;
-    myNumberOfPreviousOwners = numberOfPreviousOwners;
-    myProductionDate = productionDate;
-    myPurchaseDate = purchaseDate;
-    myVehicleSeatingCapacity = vehicleSeatingCapacity;
-    myVehicleTransmission = vehicleTransmission;
-    mySteeringPosition = steeringPosition;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myNumberOfDoors != null ? myNumberOfDoors.hashCode() : 0);
-    result = 31 * result + (myNumberOfAirbags != null ? myNumberOfAirbags.hashCode() : 0);
-    result = 31 * result + (myNumberOfAxles != null ? myNumberOfAxles.hashCode() : 0);
-    result = 31 * result + (myVehicleEngine != null ? myVehicleEngine.hashCode() : 0);
-    result = 31 * result + (myFuelConsumption != null ? myFuelConsumption.hashCode() : 0);
-    result = 31 * result + (myFuelEfficiency != null ? myFuelEfficiency.hashCode() : 0);
-    result = 31 * result + (myNumberOfForwardGears != null ? myNumberOfForwardGears.hashCode() : 0);
-    result = 31 * result + (myVin != null ? myVin.hashCode() : 0);
-    result = 31 * result + (myCargoVolume != null ? myCargoVolume.hashCode() : 0);
-    result = 31 * result + (myVehicleConfiguration != null ? myVehicleConfiguration.hashCode() : 0);
-    result = 31 * result + (myKnownVehicleDamages != null ? myKnownVehicleDamages.hashCode() : 0);
-    result = 31 * result + (myDateVehicleFirstRegistered != null ? myDateVehicleFirstRegistered.hashCode() : 0);
-    result = 31 * result + (myDriveWheelConfiguration != null ? myDriveWheelConfiguration.hashCode() : 0);
-    result = 31 * result + (myFuelType != null ? myFuelType.hashCode() : 0);
-    result = 31 * result + (myVehicleInteriorColor != null ? myVehicleInteriorColor.hashCode() : 0);
-    result = 31 * result + (myVehicleInteriorType != null ? myVehicleInteriorType.hashCode() : 0);
-    result = 31 * result + (myMileageFromOdometer != null ? myMileageFromOdometer.hashCode() : 0);
-    result = 31 * result + (myVehicleModelDate != null ? myVehicleModelDate.hashCode() : 0);
-    result = 31 * result + (myNumberOfPreviousOwners != null ? myNumberOfPreviousOwners.hashCode() : 0);
-    result = 31 * result + (myProductionDate != null ? myProductionDate.hashCode() : 0);
-    result = 31 * result + (myPurchaseDate != null ? myPurchaseDate.hashCode() : 0);
-    result = 31 * result + (myVehicleSeatingCapacity != null ? myVehicleSeatingCapacity.hashCode() : 0);
-    result = 31 * result + (myVehicleTransmission != null ? myVehicleTransmission.hashCode() : 0);
-    result = 31 * result + (mySteeringPosition != null ? mySteeringPosition.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Vehicle vehicle = (Vehicle) o;
-    if (!super.equals(o)) return false;
-    if (myNumberOfDoors != null ? !myNumberOfDoors.equals(vehicle.myNumberOfDoors) : vehicle.myNumberOfDoors != null) return false;
-    if (myNumberOfAirbags != null ? !myNumberOfAirbags.equals(vehicle.myNumberOfAirbags) : vehicle.myNumberOfAirbags != null) return false;
-    if (myNumberOfAxles != null ? !myNumberOfAxles.equals(vehicle.myNumberOfAxles) : vehicle.myNumberOfAxles != null) return false;
-    if (myVehicleEngine != null ? !myVehicleEngine.equals(vehicle.myVehicleEngine) : vehicle.myVehicleEngine != null) return false;
-    if (myFuelConsumption != null ? !myFuelConsumption.equals(vehicle.myFuelConsumption) : vehicle.myFuelConsumption != null) return false;
-    if (myFuelEfficiency != null ? !myFuelEfficiency.equals(vehicle.myFuelEfficiency) : vehicle.myFuelEfficiency != null) return false;
-    if (myNumberOfForwardGears != null ? !myNumberOfForwardGears.equals(vehicle.myNumberOfForwardGears) : vehicle.myNumberOfForwardGears != null) return false;
-    if (myVin != null ? !myVin.equals(vehicle.myVin) : vehicle.myVin != null) return false;
-    if (myCargoVolume != null ? !myCargoVolume.equals(vehicle.myCargoVolume) : vehicle.myCargoVolume != null) return false;
-    if (myVehicleConfiguration != null ? !myVehicleConfiguration.equals(vehicle.myVehicleConfiguration) : vehicle.myVehicleConfiguration != null) return false;
-    if (myKnownVehicleDamages != null ? !myKnownVehicleDamages.equals(vehicle.myKnownVehicleDamages) : vehicle.myKnownVehicleDamages != null) return false;
-    if (myDateVehicleFirstRegistered != null ? !myDateVehicleFirstRegistered.equals(vehicle.myDateVehicleFirstRegistered) : vehicle.myDateVehicleFirstRegistered != null) return false;
-    if (myDriveWheelConfiguration != null ? !myDriveWheelConfiguration.equals(vehicle.myDriveWheelConfiguration) : vehicle.myDriveWheelConfiguration != null) return false;
-    if (myFuelType != null ? !myFuelType.equals(vehicle.myFuelType) : vehicle.myFuelType != null) return false;
-    if (myVehicleInteriorColor != null ? !myVehicleInteriorColor.equals(vehicle.myVehicleInteriorColor) : vehicle.myVehicleInteriorColor != null) return false;
-    if (myVehicleInteriorType != null ? !myVehicleInteriorType.equals(vehicle.myVehicleInteriorType) : vehicle.myVehicleInteriorType != null) return false;
-    if (myMileageFromOdometer != null ? !myMileageFromOdometer.equals(vehicle.myMileageFromOdometer) : vehicle.myMileageFromOdometer != null) return false;
-    if (myVehicleModelDate != null ? !myVehicleModelDate.equals(vehicle.myVehicleModelDate) : vehicle.myVehicleModelDate != null) return false;
-    if (myNumberOfPreviousOwners != null ? !myNumberOfPreviousOwners.equals(vehicle.myNumberOfPreviousOwners) : vehicle.myNumberOfPreviousOwners != null) return false;
-    if (myProductionDate != null ? !myProductionDate.equals(vehicle.myProductionDate) : vehicle.myProductionDate != null) return false;
-    if (myPurchaseDate != null ? !myPurchaseDate.equals(vehicle.myPurchaseDate) : vehicle.myPurchaseDate != null) return false;
-    if (myVehicleSeatingCapacity != null ? !myVehicleSeatingCapacity.equals(vehicle.myVehicleSeatingCapacity) : vehicle.myVehicleSeatingCapacity != null) return false;
-    if (myVehicleTransmission != null ? !myVehicleTransmission.equals(vehicle.myVehicleTransmission) : vehicle.myVehicleTransmission != null) return false;
-    if (mySteeringPosition != null ? !mySteeringPosition.equals(vehicle.mySteeringPosition) : vehicle.mySteeringPosition != null) return false;
-    return true;
-  }
-
+  
   private NumberOrQuantitativeValue myNumberOfDoors;
   private Number myNumberOfAirbags;
   private NumberOrQuantitativeValue myNumberOfAxles;

@@ -20,45 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * BroadcastRelease.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
+ * BroadcastRelease.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
  */
 public class BroadcastRelease {
-  /**
-   * Builder for {@link BroadcastRelease}
-   */
-  static final class BroadcastReleaseThingBuilder implements Builder {
-    /**
-     * Creates new {@link BroadcastRelease} instance.
-     */
-    public BroadcastRelease build() {
-      return new BroadcastRelease();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<BroadcastRelease> {
-    
-  }
-
   protected BroadcastRelease() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -66,5 +39,21 @@ public class BroadcastRelease {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link BroadcastRelease}
+   */
+  public static class Builder implements ThingBuilder<BroadcastRelease> {
+    public BroadcastRelease build() {
+      return new BroadcastRelease();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

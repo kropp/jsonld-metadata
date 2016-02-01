@@ -20,45 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * Front-wheel drive is a transmission layout where the engine drives the front wheels.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
+ * Front-wheel drive is a transmission layout where the engine drives the front wheels.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
  */
 public class FrontWheelDriveConfiguration {
-  /**
-   * Builder for {@link FrontWheelDriveConfiguration}
-   */
-  static final class FrontWheelDriveConfigurationThingBuilder implements Builder {
-    /**
-     * Creates new {@link FrontWheelDriveConfiguration} instance.
-     */
-    public FrontWheelDriveConfiguration build() {
-      return new FrontWheelDriveConfiguration();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<FrontWheelDriveConfiguration> {
-    
-  }
-
   protected FrontWheelDriveConfiguration() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -66,5 +39,21 @@ public class FrontWheelDriveConfiguration {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link FrontWheelDriveConfiguration}
+   */
+  public static class Builder implements ThingBuilder<FrontWheelDriveConfiguration> {
+    public FrontWheelDriveConfiguration build() {
+      return new FrontWheelDriveConfiguration();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

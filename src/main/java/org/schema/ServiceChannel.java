@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A means for accessing a service, e.g. a government office location, web site, or phone number.
@@ -29,58 +29,86 @@ public class ServiceChannel extends Intangible {
   /**
    * A language someone may use with the item.
    */
-  public Language getAvailableLanguage() {
-    return myAvailableLanguage;
-  }
+  public Language getAvailableLanguage() { return myAvailableLanguage; }
   /**
    * Estimated processing time for the service using this channel.
    */
-  public Duration getProcessingTime() {
-    return myProcessingTime;
-  }
+  public Duration getProcessingTime() { return myProcessingTime; }
   /**
    * The service provided by this channel.
    */
-  public Service getProvidesService() {
-    return myProvidesService;
-  }
+  public Service getProvidesService() { return myProvidesService; }
   /**
    * The location (e.g. civic structure, local business, etc.) where a person can go to access the service.
    */
-  public Place getServiceLocation() {
-    return myServiceLocation;
-  }
+  public Place getServiceLocation() { return myServiceLocation; }
   /**
    * The phone number to use to access the service.
    */
-  public ContactPoint getServicePhone() {
-    return myServicePhone;
-  }
+  public ContactPoint getServicePhone() { return myServicePhone; }
   /**
    * The address for accessing the service by mail.
    */
-  public PostalAddress getServicePostalAddress() {
-    return myServicePostalAddress;
-  }
+  public PostalAddress getServicePostalAddress() { return myServicePostalAddress; }
   /**
    * The number to access the service by text message.
    */
-  public ContactPoint getServiceSmsNumber() {
-    return myServiceSmsNumber;
-  }
+  public ContactPoint getServiceSmsNumber() { return myServiceSmsNumber; }
   /**
    * The website to access the service.
    */
-  public String getServiceUrl() {
-    return myServiceUrl;
+  public String getServiceUrl() { return myServiceUrl; }
+  protected ServiceChannel(Language availableLanguage, Duration processingTime, Service providesService, Place serviceLocation, ContactPoint servicePhone, PostalAddress servicePostalAddress, ContactPoint serviceSmsNumber, String serviceUrl, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myAvailableLanguage = availableLanguage;
+    myProcessingTime = processingTime;
+    myProvidesService = providesService;
+    myServiceLocation = serviceLocation;
+    myServicePhone = servicePhone;
+    myServicePostalAddress = servicePostalAddress;
+    myServiceSmsNumber = serviceSmsNumber;
+    myServiceUrl = serviceUrl;
+    myAvailableLanguage = availableLanguage;
+    myProcessingTime = processingTime;
+    myProvidesService = providesService;
+    myServiceLocation = serviceLocation;
+    myServicePhone = servicePhone;
+    myServicePostalAddress = servicePostalAddress;
+    myServiceSmsNumber = serviceSmsNumber;
+    myServiceUrl = serviceUrl;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAvailableLanguage != null ? myAvailableLanguage.hashCode() : 0);
+    result = 31 * result + (myProcessingTime != null ? myProcessingTime.hashCode() : 0);
+    result = 31 * result + (myProvidesService != null ? myProvidesService.hashCode() : 0);
+    result = 31 * result + (myServiceLocation != null ? myServiceLocation.hashCode() : 0);
+    result = 31 * result + (myServicePhone != null ? myServicePhone.hashCode() : 0);
+    result = 31 * result + (myServicePostalAddress != null ? myServicePostalAddress.hashCode() : 0);
+    result = 31 * result + (myServiceSmsNumber != null ? myServiceSmsNumber.hashCode() : 0);
+    result = 31 * result + (myServiceUrl != null ? myServiceUrl.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ServiceChannel serviceChannel = (ServiceChannel) o;
+    if (!super.equals(o)) return false;
+    if (myAvailableLanguage != null ? !myAvailableLanguage.equals(serviceChannel.myAvailableLanguage) : serviceChannel.myAvailableLanguage != null) return false;
+    if (myProcessingTime != null ? !myProcessingTime.equals(serviceChannel.myProcessingTime) : serviceChannel.myProcessingTime != null) return false;
+    if (myProvidesService != null ? !myProvidesService.equals(serviceChannel.myProvidesService) : serviceChannel.myProvidesService != null) return false;
+    if (myServiceLocation != null ? !myServiceLocation.equals(serviceChannel.myServiceLocation) : serviceChannel.myServiceLocation != null) return false;
+    if (myServicePhone != null ? !myServicePhone.equals(serviceChannel.myServicePhone) : serviceChannel.myServicePhone != null) return false;
+    if (myServicePostalAddress != null ? !myServicePostalAddress.equals(serviceChannel.myServicePostalAddress) : serviceChannel.myServicePostalAddress != null) return false;
+    if (myServiceSmsNumber != null ? !myServiceSmsNumber.equals(serviceChannel.myServiceSmsNumber) : serviceChannel.myServiceSmsNumber != null) return false;
+    if (myServiceUrl != null ? !myServiceUrl.equals(serviceChannel.myServiceUrl) : serviceChannel.myServiceUrl != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link ServiceChannel}
    */
-  static final class ServiceChannelThingBuilder implements Builder {
-    /**
-     * Creates new {@link ServiceChannel} instance.
-     */
+  public static class Builder implements ThingBuilder<ServiceChannel> {
     public ServiceChannel build() {
       return new ServiceChannel(availableLanguage, processingTime, providesService, serviceLocation, servicePhone, servicePostalAddress, serviceSmsNumber, serviceUrl, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -205,33 +233,33 @@ public class ServiceChannel extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -240,66 +268,66 @@ public class ServiceChannel extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -347,7 +375,6 @@ public class ServiceChannel extends Intangible {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -391,77 +418,7 @@ public class ServiceChannel extends Intangible {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<ServiceChannel> {
-    @NotNull Builder availableLanguage(@NotNull Language language);
-    @NotNull Builder availableLanguage(@NotNull Language.Builder language);
-    @NotNull Builder processingTime(@NotNull Duration duration);
-    @NotNull Builder processingTime(@NotNull Duration.Builder duration);
-    @NotNull Builder providesService(@NotNull Service service);
-    @NotNull Builder providesService(@NotNull Service.Builder service);
-    @NotNull Builder serviceLocation(@NotNull Place place);
-    @NotNull Builder serviceLocation(@NotNull Place.Builder place);
-    @NotNull Builder servicePhone(@NotNull ContactPoint contactPoint);
-    @NotNull Builder servicePhone(@NotNull ContactPoint.Builder contactPoint);
-    @NotNull Builder servicePostalAddress(@NotNull PostalAddress postalAddress);
-    @NotNull Builder servicePostalAddress(@NotNull PostalAddress.Builder postalAddress);
-    @NotNull Builder serviceSmsNumber(@NotNull ContactPoint contactPoint);
-    @NotNull Builder serviceSmsNumber(@NotNull ContactPoint.Builder contactPoint);
-    @NotNull Builder serviceUrl(@NotNull String serviceUrl);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected ServiceChannel(Language availableLanguage, Duration processingTime, Service providesService, Place serviceLocation, ContactPoint servicePhone, PostalAddress servicePostalAddress, ContactPoint serviceSmsNumber, String serviceUrl, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAvailableLanguage = availableLanguage;
-    myProcessingTime = processingTime;
-    myProvidesService = providesService;
-    myServiceLocation = serviceLocation;
-    myServicePhone = servicePhone;
-    myServicePostalAddress = servicePostalAddress;
-    myServiceSmsNumber = serviceSmsNumber;
-    myServiceUrl = serviceUrl;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAvailableLanguage != null ? myAvailableLanguage.hashCode() : 0);
-    result = 31 * result + (myProcessingTime != null ? myProcessingTime.hashCode() : 0);
-    result = 31 * result + (myProvidesService != null ? myProvidesService.hashCode() : 0);
-    result = 31 * result + (myServiceLocation != null ? myServiceLocation.hashCode() : 0);
-    result = 31 * result + (myServicePhone != null ? myServicePhone.hashCode() : 0);
-    result = 31 * result + (myServicePostalAddress != null ? myServicePostalAddress.hashCode() : 0);
-    result = 31 * result + (myServiceSmsNumber != null ? myServiceSmsNumber.hashCode() : 0);
-    result = 31 * result + (myServiceUrl != null ? myServiceUrl.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ServiceChannel serviceChannel = (ServiceChannel) o;
-    if (!super.equals(o)) return false;
-    if (myAvailableLanguage != null ? !myAvailableLanguage.equals(serviceChannel.myAvailableLanguage) : serviceChannel.myAvailableLanguage != null) return false;
-    if (myProcessingTime != null ? !myProcessingTime.equals(serviceChannel.myProcessingTime) : serviceChannel.myProcessingTime != null) return false;
-    if (myProvidesService != null ? !myProvidesService.equals(serviceChannel.myProvidesService) : serviceChannel.myProvidesService != null) return false;
-    if (myServiceLocation != null ? !myServiceLocation.equals(serviceChannel.myServiceLocation) : serviceChannel.myServiceLocation != null) return false;
-    if (myServicePhone != null ? !myServicePhone.equals(serviceChannel.myServicePhone) : serviceChannel.myServicePhone != null) return false;
-    if (myServicePostalAddress != null ? !myServicePostalAddress.equals(serviceChannel.myServicePostalAddress) : serviceChannel.myServicePostalAddress != null) return false;
-    if (myServiceSmsNumber != null ? !myServiceSmsNumber.equals(serviceChannel.myServiceSmsNumber) : serviceChannel.myServiceSmsNumber != null) return false;
-    if (myServiceUrl != null ? !myServiceUrl.equals(serviceChannel.myServiceUrl) : serviceChannel.myServiceUrl != null) return false;
-    return true;
-  }
-
+  
   private Language myAvailableLanguage;
   private Duration myProcessingTime;
   private Service myProvidesService;

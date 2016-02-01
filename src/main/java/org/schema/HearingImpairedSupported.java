@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Uses devices to support users with hearing impairments.
  */
 public class HearingImpairedSupported {
-  /**
-   * Builder for {@link HearingImpairedSupported}
-   */
-  static final class HearingImpairedSupportedThingBuilder implements Builder {
-    /**
-     * Creates new {@link HearingImpairedSupported} instance.
-     */
-    public HearingImpairedSupported build() {
-      return new HearingImpairedSupported();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<HearingImpairedSupported> {
-    
-  }
-
   protected HearingImpairedSupported() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class HearingImpairedSupported {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link HearingImpairedSupported}
+   */
+  public static class Builder implements ThingBuilder<HearingImpairedSupported> {
+    public HearingImpairedSupported build() {
+      return new HearingImpairedSupported();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

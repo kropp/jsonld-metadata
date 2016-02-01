@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A software application.
@@ -29,142 +29,198 @@ public class SoftwareApplication extends CreativeWork {
   /**
    * Type of software application, e.g. "Game, Multimedia".
    */
-  public String getApplicationCategory() {
-    return myApplicationCategory;
-  }
+  public String getApplicationCategory() { return myApplicationCategory; }
   /**
    * Subcategory of the application, e.g. "Arcade Game".
    */
-  public String getApplicationSubCategory() {
-    return myApplicationSubCategory;
-  }
+  public String getApplicationSubCategory() { return myApplicationSubCategory; }
   /**
    * The name of the application suite to which the application belongs (e.g. Excel belongs to Office).
    */
-  public String getApplicationSuite() {
-    return myApplicationSuite;
-  }
+  public String getApplicationSuite() { return myApplicationSuite; }
   /**
    * Countries for which the application is not supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
    */
-  public String getCountriesNotSupported() {
-    return myCountriesNotSupported;
-  }
+  public String getCountriesNotSupported() { return myCountriesNotSupported; }
   /**
    * Countries for which the application is supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
    */
-  public String getCountriesSupported() {
-    return myCountriesSupported;
-  }
+  public String getCountriesSupported() { return myCountriesSupported; }
   /**
    * Device required to run the application. Used in cases where a specific make/model is required to run the application.
    */
-  public String getAvailableOnDevice() {
-    return myAvailableOnDevice;
-  }
+  public String getAvailableOnDevice() { return myAvailableOnDevice; }
   /**
    * If the file can be downloaded, URL to download the binary.
    */
-  public String getDownloadUrl() {
-    return myDownloadUrl;
-  }
+  public String getDownloadUrl() { return myDownloadUrl; }
   /**
    * Features or modules provided by this application (and possibly required by other applications).
    */
-  public String getFeatureList() {
-    return myFeatureList;
-  }
+  public String getFeatureList() { return myFeatureList; }
   /**
    * MIME format of the binary (e.g. application/zip).
    */
-  public String getFileFormat() {
-    return myFileFormat;
-  }
+  public String getFileFormat() { return myFileFormat; }
   /**
    * Size of the application / package (e.g. 18MB). In the absence of a unit (MB, KB etc.), KB will be assumed.
    */
-  public Integer getFileSize() {
-    return myFileSize;
-  }
+  public Integer getFileSize() { return myFileSize; }
   /**
    * URL at which the app may be installed, if different from the URL of the item.
    */
-  public String getInstallUrl() {
-    return myInstallUrl;
-  }
+  public String getInstallUrl() { return myInstallUrl; }
   /**
    * Minimum memory requirements.
    */
-  public String getMemoryRequirements() {
-    return myMemoryRequirements;
-  }
+  public String getMemoryRequirements() { return myMemoryRequirements; }
   /**
    * Operating systems supported (Windows 7, OSX 10.6, Android 1.6).
    */
-  public String getOperatingSystem() {
-    return myOperatingSystem;
-  }
+  public String getOperatingSystem() { return myOperatingSystem; }
   /**
    * Permission(s) required to run the app (for example, a mobile app may require full internet access or may run only on wifi).
    */
-  public String getPermissions() {
-    return myPermissions;
-  }
+  public String getPermissions() { return myPermissions; }
   /**
    * Processor architecture required to run the application (e.g. IA64).
    */
-  public String getProcessorRequirements() {
-    return myProcessorRequirements;
-  }
+  public String getProcessorRequirements() { return myProcessorRequirements; }
   /**
    * Description of what changed in this version.
    */
-  public String getReleaseNotes() {
-    return myReleaseNotes;
-  }
+  public String getReleaseNotes() { return myReleaseNotes; }
   /**
    * Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime).
    */
-  public String getSoftwareRequirements() {
-    return mySoftwareRequirements;
-  }
+  public String getSoftwareRequirements() { return mySoftwareRequirements; }
   /**
    * A link to a screenshot image of the app.
    */
-  public ImageObjectOrString getScreenshot() {
-    return myScreenshot;
-  }
+  public ImageObjectOrString getScreenshot() { return myScreenshot; }
   /**
    * Version of the software instance.
    */
-  public String getSoftwareVersion() {
-    return mySoftwareVersion;
-  }
+  public String getSoftwareVersion() { return mySoftwareVersion; }
   /**
    * Storage requirements (free space required).
    */
-  public String getStorageRequirements() {
-    return myStorageRequirements;
-  }
+  public String getStorageRequirements() { return myStorageRequirements; }
   /**
    * Additional content for a software application.
    */
-  public SoftwareApplication getSoftwareAddOn() {
-    return mySoftwareAddOn;
-  }
+  public SoftwareApplication getSoftwareAddOn() { return mySoftwareAddOn; }
   /**
    * Software application help.
    */
-  public CreativeWork getSoftwareHelp() {
-    return mySoftwareHelp;
+  public CreativeWork getSoftwareHelp() { return mySoftwareHelp; }
+  protected SoftwareApplication(String applicationCategory, String applicationSubCategory, String applicationSuite, String countriesNotSupported, String countriesSupported, String availableOnDevice, String downloadUrl, String featureList, String fileFormat, Integer fileSize, String installUrl, String memoryRequirements, String operatingSystem, String permissions, String processorRequirements, String releaseNotes, String softwareRequirements, ImageObjectOrString screenshot, String softwareVersion, String storageRequirements, SoftwareApplication softwareAddOn, CreativeWork softwareHelp, String schemaVersion, Thing about, String accessibilityAPI, String accessibilityControl, String accessibilityFeature, String accessibilityHazard, Person accountablePerson, AggregateRating aggregateRating, String alternativeHeadline, MediaObject associatedMedia, Audience audience, AudioObject audio, OrganizationOrPerson author, String award, CreativeWorkOrString citation, Comment comment, Place contentLocation, String contentRating, OrganizationOrPerson contributor, OrganizationOrPerson copyrightHolder, Number copyrightYear, OrganizationOrPerson creator, java.util.Date dateCreated, java.util.Date dateModified, java.util.Date datePublished, String discussionUrl, Person editor, AlignmentObject educationalAlignment, String educationalUse, MediaObject encoding, String genre, String headline, LanguageOrString inLanguage, String interactivityType, String isBasedOnUrl, Boolean isFamilyFriendly, String keywords, CreativeWorkOrString license, String learningResourceType, Thing mainEntity, Thing mentions, Offer offers, OrganizationOrPerson producer, PublicationEvent publication, Organization publisher, String publishingPrinciples, Event recordedAt, Review review, Organization sourceOrganization, String text, String thumbnailUrl, Duration timeRequired, String typicalAgeRange, Number version, VideoObject video, OrganizationOrPerson provider, Integer commentCount, HasPart hasPart, CreativeWork workExample, CreativeWork exampleOfWork, Person character, OrganizationOrPerson translator, PublicationEvent releasedEvent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myApplicationCategory = applicationCategory;
+    myApplicationSubCategory = applicationSubCategory;
+    myApplicationSuite = applicationSuite;
+    myCountriesNotSupported = countriesNotSupported;
+    myCountriesSupported = countriesSupported;
+    myAvailableOnDevice = availableOnDevice;
+    myDownloadUrl = downloadUrl;
+    myFeatureList = featureList;
+    myFileFormat = fileFormat;
+    myFileSize = fileSize;
+    myInstallUrl = installUrl;
+    myMemoryRequirements = memoryRequirements;
+    myOperatingSystem = operatingSystem;
+    myPermissions = permissions;
+    myProcessorRequirements = processorRequirements;
+    myReleaseNotes = releaseNotes;
+    mySoftwareRequirements = softwareRequirements;
+    myScreenshot = screenshot;
+    mySoftwareVersion = softwareVersion;
+    myStorageRequirements = storageRequirements;
+    mySoftwareAddOn = softwareAddOn;
+    mySoftwareHelp = softwareHelp;
+    myApplicationCategory = applicationCategory;
+    myApplicationSubCategory = applicationSubCategory;
+    myApplicationSuite = applicationSuite;
+    myCountriesNotSupported = countriesNotSupported;
+    myCountriesSupported = countriesSupported;
+    myAvailableOnDevice = availableOnDevice;
+    myDownloadUrl = downloadUrl;
+    myFeatureList = featureList;
+    myFileFormat = fileFormat;
+    myFileSize = fileSize;
+    myInstallUrl = installUrl;
+    myMemoryRequirements = memoryRequirements;
+    myOperatingSystem = operatingSystem;
+    myPermissions = permissions;
+    myProcessorRequirements = processorRequirements;
+    myReleaseNotes = releaseNotes;
+    mySoftwareRequirements = softwareRequirements;
+    myScreenshot = screenshot;
+    mySoftwareVersion = softwareVersion;
+    myStorageRequirements = storageRequirements;
+    mySoftwareAddOn = softwareAddOn;
+    mySoftwareHelp = softwareHelp;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myApplicationCategory != null ? myApplicationCategory.hashCode() : 0);
+    result = 31 * result + (myApplicationSubCategory != null ? myApplicationSubCategory.hashCode() : 0);
+    result = 31 * result + (myApplicationSuite != null ? myApplicationSuite.hashCode() : 0);
+    result = 31 * result + (myCountriesNotSupported != null ? myCountriesNotSupported.hashCode() : 0);
+    result = 31 * result + (myCountriesSupported != null ? myCountriesSupported.hashCode() : 0);
+    result = 31 * result + (myAvailableOnDevice != null ? myAvailableOnDevice.hashCode() : 0);
+    result = 31 * result + (myDownloadUrl != null ? myDownloadUrl.hashCode() : 0);
+    result = 31 * result + (myFeatureList != null ? myFeatureList.hashCode() : 0);
+    result = 31 * result + (myFileFormat != null ? myFileFormat.hashCode() : 0);
+    result = 31 * result + (myFileSize != null ? myFileSize.hashCode() : 0);
+    result = 31 * result + (myInstallUrl != null ? myInstallUrl.hashCode() : 0);
+    result = 31 * result + (myMemoryRequirements != null ? myMemoryRequirements.hashCode() : 0);
+    result = 31 * result + (myOperatingSystem != null ? myOperatingSystem.hashCode() : 0);
+    result = 31 * result + (myPermissions != null ? myPermissions.hashCode() : 0);
+    result = 31 * result + (myProcessorRequirements != null ? myProcessorRequirements.hashCode() : 0);
+    result = 31 * result + (myReleaseNotes != null ? myReleaseNotes.hashCode() : 0);
+    result = 31 * result + (mySoftwareRequirements != null ? mySoftwareRequirements.hashCode() : 0);
+    result = 31 * result + (myScreenshot != null ? myScreenshot.hashCode() : 0);
+    result = 31 * result + (mySoftwareVersion != null ? mySoftwareVersion.hashCode() : 0);
+    result = 31 * result + (myStorageRequirements != null ? myStorageRequirements.hashCode() : 0);
+    result = 31 * result + (mySoftwareAddOn != null ? mySoftwareAddOn.hashCode() : 0);
+    result = 31 * result + (mySoftwareHelp != null ? mySoftwareHelp.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SoftwareApplication softwareApplication = (SoftwareApplication) o;
+    if (!super.equals(o)) return false;
+    if (myApplicationCategory != null ? !myApplicationCategory.equals(softwareApplication.myApplicationCategory) : softwareApplication.myApplicationCategory != null) return false;
+    if (myApplicationSubCategory != null ? !myApplicationSubCategory.equals(softwareApplication.myApplicationSubCategory) : softwareApplication.myApplicationSubCategory != null) return false;
+    if (myApplicationSuite != null ? !myApplicationSuite.equals(softwareApplication.myApplicationSuite) : softwareApplication.myApplicationSuite != null) return false;
+    if (myCountriesNotSupported != null ? !myCountriesNotSupported.equals(softwareApplication.myCountriesNotSupported) : softwareApplication.myCountriesNotSupported != null) return false;
+    if (myCountriesSupported != null ? !myCountriesSupported.equals(softwareApplication.myCountriesSupported) : softwareApplication.myCountriesSupported != null) return false;
+    if (myAvailableOnDevice != null ? !myAvailableOnDevice.equals(softwareApplication.myAvailableOnDevice) : softwareApplication.myAvailableOnDevice != null) return false;
+    if (myDownloadUrl != null ? !myDownloadUrl.equals(softwareApplication.myDownloadUrl) : softwareApplication.myDownloadUrl != null) return false;
+    if (myFeatureList != null ? !myFeatureList.equals(softwareApplication.myFeatureList) : softwareApplication.myFeatureList != null) return false;
+    if (myFileFormat != null ? !myFileFormat.equals(softwareApplication.myFileFormat) : softwareApplication.myFileFormat != null) return false;
+    if (myFileSize != null ? !myFileSize.equals(softwareApplication.myFileSize) : softwareApplication.myFileSize != null) return false;
+    if (myInstallUrl != null ? !myInstallUrl.equals(softwareApplication.myInstallUrl) : softwareApplication.myInstallUrl != null) return false;
+    if (myMemoryRequirements != null ? !myMemoryRequirements.equals(softwareApplication.myMemoryRequirements) : softwareApplication.myMemoryRequirements != null) return false;
+    if (myOperatingSystem != null ? !myOperatingSystem.equals(softwareApplication.myOperatingSystem) : softwareApplication.myOperatingSystem != null) return false;
+    if (myPermissions != null ? !myPermissions.equals(softwareApplication.myPermissions) : softwareApplication.myPermissions != null) return false;
+    if (myProcessorRequirements != null ? !myProcessorRequirements.equals(softwareApplication.myProcessorRequirements) : softwareApplication.myProcessorRequirements != null) return false;
+    if (myReleaseNotes != null ? !myReleaseNotes.equals(softwareApplication.myReleaseNotes) : softwareApplication.myReleaseNotes != null) return false;
+    if (mySoftwareRequirements != null ? !mySoftwareRequirements.equals(softwareApplication.mySoftwareRequirements) : softwareApplication.mySoftwareRequirements != null) return false;
+    if (myScreenshot != null ? !myScreenshot.equals(softwareApplication.myScreenshot) : softwareApplication.myScreenshot != null) return false;
+    if (mySoftwareVersion != null ? !mySoftwareVersion.equals(softwareApplication.mySoftwareVersion) : softwareApplication.mySoftwareVersion != null) return false;
+    if (myStorageRequirements != null ? !myStorageRequirements.equals(softwareApplication.myStorageRequirements) : softwareApplication.myStorageRequirements != null) return false;
+    if (mySoftwareAddOn != null ? !mySoftwareAddOn.equals(softwareApplication.mySoftwareAddOn) : softwareApplication.mySoftwareAddOn != null) return false;
+    if (mySoftwareHelp != null ? !mySoftwareHelp.equals(softwareApplication.mySoftwareHelp) : softwareApplication.mySoftwareHelp != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link SoftwareApplication}
    */
-  static final class SoftwareApplicationThingBuilder implements Builder {
-    /**
-     * Creates new {@link SoftwareApplication} instance.
-     */
+  public static class Builder implements ThingBuilder<SoftwareApplication> {
     public SoftwareApplication build() {
       return new SoftwareApplication(applicationCategory, applicationSubCategory, applicationSuite, countriesNotSupported, countriesSupported, availableOnDevice, downloadUrl, featureList, fileFormat, fileSize, installUrl, memoryRequirements, operatingSystem, permissions, processorRequirements, releaseNotes, softwareRequirements, screenshot, softwareVersion, storageRequirements, softwareAddOn, softwareHelp, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -1221,33 +1277,33 @@ public class SoftwareApplication extends CreativeWork {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -1256,66 +1312,66 @@ public class SoftwareApplication extends CreativeWork {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -1363,7 +1419,6 @@ public class SoftwareApplication extends CreativeWork {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -1580,253 +1635,7 @@ public class SoftwareApplication extends CreativeWork {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<SoftwareApplication> {
-    @NotNull Builder applicationCategory(@NotNull String applicationCategory);
-    @NotNull Builder applicationSubCategory(@NotNull String applicationSubCategory);
-    @NotNull Builder applicationSuite(@NotNull String applicationSuite);
-    @NotNull Builder countriesNotSupported(@NotNull String countriesNotSupported);
-    @NotNull Builder countriesSupported(@NotNull String countriesSupported);
-    @NotNull Builder availableOnDevice(@NotNull String availableOnDevice);
-    @NotNull Builder downloadUrl(@NotNull String downloadUrl);
-    @NotNull Builder featureList(@NotNull String featureList);
-    @NotNull Builder fileFormat(@NotNull String fileFormat);
-    @NotNull Builder fileSize(@NotNull Integer integer);
-    @NotNull Builder installUrl(@NotNull String installUrl);
-    @NotNull Builder memoryRequirements(@NotNull String memoryRequirements);
-    @NotNull Builder operatingSystem(@NotNull String operatingSystem);
-    @NotNull Builder permissions(@NotNull String permissions);
-    @NotNull Builder processorRequirements(@NotNull String processorRequirements);
-    @NotNull Builder releaseNotes(@NotNull String releaseNotes);
-    @NotNull Builder softwareRequirements(@NotNull String softwareRequirements);
-    @NotNull Builder screenshot(@NotNull ImageObject imageObject);
-    @NotNull Builder screenshot(@NotNull ImageObject.Builder imageObject);
-    @NotNull Builder screenshot(@NotNull String screenshot);
-    @NotNull Builder softwareVersion(@NotNull String softwareVersion);
-    @NotNull Builder storageRequirements(@NotNull String storageRequirements);
-    @NotNull Builder softwareAddOn(@NotNull SoftwareApplication softwareApplication);
-    @NotNull Builder softwareAddOn(@NotNull SoftwareApplication.Builder softwareApplication);
-    @NotNull Builder softwareHelp(@NotNull CreativeWork creativeWork);
-    @NotNull Builder softwareHelp(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder schemaVersion(@NotNull String schemaVersion);
-    @NotNull Builder about(@NotNull Thing thing);
-    @NotNull Builder about(@NotNull Thing.Builder thing);
-    @NotNull Builder accessibilityAPI(@NotNull String accessibilityAPI);
-    @NotNull Builder accessibilityControl(@NotNull String accessibilityControl);
-    @NotNull Builder accessibilityFeature(@NotNull String accessibilityFeature);
-    @NotNull Builder accessibilityHazard(@NotNull String accessibilityHazard);
-    @NotNull Builder accountablePerson(@NotNull Person person);
-    @NotNull Builder accountablePerson(@NotNull Person.Builder person);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating aggregateRating);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating);
-    @NotNull Builder alternativeHeadline(@NotNull String alternativeHeadline);
-    @NotNull Builder associatedMedia(@NotNull MediaObject mediaObject);
-    @NotNull Builder associatedMedia(@NotNull MediaObject.Builder mediaObject);
-    @NotNull Builder audience(@NotNull Audience audience);
-    @NotNull Builder audience(@NotNull Audience.Builder audience);
-    @NotNull Builder audio(@NotNull AudioObject audioObject);
-    @NotNull Builder audio(@NotNull AudioObject.Builder audioObject);
-    @NotNull Builder author(@NotNull Organization organization);
-    @NotNull Builder author(@NotNull Organization.Builder organization);
-    @NotNull Builder author(@NotNull Person person);
-    @NotNull Builder author(@NotNull Person.Builder person);
-    @NotNull Builder award(@NotNull String award);
-    @NotNull Builder citation(@NotNull CreativeWork creativeWork);
-    @NotNull Builder citation(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder citation(@NotNull String citation);
-    @NotNull Builder comment(@NotNull Comment comment);
-    @NotNull Builder comment(@NotNull Comment.Builder comment);
-    @NotNull Builder contentLocation(@NotNull Place place);
-    @NotNull Builder contentLocation(@NotNull Place.Builder place);
-    @NotNull Builder contentRating(@NotNull String contentRating);
-    @NotNull Builder contributor(@NotNull Organization organization);
-    @NotNull Builder contributor(@NotNull Organization.Builder organization);
-    @NotNull Builder contributor(@NotNull Person person);
-    @NotNull Builder contributor(@NotNull Person.Builder person);
-    @NotNull Builder copyrightHolder(@NotNull Organization organization);
-    @NotNull Builder copyrightHolder(@NotNull Organization.Builder organization);
-    @NotNull Builder copyrightHolder(@NotNull Person person);
-    @NotNull Builder copyrightHolder(@NotNull Person.Builder person);
-    @NotNull Builder copyrightYear(@NotNull Integer integer);
-    @NotNull Builder copyrightYear(@NotNull Long copyrightYear);
-    @NotNull Builder copyrightYear(@NotNull Float copyrightYear);
-    @NotNull Builder copyrightYear(@NotNull Double copyrightYear);
-    @NotNull Builder copyrightYear(@NotNull String copyrightYear);
-    @NotNull Builder creator(@NotNull Organization organization);
-    @NotNull Builder creator(@NotNull Organization.Builder organization);
-    @NotNull Builder creator(@NotNull Person person);
-    @NotNull Builder creator(@NotNull Person.Builder person);
-    @NotNull Builder dateCreated(@NotNull java.util.Date date);
-    @NotNull Builder dateModified(@NotNull java.util.Date date);
-    @NotNull Builder datePublished(@NotNull java.util.Date date);
-    @NotNull Builder discussionUrl(@NotNull String discussionUrl);
-    @NotNull Builder editor(@NotNull Person person);
-    @NotNull Builder editor(@NotNull Person.Builder person);
-    @NotNull Builder educationalAlignment(@NotNull AlignmentObject alignmentObject);
-    @NotNull Builder educationalAlignment(@NotNull AlignmentObject.Builder alignmentObject);
-    @NotNull Builder educationalUse(@NotNull String educationalUse);
-    @NotNull Builder encoding(@NotNull MediaObject mediaObject);
-    @NotNull Builder encoding(@NotNull MediaObject.Builder mediaObject);
-    @NotNull Builder genre(@NotNull String genre);
-    @NotNull Builder headline(@NotNull String headline);
-    @NotNull Builder inLanguage(@NotNull Language language);
-    @NotNull Builder inLanguage(@NotNull Language.Builder language);
-    @NotNull Builder inLanguage(@NotNull String inLanguage);
-    @NotNull Builder interactivityType(@NotNull String interactivityType);
-    @NotNull Builder isBasedOnUrl(@NotNull String isBasedOnUrl);
-    @NotNull Builder isFamilyFriendly(@NotNull Boolean isFamilyFriendly);
-    @NotNull Builder keywords(@NotNull String keywords);
-    @NotNull Builder license(@NotNull CreativeWork creativeWork);
-    @NotNull Builder license(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder license(@NotNull String license);
-    @NotNull Builder learningResourceType(@NotNull String learningResourceType);
-    @NotNull Builder mainEntity(@NotNull Thing thing);
-    @NotNull Builder mainEntity(@NotNull Thing.Builder thing);
-    @NotNull Builder mentions(@NotNull Thing thing);
-    @NotNull Builder mentions(@NotNull Thing.Builder thing);
-    @NotNull Builder offers(@NotNull Offer offer);
-    @NotNull Builder offers(@NotNull Offer.Builder offer);
-    @NotNull Builder producer(@NotNull Organization organization);
-    @NotNull Builder producer(@NotNull Organization.Builder organization);
-    @NotNull Builder producer(@NotNull Person person);
-    @NotNull Builder producer(@NotNull Person.Builder person);
-    @NotNull Builder publication(@NotNull PublicationEvent publicationEvent);
-    @NotNull Builder publication(@NotNull PublicationEvent.Builder publicationEvent);
-    @NotNull Builder publisher(@NotNull Organization organization);
-    @NotNull Builder publisher(@NotNull Organization.Builder organization);
-    @NotNull Builder publishingPrinciples(@NotNull String publishingPrinciples);
-    @NotNull Builder recordedAt(@NotNull Event event);
-    @NotNull Builder recordedAt(@NotNull Event.Builder event);
-    @NotNull Builder review(@NotNull Review review);
-    @NotNull Builder review(@NotNull Review.Builder review);
-    @NotNull Builder sourceOrganization(@NotNull Organization organization);
-    @NotNull Builder sourceOrganization(@NotNull Organization.Builder organization);
-    @NotNull Builder text(@NotNull String text);
-    @NotNull Builder thumbnailUrl(@NotNull String thumbnailUrl);
-    @NotNull Builder timeRequired(@NotNull Duration duration);
-    @NotNull Builder timeRequired(@NotNull Duration.Builder duration);
-    @NotNull Builder typicalAgeRange(@NotNull String typicalAgeRange);
-    @NotNull Builder version(@NotNull Integer integer);
-    @NotNull Builder version(@NotNull Long version);
-    @NotNull Builder version(@NotNull Float version);
-    @NotNull Builder version(@NotNull Double version);
-    @NotNull Builder version(@NotNull String version);
-    @NotNull Builder video(@NotNull VideoObject videoObject);
-    @NotNull Builder video(@NotNull VideoObject.Builder videoObject);
-    @NotNull Builder provider(@NotNull Organization organization);
-    @NotNull Builder provider(@NotNull Organization.Builder organization);
-    @NotNull Builder provider(@NotNull Person person);
-    @NotNull Builder provider(@NotNull Person.Builder person);
-    @NotNull Builder commentCount(@NotNull Integer integer);
-    @NotNull Builder hasPart(@NotNull HasPart hasPart);
-    @NotNull Builder workExample(@NotNull CreativeWork creativeWork);
-    @NotNull Builder workExample(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder exampleOfWork(@NotNull CreativeWork creativeWork);
-    @NotNull Builder exampleOfWork(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder character(@NotNull Person person);
-    @NotNull Builder character(@NotNull Person.Builder person);
-    @NotNull Builder translator(@NotNull Organization organization);
-    @NotNull Builder translator(@NotNull Organization.Builder organization);
-    @NotNull Builder translator(@NotNull Person person);
-    @NotNull Builder translator(@NotNull Person.Builder person);
-    @NotNull Builder releasedEvent(@NotNull PublicationEvent publicationEvent);
-    @NotNull Builder releasedEvent(@NotNull PublicationEvent.Builder publicationEvent);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected SoftwareApplication(String applicationCategory, String applicationSubCategory, String applicationSuite, String countriesNotSupported, String countriesSupported, String availableOnDevice, String downloadUrl, String featureList, String fileFormat, Integer fileSize, String installUrl, String memoryRequirements, String operatingSystem, String permissions, String processorRequirements, String releaseNotes, String softwareRequirements, ImageObjectOrString screenshot, String softwareVersion, String storageRequirements, SoftwareApplication softwareAddOn, CreativeWork softwareHelp, String schemaVersion, Thing about, String accessibilityAPI, String accessibilityControl, String accessibilityFeature, String accessibilityHazard, Person accountablePerson, AggregateRating aggregateRating, String alternativeHeadline, MediaObject associatedMedia, Audience audience, AudioObject audio, OrganizationOrPerson author, String award, CreativeWorkOrString citation, Comment comment, Place contentLocation, String contentRating, OrganizationOrPerson contributor, OrganizationOrPerson copyrightHolder, Number copyrightYear, OrganizationOrPerson creator, java.util.Date dateCreated, java.util.Date dateModified, java.util.Date datePublished, String discussionUrl, Person editor, AlignmentObject educationalAlignment, String educationalUse, MediaObject encoding, String genre, String headline, LanguageOrString inLanguage, String interactivityType, String isBasedOnUrl, Boolean isFamilyFriendly, String keywords, CreativeWorkOrString license, String learningResourceType, Thing mainEntity, Thing mentions, Offer offers, OrganizationOrPerson producer, PublicationEvent publication, Organization publisher, String publishingPrinciples, Event recordedAt, Review review, Organization sourceOrganization, String text, String thumbnailUrl, Duration timeRequired, String typicalAgeRange, Number version, VideoObject video, OrganizationOrPerson provider, Integer commentCount, HasPart hasPart, CreativeWork workExample, CreativeWork exampleOfWork, Person character, OrganizationOrPerson translator, PublicationEvent releasedEvent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myApplicationCategory = applicationCategory;
-    myApplicationSubCategory = applicationSubCategory;
-    myApplicationSuite = applicationSuite;
-    myCountriesNotSupported = countriesNotSupported;
-    myCountriesSupported = countriesSupported;
-    myAvailableOnDevice = availableOnDevice;
-    myDownloadUrl = downloadUrl;
-    myFeatureList = featureList;
-    myFileFormat = fileFormat;
-    myFileSize = fileSize;
-    myInstallUrl = installUrl;
-    myMemoryRequirements = memoryRequirements;
-    myOperatingSystem = operatingSystem;
-    myPermissions = permissions;
-    myProcessorRequirements = processorRequirements;
-    myReleaseNotes = releaseNotes;
-    mySoftwareRequirements = softwareRequirements;
-    myScreenshot = screenshot;
-    mySoftwareVersion = softwareVersion;
-    myStorageRequirements = storageRequirements;
-    mySoftwareAddOn = softwareAddOn;
-    mySoftwareHelp = softwareHelp;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myApplicationCategory != null ? myApplicationCategory.hashCode() : 0);
-    result = 31 * result + (myApplicationSubCategory != null ? myApplicationSubCategory.hashCode() : 0);
-    result = 31 * result + (myApplicationSuite != null ? myApplicationSuite.hashCode() : 0);
-    result = 31 * result + (myCountriesNotSupported != null ? myCountriesNotSupported.hashCode() : 0);
-    result = 31 * result + (myCountriesSupported != null ? myCountriesSupported.hashCode() : 0);
-    result = 31 * result + (myAvailableOnDevice != null ? myAvailableOnDevice.hashCode() : 0);
-    result = 31 * result + (myDownloadUrl != null ? myDownloadUrl.hashCode() : 0);
-    result = 31 * result + (myFeatureList != null ? myFeatureList.hashCode() : 0);
-    result = 31 * result + (myFileFormat != null ? myFileFormat.hashCode() : 0);
-    result = 31 * result + (myFileSize != null ? myFileSize.hashCode() : 0);
-    result = 31 * result + (myInstallUrl != null ? myInstallUrl.hashCode() : 0);
-    result = 31 * result + (myMemoryRequirements != null ? myMemoryRequirements.hashCode() : 0);
-    result = 31 * result + (myOperatingSystem != null ? myOperatingSystem.hashCode() : 0);
-    result = 31 * result + (myPermissions != null ? myPermissions.hashCode() : 0);
-    result = 31 * result + (myProcessorRequirements != null ? myProcessorRequirements.hashCode() : 0);
-    result = 31 * result + (myReleaseNotes != null ? myReleaseNotes.hashCode() : 0);
-    result = 31 * result + (mySoftwareRequirements != null ? mySoftwareRequirements.hashCode() : 0);
-    result = 31 * result + (myScreenshot != null ? myScreenshot.hashCode() : 0);
-    result = 31 * result + (mySoftwareVersion != null ? mySoftwareVersion.hashCode() : 0);
-    result = 31 * result + (myStorageRequirements != null ? myStorageRequirements.hashCode() : 0);
-    result = 31 * result + (mySoftwareAddOn != null ? mySoftwareAddOn.hashCode() : 0);
-    result = 31 * result + (mySoftwareHelp != null ? mySoftwareHelp.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    SoftwareApplication softwareApplication = (SoftwareApplication) o;
-    if (!super.equals(o)) return false;
-    if (myApplicationCategory != null ? !myApplicationCategory.equals(softwareApplication.myApplicationCategory) : softwareApplication.myApplicationCategory != null) return false;
-    if (myApplicationSubCategory != null ? !myApplicationSubCategory.equals(softwareApplication.myApplicationSubCategory) : softwareApplication.myApplicationSubCategory != null) return false;
-    if (myApplicationSuite != null ? !myApplicationSuite.equals(softwareApplication.myApplicationSuite) : softwareApplication.myApplicationSuite != null) return false;
-    if (myCountriesNotSupported != null ? !myCountriesNotSupported.equals(softwareApplication.myCountriesNotSupported) : softwareApplication.myCountriesNotSupported != null) return false;
-    if (myCountriesSupported != null ? !myCountriesSupported.equals(softwareApplication.myCountriesSupported) : softwareApplication.myCountriesSupported != null) return false;
-    if (myAvailableOnDevice != null ? !myAvailableOnDevice.equals(softwareApplication.myAvailableOnDevice) : softwareApplication.myAvailableOnDevice != null) return false;
-    if (myDownloadUrl != null ? !myDownloadUrl.equals(softwareApplication.myDownloadUrl) : softwareApplication.myDownloadUrl != null) return false;
-    if (myFeatureList != null ? !myFeatureList.equals(softwareApplication.myFeatureList) : softwareApplication.myFeatureList != null) return false;
-    if (myFileFormat != null ? !myFileFormat.equals(softwareApplication.myFileFormat) : softwareApplication.myFileFormat != null) return false;
-    if (myFileSize != null ? !myFileSize.equals(softwareApplication.myFileSize) : softwareApplication.myFileSize != null) return false;
-    if (myInstallUrl != null ? !myInstallUrl.equals(softwareApplication.myInstallUrl) : softwareApplication.myInstallUrl != null) return false;
-    if (myMemoryRequirements != null ? !myMemoryRequirements.equals(softwareApplication.myMemoryRequirements) : softwareApplication.myMemoryRequirements != null) return false;
-    if (myOperatingSystem != null ? !myOperatingSystem.equals(softwareApplication.myOperatingSystem) : softwareApplication.myOperatingSystem != null) return false;
-    if (myPermissions != null ? !myPermissions.equals(softwareApplication.myPermissions) : softwareApplication.myPermissions != null) return false;
-    if (myProcessorRequirements != null ? !myProcessorRequirements.equals(softwareApplication.myProcessorRequirements) : softwareApplication.myProcessorRequirements != null) return false;
-    if (myReleaseNotes != null ? !myReleaseNotes.equals(softwareApplication.myReleaseNotes) : softwareApplication.myReleaseNotes != null) return false;
-    if (mySoftwareRequirements != null ? !mySoftwareRequirements.equals(softwareApplication.mySoftwareRequirements) : softwareApplication.mySoftwareRequirements != null) return false;
-    if (myScreenshot != null ? !myScreenshot.equals(softwareApplication.myScreenshot) : softwareApplication.myScreenshot != null) return false;
-    if (mySoftwareVersion != null ? !mySoftwareVersion.equals(softwareApplication.mySoftwareVersion) : softwareApplication.mySoftwareVersion != null) return false;
-    if (myStorageRequirements != null ? !myStorageRequirements.equals(softwareApplication.myStorageRequirements) : softwareApplication.myStorageRequirements != null) return false;
-    if (mySoftwareAddOn != null ? !mySoftwareAddOn.equals(softwareApplication.mySoftwareAddOn) : softwareApplication.mySoftwareAddOn != null) return false;
-    if (mySoftwareHelp != null ? !mySoftwareHelp.equals(softwareApplication.mySoftwareHelp) : softwareApplication.mySoftwareHelp != null) return false;
-    return true;
-  }
-
+  
   private String myApplicationCategory;
   private String myApplicationSubCategory;
   private String myApplicationSuite;

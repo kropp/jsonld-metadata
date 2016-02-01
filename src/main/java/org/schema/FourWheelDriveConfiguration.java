@@ -20,45 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * Four-wheel drive is a transmission layout where the engine primarily drives two wheels with a part-time four-wheel drive capability.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
+ * Four-wheel drive is a transmission layout where the engine primarily drives two wheels with a part-time four-wheel drive capability.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
  */
 public class FourWheelDriveConfiguration {
-  /**
-   * Builder for {@link FourWheelDriveConfiguration}
-   */
-  static final class FourWheelDriveConfigurationThingBuilder implements Builder {
-    /**
-     * Creates new {@link FourWheelDriveConfiguration} instance.
-     */
-    public FourWheelDriveConfiguration build() {
-      return new FourWheelDriveConfiguration();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<FourWheelDriveConfiguration> {
-    
-  }
-
   protected FourWheelDriveConfiguration() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -66,5 +39,21 @@ public class FourWheelDriveConfiguration {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link FourWheelDriveConfiguration}
+   */
+  public static class Builder implements ThingBuilder<FourWheelDriveConfiguration> {
+    public FourWheelDriveConfiguration build() {
+      return new FourWheelDriveConfiguration();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

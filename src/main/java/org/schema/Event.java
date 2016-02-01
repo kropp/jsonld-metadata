@@ -20,132 +20,179 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the 'offers' property. Repeated events may be structured as separate Event objects.
- * Equivalent class: http://purl.org/dc/dcmitype/Event
+ * An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the 'offers' property. Repeated events may be structured as separate Event objects.Equivalent class: http://purl.org/dc/dcmitype/Event
  */
 public class Event extends Thing {
   /**
    * The overall rating, based on a collection of reviews or ratings, of the item.
    */
-  public AggregateRating getAggregateRating() {
-    return myAggregateRating;
-  }
+  public AggregateRating getAggregateRating() { return myAggregateRating; }
   /**
    * An organizer of an Event.
    */
-  public OrganizationOrPerson getOrganizer() {
-    return myOrganizer;
-  }
+  public OrganizationOrPerson getOrganizer() { return myOrganizer; }
   /**
    * A person or organization attending the event.
    */
-  public OrganizationOrPerson getAttendee() {
-    return myAttendee;
-  }
+  public OrganizationOrPerson getAttendee() { return myAttendee; }
   /**
    * The time admission will commence.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDoorTime() {
-    return myDoorTime;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getDoorTime() { return myDoorTime; }
   /**
    * The duration of the item (movie, audio recording, event, etc.) in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>.
    */
-  public Duration getDuration() {
-    return myDuration;
-  }
+  public Duration getDuration() { return myDuration; }
   /**
    * The end date and time of the item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getEndDate() {
-    return myEndDate;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getEndDate() { return myEndDate; }
   /**
    * An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
    */
-  public EventStatusType getEventStatus() {
-    return myEventStatus;
-  }
+  public EventStatusType getEventStatus() { return myEventStatus; }
   /**
    * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
    */
-  public LanguageOrString getInLanguage() {
-    return myInLanguage;
-  }
+  public LanguageOrString getInLanguage() { return myInLanguage; }
   /**
    * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
    */
-  public Offer getOffers() {
-    return myOffers;
-  }
+  public Offer getOffers() { return myOffers; }
   /**
    * A performer at the event&#x2014;for example, a presenter, musician, musical group or actor.
    */
-  public OrganizationOrPerson getPerformer() {
-    return myPerformer;
-  }
+  public OrganizationOrPerson getPerformer() { return myPerformer; }
   /**
    * Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getPreviousStartDate() {
-    return myPreviousStartDate;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getPreviousStartDate() { return myPreviousStartDate; }
   /**
    * The CreativeWork that captured all or part of this Event.
    */
-  public CreativeWork getRecordedIn() {
-    return myRecordedIn;
-  }
+  public CreativeWork getRecordedIn() { return myRecordedIn; }
   /**
    * A review of the item.
    */
-  public Review getReview() {
-    return myReview;
-  }
+  public Review getReview() { return myReview; }
   /**
    * The start date and time of the item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getStartDate() {
-    return myStartDate;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getStartDate() { return myStartDate; }
   /**
    * An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.
    */
-  public Event getSubEvent() {
-    return mySubEvent;
-  }
+  public Event getSubEvent() { return mySubEvent; }
   /**
    * An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.
    */
-  public Event getSuperEvent() {
-    return mySuperEvent;
-  }
+  public Event getSuperEvent() { return mySuperEvent; }
   /**
    * The typical expected age range, e.g. '7-9', '11-'.
    */
-  public String getTypicalAgeRange() {
-    return myTypicalAgeRange;
-  }
+  public String getTypicalAgeRange() { return myTypicalAgeRange; }
   /**
    * A work performed in some event, for example a play performed in a TheaterEvent.
    */
-  public CreativeWork getWorkPerformed() {
-    return myWorkPerformed;
+  public CreativeWork getWorkPerformed() { return myWorkPerformed; }
+  protected Event(AggregateRating aggregateRating, OrganizationOrPerson organizer, OrganizationOrPerson attendee, java.util.Date doorTime, Duration duration, java.util.Date endDate, EventStatusType eventStatus, LanguageOrString inLanguage, Offer offers, OrganizationOrPerson performer, java.util.Date previousStartDate, CreativeWork recordedIn, Review review, java.util.Date startDate, Event subEvent, Event superEvent, String typicalAgeRange, CreativeWork workPerformed, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myAggregateRating = aggregateRating;
+    myOrganizer = organizer;
+    myAttendee = attendee;
+    myDoorTime = doorTime;
+    myDuration = duration;
+    myEndDate = endDate;
+    myEventStatus = eventStatus;
+    myInLanguage = inLanguage;
+    myOffers = offers;
+    myPerformer = performer;
+    myPreviousStartDate = previousStartDate;
+    myRecordedIn = recordedIn;
+    myReview = review;
+    myStartDate = startDate;
+    mySubEvent = subEvent;
+    mySuperEvent = superEvent;
+    myTypicalAgeRange = typicalAgeRange;
+    myWorkPerformed = workPerformed;
+    myAggregateRating = aggregateRating;
+    myOrganizer = organizer;
+    myAttendee = attendee;
+    myDoorTime = doorTime;
+    myDuration = duration;
+    myEndDate = endDate;
+    myEventStatus = eventStatus;
+    myInLanguage = inLanguage;
+    myOffers = offers;
+    myPerformer = performer;
+    myPreviousStartDate = previousStartDate;
+    myRecordedIn = recordedIn;
+    myReview = review;
+    myStartDate = startDate;
+    mySubEvent = subEvent;
+    mySuperEvent = superEvent;
+    myTypicalAgeRange = typicalAgeRange;
+    myWorkPerformed = workPerformed;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
+    result = 31 * result + (myOrganizer != null ? myOrganizer.hashCode() : 0);
+    result = 31 * result + (myAttendee != null ? myAttendee.hashCode() : 0);
+    result = 31 * result + (myDoorTime != null ? myDoorTime.hashCode() : 0);
+    result = 31 * result + (myDuration != null ? myDuration.hashCode() : 0);
+    result = 31 * result + (myEndDate != null ? myEndDate.hashCode() : 0);
+    result = 31 * result + (myEventStatus != null ? myEventStatus.hashCode() : 0);
+    result = 31 * result + (myInLanguage != null ? myInLanguage.hashCode() : 0);
+    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
+    result = 31 * result + (myPerformer != null ? myPerformer.hashCode() : 0);
+    result = 31 * result + (myPreviousStartDate != null ? myPreviousStartDate.hashCode() : 0);
+    result = 31 * result + (myRecordedIn != null ? myRecordedIn.hashCode() : 0);
+    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
+    result = 31 * result + (myStartDate != null ? myStartDate.hashCode() : 0);
+    result = 31 * result + (mySubEvent != null ? mySubEvent.hashCode() : 0);
+    result = 31 * result + (mySuperEvent != null ? mySuperEvent.hashCode() : 0);
+    result = 31 * result + (myTypicalAgeRange != null ? myTypicalAgeRange.hashCode() : 0);
+    result = 31 * result + (myWorkPerformed != null ? myWorkPerformed.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Event event = (Event) o;
+    if (!super.equals(o)) return false;
+    if (myAggregateRating != null ? !myAggregateRating.equals(event.myAggregateRating) : event.myAggregateRating != null) return false;
+    if (myOrganizer != null ? !myOrganizer.equals(event.myOrganizer) : event.myOrganizer != null) return false;
+    if (myAttendee != null ? !myAttendee.equals(event.myAttendee) : event.myAttendee != null) return false;
+    if (myDoorTime != null ? !myDoorTime.equals(event.myDoorTime) : event.myDoorTime != null) return false;
+    if (myDuration != null ? !myDuration.equals(event.myDuration) : event.myDuration != null) return false;
+    if (myEndDate != null ? !myEndDate.equals(event.myEndDate) : event.myEndDate != null) return false;
+    if (myEventStatus != null ? !myEventStatus.equals(event.myEventStatus) : event.myEventStatus != null) return false;
+    if (myInLanguage != null ? !myInLanguage.equals(event.myInLanguage) : event.myInLanguage != null) return false;
+    if (myOffers != null ? !myOffers.equals(event.myOffers) : event.myOffers != null) return false;
+    if (myPerformer != null ? !myPerformer.equals(event.myPerformer) : event.myPerformer != null) return false;
+    if (myPreviousStartDate != null ? !myPreviousStartDate.equals(event.myPreviousStartDate) : event.myPreviousStartDate != null) return false;
+    if (myRecordedIn != null ? !myRecordedIn.equals(event.myRecordedIn) : event.myRecordedIn != null) return false;
+    if (myReview != null ? !myReview.equals(event.myReview) : event.myReview != null) return false;
+    if (myStartDate != null ? !myStartDate.equals(event.myStartDate) : event.myStartDate != null) return false;
+    if (mySubEvent != null ? !mySubEvent.equals(event.mySubEvent) : event.mySubEvent != null) return false;
+    if (mySuperEvent != null ? !mySuperEvent.equals(event.mySuperEvent) : event.mySuperEvent != null) return false;
+    if (myTypicalAgeRange != null ? !myTypicalAgeRange.equals(event.myTypicalAgeRange) : event.myTypicalAgeRange != null) return false;
+    if (myWorkPerformed != null ? !myWorkPerformed.equals(event.myWorkPerformed) : event.myWorkPerformed != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link Event}
    */
-  static final class EventThingBuilder implements Builder {
-    /**
-     * Creates new {@link Event} instance.
-     */
+  public static class Builder implements ThingBuilder<Event> {
     public Event build() {
       return new Event(aggregateRating, organizer, attendee, doorTime, duration, endDate, eventStatus, inLanguage, offers, performer, previousStartDate, recordedIn, review, startDate, subEvent, superEvent, typicalAgeRange, workPerformed, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -430,33 +477,33 @@ public class Event extends Thing {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -465,66 +512,66 @@ public class Event extends Thing {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -572,7 +619,6 @@ public class Event extends Thing {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -640,130 +686,7 @@ public class Event extends Thing {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<Event> {
-    @NotNull Builder aggregateRating(@NotNull AggregateRating aggregateRating);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating);
-    @NotNull Builder organizer(@NotNull Organization organization);
-    @NotNull Builder organizer(@NotNull Organization.Builder organization);
-    @NotNull Builder organizer(@NotNull Person person);
-    @NotNull Builder organizer(@NotNull Person.Builder person);
-    @NotNull Builder attendee(@NotNull Organization organization);
-    @NotNull Builder attendee(@NotNull Organization.Builder organization);
-    @NotNull Builder attendee(@NotNull Person person);
-    @NotNull Builder attendee(@NotNull Person.Builder person);
-    @NotNull Builder doorTime(@NotNull java.util.Date date);
-    @NotNull Builder duration(@NotNull Duration duration);
-    @NotNull Builder duration(@NotNull Duration.Builder duration);
-    @NotNull Builder endDate(@NotNull java.util.Date date);
-    @NotNull Builder eventStatus(@NotNull EventStatusType eventStatusType);
-    @NotNull Builder eventStatus(@NotNull EventStatusType.Builder eventStatusType);
-    @NotNull Builder inLanguage(@NotNull Language language);
-    @NotNull Builder inLanguage(@NotNull Language.Builder language);
-    @NotNull Builder inLanguage(@NotNull String inLanguage);
-    @NotNull Builder offers(@NotNull Offer offer);
-    @NotNull Builder offers(@NotNull Offer.Builder offer);
-    @NotNull Builder performer(@NotNull Organization organization);
-    @NotNull Builder performer(@NotNull Organization.Builder organization);
-    @NotNull Builder performer(@NotNull Person person);
-    @NotNull Builder performer(@NotNull Person.Builder person);
-    @NotNull Builder previousStartDate(@NotNull java.util.Date date);
-    @NotNull Builder recordedIn(@NotNull CreativeWork creativeWork);
-    @NotNull Builder recordedIn(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder review(@NotNull Review review);
-    @NotNull Builder review(@NotNull Review.Builder review);
-    @NotNull Builder startDate(@NotNull java.util.Date date);
-    @NotNull Builder subEvent(@NotNull Event event);
-    @NotNull Builder subEvent(@NotNull Event.Builder event);
-    @NotNull Builder superEvent(@NotNull Event event);
-    @NotNull Builder superEvent(@NotNull Event.Builder event);
-    @NotNull Builder typicalAgeRange(@NotNull String typicalAgeRange);
-    @NotNull Builder workPerformed(@NotNull CreativeWork creativeWork);
-    @NotNull Builder workPerformed(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected Event(AggregateRating aggregateRating, OrganizationOrPerson organizer, OrganizationOrPerson attendee, java.util.Date doorTime, Duration duration, java.util.Date endDate, EventStatusType eventStatus, LanguageOrString inLanguage, Offer offers, OrganizationOrPerson performer, java.util.Date previousStartDate, CreativeWork recordedIn, Review review, java.util.Date startDate, Event subEvent, Event superEvent, String typicalAgeRange, CreativeWork workPerformed, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAggregateRating = aggregateRating;
-    myOrganizer = organizer;
-    myAttendee = attendee;
-    myDoorTime = doorTime;
-    myDuration = duration;
-    myEndDate = endDate;
-    myEventStatus = eventStatus;
-    myInLanguage = inLanguage;
-    myOffers = offers;
-    myPerformer = performer;
-    myPreviousStartDate = previousStartDate;
-    myRecordedIn = recordedIn;
-    myReview = review;
-    myStartDate = startDate;
-    mySubEvent = subEvent;
-    mySuperEvent = superEvent;
-    myTypicalAgeRange = typicalAgeRange;
-    myWorkPerformed = workPerformed;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
-    result = 31 * result + (myOrganizer != null ? myOrganizer.hashCode() : 0);
-    result = 31 * result + (myAttendee != null ? myAttendee.hashCode() : 0);
-    result = 31 * result + (myDoorTime != null ? myDoorTime.hashCode() : 0);
-    result = 31 * result + (myDuration != null ? myDuration.hashCode() : 0);
-    result = 31 * result + (myEndDate != null ? myEndDate.hashCode() : 0);
-    result = 31 * result + (myEventStatus != null ? myEventStatus.hashCode() : 0);
-    result = 31 * result + (myInLanguage != null ? myInLanguage.hashCode() : 0);
-    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
-    result = 31 * result + (myPerformer != null ? myPerformer.hashCode() : 0);
-    result = 31 * result + (myPreviousStartDate != null ? myPreviousStartDate.hashCode() : 0);
-    result = 31 * result + (myRecordedIn != null ? myRecordedIn.hashCode() : 0);
-    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
-    result = 31 * result + (myStartDate != null ? myStartDate.hashCode() : 0);
-    result = 31 * result + (mySubEvent != null ? mySubEvent.hashCode() : 0);
-    result = 31 * result + (mySuperEvent != null ? mySuperEvent.hashCode() : 0);
-    result = 31 * result + (myTypicalAgeRange != null ? myTypicalAgeRange.hashCode() : 0);
-    result = 31 * result + (myWorkPerformed != null ? myWorkPerformed.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Event event = (Event) o;
-    if (!super.equals(o)) return false;
-    if (myAggregateRating != null ? !myAggregateRating.equals(event.myAggregateRating) : event.myAggregateRating != null) return false;
-    if (myOrganizer != null ? !myOrganizer.equals(event.myOrganizer) : event.myOrganizer != null) return false;
-    if (myAttendee != null ? !myAttendee.equals(event.myAttendee) : event.myAttendee != null) return false;
-    if (myDoorTime != null ? !myDoorTime.equals(event.myDoorTime) : event.myDoorTime != null) return false;
-    if (myDuration != null ? !myDuration.equals(event.myDuration) : event.myDuration != null) return false;
-    if (myEndDate != null ? !myEndDate.equals(event.myEndDate) : event.myEndDate != null) return false;
-    if (myEventStatus != null ? !myEventStatus.equals(event.myEventStatus) : event.myEventStatus != null) return false;
-    if (myInLanguage != null ? !myInLanguage.equals(event.myInLanguage) : event.myInLanguage != null) return false;
-    if (myOffers != null ? !myOffers.equals(event.myOffers) : event.myOffers != null) return false;
-    if (myPerformer != null ? !myPerformer.equals(event.myPerformer) : event.myPerformer != null) return false;
-    if (myPreviousStartDate != null ? !myPreviousStartDate.equals(event.myPreviousStartDate) : event.myPreviousStartDate != null) return false;
-    if (myRecordedIn != null ? !myRecordedIn.equals(event.myRecordedIn) : event.myRecordedIn != null) return false;
-    if (myReview != null ? !myReview.equals(event.myReview) : event.myReview != null) return false;
-    if (myStartDate != null ? !myStartDate.equals(event.myStartDate) : event.myStartDate != null) return false;
-    if (mySubEvent != null ? !mySubEvent.equals(event.mySubEvent) : event.mySubEvent != null) return false;
-    if (mySuperEvent != null ? !mySuperEvent.equals(event.mySuperEvent) : event.mySuperEvent != null) return false;
-    if (myTypicalAgeRange != null ? !myTypicalAgeRange.equals(event.myTypicalAgeRange) : event.myTypicalAgeRange != null) return false;
-    if (myWorkPerformed != null ? !myWorkPerformed.equals(event.myWorkPerformed) : event.myWorkPerformed != null) return false;
-    return true;
-  }
-
+  
   private AggregateRating myAggregateRating;
   private OrganizationOrPerson myOrganizer;
   private OrganizationOrPerson myAttendee;

@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A trial design in which the researcher knows which treatment the patient was randomly assigned to but the patient does not.
  */
 public class SingleBlindedTrial {
-  /**
-   * Builder for {@link SingleBlindedTrial}
-   */
-  static final class SingleBlindedTrialThingBuilder implements Builder {
-    /**
-     * Creates new {@link SingleBlindedTrial} instance.
-     */
-    public SingleBlindedTrial build() {
-      return new SingleBlindedTrial();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<SingleBlindedTrial> {
-    
-  }
-
   protected SingleBlindedTrial() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class SingleBlindedTrial {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link SingleBlindedTrial}
+   */
+  public static class Builder implements ThingBuilder<SingleBlindedTrial> {
+    public SingleBlindedTrial build() {
+      return new SingleBlindedTrial();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

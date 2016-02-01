@@ -18,13 +18,15 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class MusicGroupOrPerson {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setMusicGroup(MusicGroup musicGroup) { clear(); myMusicGroup = musicGroup; }
+  public MusicGroup getMusicGroup() { return myMusicGroup; }
+  void setPerson(Person person) { clear(); myPerson = person; }
+  public Person getPerson() { return myPerson; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myMusicGroup != null) return myMusicGroup;
     if (myPerson != null) return myPerson;
     return null;
@@ -34,24 +36,16 @@ public class MusicGroupOrPerson {
     if (myPerson != null) return myPerson;
     return null;
   }
-  void setMusicGroup(MusicGroup musicGroup) { clear(); myMusicGroup = musicGroup; }
-  public MusicGroup getMusicGroup() { return myMusicGroup; }
-  private MusicGroup myMusicGroup;
-  void setPerson(Person person) { clear(); myPerson = person; }
-  public Person getPerson() { return myPerson; }
-  private Person myPerson;
-  private void clear() {
+  public void clear() {
     myMusicGroup = null;
     myPerson = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myMusicGroup != null ? myMusicGroup.hashCode() : 0);
     result = 31 * result + (myPerson != null ? myPerson.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -60,5 +54,6 @@ public class MusicGroupOrPerson {
     if (myPerson != null ? !myPerson.equals(musicGroupOrPerson.myPerson) : musicGroupOrPerson.myPerson != null) return false;
     return true;
   }
-
+  private MusicGroup myMusicGroup;
+  private Person myPerson;
 }

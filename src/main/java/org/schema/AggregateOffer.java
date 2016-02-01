@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
@@ -29,34 +29,54 @@ public class AggregateOffer extends Offer {
   /**
    * The highest price of all offers available.
    */
-  public Number getHighPrice() {
-    return myHighPrice;
-  }
+  public Number getHighPrice() { return myHighPrice; }
   /**
    * The lowest price of all offers available.
    */
-  public Number getLowPrice() {
-    return myLowPrice;
-  }
+  public Number getLowPrice() { return myLowPrice; }
   /**
    * The number of offers for the product.
    */
-  public Integer getOfferCount() {
-    return myOfferCount;
-  }
+  public Integer getOfferCount() { return myOfferCount; }
   /**
    * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
    */
-  public Offer getOffers() {
-    return myOffers;
+  public Offer getOffers() { return myOffers; }
+  protected AggregateOffer(Number highPrice, Number lowPrice, Integer offerCount, Offer offers, PaymentMethod acceptedPaymentMethod, Offer addOn, QuantitativeValue advanceBookingRequirement, AggregateRating aggregateRating, ItemAvailability availability, java.util.Date availabilityEnds, java.util.Date availabilityStarts, Place availableAtOrFrom, DeliveryMethod availableDeliveryMethod, BusinessFunction businessFunction, PhysicalActivityCategoryOrStringOrThing category, QuantitativeValue deliveryLeadTime, BusinessEntityType eligibleCustomerType, QuantitativeValue eligibleDuration, QuantitativeValue eligibleQuantity, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, PriceSpecification eligibleTransactionVolume, String gtin12, String gtin13, String gtin14, String gtin8, TypeAndQuantityNode includesObject, QuantitativeValue inventoryLevel, OfferItemCondition itemCondition, Product itemOffered, String mpn, Number price, PriceSpecification priceSpecification, java.util.Date priceValidUntil, Review review, Participant seller, String sku, java.util.Date validFrom, java.util.Date validThrough, WarrantyPromise warranty, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(acceptedPaymentMethod, addOn, advanceBookingRequirement, aggregateRating, availability, availabilityEnds, availabilityStarts, availableAtOrFrom, availableDeliveryMethod, businessFunction, category, deliveryLeadTime, eligibleCustomerType, eligibleDuration, eligibleQuantity, eligibleRegion, ineligibleRegion, eligibleTransactionVolume, gtin12, gtin13, gtin14, gtin8, includesObject, inventoryLevel, itemCondition, itemOffered, mpn, price, priceSpecification, priceValidUntil, review, seller, sku, validFrom, validThrough, warranty, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myHighPrice = highPrice;
+    myLowPrice = lowPrice;
+    myOfferCount = offerCount;
+    myOffers = offers;
+    myHighPrice = highPrice;
+    myLowPrice = lowPrice;
+    myOfferCount = offerCount;
+    myOffers = offers;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myHighPrice != null ? myHighPrice.hashCode() : 0);
+    result = 31 * result + (myLowPrice != null ? myLowPrice.hashCode() : 0);
+    result = 31 * result + (myOfferCount != null ? myOfferCount.hashCode() : 0);
+    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AggregateOffer aggregateOffer = (AggregateOffer) o;
+    if (!super.equals(o)) return false;
+    if (myHighPrice != null ? !myHighPrice.equals(aggregateOffer.myHighPrice) : aggregateOffer.myHighPrice != null) return false;
+    if (myLowPrice != null ? !myLowPrice.equals(aggregateOffer.myLowPrice) : aggregateOffer.myLowPrice != null) return false;
+    if (myOfferCount != null ? !myOfferCount.equals(aggregateOffer.myOfferCount) : aggregateOffer.myOfferCount != null) return false;
+    if (myOffers != null ? !myOffers.equals(aggregateOffer.myOffers) : aggregateOffer.myOffers != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link AggregateOffer}
    */
-  static final class AggregateOfferThingBuilder implements Builder {
-    /**
-     * Creates new {@link AggregateOffer} instance.
-     */
+  public static class Builder implements ThingBuilder<AggregateOffer> {
     public AggregateOffer build() {
       return new AggregateOffer(highPrice, lowPrice, offerCount, offers, acceptedPaymentMethod, addOn, advanceBookingRequirement, aggregateRating, availability, availabilityEnds, availabilityStarts, availableAtOrFrom, availableDeliveryMethod, businessFunction, category, deliveryLeadTime, eligibleCustomerType, eligibleDuration, eligibleQuantity, eligibleRegion, ineligibleRegion, eligibleTransactionVolume, gtin12, gtin13, gtin14, gtin8, includesObject, inventoryLevel, itemCondition, itemOffered, mpn, price, priceSpecification, priceValidUntil, review, seller, sku, validFrom, validThrough, warranty, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -540,26 +560,26 @@ public class AggregateOffer extends Offer {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Integer integer) {
       if (this.price == null) this.price = new Number();
@@ -568,26 +588,26 @@ public class AggregateOffer extends Offer {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Long price) {
       if (this.price == null) this.price = new Number();
@@ -596,26 +616,26 @@ public class AggregateOffer extends Offer {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Float price) {
       if (this.price == null) this.price = new Number();
@@ -624,26 +644,26 @@ public class AggregateOffer extends Offer {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Double price) {
       if (this.price == null) this.price = new Number();
@@ -652,26 +672,26 @@ public class AggregateOffer extends Offer {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull String price) {
       if (this.price == null) this.price = new Number();
@@ -782,33 +802,33 @@ public class AggregateOffer extends Offer {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -817,66 +837,66 @@ public class AggregateOffer extends Offer {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -924,7 +944,6 @@ public class AggregateOffer extends Offer {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -1052,136 +1071,7 @@ public class AggregateOffer extends Offer {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<AggregateOffer> {
-    @NotNull Builder highPrice(@NotNull Integer integer);
-    @NotNull Builder highPrice(@NotNull Long highPrice);
-    @NotNull Builder highPrice(@NotNull Float highPrice);
-    @NotNull Builder highPrice(@NotNull Double highPrice);
-    @NotNull Builder highPrice(@NotNull String highPrice);
-    @NotNull Builder lowPrice(@NotNull Integer integer);
-    @NotNull Builder lowPrice(@NotNull Long lowPrice);
-    @NotNull Builder lowPrice(@NotNull Float lowPrice);
-    @NotNull Builder lowPrice(@NotNull Double lowPrice);
-    @NotNull Builder lowPrice(@NotNull String lowPrice);
-    @NotNull Builder offerCount(@NotNull Integer integer);
-    @NotNull Builder offers(@NotNull Offer offer);
-    @NotNull Builder offers(@NotNull Offer.Builder offer);
-    @NotNull Builder acceptedPaymentMethod(@NotNull PaymentMethod paymentMethod);
-    @NotNull Builder acceptedPaymentMethod(@NotNull PaymentMethod.Builder paymentMethod);
-    @NotNull Builder addOn(@NotNull Offer offer);
-    @NotNull Builder addOn(@NotNull Offer.Builder offer);
-    @NotNull Builder advanceBookingRequirement(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder advanceBookingRequirement(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating aggregateRating);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating);
-    @NotNull Builder availability(@NotNull ItemAvailability itemAvailability);
-    @NotNull Builder availability(@NotNull ItemAvailability.Builder itemAvailability);
-    @NotNull Builder availabilityEnds(@NotNull java.util.Date date);
-    @NotNull Builder availabilityStarts(@NotNull java.util.Date date);
-    @NotNull Builder availableAtOrFrom(@NotNull Place place);
-    @NotNull Builder availableAtOrFrom(@NotNull Place.Builder place);
-    @NotNull Builder availableDeliveryMethod(@NotNull DeliveryMethod deliveryMethod);
-    @NotNull Builder availableDeliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod);
-    @NotNull Builder businessFunction(@NotNull BusinessFunction businessFunction);
-    @NotNull Builder businessFunction(@NotNull BusinessFunction.Builder businessFunction);
-    @NotNull Builder category(@NotNull PhysicalActivityCategory physicalActivityCategory);
-    @NotNull Builder category(@NotNull PhysicalActivityCategory.Builder physicalActivityCategory);
-    @NotNull Builder category(@NotNull String category);
-    @NotNull Builder category(@NotNull Thing thing);
-    @NotNull Builder category(@NotNull Thing.Builder thing);
-    @NotNull Builder deliveryLeadTime(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder deliveryLeadTime(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder eligibleCustomerType(@NotNull BusinessEntityType businessEntityType);
-    @NotNull Builder eligibleCustomerType(@NotNull BusinessEntityType.Builder businessEntityType);
-    @NotNull Builder eligibleDuration(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder eligibleDuration(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder eligibleQuantity(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder eligibleQuantity(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder eligibleRegion(@NotNull GeoShape geoShape);
-    @NotNull Builder eligibleRegion(@NotNull GeoShape.Builder geoShape);
-    @NotNull Builder eligibleRegion(@NotNull Place place);
-    @NotNull Builder eligibleRegion(@NotNull Place.Builder place);
-    @NotNull Builder eligibleRegion(@NotNull String eligibleRegion);
-    @NotNull Builder ineligibleRegion(@NotNull GeoShape geoShape);
-    @NotNull Builder ineligibleRegion(@NotNull GeoShape.Builder geoShape);
-    @NotNull Builder ineligibleRegion(@NotNull Place place);
-    @NotNull Builder ineligibleRegion(@NotNull Place.Builder place);
-    @NotNull Builder ineligibleRegion(@NotNull String ineligibleRegion);
-    @NotNull Builder eligibleTransactionVolume(@NotNull PriceSpecification priceSpecification);
-    @NotNull Builder eligibleTransactionVolume(@NotNull PriceSpecification.Builder priceSpecification);
-    @NotNull Builder gtin12(@NotNull String gtin12);
-    @NotNull Builder gtin13(@NotNull String gtin13);
-    @NotNull Builder gtin14(@NotNull String gtin14);
-    @NotNull Builder gtin8(@NotNull String gtin8);
-    @NotNull Builder includesObject(@NotNull TypeAndQuantityNode typeAndQuantityNode);
-    @NotNull Builder includesObject(@NotNull TypeAndQuantityNode.Builder typeAndQuantityNode);
-    @NotNull Builder inventoryLevel(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder inventoryLevel(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder itemCondition(@NotNull OfferItemCondition offerItemCondition);
-    @NotNull Builder itemCondition(@NotNull OfferItemCondition.Builder offerItemCondition);
-    @NotNull Builder itemOffered(@NotNull Product product);
-    @NotNull Builder itemOffered(@NotNull Product.Builder product);
-    @NotNull Builder mpn(@NotNull String mpn);
-    @NotNull Builder price(@NotNull Integer integer);
-    @NotNull Builder price(@NotNull Long price);
-    @NotNull Builder price(@NotNull Float price);
-    @NotNull Builder price(@NotNull Double price);
-    @NotNull Builder price(@NotNull String price);
-    @NotNull Builder priceSpecification(@NotNull PriceSpecification priceSpecification);
-    @NotNull Builder priceSpecification(@NotNull PriceSpecification.Builder priceSpecification);
-    @NotNull Builder priceValidUntil(@NotNull java.util.Date date);
-    @NotNull Builder review(@NotNull Review review);
-    @NotNull Builder review(@NotNull Review.Builder review);
-    @NotNull Builder seller(@NotNull Participant participant);
-    @NotNull Builder sku(@NotNull String sku);
-    @NotNull Builder validFrom(@NotNull java.util.Date date);
-    @NotNull Builder validThrough(@NotNull java.util.Date date);
-    @NotNull Builder warranty(@NotNull WarrantyPromise warrantyPromise);
-    @NotNull Builder warranty(@NotNull WarrantyPromise.Builder warrantyPromise);
-    @NotNull Builder priceCurrency(@NotNull String priceCurrency);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected AggregateOffer(Number highPrice, Number lowPrice, Integer offerCount, Offer offers, PaymentMethod acceptedPaymentMethod, Offer addOn, QuantitativeValue advanceBookingRequirement, AggregateRating aggregateRating, ItemAvailability availability, java.util.Date availabilityEnds, java.util.Date availabilityStarts, Place availableAtOrFrom, DeliveryMethod availableDeliveryMethod, BusinessFunction businessFunction, PhysicalActivityCategoryOrStringOrThing category, QuantitativeValue deliveryLeadTime, BusinessEntityType eligibleCustomerType, QuantitativeValue eligibleDuration, QuantitativeValue eligibleQuantity, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, PriceSpecification eligibleTransactionVolume, String gtin12, String gtin13, String gtin14, String gtin8, TypeAndQuantityNode includesObject, QuantitativeValue inventoryLevel, OfferItemCondition itemCondition, Product itemOffered, String mpn, Number price, PriceSpecification priceSpecification, java.util.Date priceValidUntil, Review review, Participant seller, String sku, java.util.Date validFrom, java.util.Date validThrough, WarrantyPromise warranty, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(acceptedPaymentMethod, addOn, advanceBookingRequirement, aggregateRating, availability, availabilityEnds, availabilityStarts, availableAtOrFrom, availableDeliveryMethod, businessFunction, category, deliveryLeadTime, eligibleCustomerType, eligibleDuration, eligibleQuantity, eligibleRegion, ineligibleRegion, eligibleTransactionVolume, gtin12, gtin13, gtin14, gtin8, includesObject, inventoryLevel, itemCondition, itemOffered, mpn, price, priceSpecification, priceValidUntil, review, seller, sku, validFrom, validThrough, warranty, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myHighPrice = highPrice;
-    myLowPrice = lowPrice;
-    myOfferCount = offerCount;
-    myOffers = offers;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myHighPrice != null ? myHighPrice.hashCode() : 0);
-    result = 31 * result + (myLowPrice != null ? myLowPrice.hashCode() : 0);
-    result = 31 * result + (myOfferCount != null ? myOfferCount.hashCode() : 0);
-    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    AggregateOffer aggregateOffer = (AggregateOffer) o;
-    if (!super.equals(o)) return false;
-    if (myHighPrice != null ? !myHighPrice.equals(aggregateOffer.myHighPrice) : aggregateOffer.myHighPrice != null) return false;
-    if (myLowPrice != null ? !myLowPrice.equals(aggregateOffer.myLowPrice) : aggregateOffer.myLowPrice != null) return false;
-    if (myOfferCount != null ? !myOfferCount.equals(aggregateOffer.myOfferCount) : aggregateOffer.myOfferCount != null) return false;
-    if (myOffers != null ? !myOffers.equals(aggregateOffer.myOffers) : aggregateOffer.myOffers != null) return false;
-    return true;
-  }
-
+  
   private Number myHighPrice;
   private Number myLowPrice;
   private Integer myOfferCount;

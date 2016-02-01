@@ -18,41 +18,34 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class PhysicalActivityCategoryOrStringOrThing {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setPhysicalActivityCategory(PhysicalActivityCategory physicalActivityCategory) { clear(); myPhysicalActivityCategory = physicalActivityCategory; }
+  public PhysicalActivityCategory getPhysicalActivityCategory() { return myPhysicalActivityCategory; }
+  void setString(String value) { clear(); myString = value; }
+  public String getString() { return myString; }
+  void setThing(Thing thing) { clear(); myThing = thing; }
+  public Thing getThing() { return myThing; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myPhysicalActivityCategory != null) return myPhysicalActivityCategory;
     if (myString != null) return myString;
     if (myThing != null) return myThing;
     return null;
   }
-  void setPhysicalActivityCategory(PhysicalActivityCategory physicalActivityCategory) { clear(); myPhysicalActivityCategory = physicalActivityCategory; }
-  public PhysicalActivityCategory getPhysicalActivityCategory() { return myPhysicalActivityCategory; }
-  private PhysicalActivityCategory myPhysicalActivityCategory;
-  void setString(String value) { clear(); myString = value; }
-  public String getString() { return myString; }
-  private String myString;
-  void setThing(Thing thing) { clear(); myThing = thing; }
-  public Thing getThing() { return myThing; }
-  private Thing myThing;
-  private void clear() {
+  public void clear() {
     myPhysicalActivityCategory = null;
     myString = null;
     myThing = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myPhysicalActivityCategory != null ? myPhysicalActivityCategory.hashCode() : 0);
     result = 31 * result + (myString != null ? myString.hashCode() : 0);
     result = 31 * result + (myThing != null ? myThing.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -62,5 +55,7 @@ public class PhysicalActivityCategoryOrStringOrThing {
     if (myThing != null ? !myThing.equals(physicalActivityCategoryOrStringOrThing.myThing) : physicalActivityCategoryOrStringOrThing.myThing != null) return false;
     return true;
   }
-
+  private PhysicalActivityCategory myPhysicalActivityCategory;
+  private String myString;
+  private Thing myThing;
 }

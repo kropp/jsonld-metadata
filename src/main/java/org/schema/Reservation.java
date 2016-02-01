@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Describes a reservation for travel, dining or an event. Some reservations require tickets.Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, restaurant reservations, flights, or rental cars, use http://schema.org/Offer.
@@ -29,84 +29,120 @@ public class Reservation extends Intangible {
   /**
    * A unique identifier for the reservation.
    */
-  public String getReservationId() {
-    return myReservationId;
-  }
+  public String getReservationId() { return myReservationId; }
   /**
    * The current status of the reservation.
    */
-  public ReservationStatusType getReservationStatus() {
-    return myReservationStatus;
-  }
+  public ReservationStatusType getReservationStatus() { return myReservationStatus; }
   /**
    * The thing -- flight, event, restaurant,etc. being reserved.
    */
-  public Thing getReservationFor() {
-    return myReservationFor;
-  }
+  public Thing getReservationFor() { return myReservationFor; }
   /**
    * The person or organization the reservation or ticket is for.
    */
-  public OrganizationOrPerson getUnderName() {
-    return myUnderName;
-  }
+  public OrganizationOrPerson getUnderName() { return myUnderName; }
   /**
    * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
    */
-  public OrganizationOrPerson getProvider() {
-    return myProvider;
-  }
+  public OrganizationOrPerson getProvider() { return myProvider; }
   /**
    * The date and time the reservation was booked.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getBookingTime() {
-    return myBookingTime;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getBookingTime() { return myBookingTime; }
   /**
    * The date and time the reservation was modified.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getModifiedTime() {
-    return myModifiedTime;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getModifiedTime() { return myModifiedTime; }
   /**
    * Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.
    */
-  public ProgramMembership getProgramMembershipUsed() {
-    return myProgramMembershipUsed;
-  }
+  public ProgramMembership getProgramMembershipUsed() { return myProgramMembershipUsed; }
   /**
    * A ticket associated with the reservation.
    */
-  public Ticket getReservedTicket() {
-    return myReservedTicket;
-  }
+  public Ticket getReservedTicket() { return myReservedTicket; }
   /**
    * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
    */
-  public Number getTotalPrice() {
-    return myTotalPrice;
-  }
+  public Number getTotalPrice() { return myTotalPrice; }
   /**
    * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
    */
-  public String getPriceCurrency() {
-    return myPriceCurrency;
-  }
+  public String getPriceCurrency() { return myPriceCurrency; }
   /**
    * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
    */
-  public OrganizationOrPerson getBroker() {
-    return myBroker;
+  public OrganizationOrPerson getBroker() { return myBroker; }
+  protected Reservation(String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, Number totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myReservationId = reservationId;
+    myReservationStatus = reservationStatus;
+    myReservationFor = reservationFor;
+    myUnderName = underName;
+    myProvider = provider;
+    myBookingTime = bookingTime;
+    myModifiedTime = modifiedTime;
+    myProgramMembershipUsed = programMembershipUsed;
+    myReservedTicket = reservedTicket;
+    myTotalPrice = totalPrice;
+    myPriceCurrency = priceCurrency;
+    myBroker = broker;
+    myReservationId = reservationId;
+    myReservationStatus = reservationStatus;
+    myReservationFor = reservationFor;
+    myUnderName = underName;
+    myProvider = provider;
+    myBookingTime = bookingTime;
+    myModifiedTime = modifiedTime;
+    myProgramMembershipUsed = programMembershipUsed;
+    myReservedTicket = reservedTicket;
+    myTotalPrice = totalPrice;
+    myPriceCurrency = priceCurrency;
+    myBroker = broker;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myReservationId != null ? myReservationId.hashCode() : 0);
+    result = 31 * result + (myReservationStatus != null ? myReservationStatus.hashCode() : 0);
+    result = 31 * result + (myReservationFor != null ? myReservationFor.hashCode() : 0);
+    result = 31 * result + (myUnderName != null ? myUnderName.hashCode() : 0);
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    result = 31 * result + (myBookingTime != null ? myBookingTime.hashCode() : 0);
+    result = 31 * result + (myModifiedTime != null ? myModifiedTime.hashCode() : 0);
+    result = 31 * result + (myProgramMembershipUsed != null ? myProgramMembershipUsed.hashCode() : 0);
+    result = 31 * result + (myReservedTicket != null ? myReservedTicket.hashCode() : 0);
+    result = 31 * result + (myTotalPrice != null ? myTotalPrice.hashCode() : 0);
+    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
+    result = 31 * result + (myBroker != null ? myBroker.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Reservation reservation = (Reservation) o;
+    if (!super.equals(o)) return false;
+    if (myReservationId != null ? !myReservationId.equals(reservation.myReservationId) : reservation.myReservationId != null) return false;
+    if (myReservationStatus != null ? !myReservationStatus.equals(reservation.myReservationStatus) : reservation.myReservationStatus != null) return false;
+    if (myReservationFor != null ? !myReservationFor.equals(reservation.myReservationFor) : reservation.myReservationFor != null) return false;
+    if (myUnderName != null ? !myUnderName.equals(reservation.myUnderName) : reservation.myUnderName != null) return false;
+    if (myProvider != null ? !myProvider.equals(reservation.myProvider) : reservation.myProvider != null) return false;
+    if (myBookingTime != null ? !myBookingTime.equals(reservation.myBookingTime) : reservation.myBookingTime != null) return false;
+    if (myModifiedTime != null ? !myModifiedTime.equals(reservation.myModifiedTime) : reservation.myModifiedTime != null) return false;
+    if (myProgramMembershipUsed != null ? !myProgramMembershipUsed.equals(reservation.myProgramMembershipUsed) : reservation.myProgramMembershipUsed != null) return false;
+    if (myReservedTicket != null ? !myReservedTicket.equals(reservation.myReservedTicket) : reservation.myReservedTicket != null) return false;
+    if (myTotalPrice != null ? !myTotalPrice.equals(reservation.myTotalPrice) : reservation.myTotalPrice != null) return false;
+    if (myPriceCurrency != null ? !myPriceCurrency.equals(reservation.myPriceCurrency) : reservation.myPriceCurrency != null) return false;
+    if (myBroker != null ? !myBroker.equals(reservation.myBroker) : reservation.myBroker != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link Reservation}
    */
-  static final class ReservationThingBuilder implements Builder {
-    /**
-     * Creates new {@link Reservation} instance.
-     */
+  public static class Builder implements ThingBuilder<Reservation> {
     public Reservation build() {
       return new Reservation(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -337,33 +373,33 @@ public class Reservation extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -372,66 +408,66 @@ public class Reservation extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -479,7 +515,6 @@ public class Reservation extends Intangible {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -538,103 +573,7 @@ public class Reservation extends Intangible {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<Reservation> {
-    @NotNull Builder reservationId(@NotNull String reservationId);
-    @NotNull Builder reservationStatus(@NotNull ReservationStatusType reservationStatusType);
-    @NotNull Builder reservationStatus(@NotNull ReservationStatusType.Builder reservationStatusType);
-    @NotNull Builder reservationFor(@NotNull Thing thing);
-    @NotNull Builder reservationFor(@NotNull Thing.Builder thing);
-    @NotNull Builder underName(@NotNull Organization organization);
-    @NotNull Builder underName(@NotNull Organization.Builder organization);
-    @NotNull Builder underName(@NotNull Person person);
-    @NotNull Builder underName(@NotNull Person.Builder person);
-    @NotNull Builder provider(@NotNull Organization organization);
-    @NotNull Builder provider(@NotNull Organization.Builder organization);
-    @NotNull Builder provider(@NotNull Person person);
-    @NotNull Builder provider(@NotNull Person.Builder person);
-    @NotNull Builder bookingTime(@NotNull java.util.Date date);
-    @NotNull Builder modifiedTime(@NotNull java.util.Date date);
-    @NotNull Builder programMembershipUsed(@NotNull ProgramMembership programMembership);
-    @NotNull Builder programMembershipUsed(@NotNull ProgramMembership.Builder programMembership);
-    @NotNull Builder reservedTicket(@NotNull Ticket ticket);
-    @NotNull Builder reservedTicket(@NotNull Ticket.Builder ticket);
-    @NotNull Builder totalPrice(@NotNull Integer integer);
-    @NotNull Builder totalPrice(@NotNull Long totalPrice);
-    @NotNull Builder totalPrice(@NotNull Float totalPrice);
-    @NotNull Builder totalPrice(@NotNull Double totalPrice);
-    @NotNull Builder totalPrice(@NotNull String totalPrice);
-    @NotNull Builder priceCurrency(@NotNull String priceCurrency);
-    @NotNull Builder broker(@NotNull Organization organization);
-    @NotNull Builder broker(@NotNull Organization.Builder organization);
-    @NotNull Builder broker(@NotNull Person person);
-    @NotNull Builder broker(@NotNull Person.Builder person);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected Reservation(String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, Number totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myReservationId = reservationId;
-    myReservationStatus = reservationStatus;
-    myReservationFor = reservationFor;
-    myUnderName = underName;
-    myProvider = provider;
-    myBookingTime = bookingTime;
-    myModifiedTime = modifiedTime;
-    myProgramMembershipUsed = programMembershipUsed;
-    myReservedTicket = reservedTicket;
-    myTotalPrice = totalPrice;
-    myPriceCurrency = priceCurrency;
-    myBroker = broker;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myReservationId != null ? myReservationId.hashCode() : 0);
-    result = 31 * result + (myReservationStatus != null ? myReservationStatus.hashCode() : 0);
-    result = 31 * result + (myReservationFor != null ? myReservationFor.hashCode() : 0);
-    result = 31 * result + (myUnderName != null ? myUnderName.hashCode() : 0);
-    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
-    result = 31 * result + (myBookingTime != null ? myBookingTime.hashCode() : 0);
-    result = 31 * result + (myModifiedTime != null ? myModifiedTime.hashCode() : 0);
-    result = 31 * result + (myProgramMembershipUsed != null ? myProgramMembershipUsed.hashCode() : 0);
-    result = 31 * result + (myReservedTicket != null ? myReservedTicket.hashCode() : 0);
-    result = 31 * result + (myTotalPrice != null ? myTotalPrice.hashCode() : 0);
-    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
-    result = 31 * result + (myBroker != null ? myBroker.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Reservation reservation = (Reservation) o;
-    if (!super.equals(o)) return false;
-    if (myReservationId != null ? !myReservationId.equals(reservation.myReservationId) : reservation.myReservationId != null) return false;
-    if (myReservationStatus != null ? !myReservationStatus.equals(reservation.myReservationStatus) : reservation.myReservationStatus != null) return false;
-    if (myReservationFor != null ? !myReservationFor.equals(reservation.myReservationFor) : reservation.myReservationFor != null) return false;
-    if (myUnderName != null ? !myUnderName.equals(reservation.myUnderName) : reservation.myUnderName != null) return false;
-    if (myProvider != null ? !myProvider.equals(reservation.myProvider) : reservation.myProvider != null) return false;
-    if (myBookingTime != null ? !myBookingTime.equals(reservation.myBookingTime) : reservation.myBookingTime != null) return false;
-    if (myModifiedTime != null ? !myModifiedTime.equals(reservation.myModifiedTime) : reservation.myModifiedTime != null) return false;
-    if (myProgramMembershipUsed != null ? !myProgramMembershipUsed.equals(reservation.myProgramMembershipUsed) : reservation.myProgramMembershipUsed != null) return false;
-    if (myReservedTicket != null ? !myReservedTicket.equals(reservation.myReservedTicket) : reservation.myReservedTicket != null) return false;
-    if (myTotalPrice != null ? !myTotalPrice.equals(reservation.myTotalPrice) : reservation.myTotalPrice != null) return false;
-    if (myPriceCurrency != null ? !myPriceCurrency.equals(reservation.myPriceCurrency) : reservation.myPriceCurrency != null) return false;
-    if (myBroker != null ? !myBroker.equals(reservation.myBroker) : reservation.myBroker != null) return false;
-    return true;
-  }
-
+  
   private String myReservationId;
   private ReservationStatusType myReservationStatus;
   private Thing myReservationFor;

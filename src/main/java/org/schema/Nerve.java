@@ -20,44 +20,63 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * A common pathway for the electrochemical nerve impulses that are transmitted along each of the axons.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
+ * A common pathway for the electrochemical nerve impulses that are transmitted along each of the axons.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
  */
 public class Nerve extends AnatomicalStructure {
   /**
    * The branches that delineate from the nerve bundle.
    */
-  public AnatomicalStructure getBranch() {
-    return myBranch;
-  }
+  public AnatomicalStructure getBranch() { return myBranch; }
   /**
    * The neurological pathway extension that involves muscle control.
    */
-  public Muscle getNerveMotor() {
-    return myNerveMotor;
-  }
+  public Muscle getNerveMotor() { return myNerveMotor; }
   /**
    * The neurological pathway extension that inputs and sends information to the brain or spinal cord.
    */
-  public AnatomicalStructureOrSuperficialAnatomy getSensoryUnit() {
-    return mySensoryUnit;
-  }
+  public AnatomicalStructureOrSuperficialAnatomy getSensoryUnit() { return mySensoryUnit; }
   /**
    * The neurological pathway that originates the neurons.
    */
-  public BrainStructure getSourcedFrom() {
-    return mySourcedFrom;
+  public BrainStructure getSourcedFrom() { return mySourcedFrom; }
+  protected Nerve(AnatomicalStructure branch, Muscle nerveMotor, AnatomicalStructureOrSuperficialAnatomy sensoryUnit, BrainStructure sourcedFrom, String associatedPathophysiology, String bodyLocation, AnatomicalStructure connectedTo, ImageObject diagram, String function, IsPartOf partOfSystem, MedicalCondition relatedCondition, MedicalTherapy relatedTherapy, AnatomicalStructure subStructure, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myBranch = branch;
+    myNerveMotor = nerveMotor;
+    mySensoryUnit = sensoryUnit;
+    mySourcedFrom = sourcedFrom;
+    myBranch = branch;
+    myNerveMotor = nerveMotor;
+    mySensoryUnit = sensoryUnit;
+    mySourcedFrom = sourcedFrom;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myBranch != null ? myBranch.hashCode() : 0);
+    result = 31 * result + (myNerveMotor != null ? myNerveMotor.hashCode() : 0);
+    result = 31 * result + (mySensoryUnit != null ? mySensoryUnit.hashCode() : 0);
+    result = 31 * result + (mySourcedFrom != null ? mySourcedFrom.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Nerve nerve = (Nerve) o;
+    if (!super.equals(o)) return false;
+    if (myBranch != null ? !myBranch.equals(nerve.myBranch) : nerve.myBranch != null) return false;
+    if (myNerveMotor != null ? !myNerveMotor.equals(nerve.myNerveMotor) : nerve.myNerveMotor != null) return false;
+    if (mySensoryUnit != null ? !mySensoryUnit.equals(nerve.mySensoryUnit) : nerve.mySensoryUnit != null) return false;
+    if (mySourcedFrom != null ? !mySourcedFrom.equals(nerve.mySourcedFrom) : nerve.mySourcedFrom != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link Nerve}
    */
-  static final class NerveThingBuilder implements Builder {
-    /**
-     * Creates new {@link Nerve} instance.
-     */
+  public static class Builder implements ThingBuilder<Nerve> {
     public Nerve build() {
       return new Nerve(branch, nerveMotor, sensoryUnit, sourcedFrom, associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -322,33 +341,33 @@ public class Nerve extends AnatomicalStructure {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -357,66 +376,66 @@ public class Nerve extends AnatomicalStructure {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -464,7 +483,6 @@ public class Nerve extends AnatomicalStructure {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -531,86 +549,7 @@ public class Nerve extends AnatomicalStructure {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<Nerve> {
-    @NotNull Builder branch(@NotNull AnatomicalStructure anatomicalStructure);
-    @NotNull Builder branch(@NotNull AnatomicalStructure.Builder anatomicalStructure);
-    @NotNull Builder nerveMotor(@NotNull Muscle muscle);
-    @NotNull Builder nerveMotor(@NotNull Muscle.Builder muscle);
-    @NotNull Builder sensoryUnit(@NotNull AnatomicalStructure anatomicalStructure);
-    @NotNull Builder sensoryUnit(@NotNull AnatomicalStructure.Builder anatomicalStructure);
-    @NotNull Builder sensoryUnit(@NotNull SuperficialAnatomy superficialAnatomy);
-    @NotNull Builder sensoryUnit(@NotNull SuperficialAnatomy.Builder superficialAnatomy);
-    @NotNull Builder sourcedFrom(@NotNull BrainStructure brainStructure);
-    @NotNull Builder sourcedFrom(@NotNull BrainStructure.Builder brainStructure);
-    @NotNull Builder associatedPathophysiology(@NotNull String associatedPathophysiology);
-    @NotNull Builder bodyLocation(@NotNull String bodyLocation);
-    @NotNull Builder connectedTo(@NotNull AnatomicalStructure anatomicalStructure);
-    @NotNull Builder connectedTo(@NotNull AnatomicalStructure.Builder anatomicalStructure);
-    @NotNull Builder diagram(@NotNull ImageObject imageObject);
-    @NotNull Builder diagram(@NotNull ImageObject.Builder imageObject);
-    @NotNull Builder function(@NotNull String function);
-    @NotNull Builder partOfSystem(@NotNull IsPartOf isPartOf);
-    @NotNull Builder relatedCondition(@NotNull MedicalCondition medicalCondition);
-    @NotNull Builder relatedCondition(@NotNull MedicalCondition.Builder medicalCondition);
-    @NotNull Builder relatedTherapy(@NotNull MedicalTherapy medicalTherapy);
-    @NotNull Builder relatedTherapy(@NotNull MedicalTherapy.Builder medicalTherapy);
-    @NotNull Builder subStructure(@NotNull AnatomicalStructure anatomicalStructure);
-    @NotNull Builder subStructure(@NotNull AnatomicalStructure.Builder anatomicalStructure);
-    @NotNull Builder code(@NotNull MedicalCode medicalCode);
-    @NotNull Builder code(@NotNull MedicalCode.Builder medicalCode);
-    @NotNull Builder guideline(@NotNull MedicalGuideline medicalGuideline);
-    @NotNull Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem medicineSystem);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem);
-    @NotNull Builder recognizingAuthority(@NotNull Organization organization);
-    @NotNull Builder recognizingAuthority(@NotNull Organization.Builder organization);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty);
-    @NotNull Builder study(@NotNull MedicalStudy medicalStudy);
-    @NotNull Builder study(@NotNull MedicalStudy.Builder medicalStudy);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected Nerve(AnatomicalStructure branch, Muscle nerveMotor, AnatomicalStructureOrSuperficialAnatomy sensoryUnit, BrainStructure sourcedFrom, String associatedPathophysiology, String bodyLocation, AnatomicalStructure connectedTo, ImageObject diagram, String function, IsPartOf partOfSystem, MedicalCondition relatedCondition, MedicalTherapy relatedTherapy, AnatomicalStructure subStructure, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myBranch = branch;
-    myNerveMotor = nerveMotor;
-    mySensoryUnit = sensoryUnit;
-    mySourcedFrom = sourcedFrom;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myBranch != null ? myBranch.hashCode() : 0);
-    result = 31 * result + (myNerveMotor != null ? myNerveMotor.hashCode() : 0);
-    result = 31 * result + (mySensoryUnit != null ? mySensoryUnit.hashCode() : 0);
-    result = 31 * result + (mySourcedFrom != null ? mySourcedFrom.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Nerve nerve = (Nerve) o;
-    if (!super.equals(o)) return false;
-    if (myBranch != null ? !myBranch.equals(nerve.myBranch) : nerve.myBranch != null) return false;
-    if (myNerveMotor != null ? !myNerveMotor.equals(nerve.myNerveMotor) : nerve.myNerveMotor != null) return false;
-    if (mySensoryUnit != null ? !mySensoryUnit.equals(nerve.mySensoryUnit) : nerve.mySensoryUnit != null) return false;
-    if (mySourcedFrom != null ? !mySourcedFrom.equals(nerve.mySourcedFrom) : nerve.mySourcedFrom != null) return false;
-    return true;
-  }
-
+  
   private AnatomicalStructure myBranch;
   private Muscle myNerveMotor;
   private AnatomicalStructureOrSuperficialAnatomy mySensoryUnit;

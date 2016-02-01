@@ -18,13 +18,15 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class AnatomicalStructureOrSuperficialAnatomy {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
+  public AnatomicalStructure getAnatomicalStructure() { return myAnatomicalStructure; }
+  void setSuperficialAnatomy(SuperficialAnatomy superficialAnatomy) { clear(); mySuperficialAnatomy = superficialAnatomy; }
+  public SuperficialAnatomy getSuperficialAnatomy() { return mySuperficialAnatomy; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myAnatomicalStructure != null) return myAnatomicalStructure;
     if (mySuperficialAnatomy != null) return mySuperficialAnatomy;
     return null;
@@ -34,24 +36,16 @@ public class AnatomicalStructureOrSuperficialAnatomy {
     if (mySuperficialAnatomy != null) return mySuperficialAnatomy;
     return null;
   }
-  void setAnatomicalStructure(AnatomicalStructure anatomicalStructure) { clear(); myAnatomicalStructure = anatomicalStructure; }
-  public AnatomicalStructure getAnatomicalStructure() { return myAnatomicalStructure; }
-  private AnatomicalStructure myAnatomicalStructure;
-  void setSuperficialAnatomy(SuperficialAnatomy superficialAnatomy) { clear(); mySuperficialAnatomy = superficialAnatomy; }
-  public SuperficialAnatomy getSuperficialAnatomy() { return mySuperficialAnatomy; }
-  private SuperficialAnatomy mySuperficialAnatomy;
-  private void clear() {
+  public void clear() {
     myAnatomicalStructure = null;
     mySuperficialAnatomy = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myAnatomicalStructure != null ? myAnatomicalStructure.hashCode() : 0);
     result = 31 * result + (mySuperficialAnatomy != null ? mySuperficialAnatomy.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -60,5 +54,6 @@ public class AnatomicalStructureOrSuperficialAnatomy {
     if (mySuperficialAnatomy != null ? !mySuperficialAnatomy.equals(anatomicalStructureOrSuperficialAnatomy.mySuperficialAnatomy) : anatomicalStructureOrSuperficialAnatomy.mySuperficialAnatomy != null) return false;
     return true;
   }
-
+  private AnatomicalStructure myAnatomicalStructure;
+  private SuperficialAnatomy mySuperficialAnatomy;
 }

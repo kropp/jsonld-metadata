@@ -18,35 +18,29 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class PropertyValueOrString {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setPropertyValue(PropertyValue propertyValue) { clear(); myPropertyValue = propertyValue; }
+  public PropertyValue getPropertyValue() { return myPropertyValue; }
+  void setString(String value) { clear(); myString = value; }
+  public String getString() { return myString; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myPropertyValue != null) return myPropertyValue;
     if (myString != null) return myString;
     return null;
   }
-  void setPropertyValue(PropertyValue propertyValue) { clear(); myPropertyValue = propertyValue; }
-  public PropertyValue getPropertyValue() { return myPropertyValue; }
-  private PropertyValue myPropertyValue;
-  void setString(String value) { clear(); myString = value; }
-  public String getString() { return myString; }
-  private String myString;
-  private void clear() {
+  public void clear() {
     myPropertyValue = null;
     myString = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myPropertyValue != null ? myPropertyValue.hashCode() : 0);
     result = 31 * result + (myString != null ? myString.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -55,5 +49,6 @@ public class PropertyValueOrString {
     if (myString != null ? !myString.equals(propertyValueOrString.myString) : propertyValueOrString.myString != null) return false;
     return true;
   }
-
+  private PropertyValue myPropertyValue;
+  private String myString;
 }

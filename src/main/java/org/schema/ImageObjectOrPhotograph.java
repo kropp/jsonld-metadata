@@ -18,13 +18,15 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ImageObjectOrPhotograph {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setImageObject(ImageObject imageObject) { clear(); myImageObject = imageObject; }
+  public ImageObject getImageObject() { return myImageObject; }
+  void setPhotograph(Photograph photograph) { clear(); myPhotograph = photograph; }
+  public Photograph getPhotograph() { return myPhotograph; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myImageObject != null) return myImageObject;
     if (myPhotograph != null) return myPhotograph;
     return null;
@@ -34,24 +36,16 @@ public class ImageObjectOrPhotograph {
     if (myPhotograph != null) return myPhotograph;
     return null;
   }
-  void setImageObject(ImageObject imageObject) { clear(); myImageObject = imageObject; }
-  public ImageObject getImageObject() { return myImageObject; }
-  private ImageObject myImageObject;
-  void setPhotograph(Photograph photograph) { clear(); myPhotograph = photograph; }
-  public Photograph getPhotograph() { return myPhotograph; }
-  private Photograph myPhotograph;
-  private void clear() {
+  public void clear() {
     myImageObject = null;
     myPhotograph = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myImageObject != null ? myImageObject.hashCode() : 0);
     result = 31 * result + (myPhotograph != null ? myPhotograph.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -60,5 +54,6 @@ public class ImageObjectOrPhotograph {
     if (myPhotograph != null ? !myPhotograph.equals(imageObjectOrPhotograph.myPhotograph) : imageObjectOrPhotograph.myPhotograph != null) return false;
     return true;
   }
-
+  private ImageObject myImageObject;
+  private Photograph myPhotograph;
 }

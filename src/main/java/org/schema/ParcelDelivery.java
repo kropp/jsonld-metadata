@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The delivery of a parcel either via the postal service or a commercial service.
@@ -29,78 +29,112 @@ public class ParcelDelivery extends Intangible {
   /**
    * Destination address.
    */
-  public PostalAddress getDeliveryAddress() {
-    return myDeliveryAddress;
-  }
+  public PostalAddress getDeliveryAddress() { return myDeliveryAddress; }
   /**
    * New entry added as the package passes through each leg of its journey (from shipment to final delivery).
    */
-  public DeliveryEvent getDeliveryStatus() {
-    return myDeliveryStatus;
-  }
+  public DeliveryEvent getDeliveryStatus() { return myDeliveryStatus; }
   /**
    * The earliest date the package may arrive.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getExpectedArrivalFrom() {
-    return myExpectedArrivalFrom;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getExpectedArrivalFrom() { return myExpectedArrivalFrom; }
   /**
    * The latest date the package may arrive.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getExpectedArrivalUntil() {
-    return myExpectedArrivalUntil;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getExpectedArrivalUntil() { return myExpectedArrivalUntil; }
   /**
    * Method used for delivery or shipping.
    */
-  public DeliveryMethod getHasDeliveryMethod() {
-    return myHasDeliveryMethod;
-  }
+  public DeliveryMethod getHasDeliveryMethod() { return myHasDeliveryMethod; }
   /**
    * Item(s) being shipped.
    */
-  public Product getItemShipped() {
-    return myItemShipped;
-  }
+  public Product getItemShipped() { return myItemShipped; }
   /**
    * Shipper's address.
    */
-  public PostalAddress getOriginAddress() {
-    return myOriginAddress;
-  }
+  public PostalAddress getOriginAddress() { return myOriginAddress; }
   /**
    * The overall order the items in this delivery were included in.
    */
-  public IsPartOf getPartOfOrder() {
-    return myPartOfOrder;
-  }
+  public IsPartOf getPartOfOrder() { return myPartOfOrder; }
   /**
    * Shipper tracking number.
    */
-  public String getTrackingNumber() {
-    return myTrackingNumber;
-  }
+  public String getTrackingNumber() { return myTrackingNumber; }
   /**
    * Tracking url for the parcel delivery.
    */
-  public String getTrackingUrl() {
-    return myTrackingUrl;
-  }
+  public String getTrackingUrl() { return myTrackingUrl; }
   /**
    * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
    */
-  public OrganizationOrPerson getProvider() {
-    return myProvider;
+  public OrganizationOrPerson getProvider() { return myProvider; }
+  protected ParcelDelivery(PostalAddress deliveryAddress, DeliveryEvent deliveryStatus, java.util.Date expectedArrivalFrom, java.util.Date expectedArrivalUntil, DeliveryMethod hasDeliveryMethod, Product itemShipped, PostalAddress originAddress, IsPartOf partOfOrder, String trackingNumber, String trackingUrl, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myDeliveryAddress = deliveryAddress;
+    myDeliveryStatus = deliveryStatus;
+    myExpectedArrivalFrom = expectedArrivalFrom;
+    myExpectedArrivalUntil = expectedArrivalUntil;
+    myHasDeliveryMethod = hasDeliveryMethod;
+    myItemShipped = itemShipped;
+    myOriginAddress = originAddress;
+    myPartOfOrder = partOfOrder;
+    myTrackingNumber = trackingNumber;
+    myTrackingUrl = trackingUrl;
+    myProvider = provider;
+    myDeliveryAddress = deliveryAddress;
+    myDeliveryStatus = deliveryStatus;
+    myExpectedArrivalFrom = expectedArrivalFrom;
+    myExpectedArrivalUntil = expectedArrivalUntil;
+    myHasDeliveryMethod = hasDeliveryMethod;
+    myItemShipped = itemShipped;
+    myOriginAddress = originAddress;
+    myPartOfOrder = partOfOrder;
+    myTrackingNumber = trackingNumber;
+    myTrackingUrl = trackingUrl;
+    myProvider = provider;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myDeliveryAddress != null ? myDeliveryAddress.hashCode() : 0);
+    result = 31 * result + (myDeliveryStatus != null ? myDeliveryStatus.hashCode() : 0);
+    result = 31 * result + (myExpectedArrivalFrom != null ? myExpectedArrivalFrom.hashCode() : 0);
+    result = 31 * result + (myExpectedArrivalUntil != null ? myExpectedArrivalUntil.hashCode() : 0);
+    result = 31 * result + (myHasDeliveryMethod != null ? myHasDeliveryMethod.hashCode() : 0);
+    result = 31 * result + (myItemShipped != null ? myItemShipped.hashCode() : 0);
+    result = 31 * result + (myOriginAddress != null ? myOriginAddress.hashCode() : 0);
+    result = 31 * result + (myPartOfOrder != null ? myPartOfOrder.hashCode() : 0);
+    result = 31 * result + (myTrackingNumber != null ? myTrackingNumber.hashCode() : 0);
+    result = 31 * result + (myTrackingUrl != null ? myTrackingUrl.hashCode() : 0);
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ParcelDelivery parcelDelivery = (ParcelDelivery) o;
+    if (!super.equals(o)) return false;
+    if (myDeliveryAddress != null ? !myDeliveryAddress.equals(parcelDelivery.myDeliveryAddress) : parcelDelivery.myDeliveryAddress != null) return false;
+    if (myDeliveryStatus != null ? !myDeliveryStatus.equals(parcelDelivery.myDeliveryStatus) : parcelDelivery.myDeliveryStatus != null) return false;
+    if (myExpectedArrivalFrom != null ? !myExpectedArrivalFrom.equals(parcelDelivery.myExpectedArrivalFrom) : parcelDelivery.myExpectedArrivalFrom != null) return false;
+    if (myExpectedArrivalUntil != null ? !myExpectedArrivalUntil.equals(parcelDelivery.myExpectedArrivalUntil) : parcelDelivery.myExpectedArrivalUntil != null) return false;
+    if (myHasDeliveryMethod != null ? !myHasDeliveryMethod.equals(parcelDelivery.myHasDeliveryMethod) : parcelDelivery.myHasDeliveryMethod != null) return false;
+    if (myItemShipped != null ? !myItemShipped.equals(parcelDelivery.myItemShipped) : parcelDelivery.myItemShipped != null) return false;
+    if (myOriginAddress != null ? !myOriginAddress.equals(parcelDelivery.myOriginAddress) : parcelDelivery.myOriginAddress != null) return false;
+    if (myPartOfOrder != null ? !myPartOfOrder.equals(parcelDelivery.myPartOfOrder) : parcelDelivery.myPartOfOrder != null) return false;
+    if (myTrackingNumber != null ? !myTrackingNumber.equals(parcelDelivery.myTrackingNumber) : parcelDelivery.myTrackingNumber != null) return false;
+    if (myTrackingUrl != null ? !myTrackingUrl.equals(parcelDelivery.myTrackingUrl) : parcelDelivery.myTrackingUrl != null) return false;
+    if (myProvider != null ? !myProvider.equals(parcelDelivery.myProvider) : parcelDelivery.myProvider != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link ParcelDelivery}
    */
-  static final class ParcelDeliveryThingBuilder implements Builder {
-    /**
-     * Creates new {@link ParcelDelivery} instance.
-     */
+  public static class Builder implements ThingBuilder<ParcelDelivery> {
     public ParcelDelivery build() {
       return new ParcelDelivery(deliveryAddress, deliveryStatus, expectedArrivalFrom, expectedArrivalUntil, hasDeliveryMethod, itemShipped, originAddress, partOfOrder, trackingNumber, trackingUrl, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -255,33 +289,33 @@ public class ParcelDelivery extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -290,66 +324,66 @@ public class ParcelDelivery extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -397,7 +431,6 @@ public class ParcelDelivery extends Intangible {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -448,90 +481,7 @@ public class ParcelDelivery extends Intangible {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<ParcelDelivery> {
-    @NotNull Builder deliveryAddress(@NotNull PostalAddress postalAddress);
-    @NotNull Builder deliveryAddress(@NotNull PostalAddress.Builder postalAddress);
-    @NotNull Builder deliveryStatus(@NotNull DeliveryEvent deliveryEvent);
-    @NotNull Builder deliveryStatus(@NotNull DeliveryEvent.Builder deliveryEvent);
-    @NotNull Builder expectedArrivalFrom(@NotNull java.util.Date date);
-    @NotNull Builder expectedArrivalUntil(@NotNull java.util.Date date);
-    @NotNull Builder hasDeliveryMethod(@NotNull DeliveryMethod deliveryMethod);
-    @NotNull Builder hasDeliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod);
-    @NotNull Builder itemShipped(@NotNull Product product);
-    @NotNull Builder itemShipped(@NotNull Product.Builder product);
-    @NotNull Builder originAddress(@NotNull PostalAddress postalAddress);
-    @NotNull Builder originAddress(@NotNull PostalAddress.Builder postalAddress);
-    @NotNull Builder partOfOrder(@NotNull IsPartOf isPartOf);
-    @NotNull Builder trackingNumber(@NotNull String trackingNumber);
-    @NotNull Builder trackingUrl(@NotNull String trackingUrl);
-    @NotNull Builder provider(@NotNull Organization organization);
-    @NotNull Builder provider(@NotNull Organization.Builder organization);
-    @NotNull Builder provider(@NotNull Person person);
-    @NotNull Builder provider(@NotNull Person.Builder person);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected ParcelDelivery(PostalAddress deliveryAddress, DeliveryEvent deliveryStatus, java.util.Date expectedArrivalFrom, java.util.Date expectedArrivalUntil, DeliveryMethod hasDeliveryMethod, Product itemShipped, PostalAddress originAddress, IsPartOf partOfOrder, String trackingNumber, String trackingUrl, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myDeliveryAddress = deliveryAddress;
-    myDeliveryStatus = deliveryStatus;
-    myExpectedArrivalFrom = expectedArrivalFrom;
-    myExpectedArrivalUntil = expectedArrivalUntil;
-    myHasDeliveryMethod = hasDeliveryMethod;
-    myItemShipped = itemShipped;
-    myOriginAddress = originAddress;
-    myPartOfOrder = partOfOrder;
-    myTrackingNumber = trackingNumber;
-    myTrackingUrl = trackingUrl;
-    myProvider = provider;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myDeliveryAddress != null ? myDeliveryAddress.hashCode() : 0);
-    result = 31 * result + (myDeliveryStatus != null ? myDeliveryStatus.hashCode() : 0);
-    result = 31 * result + (myExpectedArrivalFrom != null ? myExpectedArrivalFrom.hashCode() : 0);
-    result = 31 * result + (myExpectedArrivalUntil != null ? myExpectedArrivalUntil.hashCode() : 0);
-    result = 31 * result + (myHasDeliveryMethod != null ? myHasDeliveryMethod.hashCode() : 0);
-    result = 31 * result + (myItemShipped != null ? myItemShipped.hashCode() : 0);
-    result = 31 * result + (myOriginAddress != null ? myOriginAddress.hashCode() : 0);
-    result = 31 * result + (myPartOfOrder != null ? myPartOfOrder.hashCode() : 0);
-    result = 31 * result + (myTrackingNumber != null ? myTrackingNumber.hashCode() : 0);
-    result = 31 * result + (myTrackingUrl != null ? myTrackingUrl.hashCode() : 0);
-    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ParcelDelivery parcelDelivery = (ParcelDelivery) o;
-    if (!super.equals(o)) return false;
-    if (myDeliveryAddress != null ? !myDeliveryAddress.equals(parcelDelivery.myDeliveryAddress) : parcelDelivery.myDeliveryAddress != null) return false;
-    if (myDeliveryStatus != null ? !myDeliveryStatus.equals(parcelDelivery.myDeliveryStatus) : parcelDelivery.myDeliveryStatus != null) return false;
-    if (myExpectedArrivalFrom != null ? !myExpectedArrivalFrom.equals(parcelDelivery.myExpectedArrivalFrom) : parcelDelivery.myExpectedArrivalFrom != null) return false;
-    if (myExpectedArrivalUntil != null ? !myExpectedArrivalUntil.equals(parcelDelivery.myExpectedArrivalUntil) : parcelDelivery.myExpectedArrivalUntil != null) return false;
-    if (myHasDeliveryMethod != null ? !myHasDeliveryMethod.equals(parcelDelivery.myHasDeliveryMethod) : parcelDelivery.myHasDeliveryMethod != null) return false;
-    if (myItemShipped != null ? !myItemShipped.equals(parcelDelivery.myItemShipped) : parcelDelivery.myItemShipped != null) return false;
-    if (myOriginAddress != null ? !myOriginAddress.equals(parcelDelivery.myOriginAddress) : parcelDelivery.myOriginAddress != null) return false;
-    if (myPartOfOrder != null ? !myPartOfOrder.equals(parcelDelivery.myPartOfOrder) : parcelDelivery.myPartOfOrder != null) return false;
-    if (myTrackingNumber != null ? !myTrackingNumber.equals(parcelDelivery.myTrackingNumber) : parcelDelivery.myTrackingNumber != null) return false;
-    if (myTrackingUrl != null ? !myTrackingUrl.equals(parcelDelivery.myTrackingUrl) : parcelDelivery.myTrackingUrl != null) return false;
-    if (myProvider != null ? !myProvider.equals(parcelDelivery.myProvider) : parcelDelivery.myProvider != null) return false;
-    return true;
-  }
-
+  
   private PostalAddress myDeliveryAddress;
   private DeliveryEvent myDeliveryStatus;
   private java.util.Date myExpectedArrivalFrom;

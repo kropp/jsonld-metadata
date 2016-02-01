@@ -20,45 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * Indicates the usage of the car as a taxi.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
+ * Indicates the usage of the car as a taxi.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
  */
 public class TaxiVehicleUsage {
-  /**
-   * Builder for {@link TaxiVehicleUsage}
-   */
-  static final class TaxiVehicleUsageThingBuilder implements Builder {
-    /**
-     * Creates new {@link TaxiVehicleUsage} instance.
-     */
-    public TaxiVehicleUsage build() {
-      return new TaxiVehicleUsage();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<TaxiVehicleUsage> {
-    
-  }
-
   protected TaxiVehicleUsage() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -66,5 +39,21 @@ public class TaxiVehicleUsage {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link TaxiVehicleUsage}
+   */
+  public static class Builder implements ThingBuilder<TaxiVehicleUsage> {
+    public TaxiVehicleUsage build() {
+      return new TaxiVehicleUsage();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

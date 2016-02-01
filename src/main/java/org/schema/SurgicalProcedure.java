@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A type of medical procedure that involves invasive surgical techniques.
  */
 public class SurgicalProcedure {
-  /**
-   * Builder for {@link SurgicalProcedure}
-   */
-  static final class SurgicalProcedureThingBuilder implements Builder {
-    /**
-     * Creates new {@link SurgicalProcedure} instance.
-     */
-    public SurgicalProcedure build() {
-      return new SurgicalProcedure();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<SurgicalProcedure> {
-    
-  }
-
   protected SurgicalProcedure() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class SurgicalProcedure {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link SurgicalProcedure}
+   */
+  public static class Builder implements ThingBuilder<SurgicalProcedure> {
+    public SurgicalProcedure build() {
+      return new SurgicalProcedure();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

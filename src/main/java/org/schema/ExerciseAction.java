@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The act of participating in exertive activity for the purposes of improving health and fitness.
@@ -29,76 +29,110 @@ public class ExerciseAction extends PlayAction {
   /**
    * A sub property of location. The course where this action was taken.
    */
-  public Place getExerciseCourse() {
-    return myExerciseCourse;
-  }
+  public Place getExerciseCourse() { return myExerciseCourse; }
   /**
    * A sub property of instrument. The diet used in this action.
    */
-  public Diet getExerciseRelatedDiet() {
-    return myExerciseRelatedDiet;
-  }
+  public Diet getExerciseRelatedDiet() { return myExerciseRelatedDiet; }
   /**
    * The distance travelled, e.g. exercising or travelling.
    */
-  public Distance getDistance() {
-    return myDistance;
-  }
+  public Distance getDistance() { return myDistance; }
   /**
    * A sub property of instrument. The exercise plan used on this action.
    */
-  public ExercisePlan getExercisePlan() {
-    return myExercisePlan;
-  }
+  public ExercisePlan getExercisePlan() { return myExercisePlan; }
   /**
    * Type(s) of exercise or activity, such as strength training, flexibility training, aerobics, cardiac rehabilitation, etc.
    */
-  public String getExerciseType() {
-    return myExerciseType;
-  }
+  public String getExerciseType() { return myExerciseType; }
   /**
    * A sub property of location. The original location of the object or the agent before the action.
    */
-  public Place getFromLocation() {
-    return myFromLocation;
-  }
+  public Place getFromLocation() { return myFromLocation; }
   /**
    * A sub property of participant. The opponent on this action.
    */
-  public Person getOpponent() {
-    return myOpponent;
-  }
+  public Person getOpponent() { return myOpponent; }
   /**
    * A sub property of location. The sports activity location where this action occurred.
    */
-  public SportsActivityLocation getSportsActivityLocation() {
-    return mySportsActivityLocation;
-  }
+  public SportsActivityLocation getSportsActivityLocation() { return mySportsActivityLocation; }
   /**
    * A sub property of location. The sports event where this action occurred.
    */
-  public SportsEvent getSportsEvent() {
-    return mySportsEvent;
-  }
+  public SportsEvent getSportsEvent() { return mySportsEvent; }
   /**
    * A sub property of participant. The sports team that participated on this action.
    */
-  public SportsTeam getSportsTeam() {
-    return mySportsTeam;
-  }
+  public SportsTeam getSportsTeam() { return mySportsTeam; }
   /**
    * A sub property of location. The final location of the object or the agent after the action.
    */
-  public Place getToLocation() {
-    return myToLocation;
+  public Place getToLocation() { return myToLocation; }
+  protected ExerciseAction(Place exerciseCourse, Diet exerciseRelatedDiet, Distance distance, ExercisePlan exercisePlan, String exerciseType, Place fromLocation, Person opponent, SportsActivityLocation sportsActivityLocation, SportsEvent sportsEvent, SportsTeam sportsTeam, Place toLocation, Audience audience, Event event, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(audience, event, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myExerciseCourse = exerciseCourse;
+    myExerciseRelatedDiet = exerciseRelatedDiet;
+    myDistance = distance;
+    myExercisePlan = exercisePlan;
+    myExerciseType = exerciseType;
+    myFromLocation = fromLocation;
+    myOpponent = opponent;
+    mySportsActivityLocation = sportsActivityLocation;
+    mySportsEvent = sportsEvent;
+    mySportsTeam = sportsTeam;
+    myToLocation = toLocation;
+    myExerciseCourse = exerciseCourse;
+    myExerciseRelatedDiet = exerciseRelatedDiet;
+    myDistance = distance;
+    myExercisePlan = exercisePlan;
+    myExerciseType = exerciseType;
+    myFromLocation = fromLocation;
+    myOpponent = opponent;
+    mySportsActivityLocation = sportsActivityLocation;
+    mySportsEvent = sportsEvent;
+    mySportsTeam = sportsTeam;
+    myToLocation = toLocation;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myExerciseCourse != null ? myExerciseCourse.hashCode() : 0);
+    result = 31 * result + (myExerciseRelatedDiet != null ? myExerciseRelatedDiet.hashCode() : 0);
+    result = 31 * result + (myDistance != null ? myDistance.hashCode() : 0);
+    result = 31 * result + (myExercisePlan != null ? myExercisePlan.hashCode() : 0);
+    result = 31 * result + (myExerciseType != null ? myExerciseType.hashCode() : 0);
+    result = 31 * result + (myFromLocation != null ? myFromLocation.hashCode() : 0);
+    result = 31 * result + (myOpponent != null ? myOpponent.hashCode() : 0);
+    result = 31 * result + (mySportsActivityLocation != null ? mySportsActivityLocation.hashCode() : 0);
+    result = 31 * result + (mySportsEvent != null ? mySportsEvent.hashCode() : 0);
+    result = 31 * result + (mySportsTeam != null ? mySportsTeam.hashCode() : 0);
+    result = 31 * result + (myToLocation != null ? myToLocation.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ExerciseAction exerciseAction = (ExerciseAction) o;
+    if (!super.equals(o)) return false;
+    if (myExerciseCourse != null ? !myExerciseCourse.equals(exerciseAction.myExerciseCourse) : exerciseAction.myExerciseCourse != null) return false;
+    if (myExerciseRelatedDiet != null ? !myExerciseRelatedDiet.equals(exerciseAction.myExerciseRelatedDiet) : exerciseAction.myExerciseRelatedDiet != null) return false;
+    if (myDistance != null ? !myDistance.equals(exerciseAction.myDistance) : exerciseAction.myDistance != null) return false;
+    if (myExercisePlan != null ? !myExercisePlan.equals(exerciseAction.myExercisePlan) : exerciseAction.myExercisePlan != null) return false;
+    if (myExerciseType != null ? !myExerciseType.equals(exerciseAction.myExerciseType) : exerciseAction.myExerciseType != null) return false;
+    if (myFromLocation != null ? !myFromLocation.equals(exerciseAction.myFromLocation) : exerciseAction.myFromLocation != null) return false;
+    if (myOpponent != null ? !myOpponent.equals(exerciseAction.myOpponent) : exerciseAction.myOpponent != null) return false;
+    if (mySportsActivityLocation != null ? !mySportsActivityLocation.equals(exerciseAction.mySportsActivityLocation) : exerciseAction.mySportsActivityLocation != null) return false;
+    if (mySportsEvent != null ? !mySportsEvent.equals(exerciseAction.mySportsEvent) : exerciseAction.mySportsEvent != null) return false;
+    if (mySportsTeam != null ? !mySportsTeam.equals(exerciseAction.mySportsTeam) : exerciseAction.mySportsTeam != null) return false;
+    if (myToLocation != null ? !myToLocation.equals(exerciseAction.myToLocation) : exerciseAction.myToLocation != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link ExerciseAction}
    */
-  static final class ExerciseActionThingBuilder implements Builder {
-    /**
-     * Creates new {@link ExerciseAction} instance.
-     */
+  public static class Builder implements ThingBuilder<ExerciseAction> {
     public ExerciseAction build() {
       return new ExerciseAction(exerciseCourse, exerciseRelatedDiet, distance, exercisePlan, exerciseType, fromLocation, opponent, sportsActivityLocation, sportsEvent, sportsTeam, toLocation, audience, event, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -295,8 +329,8 @@ public class ExerciseAction extends PlayAction {
     }
     /**
      * The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to *December*.
-
-Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+     * 
+     * Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
     @NotNull public Builder endTime(@NotNull java.util.Date date) {
       this.endTime = date;
@@ -304,8 +338,8 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     }
     /**
      * The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from *January* to December.
-
-Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
+     * 
+     * Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
     @NotNull public Builder startTime(@NotNull java.util.Date date) {
       this.startTime = date;
@@ -373,33 +407,33 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -408,66 +442,66 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -515,7 +549,6 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -582,108 +615,7 @@ Note that Event uses startDate/endDate instead of startTime/endTime, even when d
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<ExerciseAction> {
-    @NotNull Builder exerciseCourse(@NotNull Place place);
-    @NotNull Builder exerciseCourse(@NotNull Place.Builder place);
-    @NotNull Builder exerciseRelatedDiet(@NotNull Diet diet);
-    @NotNull Builder exerciseRelatedDiet(@NotNull Diet.Builder diet);
-    @NotNull Builder distance(@NotNull Distance distance);
-    @NotNull Builder distance(@NotNull Distance.Builder distance);
-    @NotNull Builder exercisePlan(@NotNull ExercisePlan exercisePlan);
-    @NotNull Builder exercisePlan(@NotNull ExercisePlan.Builder exercisePlan);
-    @NotNull Builder exerciseType(@NotNull String exerciseType);
-    @NotNull Builder fromLocation(@NotNull Place place);
-    @NotNull Builder fromLocation(@NotNull Place.Builder place);
-    @NotNull Builder opponent(@NotNull Person person);
-    @NotNull Builder opponent(@NotNull Person.Builder person);
-    @NotNull Builder sportsActivityLocation(@NotNull SportsActivityLocation sportsActivityLocation);
-    @NotNull Builder sportsActivityLocation(@NotNull SportsActivityLocation.Builder sportsActivityLocation);
-    @NotNull Builder sportsEvent(@NotNull SportsEvent sportsEvent);
-    @NotNull Builder sportsEvent(@NotNull SportsEvent.Builder sportsEvent);
-    @NotNull Builder sportsTeam(@NotNull SportsTeam sportsTeam);
-    @NotNull Builder sportsTeam(@NotNull SportsTeam.Builder sportsTeam);
-    @NotNull Builder toLocation(@NotNull Place place);
-    @NotNull Builder toLocation(@NotNull Place.Builder place);
-    @NotNull Builder audience(@NotNull Audience audience);
-    @NotNull Builder audience(@NotNull Audience.Builder audience);
-    @NotNull Builder event(@NotNull Event event);
-    @NotNull Builder event(@NotNull Event.Builder event);
-    @NotNull Builder agent(@NotNull Organization organization);
-    @NotNull Builder agent(@NotNull Organization.Builder organization);
-    @NotNull Builder agent(@NotNull Person person);
-    @NotNull Builder agent(@NotNull Person.Builder person);
-    @NotNull Builder endTime(@NotNull java.util.Date date);
-    @NotNull Builder startTime(@NotNull java.util.Date date);
-    @NotNull Builder actionStatus(@NotNull ActionStatusType actionStatusType);
-    @NotNull Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType);
-    @NotNull Builder error(@NotNull Thing thing);
-    @NotNull Builder error(@NotNull Thing.Builder thing);
-    @NotNull Builder target(@NotNull EntryPoint entryPoint);
-    @NotNull Builder target(@NotNull EntryPoint.Builder entryPoint);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected ExerciseAction(Place exerciseCourse, Diet exerciseRelatedDiet, Distance distance, ExercisePlan exercisePlan, String exerciseType, Place fromLocation, Person opponent, SportsActivityLocation sportsActivityLocation, SportsEvent sportsEvent, SportsTeam sportsTeam, Place toLocation, Audience audience, Event event, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(audience, event, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myExerciseCourse = exerciseCourse;
-    myExerciseRelatedDiet = exerciseRelatedDiet;
-    myDistance = distance;
-    myExercisePlan = exercisePlan;
-    myExerciseType = exerciseType;
-    myFromLocation = fromLocation;
-    myOpponent = opponent;
-    mySportsActivityLocation = sportsActivityLocation;
-    mySportsEvent = sportsEvent;
-    mySportsTeam = sportsTeam;
-    myToLocation = toLocation;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myExerciseCourse != null ? myExerciseCourse.hashCode() : 0);
-    result = 31 * result + (myExerciseRelatedDiet != null ? myExerciseRelatedDiet.hashCode() : 0);
-    result = 31 * result + (myDistance != null ? myDistance.hashCode() : 0);
-    result = 31 * result + (myExercisePlan != null ? myExercisePlan.hashCode() : 0);
-    result = 31 * result + (myExerciseType != null ? myExerciseType.hashCode() : 0);
-    result = 31 * result + (myFromLocation != null ? myFromLocation.hashCode() : 0);
-    result = 31 * result + (myOpponent != null ? myOpponent.hashCode() : 0);
-    result = 31 * result + (mySportsActivityLocation != null ? mySportsActivityLocation.hashCode() : 0);
-    result = 31 * result + (mySportsEvent != null ? mySportsEvent.hashCode() : 0);
-    result = 31 * result + (mySportsTeam != null ? mySportsTeam.hashCode() : 0);
-    result = 31 * result + (myToLocation != null ? myToLocation.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ExerciseAction exerciseAction = (ExerciseAction) o;
-    if (!super.equals(o)) return false;
-    if (myExerciseCourse != null ? !myExerciseCourse.equals(exerciseAction.myExerciseCourse) : exerciseAction.myExerciseCourse != null) return false;
-    if (myExerciseRelatedDiet != null ? !myExerciseRelatedDiet.equals(exerciseAction.myExerciseRelatedDiet) : exerciseAction.myExerciseRelatedDiet != null) return false;
-    if (myDistance != null ? !myDistance.equals(exerciseAction.myDistance) : exerciseAction.myDistance != null) return false;
-    if (myExercisePlan != null ? !myExercisePlan.equals(exerciseAction.myExercisePlan) : exerciseAction.myExercisePlan != null) return false;
-    if (myExerciseType != null ? !myExerciseType.equals(exerciseAction.myExerciseType) : exerciseAction.myExerciseType != null) return false;
-    if (myFromLocation != null ? !myFromLocation.equals(exerciseAction.myFromLocation) : exerciseAction.myFromLocation != null) return false;
-    if (myOpponent != null ? !myOpponent.equals(exerciseAction.myOpponent) : exerciseAction.myOpponent != null) return false;
-    if (mySportsActivityLocation != null ? !mySportsActivityLocation.equals(exerciseAction.mySportsActivityLocation) : exerciseAction.mySportsActivityLocation != null) return false;
-    if (mySportsEvent != null ? !mySportsEvent.equals(exerciseAction.mySportsEvent) : exerciseAction.mySportsEvent != null) return false;
-    if (mySportsTeam != null ? !mySportsTeam.equals(exerciseAction.mySportsTeam) : exerciseAction.mySportsTeam != null) return false;
-    if (myToLocation != null ? !myToLocation.equals(exerciseAction.myToLocation) : exerciseAction.myToLocation != null) return false;
-    return true;
-  }
-
+  
   private Place myExerciseCourse;
   private Diet myExerciseRelatedDiet;
   private Distance myDistance;

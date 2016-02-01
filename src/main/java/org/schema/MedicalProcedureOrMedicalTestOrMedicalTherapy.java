@@ -18,13 +18,17 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class MedicalProcedureOrMedicalTestOrMedicalTherapy {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setMedicalProcedure(MedicalProcedure medicalProcedure) { clear(); myMedicalProcedure = medicalProcedure; }
+  public MedicalProcedure getMedicalProcedure() { return myMedicalProcedure; }
+  void setMedicalTest(MedicalTest medicalTest) { clear(); myMedicalTest = medicalTest; }
+  public MedicalTest getMedicalTest() { return myMedicalTest; }
+  void setMedicalTherapy(MedicalTherapy medicalTherapy) { clear(); myMedicalTherapy = medicalTherapy; }
+  public MedicalTherapy getMedicalTherapy() { return myMedicalTherapy; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myMedicalProcedure != null) return myMedicalProcedure;
     if (myMedicalTest != null) return myMedicalTest;
     if (myMedicalTherapy != null) return myMedicalTherapy;
@@ -36,29 +40,18 @@ public class MedicalProcedureOrMedicalTestOrMedicalTherapy {
     if (myMedicalTherapy != null) return myMedicalTherapy;
     return null;
   }
-  void setMedicalProcedure(MedicalProcedure medicalProcedure) { clear(); myMedicalProcedure = medicalProcedure; }
-  public MedicalProcedure getMedicalProcedure() { return myMedicalProcedure; }
-  private MedicalProcedure myMedicalProcedure;
-  void setMedicalTest(MedicalTest medicalTest) { clear(); myMedicalTest = medicalTest; }
-  public MedicalTest getMedicalTest() { return myMedicalTest; }
-  private MedicalTest myMedicalTest;
-  void setMedicalTherapy(MedicalTherapy medicalTherapy) { clear(); myMedicalTherapy = medicalTherapy; }
-  public MedicalTherapy getMedicalTherapy() { return myMedicalTherapy; }
-  private MedicalTherapy myMedicalTherapy;
-  private void clear() {
+  public void clear() {
     myMedicalProcedure = null;
     myMedicalTest = null;
     myMedicalTherapy = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myMedicalProcedure != null ? myMedicalProcedure.hashCode() : 0);
     result = 31 * result + (myMedicalTest != null ? myMedicalTest.hashCode() : 0);
     result = 31 * result + (myMedicalTherapy != null ? myMedicalTherapy.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -68,5 +61,7 @@ public class MedicalProcedureOrMedicalTestOrMedicalTherapy {
     if (myMedicalTherapy != null ? !myMedicalTherapy.equals(medicalProcedureOrMedicalTestOrMedicalTherapy.myMedicalTherapy) : medicalProcedureOrMedicalTestOrMedicalTherapy.myMedicalTherapy != null) return false;
     return true;
   }
-
+  private MedicalProcedure myMedicalProcedure;
+  private MedicalTest myMedicalTest;
+  private MedicalTherapy myMedicalTherapy;
 }

@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An airline flight.
@@ -29,115 +29,161 @@ public class Flight extends Intangible {
   /**
    * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
    */
-  public Participant getSeller() {
-    return mySeller;
-  }
+  public Participant getSeller() { return mySeller; }
   /**
    * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
    */
-  public OrganizationOrPerson getProvider() {
-    return myProvider;
-  }
+  public OrganizationOrPerson getProvider() { return myProvider; }
   /**
    * The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
    */
-  public String getFlightNumber() {
-    return myFlightNumber;
-  }
+  public String getFlightNumber() { return myFlightNumber; }
   /**
    * The expected departure time.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDepartureTime() {
-    return myDepartureTime;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getDepartureTime() { return myDepartureTime; }
   /**
    * The expected arrival time.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getArrivalTime() {
-    return myArrivalTime;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getArrivalTime() { return myArrivalTime; }
   /**
    * The airport where the flight originates.
    */
-  public Airport getDepartureAirport() {
-    return myDepartureAirport;
-  }
+  public Airport getDepartureAirport() { return myDepartureAirport; }
   /**
    * The airport where the flight terminates.
    */
-  public Airport getArrivalAirport() {
-    return myArrivalAirport;
-  }
+  public Airport getArrivalAirport() { return myArrivalAirport; }
   /**
    * Identifier of the flight's departure gate.
    */
-  public String getDepartureGate() {
-    return myDepartureGate;
-  }
+  public String getDepartureGate() { return myDepartureGate; }
   /**
    * Identifier of the flight's arrival gate.
    */
-  public String getArrivalGate() {
-    return myArrivalGate;
-  }
+  public String getArrivalGate() { return myArrivalGate; }
   /**
    * The type of boarding policy used by the airline (e.g. zone-based or group-based).
    */
-  public BoardingPolicyType getBoardingPolicy() {
-    return myBoardingPolicy;
-  }
+  public BoardingPolicyType getBoardingPolicy() { return myBoardingPolicy; }
   /**
    * Identifier of the flight's departure terminal.
    */
-  public String getDepartureTerminal() {
-    return myDepartureTerminal;
-  }
+  public String getDepartureTerminal() { return myDepartureTerminal; }
   /**
    * Identifier of the flight's arrival terminal.
    */
-  public String getArrivalTerminal() {
-    return myArrivalTerminal;
-  }
+  public String getArrivalTerminal() { return myArrivalTerminal; }
   /**
    * The kind of aircraft (e.g., "Boeing 747").
    */
-  public StringOrVehicle getAircraft() {
-    return myAircraft;
-  }
+  public StringOrVehicle getAircraft() { return myAircraft; }
   /**
    * Description of the meals that will be provided or available for purchase.
    */
-  public String getMealService() {
-    return myMealService;
-  }
+  public String getMealService() { return myMealService; }
   /**
    * The estimated time the flight will take.
    */
-  public DurationOrString getEstimatedFlightDuration() {
-    return myEstimatedFlightDuration;
-  }
+  public DurationOrString getEstimatedFlightDuration() { return myEstimatedFlightDuration; }
   /**
    * The distance of the flight.
    */
-  public DistanceOrString getFlightDistance() {
-    return myFlightDistance;
-  }
+  public DistanceOrString getFlightDistance() { return myFlightDistance; }
   /**
    * The time when a passenger can check into the flight online.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getWebCheckinTime() {
-    return myWebCheckinTime;
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getWebCheckinTime() { return myWebCheckinTime; }
+  protected Flight(Participant seller, OrganizationOrPerson provider, String flightNumber, java.util.Date departureTime, java.util.Date arrivalTime, Airport departureAirport, Airport arrivalAirport, String departureGate, String arrivalGate, BoardingPolicyType boardingPolicy, String departureTerminal, String arrivalTerminal, StringOrVehicle aircraft, String mealService, DurationOrString estimatedFlightDuration, DistanceOrString flightDistance, java.util.Date webCheckinTime, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    mySeller = seller;
+    myProvider = provider;
+    myFlightNumber = flightNumber;
+    myDepartureTime = departureTime;
+    myArrivalTime = arrivalTime;
+    myDepartureAirport = departureAirport;
+    myArrivalAirport = arrivalAirport;
+    myDepartureGate = departureGate;
+    myArrivalGate = arrivalGate;
+    myBoardingPolicy = boardingPolicy;
+    myDepartureTerminal = departureTerminal;
+    myArrivalTerminal = arrivalTerminal;
+    myAircraft = aircraft;
+    myMealService = mealService;
+    myEstimatedFlightDuration = estimatedFlightDuration;
+    myFlightDistance = flightDistance;
+    myWebCheckinTime = webCheckinTime;
+    mySeller = seller;
+    myProvider = provider;
+    myFlightNumber = flightNumber;
+    myDepartureTime = departureTime;
+    myArrivalTime = arrivalTime;
+    myDepartureAirport = departureAirport;
+    myArrivalAirport = arrivalAirport;
+    myDepartureGate = departureGate;
+    myArrivalGate = arrivalGate;
+    myBoardingPolicy = boardingPolicy;
+    myDepartureTerminal = departureTerminal;
+    myArrivalTerminal = arrivalTerminal;
+    myAircraft = aircraft;
+    myMealService = mealService;
+    myEstimatedFlightDuration = estimatedFlightDuration;
+    myFlightDistance = flightDistance;
+    myWebCheckinTime = webCheckinTime;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    result = 31 * result + (myFlightNumber != null ? myFlightNumber.hashCode() : 0);
+    result = 31 * result + (myDepartureTime != null ? myDepartureTime.hashCode() : 0);
+    result = 31 * result + (myArrivalTime != null ? myArrivalTime.hashCode() : 0);
+    result = 31 * result + (myDepartureAirport != null ? myDepartureAirport.hashCode() : 0);
+    result = 31 * result + (myArrivalAirport != null ? myArrivalAirport.hashCode() : 0);
+    result = 31 * result + (myDepartureGate != null ? myDepartureGate.hashCode() : 0);
+    result = 31 * result + (myArrivalGate != null ? myArrivalGate.hashCode() : 0);
+    result = 31 * result + (myBoardingPolicy != null ? myBoardingPolicy.hashCode() : 0);
+    result = 31 * result + (myDepartureTerminal != null ? myDepartureTerminal.hashCode() : 0);
+    result = 31 * result + (myArrivalTerminal != null ? myArrivalTerminal.hashCode() : 0);
+    result = 31 * result + (myAircraft != null ? myAircraft.hashCode() : 0);
+    result = 31 * result + (myMealService != null ? myMealService.hashCode() : 0);
+    result = 31 * result + (myEstimatedFlightDuration != null ? myEstimatedFlightDuration.hashCode() : 0);
+    result = 31 * result + (myFlightDistance != null ? myFlightDistance.hashCode() : 0);
+    result = 31 * result + (myWebCheckinTime != null ? myWebCheckinTime.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Flight flight = (Flight) o;
+    if (!super.equals(o)) return false;
+    if (mySeller != null ? !mySeller.equals(flight.mySeller) : flight.mySeller != null) return false;
+    if (myProvider != null ? !myProvider.equals(flight.myProvider) : flight.myProvider != null) return false;
+    if (myFlightNumber != null ? !myFlightNumber.equals(flight.myFlightNumber) : flight.myFlightNumber != null) return false;
+    if (myDepartureTime != null ? !myDepartureTime.equals(flight.myDepartureTime) : flight.myDepartureTime != null) return false;
+    if (myArrivalTime != null ? !myArrivalTime.equals(flight.myArrivalTime) : flight.myArrivalTime != null) return false;
+    if (myDepartureAirport != null ? !myDepartureAirport.equals(flight.myDepartureAirport) : flight.myDepartureAirport != null) return false;
+    if (myArrivalAirport != null ? !myArrivalAirport.equals(flight.myArrivalAirport) : flight.myArrivalAirport != null) return false;
+    if (myDepartureGate != null ? !myDepartureGate.equals(flight.myDepartureGate) : flight.myDepartureGate != null) return false;
+    if (myArrivalGate != null ? !myArrivalGate.equals(flight.myArrivalGate) : flight.myArrivalGate != null) return false;
+    if (myBoardingPolicy != null ? !myBoardingPolicy.equals(flight.myBoardingPolicy) : flight.myBoardingPolicy != null) return false;
+    if (myDepartureTerminal != null ? !myDepartureTerminal.equals(flight.myDepartureTerminal) : flight.myDepartureTerminal != null) return false;
+    if (myArrivalTerminal != null ? !myArrivalTerminal.equals(flight.myArrivalTerminal) : flight.myArrivalTerminal != null) return false;
+    if (myAircraft != null ? !myAircraft.equals(flight.myAircraft) : flight.myAircraft != null) return false;
+    if (myMealService != null ? !myMealService.equals(flight.myMealService) : flight.myMealService != null) return false;
+    if (myEstimatedFlightDuration != null ? !myEstimatedFlightDuration.equals(flight.myEstimatedFlightDuration) : flight.myEstimatedFlightDuration != null) return false;
+    if (myFlightDistance != null ? !myFlightDistance.equals(flight.myFlightDistance) : flight.myFlightDistance != null) return false;
+    if (myWebCheckinTime != null ? !myWebCheckinTime.equals(flight.myWebCheckinTime) : flight.myWebCheckinTime != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link Flight}
    */
-  static final class FlightThingBuilder implements Builder {
-    /**
-     * Creates new {@link Flight} instance.
-     */
+  public static class Builder implements ThingBuilder<Flight> {
     public Flight build() {
       return new Flight(seller, provider, flightNumber, departureTime, arrivalTime, departureAirport, arrivalAirport, departureGate, arrivalGate, boardingPolicy, departureTerminal, arrivalTerminal, aircraft, mealService, estimatedFlightDuration, flightDistance, webCheckinTime, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -367,33 +413,33 @@ public class Flight extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -402,66 +448,66 @@ public class Flight extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -509,7 +555,6 @@ public class Flight extends Intangible {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -575,118 +620,7 @@ public class Flight extends Intangible {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<Flight> {
-    @NotNull Builder seller(@NotNull Participant participant);
-    @NotNull Builder provider(@NotNull Organization organization);
-    @NotNull Builder provider(@NotNull Organization.Builder organization);
-    @NotNull Builder provider(@NotNull Person person);
-    @NotNull Builder provider(@NotNull Person.Builder person);
-    @NotNull Builder flightNumber(@NotNull String flightNumber);
-    @NotNull Builder departureTime(@NotNull java.util.Date date);
-    @NotNull Builder arrivalTime(@NotNull java.util.Date date);
-    @NotNull Builder departureAirport(@NotNull Airport airport);
-    @NotNull Builder departureAirport(@NotNull Airport.Builder airport);
-    @NotNull Builder arrivalAirport(@NotNull Airport airport);
-    @NotNull Builder arrivalAirport(@NotNull Airport.Builder airport);
-    @NotNull Builder departureGate(@NotNull String departureGate);
-    @NotNull Builder arrivalGate(@NotNull String arrivalGate);
-    @NotNull Builder boardingPolicy(@NotNull BoardingPolicyType boardingPolicyType);
-    @NotNull Builder boardingPolicy(@NotNull BoardingPolicyType.Builder boardingPolicyType);
-    @NotNull Builder departureTerminal(@NotNull String departureTerminal);
-    @NotNull Builder arrivalTerminal(@NotNull String arrivalTerminal);
-    @NotNull Builder aircraft(@NotNull String aircraft);
-    @NotNull Builder aircraft(@NotNull Vehicle vehicle);
-    @NotNull Builder aircraft(@NotNull Vehicle.Builder vehicle);
-    @NotNull Builder mealService(@NotNull String mealService);
-    @NotNull Builder estimatedFlightDuration(@NotNull Duration duration);
-    @NotNull Builder estimatedFlightDuration(@NotNull Duration.Builder duration);
-    @NotNull Builder estimatedFlightDuration(@NotNull String estimatedFlightDuration);
-    @NotNull Builder flightDistance(@NotNull Distance distance);
-    @NotNull Builder flightDistance(@NotNull Distance.Builder distance);
-    @NotNull Builder flightDistance(@NotNull String flightDistance);
-    @NotNull Builder webCheckinTime(@NotNull java.util.Date date);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected Flight(Participant seller, OrganizationOrPerson provider, String flightNumber, java.util.Date departureTime, java.util.Date arrivalTime, Airport departureAirport, Airport arrivalAirport, String departureGate, String arrivalGate, BoardingPolicyType boardingPolicy, String departureTerminal, String arrivalTerminal, StringOrVehicle aircraft, String mealService, DurationOrString estimatedFlightDuration, DistanceOrString flightDistance, java.util.Date webCheckinTime, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    mySeller = seller;
-    myProvider = provider;
-    myFlightNumber = flightNumber;
-    myDepartureTime = departureTime;
-    myArrivalTime = arrivalTime;
-    myDepartureAirport = departureAirport;
-    myArrivalAirport = arrivalAirport;
-    myDepartureGate = departureGate;
-    myArrivalGate = arrivalGate;
-    myBoardingPolicy = boardingPolicy;
-    myDepartureTerminal = departureTerminal;
-    myArrivalTerminal = arrivalTerminal;
-    myAircraft = aircraft;
-    myMealService = mealService;
-    myEstimatedFlightDuration = estimatedFlightDuration;
-    myFlightDistance = flightDistance;
-    myWebCheckinTime = webCheckinTime;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
-    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
-    result = 31 * result + (myFlightNumber != null ? myFlightNumber.hashCode() : 0);
-    result = 31 * result + (myDepartureTime != null ? myDepartureTime.hashCode() : 0);
-    result = 31 * result + (myArrivalTime != null ? myArrivalTime.hashCode() : 0);
-    result = 31 * result + (myDepartureAirport != null ? myDepartureAirport.hashCode() : 0);
-    result = 31 * result + (myArrivalAirport != null ? myArrivalAirport.hashCode() : 0);
-    result = 31 * result + (myDepartureGate != null ? myDepartureGate.hashCode() : 0);
-    result = 31 * result + (myArrivalGate != null ? myArrivalGate.hashCode() : 0);
-    result = 31 * result + (myBoardingPolicy != null ? myBoardingPolicy.hashCode() : 0);
-    result = 31 * result + (myDepartureTerminal != null ? myDepartureTerminal.hashCode() : 0);
-    result = 31 * result + (myArrivalTerminal != null ? myArrivalTerminal.hashCode() : 0);
-    result = 31 * result + (myAircraft != null ? myAircraft.hashCode() : 0);
-    result = 31 * result + (myMealService != null ? myMealService.hashCode() : 0);
-    result = 31 * result + (myEstimatedFlightDuration != null ? myEstimatedFlightDuration.hashCode() : 0);
-    result = 31 * result + (myFlightDistance != null ? myFlightDistance.hashCode() : 0);
-    result = 31 * result + (myWebCheckinTime != null ? myWebCheckinTime.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Flight flight = (Flight) o;
-    if (!super.equals(o)) return false;
-    if (mySeller != null ? !mySeller.equals(flight.mySeller) : flight.mySeller != null) return false;
-    if (myProvider != null ? !myProvider.equals(flight.myProvider) : flight.myProvider != null) return false;
-    if (myFlightNumber != null ? !myFlightNumber.equals(flight.myFlightNumber) : flight.myFlightNumber != null) return false;
-    if (myDepartureTime != null ? !myDepartureTime.equals(flight.myDepartureTime) : flight.myDepartureTime != null) return false;
-    if (myArrivalTime != null ? !myArrivalTime.equals(flight.myArrivalTime) : flight.myArrivalTime != null) return false;
-    if (myDepartureAirport != null ? !myDepartureAirport.equals(flight.myDepartureAirport) : flight.myDepartureAirport != null) return false;
-    if (myArrivalAirport != null ? !myArrivalAirport.equals(flight.myArrivalAirport) : flight.myArrivalAirport != null) return false;
-    if (myDepartureGate != null ? !myDepartureGate.equals(flight.myDepartureGate) : flight.myDepartureGate != null) return false;
-    if (myArrivalGate != null ? !myArrivalGate.equals(flight.myArrivalGate) : flight.myArrivalGate != null) return false;
-    if (myBoardingPolicy != null ? !myBoardingPolicy.equals(flight.myBoardingPolicy) : flight.myBoardingPolicy != null) return false;
-    if (myDepartureTerminal != null ? !myDepartureTerminal.equals(flight.myDepartureTerminal) : flight.myDepartureTerminal != null) return false;
-    if (myArrivalTerminal != null ? !myArrivalTerminal.equals(flight.myArrivalTerminal) : flight.myArrivalTerminal != null) return false;
-    if (myAircraft != null ? !myAircraft.equals(flight.myAircraft) : flight.myAircraft != null) return false;
-    if (myMealService != null ? !myMealService.equals(flight.myMealService) : flight.myMealService != null) return false;
-    if (myEstimatedFlightDuration != null ? !myEstimatedFlightDuration.equals(flight.myEstimatedFlightDuration) : flight.myEstimatedFlightDuration != null) return false;
-    if (myFlightDistance != null ? !myFlightDistance.equals(flight.myFlightDistance) : flight.myFlightDistance != null) return false;
-    if (myWebCheckinTime != null ? !myWebCheckinTime.equals(flight.myWebCheckinTime) : flight.myWebCheckinTime != null) return false;
-    return true;
-  }
-
+  
   private Participant mySeller;
   private OrganizationOrPerson myProvider;
   private String myFlightNumber;

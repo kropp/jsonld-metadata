@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The schema.org Actions mechanism benefited from extensive discussions across the Web standards community around W3C, in particular from the <a href="http://purl.org/hydra/"> Hydra project</a>'s community group.
  */
 public class ActionCollabClass {
-  /**
-   * Builder for {@link ActionCollabClass}
-   */
-  static final class ActionCollabClassThingBuilder implements Builder {
-    /**
-     * Creates new {@link ActionCollabClass} instance.
-     */
-    public ActionCollabClass build() {
-      return new ActionCollabClass();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<ActionCollabClass> {
-    
-  }
-
   protected ActionCollabClass() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class ActionCollabClass {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link ActionCollabClass}
+   */
+  public static class Builder implements ThingBuilder<ActionCollabClass> {
+    public ActionCollabClass build() {
+      return new ActionCollabClass();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

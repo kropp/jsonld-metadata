@@ -20,116 +20,159 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * Any condition of the human body that affects the normal functioning of a person, whether physically or mentally. Includes diseases, injuries, disabilities, disorders, syndromes, etc.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
+ * Any condition of the human body that affects the normal functioning of a person, whether physically or mentally. Includes diseases, injuries, disabilities, disorders, syndromes, etc.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
  */
 public class MedicalCondition extends MedicalEntity {
   /**
    * The anatomy of the underlying organ system or structures associated with this entity.
    */
-  public AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy getAssociatedAnatomy() {
-    return myAssociatedAnatomy;
-  }
+  public AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy getAssociatedAnatomy() { return myAssociatedAnatomy; }
   /**
    * An underlying cause. More specifically, one of the causative agent(s) that are most directly responsible for the pathophysiologic process that eventually results in the occurrence.
    */
-  public MedicalCause getCause() {
-    return myCause;
-  }
+  public MedicalCause getCause() { return myCause; }
   /**
    * One of a set of differential diagnoses for the condition. Specifically, a closely-related or competing diagnosis typically considered later in the cognitive process whereby this medical condition is distinguished from others most likely responsible for a similar collection of signs and symptoms to reach the most parsimonious diagnosis or diagnoses in a patient.
    */
-  public DDxElement getDifferentialDiagnosis() {
-    return myDifferentialDiagnosis;
-  }
+  public DDxElement getDifferentialDiagnosis() { return myDifferentialDiagnosis; }
   /**
    * The characteristics of associated patients, such as age, gender, race etc.
    */
-  public String getEpidemiology() {
-    return myEpidemiology;
-  }
+  public String getEpidemiology() { return myEpidemiology; }
   /**
    * The likely outcome in either the short term or long term of the medical condition.
    */
-  public String getExpectedPrognosis() {
-    return myExpectedPrognosis;
-  }
+  public String getExpectedPrognosis() { return myExpectedPrognosis; }
   /**
    * The expected progression of the condition if it is not treated and allowed to progress naturally.
    */
-  public String getNaturalProgression() {
-    return myNaturalProgression;
-  }
+  public String getNaturalProgression() { return myNaturalProgression; }
   /**
    * Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.
    */
-  public String getPathophysiology() {
-    return myPathophysiology;
-  }
+  public String getPathophysiology() { return myPathophysiology; }
   /**
    * A possible unexpected and unfavorable evolution of a medical condition. Complications may include worsening of the signs or symptoms of the disease, extension of the condition to other organ systems, etc.
    */
-  public String getPossibleComplication() {
-    return myPossibleComplication;
-  }
+  public String getPossibleComplication() { return myPossibleComplication; }
   /**
    * A possible treatment to address this condition, sign or symptom.
    */
-  public MedicalTherapy getPossibleTreatment() {
-    return myPossibleTreatment;
-  }
+  public MedicalTherapy getPossibleTreatment() { return myPossibleTreatment; }
   /**
    * A preventative therapy used to prevent an initial occurrence of the medical condition, such as vaccination.
    */
-  public MedicalTherapy getPrimaryPrevention() {
-    return myPrimaryPrevention;
-  }
+  public MedicalTherapy getPrimaryPrevention() { return myPrimaryPrevention; }
   /**
    * A modifiable or non-modifiable factor that increases the risk of a patient contracting this condition, e.g. age,  coexisting condition.
    */
-  public MedicalRiskFactor getRiskFactor() {
-    return myRiskFactor;
-  }
+  public MedicalRiskFactor getRiskFactor() { return myRiskFactor; }
   /**
    * A preventative therapy used to prevent reoccurrence of the medical condition after an initial episode of the condition.
    */
-  public MedicalTherapy getSecondaryPrevention() {
-    return mySecondaryPrevention;
-  }
+  public MedicalTherapy getSecondaryPrevention() { return mySecondaryPrevention; }
   /**
    * A sign or symptom of this condition. Signs are objective or physically observable manifestations of the medical condition while symptoms are the subjective experience of the medical condition.
    */
-  public MedicalSignOrSymptom getSignOrSymptom() {
-    return mySignOrSymptom;
-  }
+  public MedicalSignOrSymptom getSignOrSymptom() { return mySignOrSymptom; }
   /**
    * The stage of the condition, if applicable.
    */
-  public MedicalConditionStage getStage() {
-    return myStage;
-  }
+  public MedicalConditionStage getStage() { return myStage; }
   /**
    * A more specific type of the condition, where applicable, for example 'Type 1 Diabetes', 'Type 2 Diabetes', or 'Gestational Diabetes' for Diabetes.
    */
-  public String getSubtype() {
-    return mySubtype;
-  }
+  public String getSubtype() { return mySubtype; }
   /**
    * A medical test typically performed given this condition.
    */
-  public MedicalTest getTypicalTest() {
-    return myTypicalTest;
+  public MedicalTest getTypicalTest() { return myTypicalTest; }
+  protected MedicalCondition(AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, MedicalCause cause, DDxElement differentialDiagnosis, String epidemiology, String expectedPrognosis, String naturalProgression, String pathophysiology, String possibleComplication, MedicalTherapy possibleTreatment, MedicalTherapy primaryPrevention, MedicalRiskFactor riskFactor, MedicalTherapy secondaryPrevention, MedicalSignOrSymptom signOrSymptom, MedicalConditionStage stage, String subtype, MedicalTest typicalTest, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myAssociatedAnatomy = associatedAnatomy;
+    myCause = cause;
+    myDifferentialDiagnosis = differentialDiagnosis;
+    myEpidemiology = epidemiology;
+    myExpectedPrognosis = expectedPrognosis;
+    myNaturalProgression = naturalProgression;
+    myPathophysiology = pathophysiology;
+    myPossibleComplication = possibleComplication;
+    myPossibleTreatment = possibleTreatment;
+    myPrimaryPrevention = primaryPrevention;
+    myRiskFactor = riskFactor;
+    mySecondaryPrevention = secondaryPrevention;
+    mySignOrSymptom = signOrSymptom;
+    myStage = stage;
+    mySubtype = subtype;
+    myTypicalTest = typicalTest;
+    myAssociatedAnatomy = associatedAnatomy;
+    myCause = cause;
+    myDifferentialDiagnosis = differentialDiagnosis;
+    myEpidemiology = epidemiology;
+    myExpectedPrognosis = expectedPrognosis;
+    myNaturalProgression = naturalProgression;
+    myPathophysiology = pathophysiology;
+    myPossibleComplication = possibleComplication;
+    myPossibleTreatment = possibleTreatment;
+    myPrimaryPrevention = primaryPrevention;
+    myRiskFactor = riskFactor;
+    mySecondaryPrevention = secondaryPrevention;
+    mySignOrSymptom = signOrSymptom;
+    myStage = stage;
+    mySubtype = subtype;
+    myTypicalTest = typicalTest;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAssociatedAnatomy != null ? myAssociatedAnatomy.hashCode() : 0);
+    result = 31 * result + (myCause != null ? myCause.hashCode() : 0);
+    result = 31 * result + (myDifferentialDiagnosis != null ? myDifferentialDiagnosis.hashCode() : 0);
+    result = 31 * result + (myEpidemiology != null ? myEpidemiology.hashCode() : 0);
+    result = 31 * result + (myExpectedPrognosis != null ? myExpectedPrognosis.hashCode() : 0);
+    result = 31 * result + (myNaturalProgression != null ? myNaturalProgression.hashCode() : 0);
+    result = 31 * result + (myPathophysiology != null ? myPathophysiology.hashCode() : 0);
+    result = 31 * result + (myPossibleComplication != null ? myPossibleComplication.hashCode() : 0);
+    result = 31 * result + (myPossibleTreatment != null ? myPossibleTreatment.hashCode() : 0);
+    result = 31 * result + (myPrimaryPrevention != null ? myPrimaryPrevention.hashCode() : 0);
+    result = 31 * result + (myRiskFactor != null ? myRiskFactor.hashCode() : 0);
+    result = 31 * result + (mySecondaryPrevention != null ? mySecondaryPrevention.hashCode() : 0);
+    result = 31 * result + (mySignOrSymptom != null ? mySignOrSymptom.hashCode() : 0);
+    result = 31 * result + (myStage != null ? myStage.hashCode() : 0);
+    result = 31 * result + (mySubtype != null ? mySubtype.hashCode() : 0);
+    result = 31 * result + (myTypicalTest != null ? myTypicalTest.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MedicalCondition medicalCondition = (MedicalCondition) o;
+    if (!super.equals(o)) return false;
+    if (myAssociatedAnatomy != null ? !myAssociatedAnatomy.equals(medicalCondition.myAssociatedAnatomy) : medicalCondition.myAssociatedAnatomy != null) return false;
+    if (myCause != null ? !myCause.equals(medicalCondition.myCause) : medicalCondition.myCause != null) return false;
+    if (myDifferentialDiagnosis != null ? !myDifferentialDiagnosis.equals(medicalCondition.myDifferentialDiagnosis) : medicalCondition.myDifferentialDiagnosis != null) return false;
+    if (myEpidemiology != null ? !myEpidemiology.equals(medicalCondition.myEpidemiology) : medicalCondition.myEpidemiology != null) return false;
+    if (myExpectedPrognosis != null ? !myExpectedPrognosis.equals(medicalCondition.myExpectedPrognosis) : medicalCondition.myExpectedPrognosis != null) return false;
+    if (myNaturalProgression != null ? !myNaturalProgression.equals(medicalCondition.myNaturalProgression) : medicalCondition.myNaturalProgression != null) return false;
+    if (myPathophysiology != null ? !myPathophysiology.equals(medicalCondition.myPathophysiology) : medicalCondition.myPathophysiology != null) return false;
+    if (myPossibleComplication != null ? !myPossibleComplication.equals(medicalCondition.myPossibleComplication) : medicalCondition.myPossibleComplication != null) return false;
+    if (myPossibleTreatment != null ? !myPossibleTreatment.equals(medicalCondition.myPossibleTreatment) : medicalCondition.myPossibleTreatment != null) return false;
+    if (myPrimaryPrevention != null ? !myPrimaryPrevention.equals(medicalCondition.myPrimaryPrevention) : medicalCondition.myPrimaryPrevention != null) return false;
+    if (myRiskFactor != null ? !myRiskFactor.equals(medicalCondition.myRiskFactor) : medicalCondition.myRiskFactor != null) return false;
+    if (mySecondaryPrevention != null ? !mySecondaryPrevention.equals(medicalCondition.mySecondaryPrevention) : medicalCondition.mySecondaryPrevention != null) return false;
+    if (mySignOrSymptom != null ? !mySignOrSymptom.equals(medicalCondition.mySignOrSymptom) : medicalCondition.mySignOrSymptom != null) return false;
+    if (myStage != null ? !myStage.equals(medicalCondition.myStage) : medicalCondition.myStage != null) return false;
+    if (mySubtype != null ? !mySubtype.equals(medicalCondition.mySubtype) : medicalCondition.mySubtype != null) return false;
+    if (myTypicalTest != null ? !myTypicalTest.equals(medicalCondition.myTypicalTest) : medicalCondition.myTypicalTest != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link MedicalCondition}
    */
-  static final class MedicalConditionThingBuilder implements Builder {
-    /**
-     * Creates new {@link MedicalCondition} instance.
-     */
+  public static class Builder implements ThingBuilder<MedicalCondition> {
     public MedicalCondition build() {
       return new MedicalCondition(associatedAnatomy, cause, differentialDiagnosis, epidemiology, expectedPrognosis, naturalProgression, pathophysiology, possibleComplication, possibleTreatment, primaryPrevention, riskFactor, secondaryPrevention, signOrSymptom, stage, subtype, typicalTest, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -435,33 +478,33 @@ public class MedicalCondition extends MedicalEntity {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -470,66 +513,66 @@ public class MedicalCondition extends MedicalEntity {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -577,7 +620,6 @@ public class MedicalCondition extends MedicalEntity {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -651,128 +693,7 @@ public class MedicalCondition extends MedicalEntity {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<MedicalCondition> {
-    @NotNull Builder associatedAnatomy(@NotNull AnatomicalStructure anatomicalStructure);
-    @NotNull Builder associatedAnatomy(@NotNull AnatomicalStructure.Builder anatomicalStructure);
-    @NotNull Builder associatedAnatomy(@NotNull AnatomicalSystem anatomicalSystem);
-    @NotNull Builder associatedAnatomy(@NotNull AnatomicalSystem.Builder anatomicalSystem);
-    @NotNull Builder associatedAnatomy(@NotNull SuperficialAnatomy superficialAnatomy);
-    @NotNull Builder associatedAnatomy(@NotNull SuperficialAnatomy.Builder superficialAnatomy);
-    @NotNull Builder cause(@NotNull MedicalCause medicalCause);
-    @NotNull Builder cause(@NotNull MedicalCause.Builder medicalCause);
-    @NotNull Builder differentialDiagnosis(@NotNull DDxElement dDxElement);
-    @NotNull Builder differentialDiagnosis(@NotNull DDxElement.Builder dDxElement);
-    @NotNull Builder epidemiology(@NotNull String epidemiology);
-    @NotNull Builder expectedPrognosis(@NotNull String expectedPrognosis);
-    @NotNull Builder naturalProgression(@NotNull String naturalProgression);
-    @NotNull Builder pathophysiology(@NotNull String pathophysiology);
-    @NotNull Builder possibleComplication(@NotNull String possibleComplication);
-    @NotNull Builder possibleTreatment(@NotNull MedicalTherapy medicalTherapy);
-    @NotNull Builder possibleTreatment(@NotNull MedicalTherapy.Builder medicalTherapy);
-    @NotNull Builder primaryPrevention(@NotNull MedicalTherapy medicalTherapy);
-    @NotNull Builder primaryPrevention(@NotNull MedicalTherapy.Builder medicalTherapy);
-    @NotNull Builder riskFactor(@NotNull MedicalRiskFactor medicalRiskFactor);
-    @NotNull Builder riskFactor(@NotNull MedicalRiskFactor.Builder medicalRiskFactor);
-    @NotNull Builder secondaryPrevention(@NotNull MedicalTherapy medicalTherapy);
-    @NotNull Builder secondaryPrevention(@NotNull MedicalTherapy.Builder medicalTherapy);
-    @NotNull Builder signOrSymptom(@NotNull MedicalSignOrSymptom medicalSignOrSymptom);
-    @NotNull Builder signOrSymptom(@NotNull MedicalSignOrSymptom.Builder medicalSignOrSymptom);
-    @NotNull Builder stage(@NotNull MedicalConditionStage medicalConditionStage);
-    @NotNull Builder stage(@NotNull MedicalConditionStage.Builder medicalConditionStage);
-    @NotNull Builder subtype(@NotNull String subtype);
-    @NotNull Builder typicalTest(@NotNull MedicalTest medicalTest);
-    @NotNull Builder typicalTest(@NotNull MedicalTest.Builder medicalTest);
-    @NotNull Builder code(@NotNull MedicalCode medicalCode);
-    @NotNull Builder code(@NotNull MedicalCode.Builder medicalCode);
-    @NotNull Builder guideline(@NotNull MedicalGuideline medicalGuideline);
-    @NotNull Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem medicineSystem);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem);
-    @NotNull Builder recognizingAuthority(@NotNull Organization organization);
-    @NotNull Builder recognizingAuthority(@NotNull Organization.Builder organization);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty);
-    @NotNull Builder study(@NotNull MedicalStudy medicalStudy);
-    @NotNull Builder study(@NotNull MedicalStudy.Builder medicalStudy);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected MedicalCondition(AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, MedicalCause cause, DDxElement differentialDiagnosis, String epidemiology, String expectedPrognosis, String naturalProgression, String pathophysiology, String possibleComplication, MedicalTherapy possibleTreatment, MedicalTherapy primaryPrevention, MedicalRiskFactor riskFactor, MedicalTherapy secondaryPrevention, MedicalSignOrSymptom signOrSymptom, MedicalConditionStage stage, String subtype, MedicalTest typicalTest, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAssociatedAnatomy = associatedAnatomy;
-    myCause = cause;
-    myDifferentialDiagnosis = differentialDiagnosis;
-    myEpidemiology = epidemiology;
-    myExpectedPrognosis = expectedPrognosis;
-    myNaturalProgression = naturalProgression;
-    myPathophysiology = pathophysiology;
-    myPossibleComplication = possibleComplication;
-    myPossibleTreatment = possibleTreatment;
-    myPrimaryPrevention = primaryPrevention;
-    myRiskFactor = riskFactor;
-    mySecondaryPrevention = secondaryPrevention;
-    mySignOrSymptom = signOrSymptom;
-    myStage = stage;
-    mySubtype = subtype;
-    myTypicalTest = typicalTest;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAssociatedAnatomy != null ? myAssociatedAnatomy.hashCode() : 0);
-    result = 31 * result + (myCause != null ? myCause.hashCode() : 0);
-    result = 31 * result + (myDifferentialDiagnosis != null ? myDifferentialDiagnosis.hashCode() : 0);
-    result = 31 * result + (myEpidemiology != null ? myEpidemiology.hashCode() : 0);
-    result = 31 * result + (myExpectedPrognosis != null ? myExpectedPrognosis.hashCode() : 0);
-    result = 31 * result + (myNaturalProgression != null ? myNaturalProgression.hashCode() : 0);
-    result = 31 * result + (myPathophysiology != null ? myPathophysiology.hashCode() : 0);
-    result = 31 * result + (myPossibleComplication != null ? myPossibleComplication.hashCode() : 0);
-    result = 31 * result + (myPossibleTreatment != null ? myPossibleTreatment.hashCode() : 0);
-    result = 31 * result + (myPrimaryPrevention != null ? myPrimaryPrevention.hashCode() : 0);
-    result = 31 * result + (myRiskFactor != null ? myRiskFactor.hashCode() : 0);
-    result = 31 * result + (mySecondaryPrevention != null ? mySecondaryPrevention.hashCode() : 0);
-    result = 31 * result + (mySignOrSymptom != null ? mySignOrSymptom.hashCode() : 0);
-    result = 31 * result + (myStage != null ? myStage.hashCode() : 0);
-    result = 31 * result + (mySubtype != null ? mySubtype.hashCode() : 0);
-    result = 31 * result + (myTypicalTest != null ? myTypicalTest.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    MedicalCondition medicalCondition = (MedicalCondition) o;
-    if (!super.equals(o)) return false;
-    if (myAssociatedAnatomy != null ? !myAssociatedAnatomy.equals(medicalCondition.myAssociatedAnatomy) : medicalCondition.myAssociatedAnatomy != null) return false;
-    if (myCause != null ? !myCause.equals(medicalCondition.myCause) : medicalCondition.myCause != null) return false;
-    if (myDifferentialDiagnosis != null ? !myDifferentialDiagnosis.equals(medicalCondition.myDifferentialDiagnosis) : medicalCondition.myDifferentialDiagnosis != null) return false;
-    if (myEpidemiology != null ? !myEpidemiology.equals(medicalCondition.myEpidemiology) : medicalCondition.myEpidemiology != null) return false;
-    if (myExpectedPrognosis != null ? !myExpectedPrognosis.equals(medicalCondition.myExpectedPrognosis) : medicalCondition.myExpectedPrognosis != null) return false;
-    if (myNaturalProgression != null ? !myNaturalProgression.equals(medicalCondition.myNaturalProgression) : medicalCondition.myNaturalProgression != null) return false;
-    if (myPathophysiology != null ? !myPathophysiology.equals(medicalCondition.myPathophysiology) : medicalCondition.myPathophysiology != null) return false;
-    if (myPossibleComplication != null ? !myPossibleComplication.equals(medicalCondition.myPossibleComplication) : medicalCondition.myPossibleComplication != null) return false;
-    if (myPossibleTreatment != null ? !myPossibleTreatment.equals(medicalCondition.myPossibleTreatment) : medicalCondition.myPossibleTreatment != null) return false;
-    if (myPrimaryPrevention != null ? !myPrimaryPrevention.equals(medicalCondition.myPrimaryPrevention) : medicalCondition.myPrimaryPrevention != null) return false;
-    if (myRiskFactor != null ? !myRiskFactor.equals(medicalCondition.myRiskFactor) : medicalCondition.myRiskFactor != null) return false;
-    if (mySecondaryPrevention != null ? !mySecondaryPrevention.equals(medicalCondition.mySecondaryPrevention) : medicalCondition.mySecondaryPrevention != null) return false;
-    if (mySignOrSymptom != null ? !mySignOrSymptom.equals(medicalCondition.mySignOrSymptom) : medicalCondition.mySignOrSymptom != null) return false;
-    if (myStage != null ? !myStage.equals(medicalCondition.myStage) : medicalCondition.myStage != null) return false;
-    if (mySubtype != null ? !mySubtype.equals(medicalCondition.mySubtype) : medicalCondition.mySubtype != null) return false;
-    if (myTypicalTest != null ? !myTypicalTest.equals(medicalCondition.myTypicalTest) : medicalCondition.myTypicalTest != null) return false;
-    return true;
-  }
-
+  
   private AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy myAssociatedAnatomy;
   private MedicalCause myCause;
   private DDxElement myDifferentialDiagnosis;

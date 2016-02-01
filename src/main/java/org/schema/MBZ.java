@@ -20,46 +20,20 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * This vocabulary was improved through collaboration with the MusicBrainz project
-  *     (<a href="http://www.musicbrainz.org">www.musicbrainz.org</a>), and is partially inspired by the MusicBrainz and
-  *     <a href="http://musicontology.com/docs/getting-started.html">Music Ontology</a> schemas.
+ *     (<a href="http://www.musicbrainz.org">www.musicbrainz.org</a>), and is partially inspired by the MusicBrainz and
+ *     <a href="http://musicontology.com/docs/getting-started.html">Music Ontology</a> schemas.
  */
 public class MBZ {
-  /**
-   * Builder for {@link MBZ}
-   */
-  static final class MBZThingBuilder implements Builder {
-    /**
-     * Creates new {@link MBZ} instance.
-     */
-    public MBZ build() {
-      return new MBZ();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<MBZ> {
-    
-  }
-
   protected MBZ() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -67,5 +41,21 @@ public class MBZ {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link MBZ}
+   */
+  public static class Builder implements ThingBuilder<MBZ> {
+    public MBZ build() {
+      return new MBZ();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

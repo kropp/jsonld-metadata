@@ -20,182 +20,127 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An offer to transfer some rights to an item or to provide a service&#x2014;for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.
-  *       <br/><br/>
-  *       For <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GTIN</a>-related fields, see
-  *       <a href="http://www.gs1.org/barcodes/support/check_digit_calculator">Check Digit calculator</a>
-  *       and <a href="http://www.gs1us.org/resources/standards/gtin-validation-guide">validation guide</a>
-  *       from <a href="http://www.gs1.org/">GS1</a>.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsProperties
+ *       <br/><br/>
+ *       For <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GTIN</a>-related fields, see
+ *       <a href="http://www.gs1.org/barcodes/support/check_digit_calculator">Check Digit calculator</a>
+ *       and <a href="http://www.gs1us.org/resources/standards/gtin-validation-guide">validation guide</a>
+ *       from <a href="http://www.gs1.org/">GS1</a>.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsProperties
  */
 public class Offer extends Intangible {
   /**
    * The payment method(s) accepted by seller for this offer.
    */
-  public PaymentMethod getAcceptedPaymentMethod() {
-    return myAcceptedPaymentMethod;
-  }
+  public PaymentMethod getAcceptedPaymentMethod() { return myAcceptedPaymentMethod; }
   /**
    * An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
    */
-  public Offer getAddOn() {
-    return myAddOn;
-  }
+  public Offer getAddOn() { return myAddOn; }
   /**
    * The amount of time that is required between accepting the offer and the actual usage of the resource or service.
    */
-  public QuantitativeValue getAdvanceBookingRequirement() {
-    return myAdvanceBookingRequirement;
-  }
+  public QuantitativeValue getAdvanceBookingRequirement() { return myAdvanceBookingRequirement; }
   /**
    * The overall rating, based on a collection of reviews or ratings, of the item.
    */
-  public AggregateRating getAggregateRating() {
-    return myAggregateRating;
-  }
+  public AggregateRating getAggregateRating() { return myAggregateRating; }
   /**
    * The availability of this item&#x2014;for example In stock, Out of stock, Pre-order, etc.
    */
-  public ItemAvailability getAvailability() {
-    return myAvailability;
-  }
+  public ItemAvailability getAvailability() { return myAvailability; }
   /**
    * The end of the availability of the product or service included in the offer.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getAvailabilityEnds() {
-    return myAvailabilityEnds;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getAvailabilityEnds() { return myAvailabilityEnds; }
   /**
    * The beginning of the availability of the product or service included in the offer.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getAvailabilityStarts() {
-    return myAvailabilityStarts;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getAvailabilityStarts() { return myAvailabilityStarts; }
   /**
    * The place(s) from which the offer can be obtained (e.g. store locations).
    */
-  public Place getAvailableAtOrFrom() {
-    return myAvailableAtOrFrom;
-  }
+  public Place getAvailableAtOrFrom() { return myAvailableAtOrFrom; }
   /**
    * The delivery method(s) available for this offer.
    */
-  public DeliveryMethod getAvailableDeliveryMethod() {
-    return myAvailableDeliveryMethod;
-  }
+  public DeliveryMethod getAvailableDeliveryMethod() { return myAvailableDeliveryMethod; }
   /**
    * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
    */
-  public BusinessFunction getBusinessFunction() {
-    return myBusinessFunction;
-  }
+  public BusinessFunction getBusinessFunction() { return myBusinessFunction; }
   /**
    * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
    */
-  public PhysicalActivityCategoryOrStringOrThing getCategory() {
-    return myCategory;
-  }
+  public PhysicalActivityCategoryOrStringOrThing getCategory() { return myCategory; }
   /**
    * The typical delay between the receipt of the order and the goods leaving the warehouse.
    */
-  public QuantitativeValue getDeliveryLeadTime() {
-    return myDeliveryLeadTime;
-  }
+  public QuantitativeValue getDeliveryLeadTime() { return myDeliveryLeadTime; }
   /**
    * The type(s) of customers for which the given offer is valid.
    */
-  public BusinessEntityType getEligibleCustomerType() {
-    return myEligibleCustomerType;
-  }
+  public BusinessEntityType getEligibleCustomerType() { return myEligibleCustomerType; }
   /**
    * The duration for which the given offer is valid.
    */
-  public QuantitativeValue getEligibleDuration() {
-    return myEligibleDuration;
-  }
+  public QuantitativeValue getEligibleDuration() { return myEligibleDuration; }
   /**
    * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
    */
-  public QuantitativeValue getEligibleQuantity() {
-    return myEligibleQuantity;
-  }
+  public QuantitativeValue getEligibleQuantity() { return myEligibleQuantity; }
   /**
    * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
    */
-  public GeoShapeOrPlaceOrString getEligibleRegion() {
-    return myEligibleRegion;
-  }
+  public GeoShapeOrPlaceOrString getEligibleRegion() { return myEligibleRegion; }
   /**
    * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
    */
-  public GeoShapeOrPlaceOrString getIneligibleRegion() {
-    return myIneligibleRegion;
-  }
+  public GeoShapeOrPlaceOrString getIneligibleRegion() { return myIneligibleRegion; }
   /**
    * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
    */
-  public PriceSpecification getEligibleTransactionVolume() {
-    return myEligibleTransactionVolume;
-  }
+  public PriceSpecification getEligibleTransactionVolume() { return myEligibleTransactionVolume; }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-12.aspx">GTIN-12</a> code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin12() {
-    return myGtin12;
-  }
+  public String getGtin12() { return myGtin12; }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-13.aspx">GTIN-13</a> code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin13() {
-    return myGtin13;
-  }
+  public String getGtin13() { return myGtin13; }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-14.aspx">GTIN-14</a> code of the product, or the product to which the offer refers. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin14() {
-    return myGtin14;
-  }
+  public String getGtin14() { return myGtin14; }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-8.aspx">GTIN-8</a> code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin8() {
-    return myGtin8;
-  }
+  public String getGtin8() { return myGtin8; }
   /**
    * This links to a node or nodes indicating the exact quantity of the products included in the offer.
    */
-  public TypeAndQuantityNode getIncludesObject() {
-    return myIncludesObject;
-  }
+  public TypeAndQuantityNode getIncludesObject() { return myIncludesObject; }
   /**
    * The current approximate inventory level for the item or items.
    */
-  public QuantitativeValue getInventoryLevel() {
-    return myInventoryLevel;
-  }
+  public QuantitativeValue getInventoryLevel() { return myInventoryLevel; }
   /**
    * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
    */
-  public OfferItemCondition getItemCondition() {
-    return myItemCondition;
-  }
+  public OfferItemCondition getItemCondition() { return myItemCondition; }
   /**
    * The item being offered.
    */
-  public Product getItemOffered() {
-    return myItemOffered;
-  }
+  public Product getItemOffered() { return myItemOffered; }
   /**
    * The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
    */
-  public String getMpn() {
-    return myMpn;
-  }
+  public String getMpn() { return myMpn; }
   /**
    * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
 <br />
@@ -219,73 +164,213 @@ public class Offer extends Intangible {
 </ul>
       
    */
-  public Number getPrice() {
-    return myPrice;
-  }
+  public Number getPrice() { return myPrice; }
   /**
    * One or more detailed price specifications, indicating the unit price and delivery or payment charges.
    */
-  public PriceSpecification getPriceSpecification() {
-    return myPriceSpecification;
-  }
+  public PriceSpecification getPriceSpecification() { return myPriceSpecification; }
   /**
    * The date after which the price is no longer available.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getPriceValidUntil() {
-    return myPriceValidUntil;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getPriceValidUntil() { return myPriceValidUntil; }
   /**
    * A review of the item.
    */
-  public Review getReview() {
-    return myReview;
-  }
+  public Review getReview() { return myReview; }
   /**
    * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
    */
-  public Participant getSeller() {
-    return mySeller;
-  }
+  public Participant getSeller() { return mySeller; }
   /**
    * The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
    */
-  public String getSku() {
-    return mySku;
-  }
+  public String getSku() { return mySku; }
   /**
    * The date when the item becomes valid.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getValidFrom() {
-    return myValidFrom;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getValidFrom() { return myValidFrom; }
   /**
    * The end of the validity of offer, price specification, or opening hours data.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getValidThrough() {
-    return myValidThrough;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getValidThrough() { return myValidThrough; }
   /**
    * The warranty promise(s) included in the offer.
    */
-  public WarrantyPromise getWarranty() {
-    return myWarranty;
-  }
+  public WarrantyPromise getWarranty() { return myWarranty; }
   /**
    * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
    */
-  public String getPriceCurrency() {
-    return myPriceCurrency;
+  public String getPriceCurrency() { return myPriceCurrency; }
+  protected Offer(PaymentMethod acceptedPaymentMethod, Offer addOn, QuantitativeValue advanceBookingRequirement, AggregateRating aggregateRating, ItemAvailability availability, java.util.Date availabilityEnds, java.util.Date availabilityStarts, Place availableAtOrFrom, DeliveryMethod availableDeliveryMethod, BusinessFunction businessFunction, PhysicalActivityCategoryOrStringOrThing category, QuantitativeValue deliveryLeadTime, BusinessEntityType eligibleCustomerType, QuantitativeValue eligibleDuration, QuantitativeValue eligibleQuantity, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, PriceSpecification eligibleTransactionVolume, String gtin12, String gtin13, String gtin14, String gtin8, TypeAndQuantityNode includesObject, QuantitativeValue inventoryLevel, OfferItemCondition itemCondition, Product itemOffered, String mpn, Number price, PriceSpecification priceSpecification, java.util.Date priceValidUntil, Review review, Participant seller, String sku, java.util.Date validFrom, java.util.Date validThrough, WarrantyPromise warranty, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myAcceptedPaymentMethod = acceptedPaymentMethod;
+    myAddOn = addOn;
+    myAdvanceBookingRequirement = advanceBookingRequirement;
+    myAggregateRating = aggregateRating;
+    myAvailability = availability;
+    myAvailabilityEnds = availabilityEnds;
+    myAvailabilityStarts = availabilityStarts;
+    myAvailableAtOrFrom = availableAtOrFrom;
+    myAvailableDeliveryMethod = availableDeliveryMethod;
+    myBusinessFunction = businessFunction;
+    myCategory = category;
+    myDeliveryLeadTime = deliveryLeadTime;
+    myEligibleCustomerType = eligibleCustomerType;
+    myEligibleDuration = eligibleDuration;
+    myEligibleQuantity = eligibleQuantity;
+    myEligibleRegion = eligibleRegion;
+    myIneligibleRegion = ineligibleRegion;
+    myEligibleTransactionVolume = eligibleTransactionVolume;
+    myGtin12 = gtin12;
+    myGtin13 = gtin13;
+    myGtin14 = gtin14;
+    myGtin8 = gtin8;
+    myIncludesObject = includesObject;
+    myInventoryLevel = inventoryLevel;
+    myItemCondition = itemCondition;
+    myItemOffered = itemOffered;
+    myMpn = mpn;
+    myPrice = price;
+    myPriceSpecification = priceSpecification;
+    myPriceValidUntil = priceValidUntil;
+    myReview = review;
+    mySeller = seller;
+    mySku = sku;
+    myValidFrom = validFrom;
+    myValidThrough = validThrough;
+    myWarranty = warranty;
+    myPriceCurrency = priceCurrency;
+    myAcceptedPaymentMethod = acceptedPaymentMethod;
+    myAddOn = addOn;
+    myAdvanceBookingRequirement = advanceBookingRequirement;
+    myAggregateRating = aggregateRating;
+    myAvailability = availability;
+    myAvailabilityEnds = availabilityEnds;
+    myAvailabilityStarts = availabilityStarts;
+    myAvailableAtOrFrom = availableAtOrFrom;
+    myAvailableDeliveryMethod = availableDeliveryMethod;
+    myBusinessFunction = businessFunction;
+    myCategory = category;
+    myDeliveryLeadTime = deliveryLeadTime;
+    myEligibleCustomerType = eligibleCustomerType;
+    myEligibleDuration = eligibleDuration;
+    myEligibleQuantity = eligibleQuantity;
+    myEligibleRegion = eligibleRegion;
+    myIneligibleRegion = ineligibleRegion;
+    myEligibleTransactionVolume = eligibleTransactionVolume;
+    myGtin12 = gtin12;
+    myGtin13 = gtin13;
+    myGtin14 = gtin14;
+    myGtin8 = gtin8;
+    myIncludesObject = includesObject;
+    myInventoryLevel = inventoryLevel;
+    myItemCondition = itemCondition;
+    myItemOffered = itemOffered;
+    myMpn = mpn;
+    myPrice = price;
+    myPriceSpecification = priceSpecification;
+    myPriceValidUntil = priceValidUntil;
+    myReview = review;
+    mySeller = seller;
+    mySku = sku;
+    myValidFrom = validFrom;
+    myValidThrough = validThrough;
+    myWarranty = warranty;
+    myPriceCurrency = priceCurrency;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAcceptedPaymentMethod != null ? myAcceptedPaymentMethod.hashCode() : 0);
+    result = 31 * result + (myAddOn != null ? myAddOn.hashCode() : 0);
+    result = 31 * result + (myAdvanceBookingRequirement != null ? myAdvanceBookingRequirement.hashCode() : 0);
+    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
+    result = 31 * result + (myAvailability != null ? myAvailability.hashCode() : 0);
+    result = 31 * result + (myAvailabilityEnds != null ? myAvailabilityEnds.hashCode() : 0);
+    result = 31 * result + (myAvailabilityStarts != null ? myAvailabilityStarts.hashCode() : 0);
+    result = 31 * result + (myAvailableAtOrFrom != null ? myAvailableAtOrFrom.hashCode() : 0);
+    result = 31 * result + (myAvailableDeliveryMethod != null ? myAvailableDeliveryMethod.hashCode() : 0);
+    result = 31 * result + (myBusinessFunction != null ? myBusinessFunction.hashCode() : 0);
+    result = 31 * result + (myCategory != null ? myCategory.hashCode() : 0);
+    result = 31 * result + (myDeliveryLeadTime != null ? myDeliveryLeadTime.hashCode() : 0);
+    result = 31 * result + (myEligibleCustomerType != null ? myEligibleCustomerType.hashCode() : 0);
+    result = 31 * result + (myEligibleDuration != null ? myEligibleDuration.hashCode() : 0);
+    result = 31 * result + (myEligibleQuantity != null ? myEligibleQuantity.hashCode() : 0);
+    result = 31 * result + (myEligibleRegion != null ? myEligibleRegion.hashCode() : 0);
+    result = 31 * result + (myIneligibleRegion != null ? myIneligibleRegion.hashCode() : 0);
+    result = 31 * result + (myEligibleTransactionVolume != null ? myEligibleTransactionVolume.hashCode() : 0);
+    result = 31 * result + (myGtin12 != null ? myGtin12.hashCode() : 0);
+    result = 31 * result + (myGtin13 != null ? myGtin13.hashCode() : 0);
+    result = 31 * result + (myGtin14 != null ? myGtin14.hashCode() : 0);
+    result = 31 * result + (myGtin8 != null ? myGtin8.hashCode() : 0);
+    result = 31 * result + (myIncludesObject != null ? myIncludesObject.hashCode() : 0);
+    result = 31 * result + (myInventoryLevel != null ? myInventoryLevel.hashCode() : 0);
+    result = 31 * result + (myItemCondition != null ? myItemCondition.hashCode() : 0);
+    result = 31 * result + (myItemOffered != null ? myItemOffered.hashCode() : 0);
+    result = 31 * result + (myMpn != null ? myMpn.hashCode() : 0);
+    result = 31 * result + (myPrice != null ? myPrice.hashCode() : 0);
+    result = 31 * result + (myPriceSpecification != null ? myPriceSpecification.hashCode() : 0);
+    result = 31 * result + (myPriceValidUntil != null ? myPriceValidUntil.hashCode() : 0);
+    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
+    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
+    result = 31 * result + (mySku != null ? mySku.hashCode() : 0);
+    result = 31 * result + (myValidFrom != null ? myValidFrom.hashCode() : 0);
+    result = 31 * result + (myValidThrough != null ? myValidThrough.hashCode() : 0);
+    result = 31 * result + (myWarranty != null ? myWarranty.hashCode() : 0);
+    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Offer offer = (Offer) o;
+    if (!super.equals(o)) return false;
+    if (myAcceptedPaymentMethod != null ? !myAcceptedPaymentMethod.equals(offer.myAcceptedPaymentMethod) : offer.myAcceptedPaymentMethod != null) return false;
+    if (myAddOn != null ? !myAddOn.equals(offer.myAddOn) : offer.myAddOn != null) return false;
+    if (myAdvanceBookingRequirement != null ? !myAdvanceBookingRequirement.equals(offer.myAdvanceBookingRequirement) : offer.myAdvanceBookingRequirement != null) return false;
+    if (myAggregateRating != null ? !myAggregateRating.equals(offer.myAggregateRating) : offer.myAggregateRating != null) return false;
+    if (myAvailability != null ? !myAvailability.equals(offer.myAvailability) : offer.myAvailability != null) return false;
+    if (myAvailabilityEnds != null ? !myAvailabilityEnds.equals(offer.myAvailabilityEnds) : offer.myAvailabilityEnds != null) return false;
+    if (myAvailabilityStarts != null ? !myAvailabilityStarts.equals(offer.myAvailabilityStarts) : offer.myAvailabilityStarts != null) return false;
+    if (myAvailableAtOrFrom != null ? !myAvailableAtOrFrom.equals(offer.myAvailableAtOrFrom) : offer.myAvailableAtOrFrom != null) return false;
+    if (myAvailableDeliveryMethod != null ? !myAvailableDeliveryMethod.equals(offer.myAvailableDeliveryMethod) : offer.myAvailableDeliveryMethod != null) return false;
+    if (myBusinessFunction != null ? !myBusinessFunction.equals(offer.myBusinessFunction) : offer.myBusinessFunction != null) return false;
+    if (myCategory != null ? !myCategory.equals(offer.myCategory) : offer.myCategory != null) return false;
+    if (myDeliveryLeadTime != null ? !myDeliveryLeadTime.equals(offer.myDeliveryLeadTime) : offer.myDeliveryLeadTime != null) return false;
+    if (myEligibleCustomerType != null ? !myEligibleCustomerType.equals(offer.myEligibleCustomerType) : offer.myEligibleCustomerType != null) return false;
+    if (myEligibleDuration != null ? !myEligibleDuration.equals(offer.myEligibleDuration) : offer.myEligibleDuration != null) return false;
+    if (myEligibleQuantity != null ? !myEligibleQuantity.equals(offer.myEligibleQuantity) : offer.myEligibleQuantity != null) return false;
+    if (myEligibleRegion != null ? !myEligibleRegion.equals(offer.myEligibleRegion) : offer.myEligibleRegion != null) return false;
+    if (myIneligibleRegion != null ? !myIneligibleRegion.equals(offer.myIneligibleRegion) : offer.myIneligibleRegion != null) return false;
+    if (myEligibleTransactionVolume != null ? !myEligibleTransactionVolume.equals(offer.myEligibleTransactionVolume) : offer.myEligibleTransactionVolume != null) return false;
+    if (myGtin12 != null ? !myGtin12.equals(offer.myGtin12) : offer.myGtin12 != null) return false;
+    if (myGtin13 != null ? !myGtin13.equals(offer.myGtin13) : offer.myGtin13 != null) return false;
+    if (myGtin14 != null ? !myGtin14.equals(offer.myGtin14) : offer.myGtin14 != null) return false;
+    if (myGtin8 != null ? !myGtin8.equals(offer.myGtin8) : offer.myGtin8 != null) return false;
+    if (myIncludesObject != null ? !myIncludesObject.equals(offer.myIncludesObject) : offer.myIncludesObject != null) return false;
+    if (myInventoryLevel != null ? !myInventoryLevel.equals(offer.myInventoryLevel) : offer.myInventoryLevel != null) return false;
+    if (myItemCondition != null ? !myItemCondition.equals(offer.myItemCondition) : offer.myItemCondition != null) return false;
+    if (myItemOffered != null ? !myItemOffered.equals(offer.myItemOffered) : offer.myItemOffered != null) return false;
+    if (myMpn != null ? !myMpn.equals(offer.myMpn) : offer.myMpn != null) return false;
+    if (myPrice != null ? !myPrice.equals(offer.myPrice) : offer.myPrice != null) return false;
+    if (myPriceSpecification != null ? !myPriceSpecification.equals(offer.myPriceSpecification) : offer.myPriceSpecification != null) return false;
+    if (myPriceValidUntil != null ? !myPriceValidUntil.equals(offer.myPriceValidUntil) : offer.myPriceValidUntil != null) return false;
+    if (myReview != null ? !myReview.equals(offer.myReview) : offer.myReview != null) return false;
+    if (mySeller != null ? !mySeller.equals(offer.mySeller) : offer.mySeller != null) return false;
+    if (mySku != null ? !mySku.equals(offer.mySku) : offer.mySku != null) return false;
+    if (myValidFrom != null ? !myValidFrom.equals(offer.myValidFrom) : offer.myValidFrom != null) return false;
+    if (myValidThrough != null ? !myValidThrough.equals(offer.myValidThrough) : offer.myValidThrough != null) return false;
+    if (myWarranty != null ? !myWarranty.equals(offer.myWarranty) : offer.myWarranty != null) return false;
+    if (myPriceCurrency != null ? !myPriceCurrency.equals(offer.myPriceCurrency) : offer.myPriceCurrency != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link Offer}
    */
-  static final class OfferThingBuilder implements Builder {
-    /**
-     * Creates new {@link Offer} instance.
-     */
+  public static class Builder implements ThingBuilder<Offer> {
     public Offer build() {
       return new Offer(acceptedPaymentMethod, addOn, advanceBookingRequirement, aggregateRating, availability, availabilityEnds, availabilityStarts, availableAtOrFrom, availableDeliveryMethod, businessFunction, category, deliveryLeadTime, eligibleCustomerType, eligibleDuration, eligibleQuantity, eligibleRegion, ineligibleRegion, eligibleTransactionVolume, gtin12, gtin13, gtin14, gtin8, includesObject, inventoryLevel, itemCondition, itemOffered, mpn, price, priceSpecification, priceValidUntil, review, seller, sku, validFrom, validThrough, warranty, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -669,26 +754,26 @@ public class Offer extends Intangible {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Integer integer) {
       if (this.price == null) this.price = new Number();
@@ -697,26 +782,26 @@ public class Offer extends Intangible {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Long price) {
       if (this.price == null) this.price = new Number();
@@ -725,26 +810,26 @@ public class Offer extends Intangible {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Float price) {
       if (this.price == null) this.price = new Number();
@@ -753,26 +838,26 @@ public class Offer extends Intangible {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Double price) {
       if (this.price == null) this.price = new Number();
@@ -781,26 +866,26 @@ public class Offer extends Intangible {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull String price) {
       if (this.price == null) this.price = new Number();
@@ -911,33 +996,33 @@ public class Offer extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -946,66 +1031,66 @@ public class Offer extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -1053,7 +1138,6 @@ public class Offer extends Intangible {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -1165,222 +1249,7 @@ public class Offer extends Intangible {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<Offer> {
-    @NotNull Builder acceptedPaymentMethod(@NotNull PaymentMethod paymentMethod);
-    @NotNull Builder acceptedPaymentMethod(@NotNull PaymentMethod.Builder paymentMethod);
-    @NotNull Builder addOn(@NotNull Offer offer);
-    @NotNull Builder addOn(@NotNull Offer.Builder offer);
-    @NotNull Builder advanceBookingRequirement(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder advanceBookingRequirement(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating aggregateRating);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating);
-    @NotNull Builder availability(@NotNull ItemAvailability itemAvailability);
-    @NotNull Builder availability(@NotNull ItemAvailability.Builder itemAvailability);
-    @NotNull Builder availabilityEnds(@NotNull java.util.Date date);
-    @NotNull Builder availabilityStarts(@NotNull java.util.Date date);
-    @NotNull Builder availableAtOrFrom(@NotNull Place place);
-    @NotNull Builder availableAtOrFrom(@NotNull Place.Builder place);
-    @NotNull Builder availableDeliveryMethod(@NotNull DeliveryMethod deliveryMethod);
-    @NotNull Builder availableDeliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod);
-    @NotNull Builder businessFunction(@NotNull BusinessFunction businessFunction);
-    @NotNull Builder businessFunction(@NotNull BusinessFunction.Builder businessFunction);
-    @NotNull Builder category(@NotNull PhysicalActivityCategory physicalActivityCategory);
-    @NotNull Builder category(@NotNull PhysicalActivityCategory.Builder physicalActivityCategory);
-    @NotNull Builder category(@NotNull String category);
-    @NotNull Builder category(@NotNull Thing thing);
-    @NotNull Builder category(@NotNull Thing.Builder thing);
-    @NotNull Builder deliveryLeadTime(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder deliveryLeadTime(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder eligibleCustomerType(@NotNull BusinessEntityType businessEntityType);
-    @NotNull Builder eligibleCustomerType(@NotNull BusinessEntityType.Builder businessEntityType);
-    @NotNull Builder eligibleDuration(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder eligibleDuration(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder eligibleQuantity(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder eligibleQuantity(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder eligibleRegion(@NotNull GeoShape geoShape);
-    @NotNull Builder eligibleRegion(@NotNull GeoShape.Builder geoShape);
-    @NotNull Builder eligibleRegion(@NotNull Place place);
-    @NotNull Builder eligibleRegion(@NotNull Place.Builder place);
-    @NotNull Builder eligibleRegion(@NotNull String eligibleRegion);
-    @NotNull Builder ineligibleRegion(@NotNull GeoShape geoShape);
-    @NotNull Builder ineligibleRegion(@NotNull GeoShape.Builder geoShape);
-    @NotNull Builder ineligibleRegion(@NotNull Place place);
-    @NotNull Builder ineligibleRegion(@NotNull Place.Builder place);
-    @NotNull Builder ineligibleRegion(@NotNull String ineligibleRegion);
-    @NotNull Builder eligibleTransactionVolume(@NotNull PriceSpecification priceSpecification);
-    @NotNull Builder eligibleTransactionVolume(@NotNull PriceSpecification.Builder priceSpecification);
-    @NotNull Builder gtin12(@NotNull String gtin12);
-    @NotNull Builder gtin13(@NotNull String gtin13);
-    @NotNull Builder gtin14(@NotNull String gtin14);
-    @NotNull Builder gtin8(@NotNull String gtin8);
-    @NotNull Builder includesObject(@NotNull TypeAndQuantityNode typeAndQuantityNode);
-    @NotNull Builder includesObject(@NotNull TypeAndQuantityNode.Builder typeAndQuantityNode);
-    @NotNull Builder inventoryLevel(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder inventoryLevel(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder itemCondition(@NotNull OfferItemCondition offerItemCondition);
-    @NotNull Builder itemCondition(@NotNull OfferItemCondition.Builder offerItemCondition);
-    @NotNull Builder itemOffered(@NotNull Product product);
-    @NotNull Builder itemOffered(@NotNull Product.Builder product);
-    @NotNull Builder mpn(@NotNull String mpn);
-    @NotNull Builder price(@NotNull Integer integer);
-    @NotNull Builder price(@NotNull Long price);
-    @NotNull Builder price(@NotNull Float price);
-    @NotNull Builder price(@NotNull Double price);
-    @NotNull Builder price(@NotNull String price);
-    @NotNull Builder priceSpecification(@NotNull PriceSpecification priceSpecification);
-    @NotNull Builder priceSpecification(@NotNull PriceSpecification.Builder priceSpecification);
-    @NotNull Builder priceValidUntil(@NotNull java.util.Date date);
-    @NotNull Builder review(@NotNull Review review);
-    @NotNull Builder review(@NotNull Review.Builder review);
-    @NotNull Builder seller(@NotNull Participant participant);
-    @NotNull Builder sku(@NotNull String sku);
-    @NotNull Builder validFrom(@NotNull java.util.Date date);
-    @NotNull Builder validThrough(@NotNull java.util.Date date);
-    @NotNull Builder warranty(@NotNull WarrantyPromise warrantyPromise);
-    @NotNull Builder warranty(@NotNull WarrantyPromise.Builder warrantyPromise);
-    @NotNull Builder priceCurrency(@NotNull String priceCurrency);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected Offer(PaymentMethod acceptedPaymentMethod, Offer addOn, QuantitativeValue advanceBookingRequirement, AggregateRating aggregateRating, ItemAvailability availability, java.util.Date availabilityEnds, java.util.Date availabilityStarts, Place availableAtOrFrom, DeliveryMethod availableDeliveryMethod, BusinessFunction businessFunction, PhysicalActivityCategoryOrStringOrThing category, QuantitativeValue deliveryLeadTime, BusinessEntityType eligibleCustomerType, QuantitativeValue eligibleDuration, QuantitativeValue eligibleQuantity, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, PriceSpecification eligibleTransactionVolume, String gtin12, String gtin13, String gtin14, String gtin8, TypeAndQuantityNode includesObject, QuantitativeValue inventoryLevel, OfferItemCondition itemCondition, Product itemOffered, String mpn, Number price, PriceSpecification priceSpecification, java.util.Date priceValidUntil, Review review, Participant seller, String sku, java.util.Date validFrom, java.util.Date validThrough, WarrantyPromise warranty, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAcceptedPaymentMethod = acceptedPaymentMethod;
-    myAddOn = addOn;
-    myAdvanceBookingRequirement = advanceBookingRequirement;
-    myAggregateRating = aggregateRating;
-    myAvailability = availability;
-    myAvailabilityEnds = availabilityEnds;
-    myAvailabilityStarts = availabilityStarts;
-    myAvailableAtOrFrom = availableAtOrFrom;
-    myAvailableDeliveryMethod = availableDeliveryMethod;
-    myBusinessFunction = businessFunction;
-    myCategory = category;
-    myDeliveryLeadTime = deliveryLeadTime;
-    myEligibleCustomerType = eligibleCustomerType;
-    myEligibleDuration = eligibleDuration;
-    myEligibleQuantity = eligibleQuantity;
-    myEligibleRegion = eligibleRegion;
-    myIneligibleRegion = ineligibleRegion;
-    myEligibleTransactionVolume = eligibleTransactionVolume;
-    myGtin12 = gtin12;
-    myGtin13 = gtin13;
-    myGtin14 = gtin14;
-    myGtin8 = gtin8;
-    myIncludesObject = includesObject;
-    myInventoryLevel = inventoryLevel;
-    myItemCondition = itemCondition;
-    myItemOffered = itemOffered;
-    myMpn = mpn;
-    myPrice = price;
-    myPriceSpecification = priceSpecification;
-    myPriceValidUntil = priceValidUntil;
-    myReview = review;
-    mySeller = seller;
-    mySku = sku;
-    myValidFrom = validFrom;
-    myValidThrough = validThrough;
-    myWarranty = warranty;
-    myPriceCurrency = priceCurrency;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAcceptedPaymentMethod != null ? myAcceptedPaymentMethod.hashCode() : 0);
-    result = 31 * result + (myAddOn != null ? myAddOn.hashCode() : 0);
-    result = 31 * result + (myAdvanceBookingRequirement != null ? myAdvanceBookingRequirement.hashCode() : 0);
-    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
-    result = 31 * result + (myAvailability != null ? myAvailability.hashCode() : 0);
-    result = 31 * result + (myAvailabilityEnds != null ? myAvailabilityEnds.hashCode() : 0);
-    result = 31 * result + (myAvailabilityStarts != null ? myAvailabilityStarts.hashCode() : 0);
-    result = 31 * result + (myAvailableAtOrFrom != null ? myAvailableAtOrFrom.hashCode() : 0);
-    result = 31 * result + (myAvailableDeliveryMethod != null ? myAvailableDeliveryMethod.hashCode() : 0);
-    result = 31 * result + (myBusinessFunction != null ? myBusinessFunction.hashCode() : 0);
-    result = 31 * result + (myCategory != null ? myCategory.hashCode() : 0);
-    result = 31 * result + (myDeliveryLeadTime != null ? myDeliveryLeadTime.hashCode() : 0);
-    result = 31 * result + (myEligibleCustomerType != null ? myEligibleCustomerType.hashCode() : 0);
-    result = 31 * result + (myEligibleDuration != null ? myEligibleDuration.hashCode() : 0);
-    result = 31 * result + (myEligibleQuantity != null ? myEligibleQuantity.hashCode() : 0);
-    result = 31 * result + (myEligibleRegion != null ? myEligibleRegion.hashCode() : 0);
-    result = 31 * result + (myIneligibleRegion != null ? myIneligibleRegion.hashCode() : 0);
-    result = 31 * result + (myEligibleTransactionVolume != null ? myEligibleTransactionVolume.hashCode() : 0);
-    result = 31 * result + (myGtin12 != null ? myGtin12.hashCode() : 0);
-    result = 31 * result + (myGtin13 != null ? myGtin13.hashCode() : 0);
-    result = 31 * result + (myGtin14 != null ? myGtin14.hashCode() : 0);
-    result = 31 * result + (myGtin8 != null ? myGtin8.hashCode() : 0);
-    result = 31 * result + (myIncludesObject != null ? myIncludesObject.hashCode() : 0);
-    result = 31 * result + (myInventoryLevel != null ? myInventoryLevel.hashCode() : 0);
-    result = 31 * result + (myItemCondition != null ? myItemCondition.hashCode() : 0);
-    result = 31 * result + (myItemOffered != null ? myItemOffered.hashCode() : 0);
-    result = 31 * result + (myMpn != null ? myMpn.hashCode() : 0);
-    result = 31 * result + (myPrice != null ? myPrice.hashCode() : 0);
-    result = 31 * result + (myPriceSpecification != null ? myPriceSpecification.hashCode() : 0);
-    result = 31 * result + (myPriceValidUntil != null ? myPriceValidUntil.hashCode() : 0);
-    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
-    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
-    result = 31 * result + (mySku != null ? mySku.hashCode() : 0);
-    result = 31 * result + (myValidFrom != null ? myValidFrom.hashCode() : 0);
-    result = 31 * result + (myValidThrough != null ? myValidThrough.hashCode() : 0);
-    result = 31 * result + (myWarranty != null ? myWarranty.hashCode() : 0);
-    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Offer offer = (Offer) o;
-    if (!super.equals(o)) return false;
-    if (myAcceptedPaymentMethod != null ? !myAcceptedPaymentMethod.equals(offer.myAcceptedPaymentMethod) : offer.myAcceptedPaymentMethod != null) return false;
-    if (myAddOn != null ? !myAddOn.equals(offer.myAddOn) : offer.myAddOn != null) return false;
-    if (myAdvanceBookingRequirement != null ? !myAdvanceBookingRequirement.equals(offer.myAdvanceBookingRequirement) : offer.myAdvanceBookingRequirement != null) return false;
-    if (myAggregateRating != null ? !myAggregateRating.equals(offer.myAggregateRating) : offer.myAggregateRating != null) return false;
-    if (myAvailability != null ? !myAvailability.equals(offer.myAvailability) : offer.myAvailability != null) return false;
-    if (myAvailabilityEnds != null ? !myAvailabilityEnds.equals(offer.myAvailabilityEnds) : offer.myAvailabilityEnds != null) return false;
-    if (myAvailabilityStarts != null ? !myAvailabilityStarts.equals(offer.myAvailabilityStarts) : offer.myAvailabilityStarts != null) return false;
-    if (myAvailableAtOrFrom != null ? !myAvailableAtOrFrom.equals(offer.myAvailableAtOrFrom) : offer.myAvailableAtOrFrom != null) return false;
-    if (myAvailableDeliveryMethod != null ? !myAvailableDeliveryMethod.equals(offer.myAvailableDeliveryMethod) : offer.myAvailableDeliveryMethod != null) return false;
-    if (myBusinessFunction != null ? !myBusinessFunction.equals(offer.myBusinessFunction) : offer.myBusinessFunction != null) return false;
-    if (myCategory != null ? !myCategory.equals(offer.myCategory) : offer.myCategory != null) return false;
-    if (myDeliveryLeadTime != null ? !myDeliveryLeadTime.equals(offer.myDeliveryLeadTime) : offer.myDeliveryLeadTime != null) return false;
-    if (myEligibleCustomerType != null ? !myEligibleCustomerType.equals(offer.myEligibleCustomerType) : offer.myEligibleCustomerType != null) return false;
-    if (myEligibleDuration != null ? !myEligibleDuration.equals(offer.myEligibleDuration) : offer.myEligibleDuration != null) return false;
-    if (myEligibleQuantity != null ? !myEligibleQuantity.equals(offer.myEligibleQuantity) : offer.myEligibleQuantity != null) return false;
-    if (myEligibleRegion != null ? !myEligibleRegion.equals(offer.myEligibleRegion) : offer.myEligibleRegion != null) return false;
-    if (myIneligibleRegion != null ? !myIneligibleRegion.equals(offer.myIneligibleRegion) : offer.myIneligibleRegion != null) return false;
-    if (myEligibleTransactionVolume != null ? !myEligibleTransactionVolume.equals(offer.myEligibleTransactionVolume) : offer.myEligibleTransactionVolume != null) return false;
-    if (myGtin12 != null ? !myGtin12.equals(offer.myGtin12) : offer.myGtin12 != null) return false;
-    if (myGtin13 != null ? !myGtin13.equals(offer.myGtin13) : offer.myGtin13 != null) return false;
-    if (myGtin14 != null ? !myGtin14.equals(offer.myGtin14) : offer.myGtin14 != null) return false;
-    if (myGtin8 != null ? !myGtin8.equals(offer.myGtin8) : offer.myGtin8 != null) return false;
-    if (myIncludesObject != null ? !myIncludesObject.equals(offer.myIncludesObject) : offer.myIncludesObject != null) return false;
-    if (myInventoryLevel != null ? !myInventoryLevel.equals(offer.myInventoryLevel) : offer.myInventoryLevel != null) return false;
-    if (myItemCondition != null ? !myItemCondition.equals(offer.myItemCondition) : offer.myItemCondition != null) return false;
-    if (myItemOffered != null ? !myItemOffered.equals(offer.myItemOffered) : offer.myItemOffered != null) return false;
-    if (myMpn != null ? !myMpn.equals(offer.myMpn) : offer.myMpn != null) return false;
-    if (myPrice != null ? !myPrice.equals(offer.myPrice) : offer.myPrice != null) return false;
-    if (myPriceSpecification != null ? !myPriceSpecification.equals(offer.myPriceSpecification) : offer.myPriceSpecification != null) return false;
-    if (myPriceValidUntil != null ? !myPriceValidUntil.equals(offer.myPriceValidUntil) : offer.myPriceValidUntil != null) return false;
-    if (myReview != null ? !myReview.equals(offer.myReview) : offer.myReview != null) return false;
-    if (mySeller != null ? !mySeller.equals(offer.mySeller) : offer.mySeller != null) return false;
-    if (mySku != null ? !mySku.equals(offer.mySku) : offer.mySku != null) return false;
-    if (myValidFrom != null ? !myValidFrom.equals(offer.myValidFrom) : offer.myValidFrom != null) return false;
-    if (myValidThrough != null ? !myValidThrough.equals(offer.myValidThrough) : offer.myValidThrough != null) return false;
-    if (myWarranty != null ? !myWarranty.equals(offer.myWarranty) : offer.myWarranty != null) return false;
-    if (myPriceCurrency != null ? !myPriceCurrency.equals(offer.myPriceCurrency) : offer.myPriceCurrency != null) return false;
-    return true;
-  }
-
+  
   private PaymentMethod myAcceptedPaymentMethod;
   private Offer myAddOn;
   private QuantitativeValue myAdvanceBookingRequirement;

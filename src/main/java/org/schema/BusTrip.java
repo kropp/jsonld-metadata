@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A trip on a commercial bus line.
@@ -29,54 +29,80 @@ public class BusTrip extends Intangible {
   /**
    * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
    */
-  public OrganizationOrPerson getProvider() {
-    return myProvider;
-  }
+  public OrganizationOrPerson getProvider() { return myProvider; }
   /**
    * The expected departure time.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDepartureTime() {
-    return myDepartureTime;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getDepartureTime() { return myDepartureTime; }
   /**
    * The expected arrival time.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getArrivalTime() {
-    return myArrivalTime;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getArrivalTime() { return myArrivalTime; }
   /**
    * The unique identifier for the bus.
    */
-  public String getBusNumber() {
-    return myBusNumber;
-  }
+  public String getBusNumber() { return myBusNumber; }
   /**
    * The name of the bus (e.g. Bolt Express).
    */
-  public String getBusName() {
-    return myBusName;
-  }
+  public String getBusName() { return myBusName; }
   /**
    * The stop or station from which the bus departs.
    */
-  public BusStationOrBusStop getDepartureBusStop() {
-    return myDepartureBusStop;
-  }
+  public BusStationOrBusStop getDepartureBusStop() { return myDepartureBusStop; }
   /**
    * The stop or station from which the bus arrives.
    */
-  public BusStationOrBusStop getArrivalBusStop() {
-    return myArrivalBusStop;
+  public BusStationOrBusStop getArrivalBusStop() { return myArrivalBusStop; }
+  protected BusTrip(OrganizationOrPerson provider, java.util.Date departureTime, java.util.Date arrivalTime, String busNumber, String busName, BusStationOrBusStop departureBusStop, BusStationOrBusStop arrivalBusStop, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myProvider = provider;
+    myDepartureTime = departureTime;
+    myArrivalTime = arrivalTime;
+    myBusNumber = busNumber;
+    myBusName = busName;
+    myDepartureBusStop = departureBusStop;
+    myArrivalBusStop = arrivalBusStop;
+    myProvider = provider;
+    myDepartureTime = departureTime;
+    myArrivalTime = arrivalTime;
+    myBusNumber = busNumber;
+    myBusName = busName;
+    myDepartureBusStop = departureBusStop;
+    myArrivalBusStop = arrivalBusStop;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    result = 31 * result + (myDepartureTime != null ? myDepartureTime.hashCode() : 0);
+    result = 31 * result + (myArrivalTime != null ? myArrivalTime.hashCode() : 0);
+    result = 31 * result + (myBusNumber != null ? myBusNumber.hashCode() : 0);
+    result = 31 * result + (myBusName != null ? myBusName.hashCode() : 0);
+    result = 31 * result + (myDepartureBusStop != null ? myDepartureBusStop.hashCode() : 0);
+    result = 31 * result + (myArrivalBusStop != null ? myArrivalBusStop.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    BusTrip busTrip = (BusTrip) o;
+    if (!super.equals(o)) return false;
+    if (myProvider != null ? !myProvider.equals(busTrip.myProvider) : busTrip.myProvider != null) return false;
+    if (myDepartureTime != null ? !myDepartureTime.equals(busTrip.myDepartureTime) : busTrip.myDepartureTime != null) return false;
+    if (myArrivalTime != null ? !myArrivalTime.equals(busTrip.myArrivalTime) : busTrip.myArrivalTime != null) return false;
+    if (myBusNumber != null ? !myBusNumber.equals(busTrip.myBusNumber) : busTrip.myBusNumber != null) return false;
+    if (myBusName != null ? !myBusName.equals(busTrip.myBusName) : busTrip.myBusName != null) return false;
+    if (myDepartureBusStop != null ? !myDepartureBusStop.equals(busTrip.myDepartureBusStop) : busTrip.myDepartureBusStop != null) return false;
+    if (myArrivalBusStop != null ? !myArrivalBusStop.equals(busTrip.myArrivalBusStop) : busTrip.myArrivalBusStop != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link BusTrip}
    */
-  static final class BusTripThingBuilder implements Builder {
-    /**
-     * Creates new {@link BusTrip} instance.
-     */
+  public static class Builder implements ThingBuilder<BusTrip> {
     public BusTrip build() {
       return new BusTrip(provider, departureTime, arrivalTime, busNumber, busName, departureBusStop, arrivalBusStop, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -215,33 +241,33 @@ public class BusTrip extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -250,66 +276,66 @@ public class BusTrip extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -357,7 +383,6 @@ public class BusTrip extends Intangible {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -402,75 +427,7 @@ public class BusTrip extends Intangible {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<BusTrip> {
-    @NotNull Builder provider(@NotNull Organization organization);
-    @NotNull Builder provider(@NotNull Organization.Builder organization);
-    @NotNull Builder provider(@NotNull Person person);
-    @NotNull Builder provider(@NotNull Person.Builder person);
-    @NotNull Builder departureTime(@NotNull java.util.Date date);
-    @NotNull Builder arrivalTime(@NotNull java.util.Date date);
-    @NotNull Builder busNumber(@NotNull String busNumber);
-    @NotNull Builder busName(@NotNull String busName);
-    @NotNull Builder departureBusStop(@NotNull BusStation busStation);
-    @NotNull Builder departureBusStop(@NotNull BusStation.Builder busStation);
-    @NotNull Builder departureBusStop(@NotNull BusStop busStop);
-    @NotNull Builder departureBusStop(@NotNull BusStop.Builder busStop);
-    @NotNull Builder arrivalBusStop(@NotNull BusStation busStation);
-    @NotNull Builder arrivalBusStop(@NotNull BusStation.Builder busStation);
-    @NotNull Builder arrivalBusStop(@NotNull BusStop busStop);
-    @NotNull Builder arrivalBusStop(@NotNull BusStop.Builder busStop);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected BusTrip(OrganizationOrPerson provider, java.util.Date departureTime, java.util.Date arrivalTime, String busNumber, String busName, BusStationOrBusStop departureBusStop, BusStationOrBusStop arrivalBusStop, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myProvider = provider;
-    myDepartureTime = departureTime;
-    myArrivalTime = arrivalTime;
-    myBusNumber = busNumber;
-    myBusName = busName;
-    myDepartureBusStop = departureBusStop;
-    myArrivalBusStop = arrivalBusStop;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
-    result = 31 * result + (myDepartureTime != null ? myDepartureTime.hashCode() : 0);
-    result = 31 * result + (myArrivalTime != null ? myArrivalTime.hashCode() : 0);
-    result = 31 * result + (myBusNumber != null ? myBusNumber.hashCode() : 0);
-    result = 31 * result + (myBusName != null ? myBusName.hashCode() : 0);
-    result = 31 * result + (myDepartureBusStop != null ? myDepartureBusStop.hashCode() : 0);
-    result = 31 * result + (myArrivalBusStop != null ? myArrivalBusStop.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    BusTrip busTrip = (BusTrip) o;
-    if (!super.equals(o)) return false;
-    if (myProvider != null ? !myProvider.equals(busTrip.myProvider) : busTrip.myProvider != null) return false;
-    if (myDepartureTime != null ? !myDepartureTime.equals(busTrip.myDepartureTime) : busTrip.myDepartureTime != null) return false;
-    if (myArrivalTime != null ? !myArrivalTime.equals(busTrip.myArrivalTime) : busTrip.myArrivalTime != null) return false;
-    if (myBusNumber != null ? !myBusNumber.equals(busTrip.myBusNumber) : busTrip.myBusNumber != null) return false;
-    if (myBusName != null ? !myBusName.equals(busTrip.myBusName) : busTrip.myBusName != null) return false;
-    if (myDepartureBusStop != null ? !myDepartureBusStop.equals(busTrip.myDepartureBusStop) : busTrip.myDepartureBusStop != null) return false;
-    if (myArrivalBusStop != null ? !myArrivalBusStop.equals(busTrip.myArrivalBusStop) : busTrip.myArrivalBusStop != null) return false;
-    return true;
-  }
-
+  
   private OrganizationOrPerson myProvider;
   private java.util.Date myDepartureTime;
   private java.util.Date myArrivalTime;

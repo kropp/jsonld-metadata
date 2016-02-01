@@ -18,13 +18,15 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class EnumerationOrProperty {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setEnumeration(Enumeration enumeration) { clear(); myEnumeration = enumeration; }
+  public Enumeration getEnumeration() { return myEnumeration; }
+  void setProperty(Property property) { clear(); myProperty = property; }
+  public Property getProperty() { return myProperty; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myEnumeration != null) return myEnumeration;
     if (myProperty != null) return myProperty;
     return null;
@@ -34,24 +36,16 @@ public class EnumerationOrProperty {
     if (myProperty != null) return myProperty;
     return null;
   }
-  void setEnumeration(Enumeration enumeration) { clear(); myEnumeration = enumeration; }
-  public Enumeration getEnumeration() { return myEnumeration; }
-  private Enumeration myEnumeration;
-  void setProperty(Property property) { clear(); myProperty = property; }
-  public Property getProperty() { return myProperty; }
-  private Property myProperty;
-  private void clear() {
+  public void clear() {
     myEnumeration = null;
     myProperty = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myEnumeration != null ? myEnumeration.hashCode() : 0);
     result = 31 * result + (myProperty != null ? myProperty.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -60,5 +54,6 @@ public class EnumerationOrProperty {
     if (myProperty != null ? !myProperty.equals(enumerationOrProperty.myProperty) : enumerationOrProperty.myProperty != null) return false;
     return true;
   }
-
+  private Enumeration myEnumeration;
+  private Property myProperty;
 }

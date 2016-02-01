@@ -18,13 +18,21 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class Number {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setInteger(Integer integer) { clear(); myInteger = integer; }
+  public Integer getInteger() { return myInteger; }
+  void setLong(Long value) { clear(); myLong = value; }
+  public Long getLong() { return myLong; }
+  void setFloat(Float value) { clear(); myFloat = value; }
+  public Float getFloat() { return myFloat; }
+  void setDouble(Double value) { clear(); myDouble = value; }
+  public Double getDouble() { return myDouble; }
+  void setString(String value) { clear(); myString = value; }
+  public String getString() { return myString; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myInteger != null) return myInteger;
     if (myLong != null) return myLong;
     if (myFloat != null) return myFloat;
@@ -32,31 +40,15 @@ public class Number {
     if (myString != null) return myString;
     return null;
   }
-  void setInteger(Integer integer) { clear(); myInteger = integer; }
-  public Integer getInteger() { return myInteger; }
-  private Integer myInteger;
-  void setLong(Long value) { clear(); myLong = value; }
-  public Long getLong() { return myLong; }
-  private Long myLong;
-  void setFloat(Float value) { clear(); myFloat = value; }
-  public Float getFloat() { return myFloat; }
-  private Float myFloat;
-  void setDouble(Double value) { clear(); myDouble = value; }
-  public Double getDouble() { return myDouble; }
-  private Double myDouble;
-  void setString(String value) { clear(); myString = value; }
-  public String getString() { return myString; }
-  private String myString;
-  private void clear() {
+  public void clear() {
     myInteger = null;
     myLong = null;
     myFloat = null;
     myDouble = null;
     myString = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myInteger != null ? myInteger.hashCode() : 0);
     result = 31 * result + (myLong != null ? myLong.hashCode() : 0);
     result = 31 * result + (myFloat != null ? myFloat.hashCode() : 0);
@@ -64,7 +56,6 @@ public class Number {
     result = 31 * result + (myString != null ? myString.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -76,5 +67,9 @@ public class Number {
     if (myString != null ? !myString.equals(number.myString) : number.myString != null) return false;
     return true;
   }
-
+  private Integer myInteger;
+  private Long myLong;
+  private Float myFloat;
+  private Double myDouble;
+  private String myString;
 }

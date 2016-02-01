@@ -18,35 +18,29 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class MapOrString {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setMap(Map map) { clear(); myMap = map; }
+  public Map getMap() { return myMap; }
+  void setString(String value) { clear(); myString = value; }
+  public String getString() { return myString; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myMap != null) return myMap;
     if (myString != null) return myString;
     return null;
   }
-  void setMap(Map map) { clear(); myMap = map; }
-  public Map getMap() { return myMap; }
-  private Map myMap;
-  void setString(String value) { clear(); myString = value; }
-  public String getString() { return myString; }
-  private String myString;
-  private void clear() {
+  public void clear() {
     myMap = null;
     myString = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myMap != null ? myMap.hashCode() : 0);
     result = 31 * result + (myString != null ? myString.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -55,5 +49,6 @@ public class MapOrString {
     if (myString != null ? !myString.equals(mapOrString.myString) : mapOrString.myString != null) return false;
     return true;
   }
-
+  private Map myMap;
+  private String myString;
 }

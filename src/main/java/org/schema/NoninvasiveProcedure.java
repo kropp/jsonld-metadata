@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A type of medical procedure that involves noninvasive techniques.
  */
 public class NoninvasiveProcedure {
-  /**
-   * Builder for {@link NoninvasiveProcedure}
-   */
-  static final class NoninvasiveProcedureThingBuilder implements Builder {
-    /**
-     * Creates new {@link NoninvasiveProcedure} instance.
-     */
-    public NoninvasiveProcedure build() {
-      return new NoninvasiveProcedure();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<NoninvasiveProcedure> {
-    
-  }
-
   protected NoninvasiveProcedure() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class NoninvasiveProcedure {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link NoninvasiveProcedure}
+   */
+  public static class Builder implements ThingBuilder<NoninvasiveProcedure> {
+    public NoninvasiveProcedure build() {
+      return new NoninvasiveProcedure();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

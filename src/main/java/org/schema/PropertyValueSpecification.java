@@ -20,80 +20,111 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * A Property value specification.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass
+ * A Property value specification.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass
  */
 public class PropertyValueSpecification extends Intangible {
   /**
    * The lower value of some characteristic or property.
    */
-  public Number getMinValue() {
-    return myMinValue;
-  }
+  public Number getMinValue() { return myMinValue; }
   /**
    * Indicates the name of the PropertyValueSpecification to be used in URL templates and form encoding in a manner analogous to HTML's input@name.
    */
-  public String getValueName() {
-    return myValueName;
-  }
+  public String getValueName() { return myValueName; }
   /**
    * Whether the property must be filled in to complete the action.  Default is false.
    */
-  public Boolean getValueRequired() {
-    return myValueRequired;
-  }
+  public Boolean getValueRequired() { return myValueRequired; }
   /**
    * The default value of the input.  For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values.
    */
-  public StringOrThing getDefaultValue() {
-    return myDefaultValue;
-  }
+  public StringOrThing getDefaultValue() { return myDefaultValue; }
   /**
    * Whether or not a property is mutable.  Default is false. Specifying this for a property that also has a value makes it act similar to a "hidden" input in an HTML form.
    */
-  public Boolean getReadonlyValue() {
-    return myReadonlyValue;
-  }
+  public Boolean getReadonlyValue() { return myReadonlyValue; }
   /**
    * Whether multiple values are allowed for the property.  Default is false.
    */
-  public Boolean getMultipleValues() {
-    return myMultipleValues;
-  }
+  public Boolean getMultipleValues() { return myMultipleValues; }
   /**
    * Specifies the minimum allowed range for number of characters in a literal value.
    */
-  public Number getValueMinLength() {
-    return myValueMinLength;
-  }
+  public Number getValueMinLength() { return myValueMinLength; }
   /**
    * Specifies the allowed range for number of characters in a literal value.
    */
-  public Number getValueMaxLength() {
-    return myValueMaxLength;
-  }
+  public Number getValueMaxLength() { return myValueMaxLength; }
   /**
    * Specifies a regular expression for testing literal values according to the HTML spec.
    */
-  public String getValuePattern() {
-    return myValuePattern;
-  }
+  public String getValuePattern() { return myValuePattern; }
   /**
    * The stepValue attribute indicates the granularity that is expected (and required) of the value in a PropertyValueSpecification.
    */
-  public Number getStepValue() {
-    return myStepValue;
+  public Number getStepValue() { return myStepValue; }
+  protected PropertyValueSpecification(Number minValue, String valueName, Boolean valueRequired, StringOrThing defaultValue, Boolean readonlyValue, Boolean multipleValues, Number valueMinLength, Number valueMaxLength, String valuePattern, Number stepValue, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myMinValue = minValue;
+    myValueName = valueName;
+    myValueRequired = valueRequired;
+    myDefaultValue = defaultValue;
+    myReadonlyValue = readonlyValue;
+    myMultipleValues = multipleValues;
+    myValueMinLength = valueMinLength;
+    myValueMaxLength = valueMaxLength;
+    myValuePattern = valuePattern;
+    myStepValue = stepValue;
+    myMinValue = minValue;
+    myValueName = valueName;
+    myValueRequired = valueRequired;
+    myDefaultValue = defaultValue;
+    myReadonlyValue = readonlyValue;
+    myMultipleValues = multipleValues;
+    myValueMinLength = valueMinLength;
+    myValueMaxLength = valueMaxLength;
+    myValuePattern = valuePattern;
+    myStepValue = stepValue;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myMinValue != null ? myMinValue.hashCode() : 0);
+    result = 31 * result + (myValueName != null ? myValueName.hashCode() : 0);
+    result = 31 * result + (myValueRequired != null ? myValueRequired.hashCode() : 0);
+    result = 31 * result + (myDefaultValue != null ? myDefaultValue.hashCode() : 0);
+    result = 31 * result + (myReadonlyValue != null ? myReadonlyValue.hashCode() : 0);
+    result = 31 * result + (myMultipleValues != null ? myMultipleValues.hashCode() : 0);
+    result = 31 * result + (myValueMinLength != null ? myValueMinLength.hashCode() : 0);
+    result = 31 * result + (myValueMaxLength != null ? myValueMaxLength.hashCode() : 0);
+    result = 31 * result + (myValuePattern != null ? myValuePattern.hashCode() : 0);
+    result = 31 * result + (myStepValue != null ? myStepValue.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    PropertyValueSpecification propertyValueSpecification = (PropertyValueSpecification) o;
+    if (!super.equals(o)) return false;
+    if (myMinValue != null ? !myMinValue.equals(propertyValueSpecification.myMinValue) : propertyValueSpecification.myMinValue != null) return false;
+    if (myValueName != null ? !myValueName.equals(propertyValueSpecification.myValueName) : propertyValueSpecification.myValueName != null) return false;
+    if (myValueRequired != null ? !myValueRequired.equals(propertyValueSpecification.myValueRequired) : propertyValueSpecification.myValueRequired != null) return false;
+    if (myDefaultValue != null ? !myDefaultValue.equals(propertyValueSpecification.myDefaultValue) : propertyValueSpecification.myDefaultValue != null) return false;
+    if (myReadonlyValue != null ? !myReadonlyValue.equals(propertyValueSpecification.myReadonlyValue) : propertyValueSpecification.myReadonlyValue != null) return false;
+    if (myMultipleValues != null ? !myMultipleValues.equals(propertyValueSpecification.myMultipleValues) : propertyValueSpecification.myMultipleValues != null) return false;
+    if (myValueMinLength != null ? !myValueMinLength.equals(propertyValueSpecification.myValueMinLength) : propertyValueSpecification.myValueMinLength != null) return false;
+    if (myValueMaxLength != null ? !myValueMaxLength.equals(propertyValueSpecification.myValueMaxLength) : propertyValueSpecification.myValueMaxLength != null) return false;
+    if (myValuePattern != null ? !myValuePattern.equals(propertyValueSpecification.myValuePattern) : propertyValueSpecification.myValuePattern != null) return false;
+    if (myStepValue != null ? !myStepValue.equals(propertyValueSpecification.myStepValue) : propertyValueSpecification.myStepValue != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link PropertyValueSpecification}
    */
-  static final class PropertyValueSpecificationThingBuilder implements Builder {
-    /**
-     * Creates new {@link PropertyValueSpecification} instance.
-     */
+  public static class Builder implements ThingBuilder<PropertyValueSpecification> {
     public PropertyValueSpecification build() {
       return new PropertyValueSpecification(minValue, valueName, valueRequired, defaultValue, readonlyValue, multipleValues, valueMinLength, valueMaxLength, valuePattern, stepValue, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -337,33 +368,33 @@ public class PropertyValueSpecification extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -372,66 +403,66 @@ public class PropertyValueSpecification extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -479,7 +510,6 @@ public class PropertyValueSpecification extends Intangible {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -544,96 +574,7 @@ public class PropertyValueSpecification extends Intangible {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<PropertyValueSpecification> {
-    @NotNull Builder minValue(@NotNull Integer integer);
-    @NotNull Builder minValue(@NotNull Long minValue);
-    @NotNull Builder minValue(@NotNull Float minValue);
-    @NotNull Builder minValue(@NotNull Double minValue);
-    @NotNull Builder minValue(@NotNull String minValue);
-    @NotNull Builder valueName(@NotNull String valueName);
-    @NotNull Builder valueRequired(@NotNull Boolean valueRequired);
-    @NotNull Builder defaultValue(@NotNull String defaultValue);
-    @NotNull Builder defaultValue(@NotNull Thing thing);
-    @NotNull Builder defaultValue(@NotNull Thing.Builder thing);
-    @NotNull Builder readonlyValue(@NotNull Boolean readonlyValue);
-    @NotNull Builder multipleValues(@NotNull Boolean multipleValues);
-    @NotNull Builder valueMinLength(@NotNull Integer integer);
-    @NotNull Builder valueMinLength(@NotNull Long valueMinLength);
-    @NotNull Builder valueMinLength(@NotNull Float valueMinLength);
-    @NotNull Builder valueMinLength(@NotNull Double valueMinLength);
-    @NotNull Builder valueMinLength(@NotNull String valueMinLength);
-    @NotNull Builder valueMaxLength(@NotNull Integer integer);
-    @NotNull Builder valueMaxLength(@NotNull Long valueMaxLength);
-    @NotNull Builder valueMaxLength(@NotNull Float valueMaxLength);
-    @NotNull Builder valueMaxLength(@NotNull Double valueMaxLength);
-    @NotNull Builder valueMaxLength(@NotNull String valueMaxLength);
-    @NotNull Builder valuePattern(@NotNull String valuePattern);
-    @NotNull Builder stepValue(@NotNull Integer integer);
-    @NotNull Builder stepValue(@NotNull Long stepValue);
-    @NotNull Builder stepValue(@NotNull Float stepValue);
-    @NotNull Builder stepValue(@NotNull Double stepValue);
-    @NotNull Builder stepValue(@NotNull String stepValue);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected PropertyValueSpecification(Number minValue, String valueName, Boolean valueRequired, StringOrThing defaultValue, Boolean readonlyValue, Boolean multipleValues, Number valueMinLength, Number valueMaxLength, String valuePattern, Number stepValue, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myMinValue = minValue;
-    myValueName = valueName;
-    myValueRequired = valueRequired;
-    myDefaultValue = defaultValue;
-    myReadonlyValue = readonlyValue;
-    myMultipleValues = multipleValues;
-    myValueMinLength = valueMinLength;
-    myValueMaxLength = valueMaxLength;
-    myValuePattern = valuePattern;
-    myStepValue = stepValue;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myMinValue != null ? myMinValue.hashCode() : 0);
-    result = 31 * result + (myValueName != null ? myValueName.hashCode() : 0);
-    result = 31 * result + (myValueRequired != null ? myValueRequired.hashCode() : 0);
-    result = 31 * result + (myDefaultValue != null ? myDefaultValue.hashCode() : 0);
-    result = 31 * result + (myReadonlyValue != null ? myReadonlyValue.hashCode() : 0);
-    result = 31 * result + (myMultipleValues != null ? myMultipleValues.hashCode() : 0);
-    result = 31 * result + (myValueMinLength != null ? myValueMinLength.hashCode() : 0);
-    result = 31 * result + (myValueMaxLength != null ? myValueMaxLength.hashCode() : 0);
-    result = 31 * result + (myValuePattern != null ? myValuePattern.hashCode() : 0);
-    result = 31 * result + (myStepValue != null ? myStepValue.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    PropertyValueSpecification propertyValueSpecification = (PropertyValueSpecification) o;
-    if (!super.equals(o)) return false;
-    if (myMinValue != null ? !myMinValue.equals(propertyValueSpecification.myMinValue) : propertyValueSpecification.myMinValue != null) return false;
-    if (myValueName != null ? !myValueName.equals(propertyValueSpecification.myValueName) : propertyValueSpecification.myValueName != null) return false;
-    if (myValueRequired != null ? !myValueRequired.equals(propertyValueSpecification.myValueRequired) : propertyValueSpecification.myValueRequired != null) return false;
-    if (myDefaultValue != null ? !myDefaultValue.equals(propertyValueSpecification.myDefaultValue) : propertyValueSpecification.myDefaultValue != null) return false;
-    if (myReadonlyValue != null ? !myReadonlyValue.equals(propertyValueSpecification.myReadonlyValue) : propertyValueSpecification.myReadonlyValue != null) return false;
-    if (myMultipleValues != null ? !myMultipleValues.equals(propertyValueSpecification.myMultipleValues) : propertyValueSpecification.myMultipleValues != null) return false;
-    if (myValueMinLength != null ? !myValueMinLength.equals(propertyValueSpecification.myValueMinLength) : propertyValueSpecification.myValueMinLength != null) return false;
-    if (myValueMaxLength != null ? !myValueMaxLength.equals(propertyValueSpecification.myValueMaxLength) : propertyValueSpecification.myValueMaxLength != null) return false;
-    if (myValuePattern != null ? !myValuePattern.equals(propertyValueSpecification.myValuePattern) : propertyValueSpecification.myValuePattern != null) return false;
-    if (myStepValue != null ? !myStepValue.equals(propertyValueSpecification.myStepValue) : propertyValueSpecification.myStepValue != null) return false;
-    return true;
-  }
-
+  
   private Number myMinValue;
   private String myValueName;
   private Boolean myValueRequired;

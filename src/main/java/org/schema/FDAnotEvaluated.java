@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A designation that the drug in question has not been assigned a pregnancy category designation by the US FDA.
  */
 public class FDAnotEvaluated {
-  /**
-   * Builder for {@link FDAnotEvaluated}
-   */
-  static final class FDAnotEvaluatedThingBuilder implements Builder {
-    /**
-     * Creates new {@link FDAnotEvaluated} instance.
-     */
-    public FDAnotEvaluated build() {
-      return new FDAnotEvaluated();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<FDAnotEvaluated> {
-    
-  }
-
   protected FDAnotEvaluated() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class FDAnotEvaluated {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link FDAnotEvaluated}
+   */
+  public static class Builder implements ThingBuilder<FDAnotEvaluated> {
+    public FDAnotEvaluated build() {
+      return new FDAnotEvaluated();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

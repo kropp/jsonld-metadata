@@ -18,13 +18,15 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class OrganizationOrProgramMembership {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setOrganization(Organization organization) { clear(); myOrganization = organization; }
+  public Organization getOrganization() { return myOrganization; }
+  void setProgramMembership(ProgramMembership programMembership) { clear(); myProgramMembership = programMembership; }
+  public ProgramMembership getProgramMembership() { return myProgramMembership; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myOrganization != null) return myOrganization;
     if (myProgramMembership != null) return myProgramMembership;
     return null;
@@ -34,24 +36,16 @@ public class OrganizationOrProgramMembership {
     if (myProgramMembership != null) return myProgramMembership;
     return null;
   }
-  void setOrganization(Organization organization) { clear(); myOrganization = organization; }
-  public Organization getOrganization() { return myOrganization; }
-  private Organization myOrganization;
-  void setProgramMembership(ProgramMembership programMembership) { clear(); myProgramMembership = programMembership; }
-  public ProgramMembership getProgramMembership() { return myProgramMembership; }
-  private ProgramMembership myProgramMembership;
-  private void clear() {
+  public void clear() {
     myOrganization = null;
     myProgramMembership = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myOrganization != null ? myOrganization.hashCode() : 0);
     result = 31 * result + (myProgramMembership != null ? myProgramMembership.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -60,5 +54,6 @@ public class OrganizationOrProgramMembership {
     if (myProgramMembership != null ? !myProgramMembership.equals(organizationOrProgramMembership.myProgramMembership) : organizationOrProgramMembership.myProgramMembership != null) return false;
     return true;
   }
-
+  private Organization myOrganization;
+  private ProgramMembership myProgramMembership;
 }

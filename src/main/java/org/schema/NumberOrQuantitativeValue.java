@@ -18,13 +18,15 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class NumberOrQuantitativeValue {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setNumber(Number number) { clear(); myNumber = number; }
+  public Number getNumber() { return myNumber; }
+  void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
+  public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myNumber != null) return myNumber;
     if (myQuantitativeValue != null) return myQuantitativeValue;
     return null;
@@ -33,24 +35,16 @@ public class NumberOrQuantitativeValue {
     if (myQuantitativeValue != null) return myQuantitativeValue;
     return null;
   }
-  void setNumber(Number number) { clear(); myNumber = number; }
-  public Number getNumber() { return myNumber; }
-  private Number myNumber;
-  void setQuantitativeValue(QuantitativeValue quantitativeValue) { clear(); myQuantitativeValue = quantitativeValue; }
-  public QuantitativeValue getQuantitativeValue() { return myQuantitativeValue; }
-  private QuantitativeValue myQuantitativeValue;
-  private void clear() {
+  public void clear() {
     myNumber = null;
     myQuantitativeValue = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myNumber != null ? myNumber.hashCode() : 0);
     result = 31 * result + (myQuantitativeValue != null ? myQuantitativeValue.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -59,5 +53,6 @@ public class NumberOrQuantitativeValue {
     if (myQuantitativeValue != null ? !myQuantitativeValue.equals(numberOrQuantitativeValue.myQuantitativeValue) : numberOrQuantitativeValue.myQuantitativeValue != null) return false;
     return true;
   }
-
+  private Number myNumber;
+  private QuantitativeValue myQuantitativeValue;
 }

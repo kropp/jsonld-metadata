@@ -20,38 +20,55 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * The price for the delivery of an offer using a particular delivery method.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
+ * The price for the delivery of an offer using a particular delivery method.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
  */
 public class DeliveryChargeSpecification extends PriceSpecification {
   /**
    * The delivery method(s) to which the delivery charge or payment charge specification applies.
    */
-  public DeliveryMethod getAppliesToDeliveryMethod() {
-    return myAppliesToDeliveryMethod;
-  }
+  public DeliveryMethod getAppliesToDeliveryMethod() { return myAppliesToDeliveryMethod; }
   /**
    * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
    */
-  public GeoShapeOrPlaceOrString getEligibleRegion() {
-    return myEligibleRegion;
-  }
+  public GeoShapeOrPlaceOrString getEligibleRegion() { return myEligibleRegion; }
   /**
    * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
    */
-  public GeoShapeOrPlaceOrString getIneligibleRegion() {
-    return myIneligibleRegion;
+  public GeoShapeOrPlaceOrString getIneligibleRegion() { return myIneligibleRegion; }
+  protected DeliveryChargeSpecification(DeliveryMethod appliesToDeliveryMethod, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, Number price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myAppliesToDeliveryMethod = appliesToDeliveryMethod;
+    myEligibleRegion = eligibleRegion;
+    myIneligibleRegion = ineligibleRegion;
+    myAppliesToDeliveryMethod = appliesToDeliveryMethod;
+    myEligibleRegion = eligibleRegion;
+    myIneligibleRegion = ineligibleRegion;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAppliesToDeliveryMethod != null ? myAppliesToDeliveryMethod.hashCode() : 0);
+    result = 31 * result + (myEligibleRegion != null ? myEligibleRegion.hashCode() : 0);
+    result = 31 * result + (myIneligibleRegion != null ? myIneligibleRegion.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DeliveryChargeSpecification deliveryChargeSpecification = (DeliveryChargeSpecification) o;
+    if (!super.equals(o)) return false;
+    if (myAppliesToDeliveryMethod != null ? !myAppliesToDeliveryMethod.equals(deliveryChargeSpecification.myAppliesToDeliveryMethod) : deliveryChargeSpecification.myAppliesToDeliveryMethod != null) return false;
+    if (myEligibleRegion != null ? !myEligibleRegion.equals(deliveryChargeSpecification.myEligibleRegion) : deliveryChargeSpecification.myEligibleRegion != null) return false;
+    if (myIneligibleRegion != null ? !myIneligibleRegion.equals(deliveryChargeSpecification.myIneligibleRegion) : deliveryChargeSpecification.myIneligibleRegion != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link DeliveryChargeSpecification}
    */
-  static final class DeliveryChargeSpecificationThingBuilder implements Builder {
-    /**
-     * Creates new {@link DeliveryChargeSpecification} instance.
-     */
+  public static class Builder implements ThingBuilder<DeliveryChargeSpecification> {
     public DeliveryChargeSpecification build() {
       return new DeliveryChargeSpecification(appliesToDeliveryMethod, eligibleRegion, ineligibleRegion, eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -248,26 +265,26 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Integer integer) {
       if (this.price == null) this.price = new Number();
@@ -276,26 +293,26 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Long price) {
       if (this.price == null) this.price = new Number();
@@ -304,26 +321,26 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Float price) {
       if (this.price == null) this.price = new Number();
@@ -332,26 +349,26 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull Double price) {
       if (this.price == null) this.price = new Number();
@@ -360,26 +377,26 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     }
     /**
      * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+     * <br />
+     * <br />
+     *       Usage guidelines:
+     * <br />
+     * <ul>
+     * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+     *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+     * </li>
+     * <li>
+     *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+     * </li>
+     * <li>
+     *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+     *       alongside more human-friendly formatting.
+     * </li>
+     * <li>
+     *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+     * </li>
+     * </ul>
+     *       
      */
     @NotNull public Builder price(@NotNull String price) {
       if (this.price == null) this.price = new Number();
@@ -437,33 +454,33 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -472,66 +489,66 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -579,7 +596,6 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -647,82 +663,7 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<DeliveryChargeSpecification> {
-    @NotNull Builder appliesToDeliveryMethod(@NotNull DeliveryMethod deliveryMethod);
-    @NotNull Builder appliesToDeliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod);
-    @NotNull Builder eligibleRegion(@NotNull GeoShape geoShape);
-    @NotNull Builder eligibleRegion(@NotNull GeoShape.Builder geoShape);
-    @NotNull Builder eligibleRegion(@NotNull Place place);
-    @NotNull Builder eligibleRegion(@NotNull Place.Builder place);
-    @NotNull Builder eligibleRegion(@NotNull String eligibleRegion);
-    @NotNull Builder ineligibleRegion(@NotNull GeoShape geoShape);
-    @NotNull Builder ineligibleRegion(@NotNull GeoShape.Builder geoShape);
-    @NotNull Builder ineligibleRegion(@NotNull Place place);
-    @NotNull Builder ineligibleRegion(@NotNull Place.Builder place);
-    @NotNull Builder ineligibleRegion(@NotNull String ineligibleRegion);
-    @NotNull Builder eligibleQuantity(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder eligibleQuantity(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder eligibleTransactionVolume(@NotNull PriceSpecification priceSpecification);
-    @NotNull Builder eligibleTransactionVolume(@NotNull PriceSpecification.Builder priceSpecification);
-    @NotNull Builder maxPrice(@NotNull Integer integer);
-    @NotNull Builder maxPrice(@NotNull Long maxPrice);
-    @NotNull Builder maxPrice(@NotNull Float maxPrice);
-    @NotNull Builder maxPrice(@NotNull Double maxPrice);
-    @NotNull Builder maxPrice(@NotNull String maxPrice);
-    @NotNull Builder minPrice(@NotNull Integer integer);
-    @NotNull Builder minPrice(@NotNull Long minPrice);
-    @NotNull Builder minPrice(@NotNull Float minPrice);
-    @NotNull Builder minPrice(@NotNull Double minPrice);
-    @NotNull Builder minPrice(@NotNull String minPrice);
-    @NotNull Builder price(@NotNull Integer integer);
-    @NotNull Builder price(@NotNull Long price);
-    @NotNull Builder price(@NotNull Float price);
-    @NotNull Builder price(@NotNull Double price);
-    @NotNull Builder price(@NotNull String price);
-    @NotNull Builder validFrom(@NotNull java.util.Date date);
-    @NotNull Builder validThrough(@NotNull java.util.Date date);
-    @NotNull Builder valueAddedTaxIncluded(@NotNull Boolean valueAddedTaxIncluded);
-    @NotNull Builder priceCurrency(@NotNull String priceCurrency);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected DeliveryChargeSpecification(DeliveryMethod appliesToDeliveryMethod, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, Number price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAppliesToDeliveryMethod = appliesToDeliveryMethod;
-    myEligibleRegion = eligibleRegion;
-    myIneligibleRegion = ineligibleRegion;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAppliesToDeliveryMethod != null ? myAppliesToDeliveryMethod.hashCode() : 0);
-    result = 31 * result + (myEligibleRegion != null ? myEligibleRegion.hashCode() : 0);
-    result = 31 * result + (myIneligibleRegion != null ? myIneligibleRegion.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    DeliveryChargeSpecification deliveryChargeSpecification = (DeliveryChargeSpecification) o;
-    if (!super.equals(o)) return false;
-    if (myAppliesToDeliveryMethod != null ? !myAppliesToDeliveryMethod.equals(deliveryChargeSpecification.myAppliesToDeliveryMethod) : deliveryChargeSpecification.myAppliesToDeliveryMethod != null) return false;
-    if (myEligibleRegion != null ? !myEligibleRegion.equals(deliveryChargeSpecification.myEligibleRegion) : deliveryChargeSpecification.myEligibleRegion != null) return false;
-    if (myIneligibleRegion != null ? !myIneligibleRegion.equals(deliveryChargeSpecification.myIneligibleRegion) : deliveryChargeSpecification.myIneligibleRegion != null) return false;
-    return true;
-  }
-
+  
   private DeliveryMethod myAppliesToDeliveryMethod;
   private GeoShapeOrPlaceOrString myEligibleRegion;
   private GeoShapeOrPlaceOrString myIneligibleRegion;

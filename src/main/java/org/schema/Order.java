@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * An order is a confirmation of a transaction (a receipt), which can contain multiple line items, each represented by an Offer that has been accepted by the customer.
@@ -29,132 +29,184 @@ public class Order extends Intangible {
   /**
    * The delivery of the parcel related to this order or order item.
    */
-  public ParcelDelivery getOrderDelivery() {
-    return myOrderDelivery;
-  }
+  public ParcelDelivery getOrderDelivery() { return myOrderDelivery; }
   /**
    * The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
    */
-  public Offer getAcceptedOffer() {
-    return myAcceptedOffer;
-  }
+  public Offer getAcceptedOffer() { return myAcceptedOffer; }
   /**
    * The billing address for the order.
    */
-  public PostalAddress getBillingAddress() {
-    return myBillingAddress;
-  }
+  public PostalAddress getBillingAddress() { return myBillingAddress; }
   /**
    * A number that confirms the given order or payment has been received.
    */
-  public String getConfirmationNumber() {
-    return myConfirmationNumber;
-  }
+  public String getConfirmationNumber() { return myConfirmationNumber; }
   /**
    * Party placing the order or paying the invoice.
    */
-  public OrganizationOrPerson getCustomer() {
-    return myCustomer;
-  }
+  public OrganizationOrPerson getCustomer() { return myCustomer; }
   /**
    * Any discount applied (to an Order).
    */
-  public Number getDiscount() {
-    return myDiscount;
-  }
+  public Number getDiscount() { return myDiscount; }
   /**
    * Code used to redeem a discount.
    */
-  public String getDiscountCode() {
-    return myDiscountCode;
-  }
+  public String getDiscountCode() { return myDiscountCode; }
   /**
    * The currency (in 3-letter ISO 4217 format) of the discount.
    */
-  public String getDiscountCurrency() {
-    return myDiscountCurrency;
-  }
+  public String getDiscountCurrency() { return myDiscountCurrency; }
   /**
    * Was the offer accepted as a gift for someone other than the buyer.
    */
-  public Boolean getIsGift() {
-    return myIsGift;
-  }
+  public Boolean getIsGift() { return myIsGift; }
   /**
    * Date order was placed.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getOrderDate() {
-    return myOrderDate;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getOrderDate() { return myOrderDate; }
   /**
    * The item ordered.
    */
-  public OrderItemOrProduct getOrderedItem() {
-    return myOrderedItem;
-  }
+  public OrderItemOrProduct getOrderedItem() { return myOrderedItem; }
   /**
    * The identifier of the transaction.
    */
-  public String getOrderNumber() {
-    return myOrderNumber;
-  }
+  public String getOrderNumber() { return myOrderNumber; }
   /**
    * The current status of the order.
    */
-  public OrderStatus getOrderStatus() {
-    return myOrderStatus;
-  }
+  public OrderStatus getOrderStatus() { return myOrderStatus; }
   /**
    * The order is being paid as part of the referenced Invoice.
    */
-  public Invoice getPartOfInvoice() {
-    return myPartOfInvoice;
-  }
+  public Invoice getPartOfInvoice() { return myPartOfInvoice; }
   /**
    * The date that payment is due.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getPaymentDue() {
-    return myPaymentDue;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getPaymentDue() { return myPaymentDue; }
   /**
    * The name of the credit card or other method of payment for the order.
    */
-  public PaymentMethod getPaymentMethod() {
-    return myPaymentMethod;
-  }
+  public PaymentMethod getPaymentMethod() { return myPaymentMethod; }
   /**
    * An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
    */
-  public String getPaymentMethodId() {
-    return myPaymentMethodId;
-  }
+  public String getPaymentMethodId() { return myPaymentMethodId; }
   /**
    * The URL for sending a payment.
    */
-  public String getPaymentUrl() {
-    return myPaymentUrl;
-  }
+  public String getPaymentUrl() { return myPaymentUrl; }
   /**
    * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
    */
-  public Participant getSeller() {
-    return mySeller;
-  }
+  public Participant getSeller() { return mySeller; }
   /**
    * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
    */
-  public OrganizationOrPerson getBroker() {
-    return myBroker;
+  public OrganizationOrPerson getBroker() { return myBroker; }
+  protected Order(ParcelDelivery orderDelivery, Offer acceptedOffer, PostalAddress billingAddress, String confirmationNumber, OrganizationOrPerson customer, Number discount, String discountCode, String discountCurrency, Boolean isGift, java.util.Date orderDate, OrderItemOrProduct orderedItem, String orderNumber, OrderStatus orderStatus, Invoice partOfInvoice, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, String paymentUrl, Participant seller, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myOrderDelivery = orderDelivery;
+    myAcceptedOffer = acceptedOffer;
+    myBillingAddress = billingAddress;
+    myConfirmationNumber = confirmationNumber;
+    myCustomer = customer;
+    myDiscount = discount;
+    myDiscountCode = discountCode;
+    myDiscountCurrency = discountCurrency;
+    myIsGift = isGift;
+    myOrderDate = orderDate;
+    myOrderedItem = orderedItem;
+    myOrderNumber = orderNumber;
+    myOrderStatus = orderStatus;
+    myPartOfInvoice = partOfInvoice;
+    myPaymentDue = paymentDue;
+    myPaymentMethod = paymentMethod;
+    myPaymentMethodId = paymentMethodId;
+    myPaymentUrl = paymentUrl;
+    mySeller = seller;
+    myBroker = broker;
+    myOrderDelivery = orderDelivery;
+    myAcceptedOffer = acceptedOffer;
+    myBillingAddress = billingAddress;
+    myConfirmationNumber = confirmationNumber;
+    myCustomer = customer;
+    myDiscount = discount;
+    myDiscountCode = discountCode;
+    myDiscountCurrency = discountCurrency;
+    myIsGift = isGift;
+    myOrderDate = orderDate;
+    myOrderedItem = orderedItem;
+    myOrderNumber = orderNumber;
+    myOrderStatus = orderStatus;
+    myPartOfInvoice = partOfInvoice;
+    myPaymentDue = paymentDue;
+    myPaymentMethod = paymentMethod;
+    myPaymentMethodId = paymentMethodId;
+    myPaymentUrl = paymentUrl;
+    mySeller = seller;
+    myBroker = broker;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myOrderDelivery != null ? myOrderDelivery.hashCode() : 0);
+    result = 31 * result + (myAcceptedOffer != null ? myAcceptedOffer.hashCode() : 0);
+    result = 31 * result + (myBillingAddress != null ? myBillingAddress.hashCode() : 0);
+    result = 31 * result + (myConfirmationNumber != null ? myConfirmationNumber.hashCode() : 0);
+    result = 31 * result + (myCustomer != null ? myCustomer.hashCode() : 0);
+    result = 31 * result + (myDiscount != null ? myDiscount.hashCode() : 0);
+    result = 31 * result + (myDiscountCode != null ? myDiscountCode.hashCode() : 0);
+    result = 31 * result + (myDiscountCurrency != null ? myDiscountCurrency.hashCode() : 0);
+    result = 31 * result + (myIsGift != null ? myIsGift.hashCode() : 0);
+    result = 31 * result + (myOrderDate != null ? myOrderDate.hashCode() : 0);
+    result = 31 * result + (myOrderedItem != null ? myOrderedItem.hashCode() : 0);
+    result = 31 * result + (myOrderNumber != null ? myOrderNumber.hashCode() : 0);
+    result = 31 * result + (myOrderStatus != null ? myOrderStatus.hashCode() : 0);
+    result = 31 * result + (myPartOfInvoice != null ? myPartOfInvoice.hashCode() : 0);
+    result = 31 * result + (myPaymentDue != null ? myPaymentDue.hashCode() : 0);
+    result = 31 * result + (myPaymentMethod != null ? myPaymentMethod.hashCode() : 0);
+    result = 31 * result + (myPaymentMethodId != null ? myPaymentMethodId.hashCode() : 0);
+    result = 31 * result + (myPaymentUrl != null ? myPaymentUrl.hashCode() : 0);
+    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
+    result = 31 * result + (myBroker != null ? myBroker.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Order order = (Order) o;
+    if (!super.equals(o)) return false;
+    if (myOrderDelivery != null ? !myOrderDelivery.equals(order.myOrderDelivery) : order.myOrderDelivery != null) return false;
+    if (myAcceptedOffer != null ? !myAcceptedOffer.equals(order.myAcceptedOffer) : order.myAcceptedOffer != null) return false;
+    if (myBillingAddress != null ? !myBillingAddress.equals(order.myBillingAddress) : order.myBillingAddress != null) return false;
+    if (myConfirmationNumber != null ? !myConfirmationNumber.equals(order.myConfirmationNumber) : order.myConfirmationNumber != null) return false;
+    if (myCustomer != null ? !myCustomer.equals(order.myCustomer) : order.myCustomer != null) return false;
+    if (myDiscount != null ? !myDiscount.equals(order.myDiscount) : order.myDiscount != null) return false;
+    if (myDiscountCode != null ? !myDiscountCode.equals(order.myDiscountCode) : order.myDiscountCode != null) return false;
+    if (myDiscountCurrency != null ? !myDiscountCurrency.equals(order.myDiscountCurrency) : order.myDiscountCurrency != null) return false;
+    if (myIsGift != null ? !myIsGift.equals(order.myIsGift) : order.myIsGift != null) return false;
+    if (myOrderDate != null ? !myOrderDate.equals(order.myOrderDate) : order.myOrderDate != null) return false;
+    if (myOrderedItem != null ? !myOrderedItem.equals(order.myOrderedItem) : order.myOrderedItem != null) return false;
+    if (myOrderNumber != null ? !myOrderNumber.equals(order.myOrderNumber) : order.myOrderNumber != null) return false;
+    if (myOrderStatus != null ? !myOrderStatus.equals(order.myOrderStatus) : order.myOrderStatus != null) return false;
+    if (myPartOfInvoice != null ? !myPartOfInvoice.equals(order.myPartOfInvoice) : order.myPartOfInvoice != null) return false;
+    if (myPaymentDue != null ? !myPaymentDue.equals(order.myPaymentDue) : order.myPaymentDue != null) return false;
+    if (myPaymentMethod != null ? !myPaymentMethod.equals(order.myPaymentMethod) : order.myPaymentMethod != null) return false;
+    if (myPaymentMethodId != null ? !myPaymentMethodId.equals(order.myPaymentMethodId) : order.myPaymentMethodId != null) return false;
+    if (myPaymentUrl != null ? !myPaymentUrl.equals(order.myPaymentUrl) : order.myPaymentUrl != null) return false;
+    if (mySeller != null ? !mySeller.equals(order.mySeller) : order.mySeller != null) return false;
+    if (myBroker != null ? !myBroker.equals(order.myBroker) : order.myBroker != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link Order}
    */
-  static final class OrderThingBuilder implements Builder {
-    /**
-     * Creates new {@link Order} instance.
-     */
+  public static class Builder implements ThingBuilder<Order> {
     public Order build() {
       return new Order(orderDelivery, acceptedOffer, billingAddress, confirmationNumber, customer, discount, discountCode, discountCurrency, isGift, orderDate, orderedItem, orderNumber, orderStatus, partOfInvoice, paymentDue, paymentMethod, paymentMethodId, paymentUrl, seller, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -453,33 +505,33 @@ public class Order extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -488,66 +540,66 @@ public class Order extends Intangible {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -595,7 +647,6 @@ public class Order extends Intangible {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -670,137 +721,7 @@ public class Order extends Intangible {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<Order> {
-    @NotNull Builder orderDelivery(@NotNull ParcelDelivery parcelDelivery);
-    @NotNull Builder orderDelivery(@NotNull ParcelDelivery.Builder parcelDelivery);
-    @NotNull Builder acceptedOffer(@NotNull Offer offer);
-    @NotNull Builder acceptedOffer(@NotNull Offer.Builder offer);
-    @NotNull Builder billingAddress(@NotNull PostalAddress postalAddress);
-    @NotNull Builder billingAddress(@NotNull PostalAddress.Builder postalAddress);
-    @NotNull Builder confirmationNumber(@NotNull String confirmationNumber);
-    @NotNull Builder customer(@NotNull Organization organization);
-    @NotNull Builder customer(@NotNull Organization.Builder organization);
-    @NotNull Builder customer(@NotNull Person person);
-    @NotNull Builder customer(@NotNull Person.Builder person);
-    @NotNull Builder discount(@NotNull Integer integer);
-    @NotNull Builder discount(@NotNull Long discount);
-    @NotNull Builder discount(@NotNull Float discount);
-    @NotNull Builder discount(@NotNull Double discount);
-    @NotNull Builder discount(@NotNull String discount);
-    @NotNull Builder discountCode(@NotNull String discountCode);
-    @NotNull Builder discountCurrency(@NotNull String discountCurrency);
-    @NotNull Builder isGift(@NotNull Boolean isGift);
-    @NotNull Builder orderDate(@NotNull java.util.Date date);
-    @NotNull Builder orderedItem(@NotNull OrderItem orderItem);
-    @NotNull Builder orderedItem(@NotNull OrderItem.Builder orderItem);
-    @NotNull Builder orderedItem(@NotNull Product product);
-    @NotNull Builder orderedItem(@NotNull Product.Builder product);
-    @NotNull Builder orderNumber(@NotNull String orderNumber);
-    @NotNull Builder orderStatus(@NotNull OrderStatus orderStatus);
-    @NotNull Builder orderStatus(@NotNull OrderStatus.Builder orderStatus);
-    @NotNull Builder partOfInvoice(@NotNull Invoice invoice);
-    @NotNull Builder partOfInvoice(@NotNull Invoice.Builder invoice);
-    @NotNull Builder paymentDue(@NotNull java.util.Date date);
-    @NotNull Builder paymentMethod(@NotNull PaymentMethod paymentMethod);
-    @NotNull Builder paymentMethod(@NotNull PaymentMethod.Builder paymentMethod);
-    @NotNull Builder paymentMethodId(@NotNull String paymentMethodId);
-    @NotNull Builder paymentUrl(@NotNull String paymentUrl);
-    @NotNull Builder seller(@NotNull Participant participant);
-    @NotNull Builder broker(@NotNull Organization organization);
-    @NotNull Builder broker(@NotNull Organization.Builder organization);
-    @NotNull Builder broker(@NotNull Person person);
-    @NotNull Builder broker(@NotNull Person.Builder person);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected Order(ParcelDelivery orderDelivery, Offer acceptedOffer, PostalAddress billingAddress, String confirmationNumber, OrganizationOrPerson customer, Number discount, String discountCode, String discountCurrency, Boolean isGift, java.util.Date orderDate, OrderItemOrProduct orderedItem, String orderNumber, OrderStatus orderStatus, Invoice partOfInvoice, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, String paymentUrl, Participant seller, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myOrderDelivery = orderDelivery;
-    myAcceptedOffer = acceptedOffer;
-    myBillingAddress = billingAddress;
-    myConfirmationNumber = confirmationNumber;
-    myCustomer = customer;
-    myDiscount = discount;
-    myDiscountCode = discountCode;
-    myDiscountCurrency = discountCurrency;
-    myIsGift = isGift;
-    myOrderDate = orderDate;
-    myOrderedItem = orderedItem;
-    myOrderNumber = orderNumber;
-    myOrderStatus = orderStatus;
-    myPartOfInvoice = partOfInvoice;
-    myPaymentDue = paymentDue;
-    myPaymentMethod = paymentMethod;
-    myPaymentMethodId = paymentMethodId;
-    myPaymentUrl = paymentUrl;
-    mySeller = seller;
-    myBroker = broker;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myOrderDelivery != null ? myOrderDelivery.hashCode() : 0);
-    result = 31 * result + (myAcceptedOffer != null ? myAcceptedOffer.hashCode() : 0);
-    result = 31 * result + (myBillingAddress != null ? myBillingAddress.hashCode() : 0);
-    result = 31 * result + (myConfirmationNumber != null ? myConfirmationNumber.hashCode() : 0);
-    result = 31 * result + (myCustomer != null ? myCustomer.hashCode() : 0);
-    result = 31 * result + (myDiscount != null ? myDiscount.hashCode() : 0);
-    result = 31 * result + (myDiscountCode != null ? myDiscountCode.hashCode() : 0);
-    result = 31 * result + (myDiscountCurrency != null ? myDiscountCurrency.hashCode() : 0);
-    result = 31 * result + (myIsGift != null ? myIsGift.hashCode() : 0);
-    result = 31 * result + (myOrderDate != null ? myOrderDate.hashCode() : 0);
-    result = 31 * result + (myOrderedItem != null ? myOrderedItem.hashCode() : 0);
-    result = 31 * result + (myOrderNumber != null ? myOrderNumber.hashCode() : 0);
-    result = 31 * result + (myOrderStatus != null ? myOrderStatus.hashCode() : 0);
-    result = 31 * result + (myPartOfInvoice != null ? myPartOfInvoice.hashCode() : 0);
-    result = 31 * result + (myPaymentDue != null ? myPaymentDue.hashCode() : 0);
-    result = 31 * result + (myPaymentMethod != null ? myPaymentMethod.hashCode() : 0);
-    result = 31 * result + (myPaymentMethodId != null ? myPaymentMethodId.hashCode() : 0);
-    result = 31 * result + (myPaymentUrl != null ? myPaymentUrl.hashCode() : 0);
-    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
-    result = 31 * result + (myBroker != null ? myBroker.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Order order = (Order) o;
-    if (!super.equals(o)) return false;
-    if (myOrderDelivery != null ? !myOrderDelivery.equals(order.myOrderDelivery) : order.myOrderDelivery != null) return false;
-    if (myAcceptedOffer != null ? !myAcceptedOffer.equals(order.myAcceptedOffer) : order.myAcceptedOffer != null) return false;
-    if (myBillingAddress != null ? !myBillingAddress.equals(order.myBillingAddress) : order.myBillingAddress != null) return false;
-    if (myConfirmationNumber != null ? !myConfirmationNumber.equals(order.myConfirmationNumber) : order.myConfirmationNumber != null) return false;
-    if (myCustomer != null ? !myCustomer.equals(order.myCustomer) : order.myCustomer != null) return false;
-    if (myDiscount != null ? !myDiscount.equals(order.myDiscount) : order.myDiscount != null) return false;
-    if (myDiscountCode != null ? !myDiscountCode.equals(order.myDiscountCode) : order.myDiscountCode != null) return false;
-    if (myDiscountCurrency != null ? !myDiscountCurrency.equals(order.myDiscountCurrency) : order.myDiscountCurrency != null) return false;
-    if (myIsGift != null ? !myIsGift.equals(order.myIsGift) : order.myIsGift != null) return false;
-    if (myOrderDate != null ? !myOrderDate.equals(order.myOrderDate) : order.myOrderDate != null) return false;
-    if (myOrderedItem != null ? !myOrderedItem.equals(order.myOrderedItem) : order.myOrderedItem != null) return false;
-    if (myOrderNumber != null ? !myOrderNumber.equals(order.myOrderNumber) : order.myOrderNumber != null) return false;
-    if (myOrderStatus != null ? !myOrderStatus.equals(order.myOrderStatus) : order.myOrderStatus != null) return false;
-    if (myPartOfInvoice != null ? !myPartOfInvoice.equals(order.myPartOfInvoice) : order.myPartOfInvoice != null) return false;
-    if (myPaymentDue != null ? !myPaymentDue.equals(order.myPaymentDue) : order.myPaymentDue != null) return false;
-    if (myPaymentMethod != null ? !myPaymentMethod.equals(order.myPaymentMethod) : order.myPaymentMethod != null) return false;
-    if (myPaymentMethodId != null ? !myPaymentMethodId.equals(order.myPaymentMethodId) : order.myPaymentMethodId != null) return false;
-    if (myPaymentUrl != null ? !myPaymentUrl.equals(order.myPaymentUrl) : order.myPaymentUrl != null) return false;
-    if (mySeller != null ? !mySeller.equals(order.mySeller) : order.mySeller != null) return false;
-    if (myBroker != null ? !myBroker.equals(order.myBroker) : order.myBroker != null) return false;
-    return true;
-  }
-
+  
   private ParcelDelivery myOrderDelivery;
   private Offer myAcceptedOffer;
   private PostalAddress myBillingAddress;

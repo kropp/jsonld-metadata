@@ -18,35 +18,29 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class BreadcrumbListOrString {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setBreadcrumbList(BreadcrumbList breadcrumbList) { clear(); myBreadcrumbList = breadcrumbList; }
+  public BreadcrumbList getBreadcrumbList() { return myBreadcrumbList; }
+  void setString(String value) { clear(); myString = value; }
+  public String getString() { return myString; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myBreadcrumbList != null) return myBreadcrumbList;
     if (myString != null) return myString;
     return null;
   }
-  void setBreadcrumbList(BreadcrumbList breadcrumbList) { clear(); myBreadcrumbList = breadcrumbList; }
-  public BreadcrumbList getBreadcrumbList() { return myBreadcrumbList; }
-  private BreadcrumbList myBreadcrumbList;
-  void setString(String value) { clear(); myString = value; }
-  public String getString() { return myString; }
-  private String myString;
-  private void clear() {
+  public void clear() {
     myBreadcrumbList = null;
     myString = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myBreadcrumbList != null ? myBreadcrumbList.hashCode() : 0);
     result = 31 * result + (myString != null ? myString.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -55,5 +49,6 @@ public class BreadcrumbListOrString {
     if (myString != null ? !myString.equals(breadcrumbListOrString.myString) : breadcrumbListOrString.myString != null) return false;
     return true;
   }
-
+  private BreadcrumbList myBreadcrumbList;
+  private String myString;
 }

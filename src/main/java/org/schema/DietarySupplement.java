@@ -20,92 +20,127 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * A product taken by mouth that contains a dietary ingredient intended to supplement the diet. Dietary ingredients may include vitamins, minerals, herbs or other botanicals, amino acids, and substances such as enzymes, organ tissues, glandulars and metabolites.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
+ * A product taken by mouth that contains a dietary ingredient intended to supplement the diet. Dietary ingredients may include vitamins, minerals, herbs or other botanicals, amino acids, and substances such as enzymes, organ tissues, glandulars and metabolites.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
  */
 public class DietarySupplement extends MedicalTherapy {
   /**
    * An active ingredient, typically chemical compounds and/or biologic substances.
    */
-  public String getActiveIngredient() {
-    return myActiveIngredient;
-  }
+  public String getActiveIngredient() { return myActiveIngredient; }
   /**
    * Descriptive information establishing a historical perspective on the supplement. May include the rationale for the name, the population where the supplement first came to prominence, etc.
    */
-  public String getBackground() {
-    return myBackground;
-  }
+  public String getBackground() { return myBackground; }
   /**
    * A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension', 'injection'.
    */
-  public String getDosageForm() {
-    return myDosageForm;
-  }
+  public String getDosageForm() { return myDosageForm; }
   /**
    * True if this item's name is a proprietary/brand name (vs. generic name).
    */
-  public Boolean getIsProprietary() {
-    return myIsProprietary;
-  }
+  public Boolean getIsProprietary() { return myIsProprietary; }
   /**
    * The drug or supplement's legal status, including any controlled substance schedules that apply.
    */
-  public DrugLegalStatus getLegalStatus() {
-    return myLegalStatus;
-  }
+  public DrugLegalStatus getLegalStatus() { return myLegalStatus; }
   /**
    * The manufacturer of the product.
    */
-  public Organization getManufacturer() {
-    return myManufacturer;
-  }
+  public Organization getManufacturer() { return myManufacturer; }
   /**
    * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
    */
-  public MaximumDoseSchedule getMaximumIntake() {
-    return myMaximumIntake;
-  }
+  public MaximumDoseSchedule getMaximumIntake() { return myMaximumIntake; }
   /**
    * The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
    */
-  public String getMechanismOfAction() {
-    return myMechanismOfAction;
-  }
+  public String getMechanismOfAction() { return myMechanismOfAction; }
   /**
    * The generic name of this drug or supplement.
    */
-  public String getNonProprietaryName() {
-    return myNonProprietaryName;
-  }
+  public String getNonProprietaryName() { return myNonProprietaryName; }
   /**
    * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
    */
-  public RecommendedDoseSchedule getRecommendedIntake() {
-    return myRecommendedIntake;
-  }
+  public RecommendedDoseSchedule getRecommendedIntake() { return myRecommendedIntake; }
   /**
    * Any potential safety concern associated with the supplement. May include interactions with other drugs and foods, pregnancy, breastfeeding, known adverse reactions, and documented efficacy of the supplement.
    */
-  public String getSafetyConsideration() {
-    return mySafetyConsideration;
-  }
+  public String getSafetyConsideration() { return mySafetyConsideration; }
   /**
    * Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.
    */
-  public String getTargetPopulation() {
-    return myTargetPopulation;
+  public String getTargetPopulation() { return myTargetPopulation; }
+  protected DietarySupplement(String activeIngredient, String background, String dosageForm, Boolean isProprietary, DrugLegalStatus legalStatus, Organization manufacturer, MaximumDoseSchedule maximumIntake, String mechanismOfAction, String nonProprietaryName, RecommendedDoseSchedule recommendedIntake, String safetyConsideration, String targetPopulation, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myActiveIngredient = activeIngredient;
+    myBackground = background;
+    myDosageForm = dosageForm;
+    myIsProprietary = isProprietary;
+    myLegalStatus = legalStatus;
+    myManufacturer = manufacturer;
+    myMaximumIntake = maximumIntake;
+    myMechanismOfAction = mechanismOfAction;
+    myNonProprietaryName = nonProprietaryName;
+    myRecommendedIntake = recommendedIntake;
+    mySafetyConsideration = safetyConsideration;
+    myTargetPopulation = targetPopulation;
+    myActiveIngredient = activeIngredient;
+    myBackground = background;
+    myDosageForm = dosageForm;
+    myIsProprietary = isProprietary;
+    myLegalStatus = legalStatus;
+    myManufacturer = manufacturer;
+    myMaximumIntake = maximumIntake;
+    myMechanismOfAction = mechanismOfAction;
+    myNonProprietaryName = nonProprietaryName;
+    myRecommendedIntake = recommendedIntake;
+    mySafetyConsideration = safetyConsideration;
+    myTargetPopulation = targetPopulation;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActiveIngredient != null ? myActiveIngredient.hashCode() : 0);
+    result = 31 * result + (myBackground != null ? myBackground.hashCode() : 0);
+    result = 31 * result + (myDosageForm != null ? myDosageForm.hashCode() : 0);
+    result = 31 * result + (myIsProprietary != null ? myIsProprietary.hashCode() : 0);
+    result = 31 * result + (myLegalStatus != null ? myLegalStatus.hashCode() : 0);
+    result = 31 * result + (myManufacturer != null ? myManufacturer.hashCode() : 0);
+    result = 31 * result + (myMaximumIntake != null ? myMaximumIntake.hashCode() : 0);
+    result = 31 * result + (myMechanismOfAction != null ? myMechanismOfAction.hashCode() : 0);
+    result = 31 * result + (myNonProprietaryName != null ? myNonProprietaryName.hashCode() : 0);
+    result = 31 * result + (myRecommendedIntake != null ? myRecommendedIntake.hashCode() : 0);
+    result = 31 * result + (mySafetyConsideration != null ? mySafetyConsideration.hashCode() : 0);
+    result = 31 * result + (myTargetPopulation != null ? myTargetPopulation.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    DietarySupplement dietarySupplement = (DietarySupplement) o;
+    if (!super.equals(o)) return false;
+    if (myActiveIngredient != null ? !myActiveIngredient.equals(dietarySupplement.myActiveIngredient) : dietarySupplement.myActiveIngredient != null) return false;
+    if (myBackground != null ? !myBackground.equals(dietarySupplement.myBackground) : dietarySupplement.myBackground != null) return false;
+    if (myDosageForm != null ? !myDosageForm.equals(dietarySupplement.myDosageForm) : dietarySupplement.myDosageForm != null) return false;
+    if (myIsProprietary != null ? !myIsProprietary.equals(dietarySupplement.myIsProprietary) : dietarySupplement.myIsProprietary != null) return false;
+    if (myLegalStatus != null ? !myLegalStatus.equals(dietarySupplement.myLegalStatus) : dietarySupplement.myLegalStatus != null) return false;
+    if (myManufacturer != null ? !myManufacturer.equals(dietarySupplement.myManufacturer) : dietarySupplement.myManufacturer != null) return false;
+    if (myMaximumIntake != null ? !myMaximumIntake.equals(dietarySupplement.myMaximumIntake) : dietarySupplement.myMaximumIntake != null) return false;
+    if (myMechanismOfAction != null ? !myMechanismOfAction.equals(dietarySupplement.myMechanismOfAction) : dietarySupplement.myMechanismOfAction != null) return false;
+    if (myNonProprietaryName != null ? !myNonProprietaryName.equals(dietarySupplement.myNonProprietaryName) : dietarySupplement.myNonProprietaryName != null) return false;
+    if (myRecommendedIntake != null ? !myRecommendedIntake.equals(dietarySupplement.myRecommendedIntake) : dietarySupplement.myRecommendedIntake != null) return false;
+    if (mySafetyConsideration != null ? !mySafetyConsideration.equals(dietarySupplement.mySafetyConsideration) : dietarySupplement.mySafetyConsideration != null) return false;
+    if (myTargetPopulation != null ? !myTargetPopulation.equals(dietarySupplement.myTargetPopulation) : dietarySupplement.myTargetPopulation != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link DietarySupplement}
    */
-  static final class DietarySupplementThingBuilder implements Builder {
-    /**
-     * Creates new {@link DietarySupplement} instance.
-     */
+  public static class Builder implements ThingBuilder<DietarySupplement> {
     public DietarySupplement build() {
       return new DietarySupplement(activeIngredient, background, dosageForm, isProprietary, legalStatus, manufacturer, maximumIntake, mechanismOfAction, nonProprietaryName, recommendedIntake, safetyConsideration, targetPopulation, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -383,33 +418,33 @@ public class DietarySupplement extends MedicalTherapy {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -418,66 +453,66 @@ public class DietarySupplement extends MedicalTherapy {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -525,7 +560,6 @@ public class DietarySupplement extends MedicalTherapy {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -599,112 +633,7 @@ public class DietarySupplement extends MedicalTherapy {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<DietarySupplement> {
-    @NotNull Builder activeIngredient(@NotNull String activeIngredient);
-    @NotNull Builder background(@NotNull String background);
-    @NotNull Builder dosageForm(@NotNull String dosageForm);
-    @NotNull Builder isProprietary(@NotNull Boolean isProprietary);
-    @NotNull Builder legalStatus(@NotNull DrugLegalStatus drugLegalStatus);
-    @NotNull Builder legalStatus(@NotNull DrugLegalStatus.Builder drugLegalStatus);
-    @NotNull Builder manufacturer(@NotNull Organization organization);
-    @NotNull Builder manufacturer(@NotNull Organization.Builder organization);
-    @NotNull Builder maximumIntake(@NotNull MaximumDoseSchedule maximumDoseSchedule);
-    @NotNull Builder maximumIntake(@NotNull MaximumDoseSchedule.Builder maximumDoseSchedule);
-    @NotNull Builder mechanismOfAction(@NotNull String mechanismOfAction);
-    @NotNull Builder nonProprietaryName(@NotNull String nonProprietaryName);
-    @NotNull Builder recommendedIntake(@NotNull RecommendedDoseSchedule recommendedDoseSchedule);
-    @NotNull Builder recommendedIntake(@NotNull RecommendedDoseSchedule.Builder recommendedDoseSchedule);
-    @NotNull Builder safetyConsideration(@NotNull String safetyConsideration);
-    @NotNull Builder targetPopulation(@NotNull String targetPopulation);
-    @NotNull Builder adverseOutcome(@NotNull MedicalEntity medicalEntity);
-    @NotNull Builder adverseOutcome(@NotNull MedicalEntity.Builder medicalEntity);
-    @NotNull Builder contraindication(@NotNull MedicalContraindication medicalContraindication);
-    @NotNull Builder contraindication(@NotNull MedicalContraindication.Builder medicalContraindication);
-    @NotNull Builder duplicateTherapy(@NotNull MedicalTherapy medicalTherapy);
-    @NotNull Builder duplicateTherapy(@NotNull MedicalTherapy.Builder medicalTherapy);
-    @NotNull Builder indication(@NotNull MedicalIndication medicalIndication);
-    @NotNull Builder indication(@NotNull MedicalIndication.Builder medicalIndication);
-    @NotNull Builder seriousAdverseOutcome(@NotNull MedicalEntity medicalEntity);
-    @NotNull Builder seriousAdverseOutcome(@NotNull MedicalEntity.Builder medicalEntity);
-    @NotNull Builder code(@NotNull MedicalCode medicalCode);
-    @NotNull Builder code(@NotNull MedicalCode.Builder medicalCode);
-    @NotNull Builder guideline(@NotNull MedicalGuideline medicalGuideline);
-    @NotNull Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem medicineSystem);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem);
-    @NotNull Builder recognizingAuthority(@NotNull Organization organization);
-    @NotNull Builder recognizingAuthority(@NotNull Organization.Builder organization);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty);
-    @NotNull Builder study(@NotNull MedicalStudy medicalStudy);
-    @NotNull Builder study(@NotNull MedicalStudy.Builder medicalStudy);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected DietarySupplement(String activeIngredient, String background, String dosageForm, Boolean isProprietary, DrugLegalStatus legalStatus, Organization manufacturer, MaximumDoseSchedule maximumIntake, String mechanismOfAction, String nonProprietaryName, RecommendedDoseSchedule recommendedIntake, String safetyConsideration, String targetPopulation, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myActiveIngredient = activeIngredient;
-    myBackground = background;
-    myDosageForm = dosageForm;
-    myIsProprietary = isProprietary;
-    myLegalStatus = legalStatus;
-    myManufacturer = manufacturer;
-    myMaximumIntake = maximumIntake;
-    myMechanismOfAction = mechanismOfAction;
-    myNonProprietaryName = nonProprietaryName;
-    myRecommendedIntake = recommendedIntake;
-    mySafetyConsideration = safetyConsideration;
-    myTargetPopulation = targetPopulation;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myActiveIngredient != null ? myActiveIngredient.hashCode() : 0);
-    result = 31 * result + (myBackground != null ? myBackground.hashCode() : 0);
-    result = 31 * result + (myDosageForm != null ? myDosageForm.hashCode() : 0);
-    result = 31 * result + (myIsProprietary != null ? myIsProprietary.hashCode() : 0);
-    result = 31 * result + (myLegalStatus != null ? myLegalStatus.hashCode() : 0);
-    result = 31 * result + (myManufacturer != null ? myManufacturer.hashCode() : 0);
-    result = 31 * result + (myMaximumIntake != null ? myMaximumIntake.hashCode() : 0);
-    result = 31 * result + (myMechanismOfAction != null ? myMechanismOfAction.hashCode() : 0);
-    result = 31 * result + (myNonProprietaryName != null ? myNonProprietaryName.hashCode() : 0);
-    result = 31 * result + (myRecommendedIntake != null ? myRecommendedIntake.hashCode() : 0);
-    result = 31 * result + (mySafetyConsideration != null ? mySafetyConsideration.hashCode() : 0);
-    result = 31 * result + (myTargetPopulation != null ? myTargetPopulation.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    DietarySupplement dietarySupplement = (DietarySupplement) o;
-    if (!super.equals(o)) return false;
-    if (myActiveIngredient != null ? !myActiveIngredient.equals(dietarySupplement.myActiveIngredient) : dietarySupplement.myActiveIngredient != null) return false;
-    if (myBackground != null ? !myBackground.equals(dietarySupplement.myBackground) : dietarySupplement.myBackground != null) return false;
-    if (myDosageForm != null ? !myDosageForm.equals(dietarySupplement.myDosageForm) : dietarySupplement.myDosageForm != null) return false;
-    if (myIsProprietary != null ? !myIsProprietary.equals(dietarySupplement.myIsProprietary) : dietarySupplement.myIsProprietary != null) return false;
-    if (myLegalStatus != null ? !myLegalStatus.equals(dietarySupplement.myLegalStatus) : dietarySupplement.myLegalStatus != null) return false;
-    if (myManufacturer != null ? !myManufacturer.equals(dietarySupplement.myManufacturer) : dietarySupplement.myManufacturer != null) return false;
-    if (myMaximumIntake != null ? !myMaximumIntake.equals(dietarySupplement.myMaximumIntake) : dietarySupplement.myMaximumIntake != null) return false;
-    if (myMechanismOfAction != null ? !myMechanismOfAction.equals(dietarySupplement.myMechanismOfAction) : dietarySupplement.myMechanismOfAction != null) return false;
-    if (myNonProprietaryName != null ? !myNonProprietaryName.equals(dietarySupplement.myNonProprietaryName) : dietarySupplement.myNonProprietaryName != null) return false;
-    if (myRecommendedIntake != null ? !myRecommendedIntake.equals(dietarySupplement.myRecommendedIntake) : dietarySupplement.myRecommendedIntake != null) return false;
-    if (mySafetyConsideration != null ? !mySafetyConsideration.equals(dietarySupplement.mySafetyConsideration) : dietarySupplement.mySafetyConsideration != null) return false;
-    if (myTargetPopulation != null ? !myTargetPopulation.equals(dietarySupplement.myTargetPopulation) : dietarySupplement.myTargetPopulation != null) return false;
-    return true;
-  }
-
+  
   private String myActiveIngredient;
   private String myBackground;
   private String myDosageForm;

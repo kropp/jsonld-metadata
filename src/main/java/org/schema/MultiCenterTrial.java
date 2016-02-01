@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A trial that takes place at multiple centers.
  */
 public class MultiCenterTrial {
-  /**
-   * Builder for {@link MultiCenterTrial}
-   */
-  static final class MultiCenterTrialThingBuilder implements Builder {
-    /**
-     * Creates new {@link MultiCenterTrial} instance.
-     */
-    public MultiCenterTrial build() {
-      return new MultiCenterTrial();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<MultiCenterTrial> {
-    
-  }
-
   protected MultiCenterTrial() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class MultiCenterTrial {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link MultiCenterTrial}
+   */
+  public static class Builder implements ThingBuilder<MultiCenterTrial> {
+    public MultiCenterTrial build() {
+      return new MultiCenterTrial();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

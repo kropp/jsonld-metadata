@@ -20,44 +20,18 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A specific branch of medical science that pertains to diagnosis and treatment of disorders of muscles, ligaments and skeletal system.
  */
 public class Musculoskeletal {
-  /**
-   * Builder for {@link Musculoskeletal}
-   */
-  static final class MusculoskeletalThingBuilder implements Builder {
-    /**
-     * Creates new {@link Musculoskeletal} instance.
-     */
-    public Musculoskeletal build() {
-      return new Musculoskeletal();
-    }
-
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        
-      }
-    }
-  }
-  public interface Builder extends ThingBuilder<Musculoskeletal> {
-    
-  }
-
   protected Musculoskeletal() {
   }
-
   @Override public int hashCode() {
     int result = super.hashCode();
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -65,5 +39,21 @@ public class Musculoskeletal {
     if (!super.equals(o)) return false;
     return true;
   }
-
+  
+  /**
+   * Builder for {@link Musculoskeletal}
+   */
+  public static class Builder implements ThingBuilder<Musculoskeletal> {
+    public Musculoskeletal build() {
+      return new Musculoskeletal();
+    }
+    @Override public void fromMap(java.util.Map<String, Object> map) {
+      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
+        final String key = entry.getKey();
+        Object value = entry.getValue();
+        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+      }
+    }
+  }
+  
 }

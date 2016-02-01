@@ -20,7 +20,7 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.
@@ -29,40 +29,62 @@ public class LocalBusiness extends Place {
   /**
    * The larger organization that this local business is a branch of, if any.
    */
-  public Organization getParentOrganization() {
-    return myParentOrganization;
-  }
+  public Organization getParentOrganization() { return myParentOrganization; }
   /**
    * The currency accepted (in <a href='http://en.wikipedia.org/wiki/ISO_4217'>ISO 4217 currency format</a>).
    */
-  public String getCurrenciesAccepted() {
-    return myCurrenciesAccepted;
-  }
+  public String getCurrenciesAccepted() { return myCurrenciesAccepted; }
   /**
    * The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.<br />- Days are specified using the following two-letter combinations: <code>Mo</code>, <code>Tu</code>, <code>We</code>, <code>Th</code>, <code>Fr</code>, <code>Sa</code>, <code>Su</code>.<br />- Times are specified using 24:00 time. For example, 3pm is specified as <code>15:00</code>. <br />- Here is an example: <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Tu,Th 16:00-20:00&quot;&gt;Tuesdays and Thursdays 4-8pm&lt;/time&gt;</code>. <br />- If a business is open 7 days a week, then it can be specified as <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Mo-Su&quot;&gt;Monday through Sunday, all day&lt;/time&gt;</code>.
    */
-  public String getOpeningHours() {
-    return myOpeningHours;
-  }
+  public String getOpeningHours() { return myOpeningHours; }
   /**
    * Cash, credit card, etc.
    */
-  public String getPaymentAccepted() {
-    return myPaymentAccepted;
-  }
+  public String getPaymentAccepted() { return myPaymentAccepted; }
   /**
    * The price range of the business, for example <code>$$$</code>.
    */
-  public String getPriceRange() {
-    return myPriceRange;
+  public String getPriceRange() { return myPriceRange; }
+  protected LocalBusiness(Organization parentOrganization, String currenciesAccepted, String openingHours, String paymentAccepted, String priceRange, PostalAddress address, AggregateRating aggregateRating, Place containedIn, Event event, String faxNumber, GeoCoordinatesOrGeoShape geo, String globalLocationNumber, String isicV4, ImageObjectOrString logo, MapOrString hasMap, OpeningHoursSpecification openingHoursSpecification, ImageObjectOrPhotograph photo, Review review, String telephone, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myParentOrganization = parentOrganization;
+    myCurrenciesAccepted = currenciesAccepted;
+    myOpeningHours = openingHours;
+    myPaymentAccepted = paymentAccepted;
+    myPriceRange = priceRange;
+    myParentOrganization = parentOrganization;
+    myCurrenciesAccepted = currenciesAccepted;
+    myOpeningHours = openingHours;
+    myPaymentAccepted = paymentAccepted;
+    myPriceRange = priceRange;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myParentOrganization != null ? myParentOrganization.hashCode() : 0);
+    result = 31 * result + (myCurrenciesAccepted != null ? myCurrenciesAccepted.hashCode() : 0);
+    result = 31 * result + (myOpeningHours != null ? myOpeningHours.hashCode() : 0);
+    result = 31 * result + (myPaymentAccepted != null ? myPaymentAccepted.hashCode() : 0);
+    result = 31 * result + (myPriceRange != null ? myPriceRange.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    LocalBusiness localBusiness = (LocalBusiness) o;
+    if (!super.equals(o)) return false;
+    if (myParentOrganization != null ? !myParentOrganization.equals(localBusiness.myParentOrganization) : localBusiness.myParentOrganization != null) return false;
+    if (myCurrenciesAccepted != null ? !myCurrenciesAccepted.equals(localBusiness.myCurrenciesAccepted) : localBusiness.myCurrenciesAccepted != null) return false;
+    if (myOpeningHours != null ? !myOpeningHours.equals(localBusiness.myOpeningHours) : localBusiness.myOpeningHours != null) return false;
+    if (myPaymentAccepted != null ? !myPaymentAccepted.equals(localBusiness.myPaymentAccepted) : localBusiness.myPaymentAccepted != null) return false;
+    if (myPriceRange != null ? !myPriceRange.equals(localBusiness.myPriceRange) : localBusiness.myPriceRange != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link LocalBusiness}
    */
-  static final class LocalBusinessThingBuilder implements Builder {
-    /**
-     * Creates new {@link LocalBusiness} instance.
-     */
+  public static class Builder implements ThingBuilder<LocalBusiness> {
     public LocalBusiness build() {
       return new LocalBusiness(parentOrganization, currenciesAccepted, openingHours, paymentAccepted, priceRange, address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -315,9 +337,9 @@ public class LocalBusiness extends Place {
     }
     /**
      * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
+     * 
+     * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+     * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue propertyValue) {
       this.additionalProperty = propertyValue;
@@ -325,9 +347,9 @@ Note: Publishers should be aware that applications designed to use specific sche
     }
     /**
      * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
+     * 
+     * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+     * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue) {
       return this.additionalProperty(propertyValue.build());
@@ -355,33 +377,33 @@ Note: Publishers should be aware that applications designed to use specific sche
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -390,66 +412,66 @@ Note: Publishers should be aware that applications designed to use specific sche
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -497,7 +519,6 @@ Note: Publishers should be aware that applications designed to use specific sche
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -569,91 +590,7 @@ Note: Publishers should be aware that applications designed to use specific sche
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<LocalBusiness> {
-    @NotNull Builder parentOrganization(@NotNull Organization organization);
-    @NotNull Builder parentOrganization(@NotNull Organization.Builder organization);
-    @NotNull Builder currenciesAccepted(@NotNull String currenciesAccepted);
-    @NotNull Builder openingHours(@NotNull String openingHours);
-    @NotNull Builder paymentAccepted(@NotNull String paymentAccepted);
-    @NotNull Builder priceRange(@NotNull String priceRange);
-    @NotNull Builder address(@NotNull PostalAddress postalAddress);
-    @NotNull Builder address(@NotNull PostalAddress.Builder postalAddress);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating aggregateRating);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating);
-    @NotNull Builder containedIn(@NotNull Place place);
-    @NotNull Builder containedIn(@NotNull Place.Builder place);
-    @NotNull Builder event(@NotNull Event event);
-    @NotNull Builder event(@NotNull Event.Builder event);
-    @NotNull Builder faxNumber(@NotNull String faxNumber);
-    @NotNull Builder geo(@NotNull GeoCoordinates geoCoordinates);
-    @NotNull Builder geo(@NotNull GeoCoordinates.Builder geoCoordinates);
-    @NotNull Builder geo(@NotNull GeoShape geoShape);
-    @NotNull Builder geo(@NotNull GeoShape.Builder geoShape);
-    @NotNull Builder globalLocationNumber(@NotNull String globalLocationNumber);
-    @NotNull Builder isicV4(@NotNull String isicV4);
-    @NotNull Builder logo(@NotNull ImageObject imageObject);
-    @NotNull Builder logo(@NotNull ImageObject.Builder imageObject);
-    @NotNull Builder logo(@NotNull String logo);
-    @NotNull Builder hasMap(@NotNull Map map);
-    @NotNull Builder hasMap(@NotNull Map.Builder map);
-    @NotNull Builder hasMap(@NotNull String hasMap);
-    @NotNull Builder openingHoursSpecification(@NotNull OpeningHoursSpecification openingHoursSpecification);
-    @NotNull Builder openingHoursSpecification(@NotNull OpeningHoursSpecification.Builder openingHoursSpecification);
-    @NotNull Builder photo(@NotNull ImageObject imageObject);
-    @NotNull Builder photo(@NotNull ImageObject.Builder imageObject);
-    @NotNull Builder photo(@NotNull Photograph photograph);
-    @NotNull Builder photo(@NotNull Photograph.Builder photograph);
-    @NotNull Builder review(@NotNull Review review);
-    @NotNull Builder review(@NotNull Review.Builder review);
-    @NotNull Builder telephone(@NotNull String telephone);
-    @NotNull Builder additionalProperty(@NotNull PropertyValue propertyValue);
-    @NotNull Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected LocalBusiness(Organization parentOrganization, String currenciesAccepted, String openingHours, String paymentAccepted, String priceRange, PostalAddress address, AggregateRating aggregateRating, Place containedIn, Event event, String faxNumber, GeoCoordinatesOrGeoShape geo, String globalLocationNumber, String isicV4, ImageObjectOrString logo, MapOrString hasMap, OpeningHoursSpecification openingHoursSpecification, ImageObjectOrPhotograph photo, Review review, String telephone, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myParentOrganization = parentOrganization;
-    myCurrenciesAccepted = currenciesAccepted;
-    myOpeningHours = openingHours;
-    myPaymentAccepted = paymentAccepted;
-    myPriceRange = priceRange;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myParentOrganization != null ? myParentOrganization.hashCode() : 0);
-    result = 31 * result + (myCurrenciesAccepted != null ? myCurrenciesAccepted.hashCode() : 0);
-    result = 31 * result + (myOpeningHours != null ? myOpeningHours.hashCode() : 0);
-    result = 31 * result + (myPaymentAccepted != null ? myPaymentAccepted.hashCode() : 0);
-    result = 31 * result + (myPriceRange != null ? myPriceRange.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    LocalBusiness localBusiness = (LocalBusiness) o;
-    if (!super.equals(o)) return false;
-    if (myParentOrganization != null ? !myParentOrganization.equals(localBusiness.myParentOrganization) : localBusiness.myParentOrganization != null) return false;
-    if (myCurrenciesAccepted != null ? !myCurrenciesAccepted.equals(localBusiness.myCurrenciesAccepted) : localBusiness.myCurrenciesAccepted != null) return false;
-    if (myOpeningHours != null ? !myOpeningHours.equals(localBusiness.myOpeningHours) : localBusiness.myOpeningHours != null) return false;
-    if (myPaymentAccepted != null ? !myPaymentAccepted.equals(localBusiness.myPaymentAccepted) : localBusiness.myPaymentAccepted != null) return false;
-    if (myPriceRange != null ? !myPriceRange.equals(localBusiness.myPriceRange) : localBusiness.myPriceRange != null) return false;
-    return true;
-  }
-
+  
   private Organization myParentOrganization;
   private String myCurrenciesAccepted;
   private String myOpeningHours;

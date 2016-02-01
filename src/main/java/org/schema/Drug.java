@@ -20,176 +20,239 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
+ * A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
  */
 public class Drug extends MedicalTherapy {
   /**
    * An active ingredient, typically chemical compounds and/or biologic substances.
    */
-  public String getActiveIngredient() {
-    return myActiveIngredient;
-  }
+  public String getActiveIngredient() { return myActiveIngredient; }
   /**
    * A route by which this drug may be administered, e.g. 'oral'.
    */
-  public String getAdministrationRoute() {
-    return myAdministrationRoute;
-  }
+  public String getAdministrationRoute() { return myAdministrationRoute; }
   /**
    * Any precaution, guidance, contraindication, etc. related to consumption of alcohol while taking this drug.
    */
-  public String getAlcoholWarning() {
-    return myAlcoholWarning;
-  }
+  public String getAlcoholWarning() { return myAlcoholWarning; }
   /**
    * An available dosage strength for the drug.
    */
-  public DrugStrength getAvailableStrength() {
-    return myAvailableStrength;
-  }
+  public DrugStrength getAvailableStrength() { return myAvailableStrength; }
   /**
    * Any precaution, guidance, contraindication, etc. related to this drug's use by breastfeeding mothers.
    */
-  public String getBreastfeedingWarning() {
-    return myBreastfeedingWarning;
-  }
+  public String getBreastfeedingWarning() { return myBreastfeedingWarning; }
   /**
    * Description of the absorption and elimination of drugs, including their concentration (pharmacokinetics, pK) and biological effects (pharmacodynamics, pD).
    */
-  public String getClinicalPharmacology() {
-    return myClinicalPharmacology;
-  }
+  public String getClinicalPharmacology() { return myClinicalPharmacology; }
   /**
    * Cost per unit of the drug, as reported by the source being tagged.
    */
-  public DrugCost getCost() {
-    return myCost;
-  }
+  public DrugCost getCost() { return myCost; }
   /**
    * A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension', 'injection'.
    */
-  public String getDosageForm() {
-    return myDosageForm;
-  }
+  public String getDosageForm() { return myDosageForm; }
   /**
    * A dosing schedule for the drug for a given population, either observed, recommended, or maximum dose based on the type used.
    */
-  public DoseSchedule getDoseSchedule() {
-    return myDoseSchedule;
-  }
+  public DoseSchedule getDoseSchedule() { return myDoseSchedule; }
   /**
    * The class of drug this belongs to (e.g., statins).
    */
-  public DrugClass getDrugClass() {
-    return myDrugClass;
-  }
+  public DrugClass getDrugClass() { return myDrugClass; }
   /**
    * Any precaution, guidance, contraindication, etc. related to consumption of specific foods while taking this drug.
    */
-  public String getFoodWarning() {
-    return myFoodWarning;
-  }
+  public String getFoodWarning() { return myFoodWarning; }
   /**
    * Another drug that is known to interact with this drug in a way that impacts the effect of this drug or causes a risk to the patient. Note: disease interactions are typically captured as contraindications.
    */
-  public Drug getInteractingDrug() {
-    return myInteractingDrug;
-  }
+  public Drug getInteractingDrug() { return myInteractingDrug; }
   /**
    * True if the drug is available in a generic form (regardless of name).
    */
-  public Boolean getIsAvailableGenerically() {
-    return myIsAvailableGenerically;
-  }
+  public Boolean getIsAvailableGenerically() { return myIsAvailableGenerically; }
   /**
    * True if this item's name is a proprietary/brand name (vs. generic name).
    */
-  public Boolean getIsProprietary() {
-    return myIsProprietary;
-  }
+  public Boolean getIsProprietary() { return myIsProprietary; }
   /**
    * Link to the drug's label details.
    */
-  public String getLabelDetails() {
-    return myLabelDetails;
-  }
+  public String getLabelDetails() { return myLabelDetails; }
   /**
    * The drug or supplement's legal status, including any controlled substance schedules that apply.
    */
-  public DrugLegalStatus getLegalStatus() {
-    return myLegalStatus;
-  }
+  public DrugLegalStatus getLegalStatus() { return myLegalStatus; }
   /**
    * The manufacturer of the product.
    */
-  public Organization getManufacturer() {
-    return myManufacturer;
-  }
+  public Organization getManufacturer() { return myManufacturer; }
   /**
    * The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
    */
-  public String getMechanismOfAction() {
-    return myMechanismOfAction;
-  }
+  public String getMechanismOfAction() { return myMechanismOfAction; }
   /**
    * The generic name of this drug or supplement.
    */
-  public String getNonProprietaryName() {
-    return myNonProprietaryName;
-  }
+  public String getNonProprietaryName() { return myNonProprietaryName; }
   /**
    * Any information related to overdose on a drug, including signs or symptoms, treatments, contact information for emergency response.
    */
-  public String getOverdosage() {
-    return myOverdosage;
-  }
+  public String getOverdosage() { return myOverdosage; }
   /**
    * Pregnancy category of this drug.
    */
-  public DrugPregnancyCategory getPregnancyCategory() {
-    return myPregnancyCategory;
-  }
+  public DrugPregnancyCategory getPregnancyCategory() { return myPregnancyCategory; }
   /**
    * Any precaution, guidance, contraindication, etc. related to this drug's use during pregnancy.
    */
-  public String getPregnancyWarning() {
-    return myPregnancyWarning;
-  }
+  public String getPregnancyWarning() { return myPregnancyWarning; }
   /**
    * Link to prescribing information for the drug.
    */
-  public String getPrescribingInfo() {
-    return myPrescribingInfo;
-  }
+  public String getPrescribingInfo() { return myPrescribingInfo; }
   /**
    * Indicates whether this drug is available by prescription or over-the-counter.
    */
-  public DrugPrescriptionStatus getPrescriptionStatus() {
-    return myPrescriptionStatus;
-  }
+  public DrugPrescriptionStatus getPrescriptionStatus() { return myPrescriptionStatus; }
   /**
    * Any other drug related to this one, for example commonly-prescribed alternatives.
    */
-  public Drug getRelatedDrug() {
-    return myRelatedDrug;
-  }
+  public Drug getRelatedDrug() { return myRelatedDrug; }
   /**
    * Any FDA or other warnings about the drug (text or URL).
    */
-  public String getWarning() {
-    return myWarning;
+  public String getWarning() { return myWarning; }
+  protected Drug(String activeIngredient, String administrationRoute, String alcoholWarning, DrugStrength availableStrength, String breastfeedingWarning, String clinicalPharmacology, DrugCost cost, String dosageForm, DoseSchedule doseSchedule, DrugClass drugClass, String foodWarning, Drug interactingDrug, Boolean isAvailableGenerically, Boolean isProprietary, String labelDetails, DrugLegalStatus legalStatus, Organization manufacturer, String mechanismOfAction, String nonProprietaryName, String overdosage, DrugPregnancyCategory pregnancyCategory, String pregnancyWarning, String prescribingInfo, DrugPrescriptionStatus prescriptionStatus, Drug relatedDrug, String warning, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myActiveIngredient = activeIngredient;
+    myAdministrationRoute = administrationRoute;
+    myAlcoholWarning = alcoholWarning;
+    myAvailableStrength = availableStrength;
+    myBreastfeedingWarning = breastfeedingWarning;
+    myClinicalPharmacology = clinicalPharmacology;
+    myCost = cost;
+    myDosageForm = dosageForm;
+    myDoseSchedule = doseSchedule;
+    myDrugClass = drugClass;
+    myFoodWarning = foodWarning;
+    myInteractingDrug = interactingDrug;
+    myIsAvailableGenerically = isAvailableGenerically;
+    myIsProprietary = isProprietary;
+    myLabelDetails = labelDetails;
+    myLegalStatus = legalStatus;
+    myManufacturer = manufacturer;
+    myMechanismOfAction = mechanismOfAction;
+    myNonProprietaryName = nonProprietaryName;
+    myOverdosage = overdosage;
+    myPregnancyCategory = pregnancyCategory;
+    myPregnancyWarning = pregnancyWarning;
+    myPrescribingInfo = prescribingInfo;
+    myPrescriptionStatus = prescriptionStatus;
+    myRelatedDrug = relatedDrug;
+    myWarning = warning;
+    myActiveIngredient = activeIngredient;
+    myAdministrationRoute = administrationRoute;
+    myAlcoholWarning = alcoholWarning;
+    myAvailableStrength = availableStrength;
+    myBreastfeedingWarning = breastfeedingWarning;
+    myClinicalPharmacology = clinicalPharmacology;
+    myCost = cost;
+    myDosageForm = dosageForm;
+    myDoseSchedule = doseSchedule;
+    myDrugClass = drugClass;
+    myFoodWarning = foodWarning;
+    myInteractingDrug = interactingDrug;
+    myIsAvailableGenerically = isAvailableGenerically;
+    myIsProprietary = isProprietary;
+    myLabelDetails = labelDetails;
+    myLegalStatus = legalStatus;
+    myManufacturer = manufacturer;
+    myMechanismOfAction = mechanismOfAction;
+    myNonProprietaryName = nonProprietaryName;
+    myOverdosage = overdosage;
+    myPregnancyCategory = pregnancyCategory;
+    myPregnancyWarning = pregnancyWarning;
+    myPrescribingInfo = prescribingInfo;
+    myPrescriptionStatus = prescriptionStatus;
+    myRelatedDrug = relatedDrug;
+    myWarning = warning;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myActiveIngredient != null ? myActiveIngredient.hashCode() : 0);
+    result = 31 * result + (myAdministrationRoute != null ? myAdministrationRoute.hashCode() : 0);
+    result = 31 * result + (myAlcoholWarning != null ? myAlcoholWarning.hashCode() : 0);
+    result = 31 * result + (myAvailableStrength != null ? myAvailableStrength.hashCode() : 0);
+    result = 31 * result + (myBreastfeedingWarning != null ? myBreastfeedingWarning.hashCode() : 0);
+    result = 31 * result + (myClinicalPharmacology != null ? myClinicalPharmacology.hashCode() : 0);
+    result = 31 * result + (myCost != null ? myCost.hashCode() : 0);
+    result = 31 * result + (myDosageForm != null ? myDosageForm.hashCode() : 0);
+    result = 31 * result + (myDoseSchedule != null ? myDoseSchedule.hashCode() : 0);
+    result = 31 * result + (myDrugClass != null ? myDrugClass.hashCode() : 0);
+    result = 31 * result + (myFoodWarning != null ? myFoodWarning.hashCode() : 0);
+    result = 31 * result + (myInteractingDrug != null ? myInteractingDrug.hashCode() : 0);
+    result = 31 * result + (myIsAvailableGenerically != null ? myIsAvailableGenerically.hashCode() : 0);
+    result = 31 * result + (myIsProprietary != null ? myIsProprietary.hashCode() : 0);
+    result = 31 * result + (myLabelDetails != null ? myLabelDetails.hashCode() : 0);
+    result = 31 * result + (myLegalStatus != null ? myLegalStatus.hashCode() : 0);
+    result = 31 * result + (myManufacturer != null ? myManufacturer.hashCode() : 0);
+    result = 31 * result + (myMechanismOfAction != null ? myMechanismOfAction.hashCode() : 0);
+    result = 31 * result + (myNonProprietaryName != null ? myNonProprietaryName.hashCode() : 0);
+    result = 31 * result + (myOverdosage != null ? myOverdosage.hashCode() : 0);
+    result = 31 * result + (myPregnancyCategory != null ? myPregnancyCategory.hashCode() : 0);
+    result = 31 * result + (myPregnancyWarning != null ? myPregnancyWarning.hashCode() : 0);
+    result = 31 * result + (myPrescribingInfo != null ? myPrescribingInfo.hashCode() : 0);
+    result = 31 * result + (myPrescriptionStatus != null ? myPrescriptionStatus.hashCode() : 0);
+    result = 31 * result + (myRelatedDrug != null ? myRelatedDrug.hashCode() : 0);
+    result = 31 * result + (myWarning != null ? myWarning.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Drug drug = (Drug) o;
+    if (!super.equals(o)) return false;
+    if (myActiveIngredient != null ? !myActiveIngredient.equals(drug.myActiveIngredient) : drug.myActiveIngredient != null) return false;
+    if (myAdministrationRoute != null ? !myAdministrationRoute.equals(drug.myAdministrationRoute) : drug.myAdministrationRoute != null) return false;
+    if (myAlcoholWarning != null ? !myAlcoholWarning.equals(drug.myAlcoholWarning) : drug.myAlcoholWarning != null) return false;
+    if (myAvailableStrength != null ? !myAvailableStrength.equals(drug.myAvailableStrength) : drug.myAvailableStrength != null) return false;
+    if (myBreastfeedingWarning != null ? !myBreastfeedingWarning.equals(drug.myBreastfeedingWarning) : drug.myBreastfeedingWarning != null) return false;
+    if (myClinicalPharmacology != null ? !myClinicalPharmacology.equals(drug.myClinicalPharmacology) : drug.myClinicalPharmacology != null) return false;
+    if (myCost != null ? !myCost.equals(drug.myCost) : drug.myCost != null) return false;
+    if (myDosageForm != null ? !myDosageForm.equals(drug.myDosageForm) : drug.myDosageForm != null) return false;
+    if (myDoseSchedule != null ? !myDoseSchedule.equals(drug.myDoseSchedule) : drug.myDoseSchedule != null) return false;
+    if (myDrugClass != null ? !myDrugClass.equals(drug.myDrugClass) : drug.myDrugClass != null) return false;
+    if (myFoodWarning != null ? !myFoodWarning.equals(drug.myFoodWarning) : drug.myFoodWarning != null) return false;
+    if (myInteractingDrug != null ? !myInteractingDrug.equals(drug.myInteractingDrug) : drug.myInteractingDrug != null) return false;
+    if (myIsAvailableGenerically != null ? !myIsAvailableGenerically.equals(drug.myIsAvailableGenerically) : drug.myIsAvailableGenerically != null) return false;
+    if (myIsProprietary != null ? !myIsProprietary.equals(drug.myIsProprietary) : drug.myIsProprietary != null) return false;
+    if (myLabelDetails != null ? !myLabelDetails.equals(drug.myLabelDetails) : drug.myLabelDetails != null) return false;
+    if (myLegalStatus != null ? !myLegalStatus.equals(drug.myLegalStatus) : drug.myLegalStatus != null) return false;
+    if (myManufacturer != null ? !myManufacturer.equals(drug.myManufacturer) : drug.myManufacturer != null) return false;
+    if (myMechanismOfAction != null ? !myMechanismOfAction.equals(drug.myMechanismOfAction) : drug.myMechanismOfAction != null) return false;
+    if (myNonProprietaryName != null ? !myNonProprietaryName.equals(drug.myNonProprietaryName) : drug.myNonProprietaryName != null) return false;
+    if (myOverdosage != null ? !myOverdosage.equals(drug.myOverdosage) : drug.myOverdosage != null) return false;
+    if (myPregnancyCategory != null ? !myPregnancyCategory.equals(drug.myPregnancyCategory) : drug.myPregnancyCategory != null) return false;
+    if (myPregnancyWarning != null ? !myPregnancyWarning.equals(drug.myPregnancyWarning) : drug.myPregnancyWarning != null) return false;
+    if (myPrescribingInfo != null ? !myPrescribingInfo.equals(drug.myPrescribingInfo) : drug.myPrescribingInfo != null) return false;
+    if (myPrescriptionStatus != null ? !myPrescriptionStatus.equals(drug.myPrescriptionStatus) : drug.myPrescriptionStatus != null) return false;
+    if (myRelatedDrug != null ? !myRelatedDrug.equals(drug.myRelatedDrug) : drug.myRelatedDrug != null) return false;
+    if (myWarning != null ? !myWarning.equals(drug.myWarning) : drug.myWarning != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link Drug}
    */
-  static final class DrugThingBuilder implements Builder {
-    /**
-     * Creates new {@link Drug} instance.
-     */
+  public static class Builder implements ThingBuilder<Drug> {
     public Drug build() {
       return new Drug(activeIngredient, administrationRoute, alcoholWarning, availableStrength, breastfeedingWarning, clinicalPharmacology, cost, dosageForm, doseSchedule, drugClass, foodWarning, interactingDrug, isAvailableGenerically, isProprietary, labelDetails, legalStatus, manufacturer, mechanismOfAction, nonProprietaryName, overdosage, pregnancyCategory, pregnancyWarning, prescribingInfo, prescriptionStatus, relatedDrug, warning, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -601,33 +664,33 @@ public class Drug extends MedicalTherapy {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -636,66 +699,66 @@ public class Drug extends MedicalTherapy {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -743,7 +806,6 @@ public class Drug extends MedicalTherapy {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -845,174 +907,7 @@ public class Drug extends MedicalTherapy {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<Drug> {
-    @NotNull Builder activeIngredient(@NotNull String activeIngredient);
-    @NotNull Builder administrationRoute(@NotNull String administrationRoute);
-    @NotNull Builder alcoholWarning(@NotNull String alcoholWarning);
-    @NotNull Builder availableStrength(@NotNull DrugStrength drugStrength);
-    @NotNull Builder availableStrength(@NotNull DrugStrength.Builder drugStrength);
-    @NotNull Builder breastfeedingWarning(@NotNull String breastfeedingWarning);
-    @NotNull Builder clinicalPharmacology(@NotNull String clinicalPharmacology);
-    @NotNull Builder cost(@NotNull DrugCost drugCost);
-    @NotNull Builder cost(@NotNull DrugCost.Builder drugCost);
-    @NotNull Builder dosageForm(@NotNull String dosageForm);
-    @NotNull Builder doseSchedule(@NotNull DoseSchedule doseSchedule);
-    @NotNull Builder doseSchedule(@NotNull DoseSchedule.Builder doseSchedule);
-    @NotNull Builder drugClass(@NotNull DrugClass drugClass);
-    @NotNull Builder drugClass(@NotNull DrugClass.Builder drugClass);
-    @NotNull Builder foodWarning(@NotNull String foodWarning);
-    @NotNull Builder interactingDrug(@NotNull Drug drug);
-    @NotNull Builder interactingDrug(@NotNull Drug.Builder drug);
-    @NotNull Builder isAvailableGenerically(@NotNull Boolean isAvailableGenerically);
-    @NotNull Builder isProprietary(@NotNull Boolean isProprietary);
-    @NotNull Builder labelDetails(@NotNull String labelDetails);
-    @NotNull Builder legalStatus(@NotNull DrugLegalStatus drugLegalStatus);
-    @NotNull Builder legalStatus(@NotNull DrugLegalStatus.Builder drugLegalStatus);
-    @NotNull Builder manufacturer(@NotNull Organization organization);
-    @NotNull Builder manufacturer(@NotNull Organization.Builder organization);
-    @NotNull Builder mechanismOfAction(@NotNull String mechanismOfAction);
-    @NotNull Builder nonProprietaryName(@NotNull String nonProprietaryName);
-    @NotNull Builder overdosage(@NotNull String overdosage);
-    @NotNull Builder pregnancyCategory(@NotNull DrugPregnancyCategory drugPregnancyCategory);
-    @NotNull Builder pregnancyCategory(@NotNull DrugPregnancyCategory.Builder drugPregnancyCategory);
-    @NotNull Builder pregnancyWarning(@NotNull String pregnancyWarning);
-    @NotNull Builder prescribingInfo(@NotNull String prescribingInfo);
-    @NotNull Builder prescriptionStatus(@NotNull DrugPrescriptionStatus drugPrescriptionStatus);
-    @NotNull Builder prescriptionStatus(@NotNull DrugPrescriptionStatus.Builder drugPrescriptionStatus);
-    @NotNull Builder relatedDrug(@NotNull Drug drug);
-    @NotNull Builder relatedDrug(@NotNull Drug.Builder drug);
-    @NotNull Builder warning(@NotNull String warning);
-    @NotNull Builder adverseOutcome(@NotNull MedicalEntity medicalEntity);
-    @NotNull Builder adverseOutcome(@NotNull MedicalEntity.Builder medicalEntity);
-    @NotNull Builder contraindication(@NotNull MedicalContraindication medicalContraindication);
-    @NotNull Builder contraindication(@NotNull MedicalContraindication.Builder medicalContraindication);
-    @NotNull Builder duplicateTherapy(@NotNull MedicalTherapy medicalTherapy);
-    @NotNull Builder duplicateTherapy(@NotNull MedicalTherapy.Builder medicalTherapy);
-    @NotNull Builder indication(@NotNull MedicalIndication medicalIndication);
-    @NotNull Builder indication(@NotNull MedicalIndication.Builder medicalIndication);
-    @NotNull Builder seriousAdverseOutcome(@NotNull MedicalEntity medicalEntity);
-    @NotNull Builder seriousAdverseOutcome(@NotNull MedicalEntity.Builder medicalEntity);
-    @NotNull Builder code(@NotNull MedicalCode medicalCode);
-    @NotNull Builder code(@NotNull MedicalCode.Builder medicalCode);
-    @NotNull Builder guideline(@NotNull MedicalGuideline medicalGuideline);
-    @NotNull Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem medicineSystem);
-    @NotNull Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem);
-    @NotNull Builder recognizingAuthority(@NotNull Organization organization);
-    @NotNull Builder recognizingAuthority(@NotNull Organization.Builder organization);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty);
-    @NotNull Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty);
-    @NotNull Builder study(@NotNull MedicalStudy medicalStudy);
-    @NotNull Builder study(@NotNull MedicalStudy.Builder medicalStudy);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected Drug(String activeIngredient, String administrationRoute, String alcoholWarning, DrugStrength availableStrength, String breastfeedingWarning, String clinicalPharmacology, DrugCost cost, String dosageForm, DoseSchedule doseSchedule, DrugClass drugClass, String foodWarning, Drug interactingDrug, Boolean isAvailableGenerically, Boolean isProprietary, String labelDetails, DrugLegalStatus legalStatus, Organization manufacturer, String mechanismOfAction, String nonProprietaryName, String overdosage, DrugPregnancyCategory pregnancyCategory, String pregnancyWarning, String prescribingInfo, DrugPrescriptionStatus prescriptionStatus, Drug relatedDrug, String warning, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myActiveIngredient = activeIngredient;
-    myAdministrationRoute = administrationRoute;
-    myAlcoholWarning = alcoholWarning;
-    myAvailableStrength = availableStrength;
-    myBreastfeedingWarning = breastfeedingWarning;
-    myClinicalPharmacology = clinicalPharmacology;
-    myCost = cost;
-    myDosageForm = dosageForm;
-    myDoseSchedule = doseSchedule;
-    myDrugClass = drugClass;
-    myFoodWarning = foodWarning;
-    myInteractingDrug = interactingDrug;
-    myIsAvailableGenerically = isAvailableGenerically;
-    myIsProprietary = isProprietary;
-    myLabelDetails = labelDetails;
-    myLegalStatus = legalStatus;
-    myManufacturer = manufacturer;
-    myMechanismOfAction = mechanismOfAction;
-    myNonProprietaryName = nonProprietaryName;
-    myOverdosage = overdosage;
-    myPregnancyCategory = pregnancyCategory;
-    myPregnancyWarning = pregnancyWarning;
-    myPrescribingInfo = prescribingInfo;
-    myPrescriptionStatus = prescriptionStatus;
-    myRelatedDrug = relatedDrug;
-    myWarning = warning;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myActiveIngredient != null ? myActiveIngredient.hashCode() : 0);
-    result = 31 * result + (myAdministrationRoute != null ? myAdministrationRoute.hashCode() : 0);
-    result = 31 * result + (myAlcoholWarning != null ? myAlcoholWarning.hashCode() : 0);
-    result = 31 * result + (myAvailableStrength != null ? myAvailableStrength.hashCode() : 0);
-    result = 31 * result + (myBreastfeedingWarning != null ? myBreastfeedingWarning.hashCode() : 0);
-    result = 31 * result + (myClinicalPharmacology != null ? myClinicalPharmacology.hashCode() : 0);
-    result = 31 * result + (myCost != null ? myCost.hashCode() : 0);
-    result = 31 * result + (myDosageForm != null ? myDosageForm.hashCode() : 0);
-    result = 31 * result + (myDoseSchedule != null ? myDoseSchedule.hashCode() : 0);
-    result = 31 * result + (myDrugClass != null ? myDrugClass.hashCode() : 0);
-    result = 31 * result + (myFoodWarning != null ? myFoodWarning.hashCode() : 0);
-    result = 31 * result + (myInteractingDrug != null ? myInteractingDrug.hashCode() : 0);
-    result = 31 * result + (myIsAvailableGenerically != null ? myIsAvailableGenerically.hashCode() : 0);
-    result = 31 * result + (myIsProprietary != null ? myIsProprietary.hashCode() : 0);
-    result = 31 * result + (myLabelDetails != null ? myLabelDetails.hashCode() : 0);
-    result = 31 * result + (myLegalStatus != null ? myLegalStatus.hashCode() : 0);
-    result = 31 * result + (myManufacturer != null ? myManufacturer.hashCode() : 0);
-    result = 31 * result + (myMechanismOfAction != null ? myMechanismOfAction.hashCode() : 0);
-    result = 31 * result + (myNonProprietaryName != null ? myNonProprietaryName.hashCode() : 0);
-    result = 31 * result + (myOverdosage != null ? myOverdosage.hashCode() : 0);
-    result = 31 * result + (myPregnancyCategory != null ? myPregnancyCategory.hashCode() : 0);
-    result = 31 * result + (myPregnancyWarning != null ? myPregnancyWarning.hashCode() : 0);
-    result = 31 * result + (myPrescribingInfo != null ? myPrescribingInfo.hashCode() : 0);
-    result = 31 * result + (myPrescriptionStatus != null ? myPrescriptionStatus.hashCode() : 0);
-    result = 31 * result + (myRelatedDrug != null ? myRelatedDrug.hashCode() : 0);
-    result = 31 * result + (myWarning != null ? myWarning.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Drug drug = (Drug) o;
-    if (!super.equals(o)) return false;
-    if (myActiveIngredient != null ? !myActiveIngredient.equals(drug.myActiveIngredient) : drug.myActiveIngredient != null) return false;
-    if (myAdministrationRoute != null ? !myAdministrationRoute.equals(drug.myAdministrationRoute) : drug.myAdministrationRoute != null) return false;
-    if (myAlcoholWarning != null ? !myAlcoholWarning.equals(drug.myAlcoholWarning) : drug.myAlcoholWarning != null) return false;
-    if (myAvailableStrength != null ? !myAvailableStrength.equals(drug.myAvailableStrength) : drug.myAvailableStrength != null) return false;
-    if (myBreastfeedingWarning != null ? !myBreastfeedingWarning.equals(drug.myBreastfeedingWarning) : drug.myBreastfeedingWarning != null) return false;
-    if (myClinicalPharmacology != null ? !myClinicalPharmacology.equals(drug.myClinicalPharmacology) : drug.myClinicalPharmacology != null) return false;
-    if (myCost != null ? !myCost.equals(drug.myCost) : drug.myCost != null) return false;
-    if (myDosageForm != null ? !myDosageForm.equals(drug.myDosageForm) : drug.myDosageForm != null) return false;
-    if (myDoseSchedule != null ? !myDoseSchedule.equals(drug.myDoseSchedule) : drug.myDoseSchedule != null) return false;
-    if (myDrugClass != null ? !myDrugClass.equals(drug.myDrugClass) : drug.myDrugClass != null) return false;
-    if (myFoodWarning != null ? !myFoodWarning.equals(drug.myFoodWarning) : drug.myFoodWarning != null) return false;
-    if (myInteractingDrug != null ? !myInteractingDrug.equals(drug.myInteractingDrug) : drug.myInteractingDrug != null) return false;
-    if (myIsAvailableGenerically != null ? !myIsAvailableGenerically.equals(drug.myIsAvailableGenerically) : drug.myIsAvailableGenerically != null) return false;
-    if (myIsProprietary != null ? !myIsProprietary.equals(drug.myIsProprietary) : drug.myIsProprietary != null) return false;
-    if (myLabelDetails != null ? !myLabelDetails.equals(drug.myLabelDetails) : drug.myLabelDetails != null) return false;
-    if (myLegalStatus != null ? !myLegalStatus.equals(drug.myLegalStatus) : drug.myLegalStatus != null) return false;
-    if (myManufacturer != null ? !myManufacturer.equals(drug.myManufacturer) : drug.myManufacturer != null) return false;
-    if (myMechanismOfAction != null ? !myMechanismOfAction.equals(drug.myMechanismOfAction) : drug.myMechanismOfAction != null) return false;
-    if (myNonProprietaryName != null ? !myNonProprietaryName.equals(drug.myNonProprietaryName) : drug.myNonProprietaryName != null) return false;
-    if (myOverdosage != null ? !myOverdosage.equals(drug.myOverdosage) : drug.myOverdosage != null) return false;
-    if (myPregnancyCategory != null ? !myPregnancyCategory.equals(drug.myPregnancyCategory) : drug.myPregnancyCategory != null) return false;
-    if (myPregnancyWarning != null ? !myPregnancyWarning.equals(drug.myPregnancyWarning) : drug.myPregnancyWarning != null) return false;
-    if (myPrescribingInfo != null ? !myPrescribingInfo.equals(drug.myPrescribingInfo) : drug.myPrescribingInfo != null) return false;
-    if (myPrescriptionStatus != null ? !myPrescriptionStatus.equals(drug.myPrescriptionStatus) : drug.myPrescriptionStatus != null) return false;
-    if (myRelatedDrug != null ? !myRelatedDrug.equals(drug.myRelatedDrug) : drug.myRelatedDrug != null) return false;
-    if (myWarning != null ? !myWarning.equals(drug.myWarning) : drug.myWarning != null) return false;
-    return true;
-  }
-
+  
   private String myActiveIngredient;
   private String myAdministrationRoute;
   private String myAlcoholWarning;

@@ -18,35 +18,29 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class StringOrVehicle {
-  @JsonValue
-  public Object getJsonLdValue() {
+  void setString(String value) { clear(); myString = value; }
+  public String getString() { return myString; }
+  void setVehicle(Vehicle vehicle) { clear(); myVehicle = vehicle; }
+  public Vehicle getVehicle() { return myVehicle; }
+  @com.fasterxml.jackson.annotation.JsonValue public Object getJsonLdValue() {
     if (myString != null) return myString;
     if (myVehicle != null) return myVehicle;
     return null;
   }
-  void setString(String value) { clear(); myString = value; }
-  public String getString() { return myString; }
-  private String myString;
-  void setVehicle(Vehicle vehicle) { clear(); myVehicle = vehicle; }
-  public Vehicle getVehicle() { return myVehicle; }
-  private Vehicle myVehicle;
-  private void clear() {
+  public void clear() {
     myString = null;
     myVehicle = null;
   }
-
   @Override public int hashCode() {
-    int result = super.hashCode();
+    int result = 0;
     result = 31 * result + (myString != null ? myString.hashCode() : 0);
     result = 31 * result + (myVehicle != null ? myVehicle.hashCode() : 0);
     return result;
   }
-
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -55,5 +49,6 @@ public class StringOrVehicle {
     if (myVehicle != null ? !myVehicle.equals(stringOrVehicle.myVehicle) : stringOrVehicle.myVehicle != null) return false;
     return true;
   }
-
+  private String myString;
+  private Vehicle myVehicle;
 }

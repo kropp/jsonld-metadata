@@ -20,401 +20,538 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * The most generic kind of creative work, including books, movies, photographs, software programs, etc.
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
+ * The most generic kind of creative work, including books, movies, photographs, software programs, etc.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
  */
 public class CreativeWork extends Thing implements HasPart {
   /**
    * Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application. 
    */
-  public String getSchemaVersion() {
-    return mySchemaVersion;
-  }
+  public String getSchemaVersion() { return mySchemaVersion; }
   /**
    * The subject matter of the content.
    */
-  public Thing getAbout() {
-    return myAbout;
-  }
+  public Thing getAbout() { return myAbout; }
   /**
    * Indicates that the resource is compatible with the referenced accessibility API (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
    */
-  public String getAccessibilityAPI() {
-    return myAccessibilityAPI;
-  }
+  public String getAccessibilityAPI() { return myAccessibilityAPI; }
   /**
    * Identifies input methods that are sufficient to fully control the described resource (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
    */
-  public String getAccessibilityControl() {
-    return myAccessibilityControl;
-  }
+  public String getAccessibilityControl() { return myAccessibilityControl; }
   /**
    * Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
    */
-  public String getAccessibilityFeature() {
-    return myAccessibilityFeature;
-  }
+  public String getAccessibilityFeature() { return myAccessibilityFeature; }
   /**
    * A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3 (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
    */
-  public String getAccessibilityHazard() {
-    return myAccessibilityHazard;
-  }
+  public String getAccessibilityHazard() { return myAccessibilityHazard; }
   /**
    * Specifies the Person that is legally accountable for the CreativeWork.
    */
-  public Person getAccountablePerson() {
-    return myAccountablePerson;
-  }
+  public Person getAccountablePerson() { return myAccountablePerson; }
   /**
    * The overall rating, based on a collection of reviews or ratings, of the item.
    */
-  public AggregateRating getAggregateRating() {
-    return myAggregateRating;
-  }
+  public AggregateRating getAggregateRating() { return myAggregateRating; }
   /**
    * A secondary title of the CreativeWork.
    */
-  public String getAlternativeHeadline() {
-    return myAlternativeHeadline;
-  }
+  public String getAlternativeHeadline() { return myAlternativeHeadline; }
   /**
    * A media object that encodes this CreativeWork. This property is a synonym for encoding.
    */
-  public MediaObject getAssociatedMedia() {
-    return myAssociatedMedia;
-  }
+  public MediaObject getAssociatedMedia() { return myAssociatedMedia; }
   /**
    * An intended audience, i.e. a group for whom something was created.
    */
-  public Audience getAudience() {
-    return myAudience;
-  }
+  public Audience getAudience() { return myAudience; }
   /**
    * An embedded audio object.
    */
-  public AudioObject getAudio() {
-    return myAudio;
-  }
+  public AudioObject getAudio() { return myAudio; }
   /**
    * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
    */
-  public OrganizationOrPerson getAuthor() {
-    return myAuthor;
-  }
+  public OrganizationOrPerson getAuthor() { return myAuthor; }
   /**
    * An award won by or for this item.
    */
-  public String getAward() {
-    return myAward;
-  }
+  public String getAward() { return myAward; }
   /**
    * A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
    */
-  public CreativeWorkOrString getCitation() {
-    return myCitation;
-  }
+  public CreativeWorkOrString getCitation() { return myCitation; }
   /**
    * Comments, typically from users.
    */
-  public Comment getComment() {
-    return myComment;
-  }
+  public Comment getComment() { return myComment; }
   /**
    * The location depicted or described in the content. For example, the location in a photograph or painting.
    */
-  public Place getContentLocation() {
-    return myContentLocation;
-  }
+  public Place getContentLocation() { return myContentLocation; }
   /**
    * Official rating of a piece of content&#x2014;for example,'MPAA PG-13'.
    */
-  public String getContentRating() {
-    return myContentRating;
-  }
+  public String getContentRating() { return myContentRating; }
   /**
    * A secondary contributor to the CreativeWork.
    */
-  public OrganizationOrPerson getContributor() {
-    return myContributor;
-  }
+  public OrganizationOrPerson getContributor() { return myContributor; }
   /**
    * The party holding the legal copyright to the CreativeWork.
    */
-  public OrganizationOrPerson getCopyrightHolder() {
-    return myCopyrightHolder;
-  }
+  public OrganizationOrPerson getCopyrightHolder() { return myCopyrightHolder; }
   /**
    * The year during which the claimed copyright for the CreativeWork was first asserted.
    */
-  public Number getCopyrightYear() {
-    return myCopyrightYear;
-  }
+  public Number getCopyrightYear() { return myCopyrightYear; }
   /**
    * The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
    */
-  public OrganizationOrPerson getCreator() {
-    return myCreator;
-  }
+  public OrganizationOrPerson getCreator() { return myCreator; }
   /**
    * The date on which the CreativeWork was created.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDateCreated() {
-    return myDateCreated;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getDateCreated() { return myDateCreated; }
   /**
    * The date on which the CreativeWork was most recently modified.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDateModified() {
-    return myDateModified;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getDateModified() { return myDateModified; }
   /**
    * Date of first broadcast/publication.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDatePublished() {
-    return myDatePublished;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getDatePublished() { return myDatePublished; }
   /**
    * A link to the page containing the comments of the CreativeWork.
    */
-  public String getDiscussionUrl() {
-    return myDiscussionUrl;
-  }
+  public String getDiscussionUrl() { return myDiscussionUrl; }
   /**
    * Specifies the Person who edited the CreativeWork.
    */
-  public Person getEditor() {
-    return myEditor;
-  }
+  public Person getEditor() { return myEditor; }
   /**
    * An alignment to an established educational framework.
    */
-  public AlignmentObject getEducationalAlignment() {
-    return myEducationalAlignment;
-  }
+  public AlignmentObject getEducationalAlignment() { return myEducationalAlignment; }
   /**
    * The purpose of a work in the context of education; for example, 'assignment', 'group work'.
    */
-  public String getEducationalUse() {
-    return myEducationalUse;
-  }
+  public String getEducationalUse() { return myEducationalUse; }
   /**
    * A media object that encodes this CreativeWork. This property is a synonym for associatedMedia.
    */
-  public MediaObject getEncoding() {
-    return myEncoding;
-  }
+  public MediaObject getEncoding() { return myEncoding; }
   /**
    * Genre of the creative work or group.
    */
-  public String getGenre() {
-    return myGenre;
-  }
+  public String getGenre() { return myGenre; }
   /**
    * Headline of the article.
    */
-  public String getHeadline() {
-    return myHeadline;
-  }
+  public String getHeadline() { return myHeadline; }
   /**
    * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
    */
-  public LanguageOrString getInLanguage() {
-    return myInLanguage;
-  }
+  public LanguageOrString getInLanguage() { return myInLanguage; }
   /**
    * The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.
    */
-  public String getInteractivityType() {
-    return myInteractivityType;
-  }
+  public String getInteractivityType() { return myInteractivityType; }
   /**
    * A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
    */
-  public String getIsBasedOnUrl() {
-    return myIsBasedOnUrl;
-  }
+  public String getIsBasedOnUrl() { return myIsBasedOnUrl; }
   /**
    * Indicates whether this content is family friendly.
    */
-  public Boolean getIsFamilyFriendly() {
-    return myIsFamilyFriendly;
-  }
+  public Boolean getIsFamilyFriendly() { return myIsFamilyFriendly; }
   /**
    * Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.
    */
-  public String getKeywords() {
-    return myKeywords;
-  }
+  public String getKeywords() { return myKeywords; }
   /**
    * A license document that applies to this content, typically indicated by URL.
    */
-  public CreativeWorkOrString getLicense() {
-    return myLicense;
-  }
+  public CreativeWorkOrString getLicense() { return myLicense; }
   /**
    * The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.
    */
-  public String getLearningResourceType() {
-    return myLearningResourceType;
-  }
+  public String getLearningResourceType() { return myLearningResourceType; }
   /**
    * Indicates the primary entity described in some page or other CreativeWork.
    */
-  public Thing getMainEntity() {
-    return myMainEntity;
-  }
+  public Thing getMainEntity() { return myMainEntity; }
   /**
    * Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
    */
-  public Thing getMentions() {
-    return myMentions;
-  }
+  public Thing getMentions() { return myMentions; }
   /**
    * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
    */
-  public Offer getOffers() {
-    return myOffers;
-  }
+  public Offer getOffers() { return myOffers; }
   /**
    * The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
    */
-  public OrganizationOrPerson getProducer() {
-    return myProducer;
-  }
+  public OrganizationOrPerson getProducer() { return myProducer; }
   /**
    * A publication event associated with the item.
    */
-  public PublicationEvent getPublication() {
-    return myPublication;
-  }
+  public PublicationEvent getPublication() { return myPublication; }
   /**
    * The publisher of the creative work.
    */
-  public Organization getPublisher() {
-    return myPublisher;
-  }
+  public Organization getPublisher() { return myPublisher; }
   /**
    * Link to page describing the editorial principles of the organization primarily responsible for the creation of the CreativeWork.
    */
-  public String getPublishingPrinciples() {
-    return myPublishingPrinciples;
-  }
+  public String getPublishingPrinciples() { return myPublishingPrinciples; }
   /**
    * The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
    */
-  public Event getRecordedAt() {
-    return myRecordedAt;
-  }
+  public Event getRecordedAt() { return myRecordedAt; }
   /**
    * A review of the item.
    */
-  public Review getReview() {
-    return myReview;
-  }
+  public Review getReview() { return myReview; }
   /**
    * The Organization on whose behalf the creator was working.
    */
-  public Organization getSourceOrganization() {
-    return mySourceOrganization;
-  }
+  public Organization getSourceOrganization() { return mySourceOrganization; }
   /**
    * The textual content of this CreativeWork.
    */
-  public String getText() {
-    return myText;
-  }
+  public String getText() { return myText; }
   /**
    * A thumbnail image relevant to the Thing.
    */
-  public String getThumbnailUrl() {
-    return myThumbnailUrl;
-  }
+  public String getThumbnailUrl() { return myThumbnailUrl; }
   /**
    * Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
    */
-  public Duration getTimeRequired() {
-    return myTimeRequired;
-  }
+  public Duration getTimeRequired() { return myTimeRequired; }
   /**
    * The typical expected age range, e.g. '7-9', '11-'.
    */
-  public String getTypicalAgeRange() {
-    return myTypicalAgeRange;
-  }
+  public String getTypicalAgeRange() { return myTypicalAgeRange; }
   /**
    * The version of the CreativeWork embodied by a specified resource.
    */
-  public Number getVersion() {
-    return myVersion;
-  }
+  public Number getVersion() { return myVersion; }
   /**
    * An embedded video object.
    */
-  public VideoObject getVideo() {
-    return myVideo;
-  }
+  public VideoObject getVideo() { return myVideo; }
   /**
    * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
    */
-  public OrganizationOrPerson getProvider() {
-    return myProvider;
-  }
+  public OrganizationOrPerson getProvider() { return myProvider; }
   /**
    * The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere.
    */
-  public Integer getCommentCount() {
-    return myCommentCount;
-  }
+  public Integer getCommentCount() { return myCommentCount; }
   /**
    * Indicates a CreativeWork that is (in some sense) a part of this CreativeWork.
    */
-  public HasPart getHasPart() {
-    return myHasPart;
-  }
+  public HasPart getHasPart() { return myHasPart; }
   /**
    * Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.
    */
-  public CreativeWork getWorkExample() {
-    return myWorkExample;
-  }
+  public CreativeWork getWorkExample() { return myWorkExample; }
   /**
    * A creative work that this work is an example/instance/realization/derivation of.
    */
-  public CreativeWork getExampleOfWork() {
-    return myExampleOfWork;
-  }
+  public CreativeWork getExampleOfWork() { return myExampleOfWork; }
   /**
    * Fictional person connected with a creative work.
    */
-  public Person getCharacter() {
-    return myCharacter;
-  }
+  public Person getCharacter() { return myCharacter; }
   /**
    * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
    */
-  public OrganizationOrPerson getTranslator() {
-    return myTranslator;
-  }
+  public OrganizationOrPerson getTranslator() { return myTranslator; }
   /**
    * The place and time the release was issued, expressed as a PublicationEvent.
    */
-  public PublicationEvent getReleasedEvent() {
-    return myReleasedEvent;
+  public PublicationEvent getReleasedEvent() { return myReleasedEvent; }
+  protected CreativeWork(String schemaVersion, Thing about, String accessibilityAPI, String accessibilityControl, String accessibilityFeature, String accessibilityHazard, Person accountablePerson, AggregateRating aggregateRating, String alternativeHeadline, MediaObject associatedMedia, Audience audience, AudioObject audio, OrganizationOrPerson author, String award, CreativeWorkOrString citation, Comment comment, Place contentLocation, String contentRating, OrganizationOrPerson contributor, OrganizationOrPerson copyrightHolder, Number copyrightYear, OrganizationOrPerson creator, java.util.Date dateCreated, java.util.Date dateModified, java.util.Date datePublished, String discussionUrl, Person editor, AlignmentObject educationalAlignment, String educationalUse, MediaObject encoding, String genre, String headline, LanguageOrString inLanguage, String interactivityType, String isBasedOnUrl, Boolean isFamilyFriendly, String keywords, CreativeWorkOrString license, String learningResourceType, Thing mainEntity, Thing mentions, Offer offers, OrganizationOrPerson producer, PublicationEvent publication, Organization publisher, String publishingPrinciples, Event recordedAt, Review review, Organization sourceOrganization, String text, String thumbnailUrl, Duration timeRequired, String typicalAgeRange, Number version, VideoObject video, OrganizationOrPerson provider, Integer commentCount, HasPart hasPart, CreativeWork workExample, CreativeWork exampleOfWork, Person character, OrganizationOrPerson translator, PublicationEvent releasedEvent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    mySchemaVersion = schemaVersion;
+    myAbout = about;
+    myAccessibilityAPI = accessibilityAPI;
+    myAccessibilityControl = accessibilityControl;
+    myAccessibilityFeature = accessibilityFeature;
+    myAccessibilityHazard = accessibilityHazard;
+    myAccountablePerson = accountablePerson;
+    myAggregateRating = aggregateRating;
+    myAlternativeHeadline = alternativeHeadline;
+    myAssociatedMedia = associatedMedia;
+    myAudience = audience;
+    myAudio = audio;
+    myAuthor = author;
+    myAward = award;
+    myCitation = citation;
+    myComment = comment;
+    myContentLocation = contentLocation;
+    myContentRating = contentRating;
+    myContributor = contributor;
+    myCopyrightHolder = copyrightHolder;
+    myCopyrightYear = copyrightYear;
+    myCreator = creator;
+    myDateCreated = dateCreated;
+    myDateModified = dateModified;
+    myDatePublished = datePublished;
+    myDiscussionUrl = discussionUrl;
+    myEditor = editor;
+    myEducationalAlignment = educationalAlignment;
+    myEducationalUse = educationalUse;
+    myEncoding = encoding;
+    myGenre = genre;
+    myHeadline = headline;
+    myInLanguage = inLanguage;
+    myInteractivityType = interactivityType;
+    myIsBasedOnUrl = isBasedOnUrl;
+    myIsFamilyFriendly = isFamilyFriendly;
+    myKeywords = keywords;
+    myLicense = license;
+    myLearningResourceType = learningResourceType;
+    myMainEntity = mainEntity;
+    myMentions = mentions;
+    myOffers = offers;
+    myProducer = producer;
+    myPublication = publication;
+    myPublisher = publisher;
+    myPublishingPrinciples = publishingPrinciples;
+    myRecordedAt = recordedAt;
+    myReview = review;
+    mySourceOrganization = sourceOrganization;
+    myText = text;
+    myThumbnailUrl = thumbnailUrl;
+    myTimeRequired = timeRequired;
+    myTypicalAgeRange = typicalAgeRange;
+    myVersion = version;
+    myVideo = video;
+    myProvider = provider;
+    myCommentCount = commentCount;
+    myHasPart = hasPart;
+    myWorkExample = workExample;
+    myExampleOfWork = exampleOfWork;
+    myCharacter = character;
+    myTranslator = translator;
+    myReleasedEvent = releasedEvent;
+    mySchemaVersion = schemaVersion;
+    myAbout = about;
+    myAccessibilityAPI = accessibilityAPI;
+    myAccessibilityControl = accessibilityControl;
+    myAccessibilityFeature = accessibilityFeature;
+    myAccessibilityHazard = accessibilityHazard;
+    myAccountablePerson = accountablePerson;
+    myAggregateRating = aggregateRating;
+    myAlternativeHeadline = alternativeHeadline;
+    myAssociatedMedia = associatedMedia;
+    myAudience = audience;
+    myAudio = audio;
+    myAuthor = author;
+    myAward = award;
+    myCitation = citation;
+    myComment = comment;
+    myContentLocation = contentLocation;
+    myContentRating = contentRating;
+    myContributor = contributor;
+    myCopyrightHolder = copyrightHolder;
+    myCopyrightYear = copyrightYear;
+    myCreator = creator;
+    myDateCreated = dateCreated;
+    myDateModified = dateModified;
+    myDatePublished = datePublished;
+    myDiscussionUrl = discussionUrl;
+    myEditor = editor;
+    myEducationalAlignment = educationalAlignment;
+    myEducationalUse = educationalUse;
+    myEncoding = encoding;
+    myGenre = genre;
+    myHeadline = headline;
+    myInLanguage = inLanguage;
+    myInteractivityType = interactivityType;
+    myIsBasedOnUrl = isBasedOnUrl;
+    myIsFamilyFriendly = isFamilyFriendly;
+    myKeywords = keywords;
+    myLicense = license;
+    myLearningResourceType = learningResourceType;
+    myMainEntity = mainEntity;
+    myMentions = mentions;
+    myOffers = offers;
+    myProducer = producer;
+    myPublication = publication;
+    myPublisher = publisher;
+    myPublishingPrinciples = publishingPrinciples;
+    myRecordedAt = recordedAt;
+    myReview = review;
+    mySourceOrganization = sourceOrganization;
+    myText = text;
+    myThumbnailUrl = thumbnailUrl;
+    myTimeRequired = timeRequired;
+    myTypicalAgeRange = typicalAgeRange;
+    myVersion = version;
+    myVideo = video;
+    myProvider = provider;
+    myCommentCount = commentCount;
+    myHasPart = hasPart;
+    myWorkExample = workExample;
+    myExampleOfWork = exampleOfWork;
+    myCharacter = character;
+    myTranslator = translator;
+    myReleasedEvent = releasedEvent;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (mySchemaVersion != null ? mySchemaVersion.hashCode() : 0);
+    result = 31 * result + (myAbout != null ? myAbout.hashCode() : 0);
+    result = 31 * result + (myAccessibilityAPI != null ? myAccessibilityAPI.hashCode() : 0);
+    result = 31 * result + (myAccessibilityControl != null ? myAccessibilityControl.hashCode() : 0);
+    result = 31 * result + (myAccessibilityFeature != null ? myAccessibilityFeature.hashCode() : 0);
+    result = 31 * result + (myAccessibilityHazard != null ? myAccessibilityHazard.hashCode() : 0);
+    result = 31 * result + (myAccountablePerson != null ? myAccountablePerson.hashCode() : 0);
+    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
+    result = 31 * result + (myAlternativeHeadline != null ? myAlternativeHeadline.hashCode() : 0);
+    result = 31 * result + (myAssociatedMedia != null ? myAssociatedMedia.hashCode() : 0);
+    result = 31 * result + (myAudience != null ? myAudience.hashCode() : 0);
+    result = 31 * result + (myAudio != null ? myAudio.hashCode() : 0);
+    result = 31 * result + (myAuthor != null ? myAuthor.hashCode() : 0);
+    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
+    result = 31 * result + (myCitation != null ? myCitation.hashCode() : 0);
+    result = 31 * result + (myComment != null ? myComment.hashCode() : 0);
+    result = 31 * result + (myContentLocation != null ? myContentLocation.hashCode() : 0);
+    result = 31 * result + (myContentRating != null ? myContentRating.hashCode() : 0);
+    result = 31 * result + (myContributor != null ? myContributor.hashCode() : 0);
+    result = 31 * result + (myCopyrightHolder != null ? myCopyrightHolder.hashCode() : 0);
+    result = 31 * result + (myCopyrightYear != null ? myCopyrightYear.hashCode() : 0);
+    result = 31 * result + (myCreator != null ? myCreator.hashCode() : 0);
+    result = 31 * result + (myDateCreated != null ? myDateCreated.hashCode() : 0);
+    result = 31 * result + (myDateModified != null ? myDateModified.hashCode() : 0);
+    result = 31 * result + (myDatePublished != null ? myDatePublished.hashCode() : 0);
+    result = 31 * result + (myDiscussionUrl != null ? myDiscussionUrl.hashCode() : 0);
+    result = 31 * result + (myEditor != null ? myEditor.hashCode() : 0);
+    result = 31 * result + (myEducationalAlignment != null ? myEducationalAlignment.hashCode() : 0);
+    result = 31 * result + (myEducationalUse != null ? myEducationalUse.hashCode() : 0);
+    result = 31 * result + (myEncoding != null ? myEncoding.hashCode() : 0);
+    result = 31 * result + (myGenre != null ? myGenre.hashCode() : 0);
+    result = 31 * result + (myHeadline != null ? myHeadline.hashCode() : 0);
+    result = 31 * result + (myInLanguage != null ? myInLanguage.hashCode() : 0);
+    result = 31 * result + (myInteractivityType != null ? myInteractivityType.hashCode() : 0);
+    result = 31 * result + (myIsBasedOnUrl != null ? myIsBasedOnUrl.hashCode() : 0);
+    result = 31 * result + (myIsFamilyFriendly != null ? myIsFamilyFriendly.hashCode() : 0);
+    result = 31 * result + (myKeywords != null ? myKeywords.hashCode() : 0);
+    result = 31 * result + (myLicense != null ? myLicense.hashCode() : 0);
+    result = 31 * result + (myLearningResourceType != null ? myLearningResourceType.hashCode() : 0);
+    result = 31 * result + (myMainEntity != null ? myMainEntity.hashCode() : 0);
+    result = 31 * result + (myMentions != null ? myMentions.hashCode() : 0);
+    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
+    result = 31 * result + (myProducer != null ? myProducer.hashCode() : 0);
+    result = 31 * result + (myPublication != null ? myPublication.hashCode() : 0);
+    result = 31 * result + (myPublisher != null ? myPublisher.hashCode() : 0);
+    result = 31 * result + (myPublishingPrinciples != null ? myPublishingPrinciples.hashCode() : 0);
+    result = 31 * result + (myRecordedAt != null ? myRecordedAt.hashCode() : 0);
+    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
+    result = 31 * result + (mySourceOrganization != null ? mySourceOrganization.hashCode() : 0);
+    result = 31 * result + (myText != null ? myText.hashCode() : 0);
+    result = 31 * result + (myThumbnailUrl != null ? myThumbnailUrl.hashCode() : 0);
+    result = 31 * result + (myTimeRequired != null ? myTimeRequired.hashCode() : 0);
+    result = 31 * result + (myTypicalAgeRange != null ? myTypicalAgeRange.hashCode() : 0);
+    result = 31 * result + (myVersion != null ? myVersion.hashCode() : 0);
+    result = 31 * result + (myVideo != null ? myVideo.hashCode() : 0);
+    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
+    result = 31 * result + (myCommentCount != null ? myCommentCount.hashCode() : 0);
+    result = 31 * result + (myHasPart != null ? myHasPart.hashCode() : 0);
+    result = 31 * result + (myWorkExample != null ? myWorkExample.hashCode() : 0);
+    result = 31 * result + (myExampleOfWork != null ? myExampleOfWork.hashCode() : 0);
+    result = 31 * result + (myCharacter != null ? myCharacter.hashCode() : 0);
+    result = 31 * result + (myTranslator != null ? myTranslator.hashCode() : 0);
+    result = 31 * result + (myReleasedEvent != null ? myReleasedEvent.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CreativeWork creativeWork = (CreativeWork) o;
+    if (!super.equals(o)) return false;
+    if (mySchemaVersion != null ? !mySchemaVersion.equals(creativeWork.mySchemaVersion) : creativeWork.mySchemaVersion != null) return false;
+    if (myAbout != null ? !myAbout.equals(creativeWork.myAbout) : creativeWork.myAbout != null) return false;
+    if (myAccessibilityAPI != null ? !myAccessibilityAPI.equals(creativeWork.myAccessibilityAPI) : creativeWork.myAccessibilityAPI != null) return false;
+    if (myAccessibilityControl != null ? !myAccessibilityControl.equals(creativeWork.myAccessibilityControl) : creativeWork.myAccessibilityControl != null) return false;
+    if (myAccessibilityFeature != null ? !myAccessibilityFeature.equals(creativeWork.myAccessibilityFeature) : creativeWork.myAccessibilityFeature != null) return false;
+    if (myAccessibilityHazard != null ? !myAccessibilityHazard.equals(creativeWork.myAccessibilityHazard) : creativeWork.myAccessibilityHazard != null) return false;
+    if (myAccountablePerson != null ? !myAccountablePerson.equals(creativeWork.myAccountablePerson) : creativeWork.myAccountablePerson != null) return false;
+    if (myAggregateRating != null ? !myAggregateRating.equals(creativeWork.myAggregateRating) : creativeWork.myAggregateRating != null) return false;
+    if (myAlternativeHeadline != null ? !myAlternativeHeadline.equals(creativeWork.myAlternativeHeadline) : creativeWork.myAlternativeHeadline != null) return false;
+    if (myAssociatedMedia != null ? !myAssociatedMedia.equals(creativeWork.myAssociatedMedia) : creativeWork.myAssociatedMedia != null) return false;
+    if (myAudience != null ? !myAudience.equals(creativeWork.myAudience) : creativeWork.myAudience != null) return false;
+    if (myAudio != null ? !myAudio.equals(creativeWork.myAudio) : creativeWork.myAudio != null) return false;
+    if (myAuthor != null ? !myAuthor.equals(creativeWork.myAuthor) : creativeWork.myAuthor != null) return false;
+    if (myAward != null ? !myAward.equals(creativeWork.myAward) : creativeWork.myAward != null) return false;
+    if (myCitation != null ? !myCitation.equals(creativeWork.myCitation) : creativeWork.myCitation != null) return false;
+    if (myComment != null ? !myComment.equals(creativeWork.myComment) : creativeWork.myComment != null) return false;
+    if (myContentLocation != null ? !myContentLocation.equals(creativeWork.myContentLocation) : creativeWork.myContentLocation != null) return false;
+    if (myContentRating != null ? !myContentRating.equals(creativeWork.myContentRating) : creativeWork.myContentRating != null) return false;
+    if (myContributor != null ? !myContributor.equals(creativeWork.myContributor) : creativeWork.myContributor != null) return false;
+    if (myCopyrightHolder != null ? !myCopyrightHolder.equals(creativeWork.myCopyrightHolder) : creativeWork.myCopyrightHolder != null) return false;
+    if (myCopyrightYear != null ? !myCopyrightYear.equals(creativeWork.myCopyrightYear) : creativeWork.myCopyrightYear != null) return false;
+    if (myCreator != null ? !myCreator.equals(creativeWork.myCreator) : creativeWork.myCreator != null) return false;
+    if (myDateCreated != null ? !myDateCreated.equals(creativeWork.myDateCreated) : creativeWork.myDateCreated != null) return false;
+    if (myDateModified != null ? !myDateModified.equals(creativeWork.myDateModified) : creativeWork.myDateModified != null) return false;
+    if (myDatePublished != null ? !myDatePublished.equals(creativeWork.myDatePublished) : creativeWork.myDatePublished != null) return false;
+    if (myDiscussionUrl != null ? !myDiscussionUrl.equals(creativeWork.myDiscussionUrl) : creativeWork.myDiscussionUrl != null) return false;
+    if (myEditor != null ? !myEditor.equals(creativeWork.myEditor) : creativeWork.myEditor != null) return false;
+    if (myEducationalAlignment != null ? !myEducationalAlignment.equals(creativeWork.myEducationalAlignment) : creativeWork.myEducationalAlignment != null) return false;
+    if (myEducationalUse != null ? !myEducationalUse.equals(creativeWork.myEducationalUse) : creativeWork.myEducationalUse != null) return false;
+    if (myEncoding != null ? !myEncoding.equals(creativeWork.myEncoding) : creativeWork.myEncoding != null) return false;
+    if (myGenre != null ? !myGenre.equals(creativeWork.myGenre) : creativeWork.myGenre != null) return false;
+    if (myHeadline != null ? !myHeadline.equals(creativeWork.myHeadline) : creativeWork.myHeadline != null) return false;
+    if (myInLanguage != null ? !myInLanguage.equals(creativeWork.myInLanguage) : creativeWork.myInLanguage != null) return false;
+    if (myInteractivityType != null ? !myInteractivityType.equals(creativeWork.myInteractivityType) : creativeWork.myInteractivityType != null) return false;
+    if (myIsBasedOnUrl != null ? !myIsBasedOnUrl.equals(creativeWork.myIsBasedOnUrl) : creativeWork.myIsBasedOnUrl != null) return false;
+    if (myIsFamilyFriendly != null ? !myIsFamilyFriendly.equals(creativeWork.myIsFamilyFriendly) : creativeWork.myIsFamilyFriendly != null) return false;
+    if (myKeywords != null ? !myKeywords.equals(creativeWork.myKeywords) : creativeWork.myKeywords != null) return false;
+    if (myLicense != null ? !myLicense.equals(creativeWork.myLicense) : creativeWork.myLicense != null) return false;
+    if (myLearningResourceType != null ? !myLearningResourceType.equals(creativeWork.myLearningResourceType) : creativeWork.myLearningResourceType != null) return false;
+    if (myMainEntity != null ? !myMainEntity.equals(creativeWork.myMainEntity) : creativeWork.myMainEntity != null) return false;
+    if (myMentions != null ? !myMentions.equals(creativeWork.myMentions) : creativeWork.myMentions != null) return false;
+    if (myOffers != null ? !myOffers.equals(creativeWork.myOffers) : creativeWork.myOffers != null) return false;
+    if (myProducer != null ? !myProducer.equals(creativeWork.myProducer) : creativeWork.myProducer != null) return false;
+    if (myPublication != null ? !myPublication.equals(creativeWork.myPublication) : creativeWork.myPublication != null) return false;
+    if (myPublisher != null ? !myPublisher.equals(creativeWork.myPublisher) : creativeWork.myPublisher != null) return false;
+    if (myPublishingPrinciples != null ? !myPublishingPrinciples.equals(creativeWork.myPublishingPrinciples) : creativeWork.myPublishingPrinciples != null) return false;
+    if (myRecordedAt != null ? !myRecordedAt.equals(creativeWork.myRecordedAt) : creativeWork.myRecordedAt != null) return false;
+    if (myReview != null ? !myReview.equals(creativeWork.myReview) : creativeWork.myReview != null) return false;
+    if (mySourceOrganization != null ? !mySourceOrganization.equals(creativeWork.mySourceOrganization) : creativeWork.mySourceOrganization != null) return false;
+    if (myText != null ? !myText.equals(creativeWork.myText) : creativeWork.myText != null) return false;
+    if (myThumbnailUrl != null ? !myThumbnailUrl.equals(creativeWork.myThumbnailUrl) : creativeWork.myThumbnailUrl != null) return false;
+    if (myTimeRequired != null ? !myTimeRequired.equals(creativeWork.myTimeRequired) : creativeWork.myTimeRequired != null) return false;
+    if (myTypicalAgeRange != null ? !myTypicalAgeRange.equals(creativeWork.myTypicalAgeRange) : creativeWork.myTypicalAgeRange != null) return false;
+    if (myVersion != null ? !myVersion.equals(creativeWork.myVersion) : creativeWork.myVersion != null) return false;
+    if (myVideo != null ? !myVideo.equals(creativeWork.myVideo) : creativeWork.myVideo != null) return false;
+    if (myProvider != null ? !myProvider.equals(creativeWork.myProvider) : creativeWork.myProvider != null) return false;
+    if (myCommentCount != null ? !myCommentCount.equals(creativeWork.myCommentCount) : creativeWork.myCommentCount != null) return false;
+    if (myHasPart != null ? !myHasPart.equals(creativeWork.myHasPart) : creativeWork.myHasPart != null) return false;
+    if (myWorkExample != null ? !myWorkExample.equals(creativeWork.myWorkExample) : creativeWork.myWorkExample != null) return false;
+    if (myExampleOfWork != null ? !myExampleOfWork.equals(creativeWork.myExampleOfWork) : creativeWork.myExampleOfWork != null) return false;
+    if (myCharacter != null ? !myCharacter.equals(creativeWork.myCharacter) : creativeWork.myCharacter != null) return false;
+    if (myTranslator != null ? !myTranslator.equals(creativeWork.myTranslator) : creativeWork.myTranslator != null) return false;
+    if (myReleasedEvent != null ? !myReleasedEvent.equals(creativeWork.myReleasedEvent) : creativeWork.myReleasedEvent != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link CreativeWork}
    */
-  static final class CreativeWorkThingBuilder implements Builder {
-    /**
-     * Creates new {@link CreativeWork} instance.
-     */
+  public static class Builder implements ThingBuilder<CreativeWork> {
     public CreativeWork build() {
       return new CreativeWork(schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -1290,33 +1427,33 @@ public class CreativeWork extends Thing implements HasPart {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -1325,66 +1462,66 @@ public class CreativeWork extends Thing implements HasPart {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -1432,7 +1569,6 @@ public class CreativeWork extends Thing implements HasPart {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -1604,350 +1740,7 @@ public class CreativeWork extends Thing implements HasPart {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<CreativeWork> {
-    @NotNull Builder schemaVersion(@NotNull String schemaVersion);
-    @NotNull Builder about(@NotNull Thing thing);
-    @NotNull Builder about(@NotNull Thing.Builder thing);
-    @NotNull Builder accessibilityAPI(@NotNull String accessibilityAPI);
-    @NotNull Builder accessibilityControl(@NotNull String accessibilityControl);
-    @NotNull Builder accessibilityFeature(@NotNull String accessibilityFeature);
-    @NotNull Builder accessibilityHazard(@NotNull String accessibilityHazard);
-    @NotNull Builder accountablePerson(@NotNull Person person);
-    @NotNull Builder accountablePerson(@NotNull Person.Builder person);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating aggregateRating);
-    @NotNull Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating);
-    @NotNull Builder alternativeHeadline(@NotNull String alternativeHeadline);
-    @NotNull Builder associatedMedia(@NotNull MediaObject mediaObject);
-    @NotNull Builder associatedMedia(@NotNull MediaObject.Builder mediaObject);
-    @NotNull Builder audience(@NotNull Audience audience);
-    @NotNull Builder audience(@NotNull Audience.Builder audience);
-    @NotNull Builder audio(@NotNull AudioObject audioObject);
-    @NotNull Builder audio(@NotNull AudioObject.Builder audioObject);
-    @NotNull Builder author(@NotNull Organization organization);
-    @NotNull Builder author(@NotNull Organization.Builder organization);
-    @NotNull Builder author(@NotNull Person person);
-    @NotNull Builder author(@NotNull Person.Builder person);
-    @NotNull Builder award(@NotNull String award);
-    @NotNull Builder citation(@NotNull CreativeWork creativeWork);
-    @NotNull Builder citation(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder citation(@NotNull String citation);
-    @NotNull Builder comment(@NotNull Comment comment);
-    @NotNull Builder comment(@NotNull Comment.Builder comment);
-    @NotNull Builder contentLocation(@NotNull Place place);
-    @NotNull Builder contentLocation(@NotNull Place.Builder place);
-    @NotNull Builder contentRating(@NotNull String contentRating);
-    @NotNull Builder contributor(@NotNull Organization organization);
-    @NotNull Builder contributor(@NotNull Organization.Builder organization);
-    @NotNull Builder contributor(@NotNull Person person);
-    @NotNull Builder contributor(@NotNull Person.Builder person);
-    @NotNull Builder copyrightHolder(@NotNull Organization organization);
-    @NotNull Builder copyrightHolder(@NotNull Organization.Builder organization);
-    @NotNull Builder copyrightHolder(@NotNull Person person);
-    @NotNull Builder copyrightHolder(@NotNull Person.Builder person);
-    @NotNull Builder copyrightYear(@NotNull Integer integer);
-    @NotNull Builder copyrightYear(@NotNull Long copyrightYear);
-    @NotNull Builder copyrightYear(@NotNull Float copyrightYear);
-    @NotNull Builder copyrightYear(@NotNull Double copyrightYear);
-    @NotNull Builder copyrightYear(@NotNull String copyrightYear);
-    @NotNull Builder creator(@NotNull Organization organization);
-    @NotNull Builder creator(@NotNull Organization.Builder organization);
-    @NotNull Builder creator(@NotNull Person person);
-    @NotNull Builder creator(@NotNull Person.Builder person);
-    @NotNull Builder dateCreated(@NotNull java.util.Date date);
-    @NotNull Builder dateModified(@NotNull java.util.Date date);
-    @NotNull Builder datePublished(@NotNull java.util.Date date);
-    @NotNull Builder discussionUrl(@NotNull String discussionUrl);
-    @NotNull Builder editor(@NotNull Person person);
-    @NotNull Builder editor(@NotNull Person.Builder person);
-    @NotNull Builder educationalAlignment(@NotNull AlignmentObject alignmentObject);
-    @NotNull Builder educationalAlignment(@NotNull AlignmentObject.Builder alignmentObject);
-    @NotNull Builder educationalUse(@NotNull String educationalUse);
-    @NotNull Builder encoding(@NotNull MediaObject mediaObject);
-    @NotNull Builder encoding(@NotNull MediaObject.Builder mediaObject);
-    @NotNull Builder genre(@NotNull String genre);
-    @NotNull Builder headline(@NotNull String headline);
-    @NotNull Builder inLanguage(@NotNull Language language);
-    @NotNull Builder inLanguage(@NotNull Language.Builder language);
-    @NotNull Builder inLanguage(@NotNull String inLanguage);
-    @NotNull Builder interactivityType(@NotNull String interactivityType);
-    @NotNull Builder isBasedOnUrl(@NotNull String isBasedOnUrl);
-    @NotNull Builder isFamilyFriendly(@NotNull Boolean isFamilyFriendly);
-    @NotNull Builder keywords(@NotNull String keywords);
-    @NotNull Builder license(@NotNull CreativeWork creativeWork);
-    @NotNull Builder license(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder license(@NotNull String license);
-    @NotNull Builder learningResourceType(@NotNull String learningResourceType);
-    @NotNull Builder mainEntity(@NotNull Thing thing);
-    @NotNull Builder mainEntity(@NotNull Thing.Builder thing);
-    @NotNull Builder mentions(@NotNull Thing thing);
-    @NotNull Builder mentions(@NotNull Thing.Builder thing);
-    @NotNull Builder offers(@NotNull Offer offer);
-    @NotNull Builder offers(@NotNull Offer.Builder offer);
-    @NotNull Builder producer(@NotNull Organization organization);
-    @NotNull Builder producer(@NotNull Organization.Builder organization);
-    @NotNull Builder producer(@NotNull Person person);
-    @NotNull Builder producer(@NotNull Person.Builder person);
-    @NotNull Builder publication(@NotNull PublicationEvent publicationEvent);
-    @NotNull Builder publication(@NotNull PublicationEvent.Builder publicationEvent);
-    @NotNull Builder publisher(@NotNull Organization organization);
-    @NotNull Builder publisher(@NotNull Organization.Builder organization);
-    @NotNull Builder publishingPrinciples(@NotNull String publishingPrinciples);
-    @NotNull Builder recordedAt(@NotNull Event event);
-    @NotNull Builder recordedAt(@NotNull Event.Builder event);
-    @NotNull Builder review(@NotNull Review review);
-    @NotNull Builder review(@NotNull Review.Builder review);
-    @NotNull Builder sourceOrganization(@NotNull Organization organization);
-    @NotNull Builder sourceOrganization(@NotNull Organization.Builder organization);
-    @NotNull Builder text(@NotNull String text);
-    @NotNull Builder thumbnailUrl(@NotNull String thumbnailUrl);
-    @NotNull Builder timeRequired(@NotNull Duration duration);
-    @NotNull Builder timeRequired(@NotNull Duration.Builder duration);
-    @NotNull Builder typicalAgeRange(@NotNull String typicalAgeRange);
-    @NotNull Builder version(@NotNull Integer integer);
-    @NotNull Builder version(@NotNull Long version);
-    @NotNull Builder version(@NotNull Float version);
-    @NotNull Builder version(@NotNull Double version);
-    @NotNull Builder version(@NotNull String version);
-    @NotNull Builder video(@NotNull VideoObject videoObject);
-    @NotNull Builder video(@NotNull VideoObject.Builder videoObject);
-    @NotNull Builder provider(@NotNull Organization organization);
-    @NotNull Builder provider(@NotNull Organization.Builder organization);
-    @NotNull Builder provider(@NotNull Person person);
-    @NotNull Builder provider(@NotNull Person.Builder person);
-    @NotNull Builder commentCount(@NotNull Integer integer);
-    @NotNull Builder hasPart(@NotNull HasPart hasPart);
-    @NotNull Builder workExample(@NotNull CreativeWork creativeWork);
-    @NotNull Builder workExample(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder exampleOfWork(@NotNull CreativeWork creativeWork);
-    @NotNull Builder exampleOfWork(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder character(@NotNull Person person);
-    @NotNull Builder character(@NotNull Person.Builder person);
-    @NotNull Builder translator(@NotNull Organization organization);
-    @NotNull Builder translator(@NotNull Organization.Builder organization);
-    @NotNull Builder translator(@NotNull Person person);
-    @NotNull Builder translator(@NotNull Person.Builder person);
-    @NotNull Builder releasedEvent(@NotNull PublicationEvent publicationEvent);
-    @NotNull Builder releasedEvent(@NotNull PublicationEvent.Builder publicationEvent);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected CreativeWork(String schemaVersion, Thing about, String accessibilityAPI, String accessibilityControl, String accessibilityFeature, String accessibilityHazard, Person accountablePerson, AggregateRating aggregateRating, String alternativeHeadline, MediaObject associatedMedia, Audience audience, AudioObject audio, OrganizationOrPerson author, String award, CreativeWorkOrString citation, Comment comment, Place contentLocation, String contentRating, OrganizationOrPerson contributor, OrganizationOrPerson copyrightHolder, Number copyrightYear, OrganizationOrPerson creator, java.util.Date dateCreated, java.util.Date dateModified, java.util.Date datePublished, String discussionUrl, Person editor, AlignmentObject educationalAlignment, String educationalUse, MediaObject encoding, String genre, String headline, LanguageOrString inLanguage, String interactivityType, String isBasedOnUrl, Boolean isFamilyFriendly, String keywords, CreativeWorkOrString license, String learningResourceType, Thing mainEntity, Thing mentions, Offer offers, OrganizationOrPerson producer, PublicationEvent publication, Organization publisher, String publishingPrinciples, Event recordedAt, Review review, Organization sourceOrganization, String text, String thumbnailUrl, Duration timeRequired, String typicalAgeRange, Number version, VideoObject video, OrganizationOrPerson provider, Integer commentCount, HasPart hasPart, CreativeWork workExample, CreativeWork exampleOfWork, Person character, OrganizationOrPerson translator, PublicationEvent releasedEvent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    mySchemaVersion = schemaVersion;
-    myAbout = about;
-    myAccessibilityAPI = accessibilityAPI;
-    myAccessibilityControl = accessibilityControl;
-    myAccessibilityFeature = accessibilityFeature;
-    myAccessibilityHazard = accessibilityHazard;
-    myAccountablePerson = accountablePerson;
-    myAggregateRating = aggregateRating;
-    myAlternativeHeadline = alternativeHeadline;
-    myAssociatedMedia = associatedMedia;
-    myAudience = audience;
-    myAudio = audio;
-    myAuthor = author;
-    myAward = award;
-    myCitation = citation;
-    myComment = comment;
-    myContentLocation = contentLocation;
-    myContentRating = contentRating;
-    myContributor = contributor;
-    myCopyrightHolder = copyrightHolder;
-    myCopyrightYear = copyrightYear;
-    myCreator = creator;
-    myDateCreated = dateCreated;
-    myDateModified = dateModified;
-    myDatePublished = datePublished;
-    myDiscussionUrl = discussionUrl;
-    myEditor = editor;
-    myEducationalAlignment = educationalAlignment;
-    myEducationalUse = educationalUse;
-    myEncoding = encoding;
-    myGenre = genre;
-    myHeadline = headline;
-    myInLanguage = inLanguage;
-    myInteractivityType = interactivityType;
-    myIsBasedOnUrl = isBasedOnUrl;
-    myIsFamilyFriendly = isFamilyFriendly;
-    myKeywords = keywords;
-    myLicense = license;
-    myLearningResourceType = learningResourceType;
-    myMainEntity = mainEntity;
-    myMentions = mentions;
-    myOffers = offers;
-    myProducer = producer;
-    myPublication = publication;
-    myPublisher = publisher;
-    myPublishingPrinciples = publishingPrinciples;
-    myRecordedAt = recordedAt;
-    myReview = review;
-    mySourceOrganization = sourceOrganization;
-    myText = text;
-    myThumbnailUrl = thumbnailUrl;
-    myTimeRequired = timeRequired;
-    myTypicalAgeRange = typicalAgeRange;
-    myVersion = version;
-    myVideo = video;
-    myProvider = provider;
-    myCommentCount = commentCount;
-    myHasPart = hasPart;
-    myWorkExample = workExample;
-    myExampleOfWork = exampleOfWork;
-    myCharacter = character;
-    myTranslator = translator;
-    myReleasedEvent = releasedEvent;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (mySchemaVersion != null ? mySchemaVersion.hashCode() : 0);
-    result = 31 * result + (myAbout != null ? myAbout.hashCode() : 0);
-    result = 31 * result + (myAccessibilityAPI != null ? myAccessibilityAPI.hashCode() : 0);
-    result = 31 * result + (myAccessibilityControl != null ? myAccessibilityControl.hashCode() : 0);
-    result = 31 * result + (myAccessibilityFeature != null ? myAccessibilityFeature.hashCode() : 0);
-    result = 31 * result + (myAccessibilityHazard != null ? myAccessibilityHazard.hashCode() : 0);
-    result = 31 * result + (myAccountablePerson != null ? myAccountablePerson.hashCode() : 0);
-    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
-    result = 31 * result + (myAlternativeHeadline != null ? myAlternativeHeadline.hashCode() : 0);
-    result = 31 * result + (myAssociatedMedia != null ? myAssociatedMedia.hashCode() : 0);
-    result = 31 * result + (myAudience != null ? myAudience.hashCode() : 0);
-    result = 31 * result + (myAudio != null ? myAudio.hashCode() : 0);
-    result = 31 * result + (myAuthor != null ? myAuthor.hashCode() : 0);
-    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
-    result = 31 * result + (myCitation != null ? myCitation.hashCode() : 0);
-    result = 31 * result + (myComment != null ? myComment.hashCode() : 0);
-    result = 31 * result + (myContentLocation != null ? myContentLocation.hashCode() : 0);
-    result = 31 * result + (myContentRating != null ? myContentRating.hashCode() : 0);
-    result = 31 * result + (myContributor != null ? myContributor.hashCode() : 0);
-    result = 31 * result + (myCopyrightHolder != null ? myCopyrightHolder.hashCode() : 0);
-    result = 31 * result + (myCopyrightYear != null ? myCopyrightYear.hashCode() : 0);
-    result = 31 * result + (myCreator != null ? myCreator.hashCode() : 0);
-    result = 31 * result + (myDateCreated != null ? myDateCreated.hashCode() : 0);
-    result = 31 * result + (myDateModified != null ? myDateModified.hashCode() : 0);
-    result = 31 * result + (myDatePublished != null ? myDatePublished.hashCode() : 0);
-    result = 31 * result + (myDiscussionUrl != null ? myDiscussionUrl.hashCode() : 0);
-    result = 31 * result + (myEditor != null ? myEditor.hashCode() : 0);
-    result = 31 * result + (myEducationalAlignment != null ? myEducationalAlignment.hashCode() : 0);
-    result = 31 * result + (myEducationalUse != null ? myEducationalUse.hashCode() : 0);
-    result = 31 * result + (myEncoding != null ? myEncoding.hashCode() : 0);
-    result = 31 * result + (myGenre != null ? myGenre.hashCode() : 0);
-    result = 31 * result + (myHeadline != null ? myHeadline.hashCode() : 0);
-    result = 31 * result + (myInLanguage != null ? myInLanguage.hashCode() : 0);
-    result = 31 * result + (myInteractivityType != null ? myInteractivityType.hashCode() : 0);
-    result = 31 * result + (myIsBasedOnUrl != null ? myIsBasedOnUrl.hashCode() : 0);
-    result = 31 * result + (myIsFamilyFriendly != null ? myIsFamilyFriendly.hashCode() : 0);
-    result = 31 * result + (myKeywords != null ? myKeywords.hashCode() : 0);
-    result = 31 * result + (myLicense != null ? myLicense.hashCode() : 0);
-    result = 31 * result + (myLearningResourceType != null ? myLearningResourceType.hashCode() : 0);
-    result = 31 * result + (myMainEntity != null ? myMainEntity.hashCode() : 0);
-    result = 31 * result + (myMentions != null ? myMentions.hashCode() : 0);
-    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
-    result = 31 * result + (myProducer != null ? myProducer.hashCode() : 0);
-    result = 31 * result + (myPublication != null ? myPublication.hashCode() : 0);
-    result = 31 * result + (myPublisher != null ? myPublisher.hashCode() : 0);
-    result = 31 * result + (myPublishingPrinciples != null ? myPublishingPrinciples.hashCode() : 0);
-    result = 31 * result + (myRecordedAt != null ? myRecordedAt.hashCode() : 0);
-    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
-    result = 31 * result + (mySourceOrganization != null ? mySourceOrganization.hashCode() : 0);
-    result = 31 * result + (myText != null ? myText.hashCode() : 0);
-    result = 31 * result + (myThumbnailUrl != null ? myThumbnailUrl.hashCode() : 0);
-    result = 31 * result + (myTimeRequired != null ? myTimeRequired.hashCode() : 0);
-    result = 31 * result + (myTypicalAgeRange != null ? myTypicalAgeRange.hashCode() : 0);
-    result = 31 * result + (myVersion != null ? myVersion.hashCode() : 0);
-    result = 31 * result + (myVideo != null ? myVideo.hashCode() : 0);
-    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
-    result = 31 * result + (myCommentCount != null ? myCommentCount.hashCode() : 0);
-    result = 31 * result + (myHasPart != null ? myHasPart.hashCode() : 0);
-    result = 31 * result + (myWorkExample != null ? myWorkExample.hashCode() : 0);
-    result = 31 * result + (myExampleOfWork != null ? myExampleOfWork.hashCode() : 0);
-    result = 31 * result + (myCharacter != null ? myCharacter.hashCode() : 0);
-    result = 31 * result + (myTranslator != null ? myTranslator.hashCode() : 0);
-    result = 31 * result + (myReleasedEvent != null ? myReleasedEvent.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    CreativeWork creativeWork = (CreativeWork) o;
-    if (!super.equals(o)) return false;
-    if (mySchemaVersion != null ? !mySchemaVersion.equals(creativeWork.mySchemaVersion) : creativeWork.mySchemaVersion != null) return false;
-    if (myAbout != null ? !myAbout.equals(creativeWork.myAbout) : creativeWork.myAbout != null) return false;
-    if (myAccessibilityAPI != null ? !myAccessibilityAPI.equals(creativeWork.myAccessibilityAPI) : creativeWork.myAccessibilityAPI != null) return false;
-    if (myAccessibilityControl != null ? !myAccessibilityControl.equals(creativeWork.myAccessibilityControl) : creativeWork.myAccessibilityControl != null) return false;
-    if (myAccessibilityFeature != null ? !myAccessibilityFeature.equals(creativeWork.myAccessibilityFeature) : creativeWork.myAccessibilityFeature != null) return false;
-    if (myAccessibilityHazard != null ? !myAccessibilityHazard.equals(creativeWork.myAccessibilityHazard) : creativeWork.myAccessibilityHazard != null) return false;
-    if (myAccountablePerson != null ? !myAccountablePerson.equals(creativeWork.myAccountablePerson) : creativeWork.myAccountablePerson != null) return false;
-    if (myAggregateRating != null ? !myAggregateRating.equals(creativeWork.myAggregateRating) : creativeWork.myAggregateRating != null) return false;
-    if (myAlternativeHeadline != null ? !myAlternativeHeadline.equals(creativeWork.myAlternativeHeadline) : creativeWork.myAlternativeHeadline != null) return false;
-    if (myAssociatedMedia != null ? !myAssociatedMedia.equals(creativeWork.myAssociatedMedia) : creativeWork.myAssociatedMedia != null) return false;
-    if (myAudience != null ? !myAudience.equals(creativeWork.myAudience) : creativeWork.myAudience != null) return false;
-    if (myAudio != null ? !myAudio.equals(creativeWork.myAudio) : creativeWork.myAudio != null) return false;
-    if (myAuthor != null ? !myAuthor.equals(creativeWork.myAuthor) : creativeWork.myAuthor != null) return false;
-    if (myAward != null ? !myAward.equals(creativeWork.myAward) : creativeWork.myAward != null) return false;
-    if (myCitation != null ? !myCitation.equals(creativeWork.myCitation) : creativeWork.myCitation != null) return false;
-    if (myComment != null ? !myComment.equals(creativeWork.myComment) : creativeWork.myComment != null) return false;
-    if (myContentLocation != null ? !myContentLocation.equals(creativeWork.myContentLocation) : creativeWork.myContentLocation != null) return false;
-    if (myContentRating != null ? !myContentRating.equals(creativeWork.myContentRating) : creativeWork.myContentRating != null) return false;
-    if (myContributor != null ? !myContributor.equals(creativeWork.myContributor) : creativeWork.myContributor != null) return false;
-    if (myCopyrightHolder != null ? !myCopyrightHolder.equals(creativeWork.myCopyrightHolder) : creativeWork.myCopyrightHolder != null) return false;
-    if (myCopyrightYear != null ? !myCopyrightYear.equals(creativeWork.myCopyrightYear) : creativeWork.myCopyrightYear != null) return false;
-    if (myCreator != null ? !myCreator.equals(creativeWork.myCreator) : creativeWork.myCreator != null) return false;
-    if (myDateCreated != null ? !myDateCreated.equals(creativeWork.myDateCreated) : creativeWork.myDateCreated != null) return false;
-    if (myDateModified != null ? !myDateModified.equals(creativeWork.myDateModified) : creativeWork.myDateModified != null) return false;
-    if (myDatePublished != null ? !myDatePublished.equals(creativeWork.myDatePublished) : creativeWork.myDatePublished != null) return false;
-    if (myDiscussionUrl != null ? !myDiscussionUrl.equals(creativeWork.myDiscussionUrl) : creativeWork.myDiscussionUrl != null) return false;
-    if (myEditor != null ? !myEditor.equals(creativeWork.myEditor) : creativeWork.myEditor != null) return false;
-    if (myEducationalAlignment != null ? !myEducationalAlignment.equals(creativeWork.myEducationalAlignment) : creativeWork.myEducationalAlignment != null) return false;
-    if (myEducationalUse != null ? !myEducationalUse.equals(creativeWork.myEducationalUse) : creativeWork.myEducationalUse != null) return false;
-    if (myEncoding != null ? !myEncoding.equals(creativeWork.myEncoding) : creativeWork.myEncoding != null) return false;
-    if (myGenre != null ? !myGenre.equals(creativeWork.myGenre) : creativeWork.myGenre != null) return false;
-    if (myHeadline != null ? !myHeadline.equals(creativeWork.myHeadline) : creativeWork.myHeadline != null) return false;
-    if (myInLanguage != null ? !myInLanguage.equals(creativeWork.myInLanguage) : creativeWork.myInLanguage != null) return false;
-    if (myInteractivityType != null ? !myInteractivityType.equals(creativeWork.myInteractivityType) : creativeWork.myInteractivityType != null) return false;
-    if (myIsBasedOnUrl != null ? !myIsBasedOnUrl.equals(creativeWork.myIsBasedOnUrl) : creativeWork.myIsBasedOnUrl != null) return false;
-    if (myIsFamilyFriendly != null ? !myIsFamilyFriendly.equals(creativeWork.myIsFamilyFriendly) : creativeWork.myIsFamilyFriendly != null) return false;
-    if (myKeywords != null ? !myKeywords.equals(creativeWork.myKeywords) : creativeWork.myKeywords != null) return false;
-    if (myLicense != null ? !myLicense.equals(creativeWork.myLicense) : creativeWork.myLicense != null) return false;
-    if (myLearningResourceType != null ? !myLearningResourceType.equals(creativeWork.myLearningResourceType) : creativeWork.myLearningResourceType != null) return false;
-    if (myMainEntity != null ? !myMainEntity.equals(creativeWork.myMainEntity) : creativeWork.myMainEntity != null) return false;
-    if (myMentions != null ? !myMentions.equals(creativeWork.myMentions) : creativeWork.myMentions != null) return false;
-    if (myOffers != null ? !myOffers.equals(creativeWork.myOffers) : creativeWork.myOffers != null) return false;
-    if (myProducer != null ? !myProducer.equals(creativeWork.myProducer) : creativeWork.myProducer != null) return false;
-    if (myPublication != null ? !myPublication.equals(creativeWork.myPublication) : creativeWork.myPublication != null) return false;
-    if (myPublisher != null ? !myPublisher.equals(creativeWork.myPublisher) : creativeWork.myPublisher != null) return false;
-    if (myPublishingPrinciples != null ? !myPublishingPrinciples.equals(creativeWork.myPublishingPrinciples) : creativeWork.myPublishingPrinciples != null) return false;
-    if (myRecordedAt != null ? !myRecordedAt.equals(creativeWork.myRecordedAt) : creativeWork.myRecordedAt != null) return false;
-    if (myReview != null ? !myReview.equals(creativeWork.myReview) : creativeWork.myReview != null) return false;
-    if (mySourceOrganization != null ? !mySourceOrganization.equals(creativeWork.mySourceOrganization) : creativeWork.mySourceOrganization != null) return false;
-    if (myText != null ? !myText.equals(creativeWork.myText) : creativeWork.myText != null) return false;
-    if (myThumbnailUrl != null ? !myThumbnailUrl.equals(creativeWork.myThumbnailUrl) : creativeWork.myThumbnailUrl != null) return false;
-    if (myTimeRequired != null ? !myTimeRequired.equals(creativeWork.myTimeRequired) : creativeWork.myTimeRequired != null) return false;
-    if (myTypicalAgeRange != null ? !myTypicalAgeRange.equals(creativeWork.myTypicalAgeRange) : creativeWork.myTypicalAgeRange != null) return false;
-    if (myVersion != null ? !myVersion.equals(creativeWork.myVersion) : creativeWork.myVersion != null) return false;
-    if (myVideo != null ? !myVideo.equals(creativeWork.myVideo) : creativeWork.myVideo != null) return false;
-    if (myProvider != null ? !myProvider.equals(creativeWork.myProvider) : creativeWork.myProvider != null) return false;
-    if (myCommentCount != null ? !myCommentCount.equals(creativeWork.myCommentCount) : creativeWork.myCommentCount != null) return false;
-    if (myHasPart != null ? !myHasPart.equals(creativeWork.myHasPart) : creativeWork.myHasPart != null) return false;
-    if (myWorkExample != null ? !myWorkExample.equals(creativeWork.myWorkExample) : creativeWork.myWorkExample != null) return false;
-    if (myExampleOfWork != null ? !myExampleOfWork.equals(creativeWork.myExampleOfWork) : creativeWork.myExampleOfWork != null) return false;
-    if (myCharacter != null ? !myCharacter.equals(creativeWork.myCharacter) : creativeWork.myCharacter != null) return false;
-    if (myTranslator != null ? !myTranslator.equals(creativeWork.myTranslator) : creativeWork.myTranslator != null) return false;
-    if (myReleasedEvent != null ? !myReleasedEvent.equals(creativeWork.myReleasedEvent) : creativeWork.myReleasedEvent != null) return false;
-    return true;
-  }
-
+  
   private String mySchemaVersion;
   private Thing myAbout;
   private String myAccessibilityAPI;

@@ -20,305 +20,409 @@ package org.schema;
 
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.*;
+import org.jetbrains.annotations.NotNull;
 
 /**
- * A person (alive, dead, undead, or fictional).
- * Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
- * Equivalent class: http://xmlns.com/foaf/0.1/Person
+ * A person (alive, dead, undead, or fictional).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNewsEquivalent class: http://xmlns.com/foaf/0.1/Person
  */
 public class Person extends Thing implements Competitor {
   /**
    * An additional name for a Person, can be used for a middle name.
    */
-  public String getAdditionalName() {
-    return myAdditionalName;
-  }
+  public String getAdditionalName() { return myAdditionalName; }
   /**
    * Physical address of the item.
    */
-  public PostalAddress getAddress() {
-    return myAddress;
-  }
+  public PostalAddress getAddress() { return myAddress; }
   /**
    * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
    */
-  public Organization getAffiliation() {
-    return myAffiliation;
-  }
+  public Organization getAffiliation() { return myAffiliation; }
   /**
    * An educational organizations that the person is an alumni of.
    */
-  public EducationalOrganization getAlumniOf() {
-    return myAlumniOf;
-  }
+  public EducationalOrganization getAlumniOf() { return myAlumniOf; }
   /**
    * An award won by or for this item.
    */
-  public String getAward() {
-    return myAward;
-  }
+  public String getAward() { return myAward; }
   /**
    * Date of birth.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getBirthDate() {
-    return myBirthDate;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getBirthDate() { return myBirthDate; }
   /**
    * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
    */
-  public BrandOrOrganization getBrand() {
-    return myBrand;
-  }
+  public BrandOrOrganization getBrand() { return myBrand; }
   /**
    * A child of the person.
    */
-  public Person getChildren() {
-    return myChildren;
-  }
+  public Person getChildren() { return myChildren; }
   /**
    * A colleague of the person.
    */
-  public Person getColleague() {
-    return myColleague;
-  }
+  public Person getColleague() { return myColleague; }
   /**
    * A contact point for a person or organization.
    */
-  public ContactPoint getContactPoint() {
-    return myContactPoint;
-  }
+  public ContactPoint getContactPoint() { return myContactPoint; }
   /**
    * Date of death.
    */
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDeathDate() {
-    return myDeathDate;
-  }
+  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
+  public java.util.Date getDeathDate() { return myDeathDate; }
   /**
    * The Dun & Bradstreet DUNS number for identifying an organization or business person.
    */
-  public String getDuns() {
-    return myDuns;
-  }
+  public String getDuns() { return myDuns; }
   /**
    * Email address.
    */
-  public String getEmail() {
-    return myEmail;
-  }
+  public String getEmail() { return myEmail; }
   /**
    * Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the name property.
    */
-  public String getFamilyName() {
-    return myFamilyName;
-  }
+  public String getFamilyName() { return myFamilyName; }
   /**
    * The fax number.
    */
-  public String getFaxNumber() {
-    return myFaxNumber;
-  }
+  public String getFaxNumber() { return myFaxNumber; }
   /**
    * The most generic uni-directional social relation.
    */
-  public Person getFollows() {
-    return myFollows;
-  }
+  public Person getFollows() { return myFollows; }
   /**
    * Gender of the person.
    */
-  public String getGender() {
-    return myGender;
-  }
+  public String getGender() { return myGender; }
   /**
    * Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property.
    */
-  public String getGivenName() {
-    return myGivenName;
-  }
+  public String getGivenName() { return myGivenName; }
   /**
    * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
    */
-  public String getGlobalLocationNumber() {
-    return myGlobalLocationNumber;
-  }
+  public String getGlobalLocationNumber() { return myGlobalLocationNumber; }
   /**
    * Points-of-Sales operated by the organization or person.
    */
-  public Place getHasPOS() {
-    return myHasPOS;
-  }
+  public Place getHasPOS() { return myHasPOS; }
   /**
    * The height of the item.
    */
-  public DistanceOrQuantitativeValue getHeight() {
-    return myHeight;
-  }
+  public DistanceOrQuantitativeValue getHeight() { return myHeight; }
   /**
    * A contact location for a person's residence.
    */
-  public ContactPointOrPlace getHomeLocation() {
-    return myHomeLocation;
-  }
+  public ContactPointOrPlace getHomeLocation() { return myHomeLocation; }
   /**
    * An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.
    */
-  public String getHonorificPrefix() {
-    return myHonorificPrefix;
-  }
+  public String getHonorificPrefix() { return myHonorificPrefix; }
   /**
    * An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.
    */
-  public String getHonorificSuffix() {
-    return myHonorificSuffix;
-  }
+  public String getHonorificSuffix() { return myHonorificSuffix; }
   /**
    * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
    */
-  public String getIsicV4() {
-    return myIsicV4;
-  }
+  public String getIsicV4() { return myIsicV4; }
   /**
    * The job title of the person (for example, Financial Manager).
    */
-  public String getJobTitle() {
-    return myJobTitle;
-  }
+  public String getJobTitle() { return myJobTitle; }
   /**
    * The most generic bi-directional social/work relation.
    */
-  public Person getKnows() {
-    return myKnows;
-  }
+  public Person getKnows() { return myKnows; }
   /**
    * A pointer to products or services offered by the organization or person.
    */
-  public Offer getMakesOffer() {
-    return myMakesOffer;
-  }
+  public Offer getMakesOffer() { return myMakesOffer; }
   /**
    * An Organization (or ProgramMembership) to which this Person or Organization belongs.
    */
-  public OrganizationOrProgramMembership getMemberOf() {
-    return myMemberOf;
-  }
+  public OrganizationOrProgramMembership getMemberOf() { return myMemberOf; }
   /**
    * The North American Industry Classification System (NAICS) code for a particular organization or business person.
    */
-  public String getNaics() {
-    return myNaics;
-  }
+  public String getNaics() { return myNaics; }
   /**
    * Nationality of the person.
    */
-  public Country getNationality() {
-    return myNationality;
-  }
+  public Country getNationality() { return myNationality; }
   /**
    * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
    */
-  public PriceSpecification getNetWorth() {
-    return myNetWorth;
-  }
+  public PriceSpecification getNetWorth() { return myNetWorth; }
   /**
    * Products owned by the organization or person.
    */
-  public OwnershipInfoOrProduct getOwns() {
-    return myOwns;
-  }
+  public OwnershipInfoOrProduct getOwns() { return myOwns; }
   /**
    * A parent of this person.
    */
-  public Person getParent() {
-    return myParent;
-  }
+  public Person getParent() { return myParent; }
   /**
    * Event that this person is a performer or participant in.
    */
-  public Event getPerformerIn() {
-    return myPerformerIn;
-  }
+  public Event getPerformerIn() { return myPerformerIn; }
   /**
    * The most generic familial relation.
    */
-  public Person getRelatedTo() {
-    return myRelatedTo;
-  }
+  public Person getRelatedTo() { return myRelatedTo; }
   /**
    * A pointer to products or services sought by the organization or person (demand).
    */
-  public Demand getSeeks() {
-    return mySeeks;
-  }
+  public Demand getSeeks() { return mySeeks; }
   /**
    * A sibling of the person.
    */
-  public Person getSibling() {
-    return mySibling;
-  }
+  public Person getSibling() { return mySibling; }
   /**
    * The person's spouse.
    */
-  public Person getSpouse() {
-    return mySpouse;
-  }
+  public Person getSpouse() { return mySpouse; }
   /**
    * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
    */
-  public String getTaxID() {
-    return myTaxID;
-  }
+  public String getTaxID() { return myTaxID; }
   /**
    * The telephone number.
    */
-  public String getTelephone() {
-    return myTelephone;
-  }
+  public String getTelephone() { return myTelephone; }
   /**
    * The Value-added Tax ID of the organization or person.
    */
-  public String getVatID() {
-    return myVatID;
-  }
+  public String getVatID() { return myVatID; }
   /**
    * The weight of the product or person.
    */
-  public QuantitativeValue getWeight() {
-    return myWeight;
-  }
+  public QuantitativeValue getWeight() { return myWeight; }
   /**
    * A contact location for a person's place of work.
    */
-  public ContactPointOrPlace getWorkLocation() {
-    return myWorkLocation;
-  }
+  public ContactPointOrPlace getWorkLocation() { return myWorkLocation; }
   /**
    * Organizations that the person works for.
    */
-  public Organization getWorksFor() {
-    return myWorksFor;
-  }
+  public Organization getWorksFor() { return myWorksFor; }
   /**
    * The place where the person was born.
    */
-  public Place getBirthPlace() {
-    return myBirthPlace;
-  }
+  public Place getBirthPlace() { return myBirthPlace; }
   /**
    * The place where the person died.
    */
-  public Place getDeathPlace() {
-    return myDeathPlace;
+  public Place getDeathPlace() { return myDeathPlace; }
+  protected Person(String additionalName, PostalAddress address, Organization affiliation, EducationalOrganization alumniOf, String award, java.util.Date birthDate, BrandOrOrganization brand, Person children, Person colleague, ContactPoint contactPoint, java.util.Date deathDate, String duns, String email, String familyName, String faxNumber, Person follows, String gender, String givenName, String globalLocationNumber, Place hasPOS, DistanceOrQuantitativeValue height, ContactPointOrPlace homeLocation, String honorificPrefix, String honorificSuffix, String isicV4, String jobTitle, Person knows, Offer makesOffer, OrganizationOrProgramMembership memberOf, String naics, Country nationality, PriceSpecification netWorth, OwnershipInfoOrProduct owns, Person parent, Event performerIn, Person relatedTo, Demand seeks, Person sibling, Person spouse, String taxID, String telephone, String vatID, QuantitativeValue weight, ContactPointOrPlace workLocation, Organization worksFor, Place birthPlace, Place deathPlace, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+    myAdditionalName = additionalName;
+    myAddress = address;
+    myAffiliation = affiliation;
+    myAlumniOf = alumniOf;
+    myAward = award;
+    myBirthDate = birthDate;
+    myBrand = brand;
+    myChildren = children;
+    myColleague = colleague;
+    myContactPoint = contactPoint;
+    myDeathDate = deathDate;
+    myDuns = duns;
+    myEmail = email;
+    myFamilyName = familyName;
+    myFaxNumber = faxNumber;
+    myFollows = follows;
+    myGender = gender;
+    myGivenName = givenName;
+    myGlobalLocationNumber = globalLocationNumber;
+    myHasPOS = hasPOS;
+    myHeight = height;
+    myHomeLocation = homeLocation;
+    myHonorificPrefix = honorificPrefix;
+    myHonorificSuffix = honorificSuffix;
+    myIsicV4 = isicV4;
+    myJobTitle = jobTitle;
+    myKnows = knows;
+    myMakesOffer = makesOffer;
+    myMemberOf = memberOf;
+    myNaics = naics;
+    myNationality = nationality;
+    myNetWorth = netWorth;
+    myOwns = owns;
+    myParent = parent;
+    myPerformerIn = performerIn;
+    myRelatedTo = relatedTo;
+    mySeeks = seeks;
+    mySibling = sibling;
+    mySpouse = spouse;
+    myTaxID = taxID;
+    myTelephone = telephone;
+    myVatID = vatID;
+    myWeight = weight;
+    myWorkLocation = workLocation;
+    myWorksFor = worksFor;
+    myBirthPlace = birthPlace;
+    myDeathPlace = deathPlace;
+    myAdditionalName = additionalName;
+    myAddress = address;
+    myAffiliation = affiliation;
+    myAlumniOf = alumniOf;
+    myAward = award;
+    myBirthDate = birthDate;
+    myBrand = brand;
+    myChildren = children;
+    myColleague = colleague;
+    myContactPoint = contactPoint;
+    myDeathDate = deathDate;
+    myDuns = duns;
+    myEmail = email;
+    myFamilyName = familyName;
+    myFaxNumber = faxNumber;
+    myFollows = follows;
+    myGender = gender;
+    myGivenName = givenName;
+    myGlobalLocationNumber = globalLocationNumber;
+    myHasPOS = hasPOS;
+    myHeight = height;
+    myHomeLocation = homeLocation;
+    myHonorificPrefix = honorificPrefix;
+    myHonorificSuffix = honorificSuffix;
+    myIsicV4 = isicV4;
+    myJobTitle = jobTitle;
+    myKnows = knows;
+    myMakesOffer = makesOffer;
+    myMemberOf = memberOf;
+    myNaics = naics;
+    myNationality = nationality;
+    myNetWorth = netWorth;
+    myOwns = owns;
+    myParent = parent;
+    myPerformerIn = performerIn;
+    myRelatedTo = relatedTo;
+    mySeeks = seeks;
+    mySibling = sibling;
+    mySpouse = spouse;
+    myTaxID = taxID;
+    myTelephone = telephone;
+    myVatID = vatID;
+    myWeight = weight;
+    myWorkLocation = workLocation;
+    myWorksFor = worksFor;
+    myBirthPlace = birthPlace;
+    myDeathPlace = deathPlace;
   }
+  @Override public int hashCode() {
+    int result = super.hashCode();
+    result = 31 * result + (myAdditionalName != null ? myAdditionalName.hashCode() : 0);
+    result = 31 * result + (myAddress != null ? myAddress.hashCode() : 0);
+    result = 31 * result + (myAffiliation != null ? myAffiliation.hashCode() : 0);
+    result = 31 * result + (myAlumniOf != null ? myAlumniOf.hashCode() : 0);
+    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
+    result = 31 * result + (myBirthDate != null ? myBirthDate.hashCode() : 0);
+    result = 31 * result + (myBrand != null ? myBrand.hashCode() : 0);
+    result = 31 * result + (myChildren != null ? myChildren.hashCode() : 0);
+    result = 31 * result + (myColleague != null ? myColleague.hashCode() : 0);
+    result = 31 * result + (myContactPoint != null ? myContactPoint.hashCode() : 0);
+    result = 31 * result + (myDeathDate != null ? myDeathDate.hashCode() : 0);
+    result = 31 * result + (myDuns != null ? myDuns.hashCode() : 0);
+    result = 31 * result + (myEmail != null ? myEmail.hashCode() : 0);
+    result = 31 * result + (myFamilyName != null ? myFamilyName.hashCode() : 0);
+    result = 31 * result + (myFaxNumber != null ? myFaxNumber.hashCode() : 0);
+    result = 31 * result + (myFollows != null ? myFollows.hashCode() : 0);
+    result = 31 * result + (myGender != null ? myGender.hashCode() : 0);
+    result = 31 * result + (myGivenName != null ? myGivenName.hashCode() : 0);
+    result = 31 * result + (myGlobalLocationNumber != null ? myGlobalLocationNumber.hashCode() : 0);
+    result = 31 * result + (myHasPOS != null ? myHasPOS.hashCode() : 0);
+    result = 31 * result + (myHeight != null ? myHeight.hashCode() : 0);
+    result = 31 * result + (myHomeLocation != null ? myHomeLocation.hashCode() : 0);
+    result = 31 * result + (myHonorificPrefix != null ? myHonorificPrefix.hashCode() : 0);
+    result = 31 * result + (myHonorificSuffix != null ? myHonorificSuffix.hashCode() : 0);
+    result = 31 * result + (myIsicV4 != null ? myIsicV4.hashCode() : 0);
+    result = 31 * result + (myJobTitle != null ? myJobTitle.hashCode() : 0);
+    result = 31 * result + (myKnows != null ? myKnows.hashCode() : 0);
+    result = 31 * result + (myMakesOffer != null ? myMakesOffer.hashCode() : 0);
+    result = 31 * result + (myMemberOf != null ? myMemberOf.hashCode() : 0);
+    result = 31 * result + (myNaics != null ? myNaics.hashCode() : 0);
+    result = 31 * result + (myNationality != null ? myNationality.hashCode() : 0);
+    result = 31 * result + (myNetWorth != null ? myNetWorth.hashCode() : 0);
+    result = 31 * result + (myOwns != null ? myOwns.hashCode() : 0);
+    result = 31 * result + (myParent != null ? myParent.hashCode() : 0);
+    result = 31 * result + (myPerformerIn != null ? myPerformerIn.hashCode() : 0);
+    result = 31 * result + (myRelatedTo != null ? myRelatedTo.hashCode() : 0);
+    result = 31 * result + (mySeeks != null ? mySeeks.hashCode() : 0);
+    result = 31 * result + (mySibling != null ? mySibling.hashCode() : 0);
+    result = 31 * result + (mySpouse != null ? mySpouse.hashCode() : 0);
+    result = 31 * result + (myTaxID != null ? myTaxID.hashCode() : 0);
+    result = 31 * result + (myTelephone != null ? myTelephone.hashCode() : 0);
+    result = 31 * result + (myVatID != null ? myVatID.hashCode() : 0);
+    result = 31 * result + (myWeight != null ? myWeight.hashCode() : 0);
+    result = 31 * result + (myWorkLocation != null ? myWorkLocation.hashCode() : 0);
+    result = 31 * result + (myWorksFor != null ? myWorksFor.hashCode() : 0);
+    result = 31 * result + (myBirthPlace != null ? myBirthPlace.hashCode() : 0);
+    result = 31 * result + (myDeathPlace != null ? myDeathPlace.hashCode() : 0);
+    return result;
+  }
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Person person = (Person) o;
+    if (!super.equals(o)) return false;
+    if (myAdditionalName != null ? !myAdditionalName.equals(person.myAdditionalName) : person.myAdditionalName != null) return false;
+    if (myAddress != null ? !myAddress.equals(person.myAddress) : person.myAddress != null) return false;
+    if (myAffiliation != null ? !myAffiliation.equals(person.myAffiliation) : person.myAffiliation != null) return false;
+    if (myAlumniOf != null ? !myAlumniOf.equals(person.myAlumniOf) : person.myAlumniOf != null) return false;
+    if (myAward != null ? !myAward.equals(person.myAward) : person.myAward != null) return false;
+    if (myBirthDate != null ? !myBirthDate.equals(person.myBirthDate) : person.myBirthDate != null) return false;
+    if (myBrand != null ? !myBrand.equals(person.myBrand) : person.myBrand != null) return false;
+    if (myChildren != null ? !myChildren.equals(person.myChildren) : person.myChildren != null) return false;
+    if (myColleague != null ? !myColleague.equals(person.myColleague) : person.myColleague != null) return false;
+    if (myContactPoint != null ? !myContactPoint.equals(person.myContactPoint) : person.myContactPoint != null) return false;
+    if (myDeathDate != null ? !myDeathDate.equals(person.myDeathDate) : person.myDeathDate != null) return false;
+    if (myDuns != null ? !myDuns.equals(person.myDuns) : person.myDuns != null) return false;
+    if (myEmail != null ? !myEmail.equals(person.myEmail) : person.myEmail != null) return false;
+    if (myFamilyName != null ? !myFamilyName.equals(person.myFamilyName) : person.myFamilyName != null) return false;
+    if (myFaxNumber != null ? !myFaxNumber.equals(person.myFaxNumber) : person.myFaxNumber != null) return false;
+    if (myFollows != null ? !myFollows.equals(person.myFollows) : person.myFollows != null) return false;
+    if (myGender != null ? !myGender.equals(person.myGender) : person.myGender != null) return false;
+    if (myGivenName != null ? !myGivenName.equals(person.myGivenName) : person.myGivenName != null) return false;
+    if (myGlobalLocationNumber != null ? !myGlobalLocationNumber.equals(person.myGlobalLocationNumber) : person.myGlobalLocationNumber != null) return false;
+    if (myHasPOS != null ? !myHasPOS.equals(person.myHasPOS) : person.myHasPOS != null) return false;
+    if (myHeight != null ? !myHeight.equals(person.myHeight) : person.myHeight != null) return false;
+    if (myHomeLocation != null ? !myHomeLocation.equals(person.myHomeLocation) : person.myHomeLocation != null) return false;
+    if (myHonorificPrefix != null ? !myHonorificPrefix.equals(person.myHonorificPrefix) : person.myHonorificPrefix != null) return false;
+    if (myHonorificSuffix != null ? !myHonorificSuffix.equals(person.myHonorificSuffix) : person.myHonorificSuffix != null) return false;
+    if (myIsicV4 != null ? !myIsicV4.equals(person.myIsicV4) : person.myIsicV4 != null) return false;
+    if (myJobTitle != null ? !myJobTitle.equals(person.myJobTitle) : person.myJobTitle != null) return false;
+    if (myKnows != null ? !myKnows.equals(person.myKnows) : person.myKnows != null) return false;
+    if (myMakesOffer != null ? !myMakesOffer.equals(person.myMakesOffer) : person.myMakesOffer != null) return false;
+    if (myMemberOf != null ? !myMemberOf.equals(person.myMemberOf) : person.myMemberOf != null) return false;
+    if (myNaics != null ? !myNaics.equals(person.myNaics) : person.myNaics != null) return false;
+    if (myNationality != null ? !myNationality.equals(person.myNationality) : person.myNationality != null) return false;
+    if (myNetWorth != null ? !myNetWorth.equals(person.myNetWorth) : person.myNetWorth != null) return false;
+    if (myOwns != null ? !myOwns.equals(person.myOwns) : person.myOwns != null) return false;
+    if (myParent != null ? !myParent.equals(person.myParent) : person.myParent != null) return false;
+    if (myPerformerIn != null ? !myPerformerIn.equals(person.myPerformerIn) : person.myPerformerIn != null) return false;
+    if (myRelatedTo != null ? !myRelatedTo.equals(person.myRelatedTo) : person.myRelatedTo != null) return false;
+    if (mySeeks != null ? !mySeeks.equals(person.mySeeks) : person.mySeeks != null) return false;
+    if (mySibling != null ? !mySibling.equals(person.mySibling) : person.mySibling != null) return false;
+    if (mySpouse != null ? !mySpouse.equals(person.mySpouse) : person.mySpouse != null) return false;
+    if (myTaxID != null ? !myTaxID.equals(person.myTaxID) : person.myTaxID != null) return false;
+    if (myTelephone != null ? !myTelephone.equals(person.myTelephone) : person.myTelephone != null) return false;
+    if (myVatID != null ? !myVatID.equals(person.myVatID) : person.myVatID != null) return false;
+    if (myWeight != null ? !myWeight.equals(person.myWeight) : person.myWeight != null) return false;
+    if (myWorkLocation != null ? !myWorkLocation.equals(person.myWorkLocation) : person.myWorkLocation != null) return false;
+    if (myWorksFor != null ? !myWorksFor.equals(person.myWorksFor) : person.myWorksFor != null) return false;
+    if (myBirthPlace != null ? !myBirthPlace.equals(person.myBirthPlace) : person.myBirthPlace != null) return false;
+    if (myDeathPlace != null ? !myDeathPlace.equals(person.myDeathPlace) : person.myDeathPlace != null) return false;
+    return true;
+  }
+  
   /**
    * Builder for {@link Person}
    */
-  static final class PersonThingBuilder implements Builder {
-    /**
-     * Creates new {@link Person} instance.
-     */
+  public static class Builder implements ThingBuilder<Person> {
     public Person build() {
       return new Person(additionalName, address, affiliation, alumniOf, award, birthDate, brand, children, colleague, contactPoint, deathDate, duns, email, familyName, faxNumber, follows, gender, givenName, globalLocationNumber, hasPOS, height, homeLocation, honorificPrefix, honorificSuffix, isicV4, jobTitle, knows, makesOffer, memberOf, naics, nationality, netWorth, owns, parent, performerIn, relatedTo, seeks, sibling, spouse, taxID, telephone, vatID, weight, workLocation, worksFor, birthPlace, deathPlace, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
@@ -932,33 +1036,33 @@ public class Person extends Thing implements Competitor {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -967,66 +1071,66 @@ public class Person extends Thing implements Competitor {
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       return this.mainEntityOfPage(creativeWork.build());
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-      <br /><br />
-      Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-      example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-      represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-      between the page and the primary entity.
-      <br /><br />
-
-      Related properties include sameAs, about, and url.
-      <br /><br />
-
-      The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-      official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-      to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-      serves more to clarify which of several entities is the main one for that page.
-      <br /><br />
-
-      mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-      for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-      mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-      <br /><br />
-
-      about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-      while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-      describes some other entity. For example, one web page may display a news article about a particular person.
-      Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-      should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-      
+     *       <br /><br />
+     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
+     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
+     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
+     *       between the page and the primary entity.
+     *       <br /><br />
+     * 
+     *       Related properties include sameAs, about, and url.
+     *       <br /><br />
+     * 
+     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
+     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
+     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
+     *       serves more to clarify which of several entities is the main one for that page.
+     *       <br /><br />
+     * 
+     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
+     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
+     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
+     *       <br /><br />
+     * 
+     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
+     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
+     *       describes some other entity. For example, one web page may display a news article about a particular person.
+     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
+     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
+     *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
@@ -1074,7 +1178,6 @@ public class Person extends Thing implements Competitor {
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-
     @Override public void fromMap(java.util.Map<String, Object> map) {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
@@ -1202,266 +1305,7 @@ public class Person extends Thing implements Competitor {
     private Action potentialAction;
     private String id;
   }
-  public interface Builder extends ThingBuilder<Person> {
-    @NotNull Builder additionalName(@NotNull String additionalName);
-    @NotNull Builder address(@NotNull PostalAddress postalAddress);
-    @NotNull Builder address(@NotNull PostalAddress.Builder postalAddress);
-    @NotNull Builder affiliation(@NotNull Organization organization);
-    @NotNull Builder affiliation(@NotNull Organization.Builder organization);
-    @NotNull Builder alumniOf(@NotNull EducationalOrganization educationalOrganization);
-    @NotNull Builder alumniOf(@NotNull EducationalOrganization.Builder educationalOrganization);
-    @NotNull Builder award(@NotNull String award);
-    @NotNull Builder birthDate(@NotNull java.util.Date date);
-    @NotNull Builder brand(@NotNull Brand brand);
-    @NotNull Builder brand(@NotNull Brand.Builder brand);
-    @NotNull Builder brand(@NotNull Organization organization);
-    @NotNull Builder brand(@NotNull Organization.Builder organization);
-    @NotNull Builder children(@NotNull Person person);
-    @NotNull Builder children(@NotNull Person.Builder person);
-    @NotNull Builder colleague(@NotNull Person person);
-    @NotNull Builder colleague(@NotNull Person.Builder person);
-    @NotNull Builder contactPoint(@NotNull ContactPoint contactPoint);
-    @NotNull Builder contactPoint(@NotNull ContactPoint.Builder contactPoint);
-    @NotNull Builder deathDate(@NotNull java.util.Date date);
-    @NotNull Builder duns(@NotNull String duns);
-    @NotNull Builder email(@NotNull String email);
-    @NotNull Builder familyName(@NotNull String familyName);
-    @NotNull Builder faxNumber(@NotNull String faxNumber);
-    @NotNull Builder follows(@NotNull Person person);
-    @NotNull Builder follows(@NotNull Person.Builder person);
-    @NotNull Builder gender(@NotNull String gender);
-    @NotNull Builder givenName(@NotNull String givenName);
-    @NotNull Builder globalLocationNumber(@NotNull String globalLocationNumber);
-    @NotNull Builder hasPOS(@NotNull Place place);
-    @NotNull Builder hasPOS(@NotNull Place.Builder place);
-    @NotNull Builder height(@NotNull Distance distance);
-    @NotNull Builder height(@NotNull Distance.Builder distance);
-    @NotNull Builder height(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder height(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder homeLocation(@NotNull ContactPoint contactPoint);
-    @NotNull Builder homeLocation(@NotNull ContactPoint.Builder contactPoint);
-    @NotNull Builder homeLocation(@NotNull Place place);
-    @NotNull Builder homeLocation(@NotNull Place.Builder place);
-    @NotNull Builder honorificPrefix(@NotNull String honorificPrefix);
-    @NotNull Builder honorificSuffix(@NotNull String honorificSuffix);
-    @NotNull Builder isicV4(@NotNull String isicV4);
-    @NotNull Builder jobTitle(@NotNull String jobTitle);
-    @NotNull Builder knows(@NotNull Person person);
-    @NotNull Builder knows(@NotNull Person.Builder person);
-    @NotNull Builder makesOffer(@NotNull Offer offer);
-    @NotNull Builder makesOffer(@NotNull Offer.Builder offer);
-    @NotNull Builder memberOf(@NotNull Organization organization);
-    @NotNull Builder memberOf(@NotNull Organization.Builder organization);
-    @NotNull Builder memberOf(@NotNull ProgramMembership programMembership);
-    @NotNull Builder memberOf(@NotNull ProgramMembership.Builder programMembership);
-    @NotNull Builder naics(@NotNull String naics);
-    @NotNull Builder nationality(@NotNull Country country);
-    @NotNull Builder nationality(@NotNull Country.Builder country);
-    @NotNull Builder netWorth(@NotNull PriceSpecification priceSpecification);
-    @NotNull Builder netWorth(@NotNull PriceSpecification.Builder priceSpecification);
-    @NotNull Builder owns(@NotNull OwnershipInfo ownershipInfo);
-    @NotNull Builder owns(@NotNull OwnershipInfo.Builder ownershipInfo);
-    @NotNull Builder owns(@NotNull Product product);
-    @NotNull Builder owns(@NotNull Product.Builder product);
-    @NotNull Builder parent(@NotNull Person person);
-    @NotNull Builder parent(@NotNull Person.Builder person);
-    @NotNull Builder performerIn(@NotNull Event event);
-    @NotNull Builder performerIn(@NotNull Event.Builder event);
-    @NotNull Builder relatedTo(@NotNull Person person);
-    @NotNull Builder relatedTo(@NotNull Person.Builder person);
-    @NotNull Builder seeks(@NotNull Demand demand);
-    @NotNull Builder seeks(@NotNull Demand.Builder demand);
-    @NotNull Builder sibling(@NotNull Person person);
-    @NotNull Builder sibling(@NotNull Person.Builder person);
-    @NotNull Builder spouse(@NotNull Person person);
-    @NotNull Builder spouse(@NotNull Person.Builder person);
-    @NotNull Builder taxID(@NotNull String taxID);
-    @NotNull Builder telephone(@NotNull String telephone);
-    @NotNull Builder vatID(@NotNull String vatID);
-    @NotNull Builder weight(@NotNull QuantitativeValue quantitativeValue);
-    @NotNull Builder weight(@NotNull QuantitativeValue.Builder quantitativeValue);
-    @NotNull Builder workLocation(@NotNull ContactPoint contactPoint);
-    @NotNull Builder workLocation(@NotNull ContactPoint.Builder contactPoint);
-    @NotNull Builder workLocation(@NotNull Place place);
-    @NotNull Builder workLocation(@NotNull Place.Builder place);
-    @NotNull Builder worksFor(@NotNull Organization organization);
-    @NotNull Builder worksFor(@NotNull Organization.Builder organization);
-    @NotNull Builder birthPlace(@NotNull Place place);
-    @NotNull Builder birthPlace(@NotNull Place.Builder place);
-    @NotNull Builder deathPlace(@NotNull Place place);
-    @NotNull Builder deathPlace(@NotNull Place.Builder place);
-    @NotNull Builder additionalType(@NotNull String additionalType);
-    @NotNull Builder alternateName(@NotNull String alternateName);
-    @NotNull Builder description(@NotNull String description);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork);
-    @NotNull Builder mainEntityOfPage(@NotNull String mainEntityOfPage);
-    @NotNull Builder name(@NotNull String name);
-    @NotNull Builder sameAs(@NotNull String sameAs);
-    @NotNull Builder url(@NotNull String url);
-    @NotNull Builder potentialAction(@NotNull Action action);
-    @NotNull Builder potentialAction(@NotNull Action.Builder action);
-    @NotNull Builder id(@NotNull String id);
-  }
-
-  protected Person(String additionalName, PostalAddress address, Organization affiliation, EducationalOrganization alumniOf, String award, java.util.Date birthDate, BrandOrOrganization brand, Person children, Person colleague, ContactPoint contactPoint, java.util.Date deathDate, String duns, String email, String familyName, String faxNumber, Person follows, String gender, String givenName, String globalLocationNumber, Place hasPOS, DistanceOrQuantitativeValue height, ContactPointOrPlace homeLocation, String honorificPrefix, String honorificSuffix, String isicV4, String jobTitle, Person knows, Offer makesOffer, OrganizationOrProgramMembership memberOf, String naics, Country nationality, PriceSpecification netWorth, OwnershipInfoOrProduct owns, Person parent, Event performerIn, Person relatedTo, Demand seeks, Person sibling, Person spouse, String taxID, String telephone, String vatID, QuantitativeValue weight, ContactPointOrPlace workLocation, Organization worksFor, Place birthPlace, Place deathPlace, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAdditionalName = additionalName;
-    myAddress = address;
-    myAffiliation = affiliation;
-    myAlumniOf = alumniOf;
-    myAward = award;
-    myBirthDate = birthDate;
-    myBrand = brand;
-    myChildren = children;
-    myColleague = colleague;
-    myContactPoint = contactPoint;
-    myDeathDate = deathDate;
-    myDuns = duns;
-    myEmail = email;
-    myFamilyName = familyName;
-    myFaxNumber = faxNumber;
-    myFollows = follows;
-    myGender = gender;
-    myGivenName = givenName;
-    myGlobalLocationNumber = globalLocationNumber;
-    myHasPOS = hasPOS;
-    myHeight = height;
-    myHomeLocation = homeLocation;
-    myHonorificPrefix = honorificPrefix;
-    myHonorificSuffix = honorificSuffix;
-    myIsicV4 = isicV4;
-    myJobTitle = jobTitle;
-    myKnows = knows;
-    myMakesOffer = makesOffer;
-    myMemberOf = memberOf;
-    myNaics = naics;
-    myNationality = nationality;
-    myNetWorth = netWorth;
-    myOwns = owns;
-    myParent = parent;
-    myPerformerIn = performerIn;
-    myRelatedTo = relatedTo;
-    mySeeks = seeks;
-    mySibling = sibling;
-    mySpouse = spouse;
-    myTaxID = taxID;
-    myTelephone = telephone;
-    myVatID = vatID;
-    myWeight = weight;
-    myWorkLocation = workLocation;
-    myWorksFor = worksFor;
-    myBirthPlace = birthPlace;
-    myDeathPlace = deathPlace;
-  }
-
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAdditionalName != null ? myAdditionalName.hashCode() : 0);
-    result = 31 * result + (myAddress != null ? myAddress.hashCode() : 0);
-    result = 31 * result + (myAffiliation != null ? myAffiliation.hashCode() : 0);
-    result = 31 * result + (myAlumniOf != null ? myAlumniOf.hashCode() : 0);
-    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
-    result = 31 * result + (myBirthDate != null ? myBirthDate.hashCode() : 0);
-    result = 31 * result + (myBrand != null ? myBrand.hashCode() : 0);
-    result = 31 * result + (myChildren != null ? myChildren.hashCode() : 0);
-    result = 31 * result + (myColleague != null ? myColleague.hashCode() : 0);
-    result = 31 * result + (myContactPoint != null ? myContactPoint.hashCode() : 0);
-    result = 31 * result + (myDeathDate != null ? myDeathDate.hashCode() : 0);
-    result = 31 * result + (myDuns != null ? myDuns.hashCode() : 0);
-    result = 31 * result + (myEmail != null ? myEmail.hashCode() : 0);
-    result = 31 * result + (myFamilyName != null ? myFamilyName.hashCode() : 0);
-    result = 31 * result + (myFaxNumber != null ? myFaxNumber.hashCode() : 0);
-    result = 31 * result + (myFollows != null ? myFollows.hashCode() : 0);
-    result = 31 * result + (myGender != null ? myGender.hashCode() : 0);
-    result = 31 * result + (myGivenName != null ? myGivenName.hashCode() : 0);
-    result = 31 * result + (myGlobalLocationNumber != null ? myGlobalLocationNumber.hashCode() : 0);
-    result = 31 * result + (myHasPOS != null ? myHasPOS.hashCode() : 0);
-    result = 31 * result + (myHeight != null ? myHeight.hashCode() : 0);
-    result = 31 * result + (myHomeLocation != null ? myHomeLocation.hashCode() : 0);
-    result = 31 * result + (myHonorificPrefix != null ? myHonorificPrefix.hashCode() : 0);
-    result = 31 * result + (myHonorificSuffix != null ? myHonorificSuffix.hashCode() : 0);
-    result = 31 * result + (myIsicV4 != null ? myIsicV4.hashCode() : 0);
-    result = 31 * result + (myJobTitle != null ? myJobTitle.hashCode() : 0);
-    result = 31 * result + (myKnows != null ? myKnows.hashCode() : 0);
-    result = 31 * result + (myMakesOffer != null ? myMakesOffer.hashCode() : 0);
-    result = 31 * result + (myMemberOf != null ? myMemberOf.hashCode() : 0);
-    result = 31 * result + (myNaics != null ? myNaics.hashCode() : 0);
-    result = 31 * result + (myNationality != null ? myNationality.hashCode() : 0);
-    result = 31 * result + (myNetWorth != null ? myNetWorth.hashCode() : 0);
-    result = 31 * result + (myOwns != null ? myOwns.hashCode() : 0);
-    result = 31 * result + (myParent != null ? myParent.hashCode() : 0);
-    result = 31 * result + (myPerformerIn != null ? myPerformerIn.hashCode() : 0);
-    result = 31 * result + (myRelatedTo != null ? myRelatedTo.hashCode() : 0);
-    result = 31 * result + (mySeeks != null ? mySeeks.hashCode() : 0);
-    result = 31 * result + (mySibling != null ? mySibling.hashCode() : 0);
-    result = 31 * result + (mySpouse != null ? mySpouse.hashCode() : 0);
-    result = 31 * result + (myTaxID != null ? myTaxID.hashCode() : 0);
-    result = 31 * result + (myTelephone != null ? myTelephone.hashCode() : 0);
-    result = 31 * result + (myVatID != null ? myVatID.hashCode() : 0);
-    result = 31 * result + (myWeight != null ? myWeight.hashCode() : 0);
-    result = 31 * result + (myWorkLocation != null ? myWorkLocation.hashCode() : 0);
-    result = 31 * result + (myWorksFor != null ? myWorksFor.hashCode() : 0);
-    result = 31 * result + (myBirthPlace != null ? myBirthPlace.hashCode() : 0);
-    result = 31 * result + (myDeathPlace != null ? myDeathPlace.hashCode() : 0);
-    return result;
-  }
-
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Person person = (Person) o;
-    if (!super.equals(o)) return false;
-    if (myAdditionalName != null ? !myAdditionalName.equals(person.myAdditionalName) : person.myAdditionalName != null) return false;
-    if (myAddress != null ? !myAddress.equals(person.myAddress) : person.myAddress != null) return false;
-    if (myAffiliation != null ? !myAffiliation.equals(person.myAffiliation) : person.myAffiliation != null) return false;
-    if (myAlumniOf != null ? !myAlumniOf.equals(person.myAlumniOf) : person.myAlumniOf != null) return false;
-    if (myAward != null ? !myAward.equals(person.myAward) : person.myAward != null) return false;
-    if (myBirthDate != null ? !myBirthDate.equals(person.myBirthDate) : person.myBirthDate != null) return false;
-    if (myBrand != null ? !myBrand.equals(person.myBrand) : person.myBrand != null) return false;
-    if (myChildren != null ? !myChildren.equals(person.myChildren) : person.myChildren != null) return false;
-    if (myColleague != null ? !myColleague.equals(person.myColleague) : person.myColleague != null) return false;
-    if (myContactPoint != null ? !myContactPoint.equals(person.myContactPoint) : person.myContactPoint != null) return false;
-    if (myDeathDate != null ? !myDeathDate.equals(person.myDeathDate) : person.myDeathDate != null) return false;
-    if (myDuns != null ? !myDuns.equals(person.myDuns) : person.myDuns != null) return false;
-    if (myEmail != null ? !myEmail.equals(person.myEmail) : person.myEmail != null) return false;
-    if (myFamilyName != null ? !myFamilyName.equals(person.myFamilyName) : person.myFamilyName != null) return false;
-    if (myFaxNumber != null ? !myFaxNumber.equals(person.myFaxNumber) : person.myFaxNumber != null) return false;
-    if (myFollows != null ? !myFollows.equals(person.myFollows) : person.myFollows != null) return false;
-    if (myGender != null ? !myGender.equals(person.myGender) : person.myGender != null) return false;
-    if (myGivenName != null ? !myGivenName.equals(person.myGivenName) : person.myGivenName != null) return false;
-    if (myGlobalLocationNumber != null ? !myGlobalLocationNumber.equals(person.myGlobalLocationNumber) : person.myGlobalLocationNumber != null) return false;
-    if (myHasPOS != null ? !myHasPOS.equals(person.myHasPOS) : person.myHasPOS != null) return false;
-    if (myHeight != null ? !myHeight.equals(person.myHeight) : person.myHeight != null) return false;
-    if (myHomeLocation != null ? !myHomeLocation.equals(person.myHomeLocation) : person.myHomeLocation != null) return false;
-    if (myHonorificPrefix != null ? !myHonorificPrefix.equals(person.myHonorificPrefix) : person.myHonorificPrefix != null) return false;
-    if (myHonorificSuffix != null ? !myHonorificSuffix.equals(person.myHonorificSuffix) : person.myHonorificSuffix != null) return false;
-    if (myIsicV4 != null ? !myIsicV4.equals(person.myIsicV4) : person.myIsicV4 != null) return false;
-    if (myJobTitle != null ? !myJobTitle.equals(person.myJobTitle) : person.myJobTitle != null) return false;
-    if (myKnows != null ? !myKnows.equals(person.myKnows) : person.myKnows != null) return false;
-    if (myMakesOffer != null ? !myMakesOffer.equals(person.myMakesOffer) : person.myMakesOffer != null) return false;
-    if (myMemberOf != null ? !myMemberOf.equals(person.myMemberOf) : person.myMemberOf != null) return false;
-    if (myNaics != null ? !myNaics.equals(person.myNaics) : person.myNaics != null) return false;
-    if (myNationality != null ? !myNationality.equals(person.myNationality) : person.myNationality != null) return false;
-    if (myNetWorth != null ? !myNetWorth.equals(person.myNetWorth) : person.myNetWorth != null) return false;
-    if (myOwns != null ? !myOwns.equals(person.myOwns) : person.myOwns != null) return false;
-    if (myParent != null ? !myParent.equals(person.myParent) : person.myParent != null) return false;
-    if (myPerformerIn != null ? !myPerformerIn.equals(person.myPerformerIn) : person.myPerformerIn != null) return false;
-    if (myRelatedTo != null ? !myRelatedTo.equals(person.myRelatedTo) : person.myRelatedTo != null) return false;
-    if (mySeeks != null ? !mySeeks.equals(person.mySeeks) : person.mySeeks != null) return false;
-    if (mySibling != null ? !mySibling.equals(person.mySibling) : person.mySibling != null) return false;
-    if (mySpouse != null ? !mySpouse.equals(person.mySpouse) : person.mySpouse != null) return false;
-    if (myTaxID != null ? !myTaxID.equals(person.myTaxID) : person.myTaxID != null) return false;
-    if (myTelephone != null ? !myTelephone.equals(person.myTelephone) : person.myTelephone != null) return false;
-    if (myVatID != null ? !myVatID.equals(person.myVatID) : person.myVatID != null) return false;
-    if (myWeight != null ? !myWeight.equals(person.myWeight) : person.myWeight != null) return false;
-    if (myWorkLocation != null ? !myWorkLocation.equals(person.myWorkLocation) : person.myWorkLocation != null) return false;
-    if (myWorksFor != null ? !myWorksFor.equals(person.myWorksFor) : person.myWorksFor != null) return false;
-    if (myBirthPlace != null ? !myBirthPlace.equals(person.myBirthPlace) : person.myBirthPlace != null) return false;
-    if (myDeathPlace != null ? !myDeathPlace.equals(person.myDeathPlace) : person.myDeathPlace != null) return false;
-    return true;
-  }
-
+  
   private String myAdditionalName;
   private PostalAddress myAddress;
   private Organization myAffiliation;
