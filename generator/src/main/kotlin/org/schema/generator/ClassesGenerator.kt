@@ -6,6 +6,7 @@ package org.schema.generator
 
 class ClassesGenerator(private val sink: GeneratorSink, private val banner: String? = null) {
     private val NOT_NULL = listOf("@NotNull")
+    private val OVERRIDE = listOf("@Override")
 
     fun generate(p: Package) {
         for (type in sink.types.values) {
@@ -80,6 +81,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                 method(name.decapitalize(), "Builder") {
                                     comment = field.comment
                                     parameters = listOf(Parameter(getVariableName(fieldType, name), fieldType, NOT_NULL))
+                                    annotations = NOT_NULL
 
                                     if (eitherTypes.size < 2) {
                                         line("this.${name.decapitalize()} = ${getVariableName(fieldType, name)};")
@@ -95,6 +97,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                     method(name.decapitalize(), "Builder") {
                                         comment = field.comment
                                         parameters = listOf(Parameter(getVariableName(fieldType, name), "$fieldType.Builder", NOT_NULL))
+                                        annotations = NOT_NULL
 
                                         line("return this.${name.decapitalize()}(${getVariableName(fieldType, name)}.build());")
                                     }
@@ -110,23 +113,24 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                             }
                         }
 
-                        val fromMapIfStatements = allFields.map {
+                        val fromMapIfStatements = allFields.flatMap {
                             val varName = it.name!!.decapitalize()
                             val fieldTypes = sink.getEitherTypes(it)
+
                             fieldTypes.map {
                                 "if (\"${varName.let { if (it == "id") "@id" else it }}\".equals(key) && value instanceof $it) { $varName(($it)value); continue; }"
-                            }.joinToString("\n        ")
+                            }
                         }
 
                         method("fromMap") {
-                            //annotations = OVERRIDE
+                            annotations = OVERRIDE
                             parameters = listOf(Parameter("map", "java.util.Map<String, Object>"))
 
                             line("for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {")
                             line("  final String key = entry.getKey();")
                             line("  Object value = entry.getValue();")
                             line("  if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }")
-                            line("  " + fromMapIfStatements.joinToString("\n  "))
+                            lines(fromMapIfStatements.map { "  " + it })
                             line("}")
                         }
 

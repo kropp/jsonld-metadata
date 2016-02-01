@@ -59,6 +59,8 @@ class Klass(val sourceDirectory: File, val namespace: String?, val name: String,
     var comment: String? = null
     var copyright: String? = null
 
+    internal val indent = "  "
+
     internal val text = StringBuilder()
 
     val fields = arrayListOf<Field>()
@@ -230,6 +232,7 @@ class Parameter(val name: String, val type: String, val annotations: Collection<
 class Method(val c: Klass, val name: String, val type: String): Closeable {
     var annotations: Collection<String>? = null
     var parameters: Collection<Parameter>? = null
+    var comment: String? = null
     var throws: String? = null
 
     private val body = StringBuilder()
@@ -238,12 +241,22 @@ class Method(val c: Klass, val name: String, val type: String): Closeable {
         body.appendln("    " + line)
     }
 
+    fun lines(lines: Iterable<String>) {
+        lines.forEach { line(it) }
+    }
+
     override fun close() {
-        annotations?.forEach {
-            c.text.appendln("  $it")
+        appendComment(c.text, "  ", comment)
+        if (annotations?.size == 1) {
+            c.text.append("  ").append(annotations?.single()).append(" ")
+        } else {
+            annotations?.forEach {
+                c.text.appendln("  $it")
+            }
+            c.text.append("  ")
         }
-        c.text.append("  public $type $name(")
-        c.text.append(parameters?.map { (it.annotations?.joinToString { " " } ?: "") + "${it.type} ${it.name}" }?.joinToString(", ") ?: "")
+        c.text.append("public $type $name(")
+        c.text.append(parameters?.map { (it.annotations?.joinToString(" ")?.plus(" ") ?: "") + "${it.type} ${it.name}" }?.joinToString(", ") ?: "")
         c.text.append(")")
         throws?.let { c.text.append(" throws $it") }
         c.text.appendln(" {")
@@ -251,5 +264,13 @@ class Method(val c: Klass, val name: String, val type: String): Closeable {
         c.text.append(body.toString())
 
         c.text.appendln("  }")
+    }
+}
+
+private fun appendComment(stringBuilder: StringBuilder, indent: String, comment: String?) {
+    comment?.let {
+        stringBuilder.appendln("$indent/**")
+        stringBuilder.appendln("$indent * ${it.replace("\n", "\n$indent * ")}")
+        stringBuilder.appendln("$indent */")
     }
 }
