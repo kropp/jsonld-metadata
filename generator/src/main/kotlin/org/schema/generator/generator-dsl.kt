@@ -25,7 +25,21 @@ import java.io.File
 
 class SourcesRoot(val directory: File) {}
 
-class Package(val directory: File, val name: String) {}
+class Package(val directory: File, val name: String) {
+    fun writeClass(name: String, body: StringBuilder.() -> Unit) {
+        val builder = StringBuilder()
+
+        builder.body()
+
+        writeClass(name, builder.toString())
+    }
+
+    fun writeClass(name: String, text: String) {
+        val packageDir = this.name.split(Regex("\\.")).fold(directory) { d, s -> File(d, s) }
+        packageDir.mkdirs()
+        File(packageDir, "$name.java").writeText(text)
+    }
+}
 
 fun sources(directory: File, body: SourcesRoot.() -> Unit) {
     SourcesRoot(directory).body()
@@ -37,7 +51,7 @@ fun SourcesRoot.pakage(name: String, body: Package.() -> Unit) {
 
 
 
-class Klass(private val sourceDirectory: File, val namespace: String, val name: String, private val classOrInterface: String?) {
+class Klass(val sourceDirectory: File, val namespace: String?, val name: String, private val classOrInterface: String? = "class") {
     var extends : String? = null
     var implements: Collection<String>? = null
     var imports: Collection<String>? = null
@@ -49,8 +63,8 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
 
     val fields = arrayListOf<Field>()
 
-    fun field(name: String, type: String, body: Field.() -> Unit = {}) {
-        val field = Field(this, name.capitalize(), type)
+    fun field(name: String, type: String, prefix: String = "my", body: Field.() -> Unit = {}) {
+        val field = Field(this, name.capitalize(), type, prefix)
         fields += field
 
         field.body()
@@ -60,26 +74,22 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
         text.appendln("  private static final $type $name = $value;");
     }
 
-    fun konstructor(visibility: String = "public") {
+    fun konstructor(visibility: String = "public", parameters: Collection<Parameter>? = null, superParameters: Collection<String>? = null) {
         text.append("  $visibility $name(")
-        text.append(fields.map { "${it.type} ${it.name}" }.joinToString(", "))
+        text.append(parameters?.map { "${it.type} ${it.name}" }?.joinToString(", ") ?: "")
         text.appendln(") {")
-/*
-        type.parentType?.let {
-            append("    super(")
-            append(sink.getAllFields(sink.types[it]).map { it.name!!.decapitalize() }.joinToString(", "))
-            appendln(");")
+
+        if (superParameters != null) {
+            text.append("    super(")
+            text.append(superParameters.joinToString(", "))
+            text.appendln(");")
         }
-        for (field in type.subTypes) {
-            sink.types[field]?.let {
-                if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
-                    appendln("    my${it.name!!.capitalize()} = ${it.name!!.decapitalize()};")
-                }
-            }
+
+        parameters?.filter { superParameters?.contains(it.name) == false }?.forEach {
+            text.appendln("    my${it.name.capitalize()} = ${it.name.decapitalize()};")
         }
-*/
         fields.forEach {
-            text.appendln("    my${it.name} = ${it.name};")
+            text.appendln("    ${it.prefix}${it.name} = ${it.name.decapitalize()};")
         }
         text.appendln("  }")
     }
@@ -120,14 +130,16 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
         }
     }
 
-    private fun generate() {
+    internal fun generate() {
         text.insert(0, with(StringBuilder()) {
             copyright?.let {
                 appendln(it)
                 appendln()
             }
-            appendln("package $namespace;")
-            appendln()
+            namespace?.let {
+                appendln("package $it;")
+                appendln()
+            }
             imports?.forEach {
                 appendln("import $it;")
             }
@@ -151,7 +163,7 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
         }.toString())
 
         fields.forEach {
-            text.appendln("  private ${it.type} my${it.name};")
+            text.appendln("  ${it.fieldDeclaration};")
         }
 
         text.appendln("}")
@@ -160,9 +172,9 @@ class Klass(private val sourceDirectory: File, val namespace: String, val name: 
     fun save() {
         generate()
 
-        val packageDir = namespace.split(Regex("\\.")).fold(sourceDirectory) { d, s -> File(d, s) }
-        packageDir.mkdirs()
-        File(packageDir, "$name.java").writeText(text.toString())
+        val packageDir = namespace?.split(Regex("\\."))?.fold(sourceDirectory) { d, s -> File(d, s) }
+        packageDir?.mkdirs()
+        File(packageDir ?: File("."), "$name.java").writeText(text.toString())
     }
 }
 
@@ -172,7 +184,17 @@ fun Package.klass(name: String, classOrInterface: String? = "class", body: Klass
     c.save()
 }
 
-class Field(val c: Klass, val name: String, val type: String) {
+fun Klass.klass(name: String, body: Klass.() -> Unit) {
+    val c = Klass(this.sourceDirectory, null, name, classOrInterface = "static class")
+    c.body()
+    c.generate()
+
+    c.text.split("\n").forEach {
+        text.appendln("  $it")
+    }
+}
+
+class Field(val c: Klass, val name: String, val type: String, val prefix: String) {
     fun getter(annotations: Collection<String>? = null, comment: String? = null) {
         comment?.let {
             c.text.appendln("  /**")
@@ -180,14 +202,14 @@ class Field(val c: Klass, val name: String, val type: String) {
             c.text.appendln("   */")
         }
         annotations?.forEach { c.text.appendln("  $it") }
-        c.text.appendln("  public $type get$name() { return my$name; }")
+        c.text.appendln("  public $type get$name() { return $prefix$name; }")
     }
     fun setter(methodCallBefore: String? = null, isPublic: Boolean = true) {
         c.text.append(if (isPublic) "  public" else "  ")
         val paramName = getVariableName(type, "value")
         c.text.append("void set$type($type $paramName) {")
         methodCallBefore?.let { c.text.append(" $it();") }
-        c.text.appendln(" my$name = $paramName; }")
+        c.text.appendln(" $prefix$name = $paramName; }")
     }
     private fun getVariableName(typeName: String, entityName: String? = null): String {
         val indexOfDot = typeName.lastIndexOf('.')
@@ -199,10 +221,15 @@ class Field(val c: Klass, val name: String, val type: String) {
         }
         return typeName.decapitalize()
     }
+    val fieldDeclaration: String
+        get() = "private $type $prefix" + (if (prefix.isEmpty()) name.decapitalize() else name)
 }
+
+class Parameter(val name: String, val type: String, val annotations: Collection<String>? = null)
 
 class Method(val c: Klass, val name: String, val type: String): Closeable {
     var annotations: Collection<String>? = null
+    var parameters: Collection<Parameter>? = null
     var throws: String? = null
 
     private val body = StringBuilder()
@@ -215,7 +242,9 @@ class Method(val c: Klass, val name: String, val type: String): Closeable {
         annotations?.forEach {
             c.text.appendln("  $it")
         }
-        c.text.append("  public $type $name()")
+        c.text.append("  public $type $name(")
+        c.text.append(parameters?.map { (it.annotations?.joinToString { " " } ?: "") + "${it.type} ${it.name}" }?.joinToString(", ") ?: "")
+        c.text.append(")")
         throws?.let { c.text.append(" throws $it") }
         c.text.appendln(" {")
 

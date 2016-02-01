@@ -5,6 +5,8 @@ package org.schema.generator
  */
 
 class ClassesGenerator(private val sink: GeneratorSink, private val banner: String? = null) {
+    private val NOT_NULL = listOf("@NotNull")
+
     fun generate(p: Package) {
         for (type in sink.types.values) {
             if (type.name.isNullOrEmpty() || (type.isField && !type.isInterface) || sink.shouldSkip(type.name!!))
@@ -34,8 +36,6 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                 }
 
                 type.subTypes.mapNotNull { sink.types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.forEach {
-//                sink.getAllFields(type).forEach {
-//                type.subTypes.mapNotNull { sink.types[it] }.forEach {
                     if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
                         val fieldType = sink.getEitherFieldType(it)!!
                         val name = it.name!!.capitalize()
@@ -54,102 +54,86 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                     }
                 }
 
-                if (!type.isInterface) {
-                    konstructor("protected")
-                    hashCodeAndEquals(typeName != "Thing")
-                }
-            }
-
-            with(StringBuilder()) {
-
-
-
-
-
-                // builder
                 val allFields = sink.getAllFields(type)
+
                 if (!type.isInterface) {
-                    appendln("  /**")
-                    appendln("   * Builder for {@link $typeName}")
-                    appendln("   */")
-                    appendln("  static final class ${typeName}ThingBuilder implements Builder {")
-                    appendln("    /**")
-                    appendln("     * Creates new {@link $typeName} instance.")
-                    appendln("     */")
-                    appendln("    public $typeName build() {")
-                    append("      return new $typeName(")
-                    append(allFields.map { it.name?.decapitalize() }.filterNotNull().joinToString(", "))
-                    val fromMapIfStatements = allFields.map {
-                        val varName = it.name!!.decapitalize()
-                        val fieldTypes = sink.getEitherTypes(it)
-                        fieldTypes.map {
-                            "if (\"${varName.let { if(it == "id") "@id" else it }}\".equals(key) && value instanceof $it) { $varName(($it)value); continue; }"
-                        }.joinToString("\n        ")
-                    }
-                    appendln(");")
-                    appendln("    }")
-                    val interfaceMethods = arrayListOf<String>()
-                    for (field in allFields) {
-                        if (field.name != null) {
+                    konstructor("protected",
+                            parameters = allFields.filter { it.name != null && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.map { Parameter(it.name!!.decapitalize(), sink.getEitherFieldType(it)!!) },
+                            superParameters = type.parentType?.let { sink.getAllFields(sink.types[it]) }?.map { it.name!!.decapitalize() }
+                    )
+
+                    hashCodeAndEquals(typeName != "Thing")
+
+                    klass("Builder") {
+                        comment = "Builder for {@link $typeName}"
+                        implements = listOf("ThingBuilder<$typeName>")
+
+                        method("build", typeName) {
+                            line("return new $typeName(" + allFields.mapNotNull { it.name?.decapitalize() }.joinToString(", ") + ");")
+                        }
+
+                        allFields.filter { it.name != null }.forEach { field ->
                             val name = field.name!!.capitalize()
                             val eitherTypes = sink.getEitherTypes(field)
                             eitherTypes.forEach { fieldType ->
-                                field.comment?.let {
-                                    appendln("    /**")
-                                    appendln("     * $it")
-                                    appendln("     */")
-                                }
 
-                                interfaceMethods += "@NotNull Builder ${name.decapitalize()}(@NotNull $fieldType ${getVariableName(fieldType, name)});"
-                                appendln("    @NotNull public Builder ${name.decapitalize()}(@NotNull $fieldType ${getVariableName(fieldType, name)}) {")
-                                if (eitherTypes.size < 2) {
-                                    appendln("      this.${name.decapitalize()} = ${getVariableName(fieldType, name)};")
-                                } else {
-                                    appendln("      if (this.${name.decapitalize()} == null) this.${name.decapitalize()} = new ${sink.getEitherFieldType(field)}();")
-                                    appendln("      this.${name.decapitalize()}.set$fieldType(${getVariableName(fieldType, name)});")
+                                method(name.decapitalize(), "Builder") {
+                                    comment = field.comment
+                                    parameters = listOf(Parameter(getVariableName(fieldType, name), fieldType, NOT_NULL))
+
+                                    if (eitherTypes.size < 2) {
+                                        line("this.${name.decapitalize()} = ${getVariableName(fieldType, name)};")
+                                    } else {
+                                        line("if (this.${name.decapitalize()} == null) this.${name.decapitalize()} = new ${sink.getEitherFieldType(field)}();")
+                                        line("this.${name.decapitalize()}.set$fieldType(${getVariableName(fieldType, name)});")
+                                    }
+                                    line("return this;")
                                 }
-                                appendln("      return this;")
-                                appendln("    }")
 
                                 // add overload accepting ThingBuilder<T>
                                 if (!sink.shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && fieldType != "String" && fieldType != "Integer" && fieldType != "java.util.Date" && fieldType != "HasPart") {
-                                    field.comment?.let {
-                                        appendln("    /**")
-                                        appendln("     * $it")
-                                        appendln("     */")
+                                    method(name.decapitalize(), "Builder") {
+                                        comment = field.comment
+                                        parameters = listOf(Parameter(getVariableName(fieldType, name), "$fieldType.Builder", NOT_NULL))
+
+                                        line("return this.${name.decapitalize()}(${getVariableName(fieldType, name)}.build());")
                                     }
-                                    interfaceMethods += "@NotNull Builder ${name.decapitalize()}(@NotNull $fieldType.Builder ${getVariableName(fieldType, name)});"
-                                    appendln("    @NotNull public Builder ${name.decapitalize()}(@NotNull $fieldType.Builder ${getVariableName(fieldType, name)}) {")
-                                    appendln("      return this.${name.decapitalize()}(${getVariableName(fieldType, name)}.build());")
-                                    appendln("    }")
                                 }
                             }
                         }
+
+                        // support for integer id on all builders that have id
+                        if (allFields.any { it.name?.equals("id", true) ?: false }) {
+                            method("id", "Builder") {
+                                parameters = listOf(Parameter("id", "long"))
+                                line("return id(Long.toString(id));")
+                            }
+                        }
+
+                        val fromMapIfStatements = allFields.map {
+                            val varName = it.name!!.decapitalize()
+                            val fieldTypes = sink.getEitherTypes(it)
+                            fieldTypes.map {
+                                "if (\"${varName.let { if (it == "id") "@id" else it }}\".equals(key) && value instanceof $it) { $varName(($it)value); continue; }"
+                            }.joinToString("\n        ")
+                        }
+
+                        method("fromMap") {
+                            //annotations = OVERRIDE
+                            parameters = listOf(Parameter("map", "java.util.Map<String, Object>"))
+
+                            line("for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {")
+                            line("  final String key = entry.getKey();")
+                            line("  Object value = entry.getValue();")
+                            line("  if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }")
+                            line("  " + fromMapIfStatements.joinToString("\n  "))
+                            line("}")
+                        }
+
+                        allFields.forEach {
+                            field(getVariableName(it.name!!), sink.getEitherFieldType(it)!!, prefix = "")
+                        }
                     }
-
-                    // support for integer id on all builders that have id
-                    if (allFields.any { it.name?.equals("id", true) ?: false }) {
-                        appendln("    public Builder id(long id) {")
-                        appendln("      return id(Long.toString(id));")
-                        appendln("    }")
-                    }
-
-                    appendln()
-                    appendln("    @Override public void fromMap(java.util.Map<String, Object> map) {")
-                    appendln("      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {")
-                    appendln("        final String key = entry.getKey();")
-                    appendln("        Object value = entry.getValue();")
-                    appendln("        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }")
-                    appendln("        " + fromMapIfStatements.joinToString("\n        "))
-                    appendln("      }")
-                    appendln("    }")
-
-                    allFields.forEach { appendln("    private ${sink.getEitherFieldType(it)} ${getVariableName(it.name!!)};") }
-                    appendln("  }")
-                    appendln("  public interface Builder extends ThingBuilder<$typeName> {")
-                    appendln("    " + interfaceMethods.joinToString("\n    "))
-                    appendln("  }")
-                    appendln()
                 }
             }
         }

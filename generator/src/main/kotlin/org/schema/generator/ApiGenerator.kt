@@ -1,15 +1,12 @@
 package org.schema.generator
 
-import java.io.File
-
 /**
  * @author Victor Kropp
  */
 
 class ApiGenerator(private val sink: GeneratorSink, private val banner: String? = null) {
     fun generate(p: Package) {
-        // public API
-        with(StringBuilder()) {
+        p.writeClass("SchemaOrg") {
             appendln(banner)
             appendln()
             appendln("package ${p.name};")
@@ -32,7 +29,7 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
                     appendln("   * $it")
                     appendln("   */")
                 }
-                appendln("  public static $typeName.Builder ${typeName.decapitalize()}() { return new $typeName.${typeName}ThingBuilder(); }")
+                appendln("  public static $typeName.Builder ${typeName.decapitalize()}() { return new $typeName.Builder(); }")
             }
             appendln()
             appendln("  public static ThingBuilder getBuilder(@NotNull String type) {")
@@ -42,7 +39,7 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
 
                 val typeName = type.name!!.capitalize()
 
-                appendln("    if (\"$typeName\".equals(type)) { return new $typeName.${typeName}ThingBuilder(); }")
+                appendln("    if (\"$typeName\".equals(type)) { return new $typeName.Builder(); }")
             }
             appendln("    return null;")
             appendln("  }")
@@ -60,11 +57,9 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
             appendln("    return ThingDeserializer.fromMap(objectMapper.convertValue(node, java.util.Map.class));")
             appendln("  }")
             appendln("}")
-
-            File(p.directory, "SchemaOrg.java").writeText(toString())
         }
 
-        File(p.directory, "ThingBuilder.java").writeText("""$banner
+        p.writeClass("ThingBuilder", """$banner
 
 package ${p.name};
 
@@ -72,7 +67,7 @@ public interface ThingBuilder<T> {
   void fromMap(java.util.Map<String,Object> map);
   T build();
 }""")
-        File(p.directory, "JsonLdModule.java").writeText("""$banner
+        p.writeClass("JsonLdModule", """$banner
 
 package ${p.name};
 
@@ -85,7 +80,7 @@ public class JsonLdModule extends SimpleModule {
         addDeserializer(Thing.class, new ThingDeserializer());
     }
 }""")
-        File(p.directory, "ThingDeserializer.java").writeText("""$banner
+        p.writeClass("ThingDeserializer", """$banner
 
 package ${p.name};
 
