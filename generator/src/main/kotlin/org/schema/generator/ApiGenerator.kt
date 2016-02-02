@@ -19,7 +19,7 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
             appendln("public class SchemaOrg {")
 
             for (type in sink.types.values) {
-                if (type.name.isNullOrEmpty() || type.isField || type.isInterface || sink.shouldSkip(type.name!!))
+                if (type.name.isNullOrEmpty() || type.isField || type.isInterface || sink.shouldSkip(type.name!!) || (type.parentType == null && type.name != "Thing" && !type.isInterface))
                     continue
 
                 val typeName = type.name!!.capitalize()
@@ -34,7 +34,7 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
             appendln()
             appendln("  public static ThingBuilder getBuilder(@NotNull String type) {")
             for (type in sink.types.values) {
-                if (type.name.isNullOrEmpty() || type.isField || type.isInterface || sink.shouldSkip(type.name!!))
+                if (type.name.isNullOrEmpty() || type.isField || type.isInterface || sink.shouldSkip(type.name!!) || (type.parentType == null && type.name != "Thing" && !type.isInterface))
                     continue
 
                 val typeName = type.name!!.capitalize()

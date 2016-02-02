@@ -10,7 +10,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 
     fun generate(p: Package) {
         for (type in sink.types.values) {
-            if (type.name.isNullOrEmpty() || (type.isField && !type.isInterface) || sink.shouldSkip(type.name!!))
+            if (type.name.isNullOrEmpty() || (type.isField && !type.isInterface) || sink.shouldSkip(type.name!!) || (type.parentType == null && type.name != "Thing" && !type.isInterface))
                 continue
 
             val typeName = type.name!!.capitalize()
@@ -18,7 +18,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
             p.klass(typeName, type.classOrInterface) {
                 copyright = banner
                 extends = type.parentType?.let { sink.types[it]?.name }
-                implements = type.interfaces.filter { i -> sink.types.values.any { it.name == i && !it.isField } }
+                implements = type.interfaces.filter { i -> sink.types.values.any { it.name == i && !it.isField && it.name != "HasPart" } }
                 imports = listOf("com.fasterxml.jackson.databind.annotation.*", "com.fasterxml.jackson.annotation.*", "org.jetbrains.annotations.NotNull")
                 annotations = if (typeName == "Thing") { listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)") } else null
                 comment = (type.comment ?: "") + (type.source?.let { "Source: $it" } ?: "") + (type.equivalent?.let { "Equivalent class: $it" } ?: "")
@@ -36,7 +36,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                     }
                 }
 
-                val ownFields = type.subTypes.mapNotNull { sink.types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }
+                val ownFields = type.subTypes.mapNotNull { sink.types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" && it.dataTypes[0] != "http://schema.org/HasPart"}
                 ownFields.forEach {
                     val fieldType = sink.getEitherFieldType(it)!!
                     val name = it.name!!.capitalize()
@@ -58,7 +58,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 
                 if (!type.isInterface) {
                     konstructor("protected",
-                            parameters = allFields.filter { it.name != null && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.map { Parameter(it.name!!.decapitalize(), sink.getEitherFieldType(it)!!) },
+                            parameters = allFields.filter { it.name != null && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class"}.map { Parameter(it.name!!.decapitalize(), sink.getEitherFieldType(it)!!) },
                             superParameters = type.parentType?.let { sink.getAllFields(sink.types[it]) }?.map { it.name!!.decapitalize() }
                     )
 
@@ -95,7 +95,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                 }
 
                                 // add overload accepting ThingBuilder<T>
-                                if (!sink.shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && fieldType != "String" && fieldType != "Integer" && fieldType != "java.util.Date" && fieldType != "HasPart") {
+                                if (!sink.shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && fieldType != "String" && fieldType != "Integer" && fieldType != "java.util.Date") {
                                     method(name.decapitalize(), "Builder") {
                                         comment = field.comment
                                         parameters = listOf(Parameter(getVariableName(fieldType, name), "$fieldType.Builder", NOT_NULL))
