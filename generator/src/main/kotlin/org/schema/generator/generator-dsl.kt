@@ -91,9 +91,6 @@ class Klass(val sourceDirectory: File, val namespace: String?, val name: String,
             text.appendln(");")
         }
 
-        parameters?.filter { superParameters?.contains(it.name) == false }?.forEach {
-            text.appendln("    my${it.name.capitalize()} = ${it.name.decapitalize()};")
-        }
         fields.forEach {
             text.appendln("    ${it.prefix}${it.name} = ${it.name.decapitalize()};")
         }
