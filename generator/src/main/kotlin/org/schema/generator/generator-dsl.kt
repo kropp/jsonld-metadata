@@ -45,6 +45,10 @@ fun sources(directory: File, body: SourcesRoot.() -> Unit) {
     SourcesRoot(directory).body()
 }
 
+fun sources(directory: String, body: SourcesRoot.() -> Unit) {
+    SourcesRoot(File(directory)).body()
+}
+
 fun SourcesRoot.pakage(name: String, body: Package.() -> Unit) {
     Package(this.directory, name).body()
 }
@@ -65,8 +69,8 @@ class Klass(val sourceDirectory: File, val namespace: String?, val name: String,
 
     val fields = arrayListOf<Field>()
 
-    fun field(name: String, type: String, prefix: String = "my", body: Field.() -> Unit = {}) {
-        val field = Field(this, name.capitalize(), type, prefix)
+    fun field(name: String, type: String, access: String = "private", prefix: String = "my", body: Field.() -> Unit = {}) {
+        val field = Field(this, name.capitalize(), type, access, prefix)
         fields += field
 
         field.body()
@@ -196,7 +200,7 @@ fun Klass.klass(name: String, body: Klass.() -> Unit) {
     }
 }
 
-class Field(val c: Klass, val name: String, val type: String, val prefix: String) {
+class Field(val c: Klass, val name: String, val type: String, val access: String, val prefix: String) {
     fun getter(annotations: Collection<String>? = null, comment: String? = null) {
         comment?.let {
             c.text.appendln("  /**")
@@ -224,7 +228,7 @@ class Field(val c: Klass, val name: String, val type: String, val prefix: String
         return typeName.decapitalize()
     }
     val fieldDeclaration: String
-        get() = "private $type $prefix" + (if (prefix.isEmpty()) name.decapitalize() else name)
+        get() = "$access $type $prefix" + (if (prefix.isEmpty()) name.decapitalize() else name)
 }
 
 class Parameter(val name: String, val type: String, val annotations: Collection<String>? = null)
@@ -234,8 +238,13 @@ class Method(val c: Klass, val name: String, val type: String): Closeable {
     var parameters: Collection<Parameter>? = null
     var comment: String? = null
     var throws: String? = null
+    var access: String = "public"
 
     private val body = StringBuilder()
+
+    fun parameters(vararg param: Pair<String, String>) {
+        parameters = param.map { Parameter(it.first, it.second) }
+    }
 
     fun line(line: String) {
         body.appendln("    " + line)
@@ -255,7 +264,7 @@ class Method(val c: Klass, val name: String, val type: String): Closeable {
             }
             c.text.append("  ")
         }
-        c.text.append("public $type $name(")
+        c.text.append("$access $type $name(")
         c.text.append(parameters?.map { (it.annotations?.joinToString(" ")?.plus(" ") ?: "") + "${it.type} ${it.name}" }?.joinToString(", ") ?: "")
         c.text.append(")")
         throws?.let { c.text.append(" throws $it") }

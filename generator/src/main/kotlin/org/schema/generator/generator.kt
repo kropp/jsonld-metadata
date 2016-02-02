@@ -55,10 +55,7 @@ fun main(args: Array<String>) {
     }
     sink.postProcess()
 
-    val sourceDirectory = File("src/main/java")
-    val testDirectory = File("test/main/java")
-
-    sources(sourceDirectory) {
+    sources("src/main/java") {
         pakage(NAMESPACE) {
             println("Generating classes")
             ClassesGenerator(sink, BANNER).generate(this)
@@ -71,7 +68,7 @@ fun main(args: Array<String>) {
         }
     }
 
-    sources(testDirectory) {
+    sources("test/main/java") {
         pakage(NAMESPACE) {
             println("Generating tests")
             TestsGenerator(sink, BANNER).generate(this)
