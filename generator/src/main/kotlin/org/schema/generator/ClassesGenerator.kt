@@ -36,22 +36,21 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                     }
                 }
 
-                type.subTypes.mapNotNull { sink.types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }.forEach {
-                    if (it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class") {
-                        val fieldType = sink.getEitherFieldType(it)!!
-                        val name = it.name!!.capitalize()
+                val ownFields = type.subTypes.mapNotNull { sink.types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" }
+                ownFields.forEach {
+                    val fieldType = sink.getEitherFieldType(it)!!
+                    val name = it.name!!.capitalize()
 
-                        val getterAnnotations = arrayListOf<String>()
-                        if (fieldType == "java.util.Date") {
-                            getterAnnotations += "@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")"
-                        }
-                        if (name == "Id") {
-                            getterAnnotations += "@JsonProperty(\"@id\")"
-                        }
+                    val getterAnnotations = arrayListOf<String>()
+                    if (fieldType == "java.util.Date") {
+                        getterAnnotations += "@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")"
+                    }
+                    if (name == "Id") {
+                        getterAnnotations += "@JsonProperty(\"@id\")"
+                    }
 
-                        field(name, fieldType) {
-                            getter(getterAnnotations, comment = it.comment)
-                        }
+                    field(name, fieldType) {
+                        getter(getterAnnotations, comment = it.comment)
                     }
                 }
 
@@ -67,7 +66,10 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 
                     klass("Builder") {
                         comment = "Builder for {@link $typeName}"
-                        implements = listOf("ThingBuilder<$typeName>")
+                        extends = type.parentType?.let { sink.types[it]?.name?.plus(".Builder") }
+                        if (type.parentType == null) {
+                            implements = listOf("ThingBuilder<$typeName>")
+                        }
 
                         method("build", typeName) {
                             line("return new $typeName(" + allFields.mapNotNull { it.name?.decapitalize() }.joinToString(", ") + ");")
@@ -108,34 +110,45 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                         // support for integer id on all builders that have id
                         if (allFields.any { it.name?.equals("id", true) ?: false }) {
                             method("id", "Builder") {
-                                parameters = listOf(Parameter("id", "long"))
+                                parameters("id" to "long")
                                 line("return id(Long.toString(id));")
                             }
                         }
 
-                        val fromMapIfStatements = allFields.flatMap {
-                            val varName = it.name!!.decapitalize()
-                            val fieldTypes = sink.getEitherTypes(it)
+                        if (type.parentType == null) {
+                            method("fromMap") {
+                                parameters("map" to "java.util.Map<String, Object>")
 
-                            fieldTypes.map {
-                                "if (\"${varName.let { if (it == "id") "@id" else it }}\".equals(key) && value instanceof $it) { $varName(($it)value); continue; }"
+                                line("for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {")
+                                line("  final String key = entry.getKey();")
+                                line("  Object value = entry.getValue();")
+                                line("  if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }")
+                                line("  fromMap(key, value);")
+                                line("}")
                             }
                         }
 
                         method("fromMap") {
-                            annotations = OVERRIDE
-                            parameters = listOf(Parameter("map", "java.util.Map<String, Object>"))
+                            access = "protected"
+                            parameters("key" to "String", "value" to "Object")
 
-                            line("for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {")
-                            line("  final String key = entry.getKey();")
-                            line("  Object value = entry.getValue();")
-                            line("  if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }")
-                            lines(fromMapIfStatements.map { "  " + it })
-                            line("}")
+                            lines(ownFields.flatMap {
+                                val varName = it.name!!.decapitalize()
+                                val fieldTypes = sink.getEitherTypes(it)
+
+                                fieldTypes.map {
+                                    "if (\"${varName.let { if (it == "id") "@id" else it }}\".equals(key) && value instanceof $it) { $varName(($it)value); return; }"
+                                }
+                            })
+
+                            if (type.parentType != null) {
+                                annotations = OVERRIDE
+                                line("super.fromMap(key, value);")
+                            }
                         }
 
-                        allFields.forEach {
-                            field(getVariableName(it.name!!), sink.getEitherFieldType(it)!!, prefix = "")
+                        ownFields.forEach {
+                            field(getVariableName(it.name!!), sink.getEitherFieldType(it)!!, access = "protected", prefix = "")
                         }
                     }
                 }
