@@ -2826,6 +2826,10 @@ public class SchemaOrg {
    */
   public static DaySpa.Builder daySpa() { return new DaySpa.Builder(); }
   /**
+   * Specific revision of a software code
+   */
+  public static SourceCodeRevision.Builder sourceCodeRevision() { return new SourceCodeRevision.Builder(); }
+  /**
    * A type of medical procedure that involves invasive surgical techniques.
    */
   public static SurgicalProcedure.Builder surgicalProcedure() { return new SurgicalProcedure.Builder(); }
@@ -4276,6 +4280,7 @@ public class SchemaOrg {
     if ("AutoRepair".equals(type)) { return new AutoRepair.Builder(); }
     if ("Answer".equals(type)) { return new Answer.Builder(); }
     if ("DaySpa".equals(type)) { return new DaySpa.Builder(); }
+    if ("SourceCodeRevision".equals(type)) { return new SourceCodeRevision.Builder(); }
     if ("SurgicalProcedure".equals(type)) { return new SurgicalProcedure.Builder(); }
     if ("Drug".equals(type)) { return new Drug.Builder(); }
     if ("ReplaceAction".equals(type)) { return new ReplaceAction.Builder(); }

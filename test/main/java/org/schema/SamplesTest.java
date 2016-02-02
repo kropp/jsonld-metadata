@@ -43,4 +43,27 @@ public class SamplesTest {
         assertEquals("Hooray!", article.getComment().getText());
         assertEquals("Max Mustermann", article.getComment().getAuthor().getPerson().getName());
     }
+
+    @Test
+    public void softwareBuildTest() {
+        final SoftwareApplicationBuild build = softwareApplicationBuild()
+                .id("1")
+                .name("Build")
+                .url("http://example.com/build/1")
+                .description("My first build")
+                .totalTestsCount(100)
+                .successTestsCount(96)
+                .ignoredTestsCount(3)
+                .failedTestsCount(1)
+                .newlyFailedTestsCount(1)
+                .sourceCodeRevision(sourceCodeRevision()
+                        .id("deadbeef").branch("master").name("commit message")
+                        .author(person().id("userId").name("Full Name"))
+                        .contributor(person().id("commiterId").name("Commiter Name")))
+                .potentialAction(viewAction()
+                        .name("View")
+                        .url("http://example.com/build/1/details")
+                        .build())
+                .build();
+    }
 }

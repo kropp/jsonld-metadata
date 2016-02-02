@@ -23,213 +23,60 @@ import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Specific build of a software applicaton
+ * Specific revision of a software code
  */
-public class SoftwareApplicationBuild extends SoftwareApplication {
+public class SourceCodeRevision extends SoftwareApplication {
   /**
-   * Software application product this build belongs to.
+   * Revision tag.
    */
-  public SoftwareApplication getSoftwareApplication() { return mySoftwareApplication; }
+  public String getTag() { return myTag; }
   /**
-   * Project this build belongs to.
+   * Revision branch.
    */
-  public Project getProject() { return myProject; }
-  /**
-   * Build status.
-   */
-  public String getStatus() { return myStatus; }
-  /**
-   * Build status message.
-   */
-  public String getMessage() { return myMessage; }
-  /**
-   * Total tests run in build.
-   */
-  public Integer getTotalTestsCount() { return myTotalTestsCount; }
-  /**
-   * Number of tests successfully run in build.
-   */
-  public Integer getSuccessTestsCount() { return mySuccessTestsCount; }
-  /**
-   * Number of tests failed in build.
-   */
-  public Integer getFailedTestsCount() { return myFailedTestsCount; }
-  /**
-   * Number of new tests failed in build.
-   */
-  public Integer getNewlyFailedTestsCount() { return myNewlyFailedTestsCount; }
-  /**
-   * Number of tests ignored in build.
-   */
-  public Integer getIgnoredTestsCount() { return myIgnoredTestsCount; }
-  /**
-   * Number of tests fixed in build.
-   */
-  public Integer getFixedTestsCount() { return myFixedTestsCount; }
-  /**
-   * Source code revision used in build.
-   */
-  public SourceCodeRevision getSourceCodeRevision() { return mySourceCodeRevision; }
-  protected SoftwareApplicationBuild(SoftwareApplication softwareApplication, Project project, String status, String message, Integer totalTestsCount, Integer successTestsCount, Integer failedTestsCount, Integer newlyFailedTestsCount, Integer ignoredTestsCount, Integer fixedTestsCount, SourceCodeRevision sourceCodeRevision, String applicationCategory, String applicationSubCategory, String applicationSuite, String countriesNotSupported, String countriesSupported, String availableOnDevice, String downloadUrl, String featureList, String fileFormat, Integer fileSize, String installUrl, String memoryRequirements, String operatingSystem, String permissions, String processorRequirements, String releaseNotes, String softwareRequirements, ImageObjectOrString screenshot, String softwareVersion, String storageRequirements, SoftwareApplication softwareAddOn, CreativeWork softwareHelp, String schemaVersion, Thing about, String accessibilityAPI, String accessibilityControl, String accessibilityFeature, String accessibilityHazard, Person accountablePerson, AggregateRating aggregateRating, String alternativeHeadline, MediaObject associatedMedia, Audience audience, AudioObject audio, OrganizationOrPerson author, String award, CreativeWorkOrString citation, Comment comment, Place contentLocation, String contentRating, OrganizationOrPerson contributor, OrganizationOrPerson copyrightHolder, Number copyrightYear, OrganizationOrPerson creator, java.util.Date dateCreated, java.util.Date dateModified, java.util.Date datePublished, String discussionUrl, Person editor, AlignmentObject educationalAlignment, String educationalUse, MediaObject encoding, String genre, String headline, LanguageOrString inLanguage, String interactivityType, String isBasedOnUrl, Boolean isFamilyFriendly, String keywords, CreativeWorkOrString license, String learningResourceType, Thing mainEntity, Thing mentions, Offer offers, OrganizationOrPerson producer, PublicationEvent publication, Organization publisher, String publishingPrinciples, Event recordedAt, Review review, Organization sourceOrganization, String text, String thumbnailUrl, Duration timeRequired, String typicalAgeRange, Number version, VideoObject video, OrganizationOrPerson provider, Integer commentCount, HasPart hasPart, CreativeWork workExample, CreativeWork exampleOfWork, Person character, OrganizationOrPerson translator, PublicationEvent releasedEvent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
+  public String getBranch() { return myBranch; }
+  protected SourceCodeRevision(String tag, String branch, String applicationCategory, String applicationSubCategory, String applicationSuite, String countriesNotSupported, String countriesSupported, String availableOnDevice, String downloadUrl, String featureList, String fileFormat, Integer fileSize, String installUrl, String memoryRequirements, String operatingSystem, String permissions, String processorRequirements, String releaseNotes, String softwareRequirements, ImageObjectOrString screenshot, String softwareVersion, String storageRequirements, SoftwareApplication softwareAddOn, CreativeWork softwareHelp, String schemaVersion, Thing about, String accessibilityAPI, String accessibilityControl, String accessibilityFeature, String accessibilityHazard, Person accountablePerson, AggregateRating aggregateRating, String alternativeHeadline, MediaObject associatedMedia, Audience audience, AudioObject audio, OrganizationOrPerson author, String award, CreativeWorkOrString citation, Comment comment, Place contentLocation, String contentRating, OrganizationOrPerson contributor, OrganizationOrPerson copyrightHolder, Number copyrightYear, OrganizationOrPerson creator, java.util.Date dateCreated, java.util.Date dateModified, java.util.Date datePublished, String discussionUrl, Person editor, AlignmentObject educationalAlignment, String educationalUse, MediaObject encoding, String genre, String headline, LanguageOrString inLanguage, String interactivityType, String isBasedOnUrl, Boolean isFamilyFriendly, String keywords, CreativeWorkOrString license, String learningResourceType, Thing mainEntity, Thing mentions, Offer offers, OrganizationOrPerson producer, PublicationEvent publication, Organization publisher, String publishingPrinciples, Event recordedAt, Review review, Organization sourceOrganization, String text, String thumbnailUrl, Duration timeRequired, String typicalAgeRange, Number version, VideoObject video, OrganizationOrPerson provider, Integer commentCount, HasPart hasPart, CreativeWork workExample, CreativeWork exampleOfWork, Person character, OrganizationOrPerson translator, PublicationEvent releasedEvent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
     super(applicationCategory, applicationSubCategory, applicationSuite, countriesNotSupported, countriesSupported, availableOnDevice, downloadUrl, featureList, fileFormat, fileSize, installUrl, memoryRequirements, operatingSystem, permissions, processorRequirements, releaseNotes, softwareRequirements, screenshot, softwareVersion, storageRequirements, softwareAddOn, softwareHelp, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    mySoftwareApplication = softwareApplication;
-    myProject = project;
-    myStatus = status;
-    myMessage = message;
-    myTotalTestsCount = totalTestsCount;
-    mySuccessTestsCount = successTestsCount;
-    myFailedTestsCount = failedTestsCount;
-    myNewlyFailedTestsCount = newlyFailedTestsCount;
-    myIgnoredTestsCount = ignoredTestsCount;
-    myFixedTestsCount = fixedTestsCount;
-    mySourceCodeRevision = sourceCodeRevision;
-    mySoftwareApplication = softwareApplication;
-    myProject = project;
-    myStatus = status;
-    myMessage = message;
-    myTotalTestsCount = totalTestsCount;
-    mySuccessTestsCount = successTestsCount;
-    myFailedTestsCount = failedTestsCount;
-    myNewlyFailedTestsCount = newlyFailedTestsCount;
-    myIgnoredTestsCount = ignoredTestsCount;
-    myFixedTestsCount = fixedTestsCount;
-    mySourceCodeRevision = sourceCodeRevision;
+    myTag = tag;
+    myBranch = branch;
+    myTag = tag;
+    myBranch = branch;
   }
   @Override public int hashCode() {
     int result = super.hashCode();
-    result = 31 * result + (mySoftwareApplication != null ? mySoftwareApplication.hashCode() : 0);
-    result = 31 * result + (myProject != null ? myProject.hashCode() : 0);
-    result = 31 * result + (myStatus != null ? myStatus.hashCode() : 0);
-    result = 31 * result + (myMessage != null ? myMessage.hashCode() : 0);
-    result = 31 * result + (myTotalTestsCount != null ? myTotalTestsCount.hashCode() : 0);
-    result = 31 * result + (mySuccessTestsCount != null ? mySuccessTestsCount.hashCode() : 0);
-    result = 31 * result + (myFailedTestsCount != null ? myFailedTestsCount.hashCode() : 0);
-    result = 31 * result + (myNewlyFailedTestsCount != null ? myNewlyFailedTestsCount.hashCode() : 0);
-    result = 31 * result + (myIgnoredTestsCount != null ? myIgnoredTestsCount.hashCode() : 0);
-    result = 31 * result + (myFixedTestsCount != null ? myFixedTestsCount.hashCode() : 0);
-    result = 31 * result + (mySourceCodeRevision != null ? mySourceCodeRevision.hashCode() : 0);
+    result = 31 * result + (myTag != null ? myTag.hashCode() : 0);
+    result = 31 * result + (myBranch != null ? myBranch.hashCode() : 0);
     return result;
   }
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    SoftwareApplicationBuild softwareApplicationBuild = (SoftwareApplicationBuild) o;
+    SourceCodeRevision sourceCodeRevision = (SourceCodeRevision) o;
     if (!super.equals(o)) return false;
-    if (mySoftwareApplication != null ? !mySoftwareApplication.equals(softwareApplicationBuild.mySoftwareApplication) : softwareApplicationBuild.mySoftwareApplication != null) return false;
-    if (myProject != null ? !myProject.equals(softwareApplicationBuild.myProject) : softwareApplicationBuild.myProject != null) return false;
-    if (myStatus != null ? !myStatus.equals(softwareApplicationBuild.myStatus) : softwareApplicationBuild.myStatus != null) return false;
-    if (myMessage != null ? !myMessage.equals(softwareApplicationBuild.myMessage) : softwareApplicationBuild.myMessage != null) return false;
-    if (myTotalTestsCount != null ? !myTotalTestsCount.equals(softwareApplicationBuild.myTotalTestsCount) : softwareApplicationBuild.myTotalTestsCount != null) return false;
-    if (mySuccessTestsCount != null ? !mySuccessTestsCount.equals(softwareApplicationBuild.mySuccessTestsCount) : softwareApplicationBuild.mySuccessTestsCount != null) return false;
-    if (myFailedTestsCount != null ? !myFailedTestsCount.equals(softwareApplicationBuild.myFailedTestsCount) : softwareApplicationBuild.myFailedTestsCount != null) return false;
-    if (myNewlyFailedTestsCount != null ? !myNewlyFailedTestsCount.equals(softwareApplicationBuild.myNewlyFailedTestsCount) : softwareApplicationBuild.myNewlyFailedTestsCount != null) return false;
-    if (myIgnoredTestsCount != null ? !myIgnoredTestsCount.equals(softwareApplicationBuild.myIgnoredTestsCount) : softwareApplicationBuild.myIgnoredTestsCount != null) return false;
-    if (myFixedTestsCount != null ? !myFixedTestsCount.equals(softwareApplicationBuild.myFixedTestsCount) : softwareApplicationBuild.myFixedTestsCount != null) return false;
-    if (mySourceCodeRevision != null ? !mySourceCodeRevision.equals(softwareApplicationBuild.mySourceCodeRevision) : softwareApplicationBuild.mySourceCodeRevision != null) return false;
+    if (myTag != null ? !myTag.equals(sourceCodeRevision.myTag) : sourceCodeRevision.myTag != null) return false;
+    if (myBranch != null ? !myBranch.equals(sourceCodeRevision.myBranch) : sourceCodeRevision.myBranch != null) return false;
     return true;
   }
   
   /**
-   * Builder for {@link SoftwareApplicationBuild}
+   * Builder for {@link SourceCodeRevision}
    */
-  public static class Builder implements ThingBuilder<SoftwareApplicationBuild> {
-    public SoftwareApplicationBuild build() {
-      return new SoftwareApplicationBuild(softwareApplication, project, status, message, totalTestsCount, successTestsCount, failedTestsCount, newlyFailedTestsCount, ignoredTestsCount, fixedTestsCount, sourceCodeRevision, applicationCategory, applicationSubCategory, applicationSuite, countriesNotSupported, countriesSupported, availableOnDevice, downloadUrl, featureList, fileFormat, fileSize, installUrl, memoryRequirements, operatingSystem, permissions, processorRequirements, releaseNotes, softwareRequirements, screenshot, softwareVersion, storageRequirements, softwareAddOn, softwareHelp, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+  public static class Builder implements ThingBuilder<SourceCodeRevision> {
+    public SourceCodeRevision build() {
+      return new SourceCodeRevision(tag, branch, applicationCategory, applicationSubCategory, applicationSuite, countriesNotSupported, countriesSupported, availableOnDevice, downloadUrl, featureList, fileFormat, fileSize, installUrl, memoryRequirements, operatingSystem, permissions, processorRequirements, releaseNotes, softwareRequirements, screenshot, softwareVersion, storageRequirements, softwareAddOn, softwareHelp, schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
     }
     /**
-     * Software application product this build belongs to.
+     * Revision tag.
      */
-    @NotNull public Builder softwareApplication(@NotNull SoftwareApplication softwareApplication) {
-      this.softwareApplication = softwareApplication;
+    @NotNull public Builder tag(@NotNull String tag) {
+      this.tag = tag;
       return this;
     }
     /**
-     * Software application product this build belongs to.
+     * Revision branch.
      */
-    @NotNull public Builder softwareApplication(@NotNull SoftwareApplication.Builder softwareApplication) {
-      return this.softwareApplication(softwareApplication.build());
-    }
-    /**
-     * Project this build belongs to.
-     */
-    @NotNull public Builder project(@NotNull Project project) {
-      this.project = project;
+    @NotNull public Builder branch(@NotNull String branch) {
+      this.branch = branch;
       return this;
-    }
-    /**
-     * Project this build belongs to.
-     */
-    @NotNull public Builder project(@NotNull Project.Builder project) {
-      return this.project(project.build());
-    }
-    /**
-     * Build status.
-     */
-    @NotNull public Builder status(@NotNull String status) {
-      this.status = status;
-      return this;
-    }
-    /**
-     * Build status message.
-     */
-    @NotNull public Builder message(@NotNull String message) {
-      this.message = message;
-      return this;
-    }
-    /**
-     * Total tests run in build.
-     */
-    @NotNull public Builder totalTestsCount(@NotNull Integer integer) {
-      this.totalTestsCount = integer;
-      return this;
-    }
-    /**
-     * Number of tests successfully run in build.
-     */
-    @NotNull public Builder successTestsCount(@NotNull Integer integer) {
-      this.successTestsCount = integer;
-      return this;
-    }
-    /**
-     * Number of tests failed in build.
-     */
-    @NotNull public Builder failedTestsCount(@NotNull Integer integer) {
-      this.failedTestsCount = integer;
-      return this;
-    }
-    /**
-     * Number of new tests failed in build.
-     */
-    @NotNull public Builder newlyFailedTestsCount(@NotNull Integer integer) {
-      this.newlyFailedTestsCount = integer;
-      return this;
-    }
-    /**
-     * Number of tests ignored in build.
-     */
-    @NotNull public Builder ignoredTestsCount(@NotNull Integer integer) {
-      this.ignoredTestsCount = integer;
-      return this;
-    }
-    /**
-     * Number of tests fixed in build.
-     */
-    @NotNull public Builder fixedTestsCount(@NotNull Integer integer) {
-      this.fixedTestsCount = integer;
-      return this;
-    }
-    /**
-     * Source code revision used in build.
-     */
-    @NotNull public Builder sourceCodeRevision(@NotNull SourceCodeRevision sourceCodeRevision) {
-      this.sourceCodeRevision = sourceCodeRevision;
-      return this;
-    }
-    /**
-     * Source code revision used in build.
-     */
-    @NotNull public Builder sourceCodeRevision(@NotNull SourceCodeRevision.Builder sourceCodeRevision) {
-      return this.sourceCodeRevision(sourceCodeRevision.build());
     }
     /**
      * Type of software application, e.g. "Game, Multimedia".
@@ -1431,17 +1278,8 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
         final String key = entry.getKey();
         Object value = entry.getValue();
         if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("softwareApplication".equals(key) && value instanceof SoftwareApplication) { softwareApplication((SoftwareApplication)value); continue; }
-        if ("project".equals(key) && value instanceof Project) { project((Project)value); continue; }
-        if ("status".equals(key) && value instanceof String) { status((String)value); continue; }
-        if ("message".equals(key) && value instanceof String) { message((String)value); continue; }
-        if ("totalTestsCount".equals(key) && value instanceof Integer) { totalTestsCount((Integer)value); continue; }
-        if ("successTestsCount".equals(key) && value instanceof Integer) { successTestsCount((Integer)value); continue; }
-        if ("failedTestsCount".equals(key) && value instanceof Integer) { failedTestsCount((Integer)value); continue; }
-        if ("newlyFailedTestsCount".equals(key) && value instanceof Integer) { newlyFailedTestsCount((Integer)value); continue; }
-        if ("ignoredTestsCount".equals(key) && value instanceof Integer) { ignoredTestsCount((Integer)value); continue; }
-        if ("fixedTestsCount".equals(key) && value instanceof Integer) { fixedTestsCount((Integer)value); continue; }
-        if ("sourceCodeRevision".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); continue; }
+        if ("tag".equals(key) && value instanceof String) { tag((String)value); continue; }
+        if ("branch".equals(key) && value instanceof String) { branch((String)value); continue; }
         if ("applicationCategory".equals(key) && value instanceof String) { applicationCategory((String)value); continue; }
         if ("applicationSubCategory".equals(key) && value instanceof String) { applicationSubCategory((String)value); continue; }
         if ("applicationSuite".equals(key) && value instanceof String) { applicationSuite((String)value); continue; }
@@ -1558,17 +1396,8 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
         if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
       }
     }
-    private SoftwareApplication softwareApplication;
-    private Project project;
-    private String status;
-    private String message;
-    private Integer totalTestsCount;
-    private Integer successTestsCount;
-    private Integer failedTestsCount;
-    private Integer newlyFailedTestsCount;
-    private Integer ignoredTestsCount;
-    private Integer fixedTestsCount;
-    private SourceCodeRevision sourceCodeRevision;
+    private String tag;
+    private String branch;
     private String applicationCategory;
     private String applicationSubCategory;
     private String applicationSuite;
@@ -1665,15 +1494,6 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
     private String id;
   }
   
-  private SoftwareApplication mySoftwareApplication;
-  private Project myProject;
-  private String myStatus;
-  private String myMessage;
-  private Integer myTotalTestsCount;
-  private Integer mySuccessTestsCount;
-  private Integer myFailedTestsCount;
-  private Integer myNewlyFailedTestsCount;
-  private Integer myIgnoredTestsCount;
-  private Integer myFixedTestsCount;
-  private SourceCodeRevision mySourceCodeRevision;
+  private String myTag;
+  private String myBranch;
 }

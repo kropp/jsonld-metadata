@@ -23,15 +23,21 @@
     <hr />
 
     <div typeof="rdfs:Class" resource="http://jetbrains.org/schema/Project">
-      <span class="h" property="rdfs:label">Project</span>
-      <span property="rdfs:comment">Project</span>
-       <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/Thing">Thing</a></span>
+        <span class="h" property="rdfs:label">Project</span>
+        <span property="rdfs:comment">Project</span>
+        <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/Thing">Thing</a></span>
     </div>
 
     <div typeof="rdfs:Class" resource="http://jetbrains.org/schema/SoftwareApplicationBuild">
-      <span class="h" property="rdfs:label">SoftwareApplicationBuild</span>
-      <span property="rdfs:comment">Specific build of a software applicaton</span>
-       <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/SoftwareApplication">SoftwareApplication</a></span>
+        <span class="h" property="rdfs:label">SoftwareApplicationBuild</span>
+        <span property="rdfs:comment">Specific build of a software applicaton</span>
+        <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/SoftwareApplication">SoftwareApplication</a></span>
+    </div>
+
+    <div typeof="rdfs:Class" resource="http://jetbrains.org/schema/SourceCodeRevision">
+      <span class="h" property="rdfs:label">SourceCodeRevision</span>
+      <span property="rdfs:comment">Specific revision of a software code</span>
+       <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/SoftwareApplication">SoftwareSourceCode</a></span>
     </div>
 
     <div typeof="rdf:Property" resource="http://schema.org/softwareApplication">
@@ -48,6 +54,82 @@
         <span>Range: <a property="http://schema.org/rangeIncludes" href="http://jetbrains.org/schema/Project">Project</a></span>
     </div>
 
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/status">
+        <span class="h" property="rdfs:label">status</span>
+        <span property="rdfs:comment">Build status.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/message">
+        <span class="h" property="rdfs:label">message</span>
+        <span property="rdfs:comment">Build status message.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/totalTestsCount">
+        <span class="h" property="rdfs:label">totalTestsCount</span>
+        <span property="rdfs:comment">Total tests run in build.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Integer">Integer</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/successTestsCount">
+        <span class="h" property="rdfs:label">successTestsCount</span>
+        <span property="rdfs:comment">Number of tests successfully run in build.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Integer">Integer</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/failedTestsCount">
+        <span class="h" property="rdfs:label">failedTestsCount</span>
+        <span property="rdfs:comment">Number of tests failed in build.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Integer">Integer</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/newlyFailedTestsCount">
+        <span class="h" property="rdfs:label">newlyFailedTestsCount</span>
+        <span property="rdfs:comment">Number of new tests failed in build.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Integer">Integer</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/ignoredTestsCount">
+        <span class="h" property="rdfs:label">ignoredTestsCount</span>
+        <span property="rdfs:comment">Number of tests ignored in build.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Integer">Integer</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/fixedTestsCount">
+        <span class="h" property="rdfs:label">fixedTestsCount</span>
+        <span property="rdfs:comment">Number of tests fixed in build.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Integer">Integer</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/sourceCodeRevision">
+        <span class="h" property="rdfs:label">sourceCodeRevision</span>
+        <span property="rdfs:comment">Source code revision used in build.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://jetbrains.org/schema/SourceCodeRevision">SourceCodeRevision</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/tag">
+        <span class="h" property="rdfs:label">tag</span>
+        <span property="rdfs:comment">Revision tag.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SourceCodeRevision">SourceCodeRevision</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/branch">
+        <span class="h" property="rdfs:label">branch</span>
+        <span property="rdfs:comment">Revision branch.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SourceCodeRevision">SourceCodeRevision</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+    </div>
 </body>
 
 </html>
