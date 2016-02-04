@@ -37,6 +37,17 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                     field("data", "java.util.Map<String,Object>", "protected") {
                         getter(listOf("@JsonAnyGetter"))
                     }
+
+                    method("getValue", "Object") {
+                        access = "protected"
+                        parameters("key" to "String")
+
+                        line("final Object current = myData.get(key);")
+                        line("if (current instanceof Collection) {")
+                        line("  return ((Collection) current).iterator().next();")
+                        line("}")
+                        line("return current;")
+                    }
                 }
 
                 val ownFields = type.subTypes.mapNotNull { sink.types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" && it.dataTypes[0] != "http://schema.org/HasPart"}
@@ -68,7 +79,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                             comment = it.comment
                             annotations = getterAnnotations
 
-                            line("return ($fieldType) myData.get(\"${name.decapitalize()}\");")
+                            line("return ($fieldType) getValue(\"${name.decapitalize()}\");")
                         }
                     }
                 }
@@ -98,6 +109,24 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                             field("data", "HashMap<String,Object>", "protected") {
                                 initial = "new HashMap<String,Object>()"
                             }
+
+                            method("putValue") {
+                                parameters("key" to "String", "value" to "Object")
+                                line("if (myData.containsKey(key)) {")
+                                line("  final Object current = myData.get(key);")
+                                line("  final Collection list;")
+                                line("  if (current instanceof Collection) {")
+                                line("    list = (Collection) current;")
+                                line("  } else {")
+                                line("    list = new ArrayList<Object>();")
+                                line("    list.add(current);")
+                                line("    myData.put(key, list);")
+                                line("  }")
+                                line("  list.add(value);")
+                                line("} else {")
+                                line("  myData.put(key, value);")
+                                line("}")
+                            }
                         }
 
                         method("build", typeName) {
@@ -115,10 +144,11 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                     parameters = listOf(Parameter(getVariableName(fieldType, name), fieldType, NOT_NULL))
                                     annotations = NOT_NULL
 
+                                    line("putValue(\"${name.decapitalize()}\", ${getVariableName(fieldType, name)});")
 /*
                                     if (eitherTypes.size < 2) {
 */
-                                        line("myData.put(\"${name.decapitalize()}\", ${getVariableName(fieldType, name)});")
+                                        //line("myData.put(\"${name.decapitalize()}\", ${getVariableName(fieldType, name)});")
 /*
                                     } else {
                                         line("if (this.${name.decapitalize()} == null) this.${name.decapitalize()} = new ${sink.getEitherFieldType(field)}();")
