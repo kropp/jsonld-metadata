@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'maven'
     id 'com.github.kropp.teamcity-gitversion' version '0.1.8'
+    id 'com.jfrog.bintray' version '1.6'
 }
 
 group 'com.github.kropp'
@@ -26,6 +27,23 @@ sourceSets {
 }
 
 jar {}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    pkg {
+        repo = 'org.schema'
+        name = 'jsonld-metadata'
+        userOrg = 'bintray_user'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'git@github.com:kropp/jsonld-metadata.git'
+        version {
+            name = project.version
+            desc = 'JSON-LD Metadata ' + project.version
+            vcsTag = project.version
+        }
+    }
+}
 
 dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.5.+'
