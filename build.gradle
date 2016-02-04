@@ -34,7 +34,7 @@ bintray {
     pkg {
         repo = 'org.schema'
         name = 'jsonld-metadata'
-        userOrg = 'bintray_user'
+        userOrg = 'kropp'
         licenses = ['Apache-2.0']
         vcsUrl = 'git@github.com:kropp/jsonld-metadata.git'
         version {
