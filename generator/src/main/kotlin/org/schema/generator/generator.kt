@@ -60,9 +60,6 @@ fun main(args: Array<String>) {
             println("Generating classes")
             ClassesGenerator(sink, BANNER).generate(this)
 
-            println("Generating 'either' types")
-            EitherTypesGenerator(sink, BANNER).generate(this)
-
             println("Generating API")
             ApiGenerator(sink, BANNER).generate(this)
         }

@@ -53,39 +53,21 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                 val ownFields = type.subTypes.mapNotNull { sink.types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" && it.dataTypes[0] != "http://schema.org/HasPart"}
                 ownFields.forEach {
                     val fieldTypes = sink.getEitherTypes(it)
-                    val fieldType = if (fieldTypes.size == 1) fieldTypes.first() else "Object"
                     val name = it.name!!.capitalize()
 
-                    val getterAnnotations: List<String> //= arrayListOf<String>()
-/*
-                    if (fieldType == "java.util.Date") {
-                        getterAnnotations = listOf=("@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")"
-                    }
-*/
-                    if (name == "Id") {
-                        getterAnnotations = listOf("@JsonProperty(\"@id\")")
-                    } else {
-                        getterAnnotations = listOf("@JsonIgnore")
-                    }
-
-/*
-                    field(name, fieldType) {
-                        getter(getterAnnotations, comment = it.comment)
-                    }
-*/
                     fieldTypes.forEach { fieldType ->
                         val methodName = if (fieldTypes.size == 1) "get$name" else "get$name$fieldType"
                         val key = name.decapitalize()
                         method(methodName, fieldType) {
                             comment = it.comment
-                            annotations = getterAnnotations
+                            annotations = if (name == "Id") listOf("@JsonProperty(\"@id\")") else listOf("@JsonIgnore")
 
                             line("return ($fieldType) getValue(\"$key\");")
                         }
                         if (name != "Id") {
                             method(methodName + "s", "Collection<$fieldType>") {
                                 comment = it.comment
-                                annotations = getterAnnotations
+                                annotations = listOf("@JsonIgnore")
 
                                 line("final Object current = myData.get(\"$key\");")
                                 line("if (current == null) return Collections.emptyList();")
@@ -104,10 +86,6 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                     konstructor("protected",
                             parameters = listOf(Parameter("data", "java.util.Map<String,Object>")),
                             superParameters = type.parentType?.let { listOf("data") }
-/*
-                            parameters = allFields.filter { it.name != null && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class"}.map { Parameter(it.name!!.decapitalize(), sink.getEitherFieldType(it)!!) },
-                            superParameters = type.parentType?.let { sink.getAllFields(sink.types[it]) }?.map { it.name!!.decapitalize() }
-*/
                     )
 
                     if (typeName == "Thing") {
@@ -144,7 +122,6 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                         }
 
                         method("build", typeName) {
-                            //line("return new $typeName(" + allFields.mapNotNull { it.name?.decapitalize() }.joinToString(", ") + ");")
                             line("return new $typeName(myData);")
                         }
 
@@ -159,16 +136,6 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                     annotations = NOT_NULL
 
                                     line("putValue(\"${name.decapitalize()}\", ${getVariableName(fieldType, name)});")
-/*
-                                    if (eitherTypes.size < 2) {
-*/
-                                        //line("myData.put(\"${name.decapitalize()}\", ${getVariableName(fieldType, name)});")
-/*
-                                    } else {
-                                        line("if (this.${name.decapitalize()} == null) this.${name.decapitalize()} = new ${sink.getEitherFieldType(field)}();")
-                                        line("this.${name.decapitalize()}.set$fieldType(${getVariableName(fieldType, name)});")
-                                    }
-*/
                                     line("return this;")
                                 }
 
@@ -179,7 +146,8 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                         parameters = listOf(Parameter(getVariableName(fieldType, name), "$fieldType.Builder", NOT_NULL))
                                         annotations = NOT_NULL
 
-                                        line("return this.${name.decapitalize()}(${getVariableName(fieldType, name)}.build());")
+                                        line("putValue(\"${name.decapitalize()}\", ${getVariableName(fieldType, name)}.build());")
+                                        line("return this;")
                                     }
                                 }
                             }
@@ -224,12 +192,6 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                 line("super.fromMap(key, value);")
                             }
                         }
-
-/*
-                        ownFields.forEach {
-                            field(getVariableName(it.name!!), sink.getEitherFieldType(it)!!, access = "protected", prefix = "")
-                        }
-*/
                     }
                 }
             }

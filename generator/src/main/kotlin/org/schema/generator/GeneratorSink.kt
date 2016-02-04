@@ -44,7 +44,6 @@ class GeneratorSink : TripleSink {
     }
 
     val types = hashMapOf<String, Type>()
-    val eitherTypes = hashMapOf<String,Collection<String>>()
 
     override fun setProperty(key: String, value: Any): Boolean {
         return true
@@ -149,16 +148,6 @@ class GeneratorSink : TripleSink {
 
         val name = field.dataTypes.firstOrNull { types[it]!!.isInterface } ?: field.dataTypes.firstOrNull()
         return getBasicTypeName(types[name]?.name)
-    }
-
-    fun getEitherFieldType(field: Type): String? {
-        val names = getEitherTypes(field)
-        if (names.size < 2)
-            return names.firstOrNull()
-
-        val eitherName = if (names == NUMBER_UNDERLYING_TYPES) "Number" else names.joinToString("Or")
-        eitherTypes.put(eitherName, names)
-        return eitherName
     }
 
     fun getEitherTypes(field: Type): Collection<String> {
