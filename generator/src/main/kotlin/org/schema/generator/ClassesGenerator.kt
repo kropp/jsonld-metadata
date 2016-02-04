@@ -75,11 +75,25 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 */
                     fieldTypes.forEach { fieldType ->
                         val methodName = if (fieldTypes.size == 1) "get$name" else "get$name$fieldType"
+                        val key = name.decapitalize()
                         method(methodName, fieldType) {
                             comment = it.comment
                             annotations = getterAnnotations
 
-                            line("return ($fieldType) getValue(\"${name.decapitalize()}\");")
+                            line("return ($fieldType) getValue(\"$key\");")
+                        }
+                        if (name != "Id") {
+                            method(methodName + "s", "Collection<$fieldType>") {
+                                comment = it.comment
+                                annotations = getterAnnotations
+
+                                line("final Object current = myData.get(\"$key\");")
+                                line("if (current == null) return Collections.emptyList();")
+                                line("if (current instanceof Collection) {")
+                                line("  return (Collection<$fieldType>) current;")
+                                line("}")
+                                line("return Arrays.asList(($fieldType) current);")
+                            }
                         }
                     }
                 }
