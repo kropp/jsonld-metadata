@@ -1,8 +1,10 @@
-group 'com.github.kropp'
-version '0.1'
+plugins {
+    id 'java'
+    id 'maven'
+    id 'com.github.kropp.teamcity-gitversion' version '0.1.8'
+}
 
-apply plugin: 'java'
-apply plugin: 'maven'
+group 'com.github.kropp'
 
 sourceCompatibility = 1.6
 
