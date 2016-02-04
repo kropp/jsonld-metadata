@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A delivery service through which content is provided via broadcast over the air or online.
@@ -29,137 +30,174 @@ public class BroadcastService extends Thing {
   /**
    * The organization owning or operating the broadcast service.
    */
-  public Organization getBroadcaster() { return myBroadcaster; }
+  @JsonIgnore public Organization getBroadcaster() {
+    return (Organization) getValue("broadcaster");
+  }
+  /**
+   * The organization owning or operating the broadcast service.
+   */
+  @JsonIgnore public Collection<Organization> getBroadcasters() {
+    final Object current = myData.get("broadcaster");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
    */
-  public BroadcastService getParentService() { return myParentService; }
+  @JsonIgnore public BroadcastService getParentService() {
+    return (BroadcastService) getValue("parentService");
+  }
+  /**
+   * A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
+   */
+  @JsonIgnore public Collection<BroadcastService> getParentServices() {
+    final Object current = myData.get("parentService");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<BroadcastService>) current;
+    }
+    return Arrays.asList((BroadcastService) current);
+  }
   /**
    * The media network(s) whose content is broadcast on this station.
    */
-  public Organization getBroadcastAffiliateOf() { return myBroadcastAffiliateOf; }
+  @JsonIgnore public Organization getBroadcastAffiliateOf() {
+    return (Organization) getValue("broadcastAffiliateOf");
+  }
+  /**
+   * The media network(s) whose content is broadcast on this station.
+   */
+  @JsonIgnore public Collection<Organization> getBroadcastAffiliateOfs() {
+    final Object current = myData.get("broadcastAffiliateOf");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * The name displayed in the channel guide. For many US affiliates, it is the network name.
    */
-  public String getBroadcastDisplayName() { return myBroadcastDisplayName; }
+  @JsonIgnore public String getBroadcastDisplayName() {
+    return (String) getValue("broadcastDisplayName");
+  }
+  /**
+   * The name displayed in the channel guide. For many US affiliates, it is the network name.
+   */
+  @JsonIgnore public Collection<String> getBroadcastDisplayNames() {
+    final Object current = myData.get("broadcastDisplayName");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The timezone in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 format</a> for which the service bases its broadcasts.
    */
-  public String getTimezone() { return myTimezone; }
-  protected BroadcastService(Organization broadcaster, BroadcastService parentService, Organization broadcastAffiliateOf, String broadcastDisplayName, String timezone, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myBroadcaster = broadcaster;
-    myParentService = parentService;
-    myBroadcastAffiliateOf = broadcastAffiliateOf;
-    myBroadcastDisplayName = broadcastDisplayName;
-    myTimezone = timezone;
-    myBroadcaster = broadcaster;
-    myParentService = parentService;
-    myBroadcastAffiliateOf = broadcastAffiliateOf;
-    myBroadcastDisplayName = broadcastDisplayName;
-    myTimezone = timezone;
+  @JsonIgnore public String getTimezone() {
+    return (String) getValue("timezone");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myBroadcaster != null ? myBroadcaster.hashCode() : 0);
-    result = 31 * result + (myParentService != null ? myParentService.hashCode() : 0);
-    result = 31 * result + (myBroadcastAffiliateOf != null ? myBroadcastAffiliateOf.hashCode() : 0);
-    result = 31 * result + (myBroadcastDisplayName != null ? myBroadcastDisplayName.hashCode() : 0);
-    result = 31 * result + (myTimezone != null ? myTimezone.hashCode() : 0);
-    return result;
+  /**
+   * The timezone in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 format</a> for which the service bases its broadcasts.
+   */
+  @JsonIgnore public Collection<String> getTimezones() {
+    final Object current = myData.get("timezone");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    BroadcastService broadcastService = (BroadcastService) o;
-    if (!super.equals(o)) return false;
-    if (myBroadcaster != null ? !myBroadcaster.equals(broadcastService.myBroadcaster) : broadcastService.myBroadcaster != null) return false;
-    if (myParentService != null ? !myParentService.equals(broadcastService.myParentService) : broadcastService.myParentService != null) return false;
-    if (myBroadcastAffiliateOf != null ? !myBroadcastAffiliateOf.equals(broadcastService.myBroadcastAffiliateOf) : broadcastService.myBroadcastAffiliateOf != null) return false;
-    if (myBroadcastDisplayName != null ? !myBroadcastDisplayName.equals(broadcastService.myBroadcastDisplayName) : broadcastService.myBroadcastDisplayName != null) return false;
-    if (myTimezone != null ? !myTimezone.equals(broadcastService.myTimezone) : broadcastService.myTimezone != null) return false;
-    return true;
+  protected BroadcastService(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link BroadcastService}
    */
-  public static class Builder implements ThingBuilder<BroadcastService> {
+  public static class Builder extends Thing.Builder {
     public BroadcastService build() {
-      return new BroadcastService(broadcaster, parentService, broadcastAffiliateOf, broadcastDisplayName, timezone, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new BroadcastService(myData);
     }
     /**
      * The organization owning or operating the broadcast service.
      */
     @NotNull public Builder broadcaster(@NotNull Organization organization) {
-      this.broadcaster = organization;
+      putValue("broadcaster", organization);
       return this;
     }
     /**
      * The organization owning or operating the broadcast service.
      */
     @NotNull public Builder broadcaster(@NotNull Organization.Builder organization) {
-      return this.broadcaster(organization.build());
+      putValue("broadcaster", organization.build());
+      return this;
     }
     /**
      * A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
      */
     @NotNull public Builder parentService(@NotNull BroadcastService broadcastService) {
-      this.parentService = broadcastService;
+      putValue("parentService", broadcastService);
       return this;
     }
     /**
      * A broadcast service to which the broadcast service may belong to such as regional variations of a national channel.
      */
     @NotNull public Builder parentService(@NotNull BroadcastService.Builder broadcastService) {
-      return this.parentService(broadcastService.build());
+      putValue("parentService", broadcastService.build());
+      return this;
     }
     /**
      * The media network(s) whose content is broadcast on this station.
      */
     @NotNull public Builder broadcastAffiliateOf(@NotNull Organization organization) {
-      this.broadcastAffiliateOf = organization;
+      putValue("broadcastAffiliateOf", organization);
       return this;
     }
     /**
      * The media network(s) whose content is broadcast on this station.
      */
     @NotNull public Builder broadcastAffiliateOf(@NotNull Organization.Builder organization) {
-      return this.broadcastAffiliateOf(organization.build());
+      putValue("broadcastAffiliateOf", organization.build());
+      return this;
     }
     /**
      * The name displayed in the channel guide. For many US affiliates, it is the network name.
      */
     @NotNull public Builder broadcastDisplayName(@NotNull String broadcastDisplayName) {
-      this.broadcastDisplayName = broadcastDisplayName;
+      putValue("broadcastDisplayName", broadcastDisplayName);
       return this;
     }
     /**
      * The timezone in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 format</a> for which the service bases its broadcasts.
      */
     @NotNull public Builder timezone(@NotNull String timezone) {
-      this.timezone = timezone;
+      putValue("timezone", timezone);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -193,8 +231,7 @@ public class BroadcastService extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -228,7 +265,8 @@ public class BroadcastService extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -261,92 +299,59 @@ public class BroadcastService extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("broadcaster".equals(key) && value instanceof Organization) { broadcaster((Organization)value); continue; }
-        if ("parentService".equals(key) && value instanceof BroadcastService) { parentService((BroadcastService)value); continue; }
-        if ("broadcastAffiliateOf".equals(key) && value instanceof Organization) { broadcastAffiliateOf((Organization)value); continue; }
-        if ("broadcastDisplayName".equals(key) && value instanceof String) { broadcastDisplayName((String)value); continue; }
-        if ("timezone".equals(key) && value instanceof String) { timezone((String)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("broadcaster".equals(key) && value instanceof Organization) { broadcaster((Organization)value); return; }
+      if ("parentService".equals(key) && value instanceof BroadcastService) { parentService((BroadcastService)value); return; }
+      if ("broadcastAffiliateOf".equals(key) && value instanceof Organization) { broadcastAffiliateOf((Organization)value); return; }
+      if ("broadcastDisplayName".equals(key) && value instanceof String) { broadcastDisplayName((String)value); return; }
+      if ("timezone".equals(key) && value instanceof String) { timezone((String)value); return; }
+      super.fromMap(key, value);
     }
-    private Organization broadcaster;
-    private BroadcastService parentService;
-    private Organization broadcastAffiliateOf;
-    private String broadcastDisplayName;
-    private String timezone;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private Organization myBroadcaster;
-  private BroadcastService myParentService;
-  private Organization myBroadcastAffiliateOf;
-  private String myBroadcastDisplayName;
-  private String myTimezone;
 }

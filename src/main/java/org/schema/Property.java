@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A property, used to indicate attributes and relationships of some Thing; equivalent to rdf:Property.
@@ -29,101 +30,126 @@ public class Property extends Intangible {
   /**
    * Relates a property to a property that is its inverse. Inverse properties relate the same pairs of items to each other, but in reversed direction. For example, the 'alumni' and 'alumniOf' properties are inverseOf each other. Some properties don't have explicit inverses; in these situations RDFa and JSON-LD syntax for reverse properties can be used.
    */
-  public Property getInverseOf() { return myInverseOf; }
+  @JsonIgnore public Property getInverseOf() {
+    return (Property) getValue("inverseOf");
+  }
+  /**
+   * Relates a property to a property that is its inverse. Inverse properties relate the same pairs of items to each other, but in reversed direction. For example, the 'alumni' and 'alumniOf' properties are inverseOf each other. Some properties don't have explicit inverses; in these situations RDFa and JSON-LD syntax for reverse properties can be used.
+   */
+  @JsonIgnore public Collection<Property> getInverseOfs() {
+    final Object current = myData.get("inverseOf");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Property>) current;
+    }
+    return Arrays.asList((Property) current);
+  }
   /**
    * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
    */
-  public EnumerationOrProperty getSupersededBy() { return mySupersededBy; }
-  protected Property(Property inverseOf, EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myInverseOf = inverseOf;
-    mySupersededBy = supersededBy;
-    myInverseOf = inverseOf;
-    mySupersededBy = supersededBy;
+  @JsonIgnore public Enumeration getSupersededByEnumeration() {
+    return (Enumeration) getValue("supersededBy");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myInverseOf != null ? myInverseOf.hashCode() : 0);
-    result = 31 * result + (mySupersededBy != null ? mySupersededBy.hashCode() : 0);
-    return result;
+  /**
+   * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
+   */
+  @JsonIgnore public Collection<Enumeration> getSupersededByEnumerations() {
+    final Object current = myData.get("supersededBy");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Enumeration>) current;
+    }
+    return Arrays.asList((Enumeration) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Property property = (Property) o;
-    if (!super.equals(o)) return false;
-    if (myInverseOf != null ? !myInverseOf.equals(property.myInverseOf) : property.myInverseOf != null) return false;
-    if (mySupersededBy != null ? !mySupersededBy.equals(property.mySupersededBy) : property.mySupersededBy != null) return false;
-    return true;
+  /**
+   * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
+   */
+  @JsonIgnore public Property getSupersededByProperty() {
+    return (Property) getValue("supersededBy");
+  }
+  /**
+   * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
+   */
+  @JsonIgnore public Collection<Property> getSupersededByPropertys() {
+    final Object current = myData.get("supersededBy");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Property>) current;
+    }
+    return Arrays.asList((Property) current);
+  }
+  protected Property(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Property}
    */
-  public static class Builder implements ThingBuilder<Property> {
+  public static class Builder extends Intangible.Builder {
     public Property build() {
-      return new Property(inverseOf, supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Property(myData);
     }
     /**
      * Relates a property to a property that is its inverse. Inverse properties relate the same pairs of items to each other, but in reversed direction. For example, the 'alumni' and 'alumniOf' properties are inverseOf each other. Some properties don't have explicit inverses; in these situations RDFa and JSON-LD syntax for reverse properties can be used.
      */
     @NotNull public Builder inverseOf(@NotNull Property property) {
-      this.inverseOf = property;
+      putValue("inverseOf", property);
       return this;
     }
     /**
      * Relates a property to a property that is its inverse. Inverse properties relate the same pairs of items to each other, but in reversed direction. For example, the 'alumni' and 'alumniOf' properties are inverseOf each other. Some properties don't have explicit inverses; in these situations RDFa and JSON-LD syntax for reverse properties can be used.
      */
     @NotNull public Builder inverseOf(@NotNull Property.Builder property) {
-      return this.inverseOf(property.build());
+      putValue("inverseOf", property.build());
+      return this;
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
     @NotNull public Builder supersededBy(@NotNull Enumeration enumeration) {
-      if (this.supersededBy == null) this.supersededBy = new EnumerationOrProperty();
-      this.supersededBy.setEnumeration(enumeration);
+      putValue("supersededBy", enumeration);
       return this;
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
     @NotNull public Builder supersededBy(@NotNull Enumeration.Builder enumeration) {
-      return this.supersededBy(enumeration.build());
+      putValue("supersededBy", enumeration.build());
+      return this;
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
     @NotNull public Builder supersededBy(@NotNull Property property) {
-      if (this.supersededBy == null) this.supersededBy = new EnumerationOrProperty();
-      this.supersededBy.setProperty(property);
+      putValue("supersededBy", property);
       return this;
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
     @NotNull public Builder supersededBy(@NotNull Property.Builder property) {
-      return this.supersededBy(property.build());
+      putValue("supersededBy", property.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -157,8 +183,7 @@ public class Property extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -192,7 +217,8 @@ public class Property extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -225,84 +251,57 @@ public class Property extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("inverseOf".equals(key) && value instanceof Property) { inverseOf((Property)value); continue; }
-        if ("supersededBy".equals(key) && value instanceof Enumeration) { supersededBy((Enumeration)value); continue; }
-        if ("supersededBy".equals(key) && value instanceof Property) { supersededBy((Property)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("inverseOf".equals(key) && value instanceof Property) { inverseOf((Property)value); return; }
+      if ("supersededBy".equals(key) && value instanceof Enumeration) { supersededBy((Enumeration)value); return; }
+      if ("supersededBy".equals(key) && value instanceof Property) { supersededBy((Property)value); return; }
+      super.fromMap(key, value);
     }
-    private Property inverseOf;
-    private EnumerationOrProperty supersededBy;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private Property myInverseOf;
-  private EnumerationOrProperty mySupersededBy;
 }

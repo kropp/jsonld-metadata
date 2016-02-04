@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * Entities that have a somewhat fixed, physical extension.
@@ -29,352 +30,551 @@ public class Place extends Thing {
   /**
    * Physical address of the item.
    */
-  public PostalAddress getAddress() { return myAddress; }
+  @JsonIgnore public PostalAddress getAddress() {
+    return (PostalAddress) getValue("address");
+  }
+  /**
+   * Physical address of the item.
+   */
+  @JsonIgnore public Collection<PostalAddress> getAddresss() {
+    final Object current = myData.get("address");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PostalAddress>) current;
+    }
+    return Arrays.asList((PostalAddress) current);
+  }
   /**
    * The overall rating, based on a collection of reviews or ratings, of the item.
    */
-  public AggregateRating getAggregateRating() { return myAggregateRating; }
+  @JsonIgnore public AggregateRating getAggregateRating() {
+    return (AggregateRating) getValue("aggregateRating");
+  }
+  /**
+   * The overall rating, based on a collection of reviews or ratings, of the item.
+   */
+  @JsonIgnore public Collection<AggregateRating> getAggregateRatings() {
+    final Object current = myData.get("aggregateRating");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AggregateRating>) current;
+    }
+    return Arrays.asList((AggregateRating) current);
+  }
   /**
    * The basic containment relation between places.
    */
-  public Place getContainedIn() { return myContainedIn; }
+  @JsonIgnore public Place getContainedIn() {
+    return (Place) getValue("containedIn");
+  }
+  /**
+   * The basic containment relation between places.
+   */
+  @JsonIgnore public Collection<Place> getContainedIns() {
+    final Object current = myData.get("containedIn");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
+  }
   /**
    * Upcoming or past event associated with this place, organization, or action.
    */
-  public Event getEvent() { return myEvent; }
+  @JsonIgnore public Event getEvent() {
+    return (Event) getValue("event");
+  }
+  /**
+   * Upcoming or past event associated with this place, organization, or action.
+   */
+  @JsonIgnore public Collection<Event> getEvents() {
+    final Object current = myData.get("event");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Event>) current;
+    }
+    return Arrays.asList((Event) current);
+  }
   /**
    * The fax number.
    */
-  public String getFaxNumber() { return myFaxNumber; }
+  @JsonIgnore public String getFaxNumber() {
+    return (String) getValue("faxNumber");
+  }
+  /**
+   * The fax number.
+   */
+  @JsonIgnore public Collection<String> getFaxNumbers() {
+    final Object current = myData.get("faxNumber");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The geo coordinates of the place.
    */
-  public GeoCoordinatesOrGeoShape getGeo() { return myGeo; }
+  @JsonIgnore public GeoCoordinates getGeoGeoCoordinates() {
+    return (GeoCoordinates) getValue("geo");
+  }
+  /**
+   * The geo coordinates of the place.
+   */
+  @JsonIgnore public Collection<GeoCoordinates> getGeoGeoCoordinatess() {
+    final Object current = myData.get("geo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<GeoCoordinates>) current;
+    }
+    return Arrays.asList((GeoCoordinates) current);
+  }
+  /**
+   * The geo coordinates of the place.
+   */
+  @JsonIgnore public GeoShape getGeoGeoShape() {
+    return (GeoShape) getValue("geo");
+  }
+  /**
+   * The geo coordinates of the place.
+   */
+  @JsonIgnore public Collection<GeoShape> getGeoGeoShapes() {
+    final Object current = myData.get("geo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<GeoShape>) current;
+    }
+    return Arrays.asList((GeoShape) current);
+  }
   /**
    * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
    */
-  public String getGlobalLocationNumber() { return myGlobalLocationNumber; }
+  @JsonIgnore public String getGlobalLocationNumber() {
+    return (String) getValue("globalLocationNumber");
+  }
+  /**
+   * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+   */
+  @JsonIgnore public Collection<String> getGlobalLocationNumbers() {
+    final Object current = myData.get("globalLocationNumber");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
    */
-  public String getIsicV4() { return myIsicV4; }
+  @JsonIgnore public String getIsicV4() {
+    return (String) getValue("isicV4");
+  }
+  /**
+   * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
+   */
+  @JsonIgnore public Collection<String> getIsicV4s() {
+    final Object current = myData.get("isicV4");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * An associated logo.
    */
-  public ImageObjectOrString getLogo() { return myLogo; }
+  @JsonIgnore public ImageObject getLogoImageObject() {
+    return (ImageObject) getValue("logo");
+  }
+  /**
+   * An associated logo.
+   */
+  @JsonIgnore public Collection<ImageObject> getLogoImageObjects() {
+    final Object current = myData.get("logo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ImageObject>) current;
+    }
+    return Arrays.asList((ImageObject) current);
+  }
+  /**
+   * An associated logo.
+   */
+  @JsonIgnore public String getLogoString() {
+    return (String) getValue("logo");
+  }
+  /**
+   * An associated logo.
+   */
+  @JsonIgnore public Collection<String> getLogoStrings() {
+    final Object current = myData.get("logo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A URL to a map of the place.
    */
-  public MapOrString getHasMap() { return myHasMap; }
+  @JsonIgnore public Map getHasMapMap() {
+    return (Map) getValue("hasMap");
+  }
+  /**
+   * A URL to a map of the place.
+   */
+  @JsonIgnore public Collection<Map> getHasMapMaps() {
+    final Object current = myData.get("hasMap");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Map>) current;
+    }
+    return Arrays.asList((Map) current);
+  }
+  /**
+   * A URL to a map of the place.
+   */
+  @JsonIgnore public String getHasMapString() {
+    return (String) getValue("hasMap");
+  }
+  /**
+   * A URL to a map of the place.
+   */
+  @JsonIgnore public Collection<String> getHasMapStrings() {
+    final Object current = myData.get("hasMap");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The opening hours of a certain place.
    */
-  public OpeningHoursSpecification getOpeningHoursSpecification() { return myOpeningHoursSpecification; }
+  @JsonIgnore public OpeningHoursSpecification getOpeningHoursSpecification() {
+    return (OpeningHoursSpecification) getValue("openingHoursSpecification");
+  }
+  /**
+   * The opening hours of a certain place.
+   */
+  @JsonIgnore public Collection<OpeningHoursSpecification> getOpeningHoursSpecifications() {
+    final Object current = myData.get("openingHoursSpecification");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<OpeningHoursSpecification>) current;
+    }
+    return Arrays.asList((OpeningHoursSpecification) current);
+  }
   /**
    * A photograph of this place.
    */
-  public ImageObjectOrPhotograph getPhoto() { return myPhoto; }
+  @JsonIgnore public ImageObject getPhotoImageObject() {
+    return (ImageObject) getValue("photo");
+  }
+  /**
+   * A photograph of this place.
+   */
+  @JsonIgnore public Collection<ImageObject> getPhotoImageObjects() {
+    final Object current = myData.get("photo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ImageObject>) current;
+    }
+    return Arrays.asList((ImageObject) current);
+  }
+  /**
+   * A photograph of this place.
+   */
+  @JsonIgnore public Photograph getPhotoPhotograph() {
+    return (Photograph) getValue("photo");
+  }
+  /**
+   * A photograph of this place.
+   */
+  @JsonIgnore public Collection<Photograph> getPhotoPhotographs() {
+    final Object current = myData.get("photo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Photograph>) current;
+    }
+    return Arrays.asList((Photograph) current);
+  }
   /**
    * A review of the item.
    */
-  public Review getReview() { return myReview; }
+  @JsonIgnore public Review getReview() {
+    return (Review) getValue("review");
+  }
+  /**
+   * A review of the item.
+   */
+  @JsonIgnore public Collection<Review> getReviews() {
+    final Object current = myData.get("review");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Review>) current;
+    }
+    return Arrays.asList((Review) current);
+  }
   /**
    * The telephone number.
    */
-  public String getTelephone() { return myTelephone; }
+  @JsonIgnore public String getTelephone() {
+    return (String) getValue("telephone");
+  }
+  /**
+   * The telephone number.
+   */
+  @JsonIgnore public Collection<String> getTelephones() {
+    final Object current = myData.get("telephone");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
+   * 
+   * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+   * 
    */
-  public PropertyValue getAdditionalProperty() { return myAdditionalProperty; }
-  protected Place(PostalAddress address, AggregateRating aggregateRating, Place containedIn, Event event, String faxNumber, GeoCoordinatesOrGeoShape geo, String globalLocationNumber, String isicV4, ImageObjectOrString logo, MapOrString hasMap, OpeningHoursSpecification openingHoursSpecification, ImageObjectOrPhotograph photo, Review review, String telephone, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAddress = address;
-    myAggregateRating = aggregateRating;
-    myContainedIn = containedIn;
-    myEvent = event;
-    myFaxNumber = faxNumber;
-    myGeo = geo;
-    myGlobalLocationNumber = globalLocationNumber;
-    myIsicV4 = isicV4;
-    myLogo = logo;
-    myHasMap = hasMap;
-    myOpeningHoursSpecification = openingHoursSpecification;
-    myPhoto = photo;
-    myReview = review;
-    myTelephone = telephone;
-    myAdditionalProperty = additionalProperty;
-    myAddress = address;
-    myAggregateRating = aggregateRating;
-    myContainedIn = containedIn;
-    myEvent = event;
-    myFaxNumber = faxNumber;
-    myGeo = geo;
-    myGlobalLocationNumber = globalLocationNumber;
-    myIsicV4 = isicV4;
-    myLogo = logo;
-    myHasMap = hasMap;
-    myOpeningHoursSpecification = openingHoursSpecification;
-    myPhoto = photo;
-    myReview = review;
-    myTelephone = telephone;
-    myAdditionalProperty = additionalProperty;
+  @JsonIgnore public PropertyValue getAdditionalProperty() {
+    return (PropertyValue) getValue("additionalProperty");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAddress != null ? myAddress.hashCode() : 0);
-    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
-    result = 31 * result + (myContainedIn != null ? myContainedIn.hashCode() : 0);
-    result = 31 * result + (myEvent != null ? myEvent.hashCode() : 0);
-    result = 31 * result + (myFaxNumber != null ? myFaxNumber.hashCode() : 0);
-    result = 31 * result + (myGeo != null ? myGeo.hashCode() : 0);
-    result = 31 * result + (myGlobalLocationNumber != null ? myGlobalLocationNumber.hashCode() : 0);
-    result = 31 * result + (myIsicV4 != null ? myIsicV4.hashCode() : 0);
-    result = 31 * result + (myLogo != null ? myLogo.hashCode() : 0);
-    result = 31 * result + (myHasMap != null ? myHasMap.hashCode() : 0);
-    result = 31 * result + (myOpeningHoursSpecification != null ? myOpeningHoursSpecification.hashCode() : 0);
-    result = 31 * result + (myPhoto != null ? myPhoto.hashCode() : 0);
-    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
-    result = 31 * result + (myTelephone != null ? myTelephone.hashCode() : 0);
-    result = 31 * result + (myAdditionalProperty != null ? myAdditionalProperty.hashCode() : 0);
-    return result;
+  /**
+   * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
+   * 
+   * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+   * 
+   */
+  @JsonIgnore public Collection<PropertyValue> getAdditionalPropertys() {
+    final Object current = myData.get("additionalProperty");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PropertyValue>) current;
+    }
+    return Arrays.asList((PropertyValue) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Place place = (Place) o;
-    if (!super.equals(o)) return false;
-    if (myAddress != null ? !myAddress.equals(place.myAddress) : place.myAddress != null) return false;
-    if (myAggregateRating != null ? !myAggregateRating.equals(place.myAggregateRating) : place.myAggregateRating != null) return false;
-    if (myContainedIn != null ? !myContainedIn.equals(place.myContainedIn) : place.myContainedIn != null) return false;
-    if (myEvent != null ? !myEvent.equals(place.myEvent) : place.myEvent != null) return false;
-    if (myFaxNumber != null ? !myFaxNumber.equals(place.myFaxNumber) : place.myFaxNumber != null) return false;
-    if (myGeo != null ? !myGeo.equals(place.myGeo) : place.myGeo != null) return false;
-    if (myGlobalLocationNumber != null ? !myGlobalLocationNumber.equals(place.myGlobalLocationNumber) : place.myGlobalLocationNumber != null) return false;
-    if (myIsicV4 != null ? !myIsicV4.equals(place.myIsicV4) : place.myIsicV4 != null) return false;
-    if (myLogo != null ? !myLogo.equals(place.myLogo) : place.myLogo != null) return false;
-    if (myHasMap != null ? !myHasMap.equals(place.myHasMap) : place.myHasMap != null) return false;
-    if (myOpeningHoursSpecification != null ? !myOpeningHoursSpecification.equals(place.myOpeningHoursSpecification) : place.myOpeningHoursSpecification != null) return false;
-    if (myPhoto != null ? !myPhoto.equals(place.myPhoto) : place.myPhoto != null) return false;
-    if (myReview != null ? !myReview.equals(place.myReview) : place.myReview != null) return false;
-    if (myTelephone != null ? !myTelephone.equals(place.myTelephone) : place.myTelephone != null) return false;
-    if (myAdditionalProperty != null ? !myAdditionalProperty.equals(place.myAdditionalProperty) : place.myAdditionalProperty != null) return false;
-    return true;
+  protected Place(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Place}
    */
-  public static class Builder implements ThingBuilder<Place> {
+  public static class Builder extends Thing.Builder {
     public Place build() {
-      return new Place(address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Place(myData);
     }
     /**
      * Physical address of the item.
      */
     @NotNull public Builder address(@NotNull PostalAddress postalAddress) {
-      this.address = postalAddress;
+      putValue("address", postalAddress);
       return this;
     }
     /**
      * Physical address of the item.
      */
     @NotNull public Builder address(@NotNull PostalAddress.Builder postalAddress) {
-      return this.address(postalAddress.build());
+      putValue("address", postalAddress.build());
+      return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
-      this.aggregateRating = aggregateRating;
+      putValue("aggregateRating", aggregateRating);
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating) {
-      return this.aggregateRating(aggregateRating.build());
+      putValue("aggregateRating", aggregateRating.build());
+      return this;
     }
     /**
      * The basic containment relation between places.
      */
     @NotNull public Builder containedIn(@NotNull Place place) {
-      this.containedIn = place;
+      putValue("containedIn", place);
       return this;
     }
     /**
      * The basic containment relation between places.
      */
     @NotNull public Builder containedIn(@NotNull Place.Builder place) {
-      return this.containedIn(place.build());
+      putValue("containedIn", place.build());
+      return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
     @NotNull public Builder event(@NotNull Event event) {
-      this.event = event;
+      putValue("event", event);
       return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
     @NotNull public Builder event(@NotNull Event.Builder event) {
-      return this.event(event.build());
+      putValue("event", event.build());
+      return this;
     }
     /**
      * The fax number.
      */
     @NotNull public Builder faxNumber(@NotNull String faxNumber) {
-      this.faxNumber = faxNumber;
+      putValue("faxNumber", faxNumber);
       return this;
     }
     /**
      * The geo coordinates of the place.
      */
     @NotNull public Builder geo(@NotNull GeoCoordinates geoCoordinates) {
-      if (this.geo == null) this.geo = new GeoCoordinatesOrGeoShape();
-      this.geo.setGeoCoordinates(geoCoordinates);
+      putValue("geo", geoCoordinates);
       return this;
     }
     /**
      * The geo coordinates of the place.
      */
     @NotNull public Builder geo(@NotNull GeoCoordinates.Builder geoCoordinates) {
-      return this.geo(geoCoordinates.build());
+      putValue("geo", geoCoordinates.build());
+      return this;
     }
     /**
      * The geo coordinates of the place.
      */
     @NotNull public Builder geo(@NotNull GeoShape geoShape) {
-      if (this.geo == null) this.geo = new GeoCoordinatesOrGeoShape();
-      this.geo.setGeoShape(geoShape);
+      putValue("geo", geoShape);
       return this;
     }
     /**
      * The geo coordinates of the place.
      */
     @NotNull public Builder geo(@NotNull GeoShape.Builder geoShape) {
-      return this.geo(geoShape.build());
+      putValue("geo", geoShape.build());
+      return this;
     }
     /**
      * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
     @NotNull public Builder globalLocationNumber(@NotNull String globalLocationNumber) {
-      this.globalLocationNumber = globalLocationNumber;
+      putValue("globalLocationNumber", globalLocationNumber);
       return this;
     }
     /**
      * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
      */
     @NotNull public Builder isicV4(@NotNull String isicV4) {
-      this.isicV4 = isicV4;
+      putValue("isicV4", isicV4);
       return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull ImageObject imageObject) {
-      if (this.logo == null) this.logo = new ImageObjectOrString();
-      this.logo.setImageObject(imageObject);
+      putValue("logo", imageObject);
       return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull ImageObject.Builder imageObject) {
-      return this.logo(imageObject.build());
+      putValue("logo", imageObject.build());
+      return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull String logo) {
-      if (this.logo == null) this.logo = new ImageObjectOrString();
-      this.logo.setString(logo);
+      putValue("logo", logo);
       return this;
     }
     /**
      * A URL to a map of the place.
      */
     @NotNull public Builder hasMap(@NotNull Map map) {
-      if (this.hasMap == null) this.hasMap = new MapOrString();
-      this.hasMap.setMap(map);
+      putValue("hasMap", map);
       return this;
     }
     /**
      * A URL to a map of the place.
      */
     @NotNull public Builder hasMap(@NotNull Map.Builder map) {
-      return this.hasMap(map.build());
+      putValue("hasMap", map.build());
+      return this;
     }
     /**
      * A URL to a map of the place.
      */
     @NotNull public Builder hasMap(@NotNull String hasMap) {
-      if (this.hasMap == null) this.hasMap = new MapOrString();
-      this.hasMap.setString(hasMap);
+      putValue("hasMap", hasMap);
       return this;
     }
     /**
      * The opening hours of a certain place.
      */
     @NotNull public Builder openingHoursSpecification(@NotNull OpeningHoursSpecification openingHoursSpecification) {
-      this.openingHoursSpecification = openingHoursSpecification;
+      putValue("openingHoursSpecification", openingHoursSpecification);
       return this;
     }
     /**
      * The opening hours of a certain place.
      */
     @NotNull public Builder openingHoursSpecification(@NotNull OpeningHoursSpecification.Builder openingHoursSpecification) {
-      return this.openingHoursSpecification(openingHoursSpecification.build());
+      putValue("openingHoursSpecification", openingHoursSpecification.build());
+      return this;
     }
     /**
      * A photograph of this place.
      */
     @NotNull public Builder photo(@NotNull ImageObject imageObject) {
-      if (this.photo == null) this.photo = new ImageObjectOrPhotograph();
-      this.photo.setImageObject(imageObject);
+      putValue("photo", imageObject);
       return this;
     }
     /**
      * A photograph of this place.
      */
     @NotNull public Builder photo(@NotNull ImageObject.Builder imageObject) {
-      return this.photo(imageObject.build());
+      putValue("photo", imageObject.build());
+      return this;
     }
     /**
      * A photograph of this place.
      */
     @NotNull public Builder photo(@NotNull Photograph photograph) {
-      if (this.photo == null) this.photo = new ImageObjectOrPhotograph();
-      this.photo.setPhotograph(photograph);
+      putValue("photo", photograph);
       return this;
     }
     /**
      * A photograph of this place.
      */
     @NotNull public Builder photo(@NotNull Photograph.Builder photograph) {
-      return this.photo(photograph.build());
+      putValue("photo", photograph.build());
+      return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review review) {
-      this.review = review;
+      putValue("review", review);
       return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review.Builder review) {
-      return this.review(review.build());
+      putValue("review", review.build());
+      return this;
     }
     /**
      * The telephone number.
      */
     @NotNull public Builder telephone(@NotNull String telephone) {
-      this.telephone = telephone;
+      putValue("telephone", telephone);
       return this;
     }
     /**
@@ -384,7 +584,7 @@ Note: Publishers should be aware that applications designed to use specific sche
      * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue propertyValue) {
-      this.additionalProperty = propertyValue;
+      putValue("additionalProperty", propertyValue);
       return this;
     }
     /**
@@ -394,27 +594,28 @@ Note: Publishers should be aware that applications designed to use specific sche
      * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue) {
-      return this.additionalProperty(propertyValue.build());
+      putValue("additionalProperty", propertyValue.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -448,8 +649,7 @@ Note: Publishers should be aware that applications designed to use specific sche
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -483,7 +683,8 @@ Note: Publishers should be aware that applications designed to use specific sche
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -516,126 +717,73 @@ Note: Publishers should be aware that applications designed to use specific sche
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); continue; }
-        if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); continue; }
-        if ("containedIn".equals(key) && value instanceof Place) { containedIn((Place)value); continue; }
-        if ("event".equals(key) && value instanceof Event) { event((Event)value); continue; }
-        if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); continue; }
-        if ("geo".equals(key) && value instanceof GeoCoordinates) { geo((GeoCoordinates)value); continue; }
-        if ("geo".equals(key) && value instanceof GeoShape) { geo((GeoShape)value); continue; }
-        if ("globalLocationNumber".equals(key) && value instanceof String) { globalLocationNumber((String)value); continue; }
-        if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); continue; }
-        if ("logo".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); continue; }
-        if ("logo".equals(key) && value instanceof String) { logo((String)value); continue; }
-        if ("hasMap".equals(key) && value instanceof Map) { hasMap((Map)value); continue; }
-        if ("hasMap".equals(key) && value instanceof String) { hasMap((String)value); continue; }
-        if ("openingHoursSpecification".equals(key) && value instanceof OpeningHoursSpecification) { openingHoursSpecification((OpeningHoursSpecification)value); continue; }
-        if ("photo".equals(key) && value instanceof ImageObject) { photo((ImageObject)value); continue; }
-        if ("photo".equals(key) && value instanceof Photograph) { photo((Photograph)value); continue; }
-        if ("review".equals(key) && value instanceof Review) { review((Review)value); continue; }
-        if ("telephone".equals(key) && value instanceof String) { telephone((String)value); continue; }
-        if ("additionalProperty".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
+      if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
+      if ("containedIn".equals(key) && value instanceof Place) { containedIn((Place)value); return; }
+      if ("event".equals(key) && value instanceof Event) { event((Event)value); return; }
+      if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); return; }
+      if ("geo".equals(key) && value instanceof GeoCoordinates) { geo((GeoCoordinates)value); return; }
+      if ("geo".equals(key) && value instanceof GeoShape) { geo((GeoShape)value); return; }
+      if ("globalLocationNumber".equals(key) && value instanceof String) { globalLocationNumber((String)value); return; }
+      if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); return; }
+      if ("logo".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); return; }
+      if ("logo".equals(key) && value instanceof String) { logo((String)value); return; }
+      if ("hasMap".equals(key) && value instanceof Map) { hasMap((Map)value); return; }
+      if ("hasMap".equals(key) && value instanceof String) { hasMap((String)value); return; }
+      if ("openingHoursSpecification".equals(key) && value instanceof OpeningHoursSpecification) { openingHoursSpecification((OpeningHoursSpecification)value); return; }
+      if ("photo".equals(key) && value instanceof ImageObject) { photo((ImageObject)value); return; }
+      if ("photo".equals(key) && value instanceof Photograph) { photo((Photograph)value); return; }
+      if ("review".equals(key) && value instanceof Review) { review((Review)value); return; }
+      if ("telephone".equals(key) && value instanceof String) { telephone((String)value); return; }
+      if ("additionalProperty".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); return; }
+      super.fromMap(key, value);
     }
-    private PostalAddress address;
-    private AggregateRating aggregateRating;
-    private Place containedIn;
-    private Event event;
-    private String faxNumber;
-    private GeoCoordinatesOrGeoShape geo;
-    private String globalLocationNumber;
-    private String isicV4;
-    private ImageObjectOrString logo;
-    private MapOrString hasMap;
-    private OpeningHoursSpecification openingHoursSpecification;
-    private ImageObjectOrPhotograph photo;
-    private Review review;
-    private String telephone;
-    private PropertyValue additionalProperty;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private PostalAddress myAddress;
-  private AggregateRating myAggregateRating;
-  private Place myContainedIn;
-  private Event myEvent;
-  private String myFaxNumber;
-  private GeoCoordinatesOrGeoShape myGeo;
-  private String myGlobalLocationNumber;
-  private String myIsicV4;
-  private ImageObjectOrString myLogo;
-  private MapOrString myHasMap;
-  private OpeningHoursSpecification myOpeningHoursSpecification;
-  private ImageObjectOrPhotograph myPhoto;
-  private Review myReview;
-  private String myTelephone;
-  private PropertyValue myAdditionalProperty;
 }

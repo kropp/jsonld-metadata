@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * An organization such as a school, NGO, corporation, club, etc.
@@ -29,709 +30,1082 @@ public class Organization extends Thing {
   /**
    * Physical address of the item.
    */
-  public PostalAddress getAddress() { return myAddress; }
+  @JsonIgnore public PostalAddress getAddress() {
+    return (PostalAddress) getValue("address");
+  }
+  /**
+   * Physical address of the item.
+   */
+  @JsonIgnore public Collection<PostalAddress> getAddresss() {
+    final Object current = myData.get("address");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PostalAddress>) current;
+    }
+    return Arrays.asList((PostalAddress) current);
+  }
   /**
    * The overall rating, based on a collection of reviews or ratings, of the item.
    */
-  public AggregateRating getAggregateRating() { return myAggregateRating; }
+  @JsonIgnore public AggregateRating getAggregateRating() {
+    return (AggregateRating) getValue("aggregateRating");
+  }
+  /**
+   * The overall rating, based on a collection of reviews or ratings, of the item.
+   */
+  @JsonIgnore public Collection<AggregateRating> getAggregateRatings() {
+    final Object current = myData.get("aggregateRating");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AggregateRating>) current;
+    }
+    return Arrays.asList((AggregateRating) current);
+  }
   /**
    * An award won by or for this item.
    */
-  public String getAward() { return myAward; }
+  @JsonIgnore public String getAward() {
+    return (String) getValue("award");
+  }
+  /**
+   * An award won by or for this item.
+   */
+  @JsonIgnore public Collection<String> getAwards() {
+    final Object current = myData.get("award");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
    */
-  public BrandOrOrganization getBrand() { return myBrand; }
+  @JsonIgnore public Brand getBrandBrand() {
+    return (Brand) getValue("brand");
+  }
+  /**
+   * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+   */
+  @JsonIgnore public Collection<Brand> getBrandBrands() {
+    final Object current = myData.get("brand");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Brand>) current;
+    }
+    return Arrays.asList((Brand) current);
+  }
+  /**
+   * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+   */
+  @JsonIgnore public Organization getBrandOrganization() {
+    return (Organization) getValue("brand");
+  }
+  /**
+   * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+   */
+  @JsonIgnore public Collection<Organization> getBrandOrganizations() {
+    final Object current = myData.get("brand");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * A contact point for a person or organization.
    */
-  public ContactPoint getContactPoint() { return myContactPoint; }
+  @JsonIgnore public ContactPoint getContactPoint() {
+    return (ContactPoint) getValue("contactPoint");
+  }
+  /**
+   * A contact point for a person or organization.
+   */
+  @JsonIgnore public Collection<ContactPoint> getContactPoints() {
+    final Object current = myData.get("contactPoint");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ContactPoint>) current;
+    }
+    return Arrays.asList((ContactPoint) current);
+  }
   /**
    * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
    */
-  public Organization getDepartment() { return myDepartment; }
+  @JsonIgnore public Organization getDepartment() {
+    return (Organization) getValue("department");
+  }
+  /**
+   * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
+   */
+  @JsonIgnore public Collection<Organization> getDepartments() {
+    final Object current = myData.get("department");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * The Dun & Bradstreet DUNS number for identifying an organization or business person.
    */
-  public String getDuns() { return myDuns; }
+  @JsonIgnore public String getDuns() {
+    return (String) getValue("duns");
+  }
+  /**
+   * The Dun & Bradstreet DUNS number for identifying an organization or business person.
+   */
+  @JsonIgnore public Collection<String> getDunss() {
+    final Object current = myData.get("duns");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Email address.
    */
-  public String getEmail() { return myEmail; }
+  @JsonIgnore public String getEmail() {
+    return (String) getValue("email");
+  }
+  /**
+   * Email address.
+   */
+  @JsonIgnore public Collection<String> getEmails() {
+    final Object current = myData.get("email");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Someone working for this organization.
    */
-  public Person getEmployee() { return myEmployee; }
+  @JsonIgnore public Person getEmployee() {
+    return (Person) getValue("employee");
+  }
+  /**
+   * Someone working for this organization.
+   */
+  @JsonIgnore public Collection<Person> getEmployees() {
+    final Object current = myData.get("employee");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * Upcoming or past event associated with this place, organization, or action.
    */
-  public Event getEvent() { return myEvent; }
+  @JsonIgnore public Event getEvent() {
+    return (Event) getValue("event");
+  }
+  /**
+   * Upcoming or past event associated with this place, organization, or action.
+   */
+  @JsonIgnore public Collection<Event> getEvents() {
+    final Object current = myData.get("event");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Event>) current;
+    }
+    return Arrays.asList((Event) current);
+  }
   /**
    * The fax number.
    */
-  public String getFaxNumber() { return myFaxNumber; }
+  @JsonIgnore public String getFaxNumber() {
+    return (String) getValue("faxNumber");
+  }
+  /**
+   * The fax number.
+   */
+  @JsonIgnore public Collection<String> getFaxNumbers() {
+    final Object current = myData.get("faxNumber");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A person who founded this organization.
    */
-  public Person getFounder() { return myFounder; }
+  @JsonIgnore public Person getFounder() {
+    return (Person) getValue("founder");
+  }
+  /**
+   * A person who founded this organization.
+   */
+  @JsonIgnore public Collection<Person> getFounders() {
+    final Object current = myData.get("founder");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The date that this organization was dissolved.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDissolutionDate() { return myDissolutionDate; }
+  @JsonIgnore public java.util.Date getDissolutionDate() {
+    return (java.util.Date) getValue("dissolutionDate");
+  }
+  /**
+   * The date that this organization was dissolved.
+   */
+  @JsonIgnore public Collection<java.util.Date> getDissolutionDates() {
+    final Object current = myData.get("dissolutionDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The date that this organization was founded.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getFoundingDate() { return myFoundingDate; }
+  @JsonIgnore public java.util.Date getFoundingDate() {
+    return (java.util.Date) getValue("foundingDate");
+  }
+  /**
+   * The date that this organization was founded.
+   */
+  @JsonIgnore public Collection<java.util.Date> getFoundingDates() {
+    final Object current = myData.get("foundingDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
    */
-  public String getGlobalLocationNumber() { return myGlobalLocationNumber; }
+  @JsonIgnore public String getGlobalLocationNumber() {
+    return (String) getValue("globalLocationNumber");
+  }
+  /**
+   * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+   */
+  @JsonIgnore public Collection<String> getGlobalLocationNumbers() {
+    final Object current = myData.get("globalLocationNumber");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Points-of-Sales operated by the organization or person.
    */
-  public Place getHasPOS() { return myHasPOS; }
+  @JsonIgnore public Place getHasPOS() {
+    return (Place) getValue("hasPOS");
+  }
+  /**
+   * Points-of-Sales operated by the organization or person.
+   */
+  @JsonIgnore public Collection<Place> getHasPOSs() {
+    final Object current = myData.get("hasPOS");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
+  }
   /**
    * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
    */
-  public String getIsicV4() { return myIsicV4; }
+  @JsonIgnore public String getIsicV4() {
+    return (String) getValue("isicV4");
+  }
+  /**
+   * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
+   */
+  @JsonIgnore public Collection<String> getIsicV4s() {
+    final Object current = myData.get("isicV4");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The official name of the organization, e.g. the registered company name.
    */
-  public String getLegalName() { return myLegalName; }
+  @JsonIgnore public String getLegalName() {
+    return (String) getValue("legalName");
+  }
+  /**
+   * The official name of the organization, e.g. the registered company name.
+   */
+  @JsonIgnore public Collection<String> getLegalNames() {
+    final Object current = myData.get("legalName");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * An associated logo.
    */
-  public ImageObjectOrString getLogo() { return myLogo; }
+  @JsonIgnore public ImageObject getLogoImageObject() {
+    return (ImageObject) getValue("logo");
+  }
+  /**
+   * An associated logo.
+   */
+  @JsonIgnore public Collection<ImageObject> getLogoImageObjects() {
+    final Object current = myData.get("logo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ImageObject>) current;
+    }
+    return Arrays.asList((ImageObject) current);
+  }
+  /**
+   * An associated logo.
+   */
+  @JsonIgnore public String getLogoString() {
+    return (String) getValue("logo");
+  }
+  /**
+   * An associated logo.
+   */
+  @JsonIgnore public Collection<String> getLogoStrings() {
+    final Object current = myData.get("logo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A pointer to products or services offered by the organization or person.
    */
-  public Offer getMakesOffer() { return myMakesOffer; }
+  @JsonIgnore public Offer getMakesOffer() {
+    return (Offer) getValue("makesOffer");
+  }
+  /**
+   * A pointer to products or services offered by the organization or person.
+   */
+  @JsonIgnore public Collection<Offer> getMakesOffers() {
+    final Object current = myData.get("makesOffer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Offer>) current;
+    }
+    return Arrays.asList((Offer) current);
+  }
   /**
    * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
    */
-  public OrganizationOrPerson getMember() { return myMember; }
+  @JsonIgnore public Organization getMemberOrganization() {
+    return (Organization) getValue("member");
+  }
+  /**
+   * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
+   */
+  @JsonIgnore public Collection<Organization> getMemberOrganizations() {
+    final Object current = myData.get("member");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
+   */
+  @JsonIgnore public Person getMemberPerson() {
+    return (Person) getValue("member");
+  }
+  /**
+   * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
+   */
+  @JsonIgnore public Collection<Person> getMemberPersons() {
+    final Object current = myData.get("member");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * An Organization (or ProgramMembership) to which this Person or Organization belongs.
    */
-  public OrganizationOrProgramMembership getMemberOf() { return myMemberOf; }
+  @JsonIgnore public Organization getMemberOfOrganization() {
+    return (Organization) getValue("memberOf");
+  }
+  /**
+   * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+   */
+  @JsonIgnore public Collection<Organization> getMemberOfOrganizations() {
+    final Object current = myData.get("memberOf");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+   */
+  @JsonIgnore public ProgramMembership getMemberOfProgramMembership() {
+    return (ProgramMembership) getValue("memberOf");
+  }
+  /**
+   * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+   */
+  @JsonIgnore public Collection<ProgramMembership> getMemberOfProgramMemberships() {
+    final Object current = myData.get("memberOf");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ProgramMembership>) current;
+    }
+    return Arrays.asList((ProgramMembership) current);
+  }
   /**
    * The North American Industry Classification System (NAICS) code for a particular organization or business person.
    */
-  public String getNaics() { return myNaics; }
+  @JsonIgnore public String getNaics() {
+    return (String) getValue("naics");
+  }
+  /**
+   * The North American Industry Classification System (NAICS) code for a particular organization or business person.
+   */
+  @JsonIgnore public Collection<String> getNaicss() {
+    final Object current = myData.get("naics");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The number of employees in an organization e.g. business.
    */
-  public QuantitativeValue getNumberOfEmployees() { return myNumberOfEmployees; }
+  @JsonIgnore public QuantitativeValue getNumberOfEmployees() {
+    return (QuantitativeValue) getValue("numberOfEmployees");
+  }
+  /**
+   * The number of employees in an organization e.g. business.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getNumberOfEmployeess() {
+    final Object current = myData.get("numberOfEmployees");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * Products owned by the organization or person.
    */
-  public OwnershipInfoOrProduct getOwns() { return myOwns; }
+  @JsonIgnore public OwnershipInfo getOwnsOwnershipInfo() {
+    return (OwnershipInfo) getValue("owns");
+  }
+  /**
+   * Products owned by the organization or person.
+   */
+  @JsonIgnore public Collection<OwnershipInfo> getOwnsOwnershipInfos() {
+    final Object current = myData.get("owns");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<OwnershipInfo>) current;
+    }
+    return Arrays.asList((OwnershipInfo) current);
+  }
+  /**
+   * Products owned by the organization or person.
+   */
+  @JsonIgnore public Product getOwnsProduct() {
+    return (Product) getValue("owns");
+  }
+  /**
+   * Products owned by the organization or person.
+   */
+  @JsonIgnore public Collection<Product> getOwnsProducts() {
+    final Object current = myData.get("owns");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Product>) current;
+    }
+    return Arrays.asList((Product) current);
+  }
   /**
    * A review of the item.
    */
-  public Review getReview() { return myReview; }
+  @JsonIgnore public Review getReview() {
+    return (Review) getValue("review");
+  }
+  /**
+   * A review of the item.
+   */
+  @JsonIgnore public Collection<Review> getReviews() {
+    final Object current = myData.get("review");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Review>) current;
+    }
+    return Arrays.asList((Review) current);
+  }
   /**
    * A pointer to products or services sought by the organization or person (demand).
    */
-  public Demand getSeeks() { return mySeeks; }
+  @JsonIgnore public Demand getSeeks() {
+    return (Demand) getValue("seeks");
+  }
+  /**
+   * A pointer to products or services sought by the organization or person (demand).
+   */
+  @JsonIgnore public Collection<Demand> getSeekss() {
+    final Object current = myData.get("seeks");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Demand>) current;
+    }
+    return Arrays.asList((Demand) current);
+  }
   /**
    * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
    */
-  public Organization getSubOrganization() { return mySubOrganization; }
+  @JsonIgnore public Organization getSubOrganization() {
+    return (Organization) getValue("subOrganization");
+  }
+  /**
+   * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
+   */
+  @JsonIgnore public Collection<Organization> getSubOrganizations() {
+    final Object current = myData.get("subOrganization");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
    */
-  public String getTaxID() { return myTaxID; }
+  @JsonIgnore public String getTaxID() {
+    return (String) getValue("taxID");
+  }
+  /**
+   * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
+   */
+  @JsonIgnore public Collection<String> getTaxIDs() {
+    final Object current = myData.get("taxID");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The telephone number.
    */
-  public String getTelephone() { return myTelephone; }
+  @JsonIgnore public String getTelephone() {
+    return (String) getValue("telephone");
+  }
+  /**
+   * The telephone number.
+   */
+  @JsonIgnore public Collection<String> getTelephones() {
+    final Object current = myData.get("telephone");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The Value-added Tax ID of the organization or person.
    */
-  public String getVatID() { return myVatID; }
+  @JsonIgnore public String getVatID() {
+    return (String) getValue("vatID");
+  }
+  /**
+   * The Value-added Tax ID of the organization or person.
+   */
+  @JsonIgnore public Collection<String> getVatIDs() {
+    final Object current = myData.get("vatID");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The place where the Organization was founded.
    */
-  public Place getFoundingLocation() { return myFoundingLocation; }
-  protected Organization(PostalAddress address, AggregateRating aggregateRating, String award, BrandOrOrganization brand, ContactPoint contactPoint, Organization department, String duns, String email, Person employee, Event event, String faxNumber, Person founder, java.util.Date dissolutionDate, java.util.Date foundingDate, String globalLocationNumber, Place hasPOS, String isicV4, String legalName, ImageObjectOrString logo, Offer makesOffer, OrganizationOrPerson member, OrganizationOrProgramMembership memberOf, String naics, QuantitativeValue numberOfEmployees, OwnershipInfoOrProduct owns, Review review, Demand seeks, Organization subOrganization, String taxID, String telephone, String vatID, Place foundingLocation, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAddress = address;
-    myAggregateRating = aggregateRating;
-    myAward = award;
-    myBrand = brand;
-    myContactPoint = contactPoint;
-    myDepartment = department;
-    myDuns = duns;
-    myEmail = email;
-    myEmployee = employee;
-    myEvent = event;
-    myFaxNumber = faxNumber;
-    myFounder = founder;
-    myDissolutionDate = dissolutionDate;
-    myFoundingDate = foundingDate;
-    myGlobalLocationNumber = globalLocationNumber;
-    myHasPOS = hasPOS;
-    myIsicV4 = isicV4;
-    myLegalName = legalName;
-    myLogo = logo;
-    myMakesOffer = makesOffer;
-    myMember = member;
-    myMemberOf = memberOf;
-    myNaics = naics;
-    myNumberOfEmployees = numberOfEmployees;
-    myOwns = owns;
-    myReview = review;
-    mySeeks = seeks;
-    mySubOrganization = subOrganization;
-    myTaxID = taxID;
-    myTelephone = telephone;
-    myVatID = vatID;
-    myFoundingLocation = foundingLocation;
-    myAddress = address;
-    myAggregateRating = aggregateRating;
-    myAward = award;
-    myBrand = brand;
-    myContactPoint = contactPoint;
-    myDepartment = department;
-    myDuns = duns;
-    myEmail = email;
-    myEmployee = employee;
-    myEvent = event;
-    myFaxNumber = faxNumber;
-    myFounder = founder;
-    myDissolutionDate = dissolutionDate;
-    myFoundingDate = foundingDate;
-    myGlobalLocationNumber = globalLocationNumber;
-    myHasPOS = hasPOS;
-    myIsicV4 = isicV4;
-    myLegalName = legalName;
-    myLogo = logo;
-    myMakesOffer = makesOffer;
-    myMember = member;
-    myMemberOf = memberOf;
-    myNaics = naics;
-    myNumberOfEmployees = numberOfEmployees;
-    myOwns = owns;
-    myReview = review;
-    mySeeks = seeks;
-    mySubOrganization = subOrganization;
-    myTaxID = taxID;
-    myTelephone = telephone;
-    myVatID = vatID;
-    myFoundingLocation = foundingLocation;
+  @JsonIgnore public Place getFoundingLocation() {
+    return (Place) getValue("foundingLocation");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAddress != null ? myAddress.hashCode() : 0);
-    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
-    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
-    result = 31 * result + (myBrand != null ? myBrand.hashCode() : 0);
-    result = 31 * result + (myContactPoint != null ? myContactPoint.hashCode() : 0);
-    result = 31 * result + (myDepartment != null ? myDepartment.hashCode() : 0);
-    result = 31 * result + (myDuns != null ? myDuns.hashCode() : 0);
-    result = 31 * result + (myEmail != null ? myEmail.hashCode() : 0);
-    result = 31 * result + (myEmployee != null ? myEmployee.hashCode() : 0);
-    result = 31 * result + (myEvent != null ? myEvent.hashCode() : 0);
-    result = 31 * result + (myFaxNumber != null ? myFaxNumber.hashCode() : 0);
-    result = 31 * result + (myFounder != null ? myFounder.hashCode() : 0);
-    result = 31 * result + (myDissolutionDate != null ? myDissolutionDate.hashCode() : 0);
-    result = 31 * result + (myFoundingDate != null ? myFoundingDate.hashCode() : 0);
-    result = 31 * result + (myGlobalLocationNumber != null ? myGlobalLocationNumber.hashCode() : 0);
-    result = 31 * result + (myHasPOS != null ? myHasPOS.hashCode() : 0);
-    result = 31 * result + (myIsicV4 != null ? myIsicV4.hashCode() : 0);
-    result = 31 * result + (myLegalName != null ? myLegalName.hashCode() : 0);
-    result = 31 * result + (myLogo != null ? myLogo.hashCode() : 0);
-    result = 31 * result + (myMakesOffer != null ? myMakesOffer.hashCode() : 0);
-    result = 31 * result + (myMember != null ? myMember.hashCode() : 0);
-    result = 31 * result + (myMemberOf != null ? myMemberOf.hashCode() : 0);
-    result = 31 * result + (myNaics != null ? myNaics.hashCode() : 0);
-    result = 31 * result + (myNumberOfEmployees != null ? myNumberOfEmployees.hashCode() : 0);
-    result = 31 * result + (myOwns != null ? myOwns.hashCode() : 0);
-    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
-    result = 31 * result + (mySeeks != null ? mySeeks.hashCode() : 0);
-    result = 31 * result + (mySubOrganization != null ? mySubOrganization.hashCode() : 0);
-    result = 31 * result + (myTaxID != null ? myTaxID.hashCode() : 0);
-    result = 31 * result + (myTelephone != null ? myTelephone.hashCode() : 0);
-    result = 31 * result + (myVatID != null ? myVatID.hashCode() : 0);
-    result = 31 * result + (myFoundingLocation != null ? myFoundingLocation.hashCode() : 0);
-    return result;
+  /**
+   * The place where the Organization was founded.
+   */
+  @JsonIgnore public Collection<Place> getFoundingLocations() {
+    final Object current = myData.get("foundingLocation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Organization organization = (Organization) o;
-    if (!super.equals(o)) return false;
-    if (myAddress != null ? !myAddress.equals(organization.myAddress) : organization.myAddress != null) return false;
-    if (myAggregateRating != null ? !myAggregateRating.equals(organization.myAggregateRating) : organization.myAggregateRating != null) return false;
-    if (myAward != null ? !myAward.equals(organization.myAward) : organization.myAward != null) return false;
-    if (myBrand != null ? !myBrand.equals(organization.myBrand) : organization.myBrand != null) return false;
-    if (myContactPoint != null ? !myContactPoint.equals(organization.myContactPoint) : organization.myContactPoint != null) return false;
-    if (myDepartment != null ? !myDepartment.equals(organization.myDepartment) : organization.myDepartment != null) return false;
-    if (myDuns != null ? !myDuns.equals(organization.myDuns) : organization.myDuns != null) return false;
-    if (myEmail != null ? !myEmail.equals(organization.myEmail) : organization.myEmail != null) return false;
-    if (myEmployee != null ? !myEmployee.equals(organization.myEmployee) : organization.myEmployee != null) return false;
-    if (myEvent != null ? !myEvent.equals(organization.myEvent) : organization.myEvent != null) return false;
-    if (myFaxNumber != null ? !myFaxNumber.equals(organization.myFaxNumber) : organization.myFaxNumber != null) return false;
-    if (myFounder != null ? !myFounder.equals(organization.myFounder) : organization.myFounder != null) return false;
-    if (myDissolutionDate != null ? !myDissolutionDate.equals(organization.myDissolutionDate) : organization.myDissolutionDate != null) return false;
-    if (myFoundingDate != null ? !myFoundingDate.equals(organization.myFoundingDate) : organization.myFoundingDate != null) return false;
-    if (myGlobalLocationNumber != null ? !myGlobalLocationNumber.equals(organization.myGlobalLocationNumber) : organization.myGlobalLocationNumber != null) return false;
-    if (myHasPOS != null ? !myHasPOS.equals(organization.myHasPOS) : organization.myHasPOS != null) return false;
-    if (myIsicV4 != null ? !myIsicV4.equals(organization.myIsicV4) : organization.myIsicV4 != null) return false;
-    if (myLegalName != null ? !myLegalName.equals(organization.myLegalName) : organization.myLegalName != null) return false;
-    if (myLogo != null ? !myLogo.equals(organization.myLogo) : organization.myLogo != null) return false;
-    if (myMakesOffer != null ? !myMakesOffer.equals(organization.myMakesOffer) : organization.myMakesOffer != null) return false;
-    if (myMember != null ? !myMember.equals(organization.myMember) : organization.myMember != null) return false;
-    if (myMemberOf != null ? !myMemberOf.equals(organization.myMemberOf) : organization.myMemberOf != null) return false;
-    if (myNaics != null ? !myNaics.equals(organization.myNaics) : organization.myNaics != null) return false;
-    if (myNumberOfEmployees != null ? !myNumberOfEmployees.equals(organization.myNumberOfEmployees) : organization.myNumberOfEmployees != null) return false;
-    if (myOwns != null ? !myOwns.equals(organization.myOwns) : organization.myOwns != null) return false;
-    if (myReview != null ? !myReview.equals(organization.myReview) : organization.myReview != null) return false;
-    if (mySeeks != null ? !mySeeks.equals(organization.mySeeks) : organization.mySeeks != null) return false;
-    if (mySubOrganization != null ? !mySubOrganization.equals(organization.mySubOrganization) : organization.mySubOrganization != null) return false;
-    if (myTaxID != null ? !myTaxID.equals(organization.myTaxID) : organization.myTaxID != null) return false;
-    if (myTelephone != null ? !myTelephone.equals(organization.myTelephone) : organization.myTelephone != null) return false;
-    if (myVatID != null ? !myVatID.equals(organization.myVatID) : organization.myVatID != null) return false;
-    if (myFoundingLocation != null ? !myFoundingLocation.equals(organization.myFoundingLocation) : organization.myFoundingLocation != null) return false;
-    return true;
+  protected Organization(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Organization}
    */
-  public static class Builder implements ThingBuilder<Organization> {
+  public static class Builder extends Thing.Builder {
     public Organization build() {
-      return new Organization(address, aggregateRating, award, brand, contactPoint, department, duns, email, employee, event, faxNumber, founder, dissolutionDate, foundingDate, globalLocationNumber, hasPOS, isicV4, legalName, logo, makesOffer, member, memberOf, naics, numberOfEmployees, owns, review, seeks, subOrganization, taxID, telephone, vatID, foundingLocation, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Organization(myData);
     }
     /**
      * Physical address of the item.
      */
     @NotNull public Builder address(@NotNull PostalAddress postalAddress) {
-      this.address = postalAddress;
+      putValue("address", postalAddress);
       return this;
     }
     /**
      * Physical address of the item.
      */
     @NotNull public Builder address(@NotNull PostalAddress.Builder postalAddress) {
-      return this.address(postalAddress.build());
+      putValue("address", postalAddress.build());
+      return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
-      this.aggregateRating = aggregateRating;
+      putValue("aggregateRating", aggregateRating);
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating) {
-      return this.aggregateRating(aggregateRating.build());
+      putValue("aggregateRating", aggregateRating.build());
+      return this;
     }
     /**
      * An award won by or for this item.
      */
     @NotNull public Builder award(@NotNull String award) {
-      this.award = award;
+      putValue("award", award);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Brand brand) {
-      if (this.brand == null) this.brand = new BrandOrOrganization();
-      this.brand.setBrand(brand);
+      putValue("brand", brand);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Brand.Builder brand) {
-      return this.brand(brand.build());
+      putValue("brand", brand.build());
+      return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Organization organization) {
-      if (this.brand == null) this.brand = new BrandOrOrganization();
-      this.brand.setOrganization(organization);
+      putValue("brand", organization);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Organization.Builder organization) {
-      return this.brand(organization.build());
+      putValue("brand", organization.build());
+      return this;
     }
     /**
      * A contact point for a person or organization.
      */
     @NotNull public Builder contactPoint(@NotNull ContactPoint contactPoint) {
-      this.contactPoint = contactPoint;
+      putValue("contactPoint", contactPoint);
       return this;
     }
     /**
      * A contact point for a person or organization.
      */
     @NotNull public Builder contactPoint(@NotNull ContactPoint.Builder contactPoint) {
-      return this.contactPoint(contactPoint.build());
+      putValue("contactPoint", contactPoint.build());
+      return this;
     }
     /**
      * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
      */
     @NotNull public Builder department(@NotNull Organization organization) {
-      this.department = organization;
+      putValue("department", organization);
       return this;
     }
     /**
      * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
      */
     @NotNull public Builder department(@NotNull Organization.Builder organization) {
-      return this.department(organization.build());
+      putValue("department", organization.build());
+      return this;
     }
     /**
      * The Dun & Bradstreet DUNS number for identifying an organization or business person.
      */
     @NotNull public Builder duns(@NotNull String duns) {
-      this.duns = duns;
+      putValue("duns", duns);
       return this;
     }
     /**
      * Email address.
      */
     @NotNull public Builder email(@NotNull String email) {
-      this.email = email;
+      putValue("email", email);
       return this;
     }
     /**
      * Someone working for this organization.
      */
     @NotNull public Builder employee(@NotNull Person person) {
-      this.employee = person;
+      putValue("employee", person);
       return this;
     }
     /**
      * Someone working for this organization.
      */
     @NotNull public Builder employee(@NotNull Person.Builder person) {
-      return this.employee(person.build());
+      putValue("employee", person.build());
+      return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
     @NotNull public Builder event(@NotNull Event event) {
-      this.event = event;
+      putValue("event", event);
       return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
     @NotNull public Builder event(@NotNull Event.Builder event) {
-      return this.event(event.build());
+      putValue("event", event.build());
+      return this;
     }
     /**
      * The fax number.
      */
     @NotNull public Builder faxNumber(@NotNull String faxNumber) {
-      this.faxNumber = faxNumber;
+      putValue("faxNumber", faxNumber);
       return this;
     }
     /**
      * A person who founded this organization.
      */
     @NotNull public Builder founder(@NotNull Person person) {
-      this.founder = person;
+      putValue("founder", person);
       return this;
     }
     /**
      * A person who founded this organization.
      */
     @NotNull public Builder founder(@NotNull Person.Builder person) {
-      return this.founder(person.build());
+      putValue("founder", person.build());
+      return this;
     }
     /**
      * The date that this organization was dissolved.
      */
     @NotNull public Builder dissolutionDate(@NotNull java.util.Date date) {
-      this.dissolutionDate = date;
+      putValue("dissolutionDate", date);
       return this;
     }
     /**
      * The date that this organization was founded.
      */
     @NotNull public Builder foundingDate(@NotNull java.util.Date date) {
-      this.foundingDate = date;
+      putValue("foundingDate", date);
       return this;
     }
     /**
      * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
     @NotNull public Builder globalLocationNumber(@NotNull String globalLocationNumber) {
-      this.globalLocationNumber = globalLocationNumber;
+      putValue("globalLocationNumber", globalLocationNumber);
       return this;
     }
     /**
      * Points-of-Sales operated by the organization or person.
      */
     @NotNull public Builder hasPOS(@NotNull Place place) {
-      this.hasPOS = place;
+      putValue("hasPOS", place);
       return this;
     }
     /**
      * Points-of-Sales operated by the organization or person.
      */
     @NotNull public Builder hasPOS(@NotNull Place.Builder place) {
-      return this.hasPOS(place.build());
+      putValue("hasPOS", place.build());
+      return this;
     }
     /**
      * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
      */
     @NotNull public Builder isicV4(@NotNull String isicV4) {
-      this.isicV4 = isicV4;
+      putValue("isicV4", isicV4);
       return this;
     }
     /**
      * The official name of the organization, e.g. the registered company name.
      */
     @NotNull public Builder legalName(@NotNull String legalName) {
-      this.legalName = legalName;
+      putValue("legalName", legalName);
       return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull ImageObject imageObject) {
-      if (this.logo == null) this.logo = new ImageObjectOrString();
-      this.logo.setImageObject(imageObject);
+      putValue("logo", imageObject);
       return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull ImageObject.Builder imageObject) {
-      return this.logo(imageObject.build());
+      putValue("logo", imageObject.build());
+      return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull String logo) {
-      if (this.logo == null) this.logo = new ImageObjectOrString();
-      this.logo.setString(logo);
+      putValue("logo", logo);
       return this;
     }
     /**
      * A pointer to products or services offered by the organization or person.
      */
     @NotNull public Builder makesOffer(@NotNull Offer offer) {
-      this.makesOffer = offer;
+      putValue("makesOffer", offer);
       return this;
     }
     /**
      * A pointer to products or services offered by the organization or person.
      */
     @NotNull public Builder makesOffer(@NotNull Offer.Builder offer) {
-      return this.makesOffer(offer.build());
+      putValue("makesOffer", offer.build());
+      return this;
     }
     /**
      * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
     @NotNull public Builder member(@NotNull Organization organization) {
-      if (this.member == null) this.member = new OrganizationOrPerson();
-      this.member.setOrganization(organization);
+      putValue("member", organization);
       return this;
     }
     /**
      * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
     @NotNull public Builder member(@NotNull Organization.Builder organization) {
-      return this.member(organization.build());
+      putValue("member", organization.build());
+      return this;
     }
     /**
      * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
     @NotNull public Builder member(@NotNull Person person) {
-      if (this.member == null) this.member = new OrganizationOrPerson();
-      this.member.setPerson(person);
+      putValue("member", person);
       return this;
     }
     /**
      * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
     @NotNull public Builder member(@NotNull Person.Builder person) {
-      return this.member(person.build());
+      putValue("member", person.build());
+      return this;
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
     @NotNull public Builder memberOf(@NotNull Organization organization) {
-      if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
-      this.memberOf.setOrganization(organization);
+      putValue("memberOf", organization);
       return this;
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
     @NotNull public Builder memberOf(@NotNull Organization.Builder organization) {
-      return this.memberOf(organization.build());
+      putValue("memberOf", organization.build());
+      return this;
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
     @NotNull public Builder memberOf(@NotNull ProgramMembership programMembership) {
-      if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
-      this.memberOf.setProgramMembership(programMembership);
+      putValue("memberOf", programMembership);
       return this;
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
     @NotNull public Builder memberOf(@NotNull ProgramMembership.Builder programMembership) {
-      return this.memberOf(programMembership.build());
+      putValue("memberOf", programMembership.build());
+      return this;
     }
     /**
      * The North American Industry Classification System (NAICS) code for a particular organization or business person.
      */
     @NotNull public Builder naics(@NotNull String naics) {
-      this.naics = naics;
+      putValue("naics", naics);
       return this;
     }
     /**
      * The number of employees in an organization e.g. business.
      */
     @NotNull public Builder numberOfEmployees(@NotNull QuantitativeValue quantitativeValue) {
-      this.numberOfEmployees = quantitativeValue;
+      putValue("numberOfEmployees", quantitativeValue);
       return this;
     }
     /**
      * The number of employees in an organization e.g. business.
      */
     @NotNull public Builder numberOfEmployees(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.numberOfEmployees(quantitativeValue.build());
+      putValue("numberOfEmployees", quantitativeValue.build());
+      return this;
     }
     /**
      * Products owned by the organization or person.
      */
     @NotNull public Builder owns(@NotNull OwnershipInfo ownershipInfo) {
-      if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
-      this.owns.setOwnershipInfo(ownershipInfo);
+      putValue("owns", ownershipInfo);
       return this;
     }
     /**
      * Products owned by the organization or person.
      */
     @NotNull public Builder owns(@NotNull OwnershipInfo.Builder ownershipInfo) {
-      return this.owns(ownershipInfo.build());
+      putValue("owns", ownershipInfo.build());
+      return this;
     }
     /**
      * Products owned by the organization or person.
      */
     @NotNull public Builder owns(@NotNull Product product) {
-      if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
-      this.owns.setProduct(product);
+      putValue("owns", product);
       return this;
     }
     /**
      * Products owned by the organization or person.
      */
     @NotNull public Builder owns(@NotNull Product.Builder product) {
-      return this.owns(product.build());
+      putValue("owns", product.build());
+      return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review review) {
-      this.review = review;
+      putValue("review", review);
       return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review.Builder review) {
-      return this.review(review.build());
+      putValue("review", review.build());
+      return this;
     }
     /**
      * A pointer to products or services sought by the organization or person (demand).
      */
     @NotNull public Builder seeks(@NotNull Demand demand) {
-      this.seeks = demand;
+      putValue("seeks", demand);
       return this;
     }
     /**
      * A pointer to products or services sought by the organization or person (demand).
      */
     @NotNull public Builder seeks(@NotNull Demand.Builder demand) {
-      return this.seeks(demand.build());
+      putValue("seeks", demand.build());
+      return this;
     }
     /**
      * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
      */
     @NotNull public Builder subOrganization(@NotNull Organization organization) {
-      this.subOrganization = organization;
+      putValue("subOrganization", organization);
       return this;
     }
     /**
      * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
      */
     @NotNull public Builder subOrganization(@NotNull Organization.Builder organization) {
-      return this.subOrganization(organization.build());
+      putValue("subOrganization", organization.build());
+      return this;
     }
     /**
      * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
      */
     @NotNull public Builder taxID(@NotNull String taxID) {
-      this.taxID = taxID;
+      putValue("taxID", taxID);
       return this;
     }
     /**
      * The telephone number.
      */
     @NotNull public Builder telephone(@NotNull String telephone) {
-      this.telephone = telephone;
+      putValue("telephone", telephone);
       return this;
     }
     /**
      * The Value-added Tax ID of the organization or person.
      */
     @NotNull public Builder vatID(@NotNull String vatID) {
-      this.vatID = vatID;
+      putValue("vatID", vatID);
       return this;
     }
     /**
      * The place where the Organization was founded.
      */
     @NotNull public Builder foundingLocation(@NotNull Place place) {
-      this.foundingLocation = place;
+      putValue("foundingLocation", place);
       return this;
     }
     /**
      * The place where the Organization was founded.
      */
     @NotNull public Builder foundingLocation(@NotNull Place.Builder place) {
-      return this.foundingLocation(place.build());
+      putValue("foundingLocation", place.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -765,8 +1139,7 @@ public class Organization extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -800,7 +1173,8 @@ public class Organization extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -833,178 +1207,91 @@ public class Organization extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); continue; }
-        if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); continue; }
-        if ("award".equals(key) && value instanceof String) { award((String)value); continue; }
-        if ("brand".equals(key) && value instanceof Brand) { brand((Brand)value); continue; }
-        if ("brand".equals(key) && value instanceof Organization) { brand((Organization)value); continue; }
-        if ("contactPoint".equals(key) && value instanceof ContactPoint) { contactPoint((ContactPoint)value); continue; }
-        if ("department".equals(key) && value instanceof Organization) { department((Organization)value); continue; }
-        if ("duns".equals(key) && value instanceof String) { duns((String)value); continue; }
-        if ("email".equals(key) && value instanceof String) { email((String)value); continue; }
-        if ("employee".equals(key) && value instanceof Person) { employee((Person)value); continue; }
-        if ("event".equals(key) && value instanceof Event) { event((Event)value); continue; }
-        if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); continue; }
-        if ("founder".equals(key) && value instanceof Person) { founder((Person)value); continue; }
-        if ("dissolutionDate".equals(key) && value instanceof java.util.Date) { dissolutionDate((java.util.Date)value); continue; }
-        if ("foundingDate".equals(key) && value instanceof java.util.Date) { foundingDate((java.util.Date)value); continue; }
-        if ("globalLocationNumber".equals(key) && value instanceof String) { globalLocationNumber((String)value); continue; }
-        if ("hasPOS".equals(key) && value instanceof Place) { hasPOS((Place)value); continue; }
-        if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); continue; }
-        if ("legalName".equals(key) && value instanceof String) { legalName((String)value); continue; }
-        if ("logo".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); continue; }
-        if ("logo".equals(key) && value instanceof String) { logo((String)value); continue; }
-        if ("makesOffer".equals(key) && value instanceof Offer) { makesOffer((Offer)value); continue; }
-        if ("member".equals(key) && value instanceof Organization) { member((Organization)value); continue; }
-        if ("member".equals(key) && value instanceof Person) { member((Person)value); continue; }
-        if ("memberOf".equals(key) && value instanceof Organization) { memberOf((Organization)value); continue; }
-        if ("memberOf".equals(key) && value instanceof ProgramMembership) { memberOf((ProgramMembership)value); continue; }
-        if ("naics".equals(key) && value instanceof String) { naics((String)value); continue; }
-        if ("numberOfEmployees".equals(key) && value instanceof QuantitativeValue) { numberOfEmployees((QuantitativeValue)value); continue; }
-        if ("owns".equals(key) && value instanceof OwnershipInfo) { owns((OwnershipInfo)value); continue; }
-        if ("owns".equals(key) && value instanceof Product) { owns((Product)value); continue; }
-        if ("review".equals(key) && value instanceof Review) { review((Review)value); continue; }
-        if ("seeks".equals(key) && value instanceof Demand) { seeks((Demand)value); continue; }
-        if ("subOrganization".equals(key) && value instanceof Organization) { subOrganization((Organization)value); continue; }
-        if ("taxID".equals(key) && value instanceof String) { taxID((String)value); continue; }
-        if ("telephone".equals(key) && value instanceof String) { telephone((String)value); continue; }
-        if ("vatID".equals(key) && value instanceof String) { vatID((String)value); continue; }
-        if ("foundingLocation".equals(key) && value instanceof Place) { foundingLocation((Place)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
+      if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
+      if ("award".equals(key) && value instanceof String) { award((String)value); return; }
+      if ("brand".equals(key) && value instanceof Brand) { brand((Brand)value); return; }
+      if ("brand".equals(key) && value instanceof Organization) { brand((Organization)value); return; }
+      if ("contactPoint".equals(key) && value instanceof ContactPoint) { contactPoint((ContactPoint)value); return; }
+      if ("department".equals(key) && value instanceof Organization) { department((Organization)value); return; }
+      if ("duns".equals(key) && value instanceof String) { duns((String)value); return; }
+      if ("email".equals(key) && value instanceof String) { email((String)value); return; }
+      if ("employee".equals(key) && value instanceof Person) { employee((Person)value); return; }
+      if ("event".equals(key) && value instanceof Event) { event((Event)value); return; }
+      if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); return; }
+      if ("founder".equals(key) && value instanceof Person) { founder((Person)value); return; }
+      if ("dissolutionDate".equals(key) && value instanceof java.util.Date) { dissolutionDate((java.util.Date)value); return; }
+      if ("foundingDate".equals(key) && value instanceof java.util.Date) { foundingDate((java.util.Date)value); return; }
+      if ("globalLocationNumber".equals(key) && value instanceof String) { globalLocationNumber((String)value); return; }
+      if ("hasPOS".equals(key) && value instanceof Place) { hasPOS((Place)value); return; }
+      if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); return; }
+      if ("legalName".equals(key) && value instanceof String) { legalName((String)value); return; }
+      if ("logo".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); return; }
+      if ("logo".equals(key) && value instanceof String) { logo((String)value); return; }
+      if ("makesOffer".equals(key) && value instanceof Offer) { makesOffer((Offer)value); return; }
+      if ("member".equals(key) && value instanceof Organization) { member((Organization)value); return; }
+      if ("member".equals(key) && value instanceof Person) { member((Person)value); return; }
+      if ("memberOf".equals(key) && value instanceof Organization) { memberOf((Organization)value); return; }
+      if ("memberOf".equals(key) && value instanceof ProgramMembership) { memberOf((ProgramMembership)value); return; }
+      if ("naics".equals(key) && value instanceof String) { naics((String)value); return; }
+      if ("numberOfEmployees".equals(key) && value instanceof QuantitativeValue) { numberOfEmployees((QuantitativeValue)value); return; }
+      if ("owns".equals(key) && value instanceof OwnershipInfo) { owns((OwnershipInfo)value); return; }
+      if ("owns".equals(key) && value instanceof Product) { owns((Product)value); return; }
+      if ("review".equals(key) && value instanceof Review) { review((Review)value); return; }
+      if ("seeks".equals(key) && value instanceof Demand) { seeks((Demand)value); return; }
+      if ("subOrganization".equals(key) && value instanceof Organization) { subOrganization((Organization)value); return; }
+      if ("taxID".equals(key) && value instanceof String) { taxID((String)value); return; }
+      if ("telephone".equals(key) && value instanceof String) { telephone((String)value); return; }
+      if ("vatID".equals(key) && value instanceof String) { vatID((String)value); return; }
+      if ("foundingLocation".equals(key) && value instanceof Place) { foundingLocation((Place)value); return; }
+      super.fromMap(key, value);
     }
-    private PostalAddress address;
-    private AggregateRating aggregateRating;
-    private String award;
-    private BrandOrOrganization brand;
-    private ContactPoint contactPoint;
-    private Organization department;
-    private String duns;
-    private String email;
-    private Person employee;
-    private Event event;
-    private String faxNumber;
-    private Person founder;
-    private java.util.Date dissolutionDate;
-    private java.util.Date foundingDate;
-    private String globalLocationNumber;
-    private Place hasPOS;
-    private String isicV4;
-    private String legalName;
-    private ImageObjectOrString logo;
-    private Offer makesOffer;
-    private OrganizationOrPerson member;
-    private OrganizationOrProgramMembership memberOf;
-    private String naics;
-    private QuantitativeValue numberOfEmployees;
-    private OwnershipInfoOrProduct owns;
-    private Review review;
-    private Demand seeks;
-    private Organization subOrganization;
-    private String taxID;
-    private String telephone;
-    private String vatID;
-    private Place foundingLocation;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private PostalAddress myAddress;
-  private AggregateRating myAggregateRating;
-  private String myAward;
-  private BrandOrOrganization myBrand;
-  private ContactPoint myContactPoint;
-  private Organization myDepartment;
-  private String myDuns;
-  private String myEmail;
-  private Person myEmployee;
-  private Event myEvent;
-  private String myFaxNumber;
-  private Person myFounder;
-  private java.util.Date myDissolutionDate;
-  private java.util.Date myFoundingDate;
-  private String myGlobalLocationNumber;
-  private Place myHasPOS;
-  private String myIsicV4;
-  private String myLegalName;
-  private ImageObjectOrString myLogo;
-  private Offer myMakesOffer;
-  private OrganizationOrPerson myMember;
-  private OrganizationOrProgramMembership myMemberOf;
-  private String myNaics;
-  private QuantitativeValue myNumberOfEmployees;
-  private OwnershipInfoOrProduct myOwns;
-  private Review myReview;
-  private Demand mySeeks;
-  private Organization mySubOrganization;
-  private String myTaxID;
-  private String myTelephone;
-  private String myVatID;
-  private Place myFoundingLocation;
 }

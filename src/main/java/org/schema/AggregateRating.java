@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * The average rating based on multiple ratings or reviews.
@@ -29,182 +30,189 @@ public class AggregateRating extends Rating {
   /**
    * The item that is being reviewed/rated.
    */
-  public Thing getItemReviewed() { return myItemReviewed; }
+  @JsonIgnore public Thing getItemReviewed() {
+    return (Thing) getValue("itemReviewed");
+  }
+  /**
+   * The item that is being reviewed/rated.
+   */
+  @JsonIgnore public Collection<Thing> getItemRevieweds() {
+    final Object current = myData.get("itemReviewed");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Thing>) current;
+    }
+    return Arrays.asList((Thing) current);
+  }
   /**
    * The count of total number of ratings.
    */
-  public Integer getRatingCount() { return myRatingCount; }
+  @JsonIgnore public Integer getRatingCount() {
+    return (Integer) getValue("ratingCount");
+  }
+  /**
+   * The count of total number of ratings.
+   */
+  @JsonIgnore public Collection<Integer> getRatingCounts() {
+    final Object current = myData.get("ratingCount");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
   /**
    * The count of total number of reviews.
    */
-  public Integer getReviewCount() { return myReviewCount; }
-  protected AggregateRating(Thing itemReviewed, Integer ratingCount, Integer reviewCount, Number bestRating, String ratingValue, Number worstRating, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myItemReviewed = itemReviewed;
-    myRatingCount = ratingCount;
-    myReviewCount = reviewCount;
-    myItemReviewed = itemReviewed;
-    myRatingCount = ratingCount;
-    myReviewCount = reviewCount;
+  @JsonIgnore public Integer getReviewCount() {
+    return (Integer) getValue("reviewCount");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myItemReviewed != null ? myItemReviewed.hashCode() : 0);
-    result = 31 * result + (myRatingCount != null ? myRatingCount.hashCode() : 0);
-    result = 31 * result + (myReviewCount != null ? myReviewCount.hashCode() : 0);
-    return result;
+  /**
+   * The count of total number of reviews.
+   */
+  @JsonIgnore public Collection<Integer> getReviewCounts() {
+    final Object current = myData.get("reviewCount");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    AggregateRating aggregateRating = (AggregateRating) o;
-    if (!super.equals(o)) return false;
-    if (myItemReviewed != null ? !myItemReviewed.equals(aggregateRating.myItemReviewed) : aggregateRating.myItemReviewed != null) return false;
-    if (myRatingCount != null ? !myRatingCount.equals(aggregateRating.myRatingCount) : aggregateRating.myRatingCount != null) return false;
-    if (myReviewCount != null ? !myReviewCount.equals(aggregateRating.myReviewCount) : aggregateRating.myReviewCount != null) return false;
-    return true;
+  protected AggregateRating(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link AggregateRating}
    */
-  public static class Builder implements ThingBuilder<AggregateRating> {
+  public static class Builder extends Rating.Builder {
     public AggregateRating build() {
-      return new AggregateRating(itemReviewed, ratingCount, reviewCount, bestRating, ratingValue, worstRating, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new AggregateRating(myData);
     }
     /**
      * The item that is being reviewed/rated.
      */
     @NotNull public Builder itemReviewed(@NotNull Thing thing) {
-      this.itemReviewed = thing;
+      putValue("itemReviewed", thing);
       return this;
     }
     /**
      * The item that is being reviewed/rated.
      */
     @NotNull public Builder itemReviewed(@NotNull Thing.Builder thing) {
-      return this.itemReviewed(thing.build());
+      putValue("itemReviewed", thing.build());
+      return this;
     }
     /**
      * The count of total number of ratings.
      */
     @NotNull public Builder ratingCount(@NotNull Integer integer) {
-      this.ratingCount = integer;
+      putValue("ratingCount", integer);
       return this;
     }
     /**
      * The count of total number of reviews.
      */
     @NotNull public Builder reviewCount(@NotNull Integer integer) {
-      this.reviewCount = integer;
+      putValue("reviewCount", integer);
       return this;
     }
     /**
      * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
      */
     @NotNull public Builder bestRating(@NotNull Integer integer) {
-      if (this.bestRating == null) this.bestRating = new Number();
-      this.bestRating.setInteger(integer);
+      putValue("bestRating", integer);
       return this;
     }
     /**
      * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
      */
     @NotNull public Builder bestRating(@NotNull Long bestRating) {
-      if (this.bestRating == null) this.bestRating = new Number();
-      this.bestRating.setLong(bestRating);
+      putValue("bestRating", bestRating);
       return this;
     }
     /**
      * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
      */
     @NotNull public Builder bestRating(@NotNull Float bestRating) {
-      if (this.bestRating == null) this.bestRating = new Number();
-      this.bestRating.setFloat(bestRating);
+      putValue("bestRating", bestRating);
       return this;
     }
     /**
      * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
      */
     @NotNull public Builder bestRating(@NotNull Double bestRating) {
-      if (this.bestRating == null) this.bestRating = new Number();
-      this.bestRating.setDouble(bestRating);
+      putValue("bestRating", bestRating);
       return this;
     }
     /**
      * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
      */
     @NotNull public Builder bestRating(@NotNull String bestRating) {
-      if (this.bestRating == null) this.bestRating = new Number();
-      this.bestRating.setString(bestRating);
+      putValue("bestRating", bestRating);
       return this;
     }
     /**
      * The rating for the content.
      */
     @NotNull public Builder ratingValue(@NotNull String ratingValue) {
-      this.ratingValue = ratingValue;
+      putValue("ratingValue", ratingValue);
       return this;
     }
     /**
      * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
      */
     @NotNull public Builder worstRating(@NotNull Integer integer) {
-      if (this.worstRating == null) this.worstRating = new Number();
-      this.worstRating.setInteger(integer);
+      putValue("worstRating", integer);
       return this;
     }
     /**
      * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
      */
     @NotNull public Builder worstRating(@NotNull Long worstRating) {
-      if (this.worstRating == null) this.worstRating = new Number();
-      this.worstRating.setLong(worstRating);
+      putValue("worstRating", worstRating);
       return this;
     }
     /**
      * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
      */
     @NotNull public Builder worstRating(@NotNull Float worstRating) {
-      if (this.worstRating == null) this.worstRating = new Number();
-      this.worstRating.setFloat(worstRating);
+      putValue("worstRating", worstRating);
       return this;
     }
     /**
      * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
      */
     @NotNull public Builder worstRating(@NotNull Double worstRating) {
-      if (this.worstRating == null) this.worstRating = new Number();
-      this.worstRating.setDouble(worstRating);
+      putValue("worstRating", worstRating);
       return this;
     }
     /**
      * The lowest value allowed in this rating system. If worstRating is omitted, 1 is assumed.
      */
     @NotNull public Builder worstRating(@NotNull String worstRating) {
-      if (this.worstRating == null) this.worstRating = new Number();
-      this.worstRating.setString(worstRating);
+      putValue("worstRating", worstRating);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -238,8 +246,7 @@ public class AggregateRating extends Rating {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -273,7 +280,8 @@ public class AggregateRating extends Rating {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -306,100 +314,57 @@ public class AggregateRating extends Rating {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("itemReviewed".equals(key) && value instanceof Thing) { itemReviewed((Thing)value); continue; }
-        if ("ratingCount".equals(key) && value instanceof Integer) { ratingCount((Integer)value); continue; }
-        if ("reviewCount".equals(key) && value instanceof Integer) { reviewCount((Integer)value); continue; }
-        if ("bestRating".equals(key) && value instanceof Integer) { bestRating((Integer)value); continue; }
-        if ("bestRating".equals(key) && value instanceof Long) { bestRating((Long)value); continue; }
-        if ("bestRating".equals(key) && value instanceof Float) { bestRating((Float)value); continue; }
-        if ("bestRating".equals(key) && value instanceof Double) { bestRating((Double)value); continue; }
-        if ("bestRating".equals(key) && value instanceof String) { bestRating((String)value); continue; }
-        if ("ratingValue".equals(key) && value instanceof String) { ratingValue((String)value); continue; }
-        if ("worstRating".equals(key) && value instanceof Integer) { worstRating((Integer)value); continue; }
-        if ("worstRating".equals(key) && value instanceof Long) { worstRating((Long)value); continue; }
-        if ("worstRating".equals(key) && value instanceof Float) { worstRating((Float)value); continue; }
-        if ("worstRating".equals(key) && value instanceof Double) { worstRating((Double)value); continue; }
-        if ("worstRating".equals(key) && value instanceof String) { worstRating((String)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("itemReviewed".equals(key) && value instanceof Thing) { itemReviewed((Thing)value); return; }
+      if ("ratingCount".equals(key) && value instanceof Integer) { ratingCount((Integer)value); return; }
+      if ("reviewCount".equals(key) && value instanceof Integer) { reviewCount((Integer)value); return; }
+      super.fromMap(key, value);
     }
-    private Thing itemReviewed;
-    private Integer ratingCount;
-    private Integer reviewCount;
-    private Number bestRating;
-    private String ratingValue;
-    private Number worstRating;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private Thing myItemReviewed;
-  private Integer myRatingCount;
-  private Integer myReviewCount;
 }

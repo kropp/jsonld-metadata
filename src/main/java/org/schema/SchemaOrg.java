@@ -69,10 +69,6 @@ public class SchemaOrg {
    */
   public static AmusementPark.Builder amusementPark() { return new AmusementPark.Builder(); }
   /**
-   * DigitalAudioTapeFormat.
-   */
-  public static DigitalAudioTapeFormat.Builder digitalAudioTapeFormat() { return new DigitalAudioTapeFormat.Builder(); }
-  /**
    * The act of editing by adding an object to a collection.
    */
   public static AddAction.Builder addAction() { return new AddAction.Builder(); }
@@ -92,10 +88,6 @@ public class SchemaOrg {
    * A complex mathematical calculation requiring an online calculator, used to assess prognosis. Note: use the url property of Thing to record any URLs for online calculators.
    */
   public static MedicalRiskCalculator.Builder medicalRiskCalculator() { return new MedicalRiskCalculator.Builder(); }
-  /**
-   * Abdomen.
-   */
-  public static Abdomen.Builder abdomen() { return new Abdomen.Builder(); }
   /**
    * The act of generating a comment about a subject.
    */
@@ -133,33 +125,17 @@ public class SchemaOrg {
    */
   public static GeoCoordinates.Builder geoCoordinates() { return new GeoCoordinates.Builder(); }
   /**
-   * This class contains information contributed by <a href=http://wikidoc.org>WikiDoc</a>.
-   */
-  public static WikiDoc.Builder wikiDoc() { return new WikiDoc.Builder(); }
-  /**
    * The anatomical location at which two or more bones make contact.
    */
   public static Joint.Builder joint() { return new Joint.Builder(); }
-  /**
-   * OrderStatus representing availability of an order for pickup.
-   */
-  public static OrderPickupAvailable.Builder orderPickupAvailable() { return new OrderPickupAvailable.Builder(); }
   /**
    * A garden store.
    */
   public static GardenStore.Builder gardenStore() { return new GardenStore.Builder(); }
   /**
-   * Skin.
-   */
-  public static Skin.Builder skin() { return new Skin.Builder(); }
-  /**
    * Event type: Children's event.
    */
   public static ChildrensEvent.Builder childrensEvent() { return new ChildrensEvent.Builder(); }
-  /**
-   * Indicates that the item is in stock.
-   */
-  public static InStock.Builder inStock() { return new InStock.Builder(); }
   /**
    * Any medical test, typically performed for diagnostic purposes.
    */
@@ -173,14 +149,6 @@ public class SchemaOrg {
    */
   public static TouristAttraction.Builder touristAttraction() { return new TouristAttraction.Builder(); }
   /**
-   * SingleRelease.
-   */
-  public static SingleRelease.Builder singleRelease() { return new SingleRelease.Builder(); }
-  /**
-   * Game server status: OfflinePermanently. Server is offline and not available.
-   */
-  public static OfflinePermanently.Builder offlinePermanently() { return new OfflinePermanently.Builder(); }
-  /**
    * An agent bookmarks/flags/labels/tags/marks an object.
    */
   public static BookmarkAction.Builder bookmarkAction() { return new BookmarkAction.Builder(); }
@@ -188,14 +156,6 @@ public class SchemaOrg {
    * Categories that represent an assessment of the risk of fetal injury due to a drug or pharmaceutical used as directed by the mother during pregnancy.
    */
   public static DrugPregnancyCategory.Builder drugPregnancyCategory() { return new DrugPregnancyCategory.Builder(); }
-  /**
-   * The associated telephone number is toll free.
-   */
-  public static TollFree.Builder tollFree() { return new TollFree.Builder(); }
-  /**
-   * A specific branch of medical science that studies the nerves and nervous system and its respective disease states.
-   */
-  public static Neurologic.Builder neurologic() { return new Neurologic.Builder(); }
   /**
    * A unique instance of a BroadcastService on a CableOrSatelliteService lineup.
    */
@@ -205,10 +165,6 @@ public class SchemaOrg {
    */
   public static UnRegisterAction.Builder unRegisterAction() { return new UnRegisterAction.Builder(); }
   /**
-   * Indicates the usage of the vehicle for driving school.
-   */
-  public static DrivingSchoolVehicleUsage.Builder drivingSchoolVehicleUsage() { return new DrivingSchoolVehicleUsage.Builder(); }
-  /**
    * One of the continents (for example, Europe or Africa).
    */
   public static Continent.Builder continent() { return new Continent.Builder(); }
@@ -217,37 +173,13 @@ public class SchemaOrg {
    */
   public static DeleteAction.Builder deleteAction() { return new DeleteAction.Builder(); }
   /**
-   * An observational study design.
-   */
-  public static Observational.Builder observational() { return new Observational.Builder(); }
-  /**
-   * Results are available.
-   */
-  public static ResultsAvailable.Builder resultsAvailable() { return new ResultsAvailable.Builder(); }
-  /**
-   * DJMixAlbum.
-   */
-  public static DJMixAlbum.Builder dJMixAlbum() { return new DJMixAlbum.Builder(); }
-  /**
    * A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as <code>breadcrumb</code> may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page.
    */
   public static WebPage.Builder webPage() { return new WebPage.Builder(); }
   /**
-   * Indicates that the item is damaged.
-   */
-  public static DamagedCondition.Builder damagedCondition() { return new DamagedCondition.Builder(); }
-  /**
-   * A trial design in which the researcher knows which treatment the patient was randomly assigned to but the patient does not.
-   */
-  public static SingleBlindedTrial.Builder singleBlindedTrial() { return new SingleBlindedTrial.Builder(); }
-  /**
    * A bus station.
    */
   public static BusStation.Builder busStation() { return new BusStation.Builder(); }
-  /**
-   * Terminated.
-   */
-  public static Terminated.Builder terminated() { return new Terminated.Builder(); }
   /**
    * A taxi.
    */
@@ -260,10 +192,6 @@ public class SchemaOrg {
    * The act of resuming a device or application which was formerly paused (e.g. resume music playback or resume a timer).
    */
   public static ResumeAction.Builder resumeAction() { return new ResumeAction.Builder(); }
-  /**
-   * A system of medicine based on common theoretical concepts that originated in China and evolved over thousands of years, that uses herbs, acupuncture, exercise, massage, dietary therapy, and other methods to treat a wide range of conditions.
-   */
-  public static TraditionalChinese.Builder traditionalChinese() { return new TraditionalChinese.Builder(); }
   /**
    * An anatomical system is a group of anatomical structures that work together to perform a certain task. Anatomical systems, such as organ systems, are one organizing principle of anatomy, and can includes circulatory, digestive, endocrine, integumentary, immune, lymphatic, muscular, nervous, reproductive, respiratory, skeletal, urinary, vestibular, and other systems.
    */
@@ -299,14 +227,6 @@ public class SchemaOrg {
    */
   public static PostalAddress.Builder postalAddress() { return new PostalAddress.Builder(); }
   /**
-   * Nursing.
-   */
-  public static Nursing.Builder nursing() { return new Nursing.Builder(); }
-  /**
-   * The event has been rescheduled. The event's previousStartDate should be set to the old date and the startDate should be set to the event's new date. (If the event has been rescheduled multiple times, the previousStartDate property may be repeated).
-   */
-  public static EventRescheduled.Builder eventRescheduled() { return new EventRescheduled.Builder(); }
-  /**
    * A travel agency.
    */
   public static TravelAgency.Builder travelAgency() { return new TravelAgency.Builder(); }
@@ -314,10 +234,6 @@ public class SchemaOrg {
    * Web page type: Profile page.
    */
   public static ProfilePage.Builder profilePage() { return new ProfilePage.Builder(); }
-  /**
-   * The conventional Western system of medicine, that aims to apply the best available evidence gained from the scientific method to clinical decision making. Also known as conventional or Western medicine.
-   */
-  public static WesternConventional.Builder westernConventional() { return new WesternConventional.Builder(); }
   /**
    * A roofing contractor.
    */
@@ -335,14 +251,6 @@ public class SchemaOrg {
    */
   public static ImageObject.Builder imageObject() { return new ImageObject.Builder(); }
   /**
-   * Indicates that the item has sold out.
-   */
-  public static SoldOut.Builder soldOut() { return new SoldOut.Builder(); }
-  /**
-   * A system of medicine based on the principle that a disease can be cured by a substance that produces similar symptoms in healthy people.
-   */
-  public static Homeopathic.Builder homeopathic() { return new Homeopathic.Builder(); }
-  /**
    * A reservation for bus travel.Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use http://schema.org/Offer.
    */
   public static BusReservation.Builder busReservation() { return new BusReservation.Builder(); }
@@ -351,10 +259,6 @@ public class SchemaOrg {
    */
   public static Pond.Builder pond() { return new Pond.Builder(); }
   /**
-   * Speech pathology.
-   */
-  public static SpeechPathology.Builder speechPathology() { return new SpeechPathology.Builder(); }
-  /**
    * A sea (for example, the Caspian sea).
    */
   public static SeaBodyOfWater.Builder seaBodyOfWater() { return new SeaBodyOfWater.Builder(); }
@@ -362,10 +266,6 @@ public class SchemaOrg {
    * A reservation for air travel.Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use http://schema.org/Offer.
    */
   public static FlightReservation.Builder flightReservation() { return new FlightReservation.Builder(); }
-  /**
-   * Researchers.
-   */
-  public static Researcher.Builder researcher() { return new Researcher.Builder(); }
   /**
    * A clothing store.
    */
@@ -387,10 +287,6 @@ public class SchemaOrg {
    */
   public static Mountain.Builder mountain() { return new Mountain.Builder(); }
   /**
-   * Game server status: Online. Server is available.
-   */
-  public static Online.Builder online() { return new Online.Builder(); }
-  /**
    * A music recording (track), usually a single song.
    */
   public static MusicRecording.Builder musicRecording() { return new MusicRecording.Builder(); }
@@ -399,17 +295,9 @@ public class SchemaOrg {
    */
   public static InsertAction.Builder insertAction() { return new InsertAction.Builder(); }
   /**
-   * A system of medicine that originated in India over thousands of years and that focuses on integrating and balancing the body, mind, and spirit.
-   */
-  public static Ayurvedic.Builder ayurvedic() { return new Ayurvedic.Builder(); }
-  /**
    * The act of gaining ownership of an object from an origin. Reciprocal of GiveAction.<p>Related actions:</p><ul><li><a href="http://schema.org/GiveAction">GiveAction</a>: The reciprocal of TakeAction.</li><li><a href="http://schema.org/ReceiveAction">ReceiveAction</a>: Unlike ReceiveAction, TakeAction implies that ownership has been transfered</li></ul>.
    */
   public static TakeAction.Builder takeAction() { return new TakeAction.Builder(); }
-  /**
-   * Withdrawn.
-   */
-  public static Withdrawn.Builder withdrawn() { return new Withdrawn.Builder(); }
   /**
    * A music video file.
    */
@@ -418,10 +306,6 @@ public class SchemaOrg {
    * A reservation for train travel.Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use http://schema.org/Offer.
    */
   public static TrainReservation.Builder trainReservation() { return new TrainReservation.Builder(); }
-  /**
-   * A prion is an infectious agent composed of protein in a misfolded form.
-   */
-  public static Prion.Builder prion() { return new Prion.Builder(); }
   /**
    * The act of consuming dynamic/moving visual content.
    */
@@ -441,29 +325,13 @@ public class SchemaOrg {
    */
   public static Language.Builder language() { return new Language.Builder(); }
   /**
-   * A description of an action that is supported.
-   */
-  public static PotentialActionStatus.Builder potentialActionStatus() { return new PotentialActionStatus.Builder(); }
-  /**
-   * A specific branch of medical science that pertains to the study of the kidneys and its respective disease states.
-   */
-  public static Renal.Builder renal() { return new Renal.Builder(); }
-  /**
    * A country.
    */
   public static Country.Builder country() { return new Country.Builder(); }
   /**
-   * A medical device used for therapeutic purposes.
-   */
-  public static Therapeutic.Builder therapeutic() { return new Therapeutic.Builder(); }
-  /**
    * A specific dosing schedule for a drug or supplement.
    */
   public static DoseSchedule.Builder doseSchedule() { return new DoseSchedule.Builder(); }
-  /**
-   * A specific branch of medical science that pertains to diagnosis and treatment of bacterial, viral, fungal and parasitic infections.
-   */
-  public static Infectious.Builder infectious() { return new Infectious.Builder(); }
   /**
    * A geographical region under the jurisdiction of a particular government.
    */
@@ -512,14 +380,6 @@ public class SchemaOrg {
    */
   public static MusicGroup.Builder musicGroup() { return new MusicGroup.Builder(); }
   /**
-   * The event has been postponed and no new date has been set. The event's previousStartDate should be set.
-   */
-  public static EventPostponed.Builder eventPostponed() { return new EventPostponed.Builder(); }
-  /**
-   * A seating map.
-   */
-  public static SeatingMap.Builder seatingMap() { return new SeatingMap.Builder(); }
-  /**
    * A reservation for lodging at a hotel, motel, inn, etc.Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
    */
   public static LodgingReservation.Builder lodgingReservation() { return new LodgingReservation.Builder(); }
@@ -554,23 +414,9 @@ public class SchemaOrg {
    */
   public static LiteraryEvent.Builder literaryEvent() { return new LiteraryEvent.Builder(); }
   /**
-   * A designation by the US FDA signifying that studies in animals or humans have demonstrated fetal abnormalities and/or there is positive evidence of human fetal risk based on adverse reaction data from investigational or marketing experience, and the risks involved in use of the drug in pregnant women clearly outweigh potential benefits.
-   */
-  public static FDAcategoryX.Builder fDAcategoryX() { return new FDAcategoryX.Builder(); }
-  /**
    * A home goods store.
    */
   public static HomeGoodsStore.Builder homeGoodsStore() { return new HomeGoodsStore.Builder(); }
-  /**
-   * This vocabulary was improved through collaboration with the MusicBrainz project
-    (<a href="http://www.musicbrainz.org">www.musicbrainz.org</a>), and is partially inspired by the MusicBrainz and
-    <a href="http://musicontology.com/docs/getting-started.html">Music Ontology</a> schemas.
-   */
-  public static MBZ.Builder mBZ() { return new MBZ.Builder(); }
-  /**
-   * A specific branch of medical science that pertains to the study of the respiratory system and its respective disease states.
-   */
-  public static Pulmonary.Builder pulmonary() { return new Pulmonary.Builder(); }
   /**
    * The act of organizing tasks/objects/events by associating resources to it.
    */
@@ -579,14 +425,6 @@ public class SchemaOrg {
    * A sidebar section of the page.
    */
   public static WPSideBar.Builder wPSideBar() { return new WPSideBar.Builder(); }
-  /**
-   * A designation by the US FDA signifying that animal reproduction studies have shown an adverse effect on the fetus and there are no adequate and well-controlled studies in humans, but potential benefits may warrant use of the drug in pregnant women despite potential risks.
-   */
-  public static FDAcategoryC.Builder fDAcategoryC() { return new FDAcategoryC.Builder(); }
-  /**
-   * A designation by the US FDA signifying that there is positive evidence of human fetal risk based on adverse reaction data from investigational or marketing experience or studies in humans, but potential benefits may warrant use of the drug in pregnant women despite potential risks.
-   */
-  public static FDAcategoryD.Builder fDAcategoryD() { return new FDAcategoryD.Builder(); }
   /**
    * A school.
    */
@@ -617,14 +455,6 @@ public class SchemaOrg {
           properties of the series parts to the series as a whole wherever they seem appropriate.
    */
   public static CreativeWorkSeries.Builder creativeWorkSeries() { return new CreativeWorkSeries.Builder(); }
-  /**
-   * A designation by the US FDA signifying that adequate and well-controlled studies have failed to demonstrate a risk to the fetus in the first trimester of pregnancy (and there is no evidence of risk in later trimesters).
-   */
-  public static FDAcategoryA.Builder fDAcategoryA() { return new FDAcategoryA.Builder(); }
-  /**
-   * A designation by the US FDA signifying that animal reproduction studies have failed to demonstrate a risk to the fetus and there are no adequate and well-controlled studies in pregnant women.
-   */
-  public static FDAcategoryB.Builder fDAcategoryB() { return new FDAcategoryB.Builder(); }
   /**
    * The day of the week, e.g. used to specify to which day the opening hours of an OpeningHoursSpecification refer.
 <br />
@@ -658,18 +488,6 @@ public class SchemaOrg {
    */
   public static ScreeningEvent.Builder screeningEvent() { return new ScreeningEvent.Builder(); }
   /**
-   * Available by prescription only.
-   */
-  public static PrescriptionOnly.Builder prescriptionOnly() { return new PrescriptionOnly.Builder(); }
-  /**
-   * Indicates the usage of the vehicle as a rental car.
-   */
-  public static RentalVehicleUsage.Builder rentalVehicleUsage() { return new RentalVehicleUsage.Builder(); }
-  /**
-   * The invitee will attend.
-   */
-  public static RsvpResponseYes.Builder rsvpResponseYes() { return new RsvpResponseYes.Builder(); }
-  /**
    * A MusicRelease is a specific release of a music album.
    */
   public static MusicRelease.Builder musicRelease() { return new MusicRelease.Builder(); }
@@ -677,10 +495,6 @@ public class SchemaOrg {
    * An electrician.
    */
   public static Electrician.Builder electrician() { return new Electrician.Builder(); }
-  /**
-   * Not yet recruiting.
-   */
-  public static NotYetRecruiting.Builder notYetRecruiting() { return new NotYetRecruiting.Builder(); }
   /**
    * Beach.
    */
@@ -693,14 +507,6 @@ public class SchemaOrg {
    * A Property value specification.
    */
   public static PropertyValueSpecification.Builder propertyValueSpecification() { return new PropertyValueSpecification.Builder(); }
-  /**
-   * A placebo-controlled trial design.
-   */
-  public static PlaceboControlledTrial.Builder placeboControlledTrial() { return new PlaceboControlledTrial.Builder(); }
-  /**
-   * A specific branch of medical science that deals with benign and malignant tumors, including the study of their development, diagnosis, treatment and prevention.
-   */
-  public static Oncologic.Builder oncologic() { return new Oncologic.Builder(); }
   /**
    * ATM/cash machine.
    */
@@ -718,14 +524,6 @@ public class SchemaOrg {
    */
   public static DislikeAction.Builder dislikeAction() { return new DislikeAction.Builder(); }
   /**
-   * The W3C <a href="http://www.w3.org/community/schemabibex/">Schema Bib Extend</a> (BibEx) group led the work to improve schema.org for bibliographic information, including terms for periodicals, articles and multi-volume works. The design was inspired in places (e.g. pageStart, pageEnd, pagination) by the <a href="http://bibliontology.com/">Bibliographic Ontology</a>, 'bibo'.
-   */
-  public static BibExTerm.Builder bibExTerm() { return new BibExTerm.Builder(); }
-  /**
-   * Podiatry.
-   */
-  public static Podiatric.Builder podiatric() { return new Podiatric.Builder(); }
-  /**
    * An ocean (for example, the Pacific).
    */
   public static OceanBodyOfWater.Builder oceanBodyOfWater() { return new OceanBodyOfWater.Builder(); }
@@ -738,21 +536,9 @@ public class SchemaOrg {
    */
   public static MedicalTrial.Builder medicalTrial() { return new MedicalTrial.Builder(); }
   /**
-   * The event has been cancelled. If the event has multiple startDate values, all are assumed to be cancelled. Either startDate or previousStartDate may be used to specify the event's cancelled date(s).
-   */
-  public static EventCancelled.Builder eventCancelled() { return new EventCancelled.Builder(); }
-  /**
-   * A system of medicine focused on promoting the body's innate ability to heal itself.
-   */
-  public static Osteopathic.Builder osteopathic() { return new Osteopathic.Builder(); }
-  /**
    * A tattoo parlor.
    */
   public static TattooParlor.Builder tattooParlor() { return new TattooParlor.Builder(); }
-  /**
-   * Play mode: CoOp. Co-operative games, where you play on the same team with friends.
-   */
-  public static CoOp.Builder coOp() { return new CoOp.Builder(); }
   /**
    * UserInteraction and its subtypes is an old way of talking about users interacting with pages. It is generally better to use
           <a href="/Action">Action</a>-based vocabulary, alongside types such as <a href="/Comment">Comment</a>.
@@ -788,17 +574,9 @@ public class SchemaOrg {
    */
   public static TelevisionStation.Builder televisionStation() { return new TelevisionStation.Builder(); }
   /**
-   * Indicates that the item is available only at physical locations.
-   */
-  public static InStoreOnly.Builder inStoreOnly() { return new InStoreOnly.Builder(); }
-  /**
    * The causative agent(s) that are responsible for the pathophysiologic process that eventually results in a medical condition, symptom or sign. In this schema, unless otherwise specified this is meant to be the proximate cause of the medical condition, symptom or sign. The proximate cause is defined as the causative agent that most directly results in the medical condition, symptom or sign. For example, the HIV virus could be considered a cause of AIDS. Or in a diagnostic context, if a patient fell and sustained a hip fracture and two days later sustained a pulmonary embolism which eventuated in a cardiac arrest, the cause of the cardiac arrest (the proximate cause) would be the pulmonary embolism and not the fall. <p>Medical causes can include cardiovascular, chemical, dermatologic, endocrine, environmental, gastroenterologic, genetic, hematologic, gynecologic, iatrogenic, infectious, musculoskeletal, neurologic, nutritional, obstetric, oncologic, otolaryngologic, pharmacologic, psychiatric, pulmonary, renal, rheumatologic, toxic, traumatic, or urologic causes; medical conditions can be causes as well.
    */
   public static MedicalCause.Builder medicalCause() { return new MedicalCause.Builder(); }
-  /**
-   * EPRelease.
-   */
-  public static EPRelease.Builder ePRelease() { return new EPRelease.Builder(); }
   /**
    * An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the 'offers' property. Repeated events may be structured as separate Event objects.
    */
@@ -825,29 +603,9 @@ public class SchemaOrg {
    */
   public static ElementarySchool.Builder elementarySchool() { return new ElementarySchool.Builder(); }
   /**
-   * Data derived from a single randomized trial, or nonrandomized studies.
-   */
-  public static EvidenceLevelB.Builder evidenceLevelB() { return new EvidenceLevelB.Builder(); }
-  /**
-   * Data derived from multiple randomized clinical trials or meta-analyses.
-   */
-  public static EvidenceLevelA.Builder evidenceLevelA() { return new EvidenceLevelA.Builder(); }
-  /**
-   * OrderStatus representing that an order has been returned.
-   */
-  public static OrderReturned.Builder orderReturned() { return new OrderReturned.Builder(); }
-  /**
-   * Medical researchers.
-   */
-  public static MedicalResearcher.Builder medicalResearcher() { return new MedicalResearcher.Builder(); }
-  /**
    * EventStatusType is an enumeration type whose instances represent several states that an Event may be in.
    */
   public static EventStatusType.Builder eventStatusType() { return new EventStatusType.Builder(); }
-  /**
-   * Only consensus opinion of experts, case studies, or standard-of-care.
-   */
-  public static EvidenceLevelC.Builder evidenceLevelC() { return new EvidenceLevelC.Builder(); }
   /**
    * Web page type: Image gallery page.
    */
@@ -861,18 +619,6 @@ public class SchemaOrg {
    */
   public static WPFooter.Builder wPFooter() { return new WPFooter.Builder(); }
   /**
-   * An action that has already taken place.
-   */
-  public static CompletedActionStatus.Builder completedActionStatus() { return new CompletedActionStatus.Builder(); }
-  /**
-   * SpokenWordAlbum.
-   */
-  public static SpokenWordAlbum.Builder spokenWordAlbum() { return new SpokenWordAlbum.Builder(); }
-  /**
-   * Head.
-   */
-  public static Head.Builder head() { return new Head.Builder(); }
-  /**
    * An outlet store.
    */
   public static OutletStore.Builder outletStore() { return new OutletStore.Builder(); }
@@ -884,10 +630,6 @@ public class SchemaOrg {
    * A type of blood vessel that specifically carries blood away from the heart.
    */
   public static Artery.Builder artery() { return new Artery.Builder(); }
-  /**
-   * OrderStatus representing successful delivery of an order.
-   */
-  public static OrderDelivered.Builder orderDelivered() { return new OrderDelivered.Builder(); }
   /**
    * A notary.
    */
@@ -933,10 +675,6 @@ public class SchemaOrg {
    */
   public static CollectionPage.Builder collectionPage() { return new CollectionPage.Builder(); }
   /**
-   * The invitee may or may not attend.
-   */
-  public static RsvpResponseMaybe.Builder rsvpResponseMaybe() { return new RsvpResponseMaybe.Builder(); }
-  /**
    * A mosque.
    */
   public static Mosque.Builder mosque() { return new Mosque.Builder(); }
@@ -969,14 +707,6 @@ public class SchemaOrg {
    */
   public static MobileApplication.Builder mobileApplication() { return new MobileApplication.Builder(); }
   /**
-   * Results are not available.
-   */
-  public static ResultsNotAvailable.Builder resultsNotAvailable() { return new ResultsNotAvailable.Builder(); }
-  /**
-   * Active, but not recruiting new participants.
-   */
-  public static ActiveNotRecruiting.Builder activeNotRecruiting() { return new ActiveNotRecruiting.Builder(); }
-  /**
    * A software application.
    */
   public static SoftwareApplication.Builder softwareApplication() { return new SoftwareApplication.Builder(); }
@@ -997,10 +727,6 @@ public class SchemaOrg {
    */
   public static Property.Builder property() { return new Property.Builder(); }
   /**
-   * VinylFormat.
-   */
-  public static VinylFormat.Builder vinylFormat() { return new VinylFormat.Builder(); }
-  /**
    * A cafe or coffee shop.
    */
   public static CafeOrCoffeeShop.Builder cafeOrCoffeeShop() { return new CafeOrCoffeeShop.Builder(); }
@@ -1008,10 +734,6 @@ public class SchemaOrg {
    * A library.
    */
   public static Library.Builder library() { return new Library.Builder(); }
-  /**
-   * An ItemList ordered with no explicit order.
-   */
-  public static ItemListUnordered.Builder itemListUnordered() { return new ItemListUnordered.Builder(); }
   /**
    * Design models for observational medical studies. Enumerated type.
    */
@@ -1021,10 +743,6 @@ public class SchemaOrg {
    */
   public static FindAction.Builder findAction() { return new FindAction.Builder(); }
   /**
-   * CompilationAlbum.
-   */
-  public static CompilationAlbum.Builder compilationAlbum() { return new CompilationAlbum.Builder(); }
-  /**
    * The act of inserting at the beginning if an ordered collection.
    */
   public static PrependAction.Builder prependAction() { return new PrependAction.Builder(); }
@@ -1032,10 +750,6 @@ public class SchemaOrg {
    * A medical test performed on a sample of a patient's blood.
    */
   public static BloodTest.Builder bloodTest() { return new BloodTest.Builder(); }
-  /**
-   * X-ray imaging.
-   */
-  public static XRay.Builder xRay() { return new XRay.Builder(); }
   /**
    * The act of expressing a positive sentiment about the object. An agent likes an object (a proposition, topic or theme) with participants.
    */
@@ -1049,10 +763,6 @@ public class SchemaOrg {
    */
   public static GovernmentOrganization.Builder governmentOrganization() { return new GovernmentOrganization.Builder(); }
   /**
-   * A specific branch of medical science that is concerned with the diagnosis and treatment of diseases pertaining to the urinary tract and the urogenital system.
-   */
-  public static Urologic.Builder urologic() { return new Urologic.Builder(); }
-  /**
    * RsvpResponseType is an enumeration type whose instances represent responding to an RSVP request.
    */
   public static RsvpResponseType.Builder rsvpResponseType() { return new RsvpResponseType.Builder(); }
@@ -1065,10 +775,6 @@ public class SchemaOrg {
    */
   public static EmployeeRole.Builder employeeRole() { return new EmployeeRole.Builder(); }
   /**
-   * RemixAlbum.
-   */
-  public static RemixAlbum.Builder remixAlbum() { return new RemixAlbum.Builder(); }
-  /**
    * Target audiences for medical web pages. Enumerated type.
    */
   public static MedicalAudience.Builder medicalAudience() { return new MedicalAudience.Builder(); }
@@ -1080,10 +786,6 @@ public class SchemaOrg {
    * Server that provides game interaction in a multiplayer game.
    */
   public static GameServer.Builder gameServer() { return new GameServer.Builder(); }
-  /**
-   * This class is based on the work of the LRMI project, see lrmi.net for details.
-   */
-  public static LRMIClass.Builder lRMIClass() { return new LRMIClass.Builder(); }
   /**
    * A car is a wheeled, self-powered motor vehicle used for transportation.
    */
@@ -1161,10 +863,6 @@ public class SchemaOrg {
    */
   public static VisualArtsEvent.Builder visualArtsEvent() { return new VisualArtsEvent.Builder(); }
   /**
-   * CassetteFormat.
-   */
-  public static CassetteFormat.Builder cassetteFormat() { return new CassetteFormat.Builder(); }
-  /**
    * The act of expressing a preference from a set of options or a large or unbounded set of choices/options.
    */
   public static ChooseAction.Builder chooseAction() { return new ChooseAction.Builder(); }
@@ -1172,14 +870,6 @@ public class SchemaOrg {
    * A sporting goods store.
    */
   public static SportingGoodsStore.Builder sportingGoodsStore() { return new SportingGoodsStore.Builder(); }
-  /**
-   * A specific branch of medical science that pertains to diagnosis and treatment of disorders of heart and vasculature.
-   */
-  public static Cardiovascular.Builder cardiovascular() { return new Cardiovascular.Builder(); }
-  /**
-   * Pathogenic bacteria that cause bacterial infection.
-   */
-  public static Bacteria.Builder bacteria() { return new Bacteria.Builder(); }
   /**
    * Any object used in a medical capacity, such as to diagnose or treat a patient.
    */
@@ -1197,10 +887,6 @@ public class SchemaOrg {
    */
   public static Reservoir.Builder reservoir() { return new Reservoir.Builder(); }
   /**
-   * A DeliveryMethod in which an item is collected on site, e.g. in a store or at a box office.
-   */
-  public static OnSitePickup.Builder onSitePickup() { return new OnSitePickup.Builder(); }
-  /**
    * Car repair, sales, or parts.
    */
   public static AutomotiveBusiness.Builder automotiveBusiness() { return new AutomotiveBusiness.Builder(); }
@@ -1213,10 +899,6 @@ public class SchemaOrg {
    */
   public static WPAdBlock.Builder wPAdBlock() { return new WPAdBlock.Builder(); }
   /**
-   * This element is based on the work of the Automotive Ontology Working Group, see <a href="http://www.automotive-ontology.org">http://www.automotive-ontology.org</a> for details. Many class and property definitions are inspired by or based on abstracts from Wikipedia, the free encyclopedia.
-   */
-  public static AutomotiveOntologyWGClass.Builder automotiveOntologyWGClass() { return new AutomotiveOntologyWGClass.Builder(); }
-  /**
    * The act of manipulating/administering/supervising/controlling one or more objects.
    */
   public static OrganizeAction.Builder organizeAction() { return new OrganizeAction.Builder(); }
@@ -1225,14 +907,6 @@ public class SchemaOrg {
    */
   public static BedAndBreakfast.Builder bedAndBreakfast() { return new BedAndBreakfast.Builder(); }
   /**
-   * Respiratory therapy.
-   */
-  public static RespiratoryTherapy.Builder respiratoryTherapy() { return new RespiratoryTherapy.Builder(); }
-  /**
-   * OrderStatus representing cancellation of an order.
-   */
-  public static OrderCancelled.Builder orderCancelled() { return new OrderCancelled.Builder(); }
-  /**
    * The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise.<p>Related actions:</p><ul><li><a href="http://schema.org/ListenAction">ListenAction</a>: Unlike ListenAction (which is under ConsumeAction), PlayAction refers to performing for an audience or at an event, rather than consuming music.</li><li><a href="http://schema.org/WatchAction">WatchAction</a>: Unlike WatchAction (which is under ConsumeAction), PlayAction refers to showing/displaying for an audience or at an event, rather than consuming visual content</li></ul>.
    */
   public static PlayAction.Builder playAction() { return new PlayAction.Builder(); }
@@ -1240,14 +914,6 @@ public class SchemaOrg {
    * A process of care involving exercise, changes to diet, fitness routines, and other lifestyle changes aimed at improving a health condition.
    */
   public static LifestyleModification.Builder lifestyleModification() { return new LifestyleModification.Builder(); }
-  /**
-   * A specific branch of medical science that is concerned with poisons, their nature, effects and detection and involved in the treatment of poisoning.
-   */
-  public static Toxicologic.Builder toxicologic() { return new Toxicologic.Builder(); }
-  /**
-   * The event is taking place or has taken place on the startDate as scheduled. Use of this value is optional, as it is assumed by default.
-   */
-  public static EventScheduled.Builder eventScheduled() { return new EventScheduled.Builder(); }
   /**
    * UserInteraction and its subtypes is an old way of talking about users interacting with pages. It is generally better to use
           <a href="/Action">Action</a>-based vocabulary, alongside types such as <a href="/Comment">Comment</a>.
@@ -1258,14 +924,6 @@ public class SchemaOrg {
    * An adult entertainment establishment.
    */
   public static AdultEntertainment.Builder adultEntertainment() { return new AdultEntertainment.Builder(); }
-  /**
-   * Patients.
-   */
-  public static Patient.Builder patient() { return new Patient.Builder(); }
-  /**
-   * A medical device used for diagnostic purposes.
-   */
-  public static Diagnostic.Builder diagnostic() { return new Diagnostic.Builder(); }
   /**
    * The act of producing/preparing food.
    */
@@ -1303,10 +961,6 @@ public class SchemaOrg {
    */
   public static VideoGallery.Builder videoGallery() { return new VideoGallery.Builder(); }
   /**
-   * The status of a reservation on hold pending an update like credit card number or flight changes.
-   */
-  public static ReservationHold.Builder reservationHold() { return new ReservationHold.Builder(); }
-  /**
    * A photograph.
    */
   public static Photograph.Builder photograph() { return new Photograph.Builder(); }
@@ -1314,10 +968,6 @@ public class SchemaOrg {
    * A body of structured information describing some topic(s) of interest.
    */
   public static Dataset.Builder dataset() { return new Dataset.Builder(); }
-  /**
-   * A specific branch of medical science that is concerned with the study of the cause, origin and nature of a disease state, including its consequences as a result of manifestation of the disease. In clinical care, the term is used to designate a branch of medicine using laboratory tests to diagnose and determine the prognostic significance of illness.
-   */
-  public static Pathology.Builder pathology() { return new Pathology.Builder(); }
   /**
    * Auto body shop.
    */
@@ -1343,29 +993,9 @@ public class SchemaOrg {
    */
   public static MedicalStudyStatus.Builder medicalStudyStatus() { return new MedicalStudyStatus.Builder(); }
   /**
-   * A specific branch of medical science that pertains to treating diseases, injuries and deformities by manual and instrumental means.
-   */
-  public static Surgical.Builder surgical() { return new Surgical.Builder(); }
-  /**
-   * Optometry.
-   */
-  public static Optometic.Builder optometic() { return new Optometic.Builder(); }
-  /**
-   * Enrolling participants by invitation only.
-   */
-  public static EnrollingByInvitation.Builder enrollingByInvitation() { return new EnrollingByInvitation.Builder(); }
-  /**
-   * A specific branch of medical science that pertains to therapeutic or cosmetic repair or re-formation of missing, injured or malformed tissues or body parts by manual and instrumental means.
-   */
-  public static PlasticSurgery.Builder plasticSurgery() { return new PlasticSurgery.Builder(); }
-  /**
    * A zoo.
    */
   public static Zoo.Builder zoo() { return new Zoo.Builder(); }
-  /**
-   * Indicates that the item is available only online.
-   */
-  public static OnlineOnly.Builder onlineOnly() { return new OnlineOnly.Builder(); }
   /**
    * Place of worship, such as a church, synagogue, or mosque.
    */
@@ -1379,10 +1009,6 @@ public class SchemaOrg {
    */
   public static FollowAction.Builder followAction() { return new FollowAction.Builder(); }
   /**
-   * A specific branch of medical science that is concerned with the study, treatment, and prevention of mental illness, using both medical and psychological therapies.
-   */
-  public static Psychiatric.Builder psychiatric() { return new Psychiatric.Builder(); }
-  /**
    * The act of notifying someone of information pertinent to them, with no expectation of a response.
    */
   public static InformAction.Builder informAction() { return new InformAction.Builder(); }
@@ -1390,10 +1016,6 @@ public class SchemaOrg {
    * The place where a person lives.
    */
   public static Residence.Builder residence() { return new Residence.Builder(); }
-  /**
-   * OrderStatus representing that an order is in transit.
-   */
-  public static OrderInTransit.Builder orderInTransit() { return new OrderInTransit.Builder(); }
   /**
    * Event type: Music event.
    */
@@ -1427,10 +1049,6 @@ public class SchemaOrg {
    */
   public static AnatomicalStructure.Builder anatomicalStructure() { return new AnatomicalStructure.Builder(); }
   /**
-   * A specific branch of medical science that specializes in the care of infants, children and adolescents.
-   */
-  public static Pediatric.Builder pediatric() { return new Pediatric.Builder(); }
-  /**
    * The act of providing an object under an agreement that it will be returned at a later date. Reciprocal of BorrowAction.<p>Related actions:</p><ul><li><a href="http://schema.org/BorrowAction">BorrowAction</a>: Reciprocal of LendAction</li></ul>.
    */
   public static LendAction.Builder lendAction() { return new LendAction.Builder(); }
@@ -1455,10 +1073,6 @@ public class SchemaOrg {
    */
   public static TVEpisode.Builder tVEpisode() { return new TVEpisode.Builder(); }
   /**
-   * Indicates that the item is available for pre-order.
-   */
-  public static PreOrder.Builder preOrder() { return new PreOrder.Builder(); }
-  /**
    * A stadium.
    */
   public static StadiumOrArena.Builder stadiumOrArena() { return new StadiumOrArena.Builder(); }
@@ -1474,14 +1088,6 @@ public class SchemaOrg {
    * Any branch of a field in which people typically develop specific expertise, usually after significant study, time, and effort.
    */
   public static Specialty.Builder specialty() { return new Specialty.Builder(); }
-  /**
-   * Also known as a panel study. A cohort study is a form of longitudinal study used in medicine and social science. It is one type of study design and should be compared with a cross-sectional study.  A cohort is a group of people who share a common characteristic or experience within a defined period (e.g., are born, leave school, lose their job, are exposed to a drug or a vaccine, etc.). The comparison group may be the general population from which the cohort is drawn, or it may be another cohort of persons thought to have had little or no exposure to the substance under investigation, but otherwise similar. Alternatively, subgroups within the cohort may be compared with each other.
-   */
-  public static CohortStudy.Builder cohortStudy() { return new CohortStudy.Builder(); }
-  /**
-   * Physical activity of relatively low intensity that depends primarily on the aerobic energy-generating process; during activity, the aerobic metabolism uses oxygen to adequately meet energy demands during exercise.
-   */
-  public static AerobicActivity.Builder aerobicActivity() { return new AerobicActivity.Builder(); }
   /**
    * A component of the human body circulatory system comprised of an intricate network of hollow tubes that transport blood throughout the entire body.
    */
@@ -1500,10 +1106,6 @@ public class SchemaOrg {
       
    */
   public static UserCheckins.Builder userCheckins() { return new UserCheckins.Builder(); }
-  /**
-   * Uses devices to support users with hearing impairments.
-   */
-  public static HearingImpairedSupported.Builder hearingImpairedSupported() { return new HearingImpairedSupported.Builder(); }
   /**
    * Represents additional information about a relationship or property. For example a Role can be used to say that a 'member' role linking some SportsTeam to a player occurred during a particular time period. Or that a Person's 'actor' role in a Movie was for some particular characterName. Such properties can be attached to a Role entity, which is then associated with the main entities using ordinary properties like 'member' or 'actor'.
 
@@ -1546,10 +1148,6 @@ public class SchemaOrg {
    * The act of providing goods, services, or money without compensation, often for philanthropic reasons.
    */
   public static DonateAction.Builder donateAction() { return new DonateAction.Builder(); }
-  /**
-   * The steering position is on the left side of the vehicle (viewed from the main direction of driving).
-   */
-  public static LeftHandDriving.Builder leftHandDriving() { return new LeftHandDriving.Builder(); }
   /**
    * A single, identifiable product instance (e.g. a laptop with a particular serial number).
    */
@@ -1621,10 +1219,6 @@ public class SchemaOrg {
    */
   public static LiquorStore.Builder liquorStore() { return new LiquorStore.Builder(); }
   /**
-   * The drug's cost represents the retail cost of the drug.
-   */
-  public static Retail.Builder retail() { return new Retail.Builder(); }
-  /**
    * A code for a medical entity.
    */
   public static MedicalCode.Builder medicalCode() { return new MedicalCode.Builder(); }
@@ -1632,18 +1226,6 @@ public class SchemaOrg {
    * A short segment/part of a video game.
    */
   public static VideoGameClip.Builder videoGameClip() { return new VideoGameClip.Builder(); }
-  /**
-   * Physical activity that is engaged in to improve joint and muscle flexibility.
-   */
-  public static Flexibility.Builder flexibility() { return new Flexibility.Builder(); }
-  /**
-   * Indicates that the item is refurbished.
-   */
-  public static RefurbishedCondition.Builder refurbishedCondition() { return new RefurbishedCondition.Builder(); }
-  /**
-   * Studies carried out on pre-existing data (usually from 'snapshot' surveys), such as that collected by the Census Bureau. Sometimes called Prevalence Studies.
-   */
-  public static CrossSectional.Builder crossSectional() { return new CrossSectional.Builder(); }
   /**
    * A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
    */
@@ -1653,33 +1235,13 @@ public class SchemaOrg {
    */
   public static JoinAction.Builder joinAction() { return new JoinAction.Builder(); }
   /**
-   * Medical clinicians, including practicing physicians and other medical professionals involved in clinical practice.
-   */
-  public static Clinician.Builder clinician() { return new Clinician.Builder(); }
-  /**
    * The act of asserting that a future event/action is no longer going to happen.<p>Related actions:</p><ul><li><a href="http://schema.org/ConfirmAction">ConfirmAction</a>: The antonym of CancelAction</li></ul>.
    */
   public static CancelAction.Builder cancelAction() { return new CancelAction.Builder(); }
   /**
-   * Physiotherapy.
-   */
-  public static Physiotherapy.Builder physiotherapy() { return new Physiotherapy.Builder(); }
-  /**
    * Web page type: About page.
    */
   public static AboutPage.Builder aboutPage() { return new AboutPage.Builder(); }
-  /**
-   * Pathogenic virus that causes viral infection.
-   */
-  public static Virus.Builder virus() { return new Virus.Builder(); }
-  /**
-   * A trial that takes place at multiple centers.
-   */
-  public static MultiCenterTrial.Builder multiCenterTrial() { return new MultiCenterTrial.Builder(); }
-  /**
-   * Real-wheel drive is a transmission layout where the engine drives the rear wheels.
-   */
-  public static RearWheelDriveConfiguration.Builder rearWheelDriveConfiguration() { return new RearWheelDriveConfiguration.Builder(); }
   /**
    * A property-value pair, e.g. representing a feature of a product or place. Use the 'name' property for the name of the property. If there is an additional human-readable version of the value, put that into the 'description' property.
         <br/><br/>
@@ -1691,10 +1253,6 @@ public class SchemaOrg {
    * A painting.
    */
   public static Painting.Builder painting() { return new Painting.Builder(); }
-  /**
-   * A registry-based study design.
-   */
-  public static Registry.Builder registry() { return new Registry.Builder(); }
   /**
    * A shopping center or mall.
    */
@@ -1708,21 +1266,9 @@ public class SchemaOrg {
    */
   public static HinduTemple.Builder hinduTemple() { return new HinduTemple.Builder(); }
   /**
-   * A venue map (e.g. for malls, auditoriums, museums, etc.).
-   */
-  public static VenueMap.Builder venueMap() { return new VenueMap.Builder(); }
-  /**
    * The act of expressing a preference from a fixed/finite/structured set of choices/options.
    */
   public static VoteAction.Builder voteAction() { return new VoteAction.Builder(); }
-  /**
-   * Magnetic resonance imaging.
-   */
-  public static MRI.Builder mRI() { return new MRI.Builder(); }
-  /**
-   * Multicellular parasite that causes an infection.
-   */
-  public static MulticellularParasite.Builder multicellularParasite() { return new MulticellularParasite.Builder(); }
   /**
    * A self-storage facility.
    */
@@ -1740,21 +1286,9 @@ public class SchemaOrg {
    */
   public static PalliativeProcedure.Builder palliativeProcedure() { return new PalliativeProcedure.Builder(); }
   /**
-   * DigitalFormat.
-   */
-  public static DigitalFormat.Builder digitalFormat() { return new DigitalFormat.Builder(); }
-  /**
    * A convenience store.
    */
   public static ConvenienceStore.Builder convenienceStore() { return new ConvenienceStore.Builder(); }
-  /**
-   * AlbumRelease.
-   */
-  public static AlbumRelease.Builder albumRelease() { return new AlbumRelease.Builder(); }
-  /**
-   * StudioAlbum.
-   */
-  public static StudioAlbum.Builder studioAlbum() { return new StudioAlbum.Builder(); }
   /**
    * A waterfall, like Niagara.
    */
@@ -1764,21 +1298,9 @@ public class SchemaOrg {
    */
   public static TheaterGroup.Builder theaterGroup() { return new TheaterGroup.Builder(); }
   /**
-   * A specific branch of medical science that pertains to diagnosis and treatment of disorders of blood and blood producing organs.
-   */
-  public static Hematologic.Builder hematologic() { return new Hematologic.Builder(); }
-  /**
    * A bowling alley.
    */
   public static BowlingAlley.Builder bowlingAlley() { return new BowlingAlley.Builder(); }
-  /**
-   * A type of medical procedure that involves percutaneous techniques, where access to organs or tissue is achieved via needle-puncture of the skin. For example, catheter-based procedures like stent delivery.
-   */
-  public static PercutaneousProcedure.Builder percutaneousProcedure() { return new PercutaneousProcedure.Builder(); }
-  /**
-   * Occupational therapy.
-   */
-  public static OccupationalTherapy.Builder occupationalTherapy() { return new OccupationalTherapy.Builder(); }
   /**
    * Any physical manifestation of a person's medical condition discoverable by objective diagnostic tests or physical examination.
    */
@@ -1796,10 +1318,6 @@ public class SchemaOrg {
    */
   public static GatedResidenceCommunity.Builder gatedResidenceCommunity() { return new GatedResidenceCommunity.Builder(); }
   /**
-   * The steering position is on the right side of the vehicle (viewed from the main direction of driving).
-   */
-  public static RightHandDriving.Builder rightHandDriving() { return new RightHandDriving.Builder(); }
-  /**
    * Status of a game server.
    */
   public static GameServerStatus.Builder gameServerStatus() { return new GameServerStatus.Builder(); }
@@ -1808,17 +1326,9 @@ public class SchemaOrg {
    */
   public static LandmarksOrHistoricalBuildings.Builder landmarksOrHistoricalBuildings() { return new LandmarksOrHistoricalBuildings.Builder(); }
   /**
-   * This class is based upon W3C DCAT work, and benefits from collaboration around the DCAT, ADMS and VoID vocabularies. See http://www.w3.org/wiki/WebSchemas/Datasets for full details and mappings.
-   */
-  public static DatasetClass.Builder datasetClass() { return new DatasetClass.Builder(); }
-  /**
    * A dry-cleaning business.
    */
   public static DryCleaningOrLaundry.Builder dryCleaningOrLaundry() { return new DryCleaningOrLaundry.Builder(); }
-  /**
-   * A specific branch of medical science that pertains to study of anesthetics and their application.
-   */
-  public static Anesthesia.Builder anesthesia() { return new Anesthesia.Builder(); }
   /**
    * The act of asking someone to attend an event. Reciprocal of RsvpAction.
    */
@@ -1831,10 +1341,6 @@ public class SchemaOrg {
    * An office equipment store.
    */
   public static OfficeEquipmentStore.Builder officeEquipmentStore() { return new OfficeEquipmentStore.Builder(); }
-  /**
-   * Unlike cross-sectional studies, longitudinal studies track the same people, and therefore the differences observed in those people are less likely to be the result of cultural differences across generations. Longitudinal studies are also used in medicine to uncover predictors of certain diseases.
-   */
-  public static Longitudinal.Builder longitudinal() { return new Longitudinal.Builder(); }
   /**
    * Season dedicated to radio broadcast and associated online delivery.
    */
@@ -1864,25 +1370,9 @@ public class SchemaOrg {
    */
   public static AggregateRating.Builder aggregateRating() { return new AggregateRating.Builder(); }
   /**
-   * Diet and nutrition.
-   */
-  public static DietNutrition.Builder dietNutrition() { return new DietNutrition.Builder(); }
-  /**
    * The act of  departing from a place. An agent departs from an fromLocation for a destination, optionally with participants.
    */
   public static DepartAction.Builder departAction() { return new DepartAction.Builder(); }
-  /**
-   * X-ray computed tomography imaging.
-   */
-  public static CT.Builder cT() { return new CT.Builder(); }
-  /**
-   * A transit map.
-   */
-  public static TransitMap.Builder transitMap() { return new TransitMap.Builder(); }
-  /**
-   * The schema.org Actions mechanism benefited from extensive discussions across the Web standards community around W3C, in particular from the <a href="http://purl.org/hydra/"> Hydra project</a>'s community group.
-   */
-  public static ActionCollabClass.Builder actionCollabClass() { return new ActionCollabClass.Builder(); }
   /**
    * Event type: Education event.
    */
@@ -1899,10 +1389,6 @@ public class SchemaOrg {
    * Used to describe membership in a loyalty programs (e.g. "StarAliance"), traveler clubs (e.g. "AAA"), purchase clubs ("Safeway Club"), etc.
    */
   public static ProgramMembership.Builder programMembership() { return new ProgramMembership.Builder(); }
-  /**
-   * Indicates the usage of the car as a taxi.
-   */
-  public static TaxiVehicleUsage.Builder taxiVehicleUsage() { return new TaxiVehicleUsage.Builder(); }
   /**
    * A medical test performed by a laboratory that typically involves examination of a tissue sample by a pathologist.
    */
@@ -1943,10 +1429,6 @@ public class SchemaOrg {
    */
   public static WarrantyScope.Builder warrantyScope() { return new WarrantyScope.Builder(); }
   /**
-   * The drug's cost represents the maximum reimbursement paid by an insurer for the drug.
-   */
-  public static ReimbursementCap.Builder reimbursementCap() { return new ReimbursementCap.Builder(); }
-  /**
    * A plumbing service.
    */
   public static Plumber.Builder plumber() { return new Plumber.Builder(); }
@@ -1961,10 +1443,6 @@ public class SchemaOrg {
    */
   public static PublicationVolume.Builder publicationVolume() { return new PublicationVolume.Builder(); }
   /**
-   * The status for a previously confirmed reservation that is now cancelled.
-   */
-  public static ReservationCancelled.Builder reservationCancelled() { return new ReservationCancelled.Builder(); }
-  /**
    * The act of giving money to a seller in exchange for goods or services rendered. An agent buys an object, product, or service from a seller for a price. Reciprocal of SellAction.
    */
   public static BuyAction.Builder buyAction() { return new BuyAction.Builder(); }
@@ -1972,10 +1450,6 @@ public class SchemaOrg {
    * A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.
    */
   public static WebSite.Builder webSite() { return new WebSite.Builder(); }
-  /**
-   * Game server status: OnlineFull. Server is online but unavailable. The maximum number of players has reached.
-   */
-  public static OnlineFull.Builder onlineFull() { return new OnlineFull.Builder(); }
   /**
    * A men's clothing store.
    */
@@ -1992,10 +1466,6 @@ public class SchemaOrg {
    * Organization: A business corporation.
    */
   public static Corporation.Builder corporation() { return new Corporation.Builder(); }
-  /**
-   * Physical activity that is of high-intensity which utilizes the anaerobic metabolism of the body.
-   */
-  public static AnaerobicActivity.Builder anaerobicActivity() { return new AnaerobicActivity.Builder(); }
   /**
    * A body of water, such as a sea, ocean, or lake.
    */
@@ -2057,10 +1527,6 @@ public class SchemaOrg {
    */
   public static PublicationEvent.Builder publicationEvent() { return new PublicationEvent.Builder(); }
   /**
-   * A trial design in which neither the researcher nor the patient knows the details of the treatment the patient was randomly assigned to.
-   */
-  public static DoubleBlindedTrial.Builder doubleBlindedTrial() { return new DoubleBlindedTrial.Builder(); }
-  /**
    * An organization such as a school, NGO, corporation, club, etc.
    */
   public static Organization.Builder organization() { return new Organization.Builder(); }
@@ -2076,14 +1542,6 @@ public class SchemaOrg {
    * A short TV or radio program or a segment/part of a program.
    */
   public static Clip.Builder clip() { return new Clip.Builder(); }
-  /**
-   * Game server status: OfflineTemporarily. Server is offline now but it can be online soon.
-   */
-  public static OfflineTemporarily.Builder offlineTemporarily() { return new OfflineTemporarily.Builder(); }
-  /**
-   * This property is deprecated, alongside the UserInteraction types on which it depended.
-   */
-  public static InteractionCount.Builder interactionCount() { return new InteractionCount.Builder(); }
   /**
    * A comment on an item - for example, a comment on a blog post. The comment's content is expressed via the "text" property, and its topic via "about", properties shared with all CreativeWorks.
    */
@@ -2109,17 +1567,9 @@ public class SchemaOrg {
    */
   public static Campground.Builder campground() { return new Campground.Builder(); }
   /**
-   * This class contains derivatives of IPTC rNews properties. rNews is a data model of publishing metadata with serializations currently available for RDFa as well as HTML5 Microdata. More information about the IPTC and rNews can be found at <a href=http://rnews.org>rnews.org</a>.
-   */
-  public static RNews.Builder rNews() { return new RNews.Builder(); }
-  /**
    * A unique instance of a television BroadcastService on a CableOrSatelliteService lineup.
    */
   public static TelevisionChannel.Builder televisionChannel() { return new TelevisionChannel.Builder(); }
-  /**
-   * The airline boards by zones of the plane.
-   */
-  public static ZoneBoardingPolicy.Builder zoneBoardingPolicy() { return new ZoneBoardingPolicy.Builder(); }
   /**
    * A house painting service.
    */
@@ -2145,14 +1595,6 @@ public class SchemaOrg {
    */
   public static Movie.Builder movie() { return new Movie.Builder(); }
   /**
-   * Pharmacy.
-   */
-  public static PharmacySpecialty.Builder pharmacySpecialty() { return new PharmacySpecialty.Builder(); }
-  /**
-   * DemoAlbum.
-   */
-  public static DemoAlbum.Builder demoAlbum() { return new DemoAlbum.Builder(); }
-  /**
    * A hostel - cheap accommodation, often in shared dormitories.
    */
   public static Hostel.Builder hostel() { return new Hostel.Builder(); }
@@ -2160,10 +1602,6 @@ public class SchemaOrg {
    * The act of producing a visual/graphical representation of an object, typically with a pen/pencil and paper as instruments.
    */
   public static DrawAction.Builder drawAction() { return new DrawAction.Builder(); }
-  /**
-   * The airline boards by groups based on check-in time, priority, etc.
-   */
-  public static GroupBoardingPolicy.Builder groupBoardingPolicy() { return new GroupBoardingPolicy.Builder(); }
   /**
    * The act of participating in an exchange of goods and services for monetary compensation. An agent trades an object, product or service with a participant in exchange for a one time or periodic payment.
    */
@@ -2268,10 +1706,6 @@ public class SchemaOrg {
    */
   public static BoardingPolicyType.Builder boardingPolicyType() { return new BoardingPolicyType.Builder(); }
   /**
-   * Midwifery.
-   */
-  public static Midwifery.Builder midwifery() { return new Midwifery.Builder(); }
-  /**
    * A dentist.
    */
   public static Dentist.Builder dentist() { return new Dentist.Builder(); }
@@ -2280,29 +1714,13 @@ public class SchemaOrg {
    */
   public static PhysicalTherapy.Builder physicalTherapy() { return new PhysicalTherapy.Builder(); }
   /**
-   * CDFormat.
-   */
-  public static CDFormat.Builder cDFormat() { return new CDFormat.Builder(); }
-  /**
    * A web page element, like a table or an image.
    */
   public static WebPageElement.Builder webPageElement() { return new WebPageElement.Builder(); }
   /**
-   * OrderStatus representing that there is a problem with the order.
-   */
-  public static OrderProblem.Builder orderProblem() { return new OrderProblem.Builder(); }
-  /**
-   * OrderStatus representing that payment is due on an order.
-   */
-  public static OrderPaymentDue.Builder orderPaymentDue() { return new OrderPaymentDue.Builder(); }
-  /**
    * A collection of music tracks in playlist form.
    */
   public static MusicPlaylist.Builder musicPlaylist() { return new MusicPlaylist.Builder(); }
-  /**
-   * A trial design in which neither the researcher, the person administering the therapy nor the patient knows the details of the treatment the patient was randomly assigned to.
-   */
-  public static TripleBlindedTrial.Builder tripleBlindedTrial() { return new TripleBlindedTrial.Builder(); }
   /**
    * The act of an agent communicating (service provider, social media, etc) their departure of a previously reserved service (e.g. flight check in) or place (e.g. hotel).<p>Related actions:</p><ul><li><a href="http://schema.org/CheckInAction">CheckInAction</a>: The antonym of CheckOutAction.</li><li><a href="http://schema.org/DepartAction">DepartAction</a>: Unlike DepartAction, CheckOutAction implies that the agent is informing/confirming the end of a previously reserved service.</li><li><a href="http://schema.org/CancelAction">CancelAction</a>: Unlike CancelAction, CheckOutAction implies that the agent is informing/confirming the end of a previously reserved service</li></ul>.
    */
@@ -2316,14 +1734,6 @@ public class SchemaOrg {
    */
   public static Store.Builder store() { return new Store.Builder(); }
   /**
-   * Eye.
-   */
-  public static Eye.Builder eye() { return new Eye.Builder(); }
-  /**
-   * A specific branch of medical science that specializes in the care of women during the prenatal and postnatal care and with the delivery of the child.
-   */
-  public static Obstetric.Builder obstetric() { return new Obstetric.Builder(); }
-  /**
    * The act of searching for an object.<p>Related actions:</p><ul><li><a href="http://schema.org/FindAction">FindAction</a>: SearchAction generally leads to a FindAction, but not necessarily</li></ul>.
    */
   public static SearchAction.Builder searchAction() { return new SearchAction.Builder(); }
@@ -2335,10 +1745,6 @@ public class SchemaOrg {
    * An embassy.
    */
   public static Embassy.Builder embassy() { return new Embassy.Builder(); }
-  /**
-   * OrderStatus representing that an order is being processed.
-   */
-  public static OrderProcessing.Builder orderProcessing() { return new OrderProcessing.Builder(); }
   /**
    * An educational organization.
    */
@@ -2375,10 +1781,6 @@ public class SchemaOrg {
    */
   public static MusicReleaseFormatType.Builder musicReleaseFormatType() { return new MusicReleaseFormatType.Builder(); }
   /**
-   * MixtapeAlbum.
-   */
-  public static MixtapeAlbum.Builder mixtapeAlbum() { return new MixtapeAlbum.Builder(); }
-  /**
    * A process of care used in either a diagnostic, therapeutic, or palliative capacity that relies on invasive (surgical), non-invasive, or percutaneous techniques.
    */
   public static MedicalProcedure.Builder medicalProcedure() { return new MedicalProcedure.Builder(); }
@@ -2391,21 +1793,9 @@ public class SchemaOrg {
    */
   public static BookSeries.Builder bookSeries() { return new BookSeries.Builder(); }
   /**
-   * Neck.
-   */
-  public static Neck.Builder neck() { return new Neck.Builder(); }
-  /**
-   * The status of a confirmed reservation.
-   */
-  public static ReservationConfirmed.Builder reservationConfirmed() { return new ReservationConfirmed.Builder(); }
-  /**
    * A sports club.
    */
   public static SportsClub.Builder sportsClub() { return new SportsClub.Builder(); }
-  /**
-   * LiveAlbum.
-   */
-  public static LiveAlbum.Builder liveAlbum() { return new LiveAlbum.Builder(); }
   /**
    * A class of medical drugs, e.g., statins. Classes can represent general pharmacological class, common mechanisms of action, common physiological effects, etc.
    */
@@ -2436,14 +1826,6 @@ public class SchemaOrg {
    * An employment agency.
    */
   public static EmploymentAgency.Builder employmentAgency() { return new EmploymentAgency.Builder(); }
-  /**
-   * Genitourinary.
-   */
-  public static Genitourinary.Builder genitourinary() { return new Genitourinary.Builder(); }
-  /**
-   * Completed.
-   */
-  public static Completed.Builder completed() { return new Completed.Builder(); }
   /**
    * The act of achieving victory in a competitive activity.
    */
@@ -2477,10 +1859,6 @@ public class SchemaOrg {
    */
   public static AggregateOffer.Builder aggregateOffer() { return new AggregateOffer.Builder(); }
   /**
-   * A specific branch of medical science that pertains to diagnosis and treatment of disorders of endocrine glands and their secretions.
-   */
-  public static Endocrine.Builder endocrine() { return new Endocrine.Builder(); }
-  /**
    * A department store.
    */
   public static DepartmentStore.Builder departmentStore() { return new DepartmentStore.Builder(); }
@@ -2505,17 +1883,9 @@ public class SchemaOrg {
    */
   public static MedicalEvidenceLevel.Builder medicalEvidenceLevel() { return new MedicalEvidenceLevel.Builder(); }
   /**
-   * Ear.
-   */
-  public static Ear.Builder ear() { return new Ear.Builder(); }
-  /**
    * Any indication of the existence of a medical condition or disease.
    */
   public static MedicalSignOrSymptom.Builder medicalSignOrSymptom() { return new MedicalSignOrSymptom.Builder(); }
-  /**
-   * Book format: Ebook.
-   */
-  public static EBook.Builder eBook() { return new EBook.Builder(); }
   /**
    * A recommended dosing schedule for a drug or supplement as prescribed or recommended by an authority or by the drug/supplement's manufacturer. Capture the recommending authority in the recognizingAuthority property of MedicalEntity.
    */
@@ -2533,10 +1903,6 @@ public class SchemaOrg {
    */
   public static Bone.Builder bone() { return new Bone.Builder(); }
   /**
-   * A specific branch of medical science that pertains to diagnosis and treatment of disorders of skin.
-   */
-  public static Dermatologic.Builder dermatologic() { return new Dermatologic.Builder(); }
-  /**
    * An internet cafe.
    */
   public static InternetCafe.Builder internetCafe() { return new InternetCafe.Builder(); }
@@ -2552,10 +1918,6 @@ public class SchemaOrg {
    * A placeholder for multiple similar products of the same kind.
    */
   public static SomeProducts.Builder someProducts() { return new SomeProducts.Builder(); }
-  /**
-   * Book format: Paperback.
-   */
-  public static Paperback.Builder paperback() { return new Paperback.Builder(); }
   /**
    * A business providing entertainment.
    */
@@ -2573,14 +1935,6 @@ public class SchemaOrg {
    */
   public static PerformingGroup.Builder performingGroup() { return new PerformingGroup.Builder(); }
   /**
-   * A specific branch of medical science that pertains to diagnosis and treatment of disorders of digestive system.
-   */
-  public static Gastroenterologic.Builder gastroenterologic() { return new Gastroenterologic.Builder(); }
-  /**
-   * A specific branch of medical science that deals with the study and treatment of rheumatic, autoimmune or joint diseases.
-   */
-  public static Rheumatologic.Builder rheumatologic() { return new Rheumatologic.Builder(); }
-  /**
    * A strategy of regulating the intake of food to achieve or maintain a specific health-related goal.
    */
   public static Diet.Builder diet() { return new Diet.Builder(); }
@@ -2590,14 +1944,6 @@ public class SchemaOrg {
       
    */
   public static UserPlusOnes.Builder userPlusOnes() { return new UserPlusOnes.Builder(); }
-  /**
-   * Indicates that the item is out of stock.
-   */
-  public static OutOfStock.Builder outOfStock() { return new OutOfStock.Builder(); }
-  /**
-   * Recruiting participants.
-   */
-  public static Recruiting.Builder recruiting() { return new Recruiting.Builder(); }
   /**
    * A condition or factor that serves as a reason to withhold a certain medical therapy. Contraindications can be absolute (there are no reasonable circumstances for undertaking a course of action) or relative (the patient is at higher risk of complications, but that these risks may be outweighed by other considerations or mitigated by other measures).
    */
@@ -2615,29 +1961,13 @@ public class SchemaOrg {
    */
   public static Restaurant.Builder restaurant() { return new Restaurant.Builder(); }
   /**
-   * Ultrasound imaging.
-   */
-  public static Ultrasound.Builder ultrasound() { return new Ultrasound.Builder(); }
-  /**
    * A high school.
    */
   public static HighSchool.Builder highSchool() { return new HighSchool.Builder(); }
   /**
-   * An in-progress action (e.g, while watching the movie, or driving to a location).
-   */
-  public static ActiveActionStatus.Builder activeActionStatus() { return new ActiveActionStatus.Builder(); }
-  /**
-   * LaserDiscFormat.
-   */
-  public static LaserDiscFormat.Builder laserDiscFormat() { return new LaserDiscFormat.Builder(); }
-  /**
    * A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e.g. in a Movie, TVSeries etc.
    */
   public static PerformanceRole.Builder performanceRole() { return new PerformanceRole.Builder(); }
-  /**
-   * An action that failed to complete. The action's error property and the HTTP return code contain more information about the failure.
-   */
-  public static FailedActionStatus.Builder failedActionStatus() { return new FailedActionStatus.Builder(); }
   /**
    * A Childcare center.
    */
@@ -2655,21 +1985,9 @@ public class SchemaOrg {
    */
   public static DiagnosticProcedure.Builder diagnosticProcedure() { return new DiagnosticProcedure.Builder(); }
   /**
-   * Throat.
-   */
-  public static Throat.Builder throat() { return new Throat.Builder(); }
-  /**
-   * A trial that takes place at a single center.
-   */
-  public static SingleCenterTrial.Builder singleCenterTrial() { return new SingleCenterTrial.Builder(); }
-  /**
    * Enumerated options related to a ContactPoint.
    */
   public static ContactPointOption.Builder contactPointOption() { return new ContactPointOption.Builder(); }
-  /**
-   * A system of medicine focused on the relationship between the body's structure, mainly the spine, and its functioning.
-   */
-  public static Chiropractic.Builder chiropractic() { return new Chiropractic.Builder(); }
   /**
    * A type of physical examination of a patient performed by a physician. Enumerated type.
    */
@@ -2703,10 +2021,6 @@ public class SchemaOrg {
    */
   public static AgreeAction.Builder agreeAction() { return new AgreeAction.Builder(); }
   /**
-   * Indicates that the item has been discontinued.
-   */
-  public static Discontinued.Builder discontinued() { return new Discontinued.Builder(); }
-  /**
    * An order item is a line of an order. It includes the quantity and shipping details of a bought offer.
    */
   public static OrderItem.Builder orderItem() { return new OrderItem.Builder(); }
@@ -2723,21 +2037,9 @@ public class SchemaOrg {
    */
   public static DataDownload.Builder dataDownload() { return new DataDownload.Builder(); }
   /**
-   * BroadcastRelease.
-   */
-  public static BroadcastRelease.Builder broadcastRelease() { return new BroadcastRelease.Builder(); }
-  /**
    * A set of characteristics belonging to businesses, e.g. who compose an item's target audience.
    */
   public static BusinessAudience.Builder businessAudience() { return new BusinessAudience.Builder(); }
-  /**
-   * Book format: Hardcover.
-   */
-  public static Hardcover.Builder hardcover() { return new Hardcover.Builder(); }
-  /**
-   * An ItemList ordered with higher values listed first.
-   */
-  public static ItemListOrderDescending.Builder itemListOrderDescending() { return new ItemListOrderDescending.Builder(); }
   /**
    * An agent inspects/determines/investigates/inquire or examine an object's accuracy/quality/condition or state.
    */
@@ -2775,10 +2077,6 @@ public class SchemaOrg {
    * The act of producing a painting, typically with paint and canvas as instruments.
    */
   public static PaintAction.Builder paintAction() { return new PaintAction.Builder(); }
-  /**
-   * Physical activity that is engaged in to improve muscle and bone strength. Also referred to as resistance training.
-   */
-  public static StrengthTraining.Builder strengthTraining() { return new StrengthTraining.Builder(); }
   /**
    * A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space.
    */
@@ -2830,10 +2128,6 @@ public class SchemaOrg {
    */
   public static SourceCodeRevision.Builder sourceCodeRevision() { return new SourceCodeRevision.Builder(); }
   /**
-   * A type of medical procedure that involves invasive surgical techniques.
-   */
-  public static SurgicalProcedure.Builder surgicalProcedure() { return new SurgicalProcedure.Builder(); }
-  /**
    * A chemical or biologic substance, used as a medical therapy, that has a physiological effect on an organism.
    */
   public static Drug.Builder drug() { return new Drug.Builder(); }
@@ -2842,21 +2136,9 @@ public class SchemaOrg {
    */
   public static ReplaceAction.Builder replaceAction() { return new ReplaceAction.Builder(); }
   /**
-   * Physical activity that is engaged to help maintain posture and balance.
-   */
-  public static Balance.Builder balance() { return new Balance.Builder(); }
-  /**
    * A winery.
    */
   public static Winery.Builder winery() { return new Winery.Builder(); }
-  /**
-   * Indicates that the item is new.
-   */
-  public static NewCondition.Builder newCondition() { return new NewCondition.Builder(); }
-  /**
-   * A trial design in which the researcher knows the full details of the treatment, and so does the patient.
-   */
-  public static OpenTrial.Builder openTrial() { return new OpenTrial.Builder(); }
   /**
    * A process of care relying upon counseling, dialogue, communication, verbalization aimed at improving a mental health condition.
    */
@@ -2869,10 +2151,6 @@ public class SchemaOrg {
    * A shop that will buy, or lend money against the security of, personal possessions.
    */
   public static PawnShop.Builder pawnShop() { return new PawnShop.Builder(); }
-  /**
-   * A case series (also known as a clinical series) is a medical research study that tracks patients with a known exposure given similar treatment or examines their medical records for exposure and outcome. A case series can be retrospective or prospective and usually involves a smaller number of patients than the more powerful case-control studies or randomized controlled trials. Case series may be consecutive or non-consecutive, depending on whether all cases presenting to the reporting authors over a period of time were included, or only a selection.
-   */
-  public static CaseSeries.Builder caseSeries() { return new CaseSeries.Builder(); }
   /**
    * A train station.
    */
@@ -2890,33 +2168,13 @@ public class SchemaOrg {
    */
   public static FinancialService.Builder financialService() { return new FinancialService.Builder(); }
   /**
-   * Indicates that the item is used.
-   */
-  public static UsedCondition.Builder usedCondition() { return new UsedCondition.Builder(); }
-  /**
-   * VitalSign.
-   */
-  public static VitalSign.Builder vitalSign() { return new VitalSign.Builder(); }
-  /**
    * A motorcycle repair shop.
    */
   public static MotorcycleRepair.Builder motorcycleRepair() { return new MotorcycleRepair.Builder(); }
   /**
-   * Pathogenic fungus.
-   */
-  public static Fungus.Builder fungus() { return new Fungus.Builder(); }
-  /**
    * A video file.
    */
   public static VideoObject.Builder videoObject() { return new VideoObject.Builder(); }
-  /**
-   * A designation that the drug in question has not been assigned a pregnancy category designation by the US FDA.
-   */
-  public static FDAnotEvaluated.Builder fDAnotEvaluated() { return new FDAnotEvaluated.Builder(); }
-  /**
-   * A parking map.
-   */
-  public static ParkingMap.Builder parkingMap() { return new ParkingMap.Builder(); }
   /**
    * A government office&#x2014;for example, an IRS or DMV office.
    */
@@ -2925,10 +2183,6 @@ public class SchemaOrg {
    * A defence establishment, such as an army or navy base.
    */
   public static DefenceEstablishment.Builder defenceEstablishment() { return new DefenceEstablishment.Builder(); }
-  /**
-   * The invitee will not attend.
-   */
-  public static RsvpResponseNo.Builder rsvpResponseNo() { return new RsvpResponseNo.Builder(); }
   /**
    * The act of an agent relocating to a place.<p>Related actions:</p><ul><li><a href="http://schema.org/TransferAction">TransferAction</a>: Unlike TransferAction, the subject of the move is a living Person or Organization rather than an inanimate object</li></ul>.
    */
@@ -2950,10 +2204,6 @@ public class SchemaOrg {
    */
   public static TechArticle.Builder techArticle() { return new TechArticle.Builder(); }
   /**
-   * Play mode: MultiPlayer. Requiring or allowing multiple human players to play simultaneously.
-   */
-  public static MultiPlayer.Builder multiPlayer() { return new MultiPlayer.Builder(); }
-  /**
    * The act of responding instinctively and emotionally to an object, expressing a sentiment.
    */
   public static ReactAction.Builder reactAction() { return new ReactAction.Builder(); }
@@ -2961,10 +2211,6 @@ public class SchemaOrg {
    * The act of downloading an object.
    */
   public static DownloadAction.Builder downloadAction() { return new DownloadAction.Builder(); }
-  /**
-   * Available over the counter.
-   */
-  public static OTC.Builder oTC() { return new OTC.Builder(); }
   /**
    * An infectious disease is a clinically evident human disease resulting from the presence of pathogenic microbial agents, like pathogenic viruses, pathogenic bacteria, fungi, protozoa, multicellular parasites, and prions. To be considered an infectious disease, such pathogens are known to be able to cause this disease.
    */
@@ -3014,10 +2260,6 @@ public class SchemaOrg {
    */
   public static Place.Builder place() { return new Place.Builder(); }
   /**
-   * An international trial.
-   */
-  public static InternationalTrial.Builder internationalTrial() { return new InternationalTrial.Builder(); }
-  /**
    * A reservation for a taxi.Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use http://schema.org/Offer.
    */
   public static TaxiReservation.Builder taxiReservation() { return new TaxiReservation.Builder(); }
@@ -3042,10 +2284,6 @@ public class SchemaOrg {
    */
   public static NutritionInformation.Builder nutritionInformation() { return new NutritionInformation.Builder(); }
   /**
-   * Four-wheel drive is a transmission layout where the engine primarily drives two wheels with a part-time four-wheel drive capability.
-   */
-  public static FourWheelDriveConfiguration.Builder fourWheelDriveConfiguration() { return new FourWheelDriveConfiguration.Builder(); }
-  /**
    * A motel.
    */
   public static Motel.Builder motel() { return new Motel.Builder(); }
@@ -3057,14 +2295,6 @@ public class SchemaOrg {
    * A short TV program or a segment/part of a TV program.
    */
   public static TVClip.Builder tVClip() { return new TVClip.Builder(); }
-  /**
-   * A randomized trial design.
-   */
-  public static RandomizedTrial.Builder randomizedTrial() { return new RandomizedTrial.Builder(); }
-  /**
-   * An ItemList ordered with lower values listed first.
-   */
-  public static ItemListOrderAscending.Builder itemListOrderAscending() { return new ItemListOrderAscending.Builder(); }
   /**
    * The act of consuming written content.
    */
@@ -3094,10 +2324,6 @@ public class SchemaOrg {
    */
   public static VideoGameSeries.Builder videoGameSeries() { return new VideoGameSeries.Builder(); }
   /**
-   * Dentistry.
-   */
-  public static Dentistry.Builder dentistry() { return new Dentistry.Builder(); }
-  /**
    * Any rule set or interactive tool for estimating the risk of developing a complication or condition.
    */
   public static MedicalRiskEstimator.Builder medicalRiskEstimator() { return new MedicalRiskEstimator.Builder(); }
@@ -3110,10 +2336,6 @@ public class SchemaOrg {
    */
   public static OrganizationRole.Builder organizationRole() { return new OrganizationRole.Builder(); }
   /**
-   * A specific branch of medical science that pertains to hereditary transmission and the variation of inherited characteristics and disorders.
-   */
-  public static Genetic.Builder genetic() { return new Genetic.Builder(); }
-  /**
    * Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.
    */
   public static Product.Builder product() { return new Product.Builder(); }
@@ -3121,10 +2343,6 @@ public class SchemaOrg {
    * A florist.
    */
   public static Florist.Builder florist() { return new Florist.Builder(); }
-  /**
-   * Play mode: SinglePlayer. Which is played by a lone player.
-   */
-  public static SinglePlayer.Builder singlePlayer() { return new SinglePlayer.Builder(); }
   /**
    * A datasheet or vendor specification of a product (in the sense of a prototypical description).
    */
@@ -3138,10 +2356,6 @@ public class SchemaOrg {
    */
   public static BroadcastService.Builder broadcastService() { return new BroadcastService.Builder(); }
   /**
-   * Any physical activity engaged in for recreational purposes. Examples may include ballroom dancing, roller skating, canoeing, fishing, etc.
-   */
-  public static LeisureTimeActivity.Builder leisureTimeActivity() { return new LeisureTimeActivity.Builder(); }
-  /**
    * Any medical intervention designed to prevent, treat, and cure human diseases and medical conditions, including both curative and palliative therapies. Medical therapies are typically processes of care relying upon pharmacotherapy, behavioral therapy, supportive therapy (with fluid or nutrition for example), or detoxification (e.g. hemodialysis) aimed at improving or preventing a health condition.
    */
   public static MedicalTherapy.Builder medicalTherapy() { return new MedicalTherapy.Builder(); }
@@ -3154,29 +2368,13 @@ public class SchemaOrg {
    */
   public static DeactivateAction.Builder deactivateAction() { return new DeactivateAction.Builder(); }
   /**
-   * Nose.
-   */
-  public static Nose.Builder nose() { return new Nose.Builder(); }
-  /**
-   * A specific branch of medical science that pertains to diagnosis and treatment of disorders of muscles, ligaments and skeletal system.
-   */
-  public static Musculoskeletal.Builder musculoskeletal() { return new Musculoskeletal.Builder(); }
-  /**
    * The act of marrying a person.
    */
   public static MarryAction.Builder marryAction() { return new MarryAction.Builder(); }
   /**
-   * SoundtrackAlbum.
-   */
-  public static SoundtrackAlbum.Builder soundtrackAlbum() { return new SoundtrackAlbum.Builder(); }
-  /**
    * The cost per unit of a medical drug. Note that this type is not meant to represent the price in an offer of a drug for sale; see the Offer type for that. This type will typically be used to tag wholesale or average retail cost of a drug, or maximum reimbursable cost. Costs of medical drugs vary widely depending on how and where they are paid for, so while this type captures some of the variables, costs should be used with caution by consumers of this schema's markup.
    */
   public static DrugCost.Builder drugCost() { return new DrugCost.Builder(); }
-  /**
-   * Appearance.
-   */
-  public static Appearance.Builder appearance() { return new Appearance.Builder(); }
   /**
    * A short band of tough, flexible, fibrous connective tissue that functions to connect multiple bones, cartilages, and structurally support joints.
    */
@@ -3190,33 +2388,13 @@ public class SchemaOrg {
    */
   public static MusicAlbumProductionType.Builder musicAlbumProductionType() { return new MusicAlbumProductionType.Builder(); }
   /**
-   * A type of medical procedure that involves noninvasive techniques.
-   */
-  public static NoninvasiveProcedure.Builder noninvasiveProcedure() { return new NoninvasiveProcedure.Builder(); }
-  /**
-   * A specific branch of medical science that is concerned with the diagnosis and treatment of diseases, debilities and provision of care to the aged.
-   */
-  public static Geriatric.Builder geriatric() { return new Geriatric.Builder(); }
-  /**
-   * A specific branch of medical science that is deals with the evaluation and initial treatment of medical conditions caused by trauma or sudden illness.
-   */
-  public static Emergency.Builder emergency() { return new Emergency.Builder(); }
-  /**
    * The act of discovering/finding an object.
    */
   public static DiscoverAction.Builder discoverAction() { return new DiscoverAction.Builder(); }
   /**
-   * A specific branch of medical science that pertains to the health care of women, particularly in the diagnosis and treatment of disorders affecting the female reproductive system.
-   */
-  public static Gynecologic.Builder gynecologic() { return new Gynecologic.Builder(); }
-  /**
    * Event type: Sports event.
    */
   public static SportsEvent.Builder sportsEvent() { return new SportsEvent.Builder(); }
-  /**
-   * Radiography.
-   */
-  public static Radiograpy.Builder radiograpy() { return new Radiograpy.Builder(); }
   /**
    * A courthouse.
    */
@@ -3249,10 +2427,6 @@ public class SchemaOrg {
    * A moving company.
    */
   public static MovingCompany.Builder movingCompany() { return new MovingCompany.Builder(); }
-  /**
-   * The Question/Answer types were <a href="https://www.w3.org/wiki/WebSchemas/QASchemaResearch">based on</a> the Stack Overflow API.
-   */
-  public static StackExchange.Builder stackExchange() { return new StackExchange.Builder(); }
   /**
    * Any recommendation made by a standard society (e.g. ACC/AHA) or consensus statement that denotes how to diagnose and treat a particular condition. Note: this type should be used to tag the actual guideline recommendation; if the guideline recommendation occurs in a larger scholarly article, use MedicalScholarlyArticle to tag the overall article, not this type. Note also: the organization making the recommendation should be captured in the recognizingAuthority base property of MedicalEntity.
    */
@@ -3347,10 +2521,6 @@ public class SchemaOrg {
    */
   public static RiverBodyOfWater.Builder riverBodyOfWater() { return new RiverBodyOfWater.Builder(); }
   /**
-   * A specific branch of medical science that is concerned with the ear, nose and throat and their respective disease states.
-   */
-  public static Otolaryngologic.Builder otolaryngologic() { return new Otolaryngologic.Builder(); }
-  /**
    * A specific question - e.g. from a user seeking answers online, or collected in a Frequently Asked Questions (FAQ) document.
    */
   public static Question.Builder question() { return new Question.Builder(); }
@@ -3363,10 +2533,6 @@ public class SchemaOrg {
    */
   public static RsvpAction.Builder rsvpAction() { return new RsvpAction.Builder(); }
   /**
-   * Community health.
-   */
-  public static CommunityHealth.Builder communityHealth() { return new CommunityHealth.Builder(); }
-  /**
    * An EducationalAudience.
    */
   public static EducationalAudience.Builder educationalAudience() { return new EducationalAudience.Builder(); }
@@ -3375,21 +2541,9 @@ public class SchemaOrg {
    */
   public static AutoDealer.Builder autoDealer() { return new AutoDealer.Builder(); }
   /**
-   * DVDFormat.
-   */
-  public static DVDFormat.Builder dVDFormat() { return new DVDFormat.Builder(); }
-  /**
    * A scholarly article in the medical domain.
    */
   public static MedicalScholarlyArticle.Builder medicalScholarlyArticle() { return new MedicalScholarlyArticle.Builder(); }
-  /**
-   * Cardiovascular.
-   */
-  public static CardiovascularExam.Builder cardiovascularExam() { return new CardiovascularExam.Builder(); }
-  /**
-   * Indicates whether the vehicle has been used for special purposes, like commercial rental, driving school, or as a taxi. The legislation in many countries requires this information to be revealed when offering a car for sale.
-   */
-  public static VehicleSpecialUsage.Builder vehicleSpecialUsage() { return new VehicleSpecialUsage.Builder(); }
   /**
    * A table on a Web page.
    */
@@ -3415,17 +2569,9 @@ public class SchemaOrg {
    */
   public static AccountingService.Builder accountingService() { return new AccountingService.Builder(); }
   /**
-   * Indicates that the item has limited availability.
-   */
-  public static LimitedAvailability.Builder limitedAvailability() { return new LimitedAvailability.Builder(); }
-  /**
    * A product taken by mouth that contains a dietary ingredient intended to supplement the diet. Dietary ingredients may include vitamins, minerals, herbs or other botanicals, amino acids, and substances such as enzymes, organ tissues, glandulars and metabolites.
    */
   public static DietarySupplement.Builder dietarySupplement() { return new DietarySupplement.Builder(); }
-  /**
-   * Any physical activity engaged in for job-related purposes. Examples may include waiting tables, maid service, carrying a mailbag, picking fruits or vegetables, construction work, etc.
-   */
-  public static OccupationalActivity.Builder occupationalActivity() { return new OccupationalActivity.Builder(); }
   /**
    * The price for the delivery of an offer using a particular delivery method.
    */
@@ -3447,14 +2593,6 @@ public class SchemaOrg {
    */
   public static PlanAction.Builder planAction() { return new PlanAction.Builder(); }
   /**
-   * Positron emission tomography imaging.
-   */
-  public static PET.Builder pET() { return new PET.Builder(); }
-  /**
-   * Neuro.
-   */
-  public static Neuro.Builder neuro() { return new Neuro.Builder(); }
-  /**
    * A church.
    */
   public static Church.Builder church() { return new Church.Builder(); }
@@ -3467,14 +2605,6 @@ public class SchemaOrg {
    */
   public static AchieveAction.Builder achieveAction() { return new AchieveAction.Builder(); }
   /**
-   * The drug's cost represents the wholesale acquisition cost of the drug.
-   */
-  public static Wholesale.Builder wholesale() { return new Wholesale.Builder(); }
-  /**
-   * Front-wheel drive is a transmission layout where the engine drives the front wheels.
-   */
-  public static FrontWheelDriveConfiguration.Builder frontWheelDriveConfiguration() { return new FrontWheelDriveConfiguration.Builder(); }
-  /**
    * A comedy club.
    */
   public static ComedyClub.Builder comedyClub() { return new ComedyClub.Builder(); }
@@ -3483,10 +2613,6 @@ public class SchemaOrg {
    */
   public static Optician.Builder optician() { return new Optician.Builder(); }
   /**
-   * This class contains derivatives of properties from the GoodRelations Vocabulary for E-Commerce, created by Martin Hepp. GoodRelations is a data model for sharing e-commerce data on the Web that can be expressed in a variety of syntaxes, including RDFa and HTML5 Microdata. More information about GoodRelations can be found at <a href="http://purl.org/goodrelations/">http://purl.org/goodrelations/</a>.
-   */
-  public static GoodRelationsProperties.Builder goodRelationsProperties() { return new GoodRelationsProperties.Builder(); }
-  /**
    * A musical composition.
    */
   public static MusicComposition.Builder musicComposition() { return new MusicComposition.Builder(); }
@@ -3494,14 +2620,6 @@ public class SchemaOrg {
    * The act of transferring ownership of an object to a destination. Reciprocal of TakeAction.<p>Related actions:</p><ul><li><a href="http://schema.org/TakeAction">TakeAction</a>: Reciprocal of GiveAction.</li><li><a href="http://schema.org/SendAction">SendAction</a>: Unlike SendAction, GiveAction implies that ownership is being transferred (e.g. I may send my laptop to you, but that doesn't mean I'm giving it to you)</li></ul>.
    */
   public static GiveAction.Builder giveAction() { return new GiveAction.Builder(); }
-  /**
-   * Lung.
-   */
-  public static Lung.Builder lung() { return new Lung.Builder(); }
-  /**
-   * This class is derived from the GoodRelations Vocabulary for E-Commerce, created by Martin Hepp. GoodRelations is a data model for sharing e-commerce data on the Web that can be expressed in a variety of syntaxes, including RDFa and HTML5 Microdata. More information about GoodRelations can be found at <a href="http://purl.org/goodrelations/">http://purl.org/goodrelations/</a>.
-   */
-  public static GoodRelationsClass.Builder goodRelationsClass() { return new GoodRelationsClass.Builder(); }
   /**
    * A playground.
    */
@@ -3515,29 +2633,9 @@ public class SchemaOrg {
    */
   public static ParcelDelivery.Builder parcelDelivery() { return new ParcelDelivery.Builder(); }
   /**
-   * Primary care.
-   */
-  public static PrimaryCare.Builder primaryCare() { return new PrimaryCare.Builder(); }
-  /**
-   * The status of a reservation when a request has been sent, but not confirmed.
-   */
-  public static ReservationPending.Builder reservationPending() { return new ReservationPending.Builder(); }
-  /**
-   * Single-celled organism that causes an infection.
-   */
-  public static Protozoa.Builder protozoa() { return new Protozoa.Builder(); }
-  /**
-   * All-wheel Drive is a transmission layout where the engine drives all four wheels.
-   */
-  public static AllWheelDriveConfiguration.Builder allWheelDriveConfiguration() { return new AllWheelDriveConfiguration.Builder(); }
-  /**
    * A stage of a medical condition, such as 'Stage IIIa'.
    */
   public static MedicalConditionStage.Builder medicalConditionStage() { return new MedicalConditionStage.Builder(); }
-  /**
-   * Environment and public health.
-   */
-  public static PublicHealth.Builder publicHealth() { return new PublicHealth.Builder(); }
   /**
    * A list of possible conditions for the item.
    */
@@ -3559,10 +2657,6 @@ public class SchemaOrg {
    */
   public static City.Builder city() { return new City.Builder(); }
   /**
-   * Suspended.
-   */
-  public static Suspended.Builder suspended() { return new Suspended.Builder(); }
-  /**
    * Residence type: Single-family home.
    */
   public static SingleFamilyResidence.Builder singleFamilyResidence() { return new SingleFamilyResidence.Builder(); }
@@ -3575,10 +2669,6 @@ public class SchemaOrg {
    */
   public static Review.Builder review() { return new Review.Builder(); }
   /**
-   * Musculoskeletal.
-   */
-  public static MusculoskeletalExam.Builder musculoskeletalExam() { return new MusculoskeletalExam.Builder(); }
-  /**
    * A motorcycle dealer.
    */
   public static MotorcycleDealer.Builder motorcycleDealer() { return new MotorcycleDealer.Builder(); }
@@ -3590,10 +2680,6 @@ public class SchemaOrg {
    * A structured value representing the duration and scope of services that will be provided to a customer free of charge in case of a defect or malfunction of a product.
    */
   public static WarrantyPromise.Builder warrantyPromise() { return new WarrantyPromise.Builder(); }
-  /**
-   * Laboratory science.
-   */
-  public static LaboratoryScience.Builder laboratoryScience() { return new LaboratoryScience.Builder(); }
   /**
    * CreativeWorkSeries dedicated to radio broadcast and associated online delivery.
    */
@@ -3625,13 +2711,11 @@ public class SchemaOrg {
     if ("AnimalShelter".equals(type)) { return new AnimalShelter.Builder(); }
     if ("FastFoodRestaurant".equals(type)) { return new FastFoodRestaurant.Builder(); }
     if ("AmusementPark".equals(type)) { return new AmusementPark.Builder(); }
-    if ("DigitalAudioTapeFormat".equals(type)) { return new DigitalAudioTapeFormat.Builder(); }
     if ("AddAction".equals(type)) { return new AddAction.Builder(); }
     if ("PeopleAudience".equals(type)) { return new PeopleAudience.Builder(); }
     if ("BarOrPub".equals(type)) { return new BarOrPub.Builder(); }
     if ("TVSeason".equals(type)) { return new TVSeason.Builder(); }
     if ("MedicalRiskCalculator".equals(type)) { return new MedicalRiskCalculator.Builder(); }
-    if ("Abdomen".equals(type)) { return new Abdomen.Builder(); }
     if ("CommentAction".equals(type)) { return new CommentAction.Builder(); }
     if ("CreateAction".equals(type)) { return new CreateAction.Builder(); }
     if ("Permit".equals(type)) { return new Permit.Builder(); }
@@ -3641,39 +2725,23 @@ public class SchemaOrg {
     if ("InsuranceAgency".equals(type)) { return new InsuranceAgency.Builder(); }
     if ("TieAction".equals(type)) { return new TieAction.Builder(); }
     if ("GeoCoordinates".equals(type)) { return new GeoCoordinates.Builder(); }
-    if ("WikiDoc".equals(type)) { return new WikiDoc.Builder(); }
     if ("Joint".equals(type)) { return new Joint.Builder(); }
-    if ("OrderPickupAvailable".equals(type)) { return new OrderPickupAvailable.Builder(); }
     if ("GardenStore".equals(type)) { return new GardenStore.Builder(); }
-    if ("Skin".equals(type)) { return new Skin.Builder(); }
     if ("ChildrensEvent".equals(type)) { return new ChildrensEvent.Builder(); }
-    if ("InStock".equals(type)) { return new InStock.Builder(); }
     if ("MedicalTest".equals(type)) { return new MedicalTest.Builder(); }
     if ("QualitativeValue".equals(type)) { return new QualitativeValue.Builder(); }
     if ("TouristAttraction".equals(type)) { return new TouristAttraction.Builder(); }
-    if ("SingleRelease".equals(type)) { return new SingleRelease.Builder(); }
-    if ("OfflinePermanently".equals(type)) { return new OfflinePermanently.Builder(); }
     if ("BookmarkAction".equals(type)) { return new BookmarkAction.Builder(); }
     if ("DrugPregnancyCategory".equals(type)) { return new DrugPregnancyCategory.Builder(); }
-    if ("TollFree".equals(type)) { return new TollFree.Builder(); }
-    if ("Neurologic".equals(type)) { return new Neurologic.Builder(); }
     if ("BroadcastChannel".equals(type)) { return new BroadcastChannel.Builder(); }
     if ("UnRegisterAction".equals(type)) { return new UnRegisterAction.Builder(); }
-    if ("DrivingSchoolVehicleUsage".equals(type)) { return new DrivingSchoolVehicleUsage.Builder(); }
     if ("Continent".equals(type)) { return new Continent.Builder(); }
     if ("DeleteAction".equals(type)) { return new DeleteAction.Builder(); }
-    if ("Observational".equals(type)) { return new Observational.Builder(); }
-    if ("ResultsAvailable".equals(type)) { return new ResultsAvailable.Builder(); }
-    if ("DJMixAlbum".equals(type)) { return new DJMixAlbum.Builder(); }
     if ("WebPage".equals(type)) { return new WebPage.Builder(); }
-    if ("DamagedCondition".equals(type)) { return new DamagedCondition.Builder(); }
-    if ("SingleBlindedTrial".equals(type)) { return new SingleBlindedTrial.Builder(); }
     if ("BusStation".equals(type)) { return new BusStation.Builder(); }
-    if ("Terminated".equals(type)) { return new Terminated.Builder(); }
     if ("Taxi".equals(type)) { return new Taxi.Builder(); }
     if ("BookFormatType".equals(type)) { return new BookFormatType.Builder(); }
     if ("ResumeAction".equals(type)) { return new ResumeAction.Builder(); }
-    if ("TraditionalChinese".equals(type)) { return new TraditionalChinese.Builder(); }
     if ("AnatomicalSystem".equals(type)) { return new AnatomicalSystem.Builder(); }
     if ("EatAction".equals(type)) { return new EatAction.Builder(); }
     if ("CommunicateAction".equals(type)) { return new CommunicateAction.Builder(); }
@@ -3682,47 +2750,32 @@ public class SchemaOrg {
     if ("GroceryStore".equals(type)) { return new GroceryStore.Builder(); }
     if ("EndorseAction".equals(type)) { return new EndorseAction.Builder(); }
     if ("PostalAddress".equals(type)) { return new PostalAddress.Builder(); }
-    if ("Nursing".equals(type)) { return new Nursing.Builder(); }
-    if ("EventRescheduled".equals(type)) { return new EventRescheduled.Builder(); }
     if ("TravelAgency".equals(type)) { return new TravelAgency.Builder(); }
     if ("ProfilePage".equals(type)) { return new ProfilePage.Builder(); }
-    if ("WesternConventional".equals(type)) { return new WesternConventional.Builder(); }
     if ("RoofingContractor".equals(type)) { return new RoofingContractor.Builder(); }
     if ("ParkingFacility".equals(type)) { return new ParkingFacility.Builder(); }
     if ("Casino".equals(type)) { return new Casino.Builder(); }
     if ("ImageObject".equals(type)) { return new ImageObject.Builder(); }
-    if ("SoldOut".equals(type)) { return new SoldOut.Builder(); }
-    if ("Homeopathic".equals(type)) { return new Homeopathic.Builder(); }
     if ("BusReservation".equals(type)) { return new BusReservation.Builder(); }
     if ("Pond".equals(type)) { return new Pond.Builder(); }
-    if ("SpeechPathology".equals(type)) { return new SpeechPathology.Builder(); }
     if ("SeaBodyOfWater".equals(type)) { return new SeaBodyOfWater.Builder(); }
     if ("FlightReservation".equals(type)) { return new FlightReservation.Builder(); }
-    if ("Researcher".equals(type)) { return new Researcher.Builder(); }
     if ("ClothingStore".equals(type)) { return new ClothingStore.Builder(); }
     if ("AutoWash".equals(type)) { return new AutoWash.Builder(); }
     if ("ComputerStore".equals(type)) { return new ComputerStore.Builder(); }
     if ("Code".equals(type)) { return new Code.Builder(); }
     if ("Mountain".equals(type)) { return new Mountain.Builder(); }
-    if ("Online".equals(type)) { return new Online.Builder(); }
     if ("MusicRecording".equals(type)) { return new MusicRecording.Builder(); }
     if ("InsertAction".equals(type)) { return new InsertAction.Builder(); }
-    if ("Ayurvedic".equals(type)) { return new Ayurvedic.Builder(); }
     if ("TakeAction".equals(type)) { return new TakeAction.Builder(); }
-    if ("Withdrawn".equals(type)) { return new Withdrawn.Builder(); }
     if ("MusicVideoObject".equals(type)) { return new MusicVideoObject.Builder(); }
     if ("TrainReservation".equals(type)) { return new TrainReservation.Builder(); }
-    if ("Prion".equals(type)) { return new Prion.Builder(); }
     if ("WatchAction".equals(type)) { return new WatchAction.Builder(); }
     if ("PostOffice".equals(type)) { return new PostOffice.Builder(); }
     if ("PublicationIssue".equals(type)) { return new PublicationIssue.Builder(); }
     if ("Language".equals(type)) { return new Language.Builder(); }
-    if ("PotentialActionStatus".equals(type)) { return new PotentialActionStatus.Builder(); }
-    if ("Renal".equals(type)) { return new Renal.Builder(); }
     if ("Country".equals(type)) { return new Country.Builder(); }
-    if ("Therapeutic".equals(type)) { return new Therapeutic.Builder(); }
     if ("DoseSchedule".equals(type)) { return new DoseSchedule.Builder(); }
-    if ("Infectious".equals(type)) { return new Infectious.Builder(); }
     if ("AdministrativeArea".equals(type)) { return new AdministrativeArea.Builder(); }
     if ("SellAction".equals(type)) { return new SellAction.Builder(); }
     if ("PreventionIndication".equals(type)) { return new PreventionIndication.Builder(); }
@@ -3732,8 +2785,6 @@ public class SchemaOrg {
     if ("OrderAction".equals(type)) { return new OrderAction.Builder(); }
     if ("EventReservation".equals(type)) { return new EventReservation.Builder(); }
     if ("MusicGroup".equals(type)) { return new MusicGroup.Builder(); }
-    if ("EventPostponed".equals(type)) { return new EventPostponed.Builder(); }
-    if ("SeatingMap".equals(type)) { return new SeatingMap.Builder(); }
     if ("LodgingReservation".equals(type)) { return new LodgingReservation.Builder(); }
     if ("UserComments".equals(type)) { return new UserComments.Builder(); }
     if ("UnitPriceSpecification".equals(type)) { return new UnitPriceSpecification.Builder(); }
@@ -3742,47 +2793,29 @@ public class SchemaOrg {
     if ("Museum".equals(type)) { return new Museum.Builder(); }
     if ("SocialEvent".equals(type)) { return new SocialEvent.Builder(); }
     if ("LiteraryEvent".equals(type)) { return new LiteraryEvent.Builder(); }
-    if ("FDAcategoryX".equals(type)) { return new FDAcategoryX.Builder(); }
     if ("HomeGoodsStore".equals(type)) { return new HomeGoodsStore.Builder(); }
-    if ("MBZ".equals(type)) { return new MBZ.Builder(); }
-    if ("Pulmonary".equals(type)) { return new Pulmonary.Builder(); }
     if ("AllocateAction".equals(type)) { return new AllocateAction.Builder(); }
     if ("WPSideBar".equals(type)) { return new WPSideBar.Builder(); }
-    if ("FDAcategoryC".equals(type)) { return new FDAcategoryC.Builder(); }
-    if ("FDAcategoryD".equals(type)) { return new FDAcategoryD.Builder(); }
     if ("School".equals(type)) { return new School.Builder(); }
     if ("CreativeWorkSeries".equals(type)) { return new CreativeWorkSeries.Builder(); }
-    if ("FDAcategoryA".equals(type)) { return new FDAcategoryA.Builder(); }
-    if ("FDAcategoryB".equals(type)) { return new FDAcategoryB.Builder(); }
     if ("DayOfWeek".equals(type)) { return new DayOfWeek.Builder(); }
     if ("TreatmentIndication".equals(type)) { return new TreatmentIndication.Builder(); }
     if ("TrainTrip".equals(type)) { return new TrainTrip.Builder(); }
     if ("HardwareStore".equals(type)) { return new HardwareStore.Builder(); }
     if ("ScreeningEvent".equals(type)) { return new ScreeningEvent.Builder(); }
-    if ("PrescriptionOnly".equals(type)) { return new PrescriptionOnly.Builder(); }
-    if ("RentalVehicleUsage".equals(type)) { return new RentalVehicleUsage.Builder(); }
-    if ("RsvpResponseYes".equals(type)) { return new RsvpResponseYes.Builder(); }
     if ("MusicRelease".equals(type)) { return new MusicRelease.Builder(); }
     if ("Electrician".equals(type)) { return new Electrician.Builder(); }
-    if ("NotYetRecruiting".equals(type)) { return new NotYetRecruiting.Builder(); }
     if ("Beach".equals(type)) { return new Beach.Builder(); }
     if ("WebApplication".equals(type)) { return new WebApplication.Builder(); }
     if ("PropertyValueSpecification".equals(type)) { return new PropertyValueSpecification.Builder(); }
-    if ("PlaceboControlledTrial".equals(type)) { return new PlaceboControlledTrial.Builder(); }
-    if ("Oncologic".equals(type)) { return new Oncologic.Builder(); }
     if ("AutomatedTeller".equals(type)) { return new AutomatedTeller.Builder(); }
     if ("BusTrip".equals(type)) { return new BusTrip.Builder(); }
     if ("PriceSpecification".equals(type)) { return new PriceSpecification.Builder(); }
     if ("DislikeAction".equals(type)) { return new DislikeAction.Builder(); }
-    if ("BibExTerm".equals(type)) { return new BibExTerm.Builder(); }
-    if ("Podiatric".equals(type)) { return new Podiatric.Builder(); }
     if ("OceanBodyOfWater".equals(type)) { return new OceanBodyOfWater.Builder(); }
     if ("ApartmentComplex".equals(type)) { return new ApartmentComplex.Builder(); }
     if ("MedicalTrial".equals(type)) { return new MedicalTrial.Builder(); }
-    if ("EventCancelled".equals(type)) { return new EventCancelled.Builder(); }
-    if ("Osteopathic".equals(type)) { return new Osteopathic.Builder(); }
     if ("TattooParlor".equals(type)) { return new TattooParlor.Builder(); }
-    if ("CoOp".equals(type)) { return new CoOp.Builder(); }
     if ("UserBlocks".equals(type)) { return new UserBlocks.Builder(); }
     if ("QAPage".equals(type)) { return new QAPage.Builder(); }
     if ("HobbyShop".equals(type)) { return new HobbyShop.Builder(); }
@@ -3791,28 +2824,17 @@ public class SchemaOrg {
     if ("TherapeuticProcedure".equals(type)) { return new TherapeuticProcedure.Builder(); }
     if ("FireStation".equals(type)) { return new FireStation.Builder(); }
     if ("TelevisionStation".equals(type)) { return new TelevisionStation.Builder(); }
-    if ("InStoreOnly".equals(type)) { return new InStoreOnly.Builder(); }
     if ("MedicalCause".equals(type)) { return new MedicalCause.Builder(); }
-    if ("EPRelease".equals(type)) { return new EPRelease.Builder(); }
     if ("Event".equals(type)) { return new Event.Builder(); }
     if ("PaymentMethod".equals(type)) { return new PaymentMethod.Builder(); }
     if ("ElementarySchool".equals(type)) { return new ElementarySchool.Builder(); }
-    if ("EvidenceLevelB".equals(type)) { return new EvidenceLevelB.Builder(); }
-    if ("EvidenceLevelA".equals(type)) { return new EvidenceLevelA.Builder(); }
-    if ("OrderReturned".equals(type)) { return new OrderReturned.Builder(); }
-    if ("MedicalResearcher".equals(type)) { return new MedicalResearcher.Builder(); }
     if ("EventStatusType".equals(type)) { return new EventStatusType.Builder(); }
-    if ("EvidenceLevelC".equals(type)) { return new EvidenceLevelC.Builder(); }
     if ("ImageGallery".equals(type)) { return new ImageGallery.Builder(); }
     if ("AuthorizeAction".equals(type)) { return new AuthorizeAction.Builder(); }
     if ("WPFooter".equals(type)) { return new WPFooter.Builder(); }
-    if ("CompletedActionStatus".equals(type)) { return new CompletedActionStatus.Builder(); }
-    if ("SpokenWordAlbum".equals(type)) { return new SpokenWordAlbum.Builder(); }
-    if ("Head".equals(type)) { return new Head.Builder(); }
     if ("OutletStore".equals(type)) { return new OutletStore.Builder(); }
     if ("BikeStore".equals(type)) { return new BikeStore.Builder(); }
     if ("Artery".equals(type)) { return new Artery.Builder(); }
-    if ("OrderDelivered".equals(type)) { return new OrderDelivered.Builder(); }
     if ("Notary".equals(type)) { return new Notary.Builder(); }
     if ("Mass".equals(type)) { return new Mass.Builder(); }
     if ("Demand".equals(type)) { return new Demand.Builder(); }
@@ -3821,7 +2843,6 @@ public class SchemaOrg {
     if ("DanceGroup".equals(type)) { return new DanceGroup.Builder(); }
     if ("DDxElement".equals(type)) { return new DDxElement.Builder(); }
     if ("CollectionPage".equals(type)) { return new CollectionPage.Builder(); }
-    if ("RsvpResponseMaybe".equals(type)) { return new RsvpResponseMaybe.Builder(); }
     if ("Mosque".equals(type)) { return new Mosque.Builder(); }
     if ("Intangible".equals(type)) { return new Intangible.Builder(); }
     if ("Episode".equals(type)) { return new Episode.Builder(); }
@@ -3830,35 +2851,26 @@ public class SchemaOrg {
     if ("RecyclingCenter".equals(type)) { return new RecyclingCenter.Builder(); }
     if ("MaximumDoseSchedule".equals(type)) { return new MaximumDoseSchedule.Builder(); }
     if ("MobileApplication".equals(type)) { return new MobileApplication.Builder(); }
-    if ("ResultsNotAvailable".equals(type)) { return new ResultsNotAvailable.Builder(); }
-    if ("ActiveNotRecruiting".equals(type)) { return new ActiveNotRecruiting.Builder(); }
     if ("SoftwareApplication".equals(type)) { return new SoftwareApplication.Builder(); }
     if ("ControlAction".equals(type)) { return new ControlAction.Builder(); }
     if ("RadioChannel".equals(type)) { return new RadioChannel.Builder(); }
     if ("CableOrSatelliteService".equals(type)) { return new CableOrSatelliteService.Builder(); }
     if ("Property".equals(type)) { return new Property.Builder(); }
-    if ("VinylFormat".equals(type)) { return new VinylFormat.Builder(); }
     if ("CafeOrCoffeeShop".equals(type)) { return new CafeOrCoffeeShop.Builder(); }
     if ("Library".equals(type)) { return new Library.Builder(); }
-    if ("ItemListUnordered".equals(type)) { return new ItemListUnordered.Builder(); }
     if ("MedicalObservationalStudyDesign".equals(type)) { return new MedicalObservationalStudyDesign.Builder(); }
     if ("FindAction".equals(type)) { return new FindAction.Builder(); }
-    if ("CompilationAlbum".equals(type)) { return new CompilationAlbum.Builder(); }
     if ("PrependAction".equals(type)) { return new PrependAction.Builder(); }
     if ("BloodTest".equals(type)) { return new BloodTest.Builder(); }
-    if ("XRay".equals(type)) { return new XRay.Builder(); }
     if ("LikeAction".equals(type)) { return new LikeAction.Builder(); }
     if ("BeautySalon".equals(type)) { return new BeautySalon.Builder(); }
     if ("GovernmentOrganization".equals(type)) { return new GovernmentOrganization.Builder(); }
-    if ("Urologic".equals(type)) { return new Urologic.Builder(); }
     if ("RsvpResponseType".equals(type)) { return new RsvpResponseType.Builder(); }
     if ("BrainStructure".equals(type)) { return new BrainStructure.Builder(); }
     if ("EmployeeRole".equals(type)) { return new EmployeeRole.Builder(); }
-    if ("RemixAlbum".equals(type)) { return new RemixAlbum.Builder(); }
     if ("MedicalAudience".equals(type)) { return new MedicalAudience.Builder(); }
     if ("MovieRentalStore".equals(type)) { return new MovieRentalStore.Builder(); }
     if ("GameServer".equals(type)) { return new GameServer.Builder(); }
-    if ("LRMIClass".equals(type)) { return new LRMIClass.Builder(); }
     if ("Car".equals(type)) { return new Car.Builder(); }
     if ("Crematorium".equals(type)) { return new Crematorium.Builder(); }
     if ("BankOrCreditUnion".equals(type)) { return new BankOrCreditUnion.Builder(); }
@@ -3878,32 +2890,21 @@ public class SchemaOrg {
     if ("Thing".equals(type)) { return new Thing.Builder(); }
     if ("FurnitureStore".equals(type)) { return new FurnitureStore.Builder(); }
     if ("VisualArtsEvent".equals(type)) { return new VisualArtsEvent.Builder(); }
-    if ("CassetteFormat".equals(type)) { return new CassetteFormat.Builder(); }
     if ("ChooseAction".equals(type)) { return new ChooseAction.Builder(); }
     if ("SportingGoodsStore".equals(type)) { return new SportingGoodsStore.Builder(); }
-    if ("Cardiovascular".equals(type)) { return new Cardiovascular.Builder(); }
-    if ("Bacteria".equals(type)) { return new Bacteria.Builder(); }
     if ("MedicalDevice".equals(type)) { return new MedicalDevice.Builder(); }
     if ("NGO".equals(type)) { return new NGO.Builder(); }
     if ("BlogPosting".equals(type)) { return new BlogPosting.Builder(); }
     if ("Reservoir".equals(type)) { return new Reservoir.Builder(); }
-    if ("OnSitePickup".equals(type)) { return new OnSitePickup.Builder(); }
     if ("AutomotiveBusiness".equals(type)) { return new AutomotiveBusiness.Builder(); }
     if ("AutoRental".equals(type)) { return new AutoRental.Builder(); }
     if ("WPAdBlock".equals(type)) { return new WPAdBlock.Builder(); }
-    if ("AutomotiveOntologyWGClass".equals(type)) { return new AutomotiveOntologyWGClass.Builder(); }
     if ("OrganizeAction".equals(type)) { return new OrganizeAction.Builder(); }
     if ("BedAndBreakfast".equals(type)) { return new BedAndBreakfast.Builder(); }
-    if ("RespiratoryTherapy".equals(type)) { return new RespiratoryTherapy.Builder(); }
-    if ("OrderCancelled".equals(type)) { return new OrderCancelled.Builder(); }
     if ("PlayAction".equals(type)) { return new PlayAction.Builder(); }
     if ("LifestyleModification".equals(type)) { return new LifestyleModification.Builder(); }
-    if ("Toxicologic".equals(type)) { return new Toxicologic.Builder(); }
-    if ("EventScheduled".equals(type)) { return new EventScheduled.Builder(); }
     if ("UserPageVisits".equals(type)) { return new UserPageVisits.Builder(); }
     if ("AdultEntertainment".equals(type)) { return new AdultEntertainment.Builder(); }
-    if ("Patient".equals(type)) { return new Patient.Builder(); }
-    if ("Diagnostic".equals(type)) { return new Diagnostic.Builder(); }
     if ("CookAction".equals(type)) { return new CookAction.Builder(); }
     if ("Aquarium".equals(type)) { return new Aquarium.Builder(); }
     if ("Hotel".equals(type)) { return new Hotel.Builder(); }
@@ -3913,29 +2914,20 @@ public class SchemaOrg {
     if ("TypeAndQuantityNode".equals(type)) { return new TypeAndQuantityNode.Builder(); }
     if ("CarUsageType".equals(type)) { return new CarUsageType.Builder(); }
     if ("VideoGallery".equals(type)) { return new VideoGallery.Builder(); }
-    if ("ReservationHold".equals(type)) { return new ReservationHold.Builder(); }
     if ("Photograph".equals(type)) { return new Photograph.Builder(); }
     if ("Dataset".equals(type)) { return new Dataset.Builder(); }
-    if ("Pathology".equals(type)) { return new Pathology.Builder(); }
     if ("AutoBodyShop".equals(type)) { return new AutoBodyShop.Builder(); }
     if ("AutoPartsStore".equals(type)) { return new AutoPartsStore.Builder(); }
     if ("HealthAndBeautyBusiness".equals(type)) { return new HealthAndBeautyBusiness.Builder(); }
     if ("PhotographAction".equals(type)) { return new PhotographAction.Builder(); }
     if ("CheckoutPage".equals(type)) { return new CheckoutPage.Builder(); }
     if ("MedicalStudyStatus".equals(type)) { return new MedicalStudyStatus.Builder(); }
-    if ("Surgical".equals(type)) { return new Surgical.Builder(); }
-    if ("Optometic".equals(type)) { return new Optometic.Builder(); }
-    if ("EnrollingByInvitation".equals(type)) { return new EnrollingByInvitation.Builder(); }
-    if ("PlasticSurgery".equals(type)) { return new PlasticSurgery.Builder(); }
     if ("Zoo".equals(type)) { return new Zoo.Builder(); }
-    if ("OnlineOnly".equals(type)) { return new OnlineOnly.Builder(); }
     if ("PlaceOfWorship".equals(type)) { return new PlaceOfWorship.Builder(); }
     if ("MapCategoryType".equals(type)) { return new MapCategoryType.Builder(); }
     if ("FollowAction".equals(type)) { return new FollowAction.Builder(); }
-    if ("Psychiatric".equals(type)) { return new Psychiatric.Builder(); }
     if ("InformAction".equals(type)) { return new InformAction.Builder(); }
     if ("Residence".equals(type)) { return new Residence.Builder(); }
-    if ("OrderInTransit".equals(type)) { return new OrderInTransit.Builder(); }
     if ("MusicEvent".equals(type)) { return new MusicEvent.Builder(); }
     if ("ConsumeAction".equals(type)) { return new ConsumeAction.Builder(); }
     if ("AudioObject".equals(type)) { return new AudioObject.Builder(); }
@@ -3944,25 +2936,20 @@ public class SchemaOrg {
     if ("State".equals(type)) { return new State.Builder(); }
     if ("OwnershipInfo".equals(type)) { return new OwnershipInfo.Builder(); }
     if ("AnatomicalStructure".equals(type)) { return new AnatomicalStructure.Builder(); }
-    if ("Pediatric".equals(type)) { return new Pediatric.Builder(); }
     if ("LendAction".equals(type)) { return new LendAction.Builder(); }
     if ("Airline".equals(type)) { return new Airline.Builder(); }
     if ("NewsArticle".equals(type)) { return new NewsArticle.Builder(); }
     if ("MiddleSchool".equals(type)) { return new MiddleSchool.Builder(); }
     if ("MusicAlbumReleaseType".equals(type)) { return new MusicAlbumReleaseType.Builder(); }
     if ("TVEpisode".equals(type)) { return new TVEpisode.Builder(); }
-    if ("PreOrder".equals(type)) { return new PreOrder.Builder(); }
     if ("StadiumOrArena".equals(type)) { return new StadiumOrArena.Builder(); }
     if ("MedicalGuidelineContraindication".equals(type)) { return new MedicalGuidelineContraindication.Builder(); }
     if ("MedicalIntangible".equals(type)) { return new MedicalIntangible.Builder(); }
     if ("Specialty".equals(type)) { return new Specialty.Builder(); }
-    if ("CohortStudy".equals(type)) { return new CohortStudy.Builder(); }
-    if ("AerobicActivity".equals(type)) { return new AerobicActivity.Builder(); }
     if ("Vessel".equals(type)) { return new Vessel.Builder(); }
     if ("SportsOrganization".equals(type)) { return new SportsOrganization.Builder(); }
     if ("IgnoreAction".equals(type)) { return new IgnoreAction.Builder(); }
     if ("UserCheckins".equals(type)) { return new UserCheckins.Builder(); }
-    if ("HearingImpairedSupported".equals(type)) { return new HearingImpairedSupported.Builder(); }
     if ("Role".equals(type)) { return new Role.Builder(); }
     if ("FoodEvent".equals(type)) { return new FoodEvent.Builder(); }
     if ("TravelAction".equals(type)) { return new TravelAction.Builder(); }
@@ -3973,7 +2960,6 @@ public class SchemaOrg {
     if ("SkiResort".equals(type)) { return new SkiResort.Builder(); }
     if ("ContactPoint".equals(type)) { return new ContactPoint.Builder(); }
     if ("DonateAction".equals(type)) { return new DonateAction.Builder(); }
-    if ("LeftHandDriving".equals(type)) { return new LeftHandDriving.Builder(); }
     if ("IndividualProduct".equals(type)) { return new IndividualProduct.Builder(); }
     if ("MobilePhoneStore".equals(type)) { return new MobilePhoneStore.Builder(); }
     if ("GovernmentBuilding".equals(type)) { return new GovernmentBuilding.Builder(); }
@@ -3990,59 +2976,36 @@ public class SchemaOrg {
     if ("Person".equals(type)) { return new Person.Builder(); }
     if ("Article".equals(type)) { return new Article.Builder(); }
     if ("LiquorStore".equals(type)) { return new LiquorStore.Builder(); }
-    if ("Retail".equals(type)) { return new Retail.Builder(); }
     if ("MedicalCode".equals(type)) { return new MedicalCode.Builder(); }
     if ("VideoGameClip".equals(type)) { return new VideoGameClip.Builder(); }
-    if ("Flexibility".equals(type)) { return new Flexibility.Builder(); }
-    if ("RefurbishedCondition".equals(type)) { return new RefurbishedCondition.Builder(); }
-    if ("CrossSectional".equals(type)) { return new CrossSectional.Builder(); }
     if ("RVPark".equals(type)) { return new RVPark.Builder(); }
     if ("JoinAction".equals(type)) { return new JoinAction.Builder(); }
-    if ("Clinician".equals(type)) { return new Clinician.Builder(); }
     if ("CancelAction".equals(type)) { return new CancelAction.Builder(); }
-    if ("Physiotherapy".equals(type)) { return new Physiotherapy.Builder(); }
     if ("AboutPage".equals(type)) { return new AboutPage.Builder(); }
-    if ("Virus".equals(type)) { return new Virus.Builder(); }
-    if ("MultiCenterTrial".equals(type)) { return new MultiCenterTrial.Builder(); }
-    if ("RearWheelDriveConfiguration".equals(type)) { return new RearWheelDriveConfiguration.Builder(); }
     if ("PropertyValue".equals(type)) { return new PropertyValue.Builder(); }
     if ("Painting".equals(type)) { return new Painting.Builder(); }
-    if ("Registry".equals(type)) { return new Registry.Builder(); }
     if ("ShoppingCenter".equals(type)) { return new ShoppingCenter.Builder(); }
     if ("IceCreamShop".equals(type)) { return new IceCreamShop.Builder(); }
     if ("HinduTemple".equals(type)) { return new HinduTemple.Builder(); }
-    if ("VenueMap".equals(type)) { return new VenueMap.Builder(); }
     if ("VoteAction".equals(type)) { return new VoteAction.Builder(); }
-    if ("MRI".equals(type)) { return new MRI.Builder(); }
-    if ("MulticellularParasite".equals(type)) { return new MulticellularParasite.Builder(); }
     if ("SelfStorage".equals(type)) { return new SelfStorage.Builder(); }
     if ("JobPosting".equals(type)) { return new JobPosting.Builder(); }
     if ("TaxiStand".equals(type)) { return new TaxiStand.Builder(); }
     if ("PalliativeProcedure".equals(type)) { return new PalliativeProcedure.Builder(); }
-    if ("DigitalFormat".equals(type)) { return new DigitalFormat.Builder(); }
     if ("ConvenienceStore".equals(type)) { return new ConvenienceStore.Builder(); }
-    if ("AlbumRelease".equals(type)) { return new AlbumRelease.Builder(); }
-    if ("StudioAlbum".equals(type)) { return new StudioAlbum.Builder(); }
     if ("Waterfall".equals(type)) { return new Waterfall.Builder(); }
     if ("TheaterGroup".equals(type)) { return new TheaterGroup.Builder(); }
-    if ("Hematologic".equals(type)) { return new Hematologic.Builder(); }
     if ("BowlingAlley".equals(type)) { return new BowlingAlley.Builder(); }
-    if ("PercutaneousProcedure".equals(type)) { return new PercutaneousProcedure.Builder(); }
-    if ("OccupationalTherapy".equals(type)) { return new OccupationalTherapy.Builder(); }
     if ("MedicalSign".equals(type)) { return new MedicalSign.Builder(); }
     if ("HairSalon".equals(type)) { return new HairSalon.Builder(); }
     if ("PoliceStation".equals(type)) { return new PoliceStation.Builder(); }
     if ("GatedResidenceCommunity".equals(type)) { return new GatedResidenceCommunity.Builder(); }
-    if ("RightHandDriving".equals(type)) { return new RightHandDriving.Builder(); }
     if ("GameServerStatus".equals(type)) { return new GameServerStatus.Builder(); }
     if ("LandmarksOrHistoricalBuildings".equals(type)) { return new LandmarksOrHistoricalBuildings.Builder(); }
-    if ("DatasetClass".equals(type)) { return new DatasetClass.Builder(); }
     if ("DryCleaningOrLaundry".equals(type)) { return new DryCleaningOrLaundry.Builder(); }
-    if ("Anesthesia".equals(type)) { return new Anesthesia.Builder(); }
     if ("InviteAction".equals(type)) { return new InviteAction.Builder(); }
     if ("DanceEvent".equals(type)) { return new DanceEvent.Builder(); }
     if ("OfficeEquipmentStore".equals(type)) { return new OfficeEquipmentStore.Builder(); }
-    if ("Longitudinal".equals(type)) { return new Longitudinal.Builder(); }
     if ("RadioSeason".equals(type)) { return new RadioSeason.Builder(); }
     if ("Pharmacy".equals(type)) { return new Pharmacy.Builder(); }
     if ("CatholicChurch".equals(type)) { return new CatholicChurch.Builder(); }
@@ -4050,16 +3013,11 @@ public class SchemaOrg {
     if ("ReturnAction".equals(type)) { return new ReturnAction.Builder(); }
     if ("ExerciseGym".equals(type)) { return new ExerciseGym.Builder(); }
     if ("AggregateRating".equals(type)) { return new AggregateRating.Builder(); }
-    if ("DietNutrition".equals(type)) { return new DietNutrition.Builder(); }
     if ("DepartAction".equals(type)) { return new DepartAction.Builder(); }
-    if ("CT".equals(type)) { return new CT.Builder(); }
-    if ("TransitMap".equals(type)) { return new TransitMap.Builder(); }
-    if ("ActionCollabClass".equals(type)) { return new ActionCollabClass.Builder(); }
     if ("EducationEvent".equals(type)) { return new EducationEvent.Builder(); }
     if ("ItemAvailability".equals(type)) { return new ItemAvailability.Builder(); }
     if ("EntryPoint".equals(type)) { return new EntryPoint.Builder(); }
     if ("ProgramMembership".equals(type)) { return new ProgramMembership.Builder(); }
-    if ("TaxiVehicleUsage".equals(type)) { return new TaxiVehicleUsage.Builder(); }
     if ("PathologyTest".equals(type)) { return new PathologyTest.Builder(); }
     if ("ReservationStatusType".equals(type)) { return new ReservationStatusType.Builder(); }
     if ("Game".equals(type)) { return new Game.Builder(); }
@@ -4068,19 +3026,15 @@ public class SchemaOrg {
     if ("MedicalTrialDesign".equals(type)) { return new MedicalTrialDesign.Builder(); }
     if ("UpdateAction".equals(type)) { return new UpdateAction.Builder(); }
     if ("WarrantyScope".equals(type)) { return new WarrantyScope.Builder(); }
-    if ("ReimbursementCap".equals(type)) { return new ReimbursementCap.Builder(); }
     if ("Plumber".equals(type)) { return new Plumber.Builder(); }
     if ("Bakery".equals(type)) { return new Bakery.Builder(); }
     if ("PublicationVolume".equals(type)) { return new PublicationVolume.Builder(); }
-    if ("ReservationCancelled".equals(type)) { return new ReservationCancelled.Builder(); }
     if ("BuyAction".equals(type)) { return new BuyAction.Builder(); }
     if ("WebSite".equals(type)) { return new WebSite.Builder(); }
-    if ("OnlineFull".equals(type)) { return new OnlineFull.Builder(); }
     if ("MensClothingStore".equals(type)) { return new MensClothingStore.Builder(); }
     if ("Locksmith".equals(type)) { return new Locksmith.Builder(); }
     if ("MusicAlbum".equals(type)) { return new MusicAlbum.Builder(); }
     if ("Corporation".equals(type)) { return new Corporation.Builder(); }
-    if ("AnaerobicActivity".equals(type)) { return new AnaerobicActivity.Builder(); }
     if ("BodyOfWater".equals(type)) { return new BodyOfWater.Builder(); }
     if ("RealEstateAgent".equals(type)) { return new RealEstateAgent.Builder(); }
     if ("DrugLegalStatus".equals(type)) { return new DrugLegalStatus.Builder(); }
@@ -4096,33 +3050,25 @@ public class SchemaOrg {
     if ("ParentAudience".equals(type)) { return new ParentAudience.Builder(); }
     if ("RadioEpisode".equals(type)) { return new RadioEpisode.Builder(); }
     if ("PublicationEvent".equals(type)) { return new PublicationEvent.Builder(); }
-    if ("DoubleBlindedTrial".equals(type)) { return new DoubleBlindedTrial.Builder(); }
     if ("Organization".equals(type)) { return new Organization.Builder(); }
     if ("Order".equals(type)) { return new Order.Builder(); }
     if ("ViewAction".equals(type)) { return new ViewAction.Builder(); }
     if ("Clip".equals(type)) { return new Clip.Builder(); }
-    if ("OfflineTemporarily".equals(type)) { return new OfflineTemporarily.Builder(); }
-    if ("InteractionCount".equals(type)) { return new InteractionCount.Builder(); }
     if ("Comment".equals(type)) { return new Comment.Builder(); }
     if ("ApplyAction".equals(type)) { return new ApplyAction.Builder(); }
     if ("PerformingArtsTheater".equals(type)) { return new PerformingArtsTheater.Builder(); }
     if ("DeliveryEvent".equals(type)) { return new DeliveryEvent.Builder(); }
     if ("SoftwareApplicationBuild".equals(type)) { return new SoftwareApplicationBuild.Builder(); }
     if ("Campground".equals(type)) { return new Campground.Builder(); }
-    if ("RNews".equals(type)) { return new RNews.Builder(); }
     if ("TelevisionChannel".equals(type)) { return new TelevisionChannel.Builder(); }
-    if ("ZoneBoardingPolicy".equals(type)) { return new ZoneBoardingPolicy.Builder(); }
     if ("HousePainter".equals(type)) { return new HousePainter.Builder(); }
     if ("StructuredValue".equals(type)) { return new StructuredValue.Builder(); }
     if ("MedicalProcedureType".equals(type)) { return new MedicalProcedureType.Builder(); }
     if ("Cemetery".equals(type)) { return new Cemetery.Builder(); }
     if ("Seat".equals(type)) { return new Seat.Builder(); }
     if ("Movie".equals(type)) { return new Movie.Builder(); }
-    if ("PharmacySpecialty".equals(type)) { return new PharmacySpecialty.Builder(); }
-    if ("DemoAlbum".equals(type)) { return new DemoAlbum.Builder(); }
     if ("Hostel".equals(type)) { return new Hostel.Builder(); }
     if ("DrawAction".equals(type)) { return new DrawAction.Builder(); }
-    if ("GroupBoardingPolicy".equals(type)) { return new GroupBoardingPolicy.Builder(); }
     if ("TradeAction".equals(type)) { return new TradeAction.Builder(); }
     if ("ExerciseAction".equals(type)) { return new ExerciseAction.Builder(); }
     if ("MedicalWebPage".equals(type)) { return new MedicalWebPage.Builder(); }
@@ -4145,24 +3091,16 @@ public class SchemaOrg {
     if ("Park".equals(type)) { return new Park.Builder(); }
     if ("BorrowAction".equals(type)) { return new BorrowAction.Builder(); }
     if ("BoardingPolicyType".equals(type)) { return new BoardingPolicyType.Builder(); }
-    if ("Midwifery".equals(type)) { return new Midwifery.Builder(); }
     if ("Dentist".equals(type)) { return new Dentist.Builder(); }
     if ("PhysicalTherapy".equals(type)) { return new PhysicalTherapy.Builder(); }
-    if ("CDFormat".equals(type)) { return new CDFormat.Builder(); }
     if ("WebPageElement".equals(type)) { return new WebPageElement.Builder(); }
-    if ("OrderProblem".equals(type)) { return new OrderProblem.Builder(); }
-    if ("OrderPaymentDue".equals(type)) { return new OrderPaymentDue.Builder(); }
     if ("MusicPlaylist".equals(type)) { return new MusicPlaylist.Builder(); }
-    if ("TripleBlindedTrial".equals(type)) { return new TripleBlindedTrial.Builder(); }
     if ("CheckOutAction".equals(type)) { return new CheckOutAction.Builder(); }
     if ("ItemListOrderType".equals(type)) { return new ItemListOrderType.Builder(); }
     if ("Store".equals(type)) { return new Store.Builder(); }
-    if ("Eye".equals(type)) { return new Eye.Builder(); }
-    if ("Obstetric".equals(type)) { return new Obstetric.Builder(); }
     if ("SearchAction".equals(type)) { return new SearchAction.Builder(); }
     if ("MovieClip".equals(type)) { return new MovieClip.Builder(); }
     if ("Embassy".equals(type)) { return new Embassy.Builder(); }
-    if ("OrderProcessing".equals(type)) { return new OrderProcessing.Builder(); }
     if ("EducationalOrganization".equals(type)) { return new EducationalOrganization.Builder(); }
     if ("ParcelService".equals(type)) { return new ParcelService.Builder(); }
     if ("MedicalOrganization".equals(type)) { return new MedicalOrganization.Builder(); }
@@ -4170,14 +3108,10 @@ public class SchemaOrg {
     if ("BefriendAction".equals(type)) { return new BefriendAction.Builder(); }
     if ("DrinkAction".equals(type)) { return new DrinkAction.Builder(); }
     if ("MusicReleaseFormatType".equals(type)) { return new MusicReleaseFormatType.Builder(); }
-    if ("MixtapeAlbum".equals(type)) { return new MixtapeAlbum.Builder(); }
     if ("MedicalProcedure".equals(type)) { return new MedicalProcedure.Builder(); }
     if ("GovernmentPermit".equals(type)) { return new GovernmentPermit.Builder(); }
     if ("BookSeries".equals(type)) { return new BookSeries.Builder(); }
-    if ("Neck".equals(type)) { return new Neck.Builder(); }
-    if ("ReservationConfirmed".equals(type)) { return new ReservationConfirmed.Builder(); }
     if ("SportsClub".equals(type)) { return new SportsClub.Builder(); }
-    if ("LiveAlbum".equals(type)) { return new LiveAlbum.Builder(); }
     if ("DrugClass".equals(type)) { return new DrugClass.Builder(); }
     if ("RentalCarReservation".equals(type)) { return new RentalCarReservation.Builder(); }
     if ("PublicSwimmingPool".equals(type)) { return new PublicSwimmingPool.Builder(); }
@@ -4185,8 +3119,6 @@ public class SchemaOrg {
     if ("UserLikes".equals(type)) { return new UserLikes.Builder(); }
     if ("Muscle".equals(type)) { return new Muscle.Builder(); }
     if ("EmploymentAgency".equals(type)) { return new EmploymentAgency.Builder(); }
-    if ("Genitourinary".equals(type)) { return new Genitourinary.Builder(); }
-    if ("Completed".equals(type)) { return new Completed.Builder(); }
     if ("WinAction".equals(type)) { return new WinAction.Builder(); }
     if ("BookStore".equals(type)) { return new BookStore.Builder(); }
     if ("Season".equals(type)) { return new Season.Builder(); }
@@ -4195,54 +3127,38 @@ public class SchemaOrg {
     if ("OpeningHoursSpecification".equals(type)) { return new OpeningHoursSpecification.Builder(); }
     if ("MedicalIndication".equals(type)) { return new MedicalIndication.Builder(); }
     if ("AggregateOffer".equals(type)) { return new AggregateOffer.Builder(); }
-    if ("Endocrine".equals(type)) { return new Endocrine.Builder(); }
     if ("DepartmentStore".equals(type)) { return new DepartmentStore.Builder(); }
     if ("TipAction".equals(type)) { return new TipAction.Builder(); }
     if ("MedicineSystem".equals(type)) { return new MedicineSystem.Builder(); }
     if ("Book".equals(type)) { return new Book.Builder(); }
     if ("Brewery".equals(type)) { return new Brewery.Builder(); }
     if ("MedicalEvidenceLevel".equals(type)) { return new MedicalEvidenceLevel.Builder(); }
-    if ("Ear".equals(type)) { return new Ear.Builder(); }
     if ("MedicalSignOrSymptom".equals(type)) { return new MedicalSignOrSymptom.Builder(); }
-    if ("EBook".equals(type)) { return new EBook.Builder(); }
     if ("RecommendedDoseSchedule".equals(type)) { return new RecommendedDoseSchedule.Builder(); }
     if ("ScholarlyArticle".equals(type)) { return new ScholarlyArticle.Builder(); }
     if ("BusinessEvent".equals(type)) { return new BusinessEvent.Builder(); }
     if ("Bone".equals(type)) { return new Bone.Builder(); }
-    if ("Dermatologic".equals(type)) { return new Dermatologic.Builder(); }
     if ("InternetCafe".equals(type)) { return new InternetCafe.Builder(); }
     if ("ReserveAction".equals(type)) { return new ReserveAction.Builder(); }
     if ("BusStop".equals(type)) { return new BusStop.Builder(); }
     if ("SomeProducts".equals(type)) { return new SomeProducts.Builder(); }
-    if ("Paperback".equals(type)) { return new Paperback.Builder(); }
     if ("EntertainmentBusiness".equals(type)) { return new EntertainmentBusiness.Builder(); }
     if ("ItemPage".equals(type)) { return new ItemPage.Builder(); }
     if ("APIReference".equals(type)) { return new APIReference.Builder(); }
     if ("PerformingGroup".equals(type)) { return new PerformingGroup.Builder(); }
-    if ("Gastroenterologic".equals(type)) { return new Gastroenterologic.Builder(); }
-    if ("Rheumatologic".equals(type)) { return new Rheumatologic.Builder(); }
     if ("Diet".equals(type)) { return new Diet.Builder(); }
     if ("UserPlusOnes".equals(type)) { return new UserPlusOnes.Builder(); }
-    if ("OutOfStock".equals(type)) { return new OutOfStock.Builder(); }
-    if ("Recruiting".equals(type)) { return new Recruiting.Builder(); }
     if ("MedicalContraindication".equals(type)) { return new MedicalContraindication.Builder(); }
     if ("Synagogue".equals(type)) { return new Synagogue.Builder(); }
     if ("Landform".equals(type)) { return new Landform.Builder(); }
     if ("Restaurant".equals(type)) { return new Restaurant.Builder(); }
-    if ("Ultrasound".equals(type)) { return new Ultrasound.Builder(); }
     if ("HighSchool".equals(type)) { return new HighSchool.Builder(); }
-    if ("ActiveActionStatus".equals(type)) { return new ActiveActionStatus.Builder(); }
-    if ("LaserDiscFormat".equals(type)) { return new LaserDiscFormat.Builder(); }
     if ("PerformanceRole".equals(type)) { return new PerformanceRole.Builder(); }
-    if ("FailedActionStatus".equals(type)) { return new FailedActionStatus.Builder(); }
     if ("ChildCare".equals(type)) { return new ChildCare.Builder(); }
     if ("SoftwareSourceCode".equals(type)) { return new SoftwareSourceCode.Builder(); }
     if ("LakeBodyOfWater".equals(type)) { return new LakeBodyOfWater.Builder(); }
     if ("DiagnosticProcedure".equals(type)) { return new DiagnosticProcedure.Builder(); }
-    if ("Throat".equals(type)) { return new Throat.Builder(); }
-    if ("SingleCenterTrial".equals(type)) { return new SingleCenterTrial.Builder(); }
     if ("ContactPointOption".equals(type)) { return new ContactPointOption.Builder(); }
-    if ("Chiropractic".equals(type)) { return new Chiropractic.Builder(); }
     if ("PhysicalExam".equals(type)) { return new PhysicalExam.Builder(); }
     if ("VeterinaryCare".equals(type)) { return new VeterinaryCare.Builder(); }
     if ("RadioStation".equals(type)) { return new RadioStation.Builder(); }
@@ -4251,15 +3167,11 @@ public class SchemaOrg {
     if ("NightClub".equals(type)) { return new NightClub.Builder(); }
     if ("Volcano".equals(type)) { return new Volcano.Builder(); }
     if ("AgreeAction".equals(type)) { return new AgreeAction.Builder(); }
-    if ("Discontinued".equals(type)) { return new Discontinued.Builder(); }
     if ("OrderItem".equals(type)) { return new OrderItem.Builder(); }
     if ("CreativeWorkSeason".equals(type)) { return new CreativeWorkSeason.Builder(); }
     if ("ContactPage".equals(type)) { return new ContactPage.Builder(); }
     if ("DataDownload".equals(type)) { return new DataDownload.Builder(); }
-    if ("BroadcastRelease".equals(type)) { return new BroadcastRelease.Builder(); }
     if ("BusinessAudience".equals(type)) { return new BusinessAudience.Builder(); }
-    if ("Hardcover".equals(type)) { return new Hardcover.Builder(); }
-    if ("ItemListOrderDescending".equals(type)) { return new ItemListOrderDescending.Builder(); }
     if ("CheckAction".equals(type)) { return new CheckAction.Builder(); }
     if ("BuddhistTemple".equals(type)) { return new BuddhistTemple.Builder(); }
     if ("MedicalStudy".equals(type)) { return new MedicalStudy.Builder(); }
@@ -4268,7 +3180,6 @@ public class SchemaOrg {
     if ("MedicalSpecialty".equals(type)) { return new MedicalSpecialty.Builder(); }
     if ("ScheduleAction".equals(type)) { return new ScheduleAction.Builder(); }
     if ("PaintAction".equals(type)) { return new PaintAction.Builder(); }
-    if ("StrengthTraining".equals(type)) { return new StrengthTraining.Builder(); }
     if ("Vehicle".equals(type)) { return new Vehicle.Builder(); }
     if ("SportsTeam".equals(type)) { return new SportsTeam.Builder(); }
     if ("DrugPrescriptionStatus".equals(type)) { return new DrugPrescriptionStatus.Builder(); }
@@ -4281,40 +3192,27 @@ public class SchemaOrg {
     if ("Answer".equals(type)) { return new Answer.Builder(); }
     if ("DaySpa".equals(type)) { return new DaySpa.Builder(); }
     if ("SourceCodeRevision".equals(type)) { return new SourceCodeRevision.Builder(); }
-    if ("SurgicalProcedure".equals(type)) { return new SurgicalProcedure.Builder(); }
     if ("Drug".equals(type)) { return new Drug.Builder(); }
     if ("ReplaceAction".equals(type)) { return new ReplaceAction.Builder(); }
-    if ("Balance".equals(type)) { return new Balance.Builder(); }
     if ("Winery".equals(type)) { return new Winery.Builder(); }
-    if ("NewCondition".equals(type)) { return new NewCondition.Builder(); }
-    if ("OpenTrial".equals(type)) { return new OpenTrial.Builder(); }
     if ("PsychologicalTreatment".equals(type)) { return new PsychologicalTreatment.Builder(); }
     if ("ToyStore".equals(type)) { return new ToyStore.Builder(); }
     if ("PawnShop".equals(type)) { return new PawnShop.Builder(); }
-    if ("CaseSeries".equals(type)) { return new CaseSeries.Builder(); }
     if ("TrainStation".equals(type)) { return new TrainStation.Builder(); }
     if ("EngineSpecification".equals(type)) { return new EngineSpecification.Builder(); }
     if ("WPHeader".equals(type)) { return new WPHeader.Builder(); }
     if ("FinancialService".equals(type)) { return new FinancialService.Builder(); }
-    if ("UsedCondition".equals(type)) { return new UsedCondition.Builder(); }
-    if ("VitalSign".equals(type)) { return new VitalSign.Builder(); }
     if ("MotorcycleRepair".equals(type)) { return new MotorcycleRepair.Builder(); }
-    if ("Fungus".equals(type)) { return new Fungus.Builder(); }
     if ("VideoObject".equals(type)) { return new VideoObject.Builder(); }
-    if ("FDAnotEvaluated".equals(type)) { return new FDAnotEvaluated.Builder(); }
-    if ("ParkingMap".equals(type)) { return new ParkingMap.Builder(); }
     if ("GovernmentOffice".equals(type)) { return new GovernmentOffice.Builder(); }
     if ("DefenceEstablishment".equals(type)) { return new DefenceEstablishment.Builder(); }
-    if ("RsvpResponseNo".equals(type)) { return new RsvpResponseNo.Builder(); }
     if ("MoveAction".equals(type)) { return new MoveAction.Builder(); }
     if ("DrugCostCategory".equals(type)) { return new DrugCostCategory.Builder(); }
     if ("PayAction".equals(type)) { return new PayAction.Builder(); }
     if ("JewelryStore".equals(type)) { return new JewelryStore.Builder(); }
     if ("TechArticle".equals(type)) { return new TechArticle.Builder(); }
-    if ("MultiPlayer".equals(type)) { return new MultiPlayer.Builder(); }
     if ("ReactAction".equals(type)) { return new ReactAction.Builder(); }
     if ("DownloadAction".equals(type)) { return new DownloadAction.Builder(); }
-    if ("OTC".equals(type)) { return new OTC.Builder(); }
     if ("InfectiousDisease".equals(type)) { return new InfectiousDisease.Builder(); }
     if ("CreativeWork".equals(type)) { return new CreativeWork.Builder(); }
     if ("InfectiousAgentClass".equals(type)) { return new InfectiousAgentClass.Builder(); }
@@ -4327,19 +3225,15 @@ public class SchemaOrg {
     if ("SearchResultsPage".equals(type)) { return new SearchResultsPage.Builder(); }
     if ("MovieTheater".equals(type)) { return new MovieTheater.Builder(); }
     if ("Place".equals(type)) { return new Place.Builder(); }
-    if ("InternationalTrial".equals(type)) { return new InternationalTrial.Builder(); }
     if ("TaxiReservation".equals(type)) { return new TaxiReservation.Builder(); }
     if ("AssignAction".equals(type)) { return new AssignAction.Builder(); }
     if ("TouristInformationCenter".equals(type)) { return new TouristInformationCenter.Builder(); }
     if ("FoodEstablishment".equals(type)) { return new FoodEstablishment.Builder(); }
     if ("TrackAction".equals(type)) { return new TrackAction.Builder(); }
     if ("NutritionInformation".equals(type)) { return new NutritionInformation.Builder(); }
-    if ("FourWheelDriveConfiguration".equals(type)) { return new FourWheelDriveConfiguration.Builder(); }
     if ("Motel".equals(type)) { return new Motel.Builder(); }
     if ("Ticket".equals(type)) { return new Ticket.Builder(); }
     if ("TVClip".equals(type)) { return new TVClip.Builder(); }
-    if ("RandomizedTrial".equals(type)) { return new RandomizedTrial.Builder(); }
-    if ("ItemListOrderAscending".equals(type)) { return new ItemListOrderAscending.Builder(); }
     if ("ReadAction".equals(type)) { return new ReadAction.Builder(); }
     if ("DiagnosticLab".equals(type)) { return new DiagnosticLab.Builder(); }
     if ("ListenAction".equals(type)) { return new ListenAction.Builder(); }
@@ -4347,37 +3241,24 @@ public class SchemaOrg {
     if ("LocalBusiness".equals(type)) { return new LocalBusiness.Builder(); }
     if ("RadiationTherapy".equals(type)) { return new RadiationTherapy.Builder(); }
     if ("VideoGameSeries".equals(type)) { return new VideoGameSeries.Builder(); }
-    if ("Dentistry".equals(type)) { return new Dentistry.Builder(); }
     if ("MedicalRiskEstimator".equals(type)) { return new MedicalRiskEstimator.Builder(); }
     if ("GovernmentService".equals(type)) { return new GovernmentService.Builder(); }
     if ("OrganizationRole".equals(type)) { return new OrganizationRole.Builder(); }
-    if ("Genetic".equals(type)) { return new Genetic.Builder(); }
     if ("Product".equals(type)) { return new Product.Builder(); }
     if ("Florist".equals(type)) { return new Florist.Builder(); }
-    if ("SinglePlayer".equals(type)) { return new SinglePlayer.Builder(); }
     if ("ProductModel".equals(type)) { return new ProductModel.Builder(); }
     if ("HealthClub".equals(type)) { return new HealthClub.Builder(); }
     if ("BroadcastService".equals(type)) { return new BroadcastService.Builder(); }
-    if ("LeisureTimeActivity".equals(type)) { return new LeisureTimeActivity.Builder(); }
     if ("MedicalTherapy".equals(type)) { return new MedicalTherapy.Builder(); }
     if ("DatedMoneySpecification".equals(type)) { return new DatedMoneySpecification.Builder(); }
     if ("DeactivateAction".equals(type)) { return new DeactivateAction.Builder(); }
-    if ("Nose".equals(type)) { return new Nose.Builder(); }
-    if ("Musculoskeletal".equals(type)) { return new Musculoskeletal.Builder(); }
     if ("MarryAction".equals(type)) { return new MarryAction.Builder(); }
-    if ("SoundtrackAlbum".equals(type)) { return new SoundtrackAlbum.Builder(); }
     if ("DrugCost".equals(type)) { return new DrugCost.Builder(); }
-    if ("Appearance".equals(type)) { return new Appearance.Builder(); }
     if ("Ligament".equals(type)) { return new Ligament.Builder(); }
     if ("LodgingBusiness".equals(type)) { return new LodgingBusiness.Builder(); }
     if ("MusicAlbumProductionType".equals(type)) { return new MusicAlbumProductionType.Builder(); }
-    if ("NoninvasiveProcedure".equals(type)) { return new NoninvasiveProcedure.Builder(); }
-    if ("Geriatric".equals(type)) { return new Geriatric.Builder(); }
-    if ("Emergency".equals(type)) { return new Emergency.Builder(); }
     if ("DiscoverAction".equals(type)) { return new DiscoverAction.Builder(); }
-    if ("Gynecologic".equals(type)) { return new Gynecologic.Builder(); }
     if ("SportsEvent".equals(type)) { return new SportsEvent.Builder(); }
-    if ("Radiograpy".equals(type)) { return new Radiograpy.Builder(); }
     if ("Courthouse".equals(type)) { return new Courthouse.Builder(); }
     if ("Recipe".equals(type)) { return new Recipe.Builder(); }
     if ("ServiceChannel".equals(type)) { return new ServiceChannel.Builder(); }
@@ -4386,7 +3267,6 @@ public class SchemaOrg {
     if ("GamePlayMode".equals(type)) { return new GamePlayMode.Builder(); }
     if ("Rating".equals(type)) { return new Rating.Builder(); }
     if ("MovingCompany".equals(type)) { return new MovingCompany.Builder(); }
-    if ("StackExchange".equals(type)) { return new StackExchange.Builder(); }
     if ("MedicalGuideline".equals(type)) { return new MedicalGuideline.Builder(); }
     if ("MedicalSymptom".equals(type)) { return new MedicalSymptom.Builder(); }
     if ("PetStore".equals(type)) { return new PetStore.Builder(); }
@@ -4408,83 +3288,62 @@ public class SchemaOrg {
     if ("SubwayStation".equals(type)) { return new SubwayStation.Builder(); }
     if ("MedicalGuidelineRecommendation".equals(type)) { return new MedicalGuidelineRecommendation.Builder(); }
     if ("RiverBodyOfWater".equals(type)) { return new RiverBodyOfWater.Builder(); }
-    if ("Otolaryngologic".equals(type)) { return new Otolaryngologic.Builder(); }
     if ("Question".equals(type)) { return new Question.Builder(); }
     if ("PhysicalActivityCategory".equals(type)) { return new PhysicalActivityCategory.Builder(); }
     if ("RsvpAction".equals(type)) { return new RsvpAction.Builder(); }
-    if ("CommunityHealth".equals(type)) { return new CommunityHealth.Builder(); }
     if ("EducationalAudience".equals(type)) { return new EducationalAudience.Builder(); }
     if ("AutoDealer".equals(type)) { return new AutoDealer.Builder(); }
-    if ("DVDFormat".equals(type)) { return new DVDFormat.Builder(); }
     if ("MedicalScholarlyArticle".equals(type)) { return new MedicalScholarlyArticle.Builder(); }
-    if ("CardiovascularExam".equals(type)) { return new CardiovascularExam.Builder(); }
-    if ("VehicleSpecialUsage".equals(type)) { return new VehicleSpecialUsage.Builder(); }
     if ("Table".equals(type)) { return new Table.Builder(); }
     if ("InteractAction".equals(type)) { return new InteractAction.Builder(); }
     if ("TireShop".equals(type)) { return new TireShop.Builder(); }
     if ("CityHall".equals(type)) { return new CityHall.Builder(); }
     if ("MovieSeries".equals(type)) { return new MovieSeries.Builder(); }
     if ("AccountingService".equals(type)) { return new AccountingService.Builder(); }
-    if ("LimitedAvailability".equals(type)) { return new LimitedAvailability.Builder(); }
     if ("DietarySupplement".equals(type)) { return new DietarySupplement.Builder(); }
-    if ("OccupationalActivity".equals(type)) { return new OccupationalActivity.Builder(); }
     if ("DeliveryChargeSpecification".equals(type)) { return new DeliveryChargeSpecification.Builder(); }
     if ("SaleEvent".equals(type)) { return new SaleEvent.Builder(); }
     if ("MedicalRiskFactor".equals(type)) { return new MedicalRiskFactor.Builder(); }
     if ("ReceiveAction".equals(type)) { return new ReceiveAction.Builder(); }
     if ("PlanAction".equals(type)) { return new PlanAction.Builder(); }
-    if ("PET".equals(type)) { return new PET.Builder(); }
-    if ("Neuro".equals(type)) { return new Neuro.Builder(); }
     if ("Church".equals(type)) { return new Church.Builder(); }
     if ("MusicStore".equals(type)) { return new MusicStore.Builder(); }
     if ("AchieveAction".equals(type)) { return new AchieveAction.Builder(); }
-    if ("Wholesale".equals(type)) { return new Wholesale.Builder(); }
-    if ("FrontWheelDriveConfiguration".equals(type)) { return new FrontWheelDriveConfiguration.Builder(); }
     if ("ComedyClub".equals(type)) { return new ComedyClub.Builder(); }
     if ("Optician".equals(type)) { return new Optician.Builder(); }
-    if ("GoodRelationsProperties".equals(type)) { return new GoodRelationsProperties.Builder(); }
     if ("MusicComposition".equals(type)) { return new MusicComposition.Builder(); }
     if ("GiveAction".equals(type)) { return new GiveAction.Builder(); }
-    if ("Lung".equals(type)) { return new Lung.Builder(); }
-    if ("GoodRelationsClass".equals(type)) { return new GoodRelationsClass.Builder(); }
     if ("Playground".equals(type)) { return new Playground.Builder(); }
     if ("ExercisePlan".equals(type)) { return new ExercisePlan.Builder(); }
     if ("ParcelDelivery".equals(type)) { return new ParcelDelivery.Builder(); }
-    if ("PrimaryCare".equals(type)) { return new PrimaryCare.Builder(); }
-    if ("ReservationPending".equals(type)) { return new ReservationPending.Builder(); }
-    if ("Protozoa".equals(type)) { return new Protozoa.Builder(); }
-    if ("AllWheelDriveConfiguration".equals(type)) { return new AllWheelDriveConfiguration.Builder(); }
     if ("MedicalConditionStage".equals(type)) { return new MedicalConditionStage.Builder(); }
-    if ("PublicHealth".equals(type)) { return new PublicHealth.Builder(); }
     if ("OfferItemCondition".equals(type)) { return new OfferItemCondition.Builder(); }
     if ("TransferAction".equals(type)) { return new TransferAction.Builder(); }
     if ("ComedyEvent".equals(type)) { return new ComedyEvent.Builder(); }
     if ("HVACBusiness".equals(type)) { return new HVACBusiness.Builder(); }
     if ("City".equals(type)) { return new City.Builder(); }
-    if ("Suspended".equals(type)) { return new Suspended.Builder(); }
     if ("SingleFamilyResidence".equals(type)) { return new SingleFamilyResidence.Builder(); }
     if ("MedicalDevicePurpose".equals(type)) { return new MedicalDevicePurpose.Builder(); }
     if ("Review".equals(type)) { return new Review.Builder(); }
-    if ("MusculoskeletalExam".equals(type)) { return new MusculoskeletalExam.Builder(); }
     if ("MotorcycleDealer".equals(type)) { return new MotorcycleDealer.Builder(); }
     if ("VideoGame".equals(type)) { return new VideoGame.Builder(); }
     if ("WarrantyPromise".equals(type)) { return new WarrantyPromise.Builder(); }
-    if ("LaboratoryScience".equals(type)) { return new LaboratoryScience.Builder(); }
     if ("RadioSeries".equals(type)) { return new RadioSeries.Builder(); }
     if ("CreditCard".equals(type)) { return new CreditCard.Builder(); }
     return null;
   }
 
+  private static final ObjectMapper objectMapper = new ObjectMapper();
+  static {
+    objectMapper.registerModule(new JsonLdModule());
+  }
   @NotNull public static String writeJson(@NotNull Thing thing) throws JsonProcessingException {
-    return new ObjectMapper().writeValueAsString(thing);
+    return objectMapper.writeValueAsString(thing);
   }
   public static Thing readJson(String json) throws java.io.IOException {
-    final ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.registerModule(new JsonLdModule());
     return objectMapper.readValue(json, Thing.class);
   }
   public static Thing readJson(JsonNode node) {
-    final ObjectMapper objectMapper = new ObjectMapper();
     return ThingDeserializer.fromMap(objectMapper.convertValue(node, java.util.Map.class));
   }
 }

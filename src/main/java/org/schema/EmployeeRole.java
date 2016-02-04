@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A subclass of OrganizationRole used to describe employee relationships.
@@ -29,113 +30,106 @@ public class EmployeeRole extends OrganizationRole {
   /**
    * The currency (coded using ISO 4217, http://en.wikipedia.org/wiki/ISO_4217 ) used for the main salary information in this job posting or for this employee.
    */
-  public String getSalaryCurrency() { return mySalaryCurrency; }
-  protected EmployeeRole(String salaryCurrency, Number numberedPosition, java.util.Date startDate, String roleName, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(numberedPosition, startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    mySalaryCurrency = salaryCurrency;
-    mySalaryCurrency = salaryCurrency;
+  @JsonIgnore public String getSalaryCurrency() {
+    return (String) getValue("salaryCurrency");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (mySalaryCurrency != null ? mySalaryCurrency.hashCode() : 0);
-    return result;
+  /**
+   * The currency (coded using ISO 4217, http://en.wikipedia.org/wiki/ISO_4217 ) used for the main salary information in this job posting or for this employee.
+   */
+  @JsonIgnore public Collection<String> getSalaryCurrencys() {
+    final Object current = myData.get("salaryCurrency");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    EmployeeRole employeeRole = (EmployeeRole) o;
-    if (!super.equals(o)) return false;
-    if (mySalaryCurrency != null ? !mySalaryCurrency.equals(employeeRole.mySalaryCurrency) : employeeRole.mySalaryCurrency != null) return false;
-    return true;
+  protected EmployeeRole(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link EmployeeRole}
    */
-  public static class Builder implements ThingBuilder<EmployeeRole> {
+  public static class Builder extends OrganizationRole.Builder {
     public EmployeeRole build() {
-      return new EmployeeRole(salaryCurrency, numberedPosition, startDate, roleName, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new EmployeeRole(myData);
     }
     /**
      * The currency (coded using ISO 4217, http://en.wikipedia.org/wiki/ISO_4217 ) used for the main salary information in this job posting or for this employee.
      */
     @NotNull public Builder salaryCurrency(@NotNull String salaryCurrency) {
-      this.salaryCurrency = salaryCurrency;
+      putValue("salaryCurrency", salaryCurrency);
       return this;
     }
     /**
      * A number associated with a role in an organization, for example, the number on an athlete's jersey.
      */
     @NotNull public Builder numberedPosition(@NotNull Integer integer) {
-      if (this.numberedPosition == null) this.numberedPosition = new Number();
-      this.numberedPosition.setInteger(integer);
+      putValue("numberedPosition", integer);
       return this;
     }
     /**
      * A number associated with a role in an organization, for example, the number on an athlete's jersey.
      */
     @NotNull public Builder numberedPosition(@NotNull Long numberedPosition) {
-      if (this.numberedPosition == null) this.numberedPosition = new Number();
-      this.numberedPosition.setLong(numberedPosition);
+      putValue("numberedPosition", numberedPosition);
       return this;
     }
     /**
      * A number associated with a role in an organization, for example, the number on an athlete's jersey.
      */
     @NotNull public Builder numberedPosition(@NotNull Float numberedPosition) {
-      if (this.numberedPosition == null) this.numberedPosition = new Number();
-      this.numberedPosition.setFloat(numberedPosition);
+      putValue("numberedPosition", numberedPosition);
       return this;
     }
     /**
      * A number associated with a role in an organization, for example, the number on an athlete's jersey.
      */
     @NotNull public Builder numberedPosition(@NotNull Double numberedPosition) {
-      if (this.numberedPosition == null) this.numberedPosition = new Number();
-      this.numberedPosition.setDouble(numberedPosition);
+      putValue("numberedPosition", numberedPosition);
       return this;
     }
     /**
      * A number associated with a role in an organization, for example, the number on an athlete's jersey.
      */
     @NotNull public Builder numberedPosition(@NotNull String numberedPosition) {
-      if (this.numberedPosition == null) this.numberedPosition = new Number();
-      this.numberedPosition.setString(numberedPosition);
+      putValue("numberedPosition", numberedPosition);
       return this;
     }
     /**
      * The start date and time of the item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).
      */
     @NotNull public Builder startDate(@NotNull java.util.Date date) {
-      this.startDate = date;
+      putValue("startDate", date);
       return this;
     }
     /**
      * A role played, performed or filled by a person or organization. For example, the team of creators for a comic book might fill the roles named 'inker', 'penciller', and 'letterer'; or an athlete in a SportsTeam might play in the position named 'Quarterback'.
      */
     @NotNull public Builder roleName(@NotNull String roleName) {
-      this.roleName = roleName;
+      putValue("roleName", roleName);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -169,8 +163,7 @@ public class EmployeeRole extends OrganizationRole {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -204,7 +197,8 @@ public class EmployeeRole extends OrganizationRole {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -237,90 +231,55 @@ public class EmployeeRole extends OrganizationRole {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("salaryCurrency".equals(key) && value instanceof String) { salaryCurrency((String)value); continue; }
-        if ("numberedPosition".equals(key) && value instanceof Integer) { numberedPosition((Integer)value); continue; }
-        if ("numberedPosition".equals(key) && value instanceof Long) { numberedPosition((Long)value); continue; }
-        if ("numberedPosition".equals(key) && value instanceof Float) { numberedPosition((Float)value); continue; }
-        if ("numberedPosition".equals(key) && value instanceof Double) { numberedPosition((Double)value); continue; }
-        if ("numberedPosition".equals(key) && value instanceof String) { numberedPosition((String)value); continue; }
-        if ("startDate".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); continue; }
-        if ("roleName".equals(key) && value instanceof String) { roleName((String)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("salaryCurrency".equals(key) && value instanceof String) { salaryCurrency((String)value); return; }
+      super.fromMap(key, value);
     }
-    private String salaryCurrency;
-    private Number numberedPosition;
-    private java.util.Date startDate;
-    private String roleName;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private String mySalaryCurrency;
 }

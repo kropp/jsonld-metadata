@@ -21,92 +21,84 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A unique instance of a radio BroadcastService on a CableOrSatelliteService lineup.
  */
 public class RadioChannel extends BroadcastChannel {
-  protected RadioChannel(String broadcastChannelId, CableOrSatelliteService inBroadcastLineup, String broadcastServiceTier, BroadcastService providesBroadcastService, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(broadcastChannelId, inBroadcastLineup, broadcastServiceTier, providesBroadcastService, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-  }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    return result;
-  }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    RadioChannel radioChannel = (RadioChannel) o;
-    if (!super.equals(o)) return false;
-    return true;
+  protected RadioChannel(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link RadioChannel}
    */
-  public static class Builder implements ThingBuilder<RadioChannel> {
+  public static class Builder extends BroadcastChannel.Builder {
     public RadioChannel build() {
-      return new RadioChannel(broadcastChannelId, inBroadcastLineup, broadcastServiceTier, providesBroadcastService, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new RadioChannel(myData);
     }
     /**
      * The unique address by which the BroadcastService can be identified in a provider lineup. In US, this is typically a number.
      */
     @NotNull public Builder broadcastChannelId(@NotNull String broadcastChannelId) {
-      this.broadcastChannelId = broadcastChannelId;
+      putValue("broadcastChannelId", broadcastChannelId);
       return this;
     }
     /**
      * The CableOrSatelliteService offering the channel.
      */
     @NotNull public Builder inBroadcastLineup(@NotNull CableOrSatelliteService cableOrSatelliteService) {
-      this.inBroadcastLineup = cableOrSatelliteService;
+      putValue("inBroadcastLineup", cableOrSatelliteService);
       return this;
     }
     /**
      * The CableOrSatelliteService offering the channel.
      */
     @NotNull public Builder inBroadcastLineup(@NotNull CableOrSatelliteService.Builder cableOrSatelliteService) {
-      return this.inBroadcastLineup(cableOrSatelliteService.build());
+      putValue("inBroadcastLineup", cableOrSatelliteService.build());
+      return this;
     }
     /**
      * The type of service required to have access to the channel (e.g. Standard or Premium).
      */
     @NotNull public Builder broadcastServiceTier(@NotNull String broadcastServiceTier) {
-      this.broadcastServiceTier = broadcastServiceTier;
+      putValue("broadcastServiceTier", broadcastServiceTier);
       return this;
     }
     /**
      * The BroadcastService offered on this channel.
      */
     @NotNull public Builder providesBroadcastService(@NotNull BroadcastService broadcastService) {
-      this.providesBroadcastService = broadcastService;
+      putValue("providesBroadcastService", broadcastService);
       return this;
     }
     /**
      * The BroadcastService offered on this channel.
      */
     @NotNull public Builder providesBroadcastService(@NotNull BroadcastService.Builder broadcastService) {
-      return this.providesBroadcastService(broadcastService.build());
+      putValue("providesBroadcastService", broadcastService.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -140,8 +132,7 @@ public class RadioChannel extends BroadcastChannel {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -175,7 +166,8 @@ public class RadioChannel extends BroadcastChannel {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -208,85 +200,54 @@ public class RadioChannel extends BroadcastChannel {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("broadcastChannelId".equals(key) && value instanceof String) { broadcastChannelId((String)value); continue; }
-        if ("inBroadcastLineup".equals(key) && value instanceof CableOrSatelliteService) { inBroadcastLineup((CableOrSatelliteService)value); continue; }
-        if ("broadcastServiceTier".equals(key) && value instanceof String) { broadcastServiceTier((String)value); continue; }
-        if ("providesBroadcastService".equals(key) && value instanceof BroadcastService) { providesBroadcastService((BroadcastService)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      super.fromMap(key, value);
     }
-    private String broadcastChannelId;
-    private CableOrSatelliteService inBroadcastLineup;
-    private String broadcastServiceTier;
-    private BroadcastService providesBroadcastService;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
 }

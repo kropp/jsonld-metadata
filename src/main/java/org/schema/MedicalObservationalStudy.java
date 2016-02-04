@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * An observational study is a type of medical study that attempts to infer the possible effect of a treatment through observation of a cohort of subjects over a period of time. In an observational study, the assignment of subjects into treatment groups versus control groups is outside the control of the investigator. This is in contrast with controlled studies, such as the randomized controlled trials represented by MedicalTrial, where each subject is randomly assigned to a treatment group or a control group before the start of the treatment.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -29,209 +30,218 @@ public class MedicalObservationalStudy extends MedicalStudy {
   /**
    * Specifics about the observational study design (enumerated).
    */
-  public MedicalObservationalStudyDesign getStudyDesign() { return myStudyDesign; }
-  protected MedicalObservationalStudy(MedicalObservationalStudyDesign studyDesign, String outcome, String population, Organization sponsor, MedicalStudyStatus status, AdministrativeArea studyLocation, MedicalEntity studySubject, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myStudyDesign = studyDesign;
-    myStudyDesign = studyDesign;
+  @JsonIgnore public MedicalObservationalStudyDesign getStudyDesign() {
+    return (MedicalObservationalStudyDesign) getValue("studyDesign");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myStudyDesign != null ? myStudyDesign.hashCode() : 0);
-    return result;
+  /**
+   * Specifics about the observational study design (enumerated).
+   */
+  @JsonIgnore public Collection<MedicalObservationalStudyDesign> getStudyDesigns() {
+    final Object current = myData.get("studyDesign");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalObservationalStudyDesign>) current;
+    }
+    return Arrays.asList((MedicalObservationalStudyDesign) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    MedicalObservationalStudy medicalObservationalStudy = (MedicalObservationalStudy) o;
-    if (!super.equals(o)) return false;
-    if (myStudyDesign != null ? !myStudyDesign.equals(medicalObservationalStudy.myStudyDesign) : medicalObservationalStudy.myStudyDesign != null) return false;
-    return true;
+  protected MedicalObservationalStudy(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link MedicalObservationalStudy}
    */
-  public static class Builder implements ThingBuilder<MedicalObservationalStudy> {
+  public static class Builder extends MedicalStudy.Builder {
     public MedicalObservationalStudy build() {
-      return new MedicalObservationalStudy(studyDesign, outcome, population, sponsor, status, studyLocation, studySubject, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new MedicalObservationalStudy(myData);
     }
     /**
      * Specifics about the observational study design (enumerated).
      */
     @NotNull public Builder studyDesign(@NotNull MedicalObservationalStudyDesign medicalObservationalStudyDesign) {
-      this.studyDesign = medicalObservationalStudyDesign;
+      putValue("studyDesign", medicalObservationalStudyDesign);
       return this;
     }
     /**
      * Specifics about the observational study design (enumerated).
      */
     @NotNull public Builder studyDesign(@NotNull MedicalObservationalStudyDesign.Builder medicalObservationalStudyDesign) {
-      return this.studyDesign(medicalObservationalStudyDesign.build());
+      putValue("studyDesign", medicalObservationalStudyDesign.build());
+      return this;
     }
     /**
      * Expected or actual outcomes of the study.
      */
     @NotNull public Builder outcome(@NotNull String outcome) {
-      this.outcome = outcome;
+      putValue("outcome", outcome);
       return this;
     }
     /**
      * Any characteristics of the population used in the study, e.g. 'males under 65'.
      */
     @NotNull public Builder population(@NotNull String population) {
-      this.population = population;
+      putValue("population", population);
       return this;
     }
     /**
      * Sponsor of the study.
      */
     @NotNull public Builder sponsor(@NotNull Organization organization) {
-      this.sponsor = organization;
+      putValue("sponsor", organization);
       return this;
     }
     /**
      * Sponsor of the study.
      */
     @NotNull public Builder sponsor(@NotNull Organization.Builder organization) {
-      return this.sponsor(organization.build());
+      putValue("sponsor", organization.build());
+      return this;
     }
     /**
      * The status of the study (enumerated).
      */
     @NotNull public Builder status(@NotNull MedicalStudyStatus medicalStudyStatus) {
-      this.status = medicalStudyStatus;
+      putValue("status", medicalStudyStatus);
       return this;
     }
     /**
      * The status of the study (enumerated).
      */
     @NotNull public Builder status(@NotNull MedicalStudyStatus.Builder medicalStudyStatus) {
-      return this.status(medicalStudyStatus.build());
+      putValue("status", medicalStudyStatus.build());
+      return this;
     }
     /**
      * The location in which the study is taking/took place.
      */
     @NotNull public Builder studyLocation(@NotNull AdministrativeArea administrativeArea) {
-      this.studyLocation = administrativeArea;
+      putValue("studyLocation", administrativeArea);
       return this;
     }
     /**
      * The location in which the study is taking/took place.
      */
     @NotNull public Builder studyLocation(@NotNull AdministrativeArea.Builder administrativeArea) {
-      return this.studyLocation(administrativeArea.build());
+      putValue("studyLocation", administrativeArea.build());
+      return this;
     }
     /**
      * A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
      */
     @NotNull public Builder studySubject(@NotNull MedicalEntity medicalEntity) {
-      this.studySubject = medicalEntity;
+      putValue("studySubject", medicalEntity);
       return this;
     }
     /**
      * A subject of the study, i.e. one of the medical conditions, therapies, devices, drugs, etc. investigated by the study.
      */
     @NotNull public Builder studySubject(@NotNull MedicalEntity.Builder medicalEntity) {
-      return this.studySubject(medicalEntity.build());
+      putValue("studySubject", medicalEntity.build());
+      return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
-      this.code = medicalCode;
+      putValue("code", medicalCode);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
-      return this.code(medicalCode.build());
+      putValue("code", medicalCode.build());
+      return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+      putValue("guideline", medicalGuideline);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
-      return this.guideline(medicalGuideline.build());
+      putValue("guideline", medicalGuideline.build());
+      return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
+      putValue("medicineSystem", medicineSystem);
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
-      return this.medicineSystem(medicineSystem.build());
+      putValue("medicineSystem", medicineSystem.build());
+      return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
-      this.recognizingAuthority = organization;
+      putValue("recognizingAuthority", organization);
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
-      return this.recognizingAuthority(organization.build());
+      putValue("recognizingAuthority", organization.build());
+      return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
+      putValue("relevantSpecialty", medicalSpecialty);
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
-      return this.relevantSpecialty(medicalSpecialty.build());
+      putValue("relevantSpecialty", medicalSpecialty.build());
+      return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
+      putValue("study", medicalStudy);
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
-      return this.study(medicalStudy.build());
+      putValue("study", medicalStudy.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -265,8 +275,7 @@ public class MedicalObservationalStudy extends MedicalStudy {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -300,7 +309,8 @@ public class MedicalObservationalStudy extends MedicalStudy {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -333,104 +343,55 @@ public class MedicalObservationalStudy extends MedicalStudy {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("studyDesign".equals(key) && value instanceof MedicalObservationalStudyDesign) { studyDesign((MedicalObservationalStudyDesign)value); continue; }
-        if ("outcome".equals(key) && value instanceof String) { outcome((String)value); continue; }
-        if ("population".equals(key) && value instanceof String) { population((String)value); continue; }
-        if ("sponsor".equals(key) && value instanceof Organization) { sponsor((Organization)value); continue; }
-        if ("status".equals(key) && value instanceof MedicalStudyStatus) { status((MedicalStudyStatus)value); continue; }
-        if ("studyLocation".equals(key) && value instanceof AdministrativeArea) { studyLocation((AdministrativeArea)value); continue; }
-        if ("studySubject".equals(key) && value instanceof MedicalEntity) { studySubject((MedicalEntity)value); continue; }
-        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
-        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
-        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
-        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
-        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
-        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("studyDesign".equals(key) && value instanceof MedicalObservationalStudyDesign) { studyDesign((MedicalObservationalStudyDesign)value); return; }
+      super.fromMap(key, value);
     }
-    private MedicalObservationalStudyDesign studyDesign;
-    private String outcome;
-    private String population;
-    private Organization sponsor;
-    private MedicalStudyStatus status;
-    private AdministrativeArea studyLocation;
-    private MedicalEntity studySubject;
-    private MedicalCode code;
-    private MedicalGuideline guideline;
-    private MedicineSystem medicineSystem;
-    private Organization recognizingAuthority;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalStudy study;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private MedicalObservationalStudyDesign myStudyDesign;
 }

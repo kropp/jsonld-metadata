@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A structured value providing information about the opening hours of a place or a certain service inside a place.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -29,129 +30,160 @@ public class OpeningHoursSpecification extends StructuredValue {
   /**
    * The closing hour of the place or service on the given day(s) of the week.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getCloses() { return myCloses; }
+  @JsonIgnore public java.util.Date getCloses() {
+    return (java.util.Date) getValue("closes");
+  }
+  /**
+   * The closing hour of the place or service on the given day(s) of the week.
+   */
+  @JsonIgnore public Collection<java.util.Date> getClosess() {
+    final Object current = myData.get("closes");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The day of the week for which these opening hours are valid.
    */
-  public DayOfWeek getDayOfWeek() { return myDayOfWeek; }
+  @JsonIgnore public DayOfWeek getDayOfWeek() {
+    return (DayOfWeek) getValue("dayOfWeek");
+  }
+  /**
+   * The day of the week for which these opening hours are valid.
+   */
+  @JsonIgnore public Collection<DayOfWeek> getDayOfWeeks() {
+    final Object current = myData.get("dayOfWeek");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<DayOfWeek>) current;
+    }
+    return Arrays.asList((DayOfWeek) current);
+  }
   /**
    * The opening hour of the place or service on the given day(s) of the week.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getOpens() { return myOpens; }
+  @JsonIgnore public java.util.Date getOpens() {
+    return (java.util.Date) getValue("opens");
+  }
+  /**
+   * The opening hour of the place or service on the given day(s) of the week.
+   */
+  @JsonIgnore public Collection<java.util.Date> getOpenss() {
+    final Object current = myData.get("opens");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The date when the item becomes valid.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getValidFrom() { return myValidFrom; }
+  @JsonIgnore public java.util.Date getValidFrom() {
+    return (java.util.Date) getValue("validFrom");
+  }
+  /**
+   * The date when the item becomes valid.
+   */
+  @JsonIgnore public Collection<java.util.Date> getValidFroms() {
+    final Object current = myData.get("validFrom");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The end of the validity of offer, price specification, or opening hours data.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getValidThrough() { return myValidThrough; }
-  protected OpeningHoursSpecification(java.util.Date closes, DayOfWeek dayOfWeek, java.util.Date opens, java.util.Date validFrom, java.util.Date validThrough, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myCloses = closes;
-    myDayOfWeek = dayOfWeek;
-    myOpens = opens;
-    myValidFrom = validFrom;
-    myValidThrough = validThrough;
-    myCloses = closes;
-    myDayOfWeek = dayOfWeek;
-    myOpens = opens;
-    myValidFrom = validFrom;
-    myValidThrough = validThrough;
+  @JsonIgnore public java.util.Date getValidThrough() {
+    return (java.util.Date) getValue("validThrough");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myCloses != null ? myCloses.hashCode() : 0);
-    result = 31 * result + (myDayOfWeek != null ? myDayOfWeek.hashCode() : 0);
-    result = 31 * result + (myOpens != null ? myOpens.hashCode() : 0);
-    result = 31 * result + (myValidFrom != null ? myValidFrom.hashCode() : 0);
-    result = 31 * result + (myValidThrough != null ? myValidThrough.hashCode() : 0);
-    return result;
+  /**
+   * The end of the validity of offer, price specification, or opening hours data.
+   */
+  @JsonIgnore public Collection<java.util.Date> getValidThroughs() {
+    final Object current = myData.get("validThrough");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    OpeningHoursSpecification openingHoursSpecification = (OpeningHoursSpecification) o;
-    if (!super.equals(o)) return false;
-    if (myCloses != null ? !myCloses.equals(openingHoursSpecification.myCloses) : openingHoursSpecification.myCloses != null) return false;
-    if (myDayOfWeek != null ? !myDayOfWeek.equals(openingHoursSpecification.myDayOfWeek) : openingHoursSpecification.myDayOfWeek != null) return false;
-    if (myOpens != null ? !myOpens.equals(openingHoursSpecification.myOpens) : openingHoursSpecification.myOpens != null) return false;
-    if (myValidFrom != null ? !myValidFrom.equals(openingHoursSpecification.myValidFrom) : openingHoursSpecification.myValidFrom != null) return false;
-    if (myValidThrough != null ? !myValidThrough.equals(openingHoursSpecification.myValidThrough) : openingHoursSpecification.myValidThrough != null) return false;
-    return true;
+  protected OpeningHoursSpecification(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link OpeningHoursSpecification}
    */
-  public static class Builder implements ThingBuilder<OpeningHoursSpecification> {
+  public static class Builder extends StructuredValue.Builder {
     public OpeningHoursSpecification build() {
-      return new OpeningHoursSpecification(closes, dayOfWeek, opens, validFrom, validThrough, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new OpeningHoursSpecification(myData);
     }
     /**
      * The closing hour of the place or service on the given day(s) of the week.
      */
     @NotNull public Builder closes(@NotNull java.util.Date date) {
-      this.closes = date;
+      putValue("closes", date);
       return this;
     }
     /**
      * The day of the week for which these opening hours are valid.
      */
     @NotNull public Builder dayOfWeek(@NotNull DayOfWeek dayOfWeek) {
-      this.dayOfWeek = dayOfWeek;
+      putValue("dayOfWeek", dayOfWeek);
       return this;
     }
     /**
      * The day of the week for which these opening hours are valid.
      */
     @NotNull public Builder dayOfWeek(@NotNull DayOfWeek.Builder dayOfWeek) {
-      return this.dayOfWeek(dayOfWeek.build());
+      putValue("dayOfWeek", dayOfWeek.build());
+      return this;
     }
     /**
      * The opening hour of the place or service on the given day(s) of the week.
      */
     @NotNull public Builder opens(@NotNull java.util.Date date) {
-      this.opens = date;
+      putValue("opens", date);
       return this;
     }
     /**
      * The date when the item becomes valid.
      */
     @NotNull public Builder validFrom(@NotNull java.util.Date date) {
-      this.validFrom = date;
+      putValue("validFrom", date);
       return this;
     }
     /**
      * The end of the validity of offer, price specification, or opening hours data.
      */
     @NotNull public Builder validThrough(@NotNull java.util.Date date) {
-      this.validThrough = date;
+      putValue("validThrough", date);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -185,8 +217,7 @@ public class OpeningHoursSpecification extends StructuredValue {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -220,7 +251,8 @@ public class OpeningHoursSpecification extends StructuredValue {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -253,92 +285,59 @@ public class OpeningHoursSpecification extends StructuredValue {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("closes".equals(key) && value instanceof java.util.Date) { closes((java.util.Date)value); continue; }
-        if ("dayOfWeek".equals(key) && value instanceof DayOfWeek) { dayOfWeek((DayOfWeek)value); continue; }
-        if ("opens".equals(key) && value instanceof java.util.Date) { opens((java.util.Date)value); continue; }
-        if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); continue; }
-        if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("closes".equals(key) && value instanceof java.util.Date) { closes((java.util.Date)value); return; }
+      if ("dayOfWeek".equals(key) && value instanceof DayOfWeek) { dayOfWeek((DayOfWeek)value); return; }
+      if ("opens".equals(key) && value instanceof java.util.Date) { opens((java.util.Date)value); return; }
+      if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
+      if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
+      super.fromMap(key, value);
     }
-    private java.util.Date closes;
-    private DayOfWeek dayOfWeek;
-    private java.util.Date opens;
-    private java.util.Date validFrom;
-    private java.util.Date validThrough;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private java.util.Date myCloses;
-  private DayOfWeek myDayOfWeek;
-  private java.util.Date myOpens;
-  private java.util.Date myValidFrom;
-  private java.util.Date myValidThrough;
 }

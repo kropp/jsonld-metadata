@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * Any bodily activity that enhances or maintains physical fitness and overall health and wellness. Includes activity that is part of daily living and routine, structured exercise, and exercise prescribed as part of a medical treatment or recovery plan.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -29,311 +30,414 @@ public class PhysicalActivity extends LifestyleModification {
   /**
    * The anatomy of the underlying organ system or structures associated with this entity.
    */
-  public AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy getAssociatedAnatomy() { return myAssociatedAnatomy; }
+  @JsonIgnore public AnatomicalStructure getAssociatedAnatomyAnatomicalStructure() {
+    return (AnatomicalStructure) getValue("associatedAnatomy");
+  }
+  /**
+   * The anatomy of the underlying organ system or structures associated with this entity.
+   */
+  @JsonIgnore public Collection<AnatomicalStructure> getAssociatedAnatomyAnatomicalStructures() {
+    final Object current = myData.get("associatedAnatomy");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AnatomicalStructure>) current;
+    }
+    return Arrays.asList((AnatomicalStructure) current);
+  }
+  /**
+   * The anatomy of the underlying organ system or structures associated with this entity.
+   */
+  @JsonIgnore public AnatomicalSystem getAssociatedAnatomyAnatomicalSystem() {
+    return (AnatomicalSystem) getValue("associatedAnatomy");
+  }
+  /**
+   * The anatomy of the underlying organ system or structures associated with this entity.
+   */
+  @JsonIgnore public Collection<AnatomicalSystem> getAssociatedAnatomyAnatomicalSystems() {
+    final Object current = myData.get("associatedAnatomy");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AnatomicalSystem>) current;
+    }
+    return Arrays.asList((AnatomicalSystem) current);
+  }
+  /**
+   * The anatomy of the underlying organ system or structures associated with this entity.
+   */
+  @JsonIgnore public SuperficialAnatomy getAssociatedAnatomySuperficialAnatomy() {
+    return (SuperficialAnatomy) getValue("associatedAnatomy");
+  }
+  /**
+   * The anatomy of the underlying organ system or structures associated with this entity.
+   */
+  @JsonIgnore public Collection<SuperficialAnatomy> getAssociatedAnatomySuperficialAnatomys() {
+    final Object current = myData.get("associatedAnatomy");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<SuperficialAnatomy>) current;
+    }
+    return Arrays.asList((SuperficialAnatomy) current);
+  }
   /**
    * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
    */
-  public PhysicalActivityCategoryOrStringOrThing getCategory() { return myCategory; }
+  @JsonIgnore public PhysicalActivityCategory getCategoryPhysicalActivityCategory() {
+    return (PhysicalActivityCategory) getValue("category");
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Collection<PhysicalActivityCategory> getCategoryPhysicalActivityCategorys() {
+    final Object current = myData.get("category");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PhysicalActivityCategory>) current;
+    }
+    return Arrays.asList((PhysicalActivityCategory) current);
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public String getCategoryString() {
+    return (String) getValue("category");
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Collection<String> getCategoryStrings() {
+    final Object current = myData.get("category");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Thing getCategoryThing() {
+    return (Thing) getValue("category");
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Collection<Thing> getCategoryThings() {
+    final Object current = myData.get("category");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Thing>) current;
+    }
+    return Arrays.asList((Thing) current);
+  }
   /**
    * The characteristics of associated patients, such as age, gender, race etc.
    */
-  public String getEpidemiology() { return myEpidemiology; }
+  @JsonIgnore public String getEpidemiology() {
+    return (String) getValue("epidemiology");
+  }
+  /**
+   * The characteristics of associated patients, such as age, gender, race etc.
+   */
+  @JsonIgnore public Collection<String> getEpidemiologys() {
+    final Object current = myData.get("epidemiology");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.
    */
-  public String getPathophysiology() { return myPathophysiology; }
-  protected PhysicalActivity(AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy, PhysicalActivityCategoryOrStringOrThing category, String epidemiology, String pathophysiology, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAssociatedAnatomy = associatedAnatomy;
-    myCategory = category;
-    myEpidemiology = epidemiology;
-    myPathophysiology = pathophysiology;
-    myAssociatedAnatomy = associatedAnatomy;
-    myCategory = category;
-    myEpidemiology = epidemiology;
-    myPathophysiology = pathophysiology;
+  @JsonIgnore public String getPathophysiology() {
+    return (String) getValue("pathophysiology");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAssociatedAnatomy != null ? myAssociatedAnatomy.hashCode() : 0);
-    result = 31 * result + (myCategory != null ? myCategory.hashCode() : 0);
-    result = 31 * result + (myEpidemiology != null ? myEpidemiology.hashCode() : 0);
-    result = 31 * result + (myPathophysiology != null ? myPathophysiology.hashCode() : 0);
-    return result;
+  /**
+   * Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.
+   */
+  @JsonIgnore public Collection<String> getPathophysiologys() {
+    final Object current = myData.get("pathophysiology");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    PhysicalActivity physicalActivity = (PhysicalActivity) o;
-    if (!super.equals(o)) return false;
-    if (myAssociatedAnatomy != null ? !myAssociatedAnatomy.equals(physicalActivity.myAssociatedAnatomy) : physicalActivity.myAssociatedAnatomy != null) return false;
-    if (myCategory != null ? !myCategory.equals(physicalActivity.myCategory) : physicalActivity.myCategory != null) return false;
-    if (myEpidemiology != null ? !myEpidemiology.equals(physicalActivity.myEpidemiology) : physicalActivity.myEpidemiology != null) return false;
-    if (myPathophysiology != null ? !myPathophysiology.equals(physicalActivity.myPathophysiology) : physicalActivity.myPathophysiology != null) return false;
-    return true;
+  protected PhysicalActivity(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link PhysicalActivity}
    */
-  public static class Builder implements ThingBuilder<PhysicalActivity> {
+  public static class Builder extends LifestyleModification.Builder {
     public PhysicalActivity build() {
-      return new PhysicalActivity(associatedAnatomy, category, epidemiology, pathophysiology, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new PhysicalActivity(myData);
     }
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
     @NotNull public Builder associatedAnatomy(@NotNull AnatomicalStructure anatomicalStructure) {
-      if (this.associatedAnatomy == null) this.associatedAnatomy = new AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy();
-      this.associatedAnatomy.setAnatomicalStructure(anatomicalStructure);
+      putValue("associatedAnatomy", anatomicalStructure);
       return this;
     }
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
     @NotNull public Builder associatedAnatomy(@NotNull AnatomicalStructure.Builder anatomicalStructure) {
-      return this.associatedAnatomy(anatomicalStructure.build());
+      putValue("associatedAnatomy", anatomicalStructure.build());
+      return this;
     }
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
     @NotNull public Builder associatedAnatomy(@NotNull AnatomicalSystem anatomicalSystem) {
-      if (this.associatedAnatomy == null) this.associatedAnatomy = new AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy();
-      this.associatedAnatomy.setAnatomicalSystem(anatomicalSystem);
+      putValue("associatedAnatomy", anatomicalSystem);
       return this;
     }
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
     @NotNull public Builder associatedAnatomy(@NotNull AnatomicalSystem.Builder anatomicalSystem) {
-      return this.associatedAnatomy(anatomicalSystem.build());
+      putValue("associatedAnatomy", anatomicalSystem.build());
+      return this;
     }
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
     @NotNull public Builder associatedAnatomy(@NotNull SuperficialAnatomy superficialAnatomy) {
-      if (this.associatedAnatomy == null) this.associatedAnatomy = new AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy();
-      this.associatedAnatomy.setSuperficialAnatomy(superficialAnatomy);
+      putValue("associatedAnatomy", superficialAnatomy);
       return this;
     }
     /**
      * The anatomy of the underlying organ system or structures associated with this entity.
      */
     @NotNull public Builder associatedAnatomy(@NotNull SuperficialAnatomy.Builder superficialAnatomy) {
-      return this.associatedAnatomy(superficialAnatomy.build());
+      putValue("associatedAnatomy", superficialAnatomy.build());
+      return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull PhysicalActivityCategory physicalActivityCategory) {
-      if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
-      this.category.setPhysicalActivityCategory(physicalActivityCategory);
+      putValue("category", physicalActivityCategory);
       return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull PhysicalActivityCategory.Builder physicalActivityCategory) {
-      return this.category(physicalActivityCategory.build());
+      putValue("category", physicalActivityCategory.build());
+      return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull String category) {
-      if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
-      this.category.setString(category);
+      putValue("category", category);
       return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull Thing thing) {
-      if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
-      this.category.setThing(thing);
+      putValue("category", thing);
       return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull Thing.Builder thing) {
-      return this.category(thing.build());
+      putValue("category", thing.build());
+      return this;
     }
     /**
      * The characteristics of associated patients, such as age, gender, race etc.
      */
     @NotNull public Builder epidemiology(@NotNull String epidemiology) {
-      this.epidemiology = epidemiology;
+      putValue("epidemiology", epidemiology);
       return this;
     }
     /**
      * Changes in the normal mechanical, physical, and biochemical functions that are associated with this activity or condition.
      */
     @NotNull public Builder pathophysiology(@NotNull String pathophysiology) {
-      this.pathophysiology = pathophysiology;
+      putValue("pathophysiology", pathophysiology);
       return this;
     }
     /**
      * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
      */
     @NotNull public Builder adverseOutcome(@NotNull MedicalEntity medicalEntity) {
-      this.adverseOutcome = medicalEntity;
+      putValue("adverseOutcome", medicalEntity);
       return this;
     }
     /**
      * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
      */
     @NotNull public Builder adverseOutcome(@NotNull MedicalEntity.Builder medicalEntity) {
-      return this.adverseOutcome(medicalEntity.build());
+      putValue("adverseOutcome", medicalEntity.build());
+      return this;
     }
     /**
      * A contraindication for this therapy.
      */
     @NotNull public Builder contraindication(@NotNull MedicalContraindication medicalContraindication) {
-      this.contraindication = medicalContraindication;
+      putValue("contraindication", medicalContraindication);
       return this;
     }
     /**
      * A contraindication for this therapy.
      */
     @NotNull public Builder contraindication(@NotNull MedicalContraindication.Builder medicalContraindication) {
-      return this.contraindication(medicalContraindication.build());
+      putValue("contraindication", medicalContraindication.build());
+      return this;
     }
     /**
      * A therapy that duplicates or overlaps this one.
      */
     @NotNull public Builder duplicateTherapy(@NotNull MedicalTherapy medicalTherapy) {
-      this.duplicateTherapy = medicalTherapy;
+      putValue("duplicateTherapy", medicalTherapy);
       return this;
     }
     /**
      * A therapy that duplicates or overlaps this one.
      */
     @NotNull public Builder duplicateTherapy(@NotNull MedicalTherapy.Builder medicalTherapy) {
-      return this.duplicateTherapy(medicalTherapy.build());
+      putValue("duplicateTherapy", medicalTherapy.build());
+      return this;
     }
     /**
      * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
      */
     @NotNull public Builder indication(@NotNull MedicalIndication medicalIndication) {
-      this.indication = medicalIndication;
+      putValue("indication", medicalIndication);
       return this;
     }
     /**
      * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
      */
     @NotNull public Builder indication(@NotNull MedicalIndication.Builder medicalIndication) {
-      return this.indication(medicalIndication.build());
+      putValue("indication", medicalIndication.build());
+      return this;
     }
     /**
      * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
      */
     @NotNull public Builder seriousAdverseOutcome(@NotNull MedicalEntity medicalEntity) {
-      this.seriousAdverseOutcome = medicalEntity;
+      putValue("seriousAdverseOutcome", medicalEntity);
       return this;
     }
     /**
      * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
      */
     @NotNull public Builder seriousAdverseOutcome(@NotNull MedicalEntity.Builder medicalEntity) {
-      return this.seriousAdverseOutcome(medicalEntity.build());
+      putValue("seriousAdverseOutcome", medicalEntity.build());
+      return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
-      this.code = medicalCode;
+      putValue("code", medicalCode);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
-      return this.code(medicalCode.build());
+      putValue("code", medicalCode.build());
+      return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+      putValue("guideline", medicalGuideline);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
-      return this.guideline(medicalGuideline.build());
+      putValue("guideline", medicalGuideline.build());
+      return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
+      putValue("medicineSystem", medicineSystem);
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
-      return this.medicineSystem(medicineSystem.build());
+      putValue("medicineSystem", medicineSystem.build());
+      return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
-      this.recognizingAuthority = organization;
+      putValue("recognizingAuthority", organization);
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
-      return this.recognizingAuthority(organization.build());
+      putValue("recognizingAuthority", organization.build());
+      return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
+      putValue("relevantSpecialty", medicalSpecialty);
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
-      return this.relevantSpecialty(medicalSpecialty.build());
+      putValue("relevantSpecialty", medicalSpecialty.build());
+      return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
+      putValue("study", medicalStudy);
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
-      return this.study(medicalStudy.build());
+      putValue("study", medicalStudy.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -367,8 +471,7 @@ public class PhysicalActivity extends LifestyleModification {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -402,7 +505,8 @@ public class PhysicalActivity extends LifestyleModification {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -435,115 +539,62 @@ public class PhysicalActivity extends LifestyleModification {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("associatedAnatomy".equals(key) && value instanceof AnatomicalStructure) { associatedAnatomy((AnatomicalStructure)value); continue; }
-        if ("associatedAnatomy".equals(key) && value instanceof AnatomicalSystem) { associatedAnatomy((AnatomicalSystem)value); continue; }
-        if ("associatedAnatomy".equals(key) && value instanceof SuperficialAnatomy) { associatedAnatomy((SuperficialAnatomy)value); continue; }
-        if ("category".equals(key) && value instanceof PhysicalActivityCategory) { category((PhysicalActivityCategory)value); continue; }
-        if ("category".equals(key) && value instanceof String) { category((String)value); continue; }
-        if ("category".equals(key) && value instanceof Thing) { category((Thing)value); continue; }
-        if ("epidemiology".equals(key) && value instanceof String) { epidemiology((String)value); continue; }
-        if ("pathophysiology".equals(key) && value instanceof String) { pathophysiology((String)value); continue; }
-        if ("adverseOutcome".equals(key) && value instanceof MedicalEntity) { adverseOutcome((MedicalEntity)value); continue; }
-        if ("contraindication".equals(key) && value instanceof MedicalContraindication) { contraindication((MedicalContraindication)value); continue; }
-        if ("duplicateTherapy".equals(key) && value instanceof MedicalTherapy) { duplicateTherapy((MedicalTherapy)value); continue; }
-        if ("indication".equals(key) && value instanceof MedicalIndication) { indication((MedicalIndication)value); continue; }
-        if ("seriousAdverseOutcome".equals(key) && value instanceof MedicalEntity) { seriousAdverseOutcome((MedicalEntity)value); continue; }
-        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
-        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
-        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
-        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
-        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
-        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("associatedAnatomy".equals(key) && value instanceof AnatomicalStructure) { associatedAnatomy((AnatomicalStructure)value); return; }
+      if ("associatedAnatomy".equals(key) && value instanceof AnatomicalSystem) { associatedAnatomy((AnatomicalSystem)value); return; }
+      if ("associatedAnatomy".equals(key) && value instanceof SuperficialAnatomy) { associatedAnatomy((SuperficialAnatomy)value); return; }
+      if ("category".equals(key) && value instanceof PhysicalActivityCategory) { category((PhysicalActivityCategory)value); return; }
+      if ("category".equals(key) && value instanceof String) { category((String)value); return; }
+      if ("category".equals(key) && value instanceof Thing) { category((Thing)value); return; }
+      if ("epidemiology".equals(key) && value instanceof String) { epidemiology((String)value); return; }
+      if ("pathophysiology".equals(key) && value instanceof String) { pathophysiology((String)value); return; }
+      super.fromMap(key, value);
     }
-    private AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy associatedAnatomy;
-    private PhysicalActivityCategoryOrStringOrThing category;
-    private String epidemiology;
-    private String pathophysiology;
-    private MedicalEntity adverseOutcome;
-    private MedicalContraindication contraindication;
-    private MedicalTherapy duplicateTherapy;
-    private MedicalIndication indication;
-    private MedicalEntity seriousAdverseOutcome;
-    private MedicalCode code;
-    private MedicalGuideline guideline;
-    private MedicineSystem medicineSystem;
-    private Organization recognizingAuthority;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalStudy study;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private AnatomicalStructureOrAnatomicalSystemOrSuperficialAnatomy myAssociatedAnatomy;
-  private PhysicalActivityCategoryOrStringOrThing myCategory;
-  private String myEpidemiology;
-  private String myPathophysiology;
 }

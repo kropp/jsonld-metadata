@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * The act of playing/exercising/training/performing for enjoyment, leisure, recreation, Competition or exercise.<p>Related actions:</p><ul><li><a href="http://schema.org/ListenAction">ListenAction</a>: Unlike ListenAction (which is under ConsumeAction), PlayAction refers to performing for an audience or at an event, rather than consuming music.</li><li><a href="http://schema.org/WatchAction">WatchAction</a>: Unlike WatchAction (which is under ConsumeAction), PlayAction refers to showing/displaying for an audience or at an event, rather than consuming visual content</li></ul>.
@@ -29,94 +30,103 @@ public class PlayAction extends Action {
   /**
    * An intended audience, i.e. a group for whom something was created.
    */
-  public Audience getAudience() { return myAudience; }
+  @JsonIgnore public Audience getAudience() {
+    return (Audience) getValue("audience");
+  }
+  /**
+   * An intended audience, i.e. a group for whom something was created.
+   */
+  @JsonIgnore public Collection<Audience> getAudiences() {
+    final Object current = myData.get("audience");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Audience>) current;
+    }
+    return Arrays.asList((Audience) current);
+  }
   /**
    * Upcoming or past event associated with this place, organization, or action.
    */
-  public Event getEvent() { return myEvent; }
-  protected PlayAction(Audience audience, Event event, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAudience = audience;
-    myEvent = event;
-    myAudience = audience;
-    myEvent = event;
+  @JsonIgnore public Event getEvent() {
+    return (Event) getValue("event");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAudience != null ? myAudience.hashCode() : 0);
-    result = 31 * result + (myEvent != null ? myEvent.hashCode() : 0);
-    return result;
+  /**
+   * Upcoming or past event associated with this place, organization, or action.
+   */
+  @JsonIgnore public Collection<Event> getEvents() {
+    final Object current = myData.get("event");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Event>) current;
+    }
+    return Arrays.asList((Event) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    PlayAction playAction = (PlayAction) o;
-    if (!super.equals(o)) return false;
-    if (myAudience != null ? !myAudience.equals(playAction.myAudience) : playAction.myAudience != null) return false;
-    if (myEvent != null ? !myEvent.equals(playAction.myEvent) : playAction.myEvent != null) return false;
-    return true;
+  protected PlayAction(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link PlayAction}
    */
-  public static class Builder implements ThingBuilder<PlayAction> {
+  public static class Builder extends Action.Builder {
     public PlayAction build() {
-      return new PlayAction(audience, event, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new PlayAction(myData);
     }
     /**
      * An intended audience, i.e. a group for whom something was created.
      */
     @NotNull public Builder audience(@NotNull Audience audience) {
-      this.audience = audience;
+      putValue("audience", audience);
       return this;
     }
     /**
      * An intended audience, i.e. a group for whom something was created.
      */
     @NotNull public Builder audience(@NotNull Audience.Builder audience) {
-      return this.audience(audience.build());
+      putValue("audience", audience.build());
+      return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
     @NotNull public Builder event(@NotNull Event event) {
-      this.event = event;
+      putValue("event", event);
       return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
     @NotNull public Builder event(@NotNull Event.Builder event) {
-      return this.event(event.build());
+      putValue("event", event.build());
+      return this;
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
     @NotNull public Builder agent(@NotNull Organization organization) {
-      if (this.agent == null) this.agent = new OrganizationOrPerson();
-      this.agent.setOrganization(organization);
+      putValue("agent", organization);
       return this;
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
     @NotNull public Builder agent(@NotNull Organization.Builder organization) {
-      return this.agent(organization.build());
+      putValue("agent", organization.build());
+      return this;
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
     @NotNull public Builder agent(@NotNull Person person) {
-      if (this.agent == null) this.agent = new OrganizationOrPerson();
-      this.agent.setPerson(person);
+      putValue("agent", person);
       return this;
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
     @NotNull public Builder agent(@NotNull Person.Builder person) {
-      return this.agent(person.build());
+      putValue("agent", person.build());
+      return this;
     }
     /**
      * The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to *December*.
@@ -124,7 +134,7 @@ public class PlayAction extends Action {
      * Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
     @NotNull public Builder endTime(@NotNull java.util.Date date) {
-      this.endTime = date;
+      putValue("endTime", date);
       return this;
     }
     /**
@@ -133,67 +143,70 @@ public class PlayAction extends Action {
      * Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
     @NotNull public Builder startTime(@NotNull java.util.Date date) {
-      this.startTime = date;
+      putValue("startTime", date);
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType actionStatusType) {
-      this.actionStatus = actionStatusType;
+      putValue("actionStatus", actionStatusType);
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType) {
-      return this.actionStatus(actionStatusType.build());
+      putValue("actionStatus", actionStatusType.build());
+      return this;
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
     @NotNull public Builder error(@NotNull Thing thing) {
-      this.error = thing;
+      putValue("error", thing);
       return this;
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
     @NotNull public Builder error(@NotNull Thing.Builder thing) {
-      return this.error(thing.build());
+      putValue("error", thing.build());
+      return this;
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
     @NotNull public Builder target(@NotNull EntryPoint entryPoint) {
-      this.target = entryPoint;
+      putValue("target", entryPoint);
       return this;
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
     @NotNull public Builder target(@NotNull EntryPoint.Builder entryPoint) {
-      return this.target(entryPoint.build());
+      putValue("target", entryPoint.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -227,8 +240,7 @@ public class PlayAction extends Action {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -262,7 +274,8 @@ public class PlayAction extends Action {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -295,96 +308,56 @@ public class PlayAction extends Action {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("audience".equals(key) && value instanceof Audience) { audience((Audience)value); continue; }
-        if ("event".equals(key) && value instanceof Event) { event((Event)value); continue; }
-        if ("agent".equals(key) && value instanceof Organization) { agent((Organization)value); continue; }
-        if ("agent".equals(key) && value instanceof Person) { agent((Person)value); continue; }
-        if ("endTime".equals(key) && value instanceof java.util.Date) { endTime((java.util.Date)value); continue; }
-        if ("startTime".equals(key) && value instanceof java.util.Date) { startTime((java.util.Date)value); continue; }
-        if ("actionStatus".equals(key) && value instanceof ActionStatusType) { actionStatus((ActionStatusType)value); continue; }
-        if ("error".equals(key) && value instanceof Thing) { error((Thing)value); continue; }
-        if ("target".equals(key) && value instanceof EntryPoint) { target((EntryPoint)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("audience".equals(key) && value instanceof Audience) { audience((Audience)value); return; }
+      if ("event".equals(key) && value instanceof Event) { event((Event)value); return; }
+      super.fromMap(key, value);
     }
-    private Audience audience;
-    private Event event;
-    private OrganizationOrPerson agent;
-    private java.util.Date endTime;
-    private java.util.Date startTime;
-    private ActionStatusType actionStatus;
-    private Thing error;
-    private EntryPoint target;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private Audience myAudience;
-  private Event myEvent;
 }

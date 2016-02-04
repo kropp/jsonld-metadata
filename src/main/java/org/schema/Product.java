@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsProperties
@@ -29,683 +30,1095 @@ public class Product extends Thing {
   /**
    * The overall rating, based on a collection of reviews or ratings, of the item.
    */
-  public AggregateRating getAggregateRating() { return myAggregateRating; }
+  @JsonIgnore public AggregateRating getAggregateRating() {
+    return (AggregateRating) getValue("aggregateRating");
+  }
+  /**
+   * The overall rating, based on a collection of reviews or ratings, of the item.
+   */
+  @JsonIgnore public Collection<AggregateRating> getAggregateRatings() {
+    final Object current = myData.get("aggregateRating");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AggregateRating>) current;
+    }
+    return Arrays.asList((AggregateRating) current);
+  }
   /**
    * An intended audience, i.e. a group for whom something was created.
    */
-  public Audience getAudience() { return myAudience; }
+  @JsonIgnore public Audience getAudience() {
+    return (Audience) getValue("audience");
+  }
+  /**
+   * An intended audience, i.e. a group for whom something was created.
+   */
+  @JsonIgnore public Collection<Audience> getAudiences() {
+    final Object current = myData.get("audience");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Audience>) current;
+    }
+    return Arrays.asList((Audience) current);
+  }
   /**
    * An award won by or for this item.
    */
-  public String getAward() { return myAward; }
+  @JsonIgnore public String getAward() {
+    return (String) getValue("award");
+  }
+  /**
+   * An award won by or for this item.
+   */
+  @JsonIgnore public Collection<String> getAwards() {
+    final Object current = myData.get("award");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
    */
-  public BrandOrOrganization getBrand() { return myBrand; }
+  @JsonIgnore public Brand getBrandBrand() {
+    return (Brand) getValue("brand");
+  }
+  /**
+   * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+   */
+  @JsonIgnore public Collection<Brand> getBrandBrands() {
+    final Object current = myData.get("brand");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Brand>) current;
+    }
+    return Arrays.asList((Brand) current);
+  }
+  /**
+   * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+   */
+  @JsonIgnore public Organization getBrandOrganization() {
+    return (Organization) getValue("brand");
+  }
+  /**
+   * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+   */
+  @JsonIgnore public Collection<Organization> getBrandOrganizations() {
+    final Object current = myData.get("brand");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
    */
-  public PhysicalActivityCategoryOrStringOrThing getCategory() { return myCategory; }
+  @JsonIgnore public PhysicalActivityCategory getCategoryPhysicalActivityCategory() {
+    return (PhysicalActivityCategory) getValue("category");
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Collection<PhysicalActivityCategory> getCategoryPhysicalActivityCategorys() {
+    final Object current = myData.get("category");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PhysicalActivityCategory>) current;
+    }
+    return Arrays.asList((PhysicalActivityCategory) current);
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public String getCategoryString() {
+    return (String) getValue("category");
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Collection<String> getCategoryStrings() {
+    final Object current = myData.get("category");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Thing getCategoryThing() {
+    return (Thing) getValue("category");
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Collection<Thing> getCategoryThings() {
+    final Object current = myData.get("category");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Thing>) current;
+    }
+    return Arrays.asList((Thing) current);
+  }
   /**
    * The color of the product.
    */
-  public String getColor() { return myColor; }
+  @JsonIgnore public String getColor() {
+    return (String) getValue("color");
+  }
+  /**
+   * The color of the product.
+   */
+  @JsonIgnore public Collection<String> getColors() {
+    final Object current = myData.get("color");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The depth of the item.
    */
-  public DistanceOrQuantitativeValue getDepth() { return myDepth; }
+  @JsonIgnore public Distance getDepthDistance() {
+    return (Distance) getValue("depth");
+  }
+  /**
+   * The depth of the item.
+   */
+  @JsonIgnore public Collection<Distance> getDepthDistances() {
+    final Object current = myData.get("depth");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Distance>) current;
+    }
+    return Arrays.asList((Distance) current);
+  }
+  /**
+   * The depth of the item.
+   */
+  @JsonIgnore public QuantitativeValue getDepthQuantitativeValue() {
+    return (QuantitativeValue) getValue("depth");
+  }
+  /**
+   * The depth of the item.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getDepthQuantitativeValues() {
+    final Object current = myData.get("depth");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-12.aspx">GTIN-12</a> code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin12() { return myGtin12; }
+  @JsonIgnore public String getGtin12() {
+    return (String) getValue("gtin12");
+  }
+  /**
+   * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-12.aspx">GTIN-12</a> code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+   */
+  @JsonIgnore public Collection<String> getGtin12s() {
+    final Object current = myData.get("gtin12");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-13.aspx">GTIN-13</a> code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin13() { return myGtin13; }
+  @JsonIgnore public String getGtin13() {
+    return (String) getValue("gtin13");
+  }
+  /**
+   * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-13.aspx">GTIN-13</a> code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+   */
+  @JsonIgnore public Collection<String> getGtin13s() {
+    final Object current = myData.get("gtin13");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-14.aspx">GTIN-14</a> code of the product, or the product to which the offer refers. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin14() { return myGtin14; }
+  @JsonIgnore public String getGtin14() {
+    return (String) getValue("gtin14");
+  }
+  /**
+   * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-14.aspx">GTIN-14</a> code of the product, or the product to which the offer refers. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+   */
+  @JsonIgnore public Collection<String> getGtin14s() {
+    final Object current = myData.get("gtin14");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-8.aspx">GTIN-8</a> code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin8() { return myGtin8; }
+  @JsonIgnore public String getGtin8() {
+    return (String) getValue("gtin8");
+  }
+  /**
+   * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-8.aspx">GTIN-8</a> code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+   */
+  @JsonIgnore public Collection<String> getGtin8s() {
+    final Object current = myData.get("gtin8");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The height of the item.
    */
-  public DistanceOrQuantitativeValue getHeight() { return myHeight; }
+  @JsonIgnore public Distance getHeightDistance() {
+    return (Distance) getValue("height");
+  }
+  /**
+   * The height of the item.
+   */
+  @JsonIgnore public Collection<Distance> getHeightDistances() {
+    final Object current = myData.get("height");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Distance>) current;
+    }
+    return Arrays.asList((Distance) current);
+  }
+  /**
+   * The height of the item.
+   */
+  @JsonIgnore public QuantitativeValue getHeightQuantitativeValue() {
+    return (QuantitativeValue) getValue("height");
+  }
+  /**
+   * The height of the item.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getHeightQuantitativeValues() {
+    final Object current = myData.get("height");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * A pointer to another product (or multiple products) for which this product is an accessory or spare part.
    */
-  public Product getIsAccessoryOrSparePartFor() { return myIsAccessoryOrSparePartFor; }
+  @JsonIgnore public Product getIsAccessoryOrSparePartFor() {
+    return (Product) getValue("isAccessoryOrSparePartFor");
+  }
+  /**
+   * A pointer to another product (or multiple products) for which this product is an accessory or spare part.
+   */
+  @JsonIgnore public Collection<Product> getIsAccessoryOrSparePartFors() {
+    final Object current = myData.get("isAccessoryOrSparePartFor");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Product>) current;
+    }
+    return Arrays.asList((Product) current);
+  }
   /**
    * A pointer to another product (or multiple products) for which this product is a consumable.
    */
-  public Product getIsConsumableFor() { return myIsConsumableFor; }
+  @JsonIgnore public Product getIsConsumableFor() {
+    return (Product) getValue("isConsumableFor");
+  }
+  /**
+   * A pointer to another product (or multiple products) for which this product is a consumable.
+   */
+  @JsonIgnore public Collection<Product> getIsConsumableFors() {
+    final Object current = myData.get("isConsumableFor");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Product>) current;
+    }
+    return Arrays.asList((Product) current);
+  }
   /**
    * A pointer to another, somehow related product (or multiple products).
    */
-  public Product getIsRelatedTo() { return myIsRelatedTo; }
+  @JsonIgnore public Product getIsRelatedTo() {
+    return (Product) getValue("isRelatedTo");
+  }
+  /**
+   * A pointer to another, somehow related product (or multiple products).
+   */
+  @JsonIgnore public Collection<Product> getIsRelatedTos() {
+    final Object current = myData.get("isRelatedTo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Product>) current;
+    }
+    return Arrays.asList((Product) current);
+  }
   /**
    * A pointer to another, functionally similar product (or multiple products).
    */
-  public Product getIsSimilarTo() { return myIsSimilarTo; }
+  @JsonIgnore public Product getIsSimilarTo() {
+    return (Product) getValue("isSimilarTo");
+  }
+  /**
+   * A pointer to another, functionally similar product (or multiple products).
+   */
+  @JsonIgnore public Collection<Product> getIsSimilarTos() {
+    final Object current = myData.get("isSimilarTo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Product>) current;
+    }
+    return Arrays.asList((Product) current);
+  }
   /**
    * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
    */
-  public OfferItemCondition getItemCondition() { return myItemCondition; }
+  @JsonIgnore public OfferItemCondition getItemCondition() {
+    return (OfferItemCondition) getValue("itemCondition");
+  }
+  /**
+   * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
+   */
+  @JsonIgnore public Collection<OfferItemCondition> getItemConditions() {
+    final Object current = myData.get("itemCondition");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<OfferItemCondition>) current;
+    }
+    return Arrays.asList((OfferItemCondition) current);
+  }
   /**
    * An associated logo.
    */
-  public ImageObjectOrString getLogo() { return myLogo; }
+  @JsonIgnore public ImageObject getLogoImageObject() {
+    return (ImageObject) getValue("logo");
+  }
+  /**
+   * An associated logo.
+   */
+  @JsonIgnore public Collection<ImageObject> getLogoImageObjects() {
+    final Object current = myData.get("logo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ImageObject>) current;
+    }
+    return Arrays.asList((ImageObject) current);
+  }
+  /**
+   * An associated logo.
+   */
+  @JsonIgnore public String getLogoString() {
+    return (String) getValue("logo");
+  }
+  /**
+   * An associated logo.
+   */
+  @JsonIgnore public Collection<String> getLogoStrings() {
+    final Object current = myData.get("logo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The manufacturer of the product.
    */
-  public Organization getManufacturer() { return myManufacturer; }
+  @JsonIgnore public Organization getManufacturer() {
+    return (Organization) getValue("manufacturer");
+  }
+  /**
+   * The manufacturer of the product.
+   */
+  @JsonIgnore public Collection<Organization> getManufacturers() {
+    final Object current = myData.get("manufacturer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
    */
-  public ProductModelOrString getModel() { return myModel; }
+  @JsonIgnore public ProductModel getModelProductModel() {
+    return (ProductModel) getValue("model");
+  }
+  /**
+   * The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
+   */
+  @JsonIgnore public Collection<ProductModel> getModelProductModels() {
+    final Object current = myData.get("model");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ProductModel>) current;
+    }
+    return Arrays.asList((ProductModel) current);
+  }
+  /**
+   * The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
+   */
+  @JsonIgnore public String getModelString() {
+    return (String) getValue("model");
+  }
+  /**
+   * The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
+   */
+  @JsonIgnore public Collection<String> getModelStrings() {
+    final Object current = myData.get("model");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
    */
-  public String getMpn() { return myMpn; }
+  @JsonIgnore public String getMpn() {
+    return (String) getValue("mpn");
+  }
+  /**
+   * The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
+   */
+  @JsonIgnore public Collection<String> getMpns() {
+    final Object current = myData.get("mpn");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
    */
-  public Offer getOffers() { return myOffers; }
+  @JsonIgnore public Offer getOffers() {
+    return (Offer) getValue("offers");
+  }
+  /**
+   * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
+   */
+  @JsonIgnore public Collection<Offer> getOfferss() {
+    final Object current = myData.get("offers");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Offer>) current;
+    }
+    return Arrays.asList((Offer) current);
+  }
   /**
    * The product identifier, such as ISBN. For example: <code>&lt;meta itemprop='productID' content='isbn:123-456-789'/&gt;</code>.
    */
-  public String getProductID() { return myProductID; }
+  @JsonIgnore public String getProductID() {
+    return (String) getValue("productID");
+  }
+  /**
+   * The product identifier, such as ISBN. For example: <code>&lt;meta itemprop='productID' content='isbn:123-456-789'/&gt;</code>.
+   */
+  @JsonIgnore public Collection<String> getProductIDs() {
+    final Object current = myData.get("productID");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The release date of a product or product model. This can be used to distinguish the exact variant of a product.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getReleaseDate() { return myReleaseDate; }
+  @JsonIgnore public java.util.Date getReleaseDate() {
+    return (java.util.Date) getValue("releaseDate");
+  }
+  /**
+   * The release date of a product or product model. This can be used to distinguish the exact variant of a product.
+   */
+  @JsonIgnore public Collection<java.util.Date> getReleaseDates() {
+    final Object current = myData.get("releaseDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * A review of the item.
    */
-  public Review getReview() { return myReview; }
+  @JsonIgnore public Review getReview() {
+    return (Review) getValue("review");
+  }
+  /**
+   * A review of the item.
+   */
+  @JsonIgnore public Collection<Review> getReviews() {
+    final Object current = myData.get("review");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Review>) current;
+    }
+    return Arrays.asList((Review) current);
+  }
   /**
    * The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
    */
-  public String getSku() { return mySku; }
+  @JsonIgnore public String getSku() {
+    return (String) getValue("sku");
+  }
+  /**
+   * The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
+   */
+  @JsonIgnore public Collection<String> getSkus() {
+    final Object current = myData.get("sku");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The weight of the product or person.
    */
-  public QuantitativeValue getWeight() { return myWeight; }
+  @JsonIgnore public QuantitativeValue getWeight() {
+    return (QuantitativeValue) getValue("weight");
+  }
+  /**
+   * The weight of the product or person.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getWeights() {
+    final Object current = myData.get("weight");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * The width of the item.
    */
-  public DistanceOrQuantitativeValue getWidth() { return myWidth; }
+  @JsonIgnore public Distance getWidthDistance() {
+    return (Distance) getValue("width");
+  }
+  /**
+   * The width of the item.
+   */
+  @JsonIgnore public Collection<Distance> getWidthDistances() {
+    final Object current = myData.get("width");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Distance>) current;
+    }
+    return Arrays.asList((Distance) current);
+  }
+  /**
+   * The width of the item.
+   */
+  @JsonIgnore public QuantitativeValue getWidthQuantitativeValue() {
+    return (QuantitativeValue) getValue("width");
+  }
+  /**
+   * The width of the item.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getWidthQuantitativeValues() {
+    final Object current = myData.get("width");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
+   * 
+   * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+   * 
    */
-  public PropertyValue getAdditionalProperty() { return myAdditionalProperty; }
+  @JsonIgnore public PropertyValue getAdditionalProperty() {
+    return (PropertyValue) getValue("additionalProperty");
+  }
+  /**
+   * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
+   * 
+   * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+   * 
+   */
+  @JsonIgnore public Collection<PropertyValue> getAdditionalPropertys() {
+    final Object current = myData.get("additionalProperty");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PropertyValue>) current;
+    }
+    return Arrays.asList((PropertyValue) current);
+  }
   /**
    * The date of production of the item, e.g. vehicle.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getProductionDate() { return myProductionDate; }
+  @JsonIgnore public java.util.Date getProductionDate() {
+    return (java.util.Date) getValue("productionDate");
+  }
+  /**
+   * The date of production of the item, e.g. vehicle.
+   */
+  @JsonIgnore public Collection<java.util.Date> getProductionDates() {
+    final Object current = myData.get("productionDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The date the item e.g. vehicle was purchased by the current owner.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getPurchaseDate() { return myPurchaseDate; }
-  protected Product(AggregateRating aggregateRating, Audience audience, String award, BrandOrOrganization brand, PhysicalActivityCategoryOrStringOrThing category, String color, DistanceOrQuantitativeValue depth, String gtin12, String gtin13, String gtin14, String gtin8, DistanceOrQuantitativeValue height, Product isAccessoryOrSparePartFor, Product isConsumableFor, Product isRelatedTo, Product isSimilarTo, OfferItemCondition itemCondition, ImageObjectOrString logo, Organization manufacturer, ProductModelOrString model, String mpn, Offer offers, String productID, java.util.Date releaseDate, Review review, String sku, QuantitativeValue weight, DistanceOrQuantitativeValue width, PropertyValue additionalProperty, java.util.Date productionDate, java.util.Date purchaseDate, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAggregateRating = aggregateRating;
-    myAudience = audience;
-    myAward = award;
-    myBrand = brand;
-    myCategory = category;
-    myColor = color;
-    myDepth = depth;
-    myGtin12 = gtin12;
-    myGtin13 = gtin13;
-    myGtin14 = gtin14;
-    myGtin8 = gtin8;
-    myHeight = height;
-    myIsAccessoryOrSparePartFor = isAccessoryOrSparePartFor;
-    myIsConsumableFor = isConsumableFor;
-    myIsRelatedTo = isRelatedTo;
-    myIsSimilarTo = isSimilarTo;
-    myItemCondition = itemCondition;
-    myLogo = logo;
-    myManufacturer = manufacturer;
-    myModel = model;
-    myMpn = mpn;
-    myOffers = offers;
-    myProductID = productID;
-    myReleaseDate = releaseDate;
-    myReview = review;
-    mySku = sku;
-    myWeight = weight;
-    myWidth = width;
-    myAdditionalProperty = additionalProperty;
-    myProductionDate = productionDate;
-    myPurchaseDate = purchaseDate;
-    myAggregateRating = aggregateRating;
-    myAudience = audience;
-    myAward = award;
-    myBrand = brand;
-    myCategory = category;
-    myColor = color;
-    myDepth = depth;
-    myGtin12 = gtin12;
-    myGtin13 = gtin13;
-    myGtin14 = gtin14;
-    myGtin8 = gtin8;
-    myHeight = height;
-    myIsAccessoryOrSparePartFor = isAccessoryOrSparePartFor;
-    myIsConsumableFor = isConsumableFor;
-    myIsRelatedTo = isRelatedTo;
-    myIsSimilarTo = isSimilarTo;
-    myItemCondition = itemCondition;
-    myLogo = logo;
-    myManufacturer = manufacturer;
-    myModel = model;
-    myMpn = mpn;
-    myOffers = offers;
-    myProductID = productID;
-    myReleaseDate = releaseDate;
-    myReview = review;
-    mySku = sku;
-    myWeight = weight;
-    myWidth = width;
-    myAdditionalProperty = additionalProperty;
-    myProductionDate = productionDate;
-    myPurchaseDate = purchaseDate;
+  @JsonIgnore public java.util.Date getPurchaseDate() {
+    return (java.util.Date) getValue("purchaseDate");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
-    result = 31 * result + (myAudience != null ? myAudience.hashCode() : 0);
-    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
-    result = 31 * result + (myBrand != null ? myBrand.hashCode() : 0);
-    result = 31 * result + (myCategory != null ? myCategory.hashCode() : 0);
-    result = 31 * result + (myColor != null ? myColor.hashCode() : 0);
-    result = 31 * result + (myDepth != null ? myDepth.hashCode() : 0);
-    result = 31 * result + (myGtin12 != null ? myGtin12.hashCode() : 0);
-    result = 31 * result + (myGtin13 != null ? myGtin13.hashCode() : 0);
-    result = 31 * result + (myGtin14 != null ? myGtin14.hashCode() : 0);
-    result = 31 * result + (myGtin8 != null ? myGtin8.hashCode() : 0);
-    result = 31 * result + (myHeight != null ? myHeight.hashCode() : 0);
-    result = 31 * result + (myIsAccessoryOrSparePartFor != null ? myIsAccessoryOrSparePartFor.hashCode() : 0);
-    result = 31 * result + (myIsConsumableFor != null ? myIsConsumableFor.hashCode() : 0);
-    result = 31 * result + (myIsRelatedTo != null ? myIsRelatedTo.hashCode() : 0);
-    result = 31 * result + (myIsSimilarTo != null ? myIsSimilarTo.hashCode() : 0);
-    result = 31 * result + (myItemCondition != null ? myItemCondition.hashCode() : 0);
-    result = 31 * result + (myLogo != null ? myLogo.hashCode() : 0);
-    result = 31 * result + (myManufacturer != null ? myManufacturer.hashCode() : 0);
-    result = 31 * result + (myModel != null ? myModel.hashCode() : 0);
-    result = 31 * result + (myMpn != null ? myMpn.hashCode() : 0);
-    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
-    result = 31 * result + (myProductID != null ? myProductID.hashCode() : 0);
-    result = 31 * result + (myReleaseDate != null ? myReleaseDate.hashCode() : 0);
-    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
-    result = 31 * result + (mySku != null ? mySku.hashCode() : 0);
-    result = 31 * result + (myWeight != null ? myWeight.hashCode() : 0);
-    result = 31 * result + (myWidth != null ? myWidth.hashCode() : 0);
-    result = 31 * result + (myAdditionalProperty != null ? myAdditionalProperty.hashCode() : 0);
-    result = 31 * result + (myProductionDate != null ? myProductionDate.hashCode() : 0);
-    result = 31 * result + (myPurchaseDate != null ? myPurchaseDate.hashCode() : 0);
-    return result;
+  /**
+   * The date the item e.g. vehicle was purchased by the current owner.
+   */
+  @JsonIgnore public Collection<java.util.Date> getPurchaseDates() {
+    final Object current = myData.get("purchaseDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Product product = (Product) o;
-    if (!super.equals(o)) return false;
-    if (myAggregateRating != null ? !myAggregateRating.equals(product.myAggregateRating) : product.myAggregateRating != null) return false;
-    if (myAudience != null ? !myAudience.equals(product.myAudience) : product.myAudience != null) return false;
-    if (myAward != null ? !myAward.equals(product.myAward) : product.myAward != null) return false;
-    if (myBrand != null ? !myBrand.equals(product.myBrand) : product.myBrand != null) return false;
-    if (myCategory != null ? !myCategory.equals(product.myCategory) : product.myCategory != null) return false;
-    if (myColor != null ? !myColor.equals(product.myColor) : product.myColor != null) return false;
-    if (myDepth != null ? !myDepth.equals(product.myDepth) : product.myDepth != null) return false;
-    if (myGtin12 != null ? !myGtin12.equals(product.myGtin12) : product.myGtin12 != null) return false;
-    if (myGtin13 != null ? !myGtin13.equals(product.myGtin13) : product.myGtin13 != null) return false;
-    if (myGtin14 != null ? !myGtin14.equals(product.myGtin14) : product.myGtin14 != null) return false;
-    if (myGtin8 != null ? !myGtin8.equals(product.myGtin8) : product.myGtin8 != null) return false;
-    if (myHeight != null ? !myHeight.equals(product.myHeight) : product.myHeight != null) return false;
-    if (myIsAccessoryOrSparePartFor != null ? !myIsAccessoryOrSparePartFor.equals(product.myIsAccessoryOrSparePartFor) : product.myIsAccessoryOrSparePartFor != null) return false;
-    if (myIsConsumableFor != null ? !myIsConsumableFor.equals(product.myIsConsumableFor) : product.myIsConsumableFor != null) return false;
-    if (myIsRelatedTo != null ? !myIsRelatedTo.equals(product.myIsRelatedTo) : product.myIsRelatedTo != null) return false;
-    if (myIsSimilarTo != null ? !myIsSimilarTo.equals(product.myIsSimilarTo) : product.myIsSimilarTo != null) return false;
-    if (myItemCondition != null ? !myItemCondition.equals(product.myItemCondition) : product.myItemCondition != null) return false;
-    if (myLogo != null ? !myLogo.equals(product.myLogo) : product.myLogo != null) return false;
-    if (myManufacturer != null ? !myManufacturer.equals(product.myManufacturer) : product.myManufacturer != null) return false;
-    if (myModel != null ? !myModel.equals(product.myModel) : product.myModel != null) return false;
-    if (myMpn != null ? !myMpn.equals(product.myMpn) : product.myMpn != null) return false;
-    if (myOffers != null ? !myOffers.equals(product.myOffers) : product.myOffers != null) return false;
-    if (myProductID != null ? !myProductID.equals(product.myProductID) : product.myProductID != null) return false;
-    if (myReleaseDate != null ? !myReleaseDate.equals(product.myReleaseDate) : product.myReleaseDate != null) return false;
-    if (myReview != null ? !myReview.equals(product.myReview) : product.myReview != null) return false;
-    if (mySku != null ? !mySku.equals(product.mySku) : product.mySku != null) return false;
-    if (myWeight != null ? !myWeight.equals(product.myWeight) : product.myWeight != null) return false;
-    if (myWidth != null ? !myWidth.equals(product.myWidth) : product.myWidth != null) return false;
-    if (myAdditionalProperty != null ? !myAdditionalProperty.equals(product.myAdditionalProperty) : product.myAdditionalProperty != null) return false;
-    if (myProductionDate != null ? !myProductionDate.equals(product.myProductionDate) : product.myProductionDate != null) return false;
-    if (myPurchaseDate != null ? !myPurchaseDate.equals(product.myPurchaseDate) : product.myPurchaseDate != null) return false;
-    return true;
+  protected Product(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Product}
    */
-  public static class Builder implements ThingBuilder<Product> {
+  public static class Builder extends Thing.Builder {
     public Product build() {
-      return new Product(aggregateRating, audience, award, brand, category, color, depth, gtin12, gtin13, gtin14, gtin8, height, isAccessoryOrSparePartFor, isConsumableFor, isRelatedTo, isSimilarTo, itemCondition, logo, manufacturer, model, mpn, offers, productID, releaseDate, review, sku, weight, width, additionalProperty, productionDate, purchaseDate, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Product(myData);
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
-      this.aggregateRating = aggregateRating;
+      putValue("aggregateRating", aggregateRating);
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating) {
-      return this.aggregateRating(aggregateRating.build());
+      putValue("aggregateRating", aggregateRating.build());
+      return this;
     }
     /**
      * An intended audience, i.e. a group for whom something was created.
      */
     @NotNull public Builder audience(@NotNull Audience audience) {
-      this.audience = audience;
+      putValue("audience", audience);
       return this;
     }
     /**
      * An intended audience, i.e. a group for whom something was created.
      */
     @NotNull public Builder audience(@NotNull Audience.Builder audience) {
-      return this.audience(audience.build());
+      putValue("audience", audience.build());
+      return this;
     }
     /**
      * An award won by or for this item.
      */
     @NotNull public Builder award(@NotNull String award) {
-      this.award = award;
+      putValue("award", award);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Brand brand) {
-      if (this.brand == null) this.brand = new BrandOrOrganization();
-      this.brand.setBrand(brand);
+      putValue("brand", brand);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Brand.Builder brand) {
-      return this.brand(brand.build());
+      putValue("brand", brand.build());
+      return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Organization organization) {
-      if (this.brand == null) this.brand = new BrandOrOrganization();
-      this.brand.setOrganization(organization);
+      putValue("brand", organization);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Organization.Builder organization) {
-      return this.brand(organization.build());
+      putValue("brand", organization.build());
+      return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull PhysicalActivityCategory physicalActivityCategory) {
-      if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
-      this.category.setPhysicalActivityCategory(physicalActivityCategory);
+      putValue("category", physicalActivityCategory);
       return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull PhysicalActivityCategory.Builder physicalActivityCategory) {
-      return this.category(physicalActivityCategory.build());
+      putValue("category", physicalActivityCategory.build());
+      return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull String category) {
-      if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
-      this.category.setString(category);
+      putValue("category", category);
       return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull Thing thing) {
-      if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
-      this.category.setThing(thing);
+      putValue("category", thing);
       return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull Thing.Builder thing) {
-      return this.category(thing.build());
+      putValue("category", thing.build());
+      return this;
     }
     /**
      * The color of the product.
      */
     @NotNull public Builder color(@NotNull String color) {
-      this.color = color;
+      putValue("color", color);
       return this;
     }
     /**
      * The depth of the item.
      */
     @NotNull public Builder depth(@NotNull Distance distance) {
-      if (this.depth == null) this.depth = new DistanceOrQuantitativeValue();
-      this.depth.setDistance(distance);
+      putValue("depth", distance);
       return this;
     }
     /**
      * The depth of the item.
      */
     @NotNull public Builder depth(@NotNull Distance.Builder distance) {
-      return this.depth(distance.build());
+      putValue("depth", distance.build());
+      return this;
     }
     /**
      * The depth of the item.
      */
     @NotNull public Builder depth(@NotNull QuantitativeValue quantitativeValue) {
-      if (this.depth == null) this.depth = new DistanceOrQuantitativeValue();
-      this.depth.setQuantitativeValue(quantitativeValue);
+      putValue("depth", quantitativeValue);
       return this;
     }
     /**
      * The depth of the item.
      */
     @NotNull public Builder depth(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.depth(quantitativeValue.build());
+      putValue("depth", quantitativeValue.build());
+      return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-12.aspx">GTIN-12</a> code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
     @NotNull public Builder gtin12(@NotNull String gtin12) {
-      this.gtin12 = gtin12;
+      putValue("gtin12", gtin12);
       return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-13.aspx">GTIN-13</a> code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
     @NotNull public Builder gtin13(@NotNull String gtin13) {
-      this.gtin13 = gtin13;
+      putValue("gtin13", gtin13);
       return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-14.aspx">GTIN-14</a> code of the product, or the product to which the offer refers. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
     @NotNull public Builder gtin14(@NotNull String gtin14) {
-      this.gtin14 = gtin14;
+      putValue("gtin14", gtin14);
       return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-8.aspx">GTIN-8</a> code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
     @NotNull public Builder gtin8(@NotNull String gtin8) {
-      this.gtin8 = gtin8;
+      putValue("gtin8", gtin8);
       return this;
     }
     /**
      * The height of the item.
      */
     @NotNull public Builder height(@NotNull Distance distance) {
-      if (this.height == null) this.height = new DistanceOrQuantitativeValue();
-      this.height.setDistance(distance);
+      putValue("height", distance);
       return this;
     }
     /**
      * The height of the item.
      */
     @NotNull public Builder height(@NotNull Distance.Builder distance) {
-      return this.height(distance.build());
+      putValue("height", distance.build());
+      return this;
     }
     /**
      * The height of the item.
      */
     @NotNull public Builder height(@NotNull QuantitativeValue quantitativeValue) {
-      if (this.height == null) this.height = new DistanceOrQuantitativeValue();
-      this.height.setQuantitativeValue(quantitativeValue);
+      putValue("height", quantitativeValue);
       return this;
     }
     /**
      * The height of the item.
      */
     @NotNull public Builder height(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.height(quantitativeValue.build());
+      putValue("height", quantitativeValue.build());
+      return this;
     }
     /**
      * A pointer to another product (or multiple products) for which this product is an accessory or spare part.
      */
     @NotNull public Builder isAccessoryOrSparePartFor(@NotNull Product product) {
-      this.isAccessoryOrSparePartFor = product;
+      putValue("isAccessoryOrSparePartFor", product);
       return this;
     }
     /**
      * A pointer to another product (or multiple products) for which this product is an accessory or spare part.
      */
     @NotNull public Builder isAccessoryOrSparePartFor(@NotNull Product.Builder product) {
-      return this.isAccessoryOrSparePartFor(product.build());
+      putValue("isAccessoryOrSparePartFor", product.build());
+      return this;
     }
     /**
      * A pointer to another product (or multiple products) for which this product is a consumable.
      */
     @NotNull public Builder isConsumableFor(@NotNull Product product) {
-      this.isConsumableFor = product;
+      putValue("isConsumableFor", product);
       return this;
     }
     /**
      * A pointer to another product (or multiple products) for which this product is a consumable.
      */
     @NotNull public Builder isConsumableFor(@NotNull Product.Builder product) {
-      return this.isConsumableFor(product.build());
+      putValue("isConsumableFor", product.build());
+      return this;
     }
     /**
      * A pointer to another, somehow related product (or multiple products).
      */
     @NotNull public Builder isRelatedTo(@NotNull Product product) {
-      this.isRelatedTo = product;
+      putValue("isRelatedTo", product);
       return this;
     }
     /**
      * A pointer to another, somehow related product (or multiple products).
      */
     @NotNull public Builder isRelatedTo(@NotNull Product.Builder product) {
-      return this.isRelatedTo(product.build());
+      putValue("isRelatedTo", product.build());
+      return this;
     }
     /**
      * A pointer to another, functionally similar product (or multiple products).
      */
     @NotNull public Builder isSimilarTo(@NotNull Product product) {
-      this.isSimilarTo = product;
+      putValue("isSimilarTo", product);
       return this;
     }
     /**
      * A pointer to another, functionally similar product (or multiple products).
      */
     @NotNull public Builder isSimilarTo(@NotNull Product.Builder product) {
-      return this.isSimilarTo(product.build());
+      putValue("isSimilarTo", product.build());
+      return this;
     }
     /**
      * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
      */
     @NotNull public Builder itemCondition(@NotNull OfferItemCondition offerItemCondition) {
-      this.itemCondition = offerItemCondition;
+      putValue("itemCondition", offerItemCondition);
       return this;
     }
     /**
      * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
      */
     @NotNull public Builder itemCondition(@NotNull OfferItemCondition.Builder offerItemCondition) {
-      return this.itemCondition(offerItemCondition.build());
+      putValue("itemCondition", offerItemCondition.build());
+      return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull ImageObject imageObject) {
-      if (this.logo == null) this.logo = new ImageObjectOrString();
-      this.logo.setImageObject(imageObject);
+      putValue("logo", imageObject);
       return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull ImageObject.Builder imageObject) {
-      return this.logo(imageObject.build());
+      putValue("logo", imageObject.build());
+      return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull String logo) {
-      if (this.logo == null) this.logo = new ImageObjectOrString();
-      this.logo.setString(logo);
+      putValue("logo", logo);
       return this;
     }
     /**
      * The manufacturer of the product.
      */
     @NotNull public Builder manufacturer(@NotNull Organization organization) {
-      this.manufacturer = organization;
+      putValue("manufacturer", organization);
       return this;
     }
     /**
      * The manufacturer of the product.
      */
     @NotNull public Builder manufacturer(@NotNull Organization.Builder organization) {
-      return this.manufacturer(organization.build());
+      putValue("manufacturer", organization.build());
+      return this;
     }
     /**
      * The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
      */
     @NotNull public Builder model(@NotNull ProductModel productModel) {
-      if (this.model == null) this.model = new ProductModelOrString();
-      this.model.setProductModel(productModel);
+      putValue("model", productModel);
       return this;
     }
     /**
      * The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
      */
     @NotNull public Builder model(@NotNull ProductModel.Builder productModel) {
-      return this.model(productModel.build());
+      putValue("model", productModel.build());
+      return this;
     }
     /**
      * The model of the product. Use with the URL of a ProductModel or a textual representation of the model identifier. The URL of the ProductModel can be from an external source. It is recommended to additionally provide strong product identifiers via the gtin8/gtin13/gtin14 and mpn properties.
      */
     @NotNull public Builder model(@NotNull String model) {
-      if (this.model == null) this.model = new ProductModelOrString();
-      this.model.setString(model);
+      putValue("model", model);
       return this;
     }
     /**
      * The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
      */
     @NotNull public Builder mpn(@NotNull String mpn) {
-      this.mpn = mpn;
+      putValue("mpn", mpn);
       return this;
     }
     /**
      * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
      */
     @NotNull public Builder offers(@NotNull Offer offer) {
-      this.offers = offer;
+      putValue("offers", offer);
       return this;
     }
     /**
      * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
      */
     @NotNull public Builder offers(@NotNull Offer.Builder offer) {
-      return this.offers(offer.build());
+      putValue("offers", offer.build());
+      return this;
     }
     /**
      * The product identifier, such as ISBN. For example: <code>&lt;meta itemprop='productID' content='isbn:123-456-789'/&gt;</code>.
      */
     @NotNull public Builder productID(@NotNull String productID) {
-      this.productID = productID;
+      putValue("productID", productID);
       return this;
     }
     /**
      * The release date of a product or product model. This can be used to distinguish the exact variant of a product.
      */
     @NotNull public Builder releaseDate(@NotNull java.util.Date date) {
-      this.releaseDate = date;
+      putValue("releaseDate", date);
       return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review review) {
-      this.review = review;
+      putValue("review", review);
       return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review.Builder review) {
-      return this.review(review.build());
+      putValue("review", review.build());
+      return this;
     }
     /**
      * The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
      */
     @NotNull public Builder sku(@NotNull String sku) {
-      this.sku = sku;
+      putValue("sku", sku);
       return this;
     }
     /**
      * The weight of the product or person.
      */
     @NotNull public Builder weight(@NotNull QuantitativeValue quantitativeValue) {
-      this.weight = quantitativeValue;
+      putValue("weight", quantitativeValue);
       return this;
     }
     /**
      * The weight of the product or person.
      */
     @NotNull public Builder weight(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.weight(quantitativeValue.build());
+      putValue("weight", quantitativeValue.build());
+      return this;
     }
     /**
      * The width of the item.
      */
     @NotNull public Builder width(@NotNull Distance distance) {
-      if (this.width == null) this.width = new DistanceOrQuantitativeValue();
-      this.width.setDistance(distance);
+      putValue("width", distance);
       return this;
     }
     /**
      * The width of the item.
      */
     @NotNull public Builder width(@NotNull Distance.Builder distance) {
-      return this.width(distance.build());
+      putValue("width", distance.build());
+      return this;
     }
     /**
      * The width of the item.
      */
     @NotNull public Builder width(@NotNull QuantitativeValue quantitativeValue) {
-      if (this.width == null) this.width = new DistanceOrQuantitativeValue();
-      this.width.setQuantitativeValue(quantitativeValue);
+      putValue("width", quantitativeValue);
       return this;
     }
     /**
      * The width of the item.
      */
     @NotNull public Builder width(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.width(quantitativeValue.build());
+      putValue("width", quantitativeValue.build());
+      return this;
     }
     /**
      * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
@@ -714,7 +1127,7 @@ Note: Publishers should be aware that applications designed to use specific sche
      * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue propertyValue) {
-      this.additionalProperty = propertyValue;
+      putValue("additionalProperty", propertyValue);
       return this;
     }
     /**
@@ -724,41 +1137,42 @@ Note: Publishers should be aware that applications designed to use specific sche
      * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue) {
-      return this.additionalProperty(propertyValue.build());
+      putValue("additionalProperty", propertyValue.build());
+      return this;
     }
     /**
      * The date of production of the item, e.g. vehicle.
      */
     @NotNull public Builder productionDate(@NotNull java.util.Date date) {
-      this.productionDate = date;
+      putValue("productionDate", date);
       return this;
     }
     /**
      * The date the item e.g. vehicle was purchased by the current owner.
      */
     @NotNull public Builder purchaseDate(@NotNull java.util.Date date) {
-      this.purchaseDate = date;
+      putValue("purchaseDate", date);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -792,8 +1206,7 @@ Note: Publishers should be aware that applications designed to use specific sche
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -827,7 +1240,8 @@ Note: Publishers should be aware that applications designed to use specific sche
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -860,178 +1274,93 @@ Note: Publishers should be aware that applications designed to use specific sche
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); continue; }
-        if ("audience".equals(key) && value instanceof Audience) { audience((Audience)value); continue; }
-        if ("award".equals(key) && value instanceof String) { award((String)value); continue; }
-        if ("brand".equals(key) && value instanceof Brand) { brand((Brand)value); continue; }
-        if ("brand".equals(key) && value instanceof Organization) { brand((Organization)value); continue; }
-        if ("category".equals(key) && value instanceof PhysicalActivityCategory) { category((PhysicalActivityCategory)value); continue; }
-        if ("category".equals(key) && value instanceof String) { category((String)value); continue; }
-        if ("category".equals(key) && value instanceof Thing) { category((Thing)value); continue; }
-        if ("color".equals(key) && value instanceof String) { color((String)value); continue; }
-        if ("depth".equals(key) && value instanceof Distance) { depth((Distance)value); continue; }
-        if ("depth".equals(key) && value instanceof QuantitativeValue) { depth((QuantitativeValue)value); continue; }
-        if ("gtin12".equals(key) && value instanceof String) { gtin12((String)value); continue; }
-        if ("gtin13".equals(key) && value instanceof String) { gtin13((String)value); continue; }
-        if ("gtin14".equals(key) && value instanceof String) { gtin14((String)value); continue; }
-        if ("gtin8".equals(key) && value instanceof String) { gtin8((String)value); continue; }
-        if ("height".equals(key) && value instanceof Distance) { height((Distance)value); continue; }
-        if ("height".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); continue; }
-        if ("isAccessoryOrSparePartFor".equals(key) && value instanceof Product) { isAccessoryOrSparePartFor((Product)value); continue; }
-        if ("isConsumableFor".equals(key) && value instanceof Product) { isConsumableFor((Product)value); continue; }
-        if ("isRelatedTo".equals(key) && value instanceof Product) { isRelatedTo((Product)value); continue; }
-        if ("isSimilarTo".equals(key) && value instanceof Product) { isSimilarTo((Product)value); continue; }
-        if ("itemCondition".equals(key) && value instanceof OfferItemCondition) { itemCondition((OfferItemCondition)value); continue; }
-        if ("logo".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); continue; }
-        if ("logo".equals(key) && value instanceof String) { logo((String)value); continue; }
-        if ("manufacturer".equals(key) && value instanceof Organization) { manufacturer((Organization)value); continue; }
-        if ("model".equals(key) && value instanceof ProductModel) { model((ProductModel)value); continue; }
-        if ("model".equals(key) && value instanceof String) { model((String)value); continue; }
-        if ("mpn".equals(key) && value instanceof String) { mpn((String)value); continue; }
-        if ("offers".equals(key) && value instanceof Offer) { offers((Offer)value); continue; }
-        if ("productID".equals(key) && value instanceof String) { productID((String)value); continue; }
-        if ("releaseDate".equals(key) && value instanceof java.util.Date) { releaseDate((java.util.Date)value); continue; }
-        if ("review".equals(key) && value instanceof Review) { review((Review)value); continue; }
-        if ("sku".equals(key) && value instanceof String) { sku((String)value); continue; }
-        if ("weight".equals(key) && value instanceof QuantitativeValue) { weight((QuantitativeValue)value); continue; }
-        if ("width".equals(key) && value instanceof Distance) { width((Distance)value); continue; }
-        if ("width".equals(key) && value instanceof QuantitativeValue) { width((QuantitativeValue)value); continue; }
-        if ("additionalProperty".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); continue; }
-        if ("productionDate".equals(key) && value instanceof java.util.Date) { productionDate((java.util.Date)value); continue; }
-        if ("purchaseDate".equals(key) && value instanceof java.util.Date) { purchaseDate((java.util.Date)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
+      if ("audience".equals(key) && value instanceof Audience) { audience((Audience)value); return; }
+      if ("award".equals(key) && value instanceof String) { award((String)value); return; }
+      if ("brand".equals(key) && value instanceof Brand) { brand((Brand)value); return; }
+      if ("brand".equals(key) && value instanceof Organization) { brand((Organization)value); return; }
+      if ("category".equals(key) && value instanceof PhysicalActivityCategory) { category((PhysicalActivityCategory)value); return; }
+      if ("category".equals(key) && value instanceof String) { category((String)value); return; }
+      if ("category".equals(key) && value instanceof Thing) { category((Thing)value); return; }
+      if ("color".equals(key) && value instanceof String) { color((String)value); return; }
+      if ("depth".equals(key) && value instanceof Distance) { depth((Distance)value); return; }
+      if ("depth".equals(key) && value instanceof QuantitativeValue) { depth((QuantitativeValue)value); return; }
+      if ("gtin12".equals(key) && value instanceof String) { gtin12((String)value); return; }
+      if ("gtin13".equals(key) && value instanceof String) { gtin13((String)value); return; }
+      if ("gtin14".equals(key) && value instanceof String) { gtin14((String)value); return; }
+      if ("gtin8".equals(key) && value instanceof String) { gtin8((String)value); return; }
+      if ("height".equals(key) && value instanceof Distance) { height((Distance)value); return; }
+      if ("height".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); return; }
+      if ("isAccessoryOrSparePartFor".equals(key) && value instanceof Product) { isAccessoryOrSparePartFor((Product)value); return; }
+      if ("isConsumableFor".equals(key) && value instanceof Product) { isConsumableFor((Product)value); return; }
+      if ("isRelatedTo".equals(key) && value instanceof Product) { isRelatedTo((Product)value); return; }
+      if ("isSimilarTo".equals(key) && value instanceof Product) { isSimilarTo((Product)value); return; }
+      if ("itemCondition".equals(key) && value instanceof OfferItemCondition) { itemCondition((OfferItemCondition)value); return; }
+      if ("logo".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); return; }
+      if ("logo".equals(key) && value instanceof String) { logo((String)value); return; }
+      if ("manufacturer".equals(key) && value instanceof Organization) { manufacturer((Organization)value); return; }
+      if ("model".equals(key) && value instanceof ProductModel) { model((ProductModel)value); return; }
+      if ("model".equals(key) && value instanceof String) { model((String)value); return; }
+      if ("mpn".equals(key) && value instanceof String) { mpn((String)value); return; }
+      if ("offers".equals(key) && value instanceof Offer) { offers((Offer)value); return; }
+      if ("productID".equals(key) && value instanceof String) { productID((String)value); return; }
+      if ("releaseDate".equals(key) && value instanceof java.util.Date) { releaseDate((java.util.Date)value); return; }
+      if ("review".equals(key) && value instanceof Review) { review((Review)value); return; }
+      if ("sku".equals(key) && value instanceof String) { sku((String)value); return; }
+      if ("weight".equals(key) && value instanceof QuantitativeValue) { weight((QuantitativeValue)value); return; }
+      if ("width".equals(key) && value instanceof Distance) { width((Distance)value); return; }
+      if ("width".equals(key) && value instanceof QuantitativeValue) { width((QuantitativeValue)value); return; }
+      if ("additionalProperty".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); return; }
+      if ("productionDate".equals(key) && value instanceof java.util.Date) { productionDate((java.util.Date)value); return; }
+      if ("purchaseDate".equals(key) && value instanceof java.util.Date) { purchaseDate((java.util.Date)value); return; }
+      super.fromMap(key, value);
     }
-    private AggregateRating aggregateRating;
-    private Audience audience;
-    private String award;
-    private BrandOrOrganization brand;
-    private PhysicalActivityCategoryOrStringOrThing category;
-    private String color;
-    private DistanceOrQuantitativeValue depth;
-    private String gtin12;
-    private String gtin13;
-    private String gtin14;
-    private String gtin8;
-    private DistanceOrQuantitativeValue height;
-    private Product isAccessoryOrSparePartFor;
-    private Product isConsumableFor;
-    private Product isRelatedTo;
-    private Product isSimilarTo;
-    private OfferItemCondition itemCondition;
-    private ImageObjectOrString logo;
-    private Organization manufacturer;
-    private ProductModelOrString model;
-    private String mpn;
-    private Offer offers;
-    private String productID;
-    private java.util.Date releaseDate;
-    private Review review;
-    private String sku;
-    private QuantitativeValue weight;
-    private DistanceOrQuantitativeValue width;
-    private PropertyValue additionalProperty;
-    private java.util.Date productionDate;
-    private java.util.Date purchaseDate;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private AggregateRating myAggregateRating;
-  private Audience myAudience;
-  private String myAward;
-  private BrandOrOrganization myBrand;
-  private PhysicalActivityCategoryOrStringOrThing myCategory;
-  private String myColor;
-  private DistanceOrQuantitativeValue myDepth;
-  private String myGtin12;
-  private String myGtin13;
-  private String myGtin14;
-  private String myGtin8;
-  private DistanceOrQuantitativeValue myHeight;
-  private Product myIsAccessoryOrSparePartFor;
-  private Product myIsConsumableFor;
-  private Product myIsRelatedTo;
-  private Product myIsSimilarTo;
-  private OfferItemCondition myItemCondition;
-  private ImageObjectOrString myLogo;
-  private Organization myManufacturer;
-  private ProductModelOrString myModel;
-  private String myMpn;
-  private Offer myOffers;
-  private String myProductID;
-  private java.util.Date myReleaseDate;
-  private Review myReview;
-  private String mySku;
-  private QuantitativeValue myWeight;
-  private DistanceOrQuantitativeValue myWidth;
-  private PropertyValue myAdditionalProperty;
-  private java.util.Date myProductionDate;
-  private java.util.Date myPurchaseDate;
 }

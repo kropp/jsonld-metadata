@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A product taken by mouth that contains a dietary ingredient intended to supplement the diet. Dietary ingredients may include vitamins, minerals, herbs or other botanicals, amino acids, and substances such as enzymes, organ tissues, glandulars and metabolites.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -29,391 +30,503 @@ public class DietarySupplement extends MedicalTherapy {
   /**
    * An active ingredient, typically chemical compounds and/or biologic substances.
    */
-  public String getActiveIngredient() { return myActiveIngredient; }
+  @JsonIgnore public String getActiveIngredient() {
+    return (String) getValue("activeIngredient");
+  }
+  /**
+   * An active ingredient, typically chemical compounds and/or biologic substances.
+   */
+  @JsonIgnore public Collection<String> getActiveIngredients() {
+    final Object current = myData.get("activeIngredient");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Descriptive information establishing a historical perspective on the supplement. May include the rationale for the name, the population where the supplement first came to prominence, etc.
    */
-  public String getBackground() { return myBackground; }
+  @JsonIgnore public String getBackground() {
+    return (String) getValue("background");
+  }
+  /**
+   * Descriptive information establishing a historical perspective on the supplement. May include the rationale for the name, the population where the supplement first came to prominence, etc.
+   */
+  @JsonIgnore public Collection<String> getBackgrounds() {
+    final Object current = myData.get("background");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension', 'injection'.
    */
-  public String getDosageForm() { return myDosageForm; }
+  @JsonIgnore public String getDosageForm() {
+    return (String) getValue("dosageForm");
+  }
+  /**
+   * A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension', 'injection'.
+   */
+  @JsonIgnore public Collection<String> getDosageForms() {
+    final Object current = myData.get("dosageForm");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * True if this item's name is a proprietary/brand name (vs. generic name).
    */
-  public Boolean getIsProprietary() { return myIsProprietary; }
+  @JsonIgnore public Boolean getIsProprietary() {
+    return (Boolean) getValue("isProprietary");
+  }
+  /**
+   * True if this item's name is a proprietary/brand name (vs. generic name).
+   */
+  @JsonIgnore public Collection<Boolean> getIsProprietarys() {
+    final Object current = myData.get("isProprietary");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Boolean>) current;
+    }
+    return Arrays.asList((Boolean) current);
+  }
   /**
    * The drug or supplement's legal status, including any controlled substance schedules that apply.
    */
-  public DrugLegalStatus getLegalStatus() { return myLegalStatus; }
+  @JsonIgnore public DrugLegalStatus getLegalStatus() {
+    return (DrugLegalStatus) getValue("legalStatus");
+  }
+  /**
+   * The drug or supplement's legal status, including any controlled substance schedules that apply.
+   */
+  @JsonIgnore public Collection<DrugLegalStatus> getLegalStatuss() {
+    final Object current = myData.get("legalStatus");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<DrugLegalStatus>) current;
+    }
+    return Arrays.asList((DrugLegalStatus) current);
+  }
   /**
    * The manufacturer of the product.
    */
-  public Organization getManufacturer() { return myManufacturer; }
+  @JsonIgnore public Organization getManufacturer() {
+    return (Organization) getValue("manufacturer");
+  }
+  /**
+   * The manufacturer of the product.
+   */
+  @JsonIgnore public Collection<Organization> getManufacturers() {
+    final Object current = myData.get("manufacturer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
    */
-  public MaximumDoseSchedule getMaximumIntake() { return myMaximumIntake; }
+  @JsonIgnore public MaximumDoseSchedule getMaximumIntake() {
+    return (MaximumDoseSchedule) getValue("maximumIntake");
+  }
+  /**
+   * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
+   */
+  @JsonIgnore public Collection<MaximumDoseSchedule> getMaximumIntakes() {
+    final Object current = myData.get("maximumIntake");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MaximumDoseSchedule>) current;
+    }
+    return Arrays.asList((MaximumDoseSchedule) current);
+  }
   /**
    * The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
    */
-  public String getMechanismOfAction() { return myMechanismOfAction; }
+  @JsonIgnore public String getMechanismOfAction() {
+    return (String) getValue("mechanismOfAction");
+  }
+  /**
+   * The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
+   */
+  @JsonIgnore public Collection<String> getMechanismOfActions() {
+    final Object current = myData.get("mechanismOfAction");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The generic name of this drug or supplement.
    */
-  public String getNonProprietaryName() { return myNonProprietaryName; }
+  @JsonIgnore public String getNonProprietaryName() {
+    return (String) getValue("nonProprietaryName");
+  }
+  /**
+   * The generic name of this drug or supplement.
+   */
+  @JsonIgnore public Collection<String> getNonProprietaryNames() {
+    final Object current = myData.get("nonProprietaryName");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
    */
-  public RecommendedDoseSchedule getRecommendedIntake() { return myRecommendedIntake; }
+  @JsonIgnore public RecommendedDoseSchedule getRecommendedIntake() {
+    return (RecommendedDoseSchedule) getValue("recommendedIntake");
+  }
+  /**
+   * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
+   */
+  @JsonIgnore public Collection<RecommendedDoseSchedule> getRecommendedIntakes() {
+    final Object current = myData.get("recommendedIntake");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<RecommendedDoseSchedule>) current;
+    }
+    return Arrays.asList((RecommendedDoseSchedule) current);
+  }
   /**
    * Any potential safety concern associated with the supplement. May include interactions with other drugs and foods, pregnancy, breastfeeding, known adverse reactions, and documented efficacy of the supplement.
    */
-  public String getSafetyConsideration() { return mySafetyConsideration; }
+  @JsonIgnore public String getSafetyConsideration() {
+    return (String) getValue("safetyConsideration");
+  }
+  /**
+   * Any potential safety concern associated with the supplement. May include interactions with other drugs and foods, pregnancy, breastfeeding, known adverse reactions, and documented efficacy of the supplement.
+   */
+  @JsonIgnore public Collection<String> getSafetyConsiderations() {
+    final Object current = myData.get("safetyConsideration");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.
    */
-  public String getTargetPopulation() { return myTargetPopulation; }
-  protected DietarySupplement(String activeIngredient, String background, String dosageForm, Boolean isProprietary, DrugLegalStatus legalStatus, Organization manufacturer, MaximumDoseSchedule maximumIntake, String mechanismOfAction, String nonProprietaryName, RecommendedDoseSchedule recommendedIntake, String safetyConsideration, String targetPopulation, MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalTherapy duplicateTherapy, MedicalIndication indication, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myActiveIngredient = activeIngredient;
-    myBackground = background;
-    myDosageForm = dosageForm;
-    myIsProprietary = isProprietary;
-    myLegalStatus = legalStatus;
-    myManufacturer = manufacturer;
-    myMaximumIntake = maximumIntake;
-    myMechanismOfAction = mechanismOfAction;
-    myNonProprietaryName = nonProprietaryName;
-    myRecommendedIntake = recommendedIntake;
-    mySafetyConsideration = safetyConsideration;
-    myTargetPopulation = targetPopulation;
-    myActiveIngredient = activeIngredient;
-    myBackground = background;
-    myDosageForm = dosageForm;
-    myIsProprietary = isProprietary;
-    myLegalStatus = legalStatus;
-    myManufacturer = manufacturer;
-    myMaximumIntake = maximumIntake;
-    myMechanismOfAction = mechanismOfAction;
-    myNonProprietaryName = nonProprietaryName;
-    myRecommendedIntake = recommendedIntake;
-    mySafetyConsideration = safetyConsideration;
-    myTargetPopulation = targetPopulation;
+  @JsonIgnore public String getTargetPopulation() {
+    return (String) getValue("targetPopulation");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myActiveIngredient != null ? myActiveIngredient.hashCode() : 0);
-    result = 31 * result + (myBackground != null ? myBackground.hashCode() : 0);
-    result = 31 * result + (myDosageForm != null ? myDosageForm.hashCode() : 0);
-    result = 31 * result + (myIsProprietary != null ? myIsProprietary.hashCode() : 0);
-    result = 31 * result + (myLegalStatus != null ? myLegalStatus.hashCode() : 0);
-    result = 31 * result + (myManufacturer != null ? myManufacturer.hashCode() : 0);
-    result = 31 * result + (myMaximumIntake != null ? myMaximumIntake.hashCode() : 0);
-    result = 31 * result + (myMechanismOfAction != null ? myMechanismOfAction.hashCode() : 0);
-    result = 31 * result + (myNonProprietaryName != null ? myNonProprietaryName.hashCode() : 0);
-    result = 31 * result + (myRecommendedIntake != null ? myRecommendedIntake.hashCode() : 0);
-    result = 31 * result + (mySafetyConsideration != null ? mySafetyConsideration.hashCode() : 0);
-    result = 31 * result + (myTargetPopulation != null ? myTargetPopulation.hashCode() : 0);
-    return result;
+  /**
+   * Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.
+   */
+  @JsonIgnore public Collection<String> getTargetPopulations() {
+    final Object current = myData.get("targetPopulation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    DietarySupplement dietarySupplement = (DietarySupplement) o;
-    if (!super.equals(o)) return false;
-    if (myActiveIngredient != null ? !myActiveIngredient.equals(dietarySupplement.myActiveIngredient) : dietarySupplement.myActiveIngredient != null) return false;
-    if (myBackground != null ? !myBackground.equals(dietarySupplement.myBackground) : dietarySupplement.myBackground != null) return false;
-    if (myDosageForm != null ? !myDosageForm.equals(dietarySupplement.myDosageForm) : dietarySupplement.myDosageForm != null) return false;
-    if (myIsProprietary != null ? !myIsProprietary.equals(dietarySupplement.myIsProprietary) : dietarySupplement.myIsProprietary != null) return false;
-    if (myLegalStatus != null ? !myLegalStatus.equals(dietarySupplement.myLegalStatus) : dietarySupplement.myLegalStatus != null) return false;
-    if (myManufacturer != null ? !myManufacturer.equals(dietarySupplement.myManufacturer) : dietarySupplement.myManufacturer != null) return false;
-    if (myMaximumIntake != null ? !myMaximumIntake.equals(dietarySupplement.myMaximumIntake) : dietarySupplement.myMaximumIntake != null) return false;
-    if (myMechanismOfAction != null ? !myMechanismOfAction.equals(dietarySupplement.myMechanismOfAction) : dietarySupplement.myMechanismOfAction != null) return false;
-    if (myNonProprietaryName != null ? !myNonProprietaryName.equals(dietarySupplement.myNonProprietaryName) : dietarySupplement.myNonProprietaryName != null) return false;
-    if (myRecommendedIntake != null ? !myRecommendedIntake.equals(dietarySupplement.myRecommendedIntake) : dietarySupplement.myRecommendedIntake != null) return false;
-    if (mySafetyConsideration != null ? !mySafetyConsideration.equals(dietarySupplement.mySafetyConsideration) : dietarySupplement.mySafetyConsideration != null) return false;
-    if (myTargetPopulation != null ? !myTargetPopulation.equals(dietarySupplement.myTargetPopulation) : dietarySupplement.myTargetPopulation != null) return false;
-    return true;
+  protected DietarySupplement(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link DietarySupplement}
    */
-  public static class Builder implements ThingBuilder<DietarySupplement> {
+  public static class Builder extends MedicalTherapy.Builder {
     public DietarySupplement build() {
-      return new DietarySupplement(activeIngredient, background, dosageForm, isProprietary, legalStatus, manufacturer, maximumIntake, mechanismOfAction, nonProprietaryName, recommendedIntake, safetyConsideration, targetPopulation, adverseOutcome, contraindication, duplicateTherapy, indication, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new DietarySupplement(myData);
     }
     /**
      * An active ingredient, typically chemical compounds and/or biologic substances.
      */
     @NotNull public Builder activeIngredient(@NotNull String activeIngredient) {
-      this.activeIngredient = activeIngredient;
+      putValue("activeIngredient", activeIngredient);
       return this;
     }
     /**
      * Descriptive information establishing a historical perspective on the supplement. May include the rationale for the name, the population where the supplement first came to prominence, etc.
      */
     @NotNull public Builder background(@NotNull String background) {
-      this.background = background;
+      putValue("background", background);
       return this;
     }
     /**
      * A dosage form in which this drug/supplement is available, e.g. 'tablet', 'suspension', 'injection'.
      */
     @NotNull public Builder dosageForm(@NotNull String dosageForm) {
-      this.dosageForm = dosageForm;
+      putValue("dosageForm", dosageForm);
       return this;
     }
     /**
      * True if this item's name is a proprietary/brand name (vs. generic name).
      */
     @NotNull public Builder isProprietary(@NotNull Boolean isProprietary) {
-      this.isProprietary = isProprietary;
+      putValue("isProprietary", isProprietary);
       return this;
     }
     /**
      * The drug or supplement's legal status, including any controlled substance schedules that apply.
      */
     @NotNull public Builder legalStatus(@NotNull DrugLegalStatus drugLegalStatus) {
-      this.legalStatus = drugLegalStatus;
+      putValue("legalStatus", drugLegalStatus);
       return this;
     }
     /**
      * The drug or supplement's legal status, including any controlled substance schedules that apply.
      */
     @NotNull public Builder legalStatus(@NotNull DrugLegalStatus.Builder drugLegalStatus) {
-      return this.legalStatus(drugLegalStatus.build());
+      putValue("legalStatus", drugLegalStatus.build());
+      return this;
     }
     /**
      * The manufacturer of the product.
      */
     @NotNull public Builder manufacturer(@NotNull Organization organization) {
-      this.manufacturer = organization;
+      putValue("manufacturer", organization);
       return this;
     }
     /**
      * The manufacturer of the product.
      */
     @NotNull public Builder manufacturer(@NotNull Organization.Builder organization) {
-      return this.manufacturer(organization.build());
+      putValue("manufacturer", organization.build());
+      return this;
     }
     /**
      * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
      */
     @NotNull public Builder maximumIntake(@NotNull MaximumDoseSchedule maximumDoseSchedule) {
-      this.maximumIntake = maximumDoseSchedule;
+      putValue("maximumIntake", maximumDoseSchedule);
       return this;
     }
     /**
      * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
      */
     @NotNull public Builder maximumIntake(@NotNull MaximumDoseSchedule.Builder maximumDoseSchedule) {
-      return this.maximumIntake(maximumDoseSchedule.build());
+      putValue("maximumIntake", maximumDoseSchedule.build());
+      return this;
     }
     /**
      * The specific biochemical interaction through which this drug or supplement produces its pharmacological effect.
      */
     @NotNull public Builder mechanismOfAction(@NotNull String mechanismOfAction) {
-      this.mechanismOfAction = mechanismOfAction;
+      putValue("mechanismOfAction", mechanismOfAction);
       return this;
     }
     /**
      * The generic name of this drug or supplement.
      */
     @NotNull public Builder nonProprietaryName(@NotNull String nonProprietaryName) {
-      this.nonProprietaryName = nonProprietaryName;
+      putValue("nonProprietaryName", nonProprietaryName);
       return this;
     }
     /**
      * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
      */
     @NotNull public Builder recommendedIntake(@NotNull RecommendedDoseSchedule recommendedDoseSchedule) {
-      this.recommendedIntake = recommendedDoseSchedule;
+      putValue("recommendedIntake", recommendedDoseSchedule);
       return this;
     }
     /**
      * Recommended intake of this supplement for a given population as defined by a specific recommending authority.
      */
     @NotNull public Builder recommendedIntake(@NotNull RecommendedDoseSchedule.Builder recommendedDoseSchedule) {
-      return this.recommendedIntake(recommendedDoseSchedule.build());
+      putValue("recommendedIntake", recommendedDoseSchedule.build());
+      return this;
     }
     /**
      * Any potential safety concern associated with the supplement. May include interactions with other drugs and foods, pregnancy, breastfeeding, known adverse reactions, and documented efficacy of the supplement.
      */
     @NotNull public Builder safetyConsideration(@NotNull String safetyConsideration) {
-      this.safetyConsideration = safetyConsideration;
+      putValue("safetyConsideration", safetyConsideration);
       return this;
     }
     /**
      * Characteristics of the population for which this is intended, or which typically uses it, e.g. 'adults'.
      */
     @NotNull public Builder targetPopulation(@NotNull String targetPopulation) {
-      this.targetPopulation = targetPopulation;
+      putValue("targetPopulation", targetPopulation);
       return this;
     }
     /**
      * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
      */
     @NotNull public Builder adverseOutcome(@NotNull MedicalEntity medicalEntity) {
-      this.adverseOutcome = medicalEntity;
+      putValue("adverseOutcome", medicalEntity);
       return this;
     }
     /**
      * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
      */
     @NotNull public Builder adverseOutcome(@NotNull MedicalEntity.Builder medicalEntity) {
-      return this.adverseOutcome(medicalEntity.build());
+      putValue("adverseOutcome", medicalEntity.build());
+      return this;
     }
     /**
      * A contraindication for this therapy.
      */
     @NotNull public Builder contraindication(@NotNull MedicalContraindication medicalContraindication) {
-      this.contraindication = medicalContraindication;
+      putValue("contraindication", medicalContraindication);
       return this;
     }
     /**
      * A contraindication for this therapy.
      */
     @NotNull public Builder contraindication(@NotNull MedicalContraindication.Builder medicalContraindication) {
-      return this.contraindication(medicalContraindication.build());
+      putValue("contraindication", medicalContraindication.build());
+      return this;
     }
     /**
      * A therapy that duplicates or overlaps this one.
      */
     @NotNull public Builder duplicateTherapy(@NotNull MedicalTherapy medicalTherapy) {
-      this.duplicateTherapy = medicalTherapy;
+      putValue("duplicateTherapy", medicalTherapy);
       return this;
     }
     /**
      * A therapy that duplicates or overlaps this one.
      */
     @NotNull public Builder duplicateTherapy(@NotNull MedicalTherapy.Builder medicalTherapy) {
-      return this.duplicateTherapy(medicalTherapy.build());
+      putValue("duplicateTherapy", medicalTherapy.build());
+      return this;
     }
     /**
      * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
      */
     @NotNull public Builder indication(@NotNull MedicalIndication medicalIndication) {
-      this.indication = medicalIndication;
+      putValue("indication", medicalIndication);
       return this;
     }
     /**
      * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
      */
     @NotNull public Builder indication(@NotNull MedicalIndication.Builder medicalIndication) {
-      return this.indication(medicalIndication.build());
+      putValue("indication", medicalIndication.build());
+      return this;
     }
     /**
      * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
      */
     @NotNull public Builder seriousAdverseOutcome(@NotNull MedicalEntity medicalEntity) {
-      this.seriousAdverseOutcome = medicalEntity;
+      putValue("seriousAdverseOutcome", medicalEntity);
       return this;
     }
     /**
      * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
      */
     @NotNull public Builder seriousAdverseOutcome(@NotNull MedicalEntity.Builder medicalEntity) {
-      return this.seriousAdverseOutcome(medicalEntity.build());
+      putValue("seriousAdverseOutcome", medicalEntity.build());
+      return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
-      this.code = medicalCode;
+      putValue("code", medicalCode);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
-      return this.code(medicalCode.build());
+      putValue("code", medicalCode.build());
+      return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+      putValue("guideline", medicalGuideline);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
-      return this.guideline(medicalGuideline.build());
+      putValue("guideline", medicalGuideline.build());
+      return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
+      putValue("medicineSystem", medicineSystem);
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
-      return this.medicineSystem(medicineSystem.build());
+      putValue("medicineSystem", medicineSystem.build());
+      return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
-      this.recognizingAuthority = organization;
+      putValue("recognizingAuthority", organization);
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
-      return this.recognizingAuthority(organization.build());
+      putValue("recognizingAuthority", organization.build());
+      return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
+      putValue("relevantSpecialty", medicalSpecialty);
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
-      return this.relevantSpecialty(medicalSpecialty.build());
+      putValue("relevantSpecialty", medicalSpecialty.build());
+      return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
+      putValue("study", medicalStudy);
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
-      return this.study(medicalStudy.build());
+      putValue("study", medicalStudy.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -447,8 +560,7 @@ public class DietarySupplement extends MedicalTherapy {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -482,7 +594,8 @@ public class DietarySupplement extends MedicalTherapy {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -515,135 +628,66 @@ public class DietarySupplement extends MedicalTherapy {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("activeIngredient".equals(key) && value instanceof String) { activeIngredient((String)value); continue; }
-        if ("background".equals(key) && value instanceof String) { background((String)value); continue; }
-        if ("dosageForm".equals(key) && value instanceof String) { dosageForm((String)value); continue; }
-        if ("isProprietary".equals(key) && value instanceof Boolean) { isProprietary((Boolean)value); continue; }
-        if ("legalStatus".equals(key) && value instanceof DrugLegalStatus) { legalStatus((DrugLegalStatus)value); continue; }
-        if ("manufacturer".equals(key) && value instanceof Organization) { manufacturer((Organization)value); continue; }
-        if ("maximumIntake".equals(key) && value instanceof MaximumDoseSchedule) { maximumIntake((MaximumDoseSchedule)value); continue; }
-        if ("mechanismOfAction".equals(key) && value instanceof String) { mechanismOfAction((String)value); continue; }
-        if ("nonProprietaryName".equals(key) && value instanceof String) { nonProprietaryName((String)value); continue; }
-        if ("recommendedIntake".equals(key) && value instanceof RecommendedDoseSchedule) { recommendedIntake((RecommendedDoseSchedule)value); continue; }
-        if ("safetyConsideration".equals(key) && value instanceof String) { safetyConsideration((String)value); continue; }
-        if ("targetPopulation".equals(key) && value instanceof String) { targetPopulation((String)value); continue; }
-        if ("adverseOutcome".equals(key) && value instanceof MedicalEntity) { adverseOutcome((MedicalEntity)value); continue; }
-        if ("contraindication".equals(key) && value instanceof MedicalContraindication) { contraindication((MedicalContraindication)value); continue; }
-        if ("duplicateTherapy".equals(key) && value instanceof MedicalTherapy) { duplicateTherapy((MedicalTherapy)value); continue; }
-        if ("indication".equals(key) && value instanceof MedicalIndication) { indication((MedicalIndication)value); continue; }
-        if ("seriousAdverseOutcome".equals(key) && value instanceof MedicalEntity) { seriousAdverseOutcome((MedicalEntity)value); continue; }
-        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
-        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
-        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
-        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
-        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
-        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("activeIngredient".equals(key) && value instanceof String) { activeIngredient((String)value); return; }
+      if ("background".equals(key) && value instanceof String) { background((String)value); return; }
+      if ("dosageForm".equals(key) && value instanceof String) { dosageForm((String)value); return; }
+      if ("isProprietary".equals(key) && value instanceof Boolean) { isProprietary((Boolean)value); return; }
+      if ("legalStatus".equals(key) && value instanceof DrugLegalStatus) { legalStatus((DrugLegalStatus)value); return; }
+      if ("manufacturer".equals(key) && value instanceof Organization) { manufacturer((Organization)value); return; }
+      if ("maximumIntake".equals(key) && value instanceof MaximumDoseSchedule) { maximumIntake((MaximumDoseSchedule)value); return; }
+      if ("mechanismOfAction".equals(key) && value instanceof String) { mechanismOfAction((String)value); return; }
+      if ("nonProprietaryName".equals(key) && value instanceof String) { nonProprietaryName((String)value); return; }
+      if ("recommendedIntake".equals(key) && value instanceof RecommendedDoseSchedule) { recommendedIntake((RecommendedDoseSchedule)value); return; }
+      if ("safetyConsideration".equals(key) && value instanceof String) { safetyConsideration((String)value); return; }
+      if ("targetPopulation".equals(key) && value instanceof String) { targetPopulation((String)value); return; }
+      super.fromMap(key, value);
     }
-    private String activeIngredient;
-    private String background;
-    private String dosageForm;
-    private Boolean isProprietary;
-    private DrugLegalStatus legalStatus;
-    private Organization manufacturer;
-    private MaximumDoseSchedule maximumIntake;
-    private String mechanismOfAction;
-    private String nonProprietaryName;
-    private RecommendedDoseSchedule recommendedIntake;
-    private String safetyConsideration;
-    private String targetPopulation;
-    private MedicalEntity adverseOutcome;
-    private MedicalContraindication contraindication;
-    private MedicalTherapy duplicateTherapy;
-    private MedicalIndication indication;
-    private MedicalEntity seriousAdverseOutcome;
-    private MedicalCode code;
-    private MedicalGuideline guideline;
-    private MedicineSystem medicineSystem;
-    private Organization recognizingAuthority;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalStudy study;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private String myActiveIngredient;
-  private String myBackground;
-  private String myDosageForm;
-  private Boolean myIsProprietary;
-  private DrugLegalStatus myLegalStatus;
-  private Organization myManufacturer;
-  private MaximumDoseSchedule myMaximumIntake;
-  private String myMechanismOfAction;
-  private String myNonProprietaryName;
-  private RecommendedDoseSchedule myRecommendedIntake;
-  private String mySafetyConsideration;
-  private String myTargetPopulation;
 }

@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A predefined value for a product characteristic, e.g. the power cord plug type "US" or the garment sizes "S", "M", "L", and "XL".Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -29,239 +30,377 @@ public class QualitativeValue extends Enumeration {
   /**
    * This ordering relation for qualitative values indicates that the subject is equal to the object.
    */
-  public QualitativeValue getEqual() { return myEqual; }
+  @JsonIgnore public QualitativeValue getEqual() {
+    return (QualitativeValue) getValue("equal");
+  }
+  /**
+   * This ordering relation for qualitative values indicates that the subject is equal to the object.
+   */
+  @JsonIgnore public Collection<QualitativeValue> getEquals() {
+    final Object current = myData.get("equal");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QualitativeValue>) current;
+    }
+    return Arrays.asList((QualitativeValue) current);
+  }
   /**
    * This ordering relation for qualitative values indicates that the subject is greater than the object.
    */
-  public QualitativeValue getGreater() { return myGreater; }
+  @JsonIgnore public QualitativeValue getGreater() {
+    return (QualitativeValue) getValue("greater");
+  }
+  /**
+   * This ordering relation for qualitative values indicates that the subject is greater than the object.
+   */
+  @JsonIgnore public Collection<QualitativeValue> getGreaters() {
+    final Object current = myData.get("greater");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QualitativeValue>) current;
+    }
+    return Arrays.asList((QualitativeValue) current);
+  }
   /**
    * This ordering relation for qualitative values indicates that the subject is greater than or equal to the object.
    */
-  public QualitativeValue getGreaterOrEqual() { return myGreaterOrEqual; }
+  @JsonIgnore public QualitativeValue getGreaterOrEqual() {
+    return (QualitativeValue) getValue("greaterOrEqual");
+  }
+  /**
+   * This ordering relation for qualitative values indicates that the subject is greater than or equal to the object.
+   */
+  @JsonIgnore public Collection<QualitativeValue> getGreaterOrEquals() {
+    final Object current = myData.get("greaterOrEqual");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QualitativeValue>) current;
+    }
+    return Arrays.asList((QualitativeValue) current);
+  }
   /**
    * This ordering relation for qualitative values indicates that the subject is lesser than the object.
    */
-  public QualitativeValue getLesser() { return myLesser; }
+  @JsonIgnore public QualitativeValue getLesser() {
+    return (QualitativeValue) getValue("lesser");
+  }
+  /**
+   * This ordering relation for qualitative values indicates that the subject is lesser than the object.
+   */
+  @JsonIgnore public Collection<QualitativeValue> getLessers() {
+    final Object current = myData.get("lesser");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QualitativeValue>) current;
+    }
+    return Arrays.asList((QualitativeValue) current);
+  }
   /**
    * This ordering relation for qualitative values indicates that the subject is lesser than or equal to the object.
    */
-  public QualitativeValue getLesserOrEqual() { return myLesserOrEqual; }
+  @JsonIgnore public QualitativeValue getLesserOrEqual() {
+    return (QualitativeValue) getValue("lesserOrEqual");
+  }
+  /**
+   * This ordering relation for qualitative values indicates that the subject is lesser than or equal to the object.
+   */
+  @JsonIgnore public Collection<QualitativeValue> getLesserOrEquals() {
+    final Object current = myData.get("lesserOrEqual");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QualitativeValue>) current;
+    }
+    return Arrays.asList((QualitativeValue) current);
+  }
   /**
    * This ordering relation for qualitative values indicates that the subject is not equal to the object.
    */
-  public QualitativeValue getNonEqual() { return myNonEqual; }
+  @JsonIgnore public QualitativeValue getNonEqual() {
+    return (QualitativeValue) getValue("nonEqual");
+  }
+  /**
+   * This ordering relation for qualitative values indicates that the subject is not equal to the object.
+   */
+  @JsonIgnore public Collection<QualitativeValue> getNonEquals() {
+    final Object current = myData.get("nonEqual");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QualitativeValue>) current;
+    }
+    return Arrays.asList((QualitativeValue) current);
+  }
   /**
    * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
    */
-  public EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue getValueReference() { return myValueReference; }
+  @JsonIgnore public Enumeration getValueReferenceEnumeration() {
+    return (Enumeration) getValue("valueReference");
+  }
+  /**
+   * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+   */
+  @JsonIgnore public Collection<Enumeration> getValueReferenceEnumerations() {
+    final Object current = myData.get("valueReference");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Enumeration>) current;
+    }
+    return Arrays.asList((Enumeration) current);
+  }
+  /**
+   * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+   */
+  @JsonIgnore public PropertyValue getValueReferencePropertyValue() {
+    return (PropertyValue) getValue("valueReference");
+  }
+  /**
+   * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+   */
+  @JsonIgnore public Collection<PropertyValue> getValueReferencePropertyValues() {
+    final Object current = myData.get("valueReference");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PropertyValue>) current;
+    }
+    return Arrays.asList((PropertyValue) current);
+  }
+  /**
+   * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+   */
+  @JsonIgnore public QualitativeValue getValueReferenceQualitativeValue() {
+    return (QualitativeValue) getValue("valueReference");
+  }
+  /**
+   * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+   */
+  @JsonIgnore public Collection<QualitativeValue> getValueReferenceQualitativeValues() {
+    final Object current = myData.get("valueReference");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QualitativeValue>) current;
+    }
+    return Arrays.asList((QualitativeValue) current);
+  }
+  /**
+   * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+   */
+  @JsonIgnore public QuantitativeValue getValueReferenceQuantitativeValue() {
+    return (QuantitativeValue) getValue("valueReference");
+  }
+  /**
+   * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getValueReferenceQuantitativeValues() {
+    final Object current = myData.get("valueReference");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
+  /**
+   * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+   */
+  @JsonIgnore public StructuredValue getValueReferenceStructuredValue() {
+    return (StructuredValue) getValue("valueReference");
+  }
+  /**
+   * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
+   */
+  @JsonIgnore public Collection<StructuredValue> getValueReferenceStructuredValues() {
+    final Object current = myData.get("valueReference");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<StructuredValue>) current;
+    }
+    return Arrays.asList((StructuredValue) current);
+  }
   /**
    * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-
-Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-
+   * 
+   * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+   * 
    */
-  public PropertyValue getAdditionalProperty() { return myAdditionalProperty; }
-  protected QualitativeValue(QualitativeValue equal, QualitativeValue greater, QualitativeValue greaterOrEqual, QualitativeValue lesser, QualitativeValue lesserOrEqual, QualitativeValue nonEqual, EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference, PropertyValue additionalProperty, EnumerationOrProperty supersededBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myEqual = equal;
-    myGreater = greater;
-    myGreaterOrEqual = greaterOrEqual;
-    myLesser = lesser;
-    myLesserOrEqual = lesserOrEqual;
-    myNonEqual = nonEqual;
-    myValueReference = valueReference;
-    myAdditionalProperty = additionalProperty;
-    myEqual = equal;
-    myGreater = greater;
-    myGreaterOrEqual = greaterOrEqual;
-    myLesser = lesser;
-    myLesserOrEqual = lesserOrEqual;
-    myNonEqual = nonEqual;
-    myValueReference = valueReference;
-    myAdditionalProperty = additionalProperty;
+  @JsonIgnore public PropertyValue getAdditionalProperty() {
+    return (PropertyValue) getValue("additionalProperty");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myEqual != null ? myEqual.hashCode() : 0);
-    result = 31 * result + (myGreater != null ? myGreater.hashCode() : 0);
-    result = 31 * result + (myGreaterOrEqual != null ? myGreaterOrEqual.hashCode() : 0);
-    result = 31 * result + (myLesser != null ? myLesser.hashCode() : 0);
-    result = 31 * result + (myLesserOrEqual != null ? myLesserOrEqual.hashCode() : 0);
-    result = 31 * result + (myNonEqual != null ? myNonEqual.hashCode() : 0);
-    result = 31 * result + (myValueReference != null ? myValueReference.hashCode() : 0);
-    result = 31 * result + (myAdditionalProperty != null ? myAdditionalProperty.hashCode() : 0);
-    return result;
+  /**
+   * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
+   * 
+   * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
+   * 
+   */
+  @JsonIgnore public Collection<PropertyValue> getAdditionalPropertys() {
+    final Object current = myData.get("additionalProperty");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PropertyValue>) current;
+    }
+    return Arrays.asList((PropertyValue) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    QualitativeValue qualitativeValue = (QualitativeValue) o;
-    if (!super.equals(o)) return false;
-    if (myEqual != null ? !myEqual.equals(qualitativeValue.myEqual) : qualitativeValue.myEqual != null) return false;
-    if (myGreater != null ? !myGreater.equals(qualitativeValue.myGreater) : qualitativeValue.myGreater != null) return false;
-    if (myGreaterOrEqual != null ? !myGreaterOrEqual.equals(qualitativeValue.myGreaterOrEqual) : qualitativeValue.myGreaterOrEqual != null) return false;
-    if (myLesser != null ? !myLesser.equals(qualitativeValue.myLesser) : qualitativeValue.myLesser != null) return false;
-    if (myLesserOrEqual != null ? !myLesserOrEqual.equals(qualitativeValue.myLesserOrEqual) : qualitativeValue.myLesserOrEqual != null) return false;
-    if (myNonEqual != null ? !myNonEqual.equals(qualitativeValue.myNonEqual) : qualitativeValue.myNonEqual != null) return false;
-    if (myValueReference != null ? !myValueReference.equals(qualitativeValue.myValueReference) : qualitativeValue.myValueReference != null) return false;
-    if (myAdditionalProperty != null ? !myAdditionalProperty.equals(qualitativeValue.myAdditionalProperty) : qualitativeValue.myAdditionalProperty != null) return false;
-    return true;
+  protected QualitativeValue(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link QualitativeValue}
    */
-  public static class Builder implements ThingBuilder<QualitativeValue> {
+  public static class Builder extends Enumeration.Builder {
     public QualitativeValue build() {
-      return new QualitativeValue(equal, greater, greaterOrEqual, lesser, lesserOrEqual, nonEqual, valueReference, additionalProperty, supersededBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new QualitativeValue(myData);
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is equal to the object.
      */
     @NotNull public Builder equal(@NotNull QualitativeValue qualitativeValue) {
-      this.equal = qualitativeValue;
+      putValue("equal", qualitativeValue);
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is equal to the object.
      */
     @NotNull public Builder equal(@NotNull QualitativeValue.Builder qualitativeValue) {
-      return this.equal(qualitativeValue.build());
+      putValue("equal", qualitativeValue.build());
+      return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is greater than the object.
      */
     @NotNull public Builder greater(@NotNull QualitativeValue qualitativeValue) {
-      this.greater = qualitativeValue;
+      putValue("greater", qualitativeValue);
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is greater than the object.
      */
     @NotNull public Builder greater(@NotNull QualitativeValue.Builder qualitativeValue) {
-      return this.greater(qualitativeValue.build());
+      putValue("greater", qualitativeValue.build());
+      return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is greater than or equal to the object.
      */
     @NotNull public Builder greaterOrEqual(@NotNull QualitativeValue qualitativeValue) {
-      this.greaterOrEqual = qualitativeValue;
+      putValue("greaterOrEqual", qualitativeValue);
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is greater than or equal to the object.
      */
     @NotNull public Builder greaterOrEqual(@NotNull QualitativeValue.Builder qualitativeValue) {
-      return this.greaterOrEqual(qualitativeValue.build());
+      putValue("greaterOrEqual", qualitativeValue.build());
+      return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is lesser than the object.
      */
     @NotNull public Builder lesser(@NotNull QualitativeValue qualitativeValue) {
-      this.lesser = qualitativeValue;
+      putValue("lesser", qualitativeValue);
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is lesser than the object.
      */
     @NotNull public Builder lesser(@NotNull QualitativeValue.Builder qualitativeValue) {
-      return this.lesser(qualitativeValue.build());
+      putValue("lesser", qualitativeValue.build());
+      return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is lesser than or equal to the object.
      */
     @NotNull public Builder lesserOrEqual(@NotNull QualitativeValue qualitativeValue) {
-      this.lesserOrEqual = qualitativeValue;
+      putValue("lesserOrEqual", qualitativeValue);
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is lesser than or equal to the object.
      */
     @NotNull public Builder lesserOrEqual(@NotNull QualitativeValue.Builder qualitativeValue) {
-      return this.lesserOrEqual(qualitativeValue.build());
+      putValue("lesserOrEqual", qualitativeValue.build());
+      return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is not equal to the object.
      */
     @NotNull public Builder nonEqual(@NotNull QualitativeValue qualitativeValue) {
-      this.nonEqual = qualitativeValue;
+      putValue("nonEqual", qualitativeValue);
       return this;
     }
     /**
      * This ordering relation for qualitative values indicates that the subject is not equal to the object.
      */
     @NotNull public Builder nonEqual(@NotNull QualitativeValue.Builder qualitativeValue) {
-      return this.nonEqual(qualitativeValue.build());
+      putValue("nonEqual", qualitativeValue.build());
+      return this;
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
     @NotNull public Builder valueReference(@NotNull Enumeration enumeration) {
-      if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
-      this.valueReference.setEnumeration(enumeration);
+      putValue("valueReference", enumeration);
       return this;
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
     @NotNull public Builder valueReference(@NotNull Enumeration.Builder enumeration) {
-      return this.valueReference(enumeration.build());
+      putValue("valueReference", enumeration.build());
+      return this;
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
     @NotNull public Builder valueReference(@NotNull PropertyValue propertyValue) {
-      if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
-      this.valueReference.setPropertyValue(propertyValue);
+      putValue("valueReference", propertyValue);
       return this;
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
     @NotNull public Builder valueReference(@NotNull PropertyValue.Builder propertyValue) {
-      return this.valueReference(propertyValue.build());
+      putValue("valueReference", propertyValue.build());
+      return this;
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
     @NotNull public Builder valueReference(@NotNull QualitativeValue qualitativeValue) {
-      if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
-      this.valueReference.setQualitativeValue(qualitativeValue);
+      putValue("valueReference", qualitativeValue);
       return this;
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
     @NotNull public Builder valueReference(@NotNull QualitativeValue.Builder qualitativeValue) {
-      return this.valueReference(qualitativeValue.build());
+      putValue("valueReference", qualitativeValue.build());
+      return this;
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
     @NotNull public Builder valueReference(@NotNull QuantitativeValue quantitativeValue) {
-      if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
-      this.valueReference.setQuantitativeValue(quantitativeValue);
+      putValue("valueReference", quantitativeValue);
       return this;
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
     @NotNull public Builder valueReference(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.valueReference(quantitativeValue.build());
+      putValue("valueReference", quantitativeValue.build());
+      return this;
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
     @NotNull public Builder valueReference(@NotNull StructuredValue structuredValue) {
-      if (this.valueReference == null) this.valueReference = new EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue();
-      this.valueReference.setStructuredValue(structuredValue);
+      putValue("valueReference", structuredValue);
       return this;
     }
     /**
      * A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature.
      */
     @NotNull public Builder valueReference(@NotNull StructuredValue.Builder structuredValue) {
-      return this.valueReference(structuredValue.build());
+      putValue("valueReference", structuredValue.build());
+      return this;
     }
     /**
      * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
@@ -270,7 +409,7 @@ Note: Publishers should be aware that applications designed to use specific sche
      * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue propertyValue) {
-      this.additionalProperty = propertyValue;
+      putValue("additionalProperty", propertyValue);
       return this;
     }
     /**
@@ -280,55 +419,56 @@ Note: Publishers should be aware that applications designed to use specific sche
      * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue) {
-      return this.additionalProperty(propertyValue.build());
+      putValue("additionalProperty", propertyValue.build());
+      return this;
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
     @NotNull public Builder supersededBy(@NotNull Enumeration enumeration) {
-      if (this.supersededBy == null) this.supersededBy = new EnumerationOrProperty();
-      this.supersededBy.setEnumeration(enumeration);
+      putValue("supersededBy", enumeration);
       return this;
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
     @NotNull public Builder supersededBy(@NotNull Enumeration.Builder enumeration) {
-      return this.supersededBy(enumeration.build());
+      putValue("supersededBy", enumeration.build());
+      return this;
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
     @NotNull public Builder supersededBy(@NotNull Property property) {
-      if (this.supersededBy == null) this.supersededBy = new EnumerationOrProperty();
-      this.supersededBy.setProperty(property);
+      putValue("supersededBy", property);
       return this;
     }
     /**
      * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
      */
     @NotNull public Builder supersededBy(@NotNull Property.Builder property) {
-      return this.supersededBy(property.build());
+      putValue("supersededBy", property.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -362,8 +502,7 @@ Note: Publishers should be aware that applications designed to use specific sche
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -397,7 +536,8 @@ Note: Publishers should be aware that applications designed to use specific sche
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -430,108 +570,66 @@ Note: Publishers should be aware that applications designed to use specific sche
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("equal".equals(key) && value instanceof QualitativeValue) { equal((QualitativeValue)value); continue; }
-        if ("greater".equals(key) && value instanceof QualitativeValue) { greater((QualitativeValue)value); continue; }
-        if ("greaterOrEqual".equals(key) && value instanceof QualitativeValue) { greaterOrEqual((QualitativeValue)value); continue; }
-        if ("lesser".equals(key) && value instanceof QualitativeValue) { lesser((QualitativeValue)value); continue; }
-        if ("lesserOrEqual".equals(key) && value instanceof QualitativeValue) { lesserOrEqual((QualitativeValue)value); continue; }
-        if ("nonEqual".equals(key) && value instanceof QualitativeValue) { nonEqual((QualitativeValue)value); continue; }
-        if ("valueReference".equals(key) && value instanceof Enumeration) { valueReference((Enumeration)value); continue; }
-        if ("valueReference".equals(key) && value instanceof PropertyValue) { valueReference((PropertyValue)value); continue; }
-        if ("valueReference".equals(key) && value instanceof QualitativeValue) { valueReference((QualitativeValue)value); continue; }
-        if ("valueReference".equals(key) && value instanceof QuantitativeValue) { valueReference((QuantitativeValue)value); continue; }
-        if ("valueReference".equals(key) && value instanceof StructuredValue) { valueReference((StructuredValue)value); continue; }
-        if ("additionalProperty".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); continue; }
-        if ("supersededBy".equals(key) && value instanceof Enumeration) { supersededBy((Enumeration)value); continue; }
-        if ("supersededBy".equals(key) && value instanceof Property) { supersededBy((Property)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("equal".equals(key) && value instanceof QualitativeValue) { equal((QualitativeValue)value); return; }
+      if ("greater".equals(key) && value instanceof QualitativeValue) { greater((QualitativeValue)value); return; }
+      if ("greaterOrEqual".equals(key) && value instanceof QualitativeValue) { greaterOrEqual((QualitativeValue)value); return; }
+      if ("lesser".equals(key) && value instanceof QualitativeValue) { lesser((QualitativeValue)value); return; }
+      if ("lesserOrEqual".equals(key) && value instanceof QualitativeValue) { lesserOrEqual((QualitativeValue)value); return; }
+      if ("nonEqual".equals(key) && value instanceof QualitativeValue) { nonEqual((QualitativeValue)value); return; }
+      if ("valueReference".equals(key) && value instanceof Enumeration) { valueReference((Enumeration)value); return; }
+      if ("valueReference".equals(key) && value instanceof PropertyValue) { valueReference((PropertyValue)value); return; }
+      if ("valueReference".equals(key) && value instanceof QualitativeValue) { valueReference((QualitativeValue)value); return; }
+      if ("valueReference".equals(key) && value instanceof QuantitativeValue) { valueReference((QuantitativeValue)value); return; }
+      if ("valueReference".equals(key) && value instanceof StructuredValue) { valueReference((StructuredValue)value); return; }
+      if ("additionalProperty".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); return; }
+      super.fromMap(key, value);
     }
-    private QualitativeValue equal;
-    private QualitativeValue greater;
-    private QualitativeValue greaterOrEqual;
-    private QualitativeValue lesser;
-    private QualitativeValue lesserOrEqual;
-    private QualitativeValue nonEqual;
-    private EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue valueReference;
-    private PropertyValue additionalProperty;
-    private EnumerationOrProperty supersededBy;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private QualitativeValue myEqual;
-  private QualitativeValue myGreater;
-  private QualitativeValue myGreaterOrEqual;
-  private QualitativeValue myLesser;
-  private QualitativeValue myLesserOrEqual;
-  private QualitativeValue myNonEqual;
-  private EnumerationOrPropertyValueOrQualitativeValueOrQuantitativeValueOrStructuredValue myValueReference;
-  private PropertyValue myAdditionalProperty;
 }

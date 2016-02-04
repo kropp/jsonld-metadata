@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * The most generic type of entity related to health and the practice of medicine.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -29,170 +30,219 @@ public class MedicalEntity extends Thing {
   /**
    * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
    */
-  public MedicalCode getCode() { return myCode; }
+  @JsonIgnore public MedicalCode getCode() {
+    return (MedicalCode) getValue("code");
+  }
+  /**
+   * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
+   */
+  @JsonIgnore public Collection<MedicalCode> getCodes() {
+    final Object current = myData.get("code");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalCode>) current;
+    }
+    return Arrays.asList((MedicalCode) current);
+  }
   /**
    * A medical guideline related to this entity.
    */
-  public MedicalGuideline getGuideline() { return myGuideline; }
+  @JsonIgnore public MedicalGuideline getGuideline() {
+    return (MedicalGuideline) getValue("guideline");
+  }
+  /**
+   * A medical guideline related to this entity.
+   */
+  @JsonIgnore public Collection<MedicalGuideline> getGuidelines() {
+    final Object current = myData.get("guideline");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalGuideline>) current;
+    }
+    return Arrays.asList((MedicalGuideline) current);
+  }
   /**
    * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
    */
-  public MedicineSystem getMedicineSystem() { return myMedicineSystem; }
+  @JsonIgnore public MedicineSystem getMedicineSystem() {
+    return (MedicineSystem) getValue("medicineSystem");
+  }
+  /**
+   * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
+   */
+  @JsonIgnore public Collection<MedicineSystem> getMedicineSystems() {
+    final Object current = myData.get("medicineSystem");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicineSystem>) current;
+    }
+    return Arrays.asList((MedicineSystem) current);
+  }
   /**
    * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
    */
-  public Organization getRecognizingAuthority() { return myRecognizingAuthority; }
+  @JsonIgnore public Organization getRecognizingAuthority() {
+    return (Organization) getValue("recognizingAuthority");
+  }
+  /**
+   * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
+   */
+  @JsonIgnore public Collection<Organization> getRecognizingAuthoritys() {
+    final Object current = myData.get("recognizingAuthority");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * If applicable, a medical specialty in which this entity is relevant.
    */
-  public MedicalSpecialty getRelevantSpecialty() { return myRelevantSpecialty; }
+  @JsonIgnore public MedicalSpecialty getRelevantSpecialty() {
+    return (MedicalSpecialty) getValue("relevantSpecialty");
+  }
+  /**
+   * If applicable, a medical specialty in which this entity is relevant.
+   */
+  @JsonIgnore public Collection<MedicalSpecialty> getRelevantSpecialtys() {
+    final Object current = myData.get("relevantSpecialty");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalSpecialty>) current;
+    }
+    return Arrays.asList((MedicalSpecialty) current);
+  }
   /**
    * A medical study or trial related to this entity.
    */
-  public MedicalStudy getStudy() { return myStudy; }
-  protected MedicalEntity(MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myCode = code;
-    myGuideline = guideline;
-    myMedicineSystem = medicineSystem;
-    myRecognizingAuthority = recognizingAuthority;
-    myRelevantSpecialty = relevantSpecialty;
-    myStudy = study;
-    myCode = code;
-    myGuideline = guideline;
-    myMedicineSystem = medicineSystem;
-    myRecognizingAuthority = recognizingAuthority;
-    myRelevantSpecialty = relevantSpecialty;
-    myStudy = study;
+  @JsonIgnore public MedicalStudy getStudy() {
+    return (MedicalStudy) getValue("study");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myCode != null ? myCode.hashCode() : 0);
-    result = 31 * result + (myGuideline != null ? myGuideline.hashCode() : 0);
-    result = 31 * result + (myMedicineSystem != null ? myMedicineSystem.hashCode() : 0);
-    result = 31 * result + (myRecognizingAuthority != null ? myRecognizingAuthority.hashCode() : 0);
-    result = 31 * result + (myRelevantSpecialty != null ? myRelevantSpecialty.hashCode() : 0);
-    result = 31 * result + (myStudy != null ? myStudy.hashCode() : 0);
-    return result;
+  /**
+   * A medical study or trial related to this entity.
+   */
+  @JsonIgnore public Collection<MedicalStudy> getStudys() {
+    final Object current = myData.get("study");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalStudy>) current;
+    }
+    return Arrays.asList((MedicalStudy) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    MedicalEntity medicalEntity = (MedicalEntity) o;
-    if (!super.equals(o)) return false;
-    if (myCode != null ? !myCode.equals(medicalEntity.myCode) : medicalEntity.myCode != null) return false;
-    if (myGuideline != null ? !myGuideline.equals(medicalEntity.myGuideline) : medicalEntity.myGuideline != null) return false;
-    if (myMedicineSystem != null ? !myMedicineSystem.equals(medicalEntity.myMedicineSystem) : medicalEntity.myMedicineSystem != null) return false;
-    if (myRecognizingAuthority != null ? !myRecognizingAuthority.equals(medicalEntity.myRecognizingAuthority) : medicalEntity.myRecognizingAuthority != null) return false;
-    if (myRelevantSpecialty != null ? !myRelevantSpecialty.equals(medicalEntity.myRelevantSpecialty) : medicalEntity.myRelevantSpecialty != null) return false;
-    if (myStudy != null ? !myStudy.equals(medicalEntity.myStudy) : medicalEntity.myStudy != null) return false;
-    return true;
+  protected MedicalEntity(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link MedicalEntity}
    */
-  public static class Builder implements ThingBuilder<MedicalEntity> {
+  public static class Builder extends Thing.Builder {
     public MedicalEntity build() {
-      return new MedicalEntity(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new MedicalEntity(myData);
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
-      this.code = medicalCode;
+      putValue("code", medicalCode);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
-      return this.code(medicalCode.build());
+      putValue("code", medicalCode.build());
+      return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+      putValue("guideline", medicalGuideline);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
-      return this.guideline(medicalGuideline.build());
+      putValue("guideline", medicalGuideline.build());
+      return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
+      putValue("medicineSystem", medicineSystem);
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
-      return this.medicineSystem(medicineSystem.build());
+      putValue("medicineSystem", medicineSystem.build());
+      return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
-      this.recognizingAuthority = organization;
+      putValue("recognizingAuthority", organization);
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
-      return this.recognizingAuthority(organization.build());
+      putValue("recognizingAuthority", organization.build());
+      return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
+      putValue("relevantSpecialty", medicalSpecialty);
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
-      return this.relevantSpecialty(medicalSpecialty.build());
+      putValue("relevantSpecialty", medicalSpecialty.build());
+      return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
+      putValue("study", medicalStudy);
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
-      return this.study(medicalStudy.build());
+      putValue("study", medicalStudy.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -226,8 +276,7 @@ public class MedicalEntity extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -261,7 +310,8 @@ public class MedicalEntity extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -294,95 +344,60 @@ public class MedicalEntity extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
-        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
-        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
-        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
-        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
-        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); return; }
+      if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); return; }
+      if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); return; }
+      if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); return; }
+      if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); return; }
+      if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); return; }
+      super.fromMap(key, value);
     }
-    private MedicalCode code;
-    private MedicalGuideline guideline;
-    private MedicineSystem medicineSystem;
-    private Organization recognizingAuthority;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalStudy study;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private MedicalCode myCode;
-  private MedicalGuideline myGuideline;
-  private MedicineSystem myMedicineSystem;
-  private Organization myRecognizingAuthority;
-  private MedicalSpecialty myRelevantSpecialty;
-  private MedicalStudy myStudy;
 }

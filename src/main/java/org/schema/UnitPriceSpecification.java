@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * The price asked for a given offer by the respective organization or person.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -29,110 +30,199 @@ public class UnitPriceSpecification extends PriceSpecification {
   /**
    * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
    */
-  public Number getBillingIncrement() { return myBillingIncrement; }
+  @JsonIgnore public Integer getBillingIncrementInteger() {
+    return (Integer) getValue("billingIncrement");
+  }
+  /**
+   * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+   */
+  @JsonIgnore public Collection<Integer> getBillingIncrementIntegers() {
+    final Object current = myData.get("billingIncrement");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
+  /**
+   * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+   */
+  @JsonIgnore public Long getBillingIncrementLong() {
+    return (Long) getValue("billingIncrement");
+  }
+  /**
+   * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+   */
+  @JsonIgnore public Collection<Long> getBillingIncrementLongs() {
+    final Object current = myData.get("billingIncrement");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Long>) current;
+    }
+    return Arrays.asList((Long) current);
+  }
+  /**
+   * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+   */
+  @JsonIgnore public Float getBillingIncrementFloat() {
+    return (Float) getValue("billingIncrement");
+  }
+  /**
+   * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+   */
+  @JsonIgnore public Collection<Float> getBillingIncrementFloats() {
+    final Object current = myData.get("billingIncrement");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Float>) current;
+    }
+    return Arrays.asList((Float) current);
+  }
+  /**
+   * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+   */
+  @JsonIgnore public Double getBillingIncrementDouble() {
+    return (Double) getValue("billingIncrement");
+  }
+  /**
+   * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+   */
+  @JsonIgnore public Collection<Double> getBillingIncrementDoubles() {
+    final Object current = myData.get("billingIncrement");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Double>) current;
+    }
+    return Arrays.asList((Double) current);
+  }
+  /**
+   * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+   */
+  @JsonIgnore public String getBillingIncrementString() {
+    return (String) getValue("billingIncrement");
+  }
+  /**
+   * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
+   */
+  @JsonIgnore public Collection<String> getBillingIncrementStrings() {
+    final Object current = myData.get("billingIncrement");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A short text or acronym indicating multiple price specifications for the same offer, e.g. SRP for the suggested retail price or INVOICE for the invoice price, mostly used in the car industry.
    */
-  public String getPriceType() { return myPriceType; }
+  @JsonIgnore public String getPriceType() {
+    return (String) getValue("priceType");
+  }
+  /**
+   * A short text or acronym indicating multiple price specifications for the same offer, e.g. SRP for the suggested retail price or INVOICE for the invoice price, mostly used in the car industry.
+   */
+  @JsonIgnore public Collection<String> getPriceTypes() {
+    final Object current = myData.get("priceType");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
    */
-  public String getUnitCode() { return myUnitCode; }
+  @JsonIgnore public String getUnitCode() {
+    return (String) getValue("unitCode");
+  }
+  /**
+   * The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
+   */
+  @JsonIgnore public Collection<String> getUnitCodes() {
+    final Object current = myData.get("unitCode");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
-<a href='unitCode'>unitCode</a>.
+   * <a href='unitCode'>unitCode</a>.
    */
-  public String getUnitText() { return myUnitText; }
-  protected UnitPriceSpecification(Number billingIncrement, String priceType, String unitCode, String unitText, QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, Number price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myBillingIncrement = billingIncrement;
-    myPriceType = priceType;
-    myUnitCode = unitCode;
-    myUnitText = unitText;
-    myBillingIncrement = billingIncrement;
-    myPriceType = priceType;
-    myUnitCode = unitCode;
-    myUnitText = unitText;
+  @JsonIgnore public String getUnitText() {
+    return (String) getValue("unitText");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myBillingIncrement != null ? myBillingIncrement.hashCode() : 0);
-    result = 31 * result + (myPriceType != null ? myPriceType.hashCode() : 0);
-    result = 31 * result + (myUnitCode != null ? myUnitCode.hashCode() : 0);
-    result = 31 * result + (myUnitText != null ? myUnitText.hashCode() : 0);
-    return result;
+  /**
+   * A string or text indicating the unit of measurement. Useful if you cannot provide a standard unit code for
+   * <a href='unitCode'>unitCode</a>.
+   */
+  @JsonIgnore public Collection<String> getUnitTexts() {
+    final Object current = myData.get("unitText");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    UnitPriceSpecification unitPriceSpecification = (UnitPriceSpecification) o;
-    if (!super.equals(o)) return false;
-    if (myBillingIncrement != null ? !myBillingIncrement.equals(unitPriceSpecification.myBillingIncrement) : unitPriceSpecification.myBillingIncrement != null) return false;
-    if (myPriceType != null ? !myPriceType.equals(unitPriceSpecification.myPriceType) : unitPriceSpecification.myPriceType != null) return false;
-    if (myUnitCode != null ? !myUnitCode.equals(unitPriceSpecification.myUnitCode) : unitPriceSpecification.myUnitCode != null) return false;
-    if (myUnitText != null ? !myUnitText.equals(unitPriceSpecification.myUnitText) : unitPriceSpecification.myUnitText != null) return false;
-    return true;
+  protected UnitPriceSpecification(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link UnitPriceSpecification}
    */
-  public static class Builder implements ThingBuilder<UnitPriceSpecification> {
+  public static class Builder extends PriceSpecification.Builder {
     public UnitPriceSpecification build() {
-      return new UnitPriceSpecification(billingIncrement, priceType, unitCode, unitText, eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new UnitPriceSpecification(myData);
     }
     /**
      * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
      */
     @NotNull public Builder billingIncrement(@NotNull Integer integer) {
-      if (this.billingIncrement == null) this.billingIncrement = new Number();
-      this.billingIncrement.setInteger(integer);
+      putValue("billingIncrement", integer);
       return this;
     }
     /**
      * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
      */
     @NotNull public Builder billingIncrement(@NotNull Long billingIncrement) {
-      if (this.billingIncrement == null) this.billingIncrement = new Number();
-      this.billingIncrement.setLong(billingIncrement);
+      putValue("billingIncrement", billingIncrement);
       return this;
     }
     /**
      * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
      */
     @NotNull public Builder billingIncrement(@NotNull Float billingIncrement) {
-      if (this.billingIncrement == null) this.billingIncrement = new Number();
-      this.billingIncrement.setFloat(billingIncrement);
+      putValue("billingIncrement", billingIncrement);
       return this;
     }
     /**
      * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
      */
     @NotNull public Builder billingIncrement(@NotNull Double billingIncrement) {
-      if (this.billingIncrement == null) this.billingIncrement = new Number();
-      this.billingIncrement.setDouble(billingIncrement);
+      putValue("billingIncrement", billingIncrement);
       return this;
     }
     /**
      * This property specifies the minimal quantity and rounding increment that will be the basis for the billing. The unit of measurement is specified by the unitCode property.
      */
     @NotNull public Builder billingIncrement(@NotNull String billingIncrement) {
-      if (this.billingIncrement == null) this.billingIncrement = new Number();
-      this.billingIncrement.setString(billingIncrement);
+      putValue("billingIncrement", billingIncrement);
       return this;
     }
     /**
      * A short text or acronym indicating multiple price specifications for the same offer, e.g. SRP for the suggested retail price or INVOICE for the invoice price, mostly used in the car industry.
      */
     @NotNull public Builder priceType(@NotNull String priceType) {
-      this.priceType = priceType;
+      putValue("priceType", priceType);
       return this;
     }
     /**
      * The unit of measurement given using the UN/CEFACT Common Code (3 characters) or a URL. Other codes than the UN/CEFACT Common Code may be used with a prefix followed by a colon.
      */
     @NotNull public Builder unitCode(@NotNull String unitCode) {
-      this.unitCode = unitCode;
+      putValue("unitCode", unitCode);
       return this;
     }
     /**
@@ -140,113 +230,105 @@ public class UnitPriceSpecification extends PriceSpecification {
      * <a href='unitCode'>unitCode</a>.
      */
     @NotNull public Builder unitText(@NotNull String unitText) {
-      this.unitText = unitText;
+      putValue("unitText", unitText);
       return this;
     }
     /**
      * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
      */
     @NotNull public Builder eligibleQuantity(@NotNull QuantitativeValue quantitativeValue) {
-      this.eligibleQuantity = quantitativeValue;
+      putValue("eligibleQuantity", quantitativeValue);
       return this;
     }
     /**
      * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
      */
     @NotNull public Builder eligibleQuantity(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.eligibleQuantity(quantitativeValue.build());
+      putValue("eligibleQuantity", quantitativeValue.build());
+      return this;
     }
     /**
      * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
      */
     @NotNull public Builder eligibleTransactionVolume(@NotNull PriceSpecification priceSpecification) {
-      this.eligibleTransactionVolume = priceSpecification;
+      putValue("eligibleTransactionVolume", priceSpecification);
       return this;
     }
     /**
      * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
      */
     @NotNull public Builder eligibleTransactionVolume(@NotNull PriceSpecification.Builder priceSpecification) {
-      return this.eligibleTransactionVolume(priceSpecification.build());
+      putValue("eligibleTransactionVolume", priceSpecification.build());
+      return this;
     }
     /**
      * The highest price if the price is a range.
      */
     @NotNull public Builder maxPrice(@NotNull Integer integer) {
-      if (this.maxPrice == null) this.maxPrice = new Number();
-      this.maxPrice.setInteger(integer);
+      putValue("maxPrice", integer);
       return this;
     }
     /**
      * The highest price if the price is a range.
      */
     @NotNull public Builder maxPrice(@NotNull Long maxPrice) {
-      if (this.maxPrice == null) this.maxPrice = new Number();
-      this.maxPrice.setLong(maxPrice);
+      putValue("maxPrice", maxPrice);
       return this;
     }
     /**
      * The highest price if the price is a range.
      */
     @NotNull public Builder maxPrice(@NotNull Float maxPrice) {
-      if (this.maxPrice == null) this.maxPrice = new Number();
-      this.maxPrice.setFloat(maxPrice);
+      putValue("maxPrice", maxPrice);
       return this;
     }
     /**
      * The highest price if the price is a range.
      */
     @NotNull public Builder maxPrice(@NotNull Double maxPrice) {
-      if (this.maxPrice == null) this.maxPrice = new Number();
-      this.maxPrice.setDouble(maxPrice);
+      putValue("maxPrice", maxPrice);
       return this;
     }
     /**
      * The highest price if the price is a range.
      */
     @NotNull public Builder maxPrice(@NotNull String maxPrice) {
-      if (this.maxPrice == null) this.maxPrice = new Number();
-      this.maxPrice.setString(maxPrice);
+      putValue("maxPrice", maxPrice);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
     @NotNull public Builder minPrice(@NotNull Integer integer) {
-      if (this.minPrice == null) this.minPrice = new Number();
-      this.minPrice.setInteger(integer);
+      putValue("minPrice", integer);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
     @NotNull public Builder minPrice(@NotNull Long minPrice) {
-      if (this.minPrice == null) this.minPrice = new Number();
-      this.minPrice.setLong(minPrice);
+      putValue("minPrice", minPrice);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
     @NotNull public Builder minPrice(@NotNull Float minPrice) {
-      if (this.minPrice == null) this.minPrice = new Number();
-      this.minPrice.setFloat(minPrice);
+      putValue("minPrice", minPrice);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
     @NotNull public Builder minPrice(@NotNull Double minPrice) {
-      if (this.minPrice == null) this.minPrice = new Number();
-      this.minPrice.setDouble(minPrice);
+      putValue("minPrice", minPrice);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
     @NotNull public Builder minPrice(@NotNull String minPrice) {
-      if (this.minPrice == null) this.minPrice = new Number();
-      this.minPrice.setString(minPrice);
+      putValue("minPrice", minPrice);
       return this;
     }
     /**
@@ -273,8 +355,7 @@ public class UnitPriceSpecification extends PriceSpecification {
      *       
      */
     @NotNull public Builder price(@NotNull Integer integer) {
-      if (this.price == null) this.price = new Number();
-      this.price.setInteger(integer);
+      putValue("price", integer);
       return this;
     }
     /**
@@ -301,8 +382,7 @@ public class UnitPriceSpecification extends PriceSpecification {
      *       
      */
     @NotNull public Builder price(@NotNull Long price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setLong(price);
+      putValue("price", price);
       return this;
     }
     /**
@@ -329,8 +409,7 @@ public class UnitPriceSpecification extends PriceSpecification {
      *       
      */
     @NotNull public Builder price(@NotNull Float price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setFloat(price);
+      putValue("price", price);
       return this;
     }
     /**
@@ -357,8 +436,7 @@ public class UnitPriceSpecification extends PriceSpecification {
      *       
      */
     @NotNull public Builder price(@NotNull Double price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setDouble(price);
+      putValue("price", price);
       return this;
     }
     /**
@@ -385,57 +463,56 @@ public class UnitPriceSpecification extends PriceSpecification {
      *       
      */
     @NotNull public Builder price(@NotNull String price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setString(price);
+      putValue("price", price);
       return this;
     }
     /**
      * The date when the item becomes valid.
      */
     @NotNull public Builder validFrom(@NotNull java.util.Date date) {
-      this.validFrom = date;
+      putValue("validFrom", date);
       return this;
     }
     /**
      * The end of the validity of offer, price specification, or opening hours data.
      */
     @NotNull public Builder validThrough(@NotNull java.util.Date date) {
-      this.validThrough = date;
+      putValue("validThrough", date);
       return this;
     }
     /**
      * Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
      */
     @NotNull public Builder valueAddedTaxIncluded(@NotNull Boolean valueAddedTaxIncluded) {
-      this.valueAddedTaxIncluded = valueAddedTaxIncluded;
+      putValue("valueAddedTaxIncluded", valueAddedTaxIncluded);
       return this;
     }
     /**
      * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
      */
     @NotNull public Builder priceCurrency(@NotNull String priceCurrency) {
-      this.priceCurrency = priceCurrency;
+      putValue("priceCurrency", priceCurrency);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -469,8 +546,7 @@ public class UnitPriceSpecification extends PriceSpecification {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -504,7 +580,8 @@ public class UnitPriceSpecification extends PriceSpecification {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -537,123 +614,62 @@ public class UnitPriceSpecification extends PriceSpecification {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("billingIncrement".equals(key) && value instanceof Integer) { billingIncrement((Integer)value); continue; }
-        if ("billingIncrement".equals(key) && value instanceof Long) { billingIncrement((Long)value); continue; }
-        if ("billingIncrement".equals(key) && value instanceof Float) { billingIncrement((Float)value); continue; }
-        if ("billingIncrement".equals(key) && value instanceof Double) { billingIncrement((Double)value); continue; }
-        if ("billingIncrement".equals(key) && value instanceof String) { billingIncrement((String)value); continue; }
-        if ("priceType".equals(key) && value instanceof String) { priceType((String)value); continue; }
-        if ("unitCode".equals(key) && value instanceof String) { unitCode((String)value); continue; }
-        if ("unitText".equals(key) && value instanceof String) { unitText((String)value); continue; }
-        if ("eligibleQuantity".equals(key) && value instanceof QuantitativeValue) { eligibleQuantity((QuantitativeValue)value); continue; }
-        if ("eligibleTransactionVolume".equals(key) && value instanceof PriceSpecification) { eligibleTransactionVolume((PriceSpecification)value); continue; }
-        if ("maxPrice".equals(key) && value instanceof Integer) { maxPrice((Integer)value); continue; }
-        if ("maxPrice".equals(key) && value instanceof Long) { maxPrice((Long)value); continue; }
-        if ("maxPrice".equals(key) && value instanceof Float) { maxPrice((Float)value); continue; }
-        if ("maxPrice".equals(key) && value instanceof Double) { maxPrice((Double)value); continue; }
-        if ("maxPrice".equals(key) && value instanceof String) { maxPrice((String)value); continue; }
-        if ("minPrice".equals(key) && value instanceof Integer) { minPrice((Integer)value); continue; }
-        if ("minPrice".equals(key) && value instanceof Long) { minPrice((Long)value); continue; }
-        if ("minPrice".equals(key) && value instanceof Float) { minPrice((Float)value); continue; }
-        if ("minPrice".equals(key) && value instanceof Double) { minPrice((Double)value); continue; }
-        if ("minPrice".equals(key) && value instanceof String) { minPrice((String)value); continue; }
-        if ("price".equals(key) && value instanceof Integer) { price((Integer)value); continue; }
-        if ("price".equals(key) && value instanceof Long) { price((Long)value); continue; }
-        if ("price".equals(key) && value instanceof Float) { price((Float)value); continue; }
-        if ("price".equals(key) && value instanceof Double) { price((Double)value); continue; }
-        if ("price".equals(key) && value instanceof String) { price((String)value); continue; }
-        if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); continue; }
-        if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); continue; }
-        if ("valueAddedTaxIncluded".equals(key) && value instanceof Boolean) { valueAddedTaxIncluded((Boolean)value); continue; }
-        if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("billingIncrement".equals(key) && value instanceof Integer) { billingIncrement((Integer)value); return; }
+      if ("billingIncrement".equals(key) && value instanceof Long) { billingIncrement((Long)value); return; }
+      if ("billingIncrement".equals(key) && value instanceof Float) { billingIncrement((Float)value); return; }
+      if ("billingIncrement".equals(key) && value instanceof Double) { billingIncrement((Double)value); return; }
+      if ("billingIncrement".equals(key) && value instanceof String) { billingIncrement((String)value); return; }
+      if ("priceType".equals(key) && value instanceof String) { priceType((String)value); return; }
+      if ("unitCode".equals(key) && value instanceof String) { unitCode((String)value); return; }
+      if ("unitText".equals(key) && value instanceof String) { unitText((String)value); return; }
+      super.fromMap(key, value);
     }
-    private Number billingIncrement;
-    private String priceType;
-    private String unitCode;
-    private String unitText;
-    private QuantitativeValue eligibleQuantity;
-    private PriceSpecification eligibleTransactionVolume;
-    private Number maxPrice;
-    private Number minPrice;
-    private Number price;
-    private java.util.Date validFrom;
-    private java.util.Date validThrough;
-    private Boolean valueAddedTaxIncluded;
-    private String priceCurrency;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private Number myBillingIncrement;
-  private String myPriceType;
-  private String myUnitCode;
-  private String myUnitText;
 }

@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A reservation for a taxi.Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use http://schema.org/Offer.
@@ -29,315 +30,346 @@ public class TaxiReservation extends Reservation {
   /**
    * Number of people the reservation should accommodate.
    */
-  public IntegerOrQuantitativeValue getPartySize() { return myPartySize; }
+  @JsonIgnore public Integer getPartySizeInteger() {
+    return (Integer) getValue("partySize");
+  }
+  /**
+   * Number of people the reservation should accommodate.
+   */
+  @JsonIgnore public Collection<Integer> getPartySizeIntegers() {
+    final Object current = myData.get("partySize");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
+  /**
+   * Number of people the reservation should accommodate.
+   */
+  @JsonIgnore public QuantitativeValue getPartySizeQuantitativeValue() {
+    return (QuantitativeValue) getValue("partySize");
+  }
+  /**
+   * Number of people the reservation should accommodate.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getPartySizeQuantitativeValues() {
+    final Object current = myData.get("partySize");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * Where a taxi will pick up a passenger or a rental car can be picked up.
    */
-  public Place getPickupLocation() { return myPickupLocation; }
+  @JsonIgnore public Place getPickupLocation() {
+    return (Place) getValue("pickupLocation");
+  }
+  /**
+   * Where a taxi will pick up a passenger or a rental car can be picked up.
+   */
+  @JsonIgnore public Collection<Place> getPickupLocations() {
+    final Object current = myData.get("pickupLocation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
+  }
   /**
    * When a taxi will pickup a passenger or a rental car can be picked up.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getPickupTime() { return myPickupTime; }
-  protected TaxiReservation(IntegerOrQuantitativeValue partySize, Place pickupLocation, java.util.Date pickupTime, String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, Number totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myPartySize = partySize;
-    myPickupLocation = pickupLocation;
-    myPickupTime = pickupTime;
-    myPartySize = partySize;
-    myPickupLocation = pickupLocation;
-    myPickupTime = pickupTime;
+  @JsonIgnore public java.util.Date getPickupTime() {
+    return (java.util.Date) getValue("pickupTime");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myPartySize != null ? myPartySize.hashCode() : 0);
-    result = 31 * result + (myPickupLocation != null ? myPickupLocation.hashCode() : 0);
-    result = 31 * result + (myPickupTime != null ? myPickupTime.hashCode() : 0);
-    return result;
+  /**
+   * When a taxi will pickup a passenger or a rental car can be picked up.
+   */
+  @JsonIgnore public Collection<java.util.Date> getPickupTimes() {
+    final Object current = myData.get("pickupTime");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    TaxiReservation taxiReservation = (TaxiReservation) o;
-    if (!super.equals(o)) return false;
-    if (myPartySize != null ? !myPartySize.equals(taxiReservation.myPartySize) : taxiReservation.myPartySize != null) return false;
-    if (myPickupLocation != null ? !myPickupLocation.equals(taxiReservation.myPickupLocation) : taxiReservation.myPickupLocation != null) return false;
-    if (myPickupTime != null ? !myPickupTime.equals(taxiReservation.myPickupTime) : taxiReservation.myPickupTime != null) return false;
-    return true;
+  protected TaxiReservation(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link TaxiReservation}
    */
-  public static class Builder implements ThingBuilder<TaxiReservation> {
+  public static class Builder extends Reservation.Builder {
     public TaxiReservation build() {
-      return new TaxiReservation(partySize, pickupLocation, pickupTime, reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new TaxiReservation(myData);
     }
     /**
      * Number of people the reservation should accommodate.
      */
     @NotNull public Builder partySize(@NotNull Integer integer) {
-      if (this.partySize == null) this.partySize = new IntegerOrQuantitativeValue();
-      this.partySize.setInteger(integer);
+      putValue("partySize", integer);
       return this;
     }
     /**
      * Number of people the reservation should accommodate.
      */
     @NotNull public Builder partySize(@NotNull QuantitativeValue quantitativeValue) {
-      if (this.partySize == null) this.partySize = new IntegerOrQuantitativeValue();
-      this.partySize.setQuantitativeValue(quantitativeValue);
+      putValue("partySize", quantitativeValue);
       return this;
     }
     /**
      * Number of people the reservation should accommodate.
      */
     @NotNull public Builder partySize(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.partySize(quantitativeValue.build());
+      putValue("partySize", quantitativeValue.build());
+      return this;
     }
     /**
      * Where a taxi will pick up a passenger or a rental car can be picked up.
      */
     @NotNull public Builder pickupLocation(@NotNull Place place) {
-      this.pickupLocation = place;
+      putValue("pickupLocation", place);
       return this;
     }
     /**
      * Where a taxi will pick up a passenger or a rental car can be picked up.
      */
     @NotNull public Builder pickupLocation(@NotNull Place.Builder place) {
-      return this.pickupLocation(place.build());
+      putValue("pickupLocation", place.build());
+      return this;
     }
     /**
      * When a taxi will pickup a passenger or a rental car can be picked up.
      */
     @NotNull public Builder pickupTime(@NotNull java.util.Date date) {
-      this.pickupTime = date;
+      putValue("pickupTime", date);
       return this;
     }
     /**
      * A unique identifier for the reservation.
      */
     @NotNull public Builder reservationId(@NotNull String reservationId) {
-      this.reservationId = reservationId;
+      putValue("reservationId", reservationId);
       return this;
     }
     /**
      * The current status of the reservation.
      */
     @NotNull public Builder reservationStatus(@NotNull ReservationStatusType reservationStatusType) {
-      this.reservationStatus = reservationStatusType;
+      putValue("reservationStatus", reservationStatusType);
       return this;
     }
     /**
      * The current status of the reservation.
      */
     @NotNull public Builder reservationStatus(@NotNull ReservationStatusType.Builder reservationStatusType) {
-      return this.reservationStatus(reservationStatusType.build());
+      putValue("reservationStatus", reservationStatusType.build());
+      return this;
     }
     /**
      * The thing -- flight, event, restaurant,etc. being reserved.
      */
     @NotNull public Builder reservationFor(@NotNull Thing thing) {
-      this.reservationFor = thing;
+      putValue("reservationFor", thing);
       return this;
     }
     /**
      * The thing -- flight, event, restaurant,etc. being reserved.
      */
     @NotNull public Builder reservationFor(@NotNull Thing.Builder thing) {
-      return this.reservationFor(thing.build());
+      putValue("reservationFor", thing.build());
+      return this;
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
     @NotNull public Builder underName(@NotNull Organization organization) {
-      if (this.underName == null) this.underName = new OrganizationOrPerson();
-      this.underName.setOrganization(organization);
+      putValue("underName", organization);
       return this;
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
     @NotNull public Builder underName(@NotNull Organization.Builder organization) {
-      return this.underName(organization.build());
+      putValue("underName", organization.build());
+      return this;
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
     @NotNull public Builder underName(@NotNull Person person) {
-      if (this.underName == null) this.underName = new OrganizationOrPerson();
-      this.underName.setPerson(person);
+      putValue("underName", person);
       return this;
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
     @NotNull public Builder underName(@NotNull Person.Builder person) {
-      return this.underName(person.build());
+      putValue("underName", person.build());
+      return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Organization organization) {
-      if (this.provider == null) this.provider = new OrganizationOrPerson();
-      this.provider.setOrganization(organization);
+      putValue("provider", organization);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Organization.Builder organization) {
-      return this.provider(organization.build());
+      putValue("provider", organization.build());
+      return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Person person) {
-      if (this.provider == null) this.provider = new OrganizationOrPerson();
-      this.provider.setPerson(person);
+      putValue("provider", person);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Person.Builder person) {
-      return this.provider(person.build());
+      putValue("provider", person.build());
+      return this;
     }
     /**
      * The date and time the reservation was booked.
      */
     @NotNull public Builder bookingTime(@NotNull java.util.Date date) {
-      this.bookingTime = date;
+      putValue("bookingTime", date);
       return this;
     }
     /**
      * The date and time the reservation was modified.
      */
     @NotNull public Builder modifiedTime(@NotNull java.util.Date date) {
-      this.modifiedTime = date;
+      putValue("modifiedTime", date);
       return this;
     }
     /**
      * Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.
      */
     @NotNull public Builder programMembershipUsed(@NotNull ProgramMembership programMembership) {
-      this.programMembershipUsed = programMembership;
+      putValue("programMembershipUsed", programMembership);
       return this;
     }
     /**
      * Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.
      */
     @NotNull public Builder programMembershipUsed(@NotNull ProgramMembership.Builder programMembership) {
-      return this.programMembershipUsed(programMembership.build());
+      putValue("programMembershipUsed", programMembership.build());
+      return this;
     }
     /**
      * A ticket associated with the reservation.
      */
     @NotNull public Builder reservedTicket(@NotNull Ticket ticket) {
-      this.reservedTicket = ticket;
+      putValue("reservedTicket", ticket);
       return this;
     }
     /**
      * A ticket associated with the reservation.
      */
     @NotNull public Builder reservedTicket(@NotNull Ticket.Builder ticket) {
-      return this.reservedTicket(ticket.build());
+      putValue("reservedTicket", ticket.build());
+      return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull Integer integer) {
-      if (this.totalPrice == null) this.totalPrice = new Number();
-      this.totalPrice.setInteger(integer);
+      putValue("totalPrice", integer);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull Long totalPrice) {
-      if (this.totalPrice == null) this.totalPrice = new Number();
-      this.totalPrice.setLong(totalPrice);
+      putValue("totalPrice", totalPrice);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull Float totalPrice) {
-      if (this.totalPrice == null) this.totalPrice = new Number();
-      this.totalPrice.setFloat(totalPrice);
+      putValue("totalPrice", totalPrice);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull Double totalPrice) {
-      if (this.totalPrice == null) this.totalPrice = new Number();
-      this.totalPrice.setDouble(totalPrice);
+      putValue("totalPrice", totalPrice);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull String totalPrice) {
-      if (this.totalPrice == null) this.totalPrice = new Number();
-      this.totalPrice.setString(totalPrice);
+      putValue("totalPrice", totalPrice);
       return this;
     }
     /**
      * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
      */
     @NotNull public Builder priceCurrency(@NotNull String priceCurrency) {
-      this.priceCurrency = priceCurrency;
+      putValue("priceCurrency", priceCurrency);
       return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Organization organization) {
-      if (this.broker == null) this.broker = new OrganizationOrPerson();
-      this.broker.setOrganization(organization);
+      putValue("broker", organization);
       return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Organization.Builder organization) {
-      return this.broker(organization.build());
+      putValue("broker", organization.build());
+      return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Person person) {
-      if (this.broker == null) this.broker = new OrganizationOrPerson();
-      this.broker.setPerson(person);
+      putValue("broker", person);
       return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Person.Builder person) {
-      return this.broker(person.build());
+      putValue("broker", person.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -371,8 +403,7 @@ public class TaxiReservation extends Reservation {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -406,7 +437,8 @@ public class TaxiReservation extends Reservation {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -439,118 +471,58 @@ public class TaxiReservation extends Reservation {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("partySize".equals(key) && value instanceof Integer) { partySize((Integer)value); continue; }
-        if ("partySize".equals(key) && value instanceof QuantitativeValue) { partySize((QuantitativeValue)value); continue; }
-        if ("pickupLocation".equals(key) && value instanceof Place) { pickupLocation((Place)value); continue; }
-        if ("pickupTime".equals(key) && value instanceof java.util.Date) { pickupTime((java.util.Date)value); continue; }
-        if ("reservationId".equals(key) && value instanceof String) { reservationId((String)value); continue; }
-        if ("reservationStatus".equals(key) && value instanceof ReservationStatusType) { reservationStatus((ReservationStatusType)value); continue; }
-        if ("reservationFor".equals(key) && value instanceof Thing) { reservationFor((Thing)value); continue; }
-        if ("underName".equals(key) && value instanceof Organization) { underName((Organization)value); continue; }
-        if ("underName".equals(key) && value instanceof Person) { underName((Person)value); continue; }
-        if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); continue; }
-        if ("provider".equals(key) && value instanceof Person) { provider((Person)value); continue; }
-        if ("bookingTime".equals(key) && value instanceof java.util.Date) { bookingTime((java.util.Date)value); continue; }
-        if ("modifiedTime".equals(key) && value instanceof java.util.Date) { modifiedTime((java.util.Date)value); continue; }
-        if ("programMembershipUsed".equals(key) && value instanceof ProgramMembership) { programMembershipUsed((ProgramMembership)value); continue; }
-        if ("reservedTicket".equals(key) && value instanceof Ticket) { reservedTicket((Ticket)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof Integer) { totalPrice((Integer)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof Long) { totalPrice((Long)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof Float) { totalPrice((Float)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof Double) { totalPrice((Double)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof String) { totalPrice((String)value); continue; }
-        if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); continue; }
-        if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); continue; }
-        if ("broker".equals(key) && value instanceof Person) { broker((Person)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("partySize".equals(key) && value instanceof Integer) { partySize((Integer)value); return; }
+      if ("partySize".equals(key) && value instanceof QuantitativeValue) { partySize((QuantitativeValue)value); return; }
+      if ("pickupLocation".equals(key) && value instanceof Place) { pickupLocation((Place)value); return; }
+      if ("pickupTime".equals(key) && value instanceof java.util.Date) { pickupTime((java.util.Date)value); return; }
+      super.fromMap(key, value);
     }
-    private IntegerOrQuantitativeValue partySize;
-    private Place pickupLocation;
-    private java.util.Date pickupTime;
-    private String reservationId;
-    private ReservationStatusType reservationStatus;
-    private Thing reservationFor;
-    private OrganizationOrPerson underName;
-    private OrganizationOrPerson provider;
-    private java.util.Date bookingTime;
-    private java.util.Date modifiedTime;
-    private ProgramMembership programMembershipUsed;
-    private Ticket reservedTicket;
-    private Number totalPrice;
-    private String priceCurrency;
-    private OrganizationOrPerson broker;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private IntegerOrQuantitativeValue myPartySize;
-  private Place myPickupLocation;
-  private java.util.Date myPickupTime;
 }

@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * The act of forming a personal connection with someone/something (object) unidirectionally/asymmetrically to get updates polled from.<p>Related actions:</p><ul><li><a href="http://schema.org/BefriendAction">BefriendAction</a>: Unlike BefriendAction, FollowAction implies that the connection is *not* necessarily reciprocal.</li><li><a href="http://schema.org/SubscribeAction">SubscribeAction</a>: Unlike SubscribeAction, FollowAction implies that the follower acts as an active agent constantly/actively polling for updates.</li><li><a href="http://schema.org/RegisterAction">RegisterAction</a>: Unlike RegisterAction, FollowAction implies that the agent is interested in continuing receiving updates from the object.</li><li><a href="http://schema.org/JoinAction">JoinAction</a>: Unlike JoinAction, FollowAction implies that the agent is interested in getting updates from the object.</li><li><a href="http://schema.org/TrackAction">TrackAction</a>: Unlike TrackAction, FollowAction refers to the polling of updates of all aspects of animate objects rather than the location of inanimate objects (e.g. you track a package, but you don't follow it)</li></ul>.
@@ -29,88 +30,103 @@ public class FollowAction extends InteractAction {
   /**
    * A sub property of object. The person or organization being followed.
    */
-  public OrganizationOrPerson getFollowee() { return myFollowee; }
-  protected FollowAction(OrganizationOrPerson followee, OrganizationOrPerson agent, java.util.Date endTime, java.util.Date startTime, ActionStatusType actionStatus, Thing error, EntryPoint target, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myFollowee = followee;
-    myFollowee = followee;
+  @JsonIgnore public Organization getFolloweeOrganization() {
+    return (Organization) getValue("followee");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myFollowee != null ? myFollowee.hashCode() : 0);
-    return result;
+  /**
+   * A sub property of object. The person or organization being followed.
+   */
+  @JsonIgnore public Collection<Organization> getFolloweeOrganizations() {
+    final Object current = myData.get("followee");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    FollowAction followAction = (FollowAction) o;
-    if (!super.equals(o)) return false;
-    if (myFollowee != null ? !myFollowee.equals(followAction.myFollowee) : followAction.myFollowee != null) return false;
-    return true;
+  /**
+   * A sub property of object. The person or organization being followed.
+   */
+  @JsonIgnore public Person getFolloweePerson() {
+    return (Person) getValue("followee");
+  }
+  /**
+   * A sub property of object. The person or organization being followed.
+   */
+  @JsonIgnore public Collection<Person> getFolloweePersons() {
+    final Object current = myData.get("followee");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
+  protected FollowAction(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link FollowAction}
    */
-  public static class Builder implements ThingBuilder<FollowAction> {
+  public static class Builder extends InteractAction.Builder {
     public FollowAction build() {
-      return new FollowAction(followee, agent, endTime, startTime, actionStatus, error, target, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new FollowAction(myData);
     }
     /**
      * A sub property of object. The person or organization being followed.
      */
     @NotNull public Builder followee(@NotNull Organization organization) {
-      if (this.followee == null) this.followee = new OrganizationOrPerson();
-      this.followee.setOrganization(organization);
+      putValue("followee", organization);
       return this;
     }
     /**
      * A sub property of object. The person or organization being followed.
      */
     @NotNull public Builder followee(@NotNull Organization.Builder organization) {
-      return this.followee(organization.build());
+      putValue("followee", organization.build());
+      return this;
     }
     /**
      * A sub property of object. The person or organization being followed.
      */
     @NotNull public Builder followee(@NotNull Person person) {
-      if (this.followee == null) this.followee = new OrganizationOrPerson();
-      this.followee.setPerson(person);
+      putValue("followee", person);
       return this;
     }
     /**
      * A sub property of object. The person or organization being followed.
      */
     @NotNull public Builder followee(@NotNull Person.Builder person) {
-      return this.followee(person.build());
+      putValue("followee", person.build());
+      return this;
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
     @NotNull public Builder agent(@NotNull Organization organization) {
-      if (this.agent == null) this.agent = new OrganizationOrPerson();
-      this.agent.setOrganization(organization);
+      putValue("agent", organization);
       return this;
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
     @NotNull public Builder agent(@NotNull Organization.Builder organization) {
-      return this.agent(organization.build());
+      putValue("agent", organization.build());
+      return this;
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
     @NotNull public Builder agent(@NotNull Person person) {
-      if (this.agent == null) this.agent = new OrganizationOrPerson();
-      this.agent.setPerson(person);
+      putValue("agent", person);
       return this;
     }
     /**
      * The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.
      */
     @NotNull public Builder agent(@NotNull Person.Builder person) {
-      return this.agent(person.build());
+      putValue("agent", person.build());
+      return this;
     }
     /**
      * The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to *December*.
@@ -118,7 +134,7 @@ public class FollowAction extends InteractAction {
      * Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
     @NotNull public Builder endTime(@NotNull java.util.Date date) {
-      this.endTime = date;
+      putValue("endTime", date);
       return this;
     }
     /**
@@ -127,67 +143,70 @@ public class FollowAction extends InteractAction {
      * Note that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.
      */
     @NotNull public Builder startTime(@NotNull java.util.Date date) {
-      this.startTime = date;
+      putValue("startTime", date);
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType actionStatusType) {
-      this.actionStatus = actionStatusType;
+      putValue("actionStatus", actionStatusType);
       return this;
     }
     /**
      * Indicates the current disposition of the Action.
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType) {
-      return this.actionStatus(actionStatusType.build());
+      putValue("actionStatus", actionStatusType.build());
+      return this;
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
     @NotNull public Builder error(@NotNull Thing thing) {
-      this.error = thing;
+      putValue("error", thing);
       return this;
     }
     /**
      * For failed actions, more information on the cause of the failure.
      */
     @NotNull public Builder error(@NotNull Thing.Builder thing) {
-      return this.error(thing.build());
+      putValue("error", thing.build());
+      return this;
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
     @NotNull public Builder target(@NotNull EntryPoint entryPoint) {
-      this.target = entryPoint;
+      putValue("target", entryPoint);
       return this;
     }
     /**
      * Indicates a target EntryPoint for an Action.
      */
     @NotNull public Builder target(@NotNull EntryPoint.Builder entryPoint) {
-      return this.target(entryPoint.build());
+      putValue("target", entryPoint.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -221,8 +240,7 @@ public class FollowAction extends InteractAction {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -256,7 +274,8 @@ public class FollowAction extends InteractAction {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -289,94 +308,56 @@ public class FollowAction extends InteractAction {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("followee".equals(key) && value instanceof Organization) { followee((Organization)value); continue; }
-        if ("followee".equals(key) && value instanceof Person) { followee((Person)value); continue; }
-        if ("agent".equals(key) && value instanceof Organization) { agent((Organization)value); continue; }
-        if ("agent".equals(key) && value instanceof Person) { agent((Person)value); continue; }
-        if ("endTime".equals(key) && value instanceof java.util.Date) { endTime((java.util.Date)value); continue; }
-        if ("startTime".equals(key) && value instanceof java.util.Date) { startTime((java.util.Date)value); continue; }
-        if ("actionStatus".equals(key) && value instanceof ActionStatusType) { actionStatus((ActionStatusType)value); continue; }
-        if ("error".equals(key) && value instanceof Thing) { error((Thing)value); continue; }
-        if ("target".equals(key) && value instanceof EntryPoint) { target((EntryPoint)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("followee".equals(key) && value instanceof Organization) { followee((Organization)value); return; }
+      if ("followee".equals(key) && value instanceof Person) { followee((Person)value); return; }
+      super.fromMap(key, value);
     }
-    private OrganizationOrPerson followee;
-    private OrganizationOrPerson agent;
-    private java.util.Date endTime;
-    private java.util.Date startTime;
-    private ActionStatusType actionStatus;
-    private Thing error;
-    private EntryPoint target;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private OrganizationOrPerson myFollowee;
 }

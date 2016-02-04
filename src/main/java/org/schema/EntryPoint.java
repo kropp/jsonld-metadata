@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * An entry point, within some Web-based protocol.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass
@@ -29,125 +30,160 @@ public class EntryPoint extends Intangible {
   /**
    * An HTTP method that specifies the appropriate HTTP method for a request to an HTTP EntryPoint. Values are capitalized strings as used in HTTP.
    */
-  public String getHttpMethod() { return myHttpMethod; }
+  @JsonIgnore public String getHttpMethod() {
+    return (String) getValue("httpMethod");
+  }
+  /**
+   * An HTTP method that specifies the appropriate HTTP method for a request to an HTTP EntryPoint. Values are capitalized strings as used in HTTP.
+   */
+  @JsonIgnore public Collection<String> getHttpMethods() {
+    final Object current = myData.get("httpMethod");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The supported encoding type(s) for an EntryPoint request.
    */
-  public String getEncodingType() { return myEncodingType; }
+  @JsonIgnore public String getEncodingType() {
+    return (String) getValue("encodingType");
+  }
+  /**
+   * The supported encoding type(s) for an EntryPoint request.
+   */
+  @JsonIgnore public Collection<String> getEncodingTypes() {
+    final Object current = myData.get("encodingType");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The supported content type(s) for an EntryPoint response.
    */
-  public String getContentType() { return myContentType; }
+  @JsonIgnore public String getContentType() {
+    return (String) getValue("contentType");
+  }
+  /**
+   * The supported content type(s) for an EntryPoint response.
+   */
+  @JsonIgnore public Collection<String> getContentTypes() {
+    final Object current = myData.get("contentType");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * An application that can complete the request.
    */
-  public SoftwareApplication getActionApplication() { return myActionApplication; }
+  @JsonIgnore public SoftwareApplication getActionApplication() {
+    return (SoftwareApplication) getValue("actionApplication");
+  }
+  /**
+   * An application that can complete the request.
+   */
+  @JsonIgnore public Collection<SoftwareApplication> getActionApplications() {
+    final Object current = myData.get("actionApplication");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<SoftwareApplication>) current;
+    }
+    return Arrays.asList((SoftwareApplication) current);
+  }
   /**
    * An url template (RFC6570) that will be used to construct the target of the execution of the action.
    */
-  public String getUrlTemplate() { return myUrlTemplate; }
-  protected EntryPoint(String httpMethod, String encodingType, String contentType, SoftwareApplication actionApplication, String urlTemplate, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myHttpMethod = httpMethod;
-    myEncodingType = encodingType;
-    myContentType = contentType;
-    myActionApplication = actionApplication;
-    myUrlTemplate = urlTemplate;
-    myHttpMethod = httpMethod;
-    myEncodingType = encodingType;
-    myContentType = contentType;
-    myActionApplication = actionApplication;
-    myUrlTemplate = urlTemplate;
+  @JsonIgnore public String getUrlTemplate() {
+    return (String) getValue("urlTemplate");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myHttpMethod != null ? myHttpMethod.hashCode() : 0);
-    result = 31 * result + (myEncodingType != null ? myEncodingType.hashCode() : 0);
-    result = 31 * result + (myContentType != null ? myContentType.hashCode() : 0);
-    result = 31 * result + (myActionApplication != null ? myActionApplication.hashCode() : 0);
-    result = 31 * result + (myUrlTemplate != null ? myUrlTemplate.hashCode() : 0);
-    return result;
+  /**
+   * An url template (RFC6570) that will be used to construct the target of the execution of the action.
+   */
+  @JsonIgnore public Collection<String> getUrlTemplates() {
+    final Object current = myData.get("urlTemplate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    EntryPoint entryPoint = (EntryPoint) o;
-    if (!super.equals(o)) return false;
-    if (myHttpMethod != null ? !myHttpMethod.equals(entryPoint.myHttpMethod) : entryPoint.myHttpMethod != null) return false;
-    if (myEncodingType != null ? !myEncodingType.equals(entryPoint.myEncodingType) : entryPoint.myEncodingType != null) return false;
-    if (myContentType != null ? !myContentType.equals(entryPoint.myContentType) : entryPoint.myContentType != null) return false;
-    if (myActionApplication != null ? !myActionApplication.equals(entryPoint.myActionApplication) : entryPoint.myActionApplication != null) return false;
-    if (myUrlTemplate != null ? !myUrlTemplate.equals(entryPoint.myUrlTemplate) : entryPoint.myUrlTemplate != null) return false;
-    return true;
+  protected EntryPoint(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link EntryPoint}
    */
-  public static class Builder implements ThingBuilder<EntryPoint> {
+  public static class Builder extends Intangible.Builder {
     public EntryPoint build() {
-      return new EntryPoint(httpMethod, encodingType, contentType, actionApplication, urlTemplate, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new EntryPoint(myData);
     }
     /**
      * An HTTP method that specifies the appropriate HTTP method for a request to an HTTP EntryPoint. Values are capitalized strings as used in HTTP.
      */
     @NotNull public Builder httpMethod(@NotNull String httpMethod) {
-      this.httpMethod = httpMethod;
+      putValue("httpMethod", httpMethod);
       return this;
     }
     /**
      * The supported encoding type(s) for an EntryPoint request.
      */
     @NotNull public Builder encodingType(@NotNull String encodingType) {
-      this.encodingType = encodingType;
+      putValue("encodingType", encodingType);
       return this;
     }
     /**
      * The supported content type(s) for an EntryPoint response.
      */
     @NotNull public Builder contentType(@NotNull String contentType) {
-      this.contentType = contentType;
+      putValue("contentType", contentType);
       return this;
     }
     /**
      * An application that can complete the request.
      */
     @NotNull public Builder actionApplication(@NotNull SoftwareApplication softwareApplication) {
-      this.actionApplication = softwareApplication;
+      putValue("actionApplication", softwareApplication);
       return this;
     }
     /**
      * An application that can complete the request.
      */
     @NotNull public Builder actionApplication(@NotNull SoftwareApplication.Builder softwareApplication) {
-      return this.actionApplication(softwareApplication.build());
+      putValue("actionApplication", softwareApplication.build());
+      return this;
     }
     /**
      * An url template (RFC6570) that will be used to construct the target of the execution of the action.
      */
     @NotNull public Builder urlTemplate(@NotNull String urlTemplate) {
-      this.urlTemplate = urlTemplate;
+      putValue("urlTemplate", urlTemplate);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -181,8 +217,7 @@ public class EntryPoint extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -216,7 +251,8 @@ public class EntryPoint extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -249,92 +285,59 @@ public class EntryPoint extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("httpMethod".equals(key) && value instanceof String) { httpMethod((String)value); continue; }
-        if ("encodingType".equals(key) && value instanceof String) { encodingType((String)value); continue; }
-        if ("contentType".equals(key) && value instanceof String) { contentType((String)value); continue; }
-        if ("actionApplication".equals(key) && value instanceof SoftwareApplication) { actionApplication((SoftwareApplication)value); continue; }
-        if ("urlTemplate".equals(key) && value instanceof String) { urlTemplate((String)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("httpMethod".equals(key) && value instanceof String) { httpMethod((String)value); return; }
+      if ("encodingType".equals(key) && value instanceof String) { encodingType((String)value); return; }
+      if ("contentType".equals(key) && value instanceof String) { contentType((String)value); return; }
+      if ("actionApplication".equals(key) && value instanceof SoftwareApplication) { actionApplication((SoftwareApplication)value); return; }
+      if ("urlTemplate".equals(key) && value instanceof String) { urlTemplate((String)value); return; }
+      super.fromMap(key, value);
     }
-    private String httpMethod;
-    private String encodingType;
-    private String contentType;
-    private SoftwareApplication actionApplication;
-    private String urlTemplate;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private String myHttpMethod;
-  private String myEncodingType;
-  private String myContentType;
-  private SoftwareApplication myActionApplication;
-  private String myUrlTemplate;
 }

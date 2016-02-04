@@ -21,223 +21,224 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A short band of tough, flexible, fibrous connective tissue that functions to connect multiple bones, cartilages, and structurally support joints.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
  */
 public class Ligament extends AnatomicalStructure {
-  protected Ligament(String associatedPathophysiology, String bodyLocation, AnatomicalStructure connectedTo, ImageObject diagram, String function, IsPartOf partOfSystem, MedicalCondition relatedCondition, MedicalTherapy relatedTherapy, AnatomicalStructure subStructure, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-  }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    return result;
-  }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Ligament ligament = (Ligament) o;
-    if (!super.equals(o)) return false;
-    return true;
+  protected Ligament(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Ligament}
    */
-  public static class Builder implements ThingBuilder<Ligament> {
+  public static class Builder extends AnatomicalStructure.Builder {
     public Ligament build() {
-      return new Ligament(associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Ligament(myData);
     }
     /**
      * If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
      */
     @NotNull public Builder associatedPathophysiology(@NotNull String associatedPathophysiology) {
-      this.associatedPathophysiology = associatedPathophysiology;
+      putValue("associatedPathophysiology", associatedPathophysiology);
       return this;
     }
     /**
      * Location in the body of the anatomical structure.
      */
     @NotNull public Builder bodyLocation(@NotNull String bodyLocation) {
-      this.bodyLocation = bodyLocation;
+      putValue("bodyLocation", bodyLocation);
       return this;
     }
     /**
      * Other anatomical structures to which this structure is connected.
      */
     @NotNull public Builder connectedTo(@NotNull AnatomicalStructure anatomicalStructure) {
-      this.connectedTo = anatomicalStructure;
+      putValue("connectedTo", anatomicalStructure);
       return this;
     }
     /**
      * Other anatomical structures to which this structure is connected.
      */
     @NotNull public Builder connectedTo(@NotNull AnatomicalStructure.Builder anatomicalStructure) {
-      return this.connectedTo(anatomicalStructure.build());
+      putValue("connectedTo", anatomicalStructure.build());
+      return this;
     }
     /**
      * An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
      */
     @NotNull public Builder diagram(@NotNull ImageObject imageObject) {
-      this.diagram = imageObject;
+      putValue("diagram", imageObject);
       return this;
     }
     /**
      * An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
      */
     @NotNull public Builder diagram(@NotNull ImageObject.Builder imageObject) {
-      return this.diagram(imageObject.build());
+      putValue("diagram", imageObject.build());
+      return this;
     }
     /**
      * Function of the anatomical structure.
      */
     @NotNull public Builder function(@NotNull String function) {
-      this.function = function;
+      putValue("function", function);
       return this;
     }
     /**
      * The anatomical or organ system that this structure is part of.
      */
     @NotNull public Builder partOfSystem(@NotNull IsPartOf isPartOf) {
-      this.partOfSystem = isPartOf;
+      putValue("partOfSystem", isPartOf);
       return this;
     }
     /**
      * A medical condition associated with this anatomy.
      */
     @NotNull public Builder relatedCondition(@NotNull MedicalCondition medicalCondition) {
-      this.relatedCondition = medicalCondition;
+      putValue("relatedCondition", medicalCondition);
       return this;
     }
     /**
      * A medical condition associated with this anatomy.
      */
     @NotNull public Builder relatedCondition(@NotNull MedicalCondition.Builder medicalCondition) {
-      return this.relatedCondition(medicalCondition.build());
+      putValue("relatedCondition", medicalCondition.build());
+      return this;
     }
     /**
      * A medical therapy related to this anatomy.
      */
     @NotNull public Builder relatedTherapy(@NotNull MedicalTherapy medicalTherapy) {
-      this.relatedTherapy = medicalTherapy;
+      putValue("relatedTherapy", medicalTherapy);
       return this;
     }
     /**
      * A medical therapy related to this anatomy.
      */
     @NotNull public Builder relatedTherapy(@NotNull MedicalTherapy.Builder medicalTherapy) {
-      return this.relatedTherapy(medicalTherapy.build());
+      putValue("relatedTherapy", medicalTherapy.build());
+      return this;
     }
     /**
      * Component (sub-)structure(s) that comprise this anatomical structure.
      */
     @NotNull public Builder subStructure(@NotNull AnatomicalStructure anatomicalStructure) {
-      this.subStructure = anatomicalStructure;
+      putValue("subStructure", anatomicalStructure);
       return this;
     }
     /**
      * Component (sub-)structure(s) that comprise this anatomical structure.
      */
     @NotNull public Builder subStructure(@NotNull AnatomicalStructure.Builder anatomicalStructure) {
-      return this.subStructure(anatomicalStructure.build());
+      putValue("subStructure", anatomicalStructure.build());
+      return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
-      this.code = medicalCode;
+      putValue("code", medicalCode);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
-      return this.code(medicalCode.build());
+      putValue("code", medicalCode.build());
+      return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+      putValue("guideline", medicalGuideline);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
-      return this.guideline(medicalGuideline.build());
+      putValue("guideline", medicalGuideline.build());
+      return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
+      putValue("medicineSystem", medicineSystem);
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
-      return this.medicineSystem(medicineSystem.build());
+      putValue("medicineSystem", medicineSystem.build());
+      return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
-      this.recognizingAuthority = organization;
+      putValue("recognizingAuthority", organization);
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
-      return this.recognizingAuthority(organization.build());
+      putValue("recognizingAuthority", organization.build());
+      return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
+      putValue("relevantSpecialty", medicalSpecialty);
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
-      return this.relevantSpecialty(medicalSpecialty.build());
+      putValue("relevantSpecialty", medicalSpecialty.build());
+      return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
+      putValue("study", medicalStudy);
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
-      return this.study(medicalStudy.build());
+      putValue("study", medicalStudy.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -271,8 +272,7 @@ public class Ligament extends AnatomicalStructure {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -306,7 +306,8 @@ public class Ligament extends AnatomicalStructure {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -339,107 +340,54 @@ public class Ligament extends AnatomicalStructure {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("associatedPathophysiology".equals(key) && value instanceof String) { associatedPathophysiology((String)value); continue; }
-        if ("bodyLocation".equals(key) && value instanceof String) { bodyLocation((String)value); continue; }
-        if ("connectedTo".equals(key) && value instanceof AnatomicalStructure) { connectedTo((AnatomicalStructure)value); continue; }
-        if ("diagram".equals(key) && value instanceof ImageObject) { diagram((ImageObject)value); continue; }
-        if ("function".equals(key) && value instanceof String) { function((String)value); continue; }
-        if ("partOfSystem".equals(key) && value instanceof IsPartOf) { partOfSystem((IsPartOf)value); continue; }
-        if ("relatedCondition".equals(key) && value instanceof MedicalCondition) { relatedCondition((MedicalCondition)value); continue; }
-        if ("relatedTherapy".equals(key) && value instanceof MedicalTherapy) { relatedTherapy((MedicalTherapy)value); continue; }
-        if ("subStructure".equals(key) && value instanceof AnatomicalStructure) { subStructure((AnatomicalStructure)value); continue; }
-        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
-        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
-        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
-        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
-        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
-        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      super.fromMap(key, value);
     }
-    private String associatedPathophysiology;
-    private String bodyLocation;
-    private AnatomicalStructure connectedTo;
-    private ImageObject diagram;
-    private String function;
-    private IsPartOf partOfSystem;
-    private MedicalCondition relatedCondition;
-    private MedicalTherapy relatedTherapy;
-    private AnatomicalStructure subStructure;
-    private MedicalCode code;
-    private MedicalGuideline guideline;
-    private MedicineSystem medicineSystem;
-    private Organization recognizingAuthority;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalStudy study;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
 }

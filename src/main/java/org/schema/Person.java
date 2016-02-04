@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A person (alive, dead, undead, or fictional).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNewsEquivalent class: http://xmlns.com/foaf/0.1/Person
@@ -29,1009 +30,1543 @@ public class Person extends Thing implements Competitor {
   /**
    * An additional name for a Person, can be used for a middle name.
    */
-  public String getAdditionalName() { return myAdditionalName; }
+  @JsonIgnore public String getAdditionalName() {
+    return (String) getValue("additionalName");
+  }
+  /**
+   * An additional name for a Person, can be used for a middle name.
+   */
+  @JsonIgnore public Collection<String> getAdditionalNames() {
+    final Object current = myData.get("additionalName");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Physical address of the item.
    */
-  public PostalAddress getAddress() { return myAddress; }
+  @JsonIgnore public PostalAddress getAddress() {
+    return (PostalAddress) getValue("address");
+  }
+  /**
+   * Physical address of the item.
+   */
+  @JsonIgnore public Collection<PostalAddress> getAddresss() {
+    final Object current = myData.get("address");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PostalAddress>) current;
+    }
+    return Arrays.asList((PostalAddress) current);
+  }
   /**
    * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
    */
-  public Organization getAffiliation() { return myAffiliation; }
+  @JsonIgnore public Organization getAffiliation() {
+    return (Organization) getValue("affiliation");
+  }
+  /**
+   * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+   */
+  @JsonIgnore public Collection<Organization> getAffiliations() {
+    final Object current = myData.get("affiliation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * An educational organizations that the person is an alumni of.
    */
-  public EducationalOrganization getAlumniOf() { return myAlumniOf; }
+  @JsonIgnore public EducationalOrganization getAlumniOf() {
+    return (EducationalOrganization) getValue("alumniOf");
+  }
+  /**
+   * An educational organizations that the person is an alumni of.
+   */
+  @JsonIgnore public Collection<EducationalOrganization> getAlumniOfs() {
+    final Object current = myData.get("alumniOf");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<EducationalOrganization>) current;
+    }
+    return Arrays.asList((EducationalOrganization) current);
+  }
   /**
    * An award won by or for this item.
    */
-  public String getAward() { return myAward; }
+  @JsonIgnore public String getAward() {
+    return (String) getValue("award");
+  }
+  /**
+   * An award won by or for this item.
+   */
+  @JsonIgnore public Collection<String> getAwards() {
+    final Object current = myData.get("award");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Date of birth.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getBirthDate() { return myBirthDate; }
+  @JsonIgnore public java.util.Date getBirthDate() {
+    return (java.util.Date) getValue("birthDate");
+  }
+  /**
+   * Date of birth.
+   */
+  @JsonIgnore public Collection<java.util.Date> getBirthDates() {
+    final Object current = myData.get("birthDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
    */
-  public BrandOrOrganization getBrand() { return myBrand; }
+  @JsonIgnore public Brand getBrandBrand() {
+    return (Brand) getValue("brand");
+  }
+  /**
+   * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+   */
+  @JsonIgnore public Collection<Brand> getBrandBrands() {
+    final Object current = myData.get("brand");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Brand>) current;
+    }
+    return Arrays.asList((Brand) current);
+  }
+  /**
+   * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+   */
+  @JsonIgnore public Organization getBrandOrganization() {
+    return (Organization) getValue("brand");
+  }
+  /**
+   * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+   */
+  @JsonIgnore public Collection<Organization> getBrandOrganizations() {
+    final Object current = myData.get("brand");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * A child of the person.
    */
-  public Person getChildren() { return myChildren; }
+  @JsonIgnore public Person getChildren() {
+    return (Person) getValue("children");
+  }
+  /**
+   * A child of the person.
+   */
+  @JsonIgnore public Collection<Person> getChildrens() {
+    final Object current = myData.get("children");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * A colleague of the person.
    */
-  public Person getColleague() { return myColleague; }
+  @JsonIgnore public Person getColleague() {
+    return (Person) getValue("colleague");
+  }
+  /**
+   * A colleague of the person.
+   */
+  @JsonIgnore public Collection<Person> getColleagues() {
+    final Object current = myData.get("colleague");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * A contact point for a person or organization.
    */
-  public ContactPoint getContactPoint() { return myContactPoint; }
+  @JsonIgnore public ContactPoint getContactPoint() {
+    return (ContactPoint) getValue("contactPoint");
+  }
+  /**
+   * A contact point for a person or organization.
+   */
+  @JsonIgnore public Collection<ContactPoint> getContactPoints() {
+    final Object current = myData.get("contactPoint");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ContactPoint>) current;
+    }
+    return Arrays.asList((ContactPoint) current);
+  }
   /**
    * Date of death.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDeathDate() { return myDeathDate; }
+  @JsonIgnore public java.util.Date getDeathDate() {
+    return (java.util.Date) getValue("deathDate");
+  }
+  /**
+   * Date of death.
+   */
+  @JsonIgnore public Collection<java.util.Date> getDeathDates() {
+    final Object current = myData.get("deathDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The Dun & Bradstreet DUNS number for identifying an organization or business person.
    */
-  public String getDuns() { return myDuns; }
+  @JsonIgnore public String getDuns() {
+    return (String) getValue("duns");
+  }
+  /**
+   * The Dun & Bradstreet DUNS number for identifying an organization or business person.
+   */
+  @JsonIgnore public Collection<String> getDunss() {
+    final Object current = myData.get("duns");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Email address.
    */
-  public String getEmail() { return myEmail; }
+  @JsonIgnore public String getEmail() {
+    return (String) getValue("email");
+  }
+  /**
+   * Email address.
+   */
+  @JsonIgnore public Collection<String> getEmails() {
+    final Object current = myData.get("email");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the name property.
    */
-  public String getFamilyName() { return myFamilyName; }
+  @JsonIgnore public String getFamilyName() {
+    return (String) getValue("familyName");
+  }
+  /**
+   * Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the name property.
+   */
+  @JsonIgnore public Collection<String> getFamilyNames() {
+    final Object current = myData.get("familyName");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The fax number.
    */
-  public String getFaxNumber() { return myFaxNumber; }
+  @JsonIgnore public String getFaxNumber() {
+    return (String) getValue("faxNumber");
+  }
+  /**
+   * The fax number.
+   */
+  @JsonIgnore public Collection<String> getFaxNumbers() {
+    final Object current = myData.get("faxNumber");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The most generic uni-directional social relation.
    */
-  public Person getFollows() { return myFollows; }
+  @JsonIgnore public Person getFollows() {
+    return (Person) getValue("follows");
+  }
+  /**
+   * The most generic uni-directional social relation.
+   */
+  @JsonIgnore public Collection<Person> getFollowss() {
+    final Object current = myData.get("follows");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * Gender of the person.
    */
-  public String getGender() { return myGender; }
+  @JsonIgnore public String getGender() {
+    return (String) getValue("gender");
+  }
+  /**
+   * Gender of the person.
+   */
+  @JsonIgnore public Collection<String> getGenders() {
+    final Object current = myData.get("gender");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property.
    */
-  public String getGivenName() { return myGivenName; }
+  @JsonIgnore public String getGivenName() {
+    return (String) getValue("givenName");
+  }
+  /**
+   * Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property.
+   */
+  @JsonIgnore public Collection<String> getGivenNames() {
+    final Object current = myData.get("givenName");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
    */
-  public String getGlobalLocationNumber() { return myGlobalLocationNumber; }
+  @JsonIgnore public String getGlobalLocationNumber() {
+    return (String) getValue("globalLocationNumber");
+  }
+  /**
+   * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+   */
+  @JsonIgnore public Collection<String> getGlobalLocationNumbers() {
+    final Object current = myData.get("globalLocationNumber");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Points-of-Sales operated by the organization or person.
    */
-  public Place getHasPOS() { return myHasPOS; }
+  @JsonIgnore public Place getHasPOS() {
+    return (Place) getValue("hasPOS");
+  }
+  /**
+   * Points-of-Sales operated by the organization or person.
+   */
+  @JsonIgnore public Collection<Place> getHasPOSs() {
+    final Object current = myData.get("hasPOS");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
+  }
   /**
    * The height of the item.
    */
-  public DistanceOrQuantitativeValue getHeight() { return myHeight; }
+  @JsonIgnore public Distance getHeightDistance() {
+    return (Distance) getValue("height");
+  }
+  /**
+   * The height of the item.
+   */
+  @JsonIgnore public Collection<Distance> getHeightDistances() {
+    final Object current = myData.get("height");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Distance>) current;
+    }
+    return Arrays.asList((Distance) current);
+  }
+  /**
+   * The height of the item.
+   */
+  @JsonIgnore public QuantitativeValue getHeightQuantitativeValue() {
+    return (QuantitativeValue) getValue("height");
+  }
+  /**
+   * The height of the item.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getHeightQuantitativeValues() {
+    final Object current = myData.get("height");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * A contact location for a person's residence.
    */
-  public ContactPointOrPlace getHomeLocation() { return myHomeLocation; }
+  @JsonIgnore public ContactPoint getHomeLocationContactPoint() {
+    return (ContactPoint) getValue("homeLocation");
+  }
+  /**
+   * A contact location for a person's residence.
+   */
+  @JsonIgnore public Collection<ContactPoint> getHomeLocationContactPoints() {
+    final Object current = myData.get("homeLocation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ContactPoint>) current;
+    }
+    return Arrays.asList((ContactPoint) current);
+  }
+  /**
+   * A contact location for a person's residence.
+   */
+  @JsonIgnore public Place getHomeLocationPlace() {
+    return (Place) getValue("homeLocation");
+  }
+  /**
+   * A contact location for a person's residence.
+   */
+  @JsonIgnore public Collection<Place> getHomeLocationPlaces() {
+    final Object current = myData.get("homeLocation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
+  }
   /**
    * An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.
    */
-  public String getHonorificPrefix() { return myHonorificPrefix; }
+  @JsonIgnore public String getHonorificPrefix() {
+    return (String) getValue("honorificPrefix");
+  }
+  /**
+   * An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.
+   */
+  @JsonIgnore public Collection<String> getHonorificPrefixs() {
+    final Object current = myData.get("honorificPrefix");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.
    */
-  public String getHonorificSuffix() { return myHonorificSuffix; }
+  @JsonIgnore public String getHonorificSuffix() {
+    return (String) getValue("honorificSuffix");
+  }
+  /**
+   * An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.
+   */
+  @JsonIgnore public Collection<String> getHonorificSuffixs() {
+    final Object current = myData.get("honorificSuffix");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
    */
-  public String getIsicV4() { return myIsicV4; }
+  @JsonIgnore public String getIsicV4() {
+    return (String) getValue("isicV4");
+  }
+  /**
+   * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
+   */
+  @JsonIgnore public Collection<String> getIsicV4s() {
+    final Object current = myData.get("isicV4");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The job title of the person (for example, Financial Manager).
    */
-  public String getJobTitle() { return myJobTitle; }
+  @JsonIgnore public String getJobTitle() {
+    return (String) getValue("jobTitle");
+  }
+  /**
+   * The job title of the person (for example, Financial Manager).
+   */
+  @JsonIgnore public Collection<String> getJobTitles() {
+    final Object current = myData.get("jobTitle");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The most generic bi-directional social/work relation.
    */
-  public Person getKnows() { return myKnows; }
+  @JsonIgnore public Person getKnows() {
+    return (Person) getValue("knows");
+  }
+  /**
+   * The most generic bi-directional social/work relation.
+   */
+  @JsonIgnore public Collection<Person> getKnowss() {
+    final Object current = myData.get("knows");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * A pointer to products or services offered by the organization or person.
    */
-  public Offer getMakesOffer() { return myMakesOffer; }
+  @JsonIgnore public Offer getMakesOffer() {
+    return (Offer) getValue("makesOffer");
+  }
+  /**
+   * A pointer to products or services offered by the organization or person.
+   */
+  @JsonIgnore public Collection<Offer> getMakesOffers() {
+    final Object current = myData.get("makesOffer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Offer>) current;
+    }
+    return Arrays.asList((Offer) current);
+  }
   /**
    * An Organization (or ProgramMembership) to which this Person or Organization belongs.
    */
-  public OrganizationOrProgramMembership getMemberOf() { return myMemberOf; }
+  @JsonIgnore public Organization getMemberOfOrganization() {
+    return (Organization) getValue("memberOf");
+  }
+  /**
+   * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+   */
+  @JsonIgnore public Collection<Organization> getMemberOfOrganizations() {
+    final Object current = myData.get("memberOf");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+   */
+  @JsonIgnore public ProgramMembership getMemberOfProgramMembership() {
+    return (ProgramMembership) getValue("memberOf");
+  }
+  /**
+   * An Organization (or ProgramMembership) to which this Person or Organization belongs.
+   */
+  @JsonIgnore public Collection<ProgramMembership> getMemberOfProgramMemberships() {
+    final Object current = myData.get("memberOf");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ProgramMembership>) current;
+    }
+    return Arrays.asList((ProgramMembership) current);
+  }
   /**
    * The North American Industry Classification System (NAICS) code for a particular organization or business person.
    */
-  public String getNaics() { return myNaics; }
+  @JsonIgnore public String getNaics() {
+    return (String) getValue("naics");
+  }
+  /**
+   * The North American Industry Classification System (NAICS) code for a particular organization or business person.
+   */
+  @JsonIgnore public Collection<String> getNaicss() {
+    final Object current = myData.get("naics");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Nationality of the person.
    */
-  public Country getNationality() { return myNationality; }
+  @JsonIgnore public Country getNationality() {
+    return (Country) getValue("nationality");
+  }
+  /**
+   * Nationality of the person.
+   */
+  @JsonIgnore public Collection<Country> getNationalitys() {
+    final Object current = myData.get("nationality");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Country>) current;
+    }
+    return Arrays.asList((Country) current);
+  }
   /**
    * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
    */
-  public PriceSpecification getNetWorth() { return myNetWorth; }
+  @JsonIgnore public PriceSpecification getNetWorth() {
+    return (PriceSpecification) getValue("netWorth");
+  }
+  /**
+   * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
+   */
+  @JsonIgnore public Collection<PriceSpecification> getNetWorths() {
+    final Object current = myData.get("netWorth");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PriceSpecification>) current;
+    }
+    return Arrays.asList((PriceSpecification) current);
+  }
   /**
    * Products owned by the organization or person.
    */
-  public OwnershipInfoOrProduct getOwns() { return myOwns; }
+  @JsonIgnore public OwnershipInfo getOwnsOwnershipInfo() {
+    return (OwnershipInfo) getValue("owns");
+  }
+  /**
+   * Products owned by the organization or person.
+   */
+  @JsonIgnore public Collection<OwnershipInfo> getOwnsOwnershipInfos() {
+    final Object current = myData.get("owns");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<OwnershipInfo>) current;
+    }
+    return Arrays.asList((OwnershipInfo) current);
+  }
+  /**
+   * Products owned by the organization or person.
+   */
+  @JsonIgnore public Product getOwnsProduct() {
+    return (Product) getValue("owns");
+  }
+  /**
+   * Products owned by the organization or person.
+   */
+  @JsonIgnore public Collection<Product> getOwnsProducts() {
+    final Object current = myData.get("owns");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Product>) current;
+    }
+    return Arrays.asList((Product) current);
+  }
   /**
    * A parent of this person.
    */
-  public Person getParent() { return myParent; }
+  @JsonIgnore public Person getParent() {
+    return (Person) getValue("parent");
+  }
+  /**
+   * A parent of this person.
+   */
+  @JsonIgnore public Collection<Person> getParents() {
+    final Object current = myData.get("parent");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * Event that this person is a performer or participant in.
    */
-  public Event getPerformerIn() { return myPerformerIn; }
+  @JsonIgnore public Event getPerformerIn() {
+    return (Event) getValue("performerIn");
+  }
+  /**
+   * Event that this person is a performer or participant in.
+   */
+  @JsonIgnore public Collection<Event> getPerformerIns() {
+    final Object current = myData.get("performerIn");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Event>) current;
+    }
+    return Arrays.asList((Event) current);
+  }
   /**
    * The most generic familial relation.
    */
-  public Person getRelatedTo() { return myRelatedTo; }
+  @JsonIgnore public Person getRelatedTo() {
+    return (Person) getValue("relatedTo");
+  }
+  /**
+   * The most generic familial relation.
+   */
+  @JsonIgnore public Collection<Person> getRelatedTos() {
+    final Object current = myData.get("relatedTo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * A pointer to products or services sought by the organization or person (demand).
    */
-  public Demand getSeeks() { return mySeeks; }
+  @JsonIgnore public Demand getSeeks() {
+    return (Demand) getValue("seeks");
+  }
+  /**
+   * A pointer to products or services sought by the organization or person (demand).
+   */
+  @JsonIgnore public Collection<Demand> getSeekss() {
+    final Object current = myData.get("seeks");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Demand>) current;
+    }
+    return Arrays.asList((Demand) current);
+  }
   /**
    * A sibling of the person.
    */
-  public Person getSibling() { return mySibling; }
+  @JsonIgnore public Person getSibling() {
+    return (Person) getValue("sibling");
+  }
+  /**
+   * A sibling of the person.
+   */
+  @JsonIgnore public Collection<Person> getSiblings() {
+    final Object current = myData.get("sibling");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The person's spouse.
    */
-  public Person getSpouse() { return mySpouse; }
+  @JsonIgnore public Person getSpouse() {
+    return (Person) getValue("spouse");
+  }
+  /**
+   * The person's spouse.
+   */
+  @JsonIgnore public Collection<Person> getSpouses() {
+    final Object current = myData.get("spouse");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
    */
-  public String getTaxID() { return myTaxID; }
+  @JsonIgnore public String getTaxID() {
+    return (String) getValue("taxID");
+  }
+  /**
+   * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
+   */
+  @JsonIgnore public Collection<String> getTaxIDs() {
+    final Object current = myData.get("taxID");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The telephone number.
    */
-  public String getTelephone() { return myTelephone; }
+  @JsonIgnore public String getTelephone() {
+    return (String) getValue("telephone");
+  }
+  /**
+   * The telephone number.
+   */
+  @JsonIgnore public Collection<String> getTelephones() {
+    final Object current = myData.get("telephone");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The Value-added Tax ID of the organization or person.
    */
-  public String getVatID() { return myVatID; }
+  @JsonIgnore public String getVatID() {
+    return (String) getValue("vatID");
+  }
+  /**
+   * The Value-added Tax ID of the organization or person.
+   */
+  @JsonIgnore public Collection<String> getVatIDs() {
+    final Object current = myData.get("vatID");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The weight of the product or person.
    */
-  public QuantitativeValue getWeight() { return myWeight; }
+  @JsonIgnore public QuantitativeValue getWeight() {
+    return (QuantitativeValue) getValue("weight");
+  }
+  /**
+   * The weight of the product or person.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getWeights() {
+    final Object current = myData.get("weight");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * A contact location for a person's place of work.
    */
-  public ContactPointOrPlace getWorkLocation() { return myWorkLocation; }
+  @JsonIgnore public ContactPoint getWorkLocationContactPoint() {
+    return (ContactPoint) getValue("workLocation");
+  }
+  /**
+   * A contact location for a person's place of work.
+   */
+  @JsonIgnore public Collection<ContactPoint> getWorkLocationContactPoints() {
+    final Object current = myData.get("workLocation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ContactPoint>) current;
+    }
+    return Arrays.asList((ContactPoint) current);
+  }
+  /**
+   * A contact location for a person's place of work.
+   */
+  @JsonIgnore public Place getWorkLocationPlace() {
+    return (Place) getValue("workLocation");
+  }
+  /**
+   * A contact location for a person's place of work.
+   */
+  @JsonIgnore public Collection<Place> getWorkLocationPlaces() {
+    final Object current = myData.get("workLocation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
+  }
   /**
    * Organizations that the person works for.
    */
-  public Organization getWorksFor() { return myWorksFor; }
+  @JsonIgnore public Organization getWorksFor() {
+    return (Organization) getValue("worksFor");
+  }
+  /**
+   * Organizations that the person works for.
+   */
+  @JsonIgnore public Collection<Organization> getWorksFors() {
+    final Object current = myData.get("worksFor");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * The place where the person was born.
    */
-  public Place getBirthPlace() { return myBirthPlace; }
+  @JsonIgnore public Place getBirthPlace() {
+    return (Place) getValue("birthPlace");
+  }
+  /**
+   * The place where the person was born.
+   */
+  @JsonIgnore public Collection<Place> getBirthPlaces() {
+    final Object current = myData.get("birthPlace");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
+  }
   /**
    * The place where the person died.
    */
-  public Place getDeathPlace() { return myDeathPlace; }
-  protected Person(String additionalName, PostalAddress address, Organization affiliation, EducationalOrganization alumniOf, String award, java.util.Date birthDate, BrandOrOrganization brand, Person children, Person colleague, ContactPoint contactPoint, java.util.Date deathDate, String duns, String email, String familyName, String faxNumber, Person follows, String gender, String givenName, String globalLocationNumber, Place hasPOS, DistanceOrQuantitativeValue height, ContactPointOrPlace homeLocation, String honorificPrefix, String honorificSuffix, String isicV4, String jobTitle, Person knows, Offer makesOffer, OrganizationOrProgramMembership memberOf, String naics, Country nationality, PriceSpecification netWorth, OwnershipInfoOrProduct owns, Person parent, Event performerIn, Person relatedTo, Demand seeks, Person sibling, Person spouse, String taxID, String telephone, String vatID, QuantitativeValue weight, ContactPointOrPlace workLocation, Organization worksFor, Place birthPlace, Place deathPlace, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAdditionalName = additionalName;
-    myAddress = address;
-    myAffiliation = affiliation;
-    myAlumniOf = alumniOf;
-    myAward = award;
-    myBirthDate = birthDate;
-    myBrand = brand;
-    myChildren = children;
-    myColleague = colleague;
-    myContactPoint = contactPoint;
-    myDeathDate = deathDate;
-    myDuns = duns;
-    myEmail = email;
-    myFamilyName = familyName;
-    myFaxNumber = faxNumber;
-    myFollows = follows;
-    myGender = gender;
-    myGivenName = givenName;
-    myGlobalLocationNumber = globalLocationNumber;
-    myHasPOS = hasPOS;
-    myHeight = height;
-    myHomeLocation = homeLocation;
-    myHonorificPrefix = honorificPrefix;
-    myHonorificSuffix = honorificSuffix;
-    myIsicV4 = isicV4;
-    myJobTitle = jobTitle;
-    myKnows = knows;
-    myMakesOffer = makesOffer;
-    myMemberOf = memberOf;
-    myNaics = naics;
-    myNationality = nationality;
-    myNetWorth = netWorth;
-    myOwns = owns;
-    myParent = parent;
-    myPerformerIn = performerIn;
-    myRelatedTo = relatedTo;
-    mySeeks = seeks;
-    mySibling = sibling;
-    mySpouse = spouse;
-    myTaxID = taxID;
-    myTelephone = telephone;
-    myVatID = vatID;
-    myWeight = weight;
-    myWorkLocation = workLocation;
-    myWorksFor = worksFor;
-    myBirthPlace = birthPlace;
-    myDeathPlace = deathPlace;
-    myAdditionalName = additionalName;
-    myAddress = address;
-    myAffiliation = affiliation;
-    myAlumniOf = alumniOf;
-    myAward = award;
-    myBirthDate = birthDate;
-    myBrand = brand;
-    myChildren = children;
-    myColleague = colleague;
-    myContactPoint = contactPoint;
-    myDeathDate = deathDate;
-    myDuns = duns;
-    myEmail = email;
-    myFamilyName = familyName;
-    myFaxNumber = faxNumber;
-    myFollows = follows;
-    myGender = gender;
-    myGivenName = givenName;
-    myGlobalLocationNumber = globalLocationNumber;
-    myHasPOS = hasPOS;
-    myHeight = height;
-    myHomeLocation = homeLocation;
-    myHonorificPrefix = honorificPrefix;
-    myHonorificSuffix = honorificSuffix;
-    myIsicV4 = isicV4;
-    myJobTitle = jobTitle;
-    myKnows = knows;
-    myMakesOffer = makesOffer;
-    myMemberOf = memberOf;
-    myNaics = naics;
-    myNationality = nationality;
-    myNetWorth = netWorth;
-    myOwns = owns;
-    myParent = parent;
-    myPerformerIn = performerIn;
-    myRelatedTo = relatedTo;
-    mySeeks = seeks;
-    mySibling = sibling;
-    mySpouse = spouse;
-    myTaxID = taxID;
-    myTelephone = telephone;
-    myVatID = vatID;
-    myWeight = weight;
-    myWorkLocation = workLocation;
-    myWorksFor = worksFor;
-    myBirthPlace = birthPlace;
-    myDeathPlace = deathPlace;
+  @JsonIgnore public Place getDeathPlace() {
+    return (Place) getValue("deathPlace");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAdditionalName != null ? myAdditionalName.hashCode() : 0);
-    result = 31 * result + (myAddress != null ? myAddress.hashCode() : 0);
-    result = 31 * result + (myAffiliation != null ? myAffiliation.hashCode() : 0);
-    result = 31 * result + (myAlumniOf != null ? myAlumniOf.hashCode() : 0);
-    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
-    result = 31 * result + (myBirthDate != null ? myBirthDate.hashCode() : 0);
-    result = 31 * result + (myBrand != null ? myBrand.hashCode() : 0);
-    result = 31 * result + (myChildren != null ? myChildren.hashCode() : 0);
-    result = 31 * result + (myColleague != null ? myColleague.hashCode() : 0);
-    result = 31 * result + (myContactPoint != null ? myContactPoint.hashCode() : 0);
-    result = 31 * result + (myDeathDate != null ? myDeathDate.hashCode() : 0);
-    result = 31 * result + (myDuns != null ? myDuns.hashCode() : 0);
-    result = 31 * result + (myEmail != null ? myEmail.hashCode() : 0);
-    result = 31 * result + (myFamilyName != null ? myFamilyName.hashCode() : 0);
-    result = 31 * result + (myFaxNumber != null ? myFaxNumber.hashCode() : 0);
-    result = 31 * result + (myFollows != null ? myFollows.hashCode() : 0);
-    result = 31 * result + (myGender != null ? myGender.hashCode() : 0);
-    result = 31 * result + (myGivenName != null ? myGivenName.hashCode() : 0);
-    result = 31 * result + (myGlobalLocationNumber != null ? myGlobalLocationNumber.hashCode() : 0);
-    result = 31 * result + (myHasPOS != null ? myHasPOS.hashCode() : 0);
-    result = 31 * result + (myHeight != null ? myHeight.hashCode() : 0);
-    result = 31 * result + (myHomeLocation != null ? myHomeLocation.hashCode() : 0);
-    result = 31 * result + (myHonorificPrefix != null ? myHonorificPrefix.hashCode() : 0);
-    result = 31 * result + (myHonorificSuffix != null ? myHonorificSuffix.hashCode() : 0);
-    result = 31 * result + (myIsicV4 != null ? myIsicV4.hashCode() : 0);
-    result = 31 * result + (myJobTitle != null ? myJobTitle.hashCode() : 0);
-    result = 31 * result + (myKnows != null ? myKnows.hashCode() : 0);
-    result = 31 * result + (myMakesOffer != null ? myMakesOffer.hashCode() : 0);
-    result = 31 * result + (myMemberOf != null ? myMemberOf.hashCode() : 0);
-    result = 31 * result + (myNaics != null ? myNaics.hashCode() : 0);
-    result = 31 * result + (myNationality != null ? myNationality.hashCode() : 0);
-    result = 31 * result + (myNetWorth != null ? myNetWorth.hashCode() : 0);
-    result = 31 * result + (myOwns != null ? myOwns.hashCode() : 0);
-    result = 31 * result + (myParent != null ? myParent.hashCode() : 0);
-    result = 31 * result + (myPerformerIn != null ? myPerformerIn.hashCode() : 0);
-    result = 31 * result + (myRelatedTo != null ? myRelatedTo.hashCode() : 0);
-    result = 31 * result + (mySeeks != null ? mySeeks.hashCode() : 0);
-    result = 31 * result + (mySibling != null ? mySibling.hashCode() : 0);
-    result = 31 * result + (mySpouse != null ? mySpouse.hashCode() : 0);
-    result = 31 * result + (myTaxID != null ? myTaxID.hashCode() : 0);
-    result = 31 * result + (myTelephone != null ? myTelephone.hashCode() : 0);
-    result = 31 * result + (myVatID != null ? myVatID.hashCode() : 0);
-    result = 31 * result + (myWeight != null ? myWeight.hashCode() : 0);
-    result = 31 * result + (myWorkLocation != null ? myWorkLocation.hashCode() : 0);
-    result = 31 * result + (myWorksFor != null ? myWorksFor.hashCode() : 0);
-    result = 31 * result + (myBirthPlace != null ? myBirthPlace.hashCode() : 0);
-    result = 31 * result + (myDeathPlace != null ? myDeathPlace.hashCode() : 0);
-    return result;
+  /**
+   * The place where the person died.
+   */
+  @JsonIgnore public Collection<Place> getDeathPlaces() {
+    final Object current = myData.get("deathPlace");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Person person = (Person) o;
-    if (!super.equals(o)) return false;
-    if (myAdditionalName != null ? !myAdditionalName.equals(person.myAdditionalName) : person.myAdditionalName != null) return false;
-    if (myAddress != null ? !myAddress.equals(person.myAddress) : person.myAddress != null) return false;
-    if (myAffiliation != null ? !myAffiliation.equals(person.myAffiliation) : person.myAffiliation != null) return false;
-    if (myAlumniOf != null ? !myAlumniOf.equals(person.myAlumniOf) : person.myAlumniOf != null) return false;
-    if (myAward != null ? !myAward.equals(person.myAward) : person.myAward != null) return false;
-    if (myBirthDate != null ? !myBirthDate.equals(person.myBirthDate) : person.myBirthDate != null) return false;
-    if (myBrand != null ? !myBrand.equals(person.myBrand) : person.myBrand != null) return false;
-    if (myChildren != null ? !myChildren.equals(person.myChildren) : person.myChildren != null) return false;
-    if (myColleague != null ? !myColleague.equals(person.myColleague) : person.myColleague != null) return false;
-    if (myContactPoint != null ? !myContactPoint.equals(person.myContactPoint) : person.myContactPoint != null) return false;
-    if (myDeathDate != null ? !myDeathDate.equals(person.myDeathDate) : person.myDeathDate != null) return false;
-    if (myDuns != null ? !myDuns.equals(person.myDuns) : person.myDuns != null) return false;
-    if (myEmail != null ? !myEmail.equals(person.myEmail) : person.myEmail != null) return false;
-    if (myFamilyName != null ? !myFamilyName.equals(person.myFamilyName) : person.myFamilyName != null) return false;
-    if (myFaxNumber != null ? !myFaxNumber.equals(person.myFaxNumber) : person.myFaxNumber != null) return false;
-    if (myFollows != null ? !myFollows.equals(person.myFollows) : person.myFollows != null) return false;
-    if (myGender != null ? !myGender.equals(person.myGender) : person.myGender != null) return false;
-    if (myGivenName != null ? !myGivenName.equals(person.myGivenName) : person.myGivenName != null) return false;
-    if (myGlobalLocationNumber != null ? !myGlobalLocationNumber.equals(person.myGlobalLocationNumber) : person.myGlobalLocationNumber != null) return false;
-    if (myHasPOS != null ? !myHasPOS.equals(person.myHasPOS) : person.myHasPOS != null) return false;
-    if (myHeight != null ? !myHeight.equals(person.myHeight) : person.myHeight != null) return false;
-    if (myHomeLocation != null ? !myHomeLocation.equals(person.myHomeLocation) : person.myHomeLocation != null) return false;
-    if (myHonorificPrefix != null ? !myHonorificPrefix.equals(person.myHonorificPrefix) : person.myHonorificPrefix != null) return false;
-    if (myHonorificSuffix != null ? !myHonorificSuffix.equals(person.myHonorificSuffix) : person.myHonorificSuffix != null) return false;
-    if (myIsicV4 != null ? !myIsicV4.equals(person.myIsicV4) : person.myIsicV4 != null) return false;
-    if (myJobTitle != null ? !myJobTitle.equals(person.myJobTitle) : person.myJobTitle != null) return false;
-    if (myKnows != null ? !myKnows.equals(person.myKnows) : person.myKnows != null) return false;
-    if (myMakesOffer != null ? !myMakesOffer.equals(person.myMakesOffer) : person.myMakesOffer != null) return false;
-    if (myMemberOf != null ? !myMemberOf.equals(person.myMemberOf) : person.myMemberOf != null) return false;
-    if (myNaics != null ? !myNaics.equals(person.myNaics) : person.myNaics != null) return false;
-    if (myNationality != null ? !myNationality.equals(person.myNationality) : person.myNationality != null) return false;
-    if (myNetWorth != null ? !myNetWorth.equals(person.myNetWorth) : person.myNetWorth != null) return false;
-    if (myOwns != null ? !myOwns.equals(person.myOwns) : person.myOwns != null) return false;
-    if (myParent != null ? !myParent.equals(person.myParent) : person.myParent != null) return false;
-    if (myPerformerIn != null ? !myPerformerIn.equals(person.myPerformerIn) : person.myPerformerIn != null) return false;
-    if (myRelatedTo != null ? !myRelatedTo.equals(person.myRelatedTo) : person.myRelatedTo != null) return false;
-    if (mySeeks != null ? !mySeeks.equals(person.mySeeks) : person.mySeeks != null) return false;
-    if (mySibling != null ? !mySibling.equals(person.mySibling) : person.mySibling != null) return false;
-    if (mySpouse != null ? !mySpouse.equals(person.mySpouse) : person.mySpouse != null) return false;
-    if (myTaxID != null ? !myTaxID.equals(person.myTaxID) : person.myTaxID != null) return false;
-    if (myTelephone != null ? !myTelephone.equals(person.myTelephone) : person.myTelephone != null) return false;
-    if (myVatID != null ? !myVatID.equals(person.myVatID) : person.myVatID != null) return false;
-    if (myWeight != null ? !myWeight.equals(person.myWeight) : person.myWeight != null) return false;
-    if (myWorkLocation != null ? !myWorkLocation.equals(person.myWorkLocation) : person.myWorkLocation != null) return false;
-    if (myWorksFor != null ? !myWorksFor.equals(person.myWorksFor) : person.myWorksFor != null) return false;
-    if (myBirthPlace != null ? !myBirthPlace.equals(person.myBirthPlace) : person.myBirthPlace != null) return false;
-    if (myDeathPlace != null ? !myDeathPlace.equals(person.myDeathPlace) : person.myDeathPlace != null) return false;
-    return true;
+  protected Person(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Person}
    */
-  public static class Builder implements ThingBuilder<Person> {
+  public static class Builder extends Thing.Builder {
     public Person build() {
-      return new Person(additionalName, address, affiliation, alumniOf, award, birthDate, brand, children, colleague, contactPoint, deathDate, duns, email, familyName, faxNumber, follows, gender, givenName, globalLocationNumber, hasPOS, height, homeLocation, honorificPrefix, honorificSuffix, isicV4, jobTitle, knows, makesOffer, memberOf, naics, nationality, netWorth, owns, parent, performerIn, relatedTo, seeks, sibling, spouse, taxID, telephone, vatID, weight, workLocation, worksFor, birthPlace, deathPlace, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Person(myData);
     }
     /**
      * An additional name for a Person, can be used for a middle name.
      */
     @NotNull public Builder additionalName(@NotNull String additionalName) {
-      this.additionalName = additionalName;
+      putValue("additionalName", additionalName);
       return this;
     }
     /**
      * Physical address of the item.
      */
     @NotNull public Builder address(@NotNull PostalAddress postalAddress) {
-      this.address = postalAddress;
+      putValue("address", postalAddress);
       return this;
     }
     /**
      * Physical address of the item.
      */
     @NotNull public Builder address(@NotNull PostalAddress.Builder postalAddress) {
-      return this.address(postalAddress.build());
+      putValue("address", postalAddress.build());
+      return this;
     }
     /**
      * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
      */
     @NotNull public Builder affiliation(@NotNull Organization organization) {
-      this.affiliation = organization;
+      putValue("affiliation", organization);
       return this;
     }
     /**
      * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
      */
     @NotNull public Builder affiliation(@NotNull Organization.Builder organization) {
-      return this.affiliation(organization.build());
+      putValue("affiliation", organization.build());
+      return this;
     }
     /**
      * An educational organizations that the person is an alumni of.
      */
     @NotNull public Builder alumniOf(@NotNull EducationalOrganization educationalOrganization) {
-      this.alumniOf = educationalOrganization;
+      putValue("alumniOf", educationalOrganization);
       return this;
     }
     /**
      * An educational organizations that the person is an alumni of.
      */
     @NotNull public Builder alumniOf(@NotNull EducationalOrganization.Builder educationalOrganization) {
-      return this.alumniOf(educationalOrganization.build());
+      putValue("alumniOf", educationalOrganization.build());
+      return this;
     }
     /**
      * An award won by or for this item.
      */
     @NotNull public Builder award(@NotNull String award) {
-      this.award = award;
+      putValue("award", award);
       return this;
     }
     /**
      * Date of birth.
      */
     @NotNull public Builder birthDate(@NotNull java.util.Date date) {
-      this.birthDate = date;
+      putValue("birthDate", date);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Brand brand) {
-      if (this.brand == null) this.brand = new BrandOrOrganization();
-      this.brand.setBrand(brand);
+      putValue("brand", brand);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Brand.Builder brand) {
-      return this.brand(brand.build());
+      putValue("brand", brand.build());
+      return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Organization organization) {
-      if (this.brand == null) this.brand = new BrandOrOrganization();
-      this.brand.setOrganization(organization);
+      putValue("brand", organization);
       return this;
     }
     /**
      * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
      */
     @NotNull public Builder brand(@NotNull Organization.Builder organization) {
-      return this.brand(organization.build());
+      putValue("brand", organization.build());
+      return this;
     }
     /**
      * A child of the person.
      */
     @NotNull public Builder children(@NotNull Person person) {
-      this.children = person;
+      putValue("children", person);
       return this;
     }
     /**
      * A child of the person.
      */
     @NotNull public Builder children(@NotNull Person.Builder person) {
-      return this.children(person.build());
+      putValue("children", person.build());
+      return this;
     }
     /**
      * A colleague of the person.
      */
     @NotNull public Builder colleague(@NotNull Person person) {
-      this.colleague = person;
+      putValue("colleague", person);
       return this;
     }
     /**
      * A colleague of the person.
      */
     @NotNull public Builder colleague(@NotNull Person.Builder person) {
-      return this.colleague(person.build());
+      putValue("colleague", person.build());
+      return this;
     }
     /**
      * A contact point for a person or organization.
      */
     @NotNull public Builder contactPoint(@NotNull ContactPoint contactPoint) {
-      this.contactPoint = contactPoint;
+      putValue("contactPoint", contactPoint);
       return this;
     }
     /**
      * A contact point for a person or organization.
      */
     @NotNull public Builder contactPoint(@NotNull ContactPoint.Builder contactPoint) {
-      return this.contactPoint(contactPoint.build());
+      putValue("contactPoint", contactPoint.build());
+      return this;
     }
     /**
      * Date of death.
      */
     @NotNull public Builder deathDate(@NotNull java.util.Date date) {
-      this.deathDate = date;
+      putValue("deathDate", date);
       return this;
     }
     /**
      * The Dun & Bradstreet DUNS number for identifying an organization or business person.
      */
     @NotNull public Builder duns(@NotNull String duns) {
-      this.duns = duns;
+      putValue("duns", duns);
       return this;
     }
     /**
      * Email address.
      */
     @NotNull public Builder email(@NotNull String email) {
-      this.email = email;
+      putValue("email", email);
       return this;
     }
     /**
      * Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the name property.
      */
     @NotNull public Builder familyName(@NotNull String familyName) {
-      this.familyName = familyName;
+      putValue("familyName", familyName);
       return this;
     }
     /**
      * The fax number.
      */
     @NotNull public Builder faxNumber(@NotNull String faxNumber) {
-      this.faxNumber = faxNumber;
+      putValue("faxNumber", faxNumber);
       return this;
     }
     /**
      * The most generic uni-directional social relation.
      */
     @NotNull public Builder follows(@NotNull Person person) {
-      this.follows = person;
+      putValue("follows", person);
       return this;
     }
     /**
      * The most generic uni-directional social relation.
      */
     @NotNull public Builder follows(@NotNull Person.Builder person) {
-      return this.follows(person.build());
+      putValue("follows", person.build());
+      return this;
     }
     /**
      * Gender of the person.
      */
     @NotNull public Builder gender(@NotNull String gender) {
-      this.gender = gender;
+      putValue("gender", gender);
       return this;
     }
     /**
      * Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property.
      */
     @NotNull public Builder givenName(@NotNull String givenName) {
-      this.givenName = givenName;
+      putValue("givenName", givenName);
       return this;
     }
     /**
      * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
     @NotNull public Builder globalLocationNumber(@NotNull String globalLocationNumber) {
-      this.globalLocationNumber = globalLocationNumber;
+      putValue("globalLocationNumber", globalLocationNumber);
       return this;
     }
     /**
      * Points-of-Sales operated by the organization or person.
      */
     @NotNull public Builder hasPOS(@NotNull Place place) {
-      this.hasPOS = place;
+      putValue("hasPOS", place);
       return this;
     }
     /**
      * Points-of-Sales operated by the organization or person.
      */
     @NotNull public Builder hasPOS(@NotNull Place.Builder place) {
-      return this.hasPOS(place.build());
+      putValue("hasPOS", place.build());
+      return this;
     }
     /**
      * The height of the item.
      */
     @NotNull public Builder height(@NotNull Distance distance) {
-      if (this.height == null) this.height = new DistanceOrQuantitativeValue();
-      this.height.setDistance(distance);
+      putValue("height", distance);
       return this;
     }
     /**
      * The height of the item.
      */
     @NotNull public Builder height(@NotNull Distance.Builder distance) {
-      return this.height(distance.build());
+      putValue("height", distance.build());
+      return this;
     }
     /**
      * The height of the item.
      */
     @NotNull public Builder height(@NotNull QuantitativeValue quantitativeValue) {
-      if (this.height == null) this.height = new DistanceOrQuantitativeValue();
-      this.height.setQuantitativeValue(quantitativeValue);
+      putValue("height", quantitativeValue);
       return this;
     }
     /**
      * The height of the item.
      */
     @NotNull public Builder height(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.height(quantitativeValue.build());
+      putValue("height", quantitativeValue.build());
+      return this;
     }
     /**
      * A contact location for a person's residence.
      */
     @NotNull public Builder homeLocation(@NotNull ContactPoint contactPoint) {
-      if (this.homeLocation == null) this.homeLocation = new ContactPointOrPlace();
-      this.homeLocation.setContactPoint(contactPoint);
+      putValue("homeLocation", contactPoint);
       return this;
     }
     /**
      * A contact location for a person's residence.
      */
     @NotNull public Builder homeLocation(@NotNull ContactPoint.Builder contactPoint) {
-      return this.homeLocation(contactPoint.build());
+      putValue("homeLocation", contactPoint.build());
+      return this;
     }
     /**
      * A contact location for a person's residence.
      */
     @NotNull public Builder homeLocation(@NotNull Place place) {
-      if (this.homeLocation == null) this.homeLocation = new ContactPointOrPlace();
-      this.homeLocation.setPlace(place);
+      putValue("homeLocation", place);
       return this;
     }
     /**
      * A contact location for a person's residence.
      */
     @NotNull public Builder homeLocation(@NotNull Place.Builder place) {
-      return this.homeLocation(place.build());
+      putValue("homeLocation", place.build());
+      return this;
     }
     /**
      * An honorific prefix preceding a Person's name such as Dr/Mrs/Mr.
      */
     @NotNull public Builder honorificPrefix(@NotNull String honorificPrefix) {
-      this.honorificPrefix = honorificPrefix;
+      putValue("honorificPrefix", honorificPrefix);
       return this;
     }
     /**
      * An honorific suffix preceding a Person's name such as M.D. /PhD/MSCSW.
      */
     @NotNull public Builder honorificSuffix(@NotNull String honorificSuffix) {
-      this.honorificSuffix = honorificSuffix;
+      putValue("honorificSuffix", honorificSuffix);
       return this;
     }
     /**
      * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
      */
     @NotNull public Builder isicV4(@NotNull String isicV4) {
-      this.isicV4 = isicV4;
+      putValue("isicV4", isicV4);
       return this;
     }
     /**
      * The job title of the person (for example, Financial Manager).
      */
     @NotNull public Builder jobTitle(@NotNull String jobTitle) {
-      this.jobTitle = jobTitle;
+      putValue("jobTitle", jobTitle);
       return this;
     }
     /**
      * The most generic bi-directional social/work relation.
      */
     @NotNull public Builder knows(@NotNull Person person) {
-      this.knows = person;
+      putValue("knows", person);
       return this;
     }
     /**
      * The most generic bi-directional social/work relation.
      */
     @NotNull public Builder knows(@NotNull Person.Builder person) {
-      return this.knows(person.build());
+      putValue("knows", person.build());
+      return this;
     }
     /**
      * A pointer to products or services offered by the organization or person.
      */
     @NotNull public Builder makesOffer(@NotNull Offer offer) {
-      this.makesOffer = offer;
+      putValue("makesOffer", offer);
       return this;
     }
     /**
      * A pointer to products or services offered by the organization or person.
      */
     @NotNull public Builder makesOffer(@NotNull Offer.Builder offer) {
-      return this.makesOffer(offer.build());
+      putValue("makesOffer", offer.build());
+      return this;
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
     @NotNull public Builder memberOf(@NotNull Organization organization) {
-      if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
-      this.memberOf.setOrganization(organization);
+      putValue("memberOf", organization);
       return this;
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
     @NotNull public Builder memberOf(@NotNull Organization.Builder organization) {
-      return this.memberOf(organization.build());
+      putValue("memberOf", organization.build());
+      return this;
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
     @NotNull public Builder memberOf(@NotNull ProgramMembership programMembership) {
-      if (this.memberOf == null) this.memberOf = new OrganizationOrProgramMembership();
-      this.memberOf.setProgramMembership(programMembership);
+      putValue("memberOf", programMembership);
       return this;
     }
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
     @NotNull public Builder memberOf(@NotNull ProgramMembership.Builder programMembership) {
-      return this.memberOf(programMembership.build());
+      putValue("memberOf", programMembership.build());
+      return this;
     }
     /**
      * The North American Industry Classification System (NAICS) code for a particular organization or business person.
      */
     @NotNull public Builder naics(@NotNull String naics) {
-      this.naics = naics;
+      putValue("naics", naics);
       return this;
     }
     /**
      * Nationality of the person.
      */
     @NotNull public Builder nationality(@NotNull Country country) {
-      this.nationality = country;
+      putValue("nationality", country);
       return this;
     }
     /**
      * Nationality of the person.
      */
     @NotNull public Builder nationality(@NotNull Country.Builder country) {
-      return this.nationality(country.build());
+      putValue("nationality", country.build());
+      return this;
     }
     /**
      * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
      */
     @NotNull public Builder netWorth(@NotNull PriceSpecification priceSpecification) {
-      this.netWorth = priceSpecification;
+      putValue("netWorth", priceSpecification);
       return this;
     }
     /**
      * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
      */
     @NotNull public Builder netWorth(@NotNull PriceSpecification.Builder priceSpecification) {
-      return this.netWorth(priceSpecification.build());
+      putValue("netWorth", priceSpecification.build());
+      return this;
     }
     /**
      * Products owned by the organization or person.
      */
     @NotNull public Builder owns(@NotNull OwnershipInfo ownershipInfo) {
-      if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
-      this.owns.setOwnershipInfo(ownershipInfo);
+      putValue("owns", ownershipInfo);
       return this;
     }
     /**
      * Products owned by the organization or person.
      */
     @NotNull public Builder owns(@NotNull OwnershipInfo.Builder ownershipInfo) {
-      return this.owns(ownershipInfo.build());
+      putValue("owns", ownershipInfo.build());
+      return this;
     }
     /**
      * Products owned by the organization or person.
      */
     @NotNull public Builder owns(@NotNull Product product) {
-      if (this.owns == null) this.owns = new OwnershipInfoOrProduct();
-      this.owns.setProduct(product);
+      putValue("owns", product);
       return this;
     }
     /**
      * Products owned by the organization or person.
      */
     @NotNull public Builder owns(@NotNull Product.Builder product) {
-      return this.owns(product.build());
+      putValue("owns", product.build());
+      return this;
     }
     /**
      * A parent of this person.
      */
     @NotNull public Builder parent(@NotNull Person person) {
-      this.parent = person;
+      putValue("parent", person);
       return this;
     }
     /**
      * A parent of this person.
      */
     @NotNull public Builder parent(@NotNull Person.Builder person) {
-      return this.parent(person.build());
+      putValue("parent", person.build());
+      return this;
     }
     /**
      * Event that this person is a performer or participant in.
      */
     @NotNull public Builder performerIn(@NotNull Event event) {
-      this.performerIn = event;
+      putValue("performerIn", event);
       return this;
     }
     /**
      * Event that this person is a performer or participant in.
      */
     @NotNull public Builder performerIn(@NotNull Event.Builder event) {
-      return this.performerIn(event.build());
+      putValue("performerIn", event.build());
+      return this;
     }
     /**
      * The most generic familial relation.
      */
     @NotNull public Builder relatedTo(@NotNull Person person) {
-      this.relatedTo = person;
+      putValue("relatedTo", person);
       return this;
     }
     /**
      * The most generic familial relation.
      */
     @NotNull public Builder relatedTo(@NotNull Person.Builder person) {
-      return this.relatedTo(person.build());
+      putValue("relatedTo", person.build());
+      return this;
     }
     /**
      * A pointer to products or services sought by the organization or person (demand).
      */
     @NotNull public Builder seeks(@NotNull Demand demand) {
-      this.seeks = demand;
+      putValue("seeks", demand);
       return this;
     }
     /**
      * A pointer to products or services sought by the organization or person (demand).
      */
     @NotNull public Builder seeks(@NotNull Demand.Builder demand) {
-      return this.seeks(demand.build());
+      putValue("seeks", demand.build());
+      return this;
     }
     /**
      * A sibling of the person.
      */
     @NotNull public Builder sibling(@NotNull Person person) {
-      this.sibling = person;
+      putValue("sibling", person);
       return this;
     }
     /**
      * A sibling of the person.
      */
     @NotNull public Builder sibling(@NotNull Person.Builder person) {
-      return this.sibling(person.build());
+      putValue("sibling", person.build());
+      return this;
     }
     /**
      * The person's spouse.
      */
     @NotNull public Builder spouse(@NotNull Person person) {
-      this.spouse = person;
+      putValue("spouse", person);
       return this;
     }
     /**
      * The person's spouse.
      */
     @NotNull public Builder spouse(@NotNull Person.Builder person) {
-      return this.spouse(person.build());
+      putValue("spouse", person.build());
+      return this;
     }
     /**
      * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
      */
     @NotNull public Builder taxID(@NotNull String taxID) {
-      this.taxID = taxID;
+      putValue("taxID", taxID);
       return this;
     }
     /**
      * The telephone number.
      */
     @NotNull public Builder telephone(@NotNull String telephone) {
-      this.telephone = telephone;
+      putValue("telephone", telephone);
       return this;
     }
     /**
      * The Value-added Tax ID of the organization or person.
      */
     @NotNull public Builder vatID(@NotNull String vatID) {
-      this.vatID = vatID;
+      putValue("vatID", vatID);
       return this;
     }
     /**
      * The weight of the product or person.
      */
     @NotNull public Builder weight(@NotNull QuantitativeValue quantitativeValue) {
-      this.weight = quantitativeValue;
+      putValue("weight", quantitativeValue);
       return this;
     }
     /**
      * The weight of the product or person.
      */
     @NotNull public Builder weight(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.weight(quantitativeValue.build());
+      putValue("weight", quantitativeValue.build());
+      return this;
     }
     /**
      * A contact location for a person's place of work.
      */
     @NotNull public Builder workLocation(@NotNull ContactPoint contactPoint) {
-      if (this.workLocation == null) this.workLocation = new ContactPointOrPlace();
-      this.workLocation.setContactPoint(contactPoint);
+      putValue("workLocation", contactPoint);
       return this;
     }
     /**
      * A contact location for a person's place of work.
      */
     @NotNull public Builder workLocation(@NotNull ContactPoint.Builder contactPoint) {
-      return this.workLocation(contactPoint.build());
+      putValue("workLocation", contactPoint.build());
+      return this;
     }
     /**
      * A contact location for a person's place of work.
      */
     @NotNull public Builder workLocation(@NotNull Place place) {
-      if (this.workLocation == null) this.workLocation = new ContactPointOrPlace();
-      this.workLocation.setPlace(place);
+      putValue("workLocation", place);
       return this;
     }
     /**
      * A contact location for a person's place of work.
      */
     @NotNull public Builder workLocation(@NotNull Place.Builder place) {
-      return this.workLocation(place.build());
+      putValue("workLocation", place.build());
+      return this;
     }
     /**
      * Organizations that the person works for.
      */
     @NotNull public Builder worksFor(@NotNull Organization organization) {
-      this.worksFor = organization;
+      putValue("worksFor", organization);
       return this;
     }
     /**
      * Organizations that the person works for.
      */
     @NotNull public Builder worksFor(@NotNull Organization.Builder organization) {
-      return this.worksFor(organization.build());
+      putValue("worksFor", organization.build());
+      return this;
     }
     /**
      * The place where the person was born.
      */
     @NotNull public Builder birthPlace(@NotNull Place place) {
-      this.birthPlace = place;
+      putValue("birthPlace", place);
       return this;
     }
     /**
      * The place where the person was born.
      */
     @NotNull public Builder birthPlace(@NotNull Place.Builder place) {
-      return this.birthPlace(place.build());
+      putValue("birthPlace", place.build());
+      return this;
     }
     /**
      * The place where the person died.
      */
     @NotNull public Builder deathPlace(@NotNull Place place) {
-      this.deathPlace = place;
+      putValue("deathPlace", place);
       return this;
     }
     /**
      * The place where the person died.
      */
     @NotNull public Builder deathPlace(@NotNull Place.Builder place) {
-      return this.deathPlace(place.build());
+      putValue("deathPlace", place.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -1065,8 +1600,7 @@ public class Person extends Thing implements Competitor {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -1100,7 +1634,8 @@ public class Person extends Thing implements Competitor {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -1133,224 +1668,107 @@ public class Person extends Thing implements Competitor {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("additionalName".equals(key) && value instanceof String) { additionalName((String)value); continue; }
-        if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); continue; }
-        if ("affiliation".equals(key) && value instanceof Organization) { affiliation((Organization)value); continue; }
-        if ("alumniOf".equals(key) && value instanceof EducationalOrganization) { alumniOf((EducationalOrganization)value); continue; }
-        if ("award".equals(key) && value instanceof String) { award((String)value); continue; }
-        if ("birthDate".equals(key) && value instanceof java.util.Date) { birthDate((java.util.Date)value); continue; }
-        if ("brand".equals(key) && value instanceof Brand) { brand((Brand)value); continue; }
-        if ("brand".equals(key) && value instanceof Organization) { brand((Organization)value); continue; }
-        if ("children".equals(key) && value instanceof Person) { children((Person)value); continue; }
-        if ("colleague".equals(key) && value instanceof Person) { colleague((Person)value); continue; }
-        if ("contactPoint".equals(key) && value instanceof ContactPoint) { contactPoint((ContactPoint)value); continue; }
-        if ("deathDate".equals(key) && value instanceof java.util.Date) { deathDate((java.util.Date)value); continue; }
-        if ("duns".equals(key) && value instanceof String) { duns((String)value); continue; }
-        if ("email".equals(key) && value instanceof String) { email((String)value); continue; }
-        if ("familyName".equals(key) && value instanceof String) { familyName((String)value); continue; }
-        if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); continue; }
-        if ("follows".equals(key) && value instanceof Person) { follows((Person)value); continue; }
-        if ("gender".equals(key) && value instanceof String) { gender((String)value); continue; }
-        if ("givenName".equals(key) && value instanceof String) { givenName((String)value); continue; }
-        if ("globalLocationNumber".equals(key) && value instanceof String) { globalLocationNumber((String)value); continue; }
-        if ("hasPOS".equals(key) && value instanceof Place) { hasPOS((Place)value); continue; }
-        if ("height".equals(key) && value instanceof Distance) { height((Distance)value); continue; }
-        if ("height".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); continue; }
-        if ("homeLocation".equals(key) && value instanceof ContactPoint) { homeLocation((ContactPoint)value); continue; }
-        if ("homeLocation".equals(key) && value instanceof Place) { homeLocation((Place)value); continue; }
-        if ("honorificPrefix".equals(key) && value instanceof String) { honorificPrefix((String)value); continue; }
-        if ("honorificSuffix".equals(key) && value instanceof String) { honorificSuffix((String)value); continue; }
-        if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); continue; }
-        if ("jobTitle".equals(key) && value instanceof String) { jobTitle((String)value); continue; }
-        if ("knows".equals(key) && value instanceof Person) { knows((Person)value); continue; }
-        if ("makesOffer".equals(key) && value instanceof Offer) { makesOffer((Offer)value); continue; }
-        if ("memberOf".equals(key) && value instanceof Organization) { memberOf((Organization)value); continue; }
-        if ("memberOf".equals(key) && value instanceof ProgramMembership) { memberOf((ProgramMembership)value); continue; }
-        if ("naics".equals(key) && value instanceof String) { naics((String)value); continue; }
-        if ("nationality".equals(key) && value instanceof Country) { nationality((Country)value); continue; }
-        if ("netWorth".equals(key) && value instanceof PriceSpecification) { netWorth((PriceSpecification)value); continue; }
-        if ("owns".equals(key) && value instanceof OwnershipInfo) { owns((OwnershipInfo)value); continue; }
-        if ("owns".equals(key) && value instanceof Product) { owns((Product)value); continue; }
-        if ("parent".equals(key) && value instanceof Person) { parent((Person)value); continue; }
-        if ("performerIn".equals(key) && value instanceof Event) { performerIn((Event)value); continue; }
-        if ("relatedTo".equals(key) && value instanceof Person) { relatedTo((Person)value); continue; }
-        if ("seeks".equals(key) && value instanceof Demand) { seeks((Demand)value); continue; }
-        if ("sibling".equals(key) && value instanceof Person) { sibling((Person)value); continue; }
-        if ("spouse".equals(key) && value instanceof Person) { spouse((Person)value); continue; }
-        if ("taxID".equals(key) && value instanceof String) { taxID((String)value); continue; }
-        if ("telephone".equals(key) && value instanceof String) { telephone((String)value); continue; }
-        if ("vatID".equals(key) && value instanceof String) { vatID((String)value); continue; }
-        if ("weight".equals(key) && value instanceof QuantitativeValue) { weight((QuantitativeValue)value); continue; }
-        if ("workLocation".equals(key) && value instanceof ContactPoint) { workLocation((ContactPoint)value); continue; }
-        if ("workLocation".equals(key) && value instanceof Place) { workLocation((Place)value); continue; }
-        if ("worksFor".equals(key) && value instanceof Organization) { worksFor((Organization)value); continue; }
-        if ("birthPlace".equals(key) && value instanceof Place) { birthPlace((Place)value); continue; }
-        if ("deathPlace".equals(key) && value instanceof Place) { deathPlace((Place)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("additionalName".equals(key) && value instanceof String) { additionalName((String)value); return; }
+      if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
+      if ("affiliation".equals(key) && value instanceof Organization) { affiliation((Organization)value); return; }
+      if ("alumniOf".equals(key) && value instanceof EducationalOrganization) { alumniOf((EducationalOrganization)value); return; }
+      if ("award".equals(key) && value instanceof String) { award((String)value); return; }
+      if ("birthDate".equals(key) && value instanceof java.util.Date) { birthDate((java.util.Date)value); return; }
+      if ("brand".equals(key) && value instanceof Brand) { brand((Brand)value); return; }
+      if ("brand".equals(key) && value instanceof Organization) { brand((Organization)value); return; }
+      if ("children".equals(key) && value instanceof Person) { children((Person)value); return; }
+      if ("colleague".equals(key) && value instanceof Person) { colleague((Person)value); return; }
+      if ("contactPoint".equals(key) && value instanceof ContactPoint) { contactPoint((ContactPoint)value); return; }
+      if ("deathDate".equals(key) && value instanceof java.util.Date) { deathDate((java.util.Date)value); return; }
+      if ("duns".equals(key) && value instanceof String) { duns((String)value); return; }
+      if ("email".equals(key) && value instanceof String) { email((String)value); return; }
+      if ("familyName".equals(key) && value instanceof String) { familyName((String)value); return; }
+      if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); return; }
+      if ("follows".equals(key) && value instanceof Person) { follows((Person)value); return; }
+      if ("gender".equals(key) && value instanceof String) { gender((String)value); return; }
+      if ("givenName".equals(key) && value instanceof String) { givenName((String)value); return; }
+      if ("globalLocationNumber".equals(key) && value instanceof String) { globalLocationNumber((String)value); return; }
+      if ("hasPOS".equals(key) && value instanceof Place) { hasPOS((Place)value); return; }
+      if ("height".equals(key) && value instanceof Distance) { height((Distance)value); return; }
+      if ("height".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); return; }
+      if ("homeLocation".equals(key) && value instanceof ContactPoint) { homeLocation((ContactPoint)value); return; }
+      if ("homeLocation".equals(key) && value instanceof Place) { homeLocation((Place)value); return; }
+      if ("honorificPrefix".equals(key) && value instanceof String) { honorificPrefix((String)value); return; }
+      if ("honorificSuffix".equals(key) && value instanceof String) { honorificSuffix((String)value); return; }
+      if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); return; }
+      if ("jobTitle".equals(key) && value instanceof String) { jobTitle((String)value); return; }
+      if ("knows".equals(key) && value instanceof Person) { knows((Person)value); return; }
+      if ("makesOffer".equals(key) && value instanceof Offer) { makesOffer((Offer)value); return; }
+      if ("memberOf".equals(key) && value instanceof Organization) { memberOf((Organization)value); return; }
+      if ("memberOf".equals(key) && value instanceof ProgramMembership) { memberOf((ProgramMembership)value); return; }
+      if ("naics".equals(key) && value instanceof String) { naics((String)value); return; }
+      if ("nationality".equals(key) && value instanceof Country) { nationality((Country)value); return; }
+      if ("netWorth".equals(key) && value instanceof PriceSpecification) { netWorth((PriceSpecification)value); return; }
+      if ("owns".equals(key) && value instanceof OwnershipInfo) { owns((OwnershipInfo)value); return; }
+      if ("owns".equals(key) && value instanceof Product) { owns((Product)value); return; }
+      if ("parent".equals(key) && value instanceof Person) { parent((Person)value); return; }
+      if ("performerIn".equals(key) && value instanceof Event) { performerIn((Event)value); return; }
+      if ("relatedTo".equals(key) && value instanceof Person) { relatedTo((Person)value); return; }
+      if ("seeks".equals(key) && value instanceof Demand) { seeks((Demand)value); return; }
+      if ("sibling".equals(key) && value instanceof Person) { sibling((Person)value); return; }
+      if ("spouse".equals(key) && value instanceof Person) { spouse((Person)value); return; }
+      if ("taxID".equals(key) && value instanceof String) { taxID((String)value); return; }
+      if ("telephone".equals(key) && value instanceof String) { telephone((String)value); return; }
+      if ("vatID".equals(key) && value instanceof String) { vatID((String)value); return; }
+      if ("weight".equals(key) && value instanceof QuantitativeValue) { weight((QuantitativeValue)value); return; }
+      if ("workLocation".equals(key) && value instanceof ContactPoint) { workLocation((ContactPoint)value); return; }
+      if ("workLocation".equals(key) && value instanceof Place) { workLocation((Place)value); return; }
+      if ("worksFor".equals(key) && value instanceof Organization) { worksFor((Organization)value); return; }
+      if ("birthPlace".equals(key) && value instanceof Place) { birthPlace((Place)value); return; }
+      if ("deathPlace".equals(key) && value instanceof Place) { deathPlace((Place)value); return; }
+      super.fromMap(key, value);
     }
-    private String additionalName;
-    private PostalAddress address;
-    private Organization affiliation;
-    private EducationalOrganization alumniOf;
-    private String award;
-    private java.util.Date birthDate;
-    private BrandOrOrganization brand;
-    private Person children;
-    private Person colleague;
-    private ContactPoint contactPoint;
-    private java.util.Date deathDate;
-    private String duns;
-    private String email;
-    private String familyName;
-    private String faxNumber;
-    private Person follows;
-    private String gender;
-    private String givenName;
-    private String globalLocationNumber;
-    private Place hasPOS;
-    private DistanceOrQuantitativeValue height;
-    private ContactPointOrPlace homeLocation;
-    private String honorificPrefix;
-    private String honorificSuffix;
-    private String isicV4;
-    private String jobTitle;
-    private Person knows;
-    private Offer makesOffer;
-    private OrganizationOrProgramMembership memberOf;
-    private String naics;
-    private Country nationality;
-    private PriceSpecification netWorth;
-    private OwnershipInfoOrProduct owns;
-    private Person parent;
-    private Event performerIn;
-    private Person relatedTo;
-    private Demand seeks;
-    private Person sibling;
-    private Person spouse;
-    private String taxID;
-    private String telephone;
-    private String vatID;
-    private QuantitativeValue weight;
-    private ContactPointOrPlace workLocation;
-    private Organization worksFor;
-    private Place birthPlace;
-    private Place deathPlace;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private String myAdditionalName;
-  private PostalAddress myAddress;
-  private Organization myAffiliation;
-  private EducationalOrganization myAlumniOf;
-  private String myAward;
-  private java.util.Date myBirthDate;
-  private BrandOrOrganization myBrand;
-  private Person myChildren;
-  private Person myColleague;
-  private ContactPoint myContactPoint;
-  private java.util.Date myDeathDate;
-  private String myDuns;
-  private String myEmail;
-  private String myFamilyName;
-  private String myFaxNumber;
-  private Person myFollows;
-  private String myGender;
-  private String myGivenName;
-  private String myGlobalLocationNumber;
-  private Place myHasPOS;
-  private DistanceOrQuantitativeValue myHeight;
-  private ContactPointOrPlace myHomeLocation;
-  private String myHonorificPrefix;
-  private String myHonorificSuffix;
-  private String myIsicV4;
-  private String myJobTitle;
-  private Person myKnows;
-  private Offer myMakesOffer;
-  private OrganizationOrProgramMembership myMemberOf;
-  private String myNaics;
-  private Country myNationality;
-  private PriceSpecification myNetWorth;
-  private OwnershipInfoOrProduct myOwns;
-  private Person myParent;
-  private Event myPerformerIn;
-  private Person myRelatedTo;
-  private Demand mySeeks;
-  private Person mySibling;
-  private Person mySpouse;
-  private String myTaxID;
-  private String myTelephone;
-  private String myVatID;
-  private QuantitativeValue myWeight;
-  private ContactPointOrPlace myWorkLocation;
-  private Organization myWorksFor;
-  private Place myBirthPlace;
-  private Place myDeathPlace;
 }

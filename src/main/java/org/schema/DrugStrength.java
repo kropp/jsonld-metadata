@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A specific strength in which a medical drug is available in a specific country.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -29,221 +30,316 @@ public class DrugStrength extends MedicalIntangible {
   /**
    * An active ingredient, typically chemical compounds and/or biologic substances.
    */
-  public String getActiveIngredient() { return myActiveIngredient; }
+  @JsonIgnore public String getActiveIngredient() {
+    return (String) getValue("activeIngredient");
+  }
+  /**
+   * An active ingredient, typically chemical compounds and/or biologic substances.
+   */
+  @JsonIgnore public Collection<String> getActiveIngredients() {
+    final Object current = myData.get("activeIngredient");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The location in which the strength is available.
    */
-  public AdministrativeArea getAvailableIn() { return myAvailableIn; }
+  @JsonIgnore public AdministrativeArea getAvailableIn() {
+    return (AdministrativeArea) getValue("availableIn");
+  }
+  /**
+   * The location in which the strength is available.
+   */
+  @JsonIgnore public Collection<AdministrativeArea> getAvailableIns() {
+    final Object current = myData.get("availableIn");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AdministrativeArea>) current;
+    }
+    return Arrays.asList((AdministrativeArea) current);
+  }
   /**
    * The units of an active ingredient's strength, e.g. mg.
    */
-  public String getStrengthUnit() { return myStrengthUnit; }
+  @JsonIgnore public String getStrengthUnit() {
+    return (String) getValue("strengthUnit");
+  }
+  /**
+   * The units of an active ingredient's strength, e.g. mg.
+   */
+  @JsonIgnore public Collection<String> getStrengthUnits() {
+    final Object current = myData.get("strengthUnit");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The value of an active ingredient's strength, e.g. 325.
    */
-  public Number getStrengthValue() { return myStrengthValue; }
-  protected DrugStrength(String activeIngredient, AdministrativeArea availableIn, String strengthUnit, Number strengthValue, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myActiveIngredient = activeIngredient;
-    myAvailableIn = availableIn;
-    myStrengthUnit = strengthUnit;
-    myStrengthValue = strengthValue;
-    myActiveIngredient = activeIngredient;
-    myAvailableIn = availableIn;
-    myStrengthUnit = strengthUnit;
-    myStrengthValue = strengthValue;
+  @JsonIgnore public Integer getStrengthValueInteger() {
+    return (Integer) getValue("strengthValue");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myActiveIngredient != null ? myActiveIngredient.hashCode() : 0);
-    result = 31 * result + (myAvailableIn != null ? myAvailableIn.hashCode() : 0);
-    result = 31 * result + (myStrengthUnit != null ? myStrengthUnit.hashCode() : 0);
-    result = 31 * result + (myStrengthValue != null ? myStrengthValue.hashCode() : 0);
-    return result;
+  /**
+   * The value of an active ingredient's strength, e.g. 325.
+   */
+  @JsonIgnore public Collection<Integer> getStrengthValueIntegers() {
+    final Object current = myData.get("strengthValue");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    DrugStrength drugStrength = (DrugStrength) o;
-    if (!super.equals(o)) return false;
-    if (myActiveIngredient != null ? !myActiveIngredient.equals(drugStrength.myActiveIngredient) : drugStrength.myActiveIngredient != null) return false;
-    if (myAvailableIn != null ? !myAvailableIn.equals(drugStrength.myAvailableIn) : drugStrength.myAvailableIn != null) return false;
-    if (myStrengthUnit != null ? !myStrengthUnit.equals(drugStrength.myStrengthUnit) : drugStrength.myStrengthUnit != null) return false;
-    if (myStrengthValue != null ? !myStrengthValue.equals(drugStrength.myStrengthValue) : drugStrength.myStrengthValue != null) return false;
-    return true;
+  /**
+   * The value of an active ingredient's strength, e.g. 325.
+   */
+  @JsonIgnore public Long getStrengthValueLong() {
+    return (Long) getValue("strengthValue");
+  }
+  /**
+   * The value of an active ingredient's strength, e.g. 325.
+   */
+  @JsonIgnore public Collection<Long> getStrengthValueLongs() {
+    final Object current = myData.get("strengthValue");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Long>) current;
+    }
+    return Arrays.asList((Long) current);
+  }
+  /**
+   * The value of an active ingredient's strength, e.g. 325.
+   */
+  @JsonIgnore public Float getStrengthValueFloat() {
+    return (Float) getValue("strengthValue");
+  }
+  /**
+   * The value of an active ingredient's strength, e.g. 325.
+   */
+  @JsonIgnore public Collection<Float> getStrengthValueFloats() {
+    final Object current = myData.get("strengthValue");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Float>) current;
+    }
+    return Arrays.asList((Float) current);
+  }
+  /**
+   * The value of an active ingredient's strength, e.g. 325.
+   */
+  @JsonIgnore public Double getStrengthValueDouble() {
+    return (Double) getValue("strengthValue");
+  }
+  /**
+   * The value of an active ingredient's strength, e.g. 325.
+   */
+  @JsonIgnore public Collection<Double> getStrengthValueDoubles() {
+    final Object current = myData.get("strengthValue");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Double>) current;
+    }
+    return Arrays.asList((Double) current);
+  }
+  /**
+   * The value of an active ingredient's strength, e.g. 325.
+   */
+  @JsonIgnore public String getStrengthValueString() {
+    return (String) getValue("strengthValue");
+  }
+  /**
+   * The value of an active ingredient's strength, e.g. 325.
+   */
+  @JsonIgnore public Collection<String> getStrengthValueStrings() {
+    final Object current = myData.get("strengthValue");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  protected DrugStrength(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link DrugStrength}
    */
-  public static class Builder implements ThingBuilder<DrugStrength> {
+  public static class Builder extends MedicalIntangible.Builder {
     public DrugStrength build() {
-      return new DrugStrength(activeIngredient, availableIn, strengthUnit, strengthValue, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new DrugStrength(myData);
     }
     /**
      * An active ingredient, typically chemical compounds and/or biologic substances.
      */
     @NotNull public Builder activeIngredient(@NotNull String activeIngredient) {
-      this.activeIngredient = activeIngredient;
+      putValue("activeIngredient", activeIngredient);
       return this;
     }
     /**
      * The location in which the strength is available.
      */
     @NotNull public Builder availableIn(@NotNull AdministrativeArea administrativeArea) {
-      this.availableIn = administrativeArea;
+      putValue("availableIn", administrativeArea);
       return this;
     }
     /**
      * The location in which the strength is available.
      */
     @NotNull public Builder availableIn(@NotNull AdministrativeArea.Builder administrativeArea) {
-      return this.availableIn(administrativeArea.build());
+      putValue("availableIn", administrativeArea.build());
+      return this;
     }
     /**
      * The units of an active ingredient's strength, e.g. mg.
      */
     @NotNull public Builder strengthUnit(@NotNull String strengthUnit) {
-      this.strengthUnit = strengthUnit;
+      putValue("strengthUnit", strengthUnit);
       return this;
     }
     /**
      * The value of an active ingredient's strength, e.g. 325.
      */
     @NotNull public Builder strengthValue(@NotNull Integer integer) {
-      if (this.strengthValue == null) this.strengthValue = new Number();
-      this.strengthValue.setInteger(integer);
+      putValue("strengthValue", integer);
       return this;
     }
     /**
      * The value of an active ingredient's strength, e.g. 325.
      */
     @NotNull public Builder strengthValue(@NotNull Long strengthValue) {
-      if (this.strengthValue == null) this.strengthValue = new Number();
-      this.strengthValue.setLong(strengthValue);
+      putValue("strengthValue", strengthValue);
       return this;
     }
     /**
      * The value of an active ingredient's strength, e.g. 325.
      */
     @NotNull public Builder strengthValue(@NotNull Float strengthValue) {
-      if (this.strengthValue == null) this.strengthValue = new Number();
-      this.strengthValue.setFloat(strengthValue);
+      putValue("strengthValue", strengthValue);
       return this;
     }
     /**
      * The value of an active ingredient's strength, e.g. 325.
      */
     @NotNull public Builder strengthValue(@NotNull Double strengthValue) {
-      if (this.strengthValue == null) this.strengthValue = new Number();
-      this.strengthValue.setDouble(strengthValue);
+      putValue("strengthValue", strengthValue);
       return this;
     }
     /**
      * The value of an active ingredient's strength, e.g. 325.
      */
     @NotNull public Builder strengthValue(@NotNull String strengthValue) {
-      if (this.strengthValue == null) this.strengthValue = new Number();
-      this.strengthValue.setString(strengthValue);
+      putValue("strengthValue", strengthValue);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
-      this.code = medicalCode;
+      putValue("code", medicalCode);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
-      return this.code(medicalCode.build());
+      putValue("code", medicalCode.build());
+      return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+      putValue("guideline", medicalGuideline);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
-      return this.guideline(medicalGuideline.build());
+      putValue("guideline", medicalGuideline.build());
+      return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
+      putValue("medicineSystem", medicineSystem);
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
-      return this.medicineSystem(medicineSystem.build());
+      putValue("medicineSystem", medicineSystem.build());
+      return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
-      this.recognizingAuthority = organization;
+      putValue("recognizingAuthority", organization);
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
-      return this.recognizingAuthority(organization.build());
+      putValue("recognizingAuthority", organization.build());
+      return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
+      putValue("relevantSpecialty", medicalSpecialty);
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
-      return this.relevantSpecialty(medicalSpecialty.build());
+      putValue("relevantSpecialty", medicalSpecialty.build());
+      return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
+      putValue("study", medicalStudy);
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
-      return this.study(medicalStudy.build());
+      putValue("study", medicalStudy.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -277,8 +373,7 @@ public class DrugStrength extends MedicalIntangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -312,7 +407,8 @@ public class DrugStrength extends MedicalIntangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -345,105 +441,62 @@ public class DrugStrength extends MedicalIntangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("activeIngredient".equals(key) && value instanceof String) { activeIngredient((String)value); continue; }
-        if ("availableIn".equals(key) && value instanceof AdministrativeArea) { availableIn((AdministrativeArea)value); continue; }
-        if ("strengthUnit".equals(key) && value instanceof String) { strengthUnit((String)value); continue; }
-        if ("strengthValue".equals(key) && value instanceof Integer) { strengthValue((Integer)value); continue; }
-        if ("strengthValue".equals(key) && value instanceof Long) { strengthValue((Long)value); continue; }
-        if ("strengthValue".equals(key) && value instanceof Float) { strengthValue((Float)value); continue; }
-        if ("strengthValue".equals(key) && value instanceof Double) { strengthValue((Double)value); continue; }
-        if ("strengthValue".equals(key) && value instanceof String) { strengthValue((String)value); continue; }
-        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
-        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
-        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
-        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
-        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
-        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("activeIngredient".equals(key) && value instanceof String) { activeIngredient((String)value); return; }
+      if ("availableIn".equals(key) && value instanceof AdministrativeArea) { availableIn((AdministrativeArea)value); return; }
+      if ("strengthUnit".equals(key) && value instanceof String) { strengthUnit((String)value); return; }
+      if ("strengthValue".equals(key) && value instanceof Integer) { strengthValue((Integer)value); return; }
+      if ("strengthValue".equals(key) && value instanceof Long) { strengthValue((Long)value); return; }
+      if ("strengthValue".equals(key) && value instanceof Float) { strengthValue((Float)value); return; }
+      if ("strengthValue".equals(key) && value instanceof Double) { strengthValue((Double)value); return; }
+      if ("strengthValue".equals(key) && value instanceof String) { strengthValue((String)value); return; }
+      super.fromMap(key, value);
     }
-    private String activeIngredient;
-    private AdministrativeArea availableIn;
-    private String strengthUnit;
-    private Number strengthValue;
-    private MedicalCode code;
-    private MedicalGuideline guideline;
-    private MedicineSystem medicineSystem;
-    private Organization recognizingAuthority;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalStudy study;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private String myActiveIngredient;
-  private AdministrativeArea myAvailableIn;
-  private String myStrengthUnit;
-  private Number myStrengthValue;
 }

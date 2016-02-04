@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A type of blood vessel that specifically carries lymph fluid unidirectionally toward the heart.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -29,293 +30,339 @@ public class LymphaticVessel extends Vessel {
   /**
    * The vasculature the lymphatic structure originates, or afferents, from.
    */
-  public Vessel getOriginatesFrom() { return myOriginatesFrom; }
+  @JsonIgnore public Vessel getOriginatesFrom() {
+    return (Vessel) getValue("originatesFrom");
+  }
+  /**
+   * The vasculature the lymphatic structure originates, or afferents, from.
+   */
+  @JsonIgnore public Collection<Vessel> getOriginatesFroms() {
+    final Object current = myData.get("originatesFrom");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Vessel>) current;
+    }
+    return Arrays.asList((Vessel) current);
+  }
   /**
    * The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
    */
-  public AnatomicalStructureOrAnatomicalSystem getRegionDrained() { return myRegionDrained; }
+  @JsonIgnore public AnatomicalStructure getRegionDrainedAnatomicalStructure() {
+    return (AnatomicalStructure) getValue("regionDrained");
+  }
+  /**
+   * The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
+   */
+  @JsonIgnore public Collection<AnatomicalStructure> getRegionDrainedAnatomicalStructures() {
+    final Object current = myData.get("regionDrained");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AnatomicalStructure>) current;
+    }
+    return Arrays.asList((AnatomicalStructure) current);
+  }
+  /**
+   * The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
+   */
+  @JsonIgnore public AnatomicalSystem getRegionDrainedAnatomicalSystem() {
+    return (AnatomicalSystem) getValue("regionDrained");
+  }
+  /**
+   * The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
+   */
+  @JsonIgnore public Collection<AnatomicalSystem> getRegionDrainedAnatomicalSystems() {
+    final Object current = myData.get("regionDrained");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AnatomicalSystem>) current;
+    }
+    return Arrays.asList((AnatomicalSystem) current);
+  }
   /**
    * The vasculature the lymphatic structure runs, or efferents, to.
    */
-  public Vessel getRunsTo() { return myRunsTo; }
-  protected LymphaticVessel(Vessel originatesFrom, AnatomicalStructureOrAnatomicalSystem regionDrained, Vessel runsTo, String associatedPathophysiology, String bodyLocation, AnatomicalStructure connectedTo, ImageObject diagram, String function, IsPartOf partOfSystem, MedicalCondition relatedCondition, MedicalTherapy relatedTherapy, AnatomicalStructure subStructure, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myOriginatesFrom = originatesFrom;
-    myRegionDrained = regionDrained;
-    myRunsTo = runsTo;
-    myOriginatesFrom = originatesFrom;
-    myRegionDrained = regionDrained;
-    myRunsTo = runsTo;
+  @JsonIgnore public Vessel getRunsTo() {
+    return (Vessel) getValue("runsTo");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myOriginatesFrom != null ? myOriginatesFrom.hashCode() : 0);
-    result = 31 * result + (myRegionDrained != null ? myRegionDrained.hashCode() : 0);
-    result = 31 * result + (myRunsTo != null ? myRunsTo.hashCode() : 0);
-    return result;
+  /**
+   * The vasculature the lymphatic structure runs, or efferents, to.
+   */
+  @JsonIgnore public Collection<Vessel> getRunsTos() {
+    final Object current = myData.get("runsTo");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Vessel>) current;
+    }
+    return Arrays.asList((Vessel) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    LymphaticVessel lymphaticVessel = (LymphaticVessel) o;
-    if (!super.equals(o)) return false;
-    if (myOriginatesFrom != null ? !myOriginatesFrom.equals(lymphaticVessel.myOriginatesFrom) : lymphaticVessel.myOriginatesFrom != null) return false;
-    if (myRegionDrained != null ? !myRegionDrained.equals(lymphaticVessel.myRegionDrained) : lymphaticVessel.myRegionDrained != null) return false;
-    if (myRunsTo != null ? !myRunsTo.equals(lymphaticVessel.myRunsTo) : lymphaticVessel.myRunsTo != null) return false;
-    return true;
+  protected LymphaticVessel(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link LymphaticVessel}
    */
-  public static class Builder implements ThingBuilder<LymphaticVessel> {
+  public static class Builder extends Vessel.Builder {
     public LymphaticVessel build() {
-      return new LymphaticVessel(originatesFrom, regionDrained, runsTo, associatedPathophysiology, bodyLocation, connectedTo, diagram, function, partOfSystem, relatedCondition, relatedTherapy, subStructure, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new LymphaticVessel(myData);
     }
     /**
      * The vasculature the lymphatic structure originates, or afferents, from.
      */
     @NotNull public Builder originatesFrom(@NotNull Vessel vessel) {
-      this.originatesFrom = vessel;
+      putValue("originatesFrom", vessel);
       return this;
     }
     /**
      * The vasculature the lymphatic structure originates, or afferents, from.
      */
     @NotNull public Builder originatesFrom(@NotNull Vessel.Builder vessel) {
-      return this.originatesFrom(vessel.build());
+      putValue("originatesFrom", vessel.build());
+      return this;
     }
     /**
      * The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
      */
     @NotNull public Builder regionDrained(@NotNull AnatomicalStructure anatomicalStructure) {
-      if (this.regionDrained == null) this.regionDrained = new AnatomicalStructureOrAnatomicalSystem();
-      this.regionDrained.setAnatomicalStructure(anatomicalStructure);
+      putValue("regionDrained", anatomicalStructure);
       return this;
     }
     /**
      * The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
      */
     @NotNull public Builder regionDrained(@NotNull AnatomicalStructure.Builder anatomicalStructure) {
-      return this.regionDrained(anatomicalStructure.build());
+      putValue("regionDrained", anatomicalStructure.build());
+      return this;
     }
     /**
      * The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
      */
     @NotNull public Builder regionDrained(@NotNull AnatomicalSystem anatomicalSystem) {
-      if (this.regionDrained == null) this.regionDrained = new AnatomicalStructureOrAnatomicalSystem();
-      this.regionDrained.setAnatomicalSystem(anatomicalSystem);
+      putValue("regionDrained", anatomicalSystem);
       return this;
     }
     /**
      * The anatomical or organ system drained by this vessel; generally refers to a specific part of an organ.
      */
     @NotNull public Builder regionDrained(@NotNull AnatomicalSystem.Builder anatomicalSystem) {
-      return this.regionDrained(anatomicalSystem.build());
+      putValue("regionDrained", anatomicalSystem.build());
+      return this;
     }
     /**
      * The vasculature the lymphatic structure runs, or efferents, to.
      */
     @NotNull public Builder runsTo(@NotNull Vessel vessel) {
-      this.runsTo = vessel;
+      putValue("runsTo", vessel);
       return this;
     }
     /**
      * The vasculature the lymphatic structure runs, or efferents, to.
      */
     @NotNull public Builder runsTo(@NotNull Vessel.Builder vessel) {
-      return this.runsTo(vessel.build());
+      putValue("runsTo", vessel.build());
+      return this;
     }
     /**
      * If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
      */
     @NotNull public Builder associatedPathophysiology(@NotNull String associatedPathophysiology) {
-      this.associatedPathophysiology = associatedPathophysiology;
+      putValue("associatedPathophysiology", associatedPathophysiology);
       return this;
     }
     /**
      * Location in the body of the anatomical structure.
      */
     @NotNull public Builder bodyLocation(@NotNull String bodyLocation) {
-      this.bodyLocation = bodyLocation;
+      putValue("bodyLocation", bodyLocation);
       return this;
     }
     /**
      * Other anatomical structures to which this structure is connected.
      */
     @NotNull public Builder connectedTo(@NotNull AnatomicalStructure anatomicalStructure) {
-      this.connectedTo = anatomicalStructure;
+      putValue("connectedTo", anatomicalStructure);
       return this;
     }
     /**
      * Other anatomical structures to which this structure is connected.
      */
     @NotNull public Builder connectedTo(@NotNull AnatomicalStructure.Builder anatomicalStructure) {
-      return this.connectedTo(anatomicalStructure.build());
+      putValue("connectedTo", anatomicalStructure.build());
+      return this;
     }
     /**
      * An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
      */
     @NotNull public Builder diagram(@NotNull ImageObject imageObject) {
-      this.diagram = imageObject;
+      putValue("diagram", imageObject);
       return this;
     }
     /**
      * An image containing a diagram that illustrates the structure and/or its component substructures and/or connections with other structures.
      */
     @NotNull public Builder diagram(@NotNull ImageObject.Builder imageObject) {
-      return this.diagram(imageObject.build());
+      putValue("diagram", imageObject.build());
+      return this;
     }
     /**
      * Function of the anatomical structure.
      */
     @NotNull public Builder function(@NotNull String function) {
-      this.function = function;
+      putValue("function", function);
       return this;
     }
     /**
      * The anatomical or organ system that this structure is part of.
      */
     @NotNull public Builder partOfSystem(@NotNull IsPartOf isPartOf) {
-      this.partOfSystem = isPartOf;
+      putValue("partOfSystem", isPartOf);
       return this;
     }
     /**
      * A medical condition associated with this anatomy.
      */
     @NotNull public Builder relatedCondition(@NotNull MedicalCondition medicalCondition) {
-      this.relatedCondition = medicalCondition;
+      putValue("relatedCondition", medicalCondition);
       return this;
     }
     /**
      * A medical condition associated with this anatomy.
      */
     @NotNull public Builder relatedCondition(@NotNull MedicalCondition.Builder medicalCondition) {
-      return this.relatedCondition(medicalCondition.build());
+      putValue("relatedCondition", medicalCondition.build());
+      return this;
     }
     /**
      * A medical therapy related to this anatomy.
      */
     @NotNull public Builder relatedTherapy(@NotNull MedicalTherapy medicalTherapy) {
-      this.relatedTherapy = medicalTherapy;
+      putValue("relatedTherapy", medicalTherapy);
       return this;
     }
     /**
      * A medical therapy related to this anatomy.
      */
     @NotNull public Builder relatedTherapy(@NotNull MedicalTherapy.Builder medicalTherapy) {
-      return this.relatedTherapy(medicalTherapy.build());
+      putValue("relatedTherapy", medicalTherapy.build());
+      return this;
     }
     /**
      * Component (sub-)structure(s) that comprise this anatomical structure.
      */
     @NotNull public Builder subStructure(@NotNull AnatomicalStructure anatomicalStructure) {
-      this.subStructure = anatomicalStructure;
+      putValue("subStructure", anatomicalStructure);
       return this;
     }
     /**
      * Component (sub-)structure(s) that comprise this anatomical structure.
      */
     @NotNull public Builder subStructure(@NotNull AnatomicalStructure.Builder anatomicalStructure) {
-      return this.subStructure(anatomicalStructure.build());
+      putValue("subStructure", anatomicalStructure.build());
+      return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
-      this.code = medicalCode;
+      putValue("code", medicalCode);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
-      return this.code(medicalCode.build());
+      putValue("code", medicalCode.build());
+      return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+      putValue("guideline", medicalGuideline);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
-      return this.guideline(medicalGuideline.build());
+      putValue("guideline", medicalGuideline.build());
+      return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
+      putValue("medicineSystem", medicineSystem);
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
-      return this.medicineSystem(medicineSystem.build());
+      putValue("medicineSystem", medicineSystem.build());
+      return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
-      this.recognizingAuthority = organization;
+      putValue("recognizingAuthority", organization);
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
-      return this.recognizingAuthority(organization.build());
+      putValue("recognizingAuthority", organization.build());
+      return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
+      putValue("relevantSpecialty", medicalSpecialty);
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
-      return this.relevantSpecialty(medicalSpecialty.build());
+      putValue("relevantSpecialty", medicalSpecialty.build());
+      return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
+      putValue("study", medicalStudy);
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
-      return this.study(medicalStudy.build());
+      putValue("study", medicalStudy.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -349,8 +396,7 @@ public class LymphaticVessel extends Vessel {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -384,7 +430,8 @@ public class LymphaticVessel extends Vessel {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -417,117 +464,58 @@ public class LymphaticVessel extends Vessel {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("originatesFrom".equals(key) && value instanceof Vessel) { originatesFrom((Vessel)value); continue; }
-        if ("regionDrained".equals(key) && value instanceof AnatomicalStructure) { regionDrained((AnatomicalStructure)value); continue; }
-        if ("regionDrained".equals(key) && value instanceof AnatomicalSystem) { regionDrained((AnatomicalSystem)value); continue; }
-        if ("runsTo".equals(key) && value instanceof Vessel) { runsTo((Vessel)value); continue; }
-        if ("associatedPathophysiology".equals(key) && value instanceof String) { associatedPathophysiology((String)value); continue; }
-        if ("bodyLocation".equals(key) && value instanceof String) { bodyLocation((String)value); continue; }
-        if ("connectedTo".equals(key) && value instanceof AnatomicalStructure) { connectedTo((AnatomicalStructure)value); continue; }
-        if ("diagram".equals(key) && value instanceof ImageObject) { diagram((ImageObject)value); continue; }
-        if ("function".equals(key) && value instanceof String) { function((String)value); continue; }
-        if ("partOfSystem".equals(key) && value instanceof IsPartOf) { partOfSystem((IsPartOf)value); continue; }
-        if ("relatedCondition".equals(key) && value instanceof MedicalCondition) { relatedCondition((MedicalCondition)value); continue; }
-        if ("relatedTherapy".equals(key) && value instanceof MedicalTherapy) { relatedTherapy((MedicalTherapy)value); continue; }
-        if ("subStructure".equals(key) && value instanceof AnatomicalStructure) { subStructure((AnatomicalStructure)value); continue; }
-        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
-        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
-        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
-        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
-        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
-        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("originatesFrom".equals(key) && value instanceof Vessel) { originatesFrom((Vessel)value); return; }
+      if ("regionDrained".equals(key) && value instanceof AnatomicalStructure) { regionDrained((AnatomicalStructure)value); return; }
+      if ("regionDrained".equals(key) && value instanceof AnatomicalSystem) { regionDrained((AnatomicalSystem)value); return; }
+      if ("runsTo".equals(key) && value instanceof Vessel) { runsTo((Vessel)value); return; }
+      super.fromMap(key, value);
     }
-    private Vessel originatesFrom;
-    private AnatomicalStructureOrAnatomicalSystem regionDrained;
-    private Vessel runsTo;
-    private String associatedPathophysiology;
-    private String bodyLocation;
-    private AnatomicalStructure connectedTo;
-    private ImageObject diagram;
-    private String function;
-    private IsPartOf partOfSystem;
-    private MedicalCondition relatedCondition;
-    private MedicalTherapy relatedTherapy;
-    private AnatomicalStructure subStructure;
-    private MedicalCode code;
-    private MedicalGuideline guideline;
-    private MedicineSystem medicineSystem;
-    private Organization recognizingAuthority;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalStudy study;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private Vessel myOriginatesFrom;
-  private AnatomicalStructureOrAnatomicalSystem myRegionDrained;
-  private Vessel myRunsTo;
 }

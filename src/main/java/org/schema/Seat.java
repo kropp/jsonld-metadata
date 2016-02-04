@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * Used to describe a seat, such as a reserved seat in an event reservation.
@@ -29,119 +30,160 @@ public class Seat extends Intangible {
   /**
    * The location of the reserved seat (e.g., 27).
    */
-  public String getSeatNumber() { return mySeatNumber; }
+  @JsonIgnore public String getSeatNumber() {
+    return (String) getValue("seatNumber");
+  }
+  /**
+   * The location of the reserved seat (e.g., 27).
+   */
+  @JsonIgnore public Collection<String> getSeatNumbers() {
+    final Object current = myData.get("seatNumber");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The row location of the reserved seat (e.g., B).
    */
-  public String getSeatRow() { return mySeatRow; }
+  @JsonIgnore public String getSeatRow() {
+    return (String) getValue("seatRow");
+  }
+  /**
+   * The row location of the reserved seat (e.g., B).
+   */
+  @JsonIgnore public Collection<String> getSeatRows() {
+    final Object current = myData.get("seatRow");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The section location of the reserved seat (e.g. Orchestra).
    */
-  public String getSeatSection() { return mySeatSection; }
+  @JsonIgnore public String getSeatSection() {
+    return (String) getValue("seatSection");
+  }
+  /**
+   * The section location of the reserved seat (e.g. Orchestra).
+   */
+  @JsonIgnore public Collection<String> getSeatSections() {
+    final Object current = myData.get("seatSection");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The type/class of the seat.
    */
-  public QualitativeValueOrString getSeatingType() { return mySeatingType; }
-  protected Seat(String seatNumber, String seatRow, String seatSection, QualitativeValueOrString seatingType, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    mySeatNumber = seatNumber;
-    mySeatRow = seatRow;
-    mySeatSection = seatSection;
-    mySeatingType = seatingType;
-    mySeatNumber = seatNumber;
-    mySeatRow = seatRow;
-    mySeatSection = seatSection;
-    mySeatingType = seatingType;
+  @JsonIgnore public QualitativeValue getSeatingTypeQualitativeValue() {
+    return (QualitativeValue) getValue("seatingType");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (mySeatNumber != null ? mySeatNumber.hashCode() : 0);
-    result = 31 * result + (mySeatRow != null ? mySeatRow.hashCode() : 0);
-    result = 31 * result + (mySeatSection != null ? mySeatSection.hashCode() : 0);
-    result = 31 * result + (mySeatingType != null ? mySeatingType.hashCode() : 0);
-    return result;
+  /**
+   * The type/class of the seat.
+   */
+  @JsonIgnore public Collection<QualitativeValue> getSeatingTypeQualitativeValues() {
+    final Object current = myData.get("seatingType");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QualitativeValue>) current;
+    }
+    return Arrays.asList((QualitativeValue) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Seat seat = (Seat) o;
-    if (!super.equals(o)) return false;
-    if (mySeatNumber != null ? !mySeatNumber.equals(seat.mySeatNumber) : seat.mySeatNumber != null) return false;
-    if (mySeatRow != null ? !mySeatRow.equals(seat.mySeatRow) : seat.mySeatRow != null) return false;
-    if (mySeatSection != null ? !mySeatSection.equals(seat.mySeatSection) : seat.mySeatSection != null) return false;
-    if (mySeatingType != null ? !mySeatingType.equals(seat.mySeatingType) : seat.mySeatingType != null) return false;
-    return true;
+  /**
+   * The type/class of the seat.
+   */
+  @JsonIgnore public String getSeatingTypeString() {
+    return (String) getValue("seatingType");
+  }
+  /**
+   * The type/class of the seat.
+   */
+  @JsonIgnore public Collection<String> getSeatingTypeStrings() {
+    final Object current = myData.get("seatingType");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  protected Seat(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Seat}
    */
-  public static class Builder implements ThingBuilder<Seat> {
+  public static class Builder extends Intangible.Builder {
     public Seat build() {
-      return new Seat(seatNumber, seatRow, seatSection, seatingType, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Seat(myData);
     }
     /**
      * The location of the reserved seat (e.g., 27).
      */
     @NotNull public Builder seatNumber(@NotNull String seatNumber) {
-      this.seatNumber = seatNumber;
+      putValue("seatNumber", seatNumber);
       return this;
     }
     /**
      * The row location of the reserved seat (e.g., B).
      */
     @NotNull public Builder seatRow(@NotNull String seatRow) {
-      this.seatRow = seatRow;
+      putValue("seatRow", seatRow);
       return this;
     }
     /**
      * The section location of the reserved seat (e.g. Orchestra).
      */
     @NotNull public Builder seatSection(@NotNull String seatSection) {
-      this.seatSection = seatSection;
+      putValue("seatSection", seatSection);
       return this;
     }
     /**
      * The type/class of the seat.
      */
     @NotNull public Builder seatingType(@NotNull QualitativeValue qualitativeValue) {
-      if (this.seatingType == null) this.seatingType = new QualitativeValueOrString();
-      this.seatingType.setQualitativeValue(qualitativeValue);
+      putValue("seatingType", qualitativeValue);
       return this;
     }
     /**
      * The type/class of the seat.
      */
     @NotNull public Builder seatingType(@NotNull QualitativeValue.Builder qualitativeValue) {
-      return this.seatingType(qualitativeValue.build());
+      putValue("seatingType", qualitativeValue.build());
+      return this;
     }
     /**
      * The type/class of the seat.
      */
     @NotNull public Builder seatingType(@NotNull String seatingType) {
-      if (this.seatingType == null) this.seatingType = new QualitativeValueOrString();
-      this.seatingType.setString(seatingType);
+      putValue("seatingType", seatingType);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -175,8 +217,7 @@ public class Seat extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -210,7 +251,8 @@ public class Seat extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -243,90 +285,59 @@ public class Seat extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("seatNumber".equals(key) && value instanceof String) { seatNumber((String)value); continue; }
-        if ("seatRow".equals(key) && value instanceof String) { seatRow((String)value); continue; }
-        if ("seatSection".equals(key) && value instanceof String) { seatSection((String)value); continue; }
-        if ("seatingType".equals(key) && value instanceof QualitativeValue) { seatingType((QualitativeValue)value); continue; }
-        if ("seatingType".equals(key) && value instanceof String) { seatingType((String)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("seatNumber".equals(key) && value instanceof String) { seatNumber((String)value); return; }
+      if ("seatRow".equals(key) && value instanceof String) { seatRow((String)value); return; }
+      if ("seatSection".equals(key) && value instanceof String) { seatSection((String)value); return; }
+      if ("seatingType".equals(key) && value instanceof QualitativeValue) { seatingType((QualitativeValue)value); return; }
+      if ("seatingType".equals(key) && value instanceof String) { seatingType((String)value); return; }
+      super.fromMap(key, value);
     }
-    private String seatNumber;
-    private String seatRow;
-    private String seatSection;
-    private QualitativeValueOrString seatingType;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private String mySeatNumber;
-  private String mySeatRow;
-  private String mySeatSection;
-  private QualitativeValueOrString mySeatingType;
 }

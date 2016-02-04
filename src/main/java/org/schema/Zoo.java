@@ -21,244 +21,238 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A zoo.
  */
 public class Zoo extends CivicStructure {
-  protected Zoo(String openingHours, PostalAddress address, AggregateRating aggregateRating, Place containedIn, Event event, String faxNumber, GeoCoordinatesOrGeoShape geo, String globalLocationNumber, String isicV4, ImageObjectOrString logo, MapOrString hasMap, OpeningHoursSpecification openingHoursSpecification, ImageObjectOrPhotograph photo, Review review, String telephone, PropertyValue additionalProperty, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(openingHours, address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-  }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    return result;
-  }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Zoo zoo = (Zoo) o;
-    if (!super.equals(o)) return false;
-    return true;
+  protected Zoo(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Zoo}
    */
-  public static class Builder implements ThingBuilder<Zoo> {
+  public static class Builder extends CivicStructure.Builder {
     public Zoo build() {
-      return new Zoo(openingHours, address, aggregateRating, containedIn, event, faxNumber, geo, globalLocationNumber, isicV4, logo, hasMap, openingHoursSpecification, photo, review, telephone, additionalProperty, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Zoo(myData);
     }
     /**
      * The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.<br />- Days are specified using the following two-letter combinations: <code>Mo</code>, <code>Tu</code>, <code>We</code>, <code>Th</code>, <code>Fr</code>, <code>Sa</code>, <code>Su</code>.<br />- Times are specified using 24:00 time. For example, 3pm is specified as <code>15:00</code>. <br />- Here is an example: <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Tu,Th 16:00-20:00&quot;&gt;Tuesdays and Thursdays 4-8pm&lt;/time&gt;</code>. <br />- If a business is open 7 days a week, then it can be specified as <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Mo-Su&quot;&gt;Monday through Sunday, all day&lt;/time&gt;</code>.
      */
     @NotNull public Builder openingHours(@NotNull String openingHours) {
-      this.openingHours = openingHours;
+      putValue("openingHours", openingHours);
       return this;
     }
     /**
      * Physical address of the item.
      */
     @NotNull public Builder address(@NotNull PostalAddress postalAddress) {
-      this.address = postalAddress;
+      putValue("address", postalAddress);
       return this;
     }
     /**
      * Physical address of the item.
      */
     @NotNull public Builder address(@NotNull PostalAddress.Builder postalAddress) {
-      return this.address(postalAddress.build());
+      putValue("address", postalAddress.build());
+      return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
-      this.aggregateRating = aggregateRating;
+      putValue("aggregateRating", aggregateRating);
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating) {
-      return this.aggregateRating(aggregateRating.build());
+      putValue("aggregateRating", aggregateRating.build());
+      return this;
     }
     /**
      * The basic containment relation between places.
      */
     @NotNull public Builder containedIn(@NotNull Place place) {
-      this.containedIn = place;
+      putValue("containedIn", place);
       return this;
     }
     /**
      * The basic containment relation between places.
      */
     @NotNull public Builder containedIn(@NotNull Place.Builder place) {
-      return this.containedIn(place.build());
+      putValue("containedIn", place.build());
+      return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
     @NotNull public Builder event(@NotNull Event event) {
-      this.event = event;
+      putValue("event", event);
       return this;
     }
     /**
      * Upcoming or past event associated with this place, organization, or action.
      */
     @NotNull public Builder event(@NotNull Event.Builder event) {
-      return this.event(event.build());
+      putValue("event", event.build());
+      return this;
     }
     /**
      * The fax number.
      */
     @NotNull public Builder faxNumber(@NotNull String faxNumber) {
-      this.faxNumber = faxNumber;
+      putValue("faxNumber", faxNumber);
       return this;
     }
     /**
      * The geo coordinates of the place.
      */
     @NotNull public Builder geo(@NotNull GeoCoordinates geoCoordinates) {
-      if (this.geo == null) this.geo = new GeoCoordinatesOrGeoShape();
-      this.geo.setGeoCoordinates(geoCoordinates);
+      putValue("geo", geoCoordinates);
       return this;
     }
     /**
      * The geo coordinates of the place.
      */
     @NotNull public Builder geo(@NotNull GeoCoordinates.Builder geoCoordinates) {
-      return this.geo(geoCoordinates.build());
+      putValue("geo", geoCoordinates.build());
+      return this;
     }
     /**
      * The geo coordinates of the place.
      */
     @NotNull public Builder geo(@NotNull GeoShape geoShape) {
-      if (this.geo == null) this.geo = new GeoCoordinatesOrGeoShape();
-      this.geo.setGeoShape(geoShape);
+      putValue("geo", geoShape);
       return this;
     }
     /**
      * The geo coordinates of the place.
      */
     @NotNull public Builder geo(@NotNull GeoShape.Builder geoShape) {
-      return this.geo(geoShape.build());
+      putValue("geo", geoShape.build());
+      return this;
     }
     /**
      * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
     @NotNull public Builder globalLocationNumber(@NotNull String globalLocationNumber) {
-      this.globalLocationNumber = globalLocationNumber;
+      putValue("globalLocationNumber", globalLocationNumber);
       return this;
     }
     /**
      * The International Standard of Industrial Classification of All Economic Activities (ISIC), Revision 4 code for a particular organization, business person, or place.
      */
     @NotNull public Builder isicV4(@NotNull String isicV4) {
-      this.isicV4 = isicV4;
+      putValue("isicV4", isicV4);
       return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull ImageObject imageObject) {
-      if (this.logo == null) this.logo = new ImageObjectOrString();
-      this.logo.setImageObject(imageObject);
+      putValue("logo", imageObject);
       return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull ImageObject.Builder imageObject) {
-      return this.logo(imageObject.build());
+      putValue("logo", imageObject.build());
+      return this;
     }
     /**
      * An associated logo.
      */
     @NotNull public Builder logo(@NotNull String logo) {
-      if (this.logo == null) this.logo = new ImageObjectOrString();
-      this.logo.setString(logo);
+      putValue("logo", logo);
       return this;
     }
     /**
      * A URL to a map of the place.
      */
     @NotNull public Builder hasMap(@NotNull Map map) {
-      if (this.hasMap == null) this.hasMap = new MapOrString();
-      this.hasMap.setMap(map);
+      putValue("hasMap", map);
       return this;
     }
     /**
      * A URL to a map of the place.
      */
     @NotNull public Builder hasMap(@NotNull Map.Builder map) {
-      return this.hasMap(map.build());
+      putValue("hasMap", map.build());
+      return this;
     }
     /**
      * A URL to a map of the place.
      */
     @NotNull public Builder hasMap(@NotNull String hasMap) {
-      if (this.hasMap == null) this.hasMap = new MapOrString();
-      this.hasMap.setString(hasMap);
+      putValue("hasMap", hasMap);
       return this;
     }
     /**
      * The opening hours of a certain place.
      */
     @NotNull public Builder openingHoursSpecification(@NotNull OpeningHoursSpecification openingHoursSpecification) {
-      this.openingHoursSpecification = openingHoursSpecification;
+      putValue("openingHoursSpecification", openingHoursSpecification);
       return this;
     }
     /**
      * The opening hours of a certain place.
      */
     @NotNull public Builder openingHoursSpecification(@NotNull OpeningHoursSpecification.Builder openingHoursSpecification) {
-      return this.openingHoursSpecification(openingHoursSpecification.build());
+      putValue("openingHoursSpecification", openingHoursSpecification.build());
+      return this;
     }
     /**
      * A photograph of this place.
      */
     @NotNull public Builder photo(@NotNull ImageObject imageObject) {
-      if (this.photo == null) this.photo = new ImageObjectOrPhotograph();
-      this.photo.setImageObject(imageObject);
+      putValue("photo", imageObject);
       return this;
     }
     /**
      * A photograph of this place.
      */
     @NotNull public Builder photo(@NotNull ImageObject.Builder imageObject) {
-      return this.photo(imageObject.build());
+      putValue("photo", imageObject.build());
+      return this;
     }
     /**
      * A photograph of this place.
      */
     @NotNull public Builder photo(@NotNull Photograph photograph) {
-      if (this.photo == null) this.photo = new ImageObjectOrPhotograph();
-      this.photo.setPhotograph(photograph);
+      putValue("photo", photograph);
       return this;
     }
     /**
      * A photograph of this place.
      */
     @NotNull public Builder photo(@NotNull Photograph.Builder photograph) {
-      return this.photo(photograph.build());
+      putValue("photo", photograph.build());
+      return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review review) {
-      this.review = review;
+      putValue("review", review);
       return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review.Builder review) {
-      return this.review(review.build());
+      putValue("review", review.build());
+      return this;
     }
     /**
      * The telephone number.
      */
     @NotNull public Builder telephone(@NotNull String telephone) {
-      this.telephone = telephone;
+      putValue("telephone", telephone);
       return this;
     }
     /**
@@ -268,7 +262,7 @@ public class Zoo extends CivicStructure {
      * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue propertyValue) {
-      this.additionalProperty = propertyValue;
+      putValue("additionalProperty", propertyValue);
       return this;
     }
     /**
@@ -278,27 +272,28 @@ public class Zoo extends CivicStructure {
      * 
      */
     @NotNull public Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue) {
-      return this.additionalProperty(propertyValue.build());
+      putValue("additionalProperty", propertyValue.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -332,8 +327,7 @@ public class Zoo extends CivicStructure {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -367,7 +361,8 @@ public class Zoo extends CivicStructure {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -400,113 +395,54 @@ public class Zoo extends CivicStructure {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("openingHours".equals(key) && value instanceof String) { openingHours((String)value); continue; }
-        if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); continue; }
-        if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); continue; }
-        if ("containedIn".equals(key) && value instanceof Place) { containedIn((Place)value); continue; }
-        if ("event".equals(key) && value instanceof Event) { event((Event)value); continue; }
-        if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); continue; }
-        if ("geo".equals(key) && value instanceof GeoCoordinates) { geo((GeoCoordinates)value); continue; }
-        if ("geo".equals(key) && value instanceof GeoShape) { geo((GeoShape)value); continue; }
-        if ("globalLocationNumber".equals(key) && value instanceof String) { globalLocationNumber((String)value); continue; }
-        if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); continue; }
-        if ("logo".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); continue; }
-        if ("logo".equals(key) && value instanceof String) { logo((String)value); continue; }
-        if ("hasMap".equals(key) && value instanceof Map) { hasMap((Map)value); continue; }
-        if ("hasMap".equals(key) && value instanceof String) { hasMap((String)value); continue; }
-        if ("openingHoursSpecification".equals(key) && value instanceof OpeningHoursSpecification) { openingHoursSpecification((OpeningHoursSpecification)value); continue; }
-        if ("photo".equals(key) && value instanceof ImageObject) { photo((ImageObject)value); continue; }
-        if ("photo".equals(key) && value instanceof Photograph) { photo((Photograph)value); continue; }
-        if ("review".equals(key) && value instanceof Review) { review((Review)value); continue; }
-        if ("telephone".equals(key) && value instanceof String) { telephone((String)value); continue; }
-        if ("additionalProperty".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      super.fromMap(key, value);
     }
-    private String openingHours;
-    private PostalAddress address;
-    private AggregateRating aggregateRating;
-    private Place containedIn;
-    private Event event;
-    private String faxNumber;
-    private GeoCoordinatesOrGeoShape geo;
-    private String globalLocationNumber;
-    private String isicV4;
-    private ImageObjectOrString logo;
-    private MapOrString hasMap;
-    private OpeningHoursSpecification openingHoursSpecification;
-    private ImageObjectOrPhotograph photo;
-    private Review review;
-    private String telephone;
-    private PropertyValue additionalProperty;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
 }

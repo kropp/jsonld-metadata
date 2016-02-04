@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A structured value providing information about when a certain organization or person owned a certain product.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -29,133 +30,174 @@ public class OwnershipInfo extends StructuredValue {
   /**
    * The organization or person from which the product was acquired.
    */
-  public OrganizationOrPerson getAcquiredFrom() { return myAcquiredFrom; }
+  @JsonIgnore public Organization getAcquiredFromOrganization() {
+    return (Organization) getValue("acquiredFrom");
+  }
+  /**
+   * The organization or person from which the product was acquired.
+   */
+  @JsonIgnore public Collection<Organization> getAcquiredFromOrganizations() {
+    final Object current = myData.get("acquiredFrom");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * The organization or person from which the product was acquired.
+   */
+  @JsonIgnore public Person getAcquiredFromPerson() {
+    return (Person) getValue("acquiredFrom");
+  }
+  /**
+   * The organization or person from which the product was acquired.
+   */
+  @JsonIgnore public Collection<Person> getAcquiredFromPersons() {
+    final Object current = myData.get("acquiredFrom");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The date and time of obtaining the product.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getOwnedFrom() { return myOwnedFrom; }
+  @JsonIgnore public java.util.Date getOwnedFrom() {
+    return (java.util.Date) getValue("ownedFrom");
+  }
+  /**
+   * The date and time of obtaining the product.
+   */
+  @JsonIgnore public Collection<java.util.Date> getOwnedFroms() {
+    final Object current = myData.get("ownedFrom");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The date and time of giving up ownership on the product.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getOwnedThrough() { return myOwnedThrough; }
+  @JsonIgnore public java.util.Date getOwnedThrough() {
+    return (java.util.Date) getValue("ownedThrough");
+  }
+  /**
+   * The date and time of giving up ownership on the product.
+   */
+  @JsonIgnore public Collection<java.util.Date> getOwnedThroughs() {
+    final Object current = myData.get("ownedThrough");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The product that this structured value is referring to.
    */
-  public Product getTypeOfGood() { return myTypeOfGood; }
-  protected OwnershipInfo(OrganizationOrPerson acquiredFrom, java.util.Date ownedFrom, java.util.Date ownedThrough, Product typeOfGood, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAcquiredFrom = acquiredFrom;
-    myOwnedFrom = ownedFrom;
-    myOwnedThrough = ownedThrough;
-    myTypeOfGood = typeOfGood;
-    myAcquiredFrom = acquiredFrom;
-    myOwnedFrom = ownedFrom;
-    myOwnedThrough = ownedThrough;
-    myTypeOfGood = typeOfGood;
+  @JsonIgnore public Product getTypeOfGood() {
+    return (Product) getValue("typeOfGood");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAcquiredFrom != null ? myAcquiredFrom.hashCode() : 0);
-    result = 31 * result + (myOwnedFrom != null ? myOwnedFrom.hashCode() : 0);
-    result = 31 * result + (myOwnedThrough != null ? myOwnedThrough.hashCode() : 0);
-    result = 31 * result + (myTypeOfGood != null ? myTypeOfGood.hashCode() : 0);
-    return result;
+  /**
+   * The product that this structured value is referring to.
+   */
+  @JsonIgnore public Collection<Product> getTypeOfGoods() {
+    final Object current = myData.get("typeOfGood");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Product>) current;
+    }
+    return Arrays.asList((Product) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    OwnershipInfo ownershipInfo = (OwnershipInfo) o;
-    if (!super.equals(o)) return false;
-    if (myAcquiredFrom != null ? !myAcquiredFrom.equals(ownershipInfo.myAcquiredFrom) : ownershipInfo.myAcquiredFrom != null) return false;
-    if (myOwnedFrom != null ? !myOwnedFrom.equals(ownershipInfo.myOwnedFrom) : ownershipInfo.myOwnedFrom != null) return false;
-    if (myOwnedThrough != null ? !myOwnedThrough.equals(ownershipInfo.myOwnedThrough) : ownershipInfo.myOwnedThrough != null) return false;
-    if (myTypeOfGood != null ? !myTypeOfGood.equals(ownershipInfo.myTypeOfGood) : ownershipInfo.myTypeOfGood != null) return false;
-    return true;
+  protected OwnershipInfo(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link OwnershipInfo}
    */
-  public static class Builder implements ThingBuilder<OwnershipInfo> {
+  public static class Builder extends StructuredValue.Builder {
     public OwnershipInfo build() {
-      return new OwnershipInfo(acquiredFrom, ownedFrom, ownedThrough, typeOfGood, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new OwnershipInfo(myData);
     }
     /**
      * The organization or person from which the product was acquired.
      */
     @NotNull public Builder acquiredFrom(@NotNull Organization organization) {
-      if (this.acquiredFrom == null) this.acquiredFrom = new OrganizationOrPerson();
-      this.acquiredFrom.setOrganization(organization);
+      putValue("acquiredFrom", organization);
       return this;
     }
     /**
      * The organization or person from which the product was acquired.
      */
     @NotNull public Builder acquiredFrom(@NotNull Organization.Builder organization) {
-      return this.acquiredFrom(organization.build());
+      putValue("acquiredFrom", organization.build());
+      return this;
     }
     /**
      * The organization or person from which the product was acquired.
      */
     @NotNull public Builder acquiredFrom(@NotNull Person person) {
-      if (this.acquiredFrom == null) this.acquiredFrom = new OrganizationOrPerson();
-      this.acquiredFrom.setPerson(person);
+      putValue("acquiredFrom", person);
       return this;
     }
     /**
      * The organization or person from which the product was acquired.
      */
     @NotNull public Builder acquiredFrom(@NotNull Person.Builder person) {
-      return this.acquiredFrom(person.build());
+      putValue("acquiredFrom", person.build());
+      return this;
     }
     /**
      * The date and time of obtaining the product.
      */
     @NotNull public Builder ownedFrom(@NotNull java.util.Date date) {
-      this.ownedFrom = date;
+      putValue("ownedFrom", date);
       return this;
     }
     /**
      * The date and time of giving up ownership on the product.
      */
     @NotNull public Builder ownedThrough(@NotNull java.util.Date date) {
-      this.ownedThrough = date;
+      putValue("ownedThrough", date);
       return this;
     }
     /**
      * The product that this structured value is referring to.
      */
     @NotNull public Builder typeOfGood(@NotNull Product product) {
-      this.typeOfGood = product;
+      putValue("typeOfGood", product);
       return this;
     }
     /**
      * The product that this structured value is referring to.
      */
     @NotNull public Builder typeOfGood(@NotNull Product.Builder product) {
-      return this.typeOfGood(product.build());
+      putValue("typeOfGood", product.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -189,8 +231,7 @@ public class OwnershipInfo extends StructuredValue {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -224,7 +265,8 @@ public class OwnershipInfo extends StructuredValue {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -257,90 +299,59 @@ public class OwnershipInfo extends StructuredValue {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("acquiredFrom".equals(key) && value instanceof Organization) { acquiredFrom((Organization)value); continue; }
-        if ("acquiredFrom".equals(key) && value instanceof Person) { acquiredFrom((Person)value); continue; }
-        if ("ownedFrom".equals(key) && value instanceof java.util.Date) { ownedFrom((java.util.Date)value); continue; }
-        if ("ownedThrough".equals(key) && value instanceof java.util.Date) { ownedThrough((java.util.Date)value); continue; }
-        if ("typeOfGood".equals(key) && value instanceof Product) { typeOfGood((Product)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("acquiredFrom".equals(key) && value instanceof Organization) { acquiredFrom((Organization)value); return; }
+      if ("acquiredFrom".equals(key) && value instanceof Person) { acquiredFrom((Person)value); return; }
+      if ("ownedFrom".equals(key) && value instanceof java.util.Date) { ownedFrom((java.util.Date)value); return; }
+      if ("ownedThrough".equals(key) && value instanceof java.util.Date) { ownedThrough((java.util.Date)value); return; }
+      if ("typeOfGood".equals(key) && value instanceof Product) { typeOfGood((Product)value); return; }
+      super.fromMap(key, value);
     }
-    private OrganizationOrPerson acquiredFrom;
-    private java.util.Date ownedFrom;
-    private java.util.Date ownedThrough;
-    private Product typeOfGood;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private OrganizationOrPerson myAcquiredFrom;
-  private java.util.Date myOwnedFrom;
-  private java.util.Date myOwnedThrough;
-  private Product myTypeOfGood;
 }

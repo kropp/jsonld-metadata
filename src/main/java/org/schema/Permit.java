@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A permit issued by an organization, e.g. a parking pass.
@@ -29,181 +30,236 @@ public class Permit extends Intangible {
   /**
    * The service through with the permit was granted.
    */
-  public Service getIssuedThrough() { return myIssuedThrough; }
+  @JsonIgnore public Service getIssuedThrough() {
+    return (Service) getValue("issuedThrough");
+  }
+  /**
+   * The service through with the permit was granted.
+   */
+  @JsonIgnore public Collection<Service> getIssuedThroughs() {
+    final Object current = myData.get("issuedThrough");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Service>) current;
+    }
+    return Arrays.asList((Service) current);
+  }
   /**
    * The target audience for this permit.
    */
-  public Audience getPermitAudience() { return myPermitAudience; }
+  @JsonIgnore public Audience getPermitAudience() {
+    return (Audience) getValue("permitAudience");
+  }
+  /**
+   * The target audience for this permit.
+   */
+  @JsonIgnore public Collection<Audience> getPermitAudiences() {
+    final Object current = myData.get("permitAudience");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Audience>) current;
+    }
+    return Arrays.asList((Audience) current);
+  }
   /**
    * The time validity of the permit.
    */
-  public Duration getValidFor() { return myValidFor; }
+  @JsonIgnore public Duration getValidFor() {
+    return (Duration) getValue("validFor");
+  }
+  /**
+   * The time validity of the permit.
+   */
+  @JsonIgnore public Collection<Duration> getValidFors() {
+    final Object current = myData.get("validFor");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Duration>) current;
+    }
+    return Arrays.asList((Duration) current);
+  }
   /**
    * The date when the item becomes valid.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getValidFrom() { return myValidFrom; }
+  @JsonIgnore public java.util.Date getValidFrom() {
+    return (java.util.Date) getValue("validFrom");
+  }
+  /**
+   * The date when the item becomes valid.
+   */
+  @JsonIgnore public Collection<java.util.Date> getValidFroms() {
+    final Object current = myData.get("validFrom");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The geographic area where the permit is valid.
    */
-  public AdministrativeArea getValidIn() { return myValidIn; }
+  @JsonIgnore public AdministrativeArea getValidIn() {
+    return (AdministrativeArea) getValue("validIn");
+  }
+  /**
+   * The geographic area where the permit is valid.
+   */
+  @JsonIgnore public Collection<AdministrativeArea> getValidIns() {
+    final Object current = myData.get("validIn");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AdministrativeArea>) current;
+    }
+    return Arrays.asList((AdministrativeArea) current);
+  }
   /**
    * The date when the item is no longer valid.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getValidUntil() { return myValidUntil; }
+  @JsonIgnore public java.util.Date getValidUntil() {
+    return (java.util.Date) getValue("validUntil");
+  }
+  /**
+   * The date when the item is no longer valid.
+   */
+  @JsonIgnore public Collection<java.util.Date> getValidUntils() {
+    final Object current = myData.get("validUntil");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The organization issuing the ticket or permit.
    */
-  public Organization getIssuedBy() { return myIssuedBy; }
-  protected Permit(Service issuedThrough, Audience permitAudience, Duration validFor, java.util.Date validFrom, AdministrativeArea validIn, java.util.Date validUntil, Organization issuedBy, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myIssuedThrough = issuedThrough;
-    myPermitAudience = permitAudience;
-    myValidFor = validFor;
-    myValidFrom = validFrom;
-    myValidIn = validIn;
-    myValidUntil = validUntil;
-    myIssuedBy = issuedBy;
-    myIssuedThrough = issuedThrough;
-    myPermitAudience = permitAudience;
-    myValidFor = validFor;
-    myValidFrom = validFrom;
-    myValidIn = validIn;
-    myValidUntil = validUntil;
-    myIssuedBy = issuedBy;
+  @JsonIgnore public Organization getIssuedBy() {
+    return (Organization) getValue("issuedBy");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myIssuedThrough != null ? myIssuedThrough.hashCode() : 0);
-    result = 31 * result + (myPermitAudience != null ? myPermitAudience.hashCode() : 0);
-    result = 31 * result + (myValidFor != null ? myValidFor.hashCode() : 0);
-    result = 31 * result + (myValidFrom != null ? myValidFrom.hashCode() : 0);
-    result = 31 * result + (myValidIn != null ? myValidIn.hashCode() : 0);
-    result = 31 * result + (myValidUntil != null ? myValidUntil.hashCode() : 0);
-    result = 31 * result + (myIssuedBy != null ? myIssuedBy.hashCode() : 0);
-    return result;
+  /**
+   * The organization issuing the ticket or permit.
+   */
+  @JsonIgnore public Collection<Organization> getIssuedBys() {
+    final Object current = myData.get("issuedBy");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Permit permit = (Permit) o;
-    if (!super.equals(o)) return false;
-    if (myIssuedThrough != null ? !myIssuedThrough.equals(permit.myIssuedThrough) : permit.myIssuedThrough != null) return false;
-    if (myPermitAudience != null ? !myPermitAudience.equals(permit.myPermitAudience) : permit.myPermitAudience != null) return false;
-    if (myValidFor != null ? !myValidFor.equals(permit.myValidFor) : permit.myValidFor != null) return false;
-    if (myValidFrom != null ? !myValidFrom.equals(permit.myValidFrom) : permit.myValidFrom != null) return false;
-    if (myValidIn != null ? !myValidIn.equals(permit.myValidIn) : permit.myValidIn != null) return false;
-    if (myValidUntil != null ? !myValidUntil.equals(permit.myValidUntil) : permit.myValidUntil != null) return false;
-    if (myIssuedBy != null ? !myIssuedBy.equals(permit.myIssuedBy) : permit.myIssuedBy != null) return false;
-    return true;
+  protected Permit(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Permit}
    */
-  public static class Builder implements ThingBuilder<Permit> {
+  public static class Builder extends Intangible.Builder {
     public Permit build() {
-      return new Permit(issuedThrough, permitAudience, validFor, validFrom, validIn, validUntil, issuedBy, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Permit(myData);
     }
     /**
      * The service through with the permit was granted.
      */
     @NotNull public Builder issuedThrough(@NotNull Service service) {
-      this.issuedThrough = service;
+      putValue("issuedThrough", service);
       return this;
     }
     /**
      * The service through with the permit was granted.
      */
     @NotNull public Builder issuedThrough(@NotNull Service.Builder service) {
-      return this.issuedThrough(service.build());
+      putValue("issuedThrough", service.build());
+      return this;
     }
     /**
      * The target audience for this permit.
      */
     @NotNull public Builder permitAudience(@NotNull Audience audience) {
-      this.permitAudience = audience;
+      putValue("permitAudience", audience);
       return this;
     }
     /**
      * The target audience for this permit.
      */
     @NotNull public Builder permitAudience(@NotNull Audience.Builder audience) {
-      return this.permitAudience(audience.build());
+      putValue("permitAudience", audience.build());
+      return this;
     }
     /**
      * The time validity of the permit.
      */
     @NotNull public Builder validFor(@NotNull Duration duration) {
-      this.validFor = duration;
+      putValue("validFor", duration);
       return this;
     }
     /**
      * The time validity of the permit.
      */
     @NotNull public Builder validFor(@NotNull Duration.Builder duration) {
-      return this.validFor(duration.build());
+      putValue("validFor", duration.build());
+      return this;
     }
     /**
      * The date when the item becomes valid.
      */
     @NotNull public Builder validFrom(@NotNull java.util.Date date) {
-      this.validFrom = date;
+      putValue("validFrom", date);
       return this;
     }
     /**
      * The geographic area where the permit is valid.
      */
     @NotNull public Builder validIn(@NotNull AdministrativeArea administrativeArea) {
-      this.validIn = administrativeArea;
+      putValue("validIn", administrativeArea);
       return this;
     }
     /**
      * The geographic area where the permit is valid.
      */
     @NotNull public Builder validIn(@NotNull AdministrativeArea.Builder administrativeArea) {
-      return this.validIn(administrativeArea.build());
+      putValue("validIn", administrativeArea.build());
+      return this;
     }
     /**
      * The date when the item is no longer valid.
      */
     @NotNull public Builder validUntil(@NotNull java.util.Date date) {
-      this.validUntil = date;
+      putValue("validUntil", date);
       return this;
     }
     /**
      * The organization issuing the ticket or permit.
      */
     @NotNull public Builder issuedBy(@NotNull Organization organization) {
-      this.issuedBy = organization;
+      putValue("issuedBy", organization);
       return this;
     }
     /**
      * The organization issuing the ticket or permit.
      */
     @NotNull public Builder issuedBy(@NotNull Organization.Builder organization) {
-      return this.issuedBy(organization.build());
+      putValue("issuedBy", organization.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -237,8 +293,7 @@ public class Permit extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -272,7 +327,8 @@ public class Permit extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -305,98 +361,61 @@ public class Permit extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("issuedThrough".equals(key) && value instanceof Service) { issuedThrough((Service)value); continue; }
-        if ("permitAudience".equals(key) && value instanceof Audience) { permitAudience((Audience)value); continue; }
-        if ("validFor".equals(key) && value instanceof Duration) { validFor((Duration)value); continue; }
-        if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); continue; }
-        if ("validIn".equals(key) && value instanceof AdministrativeArea) { validIn((AdministrativeArea)value); continue; }
-        if ("validUntil".equals(key) && value instanceof java.util.Date) { validUntil((java.util.Date)value); continue; }
-        if ("issuedBy".equals(key) && value instanceof Organization) { issuedBy((Organization)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("issuedThrough".equals(key) && value instanceof Service) { issuedThrough((Service)value); return; }
+      if ("permitAudience".equals(key) && value instanceof Audience) { permitAudience((Audience)value); return; }
+      if ("validFor".equals(key) && value instanceof Duration) { validFor((Duration)value); return; }
+      if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
+      if ("validIn".equals(key) && value instanceof AdministrativeArea) { validIn((AdministrativeArea)value); return; }
+      if ("validUntil".equals(key) && value instanceof java.util.Date) { validUntil((java.util.Date)value); return; }
+      if ("issuedBy".equals(key) && value instanceof Organization) { issuedBy((Organization)value); return; }
+      super.fromMap(key, value);
     }
-    private Service issuedThrough;
-    private Audience permitAudience;
-    private Duration validFor;
-    private java.util.Date validFrom;
-    private AdministrativeArea validIn;
-    private java.util.Date validUntil;
-    private Organization issuedBy;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private Service myIssuedThrough;
-  private Audience myPermitAudience;
-  private Duration myValidFor;
-  private java.util.Date myValidFrom;
-  private AdministrativeArea myValidIn;
-  private java.util.Date myValidUntil;
-  private Organization myIssuedBy;
 }

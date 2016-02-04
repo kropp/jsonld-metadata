@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * An offer to transfer some rights to an item or to provide a service&#x2014;for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.
@@ -34,722 +35,1403 @@ public class Offer extends Intangible {
   /**
    * The payment method(s) accepted by seller for this offer.
    */
-  public PaymentMethod getAcceptedPaymentMethod() { return myAcceptedPaymentMethod; }
+  @JsonIgnore public PaymentMethod getAcceptedPaymentMethod() {
+    return (PaymentMethod) getValue("acceptedPaymentMethod");
+  }
+  /**
+   * The payment method(s) accepted by seller for this offer.
+   */
+  @JsonIgnore public Collection<PaymentMethod> getAcceptedPaymentMethods() {
+    final Object current = myData.get("acceptedPaymentMethod");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PaymentMethod>) current;
+    }
+    return Arrays.asList((PaymentMethod) current);
+  }
   /**
    * An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
    */
-  public Offer getAddOn() { return myAddOn; }
+  @JsonIgnore public Offer getAddOn() {
+    return (Offer) getValue("addOn");
+  }
+  /**
+   * An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
+   */
+  @JsonIgnore public Collection<Offer> getAddOns() {
+    final Object current = myData.get("addOn");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Offer>) current;
+    }
+    return Arrays.asList((Offer) current);
+  }
   /**
    * The amount of time that is required between accepting the offer and the actual usage of the resource or service.
    */
-  public QuantitativeValue getAdvanceBookingRequirement() { return myAdvanceBookingRequirement; }
+  @JsonIgnore public QuantitativeValue getAdvanceBookingRequirement() {
+    return (QuantitativeValue) getValue("advanceBookingRequirement");
+  }
+  /**
+   * The amount of time that is required between accepting the offer and the actual usage of the resource or service.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getAdvanceBookingRequirements() {
+    final Object current = myData.get("advanceBookingRequirement");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * The overall rating, based on a collection of reviews or ratings, of the item.
    */
-  public AggregateRating getAggregateRating() { return myAggregateRating; }
+  @JsonIgnore public AggregateRating getAggregateRating() {
+    return (AggregateRating) getValue("aggregateRating");
+  }
+  /**
+   * The overall rating, based on a collection of reviews or ratings, of the item.
+   */
+  @JsonIgnore public Collection<AggregateRating> getAggregateRatings() {
+    final Object current = myData.get("aggregateRating");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AggregateRating>) current;
+    }
+    return Arrays.asList((AggregateRating) current);
+  }
   /**
    * The availability of this item&#x2014;for example In stock, Out of stock, Pre-order, etc.
    */
-  public ItemAvailability getAvailability() { return myAvailability; }
+  @JsonIgnore public ItemAvailability getAvailability() {
+    return (ItemAvailability) getValue("availability");
+  }
+  /**
+   * The availability of this item&#x2014;for example In stock, Out of stock, Pre-order, etc.
+   */
+  @JsonIgnore public Collection<ItemAvailability> getAvailabilitys() {
+    final Object current = myData.get("availability");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ItemAvailability>) current;
+    }
+    return Arrays.asList((ItemAvailability) current);
+  }
   /**
    * The end of the availability of the product or service included in the offer.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getAvailabilityEnds() { return myAvailabilityEnds; }
+  @JsonIgnore public java.util.Date getAvailabilityEnds() {
+    return (java.util.Date) getValue("availabilityEnds");
+  }
+  /**
+   * The end of the availability of the product or service included in the offer.
+   */
+  @JsonIgnore public Collection<java.util.Date> getAvailabilityEndss() {
+    final Object current = myData.get("availabilityEnds");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The beginning of the availability of the product or service included in the offer.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getAvailabilityStarts() { return myAvailabilityStarts; }
+  @JsonIgnore public java.util.Date getAvailabilityStarts() {
+    return (java.util.Date) getValue("availabilityStarts");
+  }
+  /**
+   * The beginning of the availability of the product or service included in the offer.
+   */
+  @JsonIgnore public Collection<java.util.Date> getAvailabilityStartss() {
+    final Object current = myData.get("availabilityStarts");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The place(s) from which the offer can be obtained (e.g. store locations).
    */
-  public Place getAvailableAtOrFrom() { return myAvailableAtOrFrom; }
+  @JsonIgnore public Place getAvailableAtOrFrom() {
+    return (Place) getValue("availableAtOrFrom");
+  }
+  /**
+   * The place(s) from which the offer can be obtained (e.g. store locations).
+   */
+  @JsonIgnore public Collection<Place> getAvailableAtOrFroms() {
+    final Object current = myData.get("availableAtOrFrom");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
+  }
   /**
    * The delivery method(s) available for this offer.
    */
-  public DeliveryMethod getAvailableDeliveryMethod() { return myAvailableDeliveryMethod; }
+  @JsonIgnore public DeliveryMethod getAvailableDeliveryMethod() {
+    return (DeliveryMethod) getValue("availableDeliveryMethod");
+  }
+  /**
+   * The delivery method(s) available for this offer.
+   */
+  @JsonIgnore public Collection<DeliveryMethod> getAvailableDeliveryMethods() {
+    final Object current = myData.get("availableDeliveryMethod");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<DeliveryMethod>) current;
+    }
+    return Arrays.asList((DeliveryMethod) current);
+  }
   /**
    * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
    */
-  public BusinessFunction getBusinessFunction() { return myBusinessFunction; }
+  @JsonIgnore public BusinessFunction getBusinessFunction() {
+    return (BusinessFunction) getValue("businessFunction");
+  }
+  /**
+   * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
+   */
+  @JsonIgnore public Collection<BusinessFunction> getBusinessFunctions() {
+    final Object current = myData.get("businessFunction");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<BusinessFunction>) current;
+    }
+    return Arrays.asList((BusinessFunction) current);
+  }
   /**
    * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
    */
-  public PhysicalActivityCategoryOrStringOrThing getCategory() { return myCategory; }
+  @JsonIgnore public PhysicalActivityCategory getCategoryPhysicalActivityCategory() {
+    return (PhysicalActivityCategory) getValue("category");
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Collection<PhysicalActivityCategory> getCategoryPhysicalActivityCategorys() {
+    final Object current = myData.get("category");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PhysicalActivityCategory>) current;
+    }
+    return Arrays.asList((PhysicalActivityCategory) current);
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public String getCategoryString() {
+    return (String) getValue("category");
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Collection<String> getCategoryStrings() {
+    final Object current = myData.get("category");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Thing getCategoryThing() {
+    return (Thing) getValue("category");
+  }
+  /**
+   * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+   */
+  @JsonIgnore public Collection<Thing> getCategoryThings() {
+    final Object current = myData.get("category");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Thing>) current;
+    }
+    return Arrays.asList((Thing) current);
+  }
   /**
    * The typical delay between the receipt of the order and the goods leaving the warehouse.
    */
-  public QuantitativeValue getDeliveryLeadTime() { return myDeliveryLeadTime; }
+  @JsonIgnore public QuantitativeValue getDeliveryLeadTime() {
+    return (QuantitativeValue) getValue("deliveryLeadTime");
+  }
+  /**
+   * The typical delay between the receipt of the order and the goods leaving the warehouse.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getDeliveryLeadTimes() {
+    final Object current = myData.get("deliveryLeadTime");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * The type(s) of customers for which the given offer is valid.
    */
-  public BusinessEntityType getEligibleCustomerType() { return myEligibleCustomerType; }
+  @JsonIgnore public BusinessEntityType getEligibleCustomerType() {
+    return (BusinessEntityType) getValue("eligibleCustomerType");
+  }
+  /**
+   * The type(s) of customers for which the given offer is valid.
+   */
+  @JsonIgnore public Collection<BusinessEntityType> getEligibleCustomerTypes() {
+    final Object current = myData.get("eligibleCustomerType");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<BusinessEntityType>) current;
+    }
+    return Arrays.asList((BusinessEntityType) current);
+  }
   /**
    * The duration for which the given offer is valid.
    */
-  public QuantitativeValue getEligibleDuration() { return myEligibleDuration; }
+  @JsonIgnore public QuantitativeValue getEligibleDuration() {
+    return (QuantitativeValue) getValue("eligibleDuration");
+  }
+  /**
+   * The duration for which the given offer is valid.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getEligibleDurations() {
+    final Object current = myData.get("eligibleDuration");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
    */
-  public QuantitativeValue getEligibleQuantity() { return myEligibleQuantity; }
+  @JsonIgnore public QuantitativeValue getEligibleQuantity() {
+    return (QuantitativeValue) getValue("eligibleQuantity");
+  }
+  /**
+   * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getEligibleQuantitys() {
+    final Object current = myData.get("eligibleQuantity");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
    */
-  public GeoShapeOrPlaceOrString getEligibleRegion() { return myEligibleRegion; }
+  @JsonIgnore public GeoShape getEligibleRegionGeoShape() {
+    return (GeoShape) getValue("eligibleRegion");
+  }
+  /**
+   * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
+   */
+  @JsonIgnore public Collection<GeoShape> getEligibleRegionGeoShapes() {
+    final Object current = myData.get("eligibleRegion");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<GeoShape>) current;
+    }
+    return Arrays.asList((GeoShape) current);
+  }
+  /**
+   * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
+   */
+  @JsonIgnore public Place getEligibleRegionPlace() {
+    return (Place) getValue("eligibleRegion");
+  }
+  /**
+   * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
+   */
+  @JsonIgnore public Collection<Place> getEligibleRegionPlaces() {
+    final Object current = myData.get("eligibleRegion");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
+  }
+  /**
+   * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
+   */
+  @JsonIgnore public String getEligibleRegionString() {
+    return (String) getValue("eligibleRegion");
+  }
+  /**
+   * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
+   */
+  @JsonIgnore public Collection<String> getEligibleRegionStrings() {
+    final Object current = myData.get("eligibleRegion");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
    */
-  public GeoShapeOrPlaceOrString getIneligibleRegion() { return myIneligibleRegion; }
+  @JsonIgnore public GeoShape getIneligibleRegionGeoShape() {
+    return (GeoShape) getValue("ineligibleRegion");
+  }
+  /**
+   * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
+   */
+  @JsonIgnore public Collection<GeoShape> getIneligibleRegionGeoShapes() {
+    final Object current = myData.get("ineligibleRegion");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<GeoShape>) current;
+    }
+    return Arrays.asList((GeoShape) current);
+  }
+  /**
+   * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
+   */
+  @JsonIgnore public Place getIneligibleRegionPlace() {
+    return (Place) getValue("ineligibleRegion");
+  }
+  /**
+   * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
+   */
+  @JsonIgnore public Collection<Place> getIneligibleRegionPlaces() {
+    final Object current = myData.get("ineligibleRegion");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
+  }
+  /**
+   * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
+   */
+  @JsonIgnore public String getIneligibleRegionString() {
+    return (String) getValue("ineligibleRegion");
+  }
+  /**
+   * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
+   */
+  @JsonIgnore public Collection<String> getIneligibleRegionStrings() {
+    final Object current = myData.get("ineligibleRegion");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
    */
-  public PriceSpecification getEligibleTransactionVolume() { return myEligibleTransactionVolume; }
+  @JsonIgnore public PriceSpecification getEligibleTransactionVolume() {
+    return (PriceSpecification) getValue("eligibleTransactionVolume");
+  }
+  /**
+   * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
+   */
+  @JsonIgnore public Collection<PriceSpecification> getEligibleTransactionVolumes() {
+    final Object current = myData.get("eligibleTransactionVolume");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PriceSpecification>) current;
+    }
+    return Arrays.asList((PriceSpecification) current);
+  }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-12.aspx">GTIN-12</a> code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin12() { return myGtin12; }
+  @JsonIgnore public String getGtin12() {
+    return (String) getValue("gtin12");
+  }
+  /**
+   * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-12.aspx">GTIN-12</a> code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+   */
+  @JsonIgnore public Collection<String> getGtin12s() {
+    final Object current = myData.get("gtin12");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-13.aspx">GTIN-13</a> code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin13() { return myGtin13; }
+  @JsonIgnore public String getGtin13() {
+    return (String) getValue("gtin13");
+  }
+  /**
+   * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-13.aspx">GTIN-13</a> code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+   */
+  @JsonIgnore public Collection<String> getGtin13s() {
+    final Object current = myData.get("gtin13");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-14.aspx">GTIN-14</a> code of the product, or the product to which the offer refers. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin14() { return myGtin14; }
+  @JsonIgnore public String getGtin14() {
+    return (String) getValue("gtin14");
+  }
+  /**
+   * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-14.aspx">GTIN-14</a> code of the product, or the product to which the offer refers. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+   */
+  @JsonIgnore public Collection<String> getGtin14s() {
+    final Object current = myData.get("gtin14");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-8.aspx">GTIN-8</a> code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
    */
-  public String getGtin8() { return myGtin8; }
+  @JsonIgnore public String getGtin8() {
+    return (String) getValue("gtin8");
+  }
+  /**
+   * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-8.aspx">GTIN-8</a> code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
+   */
+  @JsonIgnore public Collection<String> getGtin8s() {
+    final Object current = myData.get("gtin8");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * This links to a node or nodes indicating the exact quantity of the products included in the offer.
    */
-  public TypeAndQuantityNode getIncludesObject() { return myIncludesObject; }
+  @JsonIgnore public TypeAndQuantityNode getIncludesObject() {
+    return (TypeAndQuantityNode) getValue("includesObject");
+  }
+  /**
+   * This links to a node or nodes indicating the exact quantity of the products included in the offer.
+   */
+  @JsonIgnore public Collection<TypeAndQuantityNode> getIncludesObjects() {
+    final Object current = myData.get("includesObject");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<TypeAndQuantityNode>) current;
+    }
+    return Arrays.asList((TypeAndQuantityNode) current);
+  }
   /**
    * The current approximate inventory level for the item or items.
    */
-  public QuantitativeValue getInventoryLevel() { return myInventoryLevel; }
+  @JsonIgnore public QuantitativeValue getInventoryLevel() {
+    return (QuantitativeValue) getValue("inventoryLevel");
+  }
+  /**
+   * The current approximate inventory level for the item or items.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getInventoryLevels() {
+    final Object current = myData.get("inventoryLevel");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
    */
-  public OfferItemCondition getItemCondition() { return myItemCondition; }
+  @JsonIgnore public OfferItemCondition getItemCondition() {
+    return (OfferItemCondition) getValue("itemCondition");
+  }
+  /**
+   * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
+   */
+  @JsonIgnore public Collection<OfferItemCondition> getItemConditions() {
+    final Object current = myData.get("itemCondition");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<OfferItemCondition>) current;
+    }
+    return Arrays.asList((OfferItemCondition) current);
+  }
   /**
    * The item being offered.
    */
-  public Product getItemOffered() { return myItemOffered; }
+  @JsonIgnore public Product getItemOffered() {
+    return (Product) getValue("itemOffered");
+  }
+  /**
+   * The item being offered.
+   */
+  @JsonIgnore public Collection<Product> getItemOffereds() {
+    final Object current = myData.get("itemOffered");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Product>) current;
+    }
+    return Arrays.asList((Product) current);
+  }
   /**
    * The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
    */
-  public String getMpn() { return myMpn; }
+  @JsonIgnore public String getMpn() {
+    return (String) getValue("mpn");
+  }
+  /**
+   * The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
+   */
+  @JsonIgnore public Collection<String> getMpns() {
+    final Object current = myData.get("mpn");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
    */
-  public Number getPrice() { return myPrice; }
+  @JsonIgnore public Integer getPriceInteger() {
+    return (Integer) getValue("price");
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Collection<Integer> getPriceIntegers() {
+    final Object current = myData.get("price");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Long getPriceLong() {
+    return (Long) getValue("price");
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Collection<Long> getPriceLongs() {
+    final Object current = myData.get("price");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Long>) current;
+    }
+    return Arrays.asList((Long) current);
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Float getPriceFloat() {
+    return (Float) getValue("price");
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Collection<Float> getPriceFloats() {
+    final Object current = myData.get("price");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Float>) current;
+    }
+    return Arrays.asList((Float) current);
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Double getPriceDouble() {
+    return (Double) getValue("price");
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Collection<Double> getPriceDoubles() {
+    final Object current = myData.get("price");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Double>) current;
+    }
+    return Arrays.asList((Double) current);
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public String getPriceString() {
+    return (String) getValue("price");
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Collection<String> getPriceStrings() {
+    final Object current = myData.get("price");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * One or more detailed price specifications, indicating the unit price and delivery or payment charges.
    */
-  public PriceSpecification getPriceSpecification() { return myPriceSpecification; }
+  @JsonIgnore public PriceSpecification getPriceSpecification() {
+    return (PriceSpecification) getValue("priceSpecification");
+  }
+  /**
+   * One or more detailed price specifications, indicating the unit price and delivery or payment charges.
+   */
+  @JsonIgnore public Collection<PriceSpecification> getPriceSpecifications() {
+    final Object current = myData.get("priceSpecification");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PriceSpecification>) current;
+    }
+    return Arrays.asList((PriceSpecification) current);
+  }
   /**
    * The date after which the price is no longer available.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getPriceValidUntil() { return myPriceValidUntil; }
+  @JsonIgnore public java.util.Date getPriceValidUntil() {
+    return (java.util.Date) getValue("priceValidUntil");
+  }
+  /**
+   * The date after which the price is no longer available.
+   */
+  @JsonIgnore public Collection<java.util.Date> getPriceValidUntils() {
+    final Object current = myData.get("priceValidUntil");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * A review of the item.
    */
-  public Review getReview() { return myReview; }
+  @JsonIgnore public Review getReview() {
+    return (Review) getValue("review");
+  }
+  /**
+   * A review of the item.
+   */
+  @JsonIgnore public Collection<Review> getReviews() {
+    final Object current = myData.get("review");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Review>) current;
+    }
+    return Arrays.asList((Review) current);
+  }
   /**
    * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
    */
-  public Participant getSeller() { return mySeller; }
+  @JsonIgnore public Participant getSeller() {
+    return (Participant) getValue("seller");
+  }
+  /**
+   * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
+   */
+  @JsonIgnore public Collection<Participant> getSellers() {
+    final Object current = myData.get("seller");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Participant>) current;
+    }
+    return Arrays.asList((Participant) current);
+  }
   /**
    * The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
    */
-  public String getSku() { return mySku; }
+  @JsonIgnore public String getSku() {
+    return (String) getValue("sku");
+  }
+  /**
+   * The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
+   */
+  @JsonIgnore public Collection<String> getSkus() {
+    final Object current = myData.get("sku");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The date when the item becomes valid.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getValidFrom() { return myValidFrom; }
+  @JsonIgnore public java.util.Date getValidFrom() {
+    return (java.util.Date) getValue("validFrom");
+  }
+  /**
+   * The date when the item becomes valid.
+   */
+  @JsonIgnore public Collection<java.util.Date> getValidFroms() {
+    final Object current = myData.get("validFrom");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The end of the validity of offer, price specification, or opening hours data.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getValidThrough() { return myValidThrough; }
+  @JsonIgnore public java.util.Date getValidThrough() {
+    return (java.util.Date) getValue("validThrough");
+  }
+  /**
+   * The end of the validity of offer, price specification, or opening hours data.
+   */
+  @JsonIgnore public Collection<java.util.Date> getValidThroughs() {
+    final Object current = myData.get("validThrough");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The warranty promise(s) included in the offer.
    */
-  public WarrantyPromise getWarranty() { return myWarranty; }
+  @JsonIgnore public WarrantyPromise getWarranty() {
+    return (WarrantyPromise) getValue("warranty");
+  }
+  /**
+   * The warranty promise(s) included in the offer.
+   */
+  @JsonIgnore public Collection<WarrantyPromise> getWarrantys() {
+    final Object current = myData.get("warranty");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<WarrantyPromise>) current;
+    }
+    return Arrays.asList((WarrantyPromise) current);
+  }
   /**
    * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
    */
-  public String getPriceCurrency() { return myPriceCurrency; }
-  protected Offer(PaymentMethod acceptedPaymentMethod, Offer addOn, QuantitativeValue advanceBookingRequirement, AggregateRating aggregateRating, ItemAvailability availability, java.util.Date availabilityEnds, java.util.Date availabilityStarts, Place availableAtOrFrom, DeliveryMethod availableDeliveryMethod, BusinessFunction businessFunction, PhysicalActivityCategoryOrStringOrThing category, QuantitativeValue deliveryLeadTime, BusinessEntityType eligibleCustomerType, QuantitativeValue eligibleDuration, QuantitativeValue eligibleQuantity, GeoShapeOrPlaceOrString eligibleRegion, GeoShapeOrPlaceOrString ineligibleRegion, PriceSpecification eligibleTransactionVolume, String gtin12, String gtin13, String gtin14, String gtin8, TypeAndQuantityNode includesObject, QuantitativeValue inventoryLevel, OfferItemCondition itemCondition, Product itemOffered, String mpn, Number price, PriceSpecification priceSpecification, java.util.Date priceValidUntil, Review review, Participant seller, String sku, java.util.Date validFrom, java.util.Date validThrough, WarrantyPromise warranty, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAcceptedPaymentMethod = acceptedPaymentMethod;
-    myAddOn = addOn;
-    myAdvanceBookingRequirement = advanceBookingRequirement;
-    myAggregateRating = aggregateRating;
-    myAvailability = availability;
-    myAvailabilityEnds = availabilityEnds;
-    myAvailabilityStarts = availabilityStarts;
-    myAvailableAtOrFrom = availableAtOrFrom;
-    myAvailableDeliveryMethod = availableDeliveryMethod;
-    myBusinessFunction = businessFunction;
-    myCategory = category;
-    myDeliveryLeadTime = deliveryLeadTime;
-    myEligibleCustomerType = eligibleCustomerType;
-    myEligibleDuration = eligibleDuration;
-    myEligibleQuantity = eligibleQuantity;
-    myEligibleRegion = eligibleRegion;
-    myIneligibleRegion = ineligibleRegion;
-    myEligibleTransactionVolume = eligibleTransactionVolume;
-    myGtin12 = gtin12;
-    myGtin13 = gtin13;
-    myGtin14 = gtin14;
-    myGtin8 = gtin8;
-    myIncludesObject = includesObject;
-    myInventoryLevel = inventoryLevel;
-    myItemCondition = itemCondition;
-    myItemOffered = itemOffered;
-    myMpn = mpn;
-    myPrice = price;
-    myPriceSpecification = priceSpecification;
-    myPriceValidUntil = priceValidUntil;
-    myReview = review;
-    mySeller = seller;
-    mySku = sku;
-    myValidFrom = validFrom;
-    myValidThrough = validThrough;
-    myWarranty = warranty;
-    myPriceCurrency = priceCurrency;
-    myAcceptedPaymentMethod = acceptedPaymentMethod;
-    myAddOn = addOn;
-    myAdvanceBookingRequirement = advanceBookingRequirement;
-    myAggregateRating = aggregateRating;
-    myAvailability = availability;
-    myAvailabilityEnds = availabilityEnds;
-    myAvailabilityStarts = availabilityStarts;
-    myAvailableAtOrFrom = availableAtOrFrom;
-    myAvailableDeliveryMethod = availableDeliveryMethod;
-    myBusinessFunction = businessFunction;
-    myCategory = category;
-    myDeliveryLeadTime = deliveryLeadTime;
-    myEligibleCustomerType = eligibleCustomerType;
-    myEligibleDuration = eligibleDuration;
-    myEligibleQuantity = eligibleQuantity;
-    myEligibleRegion = eligibleRegion;
-    myIneligibleRegion = ineligibleRegion;
-    myEligibleTransactionVolume = eligibleTransactionVolume;
-    myGtin12 = gtin12;
-    myGtin13 = gtin13;
-    myGtin14 = gtin14;
-    myGtin8 = gtin8;
-    myIncludesObject = includesObject;
-    myInventoryLevel = inventoryLevel;
-    myItemCondition = itemCondition;
-    myItemOffered = itemOffered;
-    myMpn = mpn;
-    myPrice = price;
-    myPriceSpecification = priceSpecification;
-    myPriceValidUntil = priceValidUntil;
-    myReview = review;
-    mySeller = seller;
-    mySku = sku;
-    myValidFrom = validFrom;
-    myValidThrough = validThrough;
-    myWarranty = warranty;
-    myPriceCurrency = priceCurrency;
+  @JsonIgnore public String getPriceCurrency() {
+    return (String) getValue("priceCurrency");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAcceptedPaymentMethod != null ? myAcceptedPaymentMethod.hashCode() : 0);
-    result = 31 * result + (myAddOn != null ? myAddOn.hashCode() : 0);
-    result = 31 * result + (myAdvanceBookingRequirement != null ? myAdvanceBookingRequirement.hashCode() : 0);
-    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
-    result = 31 * result + (myAvailability != null ? myAvailability.hashCode() : 0);
-    result = 31 * result + (myAvailabilityEnds != null ? myAvailabilityEnds.hashCode() : 0);
-    result = 31 * result + (myAvailabilityStarts != null ? myAvailabilityStarts.hashCode() : 0);
-    result = 31 * result + (myAvailableAtOrFrom != null ? myAvailableAtOrFrom.hashCode() : 0);
-    result = 31 * result + (myAvailableDeliveryMethod != null ? myAvailableDeliveryMethod.hashCode() : 0);
-    result = 31 * result + (myBusinessFunction != null ? myBusinessFunction.hashCode() : 0);
-    result = 31 * result + (myCategory != null ? myCategory.hashCode() : 0);
-    result = 31 * result + (myDeliveryLeadTime != null ? myDeliveryLeadTime.hashCode() : 0);
-    result = 31 * result + (myEligibleCustomerType != null ? myEligibleCustomerType.hashCode() : 0);
-    result = 31 * result + (myEligibleDuration != null ? myEligibleDuration.hashCode() : 0);
-    result = 31 * result + (myEligibleQuantity != null ? myEligibleQuantity.hashCode() : 0);
-    result = 31 * result + (myEligibleRegion != null ? myEligibleRegion.hashCode() : 0);
-    result = 31 * result + (myIneligibleRegion != null ? myIneligibleRegion.hashCode() : 0);
-    result = 31 * result + (myEligibleTransactionVolume != null ? myEligibleTransactionVolume.hashCode() : 0);
-    result = 31 * result + (myGtin12 != null ? myGtin12.hashCode() : 0);
-    result = 31 * result + (myGtin13 != null ? myGtin13.hashCode() : 0);
-    result = 31 * result + (myGtin14 != null ? myGtin14.hashCode() : 0);
-    result = 31 * result + (myGtin8 != null ? myGtin8.hashCode() : 0);
-    result = 31 * result + (myIncludesObject != null ? myIncludesObject.hashCode() : 0);
-    result = 31 * result + (myInventoryLevel != null ? myInventoryLevel.hashCode() : 0);
-    result = 31 * result + (myItemCondition != null ? myItemCondition.hashCode() : 0);
-    result = 31 * result + (myItemOffered != null ? myItemOffered.hashCode() : 0);
-    result = 31 * result + (myMpn != null ? myMpn.hashCode() : 0);
-    result = 31 * result + (myPrice != null ? myPrice.hashCode() : 0);
-    result = 31 * result + (myPriceSpecification != null ? myPriceSpecification.hashCode() : 0);
-    result = 31 * result + (myPriceValidUntil != null ? myPriceValidUntil.hashCode() : 0);
-    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
-    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
-    result = 31 * result + (mySku != null ? mySku.hashCode() : 0);
-    result = 31 * result + (myValidFrom != null ? myValidFrom.hashCode() : 0);
-    result = 31 * result + (myValidThrough != null ? myValidThrough.hashCode() : 0);
-    result = 31 * result + (myWarranty != null ? myWarranty.hashCode() : 0);
-    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
-    return result;
+  /**
+   * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
+   */
+  @JsonIgnore public Collection<String> getPriceCurrencys() {
+    final Object current = myData.get("priceCurrency");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Offer offer = (Offer) o;
-    if (!super.equals(o)) return false;
-    if (myAcceptedPaymentMethod != null ? !myAcceptedPaymentMethod.equals(offer.myAcceptedPaymentMethod) : offer.myAcceptedPaymentMethod != null) return false;
-    if (myAddOn != null ? !myAddOn.equals(offer.myAddOn) : offer.myAddOn != null) return false;
-    if (myAdvanceBookingRequirement != null ? !myAdvanceBookingRequirement.equals(offer.myAdvanceBookingRequirement) : offer.myAdvanceBookingRequirement != null) return false;
-    if (myAggregateRating != null ? !myAggregateRating.equals(offer.myAggregateRating) : offer.myAggregateRating != null) return false;
-    if (myAvailability != null ? !myAvailability.equals(offer.myAvailability) : offer.myAvailability != null) return false;
-    if (myAvailabilityEnds != null ? !myAvailabilityEnds.equals(offer.myAvailabilityEnds) : offer.myAvailabilityEnds != null) return false;
-    if (myAvailabilityStarts != null ? !myAvailabilityStarts.equals(offer.myAvailabilityStarts) : offer.myAvailabilityStarts != null) return false;
-    if (myAvailableAtOrFrom != null ? !myAvailableAtOrFrom.equals(offer.myAvailableAtOrFrom) : offer.myAvailableAtOrFrom != null) return false;
-    if (myAvailableDeliveryMethod != null ? !myAvailableDeliveryMethod.equals(offer.myAvailableDeliveryMethod) : offer.myAvailableDeliveryMethod != null) return false;
-    if (myBusinessFunction != null ? !myBusinessFunction.equals(offer.myBusinessFunction) : offer.myBusinessFunction != null) return false;
-    if (myCategory != null ? !myCategory.equals(offer.myCategory) : offer.myCategory != null) return false;
-    if (myDeliveryLeadTime != null ? !myDeliveryLeadTime.equals(offer.myDeliveryLeadTime) : offer.myDeliveryLeadTime != null) return false;
-    if (myEligibleCustomerType != null ? !myEligibleCustomerType.equals(offer.myEligibleCustomerType) : offer.myEligibleCustomerType != null) return false;
-    if (myEligibleDuration != null ? !myEligibleDuration.equals(offer.myEligibleDuration) : offer.myEligibleDuration != null) return false;
-    if (myEligibleQuantity != null ? !myEligibleQuantity.equals(offer.myEligibleQuantity) : offer.myEligibleQuantity != null) return false;
-    if (myEligibleRegion != null ? !myEligibleRegion.equals(offer.myEligibleRegion) : offer.myEligibleRegion != null) return false;
-    if (myIneligibleRegion != null ? !myIneligibleRegion.equals(offer.myIneligibleRegion) : offer.myIneligibleRegion != null) return false;
-    if (myEligibleTransactionVolume != null ? !myEligibleTransactionVolume.equals(offer.myEligibleTransactionVolume) : offer.myEligibleTransactionVolume != null) return false;
-    if (myGtin12 != null ? !myGtin12.equals(offer.myGtin12) : offer.myGtin12 != null) return false;
-    if (myGtin13 != null ? !myGtin13.equals(offer.myGtin13) : offer.myGtin13 != null) return false;
-    if (myGtin14 != null ? !myGtin14.equals(offer.myGtin14) : offer.myGtin14 != null) return false;
-    if (myGtin8 != null ? !myGtin8.equals(offer.myGtin8) : offer.myGtin8 != null) return false;
-    if (myIncludesObject != null ? !myIncludesObject.equals(offer.myIncludesObject) : offer.myIncludesObject != null) return false;
-    if (myInventoryLevel != null ? !myInventoryLevel.equals(offer.myInventoryLevel) : offer.myInventoryLevel != null) return false;
-    if (myItemCondition != null ? !myItemCondition.equals(offer.myItemCondition) : offer.myItemCondition != null) return false;
-    if (myItemOffered != null ? !myItemOffered.equals(offer.myItemOffered) : offer.myItemOffered != null) return false;
-    if (myMpn != null ? !myMpn.equals(offer.myMpn) : offer.myMpn != null) return false;
-    if (myPrice != null ? !myPrice.equals(offer.myPrice) : offer.myPrice != null) return false;
-    if (myPriceSpecification != null ? !myPriceSpecification.equals(offer.myPriceSpecification) : offer.myPriceSpecification != null) return false;
-    if (myPriceValidUntil != null ? !myPriceValidUntil.equals(offer.myPriceValidUntil) : offer.myPriceValidUntil != null) return false;
-    if (myReview != null ? !myReview.equals(offer.myReview) : offer.myReview != null) return false;
-    if (mySeller != null ? !mySeller.equals(offer.mySeller) : offer.mySeller != null) return false;
-    if (mySku != null ? !mySku.equals(offer.mySku) : offer.mySku != null) return false;
-    if (myValidFrom != null ? !myValidFrom.equals(offer.myValidFrom) : offer.myValidFrom != null) return false;
-    if (myValidThrough != null ? !myValidThrough.equals(offer.myValidThrough) : offer.myValidThrough != null) return false;
-    if (myWarranty != null ? !myWarranty.equals(offer.myWarranty) : offer.myWarranty != null) return false;
-    if (myPriceCurrency != null ? !myPriceCurrency.equals(offer.myPriceCurrency) : offer.myPriceCurrency != null) return false;
-    return true;
+  protected Offer(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Offer}
    */
-  public static class Builder implements ThingBuilder<Offer> {
+  public static class Builder extends Intangible.Builder {
     public Offer build() {
-      return new Offer(acceptedPaymentMethod, addOn, advanceBookingRequirement, aggregateRating, availability, availabilityEnds, availabilityStarts, availableAtOrFrom, availableDeliveryMethod, businessFunction, category, deliveryLeadTime, eligibleCustomerType, eligibleDuration, eligibleQuantity, eligibleRegion, ineligibleRegion, eligibleTransactionVolume, gtin12, gtin13, gtin14, gtin8, includesObject, inventoryLevel, itemCondition, itemOffered, mpn, price, priceSpecification, priceValidUntil, review, seller, sku, validFrom, validThrough, warranty, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Offer(myData);
     }
     /**
      * The payment method(s) accepted by seller for this offer.
      */
     @NotNull public Builder acceptedPaymentMethod(@NotNull PaymentMethod paymentMethod) {
-      this.acceptedPaymentMethod = paymentMethod;
+      putValue("acceptedPaymentMethod", paymentMethod);
       return this;
     }
     /**
      * The payment method(s) accepted by seller for this offer.
      */
     @NotNull public Builder acceptedPaymentMethod(@NotNull PaymentMethod.Builder paymentMethod) {
-      return this.acceptedPaymentMethod(paymentMethod.build());
+      putValue("acceptedPaymentMethod", paymentMethod.build());
+      return this;
     }
     /**
      * An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
      */
     @NotNull public Builder addOn(@NotNull Offer offer) {
-      this.addOn = offer;
+      putValue("addOn", offer);
       return this;
     }
     /**
      * An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
      */
     @NotNull public Builder addOn(@NotNull Offer.Builder offer) {
-      return this.addOn(offer.build());
+      putValue("addOn", offer.build());
+      return this;
     }
     /**
      * The amount of time that is required between accepting the offer and the actual usage of the resource or service.
      */
     @NotNull public Builder advanceBookingRequirement(@NotNull QuantitativeValue quantitativeValue) {
-      this.advanceBookingRequirement = quantitativeValue;
+      putValue("advanceBookingRequirement", quantitativeValue);
       return this;
     }
     /**
      * The amount of time that is required between accepting the offer and the actual usage of the resource or service.
      */
     @NotNull public Builder advanceBookingRequirement(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.advanceBookingRequirement(quantitativeValue.build());
+      putValue("advanceBookingRequirement", quantitativeValue.build());
+      return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
-      this.aggregateRating = aggregateRating;
+      putValue("aggregateRating", aggregateRating);
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating) {
-      return this.aggregateRating(aggregateRating.build());
+      putValue("aggregateRating", aggregateRating.build());
+      return this;
     }
     /**
      * The availability of this item&#x2014;for example In stock, Out of stock, Pre-order, etc.
      */
     @NotNull public Builder availability(@NotNull ItemAvailability itemAvailability) {
-      this.availability = itemAvailability;
+      putValue("availability", itemAvailability);
       return this;
     }
     /**
      * The availability of this item&#x2014;for example In stock, Out of stock, Pre-order, etc.
      */
     @NotNull public Builder availability(@NotNull ItemAvailability.Builder itemAvailability) {
-      return this.availability(itemAvailability.build());
+      putValue("availability", itemAvailability.build());
+      return this;
     }
     /**
      * The end of the availability of the product or service included in the offer.
      */
     @NotNull public Builder availabilityEnds(@NotNull java.util.Date date) {
-      this.availabilityEnds = date;
+      putValue("availabilityEnds", date);
       return this;
     }
     /**
      * The beginning of the availability of the product or service included in the offer.
      */
     @NotNull public Builder availabilityStarts(@NotNull java.util.Date date) {
-      this.availabilityStarts = date;
+      putValue("availabilityStarts", date);
       return this;
     }
     /**
      * The place(s) from which the offer can be obtained (e.g. store locations).
      */
     @NotNull public Builder availableAtOrFrom(@NotNull Place place) {
-      this.availableAtOrFrom = place;
+      putValue("availableAtOrFrom", place);
       return this;
     }
     /**
      * The place(s) from which the offer can be obtained (e.g. store locations).
      */
     @NotNull public Builder availableAtOrFrom(@NotNull Place.Builder place) {
-      return this.availableAtOrFrom(place.build());
+      putValue("availableAtOrFrom", place.build());
+      return this;
     }
     /**
      * The delivery method(s) available for this offer.
      */
     @NotNull public Builder availableDeliveryMethod(@NotNull DeliveryMethod deliveryMethod) {
-      this.availableDeliveryMethod = deliveryMethod;
+      putValue("availableDeliveryMethod", deliveryMethod);
       return this;
     }
     /**
      * The delivery method(s) available for this offer.
      */
     @NotNull public Builder availableDeliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod) {
-      return this.availableDeliveryMethod(deliveryMethod.build());
+      putValue("availableDeliveryMethod", deliveryMethod.build());
+      return this;
     }
     /**
      * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
      */
     @NotNull public Builder businessFunction(@NotNull BusinessFunction businessFunction) {
-      this.businessFunction = businessFunction;
+      putValue("businessFunction", businessFunction);
       return this;
     }
     /**
      * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
      */
     @NotNull public Builder businessFunction(@NotNull BusinessFunction.Builder businessFunction) {
-      return this.businessFunction(businessFunction.build());
+      putValue("businessFunction", businessFunction.build());
+      return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull PhysicalActivityCategory physicalActivityCategory) {
-      if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
-      this.category.setPhysicalActivityCategory(physicalActivityCategory);
+      putValue("category", physicalActivityCategory);
       return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull PhysicalActivityCategory.Builder physicalActivityCategory) {
-      return this.category(physicalActivityCategory.build());
+      putValue("category", physicalActivityCategory.build());
+      return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull String category) {
-      if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
-      this.category.setString(category);
+      putValue("category", category);
       return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull Thing thing) {
-      if (this.category == null) this.category = new PhysicalActivityCategoryOrStringOrThing();
-      this.category.setThing(thing);
+      putValue("category", thing);
       return this;
     }
     /**
      * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
      */
     @NotNull public Builder category(@NotNull Thing.Builder thing) {
-      return this.category(thing.build());
+      putValue("category", thing.build());
+      return this;
     }
     /**
      * The typical delay between the receipt of the order and the goods leaving the warehouse.
      */
     @NotNull public Builder deliveryLeadTime(@NotNull QuantitativeValue quantitativeValue) {
-      this.deliveryLeadTime = quantitativeValue;
+      putValue("deliveryLeadTime", quantitativeValue);
       return this;
     }
     /**
      * The typical delay between the receipt of the order and the goods leaving the warehouse.
      */
     @NotNull public Builder deliveryLeadTime(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.deliveryLeadTime(quantitativeValue.build());
+      putValue("deliveryLeadTime", quantitativeValue.build());
+      return this;
     }
     /**
      * The type(s) of customers for which the given offer is valid.
      */
     @NotNull public Builder eligibleCustomerType(@NotNull BusinessEntityType businessEntityType) {
-      this.eligibleCustomerType = businessEntityType;
+      putValue("eligibleCustomerType", businessEntityType);
       return this;
     }
     /**
      * The type(s) of customers for which the given offer is valid.
      */
     @NotNull public Builder eligibleCustomerType(@NotNull BusinessEntityType.Builder businessEntityType) {
-      return this.eligibleCustomerType(businessEntityType.build());
+      putValue("eligibleCustomerType", businessEntityType.build());
+      return this;
     }
     /**
      * The duration for which the given offer is valid.
      */
     @NotNull public Builder eligibleDuration(@NotNull QuantitativeValue quantitativeValue) {
-      this.eligibleDuration = quantitativeValue;
+      putValue("eligibleDuration", quantitativeValue);
       return this;
     }
     /**
      * The duration for which the given offer is valid.
      */
     @NotNull public Builder eligibleDuration(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.eligibleDuration(quantitativeValue.build());
+      putValue("eligibleDuration", quantitativeValue.build());
+      return this;
     }
     /**
      * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
      */
     @NotNull public Builder eligibleQuantity(@NotNull QuantitativeValue quantitativeValue) {
-      this.eligibleQuantity = quantitativeValue;
+      putValue("eligibleQuantity", quantitativeValue);
       return this;
     }
     /**
      * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
      */
     @NotNull public Builder eligibleQuantity(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.eligibleQuantity(quantitativeValue.build());
+      putValue("eligibleQuantity", quantitativeValue.build());
+      return this;
     }
     /**
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
      */
     @NotNull public Builder eligibleRegion(@NotNull GeoShape geoShape) {
-      if (this.eligibleRegion == null) this.eligibleRegion = new GeoShapeOrPlaceOrString();
-      this.eligibleRegion.setGeoShape(geoShape);
+      putValue("eligibleRegion", geoShape);
       return this;
     }
     /**
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
      */
     @NotNull public Builder eligibleRegion(@NotNull GeoShape.Builder geoShape) {
-      return this.eligibleRegion(geoShape.build());
+      putValue("eligibleRegion", geoShape.build());
+      return this;
     }
     /**
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
      */
     @NotNull public Builder eligibleRegion(@NotNull Place place) {
-      if (this.eligibleRegion == null) this.eligibleRegion = new GeoShapeOrPlaceOrString();
-      this.eligibleRegion.setPlace(place);
+      putValue("eligibleRegion", place);
       return this;
     }
     /**
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
      */
     @NotNull public Builder eligibleRegion(@NotNull Place.Builder place) {
-      return this.eligibleRegion(place.build());
+      putValue("eligibleRegion", place.build());
+      return this;
     }
     /**
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is valid.
      */
     @NotNull public Builder eligibleRegion(@NotNull String eligibleRegion) {
-      if (this.eligibleRegion == null) this.eligibleRegion = new GeoShapeOrPlaceOrString();
-      this.eligibleRegion.setString(eligibleRegion);
+      putValue("eligibleRegion", eligibleRegion);
       return this;
     }
     /**
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
      */
     @NotNull public Builder ineligibleRegion(@NotNull GeoShape geoShape) {
-      if (this.ineligibleRegion == null) this.ineligibleRegion = new GeoShapeOrPlaceOrString();
-      this.ineligibleRegion.setGeoShape(geoShape);
+      putValue("ineligibleRegion", geoShape);
       return this;
     }
     /**
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
      */
     @NotNull public Builder ineligibleRegion(@NotNull GeoShape.Builder geoShape) {
-      return this.ineligibleRegion(geoShape.build());
+      putValue("ineligibleRegion", geoShape.build());
+      return this;
     }
     /**
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
      */
     @NotNull public Builder ineligibleRegion(@NotNull Place place) {
-      if (this.ineligibleRegion == null) this.ineligibleRegion = new GeoShapeOrPlaceOrString();
-      this.ineligibleRegion.setPlace(place);
+      putValue("ineligibleRegion", place);
       return this;
     }
     /**
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
      */
     @NotNull public Builder ineligibleRegion(@NotNull Place.Builder place) {
-      return this.ineligibleRegion(place.build());
+      putValue("ineligibleRegion", place.build());
+      return this;
     }
     /**
      * The ISO 3166-1 (ISO 3166-1 alpha-2) or ISO 3166-2 code, the place, or the GeoShape for the geo-political region(s) for which the offer or delivery charge specification is not valid, e.g. a region where the transaction is not allowed.
      */
     @NotNull public Builder ineligibleRegion(@NotNull String ineligibleRegion) {
-      if (this.ineligibleRegion == null) this.ineligibleRegion = new GeoShapeOrPlaceOrString();
-      this.ineligibleRegion.setString(ineligibleRegion);
+      putValue("ineligibleRegion", ineligibleRegion);
       return this;
     }
     /**
      * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
      */
     @NotNull public Builder eligibleTransactionVolume(@NotNull PriceSpecification priceSpecification) {
-      this.eligibleTransactionVolume = priceSpecification;
+      putValue("eligibleTransactionVolume", priceSpecification);
       return this;
     }
     /**
      * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
      */
     @NotNull public Builder eligibleTransactionVolume(@NotNull PriceSpecification.Builder priceSpecification) {
-      return this.eligibleTransactionVolume(priceSpecification.build());
+      putValue("eligibleTransactionVolume", priceSpecification.build());
+      return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-12.aspx">GTIN-12</a> code of the product, or the product to which the offer refers. The GTIN-12 is the 12-digit GS1 Identification Key composed of a U.P.C. Company Prefix, Item Reference, and Check Digit used to identify trade items. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
     @NotNull public Builder gtin12(@NotNull String gtin12) {
-      this.gtin12 = gtin12;
+      putValue("gtin12", gtin12);
       return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-13.aspx">GTIN-13</a> code of the product, or the product to which the offer refers. This is equivalent to 13-digit ISBN codes and EAN UCC-13. Former 12-digit UPC codes can be converted into a GTIN-13 code by simply adding a preceeding zero. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
     @NotNull public Builder gtin13(@NotNull String gtin13) {
-      this.gtin13 = gtin13;
+      putValue("gtin13", gtin13);
       return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-14.aspx">GTIN-14</a> code of the product, or the product to which the offer refers. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
     @NotNull public Builder gtin14(@NotNull String gtin14) {
-      this.gtin14 = gtin14;
+      putValue("gtin14", gtin14);
       return this;
     }
     /**
      * The <a href="http://apps.gs1.org/GDD/glossary/Pages/GTIN-8.aspx">GTIN-8</a> code of the product, or the product to which the offer refers. This code is also known as EAN/UCC-8 or 8-digit EAN. See <a href="http://www.gs1.org/barcodes/technical/idkeys/gtin">GS1 GTIN Summary</a> for more details.
      */
     @NotNull public Builder gtin8(@NotNull String gtin8) {
-      this.gtin8 = gtin8;
+      putValue("gtin8", gtin8);
       return this;
     }
     /**
      * This links to a node or nodes indicating the exact quantity of the products included in the offer.
      */
     @NotNull public Builder includesObject(@NotNull TypeAndQuantityNode typeAndQuantityNode) {
-      this.includesObject = typeAndQuantityNode;
+      putValue("includesObject", typeAndQuantityNode);
       return this;
     }
     /**
      * This links to a node or nodes indicating the exact quantity of the products included in the offer.
      */
     @NotNull public Builder includesObject(@NotNull TypeAndQuantityNode.Builder typeAndQuantityNode) {
-      return this.includesObject(typeAndQuantityNode.build());
+      putValue("includesObject", typeAndQuantityNode.build());
+      return this;
     }
     /**
      * The current approximate inventory level for the item or items.
      */
     @NotNull public Builder inventoryLevel(@NotNull QuantitativeValue quantitativeValue) {
-      this.inventoryLevel = quantitativeValue;
+      putValue("inventoryLevel", quantitativeValue);
       return this;
     }
     /**
      * The current approximate inventory level for the item or items.
      */
     @NotNull public Builder inventoryLevel(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.inventoryLevel(quantitativeValue.build());
+      putValue("inventoryLevel", quantitativeValue.build());
+      return this;
     }
     /**
      * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
      */
     @NotNull public Builder itemCondition(@NotNull OfferItemCondition offerItemCondition) {
-      this.itemCondition = offerItemCondition;
+      putValue("itemCondition", offerItemCondition);
       return this;
     }
     /**
      * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
      */
     @NotNull public Builder itemCondition(@NotNull OfferItemCondition.Builder offerItemCondition) {
-      return this.itemCondition(offerItemCondition.build());
+      putValue("itemCondition", offerItemCondition.build());
+      return this;
     }
     /**
      * The item being offered.
      */
     @NotNull public Builder itemOffered(@NotNull Product product) {
-      this.itemOffered = product;
+      putValue("itemOffered", product);
       return this;
     }
     /**
      * The item being offered.
      */
     @NotNull public Builder itemOffered(@NotNull Product.Builder product) {
-      return this.itemOffered(product.build());
+      putValue("itemOffered", product.build());
+      return this;
     }
     /**
      * The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers.
      */
     @NotNull public Builder mpn(@NotNull String mpn) {
-      this.mpn = mpn;
+      putValue("mpn", mpn);
       return this;
     }
     /**
@@ -776,8 +1458,7 @@ public class Offer extends Intangible {
      *       
      */
     @NotNull public Builder price(@NotNull Integer integer) {
-      if (this.price == null) this.price = new Number();
-      this.price.setInteger(integer);
+      putValue("price", integer);
       return this;
     }
     /**
@@ -804,8 +1485,7 @@ public class Offer extends Intangible {
      *       
      */
     @NotNull public Builder price(@NotNull Long price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setLong(price);
+      putValue("price", price);
       return this;
     }
     /**
@@ -832,8 +1512,7 @@ public class Offer extends Intangible {
      *       
      */
     @NotNull public Builder price(@NotNull Float price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setFloat(price);
+      putValue("price", price);
       return this;
     }
     /**
@@ -860,8 +1539,7 @@ public class Offer extends Intangible {
      *       
      */
     @NotNull public Builder price(@NotNull Double price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setDouble(price);
+      putValue("price", price);
       return this;
     }
     /**
@@ -888,110 +1566,112 @@ public class Offer extends Intangible {
      *       
      */
     @NotNull public Builder price(@NotNull String price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setString(price);
+      putValue("price", price);
       return this;
     }
     /**
      * One or more detailed price specifications, indicating the unit price and delivery or payment charges.
      */
     @NotNull public Builder priceSpecification(@NotNull PriceSpecification priceSpecification) {
-      this.priceSpecification = priceSpecification;
+      putValue("priceSpecification", priceSpecification);
       return this;
     }
     /**
      * One or more detailed price specifications, indicating the unit price and delivery or payment charges.
      */
     @NotNull public Builder priceSpecification(@NotNull PriceSpecification.Builder priceSpecification) {
-      return this.priceSpecification(priceSpecification.build());
+      putValue("priceSpecification", priceSpecification.build());
+      return this;
     }
     /**
      * The date after which the price is no longer available.
      */
     @NotNull public Builder priceValidUntil(@NotNull java.util.Date date) {
-      this.priceValidUntil = date;
+      putValue("priceValidUntil", date);
       return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review review) {
-      this.review = review;
+      putValue("review", review);
       return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review.Builder review) {
-      return this.review(review.build());
+      putValue("review", review.build());
+      return this;
     }
     /**
      * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
      */
     @NotNull public Builder seller(@NotNull Participant participant) {
-      this.seller = participant;
+      putValue("seller", participant);
       return this;
     }
     /**
      * The Stock Keeping Unit (SKU), i.e. a merchant-specific identifier for a product or service, or the product to which the offer refers.
      */
     @NotNull public Builder sku(@NotNull String sku) {
-      this.sku = sku;
+      putValue("sku", sku);
       return this;
     }
     /**
      * The date when the item becomes valid.
      */
     @NotNull public Builder validFrom(@NotNull java.util.Date date) {
-      this.validFrom = date;
+      putValue("validFrom", date);
       return this;
     }
     /**
      * The end of the validity of offer, price specification, or opening hours data.
      */
     @NotNull public Builder validThrough(@NotNull java.util.Date date) {
-      this.validThrough = date;
+      putValue("validThrough", date);
       return this;
     }
     /**
      * The warranty promise(s) included in the offer.
      */
     @NotNull public Builder warranty(@NotNull WarrantyPromise warrantyPromise) {
-      this.warranty = warrantyPromise;
+      putValue("warranty", warrantyPromise);
       return this;
     }
     /**
      * The warranty promise(s) included in the offer.
      */
     @NotNull public Builder warranty(@NotNull WarrantyPromise.Builder warrantyPromise) {
-      return this.warranty(warrantyPromise.build());
+      putValue("warranty", warrantyPromise.build());
+      return this;
     }
     /**
      * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
      */
     @NotNull public Builder priceCurrency(@NotNull String priceCurrency) {
-      this.priceCurrency = priceCurrency;
+      putValue("priceCurrency", priceCurrency);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -1025,8 +1705,7 @@ public class Offer extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -1060,7 +1739,8 @@ public class Offer extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -1093,198 +1773,101 @@ public class Offer extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("acceptedPaymentMethod".equals(key) && value instanceof PaymentMethod) { acceptedPaymentMethod((PaymentMethod)value); continue; }
-        if ("addOn".equals(key) && value instanceof Offer) { addOn((Offer)value); continue; }
-        if ("advanceBookingRequirement".equals(key) && value instanceof QuantitativeValue) { advanceBookingRequirement((QuantitativeValue)value); continue; }
-        if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); continue; }
-        if ("availability".equals(key) && value instanceof ItemAvailability) { availability((ItemAvailability)value); continue; }
-        if ("availabilityEnds".equals(key) && value instanceof java.util.Date) { availabilityEnds((java.util.Date)value); continue; }
-        if ("availabilityStarts".equals(key) && value instanceof java.util.Date) { availabilityStarts((java.util.Date)value); continue; }
-        if ("availableAtOrFrom".equals(key) && value instanceof Place) { availableAtOrFrom((Place)value); continue; }
-        if ("availableDeliveryMethod".equals(key) && value instanceof DeliveryMethod) { availableDeliveryMethod((DeliveryMethod)value); continue; }
-        if ("businessFunction".equals(key) && value instanceof BusinessFunction) { businessFunction((BusinessFunction)value); continue; }
-        if ("category".equals(key) && value instanceof PhysicalActivityCategory) { category((PhysicalActivityCategory)value); continue; }
-        if ("category".equals(key) && value instanceof String) { category((String)value); continue; }
-        if ("category".equals(key) && value instanceof Thing) { category((Thing)value); continue; }
-        if ("deliveryLeadTime".equals(key) && value instanceof QuantitativeValue) { deliveryLeadTime((QuantitativeValue)value); continue; }
-        if ("eligibleCustomerType".equals(key) && value instanceof BusinessEntityType) { eligibleCustomerType((BusinessEntityType)value); continue; }
-        if ("eligibleDuration".equals(key) && value instanceof QuantitativeValue) { eligibleDuration((QuantitativeValue)value); continue; }
-        if ("eligibleQuantity".equals(key) && value instanceof QuantitativeValue) { eligibleQuantity((QuantitativeValue)value); continue; }
-        if ("eligibleRegion".equals(key) && value instanceof GeoShape) { eligibleRegion((GeoShape)value); continue; }
-        if ("eligibleRegion".equals(key) && value instanceof Place) { eligibleRegion((Place)value); continue; }
-        if ("eligibleRegion".equals(key) && value instanceof String) { eligibleRegion((String)value); continue; }
-        if ("ineligibleRegion".equals(key) && value instanceof GeoShape) { ineligibleRegion((GeoShape)value); continue; }
-        if ("ineligibleRegion".equals(key) && value instanceof Place) { ineligibleRegion((Place)value); continue; }
-        if ("ineligibleRegion".equals(key) && value instanceof String) { ineligibleRegion((String)value); continue; }
-        if ("eligibleTransactionVolume".equals(key) && value instanceof PriceSpecification) { eligibleTransactionVolume((PriceSpecification)value); continue; }
-        if ("gtin12".equals(key) && value instanceof String) { gtin12((String)value); continue; }
-        if ("gtin13".equals(key) && value instanceof String) { gtin13((String)value); continue; }
-        if ("gtin14".equals(key) && value instanceof String) { gtin14((String)value); continue; }
-        if ("gtin8".equals(key) && value instanceof String) { gtin8((String)value); continue; }
-        if ("includesObject".equals(key) && value instanceof TypeAndQuantityNode) { includesObject((TypeAndQuantityNode)value); continue; }
-        if ("inventoryLevel".equals(key) && value instanceof QuantitativeValue) { inventoryLevel((QuantitativeValue)value); continue; }
-        if ("itemCondition".equals(key) && value instanceof OfferItemCondition) { itemCondition((OfferItemCondition)value); continue; }
-        if ("itemOffered".equals(key) && value instanceof Product) { itemOffered((Product)value); continue; }
-        if ("mpn".equals(key) && value instanceof String) { mpn((String)value); continue; }
-        if ("price".equals(key) && value instanceof Integer) { price((Integer)value); continue; }
-        if ("price".equals(key) && value instanceof Long) { price((Long)value); continue; }
-        if ("price".equals(key) && value instanceof Float) { price((Float)value); continue; }
-        if ("price".equals(key) && value instanceof Double) { price((Double)value); continue; }
-        if ("price".equals(key) && value instanceof String) { price((String)value); continue; }
-        if ("priceSpecification".equals(key) && value instanceof PriceSpecification) { priceSpecification((PriceSpecification)value); continue; }
-        if ("priceValidUntil".equals(key) && value instanceof java.util.Date) { priceValidUntil((java.util.Date)value); continue; }
-        if ("review".equals(key) && value instanceof Review) { review((Review)value); continue; }
-        if ("seller".equals(key) && value instanceof Participant) { seller((Participant)value); continue; }
-        if ("sku".equals(key) && value instanceof String) { sku((String)value); continue; }
-        if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); continue; }
-        if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); continue; }
-        if ("warranty".equals(key) && value instanceof WarrantyPromise) { warranty((WarrantyPromise)value); continue; }
-        if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("acceptedPaymentMethod".equals(key) && value instanceof PaymentMethod) { acceptedPaymentMethod((PaymentMethod)value); return; }
+      if ("addOn".equals(key) && value instanceof Offer) { addOn((Offer)value); return; }
+      if ("advanceBookingRequirement".equals(key) && value instanceof QuantitativeValue) { advanceBookingRequirement((QuantitativeValue)value); return; }
+      if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
+      if ("availability".equals(key) && value instanceof ItemAvailability) { availability((ItemAvailability)value); return; }
+      if ("availabilityEnds".equals(key) && value instanceof java.util.Date) { availabilityEnds((java.util.Date)value); return; }
+      if ("availabilityStarts".equals(key) && value instanceof java.util.Date) { availabilityStarts((java.util.Date)value); return; }
+      if ("availableAtOrFrom".equals(key) && value instanceof Place) { availableAtOrFrom((Place)value); return; }
+      if ("availableDeliveryMethod".equals(key) && value instanceof DeliveryMethod) { availableDeliveryMethod((DeliveryMethod)value); return; }
+      if ("businessFunction".equals(key) && value instanceof BusinessFunction) { businessFunction((BusinessFunction)value); return; }
+      if ("category".equals(key) && value instanceof PhysicalActivityCategory) { category((PhysicalActivityCategory)value); return; }
+      if ("category".equals(key) && value instanceof String) { category((String)value); return; }
+      if ("category".equals(key) && value instanceof Thing) { category((Thing)value); return; }
+      if ("deliveryLeadTime".equals(key) && value instanceof QuantitativeValue) { deliveryLeadTime((QuantitativeValue)value); return; }
+      if ("eligibleCustomerType".equals(key) && value instanceof BusinessEntityType) { eligibleCustomerType((BusinessEntityType)value); return; }
+      if ("eligibleDuration".equals(key) && value instanceof QuantitativeValue) { eligibleDuration((QuantitativeValue)value); return; }
+      if ("eligibleQuantity".equals(key) && value instanceof QuantitativeValue) { eligibleQuantity((QuantitativeValue)value); return; }
+      if ("eligibleRegion".equals(key) && value instanceof GeoShape) { eligibleRegion((GeoShape)value); return; }
+      if ("eligibleRegion".equals(key) && value instanceof Place) { eligibleRegion((Place)value); return; }
+      if ("eligibleRegion".equals(key) && value instanceof String) { eligibleRegion((String)value); return; }
+      if ("ineligibleRegion".equals(key) && value instanceof GeoShape) { ineligibleRegion((GeoShape)value); return; }
+      if ("ineligibleRegion".equals(key) && value instanceof Place) { ineligibleRegion((Place)value); return; }
+      if ("ineligibleRegion".equals(key) && value instanceof String) { ineligibleRegion((String)value); return; }
+      if ("eligibleTransactionVolume".equals(key) && value instanceof PriceSpecification) { eligibleTransactionVolume((PriceSpecification)value); return; }
+      if ("gtin12".equals(key) && value instanceof String) { gtin12((String)value); return; }
+      if ("gtin13".equals(key) && value instanceof String) { gtin13((String)value); return; }
+      if ("gtin14".equals(key) && value instanceof String) { gtin14((String)value); return; }
+      if ("gtin8".equals(key) && value instanceof String) { gtin8((String)value); return; }
+      if ("includesObject".equals(key) && value instanceof TypeAndQuantityNode) { includesObject((TypeAndQuantityNode)value); return; }
+      if ("inventoryLevel".equals(key) && value instanceof QuantitativeValue) { inventoryLevel((QuantitativeValue)value); return; }
+      if ("itemCondition".equals(key) && value instanceof OfferItemCondition) { itemCondition((OfferItemCondition)value); return; }
+      if ("itemOffered".equals(key) && value instanceof Product) { itemOffered((Product)value); return; }
+      if ("mpn".equals(key) && value instanceof String) { mpn((String)value); return; }
+      if ("price".equals(key) && value instanceof Integer) { price((Integer)value); return; }
+      if ("price".equals(key) && value instanceof Long) { price((Long)value); return; }
+      if ("price".equals(key) && value instanceof Float) { price((Float)value); return; }
+      if ("price".equals(key) && value instanceof Double) { price((Double)value); return; }
+      if ("price".equals(key) && value instanceof String) { price((String)value); return; }
+      if ("priceSpecification".equals(key) && value instanceof PriceSpecification) { priceSpecification((PriceSpecification)value); return; }
+      if ("priceValidUntil".equals(key) && value instanceof java.util.Date) { priceValidUntil((java.util.Date)value); return; }
+      if ("review".equals(key) && value instanceof Review) { review((Review)value); return; }
+      if ("seller".equals(key) && value instanceof Participant) { seller((Participant)value); return; }
+      if ("sku".equals(key) && value instanceof String) { sku((String)value); return; }
+      if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
+      if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
+      if ("warranty".equals(key) && value instanceof WarrantyPromise) { warranty((WarrantyPromise)value); return; }
+      if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); return; }
+      super.fromMap(key, value);
     }
-    private PaymentMethod acceptedPaymentMethod;
-    private Offer addOn;
-    private QuantitativeValue advanceBookingRequirement;
-    private AggregateRating aggregateRating;
-    private ItemAvailability availability;
-    private java.util.Date availabilityEnds;
-    private java.util.Date availabilityStarts;
-    private Place availableAtOrFrom;
-    private DeliveryMethod availableDeliveryMethod;
-    private BusinessFunction businessFunction;
-    private PhysicalActivityCategoryOrStringOrThing category;
-    private QuantitativeValue deliveryLeadTime;
-    private BusinessEntityType eligibleCustomerType;
-    private QuantitativeValue eligibleDuration;
-    private QuantitativeValue eligibleQuantity;
-    private GeoShapeOrPlaceOrString eligibleRegion;
-    private GeoShapeOrPlaceOrString ineligibleRegion;
-    private PriceSpecification eligibleTransactionVolume;
-    private String gtin12;
-    private String gtin13;
-    private String gtin14;
-    private String gtin8;
-    private TypeAndQuantityNode includesObject;
-    private QuantitativeValue inventoryLevel;
-    private OfferItemCondition itemCondition;
-    private Product itemOffered;
-    private String mpn;
-    private Number price;
-    private PriceSpecification priceSpecification;
-    private java.util.Date priceValidUntil;
-    private Review review;
-    private Participant seller;
-    private String sku;
-    private java.util.Date validFrom;
-    private java.util.Date validThrough;
-    private WarrantyPromise warranty;
-    private String priceCurrency;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private PaymentMethod myAcceptedPaymentMethod;
-  private Offer myAddOn;
-  private QuantitativeValue myAdvanceBookingRequirement;
-  private AggregateRating myAggregateRating;
-  private ItemAvailability myAvailability;
-  private java.util.Date myAvailabilityEnds;
-  private java.util.Date myAvailabilityStarts;
-  private Place myAvailableAtOrFrom;
-  private DeliveryMethod myAvailableDeliveryMethod;
-  private BusinessFunction myBusinessFunction;
-  private PhysicalActivityCategoryOrStringOrThing myCategory;
-  private QuantitativeValue myDeliveryLeadTime;
-  private BusinessEntityType myEligibleCustomerType;
-  private QuantitativeValue myEligibleDuration;
-  private QuantitativeValue myEligibleQuantity;
-  private GeoShapeOrPlaceOrString myEligibleRegion;
-  private GeoShapeOrPlaceOrString myIneligibleRegion;
-  private PriceSpecification myEligibleTransactionVolume;
-  private String myGtin12;
-  private String myGtin13;
-  private String myGtin14;
-  private String myGtin8;
-  private TypeAndQuantityNode myIncludesObject;
-  private QuantitativeValue myInventoryLevel;
-  private OfferItemCondition myItemCondition;
-  private Product myItemOffered;
-  private String myMpn;
-  private Number myPrice;
-  private PriceSpecification myPriceSpecification;
-  private java.util.Date myPriceValidUntil;
-  private Review myReview;
-  private Participant mySeller;
-  private String mySku;
-  private java.util.Date myValidFrom;
-  private java.util.Date myValidThrough;
-  private WarrantyPromise myWarranty;
-  private String myPriceCurrency;
 }

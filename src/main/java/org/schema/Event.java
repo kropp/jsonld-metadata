@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * An event happening at a certain time and location, such as a concert, lecture, or festival. Ticketing information may be added via the 'offers' property. Repeated events may be structured as separate Event objects.Equivalent class: http://purl.org/dc/dcmitype/Event
@@ -29,450 +30,673 @@ public class Event extends Thing {
   /**
    * The overall rating, based on a collection of reviews or ratings, of the item.
    */
-  public AggregateRating getAggregateRating() { return myAggregateRating; }
+  @JsonIgnore public AggregateRating getAggregateRating() {
+    return (AggregateRating) getValue("aggregateRating");
+  }
+  /**
+   * The overall rating, based on a collection of reviews or ratings, of the item.
+   */
+  @JsonIgnore public Collection<AggregateRating> getAggregateRatings() {
+    final Object current = myData.get("aggregateRating");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AggregateRating>) current;
+    }
+    return Arrays.asList((AggregateRating) current);
+  }
   /**
    * An organizer of an Event.
    */
-  public OrganizationOrPerson getOrganizer() { return myOrganizer; }
+  @JsonIgnore public Organization getOrganizerOrganization() {
+    return (Organization) getValue("organizer");
+  }
+  /**
+   * An organizer of an Event.
+   */
+  @JsonIgnore public Collection<Organization> getOrganizerOrganizations() {
+    final Object current = myData.get("organizer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * An organizer of an Event.
+   */
+  @JsonIgnore public Person getOrganizerPerson() {
+    return (Person) getValue("organizer");
+  }
+  /**
+   * An organizer of an Event.
+   */
+  @JsonIgnore public Collection<Person> getOrganizerPersons() {
+    final Object current = myData.get("organizer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * A person or organization attending the event.
    */
-  public OrganizationOrPerson getAttendee() { return myAttendee; }
+  @JsonIgnore public Organization getAttendeeOrganization() {
+    return (Organization) getValue("attendee");
+  }
+  /**
+   * A person or organization attending the event.
+   */
+  @JsonIgnore public Collection<Organization> getAttendeeOrganizations() {
+    final Object current = myData.get("attendee");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * A person or organization attending the event.
+   */
+  @JsonIgnore public Person getAttendeePerson() {
+    return (Person) getValue("attendee");
+  }
+  /**
+   * A person or organization attending the event.
+   */
+  @JsonIgnore public Collection<Person> getAttendeePersons() {
+    final Object current = myData.get("attendee");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The time admission will commence.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDoorTime() { return myDoorTime; }
+  @JsonIgnore public java.util.Date getDoorTime() {
+    return (java.util.Date) getValue("doorTime");
+  }
+  /**
+   * The time admission will commence.
+   */
+  @JsonIgnore public Collection<java.util.Date> getDoorTimes() {
+    final Object current = myData.get("doorTime");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The duration of the item (movie, audio recording, event, etc.) in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>.
    */
-  public Duration getDuration() { return myDuration; }
+  @JsonIgnore public Duration getDuration() {
+    return (Duration) getValue("duration");
+  }
+  /**
+   * The duration of the item (movie, audio recording, event, etc.) in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>.
+   */
+  @JsonIgnore public Collection<Duration> getDurations() {
+    final Object current = myData.get("duration");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Duration>) current;
+    }
+    return Arrays.asList((Duration) current);
+  }
   /**
    * The end date and time of the item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getEndDate() { return myEndDate; }
+  @JsonIgnore public java.util.Date getEndDate() {
+    return (java.util.Date) getValue("endDate");
+  }
+  /**
+   * The end date and time of the item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).
+   */
+  @JsonIgnore public Collection<java.util.Date> getEndDates() {
+    final Object current = myData.get("endDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
    */
-  public EventStatusType getEventStatus() { return myEventStatus; }
+  @JsonIgnore public EventStatusType getEventStatus() {
+    return (EventStatusType) getValue("eventStatus");
+  }
+  /**
+   * An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
+   */
+  @JsonIgnore public Collection<EventStatusType> getEventStatuss() {
+    final Object current = myData.get("eventStatus");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<EventStatusType>) current;
+    }
+    return Arrays.asList((EventStatusType) current);
+  }
   /**
    * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
    */
-  public LanguageOrString getInLanguage() { return myInLanguage; }
+  @JsonIgnore public Language getInLanguageLanguage() {
+    return (Language) getValue("inLanguage");
+  }
+  /**
+   * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
+   */
+  @JsonIgnore public Collection<Language> getInLanguageLanguages() {
+    final Object current = myData.get("inLanguage");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Language>) current;
+    }
+    return Arrays.asList((Language) current);
+  }
+  /**
+   * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
+   */
+  @JsonIgnore public String getInLanguageString() {
+    return (String) getValue("inLanguage");
+  }
+  /**
+   * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
+   */
+  @JsonIgnore public Collection<String> getInLanguageStrings() {
+    final Object current = myData.get("inLanguage");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
    */
-  public Offer getOffers() { return myOffers; }
+  @JsonIgnore public Offer getOffers() {
+    return (Offer) getValue("offers");
+  }
+  /**
+   * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
+   */
+  @JsonIgnore public Collection<Offer> getOfferss() {
+    final Object current = myData.get("offers");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Offer>) current;
+    }
+    return Arrays.asList((Offer) current);
+  }
   /**
    * A performer at the event&#x2014;for example, a presenter, musician, musical group or actor.
    */
-  public OrganizationOrPerson getPerformer() { return myPerformer; }
+  @JsonIgnore public Organization getPerformerOrganization() {
+    return (Organization) getValue("performer");
+  }
+  /**
+   * A performer at the event&#x2014;for example, a presenter, musician, musical group or actor.
+   */
+  @JsonIgnore public Collection<Organization> getPerformerOrganizations() {
+    final Object current = myData.get("performer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * A performer at the event&#x2014;for example, a presenter, musician, musical group or actor.
+   */
+  @JsonIgnore public Person getPerformerPerson() {
+    return (Person) getValue("performer");
+  }
+  /**
+   * A performer at the event&#x2014;for example, a presenter, musician, musical group or actor.
+   */
+  @JsonIgnore public Collection<Person> getPerformerPersons() {
+    final Object current = myData.get("performer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getPreviousStartDate() { return myPreviousStartDate; }
+  @JsonIgnore public java.util.Date getPreviousStartDate() {
+    return (java.util.Date) getValue("previousStartDate");
+  }
+  /**
+   * Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
+   */
+  @JsonIgnore public Collection<java.util.Date> getPreviousStartDates() {
+    final Object current = myData.get("previousStartDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The CreativeWork that captured all or part of this Event.
    */
-  public CreativeWork getRecordedIn() { return myRecordedIn; }
+  @JsonIgnore public CreativeWork getRecordedIn() {
+    return (CreativeWork) getValue("recordedIn");
+  }
+  /**
+   * The CreativeWork that captured all or part of this Event.
+   */
+  @JsonIgnore public Collection<CreativeWork> getRecordedIns() {
+    final Object current = myData.get("recordedIn");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<CreativeWork>) current;
+    }
+    return Arrays.asList((CreativeWork) current);
+  }
   /**
    * A review of the item.
    */
-  public Review getReview() { return myReview; }
+  @JsonIgnore public Review getReview() {
+    return (Review) getValue("review");
+  }
+  /**
+   * A review of the item.
+   */
+  @JsonIgnore public Collection<Review> getReviews() {
+    final Object current = myData.get("review");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Review>) current;
+    }
+    return Arrays.asList((Review) current);
+  }
   /**
    * The start date and time of the item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getStartDate() { return myStartDate; }
+  @JsonIgnore public java.util.Date getStartDate() {
+    return (java.util.Date) getValue("startDate");
+  }
+  /**
+   * The start date and time of the item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).
+   */
+  @JsonIgnore public Collection<java.util.Date> getStartDates() {
+    final Object current = myData.get("startDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.
    */
-  public Event getSubEvent() { return mySubEvent; }
+  @JsonIgnore public Event getSubEvent() {
+    return (Event) getValue("subEvent");
+  }
+  /**
+   * An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.
+   */
+  @JsonIgnore public Collection<Event> getSubEvents() {
+    final Object current = myData.get("subEvent");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Event>) current;
+    }
+    return Arrays.asList((Event) current);
+  }
   /**
    * An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.
    */
-  public Event getSuperEvent() { return mySuperEvent; }
+  @JsonIgnore public Event getSuperEvent() {
+    return (Event) getValue("superEvent");
+  }
+  /**
+   * An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.
+   */
+  @JsonIgnore public Collection<Event> getSuperEvents() {
+    final Object current = myData.get("superEvent");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Event>) current;
+    }
+    return Arrays.asList((Event) current);
+  }
   /**
    * The typical expected age range, e.g. '7-9', '11-'.
    */
-  public String getTypicalAgeRange() { return myTypicalAgeRange; }
+  @JsonIgnore public String getTypicalAgeRange() {
+    return (String) getValue("typicalAgeRange");
+  }
+  /**
+   * The typical expected age range, e.g. '7-9', '11-'.
+   */
+  @JsonIgnore public Collection<String> getTypicalAgeRanges() {
+    final Object current = myData.get("typicalAgeRange");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A work performed in some event, for example a play performed in a TheaterEvent.
    */
-  public CreativeWork getWorkPerformed() { return myWorkPerformed; }
-  protected Event(AggregateRating aggregateRating, OrganizationOrPerson organizer, OrganizationOrPerson attendee, java.util.Date doorTime, Duration duration, java.util.Date endDate, EventStatusType eventStatus, LanguageOrString inLanguage, Offer offers, OrganizationOrPerson performer, java.util.Date previousStartDate, CreativeWork recordedIn, Review review, java.util.Date startDate, Event subEvent, Event superEvent, String typicalAgeRange, CreativeWork workPerformed, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAggregateRating = aggregateRating;
-    myOrganizer = organizer;
-    myAttendee = attendee;
-    myDoorTime = doorTime;
-    myDuration = duration;
-    myEndDate = endDate;
-    myEventStatus = eventStatus;
-    myInLanguage = inLanguage;
-    myOffers = offers;
-    myPerformer = performer;
-    myPreviousStartDate = previousStartDate;
-    myRecordedIn = recordedIn;
-    myReview = review;
-    myStartDate = startDate;
-    mySubEvent = subEvent;
-    mySuperEvent = superEvent;
-    myTypicalAgeRange = typicalAgeRange;
-    myWorkPerformed = workPerformed;
-    myAggregateRating = aggregateRating;
-    myOrganizer = organizer;
-    myAttendee = attendee;
-    myDoorTime = doorTime;
-    myDuration = duration;
-    myEndDate = endDate;
-    myEventStatus = eventStatus;
-    myInLanguage = inLanguage;
-    myOffers = offers;
-    myPerformer = performer;
-    myPreviousStartDate = previousStartDate;
-    myRecordedIn = recordedIn;
-    myReview = review;
-    myStartDate = startDate;
-    mySubEvent = subEvent;
-    mySuperEvent = superEvent;
-    myTypicalAgeRange = typicalAgeRange;
-    myWorkPerformed = workPerformed;
+  @JsonIgnore public CreativeWork getWorkPerformed() {
+    return (CreativeWork) getValue("workPerformed");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
-    result = 31 * result + (myOrganizer != null ? myOrganizer.hashCode() : 0);
-    result = 31 * result + (myAttendee != null ? myAttendee.hashCode() : 0);
-    result = 31 * result + (myDoorTime != null ? myDoorTime.hashCode() : 0);
-    result = 31 * result + (myDuration != null ? myDuration.hashCode() : 0);
-    result = 31 * result + (myEndDate != null ? myEndDate.hashCode() : 0);
-    result = 31 * result + (myEventStatus != null ? myEventStatus.hashCode() : 0);
-    result = 31 * result + (myInLanguage != null ? myInLanguage.hashCode() : 0);
-    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
-    result = 31 * result + (myPerformer != null ? myPerformer.hashCode() : 0);
-    result = 31 * result + (myPreviousStartDate != null ? myPreviousStartDate.hashCode() : 0);
-    result = 31 * result + (myRecordedIn != null ? myRecordedIn.hashCode() : 0);
-    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
-    result = 31 * result + (myStartDate != null ? myStartDate.hashCode() : 0);
-    result = 31 * result + (mySubEvent != null ? mySubEvent.hashCode() : 0);
-    result = 31 * result + (mySuperEvent != null ? mySuperEvent.hashCode() : 0);
-    result = 31 * result + (myTypicalAgeRange != null ? myTypicalAgeRange.hashCode() : 0);
-    result = 31 * result + (myWorkPerformed != null ? myWorkPerformed.hashCode() : 0);
-    return result;
+  /**
+   * A work performed in some event, for example a play performed in a TheaterEvent.
+   */
+  @JsonIgnore public Collection<CreativeWork> getWorkPerformeds() {
+    final Object current = myData.get("workPerformed");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<CreativeWork>) current;
+    }
+    return Arrays.asList((CreativeWork) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Event event = (Event) o;
-    if (!super.equals(o)) return false;
-    if (myAggregateRating != null ? !myAggregateRating.equals(event.myAggregateRating) : event.myAggregateRating != null) return false;
-    if (myOrganizer != null ? !myOrganizer.equals(event.myOrganizer) : event.myOrganizer != null) return false;
-    if (myAttendee != null ? !myAttendee.equals(event.myAttendee) : event.myAttendee != null) return false;
-    if (myDoorTime != null ? !myDoorTime.equals(event.myDoorTime) : event.myDoorTime != null) return false;
-    if (myDuration != null ? !myDuration.equals(event.myDuration) : event.myDuration != null) return false;
-    if (myEndDate != null ? !myEndDate.equals(event.myEndDate) : event.myEndDate != null) return false;
-    if (myEventStatus != null ? !myEventStatus.equals(event.myEventStatus) : event.myEventStatus != null) return false;
-    if (myInLanguage != null ? !myInLanguage.equals(event.myInLanguage) : event.myInLanguage != null) return false;
-    if (myOffers != null ? !myOffers.equals(event.myOffers) : event.myOffers != null) return false;
-    if (myPerformer != null ? !myPerformer.equals(event.myPerformer) : event.myPerformer != null) return false;
-    if (myPreviousStartDate != null ? !myPreviousStartDate.equals(event.myPreviousStartDate) : event.myPreviousStartDate != null) return false;
-    if (myRecordedIn != null ? !myRecordedIn.equals(event.myRecordedIn) : event.myRecordedIn != null) return false;
-    if (myReview != null ? !myReview.equals(event.myReview) : event.myReview != null) return false;
-    if (myStartDate != null ? !myStartDate.equals(event.myStartDate) : event.myStartDate != null) return false;
-    if (mySubEvent != null ? !mySubEvent.equals(event.mySubEvent) : event.mySubEvent != null) return false;
-    if (mySuperEvent != null ? !mySuperEvent.equals(event.mySuperEvent) : event.mySuperEvent != null) return false;
-    if (myTypicalAgeRange != null ? !myTypicalAgeRange.equals(event.myTypicalAgeRange) : event.myTypicalAgeRange != null) return false;
-    if (myWorkPerformed != null ? !myWorkPerformed.equals(event.myWorkPerformed) : event.myWorkPerformed != null) return false;
-    return true;
+  protected Event(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Event}
    */
-  public static class Builder implements ThingBuilder<Event> {
+  public static class Builder extends Thing.Builder {
     public Event build() {
-      return new Event(aggregateRating, organizer, attendee, doorTime, duration, endDate, eventStatus, inLanguage, offers, performer, previousStartDate, recordedIn, review, startDate, subEvent, superEvent, typicalAgeRange, workPerformed, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Event(myData);
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
-      this.aggregateRating = aggregateRating;
+      putValue("aggregateRating", aggregateRating);
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating) {
-      return this.aggregateRating(aggregateRating.build());
+      putValue("aggregateRating", aggregateRating.build());
+      return this;
     }
     /**
      * An organizer of an Event.
      */
     @NotNull public Builder organizer(@NotNull Organization organization) {
-      if (this.organizer == null) this.organizer = new OrganizationOrPerson();
-      this.organizer.setOrganization(organization);
+      putValue("organizer", organization);
       return this;
     }
     /**
      * An organizer of an Event.
      */
     @NotNull public Builder organizer(@NotNull Organization.Builder organization) {
-      return this.organizer(organization.build());
+      putValue("organizer", organization.build());
+      return this;
     }
     /**
      * An organizer of an Event.
      */
     @NotNull public Builder organizer(@NotNull Person person) {
-      if (this.organizer == null) this.organizer = new OrganizationOrPerson();
-      this.organizer.setPerson(person);
+      putValue("organizer", person);
       return this;
     }
     /**
      * An organizer of an Event.
      */
     @NotNull public Builder organizer(@NotNull Person.Builder person) {
-      return this.organizer(person.build());
+      putValue("organizer", person.build());
+      return this;
     }
     /**
      * A person or organization attending the event.
      */
     @NotNull public Builder attendee(@NotNull Organization organization) {
-      if (this.attendee == null) this.attendee = new OrganizationOrPerson();
-      this.attendee.setOrganization(organization);
+      putValue("attendee", organization);
       return this;
     }
     /**
      * A person or organization attending the event.
      */
     @NotNull public Builder attendee(@NotNull Organization.Builder organization) {
-      return this.attendee(organization.build());
+      putValue("attendee", organization.build());
+      return this;
     }
     /**
      * A person or organization attending the event.
      */
     @NotNull public Builder attendee(@NotNull Person person) {
-      if (this.attendee == null) this.attendee = new OrganizationOrPerson();
-      this.attendee.setPerson(person);
+      putValue("attendee", person);
       return this;
     }
     /**
      * A person or organization attending the event.
      */
     @NotNull public Builder attendee(@NotNull Person.Builder person) {
-      return this.attendee(person.build());
+      putValue("attendee", person.build());
+      return this;
     }
     /**
      * The time admission will commence.
      */
     @NotNull public Builder doorTime(@NotNull java.util.Date date) {
-      this.doorTime = date;
+      putValue("doorTime", date);
       return this;
     }
     /**
      * The duration of the item (movie, audio recording, event, etc.) in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>.
      */
     @NotNull public Builder duration(@NotNull Duration duration) {
-      this.duration = duration;
+      putValue("duration", duration);
       return this;
     }
     /**
      * The duration of the item (movie, audio recording, event, etc.) in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>.
      */
     @NotNull public Builder duration(@NotNull Duration.Builder duration) {
-      return this.duration(duration.build());
+      putValue("duration", duration.build());
+      return this;
     }
     /**
      * The end date and time of the item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).
      */
     @NotNull public Builder endDate(@NotNull java.util.Date date) {
-      this.endDate = date;
+      putValue("endDate", date);
       return this;
     }
     /**
      * An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
      */
     @NotNull public Builder eventStatus(@NotNull EventStatusType eventStatusType) {
-      this.eventStatus = eventStatusType;
+      putValue("eventStatus", eventStatusType);
       return this;
     }
     /**
      * An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
      */
     @NotNull public Builder eventStatus(@NotNull EventStatusType.Builder eventStatusType) {
-      return this.eventStatus(eventStatusType.build());
+      putValue("eventStatus", eventStatusType.build());
+      return this;
     }
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
     @NotNull public Builder inLanguage(@NotNull Language language) {
-      if (this.inLanguage == null) this.inLanguage = new LanguageOrString();
-      this.inLanguage.setLanguage(language);
+      putValue("inLanguage", language);
       return this;
     }
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
     @NotNull public Builder inLanguage(@NotNull Language.Builder language) {
-      return this.inLanguage(language.build());
+      putValue("inLanguage", language.build());
+      return this;
     }
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
     @NotNull public Builder inLanguage(@NotNull String inLanguage) {
-      if (this.inLanguage == null) this.inLanguage = new LanguageOrString();
-      this.inLanguage.setString(inLanguage);
+      putValue("inLanguage", inLanguage);
       return this;
     }
     /**
      * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
      */
     @NotNull public Builder offers(@NotNull Offer offer) {
-      this.offers = offer;
+      putValue("offers", offer);
       return this;
     }
     /**
      * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
      */
     @NotNull public Builder offers(@NotNull Offer.Builder offer) {
-      return this.offers(offer.build());
+      putValue("offers", offer.build());
+      return this;
     }
     /**
      * A performer at the event&#x2014;for example, a presenter, musician, musical group or actor.
      */
     @NotNull public Builder performer(@NotNull Organization organization) {
-      if (this.performer == null) this.performer = new OrganizationOrPerson();
-      this.performer.setOrganization(organization);
+      putValue("performer", organization);
       return this;
     }
     /**
      * A performer at the event&#x2014;for example, a presenter, musician, musical group or actor.
      */
     @NotNull public Builder performer(@NotNull Organization.Builder organization) {
-      return this.performer(organization.build());
+      putValue("performer", organization.build());
+      return this;
     }
     /**
      * A performer at the event&#x2014;for example, a presenter, musician, musical group or actor.
      */
     @NotNull public Builder performer(@NotNull Person person) {
-      if (this.performer == null) this.performer = new OrganizationOrPerson();
-      this.performer.setPerson(person);
+      putValue("performer", person);
       return this;
     }
     /**
      * A performer at the event&#x2014;for example, a presenter, musician, musical group or actor.
      */
     @NotNull public Builder performer(@NotNull Person.Builder person) {
-      return this.performer(person.build());
+      putValue("performer", person.build());
+      return this;
     }
     /**
      * Used in conjunction with eventStatus for rescheduled or cancelled events. This property contains the previously scheduled start date. For rescheduled events, the startDate property should be used for the newly scheduled start date. In the (rare) case of an event that has been postponed and rescheduled multiple times, this field may be repeated.
      */
     @NotNull public Builder previousStartDate(@NotNull java.util.Date date) {
-      this.previousStartDate = date;
+      putValue("previousStartDate", date);
       return this;
     }
     /**
      * The CreativeWork that captured all or part of this Event.
      */
     @NotNull public Builder recordedIn(@NotNull CreativeWork creativeWork) {
-      this.recordedIn = creativeWork;
+      putValue("recordedIn", creativeWork);
       return this;
     }
     /**
      * The CreativeWork that captured all or part of this Event.
      */
     @NotNull public Builder recordedIn(@NotNull CreativeWork.Builder creativeWork) {
-      return this.recordedIn(creativeWork.build());
+      putValue("recordedIn", creativeWork.build());
+      return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review review) {
-      this.review = review;
+      putValue("review", review);
       return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review.Builder review) {
-      return this.review(review.build());
+      putValue("review", review.build());
+      return this;
     }
     /**
      * The start date and time of the item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).
      */
     @NotNull public Builder startDate(@NotNull java.util.Date date) {
-      this.startDate = date;
+      putValue("startDate", date);
       return this;
     }
     /**
      * An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.
      */
     @NotNull public Builder subEvent(@NotNull Event event) {
-      this.subEvent = event;
+      putValue("subEvent", event);
       return this;
     }
     /**
      * An Event that is part of this event. For example, a conference event includes many presentations, each of which is a subEvent of the conference.
      */
     @NotNull public Builder subEvent(@NotNull Event.Builder event) {
-      return this.subEvent(event.build());
+      putValue("subEvent", event.build());
+      return this;
     }
     /**
      * An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.
      */
     @NotNull public Builder superEvent(@NotNull Event event) {
-      this.superEvent = event;
+      putValue("superEvent", event);
       return this;
     }
     /**
      * An event that this event is a part of. For example, a collection of individual music performances might each have a music festival as their superEvent.
      */
     @NotNull public Builder superEvent(@NotNull Event.Builder event) {
-      return this.superEvent(event.build());
+      putValue("superEvent", event.build());
+      return this;
     }
     /**
      * The typical expected age range, e.g. '7-9', '11-'.
      */
     @NotNull public Builder typicalAgeRange(@NotNull String typicalAgeRange) {
-      this.typicalAgeRange = typicalAgeRange;
+      putValue("typicalAgeRange", typicalAgeRange);
       return this;
     }
     /**
      * A work performed in some event, for example a play performed in a TheaterEvent.
      */
     @NotNull public Builder workPerformed(@NotNull CreativeWork creativeWork) {
-      this.workPerformed = creativeWork;
+      putValue("workPerformed", creativeWork);
       return this;
     }
     /**
      * A work performed in some event, for example a play performed in a TheaterEvent.
      */
     @NotNull public Builder workPerformed(@NotNull CreativeWork.Builder creativeWork) {
-      return this.workPerformed(creativeWork.build());
+      putValue("workPerformed", creativeWork.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -506,8 +730,7 @@ public class Event extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -541,7 +764,8 @@ public class Event extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -574,135 +798,76 @@ public class Event extends Thing {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); continue; }
-        if ("organizer".equals(key) && value instanceof Organization) { organizer((Organization)value); continue; }
-        if ("organizer".equals(key) && value instanceof Person) { organizer((Person)value); continue; }
-        if ("attendee".equals(key) && value instanceof Organization) { attendee((Organization)value); continue; }
-        if ("attendee".equals(key) && value instanceof Person) { attendee((Person)value); continue; }
-        if ("doorTime".equals(key) && value instanceof java.util.Date) { doorTime((java.util.Date)value); continue; }
-        if ("duration".equals(key) && value instanceof Duration) { duration((Duration)value); continue; }
-        if ("endDate".equals(key) && value instanceof java.util.Date) { endDate((java.util.Date)value); continue; }
-        if ("eventStatus".equals(key) && value instanceof EventStatusType) { eventStatus((EventStatusType)value); continue; }
-        if ("inLanguage".equals(key) && value instanceof Language) { inLanguage((Language)value); continue; }
-        if ("inLanguage".equals(key) && value instanceof String) { inLanguage((String)value); continue; }
-        if ("offers".equals(key) && value instanceof Offer) { offers((Offer)value); continue; }
-        if ("performer".equals(key) && value instanceof Organization) { performer((Organization)value); continue; }
-        if ("performer".equals(key) && value instanceof Person) { performer((Person)value); continue; }
-        if ("previousStartDate".equals(key) && value instanceof java.util.Date) { previousStartDate((java.util.Date)value); continue; }
-        if ("recordedIn".equals(key) && value instanceof CreativeWork) { recordedIn((CreativeWork)value); continue; }
-        if ("review".equals(key) && value instanceof Review) { review((Review)value); continue; }
-        if ("startDate".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); continue; }
-        if ("subEvent".equals(key) && value instanceof Event) { subEvent((Event)value); continue; }
-        if ("superEvent".equals(key) && value instanceof Event) { superEvent((Event)value); continue; }
-        if ("typicalAgeRange".equals(key) && value instanceof String) { typicalAgeRange((String)value); continue; }
-        if ("workPerformed".equals(key) && value instanceof CreativeWork) { workPerformed((CreativeWork)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
+      if ("organizer".equals(key) && value instanceof Organization) { organizer((Organization)value); return; }
+      if ("organizer".equals(key) && value instanceof Person) { organizer((Person)value); return; }
+      if ("attendee".equals(key) && value instanceof Organization) { attendee((Organization)value); return; }
+      if ("attendee".equals(key) && value instanceof Person) { attendee((Person)value); return; }
+      if ("doorTime".equals(key) && value instanceof java.util.Date) { doorTime((java.util.Date)value); return; }
+      if ("duration".equals(key) && value instanceof Duration) { duration((Duration)value); return; }
+      if ("endDate".equals(key) && value instanceof java.util.Date) { endDate((java.util.Date)value); return; }
+      if ("eventStatus".equals(key) && value instanceof EventStatusType) { eventStatus((EventStatusType)value); return; }
+      if ("inLanguage".equals(key) && value instanceof Language) { inLanguage((Language)value); return; }
+      if ("inLanguage".equals(key) && value instanceof String) { inLanguage((String)value); return; }
+      if ("offers".equals(key) && value instanceof Offer) { offers((Offer)value); return; }
+      if ("performer".equals(key) && value instanceof Organization) { performer((Organization)value); return; }
+      if ("performer".equals(key) && value instanceof Person) { performer((Person)value); return; }
+      if ("previousStartDate".equals(key) && value instanceof java.util.Date) { previousStartDate((java.util.Date)value); return; }
+      if ("recordedIn".equals(key) && value instanceof CreativeWork) { recordedIn((CreativeWork)value); return; }
+      if ("review".equals(key) && value instanceof Review) { review((Review)value); return; }
+      if ("startDate".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); return; }
+      if ("subEvent".equals(key) && value instanceof Event) { subEvent((Event)value); return; }
+      if ("superEvent".equals(key) && value instanceof Event) { superEvent((Event)value); return; }
+      if ("typicalAgeRange".equals(key) && value instanceof String) { typicalAgeRange((String)value); return; }
+      if ("workPerformed".equals(key) && value instanceof CreativeWork) { workPerformed((CreativeWork)value); return; }
+      super.fromMap(key, value);
     }
-    private AggregateRating aggregateRating;
-    private OrganizationOrPerson organizer;
-    private OrganizationOrPerson attendee;
-    private java.util.Date doorTime;
-    private Duration duration;
-    private java.util.Date endDate;
-    private EventStatusType eventStatus;
-    private LanguageOrString inLanguage;
-    private Offer offers;
-    private OrganizationOrPerson performer;
-    private java.util.Date previousStartDate;
-    private CreativeWork recordedIn;
-    private Review review;
-    private java.util.Date startDate;
-    private Event subEvent;
-    private Event superEvent;
-    private String typicalAgeRange;
-    private CreativeWork workPerformed;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private AggregateRating myAggregateRating;
-  private OrganizationOrPerson myOrganizer;
-  private OrganizationOrPerson myAttendee;
-  private java.util.Date myDoorTime;
-  private Duration myDuration;
-  private java.util.Date myEndDate;
-  private EventStatusType myEventStatus;
-  private LanguageOrString myInLanguage;
-  private Offer myOffers;
-  private OrganizationOrPerson myPerformer;
-  private java.util.Date myPreviousStartDate;
-  private CreativeWork myRecordedIn;
-  private Review myReview;
-  private java.util.Date myStartDate;
-  private Event mySubEvent;
-  private Event mySuperEvent;
-  private String myTypicalAgeRange;
-  private CreativeWork myWorkPerformed;
 }

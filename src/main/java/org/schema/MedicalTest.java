@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * Any medical test, typically performed for diagnostic purposes.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -29,221 +30,265 @@ public class MedicalTest extends MedicalEntity {
   /**
    * Drugs that affect the test's results.
    */
-  public Drug getAffectedBy() { return myAffectedBy; }
+  @JsonIgnore public Drug getAffectedBy() {
+    return (Drug) getValue("affectedBy");
+  }
+  /**
+   * Drugs that affect the test's results.
+   */
+  @JsonIgnore public Collection<Drug> getAffectedBys() {
+    final Object current = myData.get("affectedBy");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Drug>) current;
+    }
+    return Arrays.asList((Drug) current);
+  }
   /**
    * Range of acceptable values for a typical patient, when applicable.
    */
-  public String getNormalRange() { return myNormalRange; }
+  @JsonIgnore public String getNormalRange() {
+    return (String) getValue("normalRange");
+  }
+  /**
+   * Range of acceptable values for a typical patient, when applicable.
+   */
+  @JsonIgnore public Collection<String> getNormalRanges() {
+    final Object current = myData.get("normalRange");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A sign detected by the test.
    */
-  public MedicalSign getSignDetected() { return mySignDetected; }
+  @JsonIgnore public MedicalSign getSignDetected() {
+    return (MedicalSign) getValue("signDetected");
+  }
+  /**
+   * A sign detected by the test.
+   */
+  @JsonIgnore public Collection<MedicalSign> getSignDetecteds() {
+    final Object current = myData.get("signDetected");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalSign>) current;
+    }
+    return Arrays.asList((MedicalSign) current);
+  }
   /**
    * A condition the test is used to diagnose.
    */
-  public MedicalCondition getUsedToDiagnose() { return myUsedToDiagnose; }
+  @JsonIgnore public MedicalCondition getUsedToDiagnose() {
+    return (MedicalCondition) getValue("usedToDiagnose");
+  }
+  /**
+   * A condition the test is used to diagnose.
+   */
+  @JsonIgnore public Collection<MedicalCondition> getUsedToDiagnoses() {
+    final Object current = myData.get("usedToDiagnose");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalCondition>) current;
+    }
+    return Arrays.asList((MedicalCondition) current);
+  }
   /**
    * Device used to perform the test.
    */
-  public MedicalDevice getUsesDevice() { return myUsesDevice; }
-  protected MedicalTest(Drug affectedBy, String normalRange, MedicalSign signDetected, MedicalCondition usedToDiagnose, MedicalDevice usesDevice, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAffectedBy = affectedBy;
-    myNormalRange = normalRange;
-    mySignDetected = signDetected;
-    myUsedToDiagnose = usedToDiagnose;
-    myUsesDevice = usesDevice;
-    myAffectedBy = affectedBy;
-    myNormalRange = normalRange;
-    mySignDetected = signDetected;
-    myUsedToDiagnose = usedToDiagnose;
-    myUsesDevice = usesDevice;
+  @JsonIgnore public MedicalDevice getUsesDevice() {
+    return (MedicalDevice) getValue("usesDevice");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAffectedBy != null ? myAffectedBy.hashCode() : 0);
-    result = 31 * result + (myNormalRange != null ? myNormalRange.hashCode() : 0);
-    result = 31 * result + (mySignDetected != null ? mySignDetected.hashCode() : 0);
-    result = 31 * result + (myUsedToDiagnose != null ? myUsedToDiagnose.hashCode() : 0);
-    result = 31 * result + (myUsesDevice != null ? myUsesDevice.hashCode() : 0);
-    return result;
+  /**
+   * Device used to perform the test.
+   */
+  @JsonIgnore public Collection<MedicalDevice> getUsesDevices() {
+    final Object current = myData.get("usesDevice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalDevice>) current;
+    }
+    return Arrays.asList((MedicalDevice) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    MedicalTest medicalTest = (MedicalTest) o;
-    if (!super.equals(o)) return false;
-    if (myAffectedBy != null ? !myAffectedBy.equals(medicalTest.myAffectedBy) : medicalTest.myAffectedBy != null) return false;
-    if (myNormalRange != null ? !myNormalRange.equals(medicalTest.myNormalRange) : medicalTest.myNormalRange != null) return false;
-    if (mySignDetected != null ? !mySignDetected.equals(medicalTest.mySignDetected) : medicalTest.mySignDetected != null) return false;
-    if (myUsedToDiagnose != null ? !myUsedToDiagnose.equals(medicalTest.myUsedToDiagnose) : medicalTest.myUsedToDiagnose != null) return false;
-    if (myUsesDevice != null ? !myUsesDevice.equals(medicalTest.myUsesDevice) : medicalTest.myUsesDevice != null) return false;
-    return true;
+  protected MedicalTest(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link MedicalTest}
    */
-  public static class Builder implements ThingBuilder<MedicalTest> {
+  public static class Builder extends MedicalEntity.Builder {
     public MedicalTest build() {
-      return new MedicalTest(affectedBy, normalRange, signDetected, usedToDiagnose, usesDevice, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new MedicalTest(myData);
     }
     /**
      * Drugs that affect the test's results.
      */
     @NotNull public Builder affectedBy(@NotNull Drug drug) {
-      this.affectedBy = drug;
+      putValue("affectedBy", drug);
       return this;
     }
     /**
      * Drugs that affect the test's results.
      */
     @NotNull public Builder affectedBy(@NotNull Drug.Builder drug) {
-      return this.affectedBy(drug.build());
+      putValue("affectedBy", drug.build());
+      return this;
     }
     /**
      * Range of acceptable values for a typical patient, when applicable.
      */
     @NotNull public Builder normalRange(@NotNull String normalRange) {
-      this.normalRange = normalRange;
+      putValue("normalRange", normalRange);
       return this;
     }
     /**
      * A sign detected by the test.
      */
     @NotNull public Builder signDetected(@NotNull MedicalSign medicalSign) {
-      this.signDetected = medicalSign;
+      putValue("signDetected", medicalSign);
       return this;
     }
     /**
      * A sign detected by the test.
      */
     @NotNull public Builder signDetected(@NotNull MedicalSign.Builder medicalSign) {
-      return this.signDetected(medicalSign.build());
+      putValue("signDetected", medicalSign.build());
+      return this;
     }
     /**
      * A condition the test is used to diagnose.
      */
     @NotNull public Builder usedToDiagnose(@NotNull MedicalCondition medicalCondition) {
-      this.usedToDiagnose = medicalCondition;
+      putValue("usedToDiagnose", medicalCondition);
       return this;
     }
     /**
      * A condition the test is used to diagnose.
      */
     @NotNull public Builder usedToDiagnose(@NotNull MedicalCondition.Builder medicalCondition) {
-      return this.usedToDiagnose(medicalCondition.build());
+      putValue("usedToDiagnose", medicalCondition.build());
+      return this;
     }
     /**
      * Device used to perform the test.
      */
     @NotNull public Builder usesDevice(@NotNull MedicalDevice medicalDevice) {
-      this.usesDevice = medicalDevice;
+      putValue("usesDevice", medicalDevice);
       return this;
     }
     /**
      * Device used to perform the test.
      */
     @NotNull public Builder usesDevice(@NotNull MedicalDevice.Builder medicalDevice) {
-      return this.usesDevice(medicalDevice.build());
+      putValue("usesDevice", medicalDevice.build());
+      return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
-      this.code = medicalCode;
+      putValue("code", medicalCode);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
-      return this.code(medicalCode.build());
+      putValue("code", medicalCode.build());
+      return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+      putValue("guideline", medicalGuideline);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
-      return this.guideline(medicalGuideline.build());
+      putValue("guideline", medicalGuideline.build());
+      return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
+      putValue("medicineSystem", medicineSystem);
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
-      return this.medicineSystem(medicineSystem.build());
+      putValue("medicineSystem", medicineSystem.build());
+      return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
-      this.recognizingAuthority = organization;
+      putValue("recognizingAuthority", organization);
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
-      return this.recognizingAuthority(organization.build());
+      putValue("recognizingAuthority", organization.build());
+      return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
+      putValue("relevantSpecialty", medicalSpecialty);
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
-      return this.relevantSpecialty(medicalSpecialty.build());
+      putValue("relevantSpecialty", medicalSpecialty.build());
+      return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
+      putValue("study", medicalStudy);
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
-      return this.study(medicalStudy.build());
+      putValue("study", medicalStudy.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -277,8 +322,7 @@ public class MedicalTest extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -312,7 +356,8 @@ public class MedicalTest extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -345,104 +390,59 @@ public class MedicalTest extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("affectedBy".equals(key) && value instanceof Drug) { affectedBy((Drug)value); continue; }
-        if ("normalRange".equals(key) && value instanceof String) { normalRange((String)value); continue; }
-        if ("signDetected".equals(key) && value instanceof MedicalSign) { signDetected((MedicalSign)value); continue; }
-        if ("usedToDiagnose".equals(key) && value instanceof MedicalCondition) { usedToDiagnose((MedicalCondition)value); continue; }
-        if ("usesDevice".equals(key) && value instanceof MedicalDevice) { usesDevice((MedicalDevice)value); continue; }
-        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
-        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
-        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
-        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
-        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
-        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("affectedBy".equals(key) && value instanceof Drug) { affectedBy((Drug)value); return; }
+      if ("normalRange".equals(key) && value instanceof String) { normalRange((String)value); return; }
+      if ("signDetected".equals(key) && value instanceof MedicalSign) { signDetected((MedicalSign)value); return; }
+      if ("usedToDiagnose".equals(key) && value instanceof MedicalCondition) { usedToDiagnose((MedicalCondition)value); return; }
+      if ("usesDevice".equals(key) && value instanceof MedicalDevice) { usesDevice((MedicalDevice)value); return; }
+      super.fromMap(key, value);
     }
-    private Drug affectedBy;
-    private String normalRange;
-    private MedicalSign signDetected;
-    private MedicalCondition usedToDiagnose;
-    private MedicalDevice usesDevice;
-    private MedicalCode code;
-    private MedicalGuideline guideline;
-    private MedicineSystem medicineSystem;
-    private Organization recognizingAuthority;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalStudy study;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private Drug myAffectedBy;
-  private String myNormalRange;
-  private MedicalSign mySignDetected;
-  private MedicalCondition myUsedToDiagnose;
-  private MedicalDevice myUsesDevice;
 }

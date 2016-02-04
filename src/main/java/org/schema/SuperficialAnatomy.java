@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * Anatomical features that can be observed by sight (without dissection), including the form and proportions of the human body as well as surface landmarks that correspond to deeper subcutaneous structures. Superficial anatomy plays an important role in sports medicine, phlebotomy, and other medical specialties as underlying anatomical structures can be identified through surface palpation. For example, during back surgery, superficial anatomy can be used to palpate and count vertebrae to find the site of incision. Or in phlebotomy, superficial anatomy can be used to locate an underlying vein; for example, the median cubital vein can be located by palpating the borders of the cubital fossa (such as the epicondyles of the humerus) and then looking for the superficial signs of the vein, such as size, prominence, ability to refill after depression, and feel of surrounding tissue support. As another example, in a subluxation (dislocation) of the glenohumeral joint, the bony structure becomes pronounced with the deltoid muscle failing to cover the glenohumeral joint allowing the edges of the scapula to be superficially visible. Here, the superficial anatomy is the visible edges of the scapula, implying the underlying dislocation of the joint (the related anatomical structure).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -29,230 +30,289 @@ public class SuperficialAnatomy extends MedicalEntity {
   /**
    * If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
    */
-  public String getAssociatedPathophysiology() { return myAssociatedPathophysiology; }
+  @JsonIgnore public String getAssociatedPathophysiology() {
+    return (String) getValue("associatedPathophysiology");
+  }
+  /**
+   * If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
+   */
+  @JsonIgnore public Collection<String> getAssociatedPathophysiologys() {
+    final Object current = myData.get("associatedPathophysiology");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Anatomical systems or structures that relate to the superficial anatomy.
    */
-  public AnatomicalStructureOrAnatomicalSystem getRelatedAnatomy() { return myRelatedAnatomy; }
+  @JsonIgnore public AnatomicalStructure getRelatedAnatomyAnatomicalStructure() {
+    return (AnatomicalStructure) getValue("relatedAnatomy");
+  }
+  /**
+   * Anatomical systems or structures that relate to the superficial anatomy.
+   */
+  @JsonIgnore public Collection<AnatomicalStructure> getRelatedAnatomyAnatomicalStructures() {
+    final Object current = myData.get("relatedAnatomy");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AnatomicalStructure>) current;
+    }
+    return Arrays.asList((AnatomicalStructure) current);
+  }
+  /**
+   * Anatomical systems or structures that relate to the superficial anatomy.
+   */
+  @JsonIgnore public AnatomicalSystem getRelatedAnatomyAnatomicalSystem() {
+    return (AnatomicalSystem) getValue("relatedAnatomy");
+  }
+  /**
+   * Anatomical systems or structures that relate to the superficial anatomy.
+   */
+  @JsonIgnore public Collection<AnatomicalSystem> getRelatedAnatomyAnatomicalSystems() {
+    final Object current = myData.get("relatedAnatomy");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AnatomicalSystem>) current;
+    }
+    return Arrays.asList((AnatomicalSystem) current);
+  }
   /**
    * A medical condition associated with this anatomy.
    */
-  public MedicalCondition getRelatedCondition() { return myRelatedCondition; }
+  @JsonIgnore public MedicalCondition getRelatedCondition() {
+    return (MedicalCondition) getValue("relatedCondition");
+  }
+  /**
+   * A medical condition associated with this anatomy.
+   */
+  @JsonIgnore public Collection<MedicalCondition> getRelatedConditions() {
+    final Object current = myData.get("relatedCondition");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalCondition>) current;
+    }
+    return Arrays.asList((MedicalCondition) current);
+  }
   /**
    * A medical therapy related to this anatomy.
    */
-  public MedicalTherapy getRelatedTherapy() { return myRelatedTherapy; }
+  @JsonIgnore public MedicalTherapy getRelatedTherapy() {
+    return (MedicalTherapy) getValue("relatedTherapy");
+  }
+  /**
+   * A medical therapy related to this anatomy.
+   */
+  @JsonIgnore public Collection<MedicalTherapy> getRelatedTherapys() {
+    final Object current = myData.get("relatedTherapy");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalTherapy>) current;
+    }
+    return Arrays.asList((MedicalTherapy) current);
+  }
   /**
    * The significance associated with the superficial anatomy; as an example, how characteristics of the superficial anatomy can suggest underlying medical conditions or courses of treatment.
    */
-  public String getSignificance() { return mySignificance; }
-  protected SuperficialAnatomy(String associatedPathophysiology, AnatomicalStructureOrAnatomicalSystem relatedAnatomy, MedicalCondition relatedCondition, MedicalTherapy relatedTherapy, String significance, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAssociatedPathophysiology = associatedPathophysiology;
-    myRelatedAnatomy = relatedAnatomy;
-    myRelatedCondition = relatedCondition;
-    myRelatedTherapy = relatedTherapy;
-    mySignificance = significance;
-    myAssociatedPathophysiology = associatedPathophysiology;
-    myRelatedAnatomy = relatedAnatomy;
-    myRelatedCondition = relatedCondition;
-    myRelatedTherapy = relatedTherapy;
-    mySignificance = significance;
+  @JsonIgnore public String getSignificance() {
+    return (String) getValue("significance");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAssociatedPathophysiology != null ? myAssociatedPathophysiology.hashCode() : 0);
-    result = 31 * result + (myRelatedAnatomy != null ? myRelatedAnatomy.hashCode() : 0);
-    result = 31 * result + (myRelatedCondition != null ? myRelatedCondition.hashCode() : 0);
-    result = 31 * result + (myRelatedTherapy != null ? myRelatedTherapy.hashCode() : 0);
-    result = 31 * result + (mySignificance != null ? mySignificance.hashCode() : 0);
-    return result;
+  /**
+   * The significance associated with the superficial anatomy; as an example, how characteristics of the superficial anatomy can suggest underlying medical conditions or courses of treatment.
+   */
+  @JsonIgnore public Collection<String> getSignificances() {
+    final Object current = myData.get("significance");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    SuperficialAnatomy superficialAnatomy = (SuperficialAnatomy) o;
-    if (!super.equals(o)) return false;
-    if (myAssociatedPathophysiology != null ? !myAssociatedPathophysiology.equals(superficialAnatomy.myAssociatedPathophysiology) : superficialAnatomy.myAssociatedPathophysiology != null) return false;
-    if (myRelatedAnatomy != null ? !myRelatedAnatomy.equals(superficialAnatomy.myRelatedAnatomy) : superficialAnatomy.myRelatedAnatomy != null) return false;
-    if (myRelatedCondition != null ? !myRelatedCondition.equals(superficialAnatomy.myRelatedCondition) : superficialAnatomy.myRelatedCondition != null) return false;
-    if (myRelatedTherapy != null ? !myRelatedTherapy.equals(superficialAnatomy.myRelatedTherapy) : superficialAnatomy.myRelatedTherapy != null) return false;
-    if (mySignificance != null ? !mySignificance.equals(superficialAnatomy.mySignificance) : superficialAnatomy.mySignificance != null) return false;
-    return true;
+  protected SuperficialAnatomy(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link SuperficialAnatomy}
    */
-  public static class Builder implements ThingBuilder<SuperficialAnatomy> {
+  public static class Builder extends MedicalEntity.Builder {
     public SuperficialAnatomy build() {
-      return new SuperficialAnatomy(associatedPathophysiology, relatedAnatomy, relatedCondition, relatedTherapy, significance, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new SuperficialAnatomy(myData);
     }
     /**
      * If applicable, a description of the pathophysiology associated with the anatomical system, including potential abnormal changes in the mechanical, physical, and biochemical functions of the system.
      */
     @NotNull public Builder associatedPathophysiology(@NotNull String associatedPathophysiology) {
-      this.associatedPathophysiology = associatedPathophysiology;
+      putValue("associatedPathophysiology", associatedPathophysiology);
       return this;
     }
     /**
      * Anatomical systems or structures that relate to the superficial anatomy.
      */
     @NotNull public Builder relatedAnatomy(@NotNull AnatomicalStructure anatomicalStructure) {
-      if (this.relatedAnatomy == null) this.relatedAnatomy = new AnatomicalStructureOrAnatomicalSystem();
-      this.relatedAnatomy.setAnatomicalStructure(anatomicalStructure);
+      putValue("relatedAnatomy", anatomicalStructure);
       return this;
     }
     /**
      * Anatomical systems or structures that relate to the superficial anatomy.
      */
     @NotNull public Builder relatedAnatomy(@NotNull AnatomicalStructure.Builder anatomicalStructure) {
-      return this.relatedAnatomy(anatomicalStructure.build());
+      putValue("relatedAnatomy", anatomicalStructure.build());
+      return this;
     }
     /**
      * Anatomical systems or structures that relate to the superficial anatomy.
      */
     @NotNull public Builder relatedAnatomy(@NotNull AnatomicalSystem anatomicalSystem) {
-      if (this.relatedAnatomy == null) this.relatedAnatomy = new AnatomicalStructureOrAnatomicalSystem();
-      this.relatedAnatomy.setAnatomicalSystem(anatomicalSystem);
+      putValue("relatedAnatomy", anatomicalSystem);
       return this;
     }
     /**
      * Anatomical systems or structures that relate to the superficial anatomy.
      */
     @NotNull public Builder relatedAnatomy(@NotNull AnatomicalSystem.Builder anatomicalSystem) {
-      return this.relatedAnatomy(anatomicalSystem.build());
+      putValue("relatedAnatomy", anatomicalSystem.build());
+      return this;
     }
     /**
      * A medical condition associated with this anatomy.
      */
     @NotNull public Builder relatedCondition(@NotNull MedicalCondition medicalCondition) {
-      this.relatedCondition = medicalCondition;
+      putValue("relatedCondition", medicalCondition);
       return this;
     }
     /**
      * A medical condition associated with this anatomy.
      */
     @NotNull public Builder relatedCondition(@NotNull MedicalCondition.Builder medicalCondition) {
-      return this.relatedCondition(medicalCondition.build());
+      putValue("relatedCondition", medicalCondition.build());
+      return this;
     }
     /**
      * A medical therapy related to this anatomy.
      */
     @NotNull public Builder relatedTherapy(@NotNull MedicalTherapy medicalTherapy) {
-      this.relatedTherapy = medicalTherapy;
+      putValue("relatedTherapy", medicalTherapy);
       return this;
     }
     /**
      * A medical therapy related to this anatomy.
      */
     @NotNull public Builder relatedTherapy(@NotNull MedicalTherapy.Builder medicalTherapy) {
-      return this.relatedTherapy(medicalTherapy.build());
+      putValue("relatedTherapy", medicalTherapy.build());
+      return this;
     }
     /**
      * The significance associated with the superficial anatomy; as an example, how characteristics of the superficial anatomy can suggest underlying medical conditions or courses of treatment.
      */
     @NotNull public Builder significance(@NotNull String significance) {
-      this.significance = significance;
+      putValue("significance", significance);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
-      this.code = medicalCode;
+      putValue("code", medicalCode);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
-      return this.code(medicalCode.build());
+      putValue("code", medicalCode.build());
+      return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+      putValue("guideline", medicalGuideline);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
-      return this.guideline(medicalGuideline.build());
+      putValue("guideline", medicalGuideline.build());
+      return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
+      putValue("medicineSystem", medicineSystem);
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
-      return this.medicineSystem(medicineSystem.build());
+      putValue("medicineSystem", medicineSystem.build());
+      return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
-      this.recognizingAuthority = organization;
+      putValue("recognizingAuthority", organization);
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
-      return this.recognizingAuthority(organization.build());
+      putValue("recognizingAuthority", organization.build());
+      return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
+      putValue("relevantSpecialty", medicalSpecialty);
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
-      return this.relevantSpecialty(medicalSpecialty.build());
+      putValue("relevantSpecialty", medicalSpecialty.build());
+      return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
+      putValue("study", medicalStudy);
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
-      return this.study(medicalStudy.build());
+      putValue("study", medicalStudy.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -286,8 +346,7 @@ public class SuperficialAnatomy extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -321,7 +380,8 @@ public class SuperficialAnatomy extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -354,105 +414,60 @@ public class SuperficialAnatomy extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("associatedPathophysiology".equals(key) && value instanceof String) { associatedPathophysiology((String)value); continue; }
-        if ("relatedAnatomy".equals(key) && value instanceof AnatomicalStructure) { relatedAnatomy((AnatomicalStructure)value); continue; }
-        if ("relatedAnatomy".equals(key) && value instanceof AnatomicalSystem) { relatedAnatomy((AnatomicalSystem)value); continue; }
-        if ("relatedCondition".equals(key) && value instanceof MedicalCondition) { relatedCondition((MedicalCondition)value); continue; }
-        if ("relatedTherapy".equals(key) && value instanceof MedicalTherapy) { relatedTherapy((MedicalTherapy)value); continue; }
-        if ("significance".equals(key) && value instanceof String) { significance((String)value); continue; }
-        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
-        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
-        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
-        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
-        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
-        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("associatedPathophysiology".equals(key) && value instanceof String) { associatedPathophysiology((String)value); return; }
+      if ("relatedAnatomy".equals(key) && value instanceof AnatomicalStructure) { relatedAnatomy((AnatomicalStructure)value); return; }
+      if ("relatedAnatomy".equals(key) && value instanceof AnatomicalSystem) { relatedAnatomy((AnatomicalSystem)value); return; }
+      if ("relatedCondition".equals(key) && value instanceof MedicalCondition) { relatedCondition((MedicalCondition)value); return; }
+      if ("relatedTherapy".equals(key) && value instanceof MedicalTherapy) { relatedTherapy((MedicalTherapy)value); return; }
+      if ("significance".equals(key) && value instanceof String) { significance((String)value); return; }
+      super.fromMap(key, value);
     }
-    private String associatedPathophysiology;
-    private AnatomicalStructureOrAnatomicalSystem relatedAnatomy;
-    private MedicalCondition relatedCondition;
-    private MedicalTherapy relatedTherapy;
-    private String significance;
-    private MedicalCode code;
-    private MedicalGuideline guideline;
-    private MedicineSystem medicineSystem;
-    private Organization recognizingAuthority;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalStudy study;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private String myAssociatedPathophysiology;
-  private AnatomicalStructureOrAnatomicalSystem myRelatedAnatomy;
-  private MedicalCondition myRelatedCondition;
-  private MedicalTherapy myRelatedTherapy;
-  private String mySignificance;
 }

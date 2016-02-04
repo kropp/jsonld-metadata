@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
@@ -29,165 +30,169 @@ public class GovernmentService extends Service {
   /**
    * The operating organization, if different from the provider.  This enables the representation of services that are provided by an organization, but operated by another organization like a subcontractor.
    */
-  public Organization getServiceOperator() { return myServiceOperator; }
-  protected GovernmentService(Organization serviceOperator, AggregateRating aggregateRating, ServiceChannel availableChannel, Thing serviceOutput, Review review, AdministrativeArea serviceArea, String serviceType, OrganizationOrPerson provider, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myServiceOperator = serviceOperator;
-    myServiceOperator = serviceOperator;
+  @JsonIgnore public Organization getServiceOperator() {
+    return (Organization) getValue("serviceOperator");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myServiceOperator != null ? myServiceOperator.hashCode() : 0);
-    return result;
+  /**
+   * The operating organization, if different from the provider.  This enables the representation of services that are provided by an organization, but operated by another organization like a subcontractor.
+   */
+  @JsonIgnore public Collection<Organization> getServiceOperators() {
+    final Object current = myData.get("serviceOperator");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    GovernmentService governmentService = (GovernmentService) o;
-    if (!super.equals(o)) return false;
-    if (myServiceOperator != null ? !myServiceOperator.equals(governmentService.myServiceOperator) : governmentService.myServiceOperator != null) return false;
-    return true;
+  protected GovernmentService(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link GovernmentService}
    */
-  public static class Builder implements ThingBuilder<GovernmentService> {
+  public static class Builder extends Service.Builder {
     public GovernmentService build() {
-      return new GovernmentService(serviceOperator, aggregateRating, availableChannel, serviceOutput, review, serviceArea, serviceType, provider, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new GovernmentService(myData);
     }
     /**
      * The operating organization, if different from the provider.  This enables the representation of services that are provided by an organization, but operated by another organization like a subcontractor.
      */
     @NotNull public Builder serviceOperator(@NotNull Organization organization) {
-      this.serviceOperator = organization;
+      putValue("serviceOperator", organization);
       return this;
     }
     /**
      * The operating organization, if different from the provider.  This enables the representation of services that are provided by an organization, but operated by another organization like a subcontractor.
      */
     @NotNull public Builder serviceOperator(@NotNull Organization.Builder organization) {
-      return this.serviceOperator(organization.build());
+      putValue("serviceOperator", organization.build());
+      return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
-      this.aggregateRating = aggregateRating;
+      putValue("aggregateRating", aggregateRating);
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating) {
-      return this.aggregateRating(aggregateRating.build());
+      putValue("aggregateRating", aggregateRating.build());
+      return this;
     }
     /**
      * A means of accessing the service (e.g. a phone bank, a web site, a location, etc.).
      */
     @NotNull public Builder availableChannel(@NotNull ServiceChannel serviceChannel) {
-      this.availableChannel = serviceChannel;
+      putValue("availableChannel", serviceChannel);
       return this;
     }
     /**
      * A means of accessing the service (e.g. a phone bank, a web site, a location, etc.).
      */
     @NotNull public Builder availableChannel(@NotNull ServiceChannel.Builder serviceChannel) {
-      return this.availableChannel(serviceChannel.build());
+      putValue("availableChannel", serviceChannel.build());
+      return this;
     }
     /**
      * The tangible thing generated by the service, e.g. a passport, permit, etc.
      */
     @NotNull public Builder serviceOutput(@NotNull Thing thing) {
-      this.serviceOutput = thing;
+      putValue("serviceOutput", thing);
       return this;
     }
     /**
      * The tangible thing generated by the service, e.g. a passport, permit, etc.
      */
     @NotNull public Builder serviceOutput(@NotNull Thing.Builder thing) {
-      return this.serviceOutput(thing.build());
+      putValue("serviceOutput", thing.build());
+      return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review review) {
-      this.review = review;
+      putValue("review", review);
       return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review.Builder review) {
-      return this.review(review.build());
+      putValue("review", review.build());
+      return this;
     }
     /**
      * The geographic area where the service is provided.
      */
     @NotNull public Builder serviceArea(@NotNull AdministrativeArea administrativeArea) {
-      this.serviceArea = administrativeArea;
+      putValue("serviceArea", administrativeArea);
       return this;
     }
     /**
      * The geographic area where the service is provided.
      */
     @NotNull public Builder serviceArea(@NotNull AdministrativeArea.Builder administrativeArea) {
-      return this.serviceArea(administrativeArea.build());
+      putValue("serviceArea", administrativeArea.build());
+      return this;
     }
     /**
      * The type of service being offered, e.g. veterans' benefits, emergency relief, etc.
      */
     @NotNull public Builder serviceType(@NotNull String serviceType) {
-      this.serviceType = serviceType;
+      putValue("serviceType", serviceType);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Organization organization) {
-      if (this.provider == null) this.provider = new OrganizationOrPerson();
-      this.provider.setOrganization(organization);
+      putValue("provider", organization);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Organization.Builder organization) {
-      return this.provider(organization.build());
+      putValue("provider", organization.build());
+      return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Person person) {
-      if (this.provider == null) this.provider = new OrganizationOrPerson();
-      this.provider.setPerson(person);
+      putValue("provider", person);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Person.Builder person) {
-      return this.provider(person.build());
+      putValue("provider", person.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -221,8 +226,7 @@ public class GovernmentService extends Service {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -256,7 +260,8 @@ public class GovernmentService extends Service {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -289,95 +294,55 @@ public class GovernmentService extends Service {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("serviceOperator".equals(key) && value instanceof Organization) { serviceOperator((Organization)value); continue; }
-        if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); continue; }
-        if ("availableChannel".equals(key) && value instanceof ServiceChannel) { availableChannel((ServiceChannel)value); continue; }
-        if ("serviceOutput".equals(key) && value instanceof Thing) { serviceOutput((Thing)value); continue; }
-        if ("review".equals(key) && value instanceof Review) { review((Review)value); continue; }
-        if ("serviceArea".equals(key) && value instanceof AdministrativeArea) { serviceArea((AdministrativeArea)value); continue; }
-        if ("serviceType".equals(key) && value instanceof String) { serviceType((String)value); continue; }
-        if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); continue; }
-        if ("provider".equals(key) && value instanceof Person) { provider((Person)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("serviceOperator".equals(key) && value instanceof Organization) { serviceOperator((Organization)value); return; }
+      super.fromMap(key, value);
     }
-    private Organization serviceOperator;
-    private AggregateRating aggregateRating;
-    private ServiceChannel availableChannel;
-    private Thing serviceOutput;
-    private Review review;
-    private AdministrativeArea serviceArea;
-    private String serviceType;
-    private OrganizationOrPerson provider;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private Organization myServiceOperator;
 }

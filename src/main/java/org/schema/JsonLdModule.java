@@ -18,12 +18,25 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class JsonLdModule extends SimpleModule {
     public JsonLdModule() {
         super("JsonLD Module", new Version(1, 0, 0, null, null, null));
         addDeserializer(Thing.class, new ThingDeserializer());
+        addSerializer(Date.class, new DateSerializer());
+    }
+    private static class DateSerializer extends JsonSerializer<Date> {
+        private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXX");
+        @Override
+        public void serialize(Date value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+            gen.writeString(DATE_FORMAT.format(value));
+        }
     }
 }

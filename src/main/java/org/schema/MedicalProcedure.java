@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A process of care used in either a diagnostic, therapeutic, or palliative capacity that relies on invasive (surgical), non-invasive, or percutaneous techniques.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -29,188 +30,220 @@ public class MedicalProcedure extends MedicalEntity {
   /**
    * Typical or recommended followup care after the procedure is performed.
    */
-  public String getFollowup() { return myFollowup; }
+  @JsonIgnore public String getFollowup() {
+    return (String) getValue("followup");
+  }
+  /**
+   * Typical or recommended followup care after the procedure is performed.
+   */
+  @JsonIgnore public Collection<String> getFollowups() {
+    final Object current = myData.get("followup");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * How the procedure is performed.
    */
-  public String getHowPerformed() { return myHowPerformed; }
+  @JsonIgnore public String getHowPerformed() {
+    return (String) getValue("howPerformed");
+  }
+  /**
+   * How the procedure is performed.
+   */
+  @JsonIgnore public Collection<String> getHowPerformeds() {
+    final Object current = myData.get("howPerformed");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Typical preparation that a patient must undergo before having the procedure performed.
    */
-  public String getPreparation() { return myPreparation; }
+  @JsonIgnore public String getPreparation() {
+    return (String) getValue("preparation");
+  }
+  /**
+   * Typical preparation that a patient must undergo before having the procedure performed.
+   */
+  @JsonIgnore public Collection<String> getPreparations() {
+    final Object current = myData.get("preparation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The type of procedure, for example Surgical, Noninvasive, or Percutaneous.
    */
-  public MedicalProcedureType getProcedureType() { return myProcedureType; }
-  protected MedicalProcedure(String followup, String howPerformed, String preparation, MedicalProcedureType procedureType, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myFollowup = followup;
-    myHowPerformed = howPerformed;
-    myPreparation = preparation;
-    myProcedureType = procedureType;
-    myFollowup = followup;
-    myHowPerformed = howPerformed;
-    myPreparation = preparation;
-    myProcedureType = procedureType;
+  @JsonIgnore public MedicalProcedureType getProcedureType() {
+    return (MedicalProcedureType) getValue("procedureType");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myFollowup != null ? myFollowup.hashCode() : 0);
-    result = 31 * result + (myHowPerformed != null ? myHowPerformed.hashCode() : 0);
-    result = 31 * result + (myPreparation != null ? myPreparation.hashCode() : 0);
-    result = 31 * result + (myProcedureType != null ? myProcedureType.hashCode() : 0);
-    return result;
+  /**
+   * The type of procedure, for example Surgical, Noninvasive, or Percutaneous.
+   */
+  @JsonIgnore public Collection<MedicalProcedureType> getProcedureTypes() {
+    final Object current = myData.get("procedureType");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalProcedureType>) current;
+    }
+    return Arrays.asList((MedicalProcedureType) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    MedicalProcedure medicalProcedure = (MedicalProcedure) o;
-    if (!super.equals(o)) return false;
-    if (myFollowup != null ? !myFollowup.equals(medicalProcedure.myFollowup) : medicalProcedure.myFollowup != null) return false;
-    if (myHowPerformed != null ? !myHowPerformed.equals(medicalProcedure.myHowPerformed) : medicalProcedure.myHowPerformed != null) return false;
-    if (myPreparation != null ? !myPreparation.equals(medicalProcedure.myPreparation) : medicalProcedure.myPreparation != null) return false;
-    if (myProcedureType != null ? !myProcedureType.equals(medicalProcedure.myProcedureType) : medicalProcedure.myProcedureType != null) return false;
-    return true;
+  protected MedicalProcedure(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link MedicalProcedure}
    */
-  public static class Builder implements ThingBuilder<MedicalProcedure> {
+  public static class Builder extends MedicalEntity.Builder {
     public MedicalProcedure build() {
-      return new MedicalProcedure(followup, howPerformed, preparation, procedureType, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new MedicalProcedure(myData);
     }
     /**
      * Typical or recommended followup care after the procedure is performed.
      */
     @NotNull public Builder followup(@NotNull String followup) {
-      this.followup = followup;
+      putValue("followup", followup);
       return this;
     }
     /**
      * How the procedure is performed.
      */
     @NotNull public Builder howPerformed(@NotNull String howPerformed) {
-      this.howPerformed = howPerformed;
+      putValue("howPerformed", howPerformed);
       return this;
     }
     /**
      * Typical preparation that a patient must undergo before having the procedure performed.
      */
     @NotNull public Builder preparation(@NotNull String preparation) {
-      this.preparation = preparation;
+      putValue("preparation", preparation);
       return this;
     }
     /**
      * The type of procedure, for example Surgical, Noninvasive, or Percutaneous.
      */
     @NotNull public Builder procedureType(@NotNull MedicalProcedureType medicalProcedureType) {
-      this.procedureType = medicalProcedureType;
+      putValue("procedureType", medicalProcedureType);
       return this;
     }
     /**
      * The type of procedure, for example Surgical, Noninvasive, or Percutaneous.
      */
     @NotNull public Builder procedureType(@NotNull MedicalProcedureType.Builder medicalProcedureType) {
-      return this.procedureType(medicalProcedureType.build());
+      putValue("procedureType", medicalProcedureType.build());
+      return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
-      this.code = medicalCode;
+      putValue("code", medicalCode);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
-      return this.code(medicalCode.build());
+      putValue("code", medicalCode.build());
+      return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+      putValue("guideline", medicalGuideline);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
-      return this.guideline(medicalGuideline.build());
+      putValue("guideline", medicalGuideline.build());
+      return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
+      putValue("medicineSystem", medicineSystem);
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
-      return this.medicineSystem(medicineSystem.build());
+      putValue("medicineSystem", medicineSystem.build());
+      return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
-      this.recognizingAuthority = organization;
+      putValue("recognizingAuthority", organization);
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
-      return this.recognizingAuthority(organization.build());
+      putValue("recognizingAuthority", organization.build());
+      return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
+      putValue("relevantSpecialty", medicalSpecialty);
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
-      return this.relevantSpecialty(medicalSpecialty.build());
+      putValue("relevantSpecialty", medicalSpecialty.build());
+      return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
+      putValue("study", medicalStudy);
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
-      return this.study(medicalStudy.build());
+      putValue("study", medicalStudy.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -244,8 +277,7 @@ public class MedicalProcedure extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -279,7 +311,8 @@ public class MedicalProcedure extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -312,101 +345,58 @@ public class MedicalProcedure extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("followup".equals(key) && value instanceof String) { followup((String)value); continue; }
-        if ("howPerformed".equals(key) && value instanceof String) { howPerformed((String)value); continue; }
-        if ("preparation".equals(key) && value instanceof String) { preparation((String)value); continue; }
-        if ("procedureType".equals(key) && value instanceof MedicalProcedureType) { procedureType((MedicalProcedureType)value); continue; }
-        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
-        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
-        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
-        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
-        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
-        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("followup".equals(key) && value instanceof String) { followup((String)value); return; }
+      if ("howPerformed".equals(key) && value instanceof String) { howPerformed((String)value); return; }
+      if ("preparation".equals(key) && value instanceof String) { preparation((String)value); return; }
+      if ("procedureType".equals(key) && value instanceof MedicalProcedureType) { procedureType((MedicalProcedureType)value); return; }
+      super.fromMap(key, value);
     }
-    private String followup;
-    private String howPerformed;
-    private String preparation;
-    private MedicalProcedureType procedureType;
-    private MedicalCode code;
-    private MedicalGuideline guideline;
-    private MedicineSystem medicineSystem;
-    private Organization recognizingAuthority;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalStudy study;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private String myFollowup;
-  private String myHowPerformed;
-  private String myPreparation;
-  private MedicalProcedureType myProcedureType;
 }

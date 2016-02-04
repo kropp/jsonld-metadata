@@ -21,1408 +21,2280 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * The most generic kind of creative work, including books, movies, photographs, software programs, etc.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
  */
-public class CreativeWork extends Thing implements HasPart {
+public class CreativeWork extends Thing {
   /**
    * Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application. 
    */
-  public String getSchemaVersion() { return mySchemaVersion; }
+  @JsonIgnore public String getSchemaVersion() {
+    return (String) getValue("schemaVersion");
+  }
+  /**
+   * Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application. 
+   */
+  @JsonIgnore public Collection<String> getSchemaVersions() {
+    final Object current = myData.get("schemaVersion");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The subject matter of the content.
    */
-  public Thing getAbout() { return myAbout; }
+  @JsonIgnore public Thing getAbout() {
+    return (Thing) getValue("about");
+  }
+  /**
+   * The subject matter of the content.
+   */
+  @JsonIgnore public Collection<Thing> getAbouts() {
+    final Object current = myData.get("about");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Thing>) current;
+    }
+    return Arrays.asList((Thing) current);
+  }
   /**
    * Indicates that the resource is compatible with the referenced accessibility API (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
    */
-  public String getAccessibilityAPI() { return myAccessibilityAPI; }
+  @JsonIgnore public String getAccessibilityAPI() {
+    return (String) getValue("accessibilityAPI");
+  }
+  /**
+   * Indicates that the resource is compatible with the referenced accessibility API (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
+   */
+  @JsonIgnore public Collection<String> getAccessibilityAPIs() {
+    final Object current = myData.get("accessibilityAPI");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Identifies input methods that are sufficient to fully control the described resource (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
    */
-  public String getAccessibilityControl() { return myAccessibilityControl; }
+  @JsonIgnore public String getAccessibilityControl() {
+    return (String) getValue("accessibilityControl");
+  }
+  /**
+   * Identifies input methods that are sufficient to fully control the described resource (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
+   */
+  @JsonIgnore public Collection<String> getAccessibilityControls() {
+    final Object current = myData.get("accessibilityControl");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
    */
-  public String getAccessibilityFeature() { return myAccessibilityFeature; }
+  @JsonIgnore public String getAccessibilityFeature() {
+    return (String) getValue("accessibilityFeature");
+  }
+  /**
+   * Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
+   */
+  @JsonIgnore public Collection<String> getAccessibilityFeatures() {
+    final Object current = myData.get("accessibilityFeature");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3 (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
    */
-  public String getAccessibilityHazard() { return myAccessibilityHazard; }
+  @JsonIgnore public String getAccessibilityHazard() {
+    return (String) getValue("accessibilityHazard");
+  }
+  /**
+   * A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3 (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
+   */
+  @JsonIgnore public Collection<String> getAccessibilityHazards() {
+    final Object current = myData.get("accessibilityHazard");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Specifies the Person that is legally accountable for the CreativeWork.
    */
-  public Person getAccountablePerson() { return myAccountablePerson; }
+  @JsonIgnore public Person getAccountablePerson() {
+    return (Person) getValue("accountablePerson");
+  }
+  /**
+   * Specifies the Person that is legally accountable for the CreativeWork.
+   */
+  @JsonIgnore public Collection<Person> getAccountablePersons() {
+    final Object current = myData.get("accountablePerson");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The overall rating, based on a collection of reviews or ratings, of the item.
    */
-  public AggregateRating getAggregateRating() { return myAggregateRating; }
+  @JsonIgnore public AggregateRating getAggregateRating() {
+    return (AggregateRating) getValue("aggregateRating");
+  }
+  /**
+   * The overall rating, based on a collection of reviews or ratings, of the item.
+   */
+  @JsonIgnore public Collection<AggregateRating> getAggregateRatings() {
+    final Object current = myData.get("aggregateRating");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AggregateRating>) current;
+    }
+    return Arrays.asList((AggregateRating) current);
+  }
   /**
    * A secondary title of the CreativeWork.
    */
-  public String getAlternativeHeadline() { return myAlternativeHeadline; }
+  @JsonIgnore public String getAlternativeHeadline() {
+    return (String) getValue("alternativeHeadline");
+  }
+  /**
+   * A secondary title of the CreativeWork.
+   */
+  @JsonIgnore public Collection<String> getAlternativeHeadlines() {
+    final Object current = myData.get("alternativeHeadline");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A media object that encodes this CreativeWork. This property is a synonym for encoding.
    */
-  public MediaObject getAssociatedMedia() { return myAssociatedMedia; }
+  @JsonIgnore public MediaObject getAssociatedMedia() {
+    return (MediaObject) getValue("associatedMedia");
+  }
+  /**
+   * A media object that encodes this CreativeWork. This property is a synonym for encoding.
+   */
+  @JsonIgnore public Collection<MediaObject> getAssociatedMedias() {
+    final Object current = myData.get("associatedMedia");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MediaObject>) current;
+    }
+    return Arrays.asList((MediaObject) current);
+  }
   /**
    * An intended audience, i.e. a group for whom something was created.
    */
-  public Audience getAudience() { return myAudience; }
+  @JsonIgnore public Audience getAudience() {
+    return (Audience) getValue("audience");
+  }
+  /**
+   * An intended audience, i.e. a group for whom something was created.
+   */
+  @JsonIgnore public Collection<Audience> getAudiences() {
+    final Object current = myData.get("audience");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Audience>) current;
+    }
+    return Arrays.asList((Audience) current);
+  }
   /**
    * An embedded audio object.
    */
-  public AudioObject getAudio() { return myAudio; }
+  @JsonIgnore public AudioObject getAudio() {
+    return (AudioObject) getValue("audio");
+  }
+  /**
+   * An embedded audio object.
+   */
+  @JsonIgnore public Collection<AudioObject> getAudios() {
+    final Object current = myData.get("audio");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AudioObject>) current;
+    }
+    return Arrays.asList((AudioObject) current);
+  }
   /**
    * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
    */
-  public OrganizationOrPerson getAuthor() { return myAuthor; }
+  @JsonIgnore public Organization getAuthorOrganization() {
+    return (Organization) getValue("author");
+  }
+  /**
+   * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
+   */
+  @JsonIgnore public Collection<Organization> getAuthorOrganizations() {
+    final Object current = myData.get("author");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
+   */
+  @JsonIgnore public Person getAuthorPerson() {
+    return (Person) getValue("author");
+  }
+  /**
+   * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
+   */
+  @JsonIgnore public Collection<Person> getAuthorPersons() {
+    final Object current = myData.get("author");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * An award won by or for this item.
    */
-  public String getAward() { return myAward; }
+  @JsonIgnore public String getAward() {
+    return (String) getValue("award");
+  }
+  /**
+   * An award won by or for this item.
+   */
+  @JsonIgnore public Collection<String> getAwards() {
+    final Object current = myData.get("award");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
    */
-  public CreativeWorkOrString getCitation() { return myCitation; }
+  @JsonIgnore public CreativeWork getCitationCreativeWork() {
+    return (CreativeWork) getValue("citation");
+  }
+  /**
+   * A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
+   */
+  @JsonIgnore public Collection<CreativeWork> getCitationCreativeWorks() {
+    final Object current = myData.get("citation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<CreativeWork>) current;
+    }
+    return Arrays.asList((CreativeWork) current);
+  }
+  /**
+   * A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
+   */
+  @JsonIgnore public String getCitationString() {
+    return (String) getValue("citation");
+  }
+  /**
+   * A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
+   */
+  @JsonIgnore public Collection<String> getCitationStrings() {
+    final Object current = myData.get("citation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Comments, typically from users.
    */
-  public Comment getComment() { return myComment; }
+  @JsonIgnore public Comment getComment() {
+    return (Comment) getValue("comment");
+  }
+  /**
+   * Comments, typically from users.
+   */
+  @JsonIgnore public Collection<Comment> getComments() {
+    final Object current = myData.get("comment");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Comment>) current;
+    }
+    return Arrays.asList((Comment) current);
+  }
   /**
    * The location depicted or described in the content. For example, the location in a photograph or painting.
    */
-  public Place getContentLocation() { return myContentLocation; }
+  @JsonIgnore public Place getContentLocation() {
+    return (Place) getValue("contentLocation");
+  }
+  /**
+   * The location depicted or described in the content. For example, the location in a photograph or painting.
+   */
+  @JsonIgnore public Collection<Place> getContentLocations() {
+    final Object current = myData.get("contentLocation");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Place>) current;
+    }
+    return Arrays.asList((Place) current);
+  }
   /**
    * Official rating of a piece of content&#x2014;for example,'MPAA PG-13'.
    */
-  public String getContentRating() { return myContentRating; }
+  @JsonIgnore public String getContentRating() {
+    return (String) getValue("contentRating");
+  }
+  /**
+   * Official rating of a piece of content&#x2014;for example,'MPAA PG-13'.
+   */
+  @JsonIgnore public Collection<String> getContentRatings() {
+    final Object current = myData.get("contentRating");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A secondary contributor to the CreativeWork.
    */
-  public OrganizationOrPerson getContributor() { return myContributor; }
+  @JsonIgnore public Organization getContributorOrganization() {
+    return (Organization) getValue("contributor");
+  }
+  /**
+   * A secondary contributor to the CreativeWork.
+   */
+  @JsonIgnore public Collection<Organization> getContributorOrganizations() {
+    final Object current = myData.get("contributor");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * A secondary contributor to the CreativeWork.
+   */
+  @JsonIgnore public Person getContributorPerson() {
+    return (Person) getValue("contributor");
+  }
+  /**
+   * A secondary contributor to the CreativeWork.
+   */
+  @JsonIgnore public Collection<Person> getContributorPersons() {
+    final Object current = myData.get("contributor");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The party holding the legal copyright to the CreativeWork.
    */
-  public OrganizationOrPerson getCopyrightHolder() { return myCopyrightHolder; }
+  @JsonIgnore public Organization getCopyrightHolderOrganization() {
+    return (Organization) getValue("copyrightHolder");
+  }
+  /**
+   * The party holding the legal copyright to the CreativeWork.
+   */
+  @JsonIgnore public Collection<Organization> getCopyrightHolderOrganizations() {
+    final Object current = myData.get("copyrightHolder");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * The party holding the legal copyright to the CreativeWork.
+   */
+  @JsonIgnore public Person getCopyrightHolderPerson() {
+    return (Person) getValue("copyrightHolder");
+  }
+  /**
+   * The party holding the legal copyright to the CreativeWork.
+   */
+  @JsonIgnore public Collection<Person> getCopyrightHolderPersons() {
+    final Object current = myData.get("copyrightHolder");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The year during which the claimed copyright for the CreativeWork was first asserted.
    */
-  public Number getCopyrightYear() { return myCopyrightYear; }
+  @JsonIgnore public Integer getCopyrightYearInteger() {
+    return (Integer) getValue("copyrightYear");
+  }
+  /**
+   * The year during which the claimed copyright for the CreativeWork was first asserted.
+   */
+  @JsonIgnore public Collection<Integer> getCopyrightYearIntegers() {
+    final Object current = myData.get("copyrightYear");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
+  /**
+   * The year during which the claimed copyright for the CreativeWork was first asserted.
+   */
+  @JsonIgnore public Long getCopyrightYearLong() {
+    return (Long) getValue("copyrightYear");
+  }
+  /**
+   * The year during which the claimed copyright for the CreativeWork was first asserted.
+   */
+  @JsonIgnore public Collection<Long> getCopyrightYearLongs() {
+    final Object current = myData.get("copyrightYear");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Long>) current;
+    }
+    return Arrays.asList((Long) current);
+  }
+  /**
+   * The year during which the claimed copyright for the CreativeWork was first asserted.
+   */
+  @JsonIgnore public Float getCopyrightYearFloat() {
+    return (Float) getValue("copyrightYear");
+  }
+  /**
+   * The year during which the claimed copyright for the CreativeWork was first asserted.
+   */
+  @JsonIgnore public Collection<Float> getCopyrightYearFloats() {
+    final Object current = myData.get("copyrightYear");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Float>) current;
+    }
+    return Arrays.asList((Float) current);
+  }
+  /**
+   * The year during which the claimed copyright for the CreativeWork was first asserted.
+   */
+  @JsonIgnore public Double getCopyrightYearDouble() {
+    return (Double) getValue("copyrightYear");
+  }
+  /**
+   * The year during which the claimed copyright for the CreativeWork was first asserted.
+   */
+  @JsonIgnore public Collection<Double> getCopyrightYearDoubles() {
+    final Object current = myData.get("copyrightYear");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Double>) current;
+    }
+    return Arrays.asList((Double) current);
+  }
+  /**
+   * The year during which the claimed copyright for the CreativeWork was first asserted.
+   */
+  @JsonIgnore public String getCopyrightYearString() {
+    return (String) getValue("copyrightYear");
+  }
+  /**
+   * The year during which the claimed copyright for the CreativeWork was first asserted.
+   */
+  @JsonIgnore public Collection<String> getCopyrightYearStrings() {
+    final Object current = myData.get("copyrightYear");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
    */
-  public OrganizationOrPerson getCreator() { return myCreator; }
+  @JsonIgnore public Organization getCreatorOrganization() {
+    return (Organization) getValue("creator");
+  }
+  /**
+   * The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
+   */
+  @JsonIgnore public Collection<Organization> getCreatorOrganizations() {
+    final Object current = myData.get("creator");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
+   */
+  @JsonIgnore public Person getCreatorPerson() {
+    return (Person) getValue("creator");
+  }
+  /**
+   * The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
+   */
+  @JsonIgnore public Collection<Person> getCreatorPersons() {
+    final Object current = myData.get("creator");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The date on which the CreativeWork was created.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDateCreated() { return myDateCreated; }
+  @JsonIgnore public java.util.Date getDateCreated() {
+    return (java.util.Date) getValue("dateCreated");
+  }
+  /**
+   * The date on which the CreativeWork was created.
+   */
+  @JsonIgnore public Collection<java.util.Date> getDateCreateds() {
+    final Object current = myData.get("dateCreated");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The date on which the CreativeWork was most recently modified.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDateModified() { return myDateModified; }
+  @JsonIgnore public java.util.Date getDateModified() {
+    return (java.util.Date) getValue("dateModified");
+  }
+  /**
+   * The date on which the CreativeWork was most recently modified.
+   */
+  @JsonIgnore public Collection<java.util.Date> getDateModifieds() {
+    final Object current = myData.get("dateModified");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * Date of first broadcast/publication.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDatePublished() { return myDatePublished; }
+  @JsonIgnore public java.util.Date getDatePublished() {
+    return (java.util.Date) getValue("datePublished");
+  }
+  /**
+   * Date of first broadcast/publication.
+   */
+  @JsonIgnore public Collection<java.util.Date> getDatePublisheds() {
+    final Object current = myData.get("datePublished");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * A link to the page containing the comments of the CreativeWork.
    */
-  public String getDiscussionUrl() { return myDiscussionUrl; }
+  @JsonIgnore public String getDiscussionUrl() {
+    return (String) getValue("discussionUrl");
+  }
+  /**
+   * A link to the page containing the comments of the CreativeWork.
+   */
+  @JsonIgnore public Collection<String> getDiscussionUrls() {
+    final Object current = myData.get("discussionUrl");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Specifies the Person who edited the CreativeWork.
    */
-  public Person getEditor() { return myEditor; }
+  @JsonIgnore public Person getEditor() {
+    return (Person) getValue("editor");
+  }
+  /**
+   * Specifies the Person who edited the CreativeWork.
+   */
+  @JsonIgnore public Collection<Person> getEditors() {
+    final Object current = myData.get("editor");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * An alignment to an established educational framework.
    */
-  public AlignmentObject getEducationalAlignment() { return myEducationalAlignment; }
+  @JsonIgnore public AlignmentObject getEducationalAlignment() {
+    return (AlignmentObject) getValue("educationalAlignment");
+  }
+  /**
+   * An alignment to an established educational framework.
+   */
+  @JsonIgnore public Collection<AlignmentObject> getEducationalAlignments() {
+    final Object current = myData.get("educationalAlignment");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<AlignmentObject>) current;
+    }
+    return Arrays.asList((AlignmentObject) current);
+  }
   /**
    * The purpose of a work in the context of education; for example, 'assignment', 'group work'.
    */
-  public String getEducationalUse() { return myEducationalUse; }
+  @JsonIgnore public String getEducationalUse() {
+    return (String) getValue("educationalUse");
+  }
+  /**
+   * The purpose of a work in the context of education; for example, 'assignment', 'group work'.
+   */
+  @JsonIgnore public Collection<String> getEducationalUses() {
+    final Object current = myData.get("educationalUse");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A media object that encodes this CreativeWork. This property is a synonym for associatedMedia.
    */
-  public MediaObject getEncoding() { return myEncoding; }
+  @JsonIgnore public MediaObject getEncoding() {
+    return (MediaObject) getValue("encoding");
+  }
+  /**
+   * A media object that encodes this CreativeWork. This property is a synonym for associatedMedia.
+   */
+  @JsonIgnore public Collection<MediaObject> getEncodings() {
+    final Object current = myData.get("encoding");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MediaObject>) current;
+    }
+    return Arrays.asList((MediaObject) current);
+  }
   /**
    * Genre of the creative work or group.
    */
-  public String getGenre() { return myGenre; }
+  @JsonIgnore public String getGenre() {
+    return (String) getValue("genre");
+  }
+  /**
+   * Genre of the creative work or group.
+   */
+  @JsonIgnore public Collection<String> getGenres() {
+    final Object current = myData.get("genre");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Headline of the article.
    */
-  public String getHeadline() { return myHeadline; }
+  @JsonIgnore public String getHeadline() {
+    return (String) getValue("headline");
+  }
+  /**
+   * Headline of the article.
+   */
+  @JsonIgnore public Collection<String> getHeadlines() {
+    final Object current = myData.get("headline");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
    */
-  public LanguageOrString getInLanguage() { return myInLanguage; }
+  @JsonIgnore public Language getInLanguageLanguage() {
+    return (Language) getValue("inLanguage");
+  }
+  /**
+   * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
+   */
+  @JsonIgnore public Collection<Language> getInLanguageLanguages() {
+    final Object current = myData.get("inLanguage");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Language>) current;
+    }
+    return Arrays.asList((Language) current);
+  }
+  /**
+   * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
+   */
+  @JsonIgnore public String getInLanguageString() {
+    return (String) getValue("inLanguage");
+  }
+  /**
+   * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
+   */
+  @JsonIgnore public Collection<String> getInLanguageStrings() {
+    final Object current = myData.get("inLanguage");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.
    */
-  public String getInteractivityType() { return myInteractivityType; }
+  @JsonIgnore public String getInteractivityType() {
+    return (String) getValue("interactivityType");
+  }
+  /**
+   * The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.
+   */
+  @JsonIgnore public Collection<String> getInteractivityTypes() {
+    final Object current = myData.get("interactivityType");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
    */
-  public String getIsBasedOnUrl() { return myIsBasedOnUrl; }
+  @JsonIgnore public String getIsBasedOnUrl() {
+    return (String) getValue("isBasedOnUrl");
+  }
+  /**
+   * A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
+   */
+  @JsonIgnore public Collection<String> getIsBasedOnUrls() {
+    final Object current = myData.get("isBasedOnUrl");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Indicates whether this content is family friendly.
    */
-  public Boolean getIsFamilyFriendly() { return myIsFamilyFriendly; }
+  @JsonIgnore public Boolean getIsFamilyFriendly() {
+    return (Boolean) getValue("isFamilyFriendly");
+  }
+  /**
+   * Indicates whether this content is family friendly.
+   */
+  @JsonIgnore public Collection<Boolean> getIsFamilyFriendlys() {
+    final Object current = myData.get("isFamilyFriendly");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Boolean>) current;
+    }
+    return Arrays.asList((Boolean) current);
+  }
   /**
    * Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.
    */
-  public String getKeywords() { return myKeywords; }
+  @JsonIgnore public String getKeywords() {
+    return (String) getValue("keywords");
+  }
+  /**
+   * Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.
+   */
+  @JsonIgnore public Collection<String> getKeywordss() {
+    final Object current = myData.get("keywords");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A license document that applies to this content, typically indicated by URL.
    */
-  public CreativeWorkOrString getLicense() { return myLicense; }
+  @JsonIgnore public CreativeWork getLicenseCreativeWork() {
+    return (CreativeWork) getValue("license");
+  }
+  /**
+   * A license document that applies to this content, typically indicated by URL.
+   */
+  @JsonIgnore public Collection<CreativeWork> getLicenseCreativeWorks() {
+    final Object current = myData.get("license");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<CreativeWork>) current;
+    }
+    return Arrays.asList((CreativeWork) current);
+  }
+  /**
+   * A license document that applies to this content, typically indicated by URL.
+   */
+  @JsonIgnore public String getLicenseString() {
+    return (String) getValue("license");
+  }
+  /**
+   * A license document that applies to this content, typically indicated by URL.
+   */
+  @JsonIgnore public Collection<String> getLicenseStrings() {
+    final Object current = myData.get("license");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.
    */
-  public String getLearningResourceType() { return myLearningResourceType; }
+  @JsonIgnore public String getLearningResourceType() {
+    return (String) getValue("learningResourceType");
+  }
+  /**
+   * The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.
+   */
+  @JsonIgnore public Collection<String> getLearningResourceTypes() {
+    final Object current = myData.get("learningResourceType");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Indicates the primary entity described in some page or other CreativeWork.
    */
-  public Thing getMainEntity() { return myMainEntity; }
+  @JsonIgnore public Thing getMainEntity() {
+    return (Thing) getValue("mainEntity");
+  }
+  /**
+   * Indicates the primary entity described in some page or other CreativeWork.
+   */
+  @JsonIgnore public Collection<Thing> getMainEntitys() {
+    final Object current = myData.get("mainEntity");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Thing>) current;
+    }
+    return Arrays.asList((Thing) current);
+  }
   /**
    * Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
    */
-  public Thing getMentions() { return myMentions; }
+  @JsonIgnore public Thing getMentions() {
+    return (Thing) getValue("mentions");
+  }
+  /**
+   * Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
+   */
+  @JsonIgnore public Collection<Thing> getMentionss() {
+    final Object current = myData.get("mentions");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Thing>) current;
+    }
+    return Arrays.asList((Thing) current);
+  }
   /**
    * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
    */
-  public Offer getOffers() { return myOffers; }
+  @JsonIgnore public Offer getOffers() {
+    return (Offer) getValue("offers");
+  }
+  /**
+   * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
+   */
+  @JsonIgnore public Collection<Offer> getOfferss() {
+    final Object current = myData.get("offers");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Offer>) current;
+    }
+    return Arrays.asList((Offer) current);
+  }
   /**
    * The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
    */
-  public OrganizationOrPerson getProducer() { return myProducer; }
+  @JsonIgnore public Organization getProducerOrganization() {
+    return (Organization) getValue("producer");
+  }
+  /**
+   * The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
+   */
+  @JsonIgnore public Collection<Organization> getProducerOrganizations() {
+    final Object current = myData.get("producer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
+   */
+  @JsonIgnore public Person getProducerPerson() {
+    return (Person) getValue("producer");
+  }
+  /**
+   * The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
+   */
+  @JsonIgnore public Collection<Person> getProducerPersons() {
+    final Object current = myData.get("producer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * A publication event associated with the item.
    */
-  public PublicationEvent getPublication() { return myPublication; }
+  @JsonIgnore public PublicationEvent getPublication() {
+    return (PublicationEvent) getValue("publication");
+  }
+  /**
+   * A publication event associated with the item.
+   */
+  @JsonIgnore public Collection<PublicationEvent> getPublications() {
+    final Object current = myData.get("publication");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PublicationEvent>) current;
+    }
+    return Arrays.asList((PublicationEvent) current);
+  }
   /**
    * The publisher of the creative work.
    */
-  public Organization getPublisher() { return myPublisher; }
+  @JsonIgnore public Organization getPublisher() {
+    return (Organization) getValue("publisher");
+  }
+  /**
+   * The publisher of the creative work.
+   */
+  @JsonIgnore public Collection<Organization> getPublishers() {
+    final Object current = myData.get("publisher");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * Link to page describing the editorial principles of the organization primarily responsible for the creation of the CreativeWork.
    */
-  public String getPublishingPrinciples() { return myPublishingPrinciples; }
+  @JsonIgnore public String getPublishingPrinciples() {
+    return (String) getValue("publishingPrinciples");
+  }
+  /**
+   * Link to page describing the editorial principles of the organization primarily responsible for the creation of the CreativeWork.
+   */
+  @JsonIgnore public Collection<String> getPublishingPrincipless() {
+    final Object current = myData.get("publishingPrinciples");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
    */
-  public Event getRecordedAt() { return myRecordedAt; }
+  @JsonIgnore public Event getRecordedAt() {
+    return (Event) getValue("recordedAt");
+  }
+  /**
+   * The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
+   */
+  @JsonIgnore public Collection<Event> getRecordedAts() {
+    final Object current = myData.get("recordedAt");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Event>) current;
+    }
+    return Arrays.asList((Event) current);
+  }
   /**
    * A review of the item.
    */
-  public Review getReview() { return myReview; }
+  @JsonIgnore public Review getReview() {
+    return (Review) getValue("review");
+  }
+  /**
+   * A review of the item.
+   */
+  @JsonIgnore public Collection<Review> getReviews() {
+    final Object current = myData.get("review");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Review>) current;
+    }
+    return Arrays.asList((Review) current);
+  }
   /**
    * The Organization on whose behalf the creator was working.
    */
-  public Organization getSourceOrganization() { return mySourceOrganization; }
+  @JsonIgnore public Organization getSourceOrganization() {
+    return (Organization) getValue("sourceOrganization");
+  }
+  /**
+   * The Organization on whose behalf the creator was working.
+   */
+  @JsonIgnore public Collection<Organization> getSourceOrganizations() {
+    final Object current = myData.get("sourceOrganization");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
   /**
    * The textual content of this CreativeWork.
    */
-  public String getText() { return myText; }
+  @JsonIgnore public String getText() {
+    return (String) getValue("text");
+  }
+  /**
+   * The textual content of this CreativeWork.
+   */
+  @JsonIgnore public Collection<String> getTexts() {
+    final Object current = myData.get("text");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A thumbnail image relevant to the Thing.
    */
-  public String getThumbnailUrl() { return myThumbnailUrl; }
+  @JsonIgnore public String getThumbnailUrl() {
+    return (String) getValue("thumbnailUrl");
+  }
+  /**
+   * A thumbnail image relevant to the Thing.
+   */
+  @JsonIgnore public Collection<String> getThumbnailUrls() {
+    final Object current = myData.get("thumbnailUrl");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
    */
-  public Duration getTimeRequired() { return myTimeRequired; }
+  @JsonIgnore public Duration getTimeRequired() {
+    return (Duration) getValue("timeRequired");
+  }
+  /**
+   * Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
+   */
+  @JsonIgnore public Collection<Duration> getTimeRequireds() {
+    final Object current = myData.get("timeRequired");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Duration>) current;
+    }
+    return Arrays.asList((Duration) current);
+  }
   /**
    * The typical expected age range, e.g. '7-9', '11-'.
    */
-  public String getTypicalAgeRange() { return myTypicalAgeRange; }
+  @JsonIgnore public String getTypicalAgeRange() {
+    return (String) getValue("typicalAgeRange");
+  }
+  /**
+   * The typical expected age range, e.g. '7-9', '11-'.
+   */
+  @JsonIgnore public Collection<String> getTypicalAgeRanges() {
+    final Object current = myData.get("typicalAgeRange");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The version of the CreativeWork embodied by a specified resource.
    */
-  public Number getVersion() { return myVersion; }
+  @JsonIgnore public Integer getVersionInteger() {
+    return (Integer) getValue("version");
+  }
+  /**
+   * The version of the CreativeWork embodied by a specified resource.
+   */
+  @JsonIgnore public Collection<Integer> getVersionIntegers() {
+    final Object current = myData.get("version");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
+  /**
+   * The version of the CreativeWork embodied by a specified resource.
+   */
+  @JsonIgnore public Long getVersionLong() {
+    return (Long) getValue("version");
+  }
+  /**
+   * The version of the CreativeWork embodied by a specified resource.
+   */
+  @JsonIgnore public Collection<Long> getVersionLongs() {
+    final Object current = myData.get("version");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Long>) current;
+    }
+    return Arrays.asList((Long) current);
+  }
+  /**
+   * The version of the CreativeWork embodied by a specified resource.
+   */
+  @JsonIgnore public Float getVersionFloat() {
+    return (Float) getValue("version");
+  }
+  /**
+   * The version of the CreativeWork embodied by a specified resource.
+   */
+  @JsonIgnore public Collection<Float> getVersionFloats() {
+    final Object current = myData.get("version");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Float>) current;
+    }
+    return Arrays.asList((Float) current);
+  }
+  /**
+   * The version of the CreativeWork embodied by a specified resource.
+   */
+  @JsonIgnore public Double getVersionDouble() {
+    return (Double) getValue("version");
+  }
+  /**
+   * The version of the CreativeWork embodied by a specified resource.
+   */
+  @JsonIgnore public Collection<Double> getVersionDoubles() {
+    final Object current = myData.get("version");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Double>) current;
+    }
+    return Arrays.asList((Double) current);
+  }
+  /**
+   * The version of the CreativeWork embodied by a specified resource.
+   */
+  @JsonIgnore public String getVersionString() {
+    return (String) getValue("version");
+  }
+  /**
+   * The version of the CreativeWork embodied by a specified resource.
+   */
+  @JsonIgnore public Collection<String> getVersionStrings() {
+    final Object current = myData.get("version");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * An embedded video object.
    */
-  public VideoObject getVideo() { return myVideo; }
+  @JsonIgnore public VideoObject getVideo() {
+    return (VideoObject) getValue("video");
+  }
+  /**
+   * An embedded video object.
+   */
+  @JsonIgnore public Collection<VideoObject> getVideos() {
+    final Object current = myData.get("video");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<VideoObject>) current;
+    }
+    return Arrays.asList((VideoObject) current);
+  }
   /**
    * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
    */
-  public OrganizationOrPerson getProvider() { return myProvider; }
+  @JsonIgnore public Organization getProviderOrganization() {
+    return (Organization) getValue("provider");
+  }
+  /**
+   * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+   */
+  @JsonIgnore public Collection<Organization> getProviderOrganizations() {
+    final Object current = myData.get("provider");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+   */
+  @JsonIgnore public Person getProviderPerson() {
+    return (Person) getValue("provider");
+  }
+  /**
+   * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+   */
+  @JsonIgnore public Collection<Person> getProviderPersons() {
+    final Object current = myData.get("provider");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere.
    */
-  public Integer getCommentCount() { return myCommentCount; }
+  @JsonIgnore public Integer getCommentCount() {
+    return (Integer) getValue("commentCount");
+  }
+  /**
+   * The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere.
+   */
+  @JsonIgnore public Collection<Integer> getCommentCounts() {
+    final Object current = myData.get("commentCount");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
   /**
    * Indicates a CreativeWork that is (in some sense) a part of this CreativeWork.
    */
-  public HasPart getHasPart() { return myHasPart; }
+  @JsonIgnore public HasPart getHasPart() {
+    return (HasPart) getValue("hasPart");
+  }
+  /**
+   * Indicates a CreativeWork that is (in some sense) a part of this CreativeWork.
+   */
+  @JsonIgnore public Collection<HasPart> getHasParts() {
+    final Object current = myData.get("hasPart");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<HasPart>) current;
+    }
+    return Arrays.asList((HasPart) current);
+  }
   /**
    * Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.
    */
-  public CreativeWork getWorkExample() { return myWorkExample; }
+  @JsonIgnore public CreativeWork getWorkExample() {
+    return (CreativeWork) getValue("workExample");
+  }
+  /**
+   * Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.
+   */
+  @JsonIgnore public Collection<CreativeWork> getWorkExamples() {
+    final Object current = myData.get("workExample");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<CreativeWork>) current;
+    }
+    return Arrays.asList((CreativeWork) current);
+  }
   /**
    * A creative work that this work is an example/instance/realization/derivation of.
    */
-  public CreativeWork getExampleOfWork() { return myExampleOfWork; }
+  @JsonIgnore public CreativeWork getExampleOfWork() {
+    return (CreativeWork) getValue("exampleOfWork");
+  }
+  /**
+   * A creative work that this work is an example/instance/realization/derivation of.
+   */
+  @JsonIgnore public Collection<CreativeWork> getExampleOfWorks() {
+    final Object current = myData.get("exampleOfWork");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<CreativeWork>) current;
+    }
+    return Arrays.asList((CreativeWork) current);
+  }
   /**
    * Fictional person connected with a creative work.
    */
-  public Person getCharacter() { return myCharacter; }
+  @JsonIgnore public Person getCharacter() {
+    return (Person) getValue("character");
+  }
+  /**
+   * Fictional person connected with a creative work.
+   */
+  @JsonIgnore public Collection<Person> getCharacters() {
+    final Object current = myData.get("character");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
    */
-  public OrganizationOrPerson getTranslator() { return myTranslator; }
+  @JsonIgnore public Organization getTranslatorOrganization() {
+    return (Organization) getValue("translator");
+  }
+  /**
+   * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
+   */
+  @JsonIgnore public Collection<Organization> getTranslatorOrganizations() {
+    final Object current = myData.get("translator");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
+   */
+  @JsonIgnore public Person getTranslatorPerson() {
+    return (Person) getValue("translator");
+  }
+  /**
+   * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
+   */
+  @JsonIgnore public Collection<Person> getTranslatorPersons() {
+    final Object current = myData.get("translator");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The place and time the release was issued, expressed as a PublicationEvent.
    */
-  public PublicationEvent getReleasedEvent() { return myReleasedEvent; }
-  protected CreativeWork(String schemaVersion, Thing about, String accessibilityAPI, String accessibilityControl, String accessibilityFeature, String accessibilityHazard, Person accountablePerson, AggregateRating aggregateRating, String alternativeHeadline, MediaObject associatedMedia, Audience audience, AudioObject audio, OrganizationOrPerson author, String award, CreativeWorkOrString citation, Comment comment, Place contentLocation, String contentRating, OrganizationOrPerson contributor, OrganizationOrPerson copyrightHolder, Number copyrightYear, OrganizationOrPerson creator, java.util.Date dateCreated, java.util.Date dateModified, java.util.Date datePublished, String discussionUrl, Person editor, AlignmentObject educationalAlignment, String educationalUse, MediaObject encoding, String genre, String headline, LanguageOrString inLanguage, String interactivityType, String isBasedOnUrl, Boolean isFamilyFriendly, String keywords, CreativeWorkOrString license, String learningResourceType, Thing mainEntity, Thing mentions, Offer offers, OrganizationOrPerson producer, PublicationEvent publication, Organization publisher, String publishingPrinciples, Event recordedAt, Review review, Organization sourceOrganization, String text, String thumbnailUrl, Duration timeRequired, String typicalAgeRange, Number version, VideoObject video, OrganizationOrPerson provider, Integer commentCount, HasPart hasPart, CreativeWork workExample, CreativeWork exampleOfWork, Person character, OrganizationOrPerson translator, PublicationEvent releasedEvent, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    mySchemaVersion = schemaVersion;
-    myAbout = about;
-    myAccessibilityAPI = accessibilityAPI;
-    myAccessibilityControl = accessibilityControl;
-    myAccessibilityFeature = accessibilityFeature;
-    myAccessibilityHazard = accessibilityHazard;
-    myAccountablePerson = accountablePerson;
-    myAggregateRating = aggregateRating;
-    myAlternativeHeadline = alternativeHeadline;
-    myAssociatedMedia = associatedMedia;
-    myAudience = audience;
-    myAudio = audio;
-    myAuthor = author;
-    myAward = award;
-    myCitation = citation;
-    myComment = comment;
-    myContentLocation = contentLocation;
-    myContentRating = contentRating;
-    myContributor = contributor;
-    myCopyrightHolder = copyrightHolder;
-    myCopyrightYear = copyrightYear;
-    myCreator = creator;
-    myDateCreated = dateCreated;
-    myDateModified = dateModified;
-    myDatePublished = datePublished;
-    myDiscussionUrl = discussionUrl;
-    myEditor = editor;
-    myEducationalAlignment = educationalAlignment;
-    myEducationalUse = educationalUse;
-    myEncoding = encoding;
-    myGenre = genre;
-    myHeadline = headline;
-    myInLanguage = inLanguage;
-    myInteractivityType = interactivityType;
-    myIsBasedOnUrl = isBasedOnUrl;
-    myIsFamilyFriendly = isFamilyFriendly;
-    myKeywords = keywords;
-    myLicense = license;
-    myLearningResourceType = learningResourceType;
-    myMainEntity = mainEntity;
-    myMentions = mentions;
-    myOffers = offers;
-    myProducer = producer;
-    myPublication = publication;
-    myPublisher = publisher;
-    myPublishingPrinciples = publishingPrinciples;
-    myRecordedAt = recordedAt;
-    myReview = review;
-    mySourceOrganization = sourceOrganization;
-    myText = text;
-    myThumbnailUrl = thumbnailUrl;
-    myTimeRequired = timeRequired;
-    myTypicalAgeRange = typicalAgeRange;
-    myVersion = version;
-    myVideo = video;
-    myProvider = provider;
-    myCommentCount = commentCount;
-    myHasPart = hasPart;
-    myWorkExample = workExample;
-    myExampleOfWork = exampleOfWork;
-    myCharacter = character;
-    myTranslator = translator;
-    myReleasedEvent = releasedEvent;
-    mySchemaVersion = schemaVersion;
-    myAbout = about;
-    myAccessibilityAPI = accessibilityAPI;
-    myAccessibilityControl = accessibilityControl;
-    myAccessibilityFeature = accessibilityFeature;
-    myAccessibilityHazard = accessibilityHazard;
-    myAccountablePerson = accountablePerson;
-    myAggregateRating = aggregateRating;
-    myAlternativeHeadline = alternativeHeadline;
-    myAssociatedMedia = associatedMedia;
-    myAudience = audience;
-    myAudio = audio;
-    myAuthor = author;
-    myAward = award;
-    myCitation = citation;
-    myComment = comment;
-    myContentLocation = contentLocation;
-    myContentRating = contentRating;
-    myContributor = contributor;
-    myCopyrightHolder = copyrightHolder;
-    myCopyrightYear = copyrightYear;
-    myCreator = creator;
-    myDateCreated = dateCreated;
-    myDateModified = dateModified;
-    myDatePublished = datePublished;
-    myDiscussionUrl = discussionUrl;
-    myEditor = editor;
-    myEducationalAlignment = educationalAlignment;
-    myEducationalUse = educationalUse;
-    myEncoding = encoding;
-    myGenre = genre;
-    myHeadline = headline;
-    myInLanguage = inLanguage;
-    myInteractivityType = interactivityType;
-    myIsBasedOnUrl = isBasedOnUrl;
-    myIsFamilyFriendly = isFamilyFriendly;
-    myKeywords = keywords;
-    myLicense = license;
-    myLearningResourceType = learningResourceType;
-    myMainEntity = mainEntity;
-    myMentions = mentions;
-    myOffers = offers;
-    myProducer = producer;
-    myPublication = publication;
-    myPublisher = publisher;
-    myPublishingPrinciples = publishingPrinciples;
-    myRecordedAt = recordedAt;
-    myReview = review;
-    mySourceOrganization = sourceOrganization;
-    myText = text;
-    myThumbnailUrl = thumbnailUrl;
-    myTimeRequired = timeRequired;
-    myTypicalAgeRange = typicalAgeRange;
-    myVersion = version;
-    myVideo = video;
-    myProvider = provider;
-    myCommentCount = commentCount;
-    myHasPart = hasPart;
-    myWorkExample = workExample;
-    myExampleOfWork = exampleOfWork;
-    myCharacter = character;
-    myTranslator = translator;
-    myReleasedEvent = releasedEvent;
+  @JsonIgnore public PublicationEvent getReleasedEvent() {
+    return (PublicationEvent) getValue("releasedEvent");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (mySchemaVersion != null ? mySchemaVersion.hashCode() : 0);
-    result = 31 * result + (myAbout != null ? myAbout.hashCode() : 0);
-    result = 31 * result + (myAccessibilityAPI != null ? myAccessibilityAPI.hashCode() : 0);
-    result = 31 * result + (myAccessibilityControl != null ? myAccessibilityControl.hashCode() : 0);
-    result = 31 * result + (myAccessibilityFeature != null ? myAccessibilityFeature.hashCode() : 0);
-    result = 31 * result + (myAccessibilityHazard != null ? myAccessibilityHazard.hashCode() : 0);
-    result = 31 * result + (myAccountablePerson != null ? myAccountablePerson.hashCode() : 0);
-    result = 31 * result + (myAggregateRating != null ? myAggregateRating.hashCode() : 0);
-    result = 31 * result + (myAlternativeHeadline != null ? myAlternativeHeadline.hashCode() : 0);
-    result = 31 * result + (myAssociatedMedia != null ? myAssociatedMedia.hashCode() : 0);
-    result = 31 * result + (myAudience != null ? myAudience.hashCode() : 0);
-    result = 31 * result + (myAudio != null ? myAudio.hashCode() : 0);
-    result = 31 * result + (myAuthor != null ? myAuthor.hashCode() : 0);
-    result = 31 * result + (myAward != null ? myAward.hashCode() : 0);
-    result = 31 * result + (myCitation != null ? myCitation.hashCode() : 0);
-    result = 31 * result + (myComment != null ? myComment.hashCode() : 0);
-    result = 31 * result + (myContentLocation != null ? myContentLocation.hashCode() : 0);
-    result = 31 * result + (myContentRating != null ? myContentRating.hashCode() : 0);
-    result = 31 * result + (myContributor != null ? myContributor.hashCode() : 0);
-    result = 31 * result + (myCopyrightHolder != null ? myCopyrightHolder.hashCode() : 0);
-    result = 31 * result + (myCopyrightYear != null ? myCopyrightYear.hashCode() : 0);
-    result = 31 * result + (myCreator != null ? myCreator.hashCode() : 0);
-    result = 31 * result + (myDateCreated != null ? myDateCreated.hashCode() : 0);
-    result = 31 * result + (myDateModified != null ? myDateModified.hashCode() : 0);
-    result = 31 * result + (myDatePublished != null ? myDatePublished.hashCode() : 0);
-    result = 31 * result + (myDiscussionUrl != null ? myDiscussionUrl.hashCode() : 0);
-    result = 31 * result + (myEditor != null ? myEditor.hashCode() : 0);
-    result = 31 * result + (myEducationalAlignment != null ? myEducationalAlignment.hashCode() : 0);
-    result = 31 * result + (myEducationalUse != null ? myEducationalUse.hashCode() : 0);
-    result = 31 * result + (myEncoding != null ? myEncoding.hashCode() : 0);
-    result = 31 * result + (myGenre != null ? myGenre.hashCode() : 0);
-    result = 31 * result + (myHeadline != null ? myHeadline.hashCode() : 0);
-    result = 31 * result + (myInLanguage != null ? myInLanguage.hashCode() : 0);
-    result = 31 * result + (myInteractivityType != null ? myInteractivityType.hashCode() : 0);
-    result = 31 * result + (myIsBasedOnUrl != null ? myIsBasedOnUrl.hashCode() : 0);
-    result = 31 * result + (myIsFamilyFriendly != null ? myIsFamilyFriendly.hashCode() : 0);
-    result = 31 * result + (myKeywords != null ? myKeywords.hashCode() : 0);
-    result = 31 * result + (myLicense != null ? myLicense.hashCode() : 0);
-    result = 31 * result + (myLearningResourceType != null ? myLearningResourceType.hashCode() : 0);
-    result = 31 * result + (myMainEntity != null ? myMainEntity.hashCode() : 0);
-    result = 31 * result + (myMentions != null ? myMentions.hashCode() : 0);
-    result = 31 * result + (myOffers != null ? myOffers.hashCode() : 0);
-    result = 31 * result + (myProducer != null ? myProducer.hashCode() : 0);
-    result = 31 * result + (myPublication != null ? myPublication.hashCode() : 0);
-    result = 31 * result + (myPublisher != null ? myPublisher.hashCode() : 0);
-    result = 31 * result + (myPublishingPrinciples != null ? myPublishingPrinciples.hashCode() : 0);
-    result = 31 * result + (myRecordedAt != null ? myRecordedAt.hashCode() : 0);
-    result = 31 * result + (myReview != null ? myReview.hashCode() : 0);
-    result = 31 * result + (mySourceOrganization != null ? mySourceOrganization.hashCode() : 0);
-    result = 31 * result + (myText != null ? myText.hashCode() : 0);
-    result = 31 * result + (myThumbnailUrl != null ? myThumbnailUrl.hashCode() : 0);
-    result = 31 * result + (myTimeRequired != null ? myTimeRequired.hashCode() : 0);
-    result = 31 * result + (myTypicalAgeRange != null ? myTypicalAgeRange.hashCode() : 0);
-    result = 31 * result + (myVersion != null ? myVersion.hashCode() : 0);
-    result = 31 * result + (myVideo != null ? myVideo.hashCode() : 0);
-    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
-    result = 31 * result + (myCommentCount != null ? myCommentCount.hashCode() : 0);
-    result = 31 * result + (myHasPart != null ? myHasPart.hashCode() : 0);
-    result = 31 * result + (myWorkExample != null ? myWorkExample.hashCode() : 0);
-    result = 31 * result + (myExampleOfWork != null ? myExampleOfWork.hashCode() : 0);
-    result = 31 * result + (myCharacter != null ? myCharacter.hashCode() : 0);
-    result = 31 * result + (myTranslator != null ? myTranslator.hashCode() : 0);
-    result = 31 * result + (myReleasedEvent != null ? myReleasedEvent.hashCode() : 0);
-    return result;
+  /**
+   * The place and time the release was issued, expressed as a PublicationEvent.
+   */
+  @JsonIgnore public Collection<PublicationEvent> getReleasedEvents() {
+    final Object current = myData.get("releasedEvent");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PublicationEvent>) current;
+    }
+    return Arrays.asList((PublicationEvent) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    CreativeWork creativeWork = (CreativeWork) o;
-    if (!super.equals(o)) return false;
-    if (mySchemaVersion != null ? !mySchemaVersion.equals(creativeWork.mySchemaVersion) : creativeWork.mySchemaVersion != null) return false;
-    if (myAbout != null ? !myAbout.equals(creativeWork.myAbout) : creativeWork.myAbout != null) return false;
-    if (myAccessibilityAPI != null ? !myAccessibilityAPI.equals(creativeWork.myAccessibilityAPI) : creativeWork.myAccessibilityAPI != null) return false;
-    if (myAccessibilityControl != null ? !myAccessibilityControl.equals(creativeWork.myAccessibilityControl) : creativeWork.myAccessibilityControl != null) return false;
-    if (myAccessibilityFeature != null ? !myAccessibilityFeature.equals(creativeWork.myAccessibilityFeature) : creativeWork.myAccessibilityFeature != null) return false;
-    if (myAccessibilityHazard != null ? !myAccessibilityHazard.equals(creativeWork.myAccessibilityHazard) : creativeWork.myAccessibilityHazard != null) return false;
-    if (myAccountablePerson != null ? !myAccountablePerson.equals(creativeWork.myAccountablePerson) : creativeWork.myAccountablePerson != null) return false;
-    if (myAggregateRating != null ? !myAggregateRating.equals(creativeWork.myAggregateRating) : creativeWork.myAggregateRating != null) return false;
-    if (myAlternativeHeadline != null ? !myAlternativeHeadline.equals(creativeWork.myAlternativeHeadline) : creativeWork.myAlternativeHeadline != null) return false;
-    if (myAssociatedMedia != null ? !myAssociatedMedia.equals(creativeWork.myAssociatedMedia) : creativeWork.myAssociatedMedia != null) return false;
-    if (myAudience != null ? !myAudience.equals(creativeWork.myAudience) : creativeWork.myAudience != null) return false;
-    if (myAudio != null ? !myAudio.equals(creativeWork.myAudio) : creativeWork.myAudio != null) return false;
-    if (myAuthor != null ? !myAuthor.equals(creativeWork.myAuthor) : creativeWork.myAuthor != null) return false;
-    if (myAward != null ? !myAward.equals(creativeWork.myAward) : creativeWork.myAward != null) return false;
-    if (myCitation != null ? !myCitation.equals(creativeWork.myCitation) : creativeWork.myCitation != null) return false;
-    if (myComment != null ? !myComment.equals(creativeWork.myComment) : creativeWork.myComment != null) return false;
-    if (myContentLocation != null ? !myContentLocation.equals(creativeWork.myContentLocation) : creativeWork.myContentLocation != null) return false;
-    if (myContentRating != null ? !myContentRating.equals(creativeWork.myContentRating) : creativeWork.myContentRating != null) return false;
-    if (myContributor != null ? !myContributor.equals(creativeWork.myContributor) : creativeWork.myContributor != null) return false;
-    if (myCopyrightHolder != null ? !myCopyrightHolder.equals(creativeWork.myCopyrightHolder) : creativeWork.myCopyrightHolder != null) return false;
-    if (myCopyrightYear != null ? !myCopyrightYear.equals(creativeWork.myCopyrightYear) : creativeWork.myCopyrightYear != null) return false;
-    if (myCreator != null ? !myCreator.equals(creativeWork.myCreator) : creativeWork.myCreator != null) return false;
-    if (myDateCreated != null ? !myDateCreated.equals(creativeWork.myDateCreated) : creativeWork.myDateCreated != null) return false;
-    if (myDateModified != null ? !myDateModified.equals(creativeWork.myDateModified) : creativeWork.myDateModified != null) return false;
-    if (myDatePublished != null ? !myDatePublished.equals(creativeWork.myDatePublished) : creativeWork.myDatePublished != null) return false;
-    if (myDiscussionUrl != null ? !myDiscussionUrl.equals(creativeWork.myDiscussionUrl) : creativeWork.myDiscussionUrl != null) return false;
-    if (myEditor != null ? !myEditor.equals(creativeWork.myEditor) : creativeWork.myEditor != null) return false;
-    if (myEducationalAlignment != null ? !myEducationalAlignment.equals(creativeWork.myEducationalAlignment) : creativeWork.myEducationalAlignment != null) return false;
-    if (myEducationalUse != null ? !myEducationalUse.equals(creativeWork.myEducationalUse) : creativeWork.myEducationalUse != null) return false;
-    if (myEncoding != null ? !myEncoding.equals(creativeWork.myEncoding) : creativeWork.myEncoding != null) return false;
-    if (myGenre != null ? !myGenre.equals(creativeWork.myGenre) : creativeWork.myGenre != null) return false;
-    if (myHeadline != null ? !myHeadline.equals(creativeWork.myHeadline) : creativeWork.myHeadline != null) return false;
-    if (myInLanguage != null ? !myInLanguage.equals(creativeWork.myInLanguage) : creativeWork.myInLanguage != null) return false;
-    if (myInteractivityType != null ? !myInteractivityType.equals(creativeWork.myInteractivityType) : creativeWork.myInteractivityType != null) return false;
-    if (myIsBasedOnUrl != null ? !myIsBasedOnUrl.equals(creativeWork.myIsBasedOnUrl) : creativeWork.myIsBasedOnUrl != null) return false;
-    if (myIsFamilyFriendly != null ? !myIsFamilyFriendly.equals(creativeWork.myIsFamilyFriendly) : creativeWork.myIsFamilyFriendly != null) return false;
-    if (myKeywords != null ? !myKeywords.equals(creativeWork.myKeywords) : creativeWork.myKeywords != null) return false;
-    if (myLicense != null ? !myLicense.equals(creativeWork.myLicense) : creativeWork.myLicense != null) return false;
-    if (myLearningResourceType != null ? !myLearningResourceType.equals(creativeWork.myLearningResourceType) : creativeWork.myLearningResourceType != null) return false;
-    if (myMainEntity != null ? !myMainEntity.equals(creativeWork.myMainEntity) : creativeWork.myMainEntity != null) return false;
-    if (myMentions != null ? !myMentions.equals(creativeWork.myMentions) : creativeWork.myMentions != null) return false;
-    if (myOffers != null ? !myOffers.equals(creativeWork.myOffers) : creativeWork.myOffers != null) return false;
-    if (myProducer != null ? !myProducer.equals(creativeWork.myProducer) : creativeWork.myProducer != null) return false;
-    if (myPublication != null ? !myPublication.equals(creativeWork.myPublication) : creativeWork.myPublication != null) return false;
-    if (myPublisher != null ? !myPublisher.equals(creativeWork.myPublisher) : creativeWork.myPublisher != null) return false;
-    if (myPublishingPrinciples != null ? !myPublishingPrinciples.equals(creativeWork.myPublishingPrinciples) : creativeWork.myPublishingPrinciples != null) return false;
-    if (myRecordedAt != null ? !myRecordedAt.equals(creativeWork.myRecordedAt) : creativeWork.myRecordedAt != null) return false;
-    if (myReview != null ? !myReview.equals(creativeWork.myReview) : creativeWork.myReview != null) return false;
-    if (mySourceOrganization != null ? !mySourceOrganization.equals(creativeWork.mySourceOrganization) : creativeWork.mySourceOrganization != null) return false;
-    if (myText != null ? !myText.equals(creativeWork.myText) : creativeWork.myText != null) return false;
-    if (myThumbnailUrl != null ? !myThumbnailUrl.equals(creativeWork.myThumbnailUrl) : creativeWork.myThumbnailUrl != null) return false;
-    if (myTimeRequired != null ? !myTimeRequired.equals(creativeWork.myTimeRequired) : creativeWork.myTimeRequired != null) return false;
-    if (myTypicalAgeRange != null ? !myTypicalAgeRange.equals(creativeWork.myTypicalAgeRange) : creativeWork.myTypicalAgeRange != null) return false;
-    if (myVersion != null ? !myVersion.equals(creativeWork.myVersion) : creativeWork.myVersion != null) return false;
-    if (myVideo != null ? !myVideo.equals(creativeWork.myVideo) : creativeWork.myVideo != null) return false;
-    if (myProvider != null ? !myProvider.equals(creativeWork.myProvider) : creativeWork.myProvider != null) return false;
-    if (myCommentCount != null ? !myCommentCount.equals(creativeWork.myCommentCount) : creativeWork.myCommentCount != null) return false;
-    if (myHasPart != null ? !myHasPart.equals(creativeWork.myHasPart) : creativeWork.myHasPart != null) return false;
-    if (myWorkExample != null ? !myWorkExample.equals(creativeWork.myWorkExample) : creativeWork.myWorkExample != null) return false;
-    if (myExampleOfWork != null ? !myExampleOfWork.equals(creativeWork.myExampleOfWork) : creativeWork.myExampleOfWork != null) return false;
-    if (myCharacter != null ? !myCharacter.equals(creativeWork.myCharacter) : creativeWork.myCharacter != null) return false;
-    if (myTranslator != null ? !myTranslator.equals(creativeWork.myTranslator) : creativeWork.myTranslator != null) return false;
-    if (myReleasedEvent != null ? !myReleasedEvent.equals(creativeWork.myReleasedEvent) : creativeWork.myReleasedEvent != null) return false;
-    return true;
+  protected CreativeWork(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link CreativeWork}
    */
-  public static class Builder implements ThingBuilder<CreativeWork> {
+  public static class Builder extends Thing.Builder {
     public CreativeWork build() {
-      return new CreativeWork(schemaVersion, about, accessibilityAPI, accessibilityControl, accessibilityFeature, accessibilityHazard, accountablePerson, aggregateRating, alternativeHeadline, associatedMedia, audience, audio, author, award, citation, comment, contentLocation, contentRating, contributor, copyrightHolder, copyrightYear, creator, dateCreated, dateModified, datePublished, discussionUrl, editor, educationalAlignment, educationalUse, encoding, genre, headline, inLanguage, interactivityType, isBasedOnUrl, isFamilyFriendly, keywords, license, learningResourceType, mainEntity, mentions, offers, producer, publication, publisher, publishingPrinciples, recordedAt, review, sourceOrganization, text, thumbnailUrl, timeRequired, typicalAgeRange, version, video, provider, commentCount, hasPart, workExample, exampleOfWork, character, translator, releasedEvent, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new CreativeWork(myData);
     }
     /**
      * Indicates (by URL or string) a particular version of a schema used in some CreativeWork. For example, a document could declare a schemaVersion using an URL such as http://schema.org/version/2.0/ if precise indication of schema version was required by some application. 
      */
     @NotNull public Builder schemaVersion(@NotNull String schemaVersion) {
-      this.schemaVersion = schemaVersion;
+      putValue("schemaVersion", schemaVersion);
       return this;
     }
     /**
      * The subject matter of the content.
      */
     @NotNull public Builder about(@NotNull Thing thing) {
-      this.about = thing;
+      putValue("about", thing);
       return this;
     }
     /**
      * The subject matter of the content.
      */
     @NotNull public Builder about(@NotNull Thing.Builder thing) {
-      return this.about(thing.build());
+      putValue("about", thing.build());
+      return this;
     }
     /**
      * Indicates that the resource is compatible with the referenced accessibility API (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
      */
     @NotNull public Builder accessibilityAPI(@NotNull String accessibilityAPI) {
-      this.accessibilityAPI = accessibilityAPI;
+      putValue("accessibilityAPI", accessibilityAPI);
       return this;
     }
     /**
      * Identifies input methods that are sufficient to fully control the described resource (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
      */
     @NotNull public Builder accessibilityControl(@NotNull String accessibilityControl) {
-      this.accessibilityControl = accessibilityControl;
+      putValue("accessibilityControl", accessibilityControl);
       return this;
     }
     /**
      * Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
      */
     @NotNull public Builder accessibilityFeature(@NotNull String accessibilityFeature) {
-      this.accessibilityFeature = accessibilityFeature;
+      putValue("accessibilityFeature", accessibilityFeature);
       return this;
     }
     /**
      * A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3 (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
      */
     @NotNull public Builder accessibilityHazard(@NotNull String accessibilityHazard) {
-      this.accessibilityHazard = accessibilityHazard;
+      putValue("accessibilityHazard", accessibilityHazard);
       return this;
     }
     /**
      * Specifies the Person that is legally accountable for the CreativeWork.
      */
     @NotNull public Builder accountablePerson(@NotNull Person person) {
-      this.accountablePerson = person;
+      putValue("accountablePerson", person);
       return this;
     }
     /**
      * Specifies the Person that is legally accountable for the CreativeWork.
      */
     @NotNull public Builder accountablePerson(@NotNull Person.Builder person) {
-      return this.accountablePerson(person.build());
+      putValue("accountablePerson", person.build());
+      return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
-      this.aggregateRating = aggregateRating;
+      putValue("aggregateRating", aggregateRating);
       return this;
     }
     /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating) {
-      return this.aggregateRating(aggregateRating.build());
+      putValue("aggregateRating", aggregateRating.build());
+      return this;
     }
     /**
      * A secondary title of the CreativeWork.
      */
     @NotNull public Builder alternativeHeadline(@NotNull String alternativeHeadline) {
-      this.alternativeHeadline = alternativeHeadline;
+      putValue("alternativeHeadline", alternativeHeadline);
       return this;
     }
     /**
      * A media object that encodes this CreativeWork. This property is a synonym for encoding.
      */
     @NotNull public Builder associatedMedia(@NotNull MediaObject mediaObject) {
-      this.associatedMedia = mediaObject;
+      putValue("associatedMedia", mediaObject);
       return this;
     }
     /**
      * A media object that encodes this CreativeWork. This property is a synonym for encoding.
      */
     @NotNull public Builder associatedMedia(@NotNull MediaObject.Builder mediaObject) {
-      return this.associatedMedia(mediaObject.build());
+      putValue("associatedMedia", mediaObject.build());
+      return this;
     }
     /**
      * An intended audience, i.e. a group for whom something was created.
      */
     @NotNull public Builder audience(@NotNull Audience audience) {
-      this.audience = audience;
+      putValue("audience", audience);
       return this;
     }
     /**
      * An intended audience, i.e. a group for whom something was created.
      */
     @NotNull public Builder audience(@NotNull Audience.Builder audience) {
-      return this.audience(audience.build());
+      putValue("audience", audience.build());
+      return this;
     }
     /**
      * An embedded audio object.
      */
     @NotNull public Builder audio(@NotNull AudioObject audioObject) {
-      this.audio = audioObject;
+      putValue("audio", audioObject);
       return this;
     }
     /**
      * An embedded audio object.
      */
     @NotNull public Builder audio(@NotNull AudioObject.Builder audioObject) {
-      return this.audio(audioObject.build());
+      putValue("audio", audioObject.build());
+      return this;
     }
     /**
      * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
      */
     @NotNull public Builder author(@NotNull Organization organization) {
-      if (this.author == null) this.author = new OrganizationOrPerson();
-      this.author.setOrganization(organization);
+      putValue("author", organization);
       return this;
     }
     /**
      * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
      */
     @NotNull public Builder author(@NotNull Organization.Builder organization) {
-      return this.author(organization.build());
+      putValue("author", organization.build());
+      return this;
     }
     /**
      * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
      */
     @NotNull public Builder author(@NotNull Person person) {
-      if (this.author == null) this.author = new OrganizationOrPerson();
-      this.author.setPerson(person);
+      putValue("author", person);
       return this;
     }
     /**
      * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
      */
     @NotNull public Builder author(@NotNull Person.Builder person) {
-      return this.author(person.build());
+      putValue("author", person.build());
+      return this;
     }
     /**
      * An award won by or for this item.
      */
     @NotNull public Builder award(@NotNull String award) {
-      this.award = award;
+      putValue("award", award);
       return this;
     }
     /**
      * A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
      */
     @NotNull public Builder citation(@NotNull CreativeWork creativeWork) {
-      if (this.citation == null) this.citation = new CreativeWorkOrString();
-      this.citation.setCreativeWork(creativeWork);
+      putValue("citation", creativeWork);
       return this;
     }
     /**
      * A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
      */
     @NotNull public Builder citation(@NotNull CreativeWork.Builder creativeWork) {
-      return this.citation(creativeWork.build());
+      putValue("citation", creativeWork.build());
+      return this;
     }
     /**
      * A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
      */
     @NotNull public Builder citation(@NotNull String citation) {
-      if (this.citation == null) this.citation = new CreativeWorkOrString();
-      this.citation.setString(citation);
+      putValue("citation", citation);
       return this;
     }
     /**
      * Comments, typically from users.
      */
     @NotNull public Builder comment(@NotNull Comment comment) {
-      this.comment = comment;
+      putValue("comment", comment);
       return this;
     }
     /**
      * Comments, typically from users.
      */
     @NotNull public Builder comment(@NotNull Comment.Builder comment) {
-      return this.comment(comment.build());
+      putValue("comment", comment.build());
+      return this;
     }
     /**
      * The location depicted or described in the content. For example, the location in a photograph or painting.
      */
     @NotNull public Builder contentLocation(@NotNull Place place) {
-      this.contentLocation = place;
+      putValue("contentLocation", place);
       return this;
     }
     /**
      * The location depicted or described in the content. For example, the location in a photograph or painting.
      */
     @NotNull public Builder contentLocation(@NotNull Place.Builder place) {
-      return this.contentLocation(place.build());
+      putValue("contentLocation", place.build());
+      return this;
     }
     /**
      * Official rating of a piece of content&#x2014;for example,'MPAA PG-13'.
      */
     @NotNull public Builder contentRating(@NotNull String contentRating) {
-      this.contentRating = contentRating;
+      putValue("contentRating", contentRating);
       return this;
     }
     /**
      * A secondary contributor to the CreativeWork.
      */
     @NotNull public Builder contributor(@NotNull Organization organization) {
-      if (this.contributor == null) this.contributor = new OrganizationOrPerson();
-      this.contributor.setOrganization(organization);
+      putValue("contributor", organization);
       return this;
     }
     /**
      * A secondary contributor to the CreativeWork.
      */
     @NotNull public Builder contributor(@NotNull Organization.Builder organization) {
-      return this.contributor(organization.build());
+      putValue("contributor", organization.build());
+      return this;
     }
     /**
      * A secondary contributor to the CreativeWork.
      */
     @NotNull public Builder contributor(@NotNull Person person) {
-      if (this.contributor == null) this.contributor = new OrganizationOrPerson();
-      this.contributor.setPerson(person);
+      putValue("contributor", person);
       return this;
     }
     /**
      * A secondary contributor to the CreativeWork.
      */
     @NotNull public Builder contributor(@NotNull Person.Builder person) {
-      return this.contributor(person.build());
+      putValue("contributor", person.build());
+      return this;
     }
     /**
      * The party holding the legal copyright to the CreativeWork.
      */
     @NotNull public Builder copyrightHolder(@NotNull Organization organization) {
-      if (this.copyrightHolder == null) this.copyrightHolder = new OrganizationOrPerson();
-      this.copyrightHolder.setOrganization(organization);
+      putValue("copyrightHolder", organization);
       return this;
     }
     /**
      * The party holding the legal copyright to the CreativeWork.
      */
     @NotNull public Builder copyrightHolder(@NotNull Organization.Builder organization) {
-      return this.copyrightHolder(organization.build());
+      putValue("copyrightHolder", organization.build());
+      return this;
     }
     /**
      * The party holding the legal copyright to the CreativeWork.
      */
     @NotNull public Builder copyrightHolder(@NotNull Person person) {
-      if (this.copyrightHolder == null) this.copyrightHolder = new OrganizationOrPerson();
-      this.copyrightHolder.setPerson(person);
+      putValue("copyrightHolder", person);
       return this;
     }
     /**
      * The party holding the legal copyright to the CreativeWork.
      */
     @NotNull public Builder copyrightHolder(@NotNull Person.Builder person) {
-      return this.copyrightHolder(person.build());
+      putValue("copyrightHolder", person.build());
+      return this;
     }
     /**
      * The year during which the claimed copyright for the CreativeWork was first asserted.
      */
     @NotNull public Builder copyrightYear(@NotNull Integer integer) {
-      if (this.copyrightYear == null) this.copyrightYear = new Number();
-      this.copyrightYear.setInteger(integer);
+      putValue("copyrightYear", integer);
       return this;
     }
     /**
      * The year during which the claimed copyright for the CreativeWork was first asserted.
      */
     @NotNull public Builder copyrightYear(@NotNull Long copyrightYear) {
-      if (this.copyrightYear == null) this.copyrightYear = new Number();
-      this.copyrightYear.setLong(copyrightYear);
+      putValue("copyrightYear", copyrightYear);
       return this;
     }
     /**
      * The year during which the claimed copyright for the CreativeWork was first asserted.
      */
     @NotNull public Builder copyrightYear(@NotNull Float copyrightYear) {
-      if (this.copyrightYear == null) this.copyrightYear = new Number();
-      this.copyrightYear.setFloat(copyrightYear);
+      putValue("copyrightYear", copyrightYear);
       return this;
     }
     /**
      * The year during which the claimed copyright for the CreativeWork was first asserted.
      */
     @NotNull public Builder copyrightYear(@NotNull Double copyrightYear) {
-      if (this.copyrightYear == null) this.copyrightYear = new Number();
-      this.copyrightYear.setDouble(copyrightYear);
+      putValue("copyrightYear", copyrightYear);
       return this;
     }
     /**
      * The year during which the claimed copyright for the CreativeWork was first asserted.
      */
     @NotNull public Builder copyrightYear(@NotNull String copyrightYear) {
-      if (this.copyrightYear == null) this.copyrightYear = new Number();
-      this.copyrightYear.setString(copyrightYear);
+      putValue("copyrightYear", copyrightYear);
       return this;
     }
     /**
      * The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
      */
     @NotNull public Builder creator(@NotNull Organization organization) {
-      if (this.creator == null) this.creator = new OrganizationOrPerson();
-      this.creator.setOrganization(organization);
+      putValue("creator", organization);
       return this;
     }
     /**
      * The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
      */
     @NotNull public Builder creator(@NotNull Organization.Builder organization) {
-      return this.creator(organization.build());
+      putValue("creator", organization.build());
+      return this;
     }
     /**
      * The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
      */
     @NotNull public Builder creator(@NotNull Person person) {
-      if (this.creator == null) this.creator = new OrganizationOrPerson();
-      this.creator.setPerson(person);
+      putValue("creator", person);
       return this;
     }
     /**
      * The creator/author of this CreativeWork. This is the same as the Author property for CreativeWork.
      */
     @NotNull public Builder creator(@NotNull Person.Builder person) {
-      return this.creator(person.build());
+      putValue("creator", person.build());
+      return this;
     }
     /**
      * The date on which the CreativeWork was created.
      */
     @NotNull public Builder dateCreated(@NotNull java.util.Date date) {
-      this.dateCreated = date;
+      putValue("dateCreated", date);
       return this;
     }
     /**
      * The date on which the CreativeWork was most recently modified.
      */
     @NotNull public Builder dateModified(@NotNull java.util.Date date) {
-      this.dateModified = date;
+      putValue("dateModified", date);
       return this;
     }
     /**
      * Date of first broadcast/publication.
      */
     @NotNull public Builder datePublished(@NotNull java.util.Date date) {
-      this.datePublished = date;
+      putValue("datePublished", date);
       return this;
     }
     /**
      * A link to the page containing the comments of the CreativeWork.
      */
     @NotNull public Builder discussionUrl(@NotNull String discussionUrl) {
-      this.discussionUrl = discussionUrl;
+      putValue("discussionUrl", discussionUrl);
       return this;
     }
     /**
      * Specifies the Person who edited the CreativeWork.
      */
     @NotNull public Builder editor(@NotNull Person person) {
-      this.editor = person;
+      putValue("editor", person);
       return this;
     }
     /**
      * Specifies the Person who edited the CreativeWork.
      */
     @NotNull public Builder editor(@NotNull Person.Builder person) {
-      return this.editor(person.build());
+      putValue("editor", person.build());
+      return this;
     }
     /**
      * An alignment to an established educational framework.
      */
     @NotNull public Builder educationalAlignment(@NotNull AlignmentObject alignmentObject) {
-      this.educationalAlignment = alignmentObject;
+      putValue("educationalAlignment", alignmentObject);
       return this;
     }
     /**
      * An alignment to an established educational framework.
      */
     @NotNull public Builder educationalAlignment(@NotNull AlignmentObject.Builder alignmentObject) {
-      return this.educationalAlignment(alignmentObject.build());
+      putValue("educationalAlignment", alignmentObject.build());
+      return this;
     }
     /**
      * The purpose of a work in the context of education; for example, 'assignment', 'group work'.
      */
     @NotNull public Builder educationalUse(@NotNull String educationalUse) {
-      this.educationalUse = educationalUse;
+      putValue("educationalUse", educationalUse);
       return this;
     }
     /**
      * A media object that encodes this CreativeWork. This property is a synonym for associatedMedia.
      */
     @NotNull public Builder encoding(@NotNull MediaObject mediaObject) {
-      this.encoding = mediaObject;
+      putValue("encoding", mediaObject);
       return this;
     }
     /**
      * A media object that encodes this CreativeWork. This property is a synonym for associatedMedia.
      */
     @NotNull public Builder encoding(@NotNull MediaObject.Builder mediaObject) {
-      return this.encoding(mediaObject.build());
+      putValue("encoding", mediaObject.build());
+      return this;
     }
     /**
      * Genre of the creative work or group.
      */
     @NotNull public Builder genre(@NotNull String genre) {
-      this.genre = genre;
+      putValue("genre", genre);
       return this;
     }
     /**
      * Headline of the article.
      */
     @NotNull public Builder headline(@NotNull String headline) {
-      this.headline = headline;
+      putValue("headline", headline);
       return this;
     }
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
     @NotNull public Builder inLanguage(@NotNull Language language) {
-      if (this.inLanguage == null) this.inLanguage = new LanguageOrString();
-      this.inLanguage.setLanguage(language);
+      putValue("inLanguage", language);
       return this;
     }
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
     @NotNull public Builder inLanguage(@NotNull Language.Builder language) {
-      return this.inLanguage(language.build());
+      putValue("inLanguage", language.build());
+      return this;
     }
     /**
      * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
      */
     @NotNull public Builder inLanguage(@NotNull String inLanguage) {
-      if (this.inLanguage == null) this.inLanguage = new LanguageOrString();
-      this.inLanguage.setString(inLanguage);
+      putValue("inLanguage", inLanguage);
       return this;
     }
     /**
      * The predominant mode of learning supported by the learning resource. Acceptable values are 'active', 'expositive', or 'mixed'.
      */
     @NotNull public Builder interactivityType(@NotNull String interactivityType) {
-      this.interactivityType = interactivityType;
+      putValue("interactivityType", interactivityType);
       return this;
     }
     /**
      * A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
      */
     @NotNull public Builder isBasedOnUrl(@NotNull String isBasedOnUrl) {
-      this.isBasedOnUrl = isBasedOnUrl;
+      putValue("isBasedOnUrl", isBasedOnUrl);
       return this;
     }
     /**
      * Indicates whether this content is family friendly.
      */
     @NotNull public Builder isFamilyFriendly(@NotNull Boolean isFamilyFriendly) {
-      this.isFamilyFriendly = isFamilyFriendly;
+      putValue("isFamilyFriendly", isFamilyFriendly);
       return this;
     }
     /**
      * Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas.
      */
     @NotNull public Builder keywords(@NotNull String keywords) {
-      this.keywords = keywords;
+      putValue("keywords", keywords);
       return this;
     }
     /**
      * A license document that applies to this content, typically indicated by URL.
      */
     @NotNull public Builder license(@NotNull CreativeWork creativeWork) {
-      if (this.license == null) this.license = new CreativeWorkOrString();
-      this.license.setCreativeWork(creativeWork);
+      putValue("license", creativeWork);
       return this;
     }
     /**
      * A license document that applies to this content, typically indicated by URL.
      */
     @NotNull public Builder license(@NotNull CreativeWork.Builder creativeWork) {
-      return this.license(creativeWork.build());
+      putValue("license", creativeWork.build());
+      return this;
     }
     /**
      * A license document that applies to this content, typically indicated by URL.
      */
     @NotNull public Builder license(@NotNull String license) {
-      if (this.license == null) this.license = new CreativeWorkOrString();
-      this.license.setString(license);
+      putValue("license", license);
       return this;
     }
     /**
      * The predominant type or kind characterizing the learning resource. For example, 'presentation', 'handout'.
      */
     @NotNull public Builder learningResourceType(@NotNull String learningResourceType) {
-      this.learningResourceType = learningResourceType;
+      putValue("learningResourceType", learningResourceType);
       return this;
     }
     /**
      * Indicates the primary entity described in some page or other CreativeWork.
      */
     @NotNull public Builder mainEntity(@NotNull Thing thing) {
-      this.mainEntity = thing;
+      putValue("mainEntity", thing);
       return this;
     }
     /**
      * Indicates the primary entity described in some page or other CreativeWork.
      */
     @NotNull public Builder mainEntity(@NotNull Thing.Builder thing) {
-      return this.mainEntity(thing.build());
+      putValue("mainEntity", thing.build());
+      return this;
     }
     /**
      * Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
      */
     @NotNull public Builder mentions(@NotNull Thing thing) {
-      this.mentions = thing;
+      putValue("mentions", thing);
       return this;
     }
     /**
      * Indicates that the CreativeWork contains a reference to, but is not necessarily about a concept.
      */
     @NotNull public Builder mentions(@NotNull Thing.Builder thing) {
-      return this.mentions(thing.build());
+      putValue("mentions", thing.build());
+      return this;
     }
     /**
      * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
      */
     @NotNull public Builder offers(@NotNull Offer offer) {
-      this.offers = offer;
+      putValue("offers", offer);
       return this;
     }
     /**
      * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
      */
     @NotNull public Builder offers(@NotNull Offer.Builder offer) {
-      return this.offers(offer.build());
+      putValue("offers", offer.build());
+      return this;
     }
     /**
      * The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
      */
     @NotNull public Builder producer(@NotNull Organization organization) {
-      if (this.producer == null) this.producer = new OrganizationOrPerson();
-      this.producer.setOrganization(organization);
+      putValue("producer", organization);
       return this;
     }
     /**
      * The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
      */
     @NotNull public Builder producer(@NotNull Organization.Builder organization) {
-      return this.producer(organization.build());
+      putValue("producer", organization.build());
+      return this;
     }
     /**
      * The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
      */
     @NotNull public Builder producer(@NotNull Person person) {
-      if (this.producer == null) this.producer = new OrganizationOrPerson();
-      this.producer.setPerson(person);
+      putValue("producer", person);
       return this;
     }
     /**
      * The person or organization who produced the work (e.g. music album, movie, tv/radio series etc.).
      */
     @NotNull public Builder producer(@NotNull Person.Builder person) {
-      return this.producer(person.build());
+      putValue("producer", person.build());
+      return this;
     }
     /**
      * A publication event associated with the item.
      */
     @NotNull public Builder publication(@NotNull PublicationEvent publicationEvent) {
-      this.publication = publicationEvent;
+      putValue("publication", publicationEvent);
       return this;
     }
     /**
      * A publication event associated with the item.
      */
     @NotNull public Builder publication(@NotNull PublicationEvent.Builder publicationEvent) {
-      return this.publication(publicationEvent.build());
+      putValue("publication", publicationEvent.build());
+      return this;
     }
     /**
      * The publisher of the creative work.
      */
     @NotNull public Builder publisher(@NotNull Organization organization) {
-      this.publisher = organization;
+      putValue("publisher", organization);
       return this;
     }
     /**
      * The publisher of the creative work.
      */
     @NotNull public Builder publisher(@NotNull Organization.Builder organization) {
-      return this.publisher(organization.build());
+      putValue("publisher", organization.build());
+      return this;
     }
     /**
      * Link to page describing the editorial principles of the organization primarily responsible for the creation of the CreativeWork.
      */
     @NotNull public Builder publishingPrinciples(@NotNull String publishingPrinciples) {
-      this.publishingPrinciples = publishingPrinciples;
+      putValue("publishingPrinciples", publishingPrinciples);
       return this;
     }
     /**
      * The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
      */
     @NotNull public Builder recordedAt(@NotNull Event event) {
-      this.recordedAt = event;
+      putValue("recordedAt", event);
       return this;
     }
     /**
      * The Event where the CreativeWork was recorded. The CreativeWork may capture all or part of the event.
      */
     @NotNull public Builder recordedAt(@NotNull Event.Builder event) {
-      return this.recordedAt(event.build());
+      putValue("recordedAt", event.build());
+      return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review review) {
-      this.review = review;
+      putValue("review", review);
       return this;
     }
     /**
      * A review of the item.
      */
     @NotNull public Builder review(@NotNull Review.Builder review) {
-      return this.review(review.build());
+      putValue("review", review.build());
+      return this;
     }
     /**
      * The Organization on whose behalf the creator was working.
      */
     @NotNull public Builder sourceOrganization(@NotNull Organization organization) {
-      this.sourceOrganization = organization;
+      putValue("sourceOrganization", organization);
       return this;
     }
     /**
      * The Organization on whose behalf the creator was working.
      */
     @NotNull public Builder sourceOrganization(@NotNull Organization.Builder organization) {
-      return this.sourceOrganization(organization.build());
+      putValue("sourceOrganization", organization.build());
+      return this;
     }
     /**
      * The textual content of this CreativeWork.
      */
     @NotNull public Builder text(@NotNull String text) {
-      this.text = text;
+      putValue("text", text);
       return this;
     }
     /**
      * A thumbnail image relevant to the Thing.
      */
     @NotNull public Builder thumbnailUrl(@NotNull String thumbnailUrl) {
-      this.thumbnailUrl = thumbnailUrl;
+      putValue("thumbnailUrl", thumbnailUrl);
       return this;
     }
     /**
      * Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
      */
     @NotNull public Builder timeRequired(@NotNull Duration duration) {
-      this.timeRequired = duration;
+      putValue("timeRequired", duration);
       return this;
     }
     /**
      * Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
      */
     @NotNull public Builder timeRequired(@NotNull Duration.Builder duration) {
-      return this.timeRequired(duration.build());
+      putValue("timeRequired", duration.build());
+      return this;
     }
     /**
      * The typical expected age range, e.g. '7-9', '11-'.
      */
     @NotNull public Builder typicalAgeRange(@NotNull String typicalAgeRange) {
-      this.typicalAgeRange = typicalAgeRange;
+      putValue("typicalAgeRange", typicalAgeRange);
       return this;
     }
     /**
      * The version of the CreativeWork embodied by a specified resource.
      */
     @NotNull public Builder version(@NotNull Integer integer) {
-      if (this.version == null) this.version = new Number();
-      this.version.setInteger(integer);
+      putValue("version", integer);
       return this;
     }
     /**
      * The version of the CreativeWork embodied by a specified resource.
      */
     @NotNull public Builder version(@NotNull Long version) {
-      if (this.version == null) this.version = new Number();
-      this.version.setLong(version);
+      putValue("version", version);
       return this;
     }
     /**
      * The version of the CreativeWork embodied by a specified resource.
      */
     @NotNull public Builder version(@NotNull Float version) {
-      if (this.version == null) this.version = new Number();
-      this.version.setFloat(version);
+      putValue("version", version);
       return this;
     }
     /**
      * The version of the CreativeWork embodied by a specified resource.
      */
     @NotNull public Builder version(@NotNull Double version) {
-      if (this.version == null) this.version = new Number();
-      this.version.setDouble(version);
+      putValue("version", version);
       return this;
     }
     /**
      * The version of the CreativeWork embodied by a specified resource.
      */
     @NotNull public Builder version(@NotNull String version) {
-      if (this.version == null) this.version = new Number();
-      this.version.setString(version);
+      putValue("version", version);
       return this;
     }
     /**
      * An embedded video object.
      */
     @NotNull public Builder video(@NotNull VideoObject videoObject) {
-      this.video = videoObject;
+      putValue("video", videoObject);
       return this;
     }
     /**
      * An embedded video object.
      */
     @NotNull public Builder video(@NotNull VideoObject.Builder videoObject) {
-      return this.video(videoObject.build());
+      putValue("video", videoObject.build());
+      return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Organization organization) {
-      if (this.provider == null) this.provider = new OrganizationOrPerson();
-      this.provider.setOrganization(organization);
+      putValue("provider", organization);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Organization.Builder organization) {
-      return this.provider(organization.build());
+      putValue("provider", organization.build());
+      return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Person person) {
-      if (this.provider == null) this.provider = new OrganizationOrPerson();
-      this.provider.setPerson(person);
+      putValue("provider", person);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Person.Builder person) {
-      return this.provider(person.build());
+      putValue("provider", person.build());
+      return this;
     }
     /**
      * The number of comments this CreativeWork (e.g. Article, Question or Answer) has received. This is most applicable to works published in Web sites with commenting system; additional comments may exist elsewhere.
      */
     @NotNull public Builder commentCount(@NotNull Integer integer) {
-      this.commentCount = integer;
+      putValue("commentCount", integer);
       return this;
     }
     /**
      * Indicates a CreativeWork that is (in some sense) a part of this CreativeWork.
      */
     @NotNull public Builder hasPart(@NotNull HasPart hasPart) {
-      this.hasPart = hasPart;
+      putValue("hasPart", hasPart);
       return this;
     }
     /**
      * Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.
      */
     @NotNull public Builder workExample(@NotNull CreativeWork creativeWork) {
-      this.workExample = creativeWork;
+      putValue("workExample", creativeWork);
       return this;
     }
     /**
      * Example/instance/realization/derivation of the concept of this creative work. eg. The paperback edition, first edition, or eBook.
      */
     @NotNull public Builder workExample(@NotNull CreativeWork.Builder creativeWork) {
-      return this.workExample(creativeWork.build());
+      putValue("workExample", creativeWork.build());
+      return this;
     }
     /**
      * A creative work that this work is an example/instance/realization/derivation of.
      */
     @NotNull public Builder exampleOfWork(@NotNull CreativeWork creativeWork) {
-      this.exampleOfWork = creativeWork;
+      putValue("exampleOfWork", creativeWork);
       return this;
     }
     /**
      * A creative work that this work is an example/instance/realization/derivation of.
      */
     @NotNull public Builder exampleOfWork(@NotNull CreativeWork.Builder creativeWork) {
-      return this.exampleOfWork(creativeWork.build());
+      putValue("exampleOfWork", creativeWork.build());
+      return this;
     }
     /**
      * Fictional person connected with a creative work.
      */
     @NotNull public Builder character(@NotNull Person person) {
-      this.character = person;
+      putValue("character", person);
       return this;
     }
     /**
      * Fictional person connected with a creative work.
      */
     @NotNull public Builder character(@NotNull Person.Builder person) {
-      return this.character(person.build());
+      putValue("character", person.build());
+      return this;
     }
     /**
      * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
      */
     @NotNull public Builder translator(@NotNull Organization organization) {
-      if (this.translator == null) this.translator = new OrganizationOrPerson();
-      this.translator.setOrganization(organization);
+      putValue("translator", organization);
       return this;
     }
     /**
      * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
      */
     @NotNull public Builder translator(@NotNull Organization.Builder organization) {
-      return this.translator(organization.build());
+      putValue("translator", organization.build());
+      return this;
     }
     /**
      * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
      */
     @NotNull public Builder translator(@NotNull Person person) {
-      if (this.translator == null) this.translator = new OrganizationOrPerson();
-      this.translator.setPerson(person);
+      putValue("translator", person);
       return this;
     }
     /**
      * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
      */
     @NotNull public Builder translator(@NotNull Person.Builder person) {
-      return this.translator(person.build());
+      putValue("translator", person.build());
+      return this;
     }
     /**
      * The place and time the release was issued, expressed as a PublicationEvent.
      */
     @NotNull public Builder releasedEvent(@NotNull PublicationEvent publicationEvent) {
-      this.releasedEvent = publicationEvent;
+      putValue("releasedEvent", publicationEvent);
       return this;
     }
     /**
      * The place and time the release was issued, expressed as a PublicationEvent.
      */
     @NotNull public Builder releasedEvent(@NotNull PublicationEvent.Builder publicationEvent) {
-      return this.releasedEvent(publicationEvent.build());
+      putValue("releasedEvent", publicationEvent.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -1456,8 +2328,7 @@ public class CreativeWork extends Thing implements HasPart {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -1491,7 +2362,8 @@ public class CreativeWork extends Thing implements HasPart {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -1524,284 +2396,135 @@ public class CreativeWork extends Thing implements HasPart {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("schemaVersion".equals(key) && value instanceof String) { schemaVersion((String)value); continue; }
-        if ("about".equals(key) && value instanceof Thing) { about((Thing)value); continue; }
-        if ("accessibilityAPI".equals(key) && value instanceof String) { accessibilityAPI((String)value); continue; }
-        if ("accessibilityControl".equals(key) && value instanceof String) { accessibilityControl((String)value); continue; }
-        if ("accessibilityFeature".equals(key) && value instanceof String) { accessibilityFeature((String)value); continue; }
-        if ("accessibilityHazard".equals(key) && value instanceof String) { accessibilityHazard((String)value); continue; }
-        if ("accountablePerson".equals(key) && value instanceof Person) { accountablePerson((Person)value); continue; }
-        if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); continue; }
-        if ("alternativeHeadline".equals(key) && value instanceof String) { alternativeHeadline((String)value); continue; }
-        if ("associatedMedia".equals(key) && value instanceof MediaObject) { associatedMedia((MediaObject)value); continue; }
-        if ("audience".equals(key) && value instanceof Audience) { audience((Audience)value); continue; }
-        if ("audio".equals(key) && value instanceof AudioObject) { audio((AudioObject)value); continue; }
-        if ("author".equals(key) && value instanceof Organization) { author((Organization)value); continue; }
-        if ("author".equals(key) && value instanceof Person) { author((Person)value); continue; }
-        if ("award".equals(key) && value instanceof String) { award((String)value); continue; }
-        if ("citation".equals(key) && value instanceof CreativeWork) { citation((CreativeWork)value); continue; }
-        if ("citation".equals(key) && value instanceof String) { citation((String)value); continue; }
-        if ("comment".equals(key) && value instanceof Comment) { comment((Comment)value); continue; }
-        if ("contentLocation".equals(key) && value instanceof Place) { contentLocation((Place)value); continue; }
-        if ("contentRating".equals(key) && value instanceof String) { contentRating((String)value); continue; }
-        if ("contributor".equals(key) && value instanceof Organization) { contributor((Organization)value); continue; }
-        if ("contributor".equals(key) && value instanceof Person) { contributor((Person)value); continue; }
-        if ("copyrightHolder".equals(key) && value instanceof Organization) { copyrightHolder((Organization)value); continue; }
-        if ("copyrightHolder".equals(key) && value instanceof Person) { copyrightHolder((Person)value); continue; }
-        if ("copyrightYear".equals(key) && value instanceof Integer) { copyrightYear((Integer)value); continue; }
-        if ("copyrightYear".equals(key) && value instanceof Long) { copyrightYear((Long)value); continue; }
-        if ("copyrightYear".equals(key) && value instanceof Float) { copyrightYear((Float)value); continue; }
-        if ("copyrightYear".equals(key) && value instanceof Double) { copyrightYear((Double)value); continue; }
-        if ("copyrightYear".equals(key) && value instanceof String) { copyrightYear((String)value); continue; }
-        if ("creator".equals(key) && value instanceof Organization) { creator((Organization)value); continue; }
-        if ("creator".equals(key) && value instanceof Person) { creator((Person)value); continue; }
-        if ("dateCreated".equals(key) && value instanceof java.util.Date) { dateCreated((java.util.Date)value); continue; }
-        if ("dateModified".equals(key) && value instanceof java.util.Date) { dateModified((java.util.Date)value); continue; }
-        if ("datePublished".equals(key) && value instanceof java.util.Date) { datePublished((java.util.Date)value); continue; }
-        if ("discussionUrl".equals(key) && value instanceof String) { discussionUrl((String)value); continue; }
-        if ("editor".equals(key) && value instanceof Person) { editor((Person)value); continue; }
-        if ("educationalAlignment".equals(key) && value instanceof AlignmentObject) { educationalAlignment((AlignmentObject)value); continue; }
-        if ("educationalUse".equals(key) && value instanceof String) { educationalUse((String)value); continue; }
-        if ("encoding".equals(key) && value instanceof MediaObject) { encoding((MediaObject)value); continue; }
-        if ("genre".equals(key) && value instanceof String) { genre((String)value); continue; }
-        if ("headline".equals(key) && value instanceof String) { headline((String)value); continue; }
-        if ("inLanguage".equals(key) && value instanceof Language) { inLanguage((Language)value); continue; }
-        if ("inLanguage".equals(key) && value instanceof String) { inLanguage((String)value); continue; }
-        if ("interactivityType".equals(key) && value instanceof String) { interactivityType((String)value); continue; }
-        if ("isBasedOnUrl".equals(key) && value instanceof String) { isBasedOnUrl((String)value); continue; }
-        if ("isFamilyFriendly".equals(key) && value instanceof Boolean) { isFamilyFriendly((Boolean)value); continue; }
-        if ("keywords".equals(key) && value instanceof String) { keywords((String)value); continue; }
-        if ("license".equals(key) && value instanceof CreativeWork) { license((CreativeWork)value); continue; }
-        if ("license".equals(key) && value instanceof String) { license((String)value); continue; }
-        if ("learningResourceType".equals(key) && value instanceof String) { learningResourceType((String)value); continue; }
-        if ("mainEntity".equals(key) && value instanceof Thing) { mainEntity((Thing)value); continue; }
-        if ("mentions".equals(key) && value instanceof Thing) { mentions((Thing)value); continue; }
-        if ("offers".equals(key) && value instanceof Offer) { offers((Offer)value); continue; }
-        if ("producer".equals(key) && value instanceof Organization) { producer((Organization)value); continue; }
-        if ("producer".equals(key) && value instanceof Person) { producer((Person)value); continue; }
-        if ("publication".equals(key) && value instanceof PublicationEvent) { publication((PublicationEvent)value); continue; }
-        if ("publisher".equals(key) && value instanceof Organization) { publisher((Organization)value); continue; }
-        if ("publishingPrinciples".equals(key) && value instanceof String) { publishingPrinciples((String)value); continue; }
-        if ("recordedAt".equals(key) && value instanceof Event) { recordedAt((Event)value); continue; }
-        if ("review".equals(key) && value instanceof Review) { review((Review)value); continue; }
-        if ("sourceOrganization".equals(key) && value instanceof Organization) { sourceOrganization((Organization)value); continue; }
-        if ("text".equals(key) && value instanceof String) { text((String)value); continue; }
-        if ("thumbnailUrl".equals(key) && value instanceof String) { thumbnailUrl((String)value); continue; }
-        if ("timeRequired".equals(key) && value instanceof Duration) { timeRequired((Duration)value); continue; }
-        if ("typicalAgeRange".equals(key) && value instanceof String) { typicalAgeRange((String)value); continue; }
-        if ("version".equals(key) && value instanceof Integer) { version((Integer)value); continue; }
-        if ("version".equals(key) && value instanceof Long) { version((Long)value); continue; }
-        if ("version".equals(key) && value instanceof Float) { version((Float)value); continue; }
-        if ("version".equals(key) && value instanceof Double) { version((Double)value); continue; }
-        if ("version".equals(key) && value instanceof String) { version((String)value); continue; }
-        if ("video".equals(key) && value instanceof VideoObject) { video((VideoObject)value); continue; }
-        if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); continue; }
-        if ("provider".equals(key) && value instanceof Person) { provider((Person)value); continue; }
-        if ("commentCount".equals(key) && value instanceof Integer) { commentCount((Integer)value); continue; }
-        if ("hasPart".equals(key) && value instanceof HasPart) { hasPart((HasPart)value); continue; }
-        if ("workExample".equals(key) && value instanceof CreativeWork) { workExample((CreativeWork)value); continue; }
-        if ("exampleOfWork".equals(key) && value instanceof CreativeWork) { exampleOfWork((CreativeWork)value); continue; }
-        if ("character".equals(key) && value instanceof Person) { character((Person)value); continue; }
-        if ("translator".equals(key) && value instanceof Organization) { translator((Organization)value); continue; }
-        if ("translator".equals(key) && value instanceof Person) { translator((Person)value); continue; }
-        if ("releasedEvent".equals(key) && value instanceof PublicationEvent) { releasedEvent((PublicationEvent)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("schemaVersion".equals(key) && value instanceof String) { schemaVersion((String)value); return; }
+      if ("about".equals(key) && value instanceof Thing) { about((Thing)value); return; }
+      if ("accessibilityAPI".equals(key) && value instanceof String) { accessibilityAPI((String)value); return; }
+      if ("accessibilityControl".equals(key) && value instanceof String) { accessibilityControl((String)value); return; }
+      if ("accessibilityFeature".equals(key) && value instanceof String) { accessibilityFeature((String)value); return; }
+      if ("accessibilityHazard".equals(key) && value instanceof String) { accessibilityHazard((String)value); return; }
+      if ("accountablePerson".equals(key) && value instanceof Person) { accountablePerson((Person)value); return; }
+      if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
+      if ("alternativeHeadline".equals(key) && value instanceof String) { alternativeHeadline((String)value); return; }
+      if ("associatedMedia".equals(key) && value instanceof MediaObject) { associatedMedia((MediaObject)value); return; }
+      if ("audience".equals(key) && value instanceof Audience) { audience((Audience)value); return; }
+      if ("audio".equals(key) && value instanceof AudioObject) { audio((AudioObject)value); return; }
+      if ("author".equals(key) && value instanceof Organization) { author((Organization)value); return; }
+      if ("author".equals(key) && value instanceof Person) { author((Person)value); return; }
+      if ("award".equals(key) && value instanceof String) { award((String)value); return; }
+      if ("citation".equals(key) && value instanceof CreativeWork) { citation((CreativeWork)value); return; }
+      if ("citation".equals(key) && value instanceof String) { citation((String)value); return; }
+      if ("comment".equals(key) && value instanceof Comment) { comment((Comment)value); return; }
+      if ("contentLocation".equals(key) && value instanceof Place) { contentLocation((Place)value); return; }
+      if ("contentRating".equals(key) && value instanceof String) { contentRating((String)value); return; }
+      if ("contributor".equals(key) && value instanceof Organization) { contributor((Organization)value); return; }
+      if ("contributor".equals(key) && value instanceof Person) { contributor((Person)value); return; }
+      if ("copyrightHolder".equals(key) && value instanceof Organization) { copyrightHolder((Organization)value); return; }
+      if ("copyrightHolder".equals(key) && value instanceof Person) { copyrightHolder((Person)value); return; }
+      if ("copyrightYear".equals(key) && value instanceof Integer) { copyrightYear((Integer)value); return; }
+      if ("copyrightYear".equals(key) && value instanceof Long) { copyrightYear((Long)value); return; }
+      if ("copyrightYear".equals(key) && value instanceof Float) { copyrightYear((Float)value); return; }
+      if ("copyrightYear".equals(key) && value instanceof Double) { copyrightYear((Double)value); return; }
+      if ("copyrightYear".equals(key) && value instanceof String) { copyrightYear((String)value); return; }
+      if ("creator".equals(key) && value instanceof Organization) { creator((Organization)value); return; }
+      if ("creator".equals(key) && value instanceof Person) { creator((Person)value); return; }
+      if ("dateCreated".equals(key) && value instanceof java.util.Date) { dateCreated((java.util.Date)value); return; }
+      if ("dateModified".equals(key) && value instanceof java.util.Date) { dateModified((java.util.Date)value); return; }
+      if ("datePublished".equals(key) && value instanceof java.util.Date) { datePublished((java.util.Date)value); return; }
+      if ("discussionUrl".equals(key) && value instanceof String) { discussionUrl((String)value); return; }
+      if ("editor".equals(key) && value instanceof Person) { editor((Person)value); return; }
+      if ("educationalAlignment".equals(key) && value instanceof AlignmentObject) { educationalAlignment((AlignmentObject)value); return; }
+      if ("educationalUse".equals(key) && value instanceof String) { educationalUse((String)value); return; }
+      if ("encoding".equals(key) && value instanceof MediaObject) { encoding((MediaObject)value); return; }
+      if ("genre".equals(key) && value instanceof String) { genre((String)value); return; }
+      if ("headline".equals(key) && value instanceof String) { headline((String)value); return; }
+      if ("inLanguage".equals(key) && value instanceof Language) { inLanguage((Language)value); return; }
+      if ("inLanguage".equals(key) && value instanceof String) { inLanguage((String)value); return; }
+      if ("interactivityType".equals(key) && value instanceof String) { interactivityType((String)value); return; }
+      if ("isBasedOnUrl".equals(key) && value instanceof String) { isBasedOnUrl((String)value); return; }
+      if ("isFamilyFriendly".equals(key) && value instanceof Boolean) { isFamilyFriendly((Boolean)value); return; }
+      if ("keywords".equals(key) && value instanceof String) { keywords((String)value); return; }
+      if ("license".equals(key) && value instanceof CreativeWork) { license((CreativeWork)value); return; }
+      if ("license".equals(key) && value instanceof String) { license((String)value); return; }
+      if ("learningResourceType".equals(key) && value instanceof String) { learningResourceType((String)value); return; }
+      if ("mainEntity".equals(key) && value instanceof Thing) { mainEntity((Thing)value); return; }
+      if ("mentions".equals(key) && value instanceof Thing) { mentions((Thing)value); return; }
+      if ("offers".equals(key) && value instanceof Offer) { offers((Offer)value); return; }
+      if ("producer".equals(key) && value instanceof Organization) { producer((Organization)value); return; }
+      if ("producer".equals(key) && value instanceof Person) { producer((Person)value); return; }
+      if ("publication".equals(key) && value instanceof PublicationEvent) { publication((PublicationEvent)value); return; }
+      if ("publisher".equals(key) && value instanceof Organization) { publisher((Organization)value); return; }
+      if ("publishingPrinciples".equals(key) && value instanceof String) { publishingPrinciples((String)value); return; }
+      if ("recordedAt".equals(key) && value instanceof Event) { recordedAt((Event)value); return; }
+      if ("review".equals(key) && value instanceof Review) { review((Review)value); return; }
+      if ("sourceOrganization".equals(key) && value instanceof Organization) { sourceOrganization((Organization)value); return; }
+      if ("text".equals(key) && value instanceof String) { text((String)value); return; }
+      if ("thumbnailUrl".equals(key) && value instanceof String) { thumbnailUrl((String)value); return; }
+      if ("timeRequired".equals(key) && value instanceof Duration) { timeRequired((Duration)value); return; }
+      if ("typicalAgeRange".equals(key) && value instanceof String) { typicalAgeRange((String)value); return; }
+      if ("version".equals(key) && value instanceof Integer) { version((Integer)value); return; }
+      if ("version".equals(key) && value instanceof Long) { version((Long)value); return; }
+      if ("version".equals(key) && value instanceof Float) { version((Float)value); return; }
+      if ("version".equals(key) && value instanceof Double) { version((Double)value); return; }
+      if ("version".equals(key) && value instanceof String) { version((String)value); return; }
+      if ("video".equals(key) && value instanceof VideoObject) { video((VideoObject)value); return; }
+      if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
+      if ("provider".equals(key) && value instanceof Person) { provider((Person)value); return; }
+      if ("commentCount".equals(key) && value instanceof Integer) { commentCount((Integer)value); return; }
+      if ("hasPart".equals(key) && value instanceof HasPart) { hasPart((HasPart)value); return; }
+      if ("workExample".equals(key) && value instanceof CreativeWork) { workExample((CreativeWork)value); return; }
+      if ("exampleOfWork".equals(key) && value instanceof CreativeWork) { exampleOfWork((CreativeWork)value); return; }
+      if ("character".equals(key) && value instanceof Person) { character((Person)value); return; }
+      if ("translator".equals(key) && value instanceof Organization) { translator((Organization)value); return; }
+      if ("translator".equals(key) && value instanceof Person) { translator((Person)value); return; }
+      if ("releasedEvent".equals(key) && value instanceof PublicationEvent) { releasedEvent((PublicationEvent)value); return; }
+      super.fromMap(key, value);
     }
-    private String schemaVersion;
-    private Thing about;
-    private String accessibilityAPI;
-    private String accessibilityControl;
-    private String accessibilityFeature;
-    private String accessibilityHazard;
-    private Person accountablePerson;
-    private AggregateRating aggregateRating;
-    private String alternativeHeadline;
-    private MediaObject associatedMedia;
-    private Audience audience;
-    private AudioObject audio;
-    private OrganizationOrPerson author;
-    private String award;
-    private CreativeWorkOrString citation;
-    private Comment comment;
-    private Place contentLocation;
-    private String contentRating;
-    private OrganizationOrPerson contributor;
-    private OrganizationOrPerson copyrightHolder;
-    private Number copyrightYear;
-    private OrganizationOrPerson creator;
-    private java.util.Date dateCreated;
-    private java.util.Date dateModified;
-    private java.util.Date datePublished;
-    private String discussionUrl;
-    private Person editor;
-    private AlignmentObject educationalAlignment;
-    private String educationalUse;
-    private MediaObject encoding;
-    private String genre;
-    private String headline;
-    private LanguageOrString inLanguage;
-    private String interactivityType;
-    private String isBasedOnUrl;
-    private Boolean isFamilyFriendly;
-    private String keywords;
-    private CreativeWorkOrString license;
-    private String learningResourceType;
-    private Thing mainEntity;
-    private Thing mentions;
-    private Offer offers;
-    private OrganizationOrPerson producer;
-    private PublicationEvent publication;
-    private Organization publisher;
-    private String publishingPrinciples;
-    private Event recordedAt;
-    private Review review;
-    private Organization sourceOrganization;
-    private String text;
-    private String thumbnailUrl;
-    private Duration timeRequired;
-    private String typicalAgeRange;
-    private Number version;
-    private VideoObject video;
-    private OrganizationOrPerson provider;
-    private Integer commentCount;
-    private HasPart hasPart;
-    private CreativeWork workExample;
-    private CreativeWork exampleOfWork;
-    private Person character;
-    private OrganizationOrPerson translator;
-    private PublicationEvent releasedEvent;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private String mySchemaVersion;
-  private Thing myAbout;
-  private String myAccessibilityAPI;
-  private String myAccessibilityControl;
-  private String myAccessibilityFeature;
-  private String myAccessibilityHazard;
-  private Person myAccountablePerson;
-  private AggregateRating myAggregateRating;
-  private String myAlternativeHeadline;
-  private MediaObject myAssociatedMedia;
-  private Audience myAudience;
-  private AudioObject myAudio;
-  private OrganizationOrPerson myAuthor;
-  private String myAward;
-  private CreativeWorkOrString myCitation;
-  private Comment myComment;
-  private Place myContentLocation;
-  private String myContentRating;
-  private OrganizationOrPerson myContributor;
-  private OrganizationOrPerson myCopyrightHolder;
-  private Number myCopyrightYear;
-  private OrganizationOrPerson myCreator;
-  private java.util.Date myDateCreated;
-  private java.util.Date myDateModified;
-  private java.util.Date myDatePublished;
-  private String myDiscussionUrl;
-  private Person myEditor;
-  private AlignmentObject myEducationalAlignment;
-  private String myEducationalUse;
-  private MediaObject myEncoding;
-  private String myGenre;
-  private String myHeadline;
-  private LanguageOrString myInLanguage;
-  private String myInteractivityType;
-  private String myIsBasedOnUrl;
-  private Boolean myIsFamilyFriendly;
-  private String myKeywords;
-  private CreativeWorkOrString myLicense;
-  private String myLearningResourceType;
-  private Thing myMainEntity;
-  private Thing myMentions;
-  private Offer myOffers;
-  private OrganizationOrPerson myProducer;
-  private PublicationEvent myPublication;
-  private Organization myPublisher;
-  private String myPublishingPrinciples;
-  private Event myRecordedAt;
-  private Review myReview;
-  private Organization mySourceOrganization;
-  private String myText;
-  private String myThumbnailUrl;
-  private Duration myTimeRequired;
-  private String myTypicalAgeRange;
-  private Number myVersion;
-  private VideoObject myVideo;
-  private OrganizationOrPerson myProvider;
-  private Integer myCommentCount;
-  private HasPart myHasPart;
-  private CreativeWork myWorkExample;
-  private CreativeWork myExampleOfWork;
-  private Person myCharacter;
-  private OrganizationOrPerson myTranslator;
-  private PublicationEvent myReleasedEvent;
 }

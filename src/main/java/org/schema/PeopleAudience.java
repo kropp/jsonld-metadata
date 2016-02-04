@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A set of characteristics belonging to people, e.g. who compose an item's target audience.
@@ -29,241 +30,421 @@ public class PeopleAudience extends Audience {
   /**
    * Expectations for health conditions of target audience.
    */
-  public MedicalCondition getHealthCondition() { return myHealthCondition; }
+  @JsonIgnore public MedicalCondition getHealthCondition() {
+    return (MedicalCondition) getValue("healthCondition");
+  }
+  /**
+   * Expectations for health conditions of target audience.
+   */
+  @JsonIgnore public Collection<MedicalCondition> getHealthConditions() {
+    final Object current = myData.get("healthCondition");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalCondition>) current;
+    }
+    return Arrays.asList((MedicalCondition) current);
+  }
   /**
    * Audiences defined by a person's gender.
    */
-  public String getRequiredGender() { return myRequiredGender; }
+  @JsonIgnore public String getRequiredGender() {
+    return (String) getValue("requiredGender");
+  }
+  /**
+   * Audiences defined by a person's gender.
+   */
+  @JsonIgnore public Collection<String> getRequiredGenders() {
+    final Object current = myData.get("requiredGender");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Audiences defined by a person's maximum age.
    */
-  public Integer getRequiredMaxAge() { return myRequiredMaxAge; }
+  @JsonIgnore public Integer getRequiredMaxAge() {
+    return (Integer) getValue("requiredMaxAge");
+  }
+  /**
+   * Audiences defined by a person's maximum age.
+   */
+  @JsonIgnore public Collection<Integer> getRequiredMaxAges() {
+    final Object current = myData.get("requiredMaxAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
   /**
    * Audiences defined by a person's minimum age.
    */
-  public Integer getRequiredMinAge() { return myRequiredMinAge; }
+  @JsonIgnore public Integer getRequiredMinAge() {
+    return (Integer) getValue("requiredMinAge");
+  }
+  /**
+   * Audiences defined by a person's minimum age.
+   */
+  @JsonIgnore public Collection<Integer> getRequiredMinAges() {
+    final Object current = myData.get("requiredMinAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
   /**
    * The gender of the person or audience.
    */
-  public String getSuggestedGender() { return mySuggestedGender; }
+  @JsonIgnore public String getSuggestedGender() {
+    return (String) getValue("suggestedGender");
+  }
+  /**
+   * The gender of the person or audience.
+   */
+  @JsonIgnore public Collection<String> getSuggestedGenders() {
+    final Object current = myData.get("suggestedGender");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Maximal age recommended for viewing content.
    */
-  public Number getSuggestedMaxAge() { return mySuggestedMaxAge; }
+  @JsonIgnore public Integer getSuggestedMaxAgeInteger() {
+    return (Integer) getValue("suggestedMaxAge");
+  }
+  /**
+   * Maximal age recommended for viewing content.
+   */
+  @JsonIgnore public Collection<Integer> getSuggestedMaxAgeIntegers() {
+    final Object current = myData.get("suggestedMaxAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
+  /**
+   * Maximal age recommended for viewing content.
+   */
+  @JsonIgnore public Long getSuggestedMaxAgeLong() {
+    return (Long) getValue("suggestedMaxAge");
+  }
+  /**
+   * Maximal age recommended for viewing content.
+   */
+  @JsonIgnore public Collection<Long> getSuggestedMaxAgeLongs() {
+    final Object current = myData.get("suggestedMaxAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Long>) current;
+    }
+    return Arrays.asList((Long) current);
+  }
+  /**
+   * Maximal age recommended for viewing content.
+   */
+  @JsonIgnore public Float getSuggestedMaxAgeFloat() {
+    return (Float) getValue("suggestedMaxAge");
+  }
+  /**
+   * Maximal age recommended for viewing content.
+   */
+  @JsonIgnore public Collection<Float> getSuggestedMaxAgeFloats() {
+    final Object current = myData.get("suggestedMaxAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Float>) current;
+    }
+    return Arrays.asList((Float) current);
+  }
+  /**
+   * Maximal age recommended for viewing content.
+   */
+  @JsonIgnore public Double getSuggestedMaxAgeDouble() {
+    return (Double) getValue("suggestedMaxAge");
+  }
+  /**
+   * Maximal age recommended for viewing content.
+   */
+  @JsonIgnore public Collection<Double> getSuggestedMaxAgeDoubles() {
+    final Object current = myData.get("suggestedMaxAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Double>) current;
+    }
+    return Arrays.asList((Double) current);
+  }
+  /**
+   * Maximal age recommended for viewing content.
+   */
+  @JsonIgnore public String getSuggestedMaxAgeString() {
+    return (String) getValue("suggestedMaxAge");
+  }
+  /**
+   * Maximal age recommended for viewing content.
+   */
+  @JsonIgnore public Collection<String> getSuggestedMaxAgeStrings() {
+    final Object current = myData.get("suggestedMaxAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Minimal age recommended for viewing content.
    */
-  public Number getSuggestedMinAge() { return mySuggestedMinAge; }
-  protected PeopleAudience(MedicalCondition healthCondition, String requiredGender, Integer requiredMaxAge, Integer requiredMinAge, String suggestedGender, Number suggestedMaxAge, Number suggestedMinAge, String audienceType, AdministrativeArea geographicArea, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myHealthCondition = healthCondition;
-    myRequiredGender = requiredGender;
-    myRequiredMaxAge = requiredMaxAge;
-    myRequiredMinAge = requiredMinAge;
-    mySuggestedGender = suggestedGender;
-    mySuggestedMaxAge = suggestedMaxAge;
-    mySuggestedMinAge = suggestedMinAge;
-    myHealthCondition = healthCondition;
-    myRequiredGender = requiredGender;
-    myRequiredMaxAge = requiredMaxAge;
-    myRequiredMinAge = requiredMinAge;
-    mySuggestedGender = suggestedGender;
-    mySuggestedMaxAge = suggestedMaxAge;
-    mySuggestedMinAge = suggestedMinAge;
+  @JsonIgnore public Integer getSuggestedMinAgeInteger() {
+    return (Integer) getValue("suggestedMinAge");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myHealthCondition != null ? myHealthCondition.hashCode() : 0);
-    result = 31 * result + (myRequiredGender != null ? myRequiredGender.hashCode() : 0);
-    result = 31 * result + (myRequiredMaxAge != null ? myRequiredMaxAge.hashCode() : 0);
-    result = 31 * result + (myRequiredMinAge != null ? myRequiredMinAge.hashCode() : 0);
-    result = 31 * result + (mySuggestedGender != null ? mySuggestedGender.hashCode() : 0);
-    result = 31 * result + (mySuggestedMaxAge != null ? mySuggestedMaxAge.hashCode() : 0);
-    result = 31 * result + (mySuggestedMinAge != null ? mySuggestedMinAge.hashCode() : 0);
-    return result;
+  /**
+   * Minimal age recommended for viewing content.
+   */
+  @JsonIgnore public Collection<Integer> getSuggestedMinAgeIntegers() {
+    final Object current = myData.get("suggestedMinAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    PeopleAudience peopleAudience = (PeopleAudience) o;
-    if (!super.equals(o)) return false;
-    if (myHealthCondition != null ? !myHealthCondition.equals(peopleAudience.myHealthCondition) : peopleAudience.myHealthCondition != null) return false;
-    if (myRequiredGender != null ? !myRequiredGender.equals(peopleAudience.myRequiredGender) : peopleAudience.myRequiredGender != null) return false;
-    if (myRequiredMaxAge != null ? !myRequiredMaxAge.equals(peopleAudience.myRequiredMaxAge) : peopleAudience.myRequiredMaxAge != null) return false;
-    if (myRequiredMinAge != null ? !myRequiredMinAge.equals(peopleAudience.myRequiredMinAge) : peopleAudience.myRequiredMinAge != null) return false;
-    if (mySuggestedGender != null ? !mySuggestedGender.equals(peopleAudience.mySuggestedGender) : peopleAudience.mySuggestedGender != null) return false;
-    if (mySuggestedMaxAge != null ? !mySuggestedMaxAge.equals(peopleAudience.mySuggestedMaxAge) : peopleAudience.mySuggestedMaxAge != null) return false;
-    if (mySuggestedMinAge != null ? !mySuggestedMinAge.equals(peopleAudience.mySuggestedMinAge) : peopleAudience.mySuggestedMinAge != null) return false;
-    return true;
+  /**
+   * Minimal age recommended for viewing content.
+   */
+  @JsonIgnore public Long getSuggestedMinAgeLong() {
+    return (Long) getValue("suggestedMinAge");
+  }
+  /**
+   * Minimal age recommended for viewing content.
+   */
+  @JsonIgnore public Collection<Long> getSuggestedMinAgeLongs() {
+    final Object current = myData.get("suggestedMinAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Long>) current;
+    }
+    return Arrays.asList((Long) current);
+  }
+  /**
+   * Minimal age recommended for viewing content.
+   */
+  @JsonIgnore public Float getSuggestedMinAgeFloat() {
+    return (Float) getValue("suggestedMinAge");
+  }
+  /**
+   * Minimal age recommended for viewing content.
+   */
+  @JsonIgnore public Collection<Float> getSuggestedMinAgeFloats() {
+    final Object current = myData.get("suggestedMinAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Float>) current;
+    }
+    return Arrays.asList((Float) current);
+  }
+  /**
+   * Minimal age recommended for viewing content.
+   */
+  @JsonIgnore public Double getSuggestedMinAgeDouble() {
+    return (Double) getValue("suggestedMinAge");
+  }
+  /**
+   * Minimal age recommended for viewing content.
+   */
+  @JsonIgnore public Collection<Double> getSuggestedMinAgeDoubles() {
+    final Object current = myData.get("suggestedMinAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Double>) current;
+    }
+    return Arrays.asList((Double) current);
+  }
+  /**
+   * Minimal age recommended for viewing content.
+   */
+  @JsonIgnore public String getSuggestedMinAgeString() {
+    return (String) getValue("suggestedMinAge");
+  }
+  /**
+   * Minimal age recommended for viewing content.
+   */
+  @JsonIgnore public Collection<String> getSuggestedMinAgeStrings() {
+    final Object current = myData.get("suggestedMinAge");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  protected PeopleAudience(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link PeopleAudience}
    */
-  public static class Builder implements ThingBuilder<PeopleAudience> {
+  public static class Builder extends Audience.Builder {
     public PeopleAudience build() {
-      return new PeopleAudience(healthCondition, requiredGender, requiredMaxAge, requiredMinAge, suggestedGender, suggestedMaxAge, suggestedMinAge, audienceType, geographicArea, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new PeopleAudience(myData);
     }
     /**
      * Expectations for health conditions of target audience.
      */
     @NotNull public Builder healthCondition(@NotNull MedicalCondition medicalCondition) {
-      this.healthCondition = medicalCondition;
+      putValue("healthCondition", medicalCondition);
       return this;
     }
     /**
      * Expectations for health conditions of target audience.
      */
     @NotNull public Builder healthCondition(@NotNull MedicalCondition.Builder medicalCondition) {
-      return this.healthCondition(medicalCondition.build());
+      putValue("healthCondition", medicalCondition.build());
+      return this;
     }
     /**
      * Audiences defined by a person's gender.
      */
     @NotNull public Builder requiredGender(@NotNull String requiredGender) {
-      this.requiredGender = requiredGender;
+      putValue("requiredGender", requiredGender);
       return this;
     }
     /**
      * Audiences defined by a person's maximum age.
      */
     @NotNull public Builder requiredMaxAge(@NotNull Integer integer) {
-      this.requiredMaxAge = integer;
+      putValue("requiredMaxAge", integer);
       return this;
     }
     /**
      * Audiences defined by a person's minimum age.
      */
     @NotNull public Builder requiredMinAge(@NotNull Integer integer) {
-      this.requiredMinAge = integer;
+      putValue("requiredMinAge", integer);
       return this;
     }
     /**
      * The gender of the person or audience.
      */
     @NotNull public Builder suggestedGender(@NotNull String suggestedGender) {
-      this.suggestedGender = suggestedGender;
+      putValue("suggestedGender", suggestedGender);
       return this;
     }
     /**
      * Maximal age recommended for viewing content.
      */
     @NotNull public Builder suggestedMaxAge(@NotNull Integer integer) {
-      if (this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
-      this.suggestedMaxAge.setInteger(integer);
+      putValue("suggestedMaxAge", integer);
       return this;
     }
     /**
      * Maximal age recommended for viewing content.
      */
     @NotNull public Builder suggestedMaxAge(@NotNull Long suggestedMaxAge) {
-      if (this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
-      this.suggestedMaxAge.setLong(suggestedMaxAge);
+      putValue("suggestedMaxAge", suggestedMaxAge);
       return this;
     }
     /**
      * Maximal age recommended for viewing content.
      */
     @NotNull public Builder suggestedMaxAge(@NotNull Float suggestedMaxAge) {
-      if (this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
-      this.suggestedMaxAge.setFloat(suggestedMaxAge);
+      putValue("suggestedMaxAge", suggestedMaxAge);
       return this;
     }
     /**
      * Maximal age recommended for viewing content.
      */
     @NotNull public Builder suggestedMaxAge(@NotNull Double suggestedMaxAge) {
-      if (this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
-      this.suggestedMaxAge.setDouble(suggestedMaxAge);
+      putValue("suggestedMaxAge", suggestedMaxAge);
       return this;
     }
     /**
      * Maximal age recommended for viewing content.
      */
     @NotNull public Builder suggestedMaxAge(@NotNull String suggestedMaxAge) {
-      if (this.suggestedMaxAge == null) this.suggestedMaxAge = new Number();
-      this.suggestedMaxAge.setString(suggestedMaxAge);
+      putValue("suggestedMaxAge", suggestedMaxAge);
       return this;
     }
     /**
      * Minimal age recommended for viewing content.
      */
     @NotNull public Builder suggestedMinAge(@NotNull Integer integer) {
-      if (this.suggestedMinAge == null) this.suggestedMinAge = new Number();
-      this.suggestedMinAge.setInteger(integer);
+      putValue("suggestedMinAge", integer);
       return this;
     }
     /**
      * Minimal age recommended for viewing content.
      */
     @NotNull public Builder suggestedMinAge(@NotNull Long suggestedMinAge) {
-      if (this.suggestedMinAge == null) this.suggestedMinAge = new Number();
-      this.suggestedMinAge.setLong(suggestedMinAge);
+      putValue("suggestedMinAge", suggestedMinAge);
       return this;
     }
     /**
      * Minimal age recommended for viewing content.
      */
     @NotNull public Builder suggestedMinAge(@NotNull Float suggestedMinAge) {
-      if (this.suggestedMinAge == null) this.suggestedMinAge = new Number();
-      this.suggestedMinAge.setFloat(suggestedMinAge);
+      putValue("suggestedMinAge", suggestedMinAge);
       return this;
     }
     /**
      * Minimal age recommended for viewing content.
      */
     @NotNull public Builder suggestedMinAge(@NotNull Double suggestedMinAge) {
-      if (this.suggestedMinAge == null) this.suggestedMinAge = new Number();
-      this.suggestedMinAge.setDouble(suggestedMinAge);
+      putValue("suggestedMinAge", suggestedMinAge);
       return this;
     }
     /**
      * Minimal age recommended for viewing content.
      */
     @NotNull public Builder suggestedMinAge(@NotNull String suggestedMinAge) {
-      if (this.suggestedMinAge == null) this.suggestedMinAge = new Number();
-      this.suggestedMinAge.setString(suggestedMinAge);
+      putValue("suggestedMinAge", suggestedMinAge);
       return this;
     }
     /**
      * The target group associated with a given audience (e.g. veterans, car owners, musicians, etc.).
      */
     @NotNull public Builder audienceType(@NotNull String audienceType) {
-      this.audienceType = audienceType;
+      putValue("audienceType", audienceType);
       return this;
     }
     /**
      * The geographic area associated with the audience.
      */
     @NotNull public Builder geographicArea(@NotNull AdministrativeArea administrativeArea) {
-      this.geographicArea = administrativeArea;
+      putValue("geographicArea", administrativeArea);
       return this;
     }
     /**
      * The geographic area associated with the audience.
      */
     @NotNull public Builder geographicArea(@NotNull AdministrativeArea.Builder administrativeArea) {
-      return this.geographicArea(administrativeArea.build());
+      putValue("geographicArea", administrativeArea.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -297,8 +478,7 @@ public class PeopleAudience extends Audience {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -332,7 +512,8 @@ public class PeopleAudience extends Audience {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -365,110 +546,69 @@ public class PeopleAudience extends Audience {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("healthCondition".equals(key) && value instanceof MedicalCondition) { healthCondition((MedicalCondition)value); continue; }
-        if ("requiredGender".equals(key) && value instanceof String) { requiredGender((String)value); continue; }
-        if ("requiredMaxAge".equals(key) && value instanceof Integer) { requiredMaxAge((Integer)value); continue; }
-        if ("requiredMinAge".equals(key) && value instanceof Integer) { requiredMinAge((Integer)value); continue; }
-        if ("suggestedGender".equals(key) && value instanceof String) { suggestedGender((String)value); continue; }
-        if ("suggestedMaxAge".equals(key) && value instanceof Integer) { suggestedMaxAge((Integer)value); continue; }
-        if ("suggestedMaxAge".equals(key) && value instanceof Long) { suggestedMaxAge((Long)value); continue; }
-        if ("suggestedMaxAge".equals(key) && value instanceof Float) { suggestedMaxAge((Float)value); continue; }
-        if ("suggestedMaxAge".equals(key) && value instanceof Double) { suggestedMaxAge((Double)value); continue; }
-        if ("suggestedMaxAge".equals(key) && value instanceof String) { suggestedMaxAge((String)value); continue; }
-        if ("suggestedMinAge".equals(key) && value instanceof Integer) { suggestedMinAge((Integer)value); continue; }
-        if ("suggestedMinAge".equals(key) && value instanceof Long) { suggestedMinAge((Long)value); continue; }
-        if ("suggestedMinAge".equals(key) && value instanceof Float) { suggestedMinAge((Float)value); continue; }
-        if ("suggestedMinAge".equals(key) && value instanceof Double) { suggestedMinAge((Double)value); continue; }
-        if ("suggestedMinAge".equals(key) && value instanceof String) { suggestedMinAge((String)value); continue; }
-        if ("audienceType".equals(key) && value instanceof String) { audienceType((String)value); continue; }
-        if ("geographicArea".equals(key) && value instanceof AdministrativeArea) { geographicArea((AdministrativeArea)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("healthCondition".equals(key) && value instanceof MedicalCondition) { healthCondition((MedicalCondition)value); return; }
+      if ("requiredGender".equals(key) && value instanceof String) { requiredGender((String)value); return; }
+      if ("requiredMaxAge".equals(key) && value instanceof Integer) { requiredMaxAge((Integer)value); return; }
+      if ("requiredMinAge".equals(key) && value instanceof Integer) { requiredMinAge((Integer)value); return; }
+      if ("suggestedGender".equals(key) && value instanceof String) { suggestedGender((String)value); return; }
+      if ("suggestedMaxAge".equals(key) && value instanceof Integer) { suggestedMaxAge((Integer)value); return; }
+      if ("suggestedMaxAge".equals(key) && value instanceof Long) { suggestedMaxAge((Long)value); return; }
+      if ("suggestedMaxAge".equals(key) && value instanceof Float) { suggestedMaxAge((Float)value); return; }
+      if ("suggestedMaxAge".equals(key) && value instanceof Double) { suggestedMaxAge((Double)value); return; }
+      if ("suggestedMaxAge".equals(key) && value instanceof String) { suggestedMaxAge((String)value); return; }
+      if ("suggestedMinAge".equals(key) && value instanceof Integer) { suggestedMinAge((Integer)value); return; }
+      if ("suggestedMinAge".equals(key) && value instanceof Long) { suggestedMinAge((Long)value); return; }
+      if ("suggestedMinAge".equals(key) && value instanceof Float) { suggestedMinAge((Float)value); return; }
+      if ("suggestedMinAge".equals(key) && value instanceof Double) { suggestedMinAge((Double)value); return; }
+      if ("suggestedMinAge".equals(key) && value instanceof String) { suggestedMinAge((String)value); return; }
+      super.fromMap(key, value);
     }
-    private MedicalCondition healthCondition;
-    private String requiredGender;
-    private Integer requiredMaxAge;
-    private Integer requiredMinAge;
-    private String suggestedGender;
-    private Number suggestedMaxAge;
-    private Number suggestedMinAge;
-    private String audienceType;
-    private AdministrativeArea geographicArea;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private MedicalCondition myHealthCondition;
-  private String myRequiredGender;
-  private Integer myRequiredMaxAge;
-  private Integer myRequiredMinAge;
-  private String mySuggestedGender;
-  private Number mySuggestedMaxAge;
-  private Number mySuggestedMinAge;
 }

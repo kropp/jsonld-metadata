@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A reservation for air travel.Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use http://schema.org/Offer.
@@ -29,323 +30,363 @@ public class FlightReservation extends Reservation {
   /**
    * The airline-specific indicator of boarding order / preference.
    */
-  public String getBoardingGroup() { return myBoardingGroup; }
+  @JsonIgnore public String getBoardingGroup() {
+    return (String) getValue("boardingGroup");
+  }
+  /**
+   * The airline-specific indicator of boarding order / preference.
+   */
+  @JsonIgnore public Collection<String> getBoardingGroups() {
+    final Object current = myData.get("boardingGroup");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The passenger's sequence number as assigned by the airline.
    */
-  public String getPassengerSequenceNumber() { return myPassengerSequenceNumber; }
+  @JsonIgnore public String getPassengerSequenceNumber() {
+    return (String) getValue("passengerSequenceNumber");
+  }
+  /**
+   * The passenger's sequence number as assigned by the airline.
+   */
+  @JsonIgnore public Collection<String> getPassengerSequenceNumbers() {
+    final Object current = myData.get("passengerSequenceNumber");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The type of security screening the passenger is subject to.
    */
-  public String getSecurityScreening() { return mySecurityScreening; }
+  @JsonIgnore public String getSecurityScreening() {
+    return (String) getValue("securityScreening");
+  }
+  /**
+   * The type of security screening the passenger is subject to.
+   */
+  @JsonIgnore public Collection<String> getSecurityScreenings() {
+    final Object current = myData.get("securityScreening");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
    */
-  public QualitativeValueOrString getPassengerPriorityStatus() { return myPassengerPriorityStatus; }
-  protected FlightReservation(String boardingGroup, String passengerSequenceNumber, String securityScreening, QualitativeValueOrString passengerPriorityStatus, String reservationId, ReservationStatusType reservationStatus, Thing reservationFor, OrganizationOrPerson underName, OrganizationOrPerson provider, java.util.Date bookingTime, java.util.Date modifiedTime, ProgramMembership programMembershipUsed, Ticket reservedTicket, Number totalPrice, String priceCurrency, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myBoardingGroup = boardingGroup;
-    myPassengerSequenceNumber = passengerSequenceNumber;
-    mySecurityScreening = securityScreening;
-    myPassengerPriorityStatus = passengerPriorityStatus;
-    myBoardingGroup = boardingGroup;
-    myPassengerSequenceNumber = passengerSequenceNumber;
-    mySecurityScreening = securityScreening;
-    myPassengerPriorityStatus = passengerPriorityStatus;
+  @JsonIgnore public QualitativeValue getPassengerPriorityStatusQualitativeValue() {
+    return (QualitativeValue) getValue("passengerPriorityStatus");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myBoardingGroup != null ? myBoardingGroup.hashCode() : 0);
-    result = 31 * result + (myPassengerSequenceNumber != null ? myPassengerSequenceNumber.hashCode() : 0);
-    result = 31 * result + (mySecurityScreening != null ? mySecurityScreening.hashCode() : 0);
-    result = 31 * result + (myPassengerPriorityStatus != null ? myPassengerPriorityStatus.hashCode() : 0);
-    return result;
+  /**
+   * The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
+   */
+  @JsonIgnore public Collection<QualitativeValue> getPassengerPriorityStatusQualitativeValues() {
+    final Object current = myData.get("passengerPriorityStatus");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QualitativeValue>) current;
+    }
+    return Arrays.asList((QualitativeValue) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    FlightReservation flightReservation = (FlightReservation) o;
-    if (!super.equals(o)) return false;
-    if (myBoardingGroup != null ? !myBoardingGroup.equals(flightReservation.myBoardingGroup) : flightReservation.myBoardingGroup != null) return false;
-    if (myPassengerSequenceNumber != null ? !myPassengerSequenceNumber.equals(flightReservation.myPassengerSequenceNumber) : flightReservation.myPassengerSequenceNumber != null) return false;
-    if (mySecurityScreening != null ? !mySecurityScreening.equals(flightReservation.mySecurityScreening) : flightReservation.mySecurityScreening != null) return false;
-    if (myPassengerPriorityStatus != null ? !myPassengerPriorityStatus.equals(flightReservation.myPassengerPriorityStatus) : flightReservation.myPassengerPriorityStatus != null) return false;
-    return true;
+  /**
+   * The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
+   */
+  @JsonIgnore public String getPassengerPriorityStatusString() {
+    return (String) getValue("passengerPriorityStatus");
+  }
+  /**
+   * The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
+   */
+  @JsonIgnore public Collection<String> getPassengerPriorityStatusStrings() {
+    final Object current = myData.get("passengerPriorityStatus");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  protected FlightReservation(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link FlightReservation}
    */
-  public static class Builder implements ThingBuilder<FlightReservation> {
+  public static class Builder extends Reservation.Builder {
     public FlightReservation build() {
-      return new FlightReservation(boardingGroup, passengerSequenceNumber, securityScreening, passengerPriorityStatus, reservationId, reservationStatus, reservationFor, underName, provider, bookingTime, modifiedTime, programMembershipUsed, reservedTicket, totalPrice, priceCurrency, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new FlightReservation(myData);
     }
     /**
      * The airline-specific indicator of boarding order / preference.
      */
     @NotNull public Builder boardingGroup(@NotNull String boardingGroup) {
-      this.boardingGroup = boardingGroup;
+      putValue("boardingGroup", boardingGroup);
       return this;
     }
     /**
      * The passenger's sequence number as assigned by the airline.
      */
     @NotNull public Builder passengerSequenceNumber(@NotNull String passengerSequenceNumber) {
-      this.passengerSequenceNumber = passengerSequenceNumber;
+      putValue("passengerSequenceNumber", passengerSequenceNumber);
       return this;
     }
     /**
      * The type of security screening the passenger is subject to.
      */
     @NotNull public Builder securityScreening(@NotNull String securityScreening) {
-      this.securityScreening = securityScreening;
+      putValue("securityScreening", securityScreening);
       return this;
     }
     /**
      * The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
      */
     @NotNull public Builder passengerPriorityStatus(@NotNull QualitativeValue qualitativeValue) {
-      if (this.passengerPriorityStatus == null) this.passengerPriorityStatus = new QualitativeValueOrString();
-      this.passengerPriorityStatus.setQualitativeValue(qualitativeValue);
+      putValue("passengerPriorityStatus", qualitativeValue);
       return this;
     }
     /**
      * The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
      */
     @NotNull public Builder passengerPriorityStatus(@NotNull QualitativeValue.Builder qualitativeValue) {
-      return this.passengerPriorityStatus(qualitativeValue.build());
+      putValue("passengerPriorityStatus", qualitativeValue.build());
+      return this;
     }
     /**
      * The priority status assigned to a passenger for security or boarding (e.g. FastTrack or Priority).
      */
     @NotNull public Builder passengerPriorityStatus(@NotNull String passengerPriorityStatus) {
-      if (this.passengerPriorityStatus == null) this.passengerPriorityStatus = new QualitativeValueOrString();
-      this.passengerPriorityStatus.setString(passengerPriorityStatus);
+      putValue("passengerPriorityStatus", passengerPriorityStatus);
       return this;
     }
     /**
      * A unique identifier for the reservation.
      */
     @NotNull public Builder reservationId(@NotNull String reservationId) {
-      this.reservationId = reservationId;
+      putValue("reservationId", reservationId);
       return this;
     }
     /**
      * The current status of the reservation.
      */
     @NotNull public Builder reservationStatus(@NotNull ReservationStatusType reservationStatusType) {
-      this.reservationStatus = reservationStatusType;
+      putValue("reservationStatus", reservationStatusType);
       return this;
     }
     /**
      * The current status of the reservation.
      */
     @NotNull public Builder reservationStatus(@NotNull ReservationStatusType.Builder reservationStatusType) {
-      return this.reservationStatus(reservationStatusType.build());
+      putValue("reservationStatus", reservationStatusType.build());
+      return this;
     }
     /**
      * The thing -- flight, event, restaurant,etc. being reserved.
      */
     @NotNull public Builder reservationFor(@NotNull Thing thing) {
-      this.reservationFor = thing;
+      putValue("reservationFor", thing);
       return this;
     }
     /**
      * The thing -- flight, event, restaurant,etc. being reserved.
      */
     @NotNull public Builder reservationFor(@NotNull Thing.Builder thing) {
-      return this.reservationFor(thing.build());
+      putValue("reservationFor", thing.build());
+      return this;
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
     @NotNull public Builder underName(@NotNull Organization organization) {
-      if (this.underName == null) this.underName = new OrganizationOrPerson();
-      this.underName.setOrganization(organization);
+      putValue("underName", organization);
       return this;
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
     @NotNull public Builder underName(@NotNull Organization.Builder organization) {
-      return this.underName(organization.build());
+      putValue("underName", organization.build());
+      return this;
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
     @NotNull public Builder underName(@NotNull Person person) {
-      if (this.underName == null) this.underName = new OrganizationOrPerson();
-      this.underName.setPerson(person);
+      putValue("underName", person);
       return this;
     }
     /**
      * The person or organization the reservation or ticket is for.
      */
     @NotNull public Builder underName(@NotNull Person.Builder person) {
-      return this.underName(person.build());
+      putValue("underName", person.build());
+      return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Organization organization) {
-      if (this.provider == null) this.provider = new OrganizationOrPerson();
-      this.provider.setOrganization(organization);
+      putValue("provider", organization);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Organization.Builder organization) {
-      return this.provider(organization.build());
+      putValue("provider", organization.build());
+      return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Person person) {
-      if (this.provider == null) this.provider = new OrganizationOrPerson();
-      this.provider.setPerson(person);
+      putValue("provider", person);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Person.Builder person) {
-      return this.provider(person.build());
+      putValue("provider", person.build());
+      return this;
     }
     /**
      * The date and time the reservation was booked.
      */
     @NotNull public Builder bookingTime(@NotNull java.util.Date date) {
-      this.bookingTime = date;
+      putValue("bookingTime", date);
       return this;
     }
     /**
      * The date and time the reservation was modified.
      */
     @NotNull public Builder modifiedTime(@NotNull java.util.Date date) {
-      this.modifiedTime = date;
+      putValue("modifiedTime", date);
       return this;
     }
     /**
      * Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.
      */
     @NotNull public Builder programMembershipUsed(@NotNull ProgramMembership programMembership) {
-      this.programMembershipUsed = programMembership;
+      putValue("programMembershipUsed", programMembership);
       return this;
     }
     /**
      * Any membership in a frequent flyer, hotel loyalty program, etc. being applied to the reservation.
      */
     @NotNull public Builder programMembershipUsed(@NotNull ProgramMembership.Builder programMembership) {
-      return this.programMembershipUsed(programMembership.build());
+      putValue("programMembershipUsed", programMembership.build());
+      return this;
     }
     /**
      * A ticket associated with the reservation.
      */
     @NotNull public Builder reservedTicket(@NotNull Ticket ticket) {
-      this.reservedTicket = ticket;
+      putValue("reservedTicket", ticket);
       return this;
     }
     /**
      * A ticket associated with the reservation.
      */
     @NotNull public Builder reservedTicket(@NotNull Ticket.Builder ticket) {
-      return this.reservedTicket(ticket.build());
+      putValue("reservedTicket", ticket.build());
+      return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull Integer integer) {
-      if (this.totalPrice == null) this.totalPrice = new Number();
-      this.totalPrice.setInteger(integer);
+      putValue("totalPrice", integer);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull Long totalPrice) {
-      if (this.totalPrice == null) this.totalPrice = new Number();
-      this.totalPrice.setLong(totalPrice);
+      putValue("totalPrice", totalPrice);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull Float totalPrice) {
-      if (this.totalPrice == null) this.totalPrice = new Number();
-      this.totalPrice.setFloat(totalPrice);
+      putValue("totalPrice", totalPrice);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull Double totalPrice) {
-      if (this.totalPrice == null) this.totalPrice = new Number();
-      this.totalPrice.setDouble(totalPrice);
+      putValue("totalPrice", totalPrice);
       return this;
     }
     /**
      * The total price for the reservation or ticket, including applicable taxes, shipping, etc.
      */
     @NotNull public Builder totalPrice(@NotNull String totalPrice) {
-      if (this.totalPrice == null) this.totalPrice = new Number();
-      this.totalPrice.setString(totalPrice);
+      putValue("totalPrice", totalPrice);
       return this;
     }
     /**
      * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
      */
     @NotNull public Builder priceCurrency(@NotNull String priceCurrency) {
-      this.priceCurrency = priceCurrency;
+      putValue("priceCurrency", priceCurrency);
       return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Organization organization) {
-      if (this.broker == null) this.broker = new OrganizationOrPerson();
-      this.broker.setOrganization(organization);
+      putValue("broker", organization);
       return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Organization.Builder organization) {
-      return this.broker(organization.build());
+      putValue("broker", organization.build());
+      return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Person person) {
-      if (this.broker == null) this.broker = new OrganizationOrPerson();
-      this.broker.setPerson(person);
+      putValue("broker", person);
       return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Person.Builder person) {
-      return this.broker(person.build());
+      putValue("broker", person.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -379,8 +420,7 @@ public class FlightReservation extends Reservation {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -414,7 +454,8 @@ public class FlightReservation extends Reservation {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -447,121 +488,59 @@ public class FlightReservation extends Reservation {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("boardingGroup".equals(key) && value instanceof String) { boardingGroup((String)value); continue; }
-        if ("passengerSequenceNumber".equals(key) && value instanceof String) { passengerSequenceNumber((String)value); continue; }
-        if ("securityScreening".equals(key) && value instanceof String) { securityScreening((String)value); continue; }
-        if ("passengerPriorityStatus".equals(key) && value instanceof QualitativeValue) { passengerPriorityStatus((QualitativeValue)value); continue; }
-        if ("passengerPriorityStatus".equals(key) && value instanceof String) { passengerPriorityStatus((String)value); continue; }
-        if ("reservationId".equals(key) && value instanceof String) { reservationId((String)value); continue; }
-        if ("reservationStatus".equals(key) && value instanceof ReservationStatusType) { reservationStatus((ReservationStatusType)value); continue; }
-        if ("reservationFor".equals(key) && value instanceof Thing) { reservationFor((Thing)value); continue; }
-        if ("underName".equals(key) && value instanceof Organization) { underName((Organization)value); continue; }
-        if ("underName".equals(key) && value instanceof Person) { underName((Person)value); continue; }
-        if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); continue; }
-        if ("provider".equals(key) && value instanceof Person) { provider((Person)value); continue; }
-        if ("bookingTime".equals(key) && value instanceof java.util.Date) { bookingTime((java.util.Date)value); continue; }
-        if ("modifiedTime".equals(key) && value instanceof java.util.Date) { modifiedTime((java.util.Date)value); continue; }
-        if ("programMembershipUsed".equals(key) && value instanceof ProgramMembership) { programMembershipUsed((ProgramMembership)value); continue; }
-        if ("reservedTicket".equals(key) && value instanceof Ticket) { reservedTicket((Ticket)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof Integer) { totalPrice((Integer)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof Long) { totalPrice((Long)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof Float) { totalPrice((Float)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof Double) { totalPrice((Double)value); continue; }
-        if ("totalPrice".equals(key) && value instanceof String) { totalPrice((String)value); continue; }
-        if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); continue; }
-        if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); continue; }
-        if ("broker".equals(key) && value instanceof Person) { broker((Person)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("boardingGroup".equals(key) && value instanceof String) { boardingGroup((String)value); return; }
+      if ("passengerSequenceNumber".equals(key) && value instanceof String) { passengerSequenceNumber((String)value); return; }
+      if ("securityScreening".equals(key) && value instanceof String) { securityScreening((String)value); return; }
+      if ("passengerPriorityStatus".equals(key) && value instanceof QualitativeValue) { passengerPriorityStatus((QualitativeValue)value); return; }
+      if ("passengerPriorityStatus".equals(key) && value instanceof String) { passengerPriorityStatus((String)value); return; }
+      super.fromMap(key, value);
     }
-    private String boardingGroup;
-    private String passengerSequenceNumber;
-    private String securityScreening;
-    private QualitativeValueOrString passengerPriorityStatus;
-    private String reservationId;
-    private ReservationStatusType reservationStatus;
-    private Thing reservationFor;
-    private OrganizationOrPerson underName;
-    private OrganizationOrPerson provider;
-    private java.util.Date bookingTime;
-    private java.util.Date modifiedTime;
-    private ProgramMembership programMembershipUsed;
-    private Ticket reservedTicket;
-    private Number totalPrice;
-    private String priceCurrency;
-    private OrganizationOrPerson broker;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private String myBoardingGroup;
-  private String myPassengerSequenceNumber;
-  private String mySecurityScreening;
-  private QualitativeValueOrString myPassengerPriorityStatus;
 }

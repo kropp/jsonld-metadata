@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * An airline flight.
@@ -29,386 +30,593 @@ public class Flight extends Intangible {
   /**
    * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
    */
-  public Participant getSeller() { return mySeller; }
+  @JsonIgnore public Participant getSeller() {
+    return (Participant) getValue("seller");
+  }
+  /**
+   * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
+   */
+  @JsonIgnore public Collection<Participant> getSellers() {
+    final Object current = myData.get("seller");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Participant>) current;
+    }
+    return Arrays.asList((Participant) current);
+  }
   /**
    * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
    */
-  public OrganizationOrPerson getProvider() { return myProvider; }
+  @JsonIgnore public Organization getProviderOrganization() {
+    return (Organization) getValue("provider");
+  }
+  /**
+   * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+   */
+  @JsonIgnore public Collection<Organization> getProviderOrganizations() {
+    final Object current = myData.get("provider");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+   */
+  @JsonIgnore public Person getProviderPerson() {
+    return (Person) getValue("provider");
+  }
+  /**
+   * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+   */
+  @JsonIgnore public Collection<Person> getProviderPersons() {
+    final Object current = myData.get("provider");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
    */
-  public String getFlightNumber() { return myFlightNumber; }
+  @JsonIgnore public String getFlightNumber() {
+    return (String) getValue("flightNumber");
+  }
+  /**
+   * The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
+   */
+  @JsonIgnore public Collection<String> getFlightNumbers() {
+    final Object current = myData.get("flightNumber");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The expected departure time.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getDepartureTime() { return myDepartureTime; }
+  @JsonIgnore public java.util.Date getDepartureTime() {
+    return (java.util.Date) getValue("departureTime");
+  }
+  /**
+   * The expected departure time.
+   */
+  @JsonIgnore public Collection<java.util.Date> getDepartureTimes() {
+    final Object current = myData.get("departureTime");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The expected arrival time.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getArrivalTime() { return myArrivalTime; }
+  @JsonIgnore public java.util.Date getArrivalTime() {
+    return (java.util.Date) getValue("arrivalTime");
+  }
+  /**
+   * The expected arrival time.
+   */
+  @JsonIgnore public Collection<java.util.Date> getArrivalTimes() {
+    final Object current = myData.get("arrivalTime");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The airport where the flight originates.
    */
-  public Airport getDepartureAirport() { return myDepartureAirport; }
+  @JsonIgnore public Airport getDepartureAirport() {
+    return (Airport) getValue("departureAirport");
+  }
+  /**
+   * The airport where the flight originates.
+   */
+  @JsonIgnore public Collection<Airport> getDepartureAirports() {
+    final Object current = myData.get("departureAirport");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Airport>) current;
+    }
+    return Arrays.asList((Airport) current);
+  }
   /**
    * The airport where the flight terminates.
    */
-  public Airport getArrivalAirport() { return myArrivalAirport; }
+  @JsonIgnore public Airport getArrivalAirport() {
+    return (Airport) getValue("arrivalAirport");
+  }
+  /**
+   * The airport where the flight terminates.
+   */
+  @JsonIgnore public Collection<Airport> getArrivalAirports() {
+    final Object current = myData.get("arrivalAirport");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Airport>) current;
+    }
+    return Arrays.asList((Airport) current);
+  }
   /**
    * Identifier of the flight's departure gate.
    */
-  public String getDepartureGate() { return myDepartureGate; }
+  @JsonIgnore public String getDepartureGate() {
+    return (String) getValue("departureGate");
+  }
+  /**
+   * Identifier of the flight's departure gate.
+   */
+  @JsonIgnore public Collection<String> getDepartureGates() {
+    final Object current = myData.get("departureGate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Identifier of the flight's arrival gate.
    */
-  public String getArrivalGate() { return myArrivalGate; }
+  @JsonIgnore public String getArrivalGate() {
+    return (String) getValue("arrivalGate");
+  }
+  /**
+   * Identifier of the flight's arrival gate.
+   */
+  @JsonIgnore public Collection<String> getArrivalGates() {
+    final Object current = myData.get("arrivalGate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The type of boarding policy used by the airline (e.g. zone-based or group-based).
    */
-  public BoardingPolicyType getBoardingPolicy() { return myBoardingPolicy; }
+  @JsonIgnore public BoardingPolicyType getBoardingPolicy() {
+    return (BoardingPolicyType) getValue("boardingPolicy");
+  }
+  /**
+   * The type of boarding policy used by the airline (e.g. zone-based or group-based).
+   */
+  @JsonIgnore public Collection<BoardingPolicyType> getBoardingPolicys() {
+    final Object current = myData.get("boardingPolicy");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<BoardingPolicyType>) current;
+    }
+    return Arrays.asList((BoardingPolicyType) current);
+  }
   /**
    * Identifier of the flight's departure terminal.
    */
-  public String getDepartureTerminal() { return myDepartureTerminal; }
+  @JsonIgnore public String getDepartureTerminal() {
+    return (String) getValue("departureTerminal");
+  }
+  /**
+   * Identifier of the flight's departure terminal.
+   */
+  @JsonIgnore public Collection<String> getDepartureTerminals() {
+    final Object current = myData.get("departureTerminal");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Identifier of the flight's arrival terminal.
    */
-  public String getArrivalTerminal() { return myArrivalTerminal; }
+  @JsonIgnore public String getArrivalTerminal() {
+    return (String) getValue("arrivalTerminal");
+  }
+  /**
+   * Identifier of the flight's arrival terminal.
+   */
+  @JsonIgnore public Collection<String> getArrivalTerminals() {
+    final Object current = myData.get("arrivalTerminal");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The kind of aircraft (e.g., "Boeing 747").
    */
-  public StringOrVehicle getAircraft() { return myAircraft; }
+  @JsonIgnore public String getAircraftString() {
+    return (String) getValue("aircraft");
+  }
+  /**
+   * The kind of aircraft (e.g., "Boeing 747").
+   */
+  @JsonIgnore public Collection<String> getAircraftStrings() {
+    final Object current = myData.get("aircraft");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  /**
+   * The kind of aircraft (e.g., "Boeing 747").
+   */
+  @JsonIgnore public Vehicle getAircraftVehicle() {
+    return (Vehicle) getValue("aircraft");
+  }
+  /**
+   * The kind of aircraft (e.g., "Boeing 747").
+   */
+  @JsonIgnore public Collection<Vehicle> getAircraftVehicles() {
+    final Object current = myData.get("aircraft");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Vehicle>) current;
+    }
+    return Arrays.asList((Vehicle) current);
+  }
   /**
    * Description of the meals that will be provided or available for purchase.
    */
-  public String getMealService() { return myMealService; }
+  @JsonIgnore public String getMealService() {
+    return (String) getValue("mealService");
+  }
+  /**
+   * Description of the meals that will be provided or available for purchase.
+   */
+  @JsonIgnore public Collection<String> getMealServices() {
+    final Object current = myData.get("mealService");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The estimated time the flight will take.
    */
-  public DurationOrString getEstimatedFlightDuration() { return myEstimatedFlightDuration; }
+  @JsonIgnore public Duration getEstimatedFlightDurationDuration() {
+    return (Duration) getValue("estimatedFlightDuration");
+  }
+  /**
+   * The estimated time the flight will take.
+   */
+  @JsonIgnore public Collection<Duration> getEstimatedFlightDurationDurations() {
+    final Object current = myData.get("estimatedFlightDuration");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Duration>) current;
+    }
+    return Arrays.asList((Duration) current);
+  }
+  /**
+   * The estimated time the flight will take.
+   */
+  @JsonIgnore public String getEstimatedFlightDurationString() {
+    return (String) getValue("estimatedFlightDuration");
+  }
+  /**
+   * The estimated time the flight will take.
+   */
+  @JsonIgnore public Collection<String> getEstimatedFlightDurationStrings() {
+    final Object current = myData.get("estimatedFlightDuration");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The distance of the flight.
    */
-  public DistanceOrString getFlightDistance() { return myFlightDistance; }
+  @JsonIgnore public Distance getFlightDistanceDistance() {
+    return (Distance) getValue("flightDistance");
+  }
+  /**
+   * The distance of the flight.
+   */
+  @JsonIgnore public Collection<Distance> getFlightDistanceDistances() {
+    final Object current = myData.get("flightDistance");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Distance>) current;
+    }
+    return Arrays.asList((Distance) current);
+  }
+  /**
+   * The distance of the flight.
+   */
+  @JsonIgnore public String getFlightDistanceString() {
+    return (String) getValue("flightDistance");
+  }
+  /**
+   * The distance of the flight.
+   */
+  @JsonIgnore public Collection<String> getFlightDistanceStrings() {
+    final Object current = myData.get("flightDistance");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The time when a passenger can check into the flight online.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getWebCheckinTime() { return myWebCheckinTime; }
-  protected Flight(Participant seller, OrganizationOrPerson provider, String flightNumber, java.util.Date departureTime, java.util.Date arrivalTime, Airport departureAirport, Airport arrivalAirport, String departureGate, String arrivalGate, BoardingPolicyType boardingPolicy, String departureTerminal, String arrivalTerminal, StringOrVehicle aircraft, String mealService, DurationOrString estimatedFlightDuration, DistanceOrString flightDistance, java.util.Date webCheckinTime, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    mySeller = seller;
-    myProvider = provider;
-    myFlightNumber = flightNumber;
-    myDepartureTime = departureTime;
-    myArrivalTime = arrivalTime;
-    myDepartureAirport = departureAirport;
-    myArrivalAirport = arrivalAirport;
-    myDepartureGate = departureGate;
-    myArrivalGate = arrivalGate;
-    myBoardingPolicy = boardingPolicy;
-    myDepartureTerminal = departureTerminal;
-    myArrivalTerminal = arrivalTerminal;
-    myAircraft = aircraft;
-    myMealService = mealService;
-    myEstimatedFlightDuration = estimatedFlightDuration;
-    myFlightDistance = flightDistance;
-    myWebCheckinTime = webCheckinTime;
-    mySeller = seller;
-    myProvider = provider;
-    myFlightNumber = flightNumber;
-    myDepartureTime = departureTime;
-    myArrivalTime = arrivalTime;
-    myDepartureAirport = departureAirport;
-    myArrivalAirport = arrivalAirport;
-    myDepartureGate = departureGate;
-    myArrivalGate = arrivalGate;
-    myBoardingPolicy = boardingPolicy;
-    myDepartureTerminal = departureTerminal;
-    myArrivalTerminal = arrivalTerminal;
-    myAircraft = aircraft;
-    myMealService = mealService;
-    myEstimatedFlightDuration = estimatedFlightDuration;
-    myFlightDistance = flightDistance;
-    myWebCheckinTime = webCheckinTime;
+  @JsonIgnore public java.util.Date getWebCheckinTime() {
+    return (java.util.Date) getValue("webCheckinTime");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
-    result = 31 * result + (myProvider != null ? myProvider.hashCode() : 0);
-    result = 31 * result + (myFlightNumber != null ? myFlightNumber.hashCode() : 0);
-    result = 31 * result + (myDepartureTime != null ? myDepartureTime.hashCode() : 0);
-    result = 31 * result + (myArrivalTime != null ? myArrivalTime.hashCode() : 0);
-    result = 31 * result + (myDepartureAirport != null ? myDepartureAirport.hashCode() : 0);
-    result = 31 * result + (myArrivalAirport != null ? myArrivalAirport.hashCode() : 0);
-    result = 31 * result + (myDepartureGate != null ? myDepartureGate.hashCode() : 0);
-    result = 31 * result + (myArrivalGate != null ? myArrivalGate.hashCode() : 0);
-    result = 31 * result + (myBoardingPolicy != null ? myBoardingPolicy.hashCode() : 0);
-    result = 31 * result + (myDepartureTerminal != null ? myDepartureTerminal.hashCode() : 0);
-    result = 31 * result + (myArrivalTerminal != null ? myArrivalTerminal.hashCode() : 0);
-    result = 31 * result + (myAircraft != null ? myAircraft.hashCode() : 0);
-    result = 31 * result + (myMealService != null ? myMealService.hashCode() : 0);
-    result = 31 * result + (myEstimatedFlightDuration != null ? myEstimatedFlightDuration.hashCode() : 0);
-    result = 31 * result + (myFlightDistance != null ? myFlightDistance.hashCode() : 0);
-    result = 31 * result + (myWebCheckinTime != null ? myWebCheckinTime.hashCode() : 0);
-    return result;
+  /**
+   * The time when a passenger can check into the flight online.
+   */
+  @JsonIgnore public Collection<java.util.Date> getWebCheckinTimes() {
+    final Object current = myData.get("webCheckinTime");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Flight flight = (Flight) o;
-    if (!super.equals(o)) return false;
-    if (mySeller != null ? !mySeller.equals(flight.mySeller) : flight.mySeller != null) return false;
-    if (myProvider != null ? !myProvider.equals(flight.myProvider) : flight.myProvider != null) return false;
-    if (myFlightNumber != null ? !myFlightNumber.equals(flight.myFlightNumber) : flight.myFlightNumber != null) return false;
-    if (myDepartureTime != null ? !myDepartureTime.equals(flight.myDepartureTime) : flight.myDepartureTime != null) return false;
-    if (myArrivalTime != null ? !myArrivalTime.equals(flight.myArrivalTime) : flight.myArrivalTime != null) return false;
-    if (myDepartureAirport != null ? !myDepartureAirport.equals(flight.myDepartureAirport) : flight.myDepartureAirport != null) return false;
-    if (myArrivalAirport != null ? !myArrivalAirport.equals(flight.myArrivalAirport) : flight.myArrivalAirport != null) return false;
-    if (myDepartureGate != null ? !myDepartureGate.equals(flight.myDepartureGate) : flight.myDepartureGate != null) return false;
-    if (myArrivalGate != null ? !myArrivalGate.equals(flight.myArrivalGate) : flight.myArrivalGate != null) return false;
-    if (myBoardingPolicy != null ? !myBoardingPolicy.equals(flight.myBoardingPolicy) : flight.myBoardingPolicy != null) return false;
-    if (myDepartureTerminal != null ? !myDepartureTerminal.equals(flight.myDepartureTerminal) : flight.myDepartureTerminal != null) return false;
-    if (myArrivalTerminal != null ? !myArrivalTerminal.equals(flight.myArrivalTerminal) : flight.myArrivalTerminal != null) return false;
-    if (myAircraft != null ? !myAircraft.equals(flight.myAircraft) : flight.myAircraft != null) return false;
-    if (myMealService != null ? !myMealService.equals(flight.myMealService) : flight.myMealService != null) return false;
-    if (myEstimatedFlightDuration != null ? !myEstimatedFlightDuration.equals(flight.myEstimatedFlightDuration) : flight.myEstimatedFlightDuration != null) return false;
-    if (myFlightDistance != null ? !myFlightDistance.equals(flight.myFlightDistance) : flight.myFlightDistance != null) return false;
-    if (myWebCheckinTime != null ? !myWebCheckinTime.equals(flight.myWebCheckinTime) : flight.myWebCheckinTime != null) return false;
-    return true;
+  protected Flight(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Flight}
    */
-  public static class Builder implements ThingBuilder<Flight> {
+  public static class Builder extends Intangible.Builder {
     public Flight build() {
-      return new Flight(seller, provider, flightNumber, departureTime, arrivalTime, departureAirport, arrivalAirport, departureGate, arrivalGate, boardingPolicy, departureTerminal, arrivalTerminal, aircraft, mealService, estimatedFlightDuration, flightDistance, webCheckinTime, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Flight(myData);
     }
     /**
      * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
      */
     @NotNull public Builder seller(@NotNull Participant participant) {
-      this.seller = participant;
+      putValue("seller", participant);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Organization organization) {
-      if (this.provider == null) this.provider = new OrganizationOrPerson();
-      this.provider.setOrganization(organization);
+      putValue("provider", organization);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Organization.Builder organization) {
-      return this.provider(organization.build());
+      putValue("provider", organization.build());
+      return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Person person) {
-      if (this.provider == null) this.provider = new OrganizationOrPerson();
-      this.provider.setPerson(person);
+      putValue("provider", person);
       return this;
     }
     /**
      * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
      */
     @NotNull public Builder provider(@NotNull Person.Builder person) {
-      return this.provider(person.build());
+      putValue("provider", person.build());
+      return this;
     }
     /**
      * The unique identifier for a flight including the airline IATA code. For example, if describing United flight 110, where the IATA code for United is 'UA', the flightNumber is 'UA110'.
      */
     @NotNull public Builder flightNumber(@NotNull String flightNumber) {
-      this.flightNumber = flightNumber;
+      putValue("flightNumber", flightNumber);
       return this;
     }
     /**
      * The expected departure time.
      */
     @NotNull public Builder departureTime(@NotNull java.util.Date date) {
-      this.departureTime = date;
+      putValue("departureTime", date);
       return this;
     }
     /**
      * The expected arrival time.
      */
     @NotNull public Builder arrivalTime(@NotNull java.util.Date date) {
-      this.arrivalTime = date;
+      putValue("arrivalTime", date);
       return this;
     }
     /**
      * The airport where the flight originates.
      */
     @NotNull public Builder departureAirport(@NotNull Airport airport) {
-      this.departureAirport = airport;
+      putValue("departureAirport", airport);
       return this;
     }
     /**
      * The airport where the flight originates.
      */
     @NotNull public Builder departureAirport(@NotNull Airport.Builder airport) {
-      return this.departureAirport(airport.build());
+      putValue("departureAirport", airport.build());
+      return this;
     }
     /**
      * The airport where the flight terminates.
      */
     @NotNull public Builder arrivalAirport(@NotNull Airport airport) {
-      this.arrivalAirport = airport;
+      putValue("arrivalAirport", airport);
       return this;
     }
     /**
      * The airport where the flight terminates.
      */
     @NotNull public Builder arrivalAirport(@NotNull Airport.Builder airport) {
-      return this.arrivalAirport(airport.build());
+      putValue("arrivalAirport", airport.build());
+      return this;
     }
     /**
      * Identifier of the flight's departure gate.
      */
     @NotNull public Builder departureGate(@NotNull String departureGate) {
-      this.departureGate = departureGate;
+      putValue("departureGate", departureGate);
       return this;
     }
     /**
      * Identifier of the flight's arrival gate.
      */
     @NotNull public Builder arrivalGate(@NotNull String arrivalGate) {
-      this.arrivalGate = arrivalGate;
+      putValue("arrivalGate", arrivalGate);
       return this;
     }
     /**
      * The type of boarding policy used by the airline (e.g. zone-based or group-based).
      */
     @NotNull public Builder boardingPolicy(@NotNull BoardingPolicyType boardingPolicyType) {
-      this.boardingPolicy = boardingPolicyType;
+      putValue("boardingPolicy", boardingPolicyType);
       return this;
     }
     /**
      * The type of boarding policy used by the airline (e.g. zone-based or group-based).
      */
     @NotNull public Builder boardingPolicy(@NotNull BoardingPolicyType.Builder boardingPolicyType) {
-      return this.boardingPolicy(boardingPolicyType.build());
+      putValue("boardingPolicy", boardingPolicyType.build());
+      return this;
     }
     /**
      * Identifier of the flight's departure terminal.
      */
     @NotNull public Builder departureTerminal(@NotNull String departureTerminal) {
-      this.departureTerminal = departureTerminal;
+      putValue("departureTerminal", departureTerminal);
       return this;
     }
     /**
      * Identifier of the flight's arrival terminal.
      */
     @NotNull public Builder arrivalTerminal(@NotNull String arrivalTerminal) {
-      this.arrivalTerminal = arrivalTerminal;
+      putValue("arrivalTerminal", arrivalTerminal);
       return this;
     }
     /**
      * The kind of aircraft (e.g., "Boeing 747").
      */
     @NotNull public Builder aircraft(@NotNull String aircraft) {
-      if (this.aircraft == null) this.aircraft = new StringOrVehicle();
-      this.aircraft.setString(aircraft);
+      putValue("aircraft", aircraft);
       return this;
     }
     /**
      * The kind of aircraft (e.g., "Boeing 747").
      */
     @NotNull public Builder aircraft(@NotNull Vehicle vehicle) {
-      if (this.aircraft == null) this.aircraft = new StringOrVehicle();
-      this.aircraft.setVehicle(vehicle);
+      putValue("aircraft", vehicle);
       return this;
     }
     /**
      * The kind of aircraft (e.g., "Boeing 747").
      */
     @NotNull public Builder aircraft(@NotNull Vehicle.Builder vehicle) {
-      return this.aircraft(vehicle.build());
+      putValue("aircraft", vehicle.build());
+      return this;
     }
     /**
      * Description of the meals that will be provided or available for purchase.
      */
     @NotNull public Builder mealService(@NotNull String mealService) {
-      this.mealService = mealService;
+      putValue("mealService", mealService);
       return this;
     }
     /**
      * The estimated time the flight will take.
      */
     @NotNull public Builder estimatedFlightDuration(@NotNull Duration duration) {
-      if (this.estimatedFlightDuration == null) this.estimatedFlightDuration = new DurationOrString();
-      this.estimatedFlightDuration.setDuration(duration);
+      putValue("estimatedFlightDuration", duration);
       return this;
     }
     /**
      * The estimated time the flight will take.
      */
     @NotNull public Builder estimatedFlightDuration(@NotNull Duration.Builder duration) {
-      return this.estimatedFlightDuration(duration.build());
+      putValue("estimatedFlightDuration", duration.build());
+      return this;
     }
     /**
      * The estimated time the flight will take.
      */
     @NotNull public Builder estimatedFlightDuration(@NotNull String estimatedFlightDuration) {
-      if (this.estimatedFlightDuration == null) this.estimatedFlightDuration = new DurationOrString();
-      this.estimatedFlightDuration.setString(estimatedFlightDuration);
+      putValue("estimatedFlightDuration", estimatedFlightDuration);
       return this;
     }
     /**
      * The distance of the flight.
      */
     @NotNull public Builder flightDistance(@NotNull Distance distance) {
-      if (this.flightDistance == null) this.flightDistance = new DistanceOrString();
-      this.flightDistance.setDistance(distance);
+      putValue("flightDistance", distance);
       return this;
     }
     /**
      * The distance of the flight.
      */
     @NotNull public Builder flightDistance(@NotNull Distance.Builder distance) {
-      return this.flightDistance(distance.build());
+      putValue("flightDistance", distance.build());
+      return this;
     }
     /**
      * The distance of the flight.
      */
     @NotNull public Builder flightDistance(@NotNull String flightDistance) {
-      if (this.flightDistance == null) this.flightDistance = new DistanceOrString();
-      this.flightDistance.setString(flightDistance);
+      putValue("flightDistance", flightDistance);
       return this;
     }
     /**
      * The time when a passenger can check into the flight online.
      */
     @NotNull public Builder webCheckinTime(@NotNull java.util.Date date) {
-      this.webCheckinTime = date;
+      putValue("webCheckinTime", date);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -442,8 +650,7 @@ public class Flight extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -477,7 +684,8 @@ public class Flight extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -510,132 +718,75 @@ public class Flight extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("seller".equals(key) && value instanceof Participant) { seller((Participant)value); continue; }
-        if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); continue; }
-        if ("provider".equals(key) && value instanceof Person) { provider((Person)value); continue; }
-        if ("flightNumber".equals(key) && value instanceof String) { flightNumber((String)value); continue; }
-        if ("departureTime".equals(key) && value instanceof java.util.Date) { departureTime((java.util.Date)value); continue; }
-        if ("arrivalTime".equals(key) && value instanceof java.util.Date) { arrivalTime((java.util.Date)value); continue; }
-        if ("departureAirport".equals(key) && value instanceof Airport) { departureAirport((Airport)value); continue; }
-        if ("arrivalAirport".equals(key) && value instanceof Airport) { arrivalAirport((Airport)value); continue; }
-        if ("departureGate".equals(key) && value instanceof String) { departureGate((String)value); continue; }
-        if ("arrivalGate".equals(key) && value instanceof String) { arrivalGate((String)value); continue; }
-        if ("boardingPolicy".equals(key) && value instanceof BoardingPolicyType) { boardingPolicy((BoardingPolicyType)value); continue; }
-        if ("departureTerminal".equals(key) && value instanceof String) { departureTerminal((String)value); continue; }
-        if ("arrivalTerminal".equals(key) && value instanceof String) { arrivalTerminal((String)value); continue; }
-        if ("aircraft".equals(key) && value instanceof String) { aircraft((String)value); continue; }
-        if ("aircraft".equals(key) && value instanceof Vehicle) { aircraft((Vehicle)value); continue; }
-        if ("mealService".equals(key) && value instanceof String) { mealService((String)value); continue; }
-        if ("estimatedFlightDuration".equals(key) && value instanceof Duration) { estimatedFlightDuration((Duration)value); continue; }
-        if ("estimatedFlightDuration".equals(key) && value instanceof String) { estimatedFlightDuration((String)value); continue; }
-        if ("flightDistance".equals(key) && value instanceof Distance) { flightDistance((Distance)value); continue; }
-        if ("flightDistance".equals(key) && value instanceof String) { flightDistance((String)value); continue; }
-        if ("webCheckinTime".equals(key) && value instanceof java.util.Date) { webCheckinTime((java.util.Date)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("seller".equals(key) && value instanceof Participant) { seller((Participant)value); return; }
+      if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
+      if ("provider".equals(key) && value instanceof Person) { provider((Person)value); return; }
+      if ("flightNumber".equals(key) && value instanceof String) { flightNumber((String)value); return; }
+      if ("departureTime".equals(key) && value instanceof java.util.Date) { departureTime((java.util.Date)value); return; }
+      if ("arrivalTime".equals(key) && value instanceof java.util.Date) { arrivalTime((java.util.Date)value); return; }
+      if ("departureAirport".equals(key) && value instanceof Airport) { departureAirport((Airport)value); return; }
+      if ("arrivalAirport".equals(key) && value instanceof Airport) { arrivalAirport((Airport)value); return; }
+      if ("departureGate".equals(key) && value instanceof String) { departureGate((String)value); return; }
+      if ("arrivalGate".equals(key) && value instanceof String) { arrivalGate((String)value); return; }
+      if ("boardingPolicy".equals(key) && value instanceof BoardingPolicyType) { boardingPolicy((BoardingPolicyType)value); return; }
+      if ("departureTerminal".equals(key) && value instanceof String) { departureTerminal((String)value); return; }
+      if ("arrivalTerminal".equals(key) && value instanceof String) { arrivalTerminal((String)value); return; }
+      if ("aircraft".equals(key) && value instanceof String) { aircraft((String)value); return; }
+      if ("aircraft".equals(key) && value instanceof Vehicle) { aircraft((Vehicle)value); return; }
+      if ("mealService".equals(key) && value instanceof String) { mealService((String)value); return; }
+      if ("estimatedFlightDuration".equals(key) && value instanceof Duration) { estimatedFlightDuration((Duration)value); return; }
+      if ("estimatedFlightDuration".equals(key) && value instanceof String) { estimatedFlightDuration((String)value); return; }
+      if ("flightDistance".equals(key) && value instanceof Distance) { flightDistance((Distance)value); return; }
+      if ("flightDistance".equals(key) && value instanceof String) { flightDistance((String)value); return; }
+      if ("webCheckinTime".equals(key) && value instanceof java.util.Date) { webCheckinTime((java.util.Date)value); return; }
+      super.fromMap(key, value);
     }
-    private Participant seller;
-    private OrganizationOrPerson provider;
-    private String flightNumber;
-    private java.util.Date departureTime;
-    private java.util.Date arrivalTime;
-    private Airport departureAirport;
-    private Airport arrivalAirport;
-    private String departureGate;
-    private String arrivalGate;
-    private BoardingPolicyType boardingPolicy;
-    private String departureTerminal;
-    private String arrivalTerminal;
-    private StringOrVehicle aircraft;
-    private String mealService;
-    private DurationOrString estimatedFlightDuration;
-    private DistanceOrString flightDistance;
-    private java.util.Date webCheckinTime;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private Participant mySeller;
-  private OrganizationOrPerson myProvider;
-  private String myFlightNumber;
-  private java.util.Date myDepartureTime;
-  private java.util.Date myArrivalTime;
-  private Airport myDepartureAirport;
-  private Airport myArrivalAirport;
-  private String myDepartureGate;
-  private String myArrivalGate;
-  private BoardingPolicyType myBoardingPolicy;
-  private String myDepartureTerminal;
-  private String myArrivalTerminal;
-  private StringOrVehicle myAircraft;
-  private String myMealService;
-  private DurationOrString myEstimatedFlightDuration;
-  private DistanceOrString myFlightDistance;
-  private java.util.Date myWebCheckinTime;
 }

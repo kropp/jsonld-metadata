@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * A structured value representing a monetary amount. Typically, only the subclasses of this type are used for markup.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -29,223 +30,667 @@ public class PriceSpecification extends StructuredValue {
   /**
    * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
    */
-  public QuantitativeValue getEligibleQuantity() { return myEligibleQuantity; }
+  @JsonIgnore public QuantitativeValue getEligibleQuantity() {
+    return (QuantitativeValue) getValue("eligibleQuantity");
+  }
+  /**
+   * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
+   */
+  @JsonIgnore public Collection<QuantitativeValue> getEligibleQuantitys() {
+    final Object current = myData.get("eligibleQuantity");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<QuantitativeValue>) current;
+    }
+    return Arrays.asList((QuantitativeValue) current);
+  }
   /**
    * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
    */
-  public PriceSpecification getEligibleTransactionVolume() { return myEligibleTransactionVolume; }
+  @JsonIgnore public PriceSpecification getEligibleTransactionVolume() {
+    return (PriceSpecification) getValue("eligibleTransactionVolume");
+  }
+  /**
+   * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
+   */
+  @JsonIgnore public Collection<PriceSpecification> getEligibleTransactionVolumes() {
+    final Object current = myData.get("eligibleTransactionVolume");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PriceSpecification>) current;
+    }
+    return Arrays.asList((PriceSpecification) current);
+  }
   /**
    * The highest price if the price is a range.
    */
-  public Number getMaxPrice() { return myMaxPrice; }
+  @JsonIgnore public Integer getMaxPriceInteger() {
+    return (Integer) getValue("maxPrice");
+  }
+  /**
+   * The highest price if the price is a range.
+   */
+  @JsonIgnore public Collection<Integer> getMaxPriceIntegers() {
+    final Object current = myData.get("maxPrice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
+  /**
+   * The highest price if the price is a range.
+   */
+  @JsonIgnore public Long getMaxPriceLong() {
+    return (Long) getValue("maxPrice");
+  }
+  /**
+   * The highest price if the price is a range.
+   */
+  @JsonIgnore public Collection<Long> getMaxPriceLongs() {
+    final Object current = myData.get("maxPrice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Long>) current;
+    }
+    return Arrays.asList((Long) current);
+  }
+  /**
+   * The highest price if the price is a range.
+   */
+  @JsonIgnore public Float getMaxPriceFloat() {
+    return (Float) getValue("maxPrice");
+  }
+  /**
+   * The highest price if the price is a range.
+   */
+  @JsonIgnore public Collection<Float> getMaxPriceFloats() {
+    final Object current = myData.get("maxPrice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Float>) current;
+    }
+    return Arrays.asList((Float) current);
+  }
+  /**
+   * The highest price if the price is a range.
+   */
+  @JsonIgnore public Double getMaxPriceDouble() {
+    return (Double) getValue("maxPrice");
+  }
+  /**
+   * The highest price if the price is a range.
+   */
+  @JsonIgnore public Collection<Double> getMaxPriceDoubles() {
+    final Object current = myData.get("maxPrice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Double>) current;
+    }
+    return Arrays.asList((Double) current);
+  }
+  /**
+   * The highest price if the price is a range.
+   */
+  @JsonIgnore public String getMaxPriceString() {
+    return (String) getValue("maxPrice");
+  }
+  /**
+   * The highest price if the price is a range.
+   */
+  @JsonIgnore public Collection<String> getMaxPriceStrings() {
+    final Object current = myData.get("maxPrice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The lowest price if the price is a range.
    */
-  public Number getMinPrice() { return myMinPrice; }
+  @JsonIgnore public Integer getMinPriceInteger() {
+    return (Integer) getValue("minPrice");
+  }
+  /**
+   * The lowest price if the price is a range.
+   */
+  @JsonIgnore public Collection<Integer> getMinPriceIntegers() {
+    final Object current = myData.get("minPrice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
+  /**
+   * The lowest price if the price is a range.
+   */
+  @JsonIgnore public Long getMinPriceLong() {
+    return (Long) getValue("minPrice");
+  }
+  /**
+   * The lowest price if the price is a range.
+   */
+  @JsonIgnore public Collection<Long> getMinPriceLongs() {
+    final Object current = myData.get("minPrice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Long>) current;
+    }
+    return Arrays.asList((Long) current);
+  }
+  /**
+   * The lowest price if the price is a range.
+   */
+  @JsonIgnore public Float getMinPriceFloat() {
+    return (Float) getValue("minPrice");
+  }
+  /**
+   * The lowest price if the price is a range.
+   */
+  @JsonIgnore public Collection<Float> getMinPriceFloats() {
+    final Object current = myData.get("minPrice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Float>) current;
+    }
+    return Arrays.asList((Float) current);
+  }
+  /**
+   * The lowest price if the price is a range.
+   */
+  @JsonIgnore public Double getMinPriceDouble() {
+    return (Double) getValue("minPrice");
+  }
+  /**
+   * The lowest price if the price is a range.
+   */
+  @JsonIgnore public Collection<Double> getMinPriceDoubles() {
+    final Object current = myData.get("minPrice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Double>) current;
+    }
+    return Arrays.asList((Double) current);
+  }
+  /**
+   * The lowest price if the price is a range.
+   */
+  @JsonIgnore public String getMinPriceString() {
+    return (String) getValue("minPrice");
+  }
+  /**
+   * The lowest price if the price is a range.
+   */
+  @JsonIgnore public Collection<String> getMinPriceStrings() {
+    final Object current = myData.get("minPrice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
-<br />
-<br />
-      Usage guidelines:
-<br />
-<ul>
-<li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
-      including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
-</li>
-<li>
-      Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
-</li>
-<li>
-      Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
-      alongside more human-friendly formatting.
-</li>
-<li>
-      Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
-</li>
-</ul>
-      
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
    */
-  public Number getPrice() { return myPrice; }
+  @JsonIgnore public Integer getPriceInteger() {
+    return (Integer) getValue("price");
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Collection<Integer> getPriceIntegers() {
+    final Object current = myData.get("price");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Long getPriceLong() {
+    return (Long) getValue("price");
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Collection<Long> getPriceLongs() {
+    final Object current = myData.get("price");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Long>) current;
+    }
+    return Arrays.asList((Long) current);
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Float getPriceFloat() {
+    return (Float) getValue("price");
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Collection<Float> getPriceFloats() {
+    final Object current = myData.get("price");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Float>) current;
+    }
+    return Arrays.asList((Float) current);
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Double getPriceDouble() {
+    return (Double) getValue("price");
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Collection<Double> getPriceDoubles() {
+    final Object current = myData.get("price");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Double>) current;
+    }
+    return Arrays.asList((Double) current);
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public String getPriceString() {
+    return (String) getValue("price");
+  }
+  /**
+   * The offer price of a product, or of a price component when attached to PriceSpecification and its subtypes.
+   * <br />
+   * <br />
+   *       Usage guidelines:
+   * <br />
+   * <ul>
+   * <li>Use the <a href="/priceCurrency">priceCurrency</a> property (with <a href="http://en.wikipedia.org/wiki/ISO_4217#Active_codes">ISO 4217 codes</a> e.g. "USD") instead of
+   *       including <a href="http://en.wikipedia.org/wiki/Dollar_sign#Currencies_that_use_the_dollar_or_peso_sign">ambiguous symbols</a> such as '$' in the value.
+   * </li>
+   * <li>
+   *       Use '.' (Unicode 'FULL STOP' (U+002E)) rather than ',' to indicate a decimal point. Avoid using these symbols as a readability separator.
+   * </li>
+   * <li>
+   *       Note that both <a href="http://www.w3.org/TR/xhtml-rdfa-primer/#using-the-content-attribute">RDFa</a> and Microdata syntax allow the use of a "content=" attribute for publishing simple machine-readable values
+   *       alongside more human-friendly formatting.
+   * </li>
+   * <li>
+   *       Use values from 0123456789 (Unicode 'DIGIT ZERO' (U+0030) to 'DIGIT NINE' (U+0039)) rather than superficially similiar Unicode symbols.
+   * </li>
+   * </ul>
+   *       
+   */
+  @JsonIgnore public Collection<String> getPriceStrings() {
+    final Object current = myData.get("price");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The date when the item becomes valid.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getValidFrom() { return myValidFrom; }
+  @JsonIgnore public java.util.Date getValidFrom() {
+    return (java.util.Date) getValue("validFrom");
+  }
+  /**
+   * The date when the item becomes valid.
+   */
+  @JsonIgnore public Collection<java.util.Date> getValidFroms() {
+    final Object current = myData.get("validFrom");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The end of the validity of offer, price specification, or opening hours data.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getValidThrough() { return myValidThrough; }
+  @JsonIgnore public java.util.Date getValidThrough() {
+    return (java.util.Date) getValue("validThrough");
+  }
+  /**
+   * The end of the validity of offer, price specification, or opening hours data.
+   */
+  @JsonIgnore public Collection<java.util.Date> getValidThroughs() {
+    final Object current = myData.get("validThrough");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
    */
-  public Boolean getValueAddedTaxIncluded() { return myValueAddedTaxIncluded; }
+  @JsonIgnore public Boolean getValueAddedTaxIncluded() {
+    return (Boolean) getValue("valueAddedTaxIncluded");
+  }
+  /**
+   * Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
+   */
+  @JsonIgnore public Collection<Boolean> getValueAddedTaxIncludeds() {
+    final Object current = myData.get("valueAddedTaxIncluded");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Boolean>) current;
+    }
+    return Arrays.asList((Boolean) current);
+  }
   /**
    * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
    */
-  public String getPriceCurrency() { return myPriceCurrency; }
-  protected PriceSpecification(QuantitativeValue eligibleQuantity, PriceSpecification eligibleTransactionVolume, Number maxPrice, Number minPrice, Number price, java.util.Date validFrom, java.util.Date validThrough, Boolean valueAddedTaxIncluded, String priceCurrency, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myEligibleQuantity = eligibleQuantity;
-    myEligibleTransactionVolume = eligibleTransactionVolume;
-    myMaxPrice = maxPrice;
-    myMinPrice = minPrice;
-    myPrice = price;
-    myValidFrom = validFrom;
-    myValidThrough = validThrough;
-    myValueAddedTaxIncluded = valueAddedTaxIncluded;
-    myPriceCurrency = priceCurrency;
-    myEligibleQuantity = eligibleQuantity;
-    myEligibleTransactionVolume = eligibleTransactionVolume;
-    myMaxPrice = maxPrice;
-    myMinPrice = minPrice;
-    myPrice = price;
-    myValidFrom = validFrom;
-    myValidThrough = validThrough;
-    myValueAddedTaxIncluded = valueAddedTaxIncluded;
-    myPriceCurrency = priceCurrency;
+  @JsonIgnore public String getPriceCurrency() {
+    return (String) getValue("priceCurrency");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myEligibleQuantity != null ? myEligibleQuantity.hashCode() : 0);
-    result = 31 * result + (myEligibleTransactionVolume != null ? myEligibleTransactionVolume.hashCode() : 0);
-    result = 31 * result + (myMaxPrice != null ? myMaxPrice.hashCode() : 0);
-    result = 31 * result + (myMinPrice != null ? myMinPrice.hashCode() : 0);
-    result = 31 * result + (myPrice != null ? myPrice.hashCode() : 0);
-    result = 31 * result + (myValidFrom != null ? myValidFrom.hashCode() : 0);
-    result = 31 * result + (myValidThrough != null ? myValidThrough.hashCode() : 0);
-    result = 31 * result + (myValueAddedTaxIncluded != null ? myValueAddedTaxIncluded.hashCode() : 0);
-    result = 31 * result + (myPriceCurrency != null ? myPriceCurrency.hashCode() : 0);
-    return result;
+  /**
+   * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
+   */
+  @JsonIgnore public Collection<String> getPriceCurrencys() {
+    final Object current = myData.get("priceCurrency");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    PriceSpecification priceSpecification = (PriceSpecification) o;
-    if (!super.equals(o)) return false;
-    if (myEligibleQuantity != null ? !myEligibleQuantity.equals(priceSpecification.myEligibleQuantity) : priceSpecification.myEligibleQuantity != null) return false;
-    if (myEligibleTransactionVolume != null ? !myEligibleTransactionVolume.equals(priceSpecification.myEligibleTransactionVolume) : priceSpecification.myEligibleTransactionVolume != null) return false;
-    if (myMaxPrice != null ? !myMaxPrice.equals(priceSpecification.myMaxPrice) : priceSpecification.myMaxPrice != null) return false;
-    if (myMinPrice != null ? !myMinPrice.equals(priceSpecification.myMinPrice) : priceSpecification.myMinPrice != null) return false;
-    if (myPrice != null ? !myPrice.equals(priceSpecification.myPrice) : priceSpecification.myPrice != null) return false;
-    if (myValidFrom != null ? !myValidFrom.equals(priceSpecification.myValidFrom) : priceSpecification.myValidFrom != null) return false;
-    if (myValidThrough != null ? !myValidThrough.equals(priceSpecification.myValidThrough) : priceSpecification.myValidThrough != null) return false;
-    if (myValueAddedTaxIncluded != null ? !myValueAddedTaxIncluded.equals(priceSpecification.myValueAddedTaxIncluded) : priceSpecification.myValueAddedTaxIncluded != null) return false;
-    if (myPriceCurrency != null ? !myPriceCurrency.equals(priceSpecification.myPriceCurrency) : priceSpecification.myPriceCurrency != null) return false;
-    return true;
+  protected PriceSpecification(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link PriceSpecification}
    */
-  public static class Builder implements ThingBuilder<PriceSpecification> {
+  public static class Builder extends StructuredValue.Builder {
     public PriceSpecification build() {
-      return new PriceSpecification(eligibleQuantity, eligibleTransactionVolume, maxPrice, minPrice, price, validFrom, validThrough, valueAddedTaxIncluded, priceCurrency, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new PriceSpecification(myData);
     }
     /**
      * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
      */
     @NotNull public Builder eligibleQuantity(@NotNull QuantitativeValue quantitativeValue) {
-      this.eligibleQuantity = quantitativeValue;
+      putValue("eligibleQuantity", quantitativeValue);
       return this;
     }
     /**
      * The interval and unit of measurement of ordering quantities for which the offer or price specification is valid. This allows e.g. specifying that a certain freight charge is valid only for a certain quantity.
      */
     @NotNull public Builder eligibleQuantity(@NotNull QuantitativeValue.Builder quantitativeValue) {
-      return this.eligibleQuantity(quantitativeValue.build());
+      putValue("eligibleQuantity", quantitativeValue.build());
+      return this;
     }
     /**
      * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
      */
     @NotNull public Builder eligibleTransactionVolume(@NotNull PriceSpecification priceSpecification) {
-      this.eligibleTransactionVolume = priceSpecification;
+      putValue("eligibleTransactionVolume", priceSpecification);
       return this;
     }
     /**
      * The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount.
      */
     @NotNull public Builder eligibleTransactionVolume(@NotNull PriceSpecification.Builder priceSpecification) {
-      return this.eligibleTransactionVolume(priceSpecification.build());
+      putValue("eligibleTransactionVolume", priceSpecification.build());
+      return this;
     }
     /**
      * The highest price if the price is a range.
      */
     @NotNull public Builder maxPrice(@NotNull Integer integer) {
-      if (this.maxPrice == null) this.maxPrice = new Number();
-      this.maxPrice.setInteger(integer);
+      putValue("maxPrice", integer);
       return this;
     }
     /**
      * The highest price if the price is a range.
      */
     @NotNull public Builder maxPrice(@NotNull Long maxPrice) {
-      if (this.maxPrice == null) this.maxPrice = new Number();
-      this.maxPrice.setLong(maxPrice);
+      putValue("maxPrice", maxPrice);
       return this;
     }
     /**
      * The highest price if the price is a range.
      */
     @NotNull public Builder maxPrice(@NotNull Float maxPrice) {
-      if (this.maxPrice == null) this.maxPrice = new Number();
-      this.maxPrice.setFloat(maxPrice);
+      putValue("maxPrice", maxPrice);
       return this;
     }
     /**
      * The highest price if the price is a range.
      */
     @NotNull public Builder maxPrice(@NotNull Double maxPrice) {
-      if (this.maxPrice == null) this.maxPrice = new Number();
-      this.maxPrice.setDouble(maxPrice);
+      putValue("maxPrice", maxPrice);
       return this;
     }
     /**
      * The highest price if the price is a range.
      */
     @NotNull public Builder maxPrice(@NotNull String maxPrice) {
-      if (this.maxPrice == null) this.maxPrice = new Number();
-      this.maxPrice.setString(maxPrice);
+      putValue("maxPrice", maxPrice);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
     @NotNull public Builder minPrice(@NotNull Integer integer) {
-      if (this.minPrice == null) this.minPrice = new Number();
-      this.minPrice.setInteger(integer);
+      putValue("minPrice", integer);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
     @NotNull public Builder minPrice(@NotNull Long minPrice) {
-      if (this.minPrice == null) this.minPrice = new Number();
-      this.minPrice.setLong(minPrice);
+      putValue("minPrice", minPrice);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
     @NotNull public Builder minPrice(@NotNull Float minPrice) {
-      if (this.minPrice == null) this.minPrice = new Number();
-      this.minPrice.setFloat(minPrice);
+      putValue("minPrice", minPrice);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
     @NotNull public Builder minPrice(@NotNull Double minPrice) {
-      if (this.minPrice == null) this.minPrice = new Number();
-      this.minPrice.setDouble(minPrice);
+      putValue("minPrice", minPrice);
       return this;
     }
     /**
      * The lowest price if the price is a range.
      */
     @NotNull public Builder minPrice(@NotNull String minPrice) {
-      if (this.minPrice == null) this.minPrice = new Number();
-      this.minPrice.setString(minPrice);
+      putValue("minPrice", minPrice);
       return this;
     }
     /**
@@ -272,8 +717,7 @@ public class PriceSpecification extends StructuredValue {
      *       
      */
     @NotNull public Builder price(@NotNull Integer integer) {
-      if (this.price == null) this.price = new Number();
-      this.price.setInteger(integer);
+      putValue("price", integer);
       return this;
     }
     /**
@@ -300,8 +744,7 @@ public class PriceSpecification extends StructuredValue {
      *       
      */
     @NotNull public Builder price(@NotNull Long price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setLong(price);
+      putValue("price", price);
       return this;
     }
     /**
@@ -328,8 +771,7 @@ public class PriceSpecification extends StructuredValue {
      *       
      */
     @NotNull public Builder price(@NotNull Float price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setFloat(price);
+      putValue("price", price);
       return this;
     }
     /**
@@ -356,8 +798,7 @@ public class PriceSpecification extends StructuredValue {
      *       
      */
     @NotNull public Builder price(@NotNull Double price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setDouble(price);
+      putValue("price", price);
       return this;
     }
     /**
@@ -384,57 +825,56 @@ public class PriceSpecification extends StructuredValue {
      *       
      */
     @NotNull public Builder price(@NotNull String price) {
-      if (this.price == null) this.price = new Number();
-      this.price.setString(price);
+      putValue("price", price);
       return this;
     }
     /**
      * The date when the item becomes valid.
      */
     @NotNull public Builder validFrom(@NotNull java.util.Date date) {
-      this.validFrom = date;
+      putValue("validFrom", date);
       return this;
     }
     /**
      * The end of the validity of offer, price specification, or opening hours data.
      */
     @NotNull public Builder validThrough(@NotNull java.util.Date date) {
-      this.validThrough = date;
+      putValue("validThrough", date);
       return this;
     }
     /**
      * Specifies whether the applicable value-added tax (VAT) is included in the price specification or not.
      */
     @NotNull public Builder valueAddedTaxIncluded(@NotNull Boolean valueAddedTaxIncluded) {
-      this.valueAddedTaxIncluded = valueAddedTaxIncluded;
+      putValue("valueAddedTaxIncluded", valueAddedTaxIncluded);
       return this;
     }
     /**
      * The currency (in 3-letter ISO 4217 format) of the price or a price component, when attached to PriceSpecification and its subtypes.
      */
     @NotNull public Builder priceCurrency(@NotNull String priceCurrency) {
-      this.priceCurrency = priceCurrency;
+      putValue("priceCurrency", priceCurrency);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -468,8 +908,7 @@ public class PriceSpecification extends StructuredValue {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -503,7 +942,8 @@ public class PriceSpecification extends StructuredValue {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -536,116 +976,75 @@ public class PriceSpecification extends StructuredValue {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("eligibleQuantity".equals(key) && value instanceof QuantitativeValue) { eligibleQuantity((QuantitativeValue)value); continue; }
-        if ("eligibleTransactionVolume".equals(key) && value instanceof PriceSpecification) { eligibleTransactionVolume((PriceSpecification)value); continue; }
-        if ("maxPrice".equals(key) && value instanceof Integer) { maxPrice((Integer)value); continue; }
-        if ("maxPrice".equals(key) && value instanceof Long) { maxPrice((Long)value); continue; }
-        if ("maxPrice".equals(key) && value instanceof Float) { maxPrice((Float)value); continue; }
-        if ("maxPrice".equals(key) && value instanceof Double) { maxPrice((Double)value); continue; }
-        if ("maxPrice".equals(key) && value instanceof String) { maxPrice((String)value); continue; }
-        if ("minPrice".equals(key) && value instanceof Integer) { minPrice((Integer)value); continue; }
-        if ("minPrice".equals(key) && value instanceof Long) { minPrice((Long)value); continue; }
-        if ("minPrice".equals(key) && value instanceof Float) { minPrice((Float)value); continue; }
-        if ("minPrice".equals(key) && value instanceof Double) { minPrice((Double)value); continue; }
-        if ("minPrice".equals(key) && value instanceof String) { minPrice((String)value); continue; }
-        if ("price".equals(key) && value instanceof Integer) { price((Integer)value); continue; }
-        if ("price".equals(key) && value instanceof Long) { price((Long)value); continue; }
-        if ("price".equals(key) && value instanceof Float) { price((Float)value); continue; }
-        if ("price".equals(key) && value instanceof Double) { price((Double)value); continue; }
-        if ("price".equals(key) && value instanceof String) { price((String)value); continue; }
-        if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); continue; }
-        if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); continue; }
-        if ("valueAddedTaxIncluded".equals(key) && value instanceof Boolean) { valueAddedTaxIncluded((Boolean)value); continue; }
-        if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("eligibleQuantity".equals(key) && value instanceof QuantitativeValue) { eligibleQuantity((QuantitativeValue)value); return; }
+      if ("eligibleTransactionVolume".equals(key) && value instanceof PriceSpecification) { eligibleTransactionVolume((PriceSpecification)value); return; }
+      if ("maxPrice".equals(key) && value instanceof Integer) { maxPrice((Integer)value); return; }
+      if ("maxPrice".equals(key) && value instanceof Long) { maxPrice((Long)value); return; }
+      if ("maxPrice".equals(key) && value instanceof Float) { maxPrice((Float)value); return; }
+      if ("maxPrice".equals(key) && value instanceof Double) { maxPrice((Double)value); return; }
+      if ("maxPrice".equals(key) && value instanceof String) { maxPrice((String)value); return; }
+      if ("minPrice".equals(key) && value instanceof Integer) { minPrice((Integer)value); return; }
+      if ("minPrice".equals(key) && value instanceof Long) { minPrice((Long)value); return; }
+      if ("minPrice".equals(key) && value instanceof Float) { minPrice((Float)value); return; }
+      if ("minPrice".equals(key) && value instanceof Double) { minPrice((Double)value); return; }
+      if ("minPrice".equals(key) && value instanceof String) { minPrice((String)value); return; }
+      if ("price".equals(key) && value instanceof Integer) { price((Integer)value); return; }
+      if ("price".equals(key) && value instanceof Long) { price((Long)value); return; }
+      if ("price".equals(key) && value instanceof Float) { price((Float)value); return; }
+      if ("price".equals(key) && value instanceof Double) { price((Double)value); return; }
+      if ("price".equals(key) && value instanceof String) { price((String)value); return; }
+      if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
+      if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
+      if ("valueAddedTaxIncluded".equals(key) && value instanceof Boolean) { valueAddedTaxIncluded((Boolean)value); return; }
+      if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); return; }
+      super.fromMap(key, value);
     }
-    private QuantitativeValue eligibleQuantity;
-    private PriceSpecification eligibleTransactionVolume;
-    private Number maxPrice;
-    private Number minPrice;
-    private Number price;
-    private java.util.Date validFrom;
-    private java.util.Date validThrough;
-    private Boolean valueAddedTaxIncluded;
-    private String priceCurrency;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private QuantitativeValue myEligibleQuantity;
-  private PriceSpecification myEligibleTransactionVolume;
-  private Number myMaxPrice;
-  private Number myMinPrice;
-  private Number myPrice;
-  private java.util.Date myValidFrom;
-  private java.util.Date myValidThrough;
-  private Boolean myValueAddedTaxIncluded;
-  private String myPriceCurrency;
 }

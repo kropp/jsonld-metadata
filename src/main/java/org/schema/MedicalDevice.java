@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * Any object used in a medical capacity, such as to diagnose or treat a patient.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc
@@ -29,287 +30,375 @@ public class MedicalDevice extends MedicalEntity {
   /**
    * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
    */
-  public MedicalEntity getAdverseOutcome() { return myAdverseOutcome; }
+  @JsonIgnore public MedicalEntity getAdverseOutcome() {
+    return (MedicalEntity) getValue("adverseOutcome");
+  }
+  /**
+   * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
+   */
+  @JsonIgnore public Collection<MedicalEntity> getAdverseOutcomes() {
+    final Object current = myData.get("adverseOutcome");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalEntity>) current;
+    }
+    return Arrays.asList((MedicalEntity) current);
+  }
   /**
    * A contraindication for this therapy.
    */
-  public MedicalContraindication getContraindication() { return myContraindication; }
+  @JsonIgnore public MedicalContraindication getContraindication() {
+    return (MedicalContraindication) getValue("contraindication");
+  }
+  /**
+   * A contraindication for this therapy.
+   */
+  @JsonIgnore public Collection<MedicalContraindication> getContraindications() {
+    final Object current = myData.get("contraindication");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalContraindication>) current;
+    }
+    return Arrays.asList((MedicalContraindication) current);
+  }
   /**
    * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
    */
-  public MedicalIndication getIndication() { return myIndication; }
+  @JsonIgnore public MedicalIndication getIndication() {
+    return (MedicalIndication) getValue("indication");
+  }
+  /**
+   * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
+   */
+  @JsonIgnore public Collection<MedicalIndication> getIndications() {
+    final Object current = myData.get("indication");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalIndication>) current;
+    }
+    return Arrays.asList((MedicalIndication) current);
+  }
   /**
    * A description of the postoperative procedures, care, and/or followups for this device.
    */
-  public String getPostOp() { return myPostOp; }
+  @JsonIgnore public String getPostOp() {
+    return (String) getValue("postOp");
+  }
+  /**
+   * A description of the postoperative procedures, care, and/or followups for this device.
+   */
+  @JsonIgnore public Collection<String> getPostOps() {
+    final Object current = myData.get("postOp");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A description of the workup, testing, and other preparations required before implanting this device.
    */
-  public String getPreOp() { return myPreOp; }
+  @JsonIgnore public String getPreOp() {
+    return (String) getValue("preOp");
+  }
+  /**
+   * A description of the workup, testing, and other preparations required before implanting this device.
+   */
+  @JsonIgnore public Collection<String> getPreOps() {
+    final Object current = myData.get("preOp");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A description of the procedure involved in setting up, using, and/or installing the device.
    */
-  public String getProcedure() { return myProcedure; }
+  @JsonIgnore public String getProcedure() {
+    return (String) getValue("procedure");
+  }
+  /**
+   * A description of the procedure involved in setting up, using, and/or installing the device.
+   */
+  @JsonIgnore public Collection<String> getProcedures() {
+    final Object current = myData.get("procedure");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * A goal towards an action is taken. Can be concrete or abstract.
    */
-  public MedicalDevicePurposeOrThing getPurpose() { return myPurpose; }
+  @JsonIgnore public MedicalDevicePurpose getPurposeMedicalDevicePurpose() {
+    return (MedicalDevicePurpose) getValue("purpose");
+  }
+  /**
+   * A goal towards an action is taken. Can be concrete or abstract.
+   */
+  @JsonIgnore public Collection<MedicalDevicePurpose> getPurposeMedicalDevicePurposes() {
+    final Object current = myData.get("purpose");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalDevicePurpose>) current;
+    }
+    return Arrays.asList((MedicalDevicePurpose) current);
+  }
+  /**
+   * A goal towards an action is taken. Can be concrete or abstract.
+   */
+  @JsonIgnore public Thing getPurposeThing() {
+    return (Thing) getValue("purpose");
+  }
+  /**
+   * A goal towards an action is taken. Can be concrete or abstract.
+   */
+  @JsonIgnore public Collection<Thing> getPurposeThings() {
+    final Object current = myData.get("purpose");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Thing>) current;
+    }
+    return Arrays.asList((Thing) current);
+  }
   /**
    * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
    */
-  public MedicalEntity getSeriousAdverseOutcome() { return mySeriousAdverseOutcome; }
-  protected MedicalDevice(MedicalEntity adverseOutcome, MedicalContraindication contraindication, MedicalIndication indication, String postOp, String preOp, String procedure, MedicalDevicePurposeOrThing purpose, MedicalEntity seriousAdverseOutcome, MedicalCode code, MedicalGuideline guideline, MedicineSystem medicineSystem, Organization recognizingAuthority, MedicalSpecialty relevantSpecialty, MedicalStudy study, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAdverseOutcome = adverseOutcome;
-    myContraindication = contraindication;
-    myIndication = indication;
-    myPostOp = postOp;
-    myPreOp = preOp;
-    myProcedure = procedure;
-    myPurpose = purpose;
-    mySeriousAdverseOutcome = seriousAdverseOutcome;
-    myAdverseOutcome = adverseOutcome;
-    myContraindication = contraindication;
-    myIndication = indication;
-    myPostOp = postOp;
-    myPreOp = preOp;
-    myProcedure = procedure;
-    myPurpose = purpose;
-    mySeriousAdverseOutcome = seriousAdverseOutcome;
+  @JsonIgnore public MedicalEntity getSeriousAdverseOutcome() {
+    return (MedicalEntity) getValue("seriousAdverseOutcome");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAdverseOutcome != null ? myAdverseOutcome.hashCode() : 0);
-    result = 31 * result + (myContraindication != null ? myContraindication.hashCode() : 0);
-    result = 31 * result + (myIndication != null ? myIndication.hashCode() : 0);
-    result = 31 * result + (myPostOp != null ? myPostOp.hashCode() : 0);
-    result = 31 * result + (myPreOp != null ? myPreOp.hashCode() : 0);
-    result = 31 * result + (myProcedure != null ? myProcedure.hashCode() : 0);
-    result = 31 * result + (myPurpose != null ? myPurpose.hashCode() : 0);
-    result = 31 * result + (mySeriousAdverseOutcome != null ? mySeriousAdverseOutcome.hashCode() : 0);
-    return result;
+  /**
+   * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
+   */
+  @JsonIgnore public Collection<MedicalEntity> getSeriousAdverseOutcomes() {
+    final Object current = myData.get("seriousAdverseOutcome");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MedicalEntity>) current;
+    }
+    return Arrays.asList((MedicalEntity) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    MedicalDevice medicalDevice = (MedicalDevice) o;
-    if (!super.equals(o)) return false;
-    if (myAdverseOutcome != null ? !myAdverseOutcome.equals(medicalDevice.myAdverseOutcome) : medicalDevice.myAdverseOutcome != null) return false;
-    if (myContraindication != null ? !myContraindication.equals(medicalDevice.myContraindication) : medicalDevice.myContraindication != null) return false;
-    if (myIndication != null ? !myIndication.equals(medicalDevice.myIndication) : medicalDevice.myIndication != null) return false;
-    if (myPostOp != null ? !myPostOp.equals(medicalDevice.myPostOp) : medicalDevice.myPostOp != null) return false;
-    if (myPreOp != null ? !myPreOp.equals(medicalDevice.myPreOp) : medicalDevice.myPreOp != null) return false;
-    if (myProcedure != null ? !myProcedure.equals(medicalDevice.myProcedure) : medicalDevice.myProcedure != null) return false;
-    if (myPurpose != null ? !myPurpose.equals(medicalDevice.myPurpose) : medicalDevice.myPurpose != null) return false;
-    if (mySeriousAdverseOutcome != null ? !mySeriousAdverseOutcome.equals(medicalDevice.mySeriousAdverseOutcome) : medicalDevice.mySeriousAdverseOutcome != null) return false;
-    return true;
+  protected MedicalDevice(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link MedicalDevice}
    */
-  public static class Builder implements ThingBuilder<MedicalDevice> {
+  public static class Builder extends MedicalEntity.Builder {
     public MedicalDevice build() {
-      return new MedicalDevice(adverseOutcome, contraindication, indication, postOp, preOp, procedure, purpose, seriousAdverseOutcome, code, guideline, medicineSystem, recognizingAuthority, relevantSpecialty, study, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new MedicalDevice(myData);
     }
     /**
      * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
      */
     @NotNull public Builder adverseOutcome(@NotNull MedicalEntity medicalEntity) {
-      this.adverseOutcome = medicalEntity;
+      putValue("adverseOutcome", medicalEntity);
       return this;
     }
     /**
      * A possible complication and/or side effect of this therapy. If it is known that an adverse outcome is serious (resulting in death, disability, or permanent damage; requiring hospitalization; or is otherwise life-threatening or requires immediate medical attention), tag it as a seriouseAdverseOutcome instead.
      */
     @NotNull public Builder adverseOutcome(@NotNull MedicalEntity.Builder medicalEntity) {
-      return this.adverseOutcome(medicalEntity.build());
+      putValue("adverseOutcome", medicalEntity.build());
+      return this;
     }
     /**
      * A contraindication for this therapy.
      */
     @NotNull public Builder contraindication(@NotNull MedicalContraindication medicalContraindication) {
-      this.contraindication = medicalContraindication;
+      putValue("contraindication", medicalContraindication);
       return this;
     }
     /**
      * A contraindication for this therapy.
      */
     @NotNull public Builder contraindication(@NotNull MedicalContraindication.Builder medicalContraindication) {
-      return this.contraindication(medicalContraindication.build());
+      putValue("contraindication", medicalContraindication.build());
+      return this;
     }
     /**
      * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
      */
     @NotNull public Builder indication(@NotNull MedicalIndication medicalIndication) {
-      this.indication = medicalIndication;
+      putValue("indication", medicalIndication);
       return this;
     }
     /**
      * A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication.
      */
     @NotNull public Builder indication(@NotNull MedicalIndication.Builder medicalIndication) {
-      return this.indication(medicalIndication.build());
+      putValue("indication", medicalIndication.build());
+      return this;
     }
     /**
      * A description of the postoperative procedures, care, and/or followups for this device.
      */
     @NotNull public Builder postOp(@NotNull String postOp) {
-      this.postOp = postOp;
+      putValue("postOp", postOp);
       return this;
     }
     /**
      * A description of the workup, testing, and other preparations required before implanting this device.
      */
     @NotNull public Builder preOp(@NotNull String preOp) {
-      this.preOp = preOp;
+      putValue("preOp", preOp);
       return this;
     }
     /**
      * A description of the procedure involved in setting up, using, and/or installing the device.
      */
     @NotNull public Builder procedure(@NotNull String procedure) {
-      this.procedure = procedure;
+      putValue("procedure", procedure);
       return this;
     }
     /**
      * A goal towards an action is taken. Can be concrete or abstract.
      */
     @NotNull public Builder purpose(@NotNull MedicalDevicePurpose medicalDevicePurpose) {
-      if (this.purpose == null) this.purpose = new MedicalDevicePurposeOrThing();
-      this.purpose.setMedicalDevicePurpose(medicalDevicePurpose);
+      putValue("purpose", medicalDevicePurpose);
       return this;
     }
     /**
      * A goal towards an action is taken. Can be concrete or abstract.
      */
     @NotNull public Builder purpose(@NotNull MedicalDevicePurpose.Builder medicalDevicePurpose) {
-      return this.purpose(medicalDevicePurpose.build());
+      putValue("purpose", medicalDevicePurpose.build());
+      return this;
     }
     /**
      * A goal towards an action is taken. Can be concrete or abstract.
      */
     @NotNull public Builder purpose(@NotNull Thing thing) {
-      if (this.purpose == null) this.purpose = new MedicalDevicePurposeOrThing();
-      this.purpose.setThing(thing);
+      putValue("purpose", thing);
       return this;
     }
     /**
      * A goal towards an action is taken. Can be concrete or abstract.
      */
     @NotNull public Builder purpose(@NotNull Thing.Builder thing) {
-      return this.purpose(thing.build());
+      putValue("purpose", thing.build());
+      return this;
     }
     /**
      * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
      */
     @NotNull public Builder seriousAdverseOutcome(@NotNull MedicalEntity medicalEntity) {
-      this.seriousAdverseOutcome = medicalEntity;
+      putValue("seriousAdverseOutcome", medicalEntity);
       return this;
     }
     /**
      * A possible serious complication and/or serious side effect of this therapy. Serious adverse outcomes include those that are life-threatening; result in death, disability, or permanent damage; require hospitalization or prolong existing hospitalization; cause congenital anomalies or birth defects; or jeopardize the patient and may require medical or surgical intervention to prevent one of the outcomes in this definition.
      */
     @NotNull public Builder seriousAdverseOutcome(@NotNull MedicalEntity.Builder medicalEntity) {
-      return this.seriousAdverseOutcome(medicalEntity.build());
+      putValue("seriousAdverseOutcome", medicalEntity.build());
+      return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode medicalCode) {
-      this.code = medicalCode;
+      putValue("code", medicalCode);
       return this;
     }
     /**
      * A medical code for the entity, taken from a controlled vocabulary or ontology such as ICD-9, DiseasesDB, MeSH, SNOMED-CT, RxNorm, etc.
      */
     @NotNull public Builder code(@NotNull MedicalCode.Builder medicalCode) {
-      return this.code(medicalCode.build());
+      putValue("code", medicalCode.build());
+      return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline medicalGuideline) {
-      this.guideline = medicalGuideline;
+      putValue("guideline", medicalGuideline);
       return this;
     }
     /**
      * A medical guideline related to this entity.
      */
     @NotNull public Builder guideline(@NotNull MedicalGuideline.Builder medicalGuideline) {
-      return this.guideline(medicalGuideline.build());
+      putValue("guideline", medicalGuideline.build());
+      return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem medicineSystem) {
-      this.medicineSystem = medicineSystem;
+      putValue("medicineSystem", medicineSystem);
       return this;
     }
     /**
      * The system of medicine that includes this MedicalEntity, for example 'evidence-based', 'homeopathic', 'chiropractic', etc.
      */
     @NotNull public Builder medicineSystem(@NotNull MedicineSystem.Builder medicineSystem) {
-      return this.medicineSystem(medicineSystem.build());
+      putValue("medicineSystem", medicineSystem.build());
+      return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization organization) {
-      this.recognizingAuthority = organization;
+      putValue("recognizingAuthority", organization);
       return this;
     }
     /**
      * If applicable, the organization that officially recognizes this entity as part of its endorsed system of medicine.
      */
     @NotNull public Builder recognizingAuthority(@NotNull Organization.Builder organization) {
-      return this.recognizingAuthority(organization.build());
+      putValue("recognizingAuthority", organization.build());
+      return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty medicalSpecialty) {
-      this.relevantSpecialty = medicalSpecialty;
+      putValue("relevantSpecialty", medicalSpecialty);
       return this;
     }
     /**
      * If applicable, a medical specialty in which this entity is relevant.
      */
     @NotNull public Builder relevantSpecialty(@NotNull MedicalSpecialty.Builder medicalSpecialty) {
-      return this.relevantSpecialty(medicalSpecialty.build());
+      putValue("relevantSpecialty", medicalSpecialty.build());
+      return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy medicalStudy) {
-      this.study = medicalStudy;
+      putValue("study", medicalStudy);
       return this;
     }
     /**
      * A medical study or trial related to this entity.
      */
     @NotNull public Builder study(@NotNull MedicalStudy.Builder medicalStudy) {
-      return this.study(medicalStudy.build());
+      putValue("study", medicalStudy.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -343,8 +432,7 @@ public class MedicalDevice extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -378,7 +466,8 @@ public class MedicalDevice extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -411,114 +500,63 @@ public class MedicalDevice extends MedicalEntity {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("adverseOutcome".equals(key) && value instanceof MedicalEntity) { adverseOutcome((MedicalEntity)value); continue; }
-        if ("contraindication".equals(key) && value instanceof MedicalContraindication) { contraindication((MedicalContraindication)value); continue; }
-        if ("indication".equals(key) && value instanceof MedicalIndication) { indication((MedicalIndication)value); continue; }
-        if ("postOp".equals(key) && value instanceof String) { postOp((String)value); continue; }
-        if ("preOp".equals(key) && value instanceof String) { preOp((String)value); continue; }
-        if ("procedure".equals(key) && value instanceof String) { procedure((String)value); continue; }
-        if ("purpose".equals(key) && value instanceof MedicalDevicePurpose) { purpose((MedicalDevicePurpose)value); continue; }
-        if ("purpose".equals(key) && value instanceof Thing) { purpose((Thing)value); continue; }
-        if ("seriousAdverseOutcome".equals(key) && value instanceof MedicalEntity) { seriousAdverseOutcome((MedicalEntity)value); continue; }
-        if ("code".equals(key) && value instanceof MedicalCode) { code((MedicalCode)value); continue; }
-        if ("guideline".equals(key) && value instanceof MedicalGuideline) { guideline((MedicalGuideline)value); continue; }
-        if ("medicineSystem".equals(key) && value instanceof MedicineSystem) { medicineSystem((MedicineSystem)value); continue; }
-        if ("recognizingAuthority".equals(key) && value instanceof Organization) { recognizingAuthority((Organization)value); continue; }
-        if ("relevantSpecialty".equals(key) && value instanceof MedicalSpecialty) { relevantSpecialty((MedicalSpecialty)value); continue; }
-        if ("study".equals(key) && value instanceof MedicalStudy) { study((MedicalStudy)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("adverseOutcome".equals(key) && value instanceof MedicalEntity) { adverseOutcome((MedicalEntity)value); return; }
+      if ("contraindication".equals(key) && value instanceof MedicalContraindication) { contraindication((MedicalContraindication)value); return; }
+      if ("indication".equals(key) && value instanceof MedicalIndication) { indication((MedicalIndication)value); return; }
+      if ("postOp".equals(key) && value instanceof String) { postOp((String)value); return; }
+      if ("preOp".equals(key) && value instanceof String) { preOp((String)value); return; }
+      if ("procedure".equals(key) && value instanceof String) { procedure((String)value); return; }
+      if ("purpose".equals(key) && value instanceof MedicalDevicePurpose) { purpose((MedicalDevicePurpose)value); return; }
+      if ("purpose".equals(key) && value instanceof Thing) { purpose((Thing)value); return; }
+      if ("seriousAdverseOutcome".equals(key) && value instanceof MedicalEntity) { seriousAdverseOutcome((MedicalEntity)value); return; }
+      super.fromMap(key, value);
     }
-    private MedicalEntity adverseOutcome;
-    private MedicalContraindication contraindication;
-    private MedicalIndication indication;
-    private String postOp;
-    private String preOp;
-    private String procedure;
-    private MedicalDevicePurposeOrThing purpose;
-    private MedicalEntity seriousAdverseOutcome;
-    private MedicalCode code;
-    private MedicalGuideline guideline;
-    private MedicineSystem medicineSystem;
-    private Organization recognizingAuthority;
-    private MedicalSpecialty relevantSpecialty;
-    private MedicalStudy study;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private MedicalEntity myAdverseOutcome;
-  private MedicalContraindication myContraindication;
-  private MedicalIndication myIndication;
-  private String myPostOp;
-  private String myPreOp;
-  private String myProcedure;
-  private MedicalDevicePurposeOrThing myPurpose;
-  private MedicalEntity mySeriousAdverseOutcome;
 }

@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * 
@@ -35,55 +36,43 @@ import org.jetbrains.annotations.NotNull;
  *       
  */
 public class BreadcrumbList extends ItemList {
-  protected BreadcrumbList(Integer numberOfItems, ItemListOrderTypeOrString itemListOrder, ListItemOrStringOrThing itemListElement, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(numberOfItems, itemListOrder, itemListElement, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-  }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    return result;
-  }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    BreadcrumbList breadcrumbList = (BreadcrumbList) o;
-    if (!super.equals(o)) return false;
-    return true;
+  protected BreadcrumbList(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link BreadcrumbList}
    */
-  public static class Builder implements ThingBuilder<BreadcrumbList> {
+  public static class Builder extends ItemList.Builder {
     public BreadcrumbList build() {
-      return new BreadcrumbList(numberOfItems, itemListOrder, itemListElement, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new BreadcrumbList(myData);
     }
     /**
      * The number of items in an ItemList. Note that some descriptions might not fully describe all items in a list (e.g., multi-page pagination); in such cases, the numberOfItems would be for the entire list.
      */
     @NotNull public Builder numberOfItems(@NotNull Integer integer) {
-      this.numberOfItems = integer;
+      putValue("numberOfItems", integer);
       return this;
     }
     /**
      * Type of ordering (e.g. Ascending, Descending, Unordered).
      */
     @NotNull public Builder itemListOrder(@NotNull ItemListOrderType itemListOrderType) {
-      if (this.itemListOrder == null) this.itemListOrder = new ItemListOrderTypeOrString();
-      this.itemListOrder.setItemListOrderType(itemListOrderType);
+      putValue("itemListOrder", itemListOrderType);
       return this;
     }
     /**
      * Type of ordering (e.g. Ascending, Descending, Unordered).
      */
     @NotNull public Builder itemListOrder(@NotNull ItemListOrderType.Builder itemListOrderType) {
-      return this.itemListOrder(itemListOrderType.build());
+      putValue("itemListOrder", itemListOrderType.build());
+      return this;
     }
     /**
      * Type of ordering (e.g. Ascending, Descending, Unordered).
      */
     @NotNull public Builder itemListOrder(@NotNull String itemListOrder) {
-      if (this.itemListOrder == null) this.itemListOrder = new ItemListOrderTypeOrString();
-      this.itemListOrder.setString(itemListOrder);
+      putValue("itemListOrder", itemListOrder);
       return this;
     }
     /**
@@ -94,8 +83,7 @@ public class BreadcrumbList extends ItemList {
      *     Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
     @NotNull public Builder itemListElement(@NotNull ListItem listItem) {
-      if (this.itemListElement == null) this.itemListElement = new ListItemOrStringOrThing();
-      this.itemListElement.setListItem(listItem);
+      putValue("itemListElement", listItem);
       return this;
     }
     /**
@@ -106,7 +94,8 @@ public class BreadcrumbList extends ItemList {
      *     Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
     @NotNull public Builder itemListElement(@NotNull ListItem.Builder listItem) {
-      return this.itemListElement(listItem.build());
+      putValue("itemListElement", listItem.build());
+      return this;
     }
     /**
      * For itemListElement values, you can use simple strings (e.g. "Peter", "Paul", "Mary"), existing entities, or use ListItem.
@@ -116,8 +105,7 @@ public class BreadcrumbList extends ItemList {
      *     Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
     @NotNull public Builder itemListElement(@NotNull String itemListElement) {
-      if (this.itemListElement == null) this.itemListElement = new ListItemOrStringOrThing();
-      this.itemListElement.setString(itemListElement);
+      putValue("itemListElement", itemListElement);
       return this;
     }
     /**
@@ -128,8 +116,7 @@ public class BreadcrumbList extends ItemList {
      *     Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
     @NotNull public Builder itemListElement(@NotNull Thing thing) {
-      if (this.itemListElement == null) this.itemListElement = new ListItemOrStringOrThing();
-      this.itemListElement.setThing(thing);
+      putValue("itemListElement", thing);
       return this;
     }
     /**
@@ -140,27 +127,28 @@ public class BreadcrumbList extends ItemList {
      *     Note: The order of elements in your mark-up is not sufficient for indicating the order or elements.  Use ListItem with a 'position' property in such cases.
      */
     @NotNull public Builder itemListElement(@NotNull Thing.Builder thing) {
-      return this.itemListElement(thing.build());
+      putValue("itemListElement", thing.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -194,8 +182,7 @@ public class BreadcrumbList extends ItemList {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -229,7 +216,8 @@ public class BreadcrumbList extends ItemList {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -262,86 +250,54 @@ public class BreadcrumbList extends ItemList {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("numberOfItems".equals(key) && value instanceof Integer) { numberOfItems((Integer)value); continue; }
-        if ("itemListOrder".equals(key) && value instanceof ItemListOrderType) { itemListOrder((ItemListOrderType)value); continue; }
-        if ("itemListOrder".equals(key) && value instanceof String) { itemListOrder((String)value); continue; }
-        if ("itemListElement".equals(key) && value instanceof ListItem) { itemListElement((ListItem)value); continue; }
-        if ("itemListElement".equals(key) && value instanceof String) { itemListElement((String)value); continue; }
-        if ("itemListElement".equals(key) && value instanceof Thing) { itemListElement((Thing)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      super.fromMap(key, value);
     }
-    private Integer numberOfItems;
-    private ItemListOrderTypeOrString itemListOrder;
-    private ListItemOrStringOrThing itemListElement;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
 }

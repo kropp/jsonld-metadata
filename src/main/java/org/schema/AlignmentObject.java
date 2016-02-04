@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * An intangible item that describes an alignment between a learning resource and a node in an educational framework.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_LRMIClass
@@ -29,119 +30,153 @@ public class AlignmentObject extends Intangible {
   /**
    * A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationLevel'.
    */
-  public String getAlignmentType() { return myAlignmentType; }
+  @JsonIgnore public String getAlignmentType() {
+    return (String) getValue("alignmentType");
+  }
+  /**
+   * A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationLevel'.
+   */
+  @JsonIgnore public Collection<String> getAlignmentTypes() {
+    final Object current = myData.get("alignmentType");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The framework to which the resource being described is aligned.
    */
-  public String getEducationalFramework() { return myEducationalFramework; }
+  @JsonIgnore public String getEducationalFramework() {
+    return (String) getValue("educationalFramework");
+  }
+  /**
+   * The framework to which the resource being described is aligned.
+   */
+  @JsonIgnore public Collection<String> getEducationalFrameworks() {
+    final Object current = myData.get("educationalFramework");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The description of a node in an established educational framework.
    */
-  public String getTargetDescription() { return myTargetDescription; }
+  @JsonIgnore public String getTargetDescription() {
+    return (String) getValue("targetDescription");
+  }
+  /**
+   * The description of a node in an established educational framework.
+   */
+  @JsonIgnore public Collection<String> getTargetDescriptions() {
+    final Object current = myData.get("targetDescription");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The name of a node in an established educational framework.
    */
-  public String getTargetName() { return myTargetName; }
+  @JsonIgnore public String getTargetName() {
+    return (String) getValue("targetName");
+  }
+  /**
+   * The name of a node in an established educational framework.
+   */
+  @JsonIgnore public Collection<String> getTargetNames() {
+    final Object current = myData.get("targetName");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The URL of a node in an established educational framework.
    */
-  public String getTargetUrl() { return myTargetUrl; }
-  protected AlignmentObject(String alignmentType, String educationalFramework, String targetDescription, String targetName, String targetUrl, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myAlignmentType = alignmentType;
-    myEducationalFramework = educationalFramework;
-    myTargetDescription = targetDescription;
-    myTargetName = targetName;
-    myTargetUrl = targetUrl;
-    myAlignmentType = alignmentType;
-    myEducationalFramework = educationalFramework;
-    myTargetDescription = targetDescription;
-    myTargetName = targetName;
-    myTargetUrl = targetUrl;
+  @JsonIgnore public String getTargetUrl() {
+    return (String) getValue("targetUrl");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myAlignmentType != null ? myAlignmentType.hashCode() : 0);
-    result = 31 * result + (myEducationalFramework != null ? myEducationalFramework.hashCode() : 0);
-    result = 31 * result + (myTargetDescription != null ? myTargetDescription.hashCode() : 0);
-    result = 31 * result + (myTargetName != null ? myTargetName.hashCode() : 0);
-    result = 31 * result + (myTargetUrl != null ? myTargetUrl.hashCode() : 0);
-    return result;
+  /**
+   * The URL of a node in an established educational framework.
+   */
+  @JsonIgnore public Collection<String> getTargetUrls() {
+    final Object current = myData.get("targetUrl");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    AlignmentObject alignmentObject = (AlignmentObject) o;
-    if (!super.equals(o)) return false;
-    if (myAlignmentType != null ? !myAlignmentType.equals(alignmentObject.myAlignmentType) : alignmentObject.myAlignmentType != null) return false;
-    if (myEducationalFramework != null ? !myEducationalFramework.equals(alignmentObject.myEducationalFramework) : alignmentObject.myEducationalFramework != null) return false;
-    if (myTargetDescription != null ? !myTargetDescription.equals(alignmentObject.myTargetDescription) : alignmentObject.myTargetDescription != null) return false;
-    if (myTargetName != null ? !myTargetName.equals(alignmentObject.myTargetName) : alignmentObject.myTargetName != null) return false;
-    if (myTargetUrl != null ? !myTargetUrl.equals(alignmentObject.myTargetUrl) : alignmentObject.myTargetUrl != null) return false;
-    return true;
+  protected AlignmentObject(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link AlignmentObject}
    */
-  public static class Builder implements ThingBuilder<AlignmentObject> {
+  public static class Builder extends Intangible.Builder {
     public AlignmentObject build() {
-      return new AlignmentObject(alignmentType, educationalFramework, targetDescription, targetName, targetUrl, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new AlignmentObject(myData);
     }
     /**
      * A category of alignment between the learning resource and the framework node. Recommended values include: 'assesses', 'teaches', 'requires', 'textComplexity', 'readingLevel', 'educationalSubject', and 'educationLevel'.
      */
     @NotNull public Builder alignmentType(@NotNull String alignmentType) {
-      this.alignmentType = alignmentType;
+      putValue("alignmentType", alignmentType);
       return this;
     }
     /**
      * The framework to which the resource being described is aligned.
      */
     @NotNull public Builder educationalFramework(@NotNull String educationalFramework) {
-      this.educationalFramework = educationalFramework;
+      putValue("educationalFramework", educationalFramework);
       return this;
     }
     /**
      * The description of a node in an established educational framework.
      */
     @NotNull public Builder targetDescription(@NotNull String targetDescription) {
-      this.targetDescription = targetDescription;
+      putValue("targetDescription", targetDescription);
       return this;
     }
     /**
      * The name of a node in an established educational framework.
      */
     @NotNull public Builder targetName(@NotNull String targetName) {
-      this.targetName = targetName;
+      putValue("targetName", targetName);
       return this;
     }
     /**
      * The URL of a node in an established educational framework.
      */
     @NotNull public Builder targetUrl(@NotNull String targetUrl) {
-      this.targetUrl = targetUrl;
+      putValue("targetUrl", targetUrl);
       return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -175,8 +210,7 @@ public class AlignmentObject extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -210,7 +244,8 @@ public class AlignmentObject extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -243,92 +278,59 @@ public class AlignmentObject extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("alignmentType".equals(key) && value instanceof String) { alignmentType((String)value); continue; }
-        if ("educationalFramework".equals(key) && value instanceof String) { educationalFramework((String)value); continue; }
-        if ("targetDescription".equals(key) && value instanceof String) { targetDescription((String)value); continue; }
-        if ("targetName".equals(key) && value instanceof String) { targetName((String)value); continue; }
-        if ("targetUrl".equals(key) && value instanceof String) { targetUrl((String)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("alignmentType".equals(key) && value instanceof String) { alignmentType((String)value); return; }
+      if ("educationalFramework".equals(key) && value instanceof String) { educationalFramework((String)value); return; }
+      if ("targetDescription".equals(key) && value instanceof String) { targetDescription((String)value); return; }
+      if ("targetName".equals(key) && value instanceof String) { targetName((String)value); return; }
+      if ("targetUrl".equals(key) && value instanceof String) { targetUrl((String)value); return; }
+      super.fromMap(key, value);
     }
-    private String alignmentType;
-    private String educationalFramework;
-    private String targetDescription;
-    private String targetName;
-    private String targetUrl;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private String myAlignmentType;
-  private String myEducationalFramework;
-  private String myTargetDescription;
-  private String myTargetName;
-  private String myTargetUrl;
 }

@@ -21,6 +21,7 @@ package org.schema;
 import com.fasterxml.jackson.databind.annotation.*;
 import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
+import java.util.*;
 
 /**
  * An order is a confirmation of a transaction (a receipt), which can contain multiple line items, each represented by an Offer that has been accepted by the customer.
@@ -29,478 +30,765 @@ public class Order extends Intangible {
   /**
    * The delivery of the parcel related to this order or order item.
    */
-  public ParcelDelivery getOrderDelivery() { return myOrderDelivery; }
+  @JsonIgnore public ParcelDelivery getOrderDelivery() {
+    return (ParcelDelivery) getValue("orderDelivery");
+  }
+  /**
+   * The delivery of the parcel related to this order or order item.
+   */
+  @JsonIgnore public Collection<ParcelDelivery> getOrderDeliverys() {
+    final Object current = myData.get("orderDelivery");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<ParcelDelivery>) current;
+    }
+    return Arrays.asList((ParcelDelivery) current);
+  }
   /**
    * The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
    */
-  public Offer getAcceptedOffer() { return myAcceptedOffer; }
+  @JsonIgnore public Offer getAcceptedOffer() {
+    return (Offer) getValue("acceptedOffer");
+  }
+  /**
+   * The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
+   */
+  @JsonIgnore public Collection<Offer> getAcceptedOffers() {
+    final Object current = myData.get("acceptedOffer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Offer>) current;
+    }
+    return Arrays.asList((Offer) current);
+  }
   /**
    * The billing address for the order.
    */
-  public PostalAddress getBillingAddress() { return myBillingAddress; }
+  @JsonIgnore public PostalAddress getBillingAddress() {
+    return (PostalAddress) getValue("billingAddress");
+  }
+  /**
+   * The billing address for the order.
+   */
+  @JsonIgnore public Collection<PostalAddress> getBillingAddresss() {
+    final Object current = myData.get("billingAddress");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PostalAddress>) current;
+    }
+    return Arrays.asList((PostalAddress) current);
+  }
   /**
    * A number that confirms the given order or payment has been received.
    */
-  public String getConfirmationNumber() { return myConfirmationNumber; }
+  @JsonIgnore public String getConfirmationNumber() {
+    return (String) getValue("confirmationNumber");
+  }
+  /**
+   * A number that confirms the given order or payment has been received.
+   */
+  @JsonIgnore public Collection<String> getConfirmationNumbers() {
+    final Object current = myData.get("confirmationNumber");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Party placing the order or paying the invoice.
    */
-  public OrganizationOrPerson getCustomer() { return myCustomer; }
+  @JsonIgnore public Organization getCustomerOrganization() {
+    return (Organization) getValue("customer");
+  }
+  /**
+   * Party placing the order or paying the invoice.
+   */
+  @JsonIgnore public Collection<Organization> getCustomerOrganizations() {
+    final Object current = myData.get("customer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * Party placing the order or paying the invoice.
+   */
+  @JsonIgnore public Person getCustomerPerson() {
+    return (Person) getValue("customer");
+  }
+  /**
+   * Party placing the order or paying the invoice.
+   */
+  @JsonIgnore public Collection<Person> getCustomerPersons() {
+    final Object current = myData.get("customer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
   /**
    * Any discount applied (to an Order).
    */
-  public Number getDiscount() { return myDiscount; }
+  @JsonIgnore public Integer getDiscountInteger() {
+    return (Integer) getValue("discount");
+  }
+  /**
+   * Any discount applied (to an Order).
+   */
+  @JsonIgnore public Collection<Integer> getDiscountIntegers() {
+    final Object current = myData.get("discount");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Integer>) current;
+    }
+    return Arrays.asList((Integer) current);
+  }
+  /**
+   * Any discount applied (to an Order).
+   */
+  @JsonIgnore public Long getDiscountLong() {
+    return (Long) getValue("discount");
+  }
+  /**
+   * Any discount applied (to an Order).
+   */
+  @JsonIgnore public Collection<Long> getDiscountLongs() {
+    final Object current = myData.get("discount");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Long>) current;
+    }
+    return Arrays.asList((Long) current);
+  }
+  /**
+   * Any discount applied (to an Order).
+   */
+  @JsonIgnore public Float getDiscountFloat() {
+    return (Float) getValue("discount");
+  }
+  /**
+   * Any discount applied (to an Order).
+   */
+  @JsonIgnore public Collection<Float> getDiscountFloats() {
+    final Object current = myData.get("discount");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Float>) current;
+    }
+    return Arrays.asList((Float) current);
+  }
+  /**
+   * Any discount applied (to an Order).
+   */
+  @JsonIgnore public Double getDiscountDouble() {
+    return (Double) getValue("discount");
+  }
+  /**
+   * Any discount applied (to an Order).
+   */
+  @JsonIgnore public Collection<Double> getDiscountDoubles() {
+    final Object current = myData.get("discount");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Double>) current;
+    }
+    return Arrays.asList((Double) current);
+  }
+  /**
+   * Any discount applied (to an Order).
+   */
+  @JsonIgnore public String getDiscountString() {
+    return (String) getValue("discount");
+  }
+  /**
+   * Any discount applied (to an Order).
+   */
+  @JsonIgnore public Collection<String> getDiscountStrings() {
+    final Object current = myData.get("discount");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Code used to redeem a discount.
    */
-  public String getDiscountCode() { return myDiscountCode; }
+  @JsonIgnore public String getDiscountCode() {
+    return (String) getValue("discountCode");
+  }
+  /**
+   * Code used to redeem a discount.
+   */
+  @JsonIgnore public Collection<String> getDiscountCodes() {
+    final Object current = myData.get("discountCode");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The currency (in 3-letter ISO 4217 format) of the discount.
    */
-  public String getDiscountCurrency() { return myDiscountCurrency; }
+  @JsonIgnore public String getDiscountCurrency() {
+    return (String) getValue("discountCurrency");
+  }
+  /**
+   * The currency (in 3-letter ISO 4217 format) of the discount.
+   */
+  @JsonIgnore public Collection<String> getDiscountCurrencys() {
+    final Object current = myData.get("discountCurrency");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * Was the offer accepted as a gift for someone other than the buyer.
    */
-  public Boolean getIsGift() { return myIsGift; }
+  @JsonIgnore public Boolean getIsGift() {
+    return (Boolean) getValue("isGift");
+  }
+  /**
+   * Was the offer accepted as a gift for someone other than the buyer.
+   */
+  @JsonIgnore public Collection<Boolean> getIsGifts() {
+    final Object current = myData.get("isGift");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Boolean>) current;
+    }
+    return Arrays.asList((Boolean) current);
+  }
   /**
    * Date order was placed.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getOrderDate() { return myOrderDate; }
+  @JsonIgnore public java.util.Date getOrderDate() {
+    return (java.util.Date) getValue("orderDate");
+  }
+  /**
+   * Date order was placed.
+   */
+  @JsonIgnore public Collection<java.util.Date> getOrderDates() {
+    final Object current = myData.get("orderDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The item ordered.
    */
-  public OrderItemOrProduct getOrderedItem() { return myOrderedItem; }
+  @JsonIgnore public OrderItem getOrderedItemOrderItem() {
+    return (OrderItem) getValue("orderedItem");
+  }
+  /**
+   * The item ordered.
+   */
+  @JsonIgnore public Collection<OrderItem> getOrderedItemOrderItems() {
+    final Object current = myData.get("orderedItem");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<OrderItem>) current;
+    }
+    return Arrays.asList((OrderItem) current);
+  }
+  /**
+   * The item ordered.
+   */
+  @JsonIgnore public Product getOrderedItemProduct() {
+    return (Product) getValue("orderedItem");
+  }
+  /**
+   * The item ordered.
+   */
+  @JsonIgnore public Collection<Product> getOrderedItemProducts() {
+    final Object current = myData.get("orderedItem");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Product>) current;
+    }
+    return Arrays.asList((Product) current);
+  }
   /**
    * The identifier of the transaction.
    */
-  public String getOrderNumber() { return myOrderNumber; }
+  @JsonIgnore public String getOrderNumber() {
+    return (String) getValue("orderNumber");
+  }
+  /**
+   * The identifier of the transaction.
+   */
+  @JsonIgnore public Collection<String> getOrderNumbers() {
+    final Object current = myData.get("orderNumber");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The current status of the order.
    */
-  public OrderStatus getOrderStatus() { return myOrderStatus; }
+  @JsonIgnore public OrderStatus getOrderStatus() {
+    return (OrderStatus) getValue("orderStatus");
+  }
+  /**
+   * The current status of the order.
+   */
+  @JsonIgnore public Collection<OrderStatus> getOrderStatuss() {
+    final Object current = myData.get("orderStatus");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<OrderStatus>) current;
+    }
+    return Arrays.asList((OrderStatus) current);
+  }
   /**
    * The order is being paid as part of the referenced Invoice.
    */
-  public Invoice getPartOfInvoice() { return myPartOfInvoice; }
+  @JsonIgnore public Invoice getPartOfInvoice() {
+    return (Invoice) getValue("partOfInvoice");
+  }
+  /**
+   * The order is being paid as part of the referenced Invoice.
+   */
+  @JsonIgnore public Collection<Invoice> getPartOfInvoices() {
+    final Object current = myData.get("partOfInvoice");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Invoice>) current;
+    }
+    return Arrays.asList((Invoice) current);
+  }
   /**
    * The date that payment is due.
    */
-  @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
-  public java.util.Date getPaymentDue() { return myPaymentDue; }
+  @JsonIgnore public java.util.Date getPaymentDue() {
+    return (java.util.Date) getValue("paymentDue");
+  }
+  /**
+   * The date that payment is due.
+   */
+  @JsonIgnore public Collection<java.util.Date> getPaymentDues() {
+    final Object current = myData.get("paymentDue");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
+  }
   /**
    * The name of the credit card or other method of payment for the order.
    */
-  public PaymentMethod getPaymentMethod() { return myPaymentMethod; }
+  @JsonIgnore public PaymentMethod getPaymentMethod() {
+    return (PaymentMethod) getValue("paymentMethod");
+  }
+  /**
+   * The name of the credit card or other method of payment for the order.
+   */
+  @JsonIgnore public Collection<PaymentMethod> getPaymentMethods() {
+    final Object current = myData.get("paymentMethod");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PaymentMethod>) current;
+    }
+    return Arrays.asList((PaymentMethod) current);
+  }
   /**
    * An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
    */
-  public String getPaymentMethodId() { return myPaymentMethodId; }
+  @JsonIgnore public String getPaymentMethodId() {
+    return (String) getValue("paymentMethodId");
+  }
+  /**
+   * An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
+   */
+  @JsonIgnore public Collection<String> getPaymentMethodIds() {
+    final Object current = myData.get("paymentMethodId");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * The URL for sending a payment.
    */
-  public String getPaymentUrl() { return myPaymentUrl; }
+  @JsonIgnore public String getPaymentUrl() {
+    return (String) getValue("paymentUrl");
+  }
+  /**
+   * The URL for sending a payment.
+   */
+  @JsonIgnore public Collection<String> getPaymentUrls() {
+    final Object current = myData.get("paymentUrl");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   /**
    * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
    */
-  public Participant getSeller() { return mySeller; }
+  @JsonIgnore public Participant getSeller() {
+    return (Participant) getValue("seller");
+  }
+  /**
+   * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
+   */
+  @JsonIgnore public Collection<Participant> getSellers() {
+    final Object current = myData.get("seller");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Participant>) current;
+    }
+    return Arrays.asList((Participant) current);
+  }
   /**
    * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
    */
-  public OrganizationOrPerson getBroker() { return myBroker; }
-  protected Order(ParcelDelivery orderDelivery, Offer acceptedOffer, PostalAddress billingAddress, String confirmationNumber, OrganizationOrPerson customer, Number discount, String discountCode, String discountCurrency, Boolean isGift, java.util.Date orderDate, OrderItemOrProduct orderedItem, String orderNumber, OrderStatus orderStatus, Invoice partOfInvoice, java.util.Date paymentDue, PaymentMethod paymentMethod, String paymentMethodId, String paymentUrl, Participant seller, OrganizationOrPerson broker, String additionalType, String alternateName, String description, CreativeWorkOrString mainEntityOfPage, String name, String sameAs, String url, Action potentialAction, String id) {
-    super(additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
-    myOrderDelivery = orderDelivery;
-    myAcceptedOffer = acceptedOffer;
-    myBillingAddress = billingAddress;
-    myConfirmationNumber = confirmationNumber;
-    myCustomer = customer;
-    myDiscount = discount;
-    myDiscountCode = discountCode;
-    myDiscountCurrency = discountCurrency;
-    myIsGift = isGift;
-    myOrderDate = orderDate;
-    myOrderedItem = orderedItem;
-    myOrderNumber = orderNumber;
-    myOrderStatus = orderStatus;
-    myPartOfInvoice = partOfInvoice;
-    myPaymentDue = paymentDue;
-    myPaymentMethod = paymentMethod;
-    myPaymentMethodId = paymentMethodId;
-    myPaymentUrl = paymentUrl;
-    mySeller = seller;
-    myBroker = broker;
-    myOrderDelivery = orderDelivery;
-    myAcceptedOffer = acceptedOffer;
-    myBillingAddress = billingAddress;
-    myConfirmationNumber = confirmationNumber;
-    myCustomer = customer;
-    myDiscount = discount;
-    myDiscountCode = discountCode;
-    myDiscountCurrency = discountCurrency;
-    myIsGift = isGift;
-    myOrderDate = orderDate;
-    myOrderedItem = orderedItem;
-    myOrderNumber = orderNumber;
-    myOrderStatus = orderStatus;
-    myPartOfInvoice = partOfInvoice;
-    myPaymentDue = paymentDue;
-    myPaymentMethod = paymentMethod;
-    myPaymentMethodId = paymentMethodId;
-    myPaymentUrl = paymentUrl;
-    mySeller = seller;
-    myBroker = broker;
+  @JsonIgnore public Organization getBrokerOrganization() {
+    return (Organization) getValue("broker");
   }
-  @Override public int hashCode() {
-    int result = super.hashCode();
-    result = 31 * result + (myOrderDelivery != null ? myOrderDelivery.hashCode() : 0);
-    result = 31 * result + (myAcceptedOffer != null ? myAcceptedOffer.hashCode() : 0);
-    result = 31 * result + (myBillingAddress != null ? myBillingAddress.hashCode() : 0);
-    result = 31 * result + (myConfirmationNumber != null ? myConfirmationNumber.hashCode() : 0);
-    result = 31 * result + (myCustomer != null ? myCustomer.hashCode() : 0);
-    result = 31 * result + (myDiscount != null ? myDiscount.hashCode() : 0);
-    result = 31 * result + (myDiscountCode != null ? myDiscountCode.hashCode() : 0);
-    result = 31 * result + (myDiscountCurrency != null ? myDiscountCurrency.hashCode() : 0);
-    result = 31 * result + (myIsGift != null ? myIsGift.hashCode() : 0);
-    result = 31 * result + (myOrderDate != null ? myOrderDate.hashCode() : 0);
-    result = 31 * result + (myOrderedItem != null ? myOrderedItem.hashCode() : 0);
-    result = 31 * result + (myOrderNumber != null ? myOrderNumber.hashCode() : 0);
-    result = 31 * result + (myOrderStatus != null ? myOrderStatus.hashCode() : 0);
-    result = 31 * result + (myPartOfInvoice != null ? myPartOfInvoice.hashCode() : 0);
-    result = 31 * result + (myPaymentDue != null ? myPaymentDue.hashCode() : 0);
-    result = 31 * result + (myPaymentMethod != null ? myPaymentMethod.hashCode() : 0);
-    result = 31 * result + (myPaymentMethodId != null ? myPaymentMethodId.hashCode() : 0);
-    result = 31 * result + (myPaymentUrl != null ? myPaymentUrl.hashCode() : 0);
-    result = 31 * result + (mySeller != null ? mySeller.hashCode() : 0);
-    result = 31 * result + (myBroker != null ? myBroker.hashCode() : 0);
-    return result;
+  /**
+   * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+   */
+  @JsonIgnore public Collection<Organization> getBrokerOrganizations() {
+    final Object current = myData.get("broker");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
   }
-  @Override public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Order order = (Order) o;
-    if (!super.equals(o)) return false;
-    if (myOrderDelivery != null ? !myOrderDelivery.equals(order.myOrderDelivery) : order.myOrderDelivery != null) return false;
-    if (myAcceptedOffer != null ? !myAcceptedOffer.equals(order.myAcceptedOffer) : order.myAcceptedOffer != null) return false;
-    if (myBillingAddress != null ? !myBillingAddress.equals(order.myBillingAddress) : order.myBillingAddress != null) return false;
-    if (myConfirmationNumber != null ? !myConfirmationNumber.equals(order.myConfirmationNumber) : order.myConfirmationNumber != null) return false;
-    if (myCustomer != null ? !myCustomer.equals(order.myCustomer) : order.myCustomer != null) return false;
-    if (myDiscount != null ? !myDiscount.equals(order.myDiscount) : order.myDiscount != null) return false;
-    if (myDiscountCode != null ? !myDiscountCode.equals(order.myDiscountCode) : order.myDiscountCode != null) return false;
-    if (myDiscountCurrency != null ? !myDiscountCurrency.equals(order.myDiscountCurrency) : order.myDiscountCurrency != null) return false;
-    if (myIsGift != null ? !myIsGift.equals(order.myIsGift) : order.myIsGift != null) return false;
-    if (myOrderDate != null ? !myOrderDate.equals(order.myOrderDate) : order.myOrderDate != null) return false;
-    if (myOrderedItem != null ? !myOrderedItem.equals(order.myOrderedItem) : order.myOrderedItem != null) return false;
-    if (myOrderNumber != null ? !myOrderNumber.equals(order.myOrderNumber) : order.myOrderNumber != null) return false;
-    if (myOrderStatus != null ? !myOrderStatus.equals(order.myOrderStatus) : order.myOrderStatus != null) return false;
-    if (myPartOfInvoice != null ? !myPartOfInvoice.equals(order.myPartOfInvoice) : order.myPartOfInvoice != null) return false;
-    if (myPaymentDue != null ? !myPaymentDue.equals(order.myPaymentDue) : order.myPaymentDue != null) return false;
-    if (myPaymentMethod != null ? !myPaymentMethod.equals(order.myPaymentMethod) : order.myPaymentMethod != null) return false;
-    if (myPaymentMethodId != null ? !myPaymentMethodId.equals(order.myPaymentMethodId) : order.myPaymentMethodId != null) return false;
-    if (myPaymentUrl != null ? !myPaymentUrl.equals(order.myPaymentUrl) : order.myPaymentUrl != null) return false;
-    if (mySeller != null ? !mySeller.equals(order.mySeller) : order.mySeller != null) return false;
-    if (myBroker != null ? !myBroker.equals(order.myBroker) : order.myBroker != null) return false;
-    return true;
+  /**
+   * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+   */
+  @JsonIgnore public Person getBrokerPerson() {
+    return (Person) getValue("broker");
+  }
+  /**
+   * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+   */
+  @JsonIgnore public Collection<Person> getBrokerPersons() {
+    final Object current = myData.get("broker");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
+  protected Order(java.util.Map<String,Object> data) {
+    super(data);
   }
   
   /**
    * Builder for {@link Order}
    */
-  public static class Builder implements ThingBuilder<Order> {
+  public static class Builder extends Intangible.Builder {
     public Order build() {
-      return new Order(orderDelivery, acceptedOffer, billingAddress, confirmationNumber, customer, discount, discountCode, discountCurrency, isGift, orderDate, orderedItem, orderNumber, orderStatus, partOfInvoice, paymentDue, paymentMethod, paymentMethodId, paymentUrl, seller, broker, additionalType, alternateName, description, mainEntityOfPage, name, sameAs, url, potentialAction, id);
+      return new Order(myData);
     }
     /**
      * The delivery of the parcel related to this order or order item.
      */
     @NotNull public Builder orderDelivery(@NotNull ParcelDelivery parcelDelivery) {
-      this.orderDelivery = parcelDelivery;
+      putValue("orderDelivery", parcelDelivery);
       return this;
     }
     /**
      * The delivery of the parcel related to this order or order item.
      */
     @NotNull public Builder orderDelivery(@NotNull ParcelDelivery.Builder parcelDelivery) {
-      return this.orderDelivery(parcelDelivery.build());
+      putValue("orderDelivery", parcelDelivery.build());
+      return this;
     }
     /**
      * The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
      */
     @NotNull public Builder acceptedOffer(@NotNull Offer offer) {
-      this.acceptedOffer = offer;
+      putValue("acceptedOffer", offer);
       return this;
     }
     /**
      * The offer(s) -- e.g., product, quantity and price combinations -- included in the order.
      */
     @NotNull public Builder acceptedOffer(@NotNull Offer.Builder offer) {
-      return this.acceptedOffer(offer.build());
+      putValue("acceptedOffer", offer.build());
+      return this;
     }
     /**
      * The billing address for the order.
      */
     @NotNull public Builder billingAddress(@NotNull PostalAddress postalAddress) {
-      this.billingAddress = postalAddress;
+      putValue("billingAddress", postalAddress);
       return this;
     }
     /**
      * The billing address for the order.
      */
     @NotNull public Builder billingAddress(@NotNull PostalAddress.Builder postalAddress) {
-      return this.billingAddress(postalAddress.build());
+      putValue("billingAddress", postalAddress.build());
+      return this;
     }
     /**
      * A number that confirms the given order or payment has been received.
      */
     @NotNull public Builder confirmationNumber(@NotNull String confirmationNumber) {
-      this.confirmationNumber = confirmationNumber;
+      putValue("confirmationNumber", confirmationNumber);
       return this;
     }
     /**
      * Party placing the order or paying the invoice.
      */
     @NotNull public Builder customer(@NotNull Organization organization) {
-      if (this.customer == null) this.customer = new OrganizationOrPerson();
-      this.customer.setOrganization(organization);
+      putValue("customer", organization);
       return this;
     }
     /**
      * Party placing the order or paying the invoice.
      */
     @NotNull public Builder customer(@NotNull Organization.Builder organization) {
-      return this.customer(organization.build());
+      putValue("customer", organization.build());
+      return this;
     }
     /**
      * Party placing the order or paying the invoice.
      */
     @NotNull public Builder customer(@NotNull Person person) {
-      if (this.customer == null) this.customer = new OrganizationOrPerson();
-      this.customer.setPerson(person);
+      putValue("customer", person);
       return this;
     }
     /**
      * Party placing the order or paying the invoice.
      */
     @NotNull public Builder customer(@NotNull Person.Builder person) {
-      return this.customer(person.build());
+      putValue("customer", person.build());
+      return this;
     }
     /**
      * Any discount applied (to an Order).
      */
     @NotNull public Builder discount(@NotNull Integer integer) {
-      if (this.discount == null) this.discount = new Number();
-      this.discount.setInteger(integer);
+      putValue("discount", integer);
       return this;
     }
     /**
      * Any discount applied (to an Order).
      */
     @NotNull public Builder discount(@NotNull Long discount) {
-      if (this.discount == null) this.discount = new Number();
-      this.discount.setLong(discount);
+      putValue("discount", discount);
       return this;
     }
     /**
      * Any discount applied (to an Order).
      */
     @NotNull public Builder discount(@NotNull Float discount) {
-      if (this.discount == null) this.discount = new Number();
-      this.discount.setFloat(discount);
+      putValue("discount", discount);
       return this;
     }
     /**
      * Any discount applied (to an Order).
      */
     @NotNull public Builder discount(@NotNull Double discount) {
-      if (this.discount == null) this.discount = new Number();
-      this.discount.setDouble(discount);
+      putValue("discount", discount);
       return this;
     }
     /**
      * Any discount applied (to an Order).
      */
     @NotNull public Builder discount(@NotNull String discount) {
-      if (this.discount == null) this.discount = new Number();
-      this.discount.setString(discount);
+      putValue("discount", discount);
       return this;
     }
     /**
      * Code used to redeem a discount.
      */
     @NotNull public Builder discountCode(@NotNull String discountCode) {
-      this.discountCode = discountCode;
+      putValue("discountCode", discountCode);
       return this;
     }
     /**
      * The currency (in 3-letter ISO 4217 format) of the discount.
      */
     @NotNull public Builder discountCurrency(@NotNull String discountCurrency) {
-      this.discountCurrency = discountCurrency;
+      putValue("discountCurrency", discountCurrency);
       return this;
     }
     /**
      * Was the offer accepted as a gift for someone other than the buyer.
      */
     @NotNull public Builder isGift(@NotNull Boolean isGift) {
-      this.isGift = isGift;
+      putValue("isGift", isGift);
       return this;
     }
     /**
      * Date order was placed.
      */
     @NotNull public Builder orderDate(@NotNull java.util.Date date) {
-      this.orderDate = date;
+      putValue("orderDate", date);
       return this;
     }
     /**
      * The item ordered.
      */
     @NotNull public Builder orderedItem(@NotNull OrderItem orderItem) {
-      if (this.orderedItem == null) this.orderedItem = new OrderItemOrProduct();
-      this.orderedItem.setOrderItem(orderItem);
+      putValue("orderedItem", orderItem);
       return this;
     }
     /**
      * The item ordered.
      */
     @NotNull public Builder orderedItem(@NotNull OrderItem.Builder orderItem) {
-      return this.orderedItem(orderItem.build());
+      putValue("orderedItem", orderItem.build());
+      return this;
     }
     /**
      * The item ordered.
      */
     @NotNull public Builder orderedItem(@NotNull Product product) {
-      if (this.orderedItem == null) this.orderedItem = new OrderItemOrProduct();
-      this.orderedItem.setProduct(product);
+      putValue("orderedItem", product);
       return this;
     }
     /**
      * The item ordered.
      */
     @NotNull public Builder orderedItem(@NotNull Product.Builder product) {
-      return this.orderedItem(product.build());
+      putValue("orderedItem", product.build());
+      return this;
     }
     /**
      * The identifier of the transaction.
      */
     @NotNull public Builder orderNumber(@NotNull String orderNumber) {
-      this.orderNumber = orderNumber;
+      putValue("orderNumber", orderNumber);
       return this;
     }
     /**
      * The current status of the order.
      */
     @NotNull public Builder orderStatus(@NotNull OrderStatus orderStatus) {
-      this.orderStatus = orderStatus;
+      putValue("orderStatus", orderStatus);
       return this;
     }
     /**
      * The current status of the order.
      */
     @NotNull public Builder orderStatus(@NotNull OrderStatus.Builder orderStatus) {
-      return this.orderStatus(orderStatus.build());
+      putValue("orderStatus", orderStatus.build());
+      return this;
     }
     /**
      * The order is being paid as part of the referenced Invoice.
      */
     @NotNull public Builder partOfInvoice(@NotNull Invoice invoice) {
-      this.partOfInvoice = invoice;
+      putValue("partOfInvoice", invoice);
       return this;
     }
     /**
      * The order is being paid as part of the referenced Invoice.
      */
     @NotNull public Builder partOfInvoice(@NotNull Invoice.Builder invoice) {
-      return this.partOfInvoice(invoice.build());
+      putValue("partOfInvoice", invoice.build());
+      return this;
     }
     /**
      * The date that payment is due.
      */
     @NotNull public Builder paymentDue(@NotNull java.util.Date date) {
-      this.paymentDue = date;
+      putValue("paymentDue", date);
       return this;
     }
     /**
      * The name of the credit card or other method of payment for the order.
      */
     @NotNull public Builder paymentMethod(@NotNull PaymentMethod paymentMethod) {
-      this.paymentMethod = paymentMethod;
+      putValue("paymentMethod", paymentMethod);
       return this;
     }
     /**
      * The name of the credit card or other method of payment for the order.
      */
     @NotNull public Builder paymentMethod(@NotNull PaymentMethod.Builder paymentMethod) {
-      return this.paymentMethod(paymentMethod.build());
+      putValue("paymentMethod", paymentMethod.build());
+      return this;
     }
     /**
      * An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
      */
     @NotNull public Builder paymentMethodId(@NotNull String paymentMethodId) {
-      this.paymentMethodId = paymentMethodId;
+      putValue("paymentMethodId", paymentMethodId);
       return this;
     }
     /**
      * The URL for sending a payment.
      */
     @NotNull public Builder paymentUrl(@NotNull String paymentUrl) {
-      this.paymentUrl = paymentUrl;
+      putValue("paymentUrl", paymentUrl);
       return this;
     }
     /**
      * An entity which offers (sells / leases / lends / loans) the services / goods.  A seller may also be a provider.
      */
     @NotNull public Builder seller(@NotNull Participant participant) {
-      this.seller = participant;
+      putValue("seller", participant);
       return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Organization organization) {
-      if (this.broker == null) this.broker = new OrganizationOrPerson();
-      this.broker.setOrganization(organization);
+      putValue("broker", organization);
       return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Organization.Builder organization) {
-      return this.broker(organization.build());
+      putValue("broker", organization.build());
+      return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Person person) {
-      if (this.broker == null) this.broker = new OrganizationOrPerson();
-      this.broker.setPerson(person);
+      putValue("broker", person);
       return this;
     }
     /**
      * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
      */
     @NotNull public Builder broker(@NotNull Person.Builder person) {
-      return this.broker(person.build());
+      putValue("broker", person.build());
+      return this;
     }
     /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
-      this.additionalType = additionalType;
+      putValue("additionalType", additionalType);
       return this;
     }
     /**
      * An alias for the item.
      */
     @NotNull public Builder alternateName(@NotNull String alternateName) {
-      this.alternateName = alternateName;
+      putValue("alternateName", alternateName);
       return this;
     }
     /**
      * A short description of the item.
      */
     @NotNull public Builder description(@NotNull String description) {
-      this.description = description;
+      putValue("description", description);
       return this;
     }
     /**
@@ -534,8 +822,7 @@ public class Order extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setCreativeWork(creativeWork);
+      putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
@@ -569,7 +856,8 @@ public class Order extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      return this.mainEntityOfPage(creativeWork.build());
+      putValue("mainEntityOfPage", creativeWork.build());
+      return this;
     }
     /**
      * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
@@ -602,144 +890,81 @@ public class Order extends Intangible {
      *       
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      if (this.mainEntityOfPage == null) this.mainEntityOfPage = new CreativeWorkOrString();
-      this.mainEntityOfPage.setString(mainEntityOfPage);
+      putValue("mainEntityOfPage", mainEntityOfPage);
       return this;
     }
     /**
      * The name of the item.
      */
     @NotNull public Builder name(@NotNull String name) {
-      this.name = name;
+      putValue("name", name);
       return this;
     }
     /**
      * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
-      this.sameAs = sameAs;
+      putValue("sameAs", sameAs);
       return this;
     }
     /**
      * URL of the item.
      */
     @NotNull public Builder url(@NotNull String url) {
-      this.url = url;
+      putValue("url", url);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action action) {
-      this.potentialAction = action;
+      putValue("potentialAction", action);
       return this;
     }
     /**
      * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
      */
     @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      return this.potentialAction(action.build());
+      putValue("potentialAction", action.build());
+      return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      this.id = id;
+      putValue("id", id);
       return this;
     }
     public Builder id(long id) {
       return id(Long.toString(id));
     }
-    @Override public void fromMap(java.util.Map<String, Object> map) {
-      for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
-        final String key = entry.getKey();
-        Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        if ("orderDelivery".equals(key) && value instanceof ParcelDelivery) { orderDelivery((ParcelDelivery)value); continue; }
-        if ("acceptedOffer".equals(key) && value instanceof Offer) { acceptedOffer((Offer)value); continue; }
-        if ("billingAddress".equals(key) && value instanceof PostalAddress) { billingAddress((PostalAddress)value); continue; }
-        if ("confirmationNumber".equals(key) && value instanceof String) { confirmationNumber((String)value); continue; }
-        if ("customer".equals(key) && value instanceof Organization) { customer((Organization)value); continue; }
-        if ("customer".equals(key) && value instanceof Person) { customer((Person)value); continue; }
-        if ("discount".equals(key) && value instanceof Integer) { discount((Integer)value); continue; }
-        if ("discount".equals(key) && value instanceof Long) { discount((Long)value); continue; }
-        if ("discount".equals(key) && value instanceof Float) { discount((Float)value); continue; }
-        if ("discount".equals(key) && value instanceof Double) { discount((Double)value); continue; }
-        if ("discount".equals(key) && value instanceof String) { discount((String)value); continue; }
-        if ("discountCode".equals(key) && value instanceof String) { discountCode((String)value); continue; }
-        if ("discountCurrency".equals(key) && value instanceof String) { discountCurrency((String)value); continue; }
-        if ("isGift".equals(key) && value instanceof Boolean) { isGift((Boolean)value); continue; }
-        if ("orderDate".equals(key) && value instanceof java.util.Date) { orderDate((java.util.Date)value); continue; }
-        if ("orderedItem".equals(key) && value instanceof OrderItem) { orderedItem((OrderItem)value); continue; }
-        if ("orderedItem".equals(key) && value instanceof Product) { orderedItem((Product)value); continue; }
-        if ("orderNumber".equals(key) && value instanceof String) { orderNumber((String)value); continue; }
-        if ("orderStatus".equals(key) && value instanceof OrderStatus) { orderStatus((OrderStatus)value); continue; }
-        if ("partOfInvoice".equals(key) && value instanceof Invoice) { partOfInvoice((Invoice)value); continue; }
-        if ("paymentDue".equals(key) && value instanceof java.util.Date) { paymentDue((java.util.Date)value); continue; }
-        if ("paymentMethod".equals(key) && value instanceof PaymentMethod) { paymentMethod((PaymentMethod)value); continue; }
-        if ("paymentMethodId".equals(key) && value instanceof String) { paymentMethodId((String)value); continue; }
-        if ("paymentUrl".equals(key) && value instanceof String) { paymentUrl((String)value); continue; }
-        if ("seller".equals(key) && value instanceof Participant) { seller((Participant)value); continue; }
-        if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); continue; }
-        if ("broker".equals(key) && value instanceof Person) { broker((Person)value); continue; }
-        if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); continue; }
-        if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); continue; }
-        if ("description".equals(key) && value instanceof String) { description((String)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); continue; }
-        if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); continue; }
-        if ("name".equals(key) && value instanceof String) { name((String)value); continue; }
-        if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); continue; }
-        if ("url".equals(key) && value instanceof String) { url((String)value); continue; }
-        if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); continue; }
-        if ("@id".equals(key) && value instanceof String) { id((String)value); continue; }
-      }
+    @Override protected void fromMap(String key, Object value) {
+      if ("orderDelivery".equals(key) && value instanceof ParcelDelivery) { orderDelivery((ParcelDelivery)value); return; }
+      if ("acceptedOffer".equals(key) && value instanceof Offer) { acceptedOffer((Offer)value); return; }
+      if ("billingAddress".equals(key) && value instanceof PostalAddress) { billingAddress((PostalAddress)value); return; }
+      if ("confirmationNumber".equals(key) && value instanceof String) { confirmationNumber((String)value); return; }
+      if ("customer".equals(key) && value instanceof Organization) { customer((Organization)value); return; }
+      if ("customer".equals(key) && value instanceof Person) { customer((Person)value); return; }
+      if ("discount".equals(key) && value instanceof Integer) { discount((Integer)value); return; }
+      if ("discount".equals(key) && value instanceof Long) { discount((Long)value); return; }
+      if ("discount".equals(key) && value instanceof Float) { discount((Float)value); return; }
+      if ("discount".equals(key) && value instanceof Double) { discount((Double)value); return; }
+      if ("discount".equals(key) && value instanceof String) { discount((String)value); return; }
+      if ("discountCode".equals(key) && value instanceof String) { discountCode((String)value); return; }
+      if ("discountCurrency".equals(key) && value instanceof String) { discountCurrency((String)value); return; }
+      if ("isGift".equals(key) && value instanceof Boolean) { isGift((Boolean)value); return; }
+      if ("orderDate".equals(key) && value instanceof java.util.Date) { orderDate((java.util.Date)value); return; }
+      if ("orderedItem".equals(key) && value instanceof OrderItem) { orderedItem((OrderItem)value); return; }
+      if ("orderedItem".equals(key) && value instanceof Product) { orderedItem((Product)value); return; }
+      if ("orderNumber".equals(key) && value instanceof String) { orderNumber((String)value); return; }
+      if ("orderStatus".equals(key) && value instanceof OrderStatus) { orderStatus((OrderStatus)value); return; }
+      if ("partOfInvoice".equals(key) && value instanceof Invoice) { partOfInvoice((Invoice)value); return; }
+      if ("paymentDue".equals(key) && value instanceof java.util.Date) { paymentDue((java.util.Date)value); return; }
+      if ("paymentMethod".equals(key) && value instanceof PaymentMethod) { paymentMethod((PaymentMethod)value); return; }
+      if ("paymentMethodId".equals(key) && value instanceof String) { paymentMethodId((String)value); return; }
+      if ("paymentUrl".equals(key) && value instanceof String) { paymentUrl((String)value); return; }
+      if ("seller".equals(key) && value instanceof Participant) { seller((Participant)value); return; }
+      if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); return; }
+      if ("broker".equals(key) && value instanceof Person) { broker((Person)value); return; }
+      super.fromMap(key, value);
     }
-    private ParcelDelivery orderDelivery;
-    private Offer acceptedOffer;
-    private PostalAddress billingAddress;
-    private String confirmationNumber;
-    private OrganizationOrPerson customer;
-    private Number discount;
-    private String discountCode;
-    private String discountCurrency;
-    private Boolean isGift;
-    private java.util.Date orderDate;
-    private OrderItemOrProduct orderedItem;
-    private String orderNumber;
-    private OrderStatus orderStatus;
-    private Invoice partOfInvoice;
-    private java.util.Date paymentDue;
-    private PaymentMethod paymentMethod;
-    private String paymentMethodId;
-    private String paymentUrl;
-    private Participant seller;
-    private OrganizationOrPerson broker;
-    private String additionalType;
-    private String alternateName;
-    private String description;
-    private CreativeWorkOrString mainEntityOfPage;
-    private String name;
-    private String sameAs;
-    private String url;
-    private Action potentialAction;
-    private String id;
   }
   
-  private ParcelDelivery myOrderDelivery;
-  private Offer myAcceptedOffer;
-  private PostalAddress myBillingAddress;
-  private String myConfirmationNumber;
-  private OrganizationOrPerson myCustomer;
-  private Number myDiscount;
-  private String myDiscountCode;
-  private String myDiscountCurrency;
-  private Boolean myIsGift;
-  private java.util.Date myOrderDate;
-  private OrderItemOrProduct myOrderedItem;
-  private String myOrderNumber;
-  private OrderStatus myOrderStatus;
-  private Invoice myPartOfInvoice;
-  private java.util.Date myPaymentDue;
-  private PaymentMethod myPaymentMethod;
-  private String myPaymentMethodId;
-  private String myPaymentUrl;
-  private Participant mySeller;
-  private OrganizationOrPerson myBroker;
 }
