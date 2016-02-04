@@ -1,4 +1,4 @@
-rootProject.name = 'java-jsonld-mapping'
+rootProject.name = 'jsonld-metadata'
 
 include 'generator'
 
