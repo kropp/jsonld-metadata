@@ -1,8 +1,11 @@
 package org.schema;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 import static org.schema.SchemaOrg.*;
@@ -38,10 +41,10 @@ public class SamplesTest {
         assertEquals("88th Oscars ceremony will be held on February 28th", article.getName());
         assertEquals("Lorem ipsum", article.getText());
 
-        assertEquals("The Academy of Motion Picture Arts and Sciences", article.getAuthor().getOrganization().getName());
+        assertEquals("The Academy of Motion Picture Arts and Sciences", article.getAuthorOrganization().getName());
 
         assertEquals("Hooray!", article.getComment().getText());
-        assertEquals("Max Mustermann", article.getComment().getAuthor().getPerson().getName());
+        assertEquals("Max Mustermann", article.getComment().getAuthorPerson().getName());
     }
 
     @Test
@@ -59,11 +62,29 @@ public class SamplesTest {
                 .sourceCodeRevision(sourceCodeRevision()
                         .id("deadbeef").branch("master").name("commit message")
                         .author(person().id("userId").name("Full Name"))
-                        .contributor(person().id("commiterId").name("Commiter Name")))
+                        .contributor(person().id("commiterId").name("Commiter Name"))
+                        .build())
                 .potentialAction(viewAction()
                         .name("View")
                         .url("http://example.com/build/1/details")
                         .build())
                 .build();
+    }
+
+    @Test
+    public void testMultiple() throws JsonProcessingException {
+        final SourceCodeRevision revision = sourceCodeRevision()
+                .branch("master")
+                .tag("a").tag("b").tag("c")
+                .build();
+
+        final String json = SchemaOrg.writeJson(revision);
+
+        assertEquals("{\"@type\":\"SourceCodeRevision\",\"@context\":\"http://schema.org/\",\"tag\":[\"a\",\"b\",\"c\"],\"branch\":\"master\"}", json);
+
+        assertEquals("a", revision.getTag());
+        assertEquals(Arrays.asList("a", "b", "c"), revision.getTags());
+
+        assertEquals(Collections.emptyList(), revision.getWorkExamples());
     }
 }
