@@ -44,16 +44,17 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
             appendln("    return null;")
             appendln("  }")
             appendln()
+            appendln("  private static final ObjectMapper objectMapper = new ObjectMapper();")
+            appendln("  static {")
+            appendln("    objectMapper.registerModule(new JsonLdModule());")
+            appendln("  }")
             appendln("  @NotNull public static String writeJson(@NotNull Thing thing) throws JsonProcessingException {")
-            appendln("    return new ObjectMapper().writeValueAsString(thing);")
+            appendln("    return objectMapper.writeValueAsString(thing);")
             appendln("  }")
             appendln("  public static Thing readJson(String json) throws java.io.IOException {")
-            appendln("    final ObjectMapper objectMapper = new ObjectMapper();")
-            appendln("    objectMapper.registerModule(new JsonLdModule());")
             appendln("    return objectMapper.readValue(json, Thing.class);")
             appendln("  }")
             appendln("  public static Thing readJson(JsonNode node) {")
-            appendln("    final ObjectMapper objectMapper = new ObjectMapper();")
             appendln("    return ThingDeserializer.fromMap(objectMapper.convertValue(node, java.util.Map.class));")
             appendln("  }")
             appendln("}")
@@ -71,13 +72,26 @@ public interface ThingBuilder<T> {
 
 package ${p.name};
 
-import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.core.*;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class JsonLdModule extends SimpleModule {
     public JsonLdModule() {
         super("JsonLD Module", new Version(1, 0, 0, null, null, null));
         addDeserializer(Thing.class, new ThingDeserializer());
+        addSerializer(Date.class, new DateSerializer());
+    }
+    private static class DateSerializer extends JsonSerializer<Date> {
+        private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXX");
+        @Override
+        public void serialize(Date value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+            gen.writeString(DATE_FORMAT.format(value));
+        }
     }
 }""")
         p.writeClass("ThingDeserializer", """$banner

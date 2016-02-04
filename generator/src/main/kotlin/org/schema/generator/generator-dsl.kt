@@ -198,6 +198,7 @@ fun Klass.klass(name: String, body: Klass.() -> Unit) {
 }
 
 class Field(val c: Klass, val name: String, val type: String, val access: String, val prefix: String) {
+    var initial: String? = null
     fun getter(annotations: Collection<String>? = null, comment: String? = null) {
         comment?.let {
             c.text.appendln("  /**")
@@ -225,7 +226,7 @@ class Field(val c: Klass, val name: String, val type: String, val access: String
         return typeName.decapitalize()
     }
     val fieldDeclaration: String
-        get() = "$access $type $prefix" + (if (prefix.isEmpty()) name.decapitalize() else name)
+        get() = "$access $type $prefix" + (if (prefix.isEmpty()) name.decapitalize() else name) + (if (initial == null) "" else " = $initial")
 }
 
 class Parameter(val name: String, val type: String, val annotations: Collection<String>? = null)

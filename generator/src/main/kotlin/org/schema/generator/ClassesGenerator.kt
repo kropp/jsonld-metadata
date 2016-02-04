@@ -19,7 +19,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                 copyright = banner
                 extends = type.parentType?.let { sink.types[it]?.name }
                 implements = type.interfaces.filter { i -> sink.types.values.any { it.name == i && !it.isField && it.name != "HasPart" } }
-                imports = listOf("com.fasterxml.jackson.databind.annotation.*", "com.fasterxml.jackson.annotation.*", "org.jetbrains.annotations.NotNull")
+                imports = listOf("com.fasterxml.jackson.databind.annotation.*", "com.fasterxml.jackson.annotation.*", "org.jetbrains.annotations.NotNull", "java.util.*")
                 annotations = if (typeName == "Thing") { listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)") } else null
                 comment = (type.comment ?: "") + (type.source?.let { "Source: $it" } ?: "") + (type.equivalent?.let { "Equivalent class: $it" } ?: "")
 
@@ -34,23 +34,42 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 
                         line("return \"http://schema.org/\";")
                     }
+                    field("data", "java.util.Map<String,Object>", "protected") {
+                        getter(listOf("@JsonAnyGetter"))
+                    }
                 }
 
                 val ownFields = type.subTypes.mapNotNull { sink.types[it] }.filter { it.name != null && !it.isSuperseded && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class" && it.dataTypes[0] != "http://schema.org/HasPart"}
                 ownFields.forEach {
-                    val fieldType = sink.getEitherFieldType(it)!!
+                    val fieldTypes = sink.getEitherTypes(it)
+                    val fieldType = if (fieldTypes.size == 1) fieldTypes.first() else "Object"
                     val name = it.name!!.capitalize()
 
-                    val getterAnnotations = arrayListOf<String>()
+                    val getterAnnotations: List<String> //= arrayListOf<String>()
+/*
                     if (fieldType == "java.util.Date") {
-                        getterAnnotations += "@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")"
+                        getterAnnotations = listOf=("@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = \"yyyy-MM-dd'T'HH:mm:ss'Z'\")"
                     }
+*/
                     if (name == "Id") {
-                        getterAnnotations += "@JsonProperty(\"@id\")"
+                        getterAnnotations = listOf("@JsonProperty(\"@id\")")
+                    } else {
+                        getterAnnotations = listOf("@JsonIgnore")
                     }
 
+/*
                     field(name, fieldType) {
                         getter(getterAnnotations, comment = it.comment)
+                    }
+*/
+                    fieldTypes.forEach { fieldType ->
+                        val methodName = if (fieldTypes.size == 1) "get$name" else "get$name$fieldType"
+                        method(methodName, fieldType) {
+                            comment = it.comment
+                            annotations = getterAnnotations
+
+                            line("return ($fieldType) myData.get(\"${name.decapitalize()}\");")
+                        }
                     }
                 }
 
@@ -58,21 +77,32 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 
                 if (!type.isInterface) {
                     konstructor("protected",
+                            parameters = listOf(Parameter("data", "java.util.Map<String,Object>")),
+                            superParameters = type.parentType?.let { listOf("data") }
+/*
                             parameters = allFields.filter { it.name != null && it.dataTypes.any() && it.dataTypes[0] != "http://schema.org/Class"}.map { Parameter(it.name!!.decapitalize(), sink.getEitherFieldType(it)!!) },
                             superParameters = type.parentType?.let { sink.getAllFields(sink.types[it]) }?.map { it.name!!.decapitalize() }
+*/
                     )
 
-                    hashCodeAndEquals(typeName != "Thing")
+                    if (typeName == "Thing") {
+                        hashCodeAndEquals(false)
+                    }
 
                     klass("Builder") {
                         comment = "Builder for {@link $typeName}"
                         extends = type.parentType?.let { sink.types[it]?.name?.plus(".Builder") }
                         if (type.parentType == null) {
                             implements = listOf("ThingBuilder<$typeName>")
+
+                            field("data", "HashMap<String,Object>", "protected") {
+                                initial = "new HashMap<String,Object>()"
+                            }
                         }
 
                         method("build", typeName) {
-                            line("return new $typeName(" + allFields.mapNotNull { it.name?.decapitalize() }.joinToString(", ") + ");")
+                            //line("return new $typeName(" + allFields.mapNotNull { it.name?.decapitalize() }.joinToString(", ") + ");")
+                            line("return new $typeName(myData);")
                         }
 
                         allFields.filter { it.name != null }.forEach { field ->
@@ -85,12 +115,16 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                     parameters = listOf(Parameter(getVariableName(fieldType, name), fieldType, NOT_NULL))
                                     annotations = NOT_NULL
 
+/*
                                     if (eitherTypes.size < 2) {
-                                        line("this.${name.decapitalize()} = ${getVariableName(fieldType, name)};")
+*/
+                                        line("myData.put(\"${name.decapitalize()}\", ${getVariableName(fieldType, name)});")
+/*
                                     } else {
                                         line("if (this.${name.decapitalize()} == null) this.${name.decapitalize()} = new ${sink.getEitherFieldType(field)}();")
                                         line("this.${name.decapitalize()}.set$fieldType(${getVariableName(fieldType, name)});")
                                     }
+*/
                                     line("return this;")
                                 }
 
@@ -147,9 +181,11 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                             }
                         }
 
+/*
                         ownFields.forEach {
                             field(getVariableName(it.name!!), sink.getEitherFieldType(it)!!, access = "protected", prefix = "")
                         }
+*/
                     }
                 }
             }
