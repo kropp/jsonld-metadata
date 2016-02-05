@@ -45,6 +45,48 @@ bintray {
     }
 }
 
+if (hasProperty('mavenPublishUrl')) {
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+
+                repository(url: project.mavenPublishUrl) {
+                }
+
+                pom.project {
+                    name 'JSON-LD Metadata'
+                    description 'JSON-LD Java serializer'
+                    packaging 'jar'
+                    url 'https://github.com/kropp/jsonld-metadata/'
+
+                    scm {
+                        url 'https://github.com/kropp/jsonld-metadata/'
+                        connection 'scm:git:git@github.com:kropp/jsonld-metadata.git'
+                        developerConnection 'scm:git:git@github.com:kropp/jsonld-metadata.git'
+                    }
+
+                    licenses {
+                        license {
+                            name 'The Apache Software License, Version 2.0'
+                            url 'http://www.apache.org/license/LICENSE-2.0.txt'
+                            distribution 'repo'
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id 'JetBrains'
+                            name 'JetBrains Team'
+                            organization 'JetBrains s.r.o'
+                            organizationUrl 'http://www.jetbrains.com'
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 dependencies {
     compile 'com.fasterxml.jackson.core:jackson-databind:2.5.+'
     compile 'org.jetbrains:annotations:13.0'
