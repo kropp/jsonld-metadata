@@ -28,24 +28,28 @@ sourceSets {
 
 jar {}
 
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    pkg {
-        repo = 'org.schema'
-        name = 'jsonld-metadata'
-        userOrg = 'kropp'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'git@github.com:kropp/jsonld-metadata.git'
-        version {
-            name = project.version
-            desc = 'JSON-LD Metadata ' + project.version
-            vcsTag = project.version
+if (System.getenv('BINTRAY_USER')) {
+    bintray {
+        user = System.getenv('BINTRAY_USER')
+        key = System.getenv('BINTRAY_KEY')
+        pkg {
+            repo = 'org.schema'
+            name = 'jsonld-metadata'
+            userOrg = 'kropp'
+            licenses = ['Apache-2.0']
+            vcsUrl = 'git@github.com:kropp/jsonld-metadata.git'
+            version {
+                name = project.version
+                desc = 'JSON-LD Metadata ' + project.version
+                vcsTag = project.version
+            }
         }
     }
 }
 
 if (hasProperty('mavenPublishUrl')) {
+    group 'com.jetbrains.hub'
+
     uploadArchives {
         repositories {
             mavenDeployer {
