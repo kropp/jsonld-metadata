@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'maven'
     id 'com.github.kropp.teamcity-gitversion' version '0.1.8'
-    id 'com.jfrog.bintray' version '1.6'
+    id 'com.jfrog.bintray' version '1.7.3'
 }
 
 group 'com.github.kropp'
@@ -99,5 +99,5 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.12'
+    gradleVersion = '3.3'
 }

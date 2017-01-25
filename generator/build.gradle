@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.0.1'
+    ext.kotlin_version = '1.0.6'
 
     repositories {
         mavenCentral()
@@ -31,5 +31,5 @@ sourceSets {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    compile "org.semarglproject:semargl-rdfa:0.6.+"
+    compile "org.semarglproject:semargl-rdfa:0.7"
 }
