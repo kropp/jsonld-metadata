@@ -28,21 +28,38 @@ import java.util.*;
  */
 public class ServiceChannel extends Intangible {
   /**
-   * A language someone may use with the item.
+   * A language someone may use with the item. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [[inLanguage]]
    */
-  @JsonIgnore public Language getAvailableLanguage() {
+  @JsonIgnore public Language getAvailableLanguageLanguage() {
     return (Language) getValue("availableLanguage");
   }
   /**
-   * A language someone may use with the item.
+   * A language someone may use with the item. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [[inLanguage]]
    */
-  @JsonIgnore public Collection<Language> getAvailableLanguages() {
+  @JsonIgnore public Collection<Language> getAvailableLanguageLanguages() {
     final Object current = myData.get("availableLanguage");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<Language>) current;
     }
     return Arrays.asList((Language) current);
+  }
+  /**
+   * A language someone may use with the item. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [[inLanguage]]
+   */
+  @JsonIgnore public String getAvailableLanguageString() {
+    return (String) getValue("availableLanguage");
+  }
+  /**
+   * A language someone may use with the item. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [[inLanguage]]
+   */
+  @JsonIgnore public Collection<String> getAvailableLanguageStrings() {
+    final Object current = myData.get("availableLanguage");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
   /**
    * Estimated processing time for the service using this channel.
@@ -175,17 +192,24 @@ public class ServiceChannel extends Intangible {
       return new ServiceChannel(myData);
     }
     /**
-     * A language someone may use with the item.
+     * A language someone may use with the item. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [[inLanguage]]
      */
     @NotNull public Builder availableLanguage(@NotNull Language language) {
       putValue("availableLanguage", language);
       return this;
     }
     /**
-     * A language someone may use with the item.
+     * A language someone may use with the item. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [[inLanguage]]
      */
     @NotNull public Builder availableLanguage(@NotNull Language.Builder language) {
       putValue("availableLanguage", language.build());
+      return this;
+    }
+    /**
+     * A language someone may use with the item. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [[inLanguage]]
+     */
+    @NotNull public Builder availableLanguage(@NotNull String availableLanguage) {
+      putValue("availableLanguage", availableLanguage);
       return this;
     }
     /**
@@ -193,13 +217,6 @@ public class ServiceChannel extends Intangible {
      */
     @NotNull public Builder processingTime(@NotNull Duration duration) {
       putValue("processingTime", duration);
-      return this;
-    }
-    /**
-     * Estimated processing time for the service using this channel.
-     */
-    @NotNull public Builder processingTime(@NotNull Duration.Builder duration) {
-      putValue("processingTime", duration.build());
       return this;
     }
     /**
@@ -294,109 +311,28 @@ public class ServiceChannel extends Intangible {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -410,7 +346,7 @@ public class ServiceChannel extends Intangible {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);
@@ -446,6 +382,7 @@ public class ServiceChannel extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("availableLanguage".equals(key) && value instanceof Language) { availableLanguage((Language)value); return; }
+      if ("availableLanguage".equals(key) && value instanceof String) { availableLanguage((String)value); return; }
       if ("processingTime".equals(key) && value instanceof Duration) { processingTime((Duration)value); return; }
       if ("providesService".equals(key) && value instanceof Service) { providesService((Service)value); return; }
       if ("serviceLocation".equals(key) && value instanceof Place) { serviceLocation((Place)value); return; }

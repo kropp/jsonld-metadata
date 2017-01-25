@@ -118,6 +118,34 @@ public class AggregateRating extends Rating {
       return this;
     }
     /**
+     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
+     */
+    @NotNull public Builder author(@NotNull Organization organization) {
+      putValue("author", organization);
+      return this;
+    }
+    /**
+     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
+     */
+    @NotNull public Builder author(@NotNull Organization.Builder organization) {
+      putValue("author", organization.build());
+      return this;
+    }
+    /**
+     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
+     */
+    @NotNull public Builder author(@NotNull Person person) {
+      putValue("author", person);
+      return this;
+    }
+    /**
+     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
+     */
+    @NotNull public Builder author(@NotNull Person.Builder person) {
+      putValue("author", person.build());
+      return this;
+    }
+    /**
      * The highest value allowed in this rating system. If bestRating is omitted, 5 is assumed.
      */
     @NotNull public Builder bestRating(@NotNull Integer integer) {
@@ -150,6 +178,13 @@ public class AggregateRating extends Rating {
      */
     @NotNull public Builder bestRating(@NotNull String bestRating) {
       putValue("bestRating", bestRating);
+      return this;
+    }
+    /**
+     * The rating for the content.
+     */
+    @NotNull public Builder ratingValue(@NotNull Number number) {
+      putValue("ratingValue", number);
       return this;
     }
     /**
@@ -209,109 +244,28 @@ public class AggregateRating extends Rating {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -325,7 +279,7 @@ public class AggregateRating extends Rating {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);

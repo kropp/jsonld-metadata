@@ -45,6 +45,23 @@ public class MusicGroup extends PerformingGroup {
     return Arrays.asList((MusicAlbum) current);
   }
   /**
+   * Genre of the creative work, broadcast channel or group.
+   */
+  @JsonIgnore public String getGenre() {
+    return (String) getValue("genre");
+  }
+  /**
+   * Genre of the creative work, broadcast channel or group.
+   */
+  @JsonIgnore public Collection<String> getGenres() {
+    final Object current = myData.get("genre");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  /**
    * A music recording (track)&#x2014;usually a single song. If an ItemList is given, the list should contain items of type MusicRecording.
    */
   @JsonIgnore public ItemList getTrackItemList() {
@@ -78,23 +95,6 @@ public class MusicGroup extends PerformingGroup {
     }
     return Arrays.asList((MusicRecording) current);
   }
-  /**
-   * Genre of the creative work or group.
-   */
-  @JsonIgnore public String getGenre() {
-    return (String) getValue("genre");
-  }
-  /**
-   * Genre of the creative work or group.
-   */
-  @JsonIgnore public Collection<String> getGenres() {
-    final Object current = myData.get("genre");
-    if (current == null) return Collections.emptyList();
-    if (current instanceof Collection) {
-      return (Collection<String>) current;
-    }
-    return Arrays.asList((String) current);
-  }
   protected MusicGroup(java.util.Map<String,Object> data) {
     super(data);
   }
@@ -118,6 +118,13 @@ public class MusicGroup extends PerformingGroup {
      */
     @NotNull public Builder album(@NotNull MusicAlbum.Builder musicAlbum) {
       putValue("album", musicAlbum.build());
+      return this;
+    }
+    /**
+     * Genre of the creative work, broadcast channel or group.
+     */
+    @NotNull public Builder genre(@NotNull String genre) {
+      putValue("genre", genre);
       return this;
     }
     /**
@@ -149,10 +156,17 @@ public class MusicGroup extends PerformingGroup {
       return this;
     }
     /**
-     * Genre of the creative work or group.
+     * Indicates an OfferCatalog listing for this Organization, Person, or Service.
      */
-    @NotNull public Builder genre(@NotNull String genre) {
-      putValue("genre", genre);
+    @NotNull public Builder hasOfferCatalog(@NotNull OfferCatalog offerCatalog) {
+      putValue("hasOfferCatalog", offerCatalog);
+      return this;
+    }
+    /**
+     * Indicates an OfferCatalog listing for this Organization, Person, or Service.
+     */
+    @NotNull public Builder hasOfferCatalog(@NotNull OfferCatalog.Builder offerCatalog) {
+      putValue("hasOfferCatalog", offerCatalog.build());
       return this;
     }
     /**
@@ -170,6 +184,13 @@ public class MusicGroup extends PerformingGroup {
       return this;
     }
     /**
+     * Physical address of the item.
+     */
+    @NotNull public Builder address(@NotNull String address) {
+      putValue("address", address);
+      return this;
+    }
+    /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
@@ -184,10 +205,38 @@ public class MusicGroup extends PerformingGroup {
       return this;
     }
     /**
+     * Alumni of an organization.
+     */
+    @NotNull public Builder alumni(@NotNull Person person) {
+      putValue("alumni", person);
+      return this;
+    }
+    /**
+     * Alumni of an organization.
+     */
+    @NotNull public Builder alumni(@NotNull Person.Builder person) {
+      putValue("alumni", person.build());
+      return this;
+    }
+    /**
      * An award won by or for this item.
      */
     @NotNull public Builder award(@NotNull String award) {
       putValue("award", award);
+      return this;
+    }
+    /**
+     * The larger organization that this organization is a [[subOrganization]] of, if any.
+     */
+    @NotNull public Builder parentOrganization(@NotNull Organization organization) {
+      putValue("parentOrganization", organization);
+      return this;
+    }
+    /**
+     * The larger organization that this organization is a [[subOrganization]] of, if any.
+     */
+    @NotNull public Builder parentOrganization(@NotNull Organization.Builder organization) {
+      putValue("parentOrganization", organization.build());
       return this;
     }
     /**
@@ -249,8 +298,8 @@ public class MusicGroup extends PerformingGroup {
     /**
      * The Dun & Bradstreet DUNS number for identifying an organization or business person.
      */
-    @NotNull public Builder duns(@NotNull String duns) {
-      putValue("duns", duns);
+    @NotNull public Builder duns(@NotNull Identifier identifier) {
+      putValue("duns", identifier);
       return this;
     }
     /**
@@ -324,10 +373,10 @@ public class MusicGroup extends PerformingGroup {
       return this;
     }
     /**
-     * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+     * The [Global Location Number](http://www.gs1.org/gln) (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
-    @NotNull public Builder globalLocationNumber(@NotNull String globalLocationNumber) {
-      putValue("globalLocationNumber", globalLocationNumber);
+    @NotNull public Builder globalLocationNumber(@NotNull Identifier identifier) {
+      putValue("globalLocationNumber", identifier);
       return this;
     }
     /**
@@ -424,29 +473,8 @@ public class MusicGroup extends PerformingGroup {
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    @NotNull public Builder memberOf(@NotNull Organization organization) {
-      putValue("memberOf", organization);
-      return this;
-    }
-    /**
-     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-     */
-    @NotNull public Builder memberOf(@NotNull Organization.Builder organization) {
-      putValue("memberOf", organization.build());
-      return this;
-    }
-    /**
-     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-     */
-    @NotNull public Builder memberOf(@NotNull ProgramMembership programMembership) {
-      putValue("memberOf", programMembership);
-      return this;
-    }
-    /**
-     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-     */
-    @NotNull public Builder memberOf(@NotNull ProgramMembership.Builder programMembership) {
-      putValue("memberOf", programMembership.build());
+    @NotNull public Builder memberOf(@NotNull MemberOf memberOf) {
+      putValue("memberOf", memberOf);
       return this;
     }
     /**
@@ -527,6 +555,34 @@ public class MusicGroup extends PerformingGroup {
       return this;
     }
     /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Organization organization) {
+      putValue("funder", organization);
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Organization.Builder organization) {
+      putValue("funder", organization.build());
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Person person) {
+      putValue("funder", person);
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Person.Builder person) {
+      putValue("funder", person.build());
+      return this;
+    }
+    /**
      * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
      */
     @NotNull public Builder subOrganization(@NotNull Organization organization) {
@@ -543,8 +599,8 @@ public class MusicGroup extends PerformingGroup {
     /**
      * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
      */
-    @NotNull public Builder taxID(@NotNull String taxID) {
-      putValue("taxID", taxID);
+    @NotNull public Builder taxID(@NotNull Identifier identifier) {
+      putValue("taxID", identifier);
       return this;
     }
     /**
@@ -576,6 +632,13 @@ public class MusicGroup extends PerformingGroup {
       return this;
     }
     /**
+     * An organization identifier that uniquely identifies a legal entity as defined in ISO 17442.
+     */
+    @NotNull public Builder leiCode(@NotNull Identifier identifier) {
+      putValue("leiCode", identifier);
+      return this;
+    }
+    /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
@@ -590,109 +653,28 @@ public class MusicGroup extends PerformingGroup {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -706,7 +688,7 @@ public class MusicGroup extends PerformingGroup {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);
@@ -742,9 +724,9 @@ public class MusicGroup extends PerformingGroup {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("album".equals(key) && value instanceof MusicAlbum) { album((MusicAlbum)value); return; }
+      if ("genre".equals(key) && value instanceof String) { genre((String)value); return; }
       if ("track".equals(key) && value instanceof ItemList) { track((ItemList)value); return; }
       if ("track".equals(key) && value instanceof MusicRecording) { track((MusicRecording)value); return; }
-      if ("genre".equals(key) && value instanceof String) { genre((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -39,45 +39,17 @@ public class Pharmacy extends MedicalOrganization {
       return new Pharmacy(myData);
     }
     /**
-     * The larger organization that this local business is a branch of, if any.
+     * Indicates an OfferCatalog listing for this Organization, Person, or Service.
      */
-    @NotNull public Builder parentOrganization(@NotNull Organization organization) {
-      putValue("parentOrganization", organization);
+    @NotNull public Builder hasOfferCatalog(@NotNull OfferCatalog offerCatalog) {
+      putValue("hasOfferCatalog", offerCatalog);
       return this;
     }
     /**
-     * The larger organization that this local business is a branch of, if any.
+     * Indicates an OfferCatalog listing for this Organization, Person, or Service.
      */
-    @NotNull public Builder parentOrganization(@NotNull Organization.Builder organization) {
-      putValue("parentOrganization", organization.build());
-      return this;
-    }
-    /**
-     * The currency accepted (in <a href='http://en.wikipedia.org/wiki/ISO_4217'>ISO 4217 currency format</a>).
-     */
-    @NotNull public Builder currenciesAccepted(@NotNull String currenciesAccepted) {
-      putValue("currenciesAccepted", currenciesAccepted);
-      return this;
-    }
-    /**
-     * The opening hours for a business. Opening hours can be specified as a weekly time range, starting with days, then times per day. Multiple days can be listed with commas ',' separating each day. Day or time ranges are specified using a hyphen '-'.<br />- Days are specified using the following two-letter combinations: <code>Mo</code>, <code>Tu</code>, <code>We</code>, <code>Th</code>, <code>Fr</code>, <code>Sa</code>, <code>Su</code>.<br />- Times are specified using 24:00 time. For example, 3pm is specified as <code>15:00</code>. <br />- Here is an example: <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Tu,Th 16:00-20:00&quot;&gt;Tuesdays and Thursdays 4-8pm&lt;/time&gt;</code>. <br />- If a business is open 7 days a week, then it can be specified as <code>&lt;time itemprop=&quot;openingHours&quot; datetime=&quot;Mo-Su&quot;&gt;Monday through Sunday, all day&lt;/time&gt;</code>.
-     */
-    @NotNull public Builder openingHours(@NotNull String openingHours) {
-      putValue("openingHours", openingHours);
-      return this;
-    }
-    /**
-     * Cash, credit card, etc.
-     */
-    @NotNull public Builder paymentAccepted(@NotNull String paymentAccepted) {
-      putValue("paymentAccepted", paymentAccepted);
-      return this;
-    }
-    /**
-     * The price range of the business, for example <code>$$$</code>.
-     */
-    @NotNull public Builder priceRange(@NotNull String priceRange) {
-      putValue("priceRange", priceRange);
+    @NotNull public Builder hasOfferCatalog(@NotNull OfferCatalog.Builder offerCatalog) {
+      putValue("hasOfferCatalog", offerCatalog.build());
       return this;
     }
     /**
@@ -95,6 +67,13 @@ public class Pharmacy extends MedicalOrganization {
       return this;
     }
     /**
+     * Physical address of the item.
+     */
+    @NotNull public Builder address(@NotNull String address) {
+      putValue("address", address);
+      return this;
+    }
+    /**
      * The overall rating, based on a collection of reviews or ratings, of the item.
      */
     @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
@@ -109,17 +88,122 @@ public class Pharmacy extends MedicalOrganization {
       return this;
     }
     /**
-     * The basic containment relation between places.
+     * Alumni of an organization.
      */
-    @NotNull public Builder containedIn(@NotNull Place place) {
-      putValue("containedIn", place);
+    @NotNull public Builder alumni(@NotNull Person person) {
+      putValue("alumni", person);
       return this;
     }
     /**
-     * The basic containment relation between places.
+     * Alumni of an organization.
      */
-    @NotNull public Builder containedIn(@NotNull Place.Builder place) {
-      putValue("containedIn", place.build());
+    @NotNull public Builder alumni(@NotNull Person.Builder person) {
+      putValue("alumni", person.build());
+      return this;
+    }
+    /**
+     * An award won by or for this item.
+     */
+    @NotNull public Builder award(@NotNull String award) {
+      putValue("award", award);
+      return this;
+    }
+    /**
+     * The larger organization that this organization is a [[subOrganization]] of, if any.
+     */
+    @NotNull public Builder parentOrganization(@NotNull Organization organization) {
+      putValue("parentOrganization", organization);
+      return this;
+    }
+    /**
+     * The larger organization that this organization is a [[subOrganization]] of, if any.
+     */
+    @NotNull public Builder parentOrganization(@NotNull Organization.Builder organization) {
+      putValue("parentOrganization", organization.build());
+      return this;
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
+    @NotNull public Builder brand(@NotNull Brand brand) {
+      putValue("brand", brand);
+      return this;
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
+    @NotNull public Builder brand(@NotNull Brand.Builder brand) {
+      putValue("brand", brand.build());
+      return this;
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
+    @NotNull public Builder brand(@NotNull Organization organization) {
+      putValue("brand", organization);
+      return this;
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
+    @NotNull public Builder brand(@NotNull Organization.Builder organization) {
+      putValue("brand", organization.build());
+      return this;
+    }
+    /**
+     * A contact point for a person or organization.
+     */
+    @NotNull public Builder contactPoint(@NotNull ContactPoint contactPoint) {
+      putValue("contactPoint", contactPoint);
+      return this;
+    }
+    /**
+     * A contact point for a person or organization.
+     */
+    @NotNull public Builder contactPoint(@NotNull ContactPoint.Builder contactPoint) {
+      putValue("contactPoint", contactPoint.build());
+      return this;
+    }
+    /**
+     * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
+     */
+    @NotNull public Builder department(@NotNull Organization organization) {
+      putValue("department", organization);
+      return this;
+    }
+    /**
+     * A relationship between an organization and a department of that organization, also described as an organization (allowing different urls, logos, opening hours). For example: a store with a pharmacy, or a bakery with a cafe.
+     */
+    @NotNull public Builder department(@NotNull Organization.Builder organization) {
+      putValue("department", organization.build());
+      return this;
+    }
+    /**
+     * The Dun & Bradstreet DUNS number for identifying an organization or business person.
+     */
+    @NotNull public Builder duns(@NotNull Identifier identifier) {
+      putValue("duns", identifier);
+      return this;
+    }
+    /**
+     * Email address.
+     */
+    @NotNull public Builder email(@NotNull String email) {
+      putValue("email", email);
+      return this;
+    }
+    /**
+     * Someone working for this organization.
+     */
+    @NotNull public Builder employee(@NotNull Person person) {
+      putValue("employee", person);
+      return this;
+    }
+    /**
+     * Someone working for this organization.
+     */
+    @NotNull public Builder employee(@NotNull Person.Builder person) {
+      putValue("employee", person.build());
       return this;
     }
     /**
@@ -144,38 +228,52 @@ public class Pharmacy extends MedicalOrganization {
       return this;
     }
     /**
-     * The geo coordinates of the place.
+     * A person who founded this organization.
      */
-    @NotNull public Builder geo(@NotNull GeoCoordinates geoCoordinates) {
-      putValue("geo", geoCoordinates);
+    @NotNull public Builder founder(@NotNull Person person) {
+      putValue("founder", person);
       return this;
     }
     /**
-     * The geo coordinates of the place.
+     * A person who founded this organization.
      */
-    @NotNull public Builder geo(@NotNull GeoCoordinates.Builder geoCoordinates) {
-      putValue("geo", geoCoordinates.build());
+    @NotNull public Builder founder(@NotNull Person.Builder person) {
+      putValue("founder", person.build());
       return this;
     }
     /**
-     * The geo coordinates of the place.
+     * The date that this organization was dissolved.
      */
-    @NotNull public Builder geo(@NotNull GeoShape geoShape) {
-      putValue("geo", geoShape);
+    @NotNull public Builder dissolutionDate(@NotNull java.util.Date date) {
+      putValue("dissolutionDate", date);
       return this;
     }
     /**
-     * The geo coordinates of the place.
+     * The date that this organization was founded.
      */
-    @NotNull public Builder geo(@NotNull GeoShape.Builder geoShape) {
-      putValue("geo", geoShape.build());
+    @NotNull public Builder foundingDate(@NotNull java.util.Date date) {
+      putValue("foundingDate", date);
       return this;
     }
     /**
-     * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+     * The [Global Location Number](http://www.gs1.org/gln) (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
-    @NotNull public Builder globalLocationNumber(@NotNull String globalLocationNumber) {
-      putValue("globalLocationNumber", globalLocationNumber);
+    @NotNull public Builder globalLocationNumber(@NotNull Identifier identifier) {
+      putValue("globalLocationNumber", identifier);
+      return this;
+    }
+    /**
+     * Points-of-Sales operated by the organization or person.
+     */
+    @NotNull public Builder hasPOS(@NotNull Place place) {
+      putValue("hasPOS", place);
+      return this;
+    }
+    /**
+     * Points-of-Sales operated by the organization or person.
+     */
+    @NotNull public Builder hasPOS(@NotNull Place.Builder place) {
+      putValue("hasPOS", place.build());
       return this;
     }
     /**
@@ -183,6 +281,13 @@ public class Pharmacy extends MedicalOrganization {
      */
     @NotNull public Builder isicV4(@NotNull String isicV4) {
       putValue("isicV4", isicV4);
+      return this;
+    }
+    /**
+     * The official name of the organization, e.g. the registered company name.
+     */
+    @NotNull public Builder legalName(@NotNull String legalName) {
+      putValue("legalName", legalName);
       return this;
     }
     /**
@@ -207,66 +312,101 @@ public class Pharmacy extends MedicalOrganization {
       return this;
     }
     /**
-     * A URL to a map of the place.
+     * A pointer to products or services offered by the organization or person.
      */
-    @NotNull public Builder hasMap(@NotNull Map map) {
-      putValue("hasMap", map);
+    @NotNull public Builder makesOffer(@NotNull Offer offer) {
+      putValue("makesOffer", offer);
       return this;
     }
     /**
-     * A URL to a map of the place.
+     * A pointer to products or services offered by the organization or person.
      */
-    @NotNull public Builder hasMap(@NotNull Map.Builder map) {
-      putValue("hasMap", map.build());
+    @NotNull public Builder makesOffer(@NotNull Offer.Builder offer) {
+      putValue("makesOffer", offer.build());
       return this;
     }
     /**
-     * A URL to a map of the place.
+     * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
-    @NotNull public Builder hasMap(@NotNull String hasMap) {
-      putValue("hasMap", hasMap);
+    @NotNull public Builder member(@NotNull Organization organization) {
+      putValue("member", organization);
       return this;
     }
     /**
-     * The opening hours of a certain place.
+     * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
-    @NotNull public Builder openingHoursSpecification(@NotNull OpeningHoursSpecification openingHoursSpecification) {
-      putValue("openingHoursSpecification", openingHoursSpecification);
+    @NotNull public Builder member(@NotNull Organization.Builder organization) {
+      putValue("member", organization.build());
       return this;
     }
     /**
-     * The opening hours of a certain place.
+     * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
-    @NotNull public Builder openingHoursSpecification(@NotNull OpeningHoursSpecification.Builder openingHoursSpecification) {
-      putValue("openingHoursSpecification", openingHoursSpecification.build());
+    @NotNull public Builder member(@NotNull Person person) {
+      putValue("member", person);
       return this;
     }
     /**
-     * A photograph of this place.
+     * A member of an Organization or a ProgramMembership. Organizations can be members of organizations; ProgramMembership is typically for individuals.
      */
-    @NotNull public Builder photo(@NotNull ImageObject imageObject) {
-      putValue("photo", imageObject);
+    @NotNull public Builder member(@NotNull Person.Builder person) {
+      putValue("member", person.build());
       return this;
     }
     /**
-     * A photograph of this place.
+     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    @NotNull public Builder photo(@NotNull ImageObject.Builder imageObject) {
-      putValue("photo", imageObject.build());
+    @NotNull public Builder memberOf(@NotNull MemberOf memberOf) {
+      putValue("memberOf", memberOf);
       return this;
     }
     /**
-     * A photograph of this place.
+     * The North American Industry Classification System (NAICS) code for a particular organization or business person.
      */
-    @NotNull public Builder photo(@NotNull Photograph photograph) {
-      putValue("photo", photograph);
+    @NotNull public Builder naics(@NotNull String naics) {
+      putValue("naics", naics);
       return this;
     }
     /**
-     * A photograph of this place.
+     * The number of employees in an organization e.g. business.
      */
-    @NotNull public Builder photo(@NotNull Photograph.Builder photograph) {
-      putValue("photo", photograph.build());
+    @NotNull public Builder numberOfEmployees(@NotNull QuantitativeValue quantitativeValue) {
+      putValue("numberOfEmployees", quantitativeValue);
+      return this;
+    }
+    /**
+     * The number of employees in an organization e.g. business.
+     */
+    @NotNull public Builder numberOfEmployees(@NotNull QuantitativeValue.Builder quantitativeValue) {
+      putValue("numberOfEmployees", quantitativeValue.build());
+      return this;
+    }
+    /**
+     * Products owned by the organization or person.
+     */
+    @NotNull public Builder owns(@NotNull OwnershipInfo ownershipInfo) {
+      putValue("owns", ownershipInfo);
+      return this;
+    }
+    /**
+     * Products owned by the organization or person.
+     */
+    @NotNull public Builder owns(@NotNull OwnershipInfo.Builder ownershipInfo) {
+      putValue("owns", ownershipInfo.build());
+      return this;
+    }
+    /**
+     * Products owned by the organization or person.
+     */
+    @NotNull public Builder owns(@NotNull Product product) {
+      putValue("owns", product);
+      return this;
+    }
+    /**
+     * Products owned by the organization or person.
+     */
+    @NotNull public Builder owns(@NotNull Product.Builder product) {
+      putValue("owns", product.build());
       return this;
     }
     /**
@@ -284,6 +424,69 @@ public class Pharmacy extends MedicalOrganization {
       return this;
     }
     /**
+     * A pointer to products or services sought by the organization or person (demand).
+     */
+    @NotNull public Builder seeks(@NotNull Demand demand) {
+      putValue("seeks", demand);
+      return this;
+    }
+    /**
+     * A pointer to products or services sought by the organization or person (demand).
+     */
+    @NotNull public Builder seeks(@NotNull Demand.Builder demand) {
+      putValue("seeks", demand.build());
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Organization organization) {
+      putValue("funder", organization);
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Organization.Builder organization) {
+      putValue("funder", organization.build());
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Person person) {
+      putValue("funder", person);
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Person.Builder person) {
+      putValue("funder", person.build());
+      return this;
+    }
+    /**
+     * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
+     */
+    @NotNull public Builder subOrganization(@NotNull Organization organization) {
+      putValue("subOrganization", organization);
+      return this;
+    }
+    /**
+     * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
+     */
+    @NotNull public Builder subOrganization(@NotNull Organization.Builder organization) {
+      putValue("subOrganization", organization.build());
+      return this;
+    }
+    /**
+     * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
+     */
+    @NotNull public Builder taxID(@NotNull Identifier identifier) {
+      putValue("taxID", identifier);
+      return this;
+    }
+    /**
      * The telephone number.
      */
     @NotNull public Builder telephone(@NotNull String telephone) {
@@ -291,23 +494,31 @@ public class Pharmacy extends MedicalOrganization {
       return this;
     }
     /**
-     * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-     * 
-     * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-     * 
+     * The Value-added Tax ID of the organization or person.
      */
-    @NotNull public Builder additionalProperty(@NotNull PropertyValue propertyValue) {
-      putValue("additionalProperty", propertyValue);
+    @NotNull public Builder vatID(@NotNull String vatID) {
+      putValue("vatID", vatID);
       return this;
     }
     /**
-     * A property-value pair representing an additional characteristics of the entitity, e.g. a product feature or another characteristic for which there is no matching property in schema.org. <br /><br />
-     * 
-     * Note: Publishers should be aware that applications designed to use specific schema.org properties (e.g. http://schema.org/width, http://schema.org/color, http://schema.org/gtin13, ...) will typically expect such data to be provided using those properties, rather than using the generic property/value mechanism.
-     * 
+     * The place where the Organization was founded.
      */
-    @NotNull public Builder additionalProperty(@NotNull PropertyValue.Builder propertyValue) {
-      putValue("additionalProperty", propertyValue.build());
+    @NotNull public Builder foundingLocation(@NotNull Place place) {
+      putValue("foundingLocation", place);
+      return this;
+    }
+    /**
+     * The place where the Organization was founded.
+     */
+    @NotNull public Builder foundingLocation(@NotNull Place.Builder place) {
+      putValue("foundingLocation", place.build());
+      return this;
+    }
+    /**
+     * An organization identifier that uniquely identifies a legal entity as defined in ISO 17442.
+     */
+    @NotNull public Builder leiCode(@NotNull Identifier identifier) {
+      putValue("leiCode", identifier);
       return this;
     }
     /**
@@ -325,109 +536,28 @@ public class Pharmacy extends MedicalOrganization {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -441,7 +571,7 @@ public class Pharmacy extends MedicalOrganization {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);

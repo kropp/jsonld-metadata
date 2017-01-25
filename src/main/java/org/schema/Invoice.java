@@ -30,19 +30,19 @@ public class Invoice extends Intangible {
   /**
    * A number that confirms the given order or payment has been received.
    */
-  @JsonIgnore public String getConfirmationNumber() {
-    return (String) getValue("confirmationNumber");
+  @JsonIgnore public Identifier getConfirmationNumber() {
+    return (Identifier) getValue("confirmationNumber");
   }
   /**
    * A number that confirms the given order or payment has been received.
    */
-  @JsonIgnore public Collection<String> getConfirmationNumbers() {
+  @JsonIgnore public Collection<Identifier> getConfirmationNumbers() {
     final Object current = myData.get("confirmationNumber");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<Identifier>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((Identifier) current);
   }
   /**
    * Party placing the order or paying the invoice.
@@ -79,23 +79,6 @@ public class Invoice extends Intangible {
     return Arrays.asList((Person) current);
   }
   /**
-   * The date that payment is due.
-   */
-  @JsonIgnore public java.util.Date getPaymentDue() {
-    return (java.util.Date) getValue("paymentDue");
-  }
-  /**
-   * The date that payment is due.
-   */
-  @JsonIgnore public Collection<java.util.Date> getPaymentDues() {
-    final Object current = myData.get("paymentDue");
-    if (current == null) return Collections.emptyList();
-    if (current instanceof Collection) {
-      return (Collection<java.util.Date>) current;
-    }
-    return Arrays.asList((java.util.Date) current);
-  }
-  /**
    * The name of the credit card or other method of payment for the order.
    */
   @JsonIgnore public PaymentMethod getPaymentMethod() {
@@ -128,6 +111,23 @@ public class Invoice extends Intangible {
       return (Collection<String>) current;
     }
     return Arrays.asList((String) current);
+  }
+  /**
+   * The date that payment is due.
+   */
+  @JsonIgnore public java.util.Date getPaymentDueDate() {
+    return (java.util.Date) getValue("paymentDueDate");
+  }
+  /**
+   * The date that payment is due.
+   */
+  @JsonIgnore public Collection<java.util.Date> getPaymentDueDates() {
+    final Object current = myData.get("paymentDueDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
   }
   /**
    * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
@@ -200,13 +200,30 @@ public class Invoice extends Intangible {
   /**
    * The total amount due.
    */
-  @JsonIgnore public PriceSpecification getTotalPaymentDue() {
+  @JsonIgnore public MonetaryAmount getTotalPaymentDueMonetaryAmount() {
+    return (MonetaryAmount) getValue("totalPaymentDue");
+  }
+  /**
+   * The total amount due.
+   */
+  @JsonIgnore public Collection<MonetaryAmount> getTotalPaymentDueMonetaryAmounts() {
+    final Object current = myData.get("totalPaymentDue");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MonetaryAmount>) current;
+    }
+    return Arrays.asList((MonetaryAmount) current);
+  }
+  /**
+   * The total amount due.
+   */
+  @JsonIgnore public PriceSpecification getTotalPaymentDuePriceSpecification() {
     return (PriceSpecification) getValue("totalPaymentDue");
   }
   /**
    * The total amount due.
    */
-  @JsonIgnore public Collection<PriceSpecification> getTotalPaymentDues() {
+  @JsonIgnore public Collection<PriceSpecification> getTotalPaymentDuePriceSpecifications() {
     final Object current = myData.get("totalPaymentDue");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
@@ -217,13 +234,30 @@ public class Invoice extends Intangible {
   /**
    * The minimum payment required at this time.
    */
-  @JsonIgnore public PriceSpecification getMinimumPaymentDue() {
+  @JsonIgnore public MonetaryAmount getMinimumPaymentDueMonetaryAmount() {
+    return (MonetaryAmount) getValue("minimumPaymentDue");
+  }
+  /**
+   * The minimum payment required at this time.
+   */
+  @JsonIgnore public Collection<MonetaryAmount> getMinimumPaymentDueMonetaryAmounts() {
+    final Object current = myData.get("minimumPaymentDue");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MonetaryAmount>) current;
+    }
+    return Arrays.asList((MonetaryAmount) current);
+  }
+  /**
+   * The minimum payment required at this time.
+   */
+  @JsonIgnore public PriceSpecification getMinimumPaymentDuePriceSpecification() {
     return (PriceSpecification) getValue("minimumPaymentDue");
   }
   /**
    * The minimum payment required at this time.
    */
-  @JsonIgnore public Collection<PriceSpecification> getMinimumPaymentDues() {
+  @JsonIgnore public Collection<PriceSpecification> getMinimumPaymentDuePriceSpecifications() {
     final Object current = myData.get("minimumPaymentDue");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
@@ -234,19 +268,19 @@ public class Invoice extends Intangible {
   /**
    * The identifier for the account the payment will be applied to.
    */
-  @JsonIgnore public String getAccountId() {
-    return (String) getValue("accountId");
+  @JsonIgnore public Identifier getAccountId() {
+    return (Identifier) getValue("accountId");
   }
   /**
    * The identifier for the account the payment will be applied to.
    */
-  @JsonIgnore public Collection<String> getAccountIds() {
+  @JsonIgnore public Collection<Identifier> getAccountIds() {
     final Object current = myData.get("accountId");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<Identifier>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((Identifier) current);
   }
   /**
    * The date the invoice is scheduled to be paid.
@@ -285,13 +319,30 @@ public class Invoice extends Intangible {
   /**
    * The status of payment; whether the invoice has been paid or not.
    */
-  @JsonIgnore public String getPaymentStatus() {
+  @JsonIgnore public PaymentStatusType getPaymentStatusPaymentStatusType() {
+    return (PaymentStatusType) getValue("paymentStatus");
+  }
+  /**
+   * The status of payment; whether the invoice has been paid or not.
+   */
+  @JsonIgnore public Collection<PaymentStatusType> getPaymentStatusPaymentStatusTypes() {
+    final Object current = myData.get("paymentStatus");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PaymentStatusType>) current;
+    }
+    return Arrays.asList((PaymentStatusType) current);
+  }
+  /**
+   * The status of payment; whether the invoice has been paid or not.
+   */
+  @JsonIgnore public String getPaymentStatusString() {
     return (String) getValue("paymentStatus");
   }
   /**
    * The status of payment; whether the invoice has been paid or not.
    */
-  @JsonIgnore public Collection<String> getPaymentStatuss() {
+  @JsonIgnore public Collection<String> getPaymentStatusStrings() {
     final Object current = myData.get("paymentStatus");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
@@ -330,8 +381,8 @@ public class Invoice extends Intangible {
     /**
      * A number that confirms the given order or payment has been received.
      */
-    @NotNull public Builder confirmationNumber(@NotNull String confirmationNumber) {
-      putValue("confirmationNumber", confirmationNumber);
+    @NotNull public Builder confirmationNumber(@NotNull Identifier identifier) {
+      putValue("confirmationNumber", identifier);
       return this;
     }
     /**
@@ -363,13 +414,6 @@ public class Invoice extends Intangible {
       return this;
     }
     /**
-     * The date that payment is due.
-     */
-    @NotNull public Builder paymentDue(@NotNull java.util.Date date) {
-      putValue("paymentDue", date);
-      return this;
-    }
-    /**
      * The name of the credit card or other method of payment for the order.
      */
     @NotNull public Builder paymentMethod(@NotNull PaymentMethod paymentMethod) {
@@ -388,6 +432,13 @@ public class Invoice extends Intangible {
      */
     @NotNull public Builder paymentMethodId(@NotNull String paymentMethodId) {
       putValue("paymentMethodId", paymentMethodId);
+      return this;
+    }
+    /**
+     * The date that payment is due.
+     */
+    @NotNull public Builder paymentDueDate(@NotNull java.util.Date date) {
+      putValue("paymentDueDate", date);
       return this;
     }
     /**
@@ -449,6 +500,20 @@ public class Invoice extends Intangible {
     /**
      * The total amount due.
      */
+    @NotNull public Builder totalPaymentDue(@NotNull MonetaryAmount monetaryAmount) {
+      putValue("totalPaymentDue", monetaryAmount);
+      return this;
+    }
+    /**
+     * The total amount due.
+     */
+    @NotNull public Builder totalPaymentDue(@NotNull MonetaryAmount.Builder monetaryAmount) {
+      putValue("totalPaymentDue", monetaryAmount.build());
+      return this;
+    }
+    /**
+     * The total amount due.
+     */
     @NotNull public Builder totalPaymentDue(@NotNull PriceSpecification priceSpecification) {
       putValue("totalPaymentDue", priceSpecification);
       return this;
@@ -458,6 +523,20 @@ public class Invoice extends Intangible {
      */
     @NotNull public Builder totalPaymentDue(@NotNull PriceSpecification.Builder priceSpecification) {
       putValue("totalPaymentDue", priceSpecification.build());
+      return this;
+    }
+    /**
+     * The minimum payment required at this time.
+     */
+    @NotNull public Builder minimumPaymentDue(@NotNull MonetaryAmount monetaryAmount) {
+      putValue("minimumPaymentDue", monetaryAmount);
+      return this;
+    }
+    /**
+     * The minimum payment required at this time.
+     */
+    @NotNull public Builder minimumPaymentDue(@NotNull MonetaryAmount.Builder monetaryAmount) {
+      putValue("minimumPaymentDue", monetaryAmount.build());
       return this;
     }
     /**
@@ -477,8 +556,8 @@ public class Invoice extends Intangible {
     /**
      * The identifier for the account the payment will be applied to.
      */
-    @NotNull public Builder accountId(@NotNull String accountId) {
-      putValue("accountId", accountId);
+    @NotNull public Builder accountId(@NotNull Identifier identifier) {
+      putValue("accountId", identifier);
       return this;
     }
     /**
@@ -496,10 +575,17 @@ public class Invoice extends Intangible {
       return this;
     }
     /**
-     * The time interval used to compute the invoice.
+     * The status of payment; whether the invoice has been paid or not.
      */
-    @NotNull public Builder billingPeriod(@NotNull Duration.Builder duration) {
-      putValue("billingPeriod", duration.build());
+    @NotNull public Builder paymentStatus(@NotNull PaymentStatusType paymentStatusType) {
+      putValue("paymentStatus", paymentStatusType);
+      return this;
+    }
+    /**
+     * The status of payment; whether the invoice has been paid or not.
+     */
+    @NotNull public Builder paymentStatus(@NotNull PaymentStatusType.Builder paymentStatusType) {
+      putValue("paymentStatus", paymentStatusType.build());
       return this;
     }
     /**
@@ -538,109 +624,28 @@ public class Invoice extends Intangible {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -654,7 +659,7 @@ public class Invoice extends Intangible {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);
@@ -689,21 +694,24 @@ public class Invoice extends Intangible {
       return id(Long.toString(id));
     }
     @Override protected void fromMap(String key, Object value) {
-      if ("confirmationNumber".equals(key) && value instanceof String) { confirmationNumber((String)value); return; }
+      if ("confirmationNumber".equals(key) && value instanceof Identifier) { confirmationNumber((Identifier)value); return; }
       if ("customer".equals(key) && value instanceof Organization) { customer((Organization)value); return; }
       if ("customer".equals(key) && value instanceof Person) { customer((Person)value); return; }
-      if ("paymentDue".equals(key) && value instanceof java.util.Date) { paymentDue((java.util.Date)value); return; }
       if ("paymentMethod".equals(key) && value instanceof PaymentMethod) { paymentMethod((PaymentMethod)value); return; }
       if ("paymentMethodId".equals(key) && value instanceof String) { paymentMethodId((String)value); return; }
+      if ("paymentDueDate".equals(key) && value instanceof java.util.Date) { paymentDueDate((java.util.Date)value); return; }
       if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
       if ("provider".equals(key) && value instanceof Person) { provider((Person)value); return; }
       if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); return; }
       if ("broker".equals(key) && value instanceof Person) { broker((Person)value); return; }
+      if ("totalPaymentDue".equals(key) && value instanceof MonetaryAmount) { totalPaymentDue((MonetaryAmount)value); return; }
       if ("totalPaymentDue".equals(key) && value instanceof PriceSpecification) { totalPaymentDue((PriceSpecification)value); return; }
+      if ("minimumPaymentDue".equals(key) && value instanceof MonetaryAmount) { minimumPaymentDue((MonetaryAmount)value); return; }
       if ("minimumPaymentDue".equals(key) && value instanceof PriceSpecification) { minimumPaymentDue((PriceSpecification)value); return; }
-      if ("accountId".equals(key) && value instanceof String) { accountId((String)value); return; }
+      if ("accountId".equals(key) && value instanceof Identifier) { accountId((Identifier)value); return; }
       if ("scheduledPaymentDate".equals(key) && value instanceof java.util.Date) { scheduledPaymentDate((java.util.Date)value); return; }
       if ("billingPeriod".equals(key) && value instanceof Duration) { billingPeriod((Duration)value); return; }
+      if ("paymentStatus".equals(key) && value instanceof PaymentStatusType) { paymentStatus((PaymentStatusType)value); return; }
       if ("paymentStatus".equals(key) && value instanceof String) { paymentStatus((String)value); return; }
       if ("referencesOrder".equals(key) && value instanceof Order) { referencesOrder((Order)value); return; }
       super.fromMap(key, value);

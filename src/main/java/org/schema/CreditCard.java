@@ -24,19 +24,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 /**
- * A credit or debit card type as a standardized procedure for transferring the monetary amount for a purchase.
- * <br />
- *     Commonly used values:<br />
- * <br />
- *     http://purl.org/goodrelations/v1#AmericanExpress <br />
- *     http://purl.org/goodrelations/v1#DinersClub <br />
- *     http://purl.org/goodrelations/v1#Discover <br />
- *     http://purl.org/goodrelations/v1#JCB <br />
- *     http://purl.org/goodrelations/v1#MasterCard <br />
- *     http://purl.org/goodrelations/v1#VISA <br />
- *         Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
+ * A card payment method of a particular brand or name.  Used to mark up a particular payment method and/or the financial product/service that supplies the card account.\n\nCommonly used values:\n\n* http://purl.org/goodrelations/v1#AmericanExpress\n* http://purl.org/goodrelations/v1#DinersClub\n* http://purl.org/goodrelations/v1#Discover\n* http://purl.org/goodrelations/v1#JCB\n* http://purl.org/goodrelations/v1#MasterCard\n* http://purl.org/goodrelations/v1#VISA
+ *        Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
  */
-public class CreditCard extends PaymentMethod {
+public class CreditCard extends LoanOrCredit {
   protected CreditCard(java.util.Map<String,Object> data) {
     super(data);
   }
@@ -44,36 +35,393 @@ public class CreditCard extends PaymentMethod {
   /**
    * Builder for {@link CreditCard}
    */
-  public static class Builder extends PaymentMethod.Builder {
+  public static class Builder extends LoanOrCredit.Builder {
     public CreditCard build() {
       return new CreditCard(myData);
     }
     /**
-     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
+     * The duration of the loan or credit agreement.
      */
-    @NotNull public Builder supersededBy(@NotNull Enumeration enumeration) {
-      putValue("supersededBy", enumeration);
+    @NotNull public Builder loanTerm(@NotNull QuantitativeValue quantitativeValue) {
+      putValue("loanTerm", quantitativeValue);
       return this;
     }
     /**
-     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
+     * The duration of the loan or credit agreement.
      */
-    @NotNull public Builder supersededBy(@NotNull Enumeration.Builder enumeration) {
-      putValue("supersededBy", enumeration.build());
+    @NotNull public Builder loanTerm(@NotNull QuantitativeValue.Builder quantitativeValue) {
+      putValue("loanTerm", quantitativeValue.build());
       return this;
     }
     /**
-     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
+     * Assets required to secure loan or credit repayments. It may take form of third party pledge, goods, financial instruments (cash, securities, etc.)
      */
-    @NotNull public Builder supersededBy(@NotNull Property property) {
-      putValue("supersededBy", property);
+    @NotNull public Builder requiredCollateral(@NotNull String requiredCollateral) {
+      putValue("requiredCollateral", requiredCollateral);
       return this;
     }
     /**
-     * Relates a term (i.e. a property, class or enumeration) to one that supersedes it.
+     * Assets required to secure loan or credit repayments. It may take form of third party pledge, goods, financial instruments (cash, securities, etc.)
      */
-    @NotNull public Builder supersededBy(@NotNull Property.Builder property) {
-      putValue("supersededBy", property.build());
+    @NotNull public Builder requiredCollateral(@NotNull Thing thing) {
+      putValue("requiredCollateral", thing);
+      return this;
+    }
+    /**
+     * Assets required to secure loan or credit repayments. It may take form of third party pledge, goods, financial instruments (cash, securities, etc.)
+     */
+    @NotNull public Builder requiredCollateral(@NotNull Thing.Builder thing) {
+      putValue("requiredCollateral", thing.build());
+      return this;
+    }
+    /**
+     * The annual rate that is charged for borrowing (or made by investing), expressed as a single percentage number that represents the actual yearly cost of funds over the term of a loan. This includes any fees or additional costs associated with the transaction.
+     */
+    @NotNull public Builder annualPercentageRate(@NotNull Number number) {
+      putValue("annualPercentageRate", number);
+      return this;
+    }
+    /**
+     * The annual rate that is charged for borrowing (or made by investing), expressed as a single percentage number that represents the actual yearly cost of funds over the term of a loan. This includes any fees or additional costs associated with the transaction.
+     */
+    @NotNull public Builder annualPercentageRate(@NotNull QuantitativeValue quantitativeValue) {
+      putValue("annualPercentageRate", quantitativeValue);
+      return this;
+    }
+    /**
+     * The annual rate that is charged for borrowing (or made by investing), expressed as a single percentage number that represents the actual yearly cost of funds over the term of a loan. This includes any fees or additional costs associated with the transaction.
+     */
+    @NotNull public Builder annualPercentageRate(@NotNull QuantitativeValue.Builder quantitativeValue) {
+      putValue("annualPercentageRate", quantitativeValue.build());
+      return this;
+    }
+    /**
+     * Description of fees, commissions, and other terms applied either to a class of financial product, or by a financial service organization.
+     */
+    @NotNull public Builder feesAndCommissionsSpecification(@NotNull String feesAndCommissionsSpecification) {
+      putValue("feesAndCommissionsSpecification", feesAndCommissionsSpecification);
+      return this;
+    }
+    /**
+     * The interest rate, charged or paid, applicable to the financial product. Note: This is different from the calculated annualPercentageRate.
+     */
+    @NotNull public Builder interestRate(@NotNull Number number) {
+      putValue("interestRate", number);
+      return this;
+    }
+    /**
+     * The interest rate, charged or paid, applicable to the financial product. Note: This is different from the calculated annualPercentageRate.
+     */
+    @NotNull public Builder interestRate(@NotNull QuantitativeValue quantitativeValue) {
+      putValue("interestRate", quantitativeValue);
+      return this;
+    }
+    /**
+     * The interest rate, charged or paid, applicable to the financial product. Note: This is different from the calculated annualPercentageRate.
+     */
+    @NotNull public Builder interestRate(@NotNull QuantitativeValue.Builder quantitativeValue) {
+      putValue("interestRate", quantitativeValue.build());
+      return this;
+    }
+    /**
+     * The overall rating, based on a collection of reviews or ratings, of the item.
+     */
+    @NotNull public Builder aggregateRating(@NotNull AggregateRating aggregateRating) {
+      putValue("aggregateRating", aggregateRating);
+      return this;
+    }
+    /**
+     * The overall rating, based on a collection of reviews or ratings, of the item.
+     */
+    @NotNull public Builder aggregateRating(@NotNull AggregateRating.Builder aggregateRating) {
+      putValue("aggregateRating", aggregateRating.build());
+      return this;
+    }
+    /**
+     * An intended audience, i.e. a group for whom something was created.
+     */
+    @NotNull public Builder audience(@NotNull Audience audience) {
+      putValue("audience", audience);
+      return this;
+    }
+    /**
+     * An intended audience, i.e. a group for whom something was created.
+     */
+    @NotNull public Builder audience(@NotNull Audience.Builder audience) {
+      putValue("audience", audience.build());
+      return this;
+    }
+    /**
+     * A means of accessing the service (e.g. a phone bank, a web site, a location, etc.).
+     */
+    @NotNull public Builder availableChannel(@NotNull ServiceChannel serviceChannel) {
+      putValue("availableChannel", serviceChannel);
+      return this;
+    }
+    /**
+     * A means of accessing the service (e.g. a phone bank, a web site, a location, etc.).
+     */
+    @NotNull public Builder availableChannel(@NotNull ServiceChannel.Builder serviceChannel) {
+      putValue("availableChannel", serviceChannel.build());
+      return this;
+    }
+    /**
+     * An award won by or for this item.
+     */
+    @NotNull public Builder award(@NotNull String award) {
+      putValue("award", award);
+      return this;
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
+    @NotNull public Builder brand(@NotNull Brand brand) {
+      putValue("brand", brand);
+      return this;
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
+    @NotNull public Builder brand(@NotNull Brand.Builder brand) {
+      putValue("brand", brand.build());
+      return this;
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
+    @NotNull public Builder brand(@NotNull Organization organization) {
+      putValue("brand", organization);
+      return this;
+    }
+    /**
+     * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
+     */
+    @NotNull public Builder brand(@NotNull Organization.Builder organization) {
+      putValue("brand", organization.build());
+      return this;
+    }
+    /**
+     * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+     */
+    @NotNull public Builder category(@NotNull String category) {
+      putValue("category", category);
+      return this;
+    }
+    /**
+     * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+     */
+    @NotNull public Builder category(@NotNull Thing thing) {
+      putValue("category", thing);
+      return this;
+    }
+    /**
+     * A category for the item. Greater signs or slashes can be used to informally indicate a category hierarchy.
+     */
+    @NotNull public Builder category(@NotNull Thing.Builder thing) {
+      putValue("category", thing.build());
+      return this;
+    }
+    /**
+     * The hours during which this service or contact is available.
+     */
+    @NotNull public Builder hoursAvailable(@NotNull OpeningHoursSpecification openingHoursSpecification) {
+      putValue("hoursAvailable", openingHoursSpecification);
+      return this;
+    }
+    /**
+     * The hours during which this service or contact is available.
+     */
+    @NotNull public Builder hoursAvailable(@NotNull OpeningHoursSpecification.Builder openingHoursSpecification) {
+      putValue("hoursAvailable", openingHoursSpecification.build());
+      return this;
+    }
+    /**
+     * A pointer to another, somehow related product (or multiple products).
+     */
+    @NotNull public Builder isRelatedTo(@NotNull Product product) {
+      putValue("isRelatedTo", product);
+      return this;
+    }
+    /**
+     * A pointer to another, somehow related product (or multiple products).
+     */
+    @NotNull public Builder isRelatedTo(@NotNull Product.Builder product) {
+      putValue("isRelatedTo", product.build());
+      return this;
+    }
+    /**
+     * A pointer to another, somehow related product (or multiple products).
+     */
+    @NotNull public Builder isRelatedTo(@NotNull Service service) {
+      putValue("isRelatedTo", service);
+      return this;
+    }
+    /**
+     * A pointer to another, somehow related product (or multiple products).
+     */
+    @NotNull public Builder isRelatedTo(@NotNull Service.Builder service) {
+      putValue("isRelatedTo", service.build());
+      return this;
+    }
+    /**
+     * A pointer to another, functionally similar product (or multiple products).
+     */
+    @NotNull public Builder isSimilarTo(@NotNull Product product) {
+      putValue("isSimilarTo", product);
+      return this;
+    }
+    /**
+     * A pointer to another, functionally similar product (or multiple products).
+     */
+    @NotNull public Builder isSimilarTo(@NotNull Product.Builder product) {
+      putValue("isSimilarTo", product.build());
+      return this;
+    }
+    /**
+     * A pointer to another, functionally similar product (or multiple products).
+     */
+    @NotNull public Builder isSimilarTo(@NotNull Service service) {
+      putValue("isSimilarTo", service);
+      return this;
+    }
+    /**
+     * A pointer to another, functionally similar product (or multiple products).
+     */
+    @NotNull public Builder isSimilarTo(@NotNull Service.Builder service) {
+      putValue("isSimilarTo", service.build());
+      return this;
+    }
+    /**
+     * An associated logo.
+     */
+    @NotNull public Builder logo(@NotNull ImageObject imageObject) {
+      putValue("logo", imageObject);
+      return this;
+    }
+    /**
+     * An associated logo.
+     */
+    @NotNull public Builder logo(@NotNull ImageObject.Builder imageObject) {
+      putValue("logo", imageObject.build());
+      return this;
+    }
+    /**
+     * An associated logo.
+     */
+    @NotNull public Builder logo(@NotNull String logo) {
+      putValue("logo", logo);
+      return this;
+    }
+    /**
+     * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
+     */
+    @NotNull public Builder offers(@NotNull Offer offer) {
+      putValue("offers", offer);
+      return this;
+    }
+    /**
+     * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
+     */
+    @NotNull public Builder offers(@NotNull Offer.Builder offer) {
+      putValue("offers", offer.build());
+      return this;
+    }
+    /**
+     * The tangible thing generated by the service, e.g. a passport, permit, etc.
+     */
+    @NotNull public Builder serviceOutput(@NotNull Thing thing) {
+      putValue("serviceOutput", thing);
+      return this;
+    }
+    /**
+     * The tangible thing generated by the service, e.g. a passport, permit, etc.
+     */
+    @NotNull public Builder serviceOutput(@NotNull Thing.Builder thing) {
+      putValue("serviceOutput", thing.build());
+      return this;
+    }
+    /**
+     * A review of the item.
+     */
+    @NotNull public Builder review(@NotNull Review review) {
+      putValue("review", review);
+      return this;
+    }
+    /**
+     * A review of the item.
+     */
+    @NotNull public Builder review(@NotNull Review.Builder review) {
+      putValue("review", review.build());
+      return this;
+    }
+    /**
+     * The type of service being offered, e.g. veterans' benefits, emergency relief, etc.
+     */
+    @NotNull public Builder serviceType(@NotNull String serviceType) {
+      putValue("serviceType", serviceType);
+      return this;
+    }
+    /**
+     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+     */
+    @NotNull public Builder provider(@NotNull Organization organization) {
+      putValue("provider", organization);
+      return this;
+    }
+    /**
+     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+     */
+    @NotNull public Builder provider(@NotNull Organization.Builder organization) {
+      putValue("provider", organization.build());
+      return this;
+    }
+    /**
+     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+     */
+    @NotNull public Builder provider(@NotNull Person person) {
+      putValue("provider", person);
+      return this;
+    }
+    /**
+     * The service provider, service operator, or service performer; the goods producer. Another party (a seller) may offer those services or goods on behalf of the provider. A provider may also serve as the seller.
+     */
+    @NotNull public Builder provider(@NotNull Person.Builder person) {
+      putValue("provider", person.build());
+      return this;
+    }
+    /**
+     * Indicates the mobility of a provided service (e.g. 'static', 'dynamic').
+     */
+    @NotNull public Builder providerMobility(@NotNull String providerMobility) {
+      putValue("providerMobility", providerMobility);
+      return this;
+    }
+    /**
+     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+     */
+    @NotNull public Builder broker(@NotNull Organization organization) {
+      putValue("broker", organization);
+      return this;
+    }
+    /**
+     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+     */
+    @NotNull public Builder broker(@NotNull Organization.Builder organization) {
+      putValue("broker", organization.build());
+      return this;
+    }
+    /**
+     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+     */
+    @NotNull public Builder broker(@NotNull Person person) {
+      putValue("broker", person);
+      return this;
+    }
+    /**
+     * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
+     */
+    @NotNull public Builder broker(@NotNull Person.Builder person) {
+      putValue("broker", person.build());
       return this;
     }
     /**
@@ -91,109 +439,28 @@ public class CreditCard extends PaymentMethod {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -207,7 +474,7 @@ public class CreditCard extends PaymentMethod {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);

@@ -28,16 +28,16 @@ import java.util.*;
  */
 public class Dataset extends CreativeWork {
   /**
-   * A data catalog contained in the dataset.
+   * A data catalog which contains this dataset.
    */
-  @JsonIgnore public DataCatalog getIncludedDataCatalog() {
-    return (DataCatalog) getValue("includedDataCatalog");
+  @JsonIgnore public DataCatalog getIncludedInDataCatalog() {
+    return (DataCatalog) getValue("includedInDataCatalog");
   }
   /**
-   * A data catalog contained in the dataset.
+   * A data catalog which contains this dataset.
    */
-  @JsonIgnore public Collection<DataCatalog> getIncludedDataCatalogs() {
-    final Object current = myData.get("includedDataCatalog");
+  @JsonIgnore public Collection<DataCatalog> getIncludedInDataCatalogs() {
+    final Object current = myData.get("includedInDataCatalog");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<DataCatalog>) current;
@@ -61,40 +61,6 @@ public class Dataset extends CreativeWork {
     }
     return Arrays.asList((DataDownload) current);
   }
-  /**
-   * The range of spatial applicability of a dataset, e.g. for a dataset of New York weather, the state of New York.
-   */
-  @JsonIgnore public Place getSpatial() {
-    return (Place) getValue("spatial");
-  }
-  /**
-   * The range of spatial applicability of a dataset, e.g. for a dataset of New York weather, the state of New York.
-   */
-  @JsonIgnore public Collection<Place> getSpatials() {
-    final Object current = myData.get("spatial");
-    if (current == null) return Collections.emptyList();
-    if (current instanceof Collection) {
-      return (Collection<Place>) current;
-    }
-    return Arrays.asList((Place) current);
-  }
-  /**
-   * The range of temporal applicability of a dataset, e.g. for a 2011 census dataset, the year 2011 (in ISO 8601 time interval format).
-   */
-  @JsonIgnore public java.util.Date getDatasetTimeInterval() {
-    return (java.util.Date) getValue("datasetTimeInterval");
-  }
-  /**
-   * The range of temporal applicability of a dataset, e.g. for a 2011 census dataset, the year 2011 (in ISO 8601 time interval format).
-   */
-  @JsonIgnore public Collection<java.util.Date> getDatasetTimeIntervals() {
-    final Object current = myData.get("datasetTimeInterval");
-    if (current == null) return Collections.emptyList();
-    if (current instanceof Collection) {
-      return (Collection<java.util.Date>) current;
-    }
-    return Arrays.asList((java.util.Date) current);
-  }
   protected Dataset(java.util.Map<String,Object> data) {
     super(data);
   }
@@ -107,17 +73,17 @@ public class Dataset extends CreativeWork {
       return new Dataset(myData);
     }
     /**
-     * A data catalog contained in the dataset.
+     * A data catalog which contains this dataset.
      */
-    @NotNull public Builder includedDataCatalog(@NotNull DataCatalog dataCatalog) {
-      putValue("includedDataCatalog", dataCatalog);
+    @NotNull public Builder includedInDataCatalog(@NotNull DataCatalog dataCatalog) {
+      putValue("includedInDataCatalog", dataCatalog);
       return this;
     }
     /**
-     * A data catalog contained in the dataset.
+     * A data catalog which contains this dataset.
      */
-    @NotNull public Builder includedDataCatalog(@NotNull DataCatalog.Builder dataCatalog) {
-      putValue("includedDataCatalog", dataCatalog.build());
+    @NotNull public Builder includedInDataCatalog(@NotNull DataCatalog.Builder dataCatalog) {
+      putValue("includedInDataCatalog", dataCatalog.build());
       return this;
     }
     /**
@@ -132,27 +98,6 @@ public class Dataset extends CreativeWork {
      */
     @NotNull public Builder distribution(@NotNull DataDownload.Builder dataDownload) {
       putValue("distribution", dataDownload.build());
-      return this;
-    }
-    /**
-     * The range of spatial applicability of a dataset, e.g. for a dataset of New York weather, the state of New York.
-     */
-    @NotNull public Builder spatial(@NotNull Place place) {
-      putValue("spatial", place);
-      return this;
-    }
-    /**
-     * The range of spatial applicability of a dataset, e.g. for a dataset of New York weather, the state of New York.
-     */
-    @NotNull public Builder spatial(@NotNull Place.Builder place) {
-      putValue("spatial", place.build());
-      return this;
-    }
-    /**
-     * The range of temporal applicability of a dataset, e.g. for a 2011 census dataset, the year 2011 (in ISO 8601 time interval format).
-     */
-    @NotNull public Builder datasetTimeInterval(@NotNull java.util.Date date) {
-      putValue("datasetTimeInterval", date);
       return this;
     }
     /**
@@ -177,28 +122,28 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
-     * Indicates that the resource is compatible with the referenced accessibility API (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
+     * Indicates that the resource is compatible with the referenced accessibility API ([WebSchemas wiki lists possible values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
      */
     @NotNull public Builder accessibilityAPI(@NotNull String accessibilityAPI) {
       putValue("accessibilityAPI", accessibilityAPI);
       return this;
     }
     /**
-     * Identifies input methods that are sufficient to fully control the described resource (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
+     * Identifies input methods that are sufficient to fully control the described resource ([WebSchemas wiki lists possible values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
      */
     @NotNull public Builder accessibilityControl(@NotNull String accessibilityControl) {
       putValue("accessibilityControl", accessibilityControl);
       return this;
     }
     /**
-     * Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
+     * Content features of the resource, such as accessible media, alternatives and supported enhancements for accessibility ([WebSchemas wiki lists possible values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
      */
     @NotNull public Builder accessibilityFeature(@NotNull String accessibilityFeature) {
       putValue("accessibilityFeature", accessibilityFeature);
       return this;
     }
     /**
-     * A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3 (<a href="http://www.w3.org/wiki/WebSchemas/Accessibility">WebSchemas wiki lists possible values</a>).
+     * A characteristic of the described resource that is physiologically dangerous to some users. Related to WCAG 2.0 guideline 2.3 ([WebSchemas wiki lists possible values](http://www.w3.org/wiki/WebSchemas/Accessibility)).
      */
     @NotNull public Builder accessibilityHazard(@NotNull String accessibilityHazard) {
       putValue("accessibilityHazard", accessibilityHazard);
@@ -282,28 +227,28 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
-     * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
+     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
      */
     @NotNull public Builder author(@NotNull Organization organization) {
       putValue("author", organization);
       return this;
     }
     /**
-     * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
+     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
      */
     @NotNull public Builder author(@NotNull Organization.Builder organization) {
       putValue("author", organization.build());
       return this;
     }
     /**
-     * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
+     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
      */
     @NotNull public Builder author(@NotNull Person person) {
       putValue("author", person);
       return this;
     }
     /**
-     * The author of this content. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
+     * The author of this content or rating. Please note that author is special in that HTML 5 provides a special mechanism for indicating authorship via the rel tag. That is equivalent to this and may be used interchangeably.
      */
     @NotNull public Builder author(@NotNull Person.Builder person) {
       putValue("author", person.build());
@@ -352,17 +297,17 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
-     * The location depicted or described in the content. For example, the location in a photograph or painting.
+     * The location where the CreativeWork was created, which may not be the same as the location depicted in the CreativeWork.
      */
-    @NotNull public Builder contentLocation(@NotNull Place place) {
-      putValue("contentLocation", place);
+    @NotNull public Builder locationCreated(@NotNull Place place) {
+      putValue("locationCreated", place);
       return this;
     }
     /**
-     * The location depicted or described in the content. For example, the location in a photograph or painting.
+     * The location where the CreativeWork was created, which may not be the same as the location depicted in the CreativeWork.
      */
-    @NotNull public Builder contentLocation(@NotNull Place.Builder place) {
-      putValue("contentLocation", place.build());
+    @NotNull public Builder locationCreated(@NotNull Place.Builder place) {
+      putValue("locationCreated", place.build());
       return this;
     }
     /**
@@ -373,28 +318,28 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
-     * A secondary contributor to the CreativeWork.
+     * A secondary contributor to the CreativeWork or Event.
      */
     @NotNull public Builder contributor(@NotNull Organization organization) {
       putValue("contributor", organization);
       return this;
     }
     /**
-     * A secondary contributor to the CreativeWork.
+     * A secondary contributor to the CreativeWork or Event.
      */
     @NotNull public Builder contributor(@NotNull Organization.Builder organization) {
       putValue("contributor", organization.build());
       return this;
     }
     /**
-     * A secondary contributor to the CreativeWork.
+     * A secondary contributor to the CreativeWork or Event.
      */
     @NotNull public Builder contributor(@NotNull Person person) {
       putValue("contributor", person);
       return this;
     }
     /**
-     * A secondary contributor to the CreativeWork.
+     * A secondary contributor to the CreativeWork or Event.
      */
     @NotNull public Builder contributor(@NotNull Person.Builder person) {
       putValue("contributor", person.build());
@@ -492,14 +437,14 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
-     * The date on which the CreativeWork was created.
+     * The date on which the CreativeWork was created or the item was added to a DataFeed.
      */
     @NotNull public Builder dateCreated(@NotNull java.util.Date date) {
       putValue("dateCreated", date);
       return this;
     }
     /**
-     * The date on which the CreativeWork was most recently modified.
+     * The date on which the CreativeWork was most recently modified or when the item's entry was modified within a DataFeed.
      */
     @NotNull public Builder dateModified(@NotNull java.util.Date date) {
       putValue("dateModified", date);
@@ -569,7 +514,21 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
-     * Genre of the creative work or group.
+     * Media type, typically MIME format (see [IANA site](http://www.iana.org/assignments/media-types/media-types.xhtml)) of the content e.g. application/zip of a SoftwareApplication binary. In cases where a CreativeWork has several media type representations, 'encoding' can be used to indicate each MediaObject alongside particular fileFormat information. Unregistered or niche file formats can be indicated instead via the most appropriate URL, e.g. defining Web page or a Wikipedia entry.
+     */
+    @NotNull public Builder fileFormat(@NotNull String fileFormat) {
+      putValue("fileFormat", fileFormat);
+      return this;
+    }
+    /**
+     * A flag to signal that the publication is accessible for free.
+     */
+    @NotNull public Builder isAccessibleForFree(@NotNull Boolean isAccessibleForFree) {
+      putValue("isAccessibleForFree", isAccessibleForFree);
+      return this;
+    }
+    /**
+     * Genre of the creative work, broadcast channel or group.
      */
     @NotNull public Builder genre(@NotNull String genre) {
       putValue("genre", genre);
@@ -583,21 +542,21 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
-     * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
+     * The language of the content or performance or used in an action. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [[availableLanguage]].
      */
     @NotNull public Builder inLanguage(@NotNull Language language) {
       putValue("inLanguage", language);
       return this;
     }
     /**
-     * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
+     * The language of the content or performance or used in an action. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [[availableLanguage]].
      */
     @NotNull public Builder inLanguage(@NotNull Language.Builder language) {
       putValue("inLanguage", language.build());
       return this;
     }
     /**
-     * The language of the content or performance or used in an action. Please use one of the language codes from the <a href='http://tools.ietf.org/html/bcp47'>IETF BCP 47 standard</a>.
+     * The language of the content or performance or used in an action. Please use one of the language codes from the [IETF BCP 47 standard](http://tools.ietf.org/html/bcp47). See also [[availableLanguage]].
      */
     @NotNull public Builder inLanguage(@NotNull String inLanguage) {
       putValue("inLanguage", inLanguage);
@@ -613,8 +572,36 @@ public class Dataset extends CreativeWork {
     /**
      * A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
      */
-    @NotNull public Builder isBasedOnUrl(@NotNull String isBasedOnUrl) {
-      putValue("isBasedOnUrl", isBasedOnUrl);
+    @NotNull public Builder isBasedOn(@NotNull CreativeWork creativeWork) {
+      putValue("isBasedOn", creativeWork);
+      return this;
+    }
+    /**
+     * A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
+     */
+    @NotNull public Builder isBasedOn(@NotNull CreativeWork.Builder creativeWork) {
+      putValue("isBasedOn", creativeWork.build());
+      return this;
+    }
+    /**
+     * A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
+     */
+    @NotNull public Builder isBasedOn(@NotNull Product product) {
+      putValue("isBasedOn", product);
+      return this;
+    }
+    /**
+     * A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
+     */
+    @NotNull public Builder isBasedOn(@NotNull Product.Builder product) {
+      putValue("isBasedOn", product.build());
+      return this;
+    }
+    /**
+     * A resource that was used in the creation of this resource. This term can be repeated for multiple sources. For example, http://example.com/great-multiplication-intro.html.
+     */
+    @NotNull public Builder isBasedOn(@NotNull String isBasedOn) {
+      putValue("isBasedOn", isBasedOn);
       return this;
     }
     /**
@@ -688,14 +675,14 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
-     * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
+     * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
      */
     @NotNull public Builder offers(@NotNull Offer offer) {
       putValue("offers", offer);
       return this;
     }
     /**
-     * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, or give away tickets to an event.
+     * An offer to provide this item&#x2014;for example, an offer to sell a product, rent the DVD of a movie, perform a service, or give away tickets to an event.
      */
     @NotNull public Builder offers(@NotNull Offer.Builder offer) {
       putValue("offers", offer.build());
@@ -758,6 +745,20 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
+     * The publisher of the creative work.
+     */
+    @NotNull public Builder publisher(@NotNull Person person) {
+      putValue("publisher", person);
+      return this;
+    }
+    /**
+     * The publisher of the creative work.
+     */
+    @NotNull public Builder publisher(@NotNull Person.Builder person) {
+      putValue("publisher", person.build());
+      return this;
+    }
+    /**
      * Link to page describing the editorial principles of the organization primarily responsible for the creation of the CreativeWork.
      */
     @NotNull public Builder publishingPrinciples(@NotNull String publishingPrinciples) {
@@ -807,6 +808,70 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
+     * The spatialCoverage of a CreativeWork indicates the place(s) which are the focus of the content. It is a subproperty of
+     *       contentLocation intended primarily for more technical and detailed materials. For example with a Dataset, it indicates
+     *       areas that the dataset describes: a dataset of New York weather would have spatialCoverage which was the place: the state of New York.
+     */
+    @NotNull public Builder spatialCoverage(@NotNull Place place) {
+      putValue("spatialCoverage", place);
+      return this;
+    }
+    /**
+     * The spatialCoverage of a CreativeWork indicates the place(s) which are the focus of the content. It is a subproperty of
+     *       contentLocation intended primarily for more technical and detailed materials. For example with a Dataset, it indicates
+     *       areas that the dataset describes: a dataset of New York weather would have spatialCoverage which was the place: the state of New York.
+     */
+    @NotNull public Builder spatialCoverage(@NotNull Place.Builder place) {
+      putValue("spatialCoverage", place.build());
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Organization organization) {
+      putValue("funder", organization);
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Organization.Builder organization) {
+      putValue("funder", organization.build());
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Person person) {
+      putValue("funder", person);
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Person.Builder person) {
+      putValue("funder", person.build());
+      return this;
+    }
+    /**
+     * The temporalCoverage of a CreativeWork indicates the period that the content applies to, i.e. that it describes, either as a DateTime or as a textual string indicating a time period in [ISO 8601 time interval format](https://en.wikipedia.org/wiki/ISO_8601#Time_intervals). In
+     *       the case of a Dataset it will typically indicate the relevant time period in a precise notation (e.g. for a 2011 census dataset, the year 2011 would be written "2011/2012"). Other forms of content e.g. ScholarlyArticle, Book, TVSeries or TVEpisode may indicate their temporalCoverage in broader terms - textually or via well-known URL.
+     *       Written works such as books may sometimes have precise temporal coverage too, e.g. a work set in 1939 - 1945 can be indicated in ISO 8601 interval format format via "1939/1945".
+     */
+    @NotNull public Builder temporalCoverage(@NotNull String temporalCoverage) {
+      putValue("temporalCoverage", temporalCoverage);
+      return this;
+    }
+    /**
+     * The temporalCoverage of a CreativeWork indicates the period that the content applies to, i.e. that it describes, either as a DateTime or as a textual string indicating a time period in [ISO 8601 time interval format](https://en.wikipedia.org/wiki/ISO_8601#Time_intervals). In
+     *       the case of a Dataset it will typically indicate the relevant time period in a precise notation (e.g. for a 2011 census dataset, the year 2011 would be written "2011/2012"). Other forms of content e.g. ScholarlyArticle, Book, TVSeries or TVEpisode may indicate their temporalCoverage in broader terms - textually or via well-known URL.
+     *       Written works such as books may sometimes have precise temporal coverage too, e.g. a work set in 1939 - 1945 can be indicated in ISO 8601 interval format format via "1939/1945".
+     */
+    @NotNull public Builder temporalCoverage(@NotNull java.util.Date date) {
+      putValue("temporalCoverage", date);
+      return this;
+    }
+    /**
      * The textual content of this CreativeWork.
      */
     @NotNull public Builder text(@NotNull String text) {
@@ -825,13 +890,6 @@ public class Dataset extends CreativeWork {
      */
     @NotNull public Builder timeRequired(@NotNull Duration duration) {
       putValue("timeRequired", duration);
-      return this;
-    }
-    /**
-     * Approximate or typical time it takes to work with or through this learning resource for the typical intended target audience, e.g. 'P30M', 'P1H25M'.
-     */
-    @NotNull public Builder timeRequired(@NotNull Duration.Builder duration) {
-      putValue("timeRequired", duration.build());
       return this;
     }
     /**
@@ -975,28 +1033,28 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
-     * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
+     * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
      */
     @NotNull public Builder translator(@NotNull Organization organization) {
       putValue("translator", organization);
       return this;
     }
     /**
-     * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
+     * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
      */
     @NotNull public Builder translator(@NotNull Organization.Builder organization) {
       putValue("translator", organization.build());
       return this;
     }
     /**
-     * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
+     * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
      */
     @NotNull public Builder translator(@NotNull Person person) {
       putValue("translator", person);
       return this;
     }
     /**
-     * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market.
+     * Organization or person who adapts a creative work to different languages, regional differences and technical requirements of a target market, or that translates during some event.
      */
     @NotNull public Builder translator(@NotNull Person.Builder person) {
       putValue("translator", person.build());
@@ -1017,6 +1075,20 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
+     * The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.
+     */
+    @NotNull public Builder interactionStatistic(@NotNull InteractionCounter interactionCounter) {
+      putValue("interactionStatistic", interactionCounter);
+      return this;
+    }
+    /**
+     * The number of interactions for the CreativeWork using the WebSite or SoftwareApplication. The most specific child type of InteractionCounter should be used.
+     */
+    @NotNull public Builder interactionStatistic(@NotNull InteractionCounter.Builder interactionCounter) {
+      putValue("interactionStatistic", interactionCounter.build());
+      return this;
+    }
+    /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
@@ -1031,109 +1103,28 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -1147,7 +1138,7 @@ public class Dataset extends CreativeWork {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);
@@ -1182,10 +1173,8 @@ public class Dataset extends CreativeWork {
       return id(Long.toString(id));
     }
     @Override protected void fromMap(String key, Object value) {
-      if ("includedDataCatalog".equals(key) && value instanceof DataCatalog) { includedDataCatalog((DataCatalog)value); return; }
+      if ("includedInDataCatalog".equals(key) && value instanceof DataCatalog) { includedInDataCatalog((DataCatalog)value); return; }
       if ("distribution".equals(key) && value instanceof DataDownload) { distribution((DataDownload)value); return; }
-      if ("spatial".equals(key) && value instanceof Place) { spatial((Place)value); return; }
-      if ("datasetTimeInterval".equals(key) && value instanceof java.util.Date) { datasetTimeInterval((java.util.Date)value); return; }
       super.fromMap(key, value);
     }
   }

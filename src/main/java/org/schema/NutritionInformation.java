@@ -18,32 +18,17 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Nutritional information about the recipe.
  */
 public class NutritionInformation extends StructuredValue {
-  /**
-   * The number of calories.
-   */
-  @JsonIgnore public Energy getCalories() {
-    return (Energy) getValue("calories");
-  }
-  /**
-   * The number of calories.
-   */
-  @JsonIgnore public Collection<Energy> getCaloriess() {
-    final Object current = myData.get("calories");
-    if (current == null) return Collections.emptyList();
-    if (current instanceof Collection) {
-      return (Collection<Energy>) current;
-    }
-    return Arrays.asList((Energy) current);
-  }
   /**
    * The number of grams of carbohydrates.
    */
@@ -72,23 +57,6 @@ public class NutritionInformation extends StructuredValue {
    */
   @JsonIgnore public Collection<Mass> getCholesterolContents() {
     final Object current = myData.get("cholesterolContent");
-    if (current == null) return Collections.emptyList();
-    if (current instanceof Collection) {
-      return (Collection<Mass>) current;
-    }
-    return Arrays.asList((Mass) current);
-  }
-  /**
-   * The number of grams of fat.
-   */
-  @JsonIgnore public Mass getFatContent() {
-    return (Mass) getValue("fatContent");
-  }
-  /**
-   * The number of grams of fat.
-   */
-  @JsonIgnore public Collection<Mass> getFatContents() {
-    final Object current = myData.get("fatContent");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<Mass>) current;
@@ -198,6 +166,23 @@ public class NutritionInformation extends StructuredValue {
     return Arrays.asList((Mass) current);
   }
   /**
+   * The number of grams of fat.
+   */
+  @JsonIgnore public Mass getFatContent() {
+    return (Mass) getValue("fatContent");
+  }
+  /**
+   * The number of grams of fat.
+   */
+  @JsonIgnore public Collection<Mass> getFatContents() {
+    final Object current = myData.get("fatContent");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Mass>) current;
+    }
+    return Arrays.asList((Mass) current);
+  }
+  /**
    * The number of grams of trans fat.
    */
   @JsonIgnore public Mass getTransFatContent() {
@@ -243,20 +228,6 @@ public class NutritionInformation extends StructuredValue {
       return new NutritionInformation(myData);
     }
     /**
-     * The number of calories.
-     */
-    @NotNull public Builder calories(@NotNull Energy energy) {
-      putValue("calories", energy);
-      return this;
-    }
-    /**
-     * The number of calories.
-     */
-    @NotNull public Builder calories(@NotNull Energy.Builder energy) {
-      putValue("calories", energy.build());
-      return this;
-    }
-    /**
      * The number of grams of carbohydrates.
      */
     @NotNull public Builder carbohydrateContent(@NotNull Mass mass) {
@@ -282,20 +253,6 @@ public class NutritionInformation extends StructuredValue {
      */
     @NotNull public Builder cholesterolContent(@NotNull Mass.Builder mass) {
       putValue("cholesterolContent", mass.build());
-      return this;
-    }
-    /**
-     * The number of grams of fat.
-     */
-    @NotNull public Builder fatContent(@NotNull Mass mass) {
-      putValue("fatContent", mass);
-      return this;
-    }
-    /**
-     * The number of grams of fat.
-     */
-    @NotNull public Builder fatContent(@NotNull Mass.Builder mass) {
-      putValue("fatContent", mass.build());
       return this;
     }
     /**
@@ -376,6 +333,20 @@ public class NutritionInformation extends StructuredValue {
       return this;
     }
     /**
+     * The number of grams of fat.
+     */
+    @NotNull public Builder fatContent(@NotNull Mass mass) {
+      putValue("fatContent", mass);
+      return this;
+    }
+    /**
+     * The number of grams of fat.
+     */
+    @NotNull public Builder fatContent(@NotNull Mass.Builder mass) {
+      putValue("fatContent", mass.build());
+      return this;
+    }
+    /**
      * The number of grams of trans fat.
      */
     @NotNull public Builder transFatContent(@NotNull Mass mass) {
@@ -418,109 +389,28 @@ public class NutritionInformation extends StructuredValue {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -534,7 +424,7 @@ public class NutritionInformation extends StructuredValue {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);
@@ -569,16 +459,15 @@ public class NutritionInformation extends StructuredValue {
       return id(Long.toString(id));
     }
     @Override protected void fromMap(String key, Object value) {
-      if ("calories".equals(key) && value instanceof Energy) { calories((Energy)value); return; }
       if ("carbohydrateContent".equals(key) && value instanceof Mass) { carbohydrateContent((Mass)value); return; }
       if ("cholesterolContent".equals(key) && value instanceof Mass) { cholesterolContent((Mass)value); return; }
-      if ("fatContent".equals(key) && value instanceof Mass) { fatContent((Mass)value); return; }
       if ("fiberContent".equals(key) && value instanceof Mass) { fiberContent((Mass)value); return; }
       if ("proteinContent".equals(key) && value instanceof Mass) { proteinContent((Mass)value); return; }
       if ("saturatedFatContent".equals(key) && value instanceof Mass) { saturatedFatContent((Mass)value); return; }
       if ("servingSize".equals(key) && value instanceof String) { servingSize((String)value); return; }
       if ("sodiumContent".equals(key) && value instanceof Mass) { sodiumContent((Mass)value); return; }
       if ("sugarContent".equals(key) && value instanceof Mass) { sugarContent((Mass)value); return; }
+      if ("fatContent".equals(key) && value instanceof Mass) { fatContent((Mass)value); return; }
       if ("transFatContent".equals(key) && value instanceof Mass) { transFatContent((Mass)value); return; }
       if ("unsaturatedFatContent".equals(key) && value instanceof Mass) { unsaturatedFatContent((Mass)value); return; }
       super.fromMap(key, value);

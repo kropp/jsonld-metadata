@@ -26,23 +26,57 @@ import java.util.*;
 /**
  * An organization such as a school, NGO, corporation, club, etc.
  */
-public class Organization extends Thing {
+public class Organization extends Thing implements MemberOf {
+  /**
+   * Indicates an OfferCatalog listing for this Organization, Person, or Service.
+   */
+  @JsonIgnore public OfferCatalog getHasOfferCatalog() {
+    return (OfferCatalog) getValue("hasOfferCatalog");
+  }
+  /**
+   * Indicates an OfferCatalog listing for this Organization, Person, or Service.
+   */
+  @JsonIgnore public Collection<OfferCatalog> getHasOfferCatalogs() {
+    final Object current = myData.get("hasOfferCatalog");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<OfferCatalog>) current;
+    }
+    return Arrays.asList((OfferCatalog) current);
+  }
   /**
    * Physical address of the item.
    */
-  @JsonIgnore public PostalAddress getAddress() {
+  @JsonIgnore public PostalAddress getAddressPostalAddress() {
     return (PostalAddress) getValue("address");
   }
   /**
    * Physical address of the item.
    */
-  @JsonIgnore public Collection<PostalAddress> getAddresss() {
+  @JsonIgnore public Collection<PostalAddress> getAddressPostalAddresss() {
     final Object current = myData.get("address");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<PostalAddress>) current;
     }
     return Arrays.asList((PostalAddress) current);
+  }
+  /**
+   * Physical address of the item.
+   */
+  @JsonIgnore public String getAddressString() {
+    return (String) getValue("address");
+  }
+  /**
+   * Physical address of the item.
+   */
+  @JsonIgnore public Collection<String> getAddressStrings() {
+    final Object current = myData.get("address");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
   /**
    * The overall rating, based on a collection of reviews or ratings, of the item.
@@ -62,6 +96,23 @@ public class Organization extends Thing {
     return Arrays.asList((AggregateRating) current);
   }
   /**
+   * Alumni of an organization.
+   */
+  @JsonIgnore public Person getAlumni() {
+    return (Person) getValue("alumni");
+  }
+  /**
+   * Alumni of an organization.
+   */
+  @JsonIgnore public Collection<Person> getAlumnis() {
+    final Object current = myData.get("alumni");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
+  /**
    * An award won by or for this item.
    */
   @JsonIgnore public String getAward() {
@@ -77,6 +128,23 @@ public class Organization extends Thing {
       return (Collection<String>) current;
     }
     return Arrays.asList((String) current);
+  }
+  /**
+   * The larger organization that this organization is a [[subOrganization]] of, if any.
+   */
+  @JsonIgnore public Organization getParentOrganization() {
+    return (Organization) getValue("parentOrganization");
+  }
+  /**
+   * The larger organization that this organization is a [[subOrganization]] of, if any.
+   */
+  @JsonIgnore public Collection<Organization> getParentOrganizations() {
+    final Object current = myData.get("parentOrganization");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
   }
   /**
    * The brand(s) associated with a product or service, or the brand(s) maintained by an organization or business person.
@@ -149,19 +217,19 @@ public class Organization extends Thing {
   /**
    * The Dun & Bradstreet DUNS number for identifying an organization or business person.
    */
-  @JsonIgnore public String getDuns() {
-    return (String) getValue("duns");
+  @JsonIgnore public Identifier getDuns() {
+    return (Identifier) getValue("duns");
   }
   /**
    * The Dun & Bradstreet DUNS number for identifying an organization or business person.
    */
-  @JsonIgnore public Collection<String> getDunss() {
+  @JsonIgnore public Collection<Identifier> getDunss() {
     final Object current = myData.get("duns");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<Identifier>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((Identifier) current);
   }
   /**
    * Email address.
@@ -283,21 +351,21 @@ public class Organization extends Thing {
     return Arrays.asList((java.util.Date) current);
   }
   /**
-   * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+   * The [Global Location Number](http://www.gs1.org/gln) (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
    */
-  @JsonIgnore public String getGlobalLocationNumber() {
-    return (String) getValue("globalLocationNumber");
+  @JsonIgnore public Identifier getGlobalLocationNumber() {
+    return (Identifier) getValue("globalLocationNumber");
   }
   /**
-   * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+   * The [Global Location Number](http://www.gs1.org/gln) (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
    */
-  @JsonIgnore public Collection<String> getGlobalLocationNumbers() {
+  @JsonIgnore public Collection<Identifier> getGlobalLocationNumbers() {
     final Object current = myData.get("globalLocationNumber");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<Identifier>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((Identifier) current);
   }
   /**
    * Points-of-Sales operated by the organization or person.
@@ -438,36 +506,19 @@ public class Organization extends Thing {
   /**
    * An Organization (or ProgramMembership) to which this Person or Organization belongs.
    */
-  @JsonIgnore public Organization getMemberOfOrganization() {
-    return (Organization) getValue("memberOf");
+  @JsonIgnore public MemberOf getMemberOf() {
+    return (MemberOf) getValue("memberOf");
   }
   /**
    * An Organization (or ProgramMembership) to which this Person or Organization belongs.
    */
-  @JsonIgnore public Collection<Organization> getMemberOfOrganizations() {
+  @JsonIgnore public Collection<MemberOf> getMemberOfs() {
     final Object current = myData.get("memberOf");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<Organization>) current;
+      return (Collection<MemberOf>) current;
     }
-    return Arrays.asList((Organization) current);
-  }
-  /**
-   * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-   */
-  @JsonIgnore public ProgramMembership getMemberOfProgramMembership() {
-    return (ProgramMembership) getValue("memberOf");
-  }
-  /**
-   * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-   */
-  @JsonIgnore public Collection<ProgramMembership> getMemberOfProgramMemberships() {
-    final Object current = myData.get("memberOf");
-    if (current == null) return Collections.emptyList();
-    if (current instanceof Collection) {
-      return (Collection<ProgramMembership>) current;
-    }
-    return Arrays.asList((ProgramMembership) current);
+    return Arrays.asList((MemberOf) current);
   }
   /**
    * The North American Industry Classification System (NAICS) code for a particular organization or business person.
@@ -572,6 +623,40 @@ public class Organization extends Thing {
     return Arrays.asList((Demand) current);
   }
   /**
+   * A person or organization that supports (sponsors) something through some kind of financial contribution.
+   */
+  @JsonIgnore public Organization getFunderOrganization() {
+    return (Organization) getValue("funder");
+  }
+  /**
+   * A person or organization that supports (sponsors) something through some kind of financial contribution.
+   */
+  @JsonIgnore public Collection<Organization> getFunderOrganizations() {
+    final Object current = myData.get("funder");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * A person or organization that supports (sponsors) something through some kind of financial contribution.
+   */
+  @JsonIgnore public Person getFunderPerson() {
+    return (Person) getValue("funder");
+  }
+  /**
+   * A person or organization that supports (sponsors) something through some kind of financial contribution.
+   */
+  @JsonIgnore public Collection<Person> getFunderPersons() {
+    final Object current = myData.get("funder");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
+  /**
    * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
    */
   @JsonIgnore public Organization getSubOrganization() {
@@ -591,19 +676,19 @@ public class Organization extends Thing {
   /**
    * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
    */
-  @JsonIgnore public String getTaxID() {
-    return (String) getValue("taxID");
+  @JsonIgnore public Identifier getTaxID() {
+    return (Identifier) getValue("taxID");
   }
   /**
    * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
    */
-  @JsonIgnore public Collection<String> getTaxIDs() {
+  @JsonIgnore public Collection<Identifier> getTaxIDs() {
     final Object current = myData.get("taxID");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<Identifier>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((Identifier) current);
   }
   /**
    * The telephone number.
@@ -656,6 +741,23 @@ public class Organization extends Thing {
     }
     return Arrays.asList((Place) current);
   }
+  /**
+   * An organization identifier that uniquely identifies a legal entity as defined in ISO 17442.
+   */
+  @JsonIgnore public Identifier getLeiCode() {
+    return (Identifier) getValue("leiCode");
+  }
+  /**
+   * An organization identifier that uniquely identifies a legal entity as defined in ISO 17442.
+   */
+  @JsonIgnore public Collection<Identifier> getLeiCodes() {
+    final Object current = myData.get("leiCode");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Identifier>) current;
+    }
+    return Arrays.asList((Identifier) current);
+  }
   protected Organization(java.util.Map<String,Object> data) {
     super(data);
   }
@@ -666,6 +768,20 @@ public class Organization extends Thing {
   public static class Builder extends Thing.Builder {
     public Organization build() {
       return new Organization(myData);
+    }
+    /**
+     * Indicates an OfferCatalog listing for this Organization, Person, or Service.
+     */
+    @NotNull public Builder hasOfferCatalog(@NotNull OfferCatalog offerCatalog) {
+      putValue("hasOfferCatalog", offerCatalog);
+      return this;
+    }
+    /**
+     * Indicates an OfferCatalog listing for this Organization, Person, or Service.
+     */
+    @NotNull public Builder hasOfferCatalog(@NotNull OfferCatalog.Builder offerCatalog) {
+      putValue("hasOfferCatalog", offerCatalog.build());
+      return this;
     }
     /**
      * Physical address of the item.
@@ -679,6 +795,13 @@ public class Organization extends Thing {
      */
     @NotNull public Builder address(@NotNull PostalAddress.Builder postalAddress) {
       putValue("address", postalAddress.build());
+      return this;
+    }
+    /**
+     * Physical address of the item.
+     */
+    @NotNull public Builder address(@NotNull String address) {
+      putValue("address", address);
       return this;
     }
     /**
@@ -696,10 +819,38 @@ public class Organization extends Thing {
       return this;
     }
     /**
+     * Alumni of an organization.
+     */
+    @NotNull public Builder alumni(@NotNull Person person) {
+      putValue("alumni", person);
+      return this;
+    }
+    /**
+     * Alumni of an organization.
+     */
+    @NotNull public Builder alumni(@NotNull Person.Builder person) {
+      putValue("alumni", person.build());
+      return this;
+    }
+    /**
      * An award won by or for this item.
      */
     @NotNull public Builder award(@NotNull String award) {
       putValue("award", award);
+      return this;
+    }
+    /**
+     * The larger organization that this organization is a [[subOrganization]] of, if any.
+     */
+    @NotNull public Builder parentOrganization(@NotNull Organization organization) {
+      putValue("parentOrganization", organization);
+      return this;
+    }
+    /**
+     * The larger organization that this organization is a [[subOrganization]] of, if any.
+     */
+    @NotNull public Builder parentOrganization(@NotNull Organization.Builder organization) {
+      putValue("parentOrganization", organization.build());
       return this;
     }
     /**
@@ -761,8 +912,8 @@ public class Organization extends Thing {
     /**
      * The Dun & Bradstreet DUNS number for identifying an organization or business person.
      */
-    @NotNull public Builder duns(@NotNull String duns) {
-      putValue("duns", duns);
+    @NotNull public Builder duns(@NotNull Identifier identifier) {
+      putValue("duns", identifier);
       return this;
     }
     /**
@@ -836,10 +987,10 @@ public class Organization extends Thing {
       return this;
     }
     /**
-     * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+     * The [Global Location Number](http://www.gs1.org/gln) (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
-    @NotNull public Builder globalLocationNumber(@NotNull String globalLocationNumber) {
-      putValue("globalLocationNumber", globalLocationNumber);
+    @NotNull public Builder globalLocationNumber(@NotNull Identifier identifier) {
+      putValue("globalLocationNumber", identifier);
       return this;
     }
     /**
@@ -936,29 +1087,8 @@ public class Organization extends Thing {
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    @NotNull public Builder memberOf(@NotNull Organization organization) {
-      putValue("memberOf", organization);
-      return this;
-    }
-    /**
-     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-     */
-    @NotNull public Builder memberOf(@NotNull Organization.Builder organization) {
-      putValue("memberOf", organization.build());
-      return this;
-    }
-    /**
-     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-     */
-    @NotNull public Builder memberOf(@NotNull ProgramMembership programMembership) {
-      putValue("memberOf", programMembership);
-      return this;
-    }
-    /**
-     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-     */
-    @NotNull public Builder memberOf(@NotNull ProgramMembership.Builder programMembership) {
-      putValue("memberOf", programMembership.build());
+    @NotNull public Builder memberOf(@NotNull MemberOf memberOf) {
+      putValue("memberOf", memberOf);
       return this;
     }
     /**
@@ -1039,6 +1169,34 @@ public class Organization extends Thing {
       return this;
     }
     /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Organization organization) {
+      putValue("funder", organization);
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Organization.Builder organization) {
+      putValue("funder", organization.build());
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Person person) {
+      putValue("funder", person);
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Person.Builder person) {
+      putValue("funder", person.build());
+      return this;
+    }
+    /**
      * A relationship between two organizations where the first includes the second, e.g., as a subsidiary. See also: the more specific 'department' property.
      */
     @NotNull public Builder subOrganization(@NotNull Organization organization) {
@@ -1055,8 +1213,8 @@ public class Organization extends Thing {
     /**
      * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
      */
-    @NotNull public Builder taxID(@NotNull String taxID) {
-      putValue("taxID", taxID);
+    @NotNull public Builder taxID(@NotNull Identifier identifier) {
+      putValue("taxID", identifier);
       return this;
     }
     /**
@@ -1088,6 +1246,13 @@ public class Organization extends Thing {
       return this;
     }
     /**
+     * An organization identifier that uniquely identifies a legal entity as defined in ISO 17442.
+     */
+    @NotNull public Builder leiCode(@NotNull Identifier identifier) {
+      putValue("leiCode", identifier);
+      return this;
+    }
+    /**
      * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
      */
     @NotNull public Builder additionalType(@NotNull String additionalType) {
@@ -1102,109 +1267,28 @@ public class Organization extends Thing {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -1218,7 +1302,7 @@ public class Organization extends Thing {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);
@@ -1253,14 +1337,18 @@ public class Organization extends Thing {
       return id(Long.toString(id));
     }
     @Override protected void fromMap(String key, Object value) {
+      if ("hasOfferCatalog".equals(key) && value instanceof OfferCatalog) { hasOfferCatalog((OfferCatalog)value); return; }
       if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
+      if ("address".equals(key) && value instanceof String) { address((String)value); return; }
       if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
+      if ("alumni".equals(key) && value instanceof Person) { alumni((Person)value); return; }
       if ("award".equals(key) && value instanceof String) { award((String)value); return; }
+      if ("parentOrganization".equals(key) && value instanceof Organization) { parentOrganization((Organization)value); return; }
       if ("brand".equals(key) && value instanceof Brand) { brand((Brand)value); return; }
       if ("brand".equals(key) && value instanceof Organization) { brand((Organization)value); return; }
       if ("contactPoint".equals(key) && value instanceof ContactPoint) { contactPoint((ContactPoint)value); return; }
       if ("department".equals(key) && value instanceof Organization) { department((Organization)value); return; }
-      if ("duns".equals(key) && value instanceof String) { duns((String)value); return; }
+      if ("duns".equals(key) && value instanceof Identifier) { duns((Identifier)value); return; }
       if ("email".equals(key) && value instanceof String) { email((String)value); return; }
       if ("employee".equals(key) && value instanceof Person) { employee((Person)value); return; }
       if ("event".equals(key) && value instanceof Event) { event((Event)value); return; }
@@ -1268,7 +1356,7 @@ public class Organization extends Thing {
       if ("founder".equals(key) && value instanceof Person) { founder((Person)value); return; }
       if ("dissolutionDate".equals(key) && value instanceof java.util.Date) { dissolutionDate((java.util.Date)value); return; }
       if ("foundingDate".equals(key) && value instanceof java.util.Date) { foundingDate((java.util.Date)value); return; }
-      if ("globalLocationNumber".equals(key) && value instanceof String) { globalLocationNumber((String)value); return; }
+      if ("globalLocationNumber".equals(key) && value instanceof Identifier) { globalLocationNumber((Identifier)value); return; }
       if ("hasPOS".equals(key) && value instanceof Place) { hasPOS((Place)value); return; }
       if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); return; }
       if ("legalName".equals(key) && value instanceof String) { legalName((String)value); return; }
@@ -1277,19 +1365,21 @@ public class Organization extends Thing {
       if ("makesOffer".equals(key) && value instanceof Offer) { makesOffer((Offer)value); return; }
       if ("member".equals(key) && value instanceof Organization) { member((Organization)value); return; }
       if ("member".equals(key) && value instanceof Person) { member((Person)value); return; }
-      if ("memberOf".equals(key) && value instanceof Organization) { memberOf((Organization)value); return; }
-      if ("memberOf".equals(key) && value instanceof ProgramMembership) { memberOf((ProgramMembership)value); return; }
+      if ("memberOf".equals(key) && value instanceof MemberOf) { memberOf((MemberOf)value); return; }
       if ("naics".equals(key) && value instanceof String) { naics((String)value); return; }
       if ("numberOfEmployees".equals(key) && value instanceof QuantitativeValue) { numberOfEmployees((QuantitativeValue)value); return; }
       if ("owns".equals(key) && value instanceof OwnershipInfo) { owns((OwnershipInfo)value); return; }
       if ("owns".equals(key) && value instanceof Product) { owns((Product)value); return; }
       if ("review".equals(key) && value instanceof Review) { review((Review)value); return; }
       if ("seeks".equals(key) && value instanceof Demand) { seeks((Demand)value); return; }
+      if ("funder".equals(key) && value instanceof Organization) { funder((Organization)value); return; }
+      if ("funder".equals(key) && value instanceof Person) { funder((Person)value); return; }
       if ("subOrganization".equals(key) && value instanceof Organization) { subOrganization((Organization)value); return; }
-      if ("taxID".equals(key) && value instanceof String) { taxID((String)value); return; }
+      if ("taxID".equals(key) && value instanceof Identifier) { taxID((Identifier)value); return; }
       if ("telephone".equals(key) && value instanceof String) { telephone((String)value); return; }
       if ("vatID".equals(key) && value instanceof String) { vatID((String)value); return; }
       if ("foundingLocation".equals(key) && value instanceof Place) { foundingLocation((Place)value); return; }
+      if ("leiCode".equals(key) && value instanceof Identifier) { leiCode((Identifier)value); return; }
       super.fromMap(key, value);
     }
   }

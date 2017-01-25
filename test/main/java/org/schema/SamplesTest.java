@@ -53,7 +53,7 @@ public class SamplesTest {
                 .id("1")
                 .name("Build")
                 .url("http://example.com/build/1")
-                .description("My first build")
+                .headline("My first build")
                 .totalTestsCount(100)
                 .successTestsCount(96)
                 .ignoredTestsCount(3)

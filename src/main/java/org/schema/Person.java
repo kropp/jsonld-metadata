@@ -47,13 +47,13 @@ public class Person extends Thing implements Competitor {
   /**
    * Physical address of the item.
    */
-  @JsonIgnore public PostalAddress getAddress() {
+  @JsonIgnore public PostalAddress getAddressPostalAddress() {
     return (PostalAddress) getValue("address");
   }
   /**
    * Physical address of the item.
    */
-  @JsonIgnore public Collection<PostalAddress> getAddresss() {
+  @JsonIgnore public Collection<PostalAddress> getAddressPostalAddresss() {
     final Object current = myData.get("address");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
@@ -62,38 +62,72 @@ public class Person extends Thing implements Competitor {
     return Arrays.asList((PostalAddress) current);
   }
   /**
-   * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+   * Physical address of the item.
    */
-  @JsonIgnore public Organization getAffiliation() {
-    return (Organization) getValue("affiliation");
+  @JsonIgnore public String getAddressString() {
+    return (String) getValue("address");
+  }
+  /**
+   * Physical address of the item.
+   */
+  @JsonIgnore public Collection<String> getAddressStrings() {
+    final Object current = myData.get("address");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
   /**
    * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
    */
-  @JsonIgnore public Collection<Organization> getAffiliations() {
+  @JsonIgnore public MemberOf getAffiliation() {
+    return (MemberOf) getValue("affiliation");
+  }
+  /**
+   * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+   */
+  @JsonIgnore public Collection<MemberOf> getAffiliations() {
     final Object current = myData.get("affiliation");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<Organization>) current;
+      return (Collection<MemberOf>) current;
     }
-    return Arrays.asList((Organization) current);
+    return Arrays.asList((MemberOf) current);
   }
   /**
-   * An educational organizations that the person is an alumni of.
+   * An organization that the person is an alumni of.
    */
-  @JsonIgnore public EducationalOrganization getAlumniOf() {
+  @JsonIgnore public EducationalOrganization getAlumniOfEducationalOrganization() {
     return (EducationalOrganization) getValue("alumniOf");
   }
   /**
-   * An educational organizations that the person is an alumni of.
+   * An organization that the person is an alumni of.
    */
-  @JsonIgnore public Collection<EducationalOrganization> getAlumniOfs() {
+  @JsonIgnore public Collection<EducationalOrganization> getAlumniOfEducationalOrganizations() {
     final Object current = myData.get("alumniOf");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<EducationalOrganization>) current;
     }
     return Arrays.asList((EducationalOrganization) current);
+  }
+  /**
+   * An organization that the person is an alumni of.
+   */
+  @JsonIgnore public Organization getAlumniOfOrganization() {
+    return (Organization) getValue("alumniOf");
+  }
+  /**
+   * An organization that the person is an alumni of.
+   */
+  @JsonIgnore public Collection<Organization> getAlumniOfOrganizations() {
+    final Object current = myData.get("alumniOf");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
   }
   /**
    * An award won by or for this item.
@@ -183,19 +217,36 @@ public class Person extends Thing implements Competitor {
   /**
    * A colleague of the person.
    */
-  @JsonIgnore public Person getColleague() {
+  @JsonIgnore public Person getColleaguePerson() {
     return (Person) getValue("colleague");
   }
   /**
    * A colleague of the person.
    */
-  @JsonIgnore public Collection<Person> getColleagues() {
+  @JsonIgnore public Collection<Person> getColleaguePersons() {
     final Object current = myData.get("colleague");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<Person>) current;
     }
     return Arrays.asList((Person) current);
+  }
+  /**
+   * A colleague of the person.
+   */
+  @JsonIgnore public String getColleagueString() {
+    return (String) getValue("colleague");
+  }
+  /**
+   * A colleague of the person.
+   */
+  @JsonIgnore public Collection<String> getColleagueStrings() {
+    final Object current = myData.get("colleague");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
   /**
    * A contact point for a person or organization.
@@ -234,19 +285,19 @@ public class Person extends Thing implements Competitor {
   /**
    * The Dun & Bradstreet DUNS number for identifying an organization or business person.
    */
-  @JsonIgnore public String getDuns() {
-    return (String) getValue("duns");
+  @JsonIgnore public Identifier getDuns() {
+    return (Identifier) getValue("duns");
   }
   /**
    * The Dun & Bradstreet DUNS number for identifying an organization or business person.
    */
-  @JsonIgnore public Collection<String> getDunss() {
+  @JsonIgnore public Collection<Identifier> getDunss() {
     final Object current = myData.get("duns");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<Identifier>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((Identifier) current);
   }
   /**
    * Email address.
@@ -317,15 +368,32 @@ public class Person extends Thing implements Competitor {
     return Arrays.asList((Person) current);
   }
   /**
-   * Gender of the person.
+   * Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
    */
-  @JsonIgnore public String getGender() {
+  @JsonIgnore public GenderType getGenderGenderType() {
+    return (GenderType) getValue("gender");
+  }
+  /**
+   * Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
+   */
+  @JsonIgnore public Collection<GenderType> getGenderGenderTypes() {
+    final Object current = myData.get("gender");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<GenderType>) current;
+    }
+    return Arrays.asList((GenderType) current);
+  }
+  /**
+   * Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
+   */
+  @JsonIgnore public String getGenderString() {
     return (String) getValue("gender");
   }
   /**
-   * Gender of the person.
+   * Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
    */
-  @JsonIgnore public Collection<String> getGenders() {
+  @JsonIgnore public Collection<String> getGenderStrings() {
     final Object current = myData.get("gender");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
@@ -351,21 +419,21 @@ public class Person extends Thing implements Competitor {
     return Arrays.asList((String) current);
   }
   /**
-   * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+   * The [Global Location Number](http://www.gs1.org/gln) (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
    */
-  @JsonIgnore public String getGlobalLocationNumber() {
-    return (String) getValue("globalLocationNumber");
+  @JsonIgnore public Identifier getGlobalLocationNumber() {
+    return (Identifier) getValue("globalLocationNumber");
   }
   /**
-   * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+   * The [Global Location Number](http://www.gs1.org/gln) (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
    */
-  @JsonIgnore public Collection<String> getGlobalLocationNumbers() {
+  @JsonIgnore public Collection<Identifier> getGlobalLocationNumbers() {
     final Object current = myData.get("globalLocationNumber");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<Identifier>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((Identifier) current);
   }
   /**
    * Points-of-Sales operated by the organization or person.
@@ -557,36 +625,19 @@ public class Person extends Thing implements Competitor {
   /**
    * An Organization (or ProgramMembership) to which this Person or Organization belongs.
    */
-  @JsonIgnore public Organization getMemberOfOrganization() {
-    return (Organization) getValue("memberOf");
+  @JsonIgnore public MemberOf getMemberOf() {
+    return (MemberOf) getValue("memberOf");
   }
   /**
    * An Organization (or ProgramMembership) to which this Person or Organization belongs.
    */
-  @JsonIgnore public Collection<Organization> getMemberOfOrganizations() {
+  @JsonIgnore public Collection<MemberOf> getMemberOfs() {
     final Object current = myData.get("memberOf");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<Organization>) current;
+      return (Collection<MemberOf>) current;
     }
-    return Arrays.asList((Organization) current);
-  }
-  /**
-   * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-   */
-  @JsonIgnore public ProgramMembership getMemberOfProgramMembership() {
-    return (ProgramMembership) getValue("memberOf");
-  }
-  /**
-   * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-   */
-  @JsonIgnore public Collection<ProgramMembership> getMemberOfProgramMemberships() {
-    final Object current = myData.get("memberOf");
-    if (current == null) return Collections.emptyList();
-    if (current instanceof Collection) {
-      return (Collection<ProgramMembership>) current;
-    }
-    return Arrays.asList((ProgramMembership) current);
+    return Arrays.asList((MemberOf) current);
   }
   /**
    * The North American Industry Classification System (NAICS) code for a particular organization or business person.
@@ -623,15 +674,32 @@ public class Person extends Thing implements Competitor {
     return Arrays.asList((Country) current);
   }
   /**
-   * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
+   * The total financial value of the person as calculated by subtracting assets from liabilities.
    */
-  @JsonIgnore public PriceSpecification getNetWorth() {
+  @JsonIgnore public MonetaryAmount getNetWorthMonetaryAmount() {
+    return (MonetaryAmount) getValue("netWorth");
+  }
+  /**
+   * The total financial value of the person as calculated by subtracting assets from liabilities.
+   */
+  @JsonIgnore public Collection<MonetaryAmount> getNetWorthMonetaryAmounts() {
+    final Object current = myData.get("netWorth");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<MonetaryAmount>) current;
+    }
+    return Arrays.asList((MonetaryAmount) current);
+  }
+  /**
+   * The total financial value of the person as calculated by subtracting assets from liabilities.
+   */
+  @JsonIgnore public PriceSpecification getNetWorthPriceSpecification() {
     return (PriceSpecification) getValue("netWorth");
   }
   /**
-   * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
+   * The total financial value of the person as calculated by subtracting assets from liabilities.
    */
-  @JsonIgnore public Collection<PriceSpecification> getNetWorths() {
+  @JsonIgnore public Collection<PriceSpecification> getNetWorthPriceSpecifications() {
     final Object current = myData.get("netWorth");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
@@ -759,6 +827,40 @@ public class Person extends Thing implements Competitor {
     return Arrays.asList((Person) current);
   }
   /**
+   * A person or organization that supports (sponsors) something through some kind of financial contribution.
+   */
+  @JsonIgnore public Organization getFunderOrganization() {
+    return (Organization) getValue("funder");
+  }
+  /**
+   * A person or organization that supports (sponsors) something through some kind of financial contribution.
+   */
+  @JsonIgnore public Collection<Organization> getFunderOrganizations() {
+    final Object current = myData.get("funder");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * A person or organization that supports (sponsors) something through some kind of financial contribution.
+   */
+  @JsonIgnore public Person getFunderPerson() {
+    return (Person) getValue("funder");
+  }
+  /**
+   * A person or organization that supports (sponsors) something through some kind of financial contribution.
+   */
+  @JsonIgnore public Collection<Person> getFunderPersons() {
+    final Object current = myData.get("funder");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
+  /**
    * The person's spouse.
    */
   @JsonIgnore public Person getSpouse() {
@@ -778,19 +880,19 @@ public class Person extends Thing implements Competitor {
   /**
    * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
    */
-  @JsonIgnore public String getTaxID() {
-    return (String) getValue("taxID");
+  @JsonIgnore public Identifier getTaxID() {
+    return (Identifier) getValue("taxID");
   }
   /**
    * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
    */
-  @JsonIgnore public Collection<String> getTaxIDs() {
+  @JsonIgnore public Collection<Identifier> getTaxIDs() {
     final Object current = myData.get("taxID");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<Identifier>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((Identifier) current);
   }
   /**
    * The telephone number.
@@ -961,31 +1063,45 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
-     * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+     * Physical address of the item.
      */
-    @NotNull public Builder affiliation(@NotNull Organization organization) {
-      putValue("affiliation", organization);
+    @NotNull public Builder address(@NotNull String address) {
+      putValue("address", address);
       return this;
     }
     /**
      * An organization that this person is affiliated with. For example, a school/university, a club, or a team.
      */
-    @NotNull public Builder affiliation(@NotNull Organization.Builder organization) {
-      putValue("affiliation", organization.build());
+    @NotNull public Builder affiliation(@NotNull MemberOf memberOf) {
+      putValue("affiliation", memberOf);
       return this;
     }
     /**
-     * An educational organizations that the person is an alumni of.
+     * An organization that the person is an alumni of.
      */
     @NotNull public Builder alumniOf(@NotNull EducationalOrganization educationalOrganization) {
       putValue("alumniOf", educationalOrganization);
       return this;
     }
     /**
-     * An educational organizations that the person is an alumni of.
+     * An organization that the person is an alumni of.
      */
     @NotNull public Builder alumniOf(@NotNull EducationalOrganization.Builder educationalOrganization) {
       putValue("alumniOf", educationalOrganization.build());
+      return this;
+    }
+    /**
+     * An organization that the person is an alumni of.
+     */
+    @NotNull public Builder alumniOf(@NotNull Organization organization) {
+      putValue("alumniOf", organization);
+      return this;
+    }
+    /**
+     * An organization that the person is an alumni of.
+     */
+    @NotNull public Builder alumniOf(@NotNull Organization.Builder organization) {
+      putValue("alumniOf", organization.build());
       return this;
     }
     /**
@@ -1059,6 +1175,13 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * A colleague of the person.
+     */
+    @NotNull public Builder colleague(@NotNull String colleague) {
+      putValue("colleague", colleague);
+      return this;
+    }
+    /**
      * A contact point for a person or organization.
      */
     @NotNull public Builder contactPoint(@NotNull ContactPoint contactPoint) {
@@ -1082,8 +1205,8 @@ public class Person extends Thing implements Competitor {
     /**
      * The Dun & Bradstreet DUNS number for identifying an organization or business person.
      */
-    @NotNull public Builder duns(@NotNull String duns) {
-      putValue("duns", duns);
+    @NotNull public Builder duns(@NotNull Identifier identifier) {
+      putValue("duns", identifier);
       return this;
     }
     /**
@@ -1122,7 +1245,21 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
-     * Gender of the person.
+     * Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
+     */
+    @NotNull public Builder gender(@NotNull GenderType genderType) {
+      putValue("gender", genderType);
+      return this;
+    }
+    /**
+     * Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
+     */
+    @NotNull public Builder gender(@NotNull GenderType.Builder genderType) {
+      putValue("gender", genderType.build());
+      return this;
+    }
+    /**
+     * Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
      */
     @NotNull public Builder gender(@NotNull String gender) {
       putValue("gender", gender);
@@ -1136,10 +1273,10 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
-     * The <a href="http://www.gs1.org/gln">Global Location Number</a> (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
+     * The [Global Location Number](http://www.gs1.org/gln) (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
      */
-    @NotNull public Builder globalLocationNumber(@NotNull String globalLocationNumber) {
-      putValue("globalLocationNumber", globalLocationNumber);
+    @NotNull public Builder globalLocationNumber(@NotNull Identifier identifier) {
+      putValue("globalLocationNumber", identifier);
       return this;
     }
     /**
@@ -1271,29 +1408,8 @@ public class Person extends Thing implements Competitor {
     /**
      * An Organization (or ProgramMembership) to which this Person or Organization belongs.
      */
-    @NotNull public Builder memberOf(@NotNull Organization organization) {
-      putValue("memberOf", organization);
-      return this;
-    }
-    /**
-     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-     */
-    @NotNull public Builder memberOf(@NotNull Organization.Builder organization) {
-      putValue("memberOf", organization.build());
-      return this;
-    }
-    /**
-     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-     */
-    @NotNull public Builder memberOf(@NotNull ProgramMembership programMembership) {
-      putValue("memberOf", programMembership);
-      return this;
-    }
-    /**
-     * An Organization (or ProgramMembership) to which this Person or Organization belongs.
-     */
-    @NotNull public Builder memberOf(@NotNull ProgramMembership.Builder programMembership) {
-      putValue("memberOf", programMembership.build());
+    @NotNull public Builder memberOf(@NotNull MemberOf memberOf) {
+      putValue("memberOf", memberOf);
       return this;
     }
     /**
@@ -1318,14 +1434,28 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
-     * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
+     * The total financial value of the person as calculated by subtracting assets from liabilities.
+     */
+    @NotNull public Builder netWorth(@NotNull MonetaryAmount monetaryAmount) {
+      putValue("netWorth", monetaryAmount);
+      return this;
+    }
+    /**
+     * The total financial value of the person as calculated by subtracting assets from liabilities.
+     */
+    @NotNull public Builder netWorth(@NotNull MonetaryAmount.Builder monetaryAmount) {
+      putValue("netWorth", monetaryAmount.build());
+      return this;
+    }
+    /**
+     * The total financial value of the person as calculated by subtracting assets from liabilities.
      */
     @NotNull public Builder netWorth(@NotNull PriceSpecification priceSpecification) {
       putValue("netWorth", priceSpecification);
       return this;
     }
     /**
-     * The total financial value of the organization or person as calculated by subtracting assets from liabilities.
+     * The total financial value of the person as calculated by subtracting assets from liabilities.
      */
     @NotNull public Builder netWorth(@NotNull PriceSpecification.Builder priceSpecification) {
       putValue("netWorth", priceSpecification.build());
@@ -1430,6 +1560,34 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Organization organization) {
+      putValue("funder", organization);
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Organization.Builder organization) {
+      putValue("funder", organization.build());
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Person person) {
+      putValue("funder", person);
+      return this;
+    }
+    /**
+     * A person or organization that supports (sponsors) something through some kind of financial contribution.
+     */
+    @NotNull public Builder funder(@NotNull Person.Builder person) {
+      putValue("funder", person.build());
+      return this;
+    }
+    /**
      * The person's spouse.
      */
     @NotNull public Builder spouse(@NotNull Person person) {
@@ -1446,8 +1604,8 @@ public class Person extends Thing implements Competitor {
     /**
      * The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
      */
-    @NotNull public Builder taxID(@NotNull String taxID) {
-      putValue("taxID", taxID);
+    @NotNull public Builder taxID(@NotNull Identifier identifier) {
+      putValue("taxID", identifier);
       return this;
     }
     /**
@@ -1563,109 +1721,28 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -1679,7 +1756,7 @@ public class Person extends Thing implements Competitor {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);
@@ -1716,24 +1793,28 @@ public class Person extends Thing implements Competitor {
     @Override protected void fromMap(String key, Object value) {
       if ("additionalName".equals(key) && value instanceof String) { additionalName((String)value); return; }
       if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
-      if ("affiliation".equals(key) && value instanceof Organization) { affiliation((Organization)value); return; }
+      if ("address".equals(key) && value instanceof String) { address((String)value); return; }
+      if ("affiliation".equals(key) && value instanceof MemberOf) { affiliation((MemberOf)value); return; }
       if ("alumniOf".equals(key) && value instanceof EducationalOrganization) { alumniOf((EducationalOrganization)value); return; }
+      if ("alumniOf".equals(key) && value instanceof Organization) { alumniOf((Organization)value); return; }
       if ("award".equals(key) && value instanceof String) { award((String)value); return; }
       if ("birthDate".equals(key) && value instanceof java.util.Date) { birthDate((java.util.Date)value); return; }
       if ("brand".equals(key) && value instanceof Brand) { brand((Brand)value); return; }
       if ("brand".equals(key) && value instanceof Organization) { brand((Organization)value); return; }
       if ("children".equals(key) && value instanceof Person) { children((Person)value); return; }
       if ("colleague".equals(key) && value instanceof Person) { colleague((Person)value); return; }
+      if ("colleague".equals(key) && value instanceof String) { colleague((String)value); return; }
       if ("contactPoint".equals(key) && value instanceof ContactPoint) { contactPoint((ContactPoint)value); return; }
       if ("deathDate".equals(key) && value instanceof java.util.Date) { deathDate((java.util.Date)value); return; }
-      if ("duns".equals(key) && value instanceof String) { duns((String)value); return; }
+      if ("duns".equals(key) && value instanceof Identifier) { duns((Identifier)value); return; }
       if ("email".equals(key) && value instanceof String) { email((String)value); return; }
       if ("familyName".equals(key) && value instanceof String) { familyName((String)value); return; }
       if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); return; }
       if ("follows".equals(key) && value instanceof Person) { follows((Person)value); return; }
+      if ("gender".equals(key) && value instanceof GenderType) { gender((GenderType)value); return; }
       if ("gender".equals(key) && value instanceof String) { gender((String)value); return; }
       if ("givenName".equals(key) && value instanceof String) { givenName((String)value); return; }
-      if ("globalLocationNumber".equals(key) && value instanceof String) { globalLocationNumber((String)value); return; }
+      if ("globalLocationNumber".equals(key) && value instanceof Identifier) { globalLocationNumber((Identifier)value); return; }
       if ("hasPOS".equals(key) && value instanceof Place) { hasPOS((Place)value); return; }
       if ("height".equals(key) && value instanceof Distance) { height((Distance)value); return; }
       if ("height".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); return; }
@@ -1745,10 +1826,10 @@ public class Person extends Thing implements Competitor {
       if ("jobTitle".equals(key) && value instanceof String) { jobTitle((String)value); return; }
       if ("knows".equals(key) && value instanceof Person) { knows((Person)value); return; }
       if ("makesOffer".equals(key) && value instanceof Offer) { makesOffer((Offer)value); return; }
-      if ("memberOf".equals(key) && value instanceof Organization) { memberOf((Organization)value); return; }
-      if ("memberOf".equals(key) && value instanceof ProgramMembership) { memberOf((ProgramMembership)value); return; }
+      if ("memberOf".equals(key) && value instanceof MemberOf) { memberOf((MemberOf)value); return; }
       if ("naics".equals(key) && value instanceof String) { naics((String)value); return; }
       if ("nationality".equals(key) && value instanceof Country) { nationality((Country)value); return; }
+      if ("netWorth".equals(key) && value instanceof MonetaryAmount) { netWorth((MonetaryAmount)value); return; }
       if ("netWorth".equals(key) && value instanceof PriceSpecification) { netWorth((PriceSpecification)value); return; }
       if ("owns".equals(key) && value instanceof OwnershipInfo) { owns((OwnershipInfo)value); return; }
       if ("owns".equals(key) && value instanceof Product) { owns((Product)value); return; }
@@ -1757,8 +1838,10 @@ public class Person extends Thing implements Competitor {
       if ("relatedTo".equals(key) && value instanceof Person) { relatedTo((Person)value); return; }
       if ("seeks".equals(key) && value instanceof Demand) { seeks((Demand)value); return; }
       if ("sibling".equals(key) && value instanceof Person) { sibling((Person)value); return; }
+      if ("funder".equals(key) && value instanceof Organization) { funder((Organization)value); return; }
+      if ("funder".equals(key) && value instanceof Person) { funder((Person)value); return; }
       if ("spouse".equals(key) && value instanceof Person) { spouse((Person)value); return; }
-      if ("taxID".equals(key) && value instanceof String) { taxID((String)value); return; }
+      if ("taxID".equals(key) && value instanceof Identifier) { taxID((Identifier)value); return; }
       if ("telephone".equals(key) && value instanceof String) { telephone((String)value); return; }
       if ("vatID".equals(key) && value instanceof String) { vatID((String)value); return; }
       if ("weight".equals(key) && value instanceof QuantitativeValue) { weight((QuantitativeValue)value); return; }

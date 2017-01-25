@@ -28,13 +28,81 @@ import java.util.*;
  */
 public class GeoCoordinates extends StructuredValue {
   /**
-   * The elevation of a location.
+   * Physical address of the item.
+   */
+  @JsonIgnore public PostalAddress getAddressPostalAddress() {
+    return (PostalAddress) getValue("address");
+  }
+  /**
+   * Physical address of the item.
+   */
+  @JsonIgnore public Collection<PostalAddress> getAddressPostalAddresss() {
+    final Object current = myData.get("address");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<PostalAddress>) current;
+    }
+    return Arrays.asList((PostalAddress) current);
+  }
+  /**
+   * Physical address of the item.
+   */
+  @JsonIgnore public String getAddressString() {
+    return (String) getValue("address");
+  }
+  /**
+   * Physical address of the item.
+   */
+  @JsonIgnore public Collection<String> getAddressStrings() {
+    final Object current = myData.get("address");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  /**
+   * The country. For example, USA. You can also provide the two-letter [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1).
+   */
+  @JsonIgnore public Country getAddressCountryCountry() {
+    return (Country) getValue("addressCountry");
+  }
+  /**
+   * The country. For example, USA. You can also provide the two-letter [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1).
+   */
+  @JsonIgnore public Collection<Country> getAddressCountryCountrys() {
+    final Object current = myData.get("addressCountry");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Country>) current;
+    }
+    return Arrays.asList((Country) current);
+  }
+  /**
+   * The country. For example, USA. You can also provide the two-letter [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1).
+   */
+  @JsonIgnore public String getAddressCountryString() {
+    return (String) getValue("addressCountry");
+  }
+  /**
+   * The country. For example, USA. You can also provide the two-letter [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1).
+   */
+  @JsonIgnore public Collection<String> getAddressCountryStrings() {
+    final Object current = myData.get("addressCountry");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  /**
+   * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Integer getElevationInteger() {
     return (Integer) getValue("elevation");
   }
   /**
-   * The elevation of a location.
+   * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Integer> getElevationIntegers() {
     final Object current = myData.get("elevation");
@@ -45,13 +113,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Integer) current);
   }
   /**
-   * The elevation of a location.
+   * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Long getElevationLong() {
     return (Long) getValue("elevation");
   }
   /**
-   * The elevation of a location.
+   * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Long> getElevationLongs() {
     final Object current = myData.get("elevation");
@@ -62,13 +130,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Long) current);
   }
   /**
-   * The elevation of a location.
+   * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Float getElevationFloat() {
     return (Float) getValue("elevation");
   }
   /**
-   * The elevation of a location.
+   * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Float> getElevationFloats() {
     final Object current = myData.get("elevation");
@@ -79,13 +147,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Float) current);
   }
   /**
-   * The elevation of a location.
+   * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Double getElevationDouble() {
     return (Double) getValue("elevation");
   }
   /**
-   * The elevation of a location.
+   * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Double> getElevationDoubles() {
     final Object current = myData.get("elevation");
@@ -96,13 +164,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Double) current);
   }
   /**
-   * The elevation of a location.
+   * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public String getElevationString() {
     return (String) getValue("elevation");
   }
   /**
-   * The elevation of a location.
+   * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<String> getElevationStrings() {
     final Object current = myData.get("elevation");
@@ -113,13 +181,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((String) current);
   }
   /**
-   * The latitude of a location. For example <code>37.42242</code>.
+   * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Integer getLatitudeInteger() {
     return (Integer) getValue("latitude");
   }
   /**
-   * The latitude of a location. For example <code>37.42242</code>.
+   * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Integer> getLatitudeIntegers() {
     final Object current = myData.get("latitude");
@@ -130,13 +198,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Integer) current);
   }
   /**
-   * The latitude of a location. For example <code>37.42242</code>.
+   * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Long getLatitudeLong() {
     return (Long) getValue("latitude");
   }
   /**
-   * The latitude of a location. For example <code>37.42242</code>.
+   * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Long> getLatitudeLongs() {
     final Object current = myData.get("latitude");
@@ -147,13 +215,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Long) current);
   }
   /**
-   * The latitude of a location. For example <code>37.42242</code>.
+   * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Float getLatitudeFloat() {
     return (Float) getValue("latitude");
   }
   /**
-   * The latitude of a location. For example <code>37.42242</code>.
+   * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Float> getLatitudeFloats() {
     final Object current = myData.get("latitude");
@@ -164,13 +232,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Float) current);
   }
   /**
-   * The latitude of a location. For example <code>37.42242</code>.
+   * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Double getLatitudeDouble() {
     return (Double) getValue("latitude");
   }
   /**
-   * The latitude of a location. For example <code>37.42242</code>.
+   * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Double> getLatitudeDoubles() {
     final Object current = myData.get("latitude");
@@ -181,13 +249,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Double) current);
   }
   /**
-   * The latitude of a location. For example <code>37.42242</code>.
+   * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public String getLatitudeString() {
     return (String) getValue("latitude");
   }
   /**
-   * The latitude of a location. For example <code>37.42242</code>.
+   * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<String> getLatitudeStrings() {
     final Object current = myData.get("latitude");
@@ -198,13 +266,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((String) current);
   }
   /**
-   * The longitude of a location. For example <code>-122.08585</code>.
+   * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Integer getLongitudeInteger() {
     return (Integer) getValue("longitude");
   }
   /**
-   * The longitude of a location. For example <code>-122.08585</code>.
+   * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Integer> getLongitudeIntegers() {
     final Object current = myData.get("longitude");
@@ -215,13 +283,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Integer) current);
   }
   /**
-   * The longitude of a location. For example <code>-122.08585</code>.
+   * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Long getLongitudeLong() {
     return (Long) getValue("longitude");
   }
   /**
-   * The longitude of a location. For example <code>-122.08585</code>.
+   * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Long> getLongitudeLongs() {
     final Object current = myData.get("longitude");
@@ -232,13 +300,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Long) current);
   }
   /**
-   * The longitude of a location. For example <code>-122.08585</code>.
+   * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Float getLongitudeFloat() {
     return (Float) getValue("longitude");
   }
   /**
-   * The longitude of a location. For example <code>-122.08585</code>.
+   * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Float> getLongitudeFloats() {
     final Object current = myData.get("longitude");
@@ -249,13 +317,13 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Float) current);
   }
   /**
-   * The longitude of a location. For example <code>-122.08585</code>.
+   * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Double getLongitudeDouble() {
     return (Double) getValue("longitude");
   }
   /**
-   * The longitude of a location. For example <code>-122.08585</code>.
+   * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<Double> getLongitudeDoubles() {
     final Object current = myData.get("longitude");
@@ -266,16 +334,33 @@ public class GeoCoordinates extends StructuredValue {
     return Arrays.asList((Double) current);
   }
   /**
-   * The longitude of a location. For example <code>-122.08585</code>.
+   * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public String getLongitudeString() {
     return (String) getValue("longitude");
   }
   /**
-   * The longitude of a location. For example <code>-122.08585</code>.
+   * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
    */
   @JsonIgnore public Collection<String> getLongitudeStrings() {
     final Object current = myData.get("longitude");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  /**
+   * The postal code. For example, 94043.
+   */
+  @JsonIgnore public String getPostalCode() {
+    return (String) getValue("postalCode");
+  }
+  /**
+   * The postal code. For example, 94043.
+   */
+  @JsonIgnore public Collection<String> getPostalCodes() {
+    final Object current = myData.get("postalCode");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<String>) current;
@@ -294,108 +379,157 @@ public class GeoCoordinates extends StructuredValue {
       return new GeoCoordinates(myData);
     }
     /**
-     * The elevation of a location.
+     * Physical address of the item.
+     */
+    @NotNull public Builder address(@NotNull PostalAddress postalAddress) {
+      putValue("address", postalAddress);
+      return this;
+    }
+    /**
+     * Physical address of the item.
+     */
+    @NotNull public Builder address(@NotNull PostalAddress.Builder postalAddress) {
+      putValue("address", postalAddress.build());
+      return this;
+    }
+    /**
+     * Physical address of the item.
+     */
+    @NotNull public Builder address(@NotNull String address) {
+      putValue("address", address);
+      return this;
+    }
+    /**
+     * The country. For example, USA. You can also provide the two-letter [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1).
+     */
+    @NotNull public Builder addressCountry(@NotNull Country country) {
+      putValue("addressCountry", country);
+      return this;
+    }
+    /**
+     * The country. For example, USA. You can also provide the two-letter [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1).
+     */
+    @NotNull public Builder addressCountry(@NotNull Country.Builder country) {
+      putValue("addressCountry", country.build());
+      return this;
+    }
+    /**
+     * The country. For example, USA. You can also provide the two-letter [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1).
+     */
+    @NotNull public Builder addressCountry(@NotNull String addressCountry) {
+      putValue("addressCountry", addressCountry);
+      return this;
+    }
+    /**
+     * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder elevation(@NotNull Integer integer) {
       putValue("elevation", integer);
       return this;
     }
     /**
-     * The elevation of a location.
+     * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder elevation(@NotNull Long elevation) {
       putValue("elevation", elevation);
       return this;
     }
     /**
-     * The elevation of a location.
+     * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder elevation(@NotNull Float elevation) {
       putValue("elevation", elevation);
       return this;
     }
     /**
-     * The elevation of a location.
+     * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder elevation(@NotNull Double elevation) {
       putValue("elevation", elevation);
       return this;
     }
     /**
-     * The elevation of a location.
+     * The elevation of a location ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder elevation(@NotNull String elevation) {
       putValue("elevation", elevation);
       return this;
     }
     /**
-     * The latitude of a location. For example <code>37.42242</code>.
+     * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder latitude(@NotNull Integer integer) {
       putValue("latitude", integer);
       return this;
     }
     /**
-     * The latitude of a location. For example <code>37.42242</code>.
+     * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder latitude(@NotNull Long latitude) {
       putValue("latitude", latitude);
       return this;
     }
     /**
-     * The latitude of a location. For example <code>37.42242</code>.
+     * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder latitude(@NotNull Float latitude) {
       putValue("latitude", latitude);
       return this;
     }
     /**
-     * The latitude of a location. For example <code>37.42242</code>.
+     * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder latitude(@NotNull Double latitude) {
       putValue("latitude", latitude);
       return this;
     }
     /**
-     * The latitude of a location. For example <code>37.42242</code>.
+     * The latitude of a location. For example ```37.42242``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder latitude(@NotNull String latitude) {
       putValue("latitude", latitude);
       return this;
     }
     /**
-     * The longitude of a location. For example <code>-122.08585</code>.
+     * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder longitude(@NotNull Integer integer) {
       putValue("longitude", integer);
       return this;
     }
     /**
-     * The longitude of a location. For example <code>-122.08585</code>.
+     * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder longitude(@NotNull Long longitude) {
       putValue("longitude", longitude);
       return this;
     }
     /**
-     * The longitude of a location. For example <code>-122.08585</code>.
+     * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder longitude(@NotNull Float longitude) {
       putValue("longitude", longitude);
       return this;
     }
     /**
-     * The longitude of a location. For example <code>-122.08585</code>.
+     * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder longitude(@NotNull Double longitude) {
       putValue("longitude", longitude);
       return this;
     }
     /**
-     * The longitude of a location. For example <code>-122.08585</code>.
+     * The longitude of a location. For example ```-122.08585``` ([WGS 84](https://en.wikipedia.org/wiki/World_Geodetic_System)).
      */
     @NotNull public Builder longitude(@NotNull String longitude) {
       putValue("longitude", longitude);
+      return this;
+    }
+    /**
+     * The postal code. For example, 94043.
+     */
+    @NotNull public Builder postalCode(@NotNull String postalCode) {
+      putValue("postalCode", postalCode);
       return this;
     }
     /**
@@ -413,109 +547,28 @@ public class GeoCoordinates extends StructuredValue {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -529,7 +582,7 @@ public class GeoCoordinates extends StructuredValue {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);
@@ -564,6 +617,10 @@ public class GeoCoordinates extends StructuredValue {
       return id(Long.toString(id));
     }
     @Override protected void fromMap(String key, Object value) {
+      if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
+      if ("address".equals(key) && value instanceof String) { address((String)value); return; }
+      if ("addressCountry".equals(key) && value instanceof Country) { addressCountry((Country)value); return; }
+      if ("addressCountry".equals(key) && value instanceof String) { addressCountry((String)value); return; }
       if ("elevation".equals(key) && value instanceof Integer) { elevation((Integer)value); return; }
       if ("elevation".equals(key) && value instanceof Long) { elevation((Long)value); return; }
       if ("elevation".equals(key) && value instanceof Float) { elevation((Float)value); return; }
@@ -579,6 +636,7 @@ public class GeoCoordinates extends StructuredValue {
       if ("longitude".equals(key) && value instanceof Float) { longitude((Float)value); return; }
       if ("longitude".equals(key) && value instanceof Double) { longitude((Double)value); return; }
       if ("longitude".equals(key) && value instanceof String) { longitude((String)value); return; }
+      if ("postalCode".equals(key) && value instanceof String) { postalCode((String)value); return; }
       super.fromMap(key, value);
     }
   }

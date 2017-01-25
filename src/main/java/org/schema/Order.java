@@ -81,19 +81,19 @@ public class Order extends Intangible {
   /**
    * A number that confirms the given order or payment has been received.
    */
-  @JsonIgnore public String getConfirmationNumber() {
-    return (String) getValue("confirmationNumber");
+  @JsonIgnore public Identifier getConfirmationNumber() {
+    return (Identifier) getValue("confirmationNumber");
   }
   /**
    * A number that confirms the given order or payment has been received.
    */
-  @JsonIgnore public Collection<String> getConfirmationNumbers() {
+  @JsonIgnore public Collection<Identifier> getConfirmationNumbers() {
     final Object current = myData.get("confirmationNumber");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<Identifier>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((Identifier) current);
   }
   /**
    * Party placing the order or paying the invoice.
@@ -319,19 +319,19 @@ public class Order extends Intangible {
   /**
    * The identifier of the transaction.
    */
-  @JsonIgnore public String getOrderNumber() {
-    return (String) getValue("orderNumber");
+  @JsonIgnore public Identifier getOrderNumber() {
+    return (Identifier) getValue("orderNumber");
   }
   /**
    * The identifier of the transaction.
    */
-  @JsonIgnore public Collection<String> getOrderNumbers() {
+  @JsonIgnore public Collection<Identifier> getOrderNumbers() {
     final Object current = myData.get("orderNumber");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<Identifier>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((Identifier) current);
   }
   /**
    * The current status of the order.
@@ -366,23 +366,6 @@ public class Order extends Intangible {
       return (Collection<Invoice>) current;
     }
     return Arrays.asList((Invoice) current);
-  }
-  /**
-   * The date that payment is due.
-   */
-  @JsonIgnore public java.util.Date getPaymentDue() {
-    return (java.util.Date) getValue("paymentDue");
-  }
-  /**
-   * The date that payment is due.
-   */
-  @JsonIgnore public Collection<java.util.Date> getPaymentDues() {
-    final Object current = myData.get("paymentDue");
-    if (current == null) return Collections.emptyList();
-    if (current instanceof Collection) {
-      return (Collection<java.util.Date>) current;
-    }
-    return Arrays.asList((java.util.Date) current);
   }
   /**
    * The name of the credit card or other method of payment for the order.
@@ -451,6 +434,23 @@ public class Order extends Intangible {
       return (Collection<Participant>) current;
     }
     return Arrays.asList((Participant) current);
+  }
+  /**
+   * The date that payment is due.
+   */
+  @JsonIgnore public java.util.Date getPaymentDueDate() {
+    return (java.util.Date) getValue("paymentDueDate");
+  }
+  /**
+   * The date that payment is due.
+   */
+  @JsonIgnore public Collection<java.util.Date> getPaymentDueDates() {
+    final Object current = myData.get("paymentDueDate");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<java.util.Date>) current;
+    }
+    return Arrays.asList((java.util.Date) current);
   }
   /**
    * An entity that arranges for an exchange between a buyer and a seller.  In most cases a broker never acquires or releases ownership of a product or service involved in an exchange.  If it is not clear whether an entity is a broker, seller, or buyer, the latter two terms are preferred.
@@ -542,8 +542,8 @@ public class Order extends Intangible {
     /**
      * A number that confirms the given order or payment has been received.
      */
-    @NotNull public Builder confirmationNumber(@NotNull String confirmationNumber) {
-      putValue("confirmationNumber", confirmationNumber);
+    @NotNull public Builder confirmationNumber(@NotNull Identifier identifier) {
+      putValue("confirmationNumber", identifier);
       return this;
     }
     /**
@@ -668,8 +668,8 @@ public class Order extends Intangible {
     /**
      * The identifier of the transaction.
      */
-    @NotNull public Builder orderNumber(@NotNull String orderNumber) {
-      putValue("orderNumber", orderNumber);
+    @NotNull public Builder orderNumber(@NotNull Identifier identifier) {
+      putValue("orderNumber", identifier);
       return this;
     }
     /**
@@ -698,13 +698,6 @@ public class Order extends Intangible {
      */
     @NotNull public Builder partOfInvoice(@NotNull Invoice.Builder invoice) {
       putValue("partOfInvoice", invoice.build());
-      return this;
-    }
-    /**
-     * The date that payment is due.
-     */
-    @NotNull public Builder paymentDue(@NotNull java.util.Date date) {
-      putValue("paymentDue", date);
       return this;
     }
     /**
@@ -740,6 +733,13 @@ public class Order extends Intangible {
      */
     @NotNull public Builder seller(@NotNull Participant participant) {
       putValue("seller", participant);
+      return this;
+    }
+    /**
+     * The date that payment is due.
+     */
+    @NotNull public Builder paymentDueDate(@NotNull java.util.Date date) {
+      putValue("paymentDueDate", date);
       return this;
     }
     /**
@@ -785,109 +785,28 @@ public class Order extends Intangible {
       return this;
     }
     /**
-     * A short description of the item.
+     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
      */
-    @NotNull public Builder description(@NotNull String description) {
-      putValue("description", description);
+    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
+      putValue("disambiguatingDescription", disambiguatingDescription);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
       putValue("mainEntityOfPage", creativeWork);
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
       putValue("mainEntityOfPage", creativeWork.build());
       return this;
     }
     /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described.
-     *       <br /><br />
-     *       Many (but not all) pages have a fairly clear primary topic, some entity or thing that the page describes. For
-     *       example a restaurant's home page might be primarily about that Restaurant, or an event listing page might
-     *       represent a single event. The mainEntity and mainEntityOfPage properties allow you to explicitly express the relationship
-     *       between the page and the primary entity.
-     *       <br /><br />
-     * 
-     *       Related properties include sameAs, about, and url.
-     *       <br /><br />
-     * 
-     *       The sameAs and url properties are both similar to mainEntityOfPage. The url property should be reserved to refer to more
-     *       official or authoritative web pages, such as the item’s official website. The sameAs property also relates a thing
-     *       to a page that indirectly identifies it. Whereas sameAs emphasises well known pages, the mainEntityOfPage property
-     *       serves more to clarify which of several entities is the main one for that page.
-     *       <br /><br />
-     * 
-     *       mainEntityOfPage can be used for any page, including those not recognized as authoritative for that entity. For example,
-     *       for a product, sameAs might refer to a page on the manufacturer’s official site with specs for the product, while
-     *       mainEntityOfPage might be used on pages within various retailers’ sites giving details for the same product.
-     *       <br /><br />
-     * 
-     *       about is similar to mainEntity, with two key differences. First, about can refer to multiple entities/topics,
-     *       while mainEntity should be used for only the primary one. Second, some pages have a primary entity that itself
-     *       describes some other entity. For example, one web page may display a news article about a particular person.
-     *       Another page may display a product review for a particular product. In these cases, mainEntity for the pages
-     *       should refer to the news article or review, respectively, while about would more properly refer to the person or product.
-     *       
+     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
      */
     @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
       putValue("mainEntityOfPage", mainEntityOfPage);
@@ -901,7 +820,7 @@ public class Order extends Intangible {
       return this;
     }
     /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Freebase page, or official website.
+     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
      */
     @NotNull public Builder sameAs(@NotNull String sameAs) {
       putValue("sameAs", sameAs);
@@ -939,7 +858,7 @@ public class Order extends Intangible {
       if ("orderDelivery".equals(key) && value instanceof ParcelDelivery) { orderDelivery((ParcelDelivery)value); return; }
       if ("acceptedOffer".equals(key) && value instanceof Offer) { acceptedOffer((Offer)value); return; }
       if ("billingAddress".equals(key) && value instanceof PostalAddress) { billingAddress((PostalAddress)value); return; }
-      if ("confirmationNumber".equals(key) && value instanceof String) { confirmationNumber((String)value); return; }
+      if ("confirmationNumber".equals(key) && value instanceof Identifier) { confirmationNumber((Identifier)value); return; }
       if ("customer".equals(key) && value instanceof Organization) { customer((Organization)value); return; }
       if ("customer".equals(key) && value instanceof Person) { customer((Person)value); return; }
       if ("discount".equals(key) && value instanceof Integer) { discount((Integer)value); return; }
@@ -953,14 +872,14 @@ public class Order extends Intangible {
       if ("orderDate".equals(key) && value instanceof java.util.Date) { orderDate((java.util.Date)value); return; }
       if ("orderedItem".equals(key) && value instanceof OrderItem) { orderedItem((OrderItem)value); return; }
       if ("orderedItem".equals(key) && value instanceof Product) { orderedItem((Product)value); return; }
-      if ("orderNumber".equals(key) && value instanceof String) { orderNumber((String)value); return; }
+      if ("orderNumber".equals(key) && value instanceof Identifier) { orderNumber((Identifier)value); return; }
       if ("orderStatus".equals(key) && value instanceof OrderStatus) { orderStatus((OrderStatus)value); return; }
       if ("partOfInvoice".equals(key) && value instanceof Invoice) { partOfInvoice((Invoice)value); return; }
-      if ("paymentDue".equals(key) && value instanceof java.util.Date) { paymentDue((java.util.Date)value); return; }
       if ("paymentMethod".equals(key) && value instanceof PaymentMethod) { paymentMethod((PaymentMethod)value); return; }
       if ("paymentMethodId".equals(key) && value instanceof String) { paymentMethodId((String)value); return; }
       if ("paymentUrl".equals(key) && value instanceof String) { paymentUrl((String)value); return; }
       if ("seller".equals(key) && value instanceof Participant) { seller((Participant)value); return; }
+      if ("paymentDueDate".equals(key) && value instanceof java.util.Date) { paymentDueDate((java.util.Date)value); return; }
       if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); return; }
       if ("broker".equals(key) && value instanceof Person) { broker((Person)value); return; }
       super.fromMap(key, value);
