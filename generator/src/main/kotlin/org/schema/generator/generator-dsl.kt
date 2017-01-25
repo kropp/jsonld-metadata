@@ -56,7 +56,7 @@ fun SourcesRoot.pakage(name: String, body: Package.() -> Unit) {
 
 
 class Klass(val sourceDirectory: File, val namespace: String?, val name: String, private val classOrInterface: String? = "class") {
-    var extends : String? = null
+    var extends : Collection<String>? = null
     var implements: Collection<String>? = null
     var imports: Collection<String>? = null
     var annotations: Collection<String>? = null
@@ -157,7 +157,7 @@ class Klass(val sourceDirectory: File, val namespace: String?, val name: String,
             }
             append("public $classOrInterface $name")
 
-            extends?.let { append(" extends $it")}
+            extends?.let { if(it.isNotEmpty()) append(" extends ${it.joinToString(", ")}")}
             if (implements?.any() == true) {
                 append(" implements ")
                 append(implements!!.joinToString(", "))

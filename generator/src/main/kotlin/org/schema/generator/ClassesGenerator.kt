@@ -17,8 +17,12 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 
             p.klass(typeName, type.classOrInterface) {
                 copyright = banner
-                extends = type.parentType?.let { sink.types[it]?.name }
-                implements = type.interfaces.filter { i -> sink.types.values.any { it.name == i && !it.isField && it.name != "HasPart" } }
+                if (type.isInterface) {
+                    extends = type.interfaces.filter { i -> sink.types.values.any { it.name == i && !it.isField && it.name != "HasPart" } }
+                } else {
+                    extends = type.parentType?.let { sink.types[it]?.name }?.let { listOf(it) }
+                    implements = type.interfaces.filter { i -> sink.types.values.any { it.name == i && !it.isField && it.name != "HasPart" } }
+                }
                 imports = listOf("com.fasterxml.jackson.databind.annotation.*", "com.fasterxml.jackson.annotation.*", "org.jetbrains.annotations.NotNull", "java.util.*")
                 annotations = if (typeName == "Thing") { listOf("@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)") } else null
                 comment = (type.comment ?: "") + (type.source?.let { "Source: $it" } ?: "") + (type.equivalent?.let { "Equivalent class: $it" } ?: "")
@@ -56,7 +60,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                     val name = it.name!!.capitalize()
 
                     fieldTypes.forEach { fieldType ->
-                        val methodName = if (fieldTypes.size == 1) "get$name" else "get$name$fieldType"
+                        val methodName = getMethodName(fieldType, fieldTypes, name)
                         val key = name.decapitalize()
                         method(methodName, fieldType) {
                             comment = it.comment
@@ -94,7 +98,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 
                     klass("Builder") {
                         comment = "Builder for {@link $typeName}"
-                        extends = type.parentType?.let { sink.types[it]?.name?.plus(".Builder") }
+                        extends = type.parentType?.let { sink.types[it]?.name?.plus(".Builder") }?.let { listOf(it) }
                         if (type.parentType == null) {
                             implements = listOf("ThingBuilder<$typeName>")
 
@@ -196,6 +200,12 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                 }
             }
         }
+    }
+
+    private fun getMethodName(fieldType: String, fieldTypes: Collection<String>, name: String) = when {
+        fieldTypes.size == 1 -> "get$name"
+        fieldType == "java.util.Date" -> "get${name}Date"
+        else -> "get$name$fieldType"
     }
 
 
