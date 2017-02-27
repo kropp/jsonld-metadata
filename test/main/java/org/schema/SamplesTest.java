@@ -80,7 +80,7 @@ public class SamplesTest {
 
         final String json = SchemaOrg.writeJson(revision);
 
-        assertEquals("{\"@context\":\"http://schema.org/\",\"@type\":\"SourceCodeRevision\",\"tag\":[\"a\",\"b\",\"c\"],\"branch\":\"master\"}", json);
+        assertEquals("{\"@type\":\"SourceCodeRevision\",\"@context\":\"http://schema.org/\",\"tag\":[\"a\",\"b\",\"c\"],\"branch\":\"master\"}", json);
 
         assertEquals("a", revision.getTag());
         assertEquals(Arrays.asList("a", "b", "c"), revision.getTags());

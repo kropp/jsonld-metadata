@@ -355,6 +355,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static InteractAction.Builder interactAction() { return new InteractAction.Builder(); }
   /**
+   * Single entity in issue tracker (e.g. bug or feature)
+   */
+  public static Issue.Builder issue() { return new Issue.Builder(); }
+  /**
    * A house painting service.
    */
   public static HousePainter.Builder housePainter() { return new HousePainter.Builder(); }
@@ -2534,6 +2538,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("InteractionCounter".equals(type)) { return new InteractionCounter.Builder(); }
     if ("OrganizationRole".equals(type)) { return new OrganizationRole.Builder(); }
     if ("InteractAction".equals(type)) { return new InteractAction.Builder(); }
+    if ("Issue".equals(type)) { return new Issue.Builder(); }
     if ("HousePainter".equals(type)) { return new HousePainter.Builder(); }
     if ("TrainReservation".equals(type)) { return new TrainReservation.Builder(); }
     if ("SubwayStation".equals(type)) { return new SubwayStation.Builder(); }

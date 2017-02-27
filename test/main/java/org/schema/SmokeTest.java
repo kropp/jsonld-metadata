@@ -18,9 +18,11 @@
 
 package org.schema;
 
-import java.io.IOException;
 import org.junit.Test;
+
+import java.io.IOException;
 import java.util.Date;
+
 import static org.junit.Assert.assertEquals;
 
 public class SmokeTest {
@@ -1917,6 +1919,48 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(interactAction));
     assertEquals(interactAction, thing);
+  }
+  @Test public void testIssue() throws IOException {
+    final Issue issue = SchemaOrg.issue()
+      .schemaVersion("Test String")
+      .accessibilityAPI("Test String")
+      .accessibilityControl("Test String")
+      .accessibilityFeature("Test String")
+      .accessibilityHazard("Test String")
+      .alternativeHeadline("Test String")
+      .award("Test String")
+      .contentRating("Test String")
+      .copyrightYear(42)
+      .dateCreated(NOW)
+      .dateModified(NOW)
+      .datePublished(NOW)
+      .discussionUrl("Test String")
+      .educationalUse("Test String")
+      .fileFormat("Test String")
+      .isAccessibleForFree(true)
+      .genre("Test String")
+      .headline("Test String")
+      .interactivityType("Test String")
+      .isFamilyFriendly(true)
+      .keywords("Test String")
+      .learningResourceType("Test String")
+      .publishingPrinciples("Test String")
+      .temporalCoverage("Test String")
+      .text("Test String")
+      .thumbnailUrl("Test String")
+      .typicalAgeRange("Test String")
+      .version(42)
+      .commentCount(42)
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(issue));
+    assertEquals(issue, thing);
   }
   @Test public void testHousePainter() throws IOException {
     final HousePainter housePainter = SchemaOrg.housePainter()

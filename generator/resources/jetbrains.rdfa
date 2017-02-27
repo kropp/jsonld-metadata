@@ -137,6 +137,19 @@
         <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SourceCodeRevision">SourceCodeRevision</a></span>
         <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
     </div>
+
+    <div typeof="rdfs:Class" resource="http://jetbrains.org/schema/Issue">
+        <span class="h" property="rdfs:label">Issue</span>
+        <span property="rdfs:comment">Single entity in issue tracker (e.g. bug or feature)</span>
+        <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/commits">
+        <span class="h" property="rdfs:label">commits</span>
+        <span property="rdfs:comment">Related source code revisions.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/Issue">Issue</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://jetbrains.org/schema/SourceCodeRevision">SourceCodeRevision</a></span>
+    </div>
 </body>
 
 </html>
