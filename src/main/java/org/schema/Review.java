@@ -78,6 +78,23 @@ public class Review extends CreativeWork {
     }
     return Arrays.asList((Rating) current);
   }
+  /**
+   * State of the review
+   */
+  @JsonIgnore public String getState() {
+    return (String) getValue("state");
+  }
+  /**
+   * State of the review
+   */
+  @JsonIgnore public Collection<String> getStates() {
+    final Object current = myData.get("state");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
   protected Review(java.util.Map<String,Object> data) {
     super(data);
   }
@@ -122,6 +139,13 @@ public class Review extends CreativeWork {
      */
     @NotNull public Builder reviewRating(@NotNull Rating.Builder rating) {
       putValue("reviewRating", rating.build());
+      return this;
+    }
+    /**
+     * State of the review
+     */
+    @NotNull public Builder state(@NotNull String state) {
+      putValue("state", state);
       return this;
     }
     /**
@@ -1200,6 +1224,7 @@ public class Review extends CreativeWork {
       if ("itemReviewed".equals(key) && value instanceof Thing) { itemReviewed((Thing)value); return; }
       if ("reviewBody".equals(key) && value instanceof String) { reviewBody((String)value); return; }
       if ("reviewRating".equals(key) && value instanceof Rating) { reviewRating((Rating)value); return; }
+      if ("state".equals(key) && value instanceof String) { state((String)value); return; }
       super.fromMap(key, value);
     }
   }

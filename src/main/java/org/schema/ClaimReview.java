@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed).Source: https://github.com/schemaorg/schemaorg/issues/1061
@@ -95,6 +97,13 @@ public class ClaimReview extends Review {
      */
     @NotNull public Builder reviewRating(@NotNull Rating.Builder rating) {
       putValue("reviewRating", rating.build());
+      return this;
+    }
+    /**
+     * State of the review
+     */
+    @NotNull public Builder state(@NotNull String state) {
+      putValue("state", state);
       return this;
     }
     /**

@@ -28,6 +28,13 @@
         <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/Thing">Thing</a></span>
     </div>
 
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/state">
+        <span class="h" property="rdfs:label">state</span>
+        <span property="rdfs:comment">State of the review</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Review">Review</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+    </div>
+
     <div typeof="rdfs:Class" resource="http://jetbrains.org/schema/SoftwareApplicationBuild">
         <span class="h" property="rdfs:label">SoftwareApplicationBuild</span>
         <span property="rdfs:comment">Specific build of a software applicaton</span>

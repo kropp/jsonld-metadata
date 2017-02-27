@@ -389,6 +389,7 @@ public class SmokeTest {
     final ClaimReview claimReview = SchemaOrg.claimReview()
       .claimReviewed("Test String")
       .reviewBody("Test String")
+      .state("Test String")
       .schemaVersion("Test String")
       .accessibilityAPI("Test String")
       .accessibilityControl("Test String")
@@ -11429,6 +11430,7 @@ public class SmokeTest {
   @Test public void testReview() throws IOException {
     final Review review = SchemaOrg.review()
       .reviewBody("Test String")
+      .state("Test String")
       .schemaVersion("Test String")
       .accessibilityAPI("Test String")
       .accessibilityControl("Test String")
