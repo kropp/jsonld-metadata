@@ -23,7 +23,7 @@ import java.io.File
  * @author Victor Kropp
  */
 
-class SourcesRoot(val directory: File) {}
+class SourcesRoot(val directory: File)
 
 class Package(val directory: File, val name: String) {
     fun writeClass(name: String, body: StringBuilder.() -> Unit) {
@@ -35,7 +35,7 @@ class Package(val directory: File, val name: String) {
     }
 
     fun writeClass(name: String, text: String) {
-        val packageDir = this.name.split(Regex("\\.")).fold(directory) { d, s -> File(d, s) }
+        val packageDir = this.name.split(Regex("\\.")).fold(directory, ::File)
         packageDir.mkdirs()
         File(packageDir, "$name.java").writeText(text)
     }

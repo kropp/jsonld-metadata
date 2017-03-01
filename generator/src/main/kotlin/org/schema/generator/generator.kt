@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.schema.generator;
+package org.schema.generator
 
 import org.semarglproject.rdf.rdfa.RdfaParser
 import org.semarglproject.source.StreamProcessor

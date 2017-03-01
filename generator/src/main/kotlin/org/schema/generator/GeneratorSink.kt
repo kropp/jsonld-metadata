@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.schema.generator;
+package org.schema.generator
 
 import org.semarglproject.sink.TripleSink
 import java.util.*
@@ -26,7 +26,7 @@ class GeneratorSink : TripleSink {
 
     private val NUMBER_UNDERLYING_TYPES = listOf("Integer", "Long", "Float", "Double", "String")
 
-    class Type() {
+    class Type {
         var isSuperseded: Boolean = false
         var isInterface: Boolean = false
         var name: String? = null
