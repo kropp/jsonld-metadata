@@ -63,7 +63,14 @@
 
     <div typeof="rdf:Property" resource="http://jetbrains.org/schema/status">
         <span class="h" property="rdfs:label">status</span>
-        <span property="rdfs:comment">Build status.</span>
+        <span property="rdfs:comment">Build status (successful/failed).</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/state">
+        <span class="h" property="rdfs:label">state</span>
+        <span property="rdfs:comment">Build state (running/finished/etc.).</span>
         <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
         <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
     </div>
