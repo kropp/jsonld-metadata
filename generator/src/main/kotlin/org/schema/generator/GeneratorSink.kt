@@ -39,8 +39,11 @@ class GeneratorSink : TripleSink {
         var isField = false
         val dataTypes: MutableList<String> = ArrayList()
 
-        val classOrInterface: String
-            get() = when(isInterface) { true -> "interface"; else -> "class" }
+        val classOrInterface
+            get() = if (isInterface) "interface" else "class"
+
+        val isEnum
+            get() = parentType == "http://schema.org/Enumeration" && name != "QualitativeValue"
     }
 
     val types = hashMapOf<String, Type>()
@@ -78,7 +81,7 @@ class GeneratorSink : TripleSink {
 
     override fun addNonLiteral(subj: String, pred: String, obj: String) {
         when(pred) {
-            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" -> { if(!types.containsKey(subj)) types.put(subj, Type()) }
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" -> { if(!types.containsKey(subj)) types.put(subj, Type().apply { if (types.containsKey(obj)) parentType = obj }) }
             "http://www.w3.org/2000/01/rdf-schema#subClassOf" -> types[subj]!!.parentType = obj
             "http://schema.org/domainIncludes" -> {
                 val objType = types[obj]

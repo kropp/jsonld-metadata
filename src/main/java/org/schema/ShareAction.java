@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of distributing content to people for their amusement or edification.
@@ -162,13 +159,6 @@ public class ShareAction extends CommunicateAction {
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType actionStatusType) {
       putValue("actionStatus", actionStatusType);
-      return this;
-    }
-    /**
-     * Indicates the current disposition of the Action.
-     */
-    @NotNull public Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType) {
-      putValue("actionStatus", actionStatusType.build());
       return this;
     }
     /**

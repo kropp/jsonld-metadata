@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A review of an item - for example, of a restaurant, movie, or store.
@@ -79,13 +81,13 @@ public class Review extends CreativeWork {
     return Arrays.asList((Rating) current);
   }
   /**
-   * State of the review
+   * Build state (running/finished/etc.).
    */
   @JsonIgnore public String getState() {
     return (String) getValue("state");
   }
   /**
-   * State of the review
+   * Build state (running/finished/etc.).
    */
   @JsonIgnore public Collection<String> getStates() {
     final Object current = myData.get("state");
@@ -142,7 +144,7 @@ public class Review extends CreativeWork {
       return this;
     }
     /**
-     * State of the review
+     * Build state (running/finished/etc.).
      */
     @NotNull public Builder state(@NotNull String state) {
       putValue("state", state);

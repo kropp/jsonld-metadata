@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The delivery of a parcel either via the postal service or a commercial service.
@@ -289,13 +291,6 @@ public class ParcelDelivery extends Intangible {
      */
     @NotNull public Builder hasDeliveryMethod(@NotNull DeliveryMethod deliveryMethod) {
       putValue("hasDeliveryMethod", deliveryMethod);
-      return this;
-    }
-    /**
-     * Method used for delivery or shipping.
-     */
-    @NotNull public Builder hasDeliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod) {
-      putValue("hasDeliveryMethod", deliveryMethod.build());
       return this;
     }
     /**

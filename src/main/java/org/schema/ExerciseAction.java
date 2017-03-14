@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of participating in exertive activity for the purposes of improving health and fitness.
@@ -361,13 +363,6 @@ public class ExerciseAction extends PlayAction {
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType actionStatusType) {
       putValue("actionStatus", actionStatusType);
-      return this;
-    }
-    /**
-     * Indicates the current disposition of the Action.
-     */
-    @NotNull public Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType) {
-      putValue("actionStatus", actionStatusType.build());
       return this;
     }
     /**

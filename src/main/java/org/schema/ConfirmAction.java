@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of notifying someone that a future event/action is going to happen as expected.\n\nRelated actions:\n\n* [[CancelAction]]: The antonym of ConfirmAction.
@@ -176,13 +173,6 @@ public class ConfirmAction extends InformAction {
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType actionStatusType) {
       putValue("actionStatus", actionStatusType);
-      return this;
-    }
-    /**
-     * Indicates the current disposition of the Action.
-     */
-    @NotNull public Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType) {
-      putValue("actionStatus", actionStatusType.build());
       return this;
     }
     /**

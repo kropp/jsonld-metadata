@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An agent orders an object/product/service to be delivered/sent.
@@ -60,13 +62,6 @@ public class OrderAction extends TradeAction {
      */
     @NotNull public Builder deliveryMethod(@NotNull DeliveryMethod deliveryMethod) {
       putValue("deliveryMethod", deliveryMethod);
-      return this;
-    }
-    /**
-     * A sub property of instrument. The method of delivery.
-     */
-    @NotNull public Builder deliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod) {
-      putValue("deliveryMethod", deliveryMethod.build());
       return this;
     }
     /**
@@ -175,13 +170,6 @@ public class OrderAction extends TradeAction {
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType actionStatusType) {
       putValue("actionStatus", actionStatusType);
-      return this;
-    }
-    /**
-     * Indicates the current disposition of the Action.
-     */
-    @NotNull public Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType) {
-      putValue("actionStatus", actionStatusType.build());
       return this;
     }
     /**

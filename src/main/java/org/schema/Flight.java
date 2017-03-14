@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An airline flight.
@@ -498,13 +500,6 @@ public class Flight extends Intangible {
      */
     @NotNull public Builder boardingPolicy(@NotNull BoardingPolicyType boardingPolicyType) {
       putValue("boardingPolicy", boardingPolicyType);
-      return this;
-    }
-    /**
-     * The type of boarding policy used by the airline (e.g. zone-based or group-based).
-     */
-    @NotNull public Builder boardingPolicy(@NotNull BoardingPolicyType.Builder boardingPolicyType) {
-      putValue("boardingPolicy", boardingPolicyType.build());
       return this;
     }
     /**

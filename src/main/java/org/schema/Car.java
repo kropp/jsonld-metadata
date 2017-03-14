@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A car is a wheeled, self-powered motor vehicle used for transportation.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
@@ -659,13 +656,6 @@ public class Car extends Vehicle {
      */
     @NotNull public Builder itemCondition(@NotNull OfferItemCondition offerItemCondition) {
       putValue("itemCondition", offerItemCondition);
-      return this;
-    }
-    /**
-     * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
-     */
-    @NotNull public Builder itemCondition(@NotNull OfferItemCondition.Builder offerItemCondition) {
-      putValue("itemCondition", offerItemCondition.build());
       return this;
     }
     /**

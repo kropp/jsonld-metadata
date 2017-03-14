@@ -29,16 +29,13 @@ public class SchemaOrg {
    */
   public static CollegeOrUniversity.Builder collegeOrUniversity() { return new CollegeOrUniversity.Builder(); }
   /**
-   * The day of the week, e.g. used to specify to which day the opening hours of an OpeningHoursSpecification refer.
-
-Originally, URLs from [GoodRelations](http://purl.org/goodrelations/v1) were used (for [[Monday]], [[Tuesday]], [[Wednesday]], [[Thursday]], [[Friday]], [[Saturday]], [[Sunday]] plus a special entry for [[PublicHolidays]]); these have now been integrated directly into schema.org.
-      
-   */
-  public static DayOfWeek.Builder dayOfWeek() { return new DayOfWeek.Builder(); }
-  /**
    * The act of authoring written creative content.
    */
   public static WriteAction.Builder writeAction() { return new WriteAction.Builder(); }
+  /**
+   * All-wheel Drive is a transmission layout where the engine drives all four wheels.
+   */
+  public static AllWheelDriveConfiguration.Builder allWheelDriveConfiguration() { return new AllWheelDriveConfiguration.Builder(); }
   /**
    * A dentist.
    */
@@ -172,10 +169,6 @@ The place is __open__ if the [[opens]] property is specified, and __closed__ oth
    */
   public static CheckAction.Builder checkAction() { return new CheckAction.Builder(); }
   /**
-   * Enumerated options related to a ContactPoint.
-   */
-  public static ContactPointOption.Builder contactPointOption() { return new ContactPointOption.Builder(); }
-  /**
    * A reservation for an event like a concert, sporting event, or lecture.\n\nNote: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use [[Offer]].
    */
   public static EventReservation.Builder eventReservation() { return new EventReservation.Builder(); }
@@ -199,10 +192,6 @@ The place is __open__ if the [[opens]] property is specified, and __closed__ oth
    * One of the continents (for example, Europe or Africa).
    */
   public static Continent.Builder continent() { return new Continent.Builder(); }
-  /**
-   * A specific payment status. For example, PaymentDue, PaymentComplete, etc.
-   */
-  public static PaymentStatusType.Builder paymentStatusType() { return new PaymentStatusType.Builder(); }
   /**
    * A PublicationEvent corresponds indifferently to the event of publication for a CreativeWork of any type e.g. a broadcast event, an on-demand event, a book/journal publication via a variety of delivery media.
    */
@@ -231,10 +220,6 @@ The place is __open__ if the [[opens]] property is specified, and __closed__ oth
    * A blog post.
    */
   public static BlogPosting.Builder blogPosting() { return new BlogPosting.Builder(); }
-  /**
-   * Format of this release (the type of recording media used, ie. compact disc, digital media, LP, etc.).
-   */
-  public static MusicReleaseFormatType.Builder musicReleaseFormatType() { return new MusicReleaseFormatType.Builder(); }
   /**
    * Financial services business.
    */
@@ -280,6 +265,10 @@ The place is __open__ if the [[opens]] property is specified, and __closed__ oth
    */
   public static TheaterGroup.Builder theaterGroup() { return new TheaterGroup.Builder(); }
   /**
+   * The steering position is on the left side of the vehicle (viewed from the main direction of driving).
+   */
+  public static LeftHandDriving.Builder leftHandDriving() { return new LeftHandDriving.Builder(); }
+  /**
    * A public swimming pool.
    */
   public static PublicSwimmingPool.Builder publicSwimmingPool() { return new PublicSwimmingPool.Builder(); }
@@ -312,10 +301,6 @@ The place is __open__ if the [[opens]] property is specified, and __closed__ oth
    */
   public static ConsumeAction.Builder consumeAction() { return new ConsumeAction.Builder(); }
   /**
-   * RsvpResponseType is an enumeration type whose instances represent responding to an RSVP request.
-   */
-  public static RsvpResponseType.Builder rsvpResponseType() { return new RsvpResponseType.Builder(); }
-  /**
    * A movie rental store.
    */
   public static MovieRentalStore.Builder movieRentalStore() { return new MovieRentalStore.Builder(); }
@@ -338,6 +323,20 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * A cafe or coffee shop.
    */
   public static CafeOrCoffeeShop.Builder cafeOrCoffeeShop() { return new CafeOrCoffeeShop.Builder(); }
+  /**
+   * This term [uses](http://blog.schema.org/2012/11/good-relations-and-schemaorg.html) terminology from the GoodRelations Vocabulary for E-Commerce, created by Martin Hepp. GoodRelations is a data model for sharing e-commerce data on the Web. More information about GoodRelations can be found at [http://purl.org/goodrelations/](http://purl.org/goodrelations/).
+   */
+  public static GoodRelationsTerms.Builder goodRelationsTerms() { return new GoodRelationsTerms.Builder(); }
+  /**
+   * This element is based on the work of the Automotive Ontology Working Group, see [www.automotive-ontology.org](http://www.automotive-ontology.org) for details. Many class and property definitions are inspired by or based on abstracts from Wikipedia, the free encyclopedia.
+   */
+  public static AutomotiveOntologyWGClass.Builder automotiveOntologyWGClass() { return new AutomotiveOntologyWGClass.Builder(); }
+  /**
+   * This vocabulary was improved through collaboration with the MusicBrainz project
+    ([www.musicbrainz.org](http://www.musicbrainz.org)), and is partially inspired by the MusicBrainz and
+    [Music Ontology](http://musicontology.com/docs/getting-started.html) schemas.
+   */
+  public static MBZ.Builder mBZ() { return new MBZ.Builder(); }
   /**
    * The act of consuming static visual content.
    */
@@ -382,10 +381,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * A gym.
    */
   public static ExerciseGym.Builder exerciseGym() { return new ExerciseGym.Builder(); }
-  /**
-   * Enumerated status values for Reservation.
-   */
-  public static ReservationStatusType.Builder reservationStatusType() { return new ReservationStatusType.Builder(); }
   /**
    * A city hall.
    */
@@ -434,10 +429,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * The act of giving money in return for temporary use, but not ownership, of an object such as a vehicle or property. For example, an agent rents a property from a landlord in exchange for a periodic payment.
    */
   public static RentAction.Builder rentAction() { return new RentAction.Builder(); }
-  /**
-   * The publication format of the book.
-   */
-  public static BookFormatType.Builder bookFormatType() { return new BookFormatType.Builder(); }
   /**
    * Car repair business.
    */
@@ -552,10 +543,9 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static Periodical.Builder periodical() { return new Periodical.Builder(); }
   /**
-   * A business entity type is a conceptual entity representing the legal form, the size, the main line of business, the position in the value chain, or any combination thereof, of an organization or business person.\n\nCommonly used values:\n\n* http://purl.org/goodrelations/v1#Business\n* http://purl.org/goodrelations/v1#Enduser\n* http://purl.org/goodrelations/v1#PublicInstitution\n* http://purl.org/goodrelations/v1#Reseller
-	  
+   * Four-wheel drive is a transmission layout where the engine primarily drives two wheels with a part-time four-wheel drive capability.
    */
-  public static BusinessEntityType.Builder businessEntityType() { return new BusinessEntityType.Builder(); }
+  public static FourWheelDriveConfiguration.Builder fourWheelDriveConfiguration() { return new FourWheelDriveConfiguration.Builder(); }
   /**
    * An agent approves/certifies/likes/supports/sanction an object.
    */
@@ -581,17 +571,9 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static LodgingBusiness.Builder lodgingBusiness() { return new LodgingBusiness.Builder(); }
   /**
-   * The status of an Action.
-   */
-  public static ActionStatusType.Builder actionStatusType() { return new ActionStatusType.Builder(); }
-  /**
    * A general contractor.
    */
   public static GeneralContractor.Builder generalContractor() { return new GeneralContractor.Builder(); }
-  /**
-   * A payment method using a credit, debit, store or other card to associate the payment with an account.
-   */
-  public static PaymentCard.Builder paymentCard() { return new PaymentCard.Builder(); }
   /**
    * An art gallery.
    */
@@ -649,10 +631,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static ControlAction.Builder controlAction() { return new ControlAction.Builder(); }
   /**
-   * Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized.
-   */
-  public static ItemListOrderType.Builder itemListOrderType() { return new ItemListOrderType.Builder(); }
-  /**
    * A mountain, like Mount Whitney or Mount Everest.
    */
   public static Mountain.Builder mountain() { return new Mountain.Builder(); }
@@ -706,10 +684,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * Place of worship, such as a church, synagogue, or mosque.
    */
   public static PlaceOfWorship.Builder placeOfWorship() { return new PlaceOfWorship.Builder(); }
-  /**
-   * Status of a game server.
-   */
-  public static GameServerStatus.Builder gameServerStatus() { return new GameServerStatus.Builder(); }
   /**
    * A state or province of a country.
    */
@@ -869,6 +843,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static OnDemandEvent.Builder onDemandEvent() { return new OnDemandEvent.Builder(); }
   /**
+   * The W3C [Schema Bib Extend](http://www.w3.org/community/schemabibex/) (BibEx) group led the work to improve schema.org for bibliographic information, including terms for periodicals, articles and multi-volume works. The design was inspired in places (e.g. [[pageStart]], [[pageEnd]], [[pagination]]) by the [Bibliographic Ontology](http://bibliontology.com/), 'bibo'.
+   */
+  public static BibExTerm.Builder bibExTerm() { return new BibExTerm.Builder(); }
+  /**
    * A posting to a discussion forum.
    */
   public static DiscussionForumPosting.Builder discussionForumPosting() { return new DiscussionForumPosting.Builder(); }
@@ -888,6 +866,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * The act of registering to be a user of a service, product or web page.\n\nRelated actions:\n\n* [[JoinAction]]: Unlike JoinAction, RegisterAction implies you are registering to be a user of a service, *not* a group/team of people.\n* [FollowAction]]: Unlike FollowAction, RegisterAction doesn't imply that the agent is expecting to poll for updates from the object.\n* [[SubscribeAction]]: Unlike SubscribeAction, RegisterAction doesn't imply that the agent is expecting updates from the object.
    */
   public static RegisterAction.Builder registerAction() { return new RegisterAction.Builder(); }
+  /**
+   * This element is based on the work of the Financial Industry Business Ontology project (see [http://www.fibo.org/schema](http://www.fibo.org/schema) for details), in support of the W3C Financial Industry Business Ontology Community Group ([http://www.fibo.org/community](http://www.fibo.org/community)). Many class and property definitions are inspired by or based on [http://www.fibo.org](http://www.fibo.org).
+   */
+  public static FIBO.Builder fIBO() { return new FIBO.Builder(); }
   /**
    * An historical landmark or building.
    */
@@ -921,10 +903,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static UserCheckins.Builder userCheckins() { return new UserCheckins.Builder(); }
   /**
-   * An enumeration of genders.
-   */
-  public static GenderType.Builder genderType() { return new GenderType.Builder(); }
-  /**
    * A web page element, like a table or an image.
    */
   public static WebPageElement.Builder webPageElement() { return new WebPageElement.Builder(); }
@@ -944,11 +922,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * The act of discovering/finding an object.
    */
   public static DiscoverAction.Builder discoverAction() { return new DiscoverAction.Builder(); }
-  /**
-   * A private parcel service as the delivery mode available for a certain offer.\n\nCommonly used values:\n\n* http://purl.org/goodrelations/v1#DHL\n* http://purl.org/goodrelations/v1#FederalExpress\n* http://purl.org/goodrelations/v1#UPS
-      
-   */
-  public static ParcelService.Builder parcelService() { return new ParcelService.Builder(); }
   /**
    * Web page type: Contact page.
    */
@@ -981,10 +954,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.
    */
   public static InvestmentOrDeposit.Builder investmentOrDeposit() { return new InvestmentOrDeposit.Builder(); }
-  /**
-   * Indicates whether this game is multi-player, co-op or single-player.
-   */
-  public static GamePlayMode.Builder gamePlayMode() { return new GamePlayMode.Builder(); }
   /**
    * A landform or physical feature.  Landform elements include mountains, plains, lakes, rivers, seascape and oceanic waterbody interface features such as bays, peninsulas, seas and so forth, including sub-aqueous terrain features such as submersed mountain ranges, volcanoes, and the great ocean basins.
    */
@@ -1035,6 +1004,11 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static AdultEntertainment.Builder adultEntertainment() { return new AdultEntertainment.Builder(); }
   /**
+   * This element is based on the STI Accommodation Ontology, see <a href="http://ontologies.sti-innsbruck.at/acco/ns.html">http://ontologies.sti-innsbruck.at/acco/ns.html</a> for details.
+    Many class and property definitions are inspired by or based on abstracts from Wikipedia, the free encyclopedia.
+   */
+  public static STIAccommodationOntology.Builder sTIAccommodationOntology() { return new STIAccommodationOntology.Builder(); }
+  /**
    * The act of an agent communicating (service provider, social media, etc) their departure of a previously reserved service (e.g. flight check in) or place (e.g. hotel).\n\nRelated actions:\n\n* [[CheckInAction]]: The antonym of CheckOutAction.\n* [[DepartAction]]: Unlike DepartAction, CheckOutAction implies that the agent is informing/confirming the end of a previously reserved service.\n* [[CancelAction]]: Unlike CancelAction, CheckOutAction implies that the agent is informing/confirming the end of a previously reserved service.
    */
   public static CheckOutAction.Builder checkOutAction() { return new CheckOutAction.Builder(); }
@@ -1083,10 +1057,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static Photograph.Builder photograph() { return new Photograph.Builder(); }
   /**
-   * EventStatusType is an enumeration type whose instances represent several states that an Event may be in.
-   */
-  public static EventStatusType.Builder eventStatusType() { return new EventStatusType.Builder(); }
-  /**
    * An EducationalAudience.
    */
   public static EducationalAudience.Builder educationalAudience() { return new EducationalAudience.Builder(); }
@@ -1098,10 +1068,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * An emergency service, such as a fire station or ER.
    */
   public static EmergencyService.Builder emergencyService() { return new EmergencyService.Builder(); }
-  /**
-   * A list of possible conditions for the item.
-   */
-  public static OfferItemCondition.Builder offerItemCondition() { return new OfferItemCondition.Builder(); }
   /**
    * The act of forming a personal connection with someone (object) mutually/bidirectionally/symmetrically.\n\nRelated actions:\n\n* [[FollowAction]]: Unlike FollowAction, BefriendAction implies that the connection is reciprocal.
    */
@@ -1239,10 +1205,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static OceanBodyOfWater.Builder oceanBodyOfWater() { return new OceanBodyOfWater.Builder(); }
   /**
-   * An enumeration of several kinds of Map.
-   */
-  public static MapCategoryType.Builder mapCategoryType() { return new MapCategoryType.Builder(); }
-  /**
    * A bowling alley.
    */
   public static BowlingAlley.Builder bowlingAlley() { return new BowlingAlley.Builder(); }
@@ -1250,15 +1212,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * Aquarium.
    */
   public static Aquarium.Builder aquarium() { return new Aquarium.Builder(); }
-  /**
-   * The kind of release which this album is: single, EP or album.
-   */
-  public static MusicAlbumReleaseType.Builder musicAlbumReleaseType() { return new MusicAlbumReleaseType.Builder(); }
-  /**
-   * A range of of services that will be provided to a customer free of charge in case of a defect or malfunction of a product.\n\nCommonly used values:\n\n* http://purl.org/goodrelations/v1#Labor-BringIn\n* http://purl.org/goodrelations/v1#PartsAndLabor-BringIn\n* http://purl.org/goodrelations/v1#PartsAndLabor-PickUp
-      
-   */
-  public static WarrantyScope.Builder warrantyScope() { return new WarrantyScope.Builder(); }
   /**
    * A pet store.
    */
@@ -1276,17 +1229,9 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static School.Builder school() { return new School.Builder(); }
   /**
-   * Classification of the album by it's type of content: soundtrack, live album, studio album, etc.
-   */
-  public static MusicAlbumProductionType.Builder musicAlbumProductionType() { return new MusicAlbumProductionType.Builder(); }
-  /**
    * A book.
    */
   public static Book.Builder book() { return new Book.Builder(); }
-  /**
-   * A type of permission which can be granted for accessing a digital document.
-   */
-  public static DigitalDocumentPermissionType.Builder digitalDocumentPermissionType() { return new DigitalDocumentPermissionType.Builder(); }
   /**
    * The act of expressing a preference from a set of options or a large or unbounded set of choices/options.
    */
@@ -1331,11 +1276,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * The place where a person lives.
    */
   public static Residence.Builder residence() { return new Residence.Builder(); }
-  /**
-   * The business function specifies the type of activity or access (i.e., the bundle of rights) offered by the organization or business person through the offer. Typical are sell, rental or lease, maintenance or repair, manufacture / produce, recycle / dispose, engineering / construction, or installation. Proprietary specifications of access rights are also instances of this class.\n\nCommonly used values:\n\n* http://purl.org/goodrelations/v1#ConstructionInstallation\n* http://purl.org/goodrelations/v1#Dispose\n* http://purl.org/goodrelations/v1#LeaseOut\n* http://purl.org/goodrelations/v1#Maintain\n* http://purl.org/goodrelations/v1#ProvideService\n* http://purl.org/goodrelations/v1#Repair\n* http://purl.org/goodrelations/v1#Sell\n* http://purl.org/goodrelations/v1#Buy
-        
-   */
-  public static BusinessFunction.Builder businessFunction() { return new BusinessFunction.Builder(); }
   /**
    * A city or town.
    */
@@ -1400,6 +1340,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * Web page type: Checkout page.
    */
   public static CheckoutPage.Builder checkoutPage() { return new CheckoutPage.Builder(); }
+  /**
+   * This class contains information contributed by [http://wikidoc.org>WikiDoc](http://wikidoc.org>WikiDoc).
+   */
+  public static WikiDoc.Builder wikiDoc() { return new WikiDoc.Builder(); }
   /**
    * Brewery.
    */
@@ -1472,6 +1416,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static BusinessAudience.Builder businessAudience() { return new BusinessAudience.Builder(); }
   /**
+   * This class is based upon W3C DCAT work, and benefits from collaboration around the DCAT, ADMS and VoID vocabularies. See http://www.w3.org/wiki/WebSchemas/Datasets for full details and mappings.
+   */
+  public static DatasetClass.Builder datasetClass() { return new DatasetClass.Builder(); }
+  /**
    * A listing that describes a job opening in a certain organization.
    */
   public static JobPosting.Builder jobPosting() { return new JobPosting.Builder(); }
@@ -1511,6 +1459,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static DonateAction.Builder donateAction() { return new DonateAction.Builder(); }
   /**
+   * The Question/Answer types were [based on](https://www.w3.org/wiki/WebSchemas/QASchemaResearch) the Stack Overflow API.
+   */
+  public static StackExchange.Builder stackExchange() { return new StackExchange.Builder(); }
+  /**
    * A golf course.
    */
   public static GolfCourse.Builder golfCourse() { return new GolfCourse.Builder(); }
@@ -1530,11 +1482,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * A sports club.
    */
   public static SportsClub.Builder sportsClub() { return new SportsClub.Builder(); }
-  /**
-   * A payment method is a standardized procedure for transferring the monetary amount for a purchase. Payment methods are characterized by the legal and technical structures used, and by the organization or group carrying out the transaction.\n\nCommonly used values:\n\n* http://purl.org/goodrelations/v1#ByBankTransferInAdvance\n* http://purl.org/goodrelations/v1#ByInvoice\n* http://purl.org/goodrelations/v1#Cash\n* http://purl.org/goodrelations/v1#CheckInAdvance\n* http://purl.org/goodrelations/v1#COD\n* http://purl.org/goodrelations/v1#DirectDebit\n* http://purl.org/goodrelations/v1#GoogleCheckout\n* http://purl.org/goodrelations/v1#PayPal\n* http://purl.org/goodrelations/v1#PaySwarm
-        
-   */
-  public static PaymentMethod.Builder paymentMethod() { return new PaymentMethod.Builder(); }
   /**
    * The act of participating in performance arts.
    */
@@ -1568,6 +1515,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static FireStation.Builder fireStation() { return new FireStation.Builder(); }
   /**
+   * This class contains derivatives of IPTC rNews properties. rNews is a data model of publishing metadata with serializations currently available for RDFa as well as HTML5 Microdata. More information about the IPTC and rNews can be found at [rnews.org](http://rnews.org).
+   */
+  public static RNews.Builder rNews() { return new RNews.Builder(); }
+  /**
    * Information about the engine of the vehicle. A vehicle can have multiple engines represented by multiple engine specification entities.
    */
   public static EngineSpecification.Builder engineSpecification() { return new EngineSpecification.Builder(); }
@@ -1579,6 +1530,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc.
    */
   public static Intangible.Builder intangible() { return new Intangible.Builder(); }
+  /**
+   * The steering position is on the right side of the vehicle (viewed from the main direction of driving).
+   */
+  public static RightHandDriving.Builder rightHandDriving() { return new RightHandDriving.Builder(); }
   /**
    * The act of responding to a question/message asked/sent by the object. Related to [[AskAction]]\n\nRelated actions:\n\n* [[AskAction]]: Appears generally as an origin of a ReplyAction.
    */
@@ -1647,10 +1602,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static Hostel.Builder hostel() { return new Hostel.Builder(); }
   /**
-   * A diet restricted to certain foods or preparations for cultural, religious, health or lifestyle reasons. 
-   */
-  public static RestrictedDiet.Builder restrictedDiet() { return new RestrictedDiet.Builder(); }
-  /**
    * A scholarly article.
    */
   public static ScholarlyArticle.Builder scholarlyArticle() { return new ScholarlyArticle.Builder(); }
@@ -1691,9 +1642,17 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static ElectronicsStore.Builder electronicsStore() { return new ElectronicsStore.Builder(); }
   /**
+   * Real-wheel drive is a transmission layout where the engine drives the rear wheels.
+   */
+  public static RearWheelDriveConfiguration.Builder rearWheelDriveConfiguration() { return new RearWheelDriveConfiguration.Builder(); }
+  /**
    * Health and beauty.
    */
   public static HealthAndBeautyBusiness.Builder healthAndBeautyBusiness() { return new HealthAndBeautyBusiness.Builder(); }
+  /**
+   * Researchers.
+   */
+  public static Researcher.Builder researcher() { return new Researcher.Builder(); }
   /**
    * The act of expressing a preference from a fixed/finite/structured set of choices/options.
    */
@@ -1737,10 +1696,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * Beauty salon.
    */
   public static BeautySalon.Builder beautySalon() { return new BeautySalon.Builder(); }
-  /**
-   * Enumerated status values for Order.
-   */
-  public static OrderStatus.Builder orderStatus() { return new OrderStatus.Builder(); }
   /**
    * Bed and breakfast.
 <br /><br />
@@ -1837,6 +1792,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static Mass.Builder mass() { return new Mass.Builder(); }
   /**
+   * This class is based on the work of the LRMI project, see lrmi.net for details.
+   */
+  public static LRMIClass.Builder lRMIClass() { return new LRMIClass.Builder(); }
+  /**
    * A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
    */
   public static MusicGroup.Builder musicGroup() { return new MusicGroup.Builder(); }
@@ -1892,11 +1851,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static MusicRelease.Builder musicRelease() { return new MusicRelease.Builder(); }
   /**
-   * A delivery method is a standardized procedure for transferring the product or service to the destination of fulfillment chosen by the customer. Delivery methods are characterized by the means of transportation used, and by the organization or group that is the contracting party for the sending organization or person.\n\nCommonly used values:\n\n* http://purl.org/goodrelations/v1#DeliveryModeDirectDownload\n* http://purl.org/goodrelations/v1#DeliveryModeFreight\n* http://purl.org/goodrelations/v1#DeliveryModeMail\n* http://purl.org/goodrelations/v1#DeliveryModeOwnFleet\n* http://purl.org/goodrelations/v1#DeliveryModePickUp\n* http://purl.org/goodrelations/v1#DHL\n* http://purl.org/goodrelations/v1#FederalExpress\n* http://purl.org/goodrelations/v1#UPS
-        
-   */
-  public static DeliveryMethod.Builder deliveryMethod() { return new DeliveryMethod.Builder(); }
-  /**
    * A tennis complex.
    */
   public static TennisComplex.Builder tennisComplex() { return new TennisComplex.Builder(); }
@@ -1945,6 +1899,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * The act of reaching a draw in a competitive activity.
    */
   public static TieAction.Builder tieAction() { return new TieAction.Builder(); }
+  /**
+   * Front-wheel drive is a transmission layout where the engine drives the front wheels.
+   */
+  public static FrontWheelDriveConfiguration.Builder frontWheelDriveConfiguration() { return new FrontWheelDriveConfiguration.Builder(); }
   /**
    * Server that provides game interaction in a multiplayer game.
    */
@@ -2002,6 +1960,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static PaymentChargeSpecification.Builder paymentChargeSpecification() { return new PaymentChargeSpecification.Builder(); }
   /**
+   * The schema.org Actions mechanism benefited from extensive discussions across the Web standards community around W3C, in particular from the [Hydra project](http://purl.org/hydra/)'s community group.
+   */
+  public static ActionCollabClass.Builder actionCollabClass() { return new ActionCollabClass.Builder(); }
+  /**
    * A moving company.
    */
   public static MovingCompany.Builder movingCompany() { return new MovingCompany.Builder(); }
@@ -2021,6 +1983,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * A list of items of any sort&#x2014;for example, Top 10 Movies About Weathermen, or Top 100 Party Songs. Not to be confused with HTML lists, which are often used only for formatting.
    */
   public static ItemList.Builder itemList() { return new ItemList.Builder(); }
+  /**
+   * This class is derived from the GoodRelations Vocabulary for E-Commerce, created by Martin Hepp. GoodRelations is a data model for sharing e-commerce data on the Web that can be expressed in a variety of syntaxes, including RDFa and HTML5 Microdata. More information about GoodRelations can be found at [http://purl.org/goodrelations/](http://purl.org/goodrelations/).
+   */
+  public static GoodRelationsClass.Builder goodRelationsClass() { return new GoodRelationsClass.Builder(); }
   /**
    * The act of notifying someone that a future event/action is going to happen as expected.\n\nRelated actions:\n\n* [[CancelAction]]: The antonym of ConfirmAction.
    */
@@ -2222,10 +2188,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static PostalAddress.Builder postalAddress() { return new PostalAddress.Builder(); }
   /**
-   * A DeliveryMethod in which an item is made available via locker.
-   */
-  public static LockerDelivery.Builder lockerDelivery() { return new LockerDelivery.Builder(); }
-  /**
    * A music video file.
    */
   public static MusicVideoObject.Builder musicVideoObject() { return new MusicVideoObject.Builder(); }
@@ -2249,10 +2211,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * A park.
    */
   public static Park.Builder park() { return new Park.Builder(); }
-  /**
-   * A type of boarding policy used by an airline.
-   */
-  public static BoardingPolicyType.Builder boardingPolicyType() { return new BoardingPolicyType.Builder(); }
   /**
    * The act of giving money voluntarily to a beneficiary in recognition of services rendered.
    */
@@ -2330,10 +2288,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static EducationalOrganization.Builder educationalOrganization() { return new EducationalOrganization.Builder(); }
   /**
-   * A list of possible product availability options.
-   */
-  public static ItemAvailability.Builder itemAvailability() { return new ItemAvailability.Builder(); }
-  /**
    * The act of expressing a desire about the object. An agent wants an object.
    */
   public static WantAction.Builder wantAction() { return new WantAction.Builder(); }
@@ -2341,10 +2295,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    * The act of participating in an exchange of goods and services for monetary compensation. An agent trades an object, product or service with a participant in exchange for a one time or periodic payment.
    */
   public static TradeAction.Builder tradeAction() { return new TradeAction.Builder(); }
-  /**
-   * Any branch of a field in which people typically develop specific expertise, usually after significant study, time, and effort.
-   */
-  public static Specialty.Builder specialty() { return new Specialty.Builder(); }
   /**
    * A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
    */
@@ -2460,8 +2410,8 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
 
   public static ThingBuilder getBuilder(@NotNull String type) {
     if ("CollegeOrUniversity".equals(type)) { return new CollegeOrUniversity.Builder(); }
-    if ("DayOfWeek".equals(type)) { return new DayOfWeek.Builder(); }
     if ("WriteAction".equals(type)) { return new WriteAction.Builder(); }
+    if ("AllWheelDriveConfiguration".equals(type)) { return new AllWheelDriveConfiguration.Builder(); }
     if ("Dentist".equals(type)) { return new Dentist.Builder(); }
     if ("BusStop".equals(type)) { return new BusStop.Builder(); }
     if ("CancelAction".equals(type)) { return new CancelAction.Builder(); }
@@ -2493,14 +2443,12 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("CollectionPage".equals(type)) { return new CollectionPage.Builder(); }
     if ("WebSite".equals(type)) { return new WebSite.Builder(); }
     if ("CheckAction".equals(type)) { return new CheckAction.Builder(); }
-    if ("ContactPointOption".equals(type)) { return new ContactPointOption.Builder(); }
     if ("EventReservation".equals(type)) { return new EventReservation.Builder(); }
     if ("GeoCoordinates".equals(type)) { return new GeoCoordinates.Builder(); }
     if ("InsuranceAgency".equals(type)) { return new InsuranceAgency.Builder(); }
     if ("DigitalDocumentPermission".equals(type)) { return new DigitalDocumentPermission.Builder(); }
     if ("UserDownloads".equals(type)) { return new UserDownloads.Builder(); }
     if ("Continent".equals(type)) { return new Continent.Builder(); }
-    if ("PaymentStatusType".equals(type)) { return new PaymentStatusType.Builder(); }
     if ("PublicationEvent".equals(type)) { return new PublicationEvent.Builder(); }
     if ("WPFooter".equals(type)) { return new WPFooter.Builder(); }
     if ("Conversation".equals(type)) { return new Conversation.Builder(); }
@@ -2508,7 +2456,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("MusicPlaylist".equals(type)) { return new MusicPlaylist.Builder(); }
     if ("AutoRental".equals(type)) { return new AutoRental.Builder(); }
     if ("BlogPosting".equals(type)) { return new BlogPosting.Builder(); }
-    if ("MusicReleaseFormatType".equals(type)) { return new MusicReleaseFormatType.Builder(); }
     if ("FinancialService".equals(type)) { return new FinancialService.Builder(); }
     if ("PrependAction".equals(type)) { return new PrependAction.Builder(); }
     if ("PoliceStation".equals(type)) { return new PoliceStation.Builder(); }
@@ -2520,6 +2467,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("BedDetails".equals(type)) { return new BedDetails.Builder(); }
     if ("ClothingStore".equals(type)) { return new ClothingStore.Builder(); }
     if ("TheaterGroup".equals(type)) { return new TheaterGroup.Builder(); }
+    if ("LeftHandDriving".equals(type)) { return new LeftHandDriving.Builder(); }
     if ("PublicSwimmingPool".equals(type)) { return new PublicSwimmingPool.Builder(); }
     if ("TaxiReservation".equals(type)) { return new TaxiReservation.Builder(); }
     if ("ReturnAction".equals(type)) { return new ReturnAction.Builder(); }
@@ -2528,12 +2476,14 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("FoodEvent".equals(type)) { return new FoodEvent.Builder(); }
     if ("DatedMoneySpecification".equals(type)) { return new DatedMoneySpecification.Builder(); }
     if ("ConsumeAction".equals(type)) { return new ConsumeAction.Builder(); }
-    if ("RsvpResponseType".equals(type)) { return new RsvpResponseType.Builder(); }
     if ("MovieRentalStore".equals(type)) { return new MovieRentalStore.Builder(); }
     if ("Barcode".equals(type)) { return new Barcode.Builder(); }
     if ("HairSalon".equals(type)) { return new HairSalon.Builder(); }
     if ("Room".equals(type)) { return new Room.Builder(); }
     if ("CafeOrCoffeeShop".equals(type)) { return new CafeOrCoffeeShop.Builder(); }
+    if ("GoodRelationsTerms".equals(type)) { return new GoodRelationsTerms.Builder(); }
+    if ("AutomotiveOntologyWGClass".equals(type)) { return new AutomotiveOntologyWGClass.Builder(); }
+    if ("MBZ".equals(type)) { return new MBZ.Builder(); }
     if ("ViewAction".equals(type)) { return new ViewAction.Builder(); }
     if ("InteractionCounter".equals(type)) { return new InteractionCounter.Builder(); }
     if ("OrganizationRole".equals(type)) { return new OrganizationRole.Builder(); }
@@ -2545,7 +2495,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("FinancialProduct".equals(type)) { return new FinancialProduct.Builder(); }
     if ("Blog".equals(type)) { return new Blog.Builder(); }
     if ("ExerciseGym".equals(type)) { return new ExerciseGym.Builder(); }
-    if ("ReservationStatusType".equals(type)) { return new ReservationStatusType.Builder(); }
     if ("CityHall".equals(type)) { return new CityHall.Builder(); }
     if ("QuantitativeValue".equals(type)) { return new QuantitativeValue.Builder(); }
     if ("CommunicateAction".equals(type)) { return new CommunicateAction.Builder(); }
@@ -2558,7 +2507,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("FurnitureStore".equals(type)) { return new FurnitureStore.Builder(); }
     if ("ReviewAction".equals(type)) { return new ReviewAction.Builder(); }
     if ("RentAction".equals(type)) { return new RentAction.Builder(); }
-    if ("BookFormatType".equals(type)) { return new BookFormatType.Builder(); }
     if ("AutoRepair".equals(type)) { return new AutoRepair.Builder(); }
     if ("RiverBodyOfWater".equals(type)) { return new RiverBodyOfWater.Builder(); }
     if ("SuspendAction".equals(type)) { return new SuspendAction.Builder(); }
@@ -2587,16 +2535,14 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("AdministrativeArea".equals(type)) { return new AdministrativeArea.Builder(); }
     if ("PropertyValue".equals(type)) { return new PropertyValue.Builder(); }
     if ("Periodical".equals(type)) { return new Periodical.Builder(); }
-    if ("BusinessEntityType".equals(type)) { return new BusinessEntityType.Builder(); }
+    if ("FourWheelDriveConfiguration".equals(type)) { return new FourWheelDriveConfiguration.Builder(); }
     if ("EndorseAction".equals(type)) { return new EndorseAction.Builder(); }
     if ("Rating".equals(type)) { return new Rating.Builder(); }
     if ("LakeBodyOfWater".equals(type)) { return new LakeBodyOfWater.Builder(); }
     if ("GasStation".equals(type)) { return new GasStation.Builder(); }
     if ("GovernmentOffice".equals(type)) { return new GovernmentOffice.Builder(); }
     if ("LodgingBusiness".equals(type)) { return new LodgingBusiness.Builder(); }
-    if ("ActionStatusType".equals(type)) { return new ActionStatusType.Builder(); }
     if ("GeneralContractor".equals(type)) { return new GeneralContractor.Builder(); }
-    if ("PaymentCard".equals(type)) { return new PaymentCard.Builder(); }
     if ("ArtGallery".equals(type)) { return new ArtGallery.Builder(); }
     if ("DownloadAction".equals(type)) { return new DownloadAction.Builder(); }
     if ("ParcelDelivery".equals(type)) { return new ParcelDelivery.Builder(); }
@@ -2611,7 +2557,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("QAPage".equals(type)) { return new QAPage.Builder(); }
     if ("ProgramMembership".equals(type)) { return new ProgramMembership.Builder(); }
     if ("ControlAction".equals(type)) { return new ControlAction.Builder(); }
-    if ("ItemListOrderType".equals(type)) { return new ItemListOrderType.Builder(); }
     if ("Mountain".equals(type)) { return new Mountain.Builder(); }
     if ("PublicationVolume".equals(type)) { return new PublicationVolume.Builder(); }
     if ("TireShop".equals(type)) { return new TireShop.Builder(); }
@@ -2625,7 +2570,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("Article".equals(type)) { return new Article.Builder(); }
     if ("BookmarkAction".equals(type)) { return new BookmarkAction.Builder(); }
     if ("PlaceOfWorship".equals(type)) { return new PlaceOfWorship.Builder(); }
-    if ("GameServerStatus".equals(type)) { return new GameServerStatus.Builder(); }
     if ("State".equals(type)) { return new State.Builder(); }
     if ("ProfessionalService".equals(type)) { return new ProfessionalService.Builder(); }
     if ("CompoundPriceSpecification".equals(type)) { return new CompoundPriceSpecification.Builder(); }
@@ -2664,11 +2608,13 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("PresentationDigitalDocument".equals(type)) { return new PresentationDigitalDocument.Builder(); }
     if ("SendAction".equals(type)) { return new SendAction.Builder(); }
     if ("OnDemandEvent".equals(type)) { return new OnDemandEvent.Builder(); }
+    if ("BibExTerm".equals(type)) { return new BibExTerm.Builder(); }
     if ("DiscussionForumPosting".equals(type)) { return new DiscussionForumPosting.Builder(); }
     if ("Pharmacy".equals(type)) { return new Pharmacy.Builder(); }
     if ("MovieSeries".equals(type)) { return new MovieSeries.Builder(); }
     if ("DigitalDocument".equals(type)) { return new DigitalDocument.Builder(); }
     if ("RegisterAction".equals(type)) { return new RegisterAction.Builder(); }
+    if ("FIBO".equals(type)) { return new FIBO.Builder(); }
     if ("LandmarksOrHistoricalBuildings".equals(type)) { return new LandmarksOrHistoricalBuildings.Builder(); }
     if ("ExhibitionEvent".equals(type)) { return new ExhibitionEvent.Builder(); }
     if ("WebPage".equals(type)) { return new WebPage.Builder(); }
@@ -2677,13 +2623,11 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("AnimalShelter".equals(type)) { return new AnimalShelter.Builder(); }
     if ("Crematorium".equals(type)) { return new Crematorium.Builder(); }
     if ("UserCheckins".equals(type)) { return new UserCheckins.Builder(); }
-    if ("GenderType".equals(type)) { return new GenderType.Builder(); }
     if ("WebPageElement".equals(type)) { return new WebPageElement.Builder(); }
     if ("ReserveAction".equals(type)) { return new ReserveAction.Builder(); }
     if ("MovieClip".equals(type)) { return new MovieClip.Builder(); }
     if ("OrderAction".equals(type)) { return new OrderAction.Builder(); }
     if ("DiscoverAction".equals(type)) { return new DiscoverAction.Builder(); }
-    if ("ParcelService".equals(type)) { return new ParcelService.Builder(); }
     if ("ContactPage".equals(type)) { return new ContactPage.Builder(); }
     if ("AllocateAction".equals(type)) { return new AllocateAction.Builder(); }
     if ("Country".equals(type)) { return new Country.Builder(); }
@@ -2692,7 +2636,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("OrderItem".equals(type)) { return new OrderItem.Builder(); }
     if ("StructuredValue".equals(type)) { return new StructuredValue.Builder(); }
     if ("InvestmentOrDeposit".equals(type)) { return new InvestmentOrDeposit.Builder(); }
-    if ("GamePlayMode".equals(type)) { return new GamePlayMode.Builder(); }
     if ("Landform".equals(type)) { return new Landform.Builder(); }
     if ("CreativeWorkSeries".equals(type)) { return new CreativeWorkSeries.Builder(); }
     if ("CatholicChurch".equals(type)) { return new CatholicChurch.Builder(); }
@@ -2705,6 +2648,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("GatedResidenceCommunity".equals(type)) { return new GatedResidenceCommunity.Builder(); }
     if ("HobbyShop".equals(type)) { return new HobbyShop.Builder(); }
     if ("AdultEntertainment".equals(type)) { return new AdultEntertainment.Builder(); }
+    if ("STIAccommodationOntology".equals(type)) { return new STIAccommodationOntology.Builder(); }
     if ("CheckOutAction".equals(type)) { return new CheckOutAction.Builder(); }
     if ("VideoGallery".equals(type)) { return new VideoGallery.Builder(); }
     if ("ParkingFacility".equals(type)) { return new ParkingFacility.Builder(); }
@@ -2717,11 +2661,9 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("Beach".equals(type)) { return new Beach.Builder(); }
     if ("UserBlocks".equals(type)) { return new UserBlocks.Builder(); }
     if ("Photograph".equals(type)) { return new Photograph.Builder(); }
-    if ("EventStatusType".equals(type)) { return new EventStatusType.Builder(); }
     if ("EducationalAudience".equals(type)) { return new EducationalAudience.Builder(); }
     if ("Vehicle".equals(type)) { return new Vehicle.Builder(); }
     if ("EmergencyService".equals(type)) { return new EmergencyService.Builder(); }
-    if ("OfferItemCondition".equals(type)) { return new OfferItemCondition.Builder(); }
     if ("BefriendAction".equals(type)) { return new BefriendAction.Builder(); }
     if ("AddAction".equals(type)) { return new AddAction.Builder(); }
     if ("HomeAndConstructionBusiness".equals(type)) { return new HomeAndConstructionBusiness.Builder(); }
@@ -2755,18 +2697,13 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("ResumeAction".equals(type)) { return new ResumeAction.Builder(); }
     if ("DepartmentStore".equals(type)) { return new DepartmentStore.Builder(); }
     if ("OceanBodyOfWater".equals(type)) { return new OceanBodyOfWater.Builder(); }
-    if ("MapCategoryType".equals(type)) { return new MapCategoryType.Builder(); }
     if ("BowlingAlley".equals(type)) { return new BowlingAlley.Builder(); }
     if ("Aquarium".equals(type)) { return new Aquarium.Builder(); }
-    if ("MusicAlbumReleaseType".equals(type)) { return new MusicAlbumReleaseType.Builder(); }
-    if ("WarrantyScope".equals(type)) { return new WarrantyScope.Builder(); }
     if ("PetStore".equals(type)) { return new PetStore.Builder(); }
     if ("DeleteAction".equals(type)) { return new DeleteAction.Builder(); }
     if ("Energy".equals(type)) { return new Energy.Builder(); }
     if ("School".equals(type)) { return new School.Builder(); }
-    if ("MusicAlbumProductionType".equals(type)) { return new MusicAlbumProductionType.Builder(); }
     if ("Book".equals(type)) { return new Book.Builder(); }
-    if ("DigitalDocumentPermissionType".equals(type)) { return new DigitalDocumentPermissionType.Builder(); }
     if ("ChooseAction".equals(type)) { return new ChooseAction.Builder(); }
     if ("AutoDealer".equals(type)) { return new AutoDealer.Builder(); }
     if ("LiteraryEvent".equals(type)) { return new LiteraryEvent.Builder(); }
@@ -2778,7 +2715,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("ApplyAction".equals(type)) { return new ApplyAction.Builder(); }
     if ("Canal".equals(type)) { return new Canal.Builder(); }
     if ("Residence".equals(type)) { return new Residence.Builder(); }
-    if ("BusinessFunction".equals(type)) { return new BusinessFunction.Builder(); }
     if ("City".equals(type)) { return new City.Builder(); }
     if ("UserPageVisits".equals(type)) { return new UserPageVisits.Builder(); }
     if ("ShareAction".equals(type)) { return new ShareAction.Builder(); }
@@ -2795,6 +2731,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("CurrencyConversionService".equals(type)) { return new CurrencyConversionService.Builder(); }
     if ("ChildCare".equals(type)) { return new ChildCare.Builder(); }
     if ("CheckoutPage".equals(type)) { return new CheckoutPage.Builder(); }
+    if ("WikiDoc".equals(type)) { return new WikiDoc.Builder(); }
     if ("Brewery".equals(type)) { return new Brewery.Builder(); }
     if ("Zoo".equals(type)) { return new Zoo.Builder(); }
     if ("SportsEvent".equals(type)) { return new SportsEvent.Builder(); }
@@ -2812,6 +2749,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("HotelRoom".equals(type)) { return new HotelRoom.Builder(); }
     if ("WPHeader".equals(type)) { return new WPHeader.Builder(); }
     if ("BusinessAudience".equals(type)) { return new BusinessAudience.Builder(); }
+    if ("DatasetClass".equals(type)) { return new DatasetClass.Builder(); }
     if ("JobPosting".equals(type)) { return new JobPosting.Builder(); }
     if ("Motel".equals(type)) { return new Motel.Builder(); }
     if ("SportsOrganization".equals(type)) { return new SportsOrganization.Builder(); }
@@ -2821,12 +2759,12 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("HighSchool".equals(type)) { return new HighSchool.Builder(); }
     if ("Distance".equals(type)) { return new Distance.Builder(); }
     if ("DonateAction".equals(type)) { return new DonateAction.Builder(); }
+    if ("StackExchange".equals(type)) { return new StackExchange.Builder(); }
     if ("GolfCourse".equals(type)) { return new GolfCourse.Builder(); }
     if ("MobilePhoneStore".equals(type)) { return new MobilePhoneStore.Builder(); }
     if ("SomeProducts".equals(type)) { return new SomeProducts.Builder(); }
     if ("ContactPoint".equals(type)) { return new ContactPoint.Builder(); }
     if ("SportsClub".equals(type)) { return new SportsClub.Builder(); }
-    if ("PaymentMethod".equals(type)) { return new PaymentMethod.Builder(); }
     if ("PerformAction".equals(type)) { return new PerformAction.Builder(); }
     if ("DanceGroup".equals(type)) { return new DanceGroup.Builder(); }
     if ("LegislativeBuilding".equals(type)) { return new LegislativeBuilding.Builder(); }
@@ -2835,9 +2773,11 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("InformAction".equals(type)) { return new InformAction.Builder(); }
     if ("EducationEvent".equals(type)) { return new EducationEvent.Builder(); }
     if ("FireStation".equals(type)) { return new FireStation.Builder(); }
+    if ("RNews".equals(type)) { return new RNews.Builder(); }
     if ("EngineSpecification".equals(type)) { return new EngineSpecification.Builder(); }
     if ("Flight".equals(type)) { return new Flight.Builder(); }
     if ("Intangible".equals(type)) { return new Intangible.Builder(); }
+    if ("RightHandDriving".equals(type)) { return new RightHandDriving.Builder(); }
     if ("ReplyAction".equals(type)) { return new ReplyAction.Builder(); }
     if ("SubscribeAction".equals(type)) { return new SubscribeAction.Builder(); }
     if ("Physician".equals(type)) { return new Physician.Builder(); }
@@ -2853,7 +2793,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("Series".equals(type)) { return new Series.Builder(); }
     if ("DriveWheelConfigurationValue".equals(type)) { return new DriveWheelConfigurationValue.Builder(); }
     if ("Hostel".equals(type)) { return new Hostel.Builder(); }
-    if ("RestrictedDiet".equals(type)) { return new RestrictedDiet.Builder(); }
     if ("ScholarlyArticle".equals(type)) { return new ScholarlyArticle.Builder(); }
     if ("WPAdBlock".equals(type)) { return new WPAdBlock.Builder(); }
     if ("BikeStore".equals(type)) { return new BikeStore.Builder(); }
@@ -2864,7 +2803,9 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("BankOrCreditUnion".equals(type)) { return new BankOrCreditUnion.Builder(); }
     if ("RealEstateAgent".equals(type)) { return new RealEstateAgent.Builder(); }
     if ("ElectronicsStore".equals(type)) { return new ElectronicsStore.Builder(); }
+    if ("RearWheelDriveConfiguration".equals(type)) { return new RearWheelDriveConfiguration.Builder(); }
     if ("HealthAndBeautyBusiness".equals(type)) { return new HealthAndBeautyBusiness.Builder(); }
+    if ("Researcher".equals(type)) { return new Researcher.Builder(); }
     if ("VoteAction".equals(type)) { return new VoteAction.Builder(); }
     if ("Project".equals(type)) { return new Project.Builder(); }
     if ("RadioClip".equals(type)) { return new RadioClip.Builder(); }
@@ -2875,7 +2816,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("DeliveryEvent".equals(type)) { return new DeliveryEvent.Builder(); }
     if ("FindAction".equals(type)) { return new FindAction.Builder(); }
     if ("BeautySalon".equals(type)) { return new BeautySalon.Builder(); }
-    if ("OrderStatus".equals(type)) { return new OrderStatus.Builder(); }
     if ("BedAndBreakfast".equals(type)) { return new BedAndBreakfast.Builder(); }
     if ("AboutPage".equals(type)) { return new AboutPage.Builder(); }
     if ("MiddleSchool".equals(type)) { return new MiddleSchool.Builder(); }
@@ -2899,6 +2839,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("Bridge".equals(type)) { return new Bridge.Builder(); }
     if ("LegalService".equals(type)) { return new LegalService.Builder(); }
     if ("Mass".equals(type)) { return new Mass.Builder(); }
+    if ("LRMIClass".equals(type)) { return new LRMIClass.Builder(); }
     if ("MusicGroup".equals(type)) { return new MusicGroup.Builder(); }
     if ("MeetingRoom".equals(type)) { return new MeetingRoom.Builder(); }
     if ("JewelryStore".equals(type)) { return new JewelryStore.Builder(); }
@@ -2912,7 +2853,6 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("Brand".equals(type)) { return new Brand.Builder(); }
     if ("QuoteAction".equals(type)) { return new QuoteAction.Builder(); }
     if ("MusicRelease".equals(type)) { return new MusicRelease.Builder(); }
-    if ("DeliveryMethod".equals(type)) { return new DeliveryMethod.Builder(); }
     if ("TennisComplex".equals(type)) { return new TennisComplex.Builder(); }
     if ("CommentAction".equals(type)) { return new CommentAction.Builder(); }
     if ("WPSideBar".equals(type)) { return new WPSideBar.Builder(); }
@@ -2925,6 +2865,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("Playground".equals(type)) { return new Playground.Builder(); }
     if ("CivicStructure".equals(type)) { return new CivicStructure.Builder(); }
     if ("TieAction".equals(type)) { return new TieAction.Builder(); }
+    if ("FrontWheelDriveConfiguration".equals(type)) { return new FrontWheelDriveConfiguration.Builder(); }
     if ("GameServer".equals(type)) { return new GameServer.Builder(); }
     if ("InviteAction".equals(type)) { return new InviteAction.Builder(); }
     if ("LocalBusiness".equals(type)) { return new LocalBusiness.Builder(); }
@@ -2939,11 +2880,13 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("TouristAttraction".equals(type)) { return new TouristAttraction.Builder(); }
     if ("Audience".equals(type)) { return new Audience.Builder(); }
     if ("PaymentChargeSpecification".equals(type)) { return new PaymentChargeSpecification.Builder(); }
+    if ("ActionCollabClass".equals(type)) { return new ActionCollabClass.Builder(); }
     if ("MovingCompany".equals(type)) { return new MovingCompany.Builder(); }
     if ("BusStation".equals(type)) { return new BusStation.Builder(); }
     if ("Bakery".equals(type)) { return new Bakery.Builder(); }
     if ("LiveBlogPosting".equals(type)) { return new LiveBlogPosting.Builder(); }
     if ("ItemList".equals(type)) { return new ItemList.Builder(); }
+    if ("GoodRelationsClass".equals(type)) { return new GoodRelationsClass.Builder(); }
     if ("ConfirmAction".equals(type)) { return new ConfirmAction.Builder(); }
     if ("LeaveAction".equals(type)) { return new LeaveAction.Builder(); }
     if ("UserComments".equals(type)) { return new UserComments.Builder(); }
@@ -2994,14 +2937,12 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("SeaBodyOfWater".equals(type)) { return new SeaBodyOfWater.Builder(); }
     if ("Notary".equals(type)) { return new Notary.Builder(); }
     if ("PostalAddress".equals(type)) { return new PostalAddress.Builder(); }
-    if ("LockerDelivery".equals(type)) { return new LockerDelivery.Builder(); }
     if ("MusicVideoObject".equals(type)) { return new MusicVideoObject.Builder(); }
     if ("TypeAndQuantityNode".equals(type)) { return new TypeAndQuantityNode.Builder(); }
     if ("HinduTemple".equals(type)) { return new HinduTemple.Builder(); }
     if ("BusReservation".equals(type)) { return new BusReservation.Builder(); }
     if ("PaintAction".equals(type)) { return new PaintAction.Builder(); }
     if ("Park".equals(type)) { return new Park.Builder(); }
-    if ("BoardingPolicyType".equals(type)) { return new BoardingPolicyType.Builder(); }
     if ("TipAction".equals(type)) { return new TipAction.Builder(); }
     if ("GovernmentBuilding".equals(type)) { return new GovernmentBuilding.Builder(); }
     if ("UserTweets".equals(type)) { return new UserTweets.Builder(); }
@@ -3021,10 +2962,8 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("ItemPage".equals(type)) { return new ItemPage.Builder(); }
     if ("TravelAgency".equals(type)) { return new TravelAgency.Builder(); }
     if ("EducationalOrganization".equals(type)) { return new EducationalOrganization.Builder(); }
-    if ("ItemAvailability".equals(type)) { return new ItemAvailability.Builder(); }
     if ("WantAction".equals(type)) { return new WantAction.Builder(); }
     if ("TradeAction".equals(type)) { return new TradeAction.Builder(); }
-    if ("Specialty".equals(type)) { return new Specialty.Builder(); }
     if ("GovernmentService".equals(type)) { return new GovernmentService.Builder(); }
     if ("Festival".equals(type)) { return new Festival.Builder(); }
     if ("JoinAction".equals(type)) { return new JoinAction.Builder(); }

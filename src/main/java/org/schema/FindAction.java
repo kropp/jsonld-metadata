@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of finding an object.\n\nRelated actions:\n\n* [[SearchAction]]: FindAction is generally lead by a SearchAction, but not necessarily.
@@ -85,13 +82,6 @@ public class FindAction extends Action {
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType actionStatusType) {
       putValue("actionStatus", actionStatusType);
-      return this;
-    }
-    /**
-     * Indicates the current disposition of the Action.
-     */
-    @NotNull public Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType) {
-      putValue("actionStatus", actionStatusType.build());
       return this;
     }
     /**

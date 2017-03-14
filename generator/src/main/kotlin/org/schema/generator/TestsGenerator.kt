@@ -14,6 +14,7 @@ class TestsGenerator (private val sink: GeneratorSink, private val banner: Strin
             for (type in sink.types.values) {
                 if (type.name.isNullOrEmpty() || type.isField || type.isInterface || type.parentType.isNullOrEmpty() || sink.shouldSkip(type.name!!))
                     continue
+                if (type.isEnum || type.name == "http://schema.org/Enumeration" || (type.parentType?.let{ sink.types[it] }?.isEnum == true)) continue
 
                 val typeName = type.name!!.capitalize()
                 val varName = typeName.decapitalize()

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A web page. Every web page is implicitly assumed to be declared to be of type WebPage, so the various properties about that webpage, such as <code>breadcrumb</code> may be used. We recommend explicit declaration if these properties are specified, but if they are found outside of an itemscope, they will be assumed to be about the page.
@@ -311,13 +313,6 @@ public class WebPage extends CreativeWork {
      */
     @NotNull public Builder specialty(@NotNull Specialty specialty) {
       putValue("specialty", specialty);
-      return this;
-    }
-    /**
-     * One of the domain specialities to which this web page's content applies.
-     */
-    @NotNull public Builder specialty(@NotNull Specialty.Builder specialty) {
-      putValue("specialty", specialty.build());
       return this;
     }
     /**

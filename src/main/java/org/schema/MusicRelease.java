@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A MusicRelease is a specific release of a music album.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -180,13 +182,6 @@ public class MusicRelease extends MusicPlaylist {
      */
     @NotNull public Builder musicReleaseFormat(@NotNull MusicReleaseFormatType musicReleaseFormatType) {
       putValue("musicReleaseFormat", musicReleaseFormatType);
-      return this;
-    }
-    /**
-     * Format of this release (the type of recording media used, ie. compact disc, digital media, LP, etc.).
-     */
-    @NotNull public Builder musicReleaseFormat(@NotNull MusicReleaseFormatType.Builder musicReleaseFormatType) {
-      putValue("musicReleaseFormat", musicReleaseFormatType.build());
       return this;
     }
     /**

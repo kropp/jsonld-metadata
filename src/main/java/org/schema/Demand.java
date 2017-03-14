@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A demand entity represents the public, not necessarily binding, not necessarily exclusive, announcement by an organization or person to seek a certain type of goods or services. For describing demand using this type, the very same properties used for Offer apply.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -684,13 +686,6 @@ public class Demand extends Intangible {
       return this;
     }
     /**
-     * The payment method(s) accepted by seller for this offer.
-     */
-    @NotNull public Builder acceptedPaymentMethod(@NotNull PaymentMethod.Builder paymentMethod) {
-      putValue("acceptedPaymentMethod", paymentMethod.build());
-      return this;
-    }
-    /**
      * The amount of time that is required between accepting the offer and the actual usage of the resource or service.
      */
     @NotNull public Builder advanceBookingRequirement(@NotNull QuantitativeValue quantitativeValue) {
@@ -709,13 +704,6 @@ public class Demand extends Intangible {
      */
     @NotNull public Builder availability(@NotNull ItemAvailability itemAvailability) {
       putValue("availability", itemAvailability);
-      return this;
-    }
-    /**
-     * The availability of this item&#x2014;for example In stock, Out of stock, Pre-order, etc.
-     */
-    @NotNull public Builder availability(@NotNull ItemAvailability.Builder itemAvailability) {
-      putValue("availability", itemAvailability.build());
       return this;
     }
     /**
@@ -754,24 +742,10 @@ public class Demand extends Intangible {
       return this;
     }
     /**
-     * The delivery method(s) available for this offer.
-     */
-    @NotNull public Builder availableDeliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod) {
-      putValue("availableDeliveryMethod", deliveryMethod.build());
-      return this;
-    }
-    /**
      * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
      */
     @NotNull public Builder businessFunction(@NotNull BusinessFunction businessFunction) {
       putValue("businessFunction", businessFunction);
-      return this;
-    }
-    /**
-     * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
-     */
-    @NotNull public Builder businessFunction(@NotNull BusinessFunction.Builder businessFunction) {
-      putValue("businessFunction", businessFunction.build());
       return this;
     }
     /**
@@ -793,13 +767,6 @@ public class Demand extends Intangible {
      */
     @NotNull public Builder eligibleCustomerType(@NotNull BusinessEntityType businessEntityType) {
       putValue("eligibleCustomerType", businessEntityType);
-      return this;
-    }
-    /**
-     * The type(s) of customers for which the given offer is valid.
-     */
-    @NotNull public Builder eligibleCustomerType(@NotNull BusinessEntityType.Builder businessEntityType) {
-      putValue("eligibleCustomerType", businessEntityType.build());
       return this;
     }
     /**
@@ -985,13 +952,6 @@ public class Demand extends Intangible {
      */
     @NotNull public Builder itemCondition(@NotNull OfferItemCondition offerItemCondition) {
       putValue("itemCondition", offerItemCondition);
-      return this;
-    }
-    /**
-     * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
-     */
-    @NotNull public Builder itemCondition(@NotNull OfferItemCondition.Builder offerItemCondition) {
-      putValue("itemCondition", offerItemCondition.build());
       return this;
     }
     /**

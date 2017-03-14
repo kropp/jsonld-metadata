@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An offer to transfer some rights to an item or to provide a service — for example, an offer to sell tickets to an event, to rent the DVD of a movie, to stream a TV show over the internet, to repair a motorcycle, or to loan a book.\n\nFor [GTIN](http://www.gs1.org/barcodes/technical/idkeys/gtin)-related fields, see [Check Digit calculator](http://www.gs1.org/barcodes/support/check_digit_calculator) and [validation guide](http://www.gs1us.org/resources/standards/gtin-validation-guide) from [GS1](http://www.gs1.org/).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
@@ -942,13 +944,6 @@ public class Offer extends Intangible {
       return this;
     }
     /**
-     * The payment method(s) accepted by seller for this offer.
-     */
-    @NotNull public Builder acceptedPaymentMethod(@NotNull PaymentMethod.Builder paymentMethod) {
-      putValue("acceptedPaymentMethod", paymentMethod.build());
-      return this;
-    }
-    /**
      * An additional offer that can only be obtained in combination with the first base offer (e.g. supplements and extensions that are available for a surcharge).
      */
     @NotNull public Builder addOn(@NotNull Offer offer) {
@@ -998,13 +993,6 @@ public class Offer extends Intangible {
       return this;
     }
     /**
-     * The availability of this item&#x2014;for example In stock, Out of stock, Pre-order, etc.
-     */
-    @NotNull public Builder availability(@NotNull ItemAvailability.Builder itemAvailability) {
-      putValue("availability", itemAvailability.build());
-      return this;
-    }
-    /**
      * The end of the availability of the product or service included in the offer.
      */
     @NotNull public Builder availabilityEnds(@NotNull java.util.Date date) {
@@ -1040,24 +1028,10 @@ public class Offer extends Intangible {
       return this;
     }
     /**
-     * The delivery method(s) available for this offer.
-     */
-    @NotNull public Builder availableDeliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod) {
-      putValue("availableDeliveryMethod", deliveryMethod.build());
-      return this;
-    }
-    /**
      * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
      */
     @NotNull public Builder businessFunction(@NotNull BusinessFunction businessFunction) {
       putValue("businessFunction", businessFunction);
-      return this;
-    }
-    /**
-     * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
-     */
-    @NotNull public Builder businessFunction(@NotNull BusinessFunction.Builder businessFunction) {
-      putValue("businessFunction", businessFunction.build());
       return this;
     }
     /**
@@ -1100,13 +1074,6 @@ public class Offer extends Intangible {
      */
     @NotNull public Builder eligibleCustomerType(@NotNull BusinessEntityType businessEntityType) {
       putValue("eligibleCustomerType", businessEntityType);
-      return this;
-    }
-    /**
-     * The type(s) of customers for which the given offer is valid.
-     */
-    @NotNull public Builder eligibleCustomerType(@NotNull BusinessEntityType.Builder businessEntityType) {
-      putValue("eligibleCustomerType", businessEntityType.build());
       return this;
     }
     /**
@@ -1292,13 +1259,6 @@ public class Offer extends Intangible {
      */
     @NotNull public Builder itemCondition(@NotNull OfferItemCondition offerItemCondition) {
       putValue("itemCondition", offerItemCondition);
-      return this;
-    }
-    /**
-     * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
-     */
-    @NotNull public Builder itemCondition(@NotNull OfferItemCondition.Builder offerItemCondition) {
-      putValue("itemCondition", offerItemCondition.build());
       return this;
     }
     /**

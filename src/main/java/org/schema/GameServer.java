@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Server that provides game interaction in a multiplayer game.
@@ -94,13 +96,6 @@ public class GameServer extends Intangible {
      */
     @NotNull public Builder serverStatus(@NotNull GameServerStatus gameServerStatus) {
       putValue("serverStatus", gameServerStatus);
-      return this;
-    }
-    /**
-     * Status of a game server.
-     */
-    @NotNull public Builder serverStatus(@NotNull GameServerStatus.Builder gameServerStatus) {
-      putValue("serverStatus", gameServerStatus.build());
       return this;
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A person (alive, dead, undead, or fictional).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNewsEquivalent class: http://xmlns.com/foaf/0.1/Person
@@ -1249,13 +1251,6 @@ public class Person extends Thing implements Competitor {
      */
     @NotNull public Builder gender(@NotNull GenderType genderType) {
       putValue("gender", genderType);
-      return this;
-    }
-    /**
-     * Gender of the person. While http://schema.org/Male and http://schema.org/Female may be used, text strings are also acceptable for people who do not identify as a binary gender.
-     */
-    @NotNull public Builder gender(@NotNull GenderType.Builder genderType) {
-      putValue("gender", genderType.build());
       return this;
     }
     /**

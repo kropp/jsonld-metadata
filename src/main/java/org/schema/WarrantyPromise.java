@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A structured value representing the duration and scope of services that will be provided to a customer free of charge in case of a defect or malfunction of a product.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -91,13 +93,6 @@ public class WarrantyPromise extends StructuredValue {
      */
     @NotNull public Builder warrantyScope(@NotNull WarrantyScope warrantyScope) {
       putValue("warrantyScope", warrantyScope);
-      return this;
-    }
-    /**
-     * The scope of the warranty promise.
-     */
-    @NotNull public Builder warrantyScope(@NotNull WarrantyScope.Builder warrantyScope) {
-      putValue("warrantyScope", warrantyScope.build());
       return this;
     }
     /**

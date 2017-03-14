@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
@@ -984,13 +986,6 @@ public class Product extends Thing {
      */
     @NotNull public Builder itemCondition(@NotNull OfferItemCondition offerItemCondition) {
       putValue("itemCondition", offerItemCondition);
-      return this;
-    }
-    /**
-     * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
-     */
-    @NotNull public Builder itemCondition(@NotNull OfferItemCondition.Builder offerItemCondition) {
-      putValue("itemCondition", offerItemCondition.build());
       return this;
     }
     /**

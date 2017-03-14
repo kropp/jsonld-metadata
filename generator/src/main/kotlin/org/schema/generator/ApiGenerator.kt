@@ -21,6 +21,7 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
             for (type in sink.types.values) {
                 if (type.name.isNullOrEmpty() || type.isField || type.isInterface || sink.shouldSkip(type.name!!) || (type.parentType == null && type.name != "Thing" && !type.isInterface))
                     continue
+                if (type.isEnum || type.name == "http://schema.org/Enumeration" || (type.parentType?.let{ sink.types[it] }?.isEnum == true)) continue
 
                 val typeName = type.name!!.capitalize()
 
@@ -34,8 +35,9 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
             appendln()
             appendln("  public static ThingBuilder getBuilder(@NotNull String type) {")
             for (type in sink.types.values) {
-                if (type.name.isNullOrEmpty() || type.isField || type.isInterface || sink.shouldSkip(type.name!!) || (type.parentType == null && type.name != "Thing" && !type.isInterface))
+                if (type.name.isNullOrEmpty() || type.isField || type.isInterface || type.isEnum || sink.shouldSkip(type.name!!) || (type.parentType == null && type.name != "Thing" && !type.isInterface && !type.isEnum))
                     continue
+                if (type.isEnum || type.name == "http://schema.org/Enumeration" || (type.parentType?.let{ sink.types[it] }?.isEnum == true)) continue
 
                 val typeName = type.name!!.capitalize()
 

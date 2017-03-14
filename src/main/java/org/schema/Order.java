@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An order is a confirmation of a transaction (a receipt), which can contain multiple line items, each represented by an Offer that has been accepted by the customer.
@@ -680,13 +682,6 @@ public class Order extends Intangible {
       return this;
     }
     /**
-     * The current status of the order.
-     */
-    @NotNull public Builder orderStatus(@NotNull OrderStatus.Builder orderStatus) {
-      putValue("orderStatus", orderStatus.build());
-      return this;
-    }
-    /**
      * The order is being paid as part of the referenced Invoice.
      */
     @NotNull public Builder partOfInvoice(@NotNull Invoice invoice) {
@@ -705,13 +700,6 @@ public class Order extends Intangible {
      */
     @NotNull public Builder paymentMethod(@NotNull PaymentMethod paymentMethod) {
       putValue("paymentMethod", paymentMethod);
-      return this;
-    }
-    /**
-     * The name of the credit card or other method of payment for the order.
-     */
-    @NotNull public Builder paymentMethod(@NotNull PaymentMethod.Builder paymentMethod) {
-      putValue("paymentMethod", paymentMethod.build());
       return this;
     }
     /**

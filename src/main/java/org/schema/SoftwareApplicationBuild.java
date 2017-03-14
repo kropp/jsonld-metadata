@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Specific build of a software applicaton
@@ -62,16 +64,33 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
     return Arrays.asList((Project) current);
   }
   /**
-   * Build status.
+   * Build status (successful/failed).
    */
   @JsonIgnore public String getStatus() {
     return (String) getValue("status");
   }
   /**
-   * Build status.
+   * Build status (successful/failed).
    */
   @JsonIgnore public Collection<String> getStatuss() {
     final Object current = myData.get("status");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
+  }
+  /**
+   * Build state (running/finished/etc.).
+   */
+  @JsonIgnore public String getState() {
+    return (String) getValue("state");
+  }
+  /**
+   * Build state (running/finished/etc.).
+   */
+  @JsonIgnore public Collection<String> getStates() {
+    final Object current = myData.get("state");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<String>) current;
@@ -254,10 +273,17 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
       return this;
     }
     /**
-     * Build status.
+     * Build status (successful/failed).
      */
     @NotNull public Builder status(@NotNull String status) {
       putValue("status", status);
+      return this;
+    }
+    /**
+     * Build state (running/finished/etc.).
+     */
+    @NotNull public Builder state(@NotNull String state) {
+      putValue("state", state);
       return this;
     }
     /**
@@ -1588,6 +1614,7 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
       if ("softwareApplication".equals(key) && value instanceof SoftwareApplication) { softwareApplication((SoftwareApplication)value); return; }
       if ("project".equals(key) && value instanceof Project) { project((Project)value); return; }
       if ("status".equals(key) && value instanceof String) { status((String)value); return; }
+      if ("state".equals(key) && value instanceof String) { state((String)value); return; }
       if ("message".equals(key) && value instanceof String) { message((String)value); return; }
       if ("totalTestsCount".equals(key) && value instanceof Integer) { totalTestsCount((Integer)value); return; }
       if ("successTestsCount".equals(key) && value instanceof Integer) { successTestsCount((Integer)value); return; }

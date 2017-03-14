@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A video game series.
@@ -568,13 +570,6 @@ public class VideoGameSeries extends CreativeWorkSeries {
      */
     @NotNull public Builder playMode(@NotNull GamePlayMode gamePlayMode) {
       putValue("playMode", gamePlayMode);
-      return this;
-    }
-    /**
-     * Indicates whether this game is multi-player, co-op or single-player.  The game can be marked as multi-player, co-op and single-player at the same time.
-     */
-    @NotNull public Builder playMode(@NotNull GamePlayMode.Builder gamePlayMode) {
-      putValue("playMode", gamePlayMode.build());
       return this;
     }
     /**

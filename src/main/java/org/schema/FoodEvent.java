@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Event type: Food event.
@@ -197,13 +194,6 @@ public class FoodEvent extends Event {
      */
     @NotNull public Builder eventStatus(@NotNull EventStatusType eventStatusType) {
       putValue("eventStatus", eventStatusType);
-      return this;
-    }
-    /**
-     * An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
-     */
-    @NotNull public Builder eventStatus(@NotNull EventStatusType.Builder eventStatusType) {
-      putValue("eventStatus", eventStatusType.build());
       return this;
     }
     /**

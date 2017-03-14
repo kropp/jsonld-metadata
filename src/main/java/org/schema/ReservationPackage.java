@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A group of multiple reservations with common values for all sub-reservations.
@@ -81,13 +83,6 @@ public class ReservationPackage extends Reservation {
      */
     @NotNull public Builder reservationStatus(@NotNull ReservationStatusType reservationStatusType) {
       putValue("reservationStatus", reservationStatusType);
-      return this;
-    }
-    /**
-     * The current status of the reservation.
-     */
-    @NotNull public Builder reservationStatus(@NotNull ReservationStatusType.Builder reservationStatusType) {
-      putValue("reservationStatus", reservationStatusType.build());
       return this;
     }
     /**

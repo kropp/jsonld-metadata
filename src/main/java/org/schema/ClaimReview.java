@@ -100,7 +100,7 @@ public class ClaimReview extends Review {
       return this;
     }
     /**
-     * State of the review
+     * Build state (running/finished/etc.).
      */
     @NotNull public Builder state(@NotNull String state) {
       putValue("state", state);

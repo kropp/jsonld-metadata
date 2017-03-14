@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Web page type: Collection page.
@@ -141,13 +138,6 @@ public class CollectionPage extends WebPage {
      */
     @NotNull public Builder specialty(@NotNull Specialty specialty) {
       putValue("specialty", specialty);
-      return this;
-    }
-    /**
-     * One of the domain specialities to which this web page's content applies.
-     */
-    @NotNull public Builder specialty(@NotNull Specialty.Builder specialty) {
-      putValue("specialty", specialty.build());
       return this;
     }
     /**

@@ -50,19 +50,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(collegeOrUniversity));
     assertEquals(collegeOrUniversity, thing);
   }
-  @Test public void testDayOfWeek() throws IOException {
-    final DayOfWeek dayOfWeek = SchemaOrg.dayOfWeek()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(dayOfWeek));
-    assertEquals(dayOfWeek, thing);
-  }
   @Test public void testWriteAction() throws IOException {
     final WriteAction writeAction = SchemaOrg.writeAction()
       .endTime(NOW)
@@ -77,6 +64,19 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(writeAction));
     assertEquals(writeAction, thing);
+  }
+  @Test public void testAllWheelDriveConfiguration() throws IOException {
+    final AllWheelDriveConfiguration allWheelDriveConfiguration = SchemaOrg.allWheelDriveConfiguration()
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(allWheelDriveConfiguration));
+    assertEquals(allWheelDriveConfiguration, thing);
   }
   @Test public void testDentist() throws IOException {
     final Dentist dentist = SchemaOrg.dentist()
@@ -932,19 +932,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(checkAction));
     assertEquals(checkAction, thing);
   }
-  @Test public void testContactPointOption() throws IOException {
-    final ContactPointOption contactPointOption = SchemaOrg.contactPointOption()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(contactPointOption));
-    assertEquals(contactPointOption, thing);
-  }
   @Test public void testEventReservation() throws IOException {
     final EventReservation eventReservation = SchemaOrg.eventReservation()
       .reservationId("Test String")
@@ -1056,19 +1043,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(continent));
     assertEquals(continent, thing);
-  }
-  @Test public void testPaymentStatusType() throws IOException {
-    final PaymentStatusType paymentStatusType = SchemaOrg.paymentStatusType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(paymentStatusType));
-    assertEquals(paymentStatusType, thing);
   }
   @Test public void testPublicationEvent() throws IOException {
     final PublicationEvent publicationEvent = SchemaOrg.publicationEvent()
@@ -1301,19 +1275,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(blogPosting));
     assertEquals(blogPosting, thing);
-  }
-  @Test public void testMusicReleaseFormatType() throws IOException {
-    final MusicReleaseFormatType musicReleaseFormatType = SchemaOrg.musicReleaseFormatType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(musicReleaseFormatType));
-    assertEquals(musicReleaseFormatType, thing);
   }
   @Test public void testFinancialService() throws IOException {
     final FinancialService financialService = SchemaOrg.financialService()
@@ -1553,6 +1514,19 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(theaterGroup));
     assertEquals(theaterGroup, thing);
   }
+  @Test public void testLeftHandDriving() throws IOException {
+    final LeftHandDriving leftHandDriving = SchemaOrg.leftHandDriving()
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(leftHandDriving));
+    assertEquals(leftHandDriving, thing);
+  }
   @Test public void testPublicSwimmingPool() throws IOException {
     final PublicSwimmingPool publicSwimmingPool = SchemaOrg.publicSwimmingPool()
       .currenciesAccepted("Test String")
@@ -1701,19 +1675,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(consumeAction));
     assertEquals(consumeAction, thing);
   }
-  @Test public void testRsvpResponseType() throws IOException {
-    final RsvpResponseType rsvpResponseType = SchemaOrg.rsvpResponseType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(rsvpResponseType));
-    assertEquals(rsvpResponseType, thing);
-  }
   @Test public void testMovieRentalStore() throws IOException {
     final MovieRentalStore movieRentalStore = SchemaOrg.movieRentalStore()
       .currenciesAccepted("Test String")
@@ -1859,6 +1820,75 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(cafeOrCoffeeShop));
     assertEquals(cafeOrCoffeeShop, thing);
+  }
+  @Test public void testGoodRelationsTerms() throws IOException {
+    final GoodRelationsTerms goodRelationsTerms = SchemaOrg.goodRelationsTerms()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(goodRelationsTerms));
+    assertEquals(goodRelationsTerms, thing);
+  }
+  @Test public void testAutomotiveOntologyWGClass() throws IOException {
+    final AutomotiveOntologyWGClass automotiveOntologyWGClass = SchemaOrg.automotiveOntologyWGClass()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(automotiveOntologyWGClass));
+    assertEquals(automotiveOntologyWGClass, thing);
+  }
+  @Test public void testMBZ() throws IOException {
+    final MBZ mBZ = SchemaOrg.mBZ()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(mBZ));
+    assertEquals(mBZ, thing);
   }
   @Test public void testViewAction() throws IOException {
     final ViewAction viewAction = SchemaOrg.viewAction()
@@ -2106,19 +2136,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(exerciseGym));
     assertEquals(exerciseGym, thing);
   }
-  @Test public void testReservationStatusType() throws IOException {
-    final ReservationStatusType reservationStatusType = SchemaOrg.reservationStatusType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(reservationStatusType));
-    assertEquals(reservationStatusType, thing);
-  }
   @Test public void testCityHall() throws IOException {
     final CityHall cityHall = SchemaOrg.cityHall()
       .openingHours("Test String")
@@ -2364,19 +2381,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(rentAction));
     assertEquals(rentAction, thing);
-  }
-  @Test public void testBookFormatType() throws IOException {
-    final BookFormatType bookFormatType = SchemaOrg.bookFormatType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(bookFormatType));
-    assertEquals(bookFormatType, thing);
   }
   @Test public void testAutoRepair() throws IOException {
     final AutoRepair autoRepair = SchemaOrg.autoRepair()
@@ -3044,8 +3048,8 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(periodical));
     assertEquals(periodical, thing);
   }
-  @Test public void testBusinessEntityType() throws IOException {
-    final BusinessEntityType businessEntityType = SchemaOrg.businessEntityType()
+  @Test public void testFourWheelDriveConfiguration() throws IOException {
+    final FourWheelDriveConfiguration fourWheelDriveConfiguration = SchemaOrg.fourWheelDriveConfiguration()
       .additionalType("Test String")
       .alternateName("Test String")
       .disambiguatingDescription("Test String")
@@ -3054,8 +3058,8 @@ public class SmokeTest {
       .url("Test String")
       .id("Test String")
       .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(businessEntityType));
-    assertEquals(businessEntityType, thing);
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(fourWheelDriveConfiguration));
+    assertEquals(fourWheelDriveConfiguration, thing);
   }
   @Test public void testEndorseAction() throws IOException {
     final EndorseAction endorseAction = SchemaOrg.endorseAction()
@@ -3178,19 +3182,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(lodgingBusiness));
     assertEquals(lodgingBusiness, thing);
   }
-  @Test public void testActionStatusType() throws IOException {
-    final ActionStatusType actionStatusType = SchemaOrg.actionStatusType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(actionStatusType));
-    assertEquals(actionStatusType, thing);
-  }
   @Test public void testGeneralContractor() throws IOException {
     final GeneralContractor generalContractor = SchemaOrg.generalContractor()
       .currenciesAccepted("Test String")
@@ -3213,19 +3204,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(generalContractor));
     assertEquals(generalContractor, thing);
-  }
-  @Test public void testPaymentCard() throws IOException {
-    final PaymentCard paymentCard = SchemaOrg.paymentCard()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(paymentCard));
-    assertEquals(paymentCard, thing);
   }
   @Test public void testArtGallery() throws IOException {
     final ArtGallery artGallery = SchemaOrg.artGallery()
@@ -3500,19 +3478,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(controlAction));
     assertEquals(controlAction, thing);
-  }
-  @Test public void testItemListOrderType() throws IOException {
-    final ItemListOrderType itemListOrderType = SchemaOrg.itemListOrderType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(itemListOrderType));
-    assertEquals(itemListOrderType, thing);
   }
   @Test public void testMountain() throws IOException {
     final Mountain mountain = SchemaOrg.mountain()
@@ -3820,19 +3785,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(placeOfWorship));
     assertEquals(placeOfWorship, thing);
-  }
-  @Test public void testGameServerStatus() throws IOException {
-    final GameServerStatus gameServerStatus = SchemaOrg.gameServerStatus()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(gameServerStatus));
-    assertEquals(gameServerStatus, thing);
   }
   @Test public void testState() throws IOException {
     final State state = SchemaOrg.state()
@@ -4753,6 +4705,29 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(onDemandEvent));
     assertEquals(onDemandEvent, thing);
   }
+  @Test public void testBibExTerm() throws IOException {
+    final BibExTerm bibExTerm = SchemaOrg.bibExTerm()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(bibExTerm));
+    assertEquals(bibExTerm, thing);
+  }
   @Test public void testDiscussionForumPosting() throws IOException {
     final DiscussionForumPosting discussionForumPosting = SchemaOrg.discussionForumPosting()
       .articleBody("Test String")
@@ -4924,6 +4899,29 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(registerAction));
     assertEquals(registerAction, thing);
+  }
+  @Test public void testFIBO() throws IOException {
+    final FIBO fIBO = SchemaOrg.fIBO()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(fIBO));
+    assertEquals(fIBO, thing);
   }
   @Test public void testLandmarksOrHistoricalBuildings() throws IOException {
     final LandmarksOrHistoricalBuildings landmarksOrHistoricalBuildings = SchemaOrg.landmarksOrHistoricalBuildings()
@@ -5103,19 +5101,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(userCheckins));
     assertEquals(userCheckins, thing);
   }
-  @Test public void testGenderType() throws IOException {
-    final GenderType genderType = SchemaOrg.genderType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(genderType));
-    assertEquals(genderType, thing);
-  }
   @Test public void testWebPageElement() throws IOException {
     final WebPageElement webPageElement = SchemaOrg.webPageElement()
       .schemaVersion("Test String")
@@ -5246,19 +5231,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(discoverAction));
     assertEquals(discoverAction, thing);
-  }
-  @Test public void testParcelService() throws IOException {
-    final ParcelService parcelService = SchemaOrg.parcelService()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(parcelService));
-    assertEquals(parcelService, thing);
   }
   @Test public void testContactPage() throws IOException {
     final ContactPage contactPage = SchemaOrg.contactPage()
@@ -5449,19 +5421,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(investmentOrDeposit));
     assertEquals(investmentOrDeposit, thing);
-  }
-  @Test public void testGamePlayMode() throws IOException {
-    final GamePlayMode gamePlayMode = SchemaOrg.gamePlayMode()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(gamePlayMode));
-    assertEquals(gamePlayMode, thing);
   }
   @Test public void testLandform() throws IOException {
     final Landform landform = SchemaOrg.landform()
@@ -5813,6 +5772,29 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(adultEntertainment));
     assertEquals(adultEntertainment, thing);
   }
+  @Test public void testSTIAccommodationOntology() throws IOException {
+    final STIAccommodationOntology sTIAccommodationOntology = SchemaOrg.sTIAccommodationOntology()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(sTIAccommodationOntology));
+    assertEquals(sTIAccommodationOntology, thing);
+  }
   @Test public void testCheckOutAction() throws IOException {
     final CheckOutAction checkOutAction = SchemaOrg.checkOutAction()
       .endTime(NOW)
@@ -6153,19 +6135,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(photograph));
     assertEquals(photograph, thing);
   }
-  @Test public void testEventStatusType() throws IOException {
-    final EventStatusType eventStatusType = SchemaOrg.eventStatusType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(eventStatusType));
-    assertEquals(eventStatusType, thing);
-  }
   @Test public void testEducationalAudience() throws IOException {
     final EducationalAudience educationalAudience = SchemaOrg.educationalAudience()
       .educationalRole("Test String")
@@ -6232,19 +6201,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(emergencyService));
     assertEquals(emergencyService, thing);
-  }
-  @Test public void testOfferItemCondition() throws IOException {
-    final OfferItemCondition offerItemCondition = SchemaOrg.offerItemCondition()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(offerItemCondition));
-    assertEquals(offerItemCondition, thing);
   }
   @Test public void testBefriendAction() throws IOException {
     final BefriendAction befriendAction = SchemaOrg.befriendAction()
@@ -7105,19 +7061,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(oceanBodyOfWater));
     assertEquals(oceanBodyOfWater, thing);
   }
-  @Test public void testMapCategoryType() throws IOException {
-    final MapCategoryType mapCategoryType = SchemaOrg.mapCategoryType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(mapCategoryType));
-    assertEquals(mapCategoryType, thing);
-  }
   @Test public void testBowlingAlley() throws IOException {
     final BowlingAlley bowlingAlley = SchemaOrg.bowlingAlley()
       .currenciesAccepted("Test String")
@@ -7160,32 +7103,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(aquarium));
     assertEquals(aquarium, thing);
-  }
-  @Test public void testMusicAlbumReleaseType() throws IOException {
-    final MusicAlbumReleaseType musicAlbumReleaseType = SchemaOrg.musicAlbumReleaseType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(musicAlbumReleaseType));
-    assertEquals(musicAlbumReleaseType, thing);
-  }
-  @Test public void testWarrantyScope() throws IOException {
-    final WarrantyScope warrantyScope = SchemaOrg.warrantyScope()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(warrantyScope));
-    assertEquals(warrantyScope, thing);
   }
   @Test public void testPetStore() throws IOException {
     final PetStore petStore = SchemaOrg.petStore()
@@ -7261,19 +7178,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(school));
     assertEquals(school, thing);
   }
-  @Test public void testMusicAlbumProductionType() throws IOException {
-    final MusicAlbumProductionType musicAlbumProductionType = SchemaOrg.musicAlbumProductionType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(musicAlbumProductionType));
-    assertEquals(musicAlbumProductionType, thing);
-  }
   @Test public void testBook() throws IOException {
     final Book book = SchemaOrg.book()
       .bookEdition("Test String")
@@ -7317,19 +7221,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(book));
     assertEquals(book, thing);
-  }
-  @Test public void testDigitalDocumentPermissionType() throws IOException {
-    final DigitalDocumentPermissionType digitalDocumentPermissionType = SchemaOrg.digitalDocumentPermissionType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(digitalDocumentPermissionType));
-    assertEquals(digitalDocumentPermissionType, thing);
   }
   @Test public void testChooseAction() throws IOException {
     final ChooseAction chooseAction = SchemaOrg.chooseAction()
@@ -7580,19 +7471,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(residence));
     assertEquals(residence, thing);
-  }
-  @Test public void testBusinessFunction() throws IOException {
-    final BusinessFunction businessFunction = SchemaOrg.businessFunction()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(businessFunction));
-    assertEquals(businessFunction, thing);
   }
   @Test public void testCity() throws IOException {
     final City city = SchemaOrg.city()
@@ -7953,6 +7831,29 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(checkoutPage));
     assertEquals(checkoutPage, thing);
+  }
+  @Test public void testWikiDoc() throws IOException {
+    final WikiDoc wikiDoc = SchemaOrg.wikiDoc()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(wikiDoc));
+    assertEquals(wikiDoc, thing);
   }
   @Test public void testBrewery() throws IOException {
     final Brewery brewery = SchemaOrg.brewery()
@@ -8331,6 +8232,29 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(businessAudience));
     assertEquals(businessAudience, thing);
   }
+  @Test public void testDatasetClass() throws IOException {
+    final DatasetClass datasetClass = SchemaOrg.datasetClass()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(datasetClass));
+    assertEquals(datasetClass, thing);
+  }
   @Test public void testJobPosting() throws IOException {
     final JobPosting jobPosting = SchemaOrg.jobPosting()
       .baseSalary(42)
@@ -8521,6 +8445,29 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(donateAction));
     assertEquals(donateAction, thing);
   }
+  @Test public void testStackExchange() throws IOException {
+    final StackExchange stackExchange = SchemaOrg.stackExchange()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(stackExchange));
+    assertEquals(stackExchange, thing);
+  }
   @Test public void testGolfCourse() throws IOException {
     final GolfCourse golfCourse = SchemaOrg.golfCourse()
       .currenciesAccepted("Test String")
@@ -8627,19 +8574,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(sportsClub));
     assertEquals(sportsClub, thing);
   }
-  @Test public void testPaymentMethod() throws IOException {
-    final PaymentMethod paymentMethod = SchemaOrg.paymentMethod()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(paymentMethod));
-    assertEquals(paymentMethod, thing);
-  }
   @Test public void testPerformAction() throws IOException {
     final PerformAction performAction = SchemaOrg.performAction()
       .endTime(NOW)
@@ -8744,6 +8678,7 @@ public class SmokeTest {
   @Test public void testSoftwareApplicationBuild() throws IOException {
     final SoftwareApplicationBuild softwareApplicationBuild = SchemaOrg.softwareApplicationBuild()
       .status("Test String")
+      .state("Test String")
       .message("Test String")
       .totalTestsCount(42)
       .successTestsCount(42)
@@ -8868,6 +8803,29 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(fireStation));
     assertEquals(fireStation, thing);
   }
+  @Test public void testRNews() throws IOException {
+    final RNews rNews = SchemaOrg.rNews()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(rNews));
+    assertEquals(rNews, thing);
+  }
   @Test public void testEngineSpecification() throws IOException {
     final EngineSpecification engineSpecification = SchemaOrg.engineSpecification()
       .additionalType("Test String")
@@ -8915,6 +8873,19 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(intangible));
     assertEquals(intangible, thing);
+  }
+  @Test public void testRightHandDriving() throws IOException {
+    final RightHandDriving rightHandDriving = SchemaOrg.rightHandDriving()
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(rightHandDriving));
+    assertEquals(rightHandDriving, thing);
   }
   @Test public void testReplyAction() throws IOException {
     final ReplyAction replyAction = SchemaOrg.replyAction()
@@ -9293,19 +9264,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(hostel));
     assertEquals(hostel, thing);
   }
-  @Test public void testRestrictedDiet() throws IOException {
-    final RestrictedDiet restrictedDiet = SchemaOrg.restrictedDiet()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(restrictedDiet));
-    assertEquals(restrictedDiet, thing);
-  }
   @Test public void testScholarlyArticle() throws IOException {
     final ScholarlyArticle scholarlyArticle = SchemaOrg.scholarlyArticle()
       .articleBody("Test String")
@@ -9623,6 +9581,19 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(electronicsStore));
     assertEquals(electronicsStore, thing);
   }
+  @Test public void testRearWheelDriveConfiguration() throws IOException {
+    final RearWheelDriveConfiguration rearWheelDriveConfiguration = SchemaOrg.rearWheelDriveConfiguration()
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(rearWheelDriveConfiguration));
+    assertEquals(rearWheelDriveConfiguration, thing);
+  }
   @Test public void testHealthAndBeautyBusiness() throws IOException {
     final HealthAndBeautyBusiness healthAndBeautyBusiness = SchemaOrg.healthAndBeautyBusiness()
       .currenciesAccepted("Test String")
@@ -9645,6 +9616,20 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(healthAndBeautyBusiness));
     assertEquals(healthAndBeautyBusiness, thing);
+  }
+  @Test public void testResearcher() throws IOException {
+    final Researcher researcher = SchemaOrg.researcher()
+      .audienceType("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(researcher));
+    assertEquals(researcher, thing);
   }
   @Test public void testVoteAction() throws IOException {
     final VoteAction voteAction = SchemaOrg.voteAction()
@@ -9911,19 +9896,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(beautySalon));
     assertEquals(beautySalon, thing);
-  }
-  @Test public void testOrderStatus() throws IOException {
-    final OrderStatus orderStatus = SchemaOrg.orderStatus()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(orderStatus));
-    assertEquals(orderStatus, thing);
   }
   @Test public void testBedAndBreakfast() throws IOException {
     final BedAndBreakfast bedAndBreakfast = SchemaOrg.bedAndBreakfast()
@@ -10431,6 +10403,29 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(mass));
     assertEquals(mass, thing);
   }
+  @Test public void testLRMIClass() throws IOException {
+    final LRMIClass lRMIClass = SchemaOrg.lRMIClass()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(lRMIClass));
+    assertEquals(lRMIClass, thing);
+  }
   @Test public void testMusicGroup() throws IOException {
     final MusicGroup musicGroup = SchemaOrg.musicGroup()
       .genre("Test String")
@@ -10696,19 +10691,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(musicRelease));
     assertEquals(musicRelease, thing);
-  }
-  @Test public void testDeliveryMethod() throws IOException {
-    final DeliveryMethod deliveryMethod = SchemaOrg.deliveryMethod()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(deliveryMethod));
-    assertEquals(deliveryMethod, thing);
   }
   @Test public void testTennisComplex() throws IOException {
     final TennisComplex tennisComplex = SchemaOrg.tennisComplex()
@@ -10976,6 +10958,19 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(tieAction));
     assertEquals(tieAction, thing);
+  }
+  @Test public void testFrontWheelDriveConfiguration() throws IOException {
+    final FrontWheelDriveConfiguration frontWheelDriveConfiguration = SchemaOrg.frontWheelDriveConfiguration()
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(frontWheelDriveConfiguration));
+    assertEquals(frontWheelDriveConfiguration, thing);
   }
   @Test public void testGameServer() throws IOException {
     final GameServer gameServer = SchemaOrg.gameServer()
@@ -11255,6 +11250,29 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(paymentChargeSpecification));
     assertEquals(paymentChargeSpecification, thing);
   }
+  @Test public void testActionCollabClass() throws IOException {
+    final ActionCollabClass actionCollabClass = SchemaOrg.actionCollabClass()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(actionCollabClass));
+    assertEquals(actionCollabClass, thing);
+  }
   @Test public void testMovingCompany() throws IOException {
     final MovingCompany movingCompany = SchemaOrg.movingCompany()
       .currenciesAccepted("Test String")
@@ -11386,6 +11404,29 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(itemList));
     assertEquals(itemList, thing);
+  }
+  @Test public void testGoodRelationsClass() throws IOException {
+    final GoodRelationsClass goodRelationsClass = SchemaOrg.goodRelationsClass()
+      .award("Test String")
+      .email("Test String")
+      .faxNumber("Test String")
+      .dissolutionDate(NOW)
+      .foundingDate(NOW)
+      .isicV4("Test String")
+      .legalName("Test String")
+      .naics("Test String")
+      .telephone("Test String")
+      .vatID("Test String")
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(goodRelationsClass));
+    assertEquals(goodRelationsClass, thing);
   }
   @Test public void testConfirmAction() throws IOException {
     final ConfirmAction confirmAction = SchemaOrg.confirmAction()
@@ -12664,19 +12705,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(postalAddress));
     assertEquals(postalAddress, thing);
   }
-  @Test public void testLockerDelivery() throws IOException {
-    final LockerDelivery lockerDelivery = SchemaOrg.lockerDelivery()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(lockerDelivery));
-    assertEquals(lockerDelivery, thing);
-  }
   @Test public void testMusicVideoObject() throws IOException {
     final MusicVideoObject musicVideoObject = SchemaOrg.musicVideoObject()
       .bitrate("Test String")
@@ -12816,19 +12844,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(park));
     assertEquals(park, thing);
-  }
-  @Test public void testBoardingPolicyType() throws IOException {
-    final BoardingPolicyType boardingPolicyType = SchemaOrg.boardingPolicyType()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(boardingPolicyType));
-    assertEquals(boardingPolicyType, thing);
   }
   @Test public void testTipAction() throws IOException {
     final TipAction tipAction = SchemaOrg.tipAction()
@@ -13326,19 +13341,6 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(educationalOrganization));
     assertEquals(educationalOrganization, thing);
   }
-  @Test public void testItemAvailability() throws IOException {
-    final ItemAvailability itemAvailability = SchemaOrg.itemAvailability()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(itemAvailability));
-    assertEquals(itemAvailability, thing);
-  }
   @Test public void testWantAction() throws IOException {
     final WantAction wantAction = SchemaOrg.wantAction()
       .endTime(NOW)
@@ -13369,19 +13371,6 @@ public class SmokeTest {
       .build();
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(tradeAction));
     assertEquals(tradeAction, thing);
-  }
-  @Test public void testSpecialty() throws IOException {
-    final Specialty specialty = SchemaOrg.specialty()
-      .additionalType("Test String")
-      .alternateName("Test String")
-      .disambiguatingDescription("Test String")
-      .name("Test String")
-      .sameAs("Test String")
-      .url("Test String")
-      .id("Test String")
-      .build();
-    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(specialty));
-    assertEquals(specialty, thing);
   }
   @Test public void testGovernmentService() throws IOException {
     final GovernmentService governmentService = SchemaOrg.governmentService()

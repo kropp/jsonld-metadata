@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A food or drink item listed in a menu or menu section.
@@ -94,13 +96,6 @@ public class MenuItem extends Intangible {
      */
     @NotNull public Builder suitableForDiet(@NotNull RestrictedDiet restrictedDiet) {
       putValue("suitableForDiet", restrictedDiet);
-      return this;
-    }
-    /**
-     * Indicates a dietary restriction or guideline for which this recipe or menu item is suitable, e.g. diabetic, halal etc.
-     */
-    @NotNull public Builder suitableForDiet(@NotNull RestrictedDiet.Builder restrictedDiet) {
-      putValue("suitableForDiet", restrictedDiet.build());
       return this;
     }
     /**

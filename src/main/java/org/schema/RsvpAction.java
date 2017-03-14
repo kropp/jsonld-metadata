@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of notifying an event organizer as to whether you expect to attend the event.
@@ -200,13 +202,6 @@ public class RsvpAction extends InformAction {
       return this;
     }
     /**
-     * The response (yes, no, maybe) to the RSVP.
-     */
-    @NotNull public Builder rsvpResponse(@NotNull RsvpResponseType.Builder rsvpResponseType) {
-      putValue("rsvpResponse", rsvpResponseType.build());
-      return this;
-    }
-    /**
      * Comments, typically from users.
      */
     @NotNull public Builder comment(@NotNull Comment comment) {
@@ -358,13 +353,6 @@ public class RsvpAction extends InformAction {
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType actionStatusType) {
       putValue("actionStatus", actionStatusType);
-      return this;
-    }
-    /**
-     * Indicates the current disposition of the Action.
-     */
-    @NotNull public Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType) {
-      putValue("actionStatus", actionStatusType.build());
       return this;
     }
     /**

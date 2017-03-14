@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -250,13 +252,6 @@ public class TypeAndQuantityNode extends StructuredValue {
      */
     @NotNull public Builder businessFunction(@NotNull BusinessFunction businessFunction) {
       putValue("businessFunction", businessFunction);
-      return this;
-    }
-    /**
-     * The business function (e.g. sell, lease, repair, dispose) of the offer or component of a bundle (TypeAndQuantityNode). The default is http://purl.org/goodrelations/v1#Sell.
-     */
-    @NotNull public Builder businessFunction(@NotNull BusinessFunction.Builder businessFunction) {
-      putValue("businessFunction", businessFunction.build());
       return this;
     }
     /**

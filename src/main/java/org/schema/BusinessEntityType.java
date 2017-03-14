@@ -18,114 +18,18 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
- * A business entity type is a conceptual entity representing the legal form, the size, the main line of business, the position in the value chain, or any combination thereof, of an organization or business person.\n\nCommonly used values:\n\n* http://purl.org/goodrelations/v1#Business\n* http://purl.org/goodrelations/v1#Enduser\n* http://purl.org/goodrelations/v1#PublicInstitution\n* http://purl.org/goodrelations/v1#Reseller
- * 	  Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
+ * A business entity type is a conceptual entity representing the legal form, the size, the main line of business, the position in the value chain, or any combination thereof, of an organization or business person.
+ * 
+ * Commonly used values:
+ * 
+ * * http://purl.org/goodrelations/v1#Business
+ * * http://purl.org/goodrelations/v1#Enduser
+ * * http://purl.org/goodrelations/v1#PublicInstitution
+ * * http://purl.org/goodrelations/v1#Reseller
+ * 	  
  */
-public class BusinessEntityType extends Enumeration {
-  protected BusinessEntityType(java.util.Map<String,Object> data) {
-    super(data);
-  }
-  
-  /**
-   * Builder for {@link BusinessEntityType}
-   */
-  public static class Builder extends Enumeration.Builder {
-    public BusinessEntityType build() {
-      return new BusinessEntityType(myData);
-    }
-    /**
-     * An additional type for the item, typically used for adding more specific types from external vocabularies in microdata syntax. This is a relationship between something and a class that the thing is in. In RDFa syntax, it is better to use the native RDFa syntax - the 'typeof' attribute - for multiple types. Schema.org tools may have only weaker understanding of extra types, in particular those defined externally.
-     */
-    @NotNull public Builder additionalType(@NotNull String additionalType) {
-      putValue("additionalType", additionalType);
-      return this;
-    }
-    /**
-     * An alias for the item.
-     */
-    @NotNull public Builder alternateName(@NotNull String alternateName) {
-      putValue("alternateName", alternateName);
-      return this;
-    }
-    /**
-     * A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.
-     */
-    @NotNull public Builder disambiguatingDescription(@NotNull String disambiguatingDescription) {
-      putValue("disambiguatingDescription", disambiguatingDescription);
-      return this;
-    }
-    /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
-     */
-    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork creativeWork) {
-      putValue("mainEntityOfPage", creativeWork);
-      return this;
-    }
-    /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
-     */
-    @NotNull public Builder mainEntityOfPage(@NotNull CreativeWork.Builder creativeWork) {
-      putValue("mainEntityOfPage", creativeWork.build());
-      return this;
-    }
-    /**
-     * Indicates a page (or other CreativeWork) for which this thing is the main entity being described. See [background notes](/docs/datamodel.html#mainEntityBackground) for details.
-     */
-    @NotNull public Builder mainEntityOfPage(@NotNull String mainEntityOfPage) {
-      putValue("mainEntityOfPage", mainEntityOfPage);
-      return this;
-    }
-    /**
-     * The name of the item.
-     */
-    @NotNull public Builder name(@NotNull String name) {
-      putValue("name", name);
-      return this;
-    }
-    /**
-     * URL of a reference Web page that unambiguously indicates the item's identity. E.g. the URL of the item's Wikipedia page, Wikidata entry, or official website.
-     */
-    @NotNull public Builder sameAs(@NotNull String sameAs) {
-      putValue("sameAs", sameAs);
-      return this;
-    }
-    /**
-     * URL of the item.
-     */
-    @NotNull public Builder url(@NotNull String url) {
-      putValue("url", url);
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    @NotNull public Builder potentialAction(@NotNull Action action) {
-      putValue("potentialAction", action);
-      return this;
-    }
-    /**
-     * Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role.
-     */
-    @NotNull public Builder potentialAction(@NotNull Action.Builder action) {
-      putValue("potentialAction", action.build());
-      return this;
-    }
-    @NotNull public Builder id(@NotNull String id) {
-      putValue("id", id);
-      return this;
-    }
-    public Builder id(long id) {
-      return id(Long.toString(id));
-    }
-    @Override protected void fromMap(String key, Object value) {
-      super.fromMap(key, value);
-    }
-  }
+enum BusinessEntityType {
   
 }

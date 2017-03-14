@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A permission for a particular person or group to access a particular file.
@@ -184,13 +186,6 @@ public class DigitalDocumentPermission extends Intangible {
      */
     @NotNull public Builder permissionType(@NotNull DigitalDocumentPermissionType digitalDocumentPermissionType) {
       putValue("permissionType", digitalDocumentPermissionType);
-      return this;
-    }
-    /**
-     * The type of permission granted the person, organization, or audience.
-     */
-    @NotNull public Builder permissionType(@NotNull DigitalDocumentPermissionType.Builder digitalDocumentPermissionType) {
-      putValue("permissionType", digitalDocumentPermissionType.build());
       return this;
     }
     /**

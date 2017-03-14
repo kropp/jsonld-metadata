@@ -77,7 +77,7 @@ class Klass(val sourceDirectory: File, val namespace: String?, val name: String,
     }
 
     fun constant(name: String, type: String, value: String) {
-        text.appendln("  private static final $type $name = $value;");
+        text.appendln("  private static final $type $name = $value;")
     }
 
     fun konstructor(visibility: String = "public", parameters: Collection<Parameter>? = null, superParameters: Collection<String>? = null) {
@@ -181,8 +181,55 @@ class Klass(val sourceDirectory: File, val namespace: String?, val name: String,
     }
 }
 
+class Enumeration(val sourceDirectory: File, val namespace: String?, val name: String) {
+    var copyright: String? = null
+    var comment: String? = null
+    var members: List<String>? = null
+
+    internal val text = StringBuilder()
+
+    internal fun generate() {
+        text.insert(0, with(StringBuilder()) {
+            copyright?.let {
+                appendln(it)
+                appendln()
+            }
+            namespace?.let {
+                appendln("package $it;")
+                appendln()
+            }
+            appendln()
+            comment?.let {
+                appendln("/**")
+                it.split("\n").flatMap { it.split("\\n") }.forEach { appendln(" * $it") }
+                appendln(" */")
+            }
+        }.toString())
+
+        text.appendln("enum $name {")
+
+        members?.let { text.appendln("  " + it.joinToString(", ")) }
+
+        text.appendln("}")
+    }
+
+    fun save() {
+        generate()
+
+        val packageDir = namespace?.split(Regex("\\."))?.fold(sourceDirectory) { d, s -> File(d, s) }
+        packageDir?.mkdirs()
+        File(packageDir ?: File("."), "$name.java").writeText(text.toString())
+    }
+}
+
 fun Package.klass(name: String, classOrInterface: String? = "class", body: Klass.() -> Unit) {
     val c = Klass(this.directory, this.name, name, classOrInterface)
+    c.body()
+    c.save()
+}
+
+fun Package.enumeration(name: String, body: Enumeration.() -> Unit) {
+    val c = Enumeration(this.directory, this.name, name)
     c.body()
     c.save()
 }

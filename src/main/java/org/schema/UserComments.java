@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * UserInteraction and its subtypes is an old way of talking about users interacting with pages. It is generally better to use [[Action]]-based vocabulary, alongside types such as [[Comment]].Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
@@ -362,13 +364,6 @@ public class UserComments extends UserInteraction {
      */
     @NotNull public Builder eventStatus(@NotNull EventStatusType eventStatusType) {
       putValue("eventStatus", eventStatusType);
-      return this;
-    }
-    /**
-     * An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
-     */
-    @NotNull public Builder eventStatus(@NotNull EventStatusType.Builder eventStatusType) {
-      putValue("eventStatus", eventStatusType.build());
       return this;
     }
     /**

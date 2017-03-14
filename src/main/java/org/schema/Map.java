@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A map.
@@ -60,13 +62,6 @@ public class Map extends CreativeWork {
      */
     @NotNull public Builder mapType(@NotNull MapCategoryType mapCategoryType) {
       putValue("mapType", mapCategoryType);
-      return this;
-    }
-    /**
-     * Indicates the kind of Map, from the MapCategoryType Enumeration.
-     */
-    @NotNull public Builder mapType(@NotNull MapCategoryType.Builder mapCategoryType) {
-      putValue("mapType", mapCategoryType.build());
       return this;
     }
     /**

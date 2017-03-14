@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A statement of the money due for goods or services; a bill.
@@ -421,13 +423,6 @@ public class Invoice extends Intangible {
       return this;
     }
     /**
-     * The name of the credit card or other method of payment for the order.
-     */
-    @NotNull public Builder paymentMethod(@NotNull PaymentMethod.Builder paymentMethod) {
-      putValue("paymentMethod", paymentMethod.build());
-      return this;
-    }
-    /**
      * An identifier for the method of payment used (e.g. the last 4 digits of the credit card).
      */
     @NotNull public Builder paymentMethodId(@NotNull String paymentMethodId) {
@@ -579,13 +574,6 @@ public class Invoice extends Intangible {
      */
     @NotNull public Builder paymentStatus(@NotNull PaymentStatusType paymentStatusType) {
       putValue("paymentStatus", paymentStatusType);
-      return this;
-    }
-    /**
-     * The status of payment; whether the invoice has been paid or not.
-     */
-    @NotNull public Builder paymentStatus(@NotNull PaymentStatusType.Builder paymentStatusType) {
-      putValue("paymentStatus", paymentStatusType.build());
       return this;
     }
     /**

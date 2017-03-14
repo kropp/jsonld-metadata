@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The price for the delivery of an offer using a particular delivery method.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -174,13 +176,6 @@ public class DeliveryChargeSpecification extends PriceSpecification {
      */
     @NotNull public Builder appliesToDeliveryMethod(@NotNull DeliveryMethod deliveryMethod) {
       putValue("appliesToDeliveryMethod", deliveryMethod);
-      return this;
-    }
-    /**
-     * The delivery method(s) to which the delivery charge or payment charge specification applies.
-     */
-    @NotNull public Builder appliesToDeliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod) {
-      putValue("appliesToDeliveryMethod", deliveryMethod.build());
       return this;
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of physically/electronically dispatching an object for transfer from an origin to a destination.Related actions:\n\n* [[ReceiveAction]]: The reciprocal of SendAction.\n* [[GiveAction]]: Unlike GiveAction, SendAction does not imply the transfer of ownership (e.g. I can send you my laptop, but I'm not necessarily giving it to you).
@@ -111,13 +113,6 @@ public class SendAction extends TransferAction {
      */
     @NotNull public Builder deliveryMethod(@NotNull DeliveryMethod deliveryMethod) {
       putValue("deliveryMethod", deliveryMethod);
-      return this;
-    }
-    /**
-     * A sub property of instrument. The method of delivery.
-     */
-    @NotNull public Builder deliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod) {
-      putValue("deliveryMethod", deliveryMethod.build());
       return this;
     }
     /**
@@ -237,13 +232,6 @@ public class SendAction extends TransferAction {
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType actionStatusType) {
       putValue("actionStatus", actionStatusType);
-      return this;
-    }
-    /**
-     * Indicates the current disposition of the Action.
-     */
-    @NotNull public Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType) {
-      putValue("actionStatus", actionStatusType.build());
       return this;
     }
     /**

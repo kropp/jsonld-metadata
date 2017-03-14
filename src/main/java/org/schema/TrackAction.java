@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An agent tracks an object for updates.\n\nRelated actions:\n\n* [[FollowAction]]: Unlike FollowAction, TrackAction refers to the interest on the location of innanimates objects.\n* [[SubscribeAction]]: Unlike SubscribeAction, TrackAction refers to  the interest on the location of innanimate objects.
@@ -60,13 +62,6 @@ public class TrackAction extends FindAction {
      */
     @NotNull public Builder deliveryMethod(@NotNull DeliveryMethod deliveryMethod) {
       putValue("deliveryMethod", deliveryMethod);
-      return this;
-    }
-    /**
-     * A sub property of instrument. The method of delivery.
-     */
-    @NotNull public Builder deliveryMethod(@NotNull DeliveryMethod.Builder deliveryMethod) {
-      putValue("deliveryMethod", deliveryMethod.build());
       return this;
     }
     /**
@@ -116,13 +111,6 @@ public class TrackAction extends FindAction {
      */
     @NotNull public Builder actionStatus(@NotNull ActionStatusType actionStatusType) {
       putValue("actionStatus", actionStatusType);
-      return this;
-    }
-    /**
-     * Indicates the current disposition of the Action.
-     */
-    @NotNull public Builder actionStatus(@NotNull ActionStatusType.Builder actionStatusType) {
-      putValue("actionStatus", actionStatusType.build());
       return this;
     }
     /**

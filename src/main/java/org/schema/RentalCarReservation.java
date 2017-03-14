@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A reservation for a rental car.\n\nNote: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
@@ -160,13 +162,6 @@ public class RentalCarReservation extends Reservation {
      */
     @NotNull public Builder reservationStatus(@NotNull ReservationStatusType reservationStatusType) {
       putValue("reservationStatus", reservationStatusType);
-      return this;
-    }
-    /**
-     * The current status of the reservation.
-     */
-    @NotNull public Builder reservationStatus(@NotNull ReservationStatusType.Builder reservationStatusType) {
-      putValue("reservationStatus", reservationStatusType.build());
       return this;
     }
     /**

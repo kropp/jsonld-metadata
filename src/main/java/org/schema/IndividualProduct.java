@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A single, identifiable product instance (e.g. a laptop with a particular serial number).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -302,13 +299,6 @@ public class IndividualProduct extends Product {
      */
     @NotNull public Builder itemCondition(@NotNull OfferItemCondition offerItemCondition) {
       putValue("itemCondition", offerItemCondition);
-      return this;
-    }
-    /**
-     * A predefined value from OfferItemCondition or a textual description of the condition of the product or service, or the products or services included in the offer.
-     */
-    @NotNull public Builder itemCondition(@NotNull OfferItemCondition.Builder offerItemCondition) {
-      putValue("itemCondition", offerItemCondition.build());
       return this;
     }
     /**

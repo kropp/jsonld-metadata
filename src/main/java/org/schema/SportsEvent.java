@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Event type: Sports event.
@@ -269,13 +271,6 @@ public class SportsEvent extends Event {
      */
     @NotNull public Builder eventStatus(@NotNull EventStatusType eventStatusType) {
       putValue("eventStatus", eventStatusType);
-      return this;
-    }
-    /**
-     * An eventStatus of an event represents its status; particularly useful when an event is cancelled or rescheduled.
-     */
-    @NotNull public Builder eventStatus(@NotNull EventStatusType.Builder eventStatusType) {
-      putValue("eventStatus", eventStatusType.build());
       return this;
     }
     /**

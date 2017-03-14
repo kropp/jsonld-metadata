@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A structured value providing information about the opening hours of a place or a certain service inside a place.\n\n
@@ -137,13 +139,6 @@ public class OpeningHoursSpecification extends StructuredValue {
      */
     @NotNull public Builder dayOfWeek(@NotNull DayOfWeek dayOfWeek) {
       putValue("dayOfWeek", dayOfWeek);
-      return this;
-    }
-    /**
-     * The day of the week for which these opening hours are valid.
-     */
-    @NotNull public Builder dayOfWeek(@NotNull DayOfWeek.Builder dayOfWeek) {
-      putValue("dayOfWeek", dayOfWeek.build());
       return this;
     }
     /**

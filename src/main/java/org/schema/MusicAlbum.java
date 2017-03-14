@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A collection of music tracks.
@@ -128,24 +130,10 @@ public class MusicAlbum extends MusicPlaylist {
       return this;
     }
     /**
-     * Classification of the album by it's type of content: soundtrack, live album, studio album, etc.
-     */
-    @NotNull public Builder albumProductionType(@NotNull MusicAlbumProductionType.Builder musicAlbumProductionType) {
-      putValue("albumProductionType", musicAlbumProductionType.build());
-      return this;
-    }
-    /**
      * The kind of release which this album is: single, EP or album.
      */
     @NotNull public Builder albumReleaseType(@NotNull MusicAlbumReleaseType musicAlbumReleaseType) {
       putValue("albumReleaseType", musicAlbumReleaseType);
-      return this;
-    }
-    /**
-     * The kind of release which this album is: single, EP or album.
-     */
-    @NotNull public Builder albumReleaseType(@NotNull MusicAlbumReleaseType.Builder musicAlbumReleaseType) {
-      putValue("albumReleaseType", musicAlbumReleaseType.build());
       return this;
     }
     /**

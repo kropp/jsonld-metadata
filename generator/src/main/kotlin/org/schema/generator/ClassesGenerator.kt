@@ -9,11 +9,21 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
     private val OVERRIDE = listOf("@Override")
 
     fun generate(p: Package) {
-        for (type in sink.types.values) {
-            if (type.name.isNullOrEmpty() || (type.isField && !type.isInterface) || sink.shouldSkip(type.name!!) || (type.parentType == null && type.name != "Thing" && !type.isInterface))
-                continue
+        for ((key, type) in sink.types) {
+            if (type.name.isNullOrEmpty() || (type.isField && !type.isInterface) || sink.shouldSkip(type.name!!)) continue
+            if (type.parentType == null && type.name != "Thing" && !type.isInterface) continue
+            if (type.name == "http://schema.org/Enumeration" || (type.parentType?.let{ sink.types[it] }?.isEnum == true)) continue
 
             val typeName = type.name!!.capitalize()
+
+            if (type.isEnum) {
+                p.enumeration(typeName) {
+                    copyright = banner
+                    comment = type.comment ?: ""
+                    members = subTypes(key).map { it.name!!.capitalize() }
+                }
+                continue
+            }
 
             p.klass(typeName, type.classOrInterface) {
                 copyright = banner
@@ -132,7 +142,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                         allFields.filter { it.name != null }.forEach { field ->
                             val name = field.name!!.capitalize()
                             val eitherTypes = sink.getEitherTypes(field)
-                            eitherTypes.forEach { fieldType ->
+                            eitherTypes.forEachIndexed { i, fieldType ->
 
                                 method(name.decapitalize(), "Builder") {
                                     comment = field.comment
@@ -144,7 +154,8 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                 }
 
                                 // add overload accepting ThingBuilder<T>
-                                if (!sink.shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && fieldType != "String" && fieldType != "Integer" && fieldType != "java.util.Date") {
+                                val isEnum = findType(fieldType)?.isEnum != true && (i >= field.dataTypes.size || sink.types[field.dataTypes[i]]?.isEnum != true)
+                                if (!sink.shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && isEnum && fieldType != "String" && fieldType != "Integer" && fieldType != "java.util.Date") {
                                     method(name.decapitalize(), "Builder") {
                                         comment = field.comment
                                         parameters = listOf(Parameter(getVariableName(fieldType, name), "$fieldType.Builder", NOT_NULL))
@@ -210,6 +221,8 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 
 
     private fun findType(fieldType: String): GeneratorSink.Type? = sink.types.values.firstOrNull { it.name == fieldType }
+
+    private fun subTypes(typeName: String) = sink.types.values.filter { it.parentType == typeName }
 
     private fun getVariableName(typeName: String, entityName: String? = null): String {
         val indexOfDot = typeName.lastIndexOf('.')
