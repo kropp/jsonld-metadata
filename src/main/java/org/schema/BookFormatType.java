@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * The publication format of the book.
  */
 enum BookFormatType {
-  Hardcover, EBook, Paperback, AudiobookFormat
+  Hardcover("http://schema.org/Hardcover"), EBook("http://schema.org/EBook"), Paperback("http://schema.org/Paperback"), AudiobookFormat("http://schema.org/AudiobookFormat");
+  BookFormatType(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

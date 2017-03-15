@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * A type of permission which can be granted for accessing a digital document.
  */
 enum DigitalDocumentPermissionType {
-  WritePermission, ReadPermission, CommentPermission
+  WritePermission("http://schema.org/WritePermission"), ReadPermission("http://schema.org/ReadPermission"), CommentPermission("http://schema.org/CommentPermission");
+  DigitalDocumentPermissionType(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Status of a game server.
  */
 enum GameServerStatus {
-  OnlineFull, Online, OfflinePermanently, OfflineTemporarily
+  OnlineFull("http://schema.org/OnlineFull"), Online("http://schema.org/Online"), OfflinePermanently("http://schema.org/OfflinePermanently"), OfflineTemporarily("http://schema.org/OfflineTemporarily");
+  GameServerStatus(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

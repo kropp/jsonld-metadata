@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * A type of boarding policy used by an airline.
  */
 enum BoardingPolicyType {
-  ZoneBoardingPolicy, GroupBoardingPolicy
+  ZoneBoardingPolicy("http://schema.org/ZoneBoardingPolicy"), GroupBoardingPolicy("http://schema.org/GroupBoardingPolicy");
+  BoardingPolicyType(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

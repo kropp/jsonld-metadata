@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Any branch of a field in which people typically develop specific expertise, usually after significant study, time, and effort.
  */
 enum Specialty {
-  
+  ;
+  Specialty(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

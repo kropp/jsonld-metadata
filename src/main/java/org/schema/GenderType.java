@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * An enumeration of genders.
  */
 enum GenderType {
-  Male, Female
+  Male("http://schema.org/Male"), Female("http://schema.org/Female");
+  GenderType(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

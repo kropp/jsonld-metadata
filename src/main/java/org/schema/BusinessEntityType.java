@@ -18,6 +18,7 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * A business entity type is a conceptual entity representing the legal form, the size, the main line of business, the position in the value chain, or any combination thereof, of an organization or business person.
@@ -31,5 +32,11 @@ package org.schema;
  * 	  
  */
 enum BusinessEntityType {
-  
+  ;
+  BusinessEntityType(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

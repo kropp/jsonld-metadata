@@ -20,7 +20,12 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                 p.enumeration(typeName) {
                     copyright = banner
                     comment = type.comment ?: ""
-                    members = subTypes(key).map { it.name!!.capitalize() }
+                    imports = listOf("com.fasterxml.jackson.annotation.JsonValue")
+                    members = subTypes(key).map { it.value.name!!.capitalize() to it.key }.toMap()
+
+                    field("Value", "String") {
+                        getter(listOf("@JsonValue"))
+                    }
                 }
                 continue
             }
@@ -222,7 +227,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
 
     private fun findType(fieldType: String): GeneratorSink.Type? = sink.types.values.firstOrNull { it.name == fieldType }
 
-    private fun subTypes(typeName: String) = sink.types.values.filter { it.parentType == typeName }
+    private fun subTypes(typeName: String) = sink.types.filter { it.value.parentType == typeName }
 
     private fun getVariableName(typeName: String, entityName: String? = null): String {
         val indexOfDot = typeName.lastIndexOf('.')

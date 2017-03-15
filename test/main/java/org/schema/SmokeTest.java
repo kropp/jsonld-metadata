@@ -18,11 +18,9 @@
 
 package org.schema;
 
-import org.junit.Test;
-
 import java.io.IOException;
+import org.junit.Test;
 import java.util.Date;
-
 import static org.junit.Assert.assertEquals;
 
 public class SmokeTest {

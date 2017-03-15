@@ -54,18 +54,20 @@ fun SourcesRoot.pakage(name: String, body: Package.() -> Unit) {
 }
 
 
-
-class Klass(val sourceDirectory: File, val namespace: String?, val name: String, private val classOrInterface: String? = "class") {
-    var extends : Collection<String>? = null
-    var implements: Collection<String>? = null
+open class Type {
     var imports: Collection<String>? = null
     var annotations: Collection<String>? = null
     var comment: String? = null
     var copyright: String? = null
 
-    internal val indent = "  "
-
     internal val text = StringBuilder()
+}
+
+class Klass(val sourceDirectory: File, val namespace: String?, val name: String, private val classOrInterface: String? = "class") : Type() {
+    var extends : Collection<String>? = null
+    var implements: Collection<String>? = null
+
+    internal val indent = "  "
 
     val fields = arrayListOf<Field>()
 
@@ -181,12 +183,16 @@ class Klass(val sourceDirectory: File, val namespace: String?, val name: String,
     }
 }
 
-class Enumeration(val sourceDirectory: File, val namespace: String?, val name: String) {
-    var copyright: String? = null
-    var comment: String? = null
-    var members: List<String>? = null
+class Enumeration(val sourceDirectory: File, val namespace: String?, val name: String): Type() {
+    var members: Map<String, String>? = null
+    val fields = arrayListOf<Field>()
 
-    internal val text = StringBuilder()
+    fun field(name: String, type: String, access: String = "private", prefix: String = "my", body: Field.() -> Unit = {}) {
+        val field = Field(this, name.capitalize(), type, access, prefix)
+        fields += field
+
+        field.body()
+    }
 
     internal fun generate() {
         text.insert(0, with(StringBuilder()) {
@@ -198,17 +204,29 @@ class Enumeration(val sourceDirectory: File, val namespace: String?, val name: S
                 appendln("package $it;")
                 appendln()
             }
-            appendln()
+            imports?.forEach {
+                appendln("import $it;")
+                appendln()
+            }
             comment?.let {
                 appendln("/**")
                 it.split("\n").flatMap { it.split("\\n") }.forEach { appendln(" * $it") }
                 appendln(" */")
             }
+
+            appendln("enum $name {")
+
+            members?.let { append("  " + it.map { "${it.key}(\"${it.value}\")" }.joinToString(", ")); appendln(";") }
+
+            val cparams = fields.map { "${it.type} ${it.name.decapitalize()}" }.joinToString(", ")
+            appendln("  $name($cparams) {")
+            fields.forEach { appendln("    ${it.prefix}${it.name} = ${it.name.decapitalize()};") }
+            appendln("  }")
         }.toString())
 
-        text.appendln("enum $name {")
-
-        members?.let { text.appendln("  " + it.joinToString(", ")) }
+        fields.forEach {
+            text.appendln("  ${it.fieldDeclaration};")
+        }
 
         text.appendln("}")
     }
@@ -229,9 +247,9 @@ fun Package.klass(name: String, classOrInterface: String? = "class", body: Klass
 }
 
 fun Package.enumeration(name: String, body: Enumeration.() -> Unit) {
-    val c = Enumeration(this.directory, this.name, name)
-    c.body()
-    c.save()
+    val e = Enumeration(this.directory, this.name, name)
+    e.body()
+    e.save()
 }
 
 fun Klass.klass(name: String, body: Klass.() -> Unit) {
@@ -244,7 +262,7 @@ fun Klass.klass(name: String, body: Klass.() -> Unit) {
     }
 }
 
-class Field(val c: Klass, val name: String, val type: String, val access: String, val prefix: String) {
+class Field(val c: Type, val name: String, val type: String, val access: String, val prefix: String) {
     var initial: String? = null
     fun getter(annotations: Collection<String>? = null, comment: String? = null) {
         comment?.let {

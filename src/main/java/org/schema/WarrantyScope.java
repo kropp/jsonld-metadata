@@ -18,6 +18,7 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * A range of of services that will be provided to a customer free of charge in case of a defect or malfunction of a product.
@@ -30,5 +31,11 @@ package org.schema;
  *       
  */
 enum WarrantyScope {
-  
+  ;
+  WarrantyScope(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

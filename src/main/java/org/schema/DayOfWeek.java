@@ -18,6 +18,7 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * The day of the week, e.g. used to specify to which day the opening hours of an OpeningHoursSpecification refer.
@@ -26,5 +27,11 @@ package org.schema;
  *       
  */
 enum DayOfWeek {
-  Wednesday, Saturday, Tuesday, Friday, Monday, PublicHolidays, Thursday, Sunday
+  Wednesday("http://schema.org/Wednesday"), Saturday("http://schema.org/Saturday"), Tuesday("http://schema.org/Tuesday"), Friday("http://schema.org/Friday"), Monday("http://schema.org/Monday"), PublicHolidays("http://schema.org/PublicHolidays"), Thursday("http://schema.org/Thursday"), Sunday("http://schema.org/Sunday");
+  DayOfWeek(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * A diet restricted to certain foods or preparations for cultural, religious, health or lifestyle reasons. 
  */
 enum RestrictedDiet {
-  DiabeticDiet, LowSaltDiet, KosherDiet, HalalDiet, HinduDiet, LowLactoseDiet, VeganDiet, VegetarianDiet, GlutenFreeDiet, LowFatDiet, LowCalorieDiet
+  DiabeticDiet("http://schema.org/DiabeticDiet"), LowSaltDiet("http://schema.org/LowSaltDiet"), KosherDiet("http://schema.org/KosherDiet"), HalalDiet("http://schema.org/HalalDiet"), HinduDiet("http://schema.org/HinduDiet"), LowLactoseDiet("http://schema.org/LowLactoseDiet"), VeganDiet("http://schema.org/VeganDiet"), VegetarianDiet("http://schema.org/VegetarianDiet"), GlutenFreeDiet("http://schema.org/GlutenFreeDiet"), LowFatDiet("http://schema.org/LowFatDiet"), LowCalorieDiet("http://schema.org/LowCalorieDiet");
+  RestrictedDiet(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

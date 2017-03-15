@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Enumerated for values for itemListOrder for indicating how an ordered ItemList is organized.
  */
 enum ItemListOrderType {
-  ItemListUnordered, ItemListOrderAscending, ItemListOrderDescending
+  ItemListUnordered("http://schema.org/ItemListUnordered"), ItemListOrderAscending("http://schema.org/ItemListOrderAscending"), ItemListOrderDescending("http://schema.org/ItemListOrderDescending");
+  ItemListOrderType(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

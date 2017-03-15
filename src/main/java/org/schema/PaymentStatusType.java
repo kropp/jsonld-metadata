@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * A specific payment status. For example, PaymentDue, PaymentComplete, etc.
  */
 enum PaymentStatusType {
-  PaymentAutomaticallyApplied, PaymentDue, PaymentDeclined, PaymentPastDue, PaymentComplete
+  PaymentAutomaticallyApplied("http://schema.org/PaymentAutomaticallyApplied"), PaymentDue("http://schema.org/PaymentDue"), PaymentDeclined("http://schema.org/PaymentDeclined"), PaymentPastDue("http://schema.org/PaymentPastDue"), PaymentComplete("http://schema.org/PaymentComplete");
+  PaymentStatusType(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * The status of an Action.
  */
 enum ActionStatusType {
-  FailedActionStatus, CompletedActionStatus, PotentialActionStatus, ActiveActionStatus
+  FailedActionStatus("http://schema.org/FailedActionStatus"), CompletedActionStatus("http://schema.org/CompletedActionStatus"), PotentialActionStatus("http://schema.org/PotentialActionStatus"), ActiveActionStatus("http://schema.org/ActiveActionStatus");
+  ActionStatusType(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * A list of possible conditions for the item.
  */
 enum OfferItemCondition {
-  DamagedCondition, UsedCondition, NewCondition, RefurbishedCondition
+  DamagedCondition("http://schema.org/DamagedCondition"), UsedCondition("http://schema.org/UsedCondition"), NewCondition("http://schema.org/NewCondition"), RefurbishedCondition("http://schema.org/RefurbishedCondition");
+  OfferItemCondition(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

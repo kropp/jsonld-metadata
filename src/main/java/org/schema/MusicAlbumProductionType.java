@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Classification of the album by it's type of content: soundtrack, live album, studio album, etc.
  */
 enum MusicAlbumProductionType {
-  DJMixAlbum, SpokenWordAlbum, StudioAlbum, SoundtrackAlbum, MixtapeAlbum, LiveAlbum, DemoAlbum, RemixAlbum, CompilationAlbum
+  DJMixAlbum("http://schema.org/DJMixAlbum"), SpokenWordAlbum("http://schema.org/SpokenWordAlbum"), StudioAlbum("http://schema.org/StudioAlbum"), SoundtrackAlbum("http://schema.org/SoundtrackAlbum"), MixtapeAlbum("http://schema.org/MixtapeAlbum"), LiveAlbum("http://schema.org/LiveAlbum"), DemoAlbum("http://schema.org/DemoAlbum"), RemixAlbum("http://schema.org/RemixAlbum"), CompilationAlbum("http://schema.org/CompilationAlbum");
+  MusicAlbumProductionType(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

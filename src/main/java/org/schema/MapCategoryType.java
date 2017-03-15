@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * An enumeration of several kinds of Map.
  */
 enum MapCategoryType {
-  VenueMap, SeatingMap, ParkingMap, TransitMap
+  VenueMap("http://schema.org/VenueMap"), SeatingMap("http://schema.org/SeatingMap"), ParkingMap("http://schema.org/ParkingMap"), TransitMap("http://schema.org/TransitMap");
+  MapCategoryType(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

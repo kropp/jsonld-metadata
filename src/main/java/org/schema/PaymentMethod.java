@@ -18,6 +18,7 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * A payment method is a standardized procedure for transferring the monetary amount for a purchase. Payment methods are characterized by the legal and technical structures used, and by the organization or group carrying out the transaction.
@@ -36,5 +37,11 @@ package org.schema;
  *         
  */
 enum PaymentMethod {
-  PaymentCard
+  PaymentCard("http://schema.org/PaymentCard");
+  PaymentMethod(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

@@ -18,6 +18,7 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * A delivery method is a standardized procedure for transferring the product or service to the destination of fulfillment chosen by the customer. Delivery methods are characterized by the means of transportation used, and by the organization or group that is the contracting party for the sending organization or person.
@@ -35,5 +36,11 @@ package org.schema;
  *         
  */
 enum DeliveryMethod {
-  ParcelService, OnSitePickup, LockerDelivery
+  ParcelService("http://schema.org/ParcelService"), OnSitePickup("http://schema.org/OnSitePickup"), LockerDelivery("http://schema.org/LockerDelivery");
+  DeliveryMethod(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

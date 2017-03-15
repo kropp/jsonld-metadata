@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Enumerated options related to a ContactPoint.
  */
 enum ContactPointOption {
-  TollFree, HearingImpairedSupported
+  TollFree("http://schema.org/TollFree"), HearingImpairedSupported("http://schema.org/HearingImpairedSupported");
+  ContactPointOption(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }

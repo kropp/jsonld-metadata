@@ -18,10 +18,17 @@
 
 package org.schema;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Enumerated status values for Reservation.
  */
 enum ReservationStatusType {
-  ReservationHold, ReservationCancelled, ReservationPending, ReservationConfirmed
+  ReservationHold("http://schema.org/ReservationHold"), ReservationCancelled("http://schema.org/ReservationCancelled"), ReservationPending("http://schema.org/ReservationPending"), ReservationConfirmed("http://schema.org/ReservationConfirmed");
+  ReservationStatusType(String value) {
+    myValue = value;
+  }
+  @JsonValue
+  public String getValue() { return myValue; }
+  private String myValue;
 }
