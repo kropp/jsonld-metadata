@@ -87,4 +87,20 @@ public class SamplesTest {
 
         assertEquals(Collections.emptyList(), revision.getWorkExamples());
     }
+
+    @Test
+    public void testEnum() throws JsonProcessingException {
+        final GroceryStore store = groceryStore()
+                .openingHoursSpecification(openingHoursSpecification().dayOfWeek(DayOfWeek.Monday))
+                .openingHoursSpecification(openingHoursSpecification().dayOfWeek(DayOfWeek.Tuesday))
+                .openingHoursSpecification(openingHoursSpecification().dayOfWeek(DayOfWeek.Wednesday))
+                .openingHoursSpecification(openingHoursSpecification().dayOfWeek(DayOfWeek.Thursday))
+                .openingHoursSpecification(openingHoursSpecification().dayOfWeek(DayOfWeek.Friday))
+                .openingHoursSpecification(openingHoursSpecification().dayOfWeek(DayOfWeek.Sunday))
+                .build();
+
+        final String json = SchemaOrg.writeJson(store);
+
+        assertEquals("{\"@type\":\"GroceryStore\",\"@context\":\"http://schema.org/\",\"openingHoursSpecification\":[{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Monday\"},{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Tuesday\"},{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Wednesday\"},{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Thursday\"},{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Friday\"},{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Sunday\"}]}", json);
+    }
 }
