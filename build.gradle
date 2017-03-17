@@ -1,6 +1,7 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven'
+    id 'maven-publish'
     id 'com.github.kropp.teamcity-gitversion' version '0.1.8'
     id 'com.jfrog.bintray' version '1.7.3'
 }
@@ -43,6 +44,18 @@ if (System.getenv('BINTRAY_USER')) {
                 desc = 'JSON-LD Metadata ' + project.version
                 vcsTag = project.version
             }
+        }
+        publications = ['JsonLdMetadataPublication']
+    }
+}
+
+publishing {
+    publications {
+        JsonLdMetadataPublication(MavenPublication) {
+            from components.java
+            groupId 'org.schema'
+            artifactId 'jsonld-metadata'
+            version project.version
         }
     }
 }
@@ -99,5 +112,5 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.3'
+    gradleVersion = '3.4'
 }
