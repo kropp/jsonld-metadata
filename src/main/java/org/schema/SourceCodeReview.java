@@ -26,77 +26,324 @@ import java.util.Collection;
 import java.util.Collections;
 
 /**
- * A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed).Source: https://github.com/schemaorg/schemaorg/issues/1061
+ * Software code review
  */
-public class ClaimReview extends Review {
+public class SourceCodeReview extends SoftwareApplication {
   /**
-   * A short summary of the specific claims reviewed in a ClaimReview.
+   * State of the review
    */
-  @JsonIgnore public String getClaimReviewed() {
-    return (String) getValue("claimReviewed");
+  @JsonIgnore public ReviewState getState() {
+    return (ReviewState) getValue("state");
   }
   /**
-   * A short summary of the specific claims reviewed in a ClaimReview.
+   * State of the review
    */
-  @JsonIgnore public Collection<String> getClaimRevieweds() {
-    final Object current = myData.get("claimReviewed");
+  @JsonIgnore public Collection<ReviewState> getStates() {
+    final Object current = myData.get("state");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<ReviewState>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((ReviewState) current);
   }
-  protected ClaimReview(java.util.Map<String,Object> data) {
+  /**
+   * A person reviewing provided source code
+   */
+  @JsonIgnore public Person getReviewer() {
+    return (Person) getValue("reviewer");
+  }
+  /**
+   * A person reviewing provided source code
+   */
+  @JsonIgnore public Collection<Person> getReviewers() {
+    final Object current = myData.get("reviewer");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
+  /**
+   * A person watching the review by not actively participating in it.
+   */
+  @JsonIgnore public Person getWatcher() {
+    return (Person) getValue("watcher");
+  }
+  /**
+   * A person watching the review by not actively participating in it.
+   */
+  @JsonIgnore public Collection<Person> getWatchers() {
+    final Object current = myData.get("watcher");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Person>) current;
+    }
+    return Arrays.asList((Person) current);
+  }
+  /**
+   * Related source code revisions.
+   */
+  @JsonIgnore public SourceCodeRevision getSourceCodeRevision() {
+    return (SourceCodeRevision) getValue("sourceCodeRevision");
+  }
+  /**
+   * Related source code revisions.
+   */
+  @JsonIgnore public Collection<SourceCodeRevision> getSourceCodeRevisions() {
+    final Object current = myData.get("sourceCodeRevision");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<SourceCodeRevision>) current;
+    }
+    return Arrays.asList((SourceCodeRevision) current);
+  }
+  protected SourceCodeReview(java.util.Map<String,Object> data) {
     super(data);
   }
   
   /**
-   * Builder for {@link ClaimReview}
+   * Builder for {@link SourceCodeReview}
    */
-  public static class Builder extends Review.Builder {
-    public ClaimReview build() {
-      return new ClaimReview(myData);
+  public static class Builder extends SoftwareApplication.Builder {
+    public SourceCodeReview build() {
+      return new SourceCodeReview(myData);
     }
     /**
-     * A short summary of the specific claims reviewed in a ClaimReview.
+     * State of the review
      */
-    @NotNull public Builder claimReviewed(@NotNull String claimReviewed) {
-      putValue("claimReviewed", claimReviewed);
+    @NotNull public Builder state(@NotNull ReviewState reviewState) {
+      putValue("state", reviewState);
       return this;
     }
     /**
-     * The item that is being reviewed/rated.
+     * A person reviewing provided source code
      */
-    @NotNull public Builder itemReviewed(@NotNull Thing thing) {
-      putValue("itemReviewed", thing);
+    @NotNull public Builder reviewer(@NotNull Person person) {
+      putValue("reviewer", person);
       return this;
     }
     /**
-     * The item that is being reviewed/rated.
+     * A person reviewing provided source code
      */
-    @NotNull public Builder itemReviewed(@NotNull Thing.Builder thing) {
-      putValue("itemReviewed", thing.build());
+    @NotNull public Builder reviewer(@NotNull Person.Builder person) {
+      putValue("reviewer", person.build());
       return this;
     }
     /**
-     * The actual body of the review.
+     * A person watching the review by not actively participating in it.
      */
-    @NotNull public Builder reviewBody(@NotNull String reviewBody) {
-      putValue("reviewBody", reviewBody);
+    @NotNull public Builder watcher(@NotNull Person person) {
+      putValue("watcher", person);
       return this;
     }
     /**
-     * The rating given in this review. Note that reviews can themselves be rated. The ```reviewRating``` applies to rating given by the review. The [[aggregateRating]] property applies to the review itself, as a creative work.
+     * A person watching the review by not actively participating in it.
      */
-    @NotNull public Builder reviewRating(@NotNull Rating rating) {
-      putValue("reviewRating", rating);
+    @NotNull public Builder watcher(@NotNull Person.Builder person) {
+      putValue("watcher", person.build());
       return this;
     }
     /**
-     * The rating given in this review. Note that reviews can themselves be rated. The ```reviewRating``` applies to rating given by the review. The [[aggregateRating]] property applies to the review itself, as a creative work.
+     * Related source code revisions.
      */
-    @NotNull public Builder reviewRating(@NotNull Rating.Builder rating) {
-      putValue("reviewRating", rating.build());
+    @NotNull public Builder sourceCodeRevision(@NotNull SourceCodeRevision sourceCodeRevision) {
+      putValue("sourceCodeRevision", sourceCodeRevision);
+      return this;
+    }
+    /**
+     * Related source code revisions.
+     */
+    @NotNull public Builder sourceCodeRevision(@NotNull SourceCodeRevision.Builder sourceCodeRevision) {
+      putValue("sourceCodeRevision", sourceCodeRevision.build());
+      return this;
+    }
+    /**
+     * Type of software application, e.g. 'Game, Multimedia'.
+     */
+    @NotNull public Builder applicationCategory(@NotNull String applicationCategory) {
+      putValue("applicationCategory", applicationCategory);
+      return this;
+    }
+    /**
+     * Subcategory of the application, e.g. 'Arcade Game'.
+     */
+    @NotNull public Builder applicationSubCategory(@NotNull String applicationSubCategory) {
+      putValue("applicationSubCategory", applicationSubCategory);
+      return this;
+    }
+    /**
+     * The name of the application suite to which the application belongs (e.g. Excel belongs to Office).
+     */
+    @NotNull public Builder applicationSuite(@NotNull String applicationSuite) {
+      putValue("applicationSuite", applicationSuite);
+      return this;
+    }
+    /**
+     * Countries for which the application is not supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
+     */
+    @NotNull public Builder countriesNotSupported(@NotNull String countriesNotSupported) {
+      putValue("countriesNotSupported", countriesNotSupported);
+      return this;
+    }
+    /**
+     * Countries for which the application is supported. You can also provide the two-letter ISO 3166-1 alpha-2 country code.
+     */
+    @NotNull public Builder countriesSupported(@NotNull String countriesSupported) {
+      putValue("countriesSupported", countriesSupported);
+      return this;
+    }
+    /**
+     * Device required to run the application. Used in cases where a specific make/model is required to run the application.
+     */
+    @NotNull public Builder availableOnDevice(@NotNull String availableOnDevice) {
+      putValue("availableOnDevice", availableOnDevice);
+      return this;
+    }
+    /**
+     * If the file can be downloaded, URL to download the binary.
+     */
+    @NotNull public Builder downloadUrl(@NotNull String downloadUrl) {
+      putValue("downloadUrl", downloadUrl);
+      return this;
+    }
+    /**
+     * Features or modules provided by this application (and possibly required by other applications).
+     */
+    @NotNull public Builder featureList(@NotNull String featureList) {
+      putValue("featureList", featureList);
+      return this;
+    }
+    /**
+     * Size of the application / package (e.g. 18MB). In the absence of a unit (MB, KB etc.), KB will be assumed.
+     */
+    @NotNull public Builder fileSize(@NotNull String fileSize) {
+      putValue("fileSize", fileSize);
+      return this;
+    }
+    /**
+     * URL at which the app may be installed, if different from the URL of the item.
+     */
+    @NotNull public Builder installUrl(@NotNull String installUrl) {
+      putValue("installUrl", installUrl);
+      return this;
+    }
+    /**
+     * Minimum memory requirements.
+     */
+    @NotNull public Builder memoryRequirements(@NotNull String memoryRequirements) {
+      putValue("memoryRequirements", memoryRequirements);
+      return this;
+    }
+    /**
+     * Operating systems supported (Windows 7, OSX 10.6, Android 1.6).
+     */
+    @NotNull public Builder operatingSystem(@NotNull String operatingSystem) {
+      putValue("operatingSystem", operatingSystem);
+      return this;
+    }
+    /**
+     * Permission(s) required to run the app (for example, a mobile app may require full internet access or may run only on wifi).
+     */
+    @NotNull public Builder permissions(@NotNull String permissions) {
+      putValue("permissions", permissions);
+      return this;
+    }
+    /**
+     * Processor architecture required to run the application (e.g. IA64).
+     */
+    @NotNull public Builder processorRequirements(@NotNull String processorRequirements) {
+      putValue("processorRequirements", processorRequirements);
+      return this;
+    }
+    /**
+     * Description of what changed in this version.
+     */
+    @NotNull public Builder releaseNotes(@NotNull String releaseNotes) {
+      putValue("releaseNotes", releaseNotes);
+      return this;
+    }
+    /**
+     * Component dependency requirements for application. This includes runtime environments and shared libraries that are not included in the application distribution package, but required to run the application (Examples: DirectX, Java or .NET runtime).
+     */
+    @NotNull public Builder softwareRequirements(@NotNull String softwareRequirements) {
+      putValue("softwareRequirements", softwareRequirements);
+      return this;
+    }
+    /**
+     * A link to a screenshot image of the app.
+     */
+    @NotNull public Builder screenshot(@NotNull ImageObject imageObject) {
+      putValue("screenshot", imageObject);
+      return this;
+    }
+    /**
+     * A link to a screenshot image of the app.
+     */
+    @NotNull public Builder screenshot(@NotNull ImageObject.Builder imageObject) {
+      putValue("screenshot", imageObject.build());
+      return this;
+    }
+    /**
+     * A link to a screenshot image of the app.
+     */
+    @NotNull public Builder screenshot(@NotNull String screenshot) {
+      putValue("screenshot", screenshot);
+      return this;
+    }
+    /**
+     * Version of the software instance.
+     */
+    @NotNull public Builder softwareVersion(@NotNull String softwareVersion) {
+      putValue("softwareVersion", softwareVersion);
+      return this;
+    }
+    /**
+     * Storage requirements (free space required).
+     */
+    @NotNull public Builder storageRequirements(@NotNull String storageRequirements) {
+      putValue("storageRequirements", storageRequirements);
+      return this;
+    }
+    /**
+     * Supporting data for a SoftwareApplication.
+     */
+    @NotNull public Builder supportingData(@NotNull DataFeed dataFeed) {
+      putValue("supportingData", dataFeed);
+      return this;
+    }
+    /**
+     * Supporting data for a SoftwareApplication.
+     */
+    @NotNull public Builder supportingData(@NotNull DataFeed.Builder dataFeed) {
+      putValue("supportingData", dataFeed.build());
+      return this;
+    }
+    /**
+     * Additional content for a software application.
+     */
+    @NotNull public Builder softwareAddOn(@NotNull SoftwareApplication softwareApplication) {
+      putValue("softwareAddOn", softwareApplication);
+      return this;
+    }
+    /**
+     * Additional content for a software application.
+     */
+    @NotNull public Builder softwareAddOn(@NotNull SoftwareApplication.Builder softwareApplication) {
+      putValue("softwareAddOn", softwareApplication.build());
+      return this;
+    }
+    /**
+     * Software application help.
+     */
+    @NotNull public Builder softwareHelp(@NotNull CreativeWork creativeWork) {
+      putValue("softwareHelp", creativeWork);
+      return this;
+    }
+    /**
+     * Software application help.
+     */
+    @NotNull public Builder softwareHelp(@NotNull CreativeWork.Builder creativeWork) {
+      putValue("softwareHelp", creativeWork.build());
       return this;
     }
     /**
@@ -1172,7 +1419,10 @@ public class ClaimReview extends Review {
       return id(Long.toString(id));
     }
     @Override protected void fromMap(String key, Object value) {
-      if ("claimReviewed".equals(key) && value instanceof String) { claimReviewed((String)value); return; }
+      if ("state".equals(key) && value instanceof ReviewState) { state((ReviewState)value); return; }
+      if ("reviewer".equals(key) && value instanceof Person) { reviewer((Person)value); return; }
+      if ("watcher".equals(key) && value instanceof Person) { watcher((Person)value); return; }
+      if ("sourceCodeRevision".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
       super.fromMap(key, value);
     }
   }

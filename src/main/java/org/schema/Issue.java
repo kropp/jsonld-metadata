@@ -18,26 +18,45 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Single entity in issue tracker (e.g. bug or feature)
  */
 public class Issue extends CreativeWork {
   /**
-   * Related source code revisions.
+   * Issue state
    */
-  @JsonIgnore public SourceCodeRevision getCommits() {
-    return (SourceCodeRevision) getValue("commits");
+  @JsonIgnore public String getState() {
+    return (String) getValue("state");
+  }
+  /**
+   * Issue state
+   */
+  @JsonIgnore public Collection<String> getStates() {
+    final Object current = myData.get("state");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<String>) current;
+    }
+    return Arrays.asList((String) current);
   }
   /**
    * Related source code revisions.
    */
-  @JsonIgnore public Collection<SourceCodeRevision> getCommitss() {
-    final Object current = myData.get("commits");
+  @JsonIgnore public SourceCodeRevision getSourceCodeRevision() {
+    return (SourceCodeRevision) getValue("sourceCodeRevision");
+  }
+  /**
+   * Related source code revisions.
+   */
+  @JsonIgnore public Collection<SourceCodeRevision> getSourceCodeRevisions() {
+    final Object current = myData.get("sourceCodeRevision");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<SourceCodeRevision>) current;
@@ -56,17 +75,24 @@ public class Issue extends CreativeWork {
       return new Issue(myData);
     }
     /**
-     * Related source code revisions.
+     * Issue state
      */
-    @NotNull public Builder commits(@NotNull SourceCodeRevision sourceCodeRevision) {
-      putValue("commits", sourceCodeRevision);
+    @NotNull public Builder state(@NotNull String state) {
+      putValue("state", state);
       return this;
     }
     /**
      * Related source code revisions.
      */
-    @NotNull public Builder commits(@NotNull SourceCodeRevision.Builder sourceCodeRevision) {
-      putValue("commits", sourceCodeRevision.build());
+    @NotNull public Builder sourceCodeRevision(@NotNull SourceCodeRevision sourceCodeRevision) {
+      putValue("sourceCodeRevision", sourceCodeRevision);
+      return this;
+    }
+    /**
+     * Related source code revisions.
+     */
+    @NotNull public Builder sourceCodeRevision(@NotNull SourceCodeRevision.Builder sourceCodeRevision) {
+      putValue("sourceCodeRevision", sourceCodeRevision.build());
       return this;
     }
     /**
@@ -1142,7 +1168,8 @@ public class Issue extends CreativeWork {
       return id(Long.toString(id));
     }
     @Override protected void fromMap(String key, Object value) {
-      if ("commits".equals(key) && value instanceof SourceCodeRevision) { commits((SourceCodeRevision)value); return; }
+      if ("state".equals(key) && value instanceof String) { state((String)value); return; }
+      if ("sourceCodeRevision".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -18,9 +18,11 @@
 
 package org.schema;
 
-import java.io.IOException;
 import org.junit.Test;
+
+import java.io.IOException;
 import java.util.Date;
+
 import static org.junit.Assert.assertEquals;
 
 public class SmokeTest {
@@ -389,7 +391,6 @@ public class SmokeTest {
     final ClaimReview claimReview = SchemaOrg.claimReview()
       .claimReviewed("Test String")
       .reviewBody("Test String")
-      .state("Test String")
       .schemaVersion("Test String")
       .accessibilityAPI("Test String")
       .accessibilityControl("Test String")
@@ -1950,6 +1951,7 @@ public class SmokeTest {
   }
   @Test public void testIssue() throws IOException {
     final Issue issue = SchemaOrg.issue()
+      .state("Test String")
       .schemaVersion("Test String")
       .accessibilityAPI("Test String")
       .accessibilityControl("Test String")
@@ -6266,6 +6268,66 @@ public class SmokeTest {
     final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(warrantyPromise));
     assertEquals(warrantyPromise, thing);
   }
+  @Test public void testSourceCodeReview() throws IOException {
+    final SourceCodeReview sourceCodeReview = SchemaOrg.sourceCodeReview()
+      .applicationCategory("Test String")
+      .applicationSubCategory("Test String")
+      .applicationSuite("Test String")
+      .countriesNotSupported("Test String")
+      .countriesSupported("Test String")
+      .availableOnDevice("Test String")
+      .downloadUrl("Test String")
+      .featureList("Test String")
+      .fileSize("Test String")
+      .installUrl("Test String")
+      .memoryRequirements("Test String")
+      .operatingSystem("Test String")
+      .permissions("Test String")
+      .processorRequirements("Test String")
+      .releaseNotes("Test String")
+      .softwareRequirements("Test String")
+      .softwareVersion("Test String")
+      .storageRequirements("Test String")
+      .schemaVersion("Test String")
+      .accessibilityAPI("Test String")
+      .accessibilityControl("Test String")
+      .accessibilityFeature("Test String")
+      .accessibilityHazard("Test String")
+      .alternativeHeadline("Test String")
+      .award("Test String")
+      .contentRating("Test String")
+      .copyrightYear(42)
+      .dateCreated(NOW)
+      .dateModified(NOW)
+      .datePublished(NOW)
+      .discussionUrl("Test String")
+      .educationalUse("Test String")
+      .fileFormat("Test String")
+      .isAccessibleForFree(true)
+      .genre("Test String")
+      .headline("Test String")
+      .interactivityType("Test String")
+      .isFamilyFriendly(true)
+      .keywords("Test String")
+      .learningResourceType("Test String")
+      .publishingPrinciples("Test String")
+      .temporalCoverage("Test String")
+      .text("Test String")
+      .thumbnailUrl("Test String")
+      .typicalAgeRange("Test String")
+      .version(42)
+      .commentCount(42)
+      .additionalType("Test String")
+      .alternateName("Test String")
+      .disambiguatingDescription("Test String")
+      .name("Test String")
+      .sameAs("Test String")
+      .url("Test String")
+      .id("Test String")
+      .build();
+    final Thing thing = SchemaOrg.readJson(SchemaOrg.writeJson(sourceCodeReview));
+    assertEquals(sourceCodeReview, thing);
+  }
   @Test public void testProfilePage() throws IOException {
     final ProfilePage profilePage = SchemaOrg.profilePage()
       .lastReviewed(NOW)
@@ -8675,8 +8737,6 @@ public class SmokeTest {
   }
   @Test public void testSoftwareApplicationBuild() throws IOException {
     final SoftwareApplicationBuild softwareApplicationBuild = SchemaOrg.softwareApplicationBuild()
-      .status("Test String")
-      .state("Test String")
       .message("Test String")
       .totalTestsCount(42)
       .successTestsCount(42)
@@ -11513,7 +11573,6 @@ public class SmokeTest {
   @Test public void testReview() throws IOException {
     final Review review = SchemaOrg.review()
       .reviewBody("Test String")
-      .state("Test String")
       .schemaVersion("Test String")
       .accessibilityAPI("Test String")
       .accessibilityControl("Test String")

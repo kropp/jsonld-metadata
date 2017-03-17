@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Specific build of a software applicaton
@@ -64,36 +66,36 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
   /**
    * Build status (successful/failed).
    */
-  @JsonIgnore public String getStatus() {
-    return (String) getValue("status");
+  @JsonIgnore public Status getStatus() {
+    return (Status) getValue("status");
   }
   /**
    * Build status (successful/failed).
    */
-  @JsonIgnore public Collection<String> getStatuss() {
+  @JsonIgnore public Collection<Status> getStatuss() {
     final Object current = myData.get("status");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<Status>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((Status) current);
   }
   /**
    * Build state (running/finished/etc.).
    */
-  @JsonIgnore public String getState() {
-    return (String) getValue("state");
+  @JsonIgnore public BuildState getState() {
+    return (BuildState) getValue("state");
   }
   /**
    * Build state (running/finished/etc.).
    */
-  @JsonIgnore public Collection<String> getStates() {
+  @JsonIgnore public Collection<BuildState> getStates() {
     final Object current = myData.get("state");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<String>) current;
+      return (Collection<BuildState>) current;
     }
-    return Arrays.asList((String) current);
+    return Arrays.asList((BuildState) current);
   }
   /**
    * Build status message.
@@ -215,13 +217,13 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
     return Arrays.asList((Integer) current);
   }
   /**
-   * Source code revision used in build.
+   * Related source code revisions.
    */
   @JsonIgnore public SourceCodeRevision getSourceCodeRevision() {
     return (SourceCodeRevision) getValue("sourceCodeRevision");
   }
   /**
-   * Source code revision used in build.
+   * Related source code revisions.
    */
   @JsonIgnore public Collection<SourceCodeRevision> getSourceCodeRevisions() {
     final Object current = myData.get("sourceCodeRevision");
@@ -273,15 +275,15 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
     /**
      * Build status (successful/failed).
      */
-    @NotNull public Builder status(@NotNull String status) {
+    @NotNull public Builder status(@NotNull Status status) {
       putValue("status", status);
       return this;
     }
     /**
      * Build state (running/finished/etc.).
      */
-    @NotNull public Builder state(@NotNull String state) {
-      putValue("state", state);
+    @NotNull public Builder state(@NotNull BuildState buildState) {
+      putValue("state", buildState);
       return this;
     }
     /**
@@ -334,14 +336,14 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
       return this;
     }
     /**
-     * Source code revision used in build.
+     * Related source code revisions.
      */
     @NotNull public Builder sourceCodeRevision(@NotNull SourceCodeRevision sourceCodeRevision) {
       putValue("sourceCodeRevision", sourceCodeRevision);
       return this;
     }
     /**
-     * Source code revision used in build.
+     * Related source code revisions.
      */
     @NotNull public Builder sourceCodeRevision(@NotNull SourceCodeRevision.Builder sourceCodeRevision) {
       putValue("sourceCodeRevision", sourceCodeRevision.build());
@@ -1611,8 +1613,8 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
     @Override protected void fromMap(String key, Object value) {
       if ("softwareApplication".equals(key) && value instanceof SoftwareApplication) { softwareApplication((SoftwareApplication)value); return; }
       if ("project".equals(key) && value instanceof Project) { project((Project)value); return; }
-      if ("status".equals(key) && value instanceof String) { status((String)value); return; }
-      if ("state".equals(key) && value instanceof String) { state((String)value); return; }
+      if ("status".equals(key) && value instanceof Status) { status((Status)value); return; }
+      if ("state".equals(key) && value instanceof BuildState) { state((BuildState)value); return; }
       if ("message".equals(key) && value instanceof String) { message((String)value); return; }
       if ("totalTestsCount".equals(key) && value instanceof Integer) { totalTestsCount((Integer)value); return; }
       if ("successTestsCount".equals(key) && value instanceof Integer) { successTestsCount((Integer)value); return; }

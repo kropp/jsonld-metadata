@@ -28,17 +28,16 @@
         <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/Thing">Thing</a></span>
     </div>
 
-    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/state">
-        <span class="h" property="rdfs:label">state</span>
-        <span property="rdfs:comment">State of the review</span>
-        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Review">Review</a></span>
-        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
-    </div>
-
     <div typeof="rdfs:Class" resource="http://jetbrains.org/schema/SoftwareApplicationBuild">
         <span class="h" property="rdfs:label">SoftwareApplicationBuild</span>
         <span property="rdfs:comment">Specific build of a software applicaton</span>
         <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/SoftwareApplication">SoftwareApplication</a></span>
+    </div>
+
+    <div typeof="rdfs:Class" resource="http://jetbrains.org/schema/SourceCodeReview">
+      <span class="h" property="rdfs:label">SourceCodeReview</span>
+      <span property="rdfs:comment">Software code review</span>
+       <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/SoftwareApplication">Review</a></span>
     </div>
 
     <div typeof="rdfs:Class" resource="http://jetbrains.org/schema/SourceCodeRevision">
@@ -65,15 +64,47 @@
         <span class="h" property="rdfs:label">status</span>
         <span property="rdfs:comment">Build status (successful/failed).</span>
         <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
-        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://jetbrains.org/schema/Status">Status</a></span>
     </div>
+
+<div typeof="rdfs:Class" resource="http://jetbrains.org/schema/Status">
+  <span class="h" property="rdfs:label">Status</span>
+  <span property="rdfs:comment">Status (successful/failed)</span>
+   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/Enumeration">Enumeration</a></span>
+</div>
+<div typeof="http://jetbrains.org/schema/Status" resource="http://jetbrains.org/schema/StatusSuccessful">
+  <span class="h" property="rdfs:label">StatusSuccessful</span>
+  <span property="rdfs:comment">Successful</span>
+</div>
+<div typeof="http://jetbrains.org/schema/Status" resource="http://jetbrains.org/schema/StatusFailed">
+  <span class="h" property="rdfs:label">StatusFailed</span>
+  <span property="rdfs:comment">Failed</span>
+</div>
 
     <div typeof="rdf:Property" resource="http://jetbrains.org/schema/state">
         <span class="h" property="rdfs:label">state</span>
         <span property="rdfs:comment">Build state (running/finished/etc.).</span>
         <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SoftwareApplicationBuild">SoftwareApplicationBuild</a></span>
-        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://jetbrains.org/schema/buildState">BuildState</a></span>
     </div>
+
+<div typeof="rdfs:Class" resource="http://jetbrains.org/schema/buildState">
+  <span class="h" property="rdfs:label">BuildState</span>
+  <span property="rdfs:comment">Build state (queued/running/finished)</span>
+   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/Enumeration">Enumeration</a></span>
+</div>
+<div typeof="http://jetbrains.org/schema/buildState" resource="http://jetbrains.org/schema/buildStateQueued">
+  <span class="h" property="rdfs:label">BuildQueuedState</span>
+  <span property="rdfs:comment">Build queued</span>
+</div>
+<div typeof="http://jetbrains.org/schema/buildState" resource="http://jetbrains.org/schema/buildStateRunning">
+  <span class="h" property="rdfs:label">BuildRunningState</span>
+  <span property="rdfs:comment">Build running</span>
+</div>
+<div typeof="http://jetbrains.org/schema/buildState" resource="http://jetbrains.org/schema/buildFinishedRunning">
+  <span class="h" property="rdfs:label">BuildFinishedState</span>
+  <span property="rdfs:comment">Build finished</span>
+</div>
 
     <div typeof="rdf:Property" resource="http://jetbrains.org/schema/message">
         <span class="h" property="rdfs:label">message</span>
@@ -151,10 +182,63 @@
         <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/CreativeWork">CreativeWork</a></span>
     </div>
 
-    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/commits">
-        <span class="h" property="rdfs:label">commits</span>
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/issueState">
+        <span class="h" property="rdfs:label">state</span>
+        <span property="rdfs:comment">Issue state</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/Issue">Issue</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+    </div>
+
+     <div typeof="rdf:Property" resource="http://jetbrains.org/schema/reviewState">
+        <span class="h" property="rdfs:label">state</span>
+        <span property="rdfs:comment">State of the review</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SourceCodeReview">SourceCodeReview</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://jetbrains.org/schema/ReviewState">ReviewState</a></span>
+    </div>
+
+<div typeof="rdfs:Class" resource="http://jetbrains.org/schema/ReviewState">
+  <span class="h" property="rdfs:label">ReviewState</span>
+  <span property="rdfs:comment">Review state (open/closed/reopened)</span>
+   <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/Enumeration">Enumeration</a></span>
+</div>
+<div typeof="http://jetbrains.org/schema/ReviewState" resource="http://jetbrains.org/schema/reviewStateOpened">
+  <span class="h" property="rdfs:label">ReviewOpenedState</span>
+  <span property="rdfs:comment">Review opened</span>
+</div>
+<div typeof="http://jetbrains.org/schema/ReviewState" resource="http://jetbrains.org/schema/reviewStateReopened">
+  <span class="h" property="rdfs:label">ReviewReopenedState</span>
+  <span property="rdfs:comment">Review reopened</span>
+</div>
+<div typeof="http://jetbrains.org/schema/ReviewState" resource="http://jetbrains.org/schema/reviewStateClosed">
+  <span class="h" property="rdfs:label">ReviewClosedState</span>
+  <span property="rdfs:comment">Review closed</span>
+</div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/reviewer">
+        <span class="h" property="rdfs:label">reviewer</span>
+        <span property="rdfs:comment">A person reviewing provided source code</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SourceCodeReview">SourceCodeReview</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Person">Person</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/watcher">
+        <span class="h" property="rdfs:label">watcher</span>
+        <span property="rdfs:comment">A person watching the review by not actively participating in it.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SourceCodeReview">SourceCodeReview</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Person">Person</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/sourceCodeRevision">
+        <span class="h" property="rdfs:label">sourceCodeRevision</span>
         <span property="rdfs:comment">Related source code revisions.</span>
         <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/Issue">Issue</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://jetbrains.org/schema/SourceCodeRevision">SourceCodeRevision</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/sourceCodeRevision">
+        <span class="h" property="rdfs:label">sourceCodeRevision</span>
+        <span property="rdfs:comment">Related source code revisions.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/SourceCodeReview">SourceCodeReview</a></span>
         <span>Range: <a property="http://schema.org/rangeIncludes" href="http://jetbrains.org/schema/SourceCodeRevision">SourceCodeRevision</a></span>
     </div>
 </body>

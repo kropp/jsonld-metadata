@@ -1085,6 +1085,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   public static WarrantyPromise.Builder warrantyPromise() { return new WarrantyPromise.Builder(); }
   /**
+   * Software code review
+   */
+  public static SourceCodeReview.Builder sourceCodeReview() { return new SourceCodeReview.Builder(); }
+  /**
    * Web page type: Profile page.
    */
   public static ProfilePage.Builder profilePage() { return new ProfilePage.Builder(); }
@@ -2668,6 +2672,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("AddAction".equals(type)) { return new AddAction.Builder(); }
     if ("HomeAndConstructionBusiness".equals(type)) { return new HomeAndConstructionBusiness.Builder(); }
     if ("WarrantyPromise".equals(type)) { return new WarrantyPromise.Builder(); }
+    if ("SourceCodeReview".equals(type)) { return new SourceCodeReview.Builder(); }
     if ("ProfilePage".equals(type)) { return new ProfilePage.Builder(); }
     if ("MusicRecording".equals(type)) { return new MusicRecording.Builder(); }
     if ("DeliveryChargeSpecification".equals(type)) { return new DeliveryChargeSpecification.Builder(); }
