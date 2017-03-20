@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Indicates whether this game is multi-player, co-op or single-player.
  */
-enum GamePlayMode {
+public enum GamePlayMode {
   SinglePlayer("http://schema.org/SinglePlayer"), CoOp("http://schema.org/CoOp"), MultiPlayer("http://schema.org/MultiPlayer");
   GamePlayMode(String value) {
     myValue = value;

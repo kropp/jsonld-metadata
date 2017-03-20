@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Classification of the album by it's type of content: soundtrack, live album, studio album, etc.
  */
-enum MusicAlbumProductionType {
+public enum MusicAlbumProductionType {
   DJMixAlbum("http://schema.org/DJMixAlbum"), SpokenWordAlbum("http://schema.org/SpokenWordAlbum"), StudioAlbum("http://schema.org/StudioAlbum"), SoundtrackAlbum("http://schema.org/SoundtrackAlbum"), MixtapeAlbum("http://schema.org/MixtapeAlbum"), LiveAlbum("http://schema.org/LiveAlbum"), DemoAlbum("http://schema.org/DemoAlbum"), RemixAlbum("http://schema.org/RemixAlbum"), CompilationAlbum("http://schema.org/CompilationAlbum");
   MusicAlbumProductionType(String value) {
     myValue = value;

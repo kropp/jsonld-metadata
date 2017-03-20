@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Status of a game server.
  */
-enum GameServerStatus {
+public enum GameServerStatus {
   OnlineFull("http://schema.org/OnlineFull"), Online("http://schema.org/Online"), OfflinePermanently("http://schema.org/OfflinePermanently"), OfflineTemporarily("http://schema.org/OfflineTemporarily");
   GameServerStatus(String value) {
     myValue = value;

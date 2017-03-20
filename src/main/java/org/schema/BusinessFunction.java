@@ -35,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * * http://purl.org/goodrelations/v1#Buy
  *         
  */
-enum BusinessFunction {
+public enum BusinessFunction {
   ;
   BusinessFunction(String value) {
     myValue = value;

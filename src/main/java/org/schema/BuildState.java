@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Build state (queued/running/finished)
  */
-enum BuildState {
+public enum BuildState {
   BuildFinishedState("http://jetbrains.org/schema/buildFinishedRunning"), BuildRunningState("http://jetbrains.org/schema/buildStateRunning"), BuildQueuedState("http://jetbrains.org/schema/buildStateQueued");
   BuildState(String value) {
     myValue = value;

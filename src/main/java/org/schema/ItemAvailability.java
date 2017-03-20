@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * A list of possible product availability options.
  */
-enum ItemAvailability {
+public enum ItemAvailability {
   SoldOut("http://schema.org/SoldOut"), PreOrder("http://schema.org/PreOrder"), OnlineOnly("http://schema.org/OnlineOnly"), OutOfStock("http://schema.org/OutOfStock"), Discontinued("http://schema.org/Discontinued"), LimitedAvailability("http://schema.org/LimitedAvailability"), InStock("http://schema.org/InStock"), InStoreOnly("http://schema.org/InStoreOnly"), PreSale("http://schema.org/PreSale");
   ItemAvailability(String value) {
     myValue = value;

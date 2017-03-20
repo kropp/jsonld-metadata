@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * The status of an Action.
  */
-enum ActionStatusType {
+public enum ActionStatusType {
   FailedActionStatus("http://schema.org/FailedActionStatus"), CompletedActionStatus("http://schema.org/CompletedActionStatus"), PotentialActionStatus("http://schema.org/PotentialActionStatus"), ActiveActionStatus("http://schema.org/ActiveActionStatus");
   ActionStatusType(String value) {
     myValue = value;

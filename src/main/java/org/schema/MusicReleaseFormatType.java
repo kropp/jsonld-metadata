@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Format of this release (the type of recording media used, ie. compact disc, digital media, LP, etc.).
  */
-enum MusicReleaseFormatType {
+public enum MusicReleaseFormatType {
   LaserDiscFormat("http://schema.org/LaserDiscFormat"), CDFormat("http://schema.org/CDFormat"), DVDFormat("http://schema.org/DVDFormat"), DigitalFormat("http://schema.org/DigitalFormat"), DigitalAudioTapeFormat("http://schema.org/DigitalAudioTapeFormat"), CassetteFormat("http://schema.org/CassetteFormat"), VinylFormat("http://schema.org/VinylFormat");
   MusicReleaseFormatType(String value) {
     myValue = value;

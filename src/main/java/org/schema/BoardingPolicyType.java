@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * A type of boarding policy used by an airline.
  */
-enum BoardingPolicyType {
+public enum BoardingPolicyType {
   ZoneBoardingPolicy("http://schema.org/ZoneBoardingPolicy"), GroupBoardingPolicy("http://schema.org/GroupBoardingPolicy");
   BoardingPolicyType(String value) {
     myValue = value;

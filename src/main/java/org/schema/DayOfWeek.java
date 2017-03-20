@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Originally, URLs from [GoodRelations](http://purl.org/goodrelations/v1) were used (for [[Monday]], [[Tuesday]], [[Wednesday]], [[Thursday]], [[Friday]], [[Saturday]], [[Sunday]] plus a special entry for [[PublicHolidays]]); these have now been integrated directly into schema.org.
  *       
  */
-enum DayOfWeek {
+public enum DayOfWeek {
   Wednesday("http://schema.org/Wednesday"), Saturday("http://schema.org/Saturday"), Tuesday("http://schema.org/Tuesday"), Friday("http://schema.org/Friday"), Monday("http://schema.org/Monday"), PublicHolidays("http://schema.org/PublicHolidays"), Thursday("http://schema.org/Thursday"), Sunday("http://schema.org/Sunday");
   DayOfWeek(String value) {
     myValue = value;

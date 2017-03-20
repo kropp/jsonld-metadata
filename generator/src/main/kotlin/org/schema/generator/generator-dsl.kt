@@ -214,7 +214,7 @@ class Enumeration(val sourceDirectory: File, val namespace: String?, val name: S
                 appendln(" */")
             }
 
-            appendln("enum $name {")
+            appendln("public enum $name {")
 
             members?.let { append("  " + it.map { "${it.key}(\"${it.value}\")" }.joinToString(", ")); appendln(";") }
 

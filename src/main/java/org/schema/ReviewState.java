@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Review state (open/closed/reopened)
  */
-enum ReviewState {
+public enum ReviewState {
   ReviewClosedState("http://jetbrains.org/schema/reviewStateClosed"), ReviewOpenedState("http://jetbrains.org/schema/reviewStateOpened"), ReviewReopenedState("http://jetbrains.org/schema/reviewStateReopened");
   ReviewState(String value) {
     myValue = value;

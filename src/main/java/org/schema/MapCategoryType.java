@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * An enumeration of several kinds of Map.
  */
-enum MapCategoryType {
+public enum MapCategoryType {
   VenueMap("http://schema.org/VenueMap"), SeatingMap("http://schema.org/SeatingMap"), ParkingMap("http://schema.org/ParkingMap"), TransitMap("http://schema.org/TransitMap");
   MapCategoryType(String value) {
     myValue = value;

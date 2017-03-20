@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Status (successful/failed)
  */
-enum Status {
+public enum Status {
   StatusFailed("http://jetbrains.org/schema/StatusFailed"), StatusSuccessful("http://jetbrains.org/schema/StatusSuccessful");
   Status(String value) {
     myValue = value;

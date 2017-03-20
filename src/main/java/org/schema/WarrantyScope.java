@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * * http://purl.org/goodrelations/v1#PartsAndLabor-PickUp
  *       
  */
-enum WarrantyScope {
+public enum WarrantyScope {
   ;
   WarrantyScope(String value) {
     myValue = value;

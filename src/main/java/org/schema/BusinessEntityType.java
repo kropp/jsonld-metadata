@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * * http://purl.org/goodrelations/v1#Reseller
  * 	  
  */
-enum BusinessEntityType {
+public enum BusinessEntityType {
   ;
   BusinessEntityType(String value) {
     myValue = value;

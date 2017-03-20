@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * * http://purl.org/goodrelations/v1#PaySwarm
  *         
  */
-enum PaymentMethod {
+public enum PaymentMethod {
   PaymentCard("http://schema.org/PaymentCard");
   PaymentMethod(String value) {
     myValue = value;

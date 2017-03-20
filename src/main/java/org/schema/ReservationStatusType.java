@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Enumerated status values for Reservation.
  */
-enum ReservationStatusType {
+public enum ReservationStatusType {
   ReservationHold("http://schema.org/ReservationHold"), ReservationCancelled("http://schema.org/ReservationCancelled"), ReservationPending("http://schema.org/ReservationPending"), ReservationConfirmed("http://schema.org/ReservationConfirmed");
   ReservationStatusType(String value) {
     myValue = value;

@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * Enumerated status values for Order.
  */
-enum OrderStatus {
+public enum OrderStatus {
   OrderPickupAvailable("http://schema.org/OrderPickupAvailable"), OrderCancelled("http://schema.org/OrderCancelled"), OrderInTransit("http://schema.org/OrderInTransit"), OrderReturned("http://schema.org/OrderReturned"), OrderProcessing("http://schema.org/OrderProcessing"), OrderPaymentDue("http://schema.org/OrderPaymentDue"), OrderDelivered("http://schema.org/OrderDelivered"), OrderProblem("http://schema.org/OrderProblem");
   OrderStatus(String value) {
     myValue = value;
