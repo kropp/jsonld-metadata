@@ -1,7 +1,6 @@
-package org.schema;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.Test;
+import org.schema.*;
 
 import java.io.IOException;
 import java.util.Arrays;
