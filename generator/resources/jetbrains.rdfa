@@ -97,11 +97,15 @@
   <span class="h" property="rdfs:label">BuildQueuedState</span>
   <span property="rdfs:comment">Build queued</span>
 </div>
+<div typeof="http://jetbrains.org/schema/buildState" resource="http://jetbrains.org/schema/buildStateFailedToStart">
+  <span class="h" property="rdfs:label">BuildFailedToStartState</span>
+  <span property="rdfs:comment">Build failed to start</span>
+</div>
 <div typeof="http://jetbrains.org/schema/buildState" resource="http://jetbrains.org/schema/buildStateRunning">
   <span class="h" property="rdfs:label">BuildRunningState</span>
   <span property="rdfs:comment">Build running</span>
 </div>
-<div typeof="http://jetbrains.org/schema/buildState" resource="http://jetbrains.org/schema/buildFinishedRunning">
+<div typeof="http://jetbrains.org/schema/buildState" resource="http://jetbrains.org/schema/buildStateFinished">
   <span class="h" property="rdfs:label">BuildFinishedState</span>
   <span property="rdfs:comment">Build finished</span>
 </div>
