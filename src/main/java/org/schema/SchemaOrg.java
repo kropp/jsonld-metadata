@@ -3016,6 +3016,24 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     return ThingDeserializer.fromMap(map);
   }
   public static java.util.Map<String, Object> toMap(@NotNull Thing thing) {
-    return thing.myData;
+    final java.util.HashMap<String, Object> result = new java.util.HashMap<String, Object>();
+    for (java.util.Map.Entry<String, Object> entry : thing.myData.entrySet()) {
+    if (entry.getValue() instanceof Thing) {
+        result.put(entry.getKey(), toMap((Thing) entry.getValue()));
+      } else if (entry.getValue() instanceof java.util.List) {
+        final java.util.ArrayList<Object> list = new java.util.ArrayList<Object>();
+        for (Object o : ((java.util.List) entry.getValue())) {
+          if (o instanceof Thing) {
+            list.add(toMap((Thing) o));
+          } else {
+            list.add(o);
+          }
+        }
+        result.put(entry.getKey(), list);
+      } else {
+        result.put(entry.getKey(), entry.getValue());
+      }
+    }
+    return result;
   }
 }

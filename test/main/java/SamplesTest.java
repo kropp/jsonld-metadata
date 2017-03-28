@@ -102,4 +102,14 @@ public class SamplesTest {
 
         assertEquals("{\"@type\":\"GroceryStore\",\"@context\":\"http://schema.org/\",\"openingHoursSpecification\":[{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Monday\"},{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Tuesday\"},{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Wednesday\"},{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Thursday\"},{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Friday\"},{\"@type\":\"OpeningHoursSpecification\",\"@context\":\"http://schema.org/\",\"dayOfWeek\":\"http://schema.org/Sunday\"}]}", json);
     }
+
+    @Test
+    public void convertToMapSample() throws IOException {
+        final Review review = SchemaOrg.review().text("Lorem ipsum")
+                .comment(SchemaOrg.comment().text("Cool!").author(SchemaOrg.person().name("John Doe")))
+                .comment(SchemaOrg.comment().text("Great!").author(SchemaOrg.person().name("Jane Doe")))
+                .build();
+
+        final java.util.Map<String,Object> converted = SchemaOrg.toMap(review);
+    }
 }
