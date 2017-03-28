@@ -3006,10 +3006,13 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
   @NotNull public static String writeJson(@NotNull Thing thing) throws JsonProcessingException {
     return objectMapper.writeValueAsString(thing);
   }
-  public static Thing readJson(String json) throws java.io.IOException {
+  public static Thing readJson(@NotNull String json) throws java.io.IOException {
     return objectMapper.readValue(json, Thing.class);
   }
-  public static Thing readJson(JsonNode node) {
+  public static Thing readJson(@NotNull JsonNode node) {
     return ThingDeserializer.fromMap(objectMapper.convertValue(node, java.util.Map.class));
+  }
+  public static Thing fromMap(@NotNull java.util.Map<String, Object> map) {
+    return ThingDeserializer.fromMap(map);
   }
 }
