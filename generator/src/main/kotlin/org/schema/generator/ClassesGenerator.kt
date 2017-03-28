@@ -155,7 +155,11 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                     parameters = listOf(Parameter(getVariableName(fieldType, name), fieldType, NOT_NULL))
                                     annotations = NOT_NULL
 
-                                    line("putValue(\"${name.decapitalize()}\", ${getVariableName(fieldType, name)});")
+                                    if (name != "Id") {
+                                        line("putValue(\"${name.decapitalize()}\", ${getVariableName(fieldType, name)});")
+                                    } else {
+                                        line("myData.put(\"${name.decapitalize()}\", ${getVariableName(fieldType, name)});")
+                                    }
                                     line("return this;")
                                 }
 

@@ -455,7 +455,7 @@ public class ParcelDelivery extends Intangible {
       return this;
     }
     @NotNull public Builder id(@NotNull String id) {
-      putValue("id", id);
+      myData.put("id", id);
       return this;
     }
     public Builder id(long id) {
