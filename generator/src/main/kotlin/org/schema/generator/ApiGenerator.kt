@@ -62,6 +62,9 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
             appendln("  public static Thing fromMap(@NotNull java.util.Map<String, Object> map) {")
             appendln("    return ThingDeserializer.fromMap(map);")
             appendln("  }")
+            appendln("  public static java.util.Map<String, Object> toMap(@NotNull Thing thing) {")
+            appendln("    return thing.myData;")
+            appendln("  }")
             appendln("}")
         }
 

@@ -3015,7 +3015,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
   public static Thing fromMap(@NotNull java.util.Map<String, Object> map) {
     return ThingDeserializer.fromMap(map);
   }
-  public static java.util.Map<String, Object> fromMap(@NotNull Thing thing) {
+  public static java.util.Map<String, Object> toMap(@NotNull Thing thing) {
     return thing.myData;
   }
 }
