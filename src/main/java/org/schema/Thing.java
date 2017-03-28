@@ -343,6 +343,7 @@ public class Thing {
       if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); return; }
       if ("url".equals(key) && value instanceof String) { url((String)value); return; }
       if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); return; }
+      if ("id".equals(key) && value instanceof String) { id((String)value); return; }
       if ("@id".equals(key) && value instanceof String) { id((String)value); return; }
     }
     protected HashMap<String,Object> myData = new HashMap<String,Object>();

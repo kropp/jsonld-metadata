@@ -204,9 +204,13 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                 val fieldTypes = sink.getEitherTypes(it)
 
                                 fieldTypes.map {
-                                    "if (\"${varName.let { if (it == "id") "@id" else it }}\".equals(key) && value instanceof $it) { $varName(($it)value); return; }"
+                                    "if (\"$varName\".equals(key) && value instanceof $it) { $varName(($it)value); return; }"
                                 }
                             })
+
+                            if (type.parentType == null) {
+                                line("if (\"@id\".equals(key) && value instanceof String) { id((String)value); return; }")
+                            }
 
                             if (type.parentType != null) {
                                 annotations = OVERRIDE
