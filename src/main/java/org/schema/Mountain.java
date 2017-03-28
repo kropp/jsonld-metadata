@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A mountain, like Mount Whitney or Mount Everest.
@@ -35,7 +32,7 @@ public class Mountain extends Landform {
    * Builder for {@link Mountain}
    */
   public static class Builder extends Landform.Builder {
-    public Mountain build() {
+    @NotNull public Mountain build() {
       return new Mountain(myData);
     }
     /**

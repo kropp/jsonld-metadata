@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A pharmacy or drugstore.
@@ -35,7 +32,7 @@ public class Pharmacy extends MedicalOrganization {
    * Builder for {@link Pharmacy}
    */
   public static class Builder extends MedicalOrganization.Builder {
-    public Pharmacy build() {
+    @NotNull public Pharmacy build() {
       return new Pharmacy(myData);
     }
     /**

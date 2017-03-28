@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A video game series.
@@ -392,7 +394,7 @@ public class VideoGameSeries extends CreativeWorkSeries {
    * Builder for {@link VideoGameSeries}
    */
   public static class Builder extends CreativeWorkSeries.Builder {
-    public VideoGameSeries build() {
+    @NotNull public VideoGameSeries build() {
       return new VideoGameSeries(myData);
     }
     /**

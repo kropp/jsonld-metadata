@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of expressing a desire about the object. An agent wants an object.
@@ -35,7 +32,7 @@ public class WantAction extends ReactAction {
    * Builder for {@link WantAction}
    */
   public static class Builder extends ReactAction.Builder {
-    public WantAction build() {
+    @NotNull public WantAction build() {
       return new WantAction(myData);
     }
     /**

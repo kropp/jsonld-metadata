@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Project
@@ -35,7 +32,7 @@ public class Project extends Thing {
    * Builder for {@link Project}
    */
   public static class Builder extends Thing.Builder {
-    public Project build() {
+    @NotNull public Project build() {
       return new Project(myData);
     }
     /**

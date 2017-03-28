@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * This element is based on the work of the Automotive Ontology Working Group, see [www.automotive-ontology.org](http://www.automotive-ontology.org) for details. Many class and property definitions are inspired by or based on abstracts from Wikipedia, the free encyclopedia.
@@ -35,7 +32,7 @@ public class AutomotiveOntologyWGClass extends Organization {
    * Builder for {@link AutomotiveOntologyWGClass}
    */
   public static class Builder extends Organization.Builder {
-    public AutomotiveOntologyWGClass build() {
+    @NotNull public AutomotiveOntologyWGClass build() {
       return new AutomotiveOntologyWGClass(myData);
     }
     /**

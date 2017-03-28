@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A tattoo parlor.
@@ -35,7 +32,7 @@ public class TattooParlor extends HealthAndBeautyBusiness {
    * Builder for {@link TattooParlor}
    */
   public static class Builder extends HealthAndBeautyBusiness.Builder {
-    public TattooParlor build() {
+    @NotNull public TattooParlor build() {
       return new TattooParlor(myData);
     }
     /**

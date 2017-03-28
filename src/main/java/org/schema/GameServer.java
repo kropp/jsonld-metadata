@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Server that provides game interaction in a multiplayer game.
@@ -86,7 +88,7 @@ public class GameServer extends Intangible {
    * Builder for {@link GameServer}
    */
   public static class Builder extends Intangible.Builder {
-    public GameServer build() {
+    @NotNull public GameServer build() {
       return new GameServer(myData);
     }
     /**

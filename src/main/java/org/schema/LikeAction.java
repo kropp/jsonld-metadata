@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of expressing a positive sentiment about the object. An agent likes an object (a proposition, topic or theme) with participants.
@@ -35,7 +32,7 @@ public class LikeAction extends ReactAction {
    * Builder for {@link LikeAction}
    */
   public static class Builder extends ReactAction.Builder {
-    public LikeAction build() {
+    @NotNull public LikeAction build() {
       return new LikeAction(myData);
     }
     /**

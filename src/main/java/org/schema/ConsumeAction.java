@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of ingesting information/resources/food.
@@ -52,7 +54,7 @@ public class ConsumeAction extends Action {
    * Builder for {@link ConsumeAction}
    */
   public static class Builder extends Action.Builder {
-    public ConsumeAction build() {
+    @NotNull public ConsumeAction build() {
       return new ConsumeAction(myData);
     }
     /**

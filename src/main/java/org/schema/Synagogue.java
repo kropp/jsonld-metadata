@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A synagogue.
@@ -35,7 +32,7 @@ public class Synagogue extends PlaceOfWorship {
    * Builder for {@link Synagogue}
    */
   public static class Builder extends PlaceOfWorship.Builder {
-    public Synagogue build() {
+    @NotNull public Synagogue build() {
       return new Synagogue(myData);
     }
     /**

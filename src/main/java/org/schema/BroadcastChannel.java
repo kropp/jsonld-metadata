@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A unique instance of a BroadcastService on a CableOrSatelliteService lineup.
@@ -103,7 +105,7 @@ public class BroadcastChannel extends Intangible {
    * Builder for {@link BroadcastChannel}
    */
   public static class Builder extends Intangible.Builder {
-    public BroadcastChannel build() {
+    @NotNull public BroadcastChannel build() {
       return new BroadcastChannel(myData);
     }
     /**

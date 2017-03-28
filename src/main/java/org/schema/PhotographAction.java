@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of capturing still images of objects using a camera.
@@ -35,7 +32,7 @@ public class PhotographAction extends CreateAction {
    * Builder for {@link PhotographAction}
    */
   public static class Builder extends CreateAction.Builder {
-    public PhotographAction build() {
+    @NotNull public PhotographAction build() {
       return new PhotographAction(myData);
     }
     /**

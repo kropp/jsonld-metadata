@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A PublicationEvent corresponds indifferently to the event of publication for a CreativeWork of any type e.g. a broadcast event, an on-demand event, a book/journal publication via a variety of delivery media.
@@ -69,7 +71,7 @@ public class PublicationEvent extends Event {
    * Builder for {@link PublicationEvent}
    */
   public static class Builder extends Event.Builder {
-    public PublicationEvent build() {
+    @NotNull public PublicationEvent build() {
       return new PublicationEvent(myData);
     }
     /**

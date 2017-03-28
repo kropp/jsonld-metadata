@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of an agent communicating (service provider, social media, etc) their departure of a previously reserved service (e.g. flight check in) or place (e.g. hotel).\n\nRelated actions:\n\n* [[CheckInAction]]: The antonym of CheckOutAction.\n* [[DepartAction]]: Unlike DepartAction, CheckOutAction implies that the agent is informing/confirming the end of a previously reserved service.\n* [[CancelAction]]: Unlike CancelAction, CheckOutAction implies that the agent is informing/confirming the end of a previously reserved service.
@@ -35,7 +32,7 @@ public class CheckOutAction extends CommunicateAction {
    * Builder for {@link CheckOutAction}
    */
   public static class Builder extends CommunicateAction.Builder {
-    public CheckOutAction build() {
+    @NotNull public CheckOutAction build() {
       return new CheckOutAction(myData);
     }
     /**

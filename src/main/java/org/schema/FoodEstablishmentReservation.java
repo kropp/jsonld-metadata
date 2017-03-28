@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A reservation to dine at a food-related business.Note: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations.
@@ -86,7 +88,7 @@ public class FoodEstablishmentReservation extends Reservation {
    * Builder for {@link FoodEstablishmentReservation}
    */
   public static class Builder extends Reservation.Builder {
-    public FoodEstablishmentReservation build() {
+    @NotNull public FoodEstablishmentReservation build() {
       return new FoodEstablishmentReservation(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A Catholic church.
@@ -35,7 +32,7 @@ public class CatholicChurch extends PlaceOfWorship {
    * Builder for {@link CatholicChurch}
    */
   public static class Builder extends PlaceOfWorship.Builder {
-    public CatholicChurch build() {
+    @NotNull public CatholicChurch build() {
       return new CatholicChurch(myData);
     }
     /**

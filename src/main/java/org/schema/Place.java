@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Entities that have a somewhat fixed, physical extension.
@@ -483,7 +485,7 @@ public class Place extends Thing {
    * Builder for {@link Place}
    */
   public static class Builder extends Thing.Builder {
-    public Place build() {
+    @NotNull public Place build() {
       return new Place(myData);
     }
     /**

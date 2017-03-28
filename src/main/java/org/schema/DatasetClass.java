@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * This class is based upon W3C DCAT work, and benefits from collaboration around the DCAT, ADMS and VoID vocabularies. See http://www.w3.org/wiki/WebSchemas/Datasets for full details and mappings.
@@ -35,7 +32,7 @@ public class DatasetClass extends Organization {
    * Builder for {@link DatasetClass}
    */
   public static class Builder extends Organization.Builder {
-    public DatasetClass build() {
+    @NotNull public DatasetClass build() {
       return new DatasetClass(myData);
     }
     /**

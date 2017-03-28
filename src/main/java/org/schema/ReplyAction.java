@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of responding to a question/message asked/sent by the object. Related to [[AskAction]]\n\nRelated actions:\n\n* [[AskAction]]: Appears generally as an origin of a ReplyAction.
@@ -52,7 +54,7 @@ public class ReplyAction extends CommunicateAction {
    * Builder for {@link ReplyAction}
    */
   public static class Builder extends CommunicateAction.Builder {
-    public ReplyAction build() {
+    @NotNull public ReplyAction build() {
       return new ReplyAction(myData);
     }
     /**

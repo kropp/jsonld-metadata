@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Season dedicated to radio broadcast and associated online delivery.
@@ -35,7 +32,7 @@ public class RadioSeason extends CreativeWorkSeason {
    * Builder for {@link RadioSeason}
    */
   public static class Builder extends CreativeWorkSeason.Builder {
-    public RadioSeason build() {
+    @NotNull public RadioSeason build() {
       return new RadioSeason(myData);
     }
     /**

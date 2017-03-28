@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Represents the collection of all sports organizations, including sports teams, governing bodies, and sports associations.
@@ -52,7 +54,7 @@ public class SportsOrganization extends Organization {
    * Builder for {@link SportsOrganization}
    */
   public static class Builder extends Organization.Builder {
-    public SportsOrganization build() {
+    @NotNull public SportsOrganization build() {
       return new SportsOrganization(myData);
     }
     /**

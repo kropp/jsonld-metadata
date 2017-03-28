@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An over the air or online broadcast event.
@@ -86,7 +88,7 @@ public class BroadcastEvent extends PublicationEvent {
    * Builder for {@link BroadcastEvent}
    */
   public static class Builder extends PublicationEvent.Builder {
-    public BroadcastEvent build() {
+    @NotNull public BroadcastEvent build() {
       return new BroadcastEvent(myData);
     }
     /**

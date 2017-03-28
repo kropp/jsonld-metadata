@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A government office&#x2014;for example, an IRS or DMV office.
@@ -35,7 +32,7 @@ public class GovernmentOffice extends LocalBusiness {
    * Builder for {@link GovernmentOffice}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public GovernmentOffice build() {
+    @NotNull public GovernmentOffice build() {
       return new GovernmentOffice(myData);
     }
     /**

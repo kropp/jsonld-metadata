@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A sidebar section of the page.
@@ -35,7 +32,7 @@ public class WPSideBar extends WebPageElement {
    * Builder for {@link WPSideBar}
    */
   public static class Builder extends WebPageElement.Builder {
-    public WPSideBar build() {
+    @NotNull public WPSideBar build() {
       return new WPSideBar(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An EducationalAudience.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_LRMIClass
@@ -52,7 +54,7 @@ public class EducationalAudience extends Audience {
    * Builder for {@link EducationalAudience}
    */
   public static class Builder extends Audience.Builder {
-    public EducationalAudience build() {
+    @NotNull public EducationalAudience build() {
       return new EducationalAudience(myData);
     }
     /**

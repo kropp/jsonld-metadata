@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A store that sells mobile phones and related accessories.
@@ -35,7 +32,7 @@ public class MobilePhoneStore extends Store {
    * Builder for {@link MobilePhoneStore}
    */
   public static class Builder extends Store.Builder {
-    public MobilePhoneStore build() {
+    @NotNull public MobilePhoneStore build() {
       return new MobilePhoneStore(myData);
     }
     /**

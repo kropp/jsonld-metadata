@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A Service to transfer funds from a person or organization to a beneficiary person or organization.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
@@ -35,7 +32,7 @@ public class PaymentService extends FinancialProduct {
    * Builder for {@link PaymentService}
    */
   public static class Builder extends FinancialProduct.Builder {
-    public PaymentService build() {
+    @NotNull public PaymentService build() {
       return new PaymentService(myData);
     }
     /**

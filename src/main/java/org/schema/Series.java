@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * 
@@ -36,7 +33,7 @@ public class Series extends CreativeWork {
    * Builder for {@link Series}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Series build() {
+    @NotNull public Series build() {
       return new Series(myData);
     }
     /**

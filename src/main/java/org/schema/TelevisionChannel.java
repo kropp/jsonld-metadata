@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A unique instance of a television BroadcastService on a CableOrSatelliteService lineup.
@@ -35,7 +32,7 @@ public class TelevisionChannel extends BroadcastChannel {
    * Builder for {@link TelevisionChannel}
    */
   public static class Builder extends BroadcastChannel.Builder {
-    public TelevisionChannel build() {
+    @NotNull public TelevisionChannel build() {
       return new TelevisionChannel(myData);
     }
     /**

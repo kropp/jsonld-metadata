@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A page devoted to a single item, such as a particular product or hotel.
@@ -35,7 +32,7 @@ public class ItemPage extends WebPage {
    * Builder for {@link ItemPage}
    */
   public static class Builder extends WebPage.Builder {
-    public ItemPage build() {
+    @NotNull public ItemPage build() {
       return new ItemPage(myData);
     }
     /**

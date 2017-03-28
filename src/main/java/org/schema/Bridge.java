@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A bridge.
@@ -35,7 +32,7 @@ public class Bridge extends CivicStructure {
    * Builder for {@link Bridge}
    */
   public static class Builder extends CivicStructure.Builder {
-    public Bridge build() {
+    @NotNull public Bridge build() {
       return new Bridge(myData);
     }
     /**

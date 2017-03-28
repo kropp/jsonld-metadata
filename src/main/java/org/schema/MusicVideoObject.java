@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A music video file.
@@ -35,7 +32,7 @@ public class MusicVideoObject extends MediaObject {
    * Builder for {@link MusicVideoObject}
    */
   public static class Builder extends MediaObject.Builder {
-    public MusicVideoObject build() {
+    @NotNull public MusicVideoObject build() {
       return new MusicVideoObject(myData);
     }
     /**

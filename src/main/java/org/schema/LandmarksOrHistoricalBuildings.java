@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An historical landmark or building.
@@ -35,7 +32,7 @@ public class LandmarksOrHistoricalBuildings extends Place {
    * Builder for {@link LandmarksOrHistoricalBuildings}
    */
   public static class Builder extends Place.Builder {
-    public LandmarksOrHistoricalBuildings build() {
+    @NotNull public LandmarksOrHistoricalBuildings build() {
       return new LandmarksOrHistoricalBuildings(myData);
     }
     /**

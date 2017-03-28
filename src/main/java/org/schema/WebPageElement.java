@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A web page element, like a table or an image.
@@ -35,7 +32,7 @@ public class WebPageElement extends CreativeWork {
    * Builder for {@link WebPageElement}
    */
   public static class Builder extends CreativeWork.Builder {
-    public WebPageElement build() {
+    @NotNull public WebPageElement build() {
       return new WebPageElement(myData);
     }
     /**

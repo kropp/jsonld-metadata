@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of discovering/finding an object.
@@ -35,7 +32,7 @@ public class DiscoverAction extends FindAction {
    * Builder for {@link DiscoverAction}
    */
   public static class Builder extends FindAction.Builder {
-    public DiscoverAction build() {
+    @NotNull public DiscoverAction build() {
       return new DiscoverAction(myData);
     }
     /**

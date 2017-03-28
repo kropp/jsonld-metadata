@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A public structure, such as a town hall or concert hall.
@@ -52,7 +54,7 @@ public class CivicStructure extends Place {
    * Builder for {@link CivicStructure}
    */
   public static class Builder extends Place.Builder {
-    public CivicStructure build() {
+    @NotNull public CivicStructure build() {
       return new CivicStructure(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A posting to a discussion forum.
@@ -35,7 +32,7 @@ public class DiscussionForumPosting extends SocialMediaPosting {
    * Builder for {@link DiscussionForumPosting}
    */
   public static class Builder extends SocialMediaPosting.Builder {
-    public DiscussionForumPosting build() {
+    @NotNull public DiscussionForumPosting build() {
       return new DiscussionForumPosting(myData);
     }
     /**

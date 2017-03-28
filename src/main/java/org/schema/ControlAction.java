@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An agent controls a device or application.
@@ -35,7 +32,7 @@ public class ControlAction extends Action {
    * Builder for {@link ControlAction}
    */
   public static class Builder extends Action.Builder {
-    public ControlAction build() {
+    @NotNull public ControlAction build() {
       return new ControlAction(myData);
     }
     /**

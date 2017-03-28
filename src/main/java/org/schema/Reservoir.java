@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A reservoir of water, typically an artificially created lake, like the Lake Kariba reservoir.
@@ -35,7 +32,7 @@ public class Reservoir extends BodyOfWater {
    * Builder for {@link Reservoir}
    */
   public static class Builder extends BodyOfWater.Builder {
-    public Reservoir build() {
+    @NotNull public Reservoir build() {
       return new Reservoir(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An agent bookmarks/flags/labels/tags/marks an object.
@@ -35,7 +32,7 @@ public class BookmarkAction extends OrganizeAction {
    * Builder for {@link BookmarkAction}
    */
   public static class Builder extends OrganizeAction.Builder {
-    public BookmarkAction build() {
+    @NotNull public BookmarkAction build() {
       return new BookmarkAction(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A technical article - Example: How-to (task) topics, step-by-step, procedural troubleshooting, specifications, etc.
@@ -69,7 +71,7 @@ public class TechArticle extends Article {
    * Builder for {@link TechArticle}
    */
   public static class Builder extends Article.Builder {
-    public TechArticle build() {
+    @NotNull public TechArticle build() {
       return new TechArticle(myData);
     }
     /**

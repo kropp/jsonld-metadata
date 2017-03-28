@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * One or more messages between organizations or people on a particular topic. Individual messages can be linked to the conversation with isPartOf or hasPart properties.
@@ -35,7 +32,7 @@ public class Conversation extends CreativeWork {
    * Builder for {@link Conversation}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Conversation build() {
+    @NotNull public Conversation build() {
       return new Conversation(myData);
     }
     /**

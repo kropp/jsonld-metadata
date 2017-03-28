@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A mosque.
@@ -35,7 +32,7 @@ public class Mosque extends PlaceOfWorship {
    * Builder for {@link Mosque}
    */
   public static class Builder extends PlaceOfWorship.Builder {
-    public Mosque build() {
+    @NotNull public Mosque build() {
       return new Mosque(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A collection of music tracks.
@@ -103,7 +105,7 @@ public class MusicAlbum extends MusicPlaylist {
    * Builder for {@link MusicAlbum}
    */
   public static class Builder extends MusicPlaylist.Builder {
-    public MusicAlbum build() {
+    @NotNull public MusicAlbum build() {
       return new MusicAlbum(myData);
     }
     /**

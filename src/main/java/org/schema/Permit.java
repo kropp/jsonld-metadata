@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A permit issued by an organization, e.g. a parking pass.
@@ -154,7 +156,7 @@ public class Permit extends Intangible {
    * Builder for {@link Permit}
    */
   public static class Builder extends Intangible.Builder {
-    public Permit build() {
+    @NotNull public Permit build() {
       return new Permit(myData);
     }
     /**

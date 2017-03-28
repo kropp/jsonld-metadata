@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A hostel - cheap accommodation, often in shared dormitories.
@@ -38,7 +35,7 @@ public class Hostel extends LodgingBusiness {
    * Builder for {@link Hostel}
    */
   public static class Builder extends LodgingBusiness.Builder {
-    public Hostel build() {
+    @NotNull public Hostel build() {
       return new Hostel(myData);
     }
     /**

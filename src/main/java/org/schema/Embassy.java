@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An embassy.
@@ -35,7 +32,7 @@ public class Embassy extends GovernmentBuilding {
    * Builder for {@link Embassy}
    */
   public static class Builder extends GovernmentBuilding.Builder {
-    public Embassy build() {
+    @NotNull public Embassy build() {
       return new Embassy(myData);
     }
     /**

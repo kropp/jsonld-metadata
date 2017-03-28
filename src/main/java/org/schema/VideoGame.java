@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device.
@@ -205,7 +207,7 @@ public class VideoGame extends Game {
    * Builder for {@link VideoGame}
    */
   public static class Builder extends Game.Builder {
-    public VideoGame build() {
+    @NotNull public VideoGame build() {
       return new VideoGame(myData);
     }
     /**

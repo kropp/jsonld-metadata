@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of capturing sound and moving images on film, video, or digitally.
@@ -35,7 +32,7 @@ public class FilmAction extends CreateAction {
    * Builder for {@link FilmAction}
    */
   public static class Builder extends CreateAction.Builder {
-    public FilmAction build() {
+    @NotNull public FilmAction build() {
       return new FilmAction(myData);
     }
     /**

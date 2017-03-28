@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A food service, like breakfast, lunch, or dinner.Source: https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
@@ -35,7 +32,7 @@ public class FoodService extends Service {
    * Builder for {@link FoodService}
    */
   public static class Builder extends Service.Builder {
-    public FoodService build() {
+    @NotNull public FoodService build() {
       return new FoodService(myData);
     }
     /**

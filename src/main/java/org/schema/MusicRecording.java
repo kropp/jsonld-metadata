@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A music recording (track), usually a single song.
@@ -120,7 +122,7 @@ public class MusicRecording extends CreativeWork {
    * Builder for {@link MusicRecording}
    */
   public static class Builder extends CreativeWork.Builder {
-    public MusicRecording build() {
+    @NotNull public MusicRecording build() {
       return new MusicRecording(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Web page type: About page.
@@ -35,7 +32,7 @@ public class AboutPage extends WebPage {
    * Builder for {@link AboutPage}
    */
   public static class Builder extends WebPage.Builder {
-    public AboutPage build() {
+    @NotNull public AboutPage build() {
       return new AboutPage(myData);
     }
     /**

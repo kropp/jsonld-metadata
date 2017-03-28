@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of committing to/adopting an object.\n\nRelated actions:\n\n* [[RejectAction]]: The antonym of AcceptAction.
@@ -35,7 +32,7 @@ public class AcceptAction extends AllocateAction {
    * Builder for {@link AcceptAction}
    */
   public static class Builder extends AllocateAction.Builder {
-    public AcceptAction build() {
+    @NotNull public AcceptAction build() {
       return new AcceptAction(myData);
     }
     /**

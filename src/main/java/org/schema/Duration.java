@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Quantity: Duration (use [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601)).
@@ -35,7 +32,7 @@ public class Duration extends Quantity {
    * Builder for {@link Duration}
    */
   public static class Builder extends Quantity.Builder {
-    public Duration build() {
+    @NotNull public Duration build() {
       return new Duration(myData);
     }
     /**

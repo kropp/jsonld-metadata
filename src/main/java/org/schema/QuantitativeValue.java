@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  *  A point value or interval for product characteristics and other purposes.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -430,7 +432,7 @@ public class QuantitativeValue extends StructuredValue {
    * Builder for {@link QuantitativeValue}
    */
   public static class Builder extends StructuredValue.Builder {
-    public QuantitativeValue build() {
+    @NotNull public QuantitativeValue build() {
       return new QuantitativeValue(myData);
     }
     /**

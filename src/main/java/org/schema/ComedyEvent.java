@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Event type: Comedy event.
@@ -35,7 +32,7 @@ public class ComedyEvent extends Event {
    * Builder for {@link ComedyEvent}
    */
   public static class Builder extends Event.Builder {
-    public ComedyEvent build() {
+    @NotNull public ComedyEvent build() {
       return new ComedyEvent(myData);
     }
     /**

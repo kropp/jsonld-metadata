@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A business that provide Heating, Ventilation and Air Conditioning services.
@@ -35,7 +32,7 @@ public class HVACBusiness extends HomeAndConstructionBusiness {
    * Builder for {@link HVACBusiness}
    */
   public static class Builder extends HomeAndConstructionBusiness.Builder {
-    public HVACBusiness build() {
+    @NotNull public HVACBusiness build() {
       return new HVACBusiness(myData);
     }
     /**

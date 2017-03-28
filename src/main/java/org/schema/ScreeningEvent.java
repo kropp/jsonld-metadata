@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A screening of a movie or other video.
@@ -103,7 +105,7 @@ public class ScreeningEvent extends Event {
    * Builder for {@link ScreeningEvent}
    */
   public static class Builder extends Event.Builder {
-    public ScreeningEvent build() {
+    @NotNull public ScreeningEvent build() {
       return new ScreeningEvent(myData);
     }
     /**

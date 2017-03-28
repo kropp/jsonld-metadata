@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A rating is an evaluation on a numeric scale, such as 1 to 5 stars.
@@ -273,7 +275,7 @@ public class Rating extends Intangible {
    * Builder for {@link Rating}
    */
   public static class Builder extends Intangible.Builder {
-    public Rating build() {
+    @NotNull public Rating build() {
       return new Rating(myData);
     }
     /**

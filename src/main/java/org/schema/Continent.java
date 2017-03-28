@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * One of the continents (for example, Europe or Africa).
@@ -35,7 +32,7 @@ public class Continent extends Landform {
    * Builder for {@link Continent}
    */
   public static class Builder extends Landform.Builder {
-    public Continent build() {
+    @NotNull public Continent build() {
       return new Continent(myData);
     }
     /**

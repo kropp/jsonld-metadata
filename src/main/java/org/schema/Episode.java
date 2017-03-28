@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A media episode (e.g. TV, radio, video game) which can be part of a series or season.
@@ -205,7 +207,7 @@ public class Episode extends CreativeWork {
    * Builder for {@link Episode}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Episode build() {
+    @NotNull public Episode build() {
       return new Episode(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An instance of a [[Course]] which is distinct from other instances because it is offered at a different time or location or through different media or modes of study or to a specific section of students.
@@ -69,7 +71,7 @@ public class CourseInstance extends Event {
    * Builder for {@link CourseInstance}
    */
   public static class Builder extends Event.Builder {
-    public CourseInstance build() {
+    @NotNull public CourseInstance build() {
       return new CourseInstance(myData);
     }
     /**

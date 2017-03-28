@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An OfferCatalog is an ItemList that contains related Offers and/or further OfferCatalogs that are offeredBy the same provider.
@@ -35,7 +32,7 @@ public class OfferCatalog extends ItemList {
    * Builder for {@link OfferCatalog}
    */
   public static class Builder extends ItemList.Builder {
-    public OfferCatalog build() {
+    @NotNull public OfferCatalog build() {
       return new OfferCatalog(myData);
     }
     /**

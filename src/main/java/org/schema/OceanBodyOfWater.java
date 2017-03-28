@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An ocean (for example, the Pacific).
@@ -35,7 +32,7 @@ public class OceanBodyOfWater extends BodyOfWater {
    * Builder for {@link OceanBodyOfWater}
    */
   public static class Builder extends BodyOfWater.Builder {
-    public OceanBodyOfWater build() {
+    @NotNull public OceanBodyOfWater build() {
       return new OceanBodyOfWater(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.
@@ -52,7 +54,7 @@ public class TravelAction extends MoveAction {
    * Builder for {@link TravelAction}
    */
   public static class Builder extends MoveAction.Builder {
-    public TravelAction build() {
+    @NotNull public TravelAction build() {
       return new TravelAction(myData);
     }
     /**

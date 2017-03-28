@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A value indicating a steering position.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
@@ -35,7 +32,7 @@ public class SteeringPositionValue extends QualitativeValue {
    * Builder for {@link SteeringPositionValue}
    */
   public static class Builder extends QualitativeValue.Builder {
-    public SteeringPositionValue build() {
+    @NotNull public SteeringPositionValue build() {
       return new SteeringPositionValue(myData);
     }
     /**

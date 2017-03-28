@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A middle school (typically for children aged around 11-14, although this varies somewhat).
@@ -35,7 +32,7 @@ public class MiddleSchool extends EducationalOrganization {
    * Builder for {@link MiddleSchool}
    */
   public static class Builder extends EducationalOrganization.Builder {
-    public MiddleSchool build() {
+    @NotNull public MiddleSchool build() {
       return new MiddleSchool(myData);
     }
     /**

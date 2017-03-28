@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Accountancy business.\n\nAs a [[LocalBusiness]] it can be described as a [[provider]] of one or more [[Service]]\(s).
@@ -36,7 +33,7 @@ public class AccountingService extends FinancialService {
    * Builder for {@link AccountingService}
    */
   public static class Builder extends FinancialService.Builder {
-    public AccountingService build() {
+    @NotNull public AccountingService build() {
       return new AccountingService(myData);
     }
     /**

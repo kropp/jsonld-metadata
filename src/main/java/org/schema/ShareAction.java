@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of distributing content to people for their amusement or edification.
@@ -35,7 +32,7 @@ public class ShareAction extends CommunicateAction {
    * Builder for {@link ShareAction}
    */
   public static class Builder extends CommunicateAction.Builder {
-    public ShareAction build() {
+    @NotNull public ShareAction build() {
       return new ShareAction(myData);
     }
     /**

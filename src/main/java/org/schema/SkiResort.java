@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A ski resort.
@@ -35,7 +32,7 @@ public class SkiResort extends SportsActivityLocation {
    * Builder for {@link SkiResort}
    */
   public static class Builder extends SportsActivityLocation.Builder {
-    public SkiResort build() {
+    @NotNull public SkiResort build() {
       return new SkiResort(myData);
     }
     /**

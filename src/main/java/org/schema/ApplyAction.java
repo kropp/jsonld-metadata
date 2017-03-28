@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of registering to an organization/service without the guarantee to receive it.\n\nRelated actions:\n\n* [[RegisterAction]]: Unlike RegisterAction, ApplyAction has no guarantees that the application will be accepted.
@@ -35,7 +32,7 @@ public class ApplyAction extends OrganizeAction {
    * Builder for {@link ApplyAction}
    */
   public static class Builder extends OrganizeAction.Builder {
-    public ApplyAction build() {
+    @NotNull public ApplyAction build() {
       return new ApplyAction(myData);
     }
     /**

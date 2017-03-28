@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of providing goods, services, or money without compensation, often for philanthropic reasons.
@@ -86,7 +88,7 @@ public class DonateAction extends TradeAction {
    * Builder for {@link DonateAction}
    */
   public static class Builder extends TradeAction.Builder {
-    public DonateAction build() {
+    @NotNull public DonateAction build() {
       return new DonateAction(myData);
     }
     /**

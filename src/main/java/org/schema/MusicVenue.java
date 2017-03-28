@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A music venue.
@@ -35,7 +32,7 @@ public class MusicVenue extends CivicStructure {
    * Builder for {@link MusicVenue}
    */
   public static class Builder extends CivicStructure.Builder {
-    public MusicVenue build() {
+    @NotNull public MusicVenue build() {
       return new MusicVenue(myData);
     }
     /**

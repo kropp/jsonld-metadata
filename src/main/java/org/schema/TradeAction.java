@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of participating in an exchange of goods and services for monetary compensation. An agent trades an object, product or service with a participant in exchange for a one time or periodic payment.
@@ -157,7 +159,7 @@ public class TradeAction extends Action {
    * Builder for {@link TradeAction}
    */
   public static class Builder extends Action.Builder {
-    public TradeAction build() {
+    @NotNull public TradeAction build() {
       return new TradeAction(myData);
     }
     /**

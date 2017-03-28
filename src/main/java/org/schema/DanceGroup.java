@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A dance group&#x2014;for example, the Alvin Ailey Dance Theater or Riverdance.
@@ -35,7 +32,7 @@ public class DanceGroup extends PerformingGroup {
    * Builder for {@link DanceGroup}
    */
   public static class Builder extends PerformingGroup.Builder {
-    public DanceGroup build() {
+    @NotNull public DanceGroup build() {
       return new DanceGroup(myData);
     }
     /**

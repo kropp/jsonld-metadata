@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of editing by adding an object to a collection.
@@ -35,7 +32,7 @@ public class AddAction extends UpdateAction {
    * Builder for {@link AddAction}
    */
   public static class Builder extends UpdateAction.Builder {
-    public AddAction build() {
+    @NotNull public AddAction build() {
       return new AddAction(myData);
     }
     /**

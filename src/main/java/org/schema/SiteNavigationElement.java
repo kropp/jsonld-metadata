@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A navigation element of the page.
@@ -35,7 +32,7 @@ public class SiteNavigationElement extends WebPageElement {
    * Builder for {@link SiteNavigationElement}
    */
   public static class Builder extends WebPageElement.Builder {
-    public SiteNavigationElement build() {
+    @NotNull public SiteNavigationElement build() {
       return new SiteNavigationElement(myData);
     }
     /**

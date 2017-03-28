@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A recipe. For dietary restrictions covered by the recipe, a few common restrictions are enumerated via [[suitableForDiet]]. The [[keywords]] property can also be used to add more detail.
@@ -222,7 +224,7 @@ public class Recipe extends CreativeWork {
    * Builder for {@link Recipe}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Recipe build() {
+    @NotNull public Recipe build() {
       return new Recipe(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A body of structured information describing some topic(s) of interest.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_DatasetClassEquivalent class: http://purl.org/dc/dcmitype/Dataset
@@ -69,7 +71,7 @@ public class Dataset extends CreativeWork {
    * Builder for {@link Dataset}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Dataset build() {
+    @NotNull public Dataset build() {
       return new Dataset(myData);
     }
     /**

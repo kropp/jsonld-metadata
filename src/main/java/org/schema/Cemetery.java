@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A graveyard.
@@ -35,7 +32,7 @@ public class Cemetery extends CivicStructure {
    * Builder for {@link Cemetery}
    */
   public static class Builder extends CivicStructure.Builder {
-    public Cemetery build() {
+    @NotNull public Cemetery build() {
       return new Cemetery(myData);
     }
     /**

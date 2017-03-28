@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Quantities such as distance, time, mass, weight, etc. Particular instances of say Mass are entities like '3 Kg' or '4 milligrams'.
@@ -35,7 +32,7 @@ public class Quantity extends Intangible {
    * Builder for {@link Quantity}
    */
   public static class Builder extends Intangible.Builder {
-    public Quantity build() {
+    @NotNull public Quantity build() {
       return new Quantity(myData);
     }
     /**

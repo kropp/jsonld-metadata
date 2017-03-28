@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
@@ -35,7 +32,7 @@ public class InvestmentOrDeposit extends FinancialProduct {
    * Builder for {@link InvestmentOrDeposit}
    */
   public static class Builder extends FinancialProduct.Builder {
-    public InvestmentOrDeposit build() {
+    @NotNull public InvestmentOrDeposit build() {
       return new InvestmentOrDeposit(myData);
     }
     /**

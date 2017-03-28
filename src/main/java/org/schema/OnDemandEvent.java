@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A publication event e.g. catch-up TV or radio podcast, during which a program is available on-demand.
@@ -35,7 +32,7 @@ public class OnDemandEvent extends PublicationEvent {
    * Builder for {@link OnDemandEvent}
    */
   public static class Builder extends PublicationEvent.Builder {
-    public OnDemandEvent build() {
+    @NotNull public OnDemandEvent build() {
       return new OnDemandEvent(myData);
     }
     /**

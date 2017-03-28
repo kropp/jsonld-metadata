@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A health club.
@@ -35,7 +32,7 @@ public class HealthClub extends SportsActivityLocation {
    * Builder for {@link HealthClub}
    */
   public static class Builder extends SportsActivityLocation.Builder {
-    public HealthClub build() {
+    @NotNull public HealthClub build() {
       return new HealthClub(myData);
     }
     /**

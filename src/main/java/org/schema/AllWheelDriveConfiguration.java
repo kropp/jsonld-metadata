@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * All-wheel Drive is a transmission layout where the engine drives all four wheels.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
@@ -35,7 +32,7 @@ public class AllWheelDriveConfiguration extends DriveWheelConfigurationValue {
    * Builder for {@link AllWheelDriveConfiguration}
    */
   public static class Builder extends DriveWheelConfigurationValue.Builder {
-    public AllWheelDriveConfiguration build() {
+    @NotNull public AllWheelDriveConfiguration build() {
       return new AllWheelDriveConfiguration(myData);
     }
     /**

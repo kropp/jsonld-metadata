@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A particular physical business or branch of an organization. Examples of LocalBusiness include a restaurant, a particular branch of a restaurant chain, a branch of a bank, a medical practice, a club, a bowling alley, etc.
@@ -103,7 +105,7 @@ public class LocalBusiness extends Place {
    * Builder for {@link LocalBusiness}
    */
   public static class Builder extends Place.Builder {
-    public LocalBusiness build() {
+    @NotNull public LocalBusiness build() {
       return new LocalBusiness(myData);
     }
     /**

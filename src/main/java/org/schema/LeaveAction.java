@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An agent leaves an event / group with participants/friends at a location.\n\nRelated actions:\n\n* [[JoinAction]]: The antonym of LeaveAction.\n* [[UnRegisterAction]]: Unlike UnRegisterAction, LeaveAction implies leaving a group/team of people rather than a service.
@@ -52,7 +54,7 @@ public class LeaveAction extends InteractAction {
    * Builder for {@link LeaveAction}
    */
   public static class Builder extends InteractAction.Builder {
-    public LeaveAction build() {
+    @NotNull public LeaveAction build() {
       return new LeaveAction(myData);
     }
     /**

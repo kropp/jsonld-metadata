@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of notifying an event organizer as to whether you expect to attend the event.
@@ -154,7 +156,7 @@ public class RsvpAction extends InformAction {
    * Builder for {@link RsvpAction}
    */
   public static class Builder extends InformAction.Builder {
-    public RsvpAction build() {
+    @NotNull public RsvpAction build() {
       return new RsvpAction(myData);
     }
     /**

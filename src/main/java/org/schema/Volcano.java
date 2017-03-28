@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A volcano, like Fuji san.
@@ -35,7 +32,7 @@ public class Volcano extends Landform {
    * Builder for {@link Volcano}
    */
   public static class Builder extends Landform.Builder {
-    public Volcano build() {
+    @NotNull public Volcano build() {
       return new Volcano(myData);
     }
     /**

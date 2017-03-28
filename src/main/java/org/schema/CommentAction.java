@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of generating a comment about a subject.
@@ -52,7 +54,7 @@ public class CommentAction extends CommunicateAction {
    * Builder for {@link CommentAction}
    */
   public static class Builder extends CommunicateAction.Builder {
-    public CommentAction build() {
+    @NotNull public CommentAction build() {
       return new CommentAction(myData);
     }
     /**

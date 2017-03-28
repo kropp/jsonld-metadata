@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Properties that take Distances as values are of the form '&lt;Number&gt; &lt;Length unit of measure&gt;'. E.g., '7 ft'.
@@ -35,7 +32,7 @@ public class Distance extends Quantity {
    * Builder for {@link Distance}
    */
   public static class Builder extends Quantity.Builder {
-    public Distance build() {
+    @NotNull public Distance build() {
       return new Distance(myData);
     }
     /**

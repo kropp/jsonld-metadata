@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of manipulating/administering/supervising/controlling one or more objects.
@@ -35,7 +32,7 @@ public class OrganizeAction extends Action {
    * Builder for {@link OrganizeAction}
    */
   public static class Builder extends Action.Builder {
-    public OrganizeAction build() {
+    @NotNull public OrganizeAction build() {
       return new OrganizeAction(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * ATM/cash machine.
@@ -35,7 +32,7 @@ public class AutomatedTeller extends FinancialService {
    * Builder for {@link AutomatedTeller}
    */
   public static class Builder extends FinancialService.Builder {
-    public AutomatedTeller build() {
+    @NotNull public AutomatedTeller build() {
       return new AutomatedTeller(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates.
@@ -35,7 +32,7 @@ public class Code extends CreativeWork {
    * Builder for {@link Code}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Code build() {
+    @NotNull public Code build() {
       return new Code(myData);
     }
     /**

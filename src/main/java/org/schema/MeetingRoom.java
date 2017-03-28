@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A meeting room, conference room, or conference hall is a room provided for singular events such as business conferences and meetings (Source: Wikipedia, the free encyclopedia, see <a href="http://en.wikipedia.org/wiki/Conference_hall">http://en.wikipedia.org/wiki/Conference_hall</a>).
@@ -38,7 +35,7 @@ public class MeetingRoom extends Room {
    * Builder for {@link MeetingRoom}
    */
   public static class Builder extends Room.Builder {
-    public MeetingRoom build() {
+    @NotNull public MeetingRoom build() {
       return new MeetingRoom(myData);
     }
     /**

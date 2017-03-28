@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An image file.Equivalent class: http://purl.org/dc/dcmitype/Image
@@ -120,7 +122,7 @@ public class ImageObject extends MediaObject {
    * Builder for {@link ImageObject}
    */
   public static class Builder extends MediaObject.Builder {
-    public ImageObject build() {
+    @NotNull public ImageObject build() {
       return new ImageObject(myData);
     }
     /**

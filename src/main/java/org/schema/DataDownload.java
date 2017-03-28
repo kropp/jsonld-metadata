@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A dataset in downloadable form.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_DatasetClassEquivalent class: http://www.w3.org/ns/dcat#Distribution
@@ -35,7 +32,7 @@ public class DataDownload extends MediaObject {
    * Builder for {@link DataDownload}
    */
   public static class Builder extends MediaObject.Builder {
-    public DataDownload build() {
+    @NotNull public DataDownload build() {
       return new DataDownload(myData);
     }
     /**

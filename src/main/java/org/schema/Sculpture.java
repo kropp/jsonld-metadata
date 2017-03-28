@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A piece of sculpture.
@@ -35,7 +32,7 @@ public class Sculpture extends CreativeWork {
    * Builder for {@link Sculpture}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Sculpture build() {
+    @NotNull public Sculpture build() {
       return new Sculpture(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A predefined value for a product characteristic, e.g. the power cord plug type 'US' or the garment sizes 'S', 'M', 'L', and 'XL'.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -241,7 +243,7 @@ public class QualitativeValue extends Enumeration {
    * Builder for {@link QualitativeValue}
    */
   public static class Builder extends Enumeration.Builder {
-    public QualitativeValue build() {
+    @NotNull public QualitativeValue build() {
       return new QualitativeValue(myData);
     }
     /**

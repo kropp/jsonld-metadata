@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A media season e.g. tv, radio, video game etc.
@@ -222,7 +224,7 @@ public class CreativeWorkSeason extends CreativeWork {
    * Builder for {@link CreativeWorkSeason}
    */
   public static class Builder extends CreativeWork.Builder {
-    public CreativeWorkSeason build() {
+    @NotNull public CreativeWorkSeason build() {
       return new CreativeWorkSeason(myData);
     }
     /**

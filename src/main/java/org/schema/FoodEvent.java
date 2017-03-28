@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Event type: Food event.
@@ -35,7 +32,7 @@ public class FoodEvent extends Event {
    * Builder for {@link FoodEvent}
    */
   public static class Builder extends Event.Builder {
-    public FoodEvent build() {
+    @NotNull public FoodEvent build() {
       return new FoodEvent(myData);
     }
     /**

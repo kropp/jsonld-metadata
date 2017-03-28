@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A Property value specification.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass
@@ -494,7 +496,7 @@ public class PropertyValueSpecification extends Intangible {
    * Builder for {@link PropertyValueSpecification}
    */
   public static class Builder extends Intangible.Builder {
-    public PropertyValueSpecification build() {
+    @NotNull public PropertyValueSpecification build() {
       return new PropertyValueSpecification(myData);
     }
     /**

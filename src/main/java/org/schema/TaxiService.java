@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A service for a vehicle for hire with a driver for local travel. Fares are usually calculated based on distance traveled.
@@ -35,7 +32,7 @@ public class TaxiService extends Service {
    * Builder for {@link TaxiService}
    */
   public static class Builder extends Service.Builder {
-    public TaxiService build() {
+    @NotNull public TaxiService build() {
       return new TaxiService(myData);
     }
     /**

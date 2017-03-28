@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Aquarium.
@@ -35,7 +32,7 @@ public class Aquarium extends CivicStructure {
    * Builder for {@link Aquarium}
    */
   public static class Builder extends CivicStructure.Builder {
-    public Aquarium build() {
+    @NotNull public Aquarium build() {
       return new Aquarium(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A reservation for train travel.\n\nNote: This type is for information about actual reservations, e.g. in confirmation emails or HTML pages with individual confirmations of reservations. For offers of tickets, use [[Offer]].
@@ -35,7 +32,7 @@ public class TrainReservation extends Reservation {
    * Builder for {@link TrainReservation}
    */
   public static class Builder extends Reservation.Builder {
-    public TrainReservation build() {
+    @NotNull public TrainReservation build() {
       return new TrainReservation(myData);
     }
     /**

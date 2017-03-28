@@ -30,7 +30,7 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
                     appendln("   * $it")
                     appendln("   */")
                 }
-                appendln("  public static $typeName.Builder ${typeName.decapitalize()}() { return new $typeName.Builder(); }")
+                appendln("  @NotNull public static $typeName.Builder ${typeName.decapitalize()}() { return new $typeName.Builder(); }")
             }
             appendln()
             appendln("  public static ThingBuilder getBuilder(@NotNull String type) {")

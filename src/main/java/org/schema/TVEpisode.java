@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A TV episode which can be part of a series or season.
@@ -86,7 +88,7 @@ public class TVEpisode extends Episode {
    * Builder for {@link TVEpisode}
    */
   public static class Builder extends Episode.Builder {
-    public TVEpisode build() {
+    @NotNull public TVEpisode build() {
       return new TVEpisode(myData);
     }
     /**

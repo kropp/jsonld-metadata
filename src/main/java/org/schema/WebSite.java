@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A WebSite is a set of related web pages and other items typically served from a single web domain and accessible via URLs.
@@ -35,7 +32,7 @@ public class WebSite extends CreativeWork {
    * Builder for {@link WebSite}
    */
   public static class Builder extends CreativeWork.Builder {
-    public WebSite build() {
+    @NotNull public WebSite build() {
       return new WebSite(myData);
     }
     /**

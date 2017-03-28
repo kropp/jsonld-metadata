@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * UserInteraction and its subtypes is an old way of talking about users interacting with pages. It is generally better to use [[Action]]-based vocabulary, alongside types such as [[Comment]].
@@ -35,7 +32,7 @@ public class UserPlays extends UserInteraction {
    * Builder for {@link UserPlays}
    */
   public static class Builder extends UserInteraction.Builder {
-    public UserPlays build() {
+    @NotNull public UserPlays build() {
       return new UserPlays(myData);
     }
     /**

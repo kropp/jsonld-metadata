@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A GeoCircle is a GeoShape representing a circular geographic area. As it is a GeoShape
@@ -106,7 +108,7 @@ public class GeoCircle extends GeoShape {
    * Builder for {@link GeoCircle}
    */
   public static class Builder extends GeoShape.Builder {
-    public GeoCircle build() {
+    @NotNull public GeoCircle build() {
       return new GeoCircle(myData);
     }
     /**

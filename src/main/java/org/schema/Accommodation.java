@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An accommodation is a place that can accommodate human beings, e.g. a hotel room, a camping pitch, or a meeting room. Many accommodations are for overnight stays, but this is not a mandatory requirement.
@@ -221,7 +223,7 @@ public class Accommodation extends Place {
    * Builder for {@link Accommodation}
    */
   public static class Builder extends Place.Builder {
-    public Accommodation build() {
+    @NotNull public Accommodation build() {
       return new Accommodation(myData);
     }
     /**

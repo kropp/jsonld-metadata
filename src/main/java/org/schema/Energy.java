@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Properties that take Energy as values are of the form '&lt;Number&gt; &lt;Energy unit of measure&gt;'.
@@ -35,7 +32,7 @@ public class Energy extends Quantity {
    * Builder for {@link Energy}
    */
   public static class Builder extends Quantity.Builder {
-    public Energy build() {
+    @NotNull public Energy build() {
       return new Energy(myData);
     }
     /**

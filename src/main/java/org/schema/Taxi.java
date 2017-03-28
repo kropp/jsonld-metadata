@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A taxi.
@@ -35,7 +32,7 @@ public class Taxi extends Service {
    * Builder for {@link Taxi}
    */
   public static class Builder extends Service.Builder {
-    public Taxi build() {
+    @NotNull public Taxi build() {
       return new Taxi(myData);
     }
     /**

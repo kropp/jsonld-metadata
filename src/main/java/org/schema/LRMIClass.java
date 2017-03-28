@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * This class is based on the work of the LRMI project, see lrmi.net for details.
@@ -35,7 +32,7 @@ public class LRMIClass extends Organization {
    * Builder for {@link LRMIClass}
    */
   public static class Builder extends Organization.Builder {
-    public LRMIClass build() {
+    @NotNull public LRMIClass build() {
       return new LRMIClass(myData);
     }
     /**

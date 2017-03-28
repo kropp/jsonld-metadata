@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A body of water, such as a sea, ocean, or lake.
@@ -35,7 +32,7 @@ public class BodyOfWater extends Landform {
    * Builder for {@link BodyOfWater}
    */
   public static class Builder extends Landform.Builder {
-    public BodyOfWater build() {
+    @NotNull public BodyOfWater build() {
       return new BodyOfWater(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Bank or credit union.
@@ -35,7 +32,7 @@ public class BankOrCreditUnion extends FinancialService {
    * Builder for {@link BankOrCreditUnion}
    */
   public static class Builder extends FinancialService.Builder {
-    public BankOrCreditUnion build() {
+    @NotNull public BankOrCreditUnion build() {
       return new BankOrCreditUnion(myData);
     }
     /**

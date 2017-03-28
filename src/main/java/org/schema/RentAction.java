@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of giving money in return for temporary use, but not ownership, of an object such as a vehicle or property. For example, an agent rents a property from a landlord in exchange for a periodic payment.
@@ -86,7 +88,7 @@ public class RentAction extends TradeAction {
    * Builder for {@link RentAction}
    */
   public static class Builder extends TradeAction.Builder {
-    public RentAction build() {
+    @NotNull public RentAction build() {
       return new RentAction(myData);
     }
     /**

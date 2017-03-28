@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A defence establishment, such as an army or navy base.
@@ -35,7 +32,7 @@ public class DefenceEstablishment extends GovernmentBuilding {
    * Builder for {@link DefenceEstablishment}
    */
   public static class Builder extends GovernmentBuilding.Builder {
-    public DefenceEstablishment build() {
+    @NotNull public DefenceEstablishment build() {
       return new DefenceEstablishment(myData);
     }
     /**

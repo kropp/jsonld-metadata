@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of swallowing solid objects.
@@ -35,7 +32,7 @@ public class EatAction extends ConsumeAction {
    * Builder for {@link EatAction}
    */
   public static class Builder extends ConsumeAction.Builder {
-    public EatAction build() {
+    @NotNull public EatAction build() {
       return new EatAction(myData);
     }
     /**

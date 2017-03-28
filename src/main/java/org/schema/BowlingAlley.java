@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A bowling alley.
@@ -35,7 +32,7 @@ public class BowlingAlley extends SportsActivityLocation {
    * Builder for {@link BowlingAlley}
    */
   public static class Builder extends SportsActivityLocation.Builder {
-    public BowlingAlley build() {
+    @NotNull public BowlingAlley build() {
       return new BowlingAlley(myData);
     }
     /**

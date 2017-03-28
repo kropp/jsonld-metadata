@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A type of Bank Account with a main purpose of depositing funds to gain interest or other benefits.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
@@ -35,7 +32,7 @@ public class DepositAccount extends InvestmentOrDeposit {
    * Builder for {@link DepositAccount}
    */
   public static class Builder extends InvestmentOrDeposit.Builder {
-    public DepositAccount build() {
+    @NotNull public DepositAccount build() {
       return new DepositAccount(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A parking lot or other parking facility.
@@ -35,7 +32,7 @@ public class ParkingFacility extends CivicStructure {
    * Builder for {@link ParkingFacility}
    */
   public static class Builder extends CivicStructure.Builder {
-    public ParkingFacility build() {
+    @NotNull public ParkingFacility build() {
       return new ParkingFacility(myData);
     }
     /**

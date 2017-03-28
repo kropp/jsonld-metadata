@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
@@ -52,7 +54,7 @@ public class GovernmentService extends Service {
    * Builder for {@link GovernmentService}
    */
   public static class Builder extends Service.Builder {
-    public GovernmentService build() {
+    @NotNull public GovernmentService build() {
       return new GovernmentService(myData);
     }
     /**

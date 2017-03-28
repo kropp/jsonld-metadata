@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A comedy club.
@@ -35,7 +32,7 @@ public class ComedyClub extends EntertainmentBusiness {
    * Builder for {@link ComedyClub}
    */
   public static class Builder extends EntertainmentBusiness.Builder {
-    public ComedyClub build() {
+    @NotNull public ComedyClub build() {
       return new ComedyClub(myData);
     }
     /**

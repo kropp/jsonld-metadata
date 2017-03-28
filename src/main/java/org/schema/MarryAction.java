@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of marrying a person.
@@ -35,7 +32,7 @@ public class MarryAction extends InteractAction {
    * Builder for {@link MarryAction}
    */
   public static class Builder extends InteractAction.Builder {
-    public MarryAction build() {
+    @NotNull public MarryAction build() {
       return new MarryAction(myData);
     }
     /**

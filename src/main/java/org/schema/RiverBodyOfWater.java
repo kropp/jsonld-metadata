@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A river (for example, the broad majestic Shannon).
@@ -35,7 +32,7 @@ public class RiverBodyOfWater extends BodyOfWater {
    * Builder for {@link RiverBodyOfWater}
    */
   public static class Builder extends BodyOfWater.Builder {
-    public RiverBodyOfWater build() {
+    @NotNull public RiverBodyOfWater build() {
       return new RiverBodyOfWater(myData);
     }
     /**

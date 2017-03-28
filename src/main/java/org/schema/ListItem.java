@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An list item, e.g. a step in a checklist or how-to description.
@@ -86,7 +88,7 @@ public class ListItem extends Intangible implements Position {
    * Builder for {@link ListItem}
    */
   public static class Builder extends Intangible.Builder {
-    public ListItem build() {
+    @NotNull public ListItem build() {
       return new ListItem(myData);
     }
     /**

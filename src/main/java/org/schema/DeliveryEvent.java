@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An event involving the delivery of an item.
@@ -103,7 +105,7 @@ public class DeliveryEvent extends Event {
    * Builder for {@link DeliveryEvent}
    */
   public static class Builder extends Event.Builder {
-    public DeliveryEvent build() {
+    @NotNull public DeliveryEvent build() {
       return new DeliveryEvent(myData);
     }
     /**

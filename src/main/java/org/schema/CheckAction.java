@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An agent inspects, determines, investigates, inquires, or examines an object's accuracy, quality, condition, or state.
@@ -35,7 +32,7 @@ public class CheckAction extends FindAction {
    * Builder for {@link CheckAction}
    */
   public static class Builder extends FindAction.Builder {
-    public CheckAction build() {
+    @NotNull public CheckAction build() {
       return new CheckAction(myData);
     }
     /**

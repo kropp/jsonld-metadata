@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A state or province of a country.
@@ -35,7 +32,7 @@ public class State extends AdministrativeArea {
    * Builder for {@link State}
    */
   public static class Builder extends AdministrativeArea.Builder {
-    public State build() {
+    @NotNull public State build() {
       return new State(myData);
     }
     /**

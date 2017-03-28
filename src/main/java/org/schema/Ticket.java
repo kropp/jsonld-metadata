@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Used to describe a ticket to an event, a flight, a bus ride, etc.
@@ -256,7 +258,7 @@ public class Ticket extends Intangible {
    * Builder for {@link Ticket}
    */
   public static class Builder extends Intangible.Builder {
-    public Ticket build() {
+    @NotNull public Ticket build() {
       return new Ticket(myData);
     }
     /**

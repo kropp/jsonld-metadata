@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A single, identifiable product instance (e.g. a laptop with a particular serial number).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -35,7 +32,7 @@ public class IndividualProduct extends Product {
    * Builder for {@link IndividualProduct}
    */
   public static class Builder extends Product.Builder {
-    public IndividualProduct build() {
+    @NotNull public IndividualProduct build() {
       return new IndividualProduct(myData);
     }
     /**

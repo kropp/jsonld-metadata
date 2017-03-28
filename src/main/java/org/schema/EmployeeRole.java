@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A subclass of OrganizationRole used to describe employee relationships.
@@ -52,7 +54,7 @@ public class EmployeeRole extends OrganizationRole {
    * Builder for {@link EmployeeRole}
    */
   public static class Builder extends OrganizationRole.Builder {
-    public EmployeeRole build() {
+    @NotNull public EmployeeRole build() {
       return new EmployeeRole(myData);
     }
     /**

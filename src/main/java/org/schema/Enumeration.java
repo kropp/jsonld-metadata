@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Lists or enumerations—for example, a list of cuisines or music genres, etc.
@@ -35,7 +32,7 @@ public class Enumeration extends Intangible {
    * Builder for {@link Enumeration}
    */
   public static class Builder extends Intangible.Builder {
-    public Enumeration build() {
+    @NotNull public Enumeration build() {
       return new Enumeration(myData);
     }
     /**

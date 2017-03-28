@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A file containing a note, primarily for the author.
@@ -35,7 +32,7 @@ public class NoteDigitalDocument extends DigitalDocument {
    * Builder for {@link NoteDigitalDocument}
    */
   public static class Builder extends DigitalDocument.Builder {
-    public NoteDigitalDocument build() {
+    @NotNull public NoteDigitalDocument build() {
       return new NoteDigitalDocument(myData);
     }
     /**

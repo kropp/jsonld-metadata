@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A single message from a sender to one or more organizations or people.
@@ -154,7 +156,7 @@ public class Message extends CreativeWork {
    * Builder for {@link Message}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Message build() {
+    @NotNull public Message build() {
       return new Message(myData);
     }
     /**

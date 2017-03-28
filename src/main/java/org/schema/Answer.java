@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An answer offered to a question; perhaps correct, perhaps opinionated or wrong.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_QAStackExchange
@@ -35,7 +32,7 @@ public class Answer extends Comment implements SuggestedAnswer {
    * Builder for {@link Answer}
    */
   public static class Builder extends Comment.Builder {
-    public Answer build() {
+    @NotNull public Answer build() {
       return new Answer(myData);
     }
     /**

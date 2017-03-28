@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A musical composition.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -222,7 +224,7 @@ public class MusicComposition extends CreativeWork {
    * Builder for {@link MusicComposition}
    */
   public static class Builder extends CreativeWork.Builder {
-    public MusicComposition build() {
+    @NotNull public MusicComposition build() {
       return new MusicComposition(myData);
     }
     /**

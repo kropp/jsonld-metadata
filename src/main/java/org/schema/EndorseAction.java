@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An agent approves/certifies/likes/supports/sanction an object.
@@ -69,7 +71,7 @@ public class EndorseAction extends ReactAction {
    * Builder for {@link EndorseAction}
    */
   public static class Builder extends ReactAction.Builder {
-    public EndorseAction build() {
+    @NotNull public EndorseAction build() {
       return new EndorseAction(myData);
     }
     /**

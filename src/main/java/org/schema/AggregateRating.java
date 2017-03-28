@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The average rating based on multiple ratings or reviews.
@@ -86,7 +88,7 @@ public class AggregateRating extends Rating {
    * Builder for {@link AggregateRating}
    */
   public static class Builder extends Rating.Builder {
-    public AggregateRating build() {
+    @NotNull public AggregateRating build() {
       return new AggregateRating(myData);
     }
     /**

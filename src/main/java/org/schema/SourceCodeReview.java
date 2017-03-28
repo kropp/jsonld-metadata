@@ -105,7 +105,7 @@ public class SourceCodeReview extends SoftwareApplication {
    * Builder for {@link SourceCodeReview}
    */
   public static class Builder extends SoftwareApplication.Builder {
-    public SourceCodeReview build() {
+    @NotNull public SourceCodeReview build() {
       return new SourceCodeReview(myData);
     }
     /**

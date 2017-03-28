@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Reference documentation for application programming interfaces (APIs).
@@ -103,7 +105,7 @@ public class APIReference extends TechArticle {
    * Builder for {@link APIReference}
    */
   public static class Builder extends TechArticle.Builder {
-    public APIReference build() {
+    @NotNull public APIReference build() {
       return new APIReference(myData);
     }
     /**

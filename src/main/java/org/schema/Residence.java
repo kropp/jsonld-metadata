@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The place where a person lives.
@@ -35,7 +32,7 @@ public class Residence extends Place {
    * Builder for {@link Residence}
    */
   public static class Builder extends Place.Builder {
-    public Residence build() {
+    @NotNull public Residence build() {
       return new Residence(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An organization such as a school, NGO, corporation, club, etc.
@@ -766,7 +768,7 @@ public class Organization extends Thing implements MemberOf {
    * Builder for {@link Organization}
    */
   public static class Builder extends Thing.Builder {
-    public Organization build() {
+    @NotNull public Organization build() {
       return new Organization(myData);
     }
     /**

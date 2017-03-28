@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of interacting with another person or organization.
@@ -35,7 +32,7 @@ public class InteractAction extends Action {
    * Builder for {@link InteractAction}
    */
   public static class Builder extends Action.Builder {
-    public InteractAction build() {
+    @NotNull public InteractAction build() {
       return new InteractAction(myData);
     }
     /**

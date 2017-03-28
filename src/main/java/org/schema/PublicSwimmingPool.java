@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A public swimming pool.
@@ -35,7 +32,7 @@ public class PublicSwimmingPool extends SportsActivityLocation {
    * Builder for {@link PublicSwimmingPool}
    */
   public static class Builder extends SportsActivityLocation.Builder {
-    public PublicSwimmingPool build() {
+    @NotNull public PublicSwimmingPool build() {
       return new PublicSwimmingPool(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A short TV or radio program or a segment/part of a program.
@@ -171,7 +173,7 @@ public class Clip extends CreativeWork {
    * Builder for {@link Clip}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Clip build() {
+    @NotNull public Clip build() {
       return new Clip(myData);
     }
     /**

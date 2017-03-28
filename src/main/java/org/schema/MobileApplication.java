@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A software application designed specifically to work well on a mobile device such as a telephone.
@@ -52,7 +54,7 @@ public class MobileApplication extends SoftwareApplication {
    * Builder for {@link MobileApplication}
    */
   public static class Builder extends SoftwareApplication.Builder {
-    public MobileApplication build() {
+    @NotNull public MobileApplication build() {
       return new MobileApplication(myData);
     }
     /**

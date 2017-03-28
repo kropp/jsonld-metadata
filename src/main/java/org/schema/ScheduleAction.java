@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Scheduling future actions, events, or tasks.\n\nRelated actions:\n\n* [[ReserveAction]]: Unlike ReserveAction, ScheduleAction allocates future actions (e.g. an event, a task, etc) towards a time slot / spatial allocation.
@@ -35,7 +32,7 @@ public class ScheduleAction extends PlanAction {
    * Builder for {@link ScheduleAction}
    */
   public static class Builder extends PlanAction.Builder {
-    public ScheduleAction build() {
+    @NotNull public ScheduleAction build() {
       return new ScheduleAction(myData);
     }
     /**

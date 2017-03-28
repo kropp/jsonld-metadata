@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A part of a successively published publication such as a periodical or multi-volume work, often numbered. It may represent a time span, such as a year.
@@ -156,7 +158,7 @@ public class PublicationVolume extends CreativeWork {
    * Builder for {@link PublicationVolume}
    */
   public static class Builder extends CreativeWork.Builder {
-    public PublicationVolume build() {
+    @NotNull public PublicationVolume build() {
       return new PublicationVolume(myData);
     }
     /**

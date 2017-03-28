@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A camping pitch is an individual place for overnight stay in the outdoors, typically being part of a larger camping site.
@@ -38,7 +35,7 @@ public class CampingPitch extends Accommodation {
    * Builder for {@link CampingPitch}
    */
   public static class Builder extends Accommodation.Builder {
-    public CampingPitch build() {
+    @NotNull public CampingPitch build() {
       return new CampingPitch(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of inserting at the end if an ordered collection.
@@ -35,7 +32,7 @@ public class AppendAction extends InsertAction {
    * Builder for {@link AppendAction}
    */
   public static class Builder extends InsertAction.Builder {
-    public AppendAction build() {
+    @NotNull public AppendAction build() {
       return new AppendAction(myData);
     }
     /**

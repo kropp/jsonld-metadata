@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of consuming audio content.
@@ -35,7 +32,7 @@ public class ListenAction extends ConsumeAction {
    * Builder for {@link ListenAction}
    */
   public static class Builder extends ConsumeAction.Builder {
-    public ListenAction build() {
+    @NotNull public ListenAction build() {
       return new ListenAction(myData);
     }
     /**

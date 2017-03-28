@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * CreativeWorkSeries dedicated to TV broadcast and associated online delivery.
@@ -222,7 +224,7 @@ public class TVSeries extends CreativeWorkSeries {
    * Builder for {@link TVSeries}
    */
   public static class Builder extends CreativeWorkSeries.Builder {
-    public TVSeries build() {
+    @NotNull public TVSeries build() {
       return new TVSeries(myData);
     }
     /**

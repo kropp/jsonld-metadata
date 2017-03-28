@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A blog post.
@@ -35,7 +32,7 @@ public class BlogPosting extends SocialMediaPosting {
    * Builder for {@link BlogPosting}
    */
   public static class Builder extends SocialMediaPosting.Builder {
-    public BlogPosting build() {
+    @NotNull public BlogPosting build() {
       return new BlogPosting(myData);
     }
     /**

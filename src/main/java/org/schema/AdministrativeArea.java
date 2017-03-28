@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A geographical region, typically under the jurisdiction of a particular government.
@@ -35,7 +32,7 @@ public class AdministrativeArea extends Place {
    * Builder for {@link AdministrativeArea}
    */
   public static class Builder extends Place.Builder {
-    public AdministrativeArea build() {
+    @NotNull public AdministrativeArea build() {
       return new AdministrativeArea(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of dressing oneself in clothing.
@@ -35,7 +32,7 @@ public class WearAction extends UseAction {
    * Builder for {@link WearAction}
    */
   public static class Builder extends UseAction.Builder {
-    public WearAction build() {
+    @NotNull public WearAction build() {
       return new WearAction(myData);
     }
     /**

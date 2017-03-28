@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The mailing address.
@@ -154,7 +156,7 @@ public class PostalAddress extends ContactPoint {
    * Builder for {@link PostalAddress}
    */
   public static class Builder extends ContactPoint.Builder {
-    public PostalAddress build() {
+    @NotNull public PostalAddress build() {
       return new PostalAddress(myData);
     }
     /**

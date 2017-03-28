@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of momentarily pausing a device or application (e.g. pause music playback or pause a timer).
@@ -35,7 +32,7 @@ public class SuspendAction extends ControlAction {
    * Builder for {@link SuspendAction}
    */
   public static class Builder extends ControlAction.Builder {
-    public SuspendAction build() {
+    @NotNull public SuspendAction build() {
       return new SuspendAction(myData);
     }
     /**

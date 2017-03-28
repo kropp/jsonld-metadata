@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The Game type represents things which are games. These are typically rule-governed recreational activities, e.g. role-playing games in which players assume the role of characters in a fictional setting.
@@ -154,7 +156,7 @@ public class Game extends CreativeWork {
    * Builder for {@link Game}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Game build() {
+    @NotNull public Game build() {
       return new Game(myData);
     }
     /**

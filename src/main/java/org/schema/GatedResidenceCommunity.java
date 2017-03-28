@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Residence type: Gated community.
@@ -35,7 +32,7 @@ public class GatedResidenceCommunity extends Residence {
    * Builder for {@link GatedResidenceCommunity}
    */
   public static class Builder extends Residence.Builder {
-    public GatedResidenceCommunity build() {
+    @NotNull public GatedResidenceCommunity build() {
       return new GatedResidenceCommunity(myData);
     }
     /**

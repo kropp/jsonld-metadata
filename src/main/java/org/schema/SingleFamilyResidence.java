@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Residence type: Single-family home.
@@ -149,7 +151,7 @@ public class SingleFamilyResidence extends House {
    * Builder for {@link SingleFamilyResidence}
    */
   public static class Builder extends House.Builder {
-    public SingleFamilyResidence build() {
+    @NotNull public SingleFamilyResidence build() {
       return new SingleFamilyResidence(myData);
     }
     /**

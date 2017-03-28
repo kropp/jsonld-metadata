@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A country.
@@ -35,7 +32,7 @@ public class Country extends AdministrativeArea {
    * Builder for {@link Country}
    */
   public static class Builder extends AdministrativeArea.Builder {
-    public Country build() {
+    @NotNull public Country build() {
       return new Country(myData);
     }
     /**

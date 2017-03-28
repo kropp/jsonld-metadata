@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A structured value providing information about when a certain organization or person owned a certain product.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -137,7 +139,7 @@ public class OwnershipInfo extends StructuredValue {
    * Builder for {@link OwnershipInfo}
    */
   public static class Builder extends StructuredValue.Builder {
-    public OwnershipInfo build() {
+    @NotNull public OwnershipInfo build() {
       return new OwnershipInfo(myData);
     }
     /**

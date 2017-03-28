@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of being defeated in a competitive activity.
@@ -52,7 +54,7 @@ public class LoseAction extends AchieveAction {
    * Builder for {@link LoseAction}
    */
   public static class Builder extends AchieveAction.Builder {
-    public LoseAction build() {
+    @NotNull public LoseAction build() {
       return new LoseAction(myData);
     }
     /**

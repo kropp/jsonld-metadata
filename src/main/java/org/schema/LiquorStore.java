@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A shop that sells alcoholic drinks such as wine, beer, whisky and other spirits.
@@ -35,7 +32,7 @@ public class LiquorStore extends Store {
    * Builder for {@link LiquorStore}
    */
   public static class Builder extends Store.Builder {
-    public LiquorStore build() {
+    @NotNull public LiquorStore build() {
       return new LiquorStore(myData);
     }
     /**

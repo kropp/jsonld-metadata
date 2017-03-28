@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of granting permission to an object.
@@ -86,7 +88,7 @@ public class AuthorizeAction extends AllocateAction {
    * Builder for {@link AuthorizeAction}
    */
   public static class Builder extends AllocateAction.Builder {
-    public AuthorizeAction build() {
+    @NotNull public AuthorizeAction build() {
       return new AuthorizeAction(myData);
     }
     /**

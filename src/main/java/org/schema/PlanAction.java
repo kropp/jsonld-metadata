@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of planning the execution of an event/task/action/reservation/plan to a future date.
@@ -52,7 +54,7 @@ public class PlanAction extends OrganizeAction {
    * Builder for {@link PlanAction}
    */
   public static class Builder extends OrganizeAction.Builder {
-    public PlanAction build() {
+    @NotNull public PlanAction build() {
       return new PlanAction(myData);
     }
     /**

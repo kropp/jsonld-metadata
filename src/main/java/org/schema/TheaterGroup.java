@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A theater group or company, for example, the Royal Shakespeare Company or Druid Theatre.
@@ -35,7 +32,7 @@ public class TheaterGroup extends PerformingGroup {
    * Builder for {@link TheaterGroup}
    */
   public static class Builder extends PerformingGroup.Builder {
-    public TheaterGroup build() {
+    @NotNull public TheaterGroup build() {
       return new TheaterGroup(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of consuming written content.
@@ -35,7 +32,7 @@ public class ReadAction extends ConsumeAction {
    * Builder for {@link ReadAction}
    */
   public static class Builder extends ConsumeAction.Builder {
-    public ReadAction build() {
+    @NotNull public ReadAction build() {
       return new ReadAction(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A bar or pub.
@@ -35,7 +32,7 @@ public class BarOrPub extends FoodEstablishment {
    * Builder for {@link BarOrPub}
    */
   public static class Builder extends FoodEstablishment.Builder {
-    public BarOrPub build() {
+    @NotNull public BarOrPub build() {
       return new BarOrPub(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An agent orders an object/product/service to be delivered/sent.
@@ -52,7 +54,7 @@ public class OrderAction extends TradeAction {
    * Builder for {@link OrderAction}
    */
   public static class Builder extends TradeAction.Builder {
-    public OrderAction build() {
+    @NotNull public OrderAction build() {
       return new OrderAction(myData);
     }
     /**

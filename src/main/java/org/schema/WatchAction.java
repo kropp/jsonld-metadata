@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of consuming dynamic/moving visual content.
@@ -35,7 +32,7 @@ public class WatchAction extends ConsumeAction {
    * Builder for {@link WatchAction}
    */
   public static class Builder extends ConsumeAction.Builder {
-    public WatchAction build() {
+    @NotNull public WatchAction build() {
       return new WatchAction(myData);
     }
     /**

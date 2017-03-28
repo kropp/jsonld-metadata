@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A college, university, or other third-level educational institution.
@@ -35,7 +32,7 @@ public class CollegeOrUniversity extends EducationalOrganization {
    * Builder for {@link CollegeOrUniversity}
    */
   public static class Builder extends EducationalOrganization.Builder {
-    public CollegeOrUniversity build() {
+    @NotNull public CollegeOrUniversity build() {
       return new CollegeOrUniversity(myData);
     }
     /**

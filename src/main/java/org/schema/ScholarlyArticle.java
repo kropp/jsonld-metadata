@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A scholarly article.
@@ -35,7 +32,7 @@ public class ScholarlyArticle extends Article {
    * Builder for {@link ScholarlyArticle}
    */
   public static class Builder extends Article.Builder {
-    public ScholarlyArticle build() {
+    @NotNull public ScholarlyArticle build() {
       return new ScholarlyArticle(myData);
     }
     /**

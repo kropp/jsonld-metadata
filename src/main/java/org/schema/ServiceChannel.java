@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A means for accessing a service, e.g. a government office location, web site, or phone number.
@@ -188,7 +190,7 @@ public class ServiceChannel extends Intangible {
    * Builder for {@link ServiceChannel}
    */
   public static class Builder extends Intangible.Builder {
-    public ServiceChannel build() {
+    @NotNull public ServiceChannel build() {
       return new ServiceChannel(myData);
     }
     /**

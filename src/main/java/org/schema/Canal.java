@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A canal, like the Panama Canal.
@@ -35,7 +32,7 @@ public class Canal extends BodyOfWater {
    * Builder for {@link Canal}
    */
   public static class Builder extends BodyOfWater.Builder {
-    public Canal build() {
+    @NotNull public Canal build() {
       return new Canal(myData);
     }
     /**

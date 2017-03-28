@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A garden store.
@@ -35,7 +32,7 @@ public class GardenStore extends Store {
    * Builder for {@link GardenStore}
    */
   public static class Builder extends Store.Builder {
-    public GardenStore build() {
+    @NotNull public GardenStore build() {
       return new GardenStore(myData);
     }
     /**

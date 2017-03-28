@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of expressing a preference from a set of options or a large or unbounded set of choices/options.
@@ -69,7 +71,7 @@ public class ChooseAction extends AssessAction {
    * Builder for {@link ChooseAction}
    */
   public static class Builder extends AssessAction.Builder {
-    public ChooseAction build() {
+    @NotNull public ChooseAction build() {
       return new ChooseAction(myData);
     }
     /**

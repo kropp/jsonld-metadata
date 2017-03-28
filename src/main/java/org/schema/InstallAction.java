@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of installing an application.
@@ -35,7 +32,7 @@ public class InstallAction extends ConsumeAction {
    * Builder for {@link InstallAction}
    */
   public static class Builder extends ConsumeAction.Builder {
-    public InstallAction build() {
+    @NotNull public InstallAction build() {
       return new InstallAction(myData);
     }
     /**

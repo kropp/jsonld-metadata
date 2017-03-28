@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An Insurance agency.
@@ -35,7 +32,7 @@ public class InsuranceAgency extends FinancialService {
    * Builder for {@link InsuranceAgency}
    */
   public static class Builder extends FinancialService.Builder {
-    public InsuranceAgency build() {
+    @NotNull public InsuranceAgency build() {
       return new InsuranceAgency(myData);
     }
     /**

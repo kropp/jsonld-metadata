@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A painting.
@@ -35,7 +32,7 @@ public class Painting extends CreativeWork {
    * Builder for {@link Painting}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Painting build() {
+    @NotNull public Painting build() {
       return new Painting(myData);
     }
     /**

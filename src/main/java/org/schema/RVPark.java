@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
@@ -35,7 +32,7 @@ public class RVPark extends CivicStructure {
    * Builder for {@link RVPark}
    */
   public static class Builder extends CivicStructure.Builder {
-    public RVPark build() {
+    @NotNull public RVPark build() {
       return new RVPark(myData);
     }
     /**

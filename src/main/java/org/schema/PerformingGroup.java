@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A performance group, such as a band, an orchestra, or a circus.
@@ -35,7 +32,7 @@ public class PerformingGroup extends Organization {
    * Builder for {@link PerformingGroup}
    */
   public static class Builder extends Organization.Builder {
-    public PerformingGroup build() {
+    @NotNull public PerformingGroup build() {
       return new PerformingGroup(myData);
     }
     /**

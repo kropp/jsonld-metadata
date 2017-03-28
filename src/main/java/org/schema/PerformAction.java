@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of participating in performance arts.
@@ -52,7 +54,7 @@ public class PerformAction extends PlayAction {
    * Builder for {@link PerformAction}
    */
   public static class Builder extends PlayAction.Builder {
-    public PerformAction build() {
+    @NotNull public PerformAction build() {
       return new PerformAction(myData);
     }
     /**

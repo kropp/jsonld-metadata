@@ -224,7 +224,7 @@ public class NutritionInformation extends StructuredValue {
    * Builder for {@link NutritionInformation}
    */
   public static class Builder extends StructuredValue.Builder {
-    public NutritionInformation build() {
+    @NotNull public NutritionInformation build() {
       return new NutritionInformation(myData);
     }
     /**

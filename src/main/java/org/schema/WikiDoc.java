@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * This class contains information contributed by [http://wikidoc.org>WikiDoc](http://wikidoc.org>WikiDoc).
@@ -35,7 +32,7 @@ public class WikiDoc extends Organization {
    * Builder for {@link WikiDoc}
    */
   public static class Builder extends Organization.Builder {
-    public WikiDoc build() {
+    @NotNull public WikiDoc build() {
       return new WikiDoc(myData);
     }
     /**

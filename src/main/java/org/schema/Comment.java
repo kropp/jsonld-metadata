@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A comment on an item - for example, a comment on a blog post. The comment's content is expressed via the [[text]] property, and its topic via [[about]], properties shared with all CreativeWorks.
@@ -86,7 +88,7 @@ public class Comment extends CreativeWork {
    * Builder for {@link Comment}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Comment build() {
+    @NotNull public Comment build() {
       return new Comment(myData);
     }
     /**

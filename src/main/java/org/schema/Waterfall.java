@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A waterfall, like Niagara.
@@ -35,7 +32,7 @@ public class Waterfall extends BodyOfWater {
    * Builder for {@link Waterfall}
    */
   public static class Builder extends BodyOfWater.Builder {
-    public Waterfall build() {
+    @NotNull public Waterfall build() {
       return new Waterfall(myData);
     }
     /**

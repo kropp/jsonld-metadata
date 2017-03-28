@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A set of characteristics describing parents, who can be interested in viewing some content.
@@ -205,7 +207,7 @@ public class ParentAudience extends PeopleAudience {
    * Builder for {@link ParentAudience}
    */
   public static class Builder extends PeopleAudience.Builder {
-    public ParentAudience build() {
+    @NotNull public ParentAudience build() {
       return new ParentAudience(myData);
     }
     /**

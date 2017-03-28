@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A specific question - e.g. from a user seeking answers online, or collected in a Frequently Asked Questions (FAQ) document.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_QAStackExchange
@@ -120,7 +122,7 @@ public class Question extends CreativeWork {
    * Builder for {@link Question}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Question build() {
+    @NotNull public Question build() {
       return new Question(myData);
     }
     /**

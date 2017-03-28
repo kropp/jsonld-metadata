@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Original definition: "provider of professional services."\n\nThe general [[ProfessionalService]] type for local businesses was deprecated due to confusion with [[Service]]. For reference, the types that it included were: [[Dentist]],
@@ -37,7 +34,7 @@ public class ProfessionalService extends LocalBusiness {
    * Builder for {@link ProfessionalService}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public ProfessionalService build() {
+    @NotNull public ProfessionalService build() {
       return new ProfessionalService(myData);
     }
     /**

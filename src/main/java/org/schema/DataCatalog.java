@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A collection of datasets.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_DatasetClassEquivalent class: http://www.w3.org/ns/dcat#Catalog
@@ -52,7 +54,7 @@ public class DataCatalog extends CreativeWork {
    * Builder for {@link DataCatalog}
    */
   public static class Builder extends CreativeWork.Builder {
-    public DataCatalog build() {
+    @NotNull public DataCatalog build() {
       return new DataCatalog(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Organization: Non-governmental Organization.
@@ -35,7 +32,7 @@ public class NGO extends Organization {
    * Builder for {@link NGO}
    */
   public static class Builder extends Organization.Builder {
-    public NGO build() {
+    @NotNull public NGO build() {
       return new NGO(myData);
     }
     /**

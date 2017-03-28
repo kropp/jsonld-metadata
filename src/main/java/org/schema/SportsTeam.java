@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Organization: Sports team.
@@ -69,7 +71,7 @@ public class SportsTeam extends SportsOrganization implements Competitor {
    * Builder for {@link SportsTeam}
    */
   public static class Builder extends SportsOrganization.Builder {
-    public SportsTeam build() {
+    @NotNull public SportsTeam build() {
       return new SportsTeam(myData);
     }
     /**

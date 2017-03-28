@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A television station.
@@ -35,7 +32,7 @@ public class TelevisionStation extends LocalBusiness {
    * Builder for {@link TelevisionStation}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public TelevisionStation build() {
+    @NotNull public TelevisionStation build() {
       return new TelevisionStation(myData);
     }
     /**

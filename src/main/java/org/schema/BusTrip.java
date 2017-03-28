@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A trip on a commercial bus line.
@@ -205,7 +207,7 @@ public class BusTrip extends Intangible {
    * Builder for {@link BusTrip}
    */
   public static class Builder extends Intangible.Builder {
-    public BusTrip build() {
+    @NotNull public BusTrip build() {
       return new BusTrip(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An email message.
@@ -35,7 +32,7 @@ public class EmailMessage extends Message {
    * Builder for {@link EmailMessage}
    */
   public static class Builder extends Message.Builder {
-    public EmailMessage build() {
+    @NotNull public EmailMessage build() {
       return new EmailMessage(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A delivery service through which content is provided via broadcast over the air or online.
@@ -137,7 +139,7 @@ public class BroadcastService extends Service {
    * Builder for {@link BroadcastService}
    */
   public static class Builder extends Service.Builder {
-    public BroadcastService build() {
+    @NotNull public BroadcastService build() {
       return new BroadcastService(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A car is a wheeled, self-powered motor vehicle used for transportation.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
@@ -35,7 +32,7 @@ public class Car extends Vehicle {
    * Builder for {@link Car}
    */
   public static class Builder extends Vehicle.Builder {
-    public Car build() {
+    @NotNull public Car build() {
       return new Car(myData);
     }
     /**

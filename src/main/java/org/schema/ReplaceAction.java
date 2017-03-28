@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of editing a recipient by replacing an old object with a new object.
@@ -69,7 +71,7 @@ public class ReplaceAction extends UpdateAction {
    * Builder for {@link ReplaceAction}
    */
   public static class Builder extends UpdateAction.Builder {
-    public ReplaceAction build() {
+    @NotNull public ReplaceAction build() {
       return new ReplaceAction(myData);
     }
     /**

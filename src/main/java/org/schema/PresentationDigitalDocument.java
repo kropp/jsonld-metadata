@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A file containing slides or used for a presentation.
@@ -35,7 +32,7 @@ public class PresentationDigitalDocument extends DigitalDocument {
    * Builder for {@link PresentationDigitalDocument}
    */
   public static class Builder extends DigitalDocument.Builder {
-    public PresentationDigitalDocument build() {
+    @NotNull public PresentationDigitalDocument build() {
       return new PresentationDigitalDocument(myData);
     }
     /**

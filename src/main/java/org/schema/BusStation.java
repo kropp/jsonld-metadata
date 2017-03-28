@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A bus station.
@@ -35,7 +32,7 @@ public class BusStation extends CivicStructure {
    * Builder for {@link BusStation}
    */
   public static class Builder extends CivicStructure.Builder {
-    public BusStation build() {
+    @NotNull public BusStation build() {
       return new BusStation(myData);
     }
     /**

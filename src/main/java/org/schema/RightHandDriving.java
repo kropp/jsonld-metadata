@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The steering position is on the right side of the vehicle (viewed from the main direction of driving).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
@@ -35,7 +32,7 @@ public class RightHandDriving extends SteeringPositionValue {
    * Builder for {@link RightHandDriving}
    */
   public static class Builder extends SteeringPositionValue.Builder {
-    public RightHandDriving build() {
+    @NotNull public RightHandDriving build() {
       return new RightHandDriving(myData);
     }
     /**

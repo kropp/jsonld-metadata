@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of editing a recipient by removing one of its objects.
@@ -35,7 +32,7 @@ public class DeleteAction extends UpdateAction {
    * Builder for {@link DeleteAction}
    */
   public static class Builder extends UpdateAction.Builder {
-    public DeleteAction build() {
+    @NotNull public DeleteAction build() {
       return new DeleteAction(myData);
     }
     /**

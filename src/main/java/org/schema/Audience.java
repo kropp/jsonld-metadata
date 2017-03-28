@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Intended audience for an item, i.e. the group for whom the item was created.
@@ -69,7 +71,7 @@ public class Audience extends Intangible {
    * Builder for {@link Audience}
    */
   public static class Builder extends Intangible.Builder {
-    public Audience build() {
+    @NotNull public Audience build() {
       return new Audience(myData);
     }
     /**

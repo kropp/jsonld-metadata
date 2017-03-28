@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An organization that provides flights for passengers.
@@ -69,7 +71,7 @@ public class Airline extends Organization {
    * Builder for {@link Airline}
    */
   public static class Builder extends Organization.Builder {
-    public Airline build() {
+    @NotNull public Airline build() {
       return new Airline(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A dentist.
@@ -35,7 +32,7 @@ public class Dentist extends LocalBusiness {
    * Builder for {@link Dentist}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public Dentist build() {
+    @NotNull public Dentist build() {
       return new Dentist(myData);
     }
     /**

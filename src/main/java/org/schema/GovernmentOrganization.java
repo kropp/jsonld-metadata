@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A governmental organization or agency.
@@ -35,7 +32,7 @@ public class GovernmentOrganization extends Organization {
    * Builder for {@link GovernmentOrganization}
    */
   public static class Builder extends Organization.Builder {
-    public GovernmentOrganization build() {
+    @NotNull public GovernmentOrganization build() {
       return new GovernmentOrganization(myData);
     }
     /**

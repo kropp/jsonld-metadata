@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Event type: Sports event.
@@ -86,7 +88,7 @@ public class SportsEvent extends Event {
    * Builder for {@link SportsEvent}
    */
   public static class Builder extends Event.Builder {
-    public SportsEvent build() {
+    @NotNull public SportsEvent build() {
       return new SportsEvent(myData);
     }
     /**

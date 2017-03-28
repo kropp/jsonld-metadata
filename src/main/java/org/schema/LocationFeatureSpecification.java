@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.Source: https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
@@ -69,7 +71,7 @@ public class LocationFeatureSpecification extends PropertyValue {
    * Builder for {@link LocationFeatureSpecification}
    */
   public static class Builder extends PropertyValue.Builder {
-    public LocationFeatureSpecification build() {
+    @NotNull public LocationFeatureSpecification build() {
       return new LocationFeatureSpecification(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Event type: Theater performance.
@@ -35,7 +32,7 @@ public class TheaterEvent extends Event {
    * Builder for {@link TheaterEvent}
    */
   public static class Builder extends Event.Builder {
-    public TheaterEvent build() {
+    @NotNull public TheaterEvent build() {
       return new TheaterEvent(myData);
     }
     /**

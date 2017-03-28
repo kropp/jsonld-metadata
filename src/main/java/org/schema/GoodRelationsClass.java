@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * This class is derived from the GoodRelations Vocabulary for E-Commerce, created by Martin Hepp. GoodRelations is a data model for sharing e-commerce data on the Web that can be expressed in a variety of syntaxes, including RDFa and HTML5 Microdata. More information about GoodRelations can be found at [http://purl.org/goodrelations/](http://purl.org/goodrelations/).
@@ -35,7 +32,7 @@ public class GoodRelationsClass extends Organization {
    * Builder for {@link GoodRelationsClass}
    */
   public static class Builder extends Organization.Builder {
-    public GoodRelationsClass build() {
+    @NotNull public GoodRelationsClass build() {
       return new GoodRelationsClass(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Researchers.
@@ -35,7 +32,7 @@ public class Researcher extends Audience {
    * Builder for {@link Researcher}
    */
   public static class Builder extends Audience.Builder {
-    public Researcher build() {
+    @NotNull public Researcher build() {
       return new Researcher(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Event type: Literary event.
@@ -35,7 +32,7 @@ public class LiteraryEvent extends Event {
    * Builder for {@link LiteraryEvent}
    */
   public static class Builder extends Event.Builder {
-    public LiteraryEvent build() {
+    @NotNull public LiteraryEvent build() {
       return new LiteraryEvent(myData);
     }
     /**

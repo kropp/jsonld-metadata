@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of downloading an object.
@@ -35,7 +32,7 @@ public class DownloadAction extends TransferAction {
    * Builder for {@link DownloadAction}
    */
   public static class Builder extends TransferAction.Builder {
-    public DownloadAction build() {
+    @NotNull public DownloadAction build() {
       return new DownloadAction(myData);
     }
     /**

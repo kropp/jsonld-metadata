@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A monetary value or range. This type can be used to describe an amount of money such as $50 USD, or a range as in describing a bank account being suitable for a balance between £1,000 and £1,000,000 GBP, or the value of a salary, etc. It is recommended to use [[PriceSpecification]] Types to describe the price of an Offer, Invoice, etc.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
@@ -256,7 +258,7 @@ public class MonetaryAmount extends StructuredValue {
    * Builder for {@link MonetaryAmount}
    */
   public static class Builder extends StructuredValue.Builder {
-    public MonetaryAmount build() {
+    @NotNull public MonetaryAmount build() {
       return new MonetaryAmount(myData);
     }
     /**

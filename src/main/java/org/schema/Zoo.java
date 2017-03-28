@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A zoo.
@@ -35,7 +32,7 @@ public class Zoo extends CivicStructure {
    * Builder for {@link Zoo}
    */
   public static class Builder extends CivicStructure.Builder {
-    public Zoo build() {
+    @NotNull public Zoo build() {
       return new Zoo(myData);
     }
     /**

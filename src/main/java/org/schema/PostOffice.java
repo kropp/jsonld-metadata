@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A post office.
@@ -35,7 +32,7 @@ public class PostOffice extends GovernmentOffice {
    * Builder for {@link PostOffice}
    */
   public static class Builder extends GovernmentOffice.Builder {
-    public PostOffice build() {
+    @NotNull public PostOffice build() {
       return new PostOffice(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An order is a confirmation of a transaction (a receipt), which can contain multiple line items, each represented by an Offer that has been accepted by the customer.
@@ -494,7 +496,7 @@ public class Order extends Intangible {
    * Builder for {@link Order}
    */
   public static class Builder extends Intangible.Builder {
-    public Order build() {
+    @NotNull public Order build() {
       return new Order(myData);
     }
     /**

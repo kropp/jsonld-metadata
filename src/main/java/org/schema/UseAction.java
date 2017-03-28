@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of applying an object to its intended purpose.
@@ -35,7 +32,7 @@ public class UseAction extends ConsumeAction {
    * Builder for {@link UseAction}
    */
   public static class Builder extends ConsumeAction.Builder {
-    public UseAction build() {
+    @NotNull public UseAction build() {
       return new UseAction(myData);
     }
     /**

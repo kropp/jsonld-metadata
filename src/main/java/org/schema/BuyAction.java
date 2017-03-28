@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of giving money to a seller in exchange for goods or services rendered. An agent buys an object, product, or service from a seller for a price. Reciprocal of SellAction.
@@ -52,7 +54,7 @@ public class BuyAction extends TradeAction {
    * Builder for {@link BuyAction}
    */
   public static class Builder extends TradeAction.Builder {
-    public BuyAction build() {
+    @NotNull public BuyAction build() {
       return new BuyAction(myData);
     }
     /**

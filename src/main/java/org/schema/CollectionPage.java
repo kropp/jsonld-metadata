@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Web page type: Collection page.
@@ -35,7 +32,7 @@ public class CollectionPage extends WebPage {
    * Builder for {@link CollectionPage}
    */
   public static class Builder extends WebPage.Builder {
-    public CollectionPage build() {
+    @NotNull public CollectionPage build() {
       return new CollectionPage(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of allocating an action/event/task to some destination (someone or something).
@@ -35,7 +32,7 @@ public class AssignAction extends AllocateAction {
    * Builder for {@link AssignAction}
    */
   public static class Builder extends AllocateAction.Builder {
-    public AssignAction build() {
+    @NotNull public AssignAction build() {
       return new AssignAction(myData);
     }
     /**

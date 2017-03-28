@@ -71,7 +71,7 @@ public class Issue extends CreativeWork {
    * Builder for {@link Issue}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Issue build() {
+    @NotNull public Issue build() {
       return new Issue(myData);
     }
     /**

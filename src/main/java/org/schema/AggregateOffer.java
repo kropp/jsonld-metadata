@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
@@ -239,7 +241,7 @@ public class AggregateOffer extends Offer {
    * Builder for {@link AggregateOffer}
    */
   public static class Builder extends Offer.Builder {
-    public AggregateOffer build() {
+    @NotNull public AggregateOffer build() {
       return new AggregateOffer(myData);
     }
     /**

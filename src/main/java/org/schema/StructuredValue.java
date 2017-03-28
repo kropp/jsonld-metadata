@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Structured values are used when the value of a property has a more complex structure than simply being a textual value or a reference to another thing.
@@ -35,7 +32,7 @@ public class StructuredValue extends Intangible {
    * Builder for {@link StructuredValue}
    */
   public static class Builder extends Intangible.Builder {
-    public StructuredValue build() {
+    @NotNull public StructuredValue build() {
       return new StructuredValue(myData);
     }
     /**

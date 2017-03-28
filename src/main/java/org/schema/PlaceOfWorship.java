@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Place of worship, such as a church, synagogue, or mosque.
@@ -35,7 +32,7 @@ public class PlaceOfWorship extends CivicStructure {
    * Builder for {@link PlaceOfWorship}
    */
   public static class Builder extends CivicStructure.Builder {
-    public PlaceOfWorship build() {
+    @NotNull public PlaceOfWorship build() {
       return new PlaceOfWorship(myData);
     }
     /**

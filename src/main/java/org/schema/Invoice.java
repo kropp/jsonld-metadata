@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A statement of the money due for goods or services; a bill.
@@ -375,7 +377,7 @@ public class Invoice extends Intangible {
    * Builder for {@link Invoice}
    */
   public static class Builder extends Intangible.Builder {
-    public Invoice build() {
+    @NotNull public Invoice build() {
       return new Invoice(myData);
     }
     /**

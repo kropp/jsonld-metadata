@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * This element is based on the STI Accommodation Ontology, see <a href="http://ontologies.sti-innsbruck.at/acco/ns.html">http://ontologies.sti-innsbruck.at/acco/ns.html</a> for details.
@@ -36,7 +33,7 @@ public class STIAccommodationOntology extends Organization {
    * Builder for {@link STIAccommodationOntology}
    */
   public static class Builder extends Organization.Builder {
-    public STIAccommodationOntology build() {
+    @NotNull public STIAccommodationOntology build() {
       return new STIAccommodationOntology(myData);
     }
     /**

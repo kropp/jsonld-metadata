@@ -141,6 +141,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                         }
 
                         method("build", typeName) {
+                            annotations = NOT_NULL
                             line("return new $typeName(myData);")
                         }
 

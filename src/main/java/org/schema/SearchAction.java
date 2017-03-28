@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of searching for an object.\n\nRelated actions:\n\n* [[FindAction]]: SearchAction generally leads to a FindAction, but not necessarily.
@@ -52,7 +54,7 @@ public class SearchAction extends Action {
    * Builder for {@link SearchAction}
    */
   public static class Builder extends Action.Builder {
-    public SearchAction build() {
+    @NotNull public SearchAction build() {
       return new SearchAction(myData);
     }
     /**

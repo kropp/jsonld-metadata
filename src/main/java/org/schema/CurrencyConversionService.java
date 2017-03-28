@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A service to convert funds from one currency to another currency.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
@@ -35,7 +32,7 @@ public class CurrencyConversionService extends FinancialProduct {
    * Builder for {@link CurrencyConversionService}
    */
   public static class Builder extends FinancialProduct.Builder {
-    public CurrencyConversionService build() {
+    @NotNull public CurrencyConversionService build() {
       return new CurrencyConversionService(myData);
     }
     /**

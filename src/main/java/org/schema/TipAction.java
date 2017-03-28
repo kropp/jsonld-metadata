@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of giving money voluntarily to a beneficiary in recognition of services rendered.
@@ -86,7 +88,7 @@ public class TipAction extends TradeAction {
    * Builder for {@link TipAction}
    */
   public static class Builder extends TradeAction.Builder {
-    public TipAction build() {
+    @NotNull public TipAction build() {
       return new TipAction(myData);
     }
     /**

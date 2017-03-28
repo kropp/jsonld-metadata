@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A datasheet or vendor specification of a product (in the sense of a prototypical description).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -86,7 +88,7 @@ public class ProductModel extends Product {
    * Builder for {@link ProductModel}
    */
   public static class Builder extends Product.Builder {
-    public ProductModel build() {
+    @NotNull public ProductModel build() {
       return new ProductModel(myData);
     }
     /**

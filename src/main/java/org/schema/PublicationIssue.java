@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A part of a successively published publication such as a periodical or publication volume, often numbered, usually containing a grouping of works such as articles.\n\n[blog post](http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibexEquivalent class: http://purl.org/ontology/bibo/Issue
@@ -154,7 +156,7 @@ public class PublicationIssue extends CreativeWork {
    * Builder for {@link PublicationIssue}
    */
   public static class Builder extends CreativeWork.Builder {
-    public PublicationIssue build() {
+    @NotNull public PublicationIssue build() {
       return new PublicationIssue(myData);
     }
     /**

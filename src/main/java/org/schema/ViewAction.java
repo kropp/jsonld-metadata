@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of consuming static visual content.
@@ -35,7 +32,7 @@ public class ViewAction extends ConsumeAction {
    * Builder for {@link ViewAction}
    */
   public static class Builder extends ConsumeAction.Builder {
-    public ViewAction build() {
+    @NotNull public ViewAction build() {
       return new ViewAction(myData);
     }
     /**

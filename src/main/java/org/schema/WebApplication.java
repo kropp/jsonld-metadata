@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Web applications.
@@ -52,7 +54,7 @@ public class WebApplication extends SoftwareApplication {
    * Builder for {@link WebApplication}
    */
   public static class Builder extends SoftwareApplication.Builder {
-    public WebApplication build() {
+    @NotNull public WebApplication build() {
       return new WebApplication(myData);
     }
     /**

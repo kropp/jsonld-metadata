@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A lodging business, such as a motel, hotel, or inn.
@@ -188,7 +190,7 @@ public class LodgingBusiness extends LocalBusiness {
    * Builder for {@link LodgingBusiness}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public LodgingBusiness build() {
+    @NotNull public LodgingBusiness build() {
       return new LodgingBusiness(myData);
     }
     /**

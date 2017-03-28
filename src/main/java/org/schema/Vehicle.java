@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A vehicle is a device that is designed or used to transport people or cargo over land, water, air, or through space.
@@ -664,7 +666,7 @@ public class Vehicle extends Product {
    * Builder for {@link Vehicle}
    */
   public static class Builder extends Product.Builder {
-    public Vehicle build() {
+    @NotNull public Vehicle build() {
       return new Vehicle(myData);
     }
     /**

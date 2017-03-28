@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A hardware store.
@@ -35,7 +32,7 @@ public class HardwareStore extends Store {
    * Builder for {@link HardwareStore}
    */
   public static class Builder extends Store.Builder {
-    public HardwareStore build() {
+    @NotNull public HardwareStore build() {
       return new HardwareStore(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A service which provides access to media programming like TV or radio. Access may be via cable or satellite.
@@ -35,7 +32,7 @@ public class CableOrSatelliteService extends Service {
    * Builder for {@link CableOrSatelliteService}
    */
   public static class Builder extends Service.Builder {
-    public CableOrSatelliteService build() {
+    @NotNull public CableOrSatelliteService build() {
       return new CableOrSatelliteService(myData);
     }
     /**

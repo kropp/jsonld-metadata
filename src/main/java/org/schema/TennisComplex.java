@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A tennis complex.
@@ -35,7 +32,7 @@ public class TennisComplex extends SportsActivityLocation {
    * Builder for {@link TennisComplex}
    */
   public static class Builder extends SportsActivityLocation.Builder {
-    public TennisComplex build() {
+    @NotNull public TennisComplex build() {
       return new TennisComplex(myData);
     }
     /**

@@ -18,9 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 /**
@@ -235,7 +238,7 @@ public class Thing {
         myData.put(key, value);
       }
     }
-    public Thing build() {
+    @NotNull public Thing build() {
       return new Thing(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A playground.
@@ -35,7 +32,7 @@ public class Playground extends CivicStructure {
    * Builder for {@link Playground}
    */
   public static class Builder extends CivicStructure.Builder {
-    public Playground build() {
+    @NotNull public Playground build() {
       return new Playground(myData);
     }
     /**

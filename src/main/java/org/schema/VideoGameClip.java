@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A short segment/part of a video game.
@@ -35,7 +32,7 @@ public class VideoGameClip extends Clip {
    * Builder for {@link VideoGameClip}
    */
   public static class Builder extends Clip.Builder {
-    public VideoGameClip build() {
+    @NotNull public VideoGameClip build() {
       return new VideoGameClip(myData);
     }
     /**

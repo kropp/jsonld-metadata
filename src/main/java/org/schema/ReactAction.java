@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of responding instinctively and emotionally to an object, expressing a sentiment.
@@ -35,7 +32,7 @@ public class ReactAction extends AssessAction {
    * Builder for {@link ReactAction}
    */
   public static class Builder extends AssessAction.Builder {
-    public ReactAction build() {
+    @NotNull public ReactAction build() {
       return new ReactAction(myData);
     }
     /**

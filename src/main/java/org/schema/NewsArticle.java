@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A news article.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
@@ -120,7 +122,7 @@ public class NewsArticle extends Article {
    * Builder for {@link NewsArticle}
    */
   public static class Builder extends Article.Builder {
-    public NewsArticle build() {
+    @NotNull public NewsArticle build() {
       return new NewsArticle(myData);
     }
     /**

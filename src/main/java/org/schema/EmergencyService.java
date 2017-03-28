@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An emergency service, such as a fire station or ER.
@@ -35,7 +32,7 @@ public class EmergencyService extends LocalBusiness {
    * Builder for {@link EmergencyService}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public EmergencyService build() {
+    @NotNull public EmergencyService build() {
       return new EmergencyService(myData);
     }
     /**

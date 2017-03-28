@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of conveying information to another person via a communication medium (instrument) such as speech, email, or telephone conversation.
@@ -137,7 +139,7 @@ public class CommunicateAction extends InteractAction {
    * Builder for {@link CommunicateAction}
    */
   public static class Builder extends InteractAction.Builder {
-    public CommunicateAction build() {
+    @NotNull public CommunicateAction build() {
       return new CommunicateAction(myData);
     }
     /**

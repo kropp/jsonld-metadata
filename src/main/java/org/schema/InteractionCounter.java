@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A summary of how users have interacted with this CreativeWork. In most cases, authors will use a subtype to specify the specific type of interaction.
@@ -103,7 +105,7 @@ public class InteractionCounter extends StructuredValue {
    * Builder for {@link InteractionCounter}
    */
   public static class Builder extends StructuredValue.Builder {
-    public InteractionCounter build() {
+    @NotNull public InteractionCounter build() {
       return new InteractionCounter(myData);
     }
     /**

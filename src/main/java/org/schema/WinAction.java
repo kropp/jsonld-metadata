@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of achieving victory in a competitive activity.
@@ -52,7 +54,7 @@ public class WinAction extends AchieveAction {
    * Builder for {@link WinAction}
    */
   public static class Builder extends AchieveAction.Builder {
-    public WinAction build() {
+    @NotNull public WinAction build() {
       return new WinAction(myData);
     }
     /**

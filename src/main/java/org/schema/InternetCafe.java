@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An internet cafe.
@@ -35,7 +32,7 @@ public class InternetCafe extends LocalBusiness {
    * Builder for {@link InternetCafe}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public InternetCafe build() {
+    @NotNull public InternetCafe build() {
       return new InternetCafe(myData);
     }
     /**

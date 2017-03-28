@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A radio episode which can be part of a series or season.
@@ -35,7 +32,7 @@ public class RadioEpisode extends Episode {
    * Builder for {@link RadioEpisode}
    */
   public static class Builder extends Episode.Builder {
-    public RadioEpisode build() {
+    @NotNull public RadioEpisode build() {
       return new RadioEpisode(myData);
     }
     /**

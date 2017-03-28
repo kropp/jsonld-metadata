@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * This element is based on the work of the Financial Industry Business Ontology project (see [http://www.fibo.org/schema](http://www.fibo.org/schema) for details), in support of the W3C Financial Industry Business Ontology Community Group ([http://www.fibo.org/community](http://www.fibo.org/community)). Many class and property definitions are inspired by or based on [http://www.fibo.org](http://www.fibo.org).
@@ -35,7 +32,7 @@ public class FIBO extends Organization {
    * Builder for {@link FIBO}
    */
   public static class Builder extends Organization.Builder {
-    public FIBO build() {
+    @NotNull public FIBO build() {
       return new FIBO(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A structured representation of food or drink items available from a FoodEstablishment.
@@ -69,7 +71,7 @@ public class Menu extends CreativeWork {
    * Builder for {@link Menu}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Menu build() {
+    @NotNull public Menu build() {
       return new Menu(myData);
     }
     /**

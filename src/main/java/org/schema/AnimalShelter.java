@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Animal shelter.
@@ -35,7 +32,7 @@ public class AnimalShelter extends LocalBusiness {
    * Builder for {@link AnimalShelter}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public AnimalShelter build() {
+    @NotNull public AnimalShelter build() {
       return new AnimalShelter(myData);
     }
     /**

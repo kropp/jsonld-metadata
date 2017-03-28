@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of intentionally disregarding the object. An agent ignores an object.
@@ -35,7 +32,7 @@ public class IgnoreAction extends AssessAction {
    * Builder for {@link IgnoreAction}
    */
   public static class Builder extends AssessAction.Builder {
-    public IgnoreAction build() {
+    @NotNull public IgnoreAction build() {
       return new IgnoreAction(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * This type covers computer programming languages such as Scheme and Lisp, as well as other language-like computer representations. Natural languages are best represented with the [[Language]] type.
@@ -35,7 +32,7 @@ public class ComputerLanguage extends Intangible {
    * Builder for {@link ComputerLanguage}
    */
   public static class Builder extends Intangible.Builder {
-    public ComputerLanguage build() {
+    @NotNull public ComputerLanguage build() {
       return new ComputerLanguage(myData);
     }
     /**

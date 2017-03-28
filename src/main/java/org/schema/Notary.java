@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A notary.
@@ -35,7 +32,7 @@ public class Notary extends LegalService {
    * Builder for {@link Notary}
    */
   public static class Builder extends LegalService.Builder {
-    public Notary build() {
+    @NotNull public Notary build() {
       return new Notary(myData);
     }
     /**

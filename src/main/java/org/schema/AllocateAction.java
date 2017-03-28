@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of organizing tasks/objects/events by associating resources to it.
@@ -35,7 +32,7 @@ public class AllocateAction extends OrganizeAction {
    * Builder for {@link AllocateAction}
    */
   public static class Builder extends OrganizeAction.Builder {
-    public AllocateAction build() {
+    @NotNull public AllocateAction build() {
       return new AllocateAction(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A Buddhist temple.
@@ -35,7 +32,7 @@ public class BuddhistTemple extends PlaceOfWorship {
    * Builder for {@link BuddhistTemple}
    */
   public static class Builder extends PlaceOfWorship.Builder {
-    public BuddhistTemple build() {
+    @NotNull public BuddhistTemple build() {
       return new BuddhistTemple(myData);
     }
     /**

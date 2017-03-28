@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A product provided to consumers and businesses by financial institutions such as banks, insurance companies, brokerage firms, consumer finance companies, and investment companies which comprise the financial services industry.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
@@ -120,7 +122,7 @@ public class FinancialProduct extends Service {
    * Builder for {@link FinancialProduct}
    */
   public static class Builder extends Service.Builder {
-    public FinancialProduct build() {
+    @NotNull public FinancialProduct build() {
       return new FinancialProduct(myData);
     }
     /**

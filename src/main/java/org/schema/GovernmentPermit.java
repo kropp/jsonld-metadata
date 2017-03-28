@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A permit issued by a government agency.
@@ -35,7 +32,7 @@ public class GovernmentPermit extends Permit {
    * Builder for {@link GovernmentPermit}
    */
   public static class Builder extends Permit.Builder {
-    public GovernmentPermit build() {
+    @NotNull public GovernmentPermit build() {
       return new GovernmentPermit(myData);
     }
     /**

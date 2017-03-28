@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A file composed primarily of text.
@@ -35,7 +32,7 @@ public class TextDigitalDocument extends DigitalDocument {
    * Builder for {@link TextDigitalDocument}
    */
   public static class Builder extends DigitalDocument.Builder {
-    public TextDigitalDocument build() {
+    @NotNull public TextDigitalDocument build() {
       return new TextDigitalDocument(myData);
     }
     /**

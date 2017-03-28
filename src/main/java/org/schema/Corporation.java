@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Organization: A business corporation.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
@@ -52,7 +54,7 @@ public class Corporation extends Organization {
    * Builder for {@link Corporation}
    */
   public static class Builder extends Organization.Builder {
-    public Corporation build() {
+    @NotNull public Corporation build() {
       return new Corporation(myData);
     }
     /**

@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A food-related business.
@@ -137,7 +139,7 @@ public class FoodEstablishment extends LocalBusiness {
    * Builder for {@link FoodEstablishment}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public FoodEstablishment build() {
+    @NotNull public FoodEstablishment build() {
       return new FoodEstablishment(myData);
     }
     /**

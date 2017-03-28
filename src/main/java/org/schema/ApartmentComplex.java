@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Residence type: Apartment complex.
@@ -35,7 +32,7 @@ public class ApartmentComplex extends Residence {
    * Builder for {@link ApartmentComplex}
    */
   public static class Builder extends Residence.Builder {
-    public ApartmentComplex build() {
+    @NotNull public ApartmentComplex build() {
       return new ApartmentComplex(myData);
     }
     /**

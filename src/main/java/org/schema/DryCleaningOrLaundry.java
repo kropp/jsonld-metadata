@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A dry-cleaning business.
@@ -35,7 +32,7 @@ public class DryCleaningOrLaundry extends LocalBusiness {
    * Builder for {@link DryCleaningOrLaundry}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public DryCleaningOrLaundry build() {
+    @NotNull public DryCleaningOrLaundry build() {
       return new DryCleaningOrLaundry(myData);
     }
     /**

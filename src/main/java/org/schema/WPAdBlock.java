@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An advertising section of the page.
@@ -35,7 +32,7 @@ public class WPAdBlock extends WebPageElement {
    * Builder for {@link WPAdBlock}
    */
   public static class Builder extends WebPageElement.Builder {
-    public WPAdBlock build() {
+    @NotNull public WPAdBlock build() {
       return new WPAdBlock(myData);
     }
     /**

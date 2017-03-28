@@ -241,7 +241,7 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
    * Builder for {@link SoftwareApplicationBuild}
    */
   public static class Builder extends SoftwareApplication.Builder {
-    public SoftwareApplicationBuild build() {
+    @NotNull public SoftwareApplicationBuild build() {
       return new SoftwareApplicationBuild(myData);
     }
     /**

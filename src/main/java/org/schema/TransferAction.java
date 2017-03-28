@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of transferring/moving (abstract or concrete) animate or inanimate objects from one place to another.
@@ -69,7 +71,7 @@ public class TransferAction extends Action {
    * Builder for {@link TransferAction}
    */
   public static class Builder extends Action.Builder {
-    public TransferAction build() {
+    @NotNull public TransferAction build() {
       return new TransferAction(myData);
     }
     /**

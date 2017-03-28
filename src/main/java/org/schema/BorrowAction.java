@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of obtaining an object under an agreement to return it at a later date. Reciprocal of LendAction.\n\nRelated actions:\n\n* [[LendAction]]: Reciprocal of BorrowAction.
@@ -52,7 +54,7 @@ public class BorrowAction extends TransferAction {
    * Builder for {@link BorrowAction}
    */
   public static class Builder extends TransferAction.Builder {
-    public BorrowAction build() {
+    @NotNull public BorrowAction build() {
       return new BorrowAction(myData);
     }
     /**

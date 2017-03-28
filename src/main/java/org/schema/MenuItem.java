@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A food or drink item listed in a menu or menu section.
@@ -86,7 +88,7 @@ public class MenuItem extends Intangible {
    * Builder for {@link MenuItem}
    */
   public static class Builder extends Intangible.Builder {
-    public MenuItem build() {
+    @NotNull public MenuItem build() {
       return new MenuItem(myData);
     }
     /**

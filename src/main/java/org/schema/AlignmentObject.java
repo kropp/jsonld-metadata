@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An intangible item that describes an alignment between a learning resource and a node in an educational framework.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_LRMIClass
@@ -120,7 +122,7 @@ public class AlignmentObject extends Intangible {
    * Builder for {@link AlignmentObject}
    */
   public static class Builder extends Intangible.Builder {
-    public AlignmentObject build() {
+    @NotNull public AlignmentObject build() {
       return new AlignmentObject(myData);
     }
     /**

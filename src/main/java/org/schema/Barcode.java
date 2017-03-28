@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An image of a visual machine-readable code such as a barcode or QR code.
@@ -35,7 +32,7 @@ public class Barcode extends ImageObject {
    * Builder for {@link Barcode}
    */
   public static class Builder extends ImageObject.Builder {
-    public Barcode build() {
+    @NotNull public Barcode build() {
       return new Barcode(myData);
     }
     /**

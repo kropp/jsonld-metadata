@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * An art gallery.
@@ -35,7 +32,7 @@ public class ArtGallery extends EntertainmentBusiness {
    * Builder for {@link ArtGallery}
    */
   public static class Builder extends EntertainmentBusiness.Builder {
-    public ArtGallery build() {
+    @NotNull public ArtGallery build() {
       return new ArtGallery(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Properties that take Mass as values are of the form '&lt;Number&gt; &lt;Mass unit of measure&gt;'. E.g., '7 kg'.
@@ -35,7 +32,7 @@ public class Mass extends Quantity {
    * Builder for {@link Mass}
    */
   public static class Builder extends Quantity.Builder {
-    public Mass build() {
+    @NotNull public Mass build() {
       return new Mass(myData);
     }
     /**

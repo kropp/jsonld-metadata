@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A blog.
@@ -52,7 +54,7 @@ public class Blog extends CreativeWork {
    * Builder for {@link Blog}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Blog build() {
+    @NotNull public Blog build() {
       return new Blog(myData);
     }
     /**

@@ -88,7 +88,7 @@ public class Review extends CreativeWork {
    * Builder for {@link Review}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Review build() {
+    @NotNull public Review build() {
       return new Review(myData);
     }
     /**

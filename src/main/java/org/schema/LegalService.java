@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A LegalService is a business that provides legally-oriented services, advice and representation, e.g. law firms.\n\nAs a [[LocalBusiness]] it can be described as a [[provider]] of one or more [[Service]]\(s).
@@ -35,7 +32,7 @@ public class LegalService extends LocalBusiness {
    * Builder for {@link LegalService}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public LegalService build() {
+    @NotNull public LegalService build() {
       return new LegalService(myData);
     }
     /**

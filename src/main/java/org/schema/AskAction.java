@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of posing a question / favor to someone.\n\nRelated actions:\n\n* [[ReplyAction]]: Appears generally as a response to AskAction.
@@ -52,7 +54,7 @@ public class AskAction extends CommunicateAction {
    * Builder for {@link AskAction}
    */
   public static class Builder extends CommunicateAction.Builder {
-    public AskAction build() {
+    @NotNull public AskAction build() {
       return new AskAction(myData);
     }
     /**

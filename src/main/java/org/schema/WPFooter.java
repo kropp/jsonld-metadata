@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The footer section of the page.
@@ -35,7 +32,7 @@ public class WPFooter extends WebPageElement {
    * Builder for {@link WPFooter}
    */
   public static class Builder extends WebPageElement.Builder {
-    public WPFooter build() {
+    @NotNull public WPFooter build() {
       return new WPFooter(myData);
     }
     /**

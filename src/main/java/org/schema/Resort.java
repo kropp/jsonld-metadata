@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A resort is a place used for relaxation or recreation, attracting visitors for holidays or vacations. Resorts are places, towns or sometimes commercial establishment operated by a single company (Source: Wikipedia, the free encyclopedia, see <a href="http://en.wikipedia.org/wiki/Resort">http://en.wikipedia.org/wiki/Resort</a>).
@@ -38,7 +35,7 @@ public class Resort extends LodgingBusiness {
    * Builder for {@link Resort}
    */
   public static class Builder extends LodgingBusiness.Builder {
-    public Resort build() {
+    @NotNull public Resort build() {
       return new Resort(myData);
     }
     /**

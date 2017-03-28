@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A real-estate agent.
@@ -35,7 +32,7 @@ public class RealEstateAgent extends LocalBusiness {
    * Builder for {@link RealEstateAgent}
    */
   public static class Builder extends LocalBusiness.Builder {
-    public RealEstateAgent build() {
+    @NotNull public RealEstateAgent build() {
       return new RealEstateAgent(myData);
     }
     /**

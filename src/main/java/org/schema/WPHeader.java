@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The header section of the page.
@@ -35,7 +32,7 @@ public class WPHeader extends WebPageElement {
    * Builder for {@link WPHeader}
    */
   public static class Builder extends WebPageElement.Builder {
-    public WPHeader build() {
+    @NotNull public WPHeader build() {
       return new WPHeader(myData);
     }
     /**

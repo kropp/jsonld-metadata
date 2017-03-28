@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * The act of managing by changing/editing the state of the object.
@@ -52,7 +54,7 @@ public class UpdateAction extends Action {
    * Builder for {@link UpdateAction}
    */
   public static class Builder extends Action.Builder {
-    public UpdateAction build() {
+    @NotNull public UpdateAction build() {
       return new UpdateAction(myData);
     }
     /**

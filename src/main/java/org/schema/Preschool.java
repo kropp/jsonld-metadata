@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A preschool.
@@ -35,7 +32,7 @@ public class Preschool extends EducationalOrganization {
    * Builder for {@link Preschool}
    */
   public static class Builder extends EducationalOrganization.Builder {
-    public Preschool build() {
+    @NotNull public Preschool build() {
       return new Preschool(myData);
     }
     /**

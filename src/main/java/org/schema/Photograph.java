@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A photograph.
@@ -35,7 +32,7 @@ public class Photograph extends CreativeWork {
    * Builder for {@link Photograph}
    */
   public static class Builder extends CreativeWork.Builder {
-    public Photograph build() {
+    @NotNull public Photograph build() {
       return new Photograph(myData);
     }
     /**

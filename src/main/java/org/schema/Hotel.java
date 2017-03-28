@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A hotel is an establishment that provides lodging paid on a short-term basis (Source: Wikipedia, the free encyclopedia, see http://en.wikipedia.org/wiki/Hotel).
@@ -38,7 +35,7 @@ public class Hotel extends LodgingBusiness {
    * Builder for {@link Hotel}
    */
   public static class Builder extends LodgingBusiness.Builder {
-    public Hotel build() {
+    @NotNull public Hotel build() {
       return new Hotel(myData);
     }
     /**

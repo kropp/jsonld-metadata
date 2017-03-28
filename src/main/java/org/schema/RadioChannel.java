@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A unique instance of a radio BroadcastService on a CableOrSatelliteService lineup.
@@ -35,7 +32,7 @@ public class RadioChannel extends BroadcastChannel {
    * Builder for {@link RadioChannel}
    */
   public static class Builder extends BroadcastChannel.Builder {
-    public RadioChannel build() {
+    @NotNull public RadioChannel build() {
       return new RadioChannel(myData);
     }
     /**

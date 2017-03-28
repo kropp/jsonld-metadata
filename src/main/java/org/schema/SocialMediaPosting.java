@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A post to a social media platform, including blog posts, tweets, Facebook posts, etc.
@@ -52,7 +54,7 @@ public class SocialMediaPosting extends Article {
    * Builder for {@link SocialMediaPosting}
    */
   public static class Builder extends Article.Builder {
-    public SocialMediaPosting build() {
+    @NotNull public SocialMediaPosting build() {
       return new SocialMediaPosting(myData);
     }
     /**

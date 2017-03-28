@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A spreadsheet file.
@@ -35,7 +32,7 @@ public class SpreadsheetDigitalDocument extends DigitalDocument {
    * Builder for {@link SpreadsheetDigitalDocument}
    */
   public static class Builder extends DigitalDocument.Builder {
-    public SpreadsheetDigitalDocument build() {
+    @NotNull public SpreadsheetDigitalDocument build() {
       return new SpreadsheetDigitalDocument(myData);
     }
     /**

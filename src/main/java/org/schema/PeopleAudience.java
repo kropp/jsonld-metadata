@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A set of characteristics belonging to people, e.g. who compose an item's target audience.
@@ -273,7 +275,7 @@ public class PeopleAudience extends Audience {
    * Builder for {@link PeopleAudience}
    */
   public static class Builder extends Audience.Builder {
-    public PeopleAudience build() {
+    @NotNull public PeopleAudience build() {
       return new PeopleAudience(myData);
     }
     /**

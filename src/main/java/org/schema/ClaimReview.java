@@ -54,7 +54,7 @@ public class ClaimReview extends Review {
    * Builder for {@link ClaimReview}
    */
   public static class Builder extends Review.Builder {
-    public ClaimReview build() {
+    @NotNull public ClaimReview build() {
       return new ClaimReview(myData);
     }
     /**

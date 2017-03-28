@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of un-registering from a service.\n\nRelated actions:\n\n* [[RegisterAction]]: antonym of UnRegisterAction.\n* [[Leave]]: Unlike LeaveAction, UnRegisterAction implies that you are unregistering from a service you werer previously registered, rather than leaving a team/group of people.
@@ -35,7 +32,7 @@ public class UnRegisterAction extends InteractAction {
    * Builder for {@link UnRegisterAction}
    */
   public static class Builder extends InteractAction.Builder {
-    public UnRegisterAction build() {
+    @NotNull public UnRegisterAction build() {
       return new UnRegisterAction(myData);
     }
     /**

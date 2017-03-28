@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A service provided by an organization, e.g. delivery service, print services, etc.
@@ -443,7 +445,7 @@ public class Service extends Intangible {
    * Builder for {@link Service}
    */
   public static class Builder extends Intangible.Builder {
-    public Service build() {
+    @NotNull public Service build() {
       return new Service(myData);
     }
     /**

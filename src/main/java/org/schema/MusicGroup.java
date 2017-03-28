@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
@@ -103,7 +105,7 @@ public class MusicGroup extends PerformingGroup {
    * Builder for {@link MusicGroup}
    */
   public static class Builder extends PerformingGroup.Builder {
-    public MusicGroup build() {
+    @NotNull public MusicGroup build() {
       return new MusicGroup(myData);
     }
     /**

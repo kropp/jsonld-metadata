@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A contact point&#x2014;for example, a Customer Complaints department.
@@ -205,7 +207,7 @@ public class ContactPoint extends StructuredValue {
    * Builder for {@link ContactPoint}
    */
   public static class Builder extends StructuredValue.Builder {
-    public ContactPoint build() {
+    @NotNull public ContactPoint build() {
       return new ContactPoint(myData);
     }
     /**

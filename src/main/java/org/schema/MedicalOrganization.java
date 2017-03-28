@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A medical organization (physical or not), such as hospital, institution or clinic.
@@ -35,7 +32,7 @@ public class MedicalOrganization extends Organization {
    * Builder for {@link MedicalOrganization}
    */
   public static class Builder extends Organization.Builder {
-    public MedicalOrganization build() {
+    @NotNull public MedicalOrganization build() {
       return new MedicalOrganization(myData);
     }
     /**

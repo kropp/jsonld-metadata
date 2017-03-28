@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A fire station. With firemen.
@@ -35,7 +32,7 @@ public class FireStation extends EmergencyService {
    * Builder for {@link FireStation}
    */
   public static class Builder extends EmergencyService.Builder {
-    public FireStation build() {
+    @NotNull public FireStation build() {
       return new FireStation(myData);
     }
     /**

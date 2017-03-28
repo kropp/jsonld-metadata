@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of inserting at the beginning if an ordered collection.
@@ -35,7 +32,7 @@ public class PrependAction extends InsertAction {
    * Builder for {@link PrependAction}
    */
   public static class Builder extends InsertAction.Builder {
-    public PrependAction build() {
+    @NotNull public PrependAction build() {
       return new PrependAction(myData);
     }
     /**

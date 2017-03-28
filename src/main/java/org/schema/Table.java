@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A table on a Web page.
@@ -35,7 +32,7 @@ public class Table extends WebPageElement {
    * Builder for {@link Table}
    */
   public static class Builder extends WebPageElement.Builder {
-    public Table build() {
+    @NotNull public Table build() {
       return new Table(myData);
     }
     /**

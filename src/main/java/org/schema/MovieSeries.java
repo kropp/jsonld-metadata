@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * A series of movies. Included movies can be indicated with the hasPart property.
@@ -120,7 +122,7 @@ public class MovieSeries extends CreativeWorkSeries {
    * Builder for {@link MovieSeries}
    */
   public static class Builder extends CreativeWorkSeries.Builder {
-    public MovieSeries build() {
+    @NotNull public MovieSeries build() {
       return new MovieSeries(myData);
     }
     /**

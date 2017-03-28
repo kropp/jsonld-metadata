@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Used to describe membership in a loyalty programs (e.g. "StarAliance"), traveler clubs (e.g. "AAA"), purchase clubs ("Safeway Club"), etc.
@@ -86,7 +88,7 @@ public class ProgramMembership extends Intangible implements MemberOf {
    * Builder for {@link ProgramMembership}
    */
   public static class Builder extends Intangible.Builder {
-    public ProgramMembership build() {
+    @NotNull public ProgramMembership build() {
       return new ProgramMembership(myData);
     }
     /**

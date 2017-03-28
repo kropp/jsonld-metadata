@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * Event type: Visual arts event.
@@ -35,7 +32,7 @@ public class VisualArtsEvent extends Event {
    * Builder for {@link VisualArtsEvent}
    */
   public static class Builder extends Event.Builder {
-    public VisualArtsEvent build() {
+    @NotNull public VisualArtsEvent build() {
       return new VisualArtsEvent(myData);
     }
     /**

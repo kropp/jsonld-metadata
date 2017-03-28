@@ -18,10 +18,12 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * An order item is a line of an order. It includes the quantity and shipping details of a bought offer.
@@ -205,7 +207,7 @@ public class OrderItem extends Intangible {
    * Builder for {@link OrderItem}
    */
   public static class Builder extends Intangible.Builder {
-    public OrderItem build() {
+    @NotNull public OrderItem build() {
       return new OrderItem(myData);
     }
     /**

@@ -18,10 +18,7 @@
 
 package org.schema;
 
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
 import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * The act of deliberately creating/producing/generating/building a result out of the agent.
@@ -35,7 +32,7 @@ public class CreateAction extends Action {
    * Builder for {@link CreateAction}
    */
   public static class Builder extends Action.Builder {
-    public CreateAction build() {
+    @NotNull public CreateAction build() {
       return new CreateAction(myData);
     }
     /**
