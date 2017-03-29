@@ -207,9 +207,10 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                 val varName = it.name!!.decapitalize()
                                 val fieldTypes = sink.getEitherTypes(it)
 
-                                fieldTypes.map {
-                                    "if (\"$varName\".equals(key) && value instanceof $it) { $varName(($it)value); return; }"
-                                }
+                                fieldTypes.flatMap { listOf(
+                                    "if (\"$varName\".equals(key) && value instanceof $it) { $varName(($it)value); return; }",
+                                    "if (\"${varName}s\".equals(key) && value instanceof $it) { $varName(($it)value); return; }"
+                                )}
                             })
 
                             if (type.parentType == null) {
