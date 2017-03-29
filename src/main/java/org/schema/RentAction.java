@@ -355,8 +355,11 @@ public class RentAction extends TradeAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("landlord".equals(key) && value instanceof Organization) { landlord((Organization)value); return; }
+      if ("landlords".equals(key) && value instanceof Organization) { landlord((Organization)value); return; }
       if ("landlord".equals(key) && value instanceof Person) { landlord((Person)value); return; }
+      if ("landlords".equals(key) && value instanceof Person) { landlord((Person)value); return; }
       if ("realEstateAgent".equals(key) && value instanceof RealEstateAgent) { realEstateAgent((RealEstateAgent)value); return; }
+      if ("realEstateAgents".equals(key) && value instanceof RealEstateAgent) { realEstateAgent((RealEstateAgent)value); return; }
       super.fromMap(key, value);
     }
   }

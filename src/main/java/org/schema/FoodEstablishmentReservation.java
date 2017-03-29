@@ -401,8 +401,11 @@ public class FoodEstablishmentReservation extends Reservation {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("startTime".equals(key) && value instanceof java.util.Date) { startTime((java.util.Date)value); return; }
+      if ("startTimes".equals(key) && value instanceof java.util.Date) { startTime((java.util.Date)value); return; }
       if ("partySize".equals(key) && value instanceof Integer) { partySize((Integer)value); return; }
+      if ("partySizes".equals(key) && value instanceof Integer) { partySize((Integer)value); return; }
       if ("partySize".equals(key) && value instanceof QuantitativeValue) { partySize((QuantitativeValue)value); return; }
+      if ("partySizes".equals(key) && value instanceof QuantitativeValue) { partySize((QuantitativeValue)value); return; }
       super.fromMap(key, value);
     }
   }

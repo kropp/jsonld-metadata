@@ -387,15 +387,25 @@ public class ContactPoint extends StructuredValue {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("availableLanguage".equals(key) && value instanceof Language) { availableLanguage((Language)value); return; }
+      if ("availableLanguages".equals(key) && value instanceof Language) { availableLanguage((Language)value); return; }
       if ("availableLanguage".equals(key) && value instanceof String) { availableLanguage((String)value); return; }
+      if ("availableLanguages".equals(key) && value instanceof String) { availableLanguage((String)value); return; }
       if ("contactOption".equals(key) && value instanceof ContactPointOption) { contactOption((ContactPointOption)value); return; }
+      if ("contactOptions".equals(key) && value instanceof ContactPointOption) { contactOption((ContactPointOption)value); return; }
       if ("contactType".equals(key) && value instanceof String) { contactType((String)value); return; }
+      if ("contactTypes".equals(key) && value instanceof String) { contactType((String)value); return; }
       if ("email".equals(key) && value instanceof String) { email((String)value); return; }
+      if ("emails".equals(key) && value instanceof String) { email((String)value); return; }
       if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); return; }
+      if ("faxNumbers".equals(key) && value instanceof String) { faxNumber((String)value); return; }
       if ("hoursAvailable".equals(key) && value instanceof OpeningHoursSpecification) { hoursAvailable((OpeningHoursSpecification)value); return; }
+      if ("hoursAvailables".equals(key) && value instanceof OpeningHoursSpecification) { hoursAvailable((OpeningHoursSpecification)value); return; }
       if ("productSupported".equals(key) && value instanceof Product) { productSupported((Product)value); return; }
+      if ("productSupporteds".equals(key) && value instanceof Product) { productSupported((Product)value); return; }
       if ("productSupported".equals(key) && value instanceof String) { productSupported((String)value); return; }
+      if ("productSupporteds".equals(key) && value instanceof String) { productSupported((String)value); return; }
       if ("telephone".equals(key) && value instanceof String) { telephone((String)value); return; }
+      if ("telephones".equals(key) && value instanceof String) { telephone((String)value); return; }
       super.fromMap(key, value);
     }
   }

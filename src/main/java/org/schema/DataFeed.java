@@ -1228,8 +1228,11 @@ public class DataFeed extends Dataset {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("dataFeedElement".equals(key) && value instanceof DataFeedItem) { dataFeedElement((DataFeedItem)value); return; }
+      if ("dataFeedElements".equals(key) && value instanceof DataFeedItem) { dataFeedElement((DataFeedItem)value); return; }
       if ("dataFeedElement".equals(key) && value instanceof String) { dataFeedElement((String)value); return; }
+      if ("dataFeedElements".equals(key) && value instanceof String) { dataFeedElement((String)value); return; }
       if ("dataFeedElement".equals(key) && value instanceof Thing) { dataFeedElement((Thing)value); return; }
+      if ("dataFeedElements".equals(key) && value instanceof Thing) { dataFeedElement((Thing)value); return; }
       super.fromMap(key, value);
     }
   }

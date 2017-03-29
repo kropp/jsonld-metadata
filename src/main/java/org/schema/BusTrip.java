@@ -408,15 +408,25 @@ public class BusTrip extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
+      if ("providers".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
       if ("provider".equals(key) && value instanceof Person) { provider((Person)value); return; }
+      if ("providers".equals(key) && value instanceof Person) { provider((Person)value); return; }
       if ("departureTime".equals(key) && value instanceof java.util.Date) { departureTime((java.util.Date)value); return; }
+      if ("departureTimes".equals(key) && value instanceof java.util.Date) { departureTime((java.util.Date)value); return; }
       if ("arrivalTime".equals(key) && value instanceof java.util.Date) { arrivalTime((java.util.Date)value); return; }
+      if ("arrivalTimes".equals(key) && value instanceof java.util.Date) { arrivalTime((java.util.Date)value); return; }
       if ("busNumber".equals(key) && value instanceof String) { busNumber((String)value); return; }
+      if ("busNumbers".equals(key) && value instanceof String) { busNumber((String)value); return; }
       if ("busName".equals(key) && value instanceof String) { busName((String)value); return; }
+      if ("busNames".equals(key) && value instanceof String) { busName((String)value); return; }
       if ("departureBusStop".equals(key) && value instanceof BusStation) { departureBusStop((BusStation)value); return; }
+      if ("departureBusStops".equals(key) && value instanceof BusStation) { departureBusStop((BusStation)value); return; }
       if ("departureBusStop".equals(key) && value instanceof BusStop) { departureBusStop((BusStop)value); return; }
+      if ("departureBusStops".equals(key) && value instanceof BusStop) { departureBusStop((BusStop)value); return; }
       if ("arrivalBusStop".equals(key) && value instanceof BusStation) { arrivalBusStop((BusStation)value); return; }
+      if ("arrivalBusStops".equals(key) && value instanceof BusStation) { arrivalBusStop((BusStation)value); return; }
       if ("arrivalBusStop".equals(key) && value instanceof BusStop) { arrivalBusStop((BusStop)value); return; }
+      if ("arrivalBusStops".equals(key) && value instanceof BusStop) { arrivalBusStop((BusStop)value); return; }
       super.fromMap(key, value);
     }
   }

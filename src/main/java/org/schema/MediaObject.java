@@ -1578,22 +1578,39 @@ public class MediaObject extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("associatedArticle".equals(key) && value instanceof NewsArticle) { associatedArticle((NewsArticle)value); return; }
+      if ("associatedArticles".equals(key) && value instanceof NewsArticle) { associatedArticle((NewsArticle)value); return; }
       if ("bitrate".equals(key) && value instanceof String) { bitrate((String)value); return; }
+      if ("bitrates".equals(key) && value instanceof String) { bitrate((String)value); return; }
       if ("contentSize".equals(key) && value instanceof String) { contentSize((String)value); return; }
+      if ("contentSizes".equals(key) && value instanceof String) { contentSize((String)value); return; }
       if ("contentUrl".equals(key) && value instanceof String) { contentUrl((String)value); return; }
+      if ("contentUrls".equals(key) && value instanceof String) { contentUrl((String)value); return; }
       if ("embedUrl".equals(key) && value instanceof String) { embedUrl((String)value); return; }
+      if ("embedUrls".equals(key) && value instanceof String) { embedUrl((String)value); return; }
       if ("encodesCreativeWork".equals(key) && value instanceof CreativeWork) { encodesCreativeWork((CreativeWork)value); return; }
+      if ("encodesCreativeWorks".equals(key) && value instanceof CreativeWork) { encodesCreativeWork((CreativeWork)value); return; }
       if ("encodingFormat".equals(key) && value instanceof String) { encodingFormat((String)value); return; }
+      if ("encodingFormats".equals(key) && value instanceof String) { encodingFormat((String)value); return; }
       if ("expires".equals(key) && value instanceof java.util.Date) { expires((java.util.Date)value); return; }
+      if ("expiress".equals(key) && value instanceof java.util.Date) { expires((java.util.Date)value); return; }
       if ("height".equals(key) && value instanceof Distance) { height((Distance)value); return; }
+      if ("heights".equals(key) && value instanceof Distance) { height((Distance)value); return; }
       if ("height".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); return; }
+      if ("heights".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); return; }
       if ("playerType".equals(key) && value instanceof String) { playerType((String)value); return; }
+      if ("playerTypes".equals(key) && value instanceof String) { playerType((String)value); return; }
       if ("productionCompany".equals(key) && value instanceof Organization) { productionCompany((Organization)value); return; }
+      if ("productionCompanys".equals(key) && value instanceof Organization) { productionCompany((Organization)value); return; }
       if ("requiresSubscription".equals(key) && value instanceof Boolean) { requiresSubscription((Boolean)value); return; }
+      if ("requiresSubscriptions".equals(key) && value instanceof Boolean) { requiresSubscription((Boolean)value); return; }
       if ("uploadDate".equals(key) && value instanceof java.util.Date) { uploadDate((java.util.Date)value); return; }
+      if ("uploadDates".equals(key) && value instanceof java.util.Date) { uploadDate((java.util.Date)value); return; }
       if ("width".equals(key) && value instanceof Distance) { width((Distance)value); return; }
+      if ("widths".equals(key) && value instanceof Distance) { width((Distance)value); return; }
       if ("width".equals(key) && value instanceof QuantitativeValue) { width((QuantitativeValue)value); return; }
+      if ("widths".equals(key) && value instanceof QuantitativeValue) { width((QuantitativeValue)value); return; }
       if ("regionsAllowed".equals(key) && value instanceof Place) { regionsAllowed((Place)value); return; }
+      if ("regionsAlloweds".equals(key) && value instanceof Place) { regionsAllowed((Place)value); return; }
       super.fromMap(key, value);
     }
   }

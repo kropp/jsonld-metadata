@@ -345,7 +345,9 @@ public class PaymentChargeSpecification extends PriceSpecification {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("appliesToDeliveryMethod".equals(key) && value instanceof DeliveryMethod) { appliesToDeliveryMethod((DeliveryMethod)value); return; }
+      if ("appliesToDeliveryMethods".equals(key) && value instanceof DeliveryMethod) { appliesToDeliveryMethod((DeliveryMethod)value); return; }
       if ("appliesToPaymentMethod".equals(key) && value instanceof PaymentMethod) { appliesToPaymentMethod((PaymentMethod)value); return; }
+      if ("appliesToPaymentMethods".equals(key) && value instanceof PaymentMethod) { appliesToPaymentMethod((PaymentMethod)value); return; }
       super.fromMap(key, value);
     }
   }

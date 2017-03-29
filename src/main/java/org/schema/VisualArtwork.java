@@ -1420,16 +1420,27 @@ public class VisualArtwork extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("artform".equals(key) && value instanceof String) { artform((String)value); return; }
+      if ("artforms".equals(key) && value instanceof String) { artform((String)value); return; }
       if ("artMedium".equals(key) && value instanceof String) { artMedium((String)value); return; }
+      if ("artMediums".equals(key) && value instanceof String) { artMedium((String)value); return; }
       if ("artworkSurface".equals(key) && value instanceof String) { artworkSurface((String)value); return; }
+      if ("artworkSurfaces".equals(key) && value instanceof String) { artworkSurface((String)value); return; }
       if ("width".equals(key) && value instanceof Distance) { width((Distance)value); return; }
+      if ("widths".equals(key) && value instanceof Distance) { width((Distance)value); return; }
       if ("width".equals(key) && value instanceof QuantitativeValue) { width((QuantitativeValue)value); return; }
+      if ("widths".equals(key) && value instanceof QuantitativeValue) { width((QuantitativeValue)value); return; }
       if ("height".equals(key) && value instanceof Distance) { height((Distance)value); return; }
+      if ("heights".equals(key) && value instanceof Distance) { height((Distance)value); return; }
       if ("height".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); return; }
+      if ("heights".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); return; }
       if ("depth".equals(key) && value instanceof Distance) { depth((Distance)value); return; }
+      if ("depths".equals(key) && value instanceof Distance) { depth((Distance)value); return; }
       if ("depth".equals(key) && value instanceof QuantitativeValue) { depth((QuantitativeValue)value); return; }
+      if ("depths".equals(key) && value instanceof QuantitativeValue) { depth((QuantitativeValue)value); return; }
       if ("artEdition".equals(key) && value instanceof Integer) { artEdition((Integer)value); return; }
+      if ("artEditions".equals(key) && value instanceof Integer) { artEdition((Integer)value); return; }
       if ("artEdition".equals(key) && value instanceof String) { artEdition((String)value); return; }
+      if ("artEditions".equals(key) && value instanceof String) { artEdition((String)value); return; }
       super.fromMap(key, value);
     }
   }

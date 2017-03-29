@@ -394,15 +394,25 @@ public class TrainTrip extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
+      if ("providers".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
       if ("provider".equals(key) && value instanceof Person) { provider((Person)value); return; }
+      if ("providers".equals(key) && value instanceof Person) { provider((Person)value); return; }
       if ("departureTime".equals(key) && value instanceof java.util.Date) { departureTime((java.util.Date)value); return; }
+      if ("departureTimes".equals(key) && value instanceof java.util.Date) { departureTime((java.util.Date)value); return; }
       if ("arrivalTime".equals(key) && value instanceof java.util.Date) { arrivalTime((java.util.Date)value); return; }
+      if ("arrivalTimes".equals(key) && value instanceof java.util.Date) { arrivalTime((java.util.Date)value); return; }
       if ("trainNumber".equals(key) && value instanceof String) { trainNumber((String)value); return; }
+      if ("trainNumbers".equals(key) && value instanceof String) { trainNumber((String)value); return; }
       if ("trainName".equals(key) && value instanceof String) { trainName((String)value); return; }
+      if ("trainNames".equals(key) && value instanceof String) { trainName((String)value); return; }
       if ("departureStation".equals(key) && value instanceof TrainStation) { departureStation((TrainStation)value); return; }
+      if ("departureStations".equals(key) && value instanceof TrainStation) { departureStation((TrainStation)value); return; }
       if ("arrivalStation".equals(key) && value instanceof TrainStation) { arrivalStation((TrainStation)value); return; }
+      if ("arrivalStations".equals(key) && value instanceof TrainStation) { arrivalStation((TrainStation)value); return; }
       if ("departurePlatform".equals(key) && value instanceof String) { departurePlatform((String)value); return; }
+      if ("departurePlatforms".equals(key) && value instanceof String) { departurePlatform((String)value); return; }
       if ("arrivalPlatform".equals(key) && value instanceof String) { arrivalPlatform((String)value); return; }
+      if ("arrivalPlatforms".equals(key) && value instanceof String) { arrivalPlatform((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -328,6 +328,7 @@ public class CompoundPriceSpecification extends PriceSpecification {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("priceComponent".equals(key) && value instanceof UnitPriceSpecification) { priceComponent((UnitPriceSpecification)value); return; }
+      if ("priceComponents".equals(key) && value instanceof UnitPriceSpecification) { priceComponent((UnitPriceSpecification)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -212,8 +212,11 @@ public class MenuItem extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("suitableForDiet".equals(key) && value instanceof RestrictedDiet) { suitableForDiet((RestrictedDiet)value); return; }
+      if ("suitableForDiets".equals(key) && value instanceof RestrictedDiet) { suitableForDiet((RestrictedDiet)value); return; }
       if ("nutrition".equals(key) && value instanceof NutritionInformation) { nutrition((NutritionInformation)value); return; }
+      if ("nutritions".equals(key) && value instanceof NutritionInformation) { nutrition((NutritionInformation)value); return; }
       if ("menuAddOn".equals(key) && value instanceof MenuSection) { menuAddOn((MenuSection)value); return; }
+      if ("menuAddOns".equals(key) && value instanceof MenuSection) { menuAddOn((MenuSection)value); return; }
       super.fromMap(key, value);
     }
   }

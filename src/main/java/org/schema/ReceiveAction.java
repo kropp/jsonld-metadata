@@ -348,9 +348,13 @@ public class ReceiveAction extends TransferAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("deliveryMethod".equals(key) && value instanceof DeliveryMethod) { deliveryMethod((DeliveryMethod)value); return; }
+      if ("deliveryMethods".equals(key) && value instanceof DeliveryMethod) { deliveryMethod((DeliveryMethod)value); return; }
       if ("sender".equals(key) && value instanceof Audience) { sender((Audience)value); return; }
+      if ("senders".equals(key) && value instanceof Audience) { sender((Audience)value); return; }
       if ("sender".equals(key) && value instanceof Organization) { sender((Organization)value); return; }
+      if ("senders".equals(key) && value instanceof Organization) { sender((Organization)value); return; }
       if ("sender".equals(key) && value instanceof Person) { sender((Person)value); return; }
+      if ("senders".equals(key) && value instanceof Person) { sender((Person)value); return; }
       super.fromMap(key, value);
     }
   }

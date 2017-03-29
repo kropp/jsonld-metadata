@@ -606,23 +606,41 @@ public class PropertyValue extends StructuredValue {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("minValue".equals(key) && value instanceof Integer) { minValue((Integer)value); return; }
+      if ("minValues".equals(key) && value instanceof Integer) { minValue((Integer)value); return; }
       if ("minValue".equals(key) && value instanceof Long) { minValue((Long)value); return; }
+      if ("minValues".equals(key) && value instanceof Long) { minValue((Long)value); return; }
       if ("minValue".equals(key) && value instanceof Float) { minValue((Float)value); return; }
+      if ("minValues".equals(key) && value instanceof Float) { minValue((Float)value); return; }
       if ("minValue".equals(key) && value instanceof Double) { minValue((Double)value); return; }
+      if ("minValues".equals(key) && value instanceof Double) { minValue((Double)value); return; }
       if ("minValue".equals(key) && value instanceof String) { minValue((String)value); return; }
+      if ("minValues".equals(key) && value instanceof String) { minValue((String)value); return; }
       if ("unitCode".equals(key) && value instanceof String) { unitCode((String)value); return; }
+      if ("unitCodes".equals(key) && value instanceof String) { unitCode((String)value); return; }
       if ("value".equals(key) && value instanceof Integer) { value((Integer)value); return; }
+      if ("values".equals(key) && value instanceof Integer) { value((Integer)value); return; }
       if ("value".equals(key) && value instanceof Long) { value((Long)value); return; }
+      if ("values".equals(key) && value instanceof Long) { value((Long)value); return; }
       if ("value".equals(key) && value instanceof Float) { value((Float)value); return; }
+      if ("values".equals(key) && value instanceof Float) { value((Float)value); return; }
       if ("value".equals(key) && value instanceof Double) { value((Double)value); return; }
+      if ("values".equals(key) && value instanceof Double) { value((Double)value); return; }
       if ("value".equals(key) && value instanceof String) { value((String)value); return; }
+      if ("values".equals(key) && value instanceof String) { value((String)value); return; }
       if ("valueReference".equals(key) && value instanceof Enumeration) { valueReference((Enumeration)value); return; }
+      if ("valueReferences".equals(key) && value instanceof Enumeration) { valueReference((Enumeration)value); return; }
       if ("valueReference".equals(key) && value instanceof PropertyValue) { valueReference((PropertyValue)value); return; }
+      if ("valueReferences".equals(key) && value instanceof PropertyValue) { valueReference((PropertyValue)value); return; }
       if ("valueReference".equals(key) && value instanceof QualitativeValue) { valueReference((QualitativeValue)value); return; }
+      if ("valueReferences".equals(key) && value instanceof QualitativeValue) { valueReference((QualitativeValue)value); return; }
       if ("valueReference".equals(key) && value instanceof QuantitativeValue) { valueReference((QuantitativeValue)value); return; }
+      if ("valueReferences".equals(key) && value instanceof QuantitativeValue) { valueReference((QuantitativeValue)value); return; }
       if ("valueReference".equals(key) && value instanceof StructuredValue) { valueReference((StructuredValue)value); return; }
+      if ("valueReferences".equals(key) && value instanceof StructuredValue) { valueReference((StructuredValue)value); return; }
       if ("unitText".equals(key) && value instanceof String) { unitText((String)value); return; }
+      if ("unitTexts".equals(key) && value instanceof String) { unitText((String)value); return; }
       if ("propertyID".equals(key) && value instanceof String) { propertyID((String)value); return; }
+      if ("propertyIDs".equals(key) && value instanceof String) { propertyID((String)value); return; }
       super.fromMap(key, value);
     }
   }

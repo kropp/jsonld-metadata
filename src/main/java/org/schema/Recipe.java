@@ -1392,16 +1392,27 @@ public class Recipe extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("totalTime".equals(key) && value instanceof Duration) { totalTime((Duration)value); return; }
+      if ("totalTimes".equals(key) && value instanceof Duration) { totalTime((Duration)value); return; }
       if ("cookTime".equals(key) && value instanceof Duration) { cookTime((Duration)value); return; }
+      if ("cookTimes".equals(key) && value instanceof Duration) { cookTime((Duration)value); return; }
       if ("cookingMethod".equals(key) && value instanceof String) { cookingMethod((String)value); return; }
+      if ("cookingMethods".equals(key) && value instanceof String) { cookingMethod((String)value); return; }
       if ("nutrition".equals(key) && value instanceof NutritionInformation) { nutrition((NutritionInformation)value); return; }
+      if ("nutritions".equals(key) && value instanceof NutritionInformation) { nutrition((NutritionInformation)value); return; }
       if ("prepTime".equals(key) && value instanceof Duration) { prepTime((Duration)value); return; }
+      if ("prepTimes".equals(key) && value instanceof Duration) { prepTime((Duration)value); return; }
       if ("recipeCategory".equals(key) && value instanceof String) { recipeCategory((String)value); return; }
+      if ("recipeCategorys".equals(key) && value instanceof String) { recipeCategory((String)value); return; }
       if ("recipeCuisine".equals(key) && value instanceof String) { recipeCuisine((String)value); return; }
+      if ("recipeCuisines".equals(key) && value instanceof String) { recipeCuisine((String)value); return; }
       if ("recipeIngredient".equals(key) && value instanceof String) { recipeIngredient((String)value); return; }
+      if ("recipeIngredients".equals(key) && value instanceof String) { recipeIngredient((String)value); return; }
       if ("recipeInstructions".equals(key) && value instanceof ItemList) { recipeInstructions((ItemList)value); return; }
+      if ("recipeInstructionss".equals(key) && value instanceof ItemList) { recipeInstructions((ItemList)value); return; }
       if ("recipeInstructions".equals(key) && value instanceof String) { recipeInstructions((String)value); return; }
+      if ("recipeInstructionss".equals(key) && value instanceof String) { recipeInstructions((String)value); return; }
       if ("recipeYield".equals(key) && value instanceof String) { recipeYield((String)value); return; }
+      if ("recipeYields".equals(key) && value instanceof String) { recipeYield((String)value); return; }
       super.fromMap(key, value);
     }
   }

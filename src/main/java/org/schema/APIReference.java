@@ -1280,9 +1280,13 @@ public class APIReference extends TechArticle {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("executableLibraryName".equals(key) && value instanceof String) { executableLibraryName((String)value); return; }
+      if ("executableLibraryNames".equals(key) && value instanceof String) { executableLibraryName((String)value); return; }
       if ("assemblyVersion".equals(key) && value instanceof String) { assemblyVersion((String)value); return; }
+      if ("assemblyVersions".equals(key) && value instanceof String) { assemblyVersion((String)value); return; }
       if ("programmingModel".equals(key) && value instanceof String) { programmingModel((String)value); return; }
+      if ("programmingModels".equals(key) && value instanceof String) { programmingModel((String)value); return; }
       if ("targetPlatform".equals(key) && value instanceof String) { targetPlatform((String)value); return; }
+      if ("targetPlatforms".equals(key) && value instanceof String) { targetPlatform((String)value); return; }
       super.fromMap(key, value);
     }
   }

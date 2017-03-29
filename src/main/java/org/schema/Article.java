@@ -1306,13 +1306,21 @@ public class Article extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("articleBody".equals(key) && value instanceof String) { articleBody((String)value); return; }
+      if ("articleBodys".equals(key) && value instanceof String) { articleBody((String)value); return; }
       if ("articleSection".equals(key) && value instanceof String) { articleSection((String)value); return; }
+      if ("articleSections".equals(key) && value instanceof String) { articleSection((String)value); return; }
       if ("wordCount".equals(key) && value instanceof Integer) { wordCount((Integer)value); return; }
+      if ("wordCounts".equals(key) && value instanceof Integer) { wordCount((Integer)value); return; }
       if ("pageEnd".equals(key) && value instanceof Integer) { pageEnd((Integer)value); return; }
+      if ("pageEnds".equals(key) && value instanceof Integer) { pageEnd((Integer)value); return; }
       if ("pageEnd".equals(key) && value instanceof String) { pageEnd((String)value); return; }
+      if ("pageEnds".equals(key) && value instanceof String) { pageEnd((String)value); return; }
       if ("pageStart".equals(key) && value instanceof Integer) { pageStart((Integer)value); return; }
+      if ("pageStarts".equals(key) && value instanceof Integer) { pageStart((Integer)value); return; }
       if ("pageStart".equals(key) && value instanceof String) { pageStart((String)value); return; }
+      if ("pageStarts".equals(key) && value instanceof String) { pageStart((String)value); return; }
       if ("pagination".equals(key) && value instanceof String) { pagination((String)value); return; }
+      if ("paginations".equals(key) && value instanceof String) { pagination((String)value); return; }
       super.fromMap(key, value);
     }
   }

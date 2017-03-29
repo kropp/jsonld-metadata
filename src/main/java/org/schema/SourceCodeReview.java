@@ -1420,9 +1420,13 @@ public class SourceCodeReview extends SoftwareApplication {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("state".equals(key) && value instanceof ReviewState) { state((ReviewState)value); return; }
+      if ("states".equals(key) && value instanceof ReviewState) { state((ReviewState)value); return; }
       if ("reviewer".equals(key) && value instanceof Person) { reviewer((Person)value); return; }
+      if ("reviewers".equals(key) && value instanceof Person) { reviewer((Person)value); return; }
       if ("watcher".equals(key) && value instanceof Person) { watcher((Person)value); return; }
+      if ("watchers".equals(key) && value instanceof Person) { watcher((Person)value); return; }
       if ("sourceCodeRevision".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
+      if ("sourceCodeRevisions".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
       super.fromMap(key, value);
     }
   }

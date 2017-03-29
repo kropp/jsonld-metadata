@@ -607,6 +607,7 @@ public class SomeProducts extends Product {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("inventoryLevel".equals(key) && value instanceof QuantitativeValue) { inventoryLevel((QuantitativeValue)value); return; }
+      if ("inventoryLevels".equals(key) && value instanceof QuantitativeValue) { inventoryLevel((QuantitativeValue)value); return; }
       super.fromMap(key, value);
     }
   }

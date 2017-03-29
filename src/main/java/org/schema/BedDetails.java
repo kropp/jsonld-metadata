@@ -270,11 +270,17 @@ public class BedDetails extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("typeOfBed".equals(key) && value instanceof String) { typeOfBed((String)value); return; }
+      if ("typeOfBeds".equals(key) && value instanceof String) { typeOfBed((String)value); return; }
       if ("numberOfBeds".equals(key) && value instanceof Integer) { numberOfBeds((Integer)value); return; }
+      if ("numberOfBedss".equals(key) && value instanceof Integer) { numberOfBeds((Integer)value); return; }
       if ("numberOfBeds".equals(key) && value instanceof Long) { numberOfBeds((Long)value); return; }
+      if ("numberOfBedss".equals(key) && value instanceof Long) { numberOfBeds((Long)value); return; }
       if ("numberOfBeds".equals(key) && value instanceof Float) { numberOfBeds((Float)value); return; }
+      if ("numberOfBedss".equals(key) && value instanceof Float) { numberOfBeds((Float)value); return; }
       if ("numberOfBeds".equals(key) && value instanceof Double) { numberOfBeds((Double)value); return; }
+      if ("numberOfBedss".equals(key) && value instanceof Double) { numberOfBeds((Double)value); return; }
       if ("numberOfBeds".equals(key) && value instanceof String) { numberOfBeds((String)value); return; }
+      if ("numberOfBedss".equals(key) && value instanceof String) { numberOfBeds((String)value); return; }
       super.fromMap(key, value);
     }
   }

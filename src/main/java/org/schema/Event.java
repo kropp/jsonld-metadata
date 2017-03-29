@@ -1168,41 +1168,77 @@ public class Event extends Thing {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("about".equals(key) && value instanceof Thing) { about((Thing)value); return; }
+      if ("abouts".equals(key) && value instanceof Thing) { about((Thing)value); return; }
       if ("actor".equals(key) && value instanceof Person) { actor((Person)value); return; }
+      if ("actors".equals(key) && value instanceof Person) { actor((Person)value); return; }
       if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
+      if ("aggregateRatings".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
       if ("organizer".equals(key) && value instanceof Organization) { organizer((Organization)value); return; }
+      if ("organizers".equals(key) && value instanceof Organization) { organizer((Organization)value); return; }
       if ("organizer".equals(key) && value instanceof Person) { organizer((Person)value); return; }
+      if ("organizers".equals(key) && value instanceof Person) { organizer((Person)value); return; }
       if ("attendee".equals(key) && value instanceof Organization) { attendee((Organization)value); return; }
+      if ("attendees".equals(key) && value instanceof Organization) { attendee((Organization)value); return; }
       if ("attendee".equals(key) && value instanceof Person) { attendee((Person)value); return; }
+      if ("attendees".equals(key) && value instanceof Person) { attendee((Person)value); return; }
       if ("contributor".equals(key) && value instanceof Organization) { contributor((Organization)value); return; }
+      if ("contributors".equals(key) && value instanceof Organization) { contributor((Organization)value); return; }
       if ("contributor".equals(key) && value instanceof Person) { contributor((Person)value); return; }
+      if ("contributors".equals(key) && value instanceof Person) { contributor((Person)value); return; }
       if ("director".equals(key) && value instanceof Person) { director((Person)value); return; }
+      if ("directors".equals(key) && value instanceof Person) { director((Person)value); return; }
       if ("doorTime".equals(key) && value instanceof java.util.Date) { doorTime((java.util.Date)value); return; }
+      if ("doorTimes".equals(key) && value instanceof java.util.Date) { doorTime((java.util.Date)value); return; }
       if ("endDate".equals(key) && value instanceof java.util.Date) { endDate((java.util.Date)value); return; }
+      if ("endDates".equals(key) && value instanceof java.util.Date) { endDate((java.util.Date)value); return; }
       if ("eventStatus".equals(key) && value instanceof EventStatusType) { eventStatus((EventStatusType)value); return; }
+      if ("eventStatuss".equals(key) && value instanceof EventStatusType) { eventStatus((EventStatusType)value); return; }
       if ("isAccessibleForFree".equals(key) && value instanceof Boolean) { isAccessibleForFree((Boolean)value); return; }
+      if ("isAccessibleForFrees".equals(key) && value instanceof Boolean) { isAccessibleForFree((Boolean)value); return; }
       if ("inLanguage".equals(key) && value instanceof Language) { inLanguage((Language)value); return; }
+      if ("inLanguages".equals(key) && value instanceof Language) { inLanguage((Language)value); return; }
       if ("inLanguage".equals(key) && value instanceof String) { inLanguage((String)value); return; }
+      if ("inLanguages".equals(key) && value instanceof String) { inLanguage((String)value); return; }
       if ("maximumAttendeeCapacity".equals(key) && value instanceof Integer) { maximumAttendeeCapacity((Integer)value); return; }
+      if ("maximumAttendeeCapacitys".equals(key) && value instanceof Integer) { maximumAttendeeCapacity((Integer)value); return; }
       if ("remainingAttendeeCapacity".equals(key) && value instanceof Integer) { remainingAttendeeCapacity((Integer)value); return; }
+      if ("remainingAttendeeCapacitys".equals(key) && value instanceof Integer) { remainingAttendeeCapacity((Integer)value); return; }
       if ("offers".equals(key) && value instanceof Offer) { offers((Offer)value); return; }
+      if ("offerss".equals(key) && value instanceof Offer) { offers((Offer)value); return; }
       if ("performer".equals(key) && value instanceof Organization) { performer((Organization)value); return; }
+      if ("performers".equals(key) && value instanceof Organization) { performer((Organization)value); return; }
       if ("performer".equals(key) && value instanceof Person) { performer((Person)value); return; }
+      if ("performers".equals(key) && value instanceof Person) { performer((Person)value); return; }
       if ("previousStartDate".equals(key) && value instanceof java.util.Date) { previousStartDate((java.util.Date)value); return; }
+      if ("previousStartDates".equals(key) && value instanceof java.util.Date) { previousStartDate((java.util.Date)value); return; }
       if ("recordedIn".equals(key) && value instanceof CreativeWork) { recordedIn((CreativeWork)value); return; }
+      if ("recordedIns".equals(key) && value instanceof CreativeWork) { recordedIn((CreativeWork)value); return; }
       if ("review".equals(key) && value instanceof Review) { review((Review)value); return; }
+      if ("reviews".equals(key) && value instanceof Review) { review((Review)value); return; }
       if ("funder".equals(key) && value instanceof Organization) { funder((Organization)value); return; }
+      if ("funders".equals(key) && value instanceof Organization) { funder((Organization)value); return; }
       if ("funder".equals(key) && value instanceof Person) { funder((Person)value); return; }
+      if ("funders".equals(key) && value instanceof Person) { funder((Person)value); return; }
       if ("startDate".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); return; }
+      if ("startDates".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); return; }
       if ("subEvent".equals(key) && value instanceof Event) { subEvent((Event)value); return; }
+      if ("subEvents".equals(key) && value instanceof Event) { subEvent((Event)value); return; }
       if ("superEvent".equals(key) && value instanceof Event) { superEvent((Event)value); return; }
+      if ("superEvents".equals(key) && value instanceof Event) { superEvent((Event)value); return; }
       if ("typicalAgeRange".equals(key) && value instanceof String) { typicalAgeRange((String)value); return; }
+      if ("typicalAgeRanges".equals(key) && value instanceof String) { typicalAgeRange((String)value); return; }
       if ("workPerformed".equals(key) && value instanceof CreativeWork) { workPerformed((CreativeWork)value); return; }
+      if ("workPerformeds".equals(key) && value instanceof CreativeWork) { workPerformed((CreativeWork)value); return; }
       if ("workFeatured".equals(key) && value instanceof WorkFeatured) { workFeatured((WorkFeatured)value); return; }
+      if ("workFeatureds".equals(key) && value instanceof WorkFeatured) { workFeatured((WorkFeatured)value); return; }
       if ("translator".equals(key) && value instanceof Organization) { translator((Organization)value); return; }
+      if ("translators".equals(key) && value instanceof Organization) { translator((Organization)value); return; }
       if ("translator".equals(key) && value instanceof Person) { translator((Person)value); return; }
+      if ("translators".equals(key) && value instanceof Person) { translator((Person)value); return; }
       if ("composer".equals(key) && value instanceof Organization) { composer((Organization)value); return; }
+      if ("composers".equals(key) && value instanceof Organization) { composer((Organization)value); return; }
       if ("composer".equals(key) && value instanceof Person) { composer((Person)value); return; }
+      if ("composers".equals(key) && value instanceof Person) { composer((Person)value); return; }
       super.fromMap(key, value);
     }
   }

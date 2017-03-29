@@ -227,6 +227,7 @@ public class TrackAction extends FindAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("deliveryMethod".equals(key) && value instanceof DeliveryMethod) { deliveryMethod((DeliveryMethod)value); return; }
+      if ("deliveryMethods".equals(key) && value instanceof DeliveryMethod) { deliveryMethod((DeliveryMethod)value); return; }
       super.fromMap(key, value);
     }
   }

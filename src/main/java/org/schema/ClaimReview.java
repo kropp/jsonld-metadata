@@ -1173,6 +1173,7 @@ public class ClaimReview extends Review {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("claimReviewed".equals(key) && value instanceof String) { claimReviewed((String)value); return; }
+      if ("claimRevieweds".equals(key) && value instanceof String) { claimReviewed((String)value); return; }
       super.fromMap(key, value);
     }
   }

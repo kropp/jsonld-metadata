@@ -262,6 +262,7 @@ public class PerformAction extends PlayAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("entertainmentBusiness".equals(key) && value instanceof EntertainmentBusiness) { entertainmentBusiness((EntertainmentBusiness)value); return; }
+      if ("entertainmentBusinesss".equals(key) && value instanceof EntertainmentBusiness) { entertainmentBusiness((EntertainmentBusiness)value); return; }
       super.fromMap(key, value);
     }
   }

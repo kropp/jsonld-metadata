@@ -1787,64 +1787,123 @@ public class Person extends Thing implements Competitor {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("additionalName".equals(key) && value instanceof String) { additionalName((String)value); return; }
+      if ("additionalNames".equals(key) && value instanceof String) { additionalName((String)value); return; }
       if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
+      if ("addresss".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
       if ("address".equals(key) && value instanceof String) { address((String)value); return; }
+      if ("addresss".equals(key) && value instanceof String) { address((String)value); return; }
       if ("affiliation".equals(key) && value instanceof MemberOf) { affiliation((MemberOf)value); return; }
+      if ("affiliations".equals(key) && value instanceof MemberOf) { affiliation((MemberOf)value); return; }
       if ("alumniOf".equals(key) && value instanceof EducationalOrganization) { alumniOf((EducationalOrganization)value); return; }
+      if ("alumniOfs".equals(key) && value instanceof EducationalOrganization) { alumniOf((EducationalOrganization)value); return; }
       if ("alumniOf".equals(key) && value instanceof Organization) { alumniOf((Organization)value); return; }
+      if ("alumniOfs".equals(key) && value instanceof Organization) { alumniOf((Organization)value); return; }
       if ("award".equals(key) && value instanceof String) { award((String)value); return; }
+      if ("awards".equals(key) && value instanceof String) { award((String)value); return; }
       if ("birthDate".equals(key) && value instanceof java.util.Date) { birthDate((java.util.Date)value); return; }
+      if ("birthDates".equals(key) && value instanceof java.util.Date) { birthDate((java.util.Date)value); return; }
       if ("brand".equals(key) && value instanceof Brand) { brand((Brand)value); return; }
+      if ("brands".equals(key) && value instanceof Brand) { brand((Brand)value); return; }
       if ("brand".equals(key) && value instanceof Organization) { brand((Organization)value); return; }
+      if ("brands".equals(key) && value instanceof Organization) { brand((Organization)value); return; }
       if ("children".equals(key) && value instanceof Person) { children((Person)value); return; }
+      if ("childrens".equals(key) && value instanceof Person) { children((Person)value); return; }
       if ("colleague".equals(key) && value instanceof Person) { colleague((Person)value); return; }
+      if ("colleagues".equals(key) && value instanceof Person) { colleague((Person)value); return; }
       if ("colleague".equals(key) && value instanceof String) { colleague((String)value); return; }
+      if ("colleagues".equals(key) && value instanceof String) { colleague((String)value); return; }
       if ("contactPoint".equals(key) && value instanceof ContactPoint) { contactPoint((ContactPoint)value); return; }
+      if ("contactPoints".equals(key) && value instanceof ContactPoint) { contactPoint((ContactPoint)value); return; }
       if ("deathDate".equals(key) && value instanceof java.util.Date) { deathDate((java.util.Date)value); return; }
+      if ("deathDates".equals(key) && value instanceof java.util.Date) { deathDate((java.util.Date)value); return; }
       if ("duns".equals(key) && value instanceof Identifier) { duns((Identifier)value); return; }
+      if ("dunss".equals(key) && value instanceof Identifier) { duns((Identifier)value); return; }
       if ("email".equals(key) && value instanceof String) { email((String)value); return; }
+      if ("emails".equals(key) && value instanceof String) { email((String)value); return; }
       if ("familyName".equals(key) && value instanceof String) { familyName((String)value); return; }
+      if ("familyNames".equals(key) && value instanceof String) { familyName((String)value); return; }
       if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); return; }
+      if ("faxNumbers".equals(key) && value instanceof String) { faxNumber((String)value); return; }
       if ("follows".equals(key) && value instanceof Person) { follows((Person)value); return; }
+      if ("followss".equals(key) && value instanceof Person) { follows((Person)value); return; }
       if ("gender".equals(key) && value instanceof GenderType) { gender((GenderType)value); return; }
+      if ("genders".equals(key) && value instanceof GenderType) { gender((GenderType)value); return; }
       if ("gender".equals(key) && value instanceof String) { gender((String)value); return; }
+      if ("genders".equals(key) && value instanceof String) { gender((String)value); return; }
       if ("givenName".equals(key) && value instanceof String) { givenName((String)value); return; }
+      if ("givenNames".equals(key) && value instanceof String) { givenName((String)value); return; }
       if ("globalLocationNumber".equals(key) && value instanceof Identifier) { globalLocationNumber((Identifier)value); return; }
+      if ("globalLocationNumbers".equals(key) && value instanceof Identifier) { globalLocationNumber((Identifier)value); return; }
       if ("hasPOS".equals(key) && value instanceof Place) { hasPOS((Place)value); return; }
+      if ("hasPOSs".equals(key) && value instanceof Place) { hasPOS((Place)value); return; }
       if ("height".equals(key) && value instanceof Distance) { height((Distance)value); return; }
+      if ("heights".equals(key) && value instanceof Distance) { height((Distance)value); return; }
       if ("height".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); return; }
+      if ("heights".equals(key) && value instanceof QuantitativeValue) { height((QuantitativeValue)value); return; }
       if ("homeLocation".equals(key) && value instanceof ContactPoint) { homeLocation((ContactPoint)value); return; }
+      if ("homeLocations".equals(key) && value instanceof ContactPoint) { homeLocation((ContactPoint)value); return; }
       if ("homeLocation".equals(key) && value instanceof Place) { homeLocation((Place)value); return; }
+      if ("homeLocations".equals(key) && value instanceof Place) { homeLocation((Place)value); return; }
       if ("honorificPrefix".equals(key) && value instanceof String) { honorificPrefix((String)value); return; }
+      if ("honorificPrefixs".equals(key) && value instanceof String) { honorificPrefix((String)value); return; }
       if ("honorificSuffix".equals(key) && value instanceof String) { honorificSuffix((String)value); return; }
+      if ("honorificSuffixs".equals(key) && value instanceof String) { honorificSuffix((String)value); return; }
       if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); return; }
+      if ("isicV4s".equals(key) && value instanceof String) { isicV4((String)value); return; }
       if ("jobTitle".equals(key) && value instanceof String) { jobTitle((String)value); return; }
+      if ("jobTitles".equals(key) && value instanceof String) { jobTitle((String)value); return; }
       if ("knows".equals(key) && value instanceof Person) { knows((Person)value); return; }
+      if ("knowss".equals(key) && value instanceof Person) { knows((Person)value); return; }
       if ("makesOffer".equals(key) && value instanceof Offer) { makesOffer((Offer)value); return; }
+      if ("makesOffers".equals(key) && value instanceof Offer) { makesOffer((Offer)value); return; }
       if ("memberOf".equals(key) && value instanceof MemberOf) { memberOf((MemberOf)value); return; }
+      if ("memberOfs".equals(key) && value instanceof MemberOf) { memberOf((MemberOf)value); return; }
       if ("naics".equals(key) && value instanceof String) { naics((String)value); return; }
+      if ("naicss".equals(key) && value instanceof String) { naics((String)value); return; }
       if ("nationality".equals(key) && value instanceof Country) { nationality((Country)value); return; }
+      if ("nationalitys".equals(key) && value instanceof Country) { nationality((Country)value); return; }
       if ("netWorth".equals(key) && value instanceof MonetaryAmount) { netWorth((MonetaryAmount)value); return; }
+      if ("netWorths".equals(key) && value instanceof MonetaryAmount) { netWorth((MonetaryAmount)value); return; }
       if ("netWorth".equals(key) && value instanceof PriceSpecification) { netWorth((PriceSpecification)value); return; }
+      if ("netWorths".equals(key) && value instanceof PriceSpecification) { netWorth((PriceSpecification)value); return; }
       if ("owns".equals(key) && value instanceof OwnershipInfo) { owns((OwnershipInfo)value); return; }
+      if ("ownss".equals(key) && value instanceof OwnershipInfo) { owns((OwnershipInfo)value); return; }
       if ("owns".equals(key) && value instanceof Product) { owns((Product)value); return; }
+      if ("ownss".equals(key) && value instanceof Product) { owns((Product)value); return; }
       if ("parent".equals(key) && value instanceof Person) { parent((Person)value); return; }
+      if ("parents".equals(key) && value instanceof Person) { parent((Person)value); return; }
       if ("performerIn".equals(key) && value instanceof Event) { performerIn((Event)value); return; }
+      if ("performerIns".equals(key) && value instanceof Event) { performerIn((Event)value); return; }
       if ("relatedTo".equals(key) && value instanceof Person) { relatedTo((Person)value); return; }
+      if ("relatedTos".equals(key) && value instanceof Person) { relatedTo((Person)value); return; }
       if ("seeks".equals(key) && value instanceof Demand) { seeks((Demand)value); return; }
+      if ("seekss".equals(key) && value instanceof Demand) { seeks((Demand)value); return; }
       if ("sibling".equals(key) && value instanceof Person) { sibling((Person)value); return; }
+      if ("siblings".equals(key) && value instanceof Person) { sibling((Person)value); return; }
       if ("funder".equals(key) && value instanceof Organization) { funder((Organization)value); return; }
+      if ("funders".equals(key) && value instanceof Organization) { funder((Organization)value); return; }
       if ("funder".equals(key) && value instanceof Person) { funder((Person)value); return; }
+      if ("funders".equals(key) && value instanceof Person) { funder((Person)value); return; }
       if ("spouse".equals(key) && value instanceof Person) { spouse((Person)value); return; }
+      if ("spouses".equals(key) && value instanceof Person) { spouse((Person)value); return; }
       if ("taxID".equals(key) && value instanceof Identifier) { taxID((Identifier)value); return; }
+      if ("taxIDs".equals(key) && value instanceof Identifier) { taxID((Identifier)value); return; }
       if ("telephone".equals(key) && value instanceof String) { telephone((String)value); return; }
+      if ("telephones".equals(key) && value instanceof String) { telephone((String)value); return; }
       if ("vatID".equals(key) && value instanceof String) { vatID((String)value); return; }
+      if ("vatIDs".equals(key) && value instanceof String) { vatID((String)value); return; }
       if ("weight".equals(key) && value instanceof QuantitativeValue) { weight((QuantitativeValue)value); return; }
+      if ("weights".equals(key) && value instanceof QuantitativeValue) { weight((QuantitativeValue)value); return; }
       if ("workLocation".equals(key) && value instanceof ContactPoint) { workLocation((ContactPoint)value); return; }
+      if ("workLocations".equals(key) && value instanceof ContactPoint) { workLocation((ContactPoint)value); return; }
       if ("workLocation".equals(key) && value instanceof Place) { workLocation((Place)value); return; }
+      if ("workLocations".equals(key) && value instanceof Place) { workLocation((Place)value); return; }
       if ("worksFor".equals(key) && value instanceof Organization) { worksFor((Organization)value); return; }
+      if ("worksFors".equals(key) && value instanceof Organization) { worksFor((Organization)value); return; }
       if ("birthPlace".equals(key) && value instanceof Place) { birthPlace((Place)value); return; }
+      if ("birthPlaces".equals(key) && value instanceof Place) { birthPlace((Place)value); return; }
       if ("deathPlace".equals(key) && value instanceof Place) { deathPlace((Place)value); return; }
+      if ("deathPlaces".equals(key) && value instanceof Place) { deathPlace((Place)value); return; }
       super.fromMap(key, value);
     }
   }

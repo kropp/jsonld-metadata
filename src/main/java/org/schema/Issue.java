@@ -1169,7 +1169,9 @@ public class Issue extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("state".equals(key) && value instanceof String) { state((String)value); return; }
+      if ("states".equals(key) && value instanceof String) { state((String)value); return; }
       if ("sourceCodeRevision".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
+      if ("sourceCodeRevisions".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
       super.fromMap(key, value);
     }
   }

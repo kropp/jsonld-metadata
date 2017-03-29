@@ -1406,16 +1406,27 @@ public class CreativeWorkSeason extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("actor".equals(key) && value instanceof Person) { actor((Person)value); return; }
+      if ("actors".equals(key) && value instanceof Person) { actor((Person)value); return; }
       if ("director".equals(key) && value instanceof Person) { director((Person)value); return; }
+      if ("directors".equals(key) && value instanceof Person) { director((Person)value); return; }
       if ("endDate".equals(key) && value instanceof java.util.Date) { endDate((java.util.Date)value); return; }
+      if ("endDates".equals(key) && value instanceof java.util.Date) { endDate((java.util.Date)value); return; }
       if ("episode".equals(key) && value instanceof HasPart) { episode((HasPart)value); return; }
+      if ("episodes".equals(key) && value instanceof HasPart) { episode((HasPart)value); return; }
       if ("numberOfEpisodes".equals(key) && value instanceof Integer) { numberOfEpisodes((Integer)value); return; }
+      if ("numberOfEpisodess".equals(key) && value instanceof Integer) { numberOfEpisodes((Integer)value); return; }
       if ("partOfSeries".equals(key) && value instanceof IsPartOf) { partOfSeries((IsPartOf)value); return; }
+      if ("partOfSeriess".equals(key) && value instanceof IsPartOf) { partOfSeries((IsPartOf)value); return; }
       if ("productionCompany".equals(key) && value instanceof Organization) { productionCompany((Organization)value); return; }
+      if ("productionCompanys".equals(key) && value instanceof Organization) { productionCompany((Organization)value); return; }
       if ("seasonNumber".equals(key) && value instanceof Integer) { seasonNumber((Integer)value); return; }
+      if ("seasonNumbers".equals(key) && value instanceof Integer) { seasonNumber((Integer)value); return; }
       if ("seasonNumber".equals(key) && value instanceof String) { seasonNumber((String)value); return; }
+      if ("seasonNumbers".equals(key) && value instanceof String) { seasonNumber((String)value); return; }
       if ("startDate".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); return; }
+      if ("startDates".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); return; }
       if ("trailer".equals(key) && value instanceof VideoObject) { trailer((VideoObject)value); return; }
+      if ("trailers".equals(key) && value instanceof VideoObject) { trailer((VideoObject)value); return; }
       super.fromMap(key, value);
     }
   }

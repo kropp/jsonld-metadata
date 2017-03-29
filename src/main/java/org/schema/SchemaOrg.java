@@ -3017,6 +3017,11 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
   }
   public static java.util.Map<String, Object> toMap(@NotNull Thing thing) {
     final java.util.HashMap<String, Object> result = new java.util.HashMap<String, Object>();
+    if (thing.getId() != null) {
+      result.put("@id", thing.getId());
+    }
+    result.put("@type", thing.getJsonLdType());
+    result.put("@context", thing.getJsonLdContext());
     for (java.util.Map.Entry<String, Object> entry : thing.myData.entrySet()) {
     if (entry.getValue() instanceof Thing) {
         result.put(entry.getKey(), toMap((Thing) entry.getValue()));

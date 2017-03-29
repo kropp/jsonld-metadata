@@ -311,6 +311,7 @@ public class InviteAction extends CommunicateAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("event".equals(key) && value instanceof Event) { event((Event)value); return; }
+      if ("events".equals(key) && value instanceof Event) { event((Event)value); return; }
       super.fromMap(key, value);
     }
   }

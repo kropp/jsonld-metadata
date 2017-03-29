@@ -476,19 +476,33 @@ public class Rating extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("author".equals(key) && value instanceof Organization) { author((Organization)value); return; }
+      if ("authors".equals(key) && value instanceof Organization) { author((Organization)value); return; }
       if ("author".equals(key) && value instanceof Person) { author((Person)value); return; }
+      if ("authors".equals(key) && value instanceof Person) { author((Person)value); return; }
       if ("bestRating".equals(key) && value instanceof Integer) { bestRating((Integer)value); return; }
+      if ("bestRatings".equals(key) && value instanceof Integer) { bestRating((Integer)value); return; }
       if ("bestRating".equals(key) && value instanceof Long) { bestRating((Long)value); return; }
+      if ("bestRatings".equals(key) && value instanceof Long) { bestRating((Long)value); return; }
       if ("bestRating".equals(key) && value instanceof Float) { bestRating((Float)value); return; }
+      if ("bestRatings".equals(key) && value instanceof Float) { bestRating((Float)value); return; }
       if ("bestRating".equals(key) && value instanceof Double) { bestRating((Double)value); return; }
+      if ("bestRatings".equals(key) && value instanceof Double) { bestRating((Double)value); return; }
       if ("bestRating".equals(key) && value instanceof String) { bestRating((String)value); return; }
+      if ("bestRatings".equals(key) && value instanceof String) { bestRating((String)value); return; }
       if ("ratingValue".equals(key) && value instanceof Number) { ratingValue((Number)value); return; }
+      if ("ratingValues".equals(key) && value instanceof Number) { ratingValue((Number)value); return; }
       if ("ratingValue".equals(key) && value instanceof String) { ratingValue((String)value); return; }
+      if ("ratingValues".equals(key) && value instanceof String) { ratingValue((String)value); return; }
       if ("worstRating".equals(key) && value instanceof Integer) { worstRating((Integer)value); return; }
+      if ("worstRatings".equals(key) && value instanceof Integer) { worstRating((Integer)value); return; }
       if ("worstRating".equals(key) && value instanceof Long) { worstRating((Long)value); return; }
+      if ("worstRatings".equals(key) && value instanceof Long) { worstRating((Long)value); return; }
       if ("worstRating".equals(key) && value instanceof Float) { worstRating((Float)value); return; }
+      if ("worstRatings".equals(key) && value instanceof Float) { worstRating((Float)value); return; }
       if ("worstRating".equals(key) && value instanceof Double) { worstRating((Double)value); return; }
+      if ("worstRatings".equals(key) && value instanceof Double) { worstRating((Double)value); return; }
       if ("worstRating".equals(key) && value instanceof String) { worstRating((String)value); return; }
+      if ("worstRatings".equals(key) && value instanceof String) { worstRating((String)value); return; }
       super.fromMap(key, value);
     }
   }

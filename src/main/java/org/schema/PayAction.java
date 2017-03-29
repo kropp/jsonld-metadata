@@ -355,8 +355,11 @@ public class PayAction extends TradeAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("recipient".equals(key) && value instanceof Audience) { recipient((Audience)value); return; }
+      if ("recipients".equals(key) && value instanceof Audience) { recipient((Audience)value); return; }
       if ("recipient".equals(key) && value instanceof Organization) { recipient((Organization)value); return; }
+      if ("recipients".equals(key) && value instanceof Organization) { recipient((Organization)value); return; }
       if ("recipient".equals(key) && value instanceof Person) { recipient((Person)value); return; }
+      if ("recipients".equals(key) && value instanceof Person) { recipient((Person)value); return; }
       super.fromMap(key, value);
     }
   }

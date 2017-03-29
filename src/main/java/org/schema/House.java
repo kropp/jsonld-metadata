@@ -597,10 +597,15 @@ public class House extends Accommodation {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("numberOfRooms".equals(key) && value instanceof Integer) { numberOfRooms((Integer)value); return; }
+      if ("numberOfRoomss".equals(key) && value instanceof Integer) { numberOfRooms((Integer)value); return; }
       if ("numberOfRooms".equals(key) && value instanceof Long) { numberOfRooms((Long)value); return; }
+      if ("numberOfRoomss".equals(key) && value instanceof Long) { numberOfRooms((Long)value); return; }
       if ("numberOfRooms".equals(key) && value instanceof Float) { numberOfRooms((Float)value); return; }
+      if ("numberOfRoomss".equals(key) && value instanceof Float) { numberOfRooms((Float)value); return; }
       if ("numberOfRooms".equals(key) && value instanceof Double) { numberOfRooms((Double)value); return; }
+      if ("numberOfRoomss".equals(key) && value instanceof Double) { numberOfRooms((Double)value); return; }
       if ("numberOfRooms".equals(key) && value instanceof String) { numberOfRooms((String)value); return; }
+      if ("numberOfRoomss".equals(key) && value instanceof String) { numberOfRooms((String)value); return; }
       super.fromMap(key, value);
     }
   }

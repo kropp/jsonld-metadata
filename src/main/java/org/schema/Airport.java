@@ -480,7 +480,9 @@ public class Airport extends CivicStructure {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("iataCode".equals(key) && value instanceof String) { iataCode((String)value); return; }
+      if ("iataCodes".equals(key) && value instanceof String) { iataCode((String)value); return; }
       if ("icaoCode".equals(key) && value instanceof String) { icaoCode((String)value); return; }
+      if ("icaoCodes".equals(key) && value instanceof String) { icaoCode((String)value); return; }
       super.fromMap(key, value);
     }
   }

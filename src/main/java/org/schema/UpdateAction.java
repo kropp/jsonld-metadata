@@ -234,6 +234,7 @@ public class UpdateAction extends Action {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("targetCollection".equals(key) && value instanceof Thing) { targetCollection((Thing)value); return; }
+      if ("targetCollections".equals(key) && value instanceof Thing) { targetCollection((Thing)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -873,31 +873,57 @@ public class Place extends Thing {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
+      if ("addresss".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
       if ("address".equals(key) && value instanceof String) { address((String)value); return; }
+      if ("addresss".equals(key) && value instanceof String) { address((String)value); return; }
       if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
+      if ("aggregateRatings".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
       if ("branchCode".equals(key) && value instanceof String) { branchCode((String)value); return; }
+      if ("branchCodes".equals(key) && value instanceof String) { branchCode((String)value); return; }
       if ("containedInPlace".equals(key) && value instanceof Place) { containedInPlace((Place)value); return; }
+      if ("containedInPlaces".equals(key) && value instanceof Place) { containedInPlace((Place)value); return; }
       if ("containsPlace".equals(key) && value instanceof Place) { containsPlace((Place)value); return; }
+      if ("containsPlaces".equals(key) && value instanceof Place) { containsPlace((Place)value); return; }
       if ("event".equals(key) && value instanceof Event) { event((Event)value); return; }
+      if ("events".equals(key) && value instanceof Event) { event((Event)value); return; }
       if ("faxNumber".equals(key) && value instanceof String) { faxNumber((String)value); return; }
+      if ("faxNumbers".equals(key) && value instanceof String) { faxNumber((String)value); return; }
       if ("geo".equals(key) && value instanceof GeoCoordinates) { geo((GeoCoordinates)value); return; }
+      if ("geos".equals(key) && value instanceof GeoCoordinates) { geo((GeoCoordinates)value); return; }
       if ("geo".equals(key) && value instanceof GeoShape) { geo((GeoShape)value); return; }
+      if ("geos".equals(key) && value instanceof GeoShape) { geo((GeoShape)value); return; }
       if ("globalLocationNumber".equals(key) && value instanceof Identifier) { globalLocationNumber((Identifier)value); return; }
+      if ("globalLocationNumbers".equals(key) && value instanceof Identifier) { globalLocationNumber((Identifier)value); return; }
       if ("isicV4".equals(key) && value instanceof String) { isicV4((String)value); return; }
+      if ("isicV4s".equals(key) && value instanceof String) { isicV4((String)value); return; }
       if ("logo".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); return; }
+      if ("logos".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); return; }
       if ("logo".equals(key) && value instanceof String) { logo((String)value); return; }
+      if ("logos".equals(key) && value instanceof String) { logo((String)value); return; }
       if ("hasMap".equals(key) && value instanceof Map) { hasMap((Map)value); return; }
+      if ("hasMaps".equals(key) && value instanceof Map) { hasMap((Map)value); return; }
       if ("hasMap".equals(key) && value instanceof String) { hasMap((String)value); return; }
+      if ("hasMaps".equals(key) && value instanceof String) { hasMap((String)value); return; }
       if ("maximumAttendeeCapacity".equals(key) && value instanceof Integer) { maximumAttendeeCapacity((Integer)value); return; }
+      if ("maximumAttendeeCapacitys".equals(key) && value instanceof Integer) { maximumAttendeeCapacity((Integer)value); return; }
       if ("openingHoursSpecification".equals(key) && value instanceof OpeningHoursSpecification) { openingHoursSpecification((OpeningHoursSpecification)value); return; }
+      if ("openingHoursSpecifications".equals(key) && value instanceof OpeningHoursSpecification) { openingHoursSpecification((OpeningHoursSpecification)value); return; }
       if ("specialOpeningHoursSpecification".equals(key) && value instanceof OpeningHoursSpecification) { specialOpeningHoursSpecification((OpeningHoursSpecification)value); return; }
+      if ("specialOpeningHoursSpecifications".equals(key) && value instanceof OpeningHoursSpecification) { specialOpeningHoursSpecification((OpeningHoursSpecification)value); return; }
       if ("photo".equals(key) && value instanceof ImageObject) { photo((ImageObject)value); return; }
+      if ("photos".equals(key) && value instanceof ImageObject) { photo((ImageObject)value); return; }
       if ("photo".equals(key) && value instanceof Photograph) { photo((Photograph)value); return; }
+      if ("photos".equals(key) && value instanceof Photograph) { photo((Photograph)value); return; }
       if ("review".equals(key) && value instanceof Review) { review((Review)value); return; }
+      if ("reviews".equals(key) && value instanceof Review) { review((Review)value); return; }
       if ("telephone".equals(key) && value instanceof String) { telephone((String)value); return; }
+      if ("telephones".equals(key) && value instanceof String) { telephone((String)value); return; }
       if ("additionalProperty".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); return; }
+      if ("additionalPropertys".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); return; }
       if ("amenityFeature".equals(key) && value instanceof LocationFeatureSpecification) { amenityFeature((LocationFeatureSpecification)value); return; }
+      if ("amenityFeatures".equals(key) && value instanceof LocationFeatureSpecification) { amenityFeature((LocationFeatureSpecification)value); return; }
       if ("smokingAllowed".equals(key) && value instanceof Boolean) { smokingAllowed((Boolean)value); return; }
+      if ("smokingAlloweds".equals(key) && value instanceof Boolean) { smokingAllowed((Boolean)value); return; }
       super.fromMap(key, value);
     }
   }

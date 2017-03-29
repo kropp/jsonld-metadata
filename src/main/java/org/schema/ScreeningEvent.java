@@ -664,9 +664,13 @@ public class ScreeningEvent extends Event {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("videoFormat".equals(key) && value instanceof String) { videoFormat((String)value); return; }
+      if ("videoFormats".equals(key) && value instanceof String) { videoFormat((String)value); return; }
       if ("subtitleLanguage".equals(key) && value instanceof Language) { subtitleLanguage((Language)value); return; }
+      if ("subtitleLanguages".equals(key) && value instanceof Language) { subtitleLanguage((Language)value); return; }
       if ("subtitleLanguage".equals(key) && value instanceof String) { subtitleLanguage((String)value); return; }
+      if ("subtitleLanguages".equals(key) && value instanceof String) { subtitleLanguage((String)value); return; }
       if ("workPresented".equals(key) && value instanceof Movie) { workPresented((Movie)value); return; }
+      if ("workPresenteds".equals(key) && value instanceof Movie) { workPresented((Movie)value); return; }
       super.fromMap(key, value);
     }
   }

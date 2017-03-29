@@ -683,14 +683,23 @@ public class LodgingBusiness extends LocalBusiness {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("audience".equals(key) && value instanceof Audience) { audience((Audience)value); return; }
+      if ("audiences".equals(key) && value instanceof Audience) { audience((Audience)value); return; }
       if ("availableLanguage".equals(key) && value instanceof Language) { availableLanguage((Language)value); return; }
+      if ("availableLanguages".equals(key) && value instanceof Language) { availableLanguage((Language)value); return; }
       if ("availableLanguage".equals(key) && value instanceof String) { availableLanguage((String)value); return; }
+      if ("availableLanguages".equals(key) && value instanceof String) { availableLanguage((String)value); return; }
       if ("checkinTime".equals(key) && value instanceof java.util.Date) { checkinTime((java.util.Date)value); return; }
+      if ("checkinTimes".equals(key) && value instanceof java.util.Date) { checkinTime((java.util.Date)value); return; }
       if ("checkoutTime".equals(key) && value instanceof java.util.Date) { checkoutTime((java.util.Date)value); return; }
+      if ("checkoutTimes".equals(key) && value instanceof java.util.Date) { checkoutTime((java.util.Date)value); return; }
       if ("amenityFeature".equals(key) && value instanceof LocationFeatureSpecification) { amenityFeature((LocationFeatureSpecification)value); return; }
+      if ("amenityFeatures".equals(key) && value instanceof LocationFeatureSpecification) { amenityFeature((LocationFeatureSpecification)value); return; }
       if ("petsAllowed".equals(key) && value instanceof Boolean) { petsAllowed((Boolean)value); return; }
+      if ("petsAlloweds".equals(key) && value instanceof Boolean) { petsAllowed((Boolean)value); return; }
       if ("petsAllowed".equals(key) && value instanceof String) { petsAllowed((String)value); return; }
+      if ("petsAlloweds".equals(key) && value instanceof String) { petsAllowed((String)value); return; }
       if ("starRating".equals(key) && value instanceof Rating) { starRating((Rating)value); return; }
+      if ("starRatings".equals(key) && value instanceof Rating) { starRating((Rating)value); return; }
       super.fromMap(key, value);
     }
   }

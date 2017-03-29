@@ -253,10 +253,15 @@ public class DatedMoneySpecification extends StructuredValue {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("amount".equals(key) && value instanceof MonetaryAmount) { amount((MonetaryAmount)value); return; }
+      if ("amounts".equals(key) && value instanceof MonetaryAmount) { amount((MonetaryAmount)value); return; }
       if ("amount".equals(key) && value instanceof Number) { amount((Number)value); return; }
+      if ("amounts".equals(key) && value instanceof Number) { amount((Number)value); return; }
       if ("currency".equals(key) && value instanceof String) { currency((String)value); return; }
+      if ("currencys".equals(key) && value instanceof String) { currency((String)value); return; }
       if ("startDate".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); return; }
+      if ("startDates".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); return; }
       if ("endDate".equals(key) && value instanceof java.util.Date) { endDate((java.util.Date)value); return; }
+      if ("endDates".equals(key) && value instanceof java.util.Date) { endDate((java.util.Date)value); return; }
       super.fromMap(key, value);
     }
   }

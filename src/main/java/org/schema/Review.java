@@ -1200,8 +1200,11 @@ public class Review extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("itemReviewed".equals(key) && value instanceof Thing) { itemReviewed((Thing)value); return; }
+      if ("itemRevieweds".equals(key) && value instanceof Thing) { itemReviewed((Thing)value); return; }
       if ("reviewBody".equals(key) && value instanceof String) { reviewBody((String)value); return; }
+      if ("reviewBodys".equals(key) && value instanceof String) { reviewBody((String)value); return; }
       if ("reviewRating".equals(key) && value instanceof Rating) { reviewRating((Rating)value); return; }
+      if ("reviewRatings".equals(key) && value instanceof Rating) { reviewRating((Rating)value); return; }
       super.fromMap(key, value);
     }
   }

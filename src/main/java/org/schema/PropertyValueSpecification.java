@@ -781,32 +781,59 @@ public class PropertyValueSpecification extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("minValue".equals(key) && value instanceof Integer) { minValue((Integer)value); return; }
+      if ("minValues".equals(key) && value instanceof Integer) { minValue((Integer)value); return; }
       if ("minValue".equals(key) && value instanceof Long) { minValue((Long)value); return; }
+      if ("minValues".equals(key) && value instanceof Long) { minValue((Long)value); return; }
       if ("minValue".equals(key) && value instanceof Float) { minValue((Float)value); return; }
+      if ("minValues".equals(key) && value instanceof Float) { minValue((Float)value); return; }
       if ("minValue".equals(key) && value instanceof Double) { minValue((Double)value); return; }
+      if ("minValues".equals(key) && value instanceof Double) { minValue((Double)value); return; }
       if ("minValue".equals(key) && value instanceof String) { minValue((String)value); return; }
+      if ("minValues".equals(key) && value instanceof String) { minValue((String)value); return; }
       if ("valueName".equals(key) && value instanceof String) { valueName((String)value); return; }
+      if ("valueNames".equals(key) && value instanceof String) { valueName((String)value); return; }
       if ("valueRequired".equals(key) && value instanceof Boolean) { valueRequired((Boolean)value); return; }
+      if ("valueRequireds".equals(key) && value instanceof Boolean) { valueRequired((Boolean)value); return; }
       if ("defaultValue".equals(key) && value instanceof String) { defaultValue((String)value); return; }
+      if ("defaultValues".equals(key) && value instanceof String) { defaultValue((String)value); return; }
       if ("defaultValue".equals(key) && value instanceof Thing) { defaultValue((Thing)value); return; }
+      if ("defaultValues".equals(key) && value instanceof Thing) { defaultValue((Thing)value); return; }
       if ("readonlyValue".equals(key) && value instanceof Boolean) { readonlyValue((Boolean)value); return; }
+      if ("readonlyValues".equals(key) && value instanceof Boolean) { readonlyValue((Boolean)value); return; }
       if ("multipleValues".equals(key) && value instanceof Boolean) { multipleValues((Boolean)value); return; }
+      if ("multipleValuess".equals(key) && value instanceof Boolean) { multipleValues((Boolean)value); return; }
       if ("valueMinLength".equals(key) && value instanceof Integer) { valueMinLength((Integer)value); return; }
+      if ("valueMinLengths".equals(key) && value instanceof Integer) { valueMinLength((Integer)value); return; }
       if ("valueMinLength".equals(key) && value instanceof Long) { valueMinLength((Long)value); return; }
+      if ("valueMinLengths".equals(key) && value instanceof Long) { valueMinLength((Long)value); return; }
       if ("valueMinLength".equals(key) && value instanceof Float) { valueMinLength((Float)value); return; }
+      if ("valueMinLengths".equals(key) && value instanceof Float) { valueMinLength((Float)value); return; }
       if ("valueMinLength".equals(key) && value instanceof Double) { valueMinLength((Double)value); return; }
+      if ("valueMinLengths".equals(key) && value instanceof Double) { valueMinLength((Double)value); return; }
       if ("valueMinLength".equals(key) && value instanceof String) { valueMinLength((String)value); return; }
+      if ("valueMinLengths".equals(key) && value instanceof String) { valueMinLength((String)value); return; }
       if ("valueMaxLength".equals(key) && value instanceof Integer) { valueMaxLength((Integer)value); return; }
+      if ("valueMaxLengths".equals(key) && value instanceof Integer) { valueMaxLength((Integer)value); return; }
       if ("valueMaxLength".equals(key) && value instanceof Long) { valueMaxLength((Long)value); return; }
+      if ("valueMaxLengths".equals(key) && value instanceof Long) { valueMaxLength((Long)value); return; }
       if ("valueMaxLength".equals(key) && value instanceof Float) { valueMaxLength((Float)value); return; }
+      if ("valueMaxLengths".equals(key) && value instanceof Float) { valueMaxLength((Float)value); return; }
       if ("valueMaxLength".equals(key) && value instanceof Double) { valueMaxLength((Double)value); return; }
+      if ("valueMaxLengths".equals(key) && value instanceof Double) { valueMaxLength((Double)value); return; }
       if ("valueMaxLength".equals(key) && value instanceof String) { valueMaxLength((String)value); return; }
+      if ("valueMaxLengths".equals(key) && value instanceof String) { valueMaxLength((String)value); return; }
       if ("valuePattern".equals(key) && value instanceof String) { valuePattern((String)value); return; }
+      if ("valuePatterns".equals(key) && value instanceof String) { valuePattern((String)value); return; }
       if ("stepValue".equals(key) && value instanceof Integer) { stepValue((Integer)value); return; }
+      if ("stepValues".equals(key) && value instanceof Integer) { stepValue((Integer)value); return; }
       if ("stepValue".equals(key) && value instanceof Long) { stepValue((Long)value); return; }
+      if ("stepValues".equals(key) && value instanceof Long) { stepValue((Long)value); return; }
       if ("stepValue".equals(key) && value instanceof Float) { stepValue((Float)value); return; }
+      if ("stepValues".equals(key) && value instanceof Float) { stepValue((Float)value); return; }
       if ("stepValue".equals(key) && value instanceof Double) { stepValue((Double)value); return; }
+      if ("stepValues".equals(key) && value instanceof Double) { stepValue((Double)value); return; }
       if ("stepValue".equals(key) && value instanceof String) { stepValue((String)value); return; }
+      if ("stepValues".equals(key) && value instanceof String) { stepValue((String)value); return; }
       super.fromMap(key, value);
     }
   }

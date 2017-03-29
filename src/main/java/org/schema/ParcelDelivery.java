@@ -463,17 +463,29 @@ public class ParcelDelivery extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("deliveryAddress".equals(key) && value instanceof PostalAddress) { deliveryAddress((PostalAddress)value); return; }
+      if ("deliveryAddresss".equals(key) && value instanceof PostalAddress) { deliveryAddress((PostalAddress)value); return; }
       if ("deliveryStatus".equals(key) && value instanceof DeliveryEvent) { deliveryStatus((DeliveryEvent)value); return; }
+      if ("deliveryStatuss".equals(key) && value instanceof DeliveryEvent) { deliveryStatus((DeliveryEvent)value); return; }
       if ("expectedArrivalFrom".equals(key) && value instanceof java.util.Date) { expectedArrivalFrom((java.util.Date)value); return; }
+      if ("expectedArrivalFroms".equals(key) && value instanceof java.util.Date) { expectedArrivalFrom((java.util.Date)value); return; }
       if ("expectedArrivalUntil".equals(key) && value instanceof java.util.Date) { expectedArrivalUntil((java.util.Date)value); return; }
+      if ("expectedArrivalUntils".equals(key) && value instanceof java.util.Date) { expectedArrivalUntil((java.util.Date)value); return; }
       if ("hasDeliveryMethod".equals(key) && value instanceof DeliveryMethod) { hasDeliveryMethod((DeliveryMethod)value); return; }
+      if ("hasDeliveryMethods".equals(key) && value instanceof DeliveryMethod) { hasDeliveryMethod((DeliveryMethod)value); return; }
       if ("itemShipped".equals(key) && value instanceof Product) { itemShipped((Product)value); return; }
+      if ("itemShippeds".equals(key) && value instanceof Product) { itemShipped((Product)value); return; }
       if ("originAddress".equals(key) && value instanceof PostalAddress) { originAddress((PostalAddress)value); return; }
+      if ("originAddresss".equals(key) && value instanceof PostalAddress) { originAddress((PostalAddress)value); return; }
       if ("partOfOrder".equals(key) && value instanceof Order) { partOfOrder((Order)value); return; }
+      if ("partOfOrders".equals(key) && value instanceof Order) { partOfOrder((Order)value); return; }
       if ("trackingNumber".equals(key) && value instanceof String) { trackingNumber((String)value); return; }
+      if ("trackingNumbers".equals(key) && value instanceof String) { trackingNumber((String)value); return; }
       if ("trackingUrl".equals(key) && value instanceof String) { trackingUrl((String)value); return; }
+      if ("trackingUrls".equals(key) && value instanceof String) { trackingUrl((String)value); return; }
       if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
+      if ("providers".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
       if ("provider".equals(key) && value instanceof Person) { provider((Person)value); return; }
+      if ("providers".equals(key) && value instanceof Person) { provider((Person)value); return; }
       super.fromMap(key, value);
     }
   }

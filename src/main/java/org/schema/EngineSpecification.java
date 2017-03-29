@@ -181,7 +181,9 @@ public class EngineSpecification extends StructuredValue {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("fuelType".equals(key) && value instanceof QualitativeValue) { fuelType((QualitativeValue)value); return; }
+      if ("fuelTypes".equals(key) && value instanceof QualitativeValue) { fuelType((QualitativeValue)value); return; }
       if ("fuelType".equals(key) && value instanceof String) { fuelType((String)value); return; }
+      if ("fuelTypes".equals(key) && value instanceof String) { fuelType((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -1241,10 +1241,15 @@ public class Question extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("upvoteCount".equals(key) && value instanceof Integer) { upvoteCount((Integer)value); return; }
+      if ("upvoteCounts".equals(key) && value instanceof Integer) { upvoteCount((Integer)value); return; }
       if ("downvoteCount".equals(key) && value instanceof Integer) { downvoteCount((Integer)value); return; }
+      if ("downvoteCounts".equals(key) && value instanceof Integer) { downvoteCount((Integer)value); return; }
       if ("answerCount".equals(key) && value instanceof Integer) { answerCount((Integer)value); return; }
+      if ("answerCounts".equals(key) && value instanceof Integer) { answerCount((Integer)value); return; }
       if ("acceptedAnswer".equals(key) && value instanceof Answer) { acceptedAnswer((Answer)value); return; }
+      if ("acceptedAnswers".equals(key) && value instanceof Answer) { acceptedAnswer((Answer)value); return; }
       if ("suggestedAnswer".equals(key) && value instanceof SuggestedAnswer) { suggestedAnswer((SuggestedAnswer)value); return; }
+      if ("suggestedAnswers".equals(key) && value instanceof SuggestedAnswer) { suggestedAnswer((SuggestedAnswer)value); return; }
       super.fromMap(key, value);
     }
   }

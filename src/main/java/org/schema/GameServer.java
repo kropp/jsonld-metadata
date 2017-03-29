@@ -205,8 +205,11 @@ public class GameServer extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("serverStatus".equals(key) && value instanceof GameServerStatus) { serverStatus((GameServerStatus)value); return; }
+      if ("serverStatuss".equals(key) && value instanceof GameServerStatus) { serverStatus((GameServerStatus)value); return; }
       if ("playersOnline".equals(key) && value instanceof Integer) { playersOnline((Integer)value); return; }
+      if ("playersOnlines".equals(key) && value instanceof Integer) { playersOnline((Integer)value); return; }
       if ("game".equals(key) && value instanceof VideoGame) { game((VideoGame)value); return; }
+      if ("games".equals(key) && value instanceof VideoGame) { game((VideoGame)value); return; }
       super.fromMap(key, value);
     }
   }

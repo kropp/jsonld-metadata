@@ -384,14 +384,23 @@ public class ServiceChannel extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("availableLanguage".equals(key) && value instanceof Language) { availableLanguage((Language)value); return; }
+      if ("availableLanguages".equals(key) && value instanceof Language) { availableLanguage((Language)value); return; }
       if ("availableLanguage".equals(key) && value instanceof String) { availableLanguage((String)value); return; }
+      if ("availableLanguages".equals(key) && value instanceof String) { availableLanguage((String)value); return; }
       if ("processingTime".equals(key) && value instanceof Duration) { processingTime((Duration)value); return; }
+      if ("processingTimes".equals(key) && value instanceof Duration) { processingTime((Duration)value); return; }
       if ("providesService".equals(key) && value instanceof Service) { providesService((Service)value); return; }
+      if ("providesServices".equals(key) && value instanceof Service) { providesService((Service)value); return; }
       if ("serviceLocation".equals(key) && value instanceof Place) { serviceLocation((Place)value); return; }
+      if ("serviceLocations".equals(key) && value instanceof Place) { serviceLocation((Place)value); return; }
       if ("servicePhone".equals(key) && value instanceof ContactPoint) { servicePhone((ContactPoint)value); return; }
+      if ("servicePhones".equals(key) && value instanceof ContactPoint) { servicePhone((ContactPoint)value); return; }
       if ("servicePostalAddress".equals(key) && value instanceof PostalAddress) { servicePostalAddress((PostalAddress)value); return; }
+      if ("servicePostalAddresss".equals(key) && value instanceof PostalAddress) { servicePostalAddress((PostalAddress)value); return; }
       if ("serviceSmsNumber".equals(key) && value instanceof ContactPoint) { serviceSmsNumber((ContactPoint)value); return; }
+      if ("serviceSmsNumbers".equals(key) && value instanceof ContactPoint) { serviceSmsNumber((ContactPoint)value); return; }
       if ("serviceUrl".equals(key) && value instanceof String) { serviceUrl((String)value); return; }
+      if ("serviceUrls".equals(key) && value instanceof String) { serviceUrl((String)value); return; }
       super.fromMap(key, value);
     }
   }

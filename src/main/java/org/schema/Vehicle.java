@@ -1548,42 +1548,79 @@ public class Vehicle extends Product {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("numberOfDoors".equals(key) && value instanceof Number) { numberOfDoors((Number)value); return; }
+      if ("numberOfDoorss".equals(key) && value instanceof Number) { numberOfDoors((Number)value); return; }
       if ("numberOfDoors".equals(key) && value instanceof QuantitativeValue) { numberOfDoors((QuantitativeValue)value); return; }
+      if ("numberOfDoorss".equals(key) && value instanceof QuantitativeValue) { numberOfDoors((QuantitativeValue)value); return; }
       if ("numberOfAirbags".equals(key) && value instanceof Integer) { numberOfAirbags((Integer)value); return; }
+      if ("numberOfAirbagss".equals(key) && value instanceof Integer) { numberOfAirbags((Integer)value); return; }
       if ("numberOfAirbags".equals(key) && value instanceof Long) { numberOfAirbags((Long)value); return; }
+      if ("numberOfAirbagss".equals(key) && value instanceof Long) { numberOfAirbags((Long)value); return; }
       if ("numberOfAirbags".equals(key) && value instanceof Float) { numberOfAirbags((Float)value); return; }
+      if ("numberOfAirbagss".equals(key) && value instanceof Float) { numberOfAirbags((Float)value); return; }
       if ("numberOfAirbags".equals(key) && value instanceof Double) { numberOfAirbags((Double)value); return; }
+      if ("numberOfAirbagss".equals(key) && value instanceof Double) { numberOfAirbags((Double)value); return; }
       if ("numberOfAirbags".equals(key) && value instanceof String) { numberOfAirbags((String)value); return; }
+      if ("numberOfAirbagss".equals(key) && value instanceof String) { numberOfAirbags((String)value); return; }
       if ("numberOfAxles".equals(key) && value instanceof Number) { numberOfAxles((Number)value); return; }
+      if ("numberOfAxless".equals(key) && value instanceof Number) { numberOfAxles((Number)value); return; }
       if ("numberOfAxles".equals(key) && value instanceof QuantitativeValue) { numberOfAxles((QuantitativeValue)value); return; }
+      if ("numberOfAxless".equals(key) && value instanceof QuantitativeValue) { numberOfAxles((QuantitativeValue)value); return; }
       if ("vehicleEngine".equals(key) && value instanceof EngineSpecification) { vehicleEngine((EngineSpecification)value); return; }
+      if ("vehicleEngines".equals(key) && value instanceof EngineSpecification) { vehicleEngine((EngineSpecification)value); return; }
       if ("fuelConsumption".equals(key) && value instanceof QuantitativeValue) { fuelConsumption((QuantitativeValue)value); return; }
+      if ("fuelConsumptions".equals(key) && value instanceof QuantitativeValue) { fuelConsumption((QuantitativeValue)value); return; }
       if ("fuelEfficiency".equals(key) && value instanceof QuantitativeValue) { fuelEfficiency((QuantitativeValue)value); return; }
+      if ("fuelEfficiencys".equals(key) && value instanceof QuantitativeValue) { fuelEfficiency((QuantitativeValue)value); return; }
       if ("numberOfForwardGears".equals(key) && value instanceof Number) { numberOfForwardGears((Number)value); return; }
+      if ("numberOfForwardGearss".equals(key) && value instanceof Number) { numberOfForwardGears((Number)value); return; }
       if ("numberOfForwardGears".equals(key) && value instanceof QuantitativeValue) { numberOfForwardGears((QuantitativeValue)value); return; }
+      if ("numberOfForwardGearss".equals(key) && value instanceof QuantitativeValue) { numberOfForwardGears((QuantitativeValue)value); return; }
       if ("vehicleIdentificationNumber".equals(key) && value instanceof String) { vehicleIdentificationNumber((String)value); return; }
+      if ("vehicleIdentificationNumbers".equals(key) && value instanceof String) { vehicleIdentificationNumber((String)value); return; }
       if ("cargoVolume".equals(key) && value instanceof QuantitativeValue) { cargoVolume((QuantitativeValue)value); return; }
+      if ("cargoVolumes".equals(key) && value instanceof QuantitativeValue) { cargoVolume((QuantitativeValue)value); return; }
       if ("vehicleConfiguration".equals(key) && value instanceof String) { vehicleConfiguration((String)value); return; }
+      if ("vehicleConfigurations".equals(key) && value instanceof String) { vehicleConfiguration((String)value); return; }
       if ("knownVehicleDamages".equals(key) && value instanceof String) { knownVehicleDamages((String)value); return; }
+      if ("knownVehicleDamagess".equals(key) && value instanceof String) { knownVehicleDamages((String)value); return; }
       if ("dateVehicleFirstRegistered".equals(key) && value instanceof java.util.Date) { dateVehicleFirstRegistered((java.util.Date)value); return; }
+      if ("dateVehicleFirstRegistereds".equals(key) && value instanceof java.util.Date) { dateVehicleFirstRegistered((java.util.Date)value); return; }
       if ("driveWheelConfiguration".equals(key) && value instanceof DriveWheelConfigurationValue) { driveWheelConfiguration((DriveWheelConfigurationValue)value); return; }
+      if ("driveWheelConfigurations".equals(key) && value instanceof DriveWheelConfigurationValue) { driveWheelConfiguration((DriveWheelConfigurationValue)value); return; }
       if ("driveWheelConfiguration".equals(key) && value instanceof String) { driveWheelConfiguration((String)value); return; }
+      if ("driveWheelConfigurations".equals(key) && value instanceof String) { driveWheelConfiguration((String)value); return; }
       if ("fuelType".equals(key) && value instanceof QualitativeValue) { fuelType((QualitativeValue)value); return; }
+      if ("fuelTypes".equals(key) && value instanceof QualitativeValue) { fuelType((QualitativeValue)value); return; }
       if ("fuelType".equals(key) && value instanceof String) { fuelType((String)value); return; }
+      if ("fuelTypes".equals(key) && value instanceof String) { fuelType((String)value); return; }
       if ("vehicleInteriorColor".equals(key) && value instanceof String) { vehicleInteriorColor((String)value); return; }
+      if ("vehicleInteriorColors".equals(key) && value instanceof String) { vehicleInteriorColor((String)value); return; }
       if ("vehicleInteriorType".equals(key) && value instanceof String) { vehicleInteriorType((String)value); return; }
+      if ("vehicleInteriorTypes".equals(key) && value instanceof String) { vehicleInteriorType((String)value); return; }
       if ("mileageFromOdometer".equals(key) && value instanceof QuantitativeValue) { mileageFromOdometer((QuantitativeValue)value); return; }
+      if ("mileageFromOdometers".equals(key) && value instanceof QuantitativeValue) { mileageFromOdometer((QuantitativeValue)value); return; }
       if ("vehicleModelDate".equals(key) && value instanceof java.util.Date) { vehicleModelDate((java.util.Date)value); return; }
+      if ("vehicleModelDates".equals(key) && value instanceof java.util.Date) { vehicleModelDate((java.util.Date)value); return; }
       if ("numberOfPreviousOwners".equals(key) && value instanceof Number) { numberOfPreviousOwners((Number)value); return; }
+      if ("numberOfPreviousOwnerss".equals(key) && value instanceof Number) { numberOfPreviousOwners((Number)value); return; }
       if ("numberOfPreviousOwners".equals(key) && value instanceof QuantitativeValue) { numberOfPreviousOwners((QuantitativeValue)value); return; }
+      if ("numberOfPreviousOwnerss".equals(key) && value instanceof QuantitativeValue) { numberOfPreviousOwners((QuantitativeValue)value); return; }
       if ("productionDate".equals(key) && value instanceof java.util.Date) { productionDate((java.util.Date)value); return; }
+      if ("productionDates".equals(key) && value instanceof java.util.Date) { productionDate((java.util.Date)value); return; }
       if ("purchaseDate".equals(key) && value instanceof java.util.Date) { purchaseDate((java.util.Date)value); return; }
+      if ("purchaseDates".equals(key) && value instanceof java.util.Date) { purchaseDate((java.util.Date)value); return; }
       if ("vehicleSeatingCapacity".equals(key) && value instanceof Number) { vehicleSeatingCapacity((Number)value); return; }
+      if ("vehicleSeatingCapacitys".equals(key) && value instanceof Number) { vehicleSeatingCapacity((Number)value); return; }
       if ("vehicleSeatingCapacity".equals(key) && value instanceof QuantitativeValue) { vehicleSeatingCapacity((QuantitativeValue)value); return; }
+      if ("vehicleSeatingCapacitys".equals(key) && value instanceof QuantitativeValue) { vehicleSeatingCapacity((QuantitativeValue)value); return; }
       if ("vehicleTransmission".equals(key) && value instanceof QualitativeValue) { vehicleTransmission((QualitativeValue)value); return; }
+      if ("vehicleTransmissions".equals(key) && value instanceof QualitativeValue) { vehicleTransmission((QualitativeValue)value); return; }
       if ("vehicleTransmission".equals(key) && value instanceof String) { vehicleTransmission((String)value); return; }
+      if ("vehicleTransmissions".equals(key) && value instanceof String) { vehicleTransmission((String)value); return; }
       if ("steeringPosition".equals(key) && value instanceof SteeringPositionValue) { steeringPosition((SteeringPositionValue)value); return; }
+      if ("steeringPositions".equals(key) && value instanceof SteeringPositionValue) { steeringPosition((SteeringPositionValue)value); return; }
       if ("vehicleSpecialUsage".equals(key) && value instanceof String) { vehicleSpecialUsage((String)value); return; }
+      if ("vehicleSpecialUsages".equals(key) && value instanceof String) { vehicleSpecialUsage((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -674,26 +674,47 @@ public class PriceSpecification extends StructuredValue {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("eligibleQuantity".equals(key) && value instanceof QuantitativeValue) { eligibleQuantity((QuantitativeValue)value); return; }
+      if ("eligibleQuantitys".equals(key) && value instanceof QuantitativeValue) { eligibleQuantity((QuantitativeValue)value); return; }
       if ("eligibleTransactionVolume".equals(key) && value instanceof PriceSpecification) { eligibleTransactionVolume((PriceSpecification)value); return; }
+      if ("eligibleTransactionVolumes".equals(key) && value instanceof PriceSpecification) { eligibleTransactionVolume((PriceSpecification)value); return; }
       if ("maxPrice".equals(key) && value instanceof Integer) { maxPrice((Integer)value); return; }
+      if ("maxPrices".equals(key) && value instanceof Integer) { maxPrice((Integer)value); return; }
       if ("maxPrice".equals(key) && value instanceof Long) { maxPrice((Long)value); return; }
+      if ("maxPrices".equals(key) && value instanceof Long) { maxPrice((Long)value); return; }
       if ("maxPrice".equals(key) && value instanceof Float) { maxPrice((Float)value); return; }
+      if ("maxPrices".equals(key) && value instanceof Float) { maxPrice((Float)value); return; }
       if ("maxPrice".equals(key) && value instanceof Double) { maxPrice((Double)value); return; }
+      if ("maxPrices".equals(key) && value instanceof Double) { maxPrice((Double)value); return; }
       if ("maxPrice".equals(key) && value instanceof String) { maxPrice((String)value); return; }
+      if ("maxPrices".equals(key) && value instanceof String) { maxPrice((String)value); return; }
       if ("minPrice".equals(key) && value instanceof Integer) { minPrice((Integer)value); return; }
+      if ("minPrices".equals(key) && value instanceof Integer) { minPrice((Integer)value); return; }
       if ("minPrice".equals(key) && value instanceof Long) { minPrice((Long)value); return; }
+      if ("minPrices".equals(key) && value instanceof Long) { minPrice((Long)value); return; }
       if ("minPrice".equals(key) && value instanceof Float) { minPrice((Float)value); return; }
+      if ("minPrices".equals(key) && value instanceof Float) { minPrice((Float)value); return; }
       if ("minPrice".equals(key) && value instanceof Double) { minPrice((Double)value); return; }
+      if ("minPrices".equals(key) && value instanceof Double) { minPrice((Double)value); return; }
       if ("minPrice".equals(key) && value instanceof String) { minPrice((String)value); return; }
+      if ("minPrices".equals(key) && value instanceof String) { minPrice((String)value); return; }
       if ("price".equals(key) && value instanceof Integer) { price((Integer)value); return; }
+      if ("prices".equals(key) && value instanceof Integer) { price((Integer)value); return; }
       if ("price".equals(key) && value instanceof Long) { price((Long)value); return; }
+      if ("prices".equals(key) && value instanceof Long) { price((Long)value); return; }
       if ("price".equals(key) && value instanceof Float) { price((Float)value); return; }
+      if ("prices".equals(key) && value instanceof Float) { price((Float)value); return; }
       if ("price".equals(key) && value instanceof Double) { price((Double)value); return; }
+      if ("prices".equals(key) && value instanceof Double) { price((Double)value); return; }
       if ("price".equals(key) && value instanceof String) { price((String)value); return; }
+      if ("prices".equals(key) && value instanceof String) { price((String)value); return; }
       if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
+      if ("validFroms".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
       if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
+      if ("validThroughs".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
       if ("valueAddedTaxIncluded".equals(key) && value instanceof Boolean) { valueAddedTaxIncluded((Boolean)value); return; }
+      if ("valueAddedTaxIncludeds".equals(key) && value instanceof Boolean) { valueAddedTaxIncluded((Boolean)value); return; }
       if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); return; }
+      if ("priceCurrencys".equals(key) && value instanceof String) { priceCurrency((String)value); return; }
       super.fromMap(key, value);
     }
   }

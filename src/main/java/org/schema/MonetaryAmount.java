@@ -438,18 +438,31 @@ public class MonetaryAmount extends StructuredValue {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("minValue".equals(key) && value instanceof Integer) { minValue((Integer)value); return; }
+      if ("minValues".equals(key) && value instanceof Integer) { minValue((Integer)value); return; }
       if ("minValue".equals(key) && value instanceof Long) { minValue((Long)value); return; }
+      if ("minValues".equals(key) && value instanceof Long) { minValue((Long)value); return; }
       if ("minValue".equals(key) && value instanceof Float) { minValue((Float)value); return; }
+      if ("minValues".equals(key) && value instanceof Float) { minValue((Float)value); return; }
       if ("minValue".equals(key) && value instanceof Double) { minValue((Double)value); return; }
+      if ("minValues".equals(key) && value instanceof Double) { minValue((Double)value); return; }
       if ("minValue".equals(key) && value instanceof String) { minValue((String)value); return; }
+      if ("minValues".equals(key) && value instanceof String) { minValue((String)value); return; }
       if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
+      if ("validFroms".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
       if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
+      if ("validThroughs".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
       if ("value".equals(key) && value instanceof Integer) { value((Integer)value); return; }
+      if ("values".equals(key) && value instanceof Integer) { value((Integer)value); return; }
       if ("value".equals(key) && value instanceof Long) { value((Long)value); return; }
+      if ("values".equals(key) && value instanceof Long) { value((Long)value); return; }
       if ("value".equals(key) && value instanceof Float) { value((Float)value); return; }
+      if ("values".equals(key) && value instanceof Float) { value((Float)value); return; }
       if ("value".equals(key) && value instanceof Double) { value((Double)value); return; }
+      if ("values".equals(key) && value instanceof Double) { value((Double)value); return; }
       if ("value".equals(key) && value instanceof String) { value((String)value); return; }
+      if ("values".equals(key) && value instanceof String) { value((String)value); return; }
       if ("currency".equals(key) && value instanceof String) { currency((String)value); return; }
+      if ("currencys".equals(key) && value instanceof String) { currency((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -1434,16 +1434,27 @@ public class MusicComposition extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("musicArrangement".equals(key) && value instanceof MusicComposition) { musicArrangement((MusicComposition)value); return; }
+      if ("musicArrangements".equals(key) && value instanceof MusicComposition) { musicArrangement((MusicComposition)value); return; }
       if ("composer".equals(key) && value instanceof Organization) { composer((Organization)value); return; }
+      if ("composers".equals(key) && value instanceof Organization) { composer((Organization)value); return; }
       if ("composer".equals(key) && value instanceof Person) { composer((Person)value); return; }
+      if ("composers".equals(key) && value instanceof Person) { composer((Person)value); return; }
       if ("firstPerformance".equals(key) && value instanceof Event) { firstPerformance((Event)value); return; }
+      if ("firstPerformances".equals(key) && value instanceof Event) { firstPerformance((Event)value); return; }
       if ("includedComposition".equals(key) && value instanceof MusicComposition) { includedComposition((MusicComposition)value); return; }
+      if ("includedCompositions".equals(key) && value instanceof MusicComposition) { includedComposition((MusicComposition)value); return; }
       if ("iswcCode".equals(key) && value instanceof String) { iswcCode((String)value); return; }
+      if ("iswcCodes".equals(key) && value instanceof String) { iswcCode((String)value); return; }
       if ("lyricist".equals(key) && value instanceof Person) { lyricist((Person)value); return; }
+      if ("lyricists".equals(key) && value instanceof Person) { lyricist((Person)value); return; }
       if ("musicCompositionForm".equals(key) && value instanceof String) { musicCompositionForm((String)value); return; }
+      if ("musicCompositionForms".equals(key) && value instanceof String) { musicCompositionForm((String)value); return; }
       if ("musicalKey".equals(key) && value instanceof String) { musicalKey((String)value); return; }
+      if ("musicalKeys".equals(key) && value instanceof String) { musicalKey((String)value); return; }
       if ("recordedAs".equals(key) && value instanceof MusicRecording) { recordedAs((MusicRecording)value); return; }
+      if ("recordedAss".equals(key) && value instanceof MusicRecording) { recordedAs((MusicRecording)value); return; }
       if ("lyrics".equals(key) && value instanceof CreativeWork) { lyrics((CreativeWork)value); return; }
+      if ("lyricss".equals(key) && value instanceof CreativeWork) { lyrics((CreativeWork)value); return; }
       super.fromMap(key, value);
     }
   }

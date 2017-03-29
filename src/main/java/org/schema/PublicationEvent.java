@@ -602,7 +602,9 @@ public class PublicationEvent extends Event {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("isAccessibleForFree".equals(key) && value instanceof Boolean) { isAccessibleForFree((Boolean)value); return; }
+      if ("isAccessibleForFrees".equals(key) && value instanceof Boolean) { isAccessibleForFree((Boolean)value); return; }
       if ("publishedOn".equals(key) && value instanceof BroadcastService) { publishedOn((BroadcastService)value); return; }
+      if ("publishedOns".equals(key) && value instanceof BroadcastService) { publishedOn((BroadcastService)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -1163,7 +1163,9 @@ public class CreativeWorkSeries extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("endDate".equals(key) && value instanceof java.util.Date) { endDate((java.util.Date)value); return; }
+      if ("endDates".equals(key) && value instanceof java.util.Date) { endDate((java.util.Date)value); return; }
       if ("startDate".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); return; }
+      if ("startDates".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); return; }
       super.fromMap(key, value);
     }
   }

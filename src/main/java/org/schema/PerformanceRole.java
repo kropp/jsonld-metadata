@@ -164,6 +164,7 @@ public class PerformanceRole extends Role {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("characterName".equals(key) && value instanceof String) { characterName((String)value); return; }
+      if ("characterNames".equals(key) && value instanceof String) { characterName((String)value); return; }
       super.fromMap(key, value);
     }
   }

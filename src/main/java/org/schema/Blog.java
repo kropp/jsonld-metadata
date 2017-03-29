@@ -1145,6 +1145,7 @@ public class Blog extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("blogPost".equals(key) && value instanceof BlogPosting) { blogPost((BlogPosting)value); return; }
+      if ("blogPosts".equals(key) && value instanceof BlogPosting) { blogPost((BlogPosting)value); return; }
       super.fromMap(key, value);
     }
   }

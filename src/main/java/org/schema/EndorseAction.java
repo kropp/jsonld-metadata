@@ -265,7 +265,9 @@ public class EndorseAction extends ReactAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("endorsee".equals(key) && value instanceof Organization) { endorsee((Organization)value); return; }
+      if ("endorsees".equals(key) && value instanceof Organization) { endorsee((Organization)value); return; }
       if ("endorsee".equals(key) && value instanceof Person) { endorsee((Person)value); return; }
+      if ("endorsees".equals(key) && value instanceof Person) { endorsee((Person)value); return; }
       super.fromMap(key, value);
     }
   }

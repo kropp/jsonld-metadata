@@ -258,7 +258,9 @@ public class ChooseAction extends AssessAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("actionOption".equals(key) && value instanceof String) { actionOption((String)value); return; }
+      if ("actionOptions".equals(key) && value instanceof String) { actionOption((String)value); return; }
       if ("actionOption".equals(key) && value instanceof Thing) { actionOption((Thing)value); return; }
+      if ("actionOptions".equals(key) && value instanceof Thing) { actionOption((Thing)value); return; }
       super.fromMap(key, value);
     }
   }

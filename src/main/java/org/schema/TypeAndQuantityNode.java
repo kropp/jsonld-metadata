@@ -383,15 +383,25 @@ public class TypeAndQuantityNode extends StructuredValue {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("amountOfThisGood".equals(key) && value instanceof Integer) { amountOfThisGood((Integer)value); return; }
+      if ("amountOfThisGoods".equals(key) && value instanceof Integer) { amountOfThisGood((Integer)value); return; }
       if ("amountOfThisGood".equals(key) && value instanceof Long) { amountOfThisGood((Long)value); return; }
+      if ("amountOfThisGoods".equals(key) && value instanceof Long) { amountOfThisGood((Long)value); return; }
       if ("amountOfThisGood".equals(key) && value instanceof Float) { amountOfThisGood((Float)value); return; }
+      if ("amountOfThisGoods".equals(key) && value instanceof Float) { amountOfThisGood((Float)value); return; }
       if ("amountOfThisGood".equals(key) && value instanceof Double) { amountOfThisGood((Double)value); return; }
+      if ("amountOfThisGoods".equals(key) && value instanceof Double) { amountOfThisGood((Double)value); return; }
       if ("amountOfThisGood".equals(key) && value instanceof String) { amountOfThisGood((String)value); return; }
+      if ("amountOfThisGoods".equals(key) && value instanceof String) { amountOfThisGood((String)value); return; }
       if ("businessFunction".equals(key) && value instanceof BusinessFunction) { businessFunction((BusinessFunction)value); return; }
+      if ("businessFunctions".equals(key) && value instanceof BusinessFunction) { businessFunction((BusinessFunction)value); return; }
       if ("typeOfGood".equals(key) && value instanceof Product) { typeOfGood((Product)value); return; }
+      if ("typeOfGoods".equals(key) && value instanceof Product) { typeOfGood((Product)value); return; }
       if ("typeOfGood".equals(key) && value instanceof Service) { typeOfGood((Service)value); return; }
+      if ("typeOfGoods".equals(key) && value instanceof Service) { typeOfGood((Service)value); return; }
       if ("unitCode".equals(key) && value instanceof String) { unitCode((String)value); return; }
+      if ("unitCodes".equals(key) && value instanceof String) { unitCode((String)value); return; }
       if ("unitText".equals(key) && value instanceof String) { unitText((String)value); return; }
+      if ("unitTexts".equals(key) && value instanceof String) { unitText((String)value); return; }
       super.fromMap(key, value);
     }
   }

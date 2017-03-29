@@ -174,7 +174,9 @@ public class Role extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("startDate".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); return; }
+      if ("startDates".equals(key) && value instanceof java.util.Date) { startDate((java.util.Date)value); return; }
       if ("roleName".equals(key) && value instanceof String) { roleName((String)value); return; }
+      if ("roleNames".equals(key) && value instanceof String) { roleName((String)value); return; }
       super.fromMap(key, value);
     }
   }

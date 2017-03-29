@@ -952,17 +952,29 @@ public class AggregateOffer extends Offer {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("highPrice".equals(key) && value instanceof Integer) { highPrice((Integer)value); return; }
+      if ("highPrices".equals(key) && value instanceof Integer) { highPrice((Integer)value); return; }
       if ("highPrice".equals(key) && value instanceof Long) { highPrice((Long)value); return; }
+      if ("highPrices".equals(key) && value instanceof Long) { highPrice((Long)value); return; }
       if ("highPrice".equals(key) && value instanceof Float) { highPrice((Float)value); return; }
+      if ("highPrices".equals(key) && value instanceof Float) { highPrice((Float)value); return; }
       if ("highPrice".equals(key) && value instanceof Double) { highPrice((Double)value); return; }
+      if ("highPrices".equals(key) && value instanceof Double) { highPrice((Double)value); return; }
       if ("highPrice".equals(key) && value instanceof String) { highPrice((String)value); return; }
+      if ("highPrices".equals(key) && value instanceof String) { highPrice((String)value); return; }
       if ("lowPrice".equals(key) && value instanceof Integer) { lowPrice((Integer)value); return; }
+      if ("lowPrices".equals(key) && value instanceof Integer) { lowPrice((Integer)value); return; }
       if ("lowPrice".equals(key) && value instanceof Long) { lowPrice((Long)value); return; }
+      if ("lowPrices".equals(key) && value instanceof Long) { lowPrice((Long)value); return; }
       if ("lowPrice".equals(key) && value instanceof Float) { lowPrice((Float)value); return; }
+      if ("lowPrices".equals(key) && value instanceof Float) { lowPrice((Float)value); return; }
       if ("lowPrice".equals(key) && value instanceof Double) { lowPrice((Double)value); return; }
+      if ("lowPrices".equals(key) && value instanceof Double) { lowPrice((Double)value); return; }
       if ("lowPrice".equals(key) && value instanceof String) { lowPrice((String)value); return; }
+      if ("lowPrices".equals(key) && value instanceof String) { lowPrice((String)value); return; }
       if ("offerCount".equals(key) && value instanceof Integer) { offerCount((Integer)value); return; }
+      if ("offerCounts".equals(key) && value instanceof Integer) { offerCount((Integer)value); return; }
       if ("offers".equals(key) && value instanceof Offer) { offers((Offer)value); return; }
+      if ("offerss".equals(key) && value instanceof Offer) { offers((Offer)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -322,12 +322,19 @@ public class Action extends Thing {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("agent".equals(key) && value instanceof Organization) { agent((Organization)value); return; }
+      if ("agents".equals(key) && value instanceof Organization) { agent((Organization)value); return; }
       if ("agent".equals(key) && value instanceof Person) { agent((Person)value); return; }
+      if ("agents".equals(key) && value instanceof Person) { agent((Person)value); return; }
       if ("endTime".equals(key) && value instanceof java.util.Date) { endTime((java.util.Date)value); return; }
+      if ("endTimes".equals(key) && value instanceof java.util.Date) { endTime((java.util.Date)value); return; }
       if ("startTime".equals(key) && value instanceof java.util.Date) { startTime((java.util.Date)value); return; }
+      if ("startTimes".equals(key) && value instanceof java.util.Date) { startTime((java.util.Date)value); return; }
       if ("actionStatus".equals(key) && value instanceof ActionStatusType) { actionStatus((ActionStatusType)value); return; }
+      if ("actionStatuss".equals(key) && value instanceof ActionStatusType) { actionStatus((ActionStatusType)value); return; }
       if ("error".equals(key) && value instanceof Thing) { error((Thing)value); return; }
+      if ("errors".equals(key) && value instanceof Thing) { error((Thing)value); return; }
       if ("target".equals(key) && value instanceof EntryPoint) { target((EntryPoint)value); return; }
+      if ("targets".equals(key) && value instanceof EntryPoint) { target((EntryPoint)value); return; }
       super.fromMap(key, value);
     }
   }

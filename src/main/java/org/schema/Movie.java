@@ -1386,14 +1386,23 @@ public class Movie extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("actor".equals(key) && value instanceof Person) { actor((Person)value); return; }
+      if ("actors".equals(key) && value instanceof Person) { actor((Person)value); return; }
       if ("countryOfOrigin".equals(key) && value instanceof Country) { countryOfOrigin((Country)value); return; }
+      if ("countryOfOrigins".equals(key) && value instanceof Country) { countryOfOrigin((Country)value); return; }
       if ("director".equals(key) && value instanceof Person) { director((Person)value); return; }
+      if ("directors".equals(key) && value instanceof Person) { director((Person)value); return; }
       if ("musicBy".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
+      if ("musicBys".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
       if ("musicBy".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
+      if ("musicBys".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
       if ("productionCompany".equals(key) && value instanceof Organization) { productionCompany((Organization)value); return; }
+      if ("productionCompanys".equals(key) && value instanceof Organization) { productionCompany((Organization)value); return; }
       if ("subtitleLanguage".equals(key) && value instanceof Language) { subtitleLanguage((Language)value); return; }
+      if ("subtitleLanguages".equals(key) && value instanceof Language) { subtitleLanguage((Language)value); return; }
       if ("subtitleLanguage".equals(key) && value instanceof String) { subtitleLanguage((String)value); return; }
+      if ("subtitleLanguages".equals(key) && value instanceof String) { subtitleLanguage((String)value); return; }
       if ("trailer".equals(key) && value instanceof VideoObject) { trailer((VideoObject)value); return; }
+      if ("trailers".equals(key) && value instanceof VideoObject) { trailer((VideoObject)value); return; }
       super.fromMap(key, value);
     }
   }

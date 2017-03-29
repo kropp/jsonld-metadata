@@ -181,7 +181,9 @@ public class WarrantyPromise extends StructuredValue {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("durationOfWarranty".equals(key) && value instanceof QuantitativeValue) { durationOfWarranty((QuantitativeValue)value); return; }
+      if ("durationOfWarrantys".equals(key) && value instanceof QuantitativeValue) { durationOfWarranty((QuantitativeValue)value); return; }
       if ("warrantyScope".equals(key) && value instanceof WarrantyScope) { warrantyScope((WarrantyScope)value); return; }
+      if ("warrantyScopes".equals(key) && value instanceof WarrantyScope) { warrantyScope((WarrantyScope)value); return; }
       super.fromMap(key, value);
     }
   }

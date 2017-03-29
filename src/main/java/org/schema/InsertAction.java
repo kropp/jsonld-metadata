@@ -248,6 +248,7 @@ public class InsertAction extends AddAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("toLocation".equals(key) && value instanceof Place) { toLocation((Place)value); return; }
+      if ("toLocations".equals(key) && value instanceof Place) { toLocation((Place)value); return; }
       super.fromMap(key, value);
     }
   }

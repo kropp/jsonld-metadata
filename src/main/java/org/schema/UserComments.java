@@ -719,11 +719,17 @@ public class UserComments extends UserInteraction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("commentText".equals(key) && value instanceof String) { commentText((String)value); return; }
+      if ("commentTexts".equals(key) && value instanceof String) { commentText((String)value); return; }
       if ("commentTime".equals(key) && value instanceof java.util.Date) { commentTime((java.util.Date)value); return; }
+      if ("commentTimes".equals(key) && value instanceof java.util.Date) { commentTime((java.util.Date)value); return; }
       if ("creator".equals(key) && value instanceof Organization) { creator((Organization)value); return; }
+      if ("creators".equals(key) && value instanceof Organization) { creator((Organization)value); return; }
       if ("creator".equals(key) && value instanceof Person) { creator((Person)value); return; }
+      if ("creators".equals(key) && value instanceof Person) { creator((Person)value); return; }
       if ("discusses".equals(key) && value instanceof CreativeWork) { discusses((CreativeWork)value); return; }
+      if ("discussess".equals(key) && value instanceof CreativeWork) { discusses((CreativeWork)value); return; }
       if ("replyToUrl".equals(key) && value instanceof String) { replyToUrl((String)value); return; }
+      if ("replyToUrls".equals(key) && value instanceof String) { replyToUrl((String)value); return; }
       super.fromMap(key, value);
     }
   }

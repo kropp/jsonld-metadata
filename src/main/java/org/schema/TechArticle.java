@@ -1218,7 +1218,9 @@ public class TechArticle extends Article {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("dependencies".equals(key) && value instanceof String) { dependencies((String)value); return; }
+      if ("dependenciess".equals(key) && value instanceof String) { dependencies((String)value); return; }
       if ("proficiencyLevel".equals(key) && value instanceof String) { proficiencyLevel((String)value); return; }
+      if ("proficiencyLevels".equals(key) && value instanceof String) { proficiencyLevel((String)value); return; }
       super.fromMap(key, value);
     }
   }

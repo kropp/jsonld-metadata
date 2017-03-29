@@ -483,19 +483,33 @@ public class PeopleAudience extends Audience {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("requiredGender".equals(key) && value instanceof String) { requiredGender((String)value); return; }
+      if ("requiredGenders".equals(key) && value instanceof String) { requiredGender((String)value); return; }
       if ("requiredMaxAge".equals(key) && value instanceof Integer) { requiredMaxAge((Integer)value); return; }
+      if ("requiredMaxAges".equals(key) && value instanceof Integer) { requiredMaxAge((Integer)value); return; }
       if ("requiredMinAge".equals(key) && value instanceof Integer) { requiredMinAge((Integer)value); return; }
+      if ("requiredMinAges".equals(key) && value instanceof Integer) { requiredMinAge((Integer)value); return; }
       if ("suggestedGender".equals(key) && value instanceof String) { suggestedGender((String)value); return; }
+      if ("suggestedGenders".equals(key) && value instanceof String) { suggestedGender((String)value); return; }
       if ("suggestedMaxAge".equals(key) && value instanceof Integer) { suggestedMaxAge((Integer)value); return; }
+      if ("suggestedMaxAges".equals(key) && value instanceof Integer) { suggestedMaxAge((Integer)value); return; }
       if ("suggestedMaxAge".equals(key) && value instanceof Long) { suggestedMaxAge((Long)value); return; }
+      if ("suggestedMaxAges".equals(key) && value instanceof Long) { suggestedMaxAge((Long)value); return; }
       if ("suggestedMaxAge".equals(key) && value instanceof Float) { suggestedMaxAge((Float)value); return; }
+      if ("suggestedMaxAges".equals(key) && value instanceof Float) { suggestedMaxAge((Float)value); return; }
       if ("suggestedMaxAge".equals(key) && value instanceof Double) { suggestedMaxAge((Double)value); return; }
+      if ("suggestedMaxAges".equals(key) && value instanceof Double) { suggestedMaxAge((Double)value); return; }
       if ("suggestedMaxAge".equals(key) && value instanceof String) { suggestedMaxAge((String)value); return; }
+      if ("suggestedMaxAges".equals(key) && value instanceof String) { suggestedMaxAge((String)value); return; }
       if ("suggestedMinAge".equals(key) && value instanceof Integer) { suggestedMinAge((Integer)value); return; }
+      if ("suggestedMinAges".equals(key) && value instanceof Integer) { suggestedMinAge((Integer)value); return; }
       if ("suggestedMinAge".equals(key) && value instanceof Long) { suggestedMinAge((Long)value); return; }
+      if ("suggestedMinAges".equals(key) && value instanceof Long) { suggestedMinAge((Long)value); return; }
       if ("suggestedMinAge".equals(key) && value instanceof Float) { suggestedMinAge((Float)value); return; }
+      if ("suggestedMinAges".equals(key) && value instanceof Float) { suggestedMinAge((Float)value); return; }
       if ("suggestedMinAge".equals(key) && value instanceof Double) { suggestedMinAge((Double)value); return; }
+      if ("suggestedMinAges".equals(key) && value instanceof Double) { suggestedMinAge((Double)value); return; }
       if ("suggestedMinAge".equals(key) && value instanceof String) { suggestedMinAge((String)value); return; }
+      if ("suggestedMinAges".equals(key) && value instanceof String) { suggestedMinAge((String)value); return; }
       super.fromMap(key, value);
     }
   }

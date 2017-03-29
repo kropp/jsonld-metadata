@@ -234,6 +234,7 @@ public class ConsumeAction extends Action {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("expectsAcceptanceOf".equals(key) && value instanceof Offer) { expectsAcceptanceOf((Offer)value); return; }
+      if ("expectsAcceptanceOfs".equals(key) && value instanceof Offer) { expectsAcceptanceOf((Offer)value); return; }
       super.fromMap(key, value);
     }
   }

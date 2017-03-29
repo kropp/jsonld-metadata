@@ -255,6 +255,7 @@ public class VoteAction extends ChooseAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("candidate".equals(key) && value instanceof Person) { candidate((Person)value); return; }
+      if ("candidates".equals(key) && value instanceof Person) { candidate((Person)value); return; }
       super.fromMap(key, value);
     }
   }

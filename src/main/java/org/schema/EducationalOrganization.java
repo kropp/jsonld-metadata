@@ -626,6 +626,7 @@ public class EducationalOrganization extends Organization {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("alumni".equals(key) && value instanceof Person) { alumni((Person)value); return; }
+      if ("alumnis".equals(key) && value instanceof Person) { alumni((Person)value); return; }
       super.fromMap(key, value);
     }
   }

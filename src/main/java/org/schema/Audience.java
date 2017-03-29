@@ -181,7 +181,9 @@ public class Audience extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("audienceType".equals(key) && value instanceof String) { audienceType((String)value); return; }
+      if ("audienceTypes".equals(key) && value instanceof String) { audienceType((String)value); return; }
       if ("geographicArea".equals(key) && value instanceof AdministrativeArea) { geographicArea((AdministrativeArea)value); return; }
+      if ("geographicAreas".equals(key) && value instanceof AdministrativeArea) { geographicArea((AdministrativeArea)value); return; }
       super.fromMap(key, value);
     }
   }

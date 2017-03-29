@@ -611,11 +611,17 @@ public class FoodEstablishment extends LocalBusiness {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("acceptsReservations".equals(key) && value instanceof Boolean) { acceptsReservations((Boolean)value); return; }
+      if ("acceptsReservationss".equals(key) && value instanceof Boolean) { acceptsReservations((Boolean)value); return; }
       if ("acceptsReservations".equals(key) && value instanceof String) { acceptsReservations((String)value); return; }
+      if ("acceptsReservationss".equals(key) && value instanceof String) { acceptsReservations((String)value); return; }
       if ("menu".equals(key) && value instanceof Menu) { menu((Menu)value); return; }
+      if ("menus".equals(key) && value instanceof Menu) { menu((Menu)value); return; }
       if ("menu".equals(key) && value instanceof String) { menu((String)value); return; }
+      if ("menus".equals(key) && value instanceof String) { menu((String)value); return; }
       if ("servesCuisine".equals(key) && value instanceof String) { servesCuisine((String)value); return; }
+      if ("servesCuisines".equals(key) && value instanceof String) { servesCuisine((String)value); return; }
       if ("starRating".equals(key) && value instanceof Rating) { starRating((Rating)value); return; }
+      if ("starRatings".equals(key) && value instanceof Rating) { starRating((Rating)value); return; }
       super.fromMap(key, value);
     }
   }

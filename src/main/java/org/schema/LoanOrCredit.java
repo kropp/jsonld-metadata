@@ -562,8 +562,11 @@ public class LoanOrCredit extends FinancialProduct {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("loanTerm".equals(key) && value instanceof QuantitativeValue) { loanTerm((QuantitativeValue)value); return; }
+      if ("loanTerms".equals(key) && value instanceof QuantitativeValue) { loanTerm((QuantitativeValue)value); return; }
       if ("requiredCollateral".equals(key) && value instanceof String) { requiredCollateral((String)value); return; }
+      if ("requiredCollaterals".equals(key) && value instanceof String) { requiredCollateral((String)value); return; }
       if ("requiredCollateral".equals(key) && value instanceof Thing) { requiredCollateral((Thing)value); return; }
+      if ("requiredCollaterals".equals(key) && value instanceof Thing) { requiredCollateral((Thing)value); return; }
       super.fromMap(key, value);
     }
   }

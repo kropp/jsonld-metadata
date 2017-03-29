@@ -205,8 +205,11 @@ public class ProgramMembership extends Intangible implements MemberOf {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("membershipNumber".equals(key) && value instanceof String) { membershipNumber((String)value); return; }
+      if ("membershipNumbers".equals(key) && value instanceof String) { membershipNumber((String)value); return; }
       if ("programName".equals(key) && value instanceof String) { programName((String)value); return; }
+      if ("programNames".equals(key) && value instanceof String) { programName((String)value); return; }
       if ("hostingOrganization".equals(key) && value instanceof Organization) { hostingOrganization((Organization)value); return; }
+      if ("hostingOrganizations".equals(key) && value instanceof Organization) { hostingOrganization((Organization)value); return; }
       super.fromMap(key, value);
     }
   }

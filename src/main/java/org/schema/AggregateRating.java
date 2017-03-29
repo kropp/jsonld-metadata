@@ -317,8 +317,11 @@ public class AggregateRating extends Rating {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("itemReviewed".equals(key) && value instanceof Thing) { itemReviewed((Thing)value); return; }
+      if ("itemRevieweds".equals(key) && value instanceof Thing) { itemReviewed((Thing)value); return; }
       if ("ratingCount".equals(key) && value instanceof Integer) { ratingCount((Integer)value); return; }
+      if ("ratingCounts".equals(key) && value instanceof Integer) { ratingCount((Integer)value); return; }
       if ("reviewCount".equals(key) && value instanceof Integer) { reviewCount((Integer)value); return; }
+      if ("reviewCounts".equals(key) && value instanceof Integer) { reviewCount((Integer)value); return; }
       super.fromMap(key, value);
     }
   }

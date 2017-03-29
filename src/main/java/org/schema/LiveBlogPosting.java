@@ -1263,8 +1263,11 @@ public class LiveBlogPosting extends BlogPosting {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("coverageStartTime".equals(key) && value instanceof java.util.Date) { coverageStartTime((java.util.Date)value); return; }
+      if ("coverageStartTimes".equals(key) && value instanceof java.util.Date) { coverageStartTime((java.util.Date)value); return; }
       if ("coverageEndTime".equals(key) && value instanceof java.util.Date) { coverageEndTime((java.util.Date)value); return; }
+      if ("coverageEndTimes".equals(key) && value instanceof java.util.Date) { coverageEndTime((java.util.Date)value); return; }
       if ("liveBlogUpdate".equals(key) && value instanceof BlogPosting) { liveBlogUpdate((BlogPosting)value); return; }
+      if ("liveBlogUpdates".equals(key) && value instanceof BlogPosting) { liveBlogUpdate((BlogPosting)value); return; }
       super.fromMap(key, value);
     }
   }

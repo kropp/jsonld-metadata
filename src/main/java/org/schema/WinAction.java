@@ -234,6 +234,7 @@ public class WinAction extends AchieveAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("loser".equals(key) && value instanceof Person) { loser((Person)value); return; }
+      if ("losers".equals(key) && value instanceof Person) { loser((Person)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -392,12 +392,19 @@ public class PostalAddress extends ContactPoint {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("addressCountry".equals(key) && value instanceof Country) { addressCountry((Country)value); return; }
+      if ("addressCountrys".equals(key) && value instanceof Country) { addressCountry((Country)value); return; }
       if ("addressCountry".equals(key) && value instanceof String) { addressCountry((String)value); return; }
+      if ("addressCountrys".equals(key) && value instanceof String) { addressCountry((String)value); return; }
       if ("addressLocality".equals(key) && value instanceof String) { addressLocality((String)value); return; }
+      if ("addressLocalitys".equals(key) && value instanceof String) { addressLocality((String)value); return; }
       if ("addressRegion".equals(key) && value instanceof String) { addressRegion((String)value); return; }
+      if ("addressRegions".equals(key) && value instanceof String) { addressRegion((String)value); return; }
       if ("postalCode".equals(key) && value instanceof String) { postalCode((String)value); return; }
+      if ("postalCodes".equals(key) && value instanceof String) { postalCode((String)value); return; }
       if ("postOfficeBoxNumber".equals(key) && value instanceof String) { postOfficeBoxNumber((String)value); return; }
+      if ("postOfficeBoxNumbers".equals(key) && value instanceof String) { postOfficeBoxNumber((String)value); return; }
       if ("streetAddress".equals(key) && value instanceof String) { streetAddress((String)value); return; }
+      if ("streetAddresss".equals(key) && value instanceof String) { streetAddress((String)value); return; }
       super.fromMap(key, value);
     }
   }

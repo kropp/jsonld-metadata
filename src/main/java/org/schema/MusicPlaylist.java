@@ -1200,8 +1200,11 @@ public class MusicPlaylist extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("numTracks".equals(key) && value instanceof Integer) { numTracks((Integer)value); return; }
+      if ("numTrackss".equals(key) && value instanceof Integer) { numTracks((Integer)value); return; }
       if ("track".equals(key) && value instanceof ItemList) { track((ItemList)value); return; }
+      if ("tracks".equals(key) && value instanceof ItemList) { track((ItemList)value); return; }
       if ("track".equals(key) && value instanceof MusicRecording) { track((MusicRecording)value); return; }
+      if ("tracks".equals(key) && value instanceof MusicRecording) { track((MusicRecording)value); return; }
       super.fromMap(key, value);
     }
   }

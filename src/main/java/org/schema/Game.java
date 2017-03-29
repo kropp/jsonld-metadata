@@ -1324,12 +1324,19 @@ public class Game extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("numberOfPlayers".equals(key) && value instanceof QuantitativeValue) { numberOfPlayers((QuantitativeValue)value); return; }
+      if ("numberOfPlayerss".equals(key) && value instanceof QuantitativeValue) { numberOfPlayers((QuantitativeValue)value); return; }
       if ("quest".equals(key) && value instanceof Thing) { quest((Thing)value); return; }
+      if ("quests".equals(key) && value instanceof Thing) { quest((Thing)value); return; }
       if ("gameItem".equals(key) && value instanceof Thing) { gameItem((Thing)value); return; }
+      if ("gameItems".equals(key) && value instanceof Thing) { gameItem((Thing)value); return; }
       if ("characterAttribute".equals(key) && value instanceof Thing) { characterAttribute((Thing)value); return; }
+      if ("characterAttributes".equals(key) && value instanceof Thing) { characterAttribute((Thing)value); return; }
       if ("gameLocation".equals(key) && value instanceof Place) { gameLocation((Place)value); return; }
+      if ("gameLocations".equals(key) && value instanceof Place) { gameLocation((Place)value); return; }
       if ("gameLocation".equals(key) && value instanceof PostalAddress) { gameLocation((PostalAddress)value); return; }
+      if ("gameLocations".equals(key) && value instanceof PostalAddress) { gameLocation((PostalAddress)value); return; }
       if ("gameLocation".equals(key) && value instanceof String) { gameLocation((String)value); return; }
+      if ("gameLocations".equals(key) && value instanceof String) { gameLocation((String)value); return; }
       super.fromMap(key, value);
     }
   }

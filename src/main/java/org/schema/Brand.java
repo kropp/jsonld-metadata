@@ -243,9 +243,13 @@ public class Brand extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
+      if ("aggregateRatings".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
       if ("logo".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); return; }
+      if ("logos".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); return; }
       if ("logo".equals(key) && value instanceof String) { logo((String)value); return; }
+      if ("logos".equals(key) && value instanceof String) { logo((String)value); return; }
       if ("review".equals(key) && value instanceof Review) { review((Review)value); return; }
+      if ("reviews".equals(key) && value instanceof Review) { review((Review)value); return; }
       super.fromMap(key, value);
     }
   }

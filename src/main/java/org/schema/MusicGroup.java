@@ -726,9 +726,13 @@ public class MusicGroup extends PerformingGroup {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("album".equals(key) && value instanceof MusicAlbum) { album((MusicAlbum)value); return; }
+      if ("albums".equals(key) && value instanceof MusicAlbum) { album((MusicAlbum)value); return; }
       if ("genre".equals(key) && value instanceof String) { genre((String)value); return; }
+      if ("genres".equals(key) && value instanceof String) { genre((String)value); return; }
       if ("track".equals(key) && value instanceof ItemList) { track((ItemList)value); return; }
+      if ("tracks".equals(key) && value instanceof ItemList) { track((ItemList)value); return; }
       if ("track".equals(key) && value instanceof MusicRecording) { track((MusicRecording)value); return; }
+      if ("tracks".equals(key) && value instanceof MusicRecording) { track((MusicRecording)value); return; }
       super.fromMap(key, value);
     }
   }

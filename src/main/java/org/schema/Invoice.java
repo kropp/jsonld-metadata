@@ -683,25 +683,45 @@ public class Invoice extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("confirmationNumber".equals(key) && value instanceof Identifier) { confirmationNumber((Identifier)value); return; }
+      if ("confirmationNumbers".equals(key) && value instanceof Identifier) { confirmationNumber((Identifier)value); return; }
       if ("customer".equals(key) && value instanceof Organization) { customer((Organization)value); return; }
+      if ("customers".equals(key) && value instanceof Organization) { customer((Organization)value); return; }
       if ("customer".equals(key) && value instanceof Person) { customer((Person)value); return; }
+      if ("customers".equals(key) && value instanceof Person) { customer((Person)value); return; }
       if ("paymentMethod".equals(key) && value instanceof PaymentMethod) { paymentMethod((PaymentMethod)value); return; }
+      if ("paymentMethods".equals(key) && value instanceof PaymentMethod) { paymentMethod((PaymentMethod)value); return; }
       if ("paymentMethodId".equals(key) && value instanceof String) { paymentMethodId((String)value); return; }
+      if ("paymentMethodIds".equals(key) && value instanceof String) { paymentMethodId((String)value); return; }
       if ("paymentDueDate".equals(key) && value instanceof java.util.Date) { paymentDueDate((java.util.Date)value); return; }
+      if ("paymentDueDates".equals(key) && value instanceof java.util.Date) { paymentDueDate((java.util.Date)value); return; }
       if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
+      if ("providers".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
       if ("provider".equals(key) && value instanceof Person) { provider((Person)value); return; }
+      if ("providers".equals(key) && value instanceof Person) { provider((Person)value); return; }
       if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); return; }
+      if ("brokers".equals(key) && value instanceof Organization) { broker((Organization)value); return; }
       if ("broker".equals(key) && value instanceof Person) { broker((Person)value); return; }
+      if ("brokers".equals(key) && value instanceof Person) { broker((Person)value); return; }
       if ("totalPaymentDue".equals(key) && value instanceof MonetaryAmount) { totalPaymentDue((MonetaryAmount)value); return; }
+      if ("totalPaymentDues".equals(key) && value instanceof MonetaryAmount) { totalPaymentDue((MonetaryAmount)value); return; }
       if ("totalPaymentDue".equals(key) && value instanceof PriceSpecification) { totalPaymentDue((PriceSpecification)value); return; }
+      if ("totalPaymentDues".equals(key) && value instanceof PriceSpecification) { totalPaymentDue((PriceSpecification)value); return; }
       if ("minimumPaymentDue".equals(key) && value instanceof MonetaryAmount) { minimumPaymentDue((MonetaryAmount)value); return; }
+      if ("minimumPaymentDues".equals(key) && value instanceof MonetaryAmount) { minimumPaymentDue((MonetaryAmount)value); return; }
       if ("minimumPaymentDue".equals(key) && value instanceof PriceSpecification) { minimumPaymentDue((PriceSpecification)value); return; }
+      if ("minimumPaymentDues".equals(key) && value instanceof PriceSpecification) { minimumPaymentDue((PriceSpecification)value); return; }
       if ("accountId".equals(key) && value instanceof Identifier) { accountId((Identifier)value); return; }
+      if ("accountIds".equals(key) && value instanceof Identifier) { accountId((Identifier)value); return; }
       if ("scheduledPaymentDate".equals(key) && value instanceof java.util.Date) { scheduledPaymentDate((java.util.Date)value); return; }
+      if ("scheduledPaymentDates".equals(key) && value instanceof java.util.Date) { scheduledPaymentDate((java.util.Date)value); return; }
       if ("billingPeriod".equals(key) && value instanceof Duration) { billingPeriod((Duration)value); return; }
+      if ("billingPeriods".equals(key) && value instanceof Duration) { billingPeriod((Duration)value); return; }
       if ("paymentStatus".equals(key) && value instanceof PaymentStatusType) { paymentStatus((PaymentStatusType)value); return; }
+      if ("paymentStatuss".equals(key) && value instanceof PaymentStatusType) { paymentStatus((PaymentStatusType)value); return; }
       if ("paymentStatus".equals(key) && value instanceof String) { paymentStatus((String)value); return; }
+      if ("paymentStatuss".equals(key) && value instanceof String) { paymentStatus((String)value); return; }
       if ("referencesOrder".equals(key) && value instanceof Order) { referencesOrder((Order)value); return; }
+      if ("referencesOrders".equals(key) && value instanceof Order) { referencesOrder((Order)value); return; }
       super.fromMap(key, value);
     }
   }

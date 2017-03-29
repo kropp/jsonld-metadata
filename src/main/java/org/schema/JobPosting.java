@@ -692,28 +692,51 @@ public class JobPosting extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("baseSalary".equals(key) && value instanceof Integer) { baseSalary((Integer)value); return; }
+      if ("baseSalarys".equals(key) && value instanceof Integer) { baseSalary((Integer)value); return; }
       if ("baseSalary".equals(key) && value instanceof Long) { baseSalary((Long)value); return; }
+      if ("baseSalarys".equals(key) && value instanceof Long) { baseSalary((Long)value); return; }
       if ("baseSalary".equals(key) && value instanceof Float) { baseSalary((Float)value); return; }
+      if ("baseSalarys".equals(key) && value instanceof Float) { baseSalary((Float)value); return; }
       if ("baseSalary".equals(key) && value instanceof Double) { baseSalary((Double)value); return; }
+      if ("baseSalarys".equals(key) && value instanceof Double) { baseSalary((Double)value); return; }
       if ("baseSalary".equals(key) && value instanceof String) { baseSalary((String)value); return; }
+      if ("baseSalarys".equals(key) && value instanceof String) { baseSalary((String)value); return; }
       if ("jobBenefits".equals(key) && value instanceof String) { jobBenefits((String)value); return; }
+      if ("jobBenefitss".equals(key) && value instanceof String) { jobBenefits((String)value); return; }
       if ("datePosted".equals(key) && value instanceof java.util.Date) { datePosted((java.util.Date)value); return; }
+      if ("datePosteds".equals(key) && value instanceof java.util.Date) { datePosted((java.util.Date)value); return; }
       if ("educationRequirements".equals(key) && value instanceof String) { educationRequirements((String)value); return; }
+      if ("educationRequirementss".equals(key) && value instanceof String) { educationRequirements((String)value); return; }
       if ("employmentType".equals(key) && value instanceof String) { employmentType((String)value); return; }
+      if ("employmentTypes".equals(key) && value instanceof String) { employmentType((String)value); return; }
       if ("experienceRequirements".equals(key) && value instanceof String) { experienceRequirements((String)value); return; }
+      if ("experienceRequirementss".equals(key) && value instanceof String) { experienceRequirements((String)value); return; }
       if ("hiringOrganization".equals(key) && value instanceof Organization) { hiringOrganization((Organization)value); return; }
+      if ("hiringOrganizations".equals(key) && value instanceof Organization) { hiringOrganization((Organization)value); return; }
       if ("incentiveCompensation".equals(key) && value instanceof String) { incentiveCompensation((String)value); return; }
+      if ("incentiveCompensations".equals(key) && value instanceof String) { incentiveCompensation((String)value); return; }
       if ("industry".equals(key) && value instanceof String) { industry((String)value); return; }
+      if ("industrys".equals(key) && value instanceof String) { industry((String)value); return; }
       if ("jobLocation".equals(key) && value instanceof Place) { jobLocation((Place)value); return; }
+      if ("jobLocations".equals(key) && value instanceof Place) { jobLocation((Place)value); return; }
       if ("occupationalCategory".equals(key) && value instanceof String) { occupationalCategory((String)value); return; }
+      if ("occupationalCategorys".equals(key) && value instanceof String) { occupationalCategory((String)value); return; }
       if ("qualifications".equals(key) && value instanceof String) { qualifications((String)value); return; }
+      if ("qualificationss".equals(key) && value instanceof String) { qualifications((String)value); return; }
       if ("responsibilities".equals(key) && value instanceof String) { responsibilities((String)value); return; }
+      if ("responsibilitiess".equals(key) && value instanceof String) { responsibilities((String)value); return; }
       if ("salaryCurrency".equals(key) && value instanceof String) { salaryCurrency((String)value); return; }
+      if ("salaryCurrencys".equals(key) && value instanceof String) { salaryCurrency((String)value); return; }
       if ("skills".equals(key) && value instanceof String) { skills((String)value); return; }
+      if ("skillss".equals(key) && value instanceof String) { skills((String)value); return; }
       if ("specialCommitments".equals(key) && value instanceof String) { specialCommitments((String)value); return; }
+      if ("specialCommitmentss".equals(key) && value instanceof String) { specialCommitments((String)value); return; }
       if ("title".equals(key) && value instanceof String) { title((String)value); return; }
+      if ("titles".equals(key) && value instanceof String) { title((String)value); return; }
       if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
+      if ("validThroughs".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
       if ("workHours".equals(key) && value instanceof String) { workHours((String)value); return; }
+      if ("workHourss".equals(key) && value instanceof String) { workHours((String)value); return; }
       super.fromMap(key, value);
     }
   }

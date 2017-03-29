@@ -1396,15 +1396,25 @@ public class Episode extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("actor".equals(key) && value instanceof Person) { actor((Person)value); return; }
+      if ("actors".equals(key) && value instanceof Person) { actor((Person)value); return; }
       if ("director".equals(key) && value instanceof Person) { director((Person)value); return; }
+      if ("directors".equals(key) && value instanceof Person) { director((Person)value); return; }
       if ("episodeNumber".equals(key) && value instanceof Integer) { episodeNumber((Integer)value); return; }
+      if ("episodeNumbers".equals(key) && value instanceof Integer) { episodeNumber((Integer)value); return; }
       if ("episodeNumber".equals(key) && value instanceof String) { episodeNumber((String)value); return; }
+      if ("episodeNumbers".equals(key) && value instanceof String) { episodeNumber((String)value); return; }
       if ("musicBy".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
+      if ("musicBys".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
       if ("musicBy".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
+      if ("musicBys".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
       if ("partOfSeason".equals(key) && value instanceof IsPartOf) { partOfSeason((IsPartOf)value); return; }
+      if ("partOfSeasons".equals(key) && value instanceof IsPartOf) { partOfSeason((IsPartOf)value); return; }
       if ("partOfSeries".equals(key) && value instanceof IsPartOf) { partOfSeries((IsPartOf)value); return; }
+      if ("partOfSeriess".equals(key) && value instanceof IsPartOf) { partOfSeries((IsPartOf)value); return; }
       if ("productionCompany".equals(key) && value instanceof Organization) { productionCompany((Organization)value); return; }
+      if ("productionCompanys".equals(key) && value instanceof Organization) { productionCompany((Organization)value); return; }
       if ("trailer".equals(key) && value instanceof VideoObject) { trailer((VideoObject)value); return; }
+      if ("trailers".equals(key) && value instanceof VideoObject) { trailer((VideoObject)value); return; }
       super.fromMap(key, value);
     }
   }

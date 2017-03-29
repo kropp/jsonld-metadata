@@ -265,7 +265,9 @@ public class TransferAction extends Action {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("fromLocation".equals(key) && value instanceof Place) { fromLocation((Place)value); return; }
+      if ("fromLocations".equals(key) && value instanceof Place) { fromLocation((Place)value); return; }
       if ("toLocation".equals(key) && value instanceof Place) { toLocation((Place)value); return; }
+      if ("toLocations".equals(key) && value instanceof Place) { toLocation((Place)value); return; }
       super.fromMap(key, value);
     }
   }

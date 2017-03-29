@@ -384,11 +384,17 @@ public class TradeAction extends Action {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("price".equals(key) && value instanceof Integer) { price((Integer)value); return; }
+      if ("prices".equals(key) && value instanceof Integer) { price((Integer)value); return; }
       if ("price".equals(key) && value instanceof Long) { price((Long)value); return; }
+      if ("prices".equals(key) && value instanceof Long) { price((Long)value); return; }
       if ("price".equals(key) && value instanceof Float) { price((Float)value); return; }
+      if ("prices".equals(key) && value instanceof Float) { price((Float)value); return; }
       if ("price".equals(key) && value instanceof Double) { price((Double)value); return; }
+      if ("prices".equals(key) && value instanceof Double) { price((Double)value); return; }
       if ("price".equals(key) && value instanceof String) { price((String)value); return; }
+      if ("prices".equals(key) && value instanceof String) { price((String)value); return; }
       if ("priceSpecification".equals(key) && value instanceof PriceSpecification) { priceSpecification((PriceSpecification)value); return; }
+      if ("priceSpecifications".equals(key) && value instanceof PriceSpecification) { priceSpecification((PriceSpecification)value); return; }
       super.fromMap(key, value);
     }
   }

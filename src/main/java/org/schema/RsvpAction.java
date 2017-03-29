@@ -469,12 +469,19 @@ public class RsvpAction extends InformAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("additionalNumberOfGuests".equals(key) && value instanceof Integer) { additionalNumberOfGuests((Integer)value); return; }
+      if ("additionalNumberOfGuestss".equals(key) && value instanceof Integer) { additionalNumberOfGuests((Integer)value); return; }
       if ("additionalNumberOfGuests".equals(key) && value instanceof Long) { additionalNumberOfGuests((Long)value); return; }
+      if ("additionalNumberOfGuestss".equals(key) && value instanceof Long) { additionalNumberOfGuests((Long)value); return; }
       if ("additionalNumberOfGuests".equals(key) && value instanceof Float) { additionalNumberOfGuests((Float)value); return; }
+      if ("additionalNumberOfGuestss".equals(key) && value instanceof Float) { additionalNumberOfGuests((Float)value); return; }
       if ("additionalNumberOfGuests".equals(key) && value instanceof Double) { additionalNumberOfGuests((Double)value); return; }
+      if ("additionalNumberOfGuestss".equals(key) && value instanceof Double) { additionalNumberOfGuests((Double)value); return; }
       if ("additionalNumberOfGuests".equals(key) && value instanceof String) { additionalNumberOfGuests((String)value); return; }
+      if ("additionalNumberOfGuestss".equals(key) && value instanceof String) { additionalNumberOfGuests((String)value); return; }
       if ("rsvpResponse".equals(key) && value instanceof RsvpResponseType) { rsvpResponse((RsvpResponseType)value); return; }
+      if ("rsvpResponses".equals(key) && value instanceof RsvpResponseType) { rsvpResponse((RsvpResponseType)value); return; }
       if ("comment".equals(key) && value instanceof Comment) { comment((Comment)value); return; }
+      if ("comments".equals(key) && value instanceof Comment) { comment((Comment)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -1241,10 +1241,15 @@ public class Book extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("bookEdition".equals(key) && value instanceof String) { bookEdition((String)value); return; }
+      if ("bookEditions".equals(key) && value instanceof String) { bookEdition((String)value); return; }
       if ("bookFormat".equals(key) && value instanceof BookFormatType) { bookFormat((BookFormatType)value); return; }
+      if ("bookFormats".equals(key) && value instanceof BookFormatType) { bookFormat((BookFormatType)value); return; }
       if ("illustrator".equals(key) && value instanceof Person) { illustrator((Person)value); return; }
+      if ("illustrators".equals(key) && value instanceof Person) { illustrator((Person)value); return; }
       if ("isbn".equals(key) && value instanceof Identifier) { isbn((Identifier)value); return; }
+      if ("isbns".equals(key) && value instanceof Identifier) { isbn((Identifier)value); return; }
       if ("numberOfPages".equals(key) && value instanceof Integer) { numberOfPages((Integer)value); return; }
+      if ("numberOfPagess".equals(key) && value instanceof Integer) { numberOfPages((Integer)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -515,12 +515,19 @@ public class DeliveryChargeSpecification extends PriceSpecification {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("appliesToDeliveryMethod".equals(key) && value instanceof DeliveryMethod) { appliesToDeliveryMethod((DeliveryMethod)value); return; }
+      if ("appliesToDeliveryMethods".equals(key) && value instanceof DeliveryMethod) { appliesToDeliveryMethod((DeliveryMethod)value); return; }
       if ("eligibleRegion".equals(key) && value instanceof GeoShape) { eligibleRegion((GeoShape)value); return; }
+      if ("eligibleRegions".equals(key) && value instanceof GeoShape) { eligibleRegion((GeoShape)value); return; }
       if ("eligibleRegion".equals(key) && value instanceof Place) { eligibleRegion((Place)value); return; }
+      if ("eligibleRegions".equals(key) && value instanceof Place) { eligibleRegion((Place)value); return; }
       if ("eligibleRegion".equals(key) && value instanceof String) { eligibleRegion((String)value); return; }
+      if ("eligibleRegions".equals(key) && value instanceof String) { eligibleRegion((String)value); return; }
       if ("ineligibleRegion".equals(key) && value instanceof GeoShape) { ineligibleRegion((GeoShape)value); return; }
+      if ("ineligibleRegions".equals(key) && value instanceof GeoShape) { ineligibleRegion((GeoShape)value); return; }
       if ("ineligibleRegion".equals(key) && value instanceof Place) { ineligibleRegion((Place)value); return; }
+      if ("ineligibleRegions".equals(key) && value instanceof Place) { ineligibleRegion((Place)value); return; }
       if ("ineligibleRegion".equals(key) && value instanceof String) { ineligibleRegion((String)value); return; }
+      if ("ineligibleRegions".equals(key) && value instanceof String) { ineligibleRegion((String)value); return; }
       super.fromMap(key, value);
     }
   }

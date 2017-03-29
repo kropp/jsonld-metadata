@@ -678,7 +678,9 @@ public class SportsTeam extends SportsOrganization implements Competitor {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("coach".equals(key) && value instanceof Person) { coach((Person)value); return; }
+      if ("coachs".equals(key) && value instanceof Person) { coach((Person)value); return; }
       if ("athlete".equals(key) && value instanceof Person) { athlete((Person)value); return; }
+      if ("athletes".equals(key) && value instanceof Person) { athlete((Person)value); return; }
       super.fromMap(key, value);
     }
   }

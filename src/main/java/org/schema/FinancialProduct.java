@@ -561,10 +561,15 @@ public class FinancialProduct extends Service {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("annualPercentageRate".equals(key) && value instanceof Number) { annualPercentageRate((Number)value); return; }
+      if ("annualPercentageRates".equals(key) && value instanceof Number) { annualPercentageRate((Number)value); return; }
       if ("annualPercentageRate".equals(key) && value instanceof QuantitativeValue) { annualPercentageRate((QuantitativeValue)value); return; }
+      if ("annualPercentageRates".equals(key) && value instanceof QuantitativeValue) { annualPercentageRate((QuantitativeValue)value); return; }
       if ("feesAndCommissionsSpecification".equals(key) && value instanceof String) { feesAndCommissionsSpecification((String)value); return; }
+      if ("feesAndCommissionsSpecifications".equals(key) && value instanceof String) { feesAndCommissionsSpecification((String)value); return; }
       if ("interestRate".equals(key) && value instanceof Number) { interestRate((Number)value); return; }
+      if ("interestRates".equals(key) && value instanceof Number) { interestRate((Number)value); return; }
       if ("interestRate".equals(key) && value instanceof QuantitativeValue) { interestRate((QuantitativeValue)value); return; }
+      if ("interestRates".equals(key) && value instanceof QuantitativeValue) { interestRate((QuantitativeValue)value); return; }
       super.fromMap(key, value);
     }
   }

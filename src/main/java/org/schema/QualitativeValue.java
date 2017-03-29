@@ -502,17 +502,29 @@ public class QualitativeValue extends Enumeration {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("equal".equals(key) && value instanceof QualitativeValue) { equal((QualitativeValue)value); return; }
+      if ("equals".equals(key) && value instanceof QualitativeValue) { equal((QualitativeValue)value); return; }
       if ("greater".equals(key) && value instanceof QualitativeValue) { greater((QualitativeValue)value); return; }
+      if ("greaters".equals(key) && value instanceof QualitativeValue) { greater((QualitativeValue)value); return; }
       if ("greaterOrEqual".equals(key) && value instanceof QualitativeValue) { greaterOrEqual((QualitativeValue)value); return; }
+      if ("greaterOrEquals".equals(key) && value instanceof QualitativeValue) { greaterOrEqual((QualitativeValue)value); return; }
       if ("lesser".equals(key) && value instanceof QualitativeValue) { lesser((QualitativeValue)value); return; }
+      if ("lessers".equals(key) && value instanceof QualitativeValue) { lesser((QualitativeValue)value); return; }
       if ("lesserOrEqual".equals(key) && value instanceof QualitativeValue) { lesserOrEqual((QualitativeValue)value); return; }
+      if ("lesserOrEquals".equals(key) && value instanceof QualitativeValue) { lesserOrEqual((QualitativeValue)value); return; }
       if ("nonEqual".equals(key) && value instanceof QualitativeValue) { nonEqual((QualitativeValue)value); return; }
+      if ("nonEquals".equals(key) && value instanceof QualitativeValue) { nonEqual((QualitativeValue)value); return; }
       if ("valueReference".equals(key) && value instanceof Enumeration) { valueReference((Enumeration)value); return; }
+      if ("valueReferences".equals(key) && value instanceof Enumeration) { valueReference((Enumeration)value); return; }
       if ("valueReference".equals(key) && value instanceof PropertyValue) { valueReference((PropertyValue)value); return; }
+      if ("valueReferences".equals(key) && value instanceof PropertyValue) { valueReference((PropertyValue)value); return; }
       if ("valueReference".equals(key) && value instanceof QualitativeValue) { valueReference((QualitativeValue)value); return; }
+      if ("valueReferences".equals(key) && value instanceof QualitativeValue) { valueReference((QualitativeValue)value); return; }
       if ("valueReference".equals(key) && value instanceof QuantitativeValue) { valueReference((QuantitativeValue)value); return; }
+      if ("valueReferences".equals(key) && value instanceof QuantitativeValue) { valueReference((QuantitativeValue)value); return; }
       if ("valueReference".equals(key) && value instanceof StructuredValue) { valueReference((StructuredValue)value); return; }
+      if ("valueReferences".equals(key) && value instanceof StructuredValue) { valueReference((StructuredValue)value); return; }
       if ("additionalProperty".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); return; }
+      if ("additionalPropertys".equals(key) && value instanceof PropertyValue) { additionalProperty((PropertyValue)value); return; }
       super.fromMap(key, value);
     }
   }

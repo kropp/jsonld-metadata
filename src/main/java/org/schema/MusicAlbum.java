@@ -1259,9 +1259,13 @@ public class MusicAlbum extends MusicPlaylist {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("byArtist".equals(key) && value instanceof MusicGroup) { byArtist((MusicGroup)value); return; }
+      if ("byArtists".equals(key) && value instanceof MusicGroup) { byArtist((MusicGroup)value); return; }
       if ("albumProductionType".equals(key) && value instanceof MusicAlbumProductionType) { albumProductionType((MusicAlbumProductionType)value); return; }
+      if ("albumProductionTypes".equals(key) && value instanceof MusicAlbumProductionType) { albumProductionType((MusicAlbumProductionType)value); return; }
       if ("albumReleaseType".equals(key) && value instanceof MusicAlbumReleaseType) { albumReleaseType((MusicAlbumReleaseType)value); return; }
+      if ("albumReleaseTypes".equals(key) && value instanceof MusicAlbumReleaseType) { albumReleaseType((MusicAlbumReleaseType)value); return; }
       if ("albumRelease".equals(key) && value instanceof MusicRelease) { albumRelease((MusicRelease)value); return; }
+      if ("albumReleases".equals(key) && value instanceof MusicRelease) { albumRelease((MusicRelease)value); return; }
       super.fromMap(key, value);
     }
   }

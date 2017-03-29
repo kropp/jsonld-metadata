@@ -1321,11 +1321,17 @@ public class MusicRelease extends MusicPlaylist {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("catalogNumber".equals(key) && value instanceof String) { catalogNumber((String)value); return; }
+      if ("catalogNumbers".equals(key) && value instanceof String) { catalogNumber((String)value); return; }
       if ("creditedTo".equals(key) && value instanceof Organization) { creditedTo((Organization)value); return; }
+      if ("creditedTos".equals(key) && value instanceof Organization) { creditedTo((Organization)value); return; }
       if ("creditedTo".equals(key) && value instanceof Person) { creditedTo((Person)value); return; }
+      if ("creditedTos".equals(key) && value instanceof Person) { creditedTo((Person)value); return; }
       if ("musicReleaseFormat".equals(key) && value instanceof MusicReleaseFormatType) { musicReleaseFormat((MusicReleaseFormatType)value); return; }
+      if ("musicReleaseFormats".equals(key) && value instanceof MusicReleaseFormatType) { musicReleaseFormat((MusicReleaseFormatType)value); return; }
       if ("recordLabel".equals(key) && value instanceof Organization) { recordLabel((Organization)value); return; }
+      if ("recordLabels".equals(key) && value instanceof Organization) { recordLabel((Organization)value); return; }
       if ("releaseOf".equals(key) && value instanceof MusicAlbum) { releaseOf((MusicAlbum)value); return; }
+      if ("releaseOfs".equals(key) && value instanceof MusicAlbum) { releaseOf((MusicAlbum)value); return; }
       super.fromMap(key, value);
     }
   }

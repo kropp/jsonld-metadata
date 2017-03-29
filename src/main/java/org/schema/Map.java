@@ -1138,6 +1138,7 @@ public class Map extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("mapType".equals(key) && value instanceof MapCategoryType) { mapType((MapCategoryType)value); return; }
+      if ("mapTypes".equals(key) && value instanceof MapCategoryType) { mapType((MapCategoryType)value); return; }
       super.fromMap(key, value);
     }
   }

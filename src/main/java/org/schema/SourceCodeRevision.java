@@ -1351,7 +1351,9 @@ public class SourceCodeRevision extends SoftwareApplication {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("tag".equals(key) && value instanceof String) { tag((String)value); return; }
+      if ("tags".equals(key) && value instanceof String) { tag((String)value); return; }
       if ("branch".equals(key) && value instanceof String) { branch((String)value); return; }
+      if ("branchs".equals(key) && value instanceof String) { branch((String)value); return; }
       super.fromMap(key, value);
     }
   }

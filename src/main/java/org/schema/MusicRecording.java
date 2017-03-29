@@ -1262,10 +1262,15 @@ public class MusicRecording extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("byArtist".equals(key) && value instanceof MusicGroup) { byArtist((MusicGroup)value); return; }
+      if ("byArtists".equals(key) && value instanceof MusicGroup) { byArtist((MusicGroup)value); return; }
       if ("inAlbum".equals(key) && value instanceof MusicAlbum) { inAlbum((MusicAlbum)value); return; }
+      if ("inAlbums".equals(key) && value instanceof MusicAlbum) { inAlbum((MusicAlbum)value); return; }
       if ("inPlaylist".equals(key) && value instanceof MusicPlaylist) { inPlaylist((MusicPlaylist)value); return; }
+      if ("inPlaylists".equals(key) && value instanceof MusicPlaylist) { inPlaylist((MusicPlaylist)value); return; }
       if ("isrcCode".equals(key) && value instanceof String) { isrcCode((String)value); return; }
+      if ("isrcCodes".equals(key) && value instanceof String) { isrcCode((String)value); return; }
       if ("recordingOf".equals(key) && value instanceof MusicComposition) { recordingOf((MusicComposition)value); return; }
+      if ("recordingOfs".equals(key) && value instanceof MusicComposition) { recordingOf((MusicComposition)value); return; }
       super.fromMap(key, value);
     }
   }

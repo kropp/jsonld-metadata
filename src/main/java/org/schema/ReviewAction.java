@@ -234,6 +234,7 @@ public class ReviewAction extends AssessAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("resultReview".equals(key) && value instanceof Review) { resultReview((Review)value); return; }
+      if ("resultReviews".equals(key) && value instanceof Review) { resultReview((Review)value); return; }
       super.fromMap(key, value);
     }
   }

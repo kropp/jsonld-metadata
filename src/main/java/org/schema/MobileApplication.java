@@ -1327,6 +1327,7 @@ public class MobileApplication extends SoftwareApplication {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("carrierRequirements".equals(key) && value instanceof String) { carrierRequirements((String)value); return; }
+      if ("carrierRequirementss".equals(key) && value instanceof String) { carrierRequirements((String)value); return; }
       super.fromMap(key, value);
     }
   }

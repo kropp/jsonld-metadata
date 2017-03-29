@@ -1540,14 +1540,23 @@ public class VideoObject extends MediaObject {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("actor".equals(key) && value instanceof Person) { actor((Person)value); return; }
+      if ("actors".equals(key) && value instanceof Person) { actor((Person)value); return; }
       if ("caption".equals(key) && value instanceof String) { caption((String)value); return; }
+      if ("captions".equals(key) && value instanceof String) { caption((String)value); return; }
       if ("director".equals(key) && value instanceof Person) { director((Person)value); return; }
+      if ("directors".equals(key) && value instanceof Person) { director((Person)value); return; }
       if ("musicBy".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
+      if ("musicBys".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
       if ("musicBy".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
+      if ("musicBys".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
       if ("thumbnail".equals(key) && value instanceof ImageObject) { thumbnail((ImageObject)value); return; }
+      if ("thumbnails".equals(key) && value instanceof ImageObject) { thumbnail((ImageObject)value); return; }
       if ("transcript".equals(key) && value instanceof String) { transcript((String)value); return; }
+      if ("transcripts".equals(key) && value instanceof String) { transcript((String)value); return; }
       if ("videoFrameSize".equals(key) && value instanceof String) { videoFrameSize((String)value); return; }
+      if ("videoFrameSizes".equals(key) && value instanceof String) { videoFrameSize((String)value); return; }
       if ("videoQuality".equals(key) && value instanceof String) { videoQuality((String)value); return; }
+      if ("videoQualitys".equals(key) && value instanceof String) { videoQuality((String)value); return; }
       super.fromMap(key, value);
     }
   }

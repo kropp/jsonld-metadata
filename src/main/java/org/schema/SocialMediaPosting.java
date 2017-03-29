@@ -1201,6 +1201,7 @@ public class SocialMediaPosting extends Article {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("sharedContent".equals(key) && value instanceof CreativeWork) { sharedContent((CreativeWork)value); return; }
+      if ("sharedContents".equals(key) && value instanceof CreativeWork) { sharedContent((CreativeWork)value); return; }
       super.fromMap(key, value);
     }
   }

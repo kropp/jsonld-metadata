@@ -466,18 +466,31 @@ public class Ticket extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("underName".equals(key) && value instanceof Organization) { underName((Organization)value); return; }
+      if ("underNames".equals(key) && value instanceof Organization) { underName((Organization)value); return; }
       if ("underName".equals(key) && value instanceof Person) { underName((Person)value); return; }
+      if ("underNames".equals(key) && value instanceof Person) { underName((Person)value); return; }
       if ("totalPrice".equals(key) && value instanceof Integer) { totalPrice((Integer)value); return; }
+      if ("totalPrices".equals(key) && value instanceof Integer) { totalPrice((Integer)value); return; }
       if ("totalPrice".equals(key) && value instanceof Long) { totalPrice((Long)value); return; }
+      if ("totalPrices".equals(key) && value instanceof Long) { totalPrice((Long)value); return; }
       if ("totalPrice".equals(key) && value instanceof Float) { totalPrice((Float)value); return; }
+      if ("totalPrices".equals(key) && value instanceof Float) { totalPrice((Float)value); return; }
       if ("totalPrice".equals(key) && value instanceof Double) { totalPrice((Double)value); return; }
+      if ("totalPrices".equals(key) && value instanceof Double) { totalPrice((Double)value); return; }
       if ("totalPrice".equals(key) && value instanceof String) { totalPrice((String)value); return; }
+      if ("totalPrices".equals(key) && value instanceof String) { totalPrice((String)value); return; }
       if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); return; }
+      if ("priceCurrencys".equals(key) && value instanceof String) { priceCurrency((String)value); return; }
       if ("issuedBy".equals(key) && value instanceof Organization) { issuedBy((Organization)value); return; }
+      if ("issuedBys".equals(key) && value instanceof Organization) { issuedBy((Organization)value); return; }
       if ("dateIssued".equals(key) && value instanceof java.util.Date) { dateIssued((java.util.Date)value); return; }
+      if ("dateIssueds".equals(key) && value instanceof java.util.Date) { dateIssued((java.util.Date)value); return; }
       if ("ticketedSeat".equals(key) && value instanceof Seat) { ticketedSeat((Seat)value); return; }
+      if ("ticketedSeats".equals(key) && value instanceof Seat) { ticketedSeat((Seat)value); return; }
       if ("ticketNumber".equals(key) && value instanceof String) { ticketNumber((String)value); return; }
+      if ("ticketNumbers".equals(key) && value instanceof String) { ticketNumber((String)value); return; }
       if ("ticketToken".equals(key) && value instanceof String) { ticketToken((String)value); return; }
+      if ("ticketTokens".equals(key) && value instanceof String) { ticketToken((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -274,10 +274,15 @@ public class DigitalDocumentPermission extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("grantee".equals(key) && value instanceof Audience) { grantee((Audience)value); return; }
+      if ("grantees".equals(key) && value instanceof Audience) { grantee((Audience)value); return; }
       if ("grantee".equals(key) && value instanceof ContactPoint) { grantee((ContactPoint)value); return; }
+      if ("grantees".equals(key) && value instanceof ContactPoint) { grantee((ContactPoint)value); return; }
       if ("grantee".equals(key) && value instanceof Organization) { grantee((Organization)value); return; }
+      if ("grantees".equals(key) && value instanceof Organization) { grantee((Organization)value); return; }
       if ("grantee".equals(key) && value instanceof Person) { grantee((Person)value); return; }
+      if ("grantees".equals(key) && value instanceof Person) { grantee((Person)value); return; }
       if ("permissionType".equals(key) && value instanceof DigitalDocumentPermissionType) { permissionType((DigitalDocumentPermissionType)value); return; }
+      if ("permissionTypes".equals(key) && value instanceof DigitalDocumentPermissionType) { permissionType((DigitalDocumentPermissionType)value); return; }
       super.fromMap(key, value);
     }
   }

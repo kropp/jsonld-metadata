@@ -262,6 +262,7 @@ public class TravelAction extends MoveAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("distance".equals(key) && value instanceof Distance) { distance((Distance)value); return; }
+      if ("distances".equals(key) && value instanceof Distance) { distance((Distance)value); return; }
       super.fromMap(key, value);
     }
   }

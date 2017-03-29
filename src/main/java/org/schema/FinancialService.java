@@ -477,6 +477,7 @@ public class FinancialService extends LocalBusiness {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("feesAndCommissionsSpecification".equals(key) && value instanceof String) { feesAndCommissionsSpecification((String)value); return; }
+      if ("feesAndCommissionsSpecifications".equals(key) && value instanceof String) { feesAndCommissionsSpecification((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -521,9 +521,13 @@ public class LocalBusiness extends Place {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("currenciesAccepted".equals(key) && value instanceof String) { currenciesAccepted((String)value); return; }
+      if ("currenciesAccepteds".equals(key) && value instanceof String) { currenciesAccepted((String)value); return; }
       if ("openingHours".equals(key) && value instanceof String) { openingHours((String)value); return; }
+      if ("openingHourss".equals(key) && value instanceof String) { openingHours((String)value); return; }
       if ("paymentAccepted".equals(key) && value instanceof String) { paymentAccepted((String)value); return; }
+      if ("paymentAccepteds".equals(key) && value instanceof String) { paymentAccepted((String)value); return; }
       if ("priceRange".equals(key) && value instanceof String) { priceRange((String)value); return; }
+      if ("priceRanges".equals(key) && value instanceof String) { priceRange((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -353,6 +353,7 @@ public class ReservationPackage extends Reservation {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("subReservation".equals(key) && value instanceof Reservation) { subReservation((Reservation)value); return; }
+      if ("subReservations".equals(key) && value instanceof Reservation) { subReservation((Reservation)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -620,25 +620,45 @@ public class GeoCoordinates extends StructuredValue {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("address".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
+      if ("addresss".equals(key) && value instanceof PostalAddress) { address((PostalAddress)value); return; }
       if ("address".equals(key) && value instanceof String) { address((String)value); return; }
+      if ("addresss".equals(key) && value instanceof String) { address((String)value); return; }
       if ("addressCountry".equals(key) && value instanceof Country) { addressCountry((Country)value); return; }
+      if ("addressCountrys".equals(key) && value instanceof Country) { addressCountry((Country)value); return; }
       if ("addressCountry".equals(key) && value instanceof String) { addressCountry((String)value); return; }
+      if ("addressCountrys".equals(key) && value instanceof String) { addressCountry((String)value); return; }
       if ("elevation".equals(key) && value instanceof Integer) { elevation((Integer)value); return; }
+      if ("elevations".equals(key) && value instanceof Integer) { elevation((Integer)value); return; }
       if ("elevation".equals(key) && value instanceof Long) { elevation((Long)value); return; }
+      if ("elevations".equals(key) && value instanceof Long) { elevation((Long)value); return; }
       if ("elevation".equals(key) && value instanceof Float) { elevation((Float)value); return; }
+      if ("elevations".equals(key) && value instanceof Float) { elevation((Float)value); return; }
       if ("elevation".equals(key) && value instanceof Double) { elevation((Double)value); return; }
+      if ("elevations".equals(key) && value instanceof Double) { elevation((Double)value); return; }
       if ("elevation".equals(key) && value instanceof String) { elevation((String)value); return; }
+      if ("elevations".equals(key) && value instanceof String) { elevation((String)value); return; }
       if ("latitude".equals(key) && value instanceof Integer) { latitude((Integer)value); return; }
+      if ("latitudes".equals(key) && value instanceof Integer) { latitude((Integer)value); return; }
       if ("latitude".equals(key) && value instanceof Long) { latitude((Long)value); return; }
+      if ("latitudes".equals(key) && value instanceof Long) { latitude((Long)value); return; }
       if ("latitude".equals(key) && value instanceof Float) { latitude((Float)value); return; }
+      if ("latitudes".equals(key) && value instanceof Float) { latitude((Float)value); return; }
       if ("latitude".equals(key) && value instanceof Double) { latitude((Double)value); return; }
+      if ("latitudes".equals(key) && value instanceof Double) { latitude((Double)value); return; }
       if ("latitude".equals(key) && value instanceof String) { latitude((String)value); return; }
+      if ("latitudes".equals(key) && value instanceof String) { latitude((String)value); return; }
       if ("longitude".equals(key) && value instanceof Integer) { longitude((Integer)value); return; }
+      if ("longitudes".equals(key) && value instanceof Integer) { longitude((Integer)value); return; }
       if ("longitude".equals(key) && value instanceof Long) { longitude((Long)value); return; }
+      if ("longitudes".equals(key) && value instanceof Long) { longitude((Long)value); return; }
       if ("longitude".equals(key) && value instanceof Float) { longitude((Float)value); return; }
+      if ("longitudes".equals(key) && value instanceof Float) { longitude((Float)value); return; }
       if ("longitude".equals(key) && value instanceof Double) { longitude((Double)value); return; }
+      if ("longitudes".equals(key) && value instanceof Double) { longitude((Double)value); return; }
       if ("longitude".equals(key) && value instanceof String) { longitude((String)value); return; }
+      if ("longitudes".equals(key) && value instanceof String) { longitude((String)value); return; }
       if ("postalCode".equals(key) && value instanceof String) { postalCode((String)value); return; }
+      if ("postalCodes".equals(key) && value instanceof String) { postalCode((String)value); return; }
       super.fromMap(key, value);
     }
   }

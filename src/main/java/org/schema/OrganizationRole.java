@@ -260,10 +260,15 @@ public class OrganizationRole extends Role {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("numberedPosition".equals(key) && value instanceof Integer) { numberedPosition((Integer)value); return; }
+      if ("numberedPositions".equals(key) && value instanceof Integer) { numberedPosition((Integer)value); return; }
       if ("numberedPosition".equals(key) && value instanceof Long) { numberedPosition((Long)value); return; }
+      if ("numberedPositions".equals(key) && value instanceof Long) { numberedPosition((Long)value); return; }
       if ("numberedPosition".equals(key) && value instanceof Float) { numberedPosition((Float)value); return; }
+      if ("numberedPositions".equals(key) && value instanceof Float) { numberedPosition((Float)value); return; }
       if ("numberedPosition".equals(key) && value instanceof Double) { numberedPosition((Double)value); return; }
+      if ("numberedPositions".equals(key) && value instanceof Double) { numberedPosition((Double)value); return; }
       if ("numberedPosition".equals(key) && value instanceof String) { numberedPosition((String)value); return; }
+      if ("numberedPositions".equals(key) && value instanceof String) { numberedPosition((String)value); return; }
       super.fromMap(key, value);
     }
   }

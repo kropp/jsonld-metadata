@@ -1272,11 +1272,17 @@ public class SoftwareSourceCode extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("codeRepository".equals(key) && value instanceof String) { codeRepository((String)value); return; }
+      if ("codeRepositorys".equals(key) && value instanceof String) { codeRepository((String)value); return; }
       if ("programmingLanguage".equals(key) && value instanceof ComputerLanguage) { programmingLanguage((ComputerLanguage)value); return; }
+      if ("programmingLanguages".equals(key) && value instanceof ComputerLanguage) { programmingLanguage((ComputerLanguage)value); return; }
       if ("programmingLanguage".equals(key) && value instanceof String) { programmingLanguage((String)value); return; }
+      if ("programmingLanguages".equals(key) && value instanceof String) { programmingLanguage((String)value); return; }
       if ("runtimePlatform".equals(key) && value instanceof String) { runtimePlatform((String)value); return; }
+      if ("runtimePlatforms".equals(key) && value instanceof String) { runtimePlatform((String)value); return; }
       if ("codeSampleType".equals(key) && value instanceof String) { codeSampleType((String)value); return; }
+      if ("codeSampleTypes".equals(key) && value instanceof String) { codeSampleType((String)value); return; }
       if ("targetProduct".equals(key) && value instanceof SoftwareApplication) { targetProduct((SoftwareApplication)value); return; }
+      if ("targetProducts".equals(key) && value instanceof SoftwareApplication) { targetProduct((SoftwareApplication)value); return; }
       super.fromMap(key, value);
     }
   }

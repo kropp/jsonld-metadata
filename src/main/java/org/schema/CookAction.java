@@ -275,8 +275,11 @@ public class CookAction extends CreateAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("foodEstablishment".equals(key) && value instanceof Location) { foodEstablishment((Location)value); return; }
+      if ("foodEstablishments".equals(key) && value instanceof Location) { foodEstablishment((Location)value); return; }
       if ("foodEvent".equals(key) && value instanceof Location) { foodEvent((Location)value); return; }
+      if ("foodEvents".equals(key) && value instanceof Location) { foodEvent((Location)value); return; }
       if ("recipe".equals(key) && value instanceof Instrument) { recipe((Instrument)value); return; }
+      if ("recipes".equals(key) && value instanceof Instrument) { recipe((Instrument)value); return; }
       super.fromMap(key, value);
     }
   }

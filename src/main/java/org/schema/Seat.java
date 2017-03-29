@@ -253,10 +253,15 @@ public class Seat extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("seatNumber".equals(key) && value instanceof String) { seatNumber((String)value); return; }
+      if ("seatNumbers".equals(key) && value instanceof String) { seatNumber((String)value); return; }
       if ("seatRow".equals(key) && value instanceof String) { seatRow((String)value); return; }
+      if ("seatRows".equals(key) && value instanceof String) { seatRow((String)value); return; }
       if ("seatSection".equals(key) && value instanceof String) { seatSection((String)value); return; }
+      if ("seatSections".equals(key) && value instanceof String) { seatSection((String)value); return; }
       if ("seatingType".equals(key) && value instanceof QualitativeValue) { seatingType((QualitativeValue)value); return; }
+      if ("seatingTypes".equals(key) && value instanceof QualitativeValue) { seatingType((QualitativeValue)value); return; }
       if ("seatingType".equals(key) && value instanceof String) { seatingType((String)value); return; }
+      if ("seatingTypes".equals(key) && value instanceof String) { seatingType((String)value); return; }
       super.fromMap(key, value);
     }
   }

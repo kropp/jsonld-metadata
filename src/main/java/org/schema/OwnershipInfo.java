@@ -298,11 +298,17 @@ public class OwnershipInfo extends StructuredValue {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("acquiredFrom".equals(key) && value instanceof Organization) { acquiredFrom((Organization)value); return; }
+      if ("acquiredFroms".equals(key) && value instanceof Organization) { acquiredFrom((Organization)value); return; }
       if ("acquiredFrom".equals(key) && value instanceof Person) { acquiredFrom((Person)value); return; }
+      if ("acquiredFroms".equals(key) && value instanceof Person) { acquiredFrom((Person)value); return; }
       if ("ownedFrom".equals(key) && value instanceof java.util.Date) { ownedFrom((java.util.Date)value); return; }
+      if ("ownedFroms".equals(key) && value instanceof java.util.Date) { ownedFrom((java.util.Date)value); return; }
       if ("ownedThrough".equals(key) && value instanceof java.util.Date) { ownedThrough((java.util.Date)value); return; }
+      if ("ownedThroughs".equals(key) && value instanceof java.util.Date) { ownedThrough((java.util.Date)value); return; }
       if ("typeOfGood".equals(key) && value instanceof Product) { typeOfGood((Product)value); return; }
+      if ("typeOfGoods".equals(key) && value instanceof Product) { typeOfGood((Product)value); return; }
       if ("typeOfGood".equals(key) && value instanceof Service) { typeOfGood((Service)value); return; }
+      if ("typeOfGoods".equals(key) && value instanceof Service) { typeOfGood((Service)value); return; }
       super.fromMap(key, value);
     }
   }

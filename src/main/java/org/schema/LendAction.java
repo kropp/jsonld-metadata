@@ -262,6 +262,7 @@ public class LendAction extends TransferAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("borrower".equals(key) && value instanceof Person) { borrower((Person)value); return; }
+      if ("borrowers".equals(key) && value instanceof Person) { borrower((Person)value); return; }
       super.fromMap(key, value);
     }
   }

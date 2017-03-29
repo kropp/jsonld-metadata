@@ -645,24 +645,43 @@ public class Reservation extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("reservationId".equals(key) && value instanceof String) { reservationId((String)value); return; }
+      if ("reservationIds".equals(key) && value instanceof String) { reservationId((String)value); return; }
       if ("reservationStatus".equals(key) && value instanceof ReservationStatusType) { reservationStatus((ReservationStatusType)value); return; }
+      if ("reservationStatuss".equals(key) && value instanceof ReservationStatusType) { reservationStatus((ReservationStatusType)value); return; }
       if ("reservationFor".equals(key) && value instanceof Thing) { reservationFor((Thing)value); return; }
+      if ("reservationFors".equals(key) && value instanceof Thing) { reservationFor((Thing)value); return; }
       if ("underName".equals(key) && value instanceof Organization) { underName((Organization)value); return; }
+      if ("underNames".equals(key) && value instanceof Organization) { underName((Organization)value); return; }
       if ("underName".equals(key) && value instanceof Person) { underName((Person)value); return; }
+      if ("underNames".equals(key) && value instanceof Person) { underName((Person)value); return; }
       if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
+      if ("providers".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
       if ("provider".equals(key) && value instanceof Person) { provider((Person)value); return; }
+      if ("providers".equals(key) && value instanceof Person) { provider((Person)value); return; }
       if ("bookingTime".equals(key) && value instanceof java.util.Date) { bookingTime((java.util.Date)value); return; }
+      if ("bookingTimes".equals(key) && value instanceof java.util.Date) { bookingTime((java.util.Date)value); return; }
       if ("modifiedTime".equals(key) && value instanceof java.util.Date) { modifiedTime((java.util.Date)value); return; }
+      if ("modifiedTimes".equals(key) && value instanceof java.util.Date) { modifiedTime((java.util.Date)value); return; }
       if ("programMembershipUsed".equals(key) && value instanceof ProgramMembership) { programMembershipUsed((ProgramMembership)value); return; }
+      if ("programMembershipUseds".equals(key) && value instanceof ProgramMembership) { programMembershipUsed((ProgramMembership)value); return; }
       if ("reservedTicket".equals(key) && value instanceof Ticket) { reservedTicket((Ticket)value); return; }
+      if ("reservedTickets".equals(key) && value instanceof Ticket) { reservedTicket((Ticket)value); return; }
       if ("totalPrice".equals(key) && value instanceof Integer) { totalPrice((Integer)value); return; }
+      if ("totalPrices".equals(key) && value instanceof Integer) { totalPrice((Integer)value); return; }
       if ("totalPrice".equals(key) && value instanceof Long) { totalPrice((Long)value); return; }
+      if ("totalPrices".equals(key) && value instanceof Long) { totalPrice((Long)value); return; }
       if ("totalPrice".equals(key) && value instanceof Float) { totalPrice((Float)value); return; }
+      if ("totalPrices".equals(key) && value instanceof Float) { totalPrice((Float)value); return; }
       if ("totalPrice".equals(key) && value instanceof Double) { totalPrice((Double)value); return; }
+      if ("totalPrices".equals(key) && value instanceof Double) { totalPrice((Double)value); return; }
       if ("totalPrice".equals(key) && value instanceof String) { totalPrice((String)value); return; }
+      if ("totalPrices".equals(key) && value instanceof String) { totalPrice((String)value); return; }
       if ("priceCurrency".equals(key) && value instanceof String) { priceCurrency((String)value); return; }
+      if ("priceCurrencys".equals(key) && value instanceof String) { priceCurrency((String)value); return; }
       if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); return; }
+      if ("brokers".equals(key) && value instanceof Organization) { broker((Organization)value); return; }
       if ("broker".equals(key) && value instanceof Person) { broker((Person)value); return; }
+      if ("brokers".equals(key) && value instanceof Person) { broker((Person)value); return; }
       super.fromMap(key, value);
     }
   }

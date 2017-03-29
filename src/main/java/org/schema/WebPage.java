@@ -1389,15 +1389,25 @@ public class WebPage extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("breadcrumb".equals(key) && value instanceof BreadcrumbList) { breadcrumb((BreadcrumbList)value); return; }
+      if ("breadcrumbs".equals(key) && value instanceof BreadcrumbList) { breadcrumb((BreadcrumbList)value); return; }
       if ("breadcrumb".equals(key) && value instanceof String) { breadcrumb((String)value); return; }
+      if ("breadcrumbs".equals(key) && value instanceof String) { breadcrumb((String)value); return; }
       if ("lastReviewed".equals(key) && value instanceof java.util.Date) { lastReviewed((java.util.Date)value); return; }
+      if ("lastRevieweds".equals(key) && value instanceof java.util.Date) { lastReviewed((java.util.Date)value); return; }
       if ("mainContentOfPage".equals(key) && value instanceof WebPageElement) { mainContentOfPage((WebPageElement)value); return; }
+      if ("mainContentOfPages".equals(key) && value instanceof WebPageElement) { mainContentOfPage((WebPageElement)value); return; }
       if ("primaryImageOfPage".equals(key) && value instanceof ImageObject) { primaryImageOfPage((ImageObject)value); return; }
+      if ("primaryImageOfPages".equals(key) && value instanceof ImageObject) { primaryImageOfPage((ImageObject)value); return; }
       if ("relatedLink".equals(key) && value instanceof String) { relatedLink((String)value); return; }
+      if ("relatedLinks".equals(key) && value instanceof String) { relatedLink((String)value); return; }
       if ("reviewedBy".equals(key) && value instanceof Organization) { reviewedBy((Organization)value); return; }
+      if ("reviewedBys".equals(key) && value instanceof Organization) { reviewedBy((Organization)value); return; }
       if ("reviewedBy".equals(key) && value instanceof Person) { reviewedBy((Person)value); return; }
+      if ("reviewedBys".equals(key) && value instanceof Person) { reviewedBy((Person)value); return; }
       if ("significantLink".equals(key) && value instanceof String) { significantLink((String)value); return; }
+      if ("significantLinks".equals(key) && value instanceof String) { significantLink((String)value); return; }
       if ("specialty".equals(key) && value instanceof Specialty) { specialty((Specialty)value); return; }
+      if ("specialtys".equals(key) && value instanceof Specialty) { specialty((Specialty)value); return; }
       super.fromMap(key, value);
     }
   }

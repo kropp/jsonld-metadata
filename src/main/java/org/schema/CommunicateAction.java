@@ -382,11 +382,17 @@ public class CommunicateAction extends InteractAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("about".equals(key) && value instanceof Thing) { about((Thing)value); return; }
+      if ("abouts".equals(key) && value instanceof Thing) { about((Thing)value); return; }
       if ("inLanguage".equals(key) && value instanceof Language) { inLanguage((Language)value); return; }
+      if ("inLanguages".equals(key) && value instanceof Language) { inLanguage((Language)value); return; }
       if ("inLanguage".equals(key) && value instanceof String) { inLanguage((String)value); return; }
+      if ("inLanguages".equals(key) && value instanceof String) { inLanguage((String)value); return; }
       if ("recipient".equals(key) && value instanceof Audience) { recipient((Audience)value); return; }
+      if ("recipients".equals(key) && value instanceof Audience) { recipient((Audience)value); return; }
       if ("recipient".equals(key) && value instanceof Organization) { recipient((Organization)value); return; }
+      if ("recipients".equals(key) && value instanceof Organization) { recipient((Organization)value); return; }
       if ("recipient".equals(key) && value instanceof Person) { recipient((Person)value); return; }
+      if ("recipients".equals(key) && value instanceof Person) { recipient((Person)value); return; }
       super.fromMap(key, value);
     }
   }

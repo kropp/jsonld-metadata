@@ -205,8 +205,11 @@ public class DataFeedItem extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("dateDeleted".equals(key) && value instanceof java.util.Date) { dateDeleted((java.util.Date)value); return; }
+      if ("dateDeleteds".equals(key) && value instanceof java.util.Date) { dateDeleted((java.util.Date)value); return; }
       if ("dateModified".equals(key) && value instanceof java.util.Date) { dateModified((java.util.Date)value); return; }
+      if ("dateModifieds".equals(key) && value instanceof java.util.Date) { dateModified((java.util.Date)value); return; }
       if ("item".equals(key) && value instanceof Thing) { item((Thing)value); return; }
+      if ("items".equals(key) && value instanceof Thing) { item((Thing)value); return; }
       super.fromMap(key, value);
     }
   }

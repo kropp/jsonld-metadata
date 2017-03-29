@@ -633,6 +633,7 @@ public class Corporation extends Organization {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("tickerSymbol".equals(key) && value instanceof String) { tickerSymbol((String)value); return; }
+      if ("tickerSymbols".equals(key) && value instanceof String) { tickerSymbol((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -236,9 +236,13 @@ public class BroadcastChannel extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("broadcastChannelId".equals(key) && value instanceof String) { broadcastChannelId((String)value); return; }
+      if ("broadcastChannelIds".equals(key) && value instanceof String) { broadcastChannelId((String)value); return; }
       if ("inBroadcastLineup".equals(key) && value instanceof CableOrSatelliteService) { inBroadcastLineup((CableOrSatelliteService)value); return; }
+      if ("inBroadcastLineups".equals(key) && value instanceof CableOrSatelliteService) { inBroadcastLineup((CableOrSatelliteService)value); return; }
       if ("broadcastServiceTier".equals(key) && value instanceof String) { broadcastServiceTier((String)value); return; }
+      if ("broadcastServiceTiers".equals(key) && value instanceof String) { broadcastServiceTier((String)value); return; }
       if ("providesBroadcastService".equals(key) && value instanceof BroadcastService) { providesBroadcastService((BroadcastService)value); return; }
+      if ("providesBroadcastServices".equals(key) && value instanceof BroadcastService) { providesBroadcastService((BroadcastService)value); return; }
       super.fromMap(key, value);
     }
   }

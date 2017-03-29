@@ -647,8 +647,11 @@ public class BroadcastEvent extends PublicationEvent {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("videoFormat".equals(key) && value instanceof String) { videoFormat((String)value); return; }
+      if ("videoFormats".equals(key) && value instanceof String) { videoFormat((String)value); return; }
       if ("broadcastOfEvent".equals(key) && value instanceof Event) { broadcastOfEvent((Event)value); return; }
+      if ("broadcastOfEvents".equals(key) && value instanceof Event) { broadcastOfEvent((Event)value); return; }
       if ("isLiveBroadcast".equals(key) && value instanceof Boolean) { isLiveBroadcast((Boolean)value); return; }
+      if ("isLiveBroadcasts".equals(key) && value instanceof Boolean) { isLiveBroadcast((Boolean)value); return; }
       super.fromMap(key, value);
     }
   }

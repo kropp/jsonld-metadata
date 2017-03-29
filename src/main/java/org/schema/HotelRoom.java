@@ -602,8 +602,11 @@ public class HotelRoom extends Room {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("bed".equals(key) && value instanceof BedDetails) { bed((BedDetails)value); return; }
+      if ("beds".equals(key) && value instanceof BedDetails) { bed((BedDetails)value); return; }
       if ("bed".equals(key) && value instanceof String) { bed((String)value); return; }
+      if ("beds".equals(key) && value instanceof String) { bed((String)value); return; }
       if ("occupancy".equals(key) && value instanceof QuantitativeValue) { occupancy((QuantitativeValue)value); return; }
+      if ("occupancys".equals(key) && value instanceof QuantitativeValue) { occupancy((QuantitativeValue)value); return; }
       super.fromMap(key, value);
     }
   }

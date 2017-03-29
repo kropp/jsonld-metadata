@@ -1730,26 +1730,47 @@ public class VideoGameSeries extends CreativeWorkSeries {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("actor".equals(key) && value instanceof Person) { actor((Person)value); return; }
+      if ("actors".equals(key) && value instanceof Person) { actor((Person)value); return; }
       if ("director".equals(key) && value instanceof Person) { director((Person)value); return; }
+      if ("directors".equals(key) && value instanceof Person) { director((Person)value); return; }
       if ("episode".equals(key) && value instanceof HasPart) { episode((HasPart)value); return; }
+      if ("episodes".equals(key) && value instanceof HasPart) { episode((HasPart)value); return; }
       if ("musicBy".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
+      if ("musicBys".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
       if ("musicBy".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
+      if ("musicBys".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
       if ("numberOfEpisodes".equals(key) && value instanceof Integer) { numberOfEpisodes((Integer)value); return; }
+      if ("numberOfEpisodess".equals(key) && value instanceof Integer) { numberOfEpisodes((Integer)value); return; }
       if ("numberOfSeasons".equals(key) && value instanceof Integer) { numberOfSeasons((Integer)value); return; }
+      if ("numberOfSeasonss".equals(key) && value instanceof Integer) { numberOfSeasons((Integer)value); return; }
       if ("productionCompany".equals(key) && value instanceof Organization) { productionCompany((Organization)value); return; }
+      if ("productionCompanys".equals(key) && value instanceof Organization) { productionCompany((Organization)value); return; }
       if ("containsSeason".equals(key) && value instanceof HasPart) { containsSeason((HasPart)value); return; }
+      if ("containsSeasons".equals(key) && value instanceof HasPart) { containsSeason((HasPart)value); return; }
       if ("trailer".equals(key) && value instanceof VideoObject) { trailer((VideoObject)value); return; }
+      if ("trailers".equals(key) && value instanceof VideoObject) { trailer((VideoObject)value); return; }
       if ("numberOfPlayers".equals(key) && value instanceof QuantitativeValue) { numberOfPlayers((QuantitativeValue)value); return; }
+      if ("numberOfPlayerss".equals(key) && value instanceof QuantitativeValue) { numberOfPlayers((QuantitativeValue)value); return; }
       if ("quest".equals(key) && value instanceof Thing) { quest((Thing)value); return; }
+      if ("quests".equals(key) && value instanceof Thing) { quest((Thing)value); return; }
       if ("gameItem".equals(key) && value instanceof Thing) { gameItem((Thing)value); return; }
+      if ("gameItems".equals(key) && value instanceof Thing) { gameItem((Thing)value); return; }
       if ("characterAttribute".equals(key) && value instanceof Thing) { characterAttribute((Thing)value); return; }
+      if ("characterAttributes".equals(key) && value instanceof Thing) { characterAttribute((Thing)value); return; }
       if ("playMode".equals(key) && value instanceof GamePlayMode) { playMode((GamePlayMode)value); return; }
+      if ("playModes".equals(key) && value instanceof GamePlayMode) { playMode((GamePlayMode)value); return; }
       if ("cheatCode".equals(key) && value instanceof CreativeWork) { cheatCode((CreativeWork)value); return; }
+      if ("cheatCodes".equals(key) && value instanceof CreativeWork) { cheatCode((CreativeWork)value); return; }
       if ("gamePlatform".equals(key) && value instanceof String) { gamePlatform((String)value); return; }
+      if ("gamePlatforms".equals(key) && value instanceof String) { gamePlatform((String)value); return; }
       if ("gamePlatform".equals(key) && value instanceof Thing) { gamePlatform((Thing)value); return; }
+      if ("gamePlatforms".equals(key) && value instanceof Thing) { gamePlatform((Thing)value); return; }
       if ("gameLocation".equals(key) && value instanceof Place) { gameLocation((Place)value); return; }
+      if ("gameLocations".equals(key) && value instanceof Place) { gameLocation((Place)value); return; }
       if ("gameLocation".equals(key) && value instanceof PostalAddress) { gameLocation((PostalAddress)value); return; }
+      if ("gameLocations".equals(key) && value instanceof PostalAddress) { gameLocation((PostalAddress)value); return; }
       if ("gameLocation".equals(key) && value instanceof String) { gameLocation((String)value); return; }
+      if ("gameLocations".equals(key) && value instanceof String) { gameLocation((String)value); return; }
       super.fromMap(key, value);
     }
   }

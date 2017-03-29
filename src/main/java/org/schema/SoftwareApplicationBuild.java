@@ -1612,17 +1612,29 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("softwareApplication".equals(key) && value instanceof SoftwareApplication) { softwareApplication((SoftwareApplication)value); return; }
+      if ("softwareApplications".equals(key) && value instanceof SoftwareApplication) { softwareApplication((SoftwareApplication)value); return; }
       if ("project".equals(key) && value instanceof Project) { project((Project)value); return; }
+      if ("projects".equals(key) && value instanceof Project) { project((Project)value); return; }
       if ("status".equals(key) && value instanceof Status) { status((Status)value); return; }
+      if ("statuss".equals(key) && value instanceof Status) { status((Status)value); return; }
       if ("state".equals(key) && value instanceof BuildState) { state((BuildState)value); return; }
+      if ("states".equals(key) && value instanceof BuildState) { state((BuildState)value); return; }
       if ("message".equals(key) && value instanceof String) { message((String)value); return; }
+      if ("messages".equals(key) && value instanceof String) { message((String)value); return; }
       if ("totalTestsCount".equals(key) && value instanceof Integer) { totalTestsCount((Integer)value); return; }
+      if ("totalTestsCounts".equals(key) && value instanceof Integer) { totalTestsCount((Integer)value); return; }
       if ("successTestsCount".equals(key) && value instanceof Integer) { successTestsCount((Integer)value); return; }
+      if ("successTestsCounts".equals(key) && value instanceof Integer) { successTestsCount((Integer)value); return; }
       if ("failedTestsCount".equals(key) && value instanceof Integer) { failedTestsCount((Integer)value); return; }
+      if ("failedTestsCounts".equals(key) && value instanceof Integer) { failedTestsCount((Integer)value); return; }
       if ("newlyFailedTestsCount".equals(key) && value instanceof Integer) { newlyFailedTestsCount((Integer)value); return; }
+      if ("newlyFailedTestsCounts".equals(key) && value instanceof Integer) { newlyFailedTestsCount((Integer)value); return; }
       if ("ignoredTestsCount".equals(key) && value instanceof Integer) { ignoredTestsCount((Integer)value); return; }
+      if ("ignoredTestsCounts".equals(key) && value instanceof Integer) { ignoredTestsCount((Integer)value); return; }
       if ("fixedTestsCount".equals(key) && value instanceof Integer) { fixedTestsCount((Integer)value); return; }
+      if ("fixedTestsCounts".equals(key) && value instanceof Integer) { fixedTestsCount((Integer)value); return; }
       if ("sourceCodeRevision".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
+      if ("sourceCodeRevisions".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
       super.fromMap(key, value);
     }
   }

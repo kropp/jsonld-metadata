@@ -248,10 +248,15 @@ public class OpeningHoursSpecification extends StructuredValue {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("closes".equals(key) && value instanceof java.util.Date) { closes((java.util.Date)value); return; }
+      if ("closess".equals(key) && value instanceof java.util.Date) { closes((java.util.Date)value); return; }
       if ("dayOfWeek".equals(key) && value instanceof DayOfWeek) { dayOfWeek((DayOfWeek)value); return; }
+      if ("dayOfWeeks".equals(key) && value instanceof DayOfWeek) { dayOfWeek((DayOfWeek)value); return; }
       if ("opens".equals(key) && value instanceof java.util.Date) { opens((java.util.Date)value); return; }
+      if ("openss".equals(key) && value instanceof java.util.Date) { opens((java.util.Date)value); return; }
       if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
+      if ("validFroms".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
       if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
+      if ("validThroughs".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
       super.fromMap(key, value);
     }
   }

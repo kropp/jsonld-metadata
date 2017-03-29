@@ -311,6 +311,7 @@ public class CommentAction extends CommunicateAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("resultComment".equals(key) && value instanceof Comment) { resultComment((Comment)value); return; }
+      if ("resultComments".equals(key) && value instanceof Comment) { resultComment((Comment)value); return; }
       super.fromMap(key, value);
     }
   }

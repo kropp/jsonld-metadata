@@ -1131,41 +1131,77 @@ public class Demand extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("acceptedPaymentMethod".equals(key) && value instanceof LoanOrCredit) { acceptedPaymentMethod((LoanOrCredit)value); return; }
+      if ("acceptedPaymentMethods".equals(key) && value instanceof LoanOrCredit) { acceptedPaymentMethod((LoanOrCredit)value); return; }
       if ("acceptedPaymentMethod".equals(key) && value instanceof PaymentMethod) { acceptedPaymentMethod((PaymentMethod)value); return; }
+      if ("acceptedPaymentMethods".equals(key) && value instanceof PaymentMethod) { acceptedPaymentMethod((PaymentMethod)value); return; }
       if ("advanceBookingRequirement".equals(key) && value instanceof QuantitativeValue) { advanceBookingRequirement((QuantitativeValue)value); return; }
+      if ("advanceBookingRequirements".equals(key) && value instanceof QuantitativeValue) { advanceBookingRequirement((QuantitativeValue)value); return; }
       if ("availability".equals(key) && value instanceof ItemAvailability) { availability((ItemAvailability)value); return; }
+      if ("availabilitys".equals(key) && value instanceof ItemAvailability) { availability((ItemAvailability)value); return; }
       if ("availabilityEnds".equals(key) && value instanceof java.util.Date) { availabilityEnds((java.util.Date)value); return; }
+      if ("availabilityEndss".equals(key) && value instanceof java.util.Date) { availabilityEnds((java.util.Date)value); return; }
       if ("availabilityStarts".equals(key) && value instanceof java.util.Date) { availabilityStarts((java.util.Date)value); return; }
+      if ("availabilityStartss".equals(key) && value instanceof java.util.Date) { availabilityStarts((java.util.Date)value); return; }
       if ("availableAtOrFrom".equals(key) && value instanceof Place) { availableAtOrFrom((Place)value); return; }
+      if ("availableAtOrFroms".equals(key) && value instanceof Place) { availableAtOrFrom((Place)value); return; }
       if ("availableDeliveryMethod".equals(key) && value instanceof DeliveryMethod) { availableDeliveryMethod((DeliveryMethod)value); return; }
+      if ("availableDeliveryMethods".equals(key) && value instanceof DeliveryMethod) { availableDeliveryMethod((DeliveryMethod)value); return; }
       if ("businessFunction".equals(key) && value instanceof BusinessFunction) { businessFunction((BusinessFunction)value); return; }
+      if ("businessFunctions".equals(key) && value instanceof BusinessFunction) { businessFunction((BusinessFunction)value); return; }
       if ("deliveryLeadTime".equals(key) && value instanceof QuantitativeValue) { deliveryLeadTime((QuantitativeValue)value); return; }
+      if ("deliveryLeadTimes".equals(key) && value instanceof QuantitativeValue) { deliveryLeadTime((QuantitativeValue)value); return; }
       if ("eligibleCustomerType".equals(key) && value instanceof BusinessEntityType) { eligibleCustomerType((BusinessEntityType)value); return; }
+      if ("eligibleCustomerTypes".equals(key) && value instanceof BusinessEntityType) { eligibleCustomerType((BusinessEntityType)value); return; }
       if ("eligibleDuration".equals(key) && value instanceof QuantitativeValue) { eligibleDuration((QuantitativeValue)value); return; }
+      if ("eligibleDurations".equals(key) && value instanceof QuantitativeValue) { eligibleDuration((QuantitativeValue)value); return; }
       if ("eligibleQuantity".equals(key) && value instanceof QuantitativeValue) { eligibleQuantity((QuantitativeValue)value); return; }
+      if ("eligibleQuantitys".equals(key) && value instanceof QuantitativeValue) { eligibleQuantity((QuantitativeValue)value); return; }
       if ("eligibleRegion".equals(key) && value instanceof GeoShape) { eligibleRegion((GeoShape)value); return; }
+      if ("eligibleRegions".equals(key) && value instanceof GeoShape) { eligibleRegion((GeoShape)value); return; }
       if ("eligibleRegion".equals(key) && value instanceof Place) { eligibleRegion((Place)value); return; }
+      if ("eligibleRegions".equals(key) && value instanceof Place) { eligibleRegion((Place)value); return; }
       if ("eligibleRegion".equals(key) && value instanceof String) { eligibleRegion((String)value); return; }
+      if ("eligibleRegions".equals(key) && value instanceof String) { eligibleRegion((String)value); return; }
       if ("ineligibleRegion".equals(key) && value instanceof GeoShape) { ineligibleRegion((GeoShape)value); return; }
+      if ("ineligibleRegions".equals(key) && value instanceof GeoShape) { ineligibleRegion((GeoShape)value); return; }
       if ("ineligibleRegion".equals(key) && value instanceof Place) { ineligibleRegion((Place)value); return; }
+      if ("ineligibleRegions".equals(key) && value instanceof Place) { ineligibleRegion((Place)value); return; }
       if ("ineligibleRegion".equals(key) && value instanceof String) { ineligibleRegion((String)value); return; }
+      if ("ineligibleRegions".equals(key) && value instanceof String) { ineligibleRegion((String)value); return; }
       if ("eligibleTransactionVolume".equals(key) && value instanceof PriceSpecification) { eligibleTransactionVolume((PriceSpecification)value); return; }
+      if ("eligibleTransactionVolumes".equals(key) && value instanceof PriceSpecification) { eligibleTransactionVolume((PriceSpecification)value); return; }
       if ("gtin12".equals(key) && value instanceof Identifier) { gtin12((Identifier)value); return; }
+      if ("gtin12s".equals(key) && value instanceof Identifier) { gtin12((Identifier)value); return; }
       if ("gtin13".equals(key) && value instanceof Identifier) { gtin13((Identifier)value); return; }
+      if ("gtin13s".equals(key) && value instanceof Identifier) { gtin13((Identifier)value); return; }
       if ("gtin14".equals(key) && value instanceof Identifier) { gtin14((Identifier)value); return; }
+      if ("gtin14s".equals(key) && value instanceof Identifier) { gtin14((Identifier)value); return; }
       if ("gtin8".equals(key) && value instanceof Identifier) { gtin8((Identifier)value); return; }
+      if ("gtin8s".equals(key) && value instanceof Identifier) { gtin8((Identifier)value); return; }
       if ("includesObject".equals(key) && value instanceof TypeAndQuantityNode) { includesObject((TypeAndQuantityNode)value); return; }
+      if ("includesObjects".equals(key) && value instanceof TypeAndQuantityNode) { includesObject((TypeAndQuantityNode)value); return; }
       if ("inventoryLevel".equals(key) && value instanceof QuantitativeValue) { inventoryLevel((QuantitativeValue)value); return; }
+      if ("inventoryLevels".equals(key) && value instanceof QuantitativeValue) { inventoryLevel((QuantitativeValue)value); return; }
       if ("itemCondition".equals(key) && value instanceof OfferItemCondition) { itemCondition((OfferItemCondition)value); return; }
+      if ("itemConditions".equals(key) && value instanceof OfferItemCondition) { itemCondition((OfferItemCondition)value); return; }
       if ("itemOffered".equals(key) && value instanceof Product) { itemOffered((Product)value); return; }
+      if ("itemOffereds".equals(key) && value instanceof Product) { itemOffered((Product)value); return; }
       if ("itemOffered".equals(key) && value instanceof Service) { itemOffered((Service)value); return; }
+      if ("itemOffereds".equals(key) && value instanceof Service) { itemOffered((Service)value); return; }
       if ("mpn".equals(key) && value instanceof String) { mpn((String)value); return; }
+      if ("mpns".equals(key) && value instanceof String) { mpn((String)value); return; }
       if ("priceSpecification".equals(key) && value instanceof PriceSpecification) { priceSpecification((PriceSpecification)value); return; }
+      if ("priceSpecifications".equals(key) && value instanceof PriceSpecification) { priceSpecification((PriceSpecification)value); return; }
       if ("seller".equals(key) && value instanceof Participant) { seller((Participant)value); return; }
+      if ("sellers".equals(key) && value instanceof Participant) { seller((Participant)value); return; }
       if ("sku".equals(key) && value instanceof Identifier) { sku((Identifier)value); return; }
+      if ("skus".equals(key) && value instanceof Identifier) { sku((Identifier)value); return; }
       if ("validFrom".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
+      if ("validFroms".equals(key) && value instanceof java.util.Date) { validFrom((java.util.Date)value); return; }
       if ("validThrough".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
+      if ("validThroughs".equals(key) && value instanceof java.util.Date) { validThrough((java.util.Date)value); return; }
       if ("warranty".equals(key) && value instanceof WarrantyPromise) { warranty((WarrantyPromise)value); return; }
+      if ("warrantys".equals(key) && value instanceof WarrantyPromise) { warranty((WarrantyPromise)value); return; }
       super.fromMap(key, value);
     }
   }

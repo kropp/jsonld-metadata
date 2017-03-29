@@ -835,29 +835,53 @@ public class Service extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("aggregateRating".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
+      if ("aggregateRatings".equals(key) && value instanceof AggregateRating) { aggregateRating((AggregateRating)value); return; }
       if ("audience".equals(key) && value instanceof Audience) { audience((Audience)value); return; }
+      if ("audiences".equals(key) && value instanceof Audience) { audience((Audience)value); return; }
       if ("availableChannel".equals(key) && value instanceof ServiceChannel) { availableChannel((ServiceChannel)value); return; }
+      if ("availableChannels".equals(key) && value instanceof ServiceChannel) { availableChannel((ServiceChannel)value); return; }
       if ("award".equals(key) && value instanceof String) { award((String)value); return; }
+      if ("awards".equals(key) && value instanceof String) { award((String)value); return; }
       if ("brand".equals(key) && value instanceof Brand) { brand((Brand)value); return; }
+      if ("brands".equals(key) && value instanceof Brand) { brand((Brand)value); return; }
       if ("brand".equals(key) && value instanceof Organization) { brand((Organization)value); return; }
+      if ("brands".equals(key) && value instanceof Organization) { brand((Organization)value); return; }
       if ("category".equals(key) && value instanceof String) { category((String)value); return; }
+      if ("categorys".equals(key) && value instanceof String) { category((String)value); return; }
       if ("category".equals(key) && value instanceof Thing) { category((Thing)value); return; }
+      if ("categorys".equals(key) && value instanceof Thing) { category((Thing)value); return; }
       if ("hoursAvailable".equals(key) && value instanceof OpeningHoursSpecification) { hoursAvailable((OpeningHoursSpecification)value); return; }
+      if ("hoursAvailables".equals(key) && value instanceof OpeningHoursSpecification) { hoursAvailable((OpeningHoursSpecification)value); return; }
       if ("isRelatedTo".equals(key) && value instanceof Product) { isRelatedTo((Product)value); return; }
+      if ("isRelatedTos".equals(key) && value instanceof Product) { isRelatedTo((Product)value); return; }
       if ("isRelatedTo".equals(key) && value instanceof Service) { isRelatedTo((Service)value); return; }
+      if ("isRelatedTos".equals(key) && value instanceof Service) { isRelatedTo((Service)value); return; }
       if ("isSimilarTo".equals(key) && value instanceof Product) { isSimilarTo((Product)value); return; }
+      if ("isSimilarTos".equals(key) && value instanceof Product) { isSimilarTo((Product)value); return; }
       if ("isSimilarTo".equals(key) && value instanceof Service) { isSimilarTo((Service)value); return; }
+      if ("isSimilarTos".equals(key) && value instanceof Service) { isSimilarTo((Service)value); return; }
       if ("logo".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); return; }
+      if ("logos".equals(key) && value instanceof ImageObject) { logo((ImageObject)value); return; }
       if ("logo".equals(key) && value instanceof String) { logo((String)value); return; }
+      if ("logos".equals(key) && value instanceof String) { logo((String)value); return; }
       if ("offers".equals(key) && value instanceof Offer) { offers((Offer)value); return; }
+      if ("offerss".equals(key) && value instanceof Offer) { offers((Offer)value); return; }
       if ("serviceOutput".equals(key) && value instanceof Thing) { serviceOutput((Thing)value); return; }
+      if ("serviceOutputs".equals(key) && value instanceof Thing) { serviceOutput((Thing)value); return; }
       if ("review".equals(key) && value instanceof Review) { review((Review)value); return; }
+      if ("reviews".equals(key) && value instanceof Review) { review((Review)value); return; }
       if ("serviceType".equals(key) && value instanceof String) { serviceType((String)value); return; }
+      if ("serviceTypes".equals(key) && value instanceof String) { serviceType((String)value); return; }
       if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
+      if ("providers".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
       if ("provider".equals(key) && value instanceof Person) { provider((Person)value); return; }
+      if ("providers".equals(key) && value instanceof Person) { provider((Person)value); return; }
       if ("providerMobility".equals(key) && value instanceof String) { providerMobility((String)value); return; }
+      if ("providerMobilitys".equals(key) && value instanceof String) { providerMobility((String)value); return; }
       if ("broker".equals(key) && value instanceof Organization) { broker((Organization)value); return; }
+      if ("brokers".equals(key) && value instanceof Organization) { broker((Organization)value); return; }
       if ("broker".equals(key) && value instanceof Person) { broker((Person)value); return; }
+      if ("brokers".equals(key) && value instanceof Person) { broker((Person)value); return; }
       super.fromMap(key, value);
     }
   }

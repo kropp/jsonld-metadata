@@ -1250,6 +1250,7 @@ public class TVSeason extends CreativeWorkSeason {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("countryOfOrigin".equals(key) && value instanceof Country) { countryOfOrigin((Country)value); return; }
+      if ("countryOfOrigins".equals(key) && value instanceof Country) { countryOfOrigin((Country)value); return; }
       super.fromMap(key, value);
     }
   }

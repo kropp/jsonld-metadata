@@ -1501,15 +1501,25 @@ public class VideoGame extends Game {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("director".equals(key) && value instanceof Person) { director((Person)value); return; }
+      if ("directors".equals(key) && value instanceof Person) { director((Person)value); return; }
       if ("musicBy".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
+      if ("musicBys".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
       if ("musicBy".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
+      if ("musicBys".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
       if ("trailer".equals(key) && value instanceof VideoObject) { trailer((VideoObject)value); return; }
+      if ("trailers".equals(key) && value instanceof VideoObject) { trailer((VideoObject)value); return; }
       if ("playMode".equals(key) && value instanceof GamePlayMode) { playMode((GamePlayMode)value); return; }
+      if ("playModes".equals(key) && value instanceof GamePlayMode) { playMode((GamePlayMode)value); return; }
       if ("cheatCode".equals(key) && value instanceof CreativeWork) { cheatCode((CreativeWork)value); return; }
+      if ("cheatCodes".equals(key) && value instanceof CreativeWork) { cheatCode((CreativeWork)value); return; }
       if ("gameTip".equals(key) && value instanceof CreativeWork) { gameTip((CreativeWork)value); return; }
+      if ("gameTips".equals(key) && value instanceof CreativeWork) { gameTip((CreativeWork)value); return; }
       if ("gamePlatform".equals(key) && value instanceof String) { gamePlatform((String)value); return; }
+      if ("gamePlatforms".equals(key) && value instanceof String) { gamePlatform((String)value); return; }
       if ("gamePlatform".equals(key) && value instanceof Thing) { gamePlatform((Thing)value); return; }
+      if ("gamePlatforms".equals(key) && value instanceof Thing) { gamePlatform((Thing)value); return; }
       if ("gameServer".equals(key) && value instanceof GameServer) { gameServer((GameServer)value); return; }
+      if ("gameServers".equals(key) && value instanceof GameServer) { gameServer((GameServer)value); return; }
       super.fromMap(key, value);
     }
   }

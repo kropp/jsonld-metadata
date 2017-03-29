@@ -1694,28 +1694,51 @@ public class SoftwareApplication extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("applicationCategory".equals(key) && value instanceof String) { applicationCategory((String)value); return; }
+      if ("applicationCategorys".equals(key) && value instanceof String) { applicationCategory((String)value); return; }
       if ("applicationSubCategory".equals(key) && value instanceof String) { applicationSubCategory((String)value); return; }
+      if ("applicationSubCategorys".equals(key) && value instanceof String) { applicationSubCategory((String)value); return; }
       if ("applicationSuite".equals(key) && value instanceof String) { applicationSuite((String)value); return; }
+      if ("applicationSuites".equals(key) && value instanceof String) { applicationSuite((String)value); return; }
       if ("countriesNotSupported".equals(key) && value instanceof String) { countriesNotSupported((String)value); return; }
+      if ("countriesNotSupporteds".equals(key) && value instanceof String) { countriesNotSupported((String)value); return; }
       if ("countriesSupported".equals(key) && value instanceof String) { countriesSupported((String)value); return; }
+      if ("countriesSupporteds".equals(key) && value instanceof String) { countriesSupported((String)value); return; }
       if ("availableOnDevice".equals(key) && value instanceof String) { availableOnDevice((String)value); return; }
+      if ("availableOnDevices".equals(key) && value instanceof String) { availableOnDevice((String)value); return; }
       if ("downloadUrl".equals(key) && value instanceof String) { downloadUrl((String)value); return; }
+      if ("downloadUrls".equals(key) && value instanceof String) { downloadUrl((String)value); return; }
       if ("featureList".equals(key) && value instanceof String) { featureList((String)value); return; }
+      if ("featureLists".equals(key) && value instanceof String) { featureList((String)value); return; }
       if ("fileSize".equals(key) && value instanceof String) { fileSize((String)value); return; }
+      if ("fileSizes".equals(key) && value instanceof String) { fileSize((String)value); return; }
       if ("installUrl".equals(key) && value instanceof String) { installUrl((String)value); return; }
+      if ("installUrls".equals(key) && value instanceof String) { installUrl((String)value); return; }
       if ("memoryRequirements".equals(key) && value instanceof String) { memoryRequirements((String)value); return; }
+      if ("memoryRequirementss".equals(key) && value instanceof String) { memoryRequirements((String)value); return; }
       if ("operatingSystem".equals(key) && value instanceof String) { operatingSystem((String)value); return; }
+      if ("operatingSystems".equals(key) && value instanceof String) { operatingSystem((String)value); return; }
       if ("permissions".equals(key) && value instanceof String) { permissions((String)value); return; }
+      if ("permissionss".equals(key) && value instanceof String) { permissions((String)value); return; }
       if ("processorRequirements".equals(key) && value instanceof String) { processorRequirements((String)value); return; }
+      if ("processorRequirementss".equals(key) && value instanceof String) { processorRequirements((String)value); return; }
       if ("releaseNotes".equals(key) && value instanceof String) { releaseNotes((String)value); return; }
+      if ("releaseNotess".equals(key) && value instanceof String) { releaseNotes((String)value); return; }
       if ("softwareRequirements".equals(key) && value instanceof String) { softwareRequirements((String)value); return; }
+      if ("softwareRequirementss".equals(key) && value instanceof String) { softwareRequirements((String)value); return; }
       if ("screenshot".equals(key) && value instanceof ImageObject) { screenshot((ImageObject)value); return; }
+      if ("screenshots".equals(key) && value instanceof ImageObject) { screenshot((ImageObject)value); return; }
       if ("screenshot".equals(key) && value instanceof String) { screenshot((String)value); return; }
+      if ("screenshots".equals(key) && value instanceof String) { screenshot((String)value); return; }
       if ("softwareVersion".equals(key) && value instanceof String) { softwareVersion((String)value); return; }
+      if ("softwareVersions".equals(key) && value instanceof String) { softwareVersion((String)value); return; }
       if ("storageRequirements".equals(key) && value instanceof String) { storageRequirements((String)value); return; }
+      if ("storageRequirementss".equals(key) && value instanceof String) { storageRequirements((String)value); return; }
       if ("supportingData".equals(key) && value instanceof DataFeed) { supportingData((DataFeed)value); return; }
+      if ("supportingDatas".equals(key) && value instanceof DataFeed) { supportingData((DataFeed)value); return; }
       if ("softwareAddOn".equals(key) && value instanceof SoftwareApplication) { softwareAddOn((SoftwareApplication)value); return; }
+      if ("softwareAddOns".equals(key) && value instanceof SoftwareApplication) { softwareAddOn((SoftwareApplication)value); return; }
       if ("softwareHelp".equals(key) && value instanceof CreativeWork) { softwareHelp((CreativeWork)value); return; }
+      if ("softwareHelps".equals(key) && value instanceof CreativeWork) { softwareHelp((CreativeWork)value); return; }
       super.fromMap(key, value);
     }
   }

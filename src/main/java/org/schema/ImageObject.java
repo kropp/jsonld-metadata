@@ -1423,10 +1423,15 @@ public class ImageObject extends MediaObject {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("caption".equals(key) && value instanceof String) { caption((String)value); return; }
+      if ("captions".equals(key) && value instanceof String) { caption((String)value); return; }
       if ("exifData".equals(key) && value instanceof PropertyValue) { exifData((PropertyValue)value); return; }
+      if ("exifDatas".equals(key) && value instanceof PropertyValue) { exifData((PropertyValue)value); return; }
       if ("exifData".equals(key) && value instanceof String) { exifData((String)value); return; }
+      if ("exifDatas".equals(key) && value instanceof String) { exifData((String)value); return; }
       if ("representativeOfPage".equals(key) && value instanceof Boolean) { representativeOfPage((Boolean)value); return; }
+      if ("representativeOfPages".equals(key) && value instanceof Boolean) { representativeOfPage((Boolean)value); return; }
       if ("thumbnail".equals(key) && value instanceof ImageObject) { thumbnail((ImageObject)value); return; }
+      if ("thumbnails".equals(key) && value instanceof ImageObject) { thumbnail((ImageObject)value); return; }
       super.fromMap(key, value);
     }
   }

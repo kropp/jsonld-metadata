@@ -1193,8 +1193,11 @@ public class Comment extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("upvoteCount".equals(key) && value instanceof Integer) { upvoteCount((Integer)value); return; }
+      if ("upvoteCounts".equals(key) && value instanceof Integer) { upvoteCount((Integer)value); return; }
       if ("downvoteCount".equals(key) && value instanceof Integer) { downvoteCount((Integer)value); return; }
+      if ("downvoteCounts".equals(key) && value instanceof Integer) { downvoteCount((Integer)value); return; }
       if ("parentItem".equals(key) && value instanceof Question) { parentItem((Question)value); return; }
+      if ("parentItems".equals(key) && value instanceof Question) { parentItem((Question)value); return; }
       super.fromMap(key, value);
     }
   }

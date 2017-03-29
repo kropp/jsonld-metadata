@@ -688,15 +688,25 @@ public class Accommodation extends Place {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("amenityFeature".equals(key) && value instanceof LocationFeatureSpecification) { amenityFeature((LocationFeatureSpecification)value); return; }
+      if ("amenityFeatures".equals(key) && value instanceof LocationFeatureSpecification) { amenityFeature((LocationFeatureSpecification)value); return; }
       if ("numberOfRooms".equals(key) && value instanceof Integer) { numberOfRooms((Integer)value); return; }
+      if ("numberOfRoomss".equals(key) && value instanceof Integer) { numberOfRooms((Integer)value); return; }
       if ("numberOfRooms".equals(key) && value instanceof Long) { numberOfRooms((Long)value); return; }
+      if ("numberOfRoomss".equals(key) && value instanceof Long) { numberOfRooms((Long)value); return; }
       if ("numberOfRooms".equals(key) && value instanceof Float) { numberOfRooms((Float)value); return; }
+      if ("numberOfRoomss".equals(key) && value instanceof Float) { numberOfRooms((Float)value); return; }
       if ("numberOfRooms".equals(key) && value instanceof Double) { numberOfRooms((Double)value); return; }
+      if ("numberOfRoomss".equals(key) && value instanceof Double) { numberOfRooms((Double)value); return; }
       if ("numberOfRooms".equals(key) && value instanceof String) { numberOfRooms((String)value); return; }
+      if ("numberOfRoomss".equals(key) && value instanceof String) { numberOfRooms((String)value); return; }
       if ("floorSize".equals(key) && value instanceof QuantitativeValue) { floorSize((QuantitativeValue)value); return; }
+      if ("floorSizes".equals(key) && value instanceof QuantitativeValue) { floorSize((QuantitativeValue)value); return; }
       if ("permittedUsage".equals(key) && value instanceof String) { permittedUsage((String)value); return; }
+      if ("permittedUsages".equals(key) && value instanceof String) { permittedUsage((String)value); return; }
       if ("petsAllowed".equals(key) && value instanceof Boolean) { petsAllowed((Boolean)value); return; }
+      if ("petsAlloweds".equals(key) && value instanceof Boolean) { petsAllowed((Boolean)value); return; }
       if ("petsAllowed".equals(key) && value instanceof String) { petsAllowed((String)value); return; }
+      if ("petsAlloweds".equals(key) && value instanceof String) { petsAllowed((String)value); return; }
       super.fromMap(key, value);
     }
   }

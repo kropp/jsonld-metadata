@@ -219,8 +219,11 @@ public class ListItem extends Intangible implements Position {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("item".equals(key) && value instanceof Thing) { item((Thing)value); return; }
+      if ("items".equals(key) && value instanceof Thing) { item((Thing)value); return; }
       if ("previousItem".equals(key) && value instanceof ListItem) { previousItem((ListItem)value); return; }
+      if ("previousItems".equals(key) && value instanceof ListItem) { previousItem((ListItem)value); return; }
       if ("nextItem".equals(key) && value instanceof ListItem) { nextItem((ListItem)value); return; }
+      if ("nextItems".equals(key) && value instanceof ListItem) { nextItem((ListItem)value); return; }
       super.fromMap(key, value);
     }
   }

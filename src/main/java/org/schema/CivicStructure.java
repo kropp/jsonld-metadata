@@ -449,6 +449,7 @@ public class CivicStructure extends Place {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("openingHours".equals(key) && value instanceof String) { openingHours((String)value); return; }
+      if ("openingHourss".equals(key) && value instanceof String) { openingHours((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -1255,10 +1255,15 @@ public class Course extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("courseCode".equals(key) && value instanceof String) { courseCode((String)value); return; }
+      if ("courseCodes".equals(key) && value instanceof String) { courseCode((String)value); return; }
       if ("coursePrerequisites".equals(key) && value instanceof AlignmentObject) { coursePrerequisites((AlignmentObject)value); return; }
+      if ("coursePrerequisitess".equals(key) && value instanceof AlignmentObject) { coursePrerequisites((AlignmentObject)value); return; }
       if ("coursePrerequisites".equals(key) && value instanceof Course) { coursePrerequisites((Course)value); return; }
+      if ("coursePrerequisitess".equals(key) && value instanceof Course) { coursePrerequisites((Course)value); return; }
       if ("coursePrerequisites".equals(key) && value instanceof String) { coursePrerequisites((String)value); return; }
+      if ("coursePrerequisitess".equals(key) && value instanceof String) { coursePrerequisites((String)value); return; }
       if ("hasCourseInstance".equals(key) && value instanceof CourseInstance) { hasCourseInstance((CourseInstance)value); return; }
+      if ("hasCourseInstances".equals(key) && value instanceof CourseInstance) { hasCourseInstance((CourseInstance)value); return; }
       super.fromMap(key, value);
     }
   }

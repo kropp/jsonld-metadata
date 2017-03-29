@@ -1282,12 +1282,19 @@ public class PublicationIssue extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("issueNumber".equals(key) && value instanceof Integer) { issueNumber((Integer)value); return; }
+      if ("issueNumbers".equals(key) && value instanceof Integer) { issueNumber((Integer)value); return; }
       if ("issueNumber".equals(key) && value instanceof String) { issueNumber((String)value); return; }
+      if ("issueNumbers".equals(key) && value instanceof String) { issueNumber((String)value); return; }
       if ("pageEnd".equals(key) && value instanceof Integer) { pageEnd((Integer)value); return; }
+      if ("pageEnds".equals(key) && value instanceof Integer) { pageEnd((Integer)value); return; }
       if ("pageEnd".equals(key) && value instanceof String) { pageEnd((String)value); return; }
+      if ("pageEnds".equals(key) && value instanceof String) { pageEnd((String)value); return; }
       if ("pageStart".equals(key) && value instanceof Integer) { pageStart((Integer)value); return; }
+      if ("pageStarts".equals(key) && value instanceof Integer) { pageStart((Integer)value); return; }
       if ("pageStart".equals(key) && value instanceof String) { pageStart((String)value); return; }
+      if ("pageStarts".equals(key) && value instanceof String) { pageStart((String)value); return; }
       if ("pagination".equals(key) && value instanceof String) { pagination((String)value); return; }
+      if ("paginations".equals(key) && value instanceof String) { pagination((String)value); return; }
       super.fromMap(key, value);
     }
   }

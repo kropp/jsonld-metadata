@@ -657,7 +657,9 @@ public class Airline extends Organization {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("boardingPolicy".equals(key) && value instanceof BoardingPolicyType) { boardingPolicy((BoardingPolicyType)value); return; }
+      if ("boardingPolicys".equals(key) && value instanceof BoardingPolicyType) { boardingPolicy((BoardingPolicyType)value); return; }
       if ("iataCode".equals(key) && value instanceof String) { iataCode((String)value); return; }
+      if ("iataCodes".equals(key) && value instanceof String) { iataCode((String)value); return; }
       super.fromMap(key, value);
     }
   }

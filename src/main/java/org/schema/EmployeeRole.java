@@ -199,6 +199,7 @@ public class EmployeeRole extends OrganizationRole {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("salaryCurrency".equals(key) && value instanceof String) { salaryCurrency((String)value); return; }
+      if ("salaryCurrencys".equals(key) && value instanceof String) { salaryCurrency((String)value); return; }
       super.fromMap(key, value);
     }
   }

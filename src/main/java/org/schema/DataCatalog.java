@@ -1145,6 +1145,7 @@ public class DataCatalog extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("dataset".equals(key) && value instanceof Dataset) { dataset((Dataset)value); return; }
+      if ("datasets".equals(key) && value instanceof Dataset) { dataset((Dataset)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -633,6 +633,7 @@ public class SportsOrganization extends Organization {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("sport".equals(key) && value instanceof String) { sport((String)value); return; }
+      if ("sports".equals(key) && value instanceof String) { sport((String)value); return; }
       super.fromMap(key, value);
     }
   }

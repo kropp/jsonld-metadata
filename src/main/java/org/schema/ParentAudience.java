@@ -485,15 +485,25 @@ public class ParentAudience extends PeopleAudience {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("childMaxAge".equals(key) && value instanceof Integer) { childMaxAge((Integer)value); return; }
+      if ("childMaxAges".equals(key) && value instanceof Integer) { childMaxAge((Integer)value); return; }
       if ("childMaxAge".equals(key) && value instanceof Long) { childMaxAge((Long)value); return; }
+      if ("childMaxAges".equals(key) && value instanceof Long) { childMaxAge((Long)value); return; }
       if ("childMaxAge".equals(key) && value instanceof Float) { childMaxAge((Float)value); return; }
+      if ("childMaxAges".equals(key) && value instanceof Float) { childMaxAge((Float)value); return; }
       if ("childMaxAge".equals(key) && value instanceof Double) { childMaxAge((Double)value); return; }
+      if ("childMaxAges".equals(key) && value instanceof Double) { childMaxAge((Double)value); return; }
       if ("childMaxAge".equals(key) && value instanceof String) { childMaxAge((String)value); return; }
+      if ("childMaxAges".equals(key) && value instanceof String) { childMaxAge((String)value); return; }
       if ("childMinAge".equals(key) && value instanceof Integer) { childMinAge((Integer)value); return; }
+      if ("childMinAges".equals(key) && value instanceof Integer) { childMinAge((Integer)value); return; }
       if ("childMinAge".equals(key) && value instanceof Long) { childMinAge((Long)value); return; }
+      if ("childMinAges".equals(key) && value instanceof Long) { childMinAge((Long)value); return; }
       if ("childMinAge".equals(key) && value instanceof Float) { childMinAge((Float)value); return; }
+      if ("childMinAges".equals(key) && value instanceof Float) { childMinAge((Float)value); return; }
       if ("childMinAge".equals(key) && value instanceof Double) { childMinAge((Double)value); return; }
+      if ("childMinAges".equals(key) && value instanceof Double) { childMinAge((Double)value); return; }
       if ("childMinAge".equals(key) && value instanceof String) { childMinAge((String)value); return; }
+      if ("childMinAges".equals(key) && value instanceof String) { childMinAge((String)value); return; }
       super.fromMap(key, value);
     }
   }

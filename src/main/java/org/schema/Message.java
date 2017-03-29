@@ -1310,12 +1310,19 @@ public class Message extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("sender".equals(key) && value instanceof Audience) { sender((Audience)value); return; }
+      if ("senders".equals(key) && value instanceof Audience) { sender((Audience)value); return; }
       if ("sender".equals(key) && value instanceof Organization) { sender((Organization)value); return; }
+      if ("senders".equals(key) && value instanceof Organization) { sender((Organization)value); return; }
       if ("sender".equals(key) && value instanceof Person) { sender((Person)value); return; }
+      if ("senders".equals(key) && value instanceof Person) { sender((Person)value); return; }
       if ("dateRead".equals(key) && value instanceof java.util.Date) { dateRead((java.util.Date)value); return; }
+      if ("dateReads".equals(key) && value instanceof java.util.Date) { dateRead((java.util.Date)value); return; }
       if ("dateReceived".equals(key) && value instanceof java.util.Date) { dateReceived((java.util.Date)value); return; }
+      if ("dateReceiveds".equals(key) && value instanceof java.util.Date) { dateReceived((java.util.Date)value); return; }
       if ("dateSent".equals(key) && value instanceof java.util.Date) { dateSent((java.util.Date)value); return; }
+      if ("dateSents".equals(key) && value instanceof java.util.Date) { dateSent((java.util.Date)value); return; }
       if ("messageAttachment".equals(key) && value instanceof CreativeWork) { messageAttachment((CreativeWork)value); return; }
+      if ("messageAttachments".equals(key) && value instanceof CreativeWork) { messageAttachment((CreativeWork)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -1327,6 +1327,7 @@ public class WebApplication extends SoftwareApplication {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("browserRequirements".equals(key) && value instanceof String) { browserRequirements((String)value); return; }
+      if ("browserRequirementss".equals(key) && value instanceof String) { browserRequirements((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -1152,6 +1152,7 @@ public class Periodical extends CreativeWorkSeries {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("issn".equals(key) && value instanceof Identifier) { issn((Identifier)value); return; }
+      if ("issns".equals(key) && value instanceof Identifier) { issn((Identifier)value); return; }
       super.fromMap(key, value);
     }
   }

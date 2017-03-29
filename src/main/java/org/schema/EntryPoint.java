@@ -277,11 +277,17 @@ public class EntryPoint extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("actionPlatform".equals(key) && value instanceof String) { actionPlatform((String)value); return; }
+      if ("actionPlatforms".equals(key) && value instanceof String) { actionPlatform((String)value); return; }
       if ("httpMethod".equals(key) && value instanceof String) { httpMethod((String)value); return; }
+      if ("httpMethods".equals(key) && value instanceof String) { httpMethod((String)value); return; }
       if ("encodingType".equals(key) && value instanceof String) { encodingType((String)value); return; }
+      if ("encodingTypes".equals(key) && value instanceof String) { encodingType((String)value); return; }
       if ("contentType".equals(key) && value instanceof String) { contentType((String)value); return; }
+      if ("contentTypes".equals(key) && value instanceof String) { contentType((String)value); return; }
       if ("actionApplication".equals(key) && value instanceof SoftwareApplication) { actionApplication((SoftwareApplication)value); return; }
+      if ("actionApplications".equals(key) && value instanceof SoftwareApplication) { actionApplication((SoftwareApplication)value); return; }
       if ("urlTemplate".equals(key) && value instanceof String) { urlTemplate((String)value); return; }
+      if ("urlTemplates".equals(key) && value instanceof String) { urlTemplate((String)value); return; }
       super.fromMap(key, value);
     }
   }

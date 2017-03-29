@@ -293,6 +293,7 @@ public class SellAction extends TradeAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("buyer".equals(key) && value instanceof Person) { buyer((Person)value); return; }
+      if ("buyers".equals(key) && value instanceof Person) { buyer((Person)value); return; }
       super.fromMap(key, value);
     }
   }

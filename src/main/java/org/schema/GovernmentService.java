@@ -458,6 +458,7 @@ public class GovernmentService extends Service {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("serviceOperator".equals(key) && value instanceof Organization) { serviceOperator((Organization)value); return; }
+      if ("serviceOperators".equals(key) && value instanceof Organization) { serviceOperator((Organization)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -1334,13 +1334,21 @@ public class Clip extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("actor".equals(key) && value instanceof Person) { actor((Person)value); return; }
+      if ("actors".equals(key) && value instanceof Person) { actor((Person)value); return; }
       if ("clipNumber".equals(key) && value instanceof Position) { clipNumber((Position)value); return; }
+      if ("clipNumbers".equals(key) && value instanceof Position) { clipNumber((Position)value); return; }
       if ("director".equals(key) && value instanceof Person) { director((Person)value); return; }
+      if ("directors".equals(key) && value instanceof Person) { director((Person)value); return; }
       if ("musicBy".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
+      if ("musicBys".equals(key) && value instanceof MusicGroup) { musicBy((MusicGroup)value); return; }
       if ("musicBy".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
+      if ("musicBys".equals(key) && value instanceof Person) { musicBy((Person)value); return; }
       if ("partOfEpisode".equals(key) && value instanceof IsPartOf) { partOfEpisode((IsPartOf)value); return; }
+      if ("partOfEpisodes".equals(key) && value instanceof IsPartOf) { partOfEpisode((IsPartOf)value); return; }
       if ("partOfSeason".equals(key) && value instanceof IsPartOf) { partOfSeason((IsPartOf)value); return; }
+      if ("partOfSeasons".equals(key) && value instanceof IsPartOf) { partOfSeason((IsPartOf)value); return; }
       if ("partOfSeries".equals(key) && value instanceof IsPartOf) { partOfSeries((IsPartOf)value); return; }
+      if ("partOfSeriess".equals(key) && value instanceof IsPartOf) { partOfSeries((IsPartOf)value); return; }
       super.fromMap(key, value);
     }
   }

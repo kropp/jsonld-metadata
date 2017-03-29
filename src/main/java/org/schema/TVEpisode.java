@@ -1312,8 +1312,11 @@ public class TVEpisode extends Episode {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("countryOfOrigin".equals(key) && value instanceof Country) { countryOfOrigin((Country)value); return; }
+      if ("countryOfOrigins".equals(key) && value instanceof Country) { countryOfOrigin((Country)value); return; }
       if ("subtitleLanguage".equals(key) && value instanceof Language) { subtitleLanguage((Language)value); return; }
+      if ("subtitleLanguages".equals(key) && value instanceof Language) { subtitleLanguage((Language)value); return; }
       if ("subtitleLanguage".equals(key) && value instanceof String) { subtitleLanguage((String)value); return; }
+      if ("subtitleLanguages".equals(key) && value instanceof String) { subtitleLanguage((String)value); return; }
       super.fromMap(key, value);
     }
   }

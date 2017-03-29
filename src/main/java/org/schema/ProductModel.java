@@ -669,8 +669,11 @@ public class ProductModel extends Product {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("isVariantOf".equals(key) && value instanceof ProductModel) { isVariantOf((ProductModel)value); return; }
+      if ("isVariantOfs".equals(key) && value instanceof ProductModel) { isVariantOf((ProductModel)value); return; }
       if ("predecessorOf".equals(key) && value instanceof ProductModel) { predecessorOf((ProductModel)value); return; }
+      if ("predecessorOfs".equals(key) && value instanceof ProductModel) { predecessorOf((ProductModel)value); return; }
       if ("successorOf".equals(key) && value instanceof ProductModel) { successorOf((ProductModel)value); return; }
+      if ("successorOfs".equals(key) && value instanceof ProductModel) { successorOf((ProductModel)value); return; }
       super.fromMap(key, value);
     }
   }

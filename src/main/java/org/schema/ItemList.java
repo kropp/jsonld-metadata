@@ -284,11 +284,17 @@ public class ItemList extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("numberOfItems".equals(key) && value instanceof Integer) { numberOfItems((Integer)value); return; }
+      if ("numberOfItemss".equals(key) && value instanceof Integer) { numberOfItems((Integer)value); return; }
       if ("itemListOrder".equals(key) && value instanceof ItemListOrderType) { itemListOrder((ItemListOrderType)value); return; }
+      if ("itemListOrders".equals(key) && value instanceof ItemListOrderType) { itemListOrder((ItemListOrderType)value); return; }
       if ("itemListOrder".equals(key) && value instanceof String) { itemListOrder((String)value); return; }
+      if ("itemListOrders".equals(key) && value instanceof String) { itemListOrder((String)value); return; }
       if ("itemListElement".equals(key) && value instanceof ListItem) { itemListElement((ListItem)value); return; }
+      if ("itemListElements".equals(key) && value instanceof ListItem) { itemListElement((ListItem)value); return; }
       if ("itemListElement".equals(key) && value instanceof String) { itemListElement((String)value); return; }
+      if ("itemListElements".equals(key) && value instanceof String) { itemListElement((String)value); return; }
       if ("itemListElement".equals(key) && value instanceof Thing) { itemListElement((Thing)value); return; }
+      if ("itemListElements".equals(key) && value instanceof Thing) { itemListElement((Thing)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -650,9 +650,13 @@ public class DeliveryEvent extends Event {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("accessCode".equals(key) && value instanceof String) { accessCode((String)value); return; }
+      if ("accessCodes".equals(key) && value instanceof String) { accessCode((String)value); return; }
       if ("availableFrom".equals(key) && value instanceof java.util.Date) { availableFrom((java.util.Date)value); return; }
+      if ("availableFroms".equals(key) && value instanceof java.util.Date) { availableFrom((java.util.Date)value); return; }
       if ("availableThrough".equals(key) && value instanceof java.util.Date) { availableThrough((java.util.Date)value); return; }
+      if ("availableThroughs".equals(key) && value instanceof java.util.Date) { availableThrough((java.util.Date)value); return; }
       if ("hasDeliveryMethod".equals(key) && value instanceof DeliveryMethod) { hasDeliveryMethod((DeliveryMethod)value); return; }
+      if ("hasDeliveryMethods".equals(key) && value instanceof DeliveryMethod) { hasDeliveryMethod((DeliveryMethod)value); return; }
       super.fromMap(key, value);
     }
   }

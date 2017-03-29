@@ -626,8 +626,11 @@ public class SportsEvent extends Event {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("homeTeam".equals(key) && value instanceof Competitor) { homeTeam((Competitor)value); return; }
+      if ("homeTeams".equals(key) && value instanceof Competitor) { homeTeam((Competitor)value); return; }
       if ("awayTeam".equals(key) && value instanceof Competitor) { awayTeam((Competitor)value); return; }
+      if ("awayTeams".equals(key) && value instanceof Competitor) { awayTeam((Competitor)value); return; }
       if ("competitor".equals(key) && value instanceof Competitor) { competitor((Competitor)value); return; }
+      if ("competitors".equals(key) && value instanceof Competitor) { competitor((Competitor)value); return; }
       super.fromMap(key, value);
     }
   }

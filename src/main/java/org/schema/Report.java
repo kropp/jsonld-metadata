@@ -1194,6 +1194,7 @@ public class Report extends Article {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("reportNumber".equals(key) && value instanceof String) { reportNumber((String)value); return; }
+      if ("reportNumbers".equals(key) && value instanceof String) { reportNumber((String)value); return; }
       super.fromMap(key, value);
     }
   }

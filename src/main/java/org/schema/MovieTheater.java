@@ -573,10 +573,15 @@ public class MovieTheater extends EntertainmentBusiness {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("screenCount".equals(key) && value instanceof Integer) { screenCount((Integer)value); return; }
+      if ("screenCounts".equals(key) && value instanceof Integer) { screenCount((Integer)value); return; }
       if ("screenCount".equals(key) && value instanceof Long) { screenCount((Long)value); return; }
+      if ("screenCounts".equals(key) && value instanceof Long) { screenCount((Long)value); return; }
       if ("screenCount".equals(key) && value instanceof Float) { screenCount((Float)value); return; }
+      if ("screenCounts".equals(key) && value instanceof Float) { screenCount((Float)value); return; }
       if ("screenCount".equals(key) && value instanceof Double) { screenCount((Double)value); return; }
+      if ("screenCounts".equals(key) && value instanceof Double) { screenCount((Double)value); return; }
       if ("screenCount".equals(key) && value instanceof String) { screenCount((String)value); return; }
+      if ("screenCounts".equals(key) && value instanceof String) { screenCount((String)value); return; }
       super.fromMap(key, value);
     }
   }

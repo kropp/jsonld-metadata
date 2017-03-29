@@ -479,13 +479,21 @@ public class ExerciseAction extends PlayAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("exerciseCourse".equals(key) && value instanceof Place) { exerciseCourse((Place)value); return; }
+      if ("exerciseCourses".equals(key) && value instanceof Place) { exerciseCourse((Place)value); return; }
       if ("distance".equals(key) && value instanceof Distance) { distance((Distance)value); return; }
+      if ("distances".equals(key) && value instanceof Distance) { distance((Distance)value); return; }
       if ("fromLocation".equals(key) && value instanceof Place) { fromLocation((Place)value); return; }
+      if ("fromLocations".equals(key) && value instanceof Place) { fromLocation((Place)value); return; }
       if ("opponent".equals(key) && value instanceof Person) { opponent((Person)value); return; }
+      if ("opponents".equals(key) && value instanceof Person) { opponent((Person)value); return; }
       if ("sportsActivityLocation".equals(key) && value instanceof SportsActivityLocation) { sportsActivityLocation((SportsActivityLocation)value); return; }
+      if ("sportsActivityLocations".equals(key) && value instanceof SportsActivityLocation) { sportsActivityLocation((SportsActivityLocation)value); return; }
       if ("sportsEvent".equals(key) && value instanceof SportsEvent) { sportsEvent((SportsEvent)value); return; }
+      if ("sportsEvents".equals(key) && value instanceof SportsEvent) { sportsEvent((SportsEvent)value); return; }
       if ("sportsTeam".equals(key) && value instanceof SportsTeam) { sportsTeam((SportsTeam)value); return; }
+      if ("sportsTeams".equals(key) && value instanceof SportsTeam) { sportsTeam((SportsTeam)value); return; }
       if ("toLocation".equals(key) && value instanceof Place) { toLocation((Place)value); return; }
+      if ("toLocations".equals(key) && value instanceof Place) { toLocation((Place)value); return; }
       super.fromMap(key, value);
     }
   }

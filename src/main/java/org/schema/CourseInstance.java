@@ -609,7 +609,9 @@ public class CourseInstance extends Event {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("courseMode".equals(key) && value instanceof String) { courseMode((String)value); return; }
+      if ("courseModes".equals(key) && value instanceof String) { courseMode((String)value); return; }
       if ("instructor".equals(key) && value instanceof Person) { instructor((Person)value); return; }
+      if ("instructors".equals(key) && value instanceof Person) { instructor((Person)value); return; }
       super.fromMap(key, value);
     }
   }

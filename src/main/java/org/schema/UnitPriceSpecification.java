@@ -523,14 +523,23 @@ public class UnitPriceSpecification extends PriceSpecification {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("billingIncrement".equals(key) && value instanceof Integer) { billingIncrement((Integer)value); return; }
+      if ("billingIncrements".equals(key) && value instanceof Integer) { billingIncrement((Integer)value); return; }
       if ("billingIncrement".equals(key) && value instanceof Long) { billingIncrement((Long)value); return; }
+      if ("billingIncrements".equals(key) && value instanceof Long) { billingIncrement((Long)value); return; }
       if ("billingIncrement".equals(key) && value instanceof Float) { billingIncrement((Float)value); return; }
+      if ("billingIncrements".equals(key) && value instanceof Float) { billingIncrement((Float)value); return; }
       if ("billingIncrement".equals(key) && value instanceof Double) { billingIncrement((Double)value); return; }
+      if ("billingIncrements".equals(key) && value instanceof Double) { billingIncrement((Double)value); return; }
       if ("billingIncrement".equals(key) && value instanceof String) { billingIncrement((String)value); return; }
+      if ("billingIncrements".equals(key) && value instanceof String) { billingIncrement((String)value); return; }
       if ("priceType".equals(key) && value instanceof String) { priceType((String)value); return; }
+      if ("priceTypes".equals(key) && value instanceof String) { priceType((String)value); return; }
       if ("unitCode".equals(key) && value instanceof String) { unitCode((String)value); return; }
+      if ("unitCodes".equals(key) && value instanceof String) { unitCode((String)value); return; }
       if ("unitText".equals(key) && value instanceof String) { unitText((String)value); return; }
+      if ("unitTexts".equals(key) && value instanceof String) { unitText((String)value); return; }
       if ("referenceQuantity".equals(key) && value instanceof QuantitativeValue) { referenceQuantity((QuantitativeValue)value); return; }
+      if ("referenceQuantitys".equals(key) && value instanceof QuantitativeValue) { referenceQuantity((QuantitativeValue)value); return; }
       super.fromMap(key, value);
     }
   }

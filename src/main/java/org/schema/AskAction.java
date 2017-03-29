@@ -311,6 +311,7 @@ public class AskAction extends CommunicateAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("question".equals(key) && value instanceof Question) { question((Question)value); return; }
+      if ("questions".equals(key) && value instanceof Question) { question((Question)value); return; }
       super.fromMap(key, value);
     }
   }

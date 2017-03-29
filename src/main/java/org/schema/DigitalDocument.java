@@ -1145,6 +1145,7 @@ public class DigitalDocument extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("hasDigitalDocumentPermission".equals(key) && value instanceof DigitalDocumentPermission) { hasDigitalDocumentPermission((DigitalDocumentPermission)value); return; }
+      if ("hasDigitalDocumentPermissions".equals(key) && value instanceof DigitalDocumentPermission) { hasDigitalDocumentPermission((DigitalDocumentPermission)value); return; }
       super.fromMap(key, value);
     }
   }

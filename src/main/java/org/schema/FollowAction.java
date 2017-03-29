@@ -265,7 +265,9 @@ public class FollowAction extends InteractAction {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("followee".equals(key) && value instanceof Organization) { followee((Organization)value); return; }
+      if ("followees".equals(key) && value instanceof Organization) { followee((Organization)value); return; }
       if ("followee".equals(key) && value instanceof Person) { followee((Person)value); return; }
+      if ("followees".equals(key) && value instanceof Person) { followee((Person)value); return; }
       super.fromMap(key, value);
     }
   }

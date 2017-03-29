@@ -1176,7 +1176,9 @@ public class Dataset extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("includedInDataCatalog".equals(key) && value instanceof DataCatalog) { includedInDataCatalog((DataCatalog)value); return; }
+      if ("includedInDataCatalogs".equals(key) && value instanceof DataCatalog) { includedInDataCatalog((DataCatalog)value); return; }
       if ("distribution".equals(key) && value instanceof DataDownload) { distribution((DataDownload)value); return; }
+      if ("distributions".equals(key) && value instanceof DataDownload) { distribution((DataDownload)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -559,14 +559,23 @@ public class LodgingReservation extends Reservation {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("checkinTime".equals(key) && value instanceof java.util.Date) { checkinTime((java.util.Date)value); return; }
+      if ("checkinTimes".equals(key) && value instanceof java.util.Date) { checkinTime((java.util.Date)value); return; }
       if ("checkoutTime".equals(key) && value instanceof java.util.Date) { checkoutTime((java.util.Date)value); return; }
+      if ("checkoutTimes".equals(key) && value instanceof java.util.Date) { checkoutTime((java.util.Date)value); return; }
       if ("lodgingUnitType".equals(key) && value instanceof QualitativeValue) { lodgingUnitType((QualitativeValue)value); return; }
+      if ("lodgingUnitTypes".equals(key) && value instanceof QualitativeValue) { lodgingUnitType((QualitativeValue)value); return; }
       if ("lodgingUnitType".equals(key) && value instanceof String) { lodgingUnitType((String)value); return; }
+      if ("lodgingUnitTypes".equals(key) && value instanceof String) { lodgingUnitType((String)value); return; }
       if ("lodgingUnitDescription".equals(key) && value instanceof String) { lodgingUnitDescription((String)value); return; }
+      if ("lodgingUnitDescriptions".equals(key) && value instanceof String) { lodgingUnitDescription((String)value); return; }
       if ("numAdults".equals(key) && value instanceof Integer) { numAdults((Integer)value); return; }
+      if ("numAdultss".equals(key) && value instanceof Integer) { numAdults((Integer)value); return; }
       if ("numAdults".equals(key) && value instanceof QuantitativeValue) { numAdults((QuantitativeValue)value); return; }
+      if ("numAdultss".equals(key) && value instanceof QuantitativeValue) { numAdults((QuantitativeValue)value); return; }
       if ("numChildren".equals(key) && value instanceof Integer) { numChildren((Integer)value); return; }
+      if ("numChildrens".equals(key) && value instanceof Integer) { numChildren((Integer)value); return; }
       if ("numChildren".equals(key) && value instanceof QuantitativeValue) { numChildren((QuantitativeValue)value); return; }
+      if ("numChildrens".equals(key) && value instanceof QuantitativeValue) { numChildren((QuantitativeValue)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -432,9 +432,13 @@ public class TaxiReservation extends Reservation {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("partySize".equals(key) && value instanceof Integer) { partySize((Integer)value); return; }
+      if ("partySizes".equals(key) && value instanceof Integer) { partySize((Integer)value); return; }
       if ("partySize".equals(key) && value instanceof QuantitativeValue) { partySize((QuantitativeValue)value); return; }
+      if ("partySizes".equals(key) && value instanceof QuantitativeValue) { partySize((QuantitativeValue)value); return; }
       if ("pickupLocation".equals(key) && value instanceof Place) { pickupLocation((Place)value); return; }
+      if ("pickupLocations".equals(key) && value instanceof Place) { pickupLocation((Place)value); return; }
       if ("pickupTime".equals(key) && value instanceof java.util.Date) { pickupTime((java.util.Date)value); return; }
+      if ("pickupTimes".equals(key) && value instanceof java.util.Date) { pickupTime((java.util.Date)value); return; }
       super.fromMap(key, value);
     }
   }

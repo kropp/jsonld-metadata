@@ -1290,10 +1290,15 @@ public class NewsArticle extends Article {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("dateline".equals(key) && value instanceof String) { dateline((String)value); return; }
+      if ("datelines".equals(key) && value instanceof String) { dateline((String)value); return; }
       if ("printColumn".equals(key) && value instanceof String) { printColumn((String)value); return; }
+      if ("printColumns".equals(key) && value instanceof String) { printColumn((String)value); return; }
       if ("printEdition".equals(key) && value instanceof String) { printEdition((String)value); return; }
+      if ("printEditions".equals(key) && value instanceof String) { printEdition((String)value); return; }
       if ("printPage".equals(key) && value instanceof String) { printPage((String)value); return; }
+      if ("printPages".equals(key) && value instanceof String) { printPage((String)value); return; }
       if ("printSection".equals(key) && value instanceof String) { printSection((String)value); return; }
+      if ("printSections".equals(key) && value instanceof String) { printSection((String)value); return; }
       super.fromMap(key, value);
     }
   }

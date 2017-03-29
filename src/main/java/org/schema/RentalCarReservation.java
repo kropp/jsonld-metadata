@@ -432,9 +432,13 @@ public class RentalCarReservation extends Reservation {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("pickupLocation".equals(key) && value instanceof Place) { pickupLocation((Place)value); return; }
+      if ("pickupLocations".equals(key) && value instanceof Place) { pickupLocation((Place)value); return; }
       if ("dropoffLocation".equals(key) && value instanceof Place) { dropoffLocation((Place)value); return; }
+      if ("dropoffLocations".equals(key) && value instanceof Place) { dropoffLocation((Place)value); return; }
       if ("pickupTime".equals(key) && value instanceof java.util.Date) { pickupTime((java.util.Date)value); return; }
+      if ("pickupTimes".equals(key) && value instanceof java.util.Date) { pickupTime((java.util.Date)value); return; }
       if ("dropoffTime".equals(key) && value instanceof java.util.Date) { dropoffTime((java.util.Date)value); return; }
+      if ("dropoffTimes".equals(key) && value instanceof java.util.Date) { dropoffTime((java.util.Date)value); return; }
       super.fromMap(key, value);
     }
   }

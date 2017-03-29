@@ -1176,7 +1176,9 @@ public class Menu extends CreativeWork {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("hasMenuItem".equals(key) && value instanceof MenuItem) { hasMenuItem((MenuItem)value); return; }
+      if ("hasMenuItems".equals(key) && value instanceof MenuItem) { hasMenuItem((MenuItem)value); return; }
       if ("hasMenuSection".equals(key) && value instanceof MenuSection) { hasMenuSection((MenuSection)value); return; }
+      if ("hasMenuSections".equals(key) && value instanceof MenuSection) { hasMenuSection((MenuSection)value); return; }
       super.fromMap(key, value);
     }
   }

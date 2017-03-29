@@ -592,11 +592,17 @@ public class BroadcastService extends Service {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("broadcaster".equals(key) && value instanceof Organization) { broadcaster((Organization)value); return; }
+      if ("broadcasters".equals(key) && value instanceof Organization) { broadcaster((Organization)value); return; }
       if ("parentService".equals(key) && value instanceof BroadcastService) { parentService((BroadcastService)value); return; }
+      if ("parentServices".equals(key) && value instanceof BroadcastService) { parentService((BroadcastService)value); return; }
       if ("videoFormat".equals(key) && value instanceof String) { videoFormat((String)value); return; }
+      if ("videoFormats".equals(key) && value instanceof String) { videoFormat((String)value); return; }
       if ("broadcastAffiliateOf".equals(key) && value instanceof Organization) { broadcastAffiliateOf((Organization)value); return; }
+      if ("broadcastAffiliateOfs".equals(key) && value instanceof Organization) { broadcastAffiliateOf((Organization)value); return; }
       if ("broadcastDisplayName".equals(key) && value instanceof String) { broadcastDisplayName((String)value); return; }
+      if ("broadcastDisplayNames".equals(key) && value instanceof String) { broadcastDisplayName((String)value); return; }
       if ("broadcastTimezone".equals(key) && value instanceof String) { broadcastTimezone((String)value); return; }
+      if ("broadcastTimezones".equals(key) && value instanceof String) { broadcastTimezone((String)value); return; }
       super.fromMap(key, value);
     }
   }

@@ -1313,6 +1313,7 @@ public class AudioObject extends MediaObject {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("transcript".equals(key) && value instanceof String) { transcript((String)value); return; }
+      if ("transcripts".equals(key) && value instanceof String) { transcript((String)value); return; }
       super.fromMap(key, value);
     }
   }

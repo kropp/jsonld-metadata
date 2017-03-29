@@ -672,26 +672,47 @@ public class Flight extends Intangible {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("seller".equals(key) && value instanceof Participant) { seller((Participant)value); return; }
+      if ("sellers".equals(key) && value instanceof Participant) { seller((Participant)value); return; }
       if ("provider".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
+      if ("providers".equals(key) && value instanceof Organization) { provider((Organization)value); return; }
       if ("provider".equals(key) && value instanceof Person) { provider((Person)value); return; }
+      if ("providers".equals(key) && value instanceof Person) { provider((Person)value); return; }
       if ("flightNumber".equals(key) && value instanceof Identifier) { flightNumber((Identifier)value); return; }
+      if ("flightNumbers".equals(key) && value instanceof Identifier) { flightNumber((Identifier)value); return; }
       if ("departureTime".equals(key) && value instanceof java.util.Date) { departureTime((java.util.Date)value); return; }
+      if ("departureTimes".equals(key) && value instanceof java.util.Date) { departureTime((java.util.Date)value); return; }
       if ("arrivalTime".equals(key) && value instanceof java.util.Date) { arrivalTime((java.util.Date)value); return; }
+      if ("arrivalTimes".equals(key) && value instanceof java.util.Date) { arrivalTime((java.util.Date)value); return; }
       if ("departureAirport".equals(key) && value instanceof Airport) { departureAirport((Airport)value); return; }
+      if ("departureAirports".equals(key) && value instanceof Airport) { departureAirport((Airport)value); return; }
       if ("arrivalAirport".equals(key) && value instanceof Airport) { arrivalAirport((Airport)value); return; }
+      if ("arrivalAirports".equals(key) && value instanceof Airport) { arrivalAirport((Airport)value); return; }
       if ("departureGate".equals(key) && value instanceof String) { departureGate((String)value); return; }
+      if ("departureGates".equals(key) && value instanceof String) { departureGate((String)value); return; }
       if ("arrivalGate".equals(key) && value instanceof String) { arrivalGate((String)value); return; }
+      if ("arrivalGates".equals(key) && value instanceof String) { arrivalGate((String)value); return; }
       if ("boardingPolicy".equals(key) && value instanceof BoardingPolicyType) { boardingPolicy((BoardingPolicyType)value); return; }
+      if ("boardingPolicys".equals(key) && value instanceof BoardingPolicyType) { boardingPolicy((BoardingPolicyType)value); return; }
       if ("departureTerminal".equals(key) && value instanceof String) { departureTerminal((String)value); return; }
+      if ("departureTerminals".equals(key) && value instanceof String) { departureTerminal((String)value); return; }
       if ("arrivalTerminal".equals(key) && value instanceof String) { arrivalTerminal((String)value); return; }
+      if ("arrivalTerminals".equals(key) && value instanceof String) { arrivalTerminal((String)value); return; }
       if ("aircraft".equals(key) && value instanceof String) { aircraft((String)value); return; }
+      if ("aircrafts".equals(key) && value instanceof String) { aircraft((String)value); return; }
       if ("aircraft".equals(key) && value instanceof Vehicle) { aircraft((Vehicle)value); return; }
+      if ("aircrafts".equals(key) && value instanceof Vehicle) { aircraft((Vehicle)value); return; }
       if ("mealService".equals(key) && value instanceof String) { mealService((String)value); return; }
+      if ("mealServices".equals(key) && value instanceof String) { mealService((String)value); return; }
       if ("estimatedFlightDuration".equals(key) && value instanceof Duration) { estimatedFlightDuration((Duration)value); return; }
+      if ("estimatedFlightDurations".equals(key) && value instanceof Duration) { estimatedFlightDuration((Duration)value); return; }
       if ("estimatedFlightDuration".equals(key) && value instanceof String) { estimatedFlightDuration((String)value); return; }
+      if ("estimatedFlightDurations".equals(key) && value instanceof String) { estimatedFlightDuration((String)value); return; }
       if ("flightDistance".equals(key) && value instanceof Distance) { flightDistance((Distance)value); return; }
+      if ("flightDistances".equals(key) && value instanceof Distance) { flightDistance((Distance)value); return; }
       if ("flightDistance".equals(key) && value instanceof String) { flightDistance((String)value); return; }
+      if ("flightDistances".equals(key) && value instanceof String) { flightDistance((String)value); return; }
       if ("webCheckinTime".equals(key) && value instanceof java.util.Date) { webCheckinTime((java.util.Date)value); return; }
+      if ("webCheckinTimes".equals(key) && value instanceof java.util.Date) { webCheckinTime((java.util.Date)value); return; }
       super.fromMap(key, value);
     }
   }

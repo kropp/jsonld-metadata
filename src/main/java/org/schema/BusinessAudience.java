@@ -240,8 +240,11 @@ public class BusinessAudience extends Audience {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("numberOfEmployees".equals(key) && value instanceof QuantitativeValue) { numberOfEmployees((QuantitativeValue)value); return; }
+      if ("numberOfEmployeess".equals(key) && value instanceof QuantitativeValue) { numberOfEmployees((QuantitativeValue)value); return; }
       if ("yearlyRevenue".equals(key) && value instanceof QuantitativeValue) { yearlyRevenue((QuantitativeValue)value); return; }
+      if ("yearlyRevenues".equals(key) && value instanceof QuantitativeValue) { yearlyRevenue((QuantitativeValue)value); return; }
       if ("yearsInOperation".equals(key) && value instanceof QuantitativeValue) { yearsInOperation((QuantitativeValue)value); return; }
+      if ("yearsInOperations".equals(key) && value instanceof QuantitativeValue) { yearsInOperation((QuantitativeValue)value); return; }
       super.fromMap(key, value);
     }
   }

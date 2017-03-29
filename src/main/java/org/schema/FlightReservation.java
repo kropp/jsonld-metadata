@@ -449,10 +449,15 @@ public class FlightReservation extends Reservation {
     }
     @Override protected void fromMap(String key, Object value) {
       if ("boardingGroup".equals(key) && value instanceof String) { boardingGroup((String)value); return; }
+      if ("boardingGroups".equals(key) && value instanceof String) { boardingGroup((String)value); return; }
       if ("passengerSequenceNumber".equals(key) && value instanceof String) { passengerSequenceNumber((String)value); return; }
+      if ("passengerSequenceNumbers".equals(key) && value instanceof String) { passengerSequenceNumber((String)value); return; }
       if ("securityScreening".equals(key) && value instanceof String) { securityScreening((String)value); return; }
+      if ("securityScreenings".equals(key) && value instanceof String) { securityScreening((String)value); return; }
       if ("passengerPriorityStatus".equals(key) && value instanceof QualitativeValue) { passengerPriorityStatus((QualitativeValue)value); return; }
+      if ("passengerPriorityStatuss".equals(key) && value instanceof QualitativeValue) { passengerPriorityStatus((QualitativeValue)value); return; }
       if ("passengerPriorityStatus".equals(key) && value instanceof String) { passengerPriorityStatus((String)value); return; }
+      if ("passengerPriorityStatuss".equals(key) && value instanceof String) { passengerPriorityStatus((String)value); return; }
       super.fromMap(key, value);
     }
   }
