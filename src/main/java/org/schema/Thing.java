@@ -329,21 +329,42 @@ public class Thing {
       for (java.util.Map.Entry<String, Object> entry : map.entrySet()) {
         final String key = entry.getKey();
         Object value = entry.getValue();
-        if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
-        fromMap(key, value);
+        if (value instanceof java.util.List) {
+          final java.util.List list = (java.util.List) value;
+          for (Object o : list) {
+            if (o instanceof java.util.Map) {
+              fromMap(key, ThingDeserializer.fromMap((java.util.Map<String, Object>)o));
+            } else {
+              fromMap(key, o);
+            }
+          }
+        } else {
+          if (value instanceof java.util.Map) { value = ThingDeserializer.fromMap((java.util.Map<String,Object>)value); }
+          fromMap(key, value);
+        }
       }
     }
     protected void fromMap(String key, Object value) {
       if ("additionalType".equals(key) && value instanceof String) { additionalType((String)value); return; }
+      if ("additionalTypes".equals(key) && value instanceof String) { additionalType((String)value); return; }
       if ("alternateName".equals(key) && value instanceof String) { alternateName((String)value); return; }
+      if ("alternateNames".equals(key) && value instanceof String) { alternateName((String)value); return; }
       if ("disambiguatingDescription".equals(key) && value instanceof String) { disambiguatingDescription((String)value); return; }
+      if ("disambiguatingDescriptions".equals(key) && value instanceof String) { disambiguatingDescription((String)value); return; }
       if ("mainEntityOfPage".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); return; }
+      if ("mainEntityOfPages".equals(key) && value instanceof CreativeWork) { mainEntityOfPage((CreativeWork)value); return; }
       if ("mainEntityOfPage".equals(key) && value instanceof String) { mainEntityOfPage((String)value); return; }
+      if ("mainEntityOfPages".equals(key) && value instanceof String) { mainEntityOfPage((String)value); return; }
       if ("name".equals(key) && value instanceof String) { name((String)value); return; }
+      if ("names".equals(key) && value instanceof String) { name((String)value); return; }
       if ("sameAs".equals(key) && value instanceof String) { sameAs((String)value); return; }
+      if ("sameAss".equals(key) && value instanceof String) { sameAs((String)value); return; }
       if ("url".equals(key) && value instanceof String) { url((String)value); return; }
+      if ("urls".equals(key) && value instanceof String) { url((String)value); return; }
       if ("potentialAction".equals(key) && value instanceof Action) { potentialAction((Action)value); return; }
+      if ("potentialActions".equals(key) && value instanceof Action) { potentialAction((Action)value); return; }
       if ("id".equals(key) && value instanceof String) { id((String)value); return; }
+      if ("ids".equals(key) && value instanceof String) { id((String)value); return; }
       if ("@id".equals(key) && value instanceof String) { id((String)value); return; }
     }
     protected HashMap<String,Object> myData = new HashMap<String,Object>();
