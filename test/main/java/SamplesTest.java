@@ -5,6 +5,7 @@ import org.schema.*;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.schema.SchemaOrg.*;
@@ -104,12 +105,31 @@ public class SamplesTest {
     }
 
     @Test
-    public void convertToMapSample() throws IOException {
+    public void convertToMapAndBack() throws IOException {
         final Review review = SchemaOrg.review().text("Lorem ipsum")
                 .comment(SchemaOrg.comment().text("Cool!").author(SchemaOrg.person().name("John Doe")))
                 .comment(SchemaOrg.comment().text("Great!").author(SchemaOrg.person().name("Jane Doe")))
                 .build();
 
         final java.util.Map<String,Object> converted = SchemaOrg.toMap(review);
+
+        final Thing restored = SchemaOrg.fromMap(converted);
+
+        assertEquals(review, restored);
+    }
+
+    @Test
+    public void convertDateToMapAndBack() throws IOException {
+        final Review review = SchemaOrg.review().text("Very informative")
+                .mainEntity(SchemaOrg.webPage().text("Lorem ipsum")
+                    .comment(SchemaOrg.comment().text("Cool!").dateCreated(new Date(1234567890000L)))
+                    .comment(SchemaOrg.comment().text("Great!").dateCreated(new Date(1234567890000L)))
+                ).build();
+
+        final java.util.Map<String,Object> converted = SchemaOrg.toMap(review);
+
+        final Thing restored = SchemaOrg.fromMap(converted);
+
+        assertEquals(review, restored);
     }
 }
