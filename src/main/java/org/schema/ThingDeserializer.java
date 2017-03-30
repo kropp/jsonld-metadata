@@ -22,20 +22,21 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import org.jetbrains.annotations.Nullable;
 import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
-import java.util.Map;
 import java.util.HashMap;
-import java.text.*;
+import java.util.Map;
 
 /**
  * Typed deserializer for {@link org.schema.Thing}
  */
 class ThingDeserializer extends JsonDeserializer<Thing> {
-    private static final DateFormat dateFormat = new ISO8601DateFormat();
+    static final DateFormat dateFormat = new ISO8601DateFormat();
 
     @Override
     public Thing deserialize(JsonParser p, DeserializationContext ctx) throws IOException {

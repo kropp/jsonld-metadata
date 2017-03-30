@@ -82,6 +82,8 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
             appendln("          }")
             appendln("        }")
             appendln("        result.put(entry.getKey(), list);")
+            appendln("      } else if (entry.getValue() instanceof java.util.Date) {")
+            appendln("        result.put(entry.getKey(), ThingDeserializer.dateFormat.format(entry.getValue()));")
             appendln("      } else {")
             appendln("        result.put(entry.getKey(), entry.getValue());")
             appendln("      }")
@@ -146,7 +148,7 @@ import java.text.*;
  * Typed deserializer for {@link org.schema.Thing}
  */
 class ThingDeserializer extends JsonDeserializer<Thing> {
-    private static final DateFormat dateFormat = new ISO8601DateFormat();
+    static final DateFormat dateFormat = new ISO8601DateFormat();
 
     @Override
     public Thing deserialize(JsonParser p, DeserializationContext ctx) throws IOException {

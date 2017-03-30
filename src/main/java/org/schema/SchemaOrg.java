@@ -3035,6 +3035,8 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
           }
         }
         result.put(entry.getKey(), list);
+      } else if (entry.getValue() instanceof java.util.Date) {
+        result.put(entry.getKey(), ThingDeserializer.dateFormat.format(entry.getValue()));
       } else {
         result.put(entry.getKey(), entry.getValue());
       }
