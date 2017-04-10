@@ -117,9 +117,7 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                         if (type.parentType == null) {
                             implements = listOf("ThingBuilder<$typeName>")
 
-                            field("data", "HashMap<String,Object>", "protected") {
-                                initial = "new HashMap<String,Object>()"
-                            }
+                            field("data", "HashMap<String,Object>", "protected")
 
                             method("putValue") {
                                 parameters("key" to "String", "value" to "Object")
@@ -139,6 +137,8 @@ class ClassesGenerator(private val sink: GeneratorSink, private val banner: Stri
                                 line("}")
                             }
                         }
+
+                        konstructor("public", listOf(Parameter("data", "HashMap<String,Object>", NOT_NULL)), type.parentType?.let { listOf("data") })
 
                         method("build", typeName) {
                             annotations = NOT_NULL

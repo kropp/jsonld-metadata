@@ -84,7 +84,7 @@ class Klass(val sourceDirectory: File, val namespace: String?, val name: String,
 
     fun konstructor(visibility: String = "public", parameters: Collection<Parameter>? = null, superParameters: Collection<String>? = null) {
         text.append("  $visibility $name(")
-        text.append(parameters?.map { "${it.type} ${it.name}" }?.joinToString(", ") ?: "")
+        text.append(parameters?.map { (it.annotations?.joinToString(" ")?.plus(" ") ?: "") + "${it.type} ${it.name}" }?.joinToString(", ") ?: "")
         text.appendln(") {")
 
         if (superParameters != null) {

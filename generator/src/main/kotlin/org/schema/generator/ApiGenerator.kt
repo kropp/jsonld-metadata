@@ -11,6 +11,7 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
             appendln()
             appendln("package ${p.name};")
             appendln()
+            appendln("import java.util.HashMap;")
             appendln("import com.fasterxml.jackson.core.JsonProcessingException;")
             appendln("import com.fasterxml.jackson.databind.JsonNode;")
             appendln("import com.fasterxml.jackson.databind.ObjectMapper;")
@@ -30,7 +31,7 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
                     appendln("   * $it")
                     appendln("   */")
                 }
-                appendln("  @NotNull public static $typeName.Builder ${typeName.decapitalize()}() { return new $typeName.Builder(); }")
+                appendln("  @NotNull public static $typeName.Builder ${typeName.decapitalize()}() { return new $typeName.Builder(new HashMap<String,Object>()); }")
             }
             appendln()
             appendln("  public static ThingBuilder getBuilder(@NotNull String type) {")
@@ -41,7 +42,7 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
 
                 val typeName = type.name!!.capitalize()
 
-                appendln("    if (\"$typeName\".equals(type)) { return new $typeName.Builder(); }")
+                appendln("    if (\"$typeName\".equals(type)) { return new $typeName.Builder(new HashMap<String,Object>()); }")
             }
             appendln("    return null;")
             appendln("  }")
@@ -63,7 +64,7 @@ class ApiGenerator(private val sink: GeneratorSink, private val banner: String? 
             appendln("    return ThingDeserializer.fromMap(map);")
             appendln("  }")
             appendln("  public static java.util.Map<String, Object> toMap(@NotNull Thing thing) {")
-            appendln("    final java.util.HashMap<String, Object> result = new java.util.HashMap<String, Object>();")
+            appendln("    final HashMap<String, Object> result = new HashMap<String, Object>();")
             appendln("    if (thing.getId() != null) {")
             appendln("      result.put(\"@id\", thing.getId());")
             appendln("    }")
