@@ -12,6 +12,8 @@ buildscript {
     }
 }
 
+apply plugin: 'kotlin'
+
 repositories {
     mavenCentral()
     maven {
@@ -19,23 +21,11 @@ repositories {
     }
 }
 
-apply plugin: 'kotlin'
-
-sourceSets {
-    main {
-        kotlin {
-            srcDir "src/main/kotlin"
-        }
-    }
-    test {
-        kotlin {
-            srcDir "test/main/kotlin"
-        }
-    }
+compileKotlin {
+    kotlinOptions.verbose = true
 }
 
 dependencies {
+    compile rootProject
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    compile "org.semarglproject:semargl-rdfa:0.7"
 }
