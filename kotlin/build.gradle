@@ -28,4 +28,5 @@ compileKotlin {
 dependencies {
     compile rootProject
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testCompile 'junit:junit:4.11'
 }
