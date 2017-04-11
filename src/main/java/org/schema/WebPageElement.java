@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A web page element, like a table or an image.
  */
@@ -32,6 +34,9 @@ public class WebPageElement extends CreativeWork {
    * Builder for {@link WebPageElement}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public WebPageElement build() {
       return new WebPageElement(myData);
     }

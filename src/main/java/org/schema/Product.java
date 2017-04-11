@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Any offered product or service. For example: a pair of shoes; a concert ticket; the rental of a car; a haircut; or an episode of a TV show streamed online.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsTerms
@@ -719,6 +720,9 @@ public class Product extends Thing {
    * Builder for {@link Product}
    */
   public static class Builder extends Thing.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Product build() {
       return new Product(myData);
     }

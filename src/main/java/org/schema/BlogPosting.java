@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A blog post.
  */
@@ -32,6 +34,9 @@ public class BlogPosting extends SocialMediaPosting {
    * Builder for {@link BlogPosting}
    */
   public static class Builder extends SocialMediaPosting.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public BlogPosting build() {
       return new BlogPosting(myData);
     }

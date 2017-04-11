@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of searching for an object.\n\nRelated actions:\n\n* [[FindAction]]: SearchAction generally leads to a FindAction, but not necessarily.
@@ -54,6 +55,9 @@ public class SearchAction extends Action {
    * Builder for {@link SearchAction}
    */
   public static class Builder extends Action.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SearchAction build() {
       return new SearchAction(myData);
     }

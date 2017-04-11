@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * When a single product is associated with multiple offers (for example, the same pair of shoes is offered by different merchants), then AggregateOffer can be used.
@@ -241,6 +242,9 @@ public class AggregateOffer extends Offer {
    * Builder for {@link AggregateOffer}
    */
   public static class Builder extends Offer.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AggregateOffer build() {
       return new AggregateOffer(myData);
     }

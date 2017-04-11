@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Web page type: Image gallery page.
  */
@@ -32,6 +34,9 @@ public class ImageGallery extends CollectionPage {
    * Builder for {@link ImageGallery}
    */
   public static class Builder extends CollectionPage.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ImageGallery build() {
       return new ImageGallery(myData);
     }

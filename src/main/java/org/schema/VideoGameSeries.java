@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A video game series.
@@ -394,6 +395,9 @@ public class VideoGameSeries extends CreativeWorkSeries {
    * Builder for {@link VideoGameSeries}
    */
   public static class Builder extends CreativeWorkSeries.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public VideoGameSeries build() {
       return new VideoGameSeries(myData);
     }

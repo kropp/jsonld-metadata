@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * An airport.
@@ -71,6 +72,9 @@ public class Airport extends CivicStructure {
    * Builder for {@link Airport}
    */
   public static class Builder extends CivicStructure.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Airport build() {
       return new Airport(myData);
     }

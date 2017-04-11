@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A single, identifiable product instance (e.g. a laptop with a particular serial number).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
  */
@@ -32,6 +34,9 @@ public class IndividualProduct extends Product {
    * Builder for {@link IndividualProduct}
    */
   public static class Builder extends Product.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public IndividualProduct build() {
       return new IndividualProduct(myData);
     }

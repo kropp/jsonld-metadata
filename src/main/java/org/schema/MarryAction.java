@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of marrying a person.
  */
@@ -32,6 +34,9 @@ public class MarryAction extends InteractAction {
    * Builder for {@link MarryAction}
    */
   public static class Builder extends InteractAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MarryAction build() {
       return new MarryAction(myData);
     }

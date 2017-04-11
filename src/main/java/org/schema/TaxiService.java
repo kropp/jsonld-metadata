@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A service for a vehicle for hire with a driver for local travel. Fares are usually calculated based on distance traveled.
  */
@@ -32,6 +34,9 @@ public class TaxiService extends Service {
    * Builder for {@link TaxiService}
    */
   public static class Builder extends Service.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TaxiService build() {
       return new TaxiService(myData);
     }

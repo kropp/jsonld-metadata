@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * An agent approves/certifies/likes/supports/sanction an object.
@@ -71,6 +72,9 @@ public class EndorseAction extends ReactAction {
    * Builder for {@link EndorseAction}
    */
   public static class Builder extends ReactAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public EndorseAction build() {
       return new EndorseAction(myData);
     }

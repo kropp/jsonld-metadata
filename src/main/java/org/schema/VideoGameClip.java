@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A short segment/part of a video game.
  */
@@ -32,6 +34,9 @@ public class VideoGameClip extends Clip {
    * Builder for {@link VideoGameClip}
    */
   public static class Builder extends Clip.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public VideoGameClip build() {
       return new VideoGameClip(myData);
     }

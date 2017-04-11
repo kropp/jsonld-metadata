@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A single item within a larger data feed.
@@ -88,6 +89,9 @@ public class DataFeedItem extends Intangible {
    * Builder for {@link DataFeedItem}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DataFeedItem build() {
       return new DataFeedItem(myData);
     }

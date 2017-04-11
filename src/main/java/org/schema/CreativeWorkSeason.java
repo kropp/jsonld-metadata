@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A media season e.g. tv, radio, video game etc.
@@ -224,6 +225,9 @@ public class CreativeWorkSeason extends CreativeWork {
    * Builder for {@link CreativeWorkSeason}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CreativeWorkSeason build() {
       return new CreativeWorkSeason(myData);
     }

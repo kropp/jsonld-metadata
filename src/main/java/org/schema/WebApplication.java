@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Web applications.
@@ -54,6 +55,9 @@ public class WebApplication extends SoftwareApplication {
    * Builder for {@link WebApplication}
    */
   public static class Builder extends SoftwareApplication.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public WebApplication build() {
       return new WebApplication(myData);
     }

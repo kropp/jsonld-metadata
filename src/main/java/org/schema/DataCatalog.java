@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A collection of datasets.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_DatasetClassEquivalent class: http://www.w3.org/ns/dcat#Catalog
@@ -54,6 +55,9 @@ public class DataCatalog extends CreativeWork {
    * Builder for {@link DataCatalog}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DataCatalog build() {
       return new DataCatalog(myData);
     }

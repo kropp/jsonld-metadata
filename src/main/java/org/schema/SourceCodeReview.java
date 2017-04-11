@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Software code review
@@ -105,6 +106,9 @@ public class SourceCodeReview extends SoftwareApplication {
    * Builder for {@link SourceCodeReview}
    */
   public static class Builder extends SoftwareApplication.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SourceCodeReview build() {
       return new SourceCodeReview(myData);
     }

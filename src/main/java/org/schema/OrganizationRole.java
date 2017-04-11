@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A subclass of Role used to describe roles within organizations.
@@ -122,6 +123,9 @@ public class OrganizationRole extends Role {
    * Builder for {@link OrganizationRole}
    */
   public static class Builder extends Role.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public OrganizationRole build() {
       return new OrganizationRole(myData);
     }

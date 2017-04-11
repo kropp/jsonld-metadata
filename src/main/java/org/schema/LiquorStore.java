@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A shop that sells alcoholic drinks such as wine, beer, whisky and other spirits.
  */
@@ -32,6 +34,9 @@ public class LiquorStore extends Store {
    * Builder for {@link LiquorStore}
    */
   public static class Builder extends Store.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public LiquorStore build() {
       return new LiquorStore(myData);
     }

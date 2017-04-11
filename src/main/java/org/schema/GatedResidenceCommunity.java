@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Residence type: Gated community.
  */
@@ -32,6 +34,9 @@ public class GatedResidenceCommunity extends Residence {
    * Builder for {@link GatedResidenceCommunity}
    */
   public static class Builder extends Residence.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public GatedResidenceCommunity build() {
       return new GatedResidenceCommunity(myData);
     }

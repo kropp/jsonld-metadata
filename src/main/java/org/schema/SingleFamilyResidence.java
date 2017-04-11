@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Residence type: Single-family home.
@@ -151,6 +152,9 @@ public class SingleFamilyResidence extends House {
    * Builder for {@link SingleFamilyResidence}
    */
   public static class Builder extends House.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SingleFamilyResidence build() {
       return new SingleFamilyResidence(myData);
     }

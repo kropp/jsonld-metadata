@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Accountancy business.\n\nAs a [[LocalBusiness]] it can be described as a [[provider]] of one or more [[Service]]\(s).
  *       
@@ -33,6 +35,9 @@ public class AccountingService extends FinancialService {
    * Builder for {@link AccountingService}
    */
   public static class Builder extends FinancialService.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AccountingService build() {
       return new AccountingService(myData);
     }

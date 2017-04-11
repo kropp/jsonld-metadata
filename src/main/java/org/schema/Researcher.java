@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Researchers.
  */
@@ -32,6 +34,9 @@ public class Researcher extends Audience {
    * Builder for {@link Researcher}
    */
   public static class Builder extends Audience.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Researcher build() {
       return new Researcher(myData);
     }

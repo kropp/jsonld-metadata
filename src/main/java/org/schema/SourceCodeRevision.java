@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Specific revision of a software code
@@ -71,6 +72,9 @@ public class SourceCodeRevision extends SoftwareApplication {
    * Builder for {@link SourceCodeRevision}
    */
   public static class Builder extends SoftwareApplication.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SourceCodeRevision build() {
       return new SourceCodeRevision(myData);
     }

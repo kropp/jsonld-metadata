@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Residence type: Apartment complex.
  */
@@ -32,6 +34,9 @@ public class ApartmentComplex extends Residence {
    * Builder for {@link ApartmentComplex}
    */
   public static class Builder extends Residence.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ApartmentComplex build() {
       return new ApartmentComplex(myData);
     }

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of being defeated in a competitive activity.
@@ -54,6 +55,9 @@ public class LoseAction extends AchieveAction {
    * Builder for {@link LoseAction}
    */
   public static class Builder extends AchieveAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public LoseAction build() {
       return new LoseAction(myData);
     }

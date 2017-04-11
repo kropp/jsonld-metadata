@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of arriving at a place. An agent arrives at a destination from a fromLocation, optionally with participants.
  */
@@ -32,6 +34,9 @@ public class ArriveAction extends MoveAction {
    * Builder for {@link ArriveAction}
    */
   public static class Builder extends MoveAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ArriveAction build() {
       return new ArriveAction(myData);
     }

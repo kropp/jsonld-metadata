@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Organization: Sports team.
@@ -71,6 +72,9 @@ public class SportsTeam extends SportsOrganization implements Competitor {
    * Builder for {@link SportsTeam}
    */
   public static class Builder extends SportsOrganization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SportsTeam build() {
       return new SportsTeam(myData);
     }

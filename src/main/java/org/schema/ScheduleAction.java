@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Scheduling future actions, events, or tasks.\n\nRelated actions:\n\n* [[ReserveAction]]: Unlike ReserveAction, ScheduleAction allocates future actions (e.g. an event, a task, etc) towards a time slot / spatial allocation.
  */
@@ -32,6 +34,9 @@ public class ScheduleAction extends PlanAction {
    * Builder for {@link ScheduleAction}
    */
   public static class Builder extends PlanAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ScheduleAction build() {
       return new ScheduleAction(myData);
     }

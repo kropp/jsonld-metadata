@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A publication in any medium issued in successive parts bearing numerical or chronological designations and intended, such as a magazine, scholarly journal, or newspaper to continue indefinitely.\n\nSee also [blog post](http://blog.schema.org/2014/09/schemaorg-support-for-bibliographic_2.html).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_bibexEquivalent class: http://purl.org/ontology/bibo/Periodical
@@ -54,6 +55,9 @@ public class Periodical extends CreativeWorkSeries {
    * Builder for {@link Periodical}
    */
   public static class Builder extends CreativeWorkSeries.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Periodical build() {
       return new Periodical(myData);
     }

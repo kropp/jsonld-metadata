@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A legislative building&#x2014;for example, the state capitol.
  */
@@ -32,6 +34,9 @@ public class LegislativeBuilding extends GovernmentBuilding {
    * Builder for {@link LegislativeBuilding}
    */
   public static class Builder extends GovernmentBuilding.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public LegislativeBuilding build() {
       return new LegislativeBuilding(myData);
     }

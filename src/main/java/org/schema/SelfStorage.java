@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A self-storage facility.
  */
@@ -32,6 +34,9 @@ public class SelfStorage extends LocalBusiness {
    * Builder for {@link SelfStorage}
    */
   public static class Builder extends LocalBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SelfStorage build() {
       return new SelfStorage(myData);
     }

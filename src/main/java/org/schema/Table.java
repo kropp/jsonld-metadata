@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A table on a Web page.
  */
@@ -32,6 +34,9 @@ public class Table extends WebPageElement {
    * Builder for {@link Table}
    */
   public static class Builder extends WebPageElement.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Table build() {
       return new Table(myData);
     }

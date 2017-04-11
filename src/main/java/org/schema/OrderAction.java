@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * An agent orders an object/product/service to be delivered/sent.
@@ -54,6 +55,9 @@ public class OrderAction extends TradeAction {
    * Builder for {@link OrderAction}
    */
   public static class Builder extends TradeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public OrderAction build() {
       return new OrderAction(myData);
     }

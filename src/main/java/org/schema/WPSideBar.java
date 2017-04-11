@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A sidebar section of the page.
  */
@@ -32,6 +34,9 @@ public class WPSideBar extends WebPageElement {
    * Builder for {@link WPSideBar}
    */
   public static class Builder extends WebPageElement.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public WPSideBar build() {
       return new WPSideBar(myData);
     }

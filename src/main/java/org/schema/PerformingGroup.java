@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A performance group, such as a band, an orchestra, or a circus.
  */
@@ -32,6 +34,9 @@ public class PerformingGroup extends Organization {
    * Builder for {@link PerformingGroup}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PerformingGroup build() {
       return new PerformingGroup(myData);
     }

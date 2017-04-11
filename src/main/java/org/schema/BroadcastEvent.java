@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * An over the air or online broadcast event.
@@ -88,6 +89,9 @@ public class BroadcastEvent extends PublicationEvent {
    * Builder for {@link BroadcastEvent}
    */
   public static class Builder extends PublicationEvent.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public BroadcastEvent build() {
       return new BroadcastEvent(myData);
     }

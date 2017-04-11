@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A trip on a commercial train line.
@@ -207,6 +208,9 @@ public class TrainTrip extends Intangible {
    * Builder for {@link TrainTrip}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TrainTrip build() {
       return new TrainTrip(myData);
     }

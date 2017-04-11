@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of forming one's opinion, reaction or sentiment.
  */
@@ -32,6 +34,9 @@ public class AssessAction extends Action {
    * Builder for {@link AssessAction}
    */
   public static class Builder extends Action.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AssessAction build() {
       return new AssessAction(myData);
     }

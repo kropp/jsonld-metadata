@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Aquarium.
  */
@@ -32,6 +34,9 @@ public class Aquarium extends CivicStructure {
    * Builder for {@link Aquarium}
    */
   public static class Builder extends CivicStructure.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Aquarium build() {
       return new Aquarium(myData);
     }

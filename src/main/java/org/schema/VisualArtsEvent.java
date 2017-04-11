@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Event type: Visual arts event.
  */
@@ -32,6 +34,9 @@ public class VisualArtsEvent extends Event {
    * Builder for {@link VisualArtsEvent}
    */
   public static class Builder extends Event.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public VisualArtsEvent build() {
       return new VisualArtsEvent(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Structured values are used when the value of a property has a more complex structure than simply being a textual value or a reference to another thing.
  */
@@ -32,6 +34,9 @@ public class StructuredValue extends Intangible {
    * Builder for {@link StructuredValue}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public StructuredValue build() {
       return new StructuredValue(myData);
     }

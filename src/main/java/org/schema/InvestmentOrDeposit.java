@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A type of financial product that typically requires the client to transfer funds to a financial service in return for potential beneficial financial return.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
  */
@@ -32,6 +34,9 @@ public class InvestmentOrDeposit extends FinancialProduct {
    * Builder for {@link InvestmentOrDeposit}
    */
   public static class Builder extends FinancialProduct.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public InvestmentOrDeposit build() {
       return new InvestmentOrDeposit(myData);
     }

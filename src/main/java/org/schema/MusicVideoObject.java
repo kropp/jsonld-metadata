@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A music video file.
  */
@@ -32,6 +34,9 @@ public class MusicVideoObject extends MediaObject {
    * Builder for {@link MusicVideoObject}
    */
   public static class Builder extends MediaObject.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MusicVideoObject build() {
       return new MusicVideoObject(myData);
     }

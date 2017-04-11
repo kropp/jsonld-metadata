@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of downloading an object.
  */
@@ -32,6 +34,9 @@ public class DownloadAction extends TransferAction {
    * Builder for {@link DownloadAction}
    */
   public static class Builder extends TransferAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DownloadAction build() {
       return new DownloadAction(myData);
     }

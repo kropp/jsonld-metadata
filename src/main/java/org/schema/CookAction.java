@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of producing/preparing food.
@@ -88,6 +89,9 @@ public class CookAction extends CreateAction {
    * Builder for {@link CookAction}
    */
   public static class Builder extends CreateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CookAction build() {
       return new CookAction(myData);
     }

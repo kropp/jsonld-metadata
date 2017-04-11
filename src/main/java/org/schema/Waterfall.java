@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A waterfall, like Niagara.
  */
@@ -32,6 +34,9 @@ public class Waterfall extends BodyOfWater {
    * Builder for {@link Waterfall}
    */
   public static class Builder extends BodyOfWater.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Waterfall build() {
       return new Waterfall(myData);
     }

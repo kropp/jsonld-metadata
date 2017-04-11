@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A theater group or company, for example, the Royal Shakespeare Company or Druid Theatre.
  */
@@ -32,6 +34,9 @@ public class TheaterGroup extends PerformingGroup {
    * Builder for {@link TheaterGroup}
    */
   public static class Builder extends PerformingGroup.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TheaterGroup build() {
       return new TheaterGroup(myData);
     }

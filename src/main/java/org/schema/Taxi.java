@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A taxi.
  */
@@ -32,6 +34,9 @@ public class Taxi extends Service {
    * Builder for {@link Taxi}
    */
   public static class Builder extends Service.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Taxi build() {
       return new Taxi(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The Question/Answer types were [based on](https://www.w3.org/wiki/WebSchemas/QASchemaResearch) the Stack Overflow API.
  */
@@ -32,6 +34,9 @@ public class StackExchange extends Organization {
    * Builder for {@link StackExchange}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public StackExchange build() {
       return new StackExchange(myData);
     }

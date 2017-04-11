@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A placeholder for multiple similar products of the same kind.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -54,6 +55,9 @@ public class SomeProducts extends Product {
    * Builder for {@link SomeProducts}
    */
   public static class Builder extends Product.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SomeProducts build() {
       return new SomeProducts(myData);
     }

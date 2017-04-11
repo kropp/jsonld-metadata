@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A Service to transfer funds from a person or organization to a beneficiary person or organization.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
  */
@@ -32,6 +34,9 @@ public class PaymentService extends FinancialProduct {
    * Builder for {@link PaymentService}
    */
   public static class Builder extends FinancialProduct.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PaymentService build() {
       return new PaymentService(myData);
     }

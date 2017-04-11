@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * An email message.
  */
@@ -32,6 +34,9 @@ public class EmailMessage extends Message {
    * Builder for {@link EmailMessage}
    */
   public static class Builder extends Message.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public EmailMessage build() {
       return new EmailMessage(myData);
     }

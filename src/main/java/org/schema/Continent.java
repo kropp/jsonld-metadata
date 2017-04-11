@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * One of the continents (for example, Europe or Africa).
  */
@@ -32,6 +34,9 @@ public class Continent extends Landform {
    * Builder for {@link Continent}
    */
   public static class Builder extends Landform.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Continent build() {
       return new Continent(myData);
     }

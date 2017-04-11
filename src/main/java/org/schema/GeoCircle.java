@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A GeoCircle is a GeoShape representing a circular geographic area. As it is a GeoShape
@@ -108,6 +109,9 @@ public class GeoCircle extends GeoShape {
    * Builder for {@link GeoCircle}
    */
   public static class Builder extends GeoShape.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public GeoCircle build() {
       return new GeoCircle(myData);
     }

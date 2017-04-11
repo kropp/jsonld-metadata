@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A structured value providing information about the opening hours of a place or a certain service inside a place.\n\n
@@ -124,6 +125,9 @@ public class OpeningHoursSpecification extends StructuredValue {
    * Builder for {@link OpeningHoursSpecification}
    */
   public static class Builder extends StructuredValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public OpeningHoursSpecification build() {
       return new OpeningHoursSpecification(myData);
     }

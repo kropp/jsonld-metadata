@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A lake (for example, Lake Pontrachain).
  */
@@ -32,6 +34,9 @@ public class LakeBodyOfWater extends BodyOfWater {
    * Builder for {@link LakeBodyOfWater}
    */
   public static class Builder extends BodyOfWater.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public LakeBodyOfWater build() {
       return new LakeBodyOfWater(myData);
     }

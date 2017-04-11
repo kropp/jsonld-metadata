@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A statement of the money due for goods or services; a bill.
@@ -377,6 +378,9 @@ public class Invoice extends Intangible {
    * Builder for {@link Invoice}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Invoice build() {
       return new Invoice(myData);
     }

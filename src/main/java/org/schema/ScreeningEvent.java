@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A screening of a movie or other video.
@@ -105,6 +106,9 @@ public class ScreeningEvent extends Event {
    * Builder for {@link ScreeningEvent}
    */
   public static class Builder extends Event.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ScreeningEvent build() {
       return new ScreeningEvent(myData);
     }

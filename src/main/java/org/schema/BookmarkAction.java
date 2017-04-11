@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * An agent bookmarks/flags/labels/tags/marks an object.
  */
@@ -32,6 +34,9 @@ public class BookmarkAction extends OrganizeAction {
    * Builder for {@link BookmarkAction}
    */
   public static class Builder extends OrganizeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public BookmarkAction build() {
       return new BookmarkAction(myData);
     }

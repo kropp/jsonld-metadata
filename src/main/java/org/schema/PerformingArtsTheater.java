@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A theater or other performing art center.
  */
@@ -32,6 +34,9 @@ public class PerformingArtsTheater extends CivicStructure {
    * Builder for {@link PerformingArtsTheater}
    */
   public static class Builder extends CivicStructure.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PerformingArtsTheater build() {
       return new PerformingArtsTheater(myData);
     }

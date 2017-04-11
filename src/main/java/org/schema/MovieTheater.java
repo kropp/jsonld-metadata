@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A movie theater.
@@ -122,6 +123,9 @@ public class MovieTheater extends EntertainmentBusiness {
    * Builder for {@link MovieTheater}
    */
   public static class Builder extends EntertainmentBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MovieTheater build() {
       return new MovieTheater(myData);
     }

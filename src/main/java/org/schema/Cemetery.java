@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A graveyard.
  */
@@ -32,6 +34,9 @@ public class Cemetery extends CivicStructure {
    * Builder for {@link Cemetery}
    */
   public static class Builder extends CivicStructure.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Cemetery build() {
       return new Cemetery(myData);
     }

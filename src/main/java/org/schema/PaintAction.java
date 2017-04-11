@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of producing a painting, typically with paint and canvas as instruments.
  */
@@ -32,6 +34,9 @@ public class PaintAction extends CreateAction {
    * Builder for {@link PaintAction}
    */
   public static class Builder extends CreateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PaintAction build() {
       return new PaintAction(myData);
     }

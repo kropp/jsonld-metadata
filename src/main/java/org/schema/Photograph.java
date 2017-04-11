@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A photograph.
  */
@@ -32,6 +34,9 @@ public class Photograph extends CreativeWork {
    * Builder for {@link Photograph}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Photograph build() {
       return new Photograph(myData);
     }

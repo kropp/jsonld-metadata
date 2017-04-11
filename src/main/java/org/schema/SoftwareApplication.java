@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A software application.
@@ -428,6 +429,9 @@ public class SoftwareApplication extends CreativeWork {
    * Builder for {@link SoftwareApplication}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SoftwareApplication build() {
       return new SoftwareApplication(myData);
     }

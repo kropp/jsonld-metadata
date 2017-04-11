@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Bank or credit union.
  */
@@ -32,6 +34,9 @@ public class BankOrCreditUnion extends FinancialService {
    * Builder for {@link BankOrCreditUnion}
    */
   public static class Builder extends FinancialService.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public BankOrCreditUnion build() {
       return new BankOrCreditUnion(myData);
     }

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A structured representation of food or drink items available from a FoodEstablishment.
@@ -71,6 +72,9 @@ public class Menu extends CreativeWork {
    * Builder for {@link Menu}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Menu build() {
       return new Menu(myData);
     }

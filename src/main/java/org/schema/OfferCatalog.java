@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * An OfferCatalog is an ItemList that contains related Offers and/or further OfferCatalogs that are offeredBy the same provider.
  */
@@ -32,6 +34,9 @@ public class OfferCatalog extends ItemList {
    * Builder for {@link OfferCatalog}
    */
   public static class Builder extends ItemList.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public OfferCatalog build() {
       return new OfferCatalog(myData);
     }

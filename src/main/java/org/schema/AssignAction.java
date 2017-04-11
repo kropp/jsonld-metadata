@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of allocating an action/event/task to some destination (someone or something).
  */
@@ -32,6 +34,9 @@ public class AssignAction extends AllocateAction {
    * Builder for {@link AssignAction}
    */
   public static class Builder extends AllocateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AssignAction build() {
       return new AssignAction(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A store that sells materials useful or necessary for various hobbies.
  */
@@ -32,6 +34,9 @@ public class HobbyShop extends Store {
    * Builder for {@link HobbyShop}
    */
   public static class Builder extends Store.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public HobbyShop build() {
       return new HobbyShop(myData);
     }

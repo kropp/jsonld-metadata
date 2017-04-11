@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Event type: Education event.
  */
@@ -32,6 +34,9 @@ public class EducationEvent extends Event {
    * Builder for {@link EducationEvent}
    */
   public static class Builder extends Event.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public EducationEvent build() {
       return new EducationEvent(myData);
     }

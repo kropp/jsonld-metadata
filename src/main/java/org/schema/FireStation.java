@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A fire station. With firemen.
  */
@@ -32,6 +34,9 @@ public class FireStation extends EmergencyService {
    * Builder for {@link FireStation}
    */
   public static class Builder extends EmergencyService.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public FireStation build() {
       return new FireStation(myData);
     }

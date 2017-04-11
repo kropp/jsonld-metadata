@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A specific question - e.g. from a user seeking answers online, or collected in a Frequently Asked Questions (FAQ) document.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_QAStackExchange
@@ -122,6 +123,9 @@ public class Question extends CreativeWork {
    * Builder for {@link Question}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Question build() {
       return new Question(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of swallowing solid objects.
  */
@@ -32,6 +34,9 @@ public class EatAction extends ConsumeAction {
    * Builder for {@link EatAction}
    */
   public static class Builder extends ConsumeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public EatAction build() {
       return new EatAction(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A construction business.\n\nA HomeAndConstructionBusiness is a [[LocalBusiness]] that provides services around homes and buildings.\n\nAs a [[LocalBusiness]] it can be described as a [[provider]] of one or more [[Service]]\(s).
  */
@@ -32,6 +34,9 @@ public class HomeAndConstructionBusiness extends LocalBusiness {
    * Builder for {@link HomeAndConstructionBusiness}
    */
   public static class Builder extends LocalBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public HomeAndConstructionBusiness build() {
       return new HomeAndConstructionBusiness(myData);
     }

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A PerformanceRole is a Role that some entity places with regard to a theatrical performance, e.g. in a Movie, TVSeries etc.
@@ -54,6 +55,9 @@ public class PerformanceRole extends Role {
    * Builder for {@link PerformanceRole}
    */
   public static class Builder extends Role.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PerformanceRole build() {
       return new PerformanceRole(myData);
     }

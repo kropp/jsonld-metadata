@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Single entity in issue tracker (e.g. bug or feature)
@@ -71,6 +72,9 @@ public class Issue extends CreativeWork {
    * Builder for {@link Issue}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Issue build() {
       return new Issue(myData);
     }

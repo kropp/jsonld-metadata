@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of momentarily pausing a device or application (e.g. pause music playback or pause a timer).
  */
@@ -32,6 +34,9 @@ public class SuspendAction extends ControlAction {
    * Builder for {@link SuspendAction}
    */
   public static class Builder extends ControlAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SuspendAction build() {
       return new SuspendAction(myData);
     }

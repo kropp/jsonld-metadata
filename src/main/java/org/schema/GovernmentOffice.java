@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A government office&#x2014;for example, an IRS or DMV office.
  */
@@ -32,6 +34,9 @@ public class GovernmentOffice extends LocalBusiness {
    * Builder for {@link GovernmentOffice}
    */
   public static class Builder extends LocalBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public GovernmentOffice build() {
       return new GovernmentOffice(myData);
     }

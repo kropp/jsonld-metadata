@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A dataset in downloadable form.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_DatasetClassEquivalent class: http://www.w3.org/ns/dcat#Distribution
  */
@@ -32,6 +34,9 @@ public class DataDownload extends MediaObject {
    * Builder for {@link DataDownload}
    */
   public static class Builder extends MediaObject.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DataDownload build() {
       return new DataDownload(myData);
     }

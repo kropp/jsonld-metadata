@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The average rating based on multiple ratings or reviews.
@@ -88,6 +89,9 @@ public class AggregateRating extends Rating {
    * Builder for {@link AggregateRating}
    */
   public static class Builder extends Rating.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AggregateRating build() {
       return new AggregateRating(myData);
     }

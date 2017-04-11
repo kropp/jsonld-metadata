@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * ATM/cash machine.
  */
@@ -32,6 +34,9 @@ public class AutomatedTeller extends FinancialService {
    * Builder for {@link AutomatedTeller}
    */
   public static class Builder extends FinancialService.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AutomatedTeller build() {
       return new AutomatedTeller(myData);
     }

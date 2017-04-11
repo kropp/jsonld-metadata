@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * An agent quotes/estimates/appraises an object/product/service with a price at a location/store.
  */
@@ -32,6 +34,9 @@ public class QuoteAction extends TradeAction {
    * Builder for {@link QuoteAction}
    */
   public static class Builder extends TradeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public QuoteAction build() {
       return new QuoteAction(myData);
     }

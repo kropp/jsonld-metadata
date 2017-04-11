@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The price asked for a given offer by the respective organization or person.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -192,6 +193,9 @@ public class UnitPriceSpecification extends PriceSpecification {
    * Builder for {@link UnitPriceSpecification}
    */
   public static class Builder extends PriceSpecification.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public UnitPriceSpecification build() {
       return new UnitPriceSpecification(myData);
     }

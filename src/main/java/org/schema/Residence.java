@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The place where a person lives.
  */
@@ -32,6 +34,9 @@ public class Residence extends Place {
    * Builder for {@link Residence}
    */
   public static class Builder extends Place.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Residence build() {
       return new Residence(myData);
     }

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Server that provides game interaction in a multiplayer game.
@@ -88,6 +89,9 @@ public class GameServer extends Intangible {
    * Builder for {@link GameServer}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public GameServer build() {
       return new GameServer(myData);
     }

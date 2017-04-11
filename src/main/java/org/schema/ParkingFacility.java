@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A parking lot or other parking facility.
  */
@@ -32,6 +34,9 @@ public class ParkingFacility extends CivicStructure {
    * Builder for {@link ParkingFacility}
    */
   public static class Builder extends CivicStructure.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ParkingFacility build() {
       return new ParkingFacility(myData);
     }

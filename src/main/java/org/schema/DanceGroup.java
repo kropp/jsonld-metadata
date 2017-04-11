@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A dance group&#x2014;for example, the Alvin Ailey Dance Theater or Riverdance.
  */
@@ -32,6 +34,9 @@ public class DanceGroup extends PerformingGroup {
    * Builder for {@link DanceGroup}
    */
   public static class Builder extends PerformingGroup.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DanceGroup build() {
       return new DanceGroup(myData);
     }

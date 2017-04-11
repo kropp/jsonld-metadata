@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A summary of how users have interacted with this CreativeWork. In most cases, authors will use a subtype to specify the specific type of interaction.
@@ -105,6 +106,9 @@ public class InteractionCounter extends StructuredValue {
    * Builder for {@link InteractionCounter}
    */
   public static class Builder extends StructuredValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public InteractionCounter build() {
       return new InteractionCounter(myData);
     }

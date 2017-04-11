@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Event type: Theater performance.
  */
@@ -32,6 +34,9 @@ public class TheaterEvent extends Event {
    * Builder for {@link TheaterEvent}
    */
   public static class Builder extends Event.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TheaterEvent build() {
       return new TheaterEvent(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * An agent controls a device or application.
  */
@@ -32,6 +34,9 @@ public class ControlAction extends Action {
    * Builder for {@link ControlAction}
    */
   public static class Builder extends Action.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ControlAction build() {
       return new ControlAction(myData);
     }

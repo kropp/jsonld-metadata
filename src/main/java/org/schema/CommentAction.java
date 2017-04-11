@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of generating a comment about a subject.
@@ -54,6 +55,9 @@ public class CommentAction extends CommunicateAction {
    * Builder for {@link CommentAction}
    */
   public static class Builder extends CommunicateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CommentAction build() {
       return new CommentAction(myData);
     }

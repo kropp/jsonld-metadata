@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of expressing a consistency of opinion with the object. An agent agrees to/about an object (a proposition, topic or theme) with participants.
  */
@@ -32,6 +34,9 @@ public class AgreeAction extends ReactAction {
    * Builder for {@link AgreeAction}
    */
   public static class Builder extends ReactAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AgreeAction build() {
       return new AgreeAction(myData);
     }

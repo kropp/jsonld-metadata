@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A sea (for example, the Caspian sea).
  */
@@ -32,6 +34,9 @@ public class SeaBodyOfWater extends BodyOfWater {
    * Builder for {@link SeaBodyOfWater}
    */
   public static class Builder extends BodyOfWater.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SeaBodyOfWater build() {
       return new SeaBodyOfWater(myData);
     }

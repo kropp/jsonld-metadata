@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A publication event e.g. catch-up TV or radio podcast, during which a program is available on-demand.
  */
@@ -32,6 +34,9 @@ public class OnDemandEvent extends PublicationEvent {
    * Builder for {@link OnDemandEvent}
    */
   public static class Builder extends PublicationEvent.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public OnDemandEvent build() {
       return new OnDemandEvent(myData);
     }

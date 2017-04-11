@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of providing goods, services, or money without compensation, often for philanthropic reasons.
@@ -88,6 +89,9 @@ public class DonateAction extends TradeAction {
    * Builder for {@link DonateAction}
    */
   public static class Builder extends TradeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DonateAction build() {
       return new DonateAction(myData);
     }

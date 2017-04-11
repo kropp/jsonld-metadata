@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of editing by adding an object to a collection.
  */
@@ -32,6 +34,9 @@ public class AddAction extends UpdateAction {
    * Builder for {@link AddAction}
    */
   public static class Builder extends UpdateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AddAction build() {
       return new AddAction(myData);
     }

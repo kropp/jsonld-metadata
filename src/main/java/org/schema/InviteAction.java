@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of asking someone to attend an event. Reciprocal of RsvpAction.
@@ -54,6 +55,9 @@ public class InviteAction extends CommunicateAction {
    * Builder for {@link InviteAction}
    */
   public static class Builder extends CommunicateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public InviteAction build() {
       return new InviteAction(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A food service, like breakfast, lunch, or dinner.Source: https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
  */
@@ -32,6 +34,9 @@ public class FoodService extends Service {
    * Builder for {@link FoodService}
    */
   public static class Builder extends Service.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public FoodService build() {
       return new FoodService(myData);
     }

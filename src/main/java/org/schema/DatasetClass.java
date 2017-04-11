@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * This class is based upon W3C DCAT work, and benefits from collaboration around the DCAT, ADMS and VoID vocabularies. See http://www.w3.org/wiki/WebSchemas/Datasets for full details and mappings.
  */
@@ -32,6 +34,9 @@ public class DatasetClass extends Organization {
    * Builder for {@link DatasetClass}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DatasetClass build() {
       return new DatasetClass(myData);
     }

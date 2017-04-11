@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A bike store.
  */
@@ -32,6 +34,9 @@ public class BikeStore extends Store {
    * Builder for {@link BikeStore}
    */
   public static class Builder extends Store.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public BikeStore build() {
       return new BikeStore(myData);
     }

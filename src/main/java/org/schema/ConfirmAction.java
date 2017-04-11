@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of notifying someone that a future event/action is going to happen as expected.\n\nRelated actions:\n\n* [[CancelAction]]: The antonym of ConfirmAction.
  */
@@ -32,6 +34,9 @@ public class ConfirmAction extends InformAction {
    * Builder for {@link ConfirmAction}
    */
   public static class Builder extends InformAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ConfirmAction build() {
       return new ConfirmAction(myData);
     }

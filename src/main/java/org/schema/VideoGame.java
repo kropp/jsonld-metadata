@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A video game is an electronic game that involves human interaction with a user interface to generate visual feedback on a video device.
@@ -207,6 +208,9 @@ public class VideoGame extends Game {
    * Builder for {@link VideoGame}
    */
   public static class Builder extends Game.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public VideoGame build() {
       return new VideoGame(myData);
     }

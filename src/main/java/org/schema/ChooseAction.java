@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of expressing a preference from a set of options or a large or unbounded set of choices/options.
@@ -71,6 +72,9 @@ public class ChooseAction extends AssessAction {
    * Builder for {@link ChooseAction}
    */
   public static class Builder extends AssessAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ChooseAction build() {
       return new ChooseAction(myData);
     }

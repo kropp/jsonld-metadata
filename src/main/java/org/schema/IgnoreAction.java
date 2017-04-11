@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of intentionally disregarding the object. An agent ignores an object.
  */
@@ -32,6 +34,9 @@ public class IgnoreAction extends AssessAction {
    * Builder for {@link IgnoreAction}
    */
   public static class Builder extends AssessAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public IgnoreAction build() {
       return new IgnoreAction(myData);
     }

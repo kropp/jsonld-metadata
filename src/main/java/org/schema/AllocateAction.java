@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of organizing tasks/objects/events by associating resources to it.
  */
@@ -32,6 +34,9 @@ public class AllocateAction extends OrganizeAction {
    * Builder for {@link AllocateAction}
    */
   public static class Builder extends OrganizeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AllocateAction build() {
       return new AllocateAction(myData);
     }

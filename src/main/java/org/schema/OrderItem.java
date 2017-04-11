@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * An order item is a line of an order. It includes the quantity and shipping details of a bought offer.
@@ -207,6 +208,9 @@ public class OrderItem extends Intangible {
    * Builder for {@link OrderItem}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public OrderItem build() {
       return new OrderItem(myData);
     }

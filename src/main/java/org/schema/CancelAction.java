@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of asserting that a future event/action is no longer going to happen.\n\nRelated actions:\n\n* [[ConfirmAction]]: The antonym of CancelAction.
  */
@@ -32,6 +34,9 @@ public class CancelAction extends PlanAction {
    * Builder for {@link CancelAction}
    */
   public static class Builder extends PlanAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CancelAction build() {
       return new CancelAction(myData);
     }

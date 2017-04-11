@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A collection of music tracks.
@@ -105,6 +106,9 @@ public class MusicAlbum extends MusicPlaylist {
    * Builder for {@link MusicAlbum}
    */
   public static class Builder extends MusicPlaylist.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MusicAlbum build() {
       return new MusicAlbum(myData);
     }

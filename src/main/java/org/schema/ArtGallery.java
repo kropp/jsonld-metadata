@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * An art gallery.
  */
@@ -32,6 +34,9 @@ public class ArtGallery extends EntertainmentBusiness {
    * Builder for {@link ArtGallery}
    */
   public static class Builder extends EntertainmentBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ArtGallery build() {
       return new ArtGallery(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * 
  *           A Series in schema.org is a group of related items, typically but not necessarily of the same kind. 
@@ -33,6 +35,9 @@ public class Series extends CreativeWork {
    * Builder for {@link Series}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Series build() {
       return new Series(myData);
     }

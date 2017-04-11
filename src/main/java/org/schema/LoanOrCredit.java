@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A financial product for the loaning of an amount of money under agreed terms and charges.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
@@ -88,6 +89,9 @@ public class LoanOrCredit extends FinancialProduct {
    * Builder for {@link LoanOrCredit}
    */
   public static class Builder extends FinancialProduct.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public LoanOrCredit build() {
       return new LoanOrCredit(myData);
     }

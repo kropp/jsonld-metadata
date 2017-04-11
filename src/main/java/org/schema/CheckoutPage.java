@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Web page type: Checkout page.
  */
@@ -32,6 +34,9 @@ public class CheckoutPage extends WebPage {
    * Builder for {@link CheckoutPage}
    */
   public static class Builder extends WebPage.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CheckoutPage build() {
       return new CheckoutPage(myData);
     }

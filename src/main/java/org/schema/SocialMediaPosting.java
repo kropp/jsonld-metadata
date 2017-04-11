@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A post to a social media platform, including blog posts, tweets, Facebook posts, etc.
@@ -54,6 +55,9 @@ public class SocialMediaPosting extends Article {
    * Builder for {@link SocialMediaPosting}
    */
   public static class Builder extends Article.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SocialMediaPosting build() {
       return new SocialMediaPosting(myData);
     }

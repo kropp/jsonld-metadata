@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of giving money voluntarily to a beneficiary in recognition of services rendered.
@@ -88,6 +89,9 @@ public class TipAction extends TradeAction {
    * Builder for {@link TipAction}
    */
   public static class Builder extends TradeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TipAction build() {
       return new TipAction(myData);
     }

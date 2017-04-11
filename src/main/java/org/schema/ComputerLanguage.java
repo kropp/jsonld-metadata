@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * This type covers computer programming languages such as Scheme and Lisp, as well as other language-like computer representations. Natural languages are best represented with the [[Language]] type.
  */
@@ -32,6 +34,9 @@ public class ComputerLanguage extends Intangible {
    * Builder for {@link ComputerLanguage}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ComputerLanguage build() {
       return new ComputerLanguage(myData);
     }

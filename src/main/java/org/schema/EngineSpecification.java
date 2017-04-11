@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Information about the engine of the vehicle. A vehicle can have multiple engines represented by multiple engine specification entities.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
@@ -71,6 +72,9 @@ public class EngineSpecification extends StructuredValue {
    * Builder for {@link EngineSpecification}
    */
   public static class Builder extends StructuredValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public EngineSpecification build() {
       return new EngineSpecification(myData);
     }

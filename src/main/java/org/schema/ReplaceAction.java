@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of editing a recipient by replacing an old object with a new object.
@@ -71,6 +72,9 @@ public class ReplaceAction extends UpdateAction {
    * Builder for {@link ReplaceAction}
    */
   public static class Builder extends UpdateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ReplaceAction build() {
       return new ReplaceAction(myData);
     }

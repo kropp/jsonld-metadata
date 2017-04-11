@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A QAPage is a WebPage focussed on a specific Question and its Answer(s), e.g. in a question answering site or documenting Frequently Asked Questions (FAQs).
  */
@@ -32,6 +34,9 @@ public class QAPage extends WebPage {
    * Builder for {@link QAPage}
    */
   public static class Builder extends WebPage.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public QAPage build() {
       return new QAPage(myData);
     }

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of producing a balanced opinion about the object for an audience. An agent reviews an object with participants resulting in a review.
@@ -54,6 +55,9 @@ public class ReviewAction extends AssessAction {
    * Builder for {@link ReviewAction}
    */
   public static class Builder extends AssessAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ReviewAction build() {
       return new ReviewAction(myData);
     }

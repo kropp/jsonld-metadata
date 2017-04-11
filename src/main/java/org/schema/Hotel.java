@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A hotel is an establishment that provides lodging paid on a short-term basis (Source: Wikipedia, the free encyclopedia, see http://en.wikipedia.org/wiki/Hotel).
  * <br /><br />
@@ -35,6 +37,9 @@ public class Hotel extends LodgingBusiness {
    * Builder for {@link Hotel}
    */
   public static class Builder extends LodgingBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Hotel build() {
       return new Hotel(myData);
     }

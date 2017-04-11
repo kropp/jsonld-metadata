@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A college, university, or other third-level educational institution.
  */
@@ -32,6 +34,9 @@ public class CollegeOrUniversity extends EducationalOrganization {
    * Builder for {@link CollegeOrUniversity}
    */
   public static class Builder extends EducationalOrganization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CollegeOrUniversity build() {
       return new CollegeOrUniversity(myData);
     }

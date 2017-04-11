@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A permission for a particular person or group to access a particular file.
@@ -122,6 +123,9 @@ public class DigitalDocumentPermission extends Intangible {
    * Builder for {@link DigitalDocumentPermission}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DigitalDocumentPermission build() {
       return new DigitalDocumentPermission(myData);
     }

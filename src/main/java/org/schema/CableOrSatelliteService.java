@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A service which provides access to media programming like TV or radio. Access may be via cable or satellite.
  */
@@ -32,6 +34,9 @@ public class CableOrSatelliteService extends Service {
    * Builder for {@link CableOrSatelliteService}
    */
   public static class Builder extends Service.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CableOrSatelliteService build() {
       return new CableOrSatelliteService(myData);
     }

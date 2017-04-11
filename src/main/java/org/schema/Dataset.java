@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A body of structured information describing some topic(s) of interest.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_DatasetClassEquivalent class: http://purl.org/dc/dcmitype/Dataset
@@ -71,6 +72,9 @@ public class Dataset extends CreativeWork {
    * Builder for {@link Dataset}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Dataset build() {
       return new Dataset(myData);
     }

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of traveling from an fromLocation to a destination by a specified mode of transport, optionally with participants.
@@ -54,6 +55,9 @@ public class TravelAction extends MoveAction {
    * Builder for {@link TravelAction}
    */
   public static class Builder extends MoveAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TravelAction build() {
       return new TravelAction(myData);
     }

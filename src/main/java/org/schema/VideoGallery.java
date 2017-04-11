@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Web page type: Video gallery page.
  */
@@ -32,6 +34,9 @@ public class VideoGallery extends CollectionPage {
    * Builder for {@link VideoGallery}
    */
   public static class Builder extends CollectionPage.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public VideoGallery build() {
       return new VideoGallery(myData);
     }

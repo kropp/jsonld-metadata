@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A service to convert funds from one currency to another currency.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
  */
@@ -32,6 +34,9 @@ public class CurrencyConversionService extends FinancialProduct {
    * Builder for {@link CurrencyConversionService}
    */
   public static class Builder extends FinancialProduct.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CurrencyConversionService build() {
       return new CurrencyConversionService(myData);
     }

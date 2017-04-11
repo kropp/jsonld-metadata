@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A unique instance of a BroadcastService on a CableOrSatelliteService lineup.
@@ -105,6 +106,9 @@ public class BroadcastChannel extends Intangible {
    * Builder for {@link BroadcastChannel}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public BroadcastChannel build() {
       return new BroadcastChannel(myData);
     }

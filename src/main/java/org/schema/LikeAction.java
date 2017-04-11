@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of expressing a positive sentiment about the object. An agent likes an object (a proposition, topic or theme) with participants.
  */
@@ -32,6 +34,9 @@ public class LikeAction extends ReactAction {
    * Builder for {@link LikeAction}
    */
   public static class Builder extends ReactAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public LikeAction build() {
       return new LikeAction(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of reaching a draw in a competitive activity.
  */
@@ -32,6 +34,9 @@ public class TieAction extends AchieveAction {
    * Builder for {@link TieAction}
    */
   public static class Builder extends AchieveAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TieAction build() {
       return new TieAction(myData);
     }

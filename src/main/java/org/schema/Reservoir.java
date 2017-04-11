@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A reservoir of water, typically an artificially created lake, like the Lake Kariba reservoir.
  */
@@ -32,6 +34,9 @@ public class Reservoir extends BodyOfWater {
    * Builder for {@link Reservoir}
    */
   public static class Builder extends BodyOfWater.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Reservoir build() {
       return new Reservoir(myData);
     }

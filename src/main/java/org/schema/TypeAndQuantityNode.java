@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A structured value indicating the quantity, unit of measurement, and business function of goods included in a bundle offer.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -209,6 +210,9 @@ public class TypeAndQuantityNode extends StructuredValue {
    * Builder for {@link TypeAndQuantityNode}
    */
   public static class Builder extends StructuredValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TypeAndQuantityNode build() {
       return new TypeAndQuantityNode(myData);
     }

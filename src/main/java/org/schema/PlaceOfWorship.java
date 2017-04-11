@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Place of worship, such as a church, synagogue, or mosque.
  */
@@ -32,6 +34,9 @@ public class PlaceOfWorship extends CivicStructure {
    * Builder for {@link PlaceOfWorship}
    */
   public static class Builder extends CivicStructure.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PlaceOfWorship build() {
       return new PlaceOfWorship(myData);
     }

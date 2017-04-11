@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of consuming static visual content.
  */
@@ -32,6 +34,9 @@ public class ViewAction extends ConsumeAction {
    * Builder for {@link ViewAction}
    */
   public static class Builder extends ConsumeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ViewAction build() {
       return new ViewAction(myData);
     }

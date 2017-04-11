@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A delivery service through which content is provided via broadcast over the air or online.
@@ -139,6 +140,9 @@ public class BroadcastService extends Service {
    * Builder for {@link BroadcastService}
    */
   public static class Builder extends Service.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public BroadcastService build() {
       return new BroadcastService(myData);
     }

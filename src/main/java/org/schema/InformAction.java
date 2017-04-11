@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of notifying someone of information pertinent to them, with no expectation of a response.
@@ -54,6 +55,9 @@ public class InformAction extends CommunicateAction {
    * Builder for {@link InformAction}
    */
   public static class Builder extends CommunicateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public InformAction build() {
       return new InformAction(myData);
     }

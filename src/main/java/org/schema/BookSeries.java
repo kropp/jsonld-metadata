@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A series of books. Included books can be indicated with the hasPart property.
  */
@@ -32,6 +34,9 @@ public class BookSeries extends CreativeWorkSeries {
    * Builder for {@link BookSeries}
    */
   public static class Builder extends CreativeWorkSeries.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public BookSeries build() {
       return new BookSeries(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * An historical landmark or building.
  */
@@ -32,6 +34,9 @@ public class LandmarksOrHistoricalBuildings extends Place {
    * Builder for {@link LandmarksOrHistoricalBuildings}
    */
   public static class Builder extends Place.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public LandmarksOrHistoricalBuildings build() {
       return new LandmarksOrHistoricalBuildings(myData);
     }

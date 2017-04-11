@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The steering position is on the left side of the vehicle (viewed from the main direction of driving).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
  */
@@ -32,6 +34,9 @@ public class LeftHandDriving extends SteeringPositionValue {
    * Builder for {@link LeftHandDriving}
    */
   public static class Builder extends SteeringPositionValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public LeftHandDriving build() {
       return new LeftHandDriving(myData);
     }

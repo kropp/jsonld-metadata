@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of  departing from a place. An agent departs from an fromLocation for a destination, optionally with participants.
  */
@@ -32,6 +34,9 @@ public class DepartAction extends MoveAction {
    * Builder for {@link DepartAction}
    */
   public static class Builder extends MoveAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DepartAction build() {
       return new DepartAction(myData);
     }

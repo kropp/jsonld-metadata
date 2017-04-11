@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of editing a recipient by removing one of its objects.
  */
@@ -32,6 +34,9 @@ public class DeleteAction extends UpdateAction {
    * Builder for {@link DeleteAction}
    */
   public static class Builder extends UpdateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DeleteAction build() {
       return new DeleteAction(myData);
     }

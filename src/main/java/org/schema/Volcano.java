@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A volcano, like Fuji san.
  */
@@ -32,6 +34,9 @@ public class Volcano extends Landform {
    * Builder for {@link Volcano}
    */
   public static class Builder extends Landform.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Volcano build() {
       return new Volcano(myData);
     }

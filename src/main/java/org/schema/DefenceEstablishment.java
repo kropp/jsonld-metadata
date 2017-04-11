@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A defence establishment, such as an army or navy base.
  */
@@ -32,6 +34,9 @@ public class DefenceEstablishment extends GovernmentBuilding {
    * Builder for {@link DefenceEstablishment}
    */
   public static class Builder extends GovernmentBuilding.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DefenceEstablishment build() {
       return new DefenceEstablishment(myData);
     }

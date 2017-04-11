@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of finding an object.\n\nRelated actions:\n\n* [[SearchAction]]: FindAction is generally lead by a SearchAction, but not necessarily.
  */
@@ -32,6 +34,9 @@ public class FindAction extends Action {
    * Builder for {@link FindAction}
    */
   public static class Builder extends Action.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public FindAction build() {
       return new FindAction(myData);
     }

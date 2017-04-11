@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A service provided by an organization, e.g. delivery service, print services, etc.
@@ -445,6 +446,9 @@ public class Service extends Intangible {
    * Builder for {@link Service}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Service build() {
       return new Service(myData);
     }

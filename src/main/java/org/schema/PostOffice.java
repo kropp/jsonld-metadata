@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A post office.
  */
@@ -32,6 +34,9 @@ public class PostOffice extends GovernmentOffice {
    * Builder for {@link PostOffice}
    */
   public static class Builder extends GovernmentOffice.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PostOffice build() {
       return new PostOffice(myData);
     }

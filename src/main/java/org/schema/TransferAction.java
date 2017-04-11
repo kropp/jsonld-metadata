@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of transferring/moving (abstract or concrete) animate or inanimate objects from one place to another.
@@ -71,6 +72,9 @@ public class TransferAction extends Action {
    * Builder for {@link TransferAction}
    */
   public static class Builder extends Action.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TransferAction build() {
       return new TransferAction(myData);
     }

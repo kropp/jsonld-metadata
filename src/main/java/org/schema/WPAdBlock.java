@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * An advertising section of the page.
  */
@@ -32,6 +34,9 @@ public class WPAdBlock extends WebPageElement {
    * Builder for {@link WPAdBlock}
    */
   public static class Builder extends WebPageElement.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public WPAdBlock build() {
       return new WPAdBlock(myData);
     }

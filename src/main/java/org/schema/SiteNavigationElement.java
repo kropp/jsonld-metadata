@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A navigation element of the page.
  */
@@ -32,6 +34,9 @@ public class SiteNavigationElement extends WebPageElement {
    * Builder for {@link SiteNavigationElement}
    */
   public static class Builder extends WebPageElement.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SiteNavigationElement build() {
       return new SiteNavigationElement(myData);
     }

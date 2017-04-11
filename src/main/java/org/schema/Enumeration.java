@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Lists or enumerations—for example, a list of cuisines or music genres, etc.
  */
@@ -32,6 +34,9 @@ public class Enumeration extends Intangible {
    * Builder for {@link Enumeration}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Enumeration build() {
       return new Enumeration(myData);
     }

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Organization: A business corporation.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
@@ -54,6 +55,9 @@ public class Corporation extends Organization {
    * Builder for {@link Corporation}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Corporation build() {
       return new Corporation(myData);
     }

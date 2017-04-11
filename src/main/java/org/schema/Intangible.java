@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A utility class that serves as the umbrella for a number of 'intangible' things such as quantities, structured values, etc.
  */
@@ -32,6 +34,9 @@ public class Intangible extends Thing {
    * Builder for {@link Intangible}
    */
   public static class Builder extends Thing.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Intangible build() {
       return new Intangible(myData);
     }

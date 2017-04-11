@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of managing by changing/editing the state of the object.
@@ -54,6 +55,9 @@ public class UpdateAction extends Action {
    * Builder for {@link UpdateAction}
    */
   public static class Builder extends Action.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public UpdateAction build() {
       return new UpdateAction(myData);
     }

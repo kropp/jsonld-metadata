@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Season dedicated to radio broadcast and associated online delivery.
  */
@@ -32,6 +34,9 @@ public class RadioSeason extends CreativeWorkSeason {
    * Builder for {@link RadioSeason}
    */
   public static class Builder extends CreativeWorkSeason.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public RadioSeason build() {
       return new RadioSeason(myData);
     }

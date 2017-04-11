@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of adding at a specific location in an ordered collection.
@@ -54,6 +55,9 @@ public class InsertAction extends AddAction {
    * Builder for {@link InsertAction}
    */
   public static class Builder extends AddAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public InsertAction build() {
       return new InsertAction(myData);
     }

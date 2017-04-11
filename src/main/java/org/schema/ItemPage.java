@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A page devoted to a single item, such as a particular product or hotel.
  */
@@ -32,6 +34,9 @@ public class ItemPage extends WebPage {
    * Builder for {@link ItemPage}
    */
   public static class Builder extends WebPage.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ItemPage build() {
       return new ItemPage(myData);
     }

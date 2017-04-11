@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A set of characteristics belonging to businesses, e.g. who compose an item's target audience.
@@ -88,6 +89,9 @@ public class BusinessAudience extends Audience {
    * Builder for {@link BusinessAudience}
    */
   public static class Builder extends Audience.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public BusinessAudience build() {
       return new BusinessAudience(myData);
     }

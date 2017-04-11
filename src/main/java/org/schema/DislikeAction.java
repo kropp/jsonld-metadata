@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of expressing a negative sentiment about the object. An agent dislikes an object (a proposition, topic or theme) with participants.
  */
@@ -32,6 +34,9 @@ public class DislikeAction extends ReactAction {
    * Builder for {@link DislikeAction}
    */
   public static class Builder extends ReactAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DislikeAction build() {
       return new DislikeAction(myData);
     }

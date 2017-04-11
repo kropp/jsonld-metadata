@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A food or drink item listed in a menu or menu section.
@@ -88,6 +89,9 @@ public class MenuItem extends Intangible {
    * Builder for {@link MenuItem}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MenuItem build() {
       return new MenuItem(myData);
     }

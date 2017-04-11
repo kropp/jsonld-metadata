@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A business that provide Heating, Ventilation and Air Conditioning services.
  */
@@ -32,6 +34,9 @@ public class HVACBusiness extends HomeAndConstructionBusiness {
    * Builder for {@link HVACBusiness}
    */
   public static class Builder extends HomeAndConstructionBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public HVACBusiness build() {
       return new HVACBusiness(myData);
     }

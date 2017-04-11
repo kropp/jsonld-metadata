@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of notifying an event organizer as to whether you expect to attend the event.
@@ -156,6 +157,9 @@ public class RsvpAction extends InformAction {
    * Builder for {@link RsvpAction}
    */
   public static class Builder extends InformAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public RsvpAction build() {
       return new RsvpAction(myData);
     }

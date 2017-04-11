@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A means for accessing a service, e.g. a government office location, web site, or phone number.
@@ -190,6 +191,9 @@ public class ServiceChannel extends Intangible {
    * Builder for {@link ServiceChannel}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ServiceChannel build() {
       return new ServiceChannel(myData);
     }

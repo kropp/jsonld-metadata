@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A meeting room, conference room, or conference hall is a room provided for singular events such as business conferences and meetings (Source: Wikipedia, the free encyclopedia, see <a href="http://en.wikipedia.org/wiki/Conference_hall">http://en.wikipedia.org/wiki/Conference_hall</a>).
  * <br /><br />
@@ -35,6 +37,9 @@ public class MeetingRoom extends Room {
    * Builder for {@link MeetingRoom}
    */
   public static class Builder extends Room.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MeetingRoom build() {
       return new MeetingRoom(myData);
     }

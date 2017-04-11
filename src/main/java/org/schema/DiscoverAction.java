@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of discovering/finding an object.
  */
@@ -32,6 +34,9 @@ public class DiscoverAction extends FindAction {
    * Builder for {@link DiscoverAction}
    */
   public static class Builder extends FindAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DiscoverAction build() {
       return new DiscoverAction(myData);
     }

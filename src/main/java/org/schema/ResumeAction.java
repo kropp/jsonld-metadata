@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of resuming a device or application which was formerly paused (e.g. resume music playback or resume a timer).
  */
@@ -32,6 +34,9 @@ public class ResumeAction extends ControlAction {
    * Builder for {@link ResumeAction}
    */
   public static class Builder extends ControlAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ResumeAction build() {
       return new ResumeAction(myData);
     }

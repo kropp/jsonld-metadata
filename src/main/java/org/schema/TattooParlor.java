@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A tattoo parlor.
  */
@@ -32,6 +34,9 @@ public class TattooParlor extends HealthAndBeautyBusiness {
    * Builder for {@link TattooParlor}
    */
   public static class Builder extends HealthAndBeautyBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TattooParlor build() {
       return new TattooParlor(myData);
     }

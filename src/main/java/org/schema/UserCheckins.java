@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * UserInteraction and its subtypes is an old way of talking about users interacting with pages. It is generally better to use [[Action]]-based vocabulary, alongside types such as [[Comment]].
  */
@@ -32,6 +34,9 @@ public class UserCheckins extends UserInteraction {
    * Builder for {@link UserCheckins}
    */
   public static class Builder extends UserInteraction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public UserCheckins build() {
       return new UserCheckins(myData);
     }

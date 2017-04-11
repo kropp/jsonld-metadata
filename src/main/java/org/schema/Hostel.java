@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A hostel - cheap accommodation, often in shared dormitories.
  * <br /><br />
@@ -35,6 +37,9 @@ public class Hostel extends LodgingBusiness {
    * Builder for {@link Hostel}
    */
   public static class Builder extends LodgingBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Hostel build() {
       return new Hostel(myData);
     }

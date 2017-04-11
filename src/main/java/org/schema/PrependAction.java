@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of inserting at the beginning if an ordered collection.
  */
@@ -32,6 +34,9 @@ public class PrependAction extends InsertAction {
    * Builder for {@link PrependAction}
    */
   public static class Builder extends InsertAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PrependAction build() {
       return new PrependAction(myData);
     }

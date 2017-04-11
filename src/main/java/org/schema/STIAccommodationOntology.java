@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * This element is based on the STI Accommodation Ontology, see <a href="http://ontologies.sti-innsbruck.at/acco/ns.html">http://ontologies.sti-innsbruck.at/acco/ns.html</a> for details.
  *     Many class and property definitions are inspired by or based on abstracts from Wikipedia, the free encyclopedia.
@@ -33,6 +35,9 @@ public class STIAccommodationOntology extends Organization {
    * Builder for {@link STIAccommodationOntology}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public STIAccommodationOntology build() {
       return new STIAccommodationOntology(myData);
     }

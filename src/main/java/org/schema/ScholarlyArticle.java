@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A scholarly article.
  */
@@ -32,6 +34,9 @@ public class ScholarlyArticle extends Article {
    * Builder for {@link ScholarlyArticle}
    */
   public static class Builder extends Article.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ScholarlyArticle build() {
       return new ScholarlyArticle(myData);
     }

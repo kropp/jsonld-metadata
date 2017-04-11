@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A type of Bank Account with a main purpose of depositing funds to gain interest or other benefits.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO
  */
@@ -32,6 +34,9 @@ public class DepositAccount extends InvestmentOrDeposit {
    * Builder for {@link DepositAccount}
    */
   public static class Builder extends InvestmentOrDeposit.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DepositAccount build() {
       return new DepositAccount(myData);
     }

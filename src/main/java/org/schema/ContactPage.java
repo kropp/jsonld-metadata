@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Web page type: Contact page.
  */
@@ -32,6 +34,9 @@ public class ContactPage extends WebPage {
    * Builder for {@link ContactPage}
    */
   public static class Builder extends WebPage.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ContactPage build() {
       return new ContactPage(myData);
     }

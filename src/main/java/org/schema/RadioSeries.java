@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * CreativeWorkSeries dedicated to radio broadcast and associated online delivery.
@@ -207,6 +208,9 @@ public class RadioSeries extends CreativeWorkSeries {
    * Builder for {@link RadioSeries}
    */
   public static class Builder extends CreativeWorkSeries.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public RadioSeries build() {
       return new RadioSeries(myData);
     }

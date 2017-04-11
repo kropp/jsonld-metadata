@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A value indicating which roadwheels will receive torque.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
  */
@@ -32,6 +34,9 @@ public class DriveWheelConfigurationValue extends QualitativeValue {
    * Builder for {@link DriveWheelConfigurationValue}
    */
   public static class Builder extends QualitativeValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DriveWheelConfigurationValue build() {
       return new DriveWheelConfigurationValue(myData);
     }

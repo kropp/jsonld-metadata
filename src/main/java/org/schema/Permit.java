@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A permit issued by an organization, e.g. a parking pass.
@@ -156,6 +157,9 @@ public class Permit extends Intangible {
    * Builder for {@link Permit}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Permit build() {
       return new Permit(myData);
     }

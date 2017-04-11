@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of returning to the origin that which was previously received (concrete objects) or taken (ownership).
@@ -88,6 +89,9 @@ public class ReturnAction extends TransferAction {
    * Builder for {@link ReturnAction}
    */
   public static class Builder extends TransferAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ReturnAction build() {
       return new ReturnAction(myData);
     }

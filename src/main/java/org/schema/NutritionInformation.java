@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Nutritional information about the recipe.
@@ -224,6 +225,9 @@ public class NutritionInformation extends StructuredValue {
    * Builder for {@link NutritionInformation}
    */
   public static class Builder extends StructuredValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public NutritionInformation build() {
       return new NutritionInformation(myData);
     }

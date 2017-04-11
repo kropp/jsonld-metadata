@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A software application designed specifically to work well on a mobile device such as a telephone.
@@ -54,6 +55,9 @@ public class MobileApplication extends SoftwareApplication {
    * Builder for {@link MobileApplication}
    */
   public static class Builder extends SoftwareApplication.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MobileApplication build() {
       return new MobileApplication(myData);
     }

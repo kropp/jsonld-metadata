@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The header section of the page.
  */
@@ -32,6 +34,9 @@ public class WPHeader extends WebPageElement {
    * Builder for {@link WPHeader}
    */
   public static class Builder extends WebPageElement.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public WPHeader build() {
       return new WPHeader(myData);
     }

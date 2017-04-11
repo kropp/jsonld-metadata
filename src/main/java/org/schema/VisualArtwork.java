@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A work of art that is primarily visual in character.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_VisualArtworkClass
@@ -224,6 +225,9 @@ public class VisualArtwork extends CreativeWork {
    * Builder for {@link VisualArtwork}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public VisualArtwork build() {
       return new VisualArtwork(myData);
     }

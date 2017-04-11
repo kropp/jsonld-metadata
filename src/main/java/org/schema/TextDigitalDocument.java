@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A file composed primarily of text.
  */
@@ -32,6 +34,9 @@ public class TextDigitalDocument extends DigitalDocument {
    * Builder for {@link TextDigitalDocument}
    */
   public static class Builder extends DigitalDocument.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TextDigitalDocument build() {
       return new TextDigitalDocument(myData);
     }

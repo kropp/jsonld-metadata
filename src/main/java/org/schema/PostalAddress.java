@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The mailing address.
@@ -156,6 +157,9 @@ public class PostalAddress extends ContactPoint {
    * Builder for {@link PostalAddress}
    */
   public static class Builder extends ContactPoint.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PostalAddress build() {
       return new PostalAddress(myData);
     }

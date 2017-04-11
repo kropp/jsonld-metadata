@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The delivery of a parcel either via the postal service or a commercial service.
@@ -241,6 +242,9 @@ public class ParcelDelivery extends Intangible {
    * Builder for {@link ParcelDelivery}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ParcelDelivery build() {
       return new ParcelDelivery(myData);
     }

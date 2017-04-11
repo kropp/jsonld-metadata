@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * An adult entertainment establishment.
  */
@@ -32,6 +34,9 @@ public class AdultEntertainment extends EntertainmentBusiness {
    * Builder for {@link AdultEntertainment}
    */
   public static class Builder extends EntertainmentBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AdultEntertainment build() {
       return new AdultEntertainment(myData);
     }

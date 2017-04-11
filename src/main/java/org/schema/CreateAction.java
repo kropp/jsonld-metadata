@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of deliberately creating/producing/generating/building a result out of the agent.
  */
@@ -32,6 +34,9 @@ public class CreateAction extends Action {
    * Builder for {@link CreateAction}
    */
   public static class Builder extends Action.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CreateAction build() {
       return new CreateAction(myData);
     }

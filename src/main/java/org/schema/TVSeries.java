@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * CreativeWorkSeries dedicated to TV broadcast and associated online delivery.
@@ -224,6 +225,9 @@ public class TVSeries extends CreativeWorkSeries {
    * Builder for {@link TVSeries}
    */
   public static class Builder extends CreativeWorkSeries.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TVSeries build() {
       return new TVSeries(myData);
     }

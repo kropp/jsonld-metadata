@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * UserInteraction and its subtypes is an old way of talking about users interacting with pages. It is generally better to use [[Action]]-based vocabulary, alongside types such as [[Comment]].Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
@@ -139,6 +140,9 @@ public class UserComments extends UserInteraction {
    * Builder for {@link UserComments}
    */
   public static class Builder extends UserInteraction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public UserComments build() {
       return new UserComments(myData);
     }

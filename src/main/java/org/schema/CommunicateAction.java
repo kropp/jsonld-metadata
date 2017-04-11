@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of conveying information to another person via a communication medium (instrument) such as speech, email, or telephone conversation.
@@ -139,6 +140,9 @@ public class CommunicateAction extends InteractAction {
    * Builder for {@link CommunicateAction}
    */
   public static class Builder extends InteractAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CommunicateAction build() {
       return new CommunicateAction(myData);
     }

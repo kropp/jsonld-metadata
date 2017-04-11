@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of participating in exertive activity for the purposes of improving health and fitness.
@@ -173,6 +174,9 @@ public class ExerciseAction extends PlayAction {
    * Builder for {@link ExerciseAction}
    */
   public static class Builder extends PlayAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ExerciseAction build() {
       return new ExerciseAction(myData);
     }

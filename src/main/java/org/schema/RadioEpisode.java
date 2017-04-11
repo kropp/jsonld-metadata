@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A radio episode which can be part of a series or season.
  */
@@ -32,6 +34,9 @@ public class RadioEpisode extends Episode {
    * Builder for {@link RadioEpisode}
    */
   public static class Builder extends Episode.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public RadioEpisode build() {
       return new RadioEpisode(myData);
     }

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * An agent pays a price to a participant.
@@ -88,6 +89,9 @@ public class PayAction extends TradeAction {
    * Builder for {@link PayAction}
    */
   public static class Builder extends TradeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PayAction build() {
       return new PayAction(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * All-wheel Drive is a transmission layout where the engine drives all four wheels.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
  */
@@ -32,6 +34,9 @@ public class AllWheelDriveConfiguration extends DriveWheelConfigurationValue {
    * Builder for {@link AllWheelDriveConfiguration}
    */
   public static class Builder extends DriveWheelConfigurationValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AllWheelDriveConfiguration build() {
       return new AllWheelDriveConfiguration(myData);
     }

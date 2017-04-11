@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A contact point&#x2014;for example, a Customer Complaints department.
@@ -207,6 +208,9 @@ public class ContactPoint extends StructuredValue {
    * Builder for {@link ContactPoint}
    */
   public static class Builder extends StructuredValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ContactPoint build() {
       return new ContactPoint(myData);
     }

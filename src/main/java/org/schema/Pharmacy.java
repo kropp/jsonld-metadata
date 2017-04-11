@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A pharmacy or drugstore.
  */
@@ -32,6 +34,9 @@ public class Pharmacy extends MedicalOrganization {
    * Builder for {@link Pharmacy}
    */
   public static class Builder extends MedicalOrganization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Pharmacy build() {
       return new Pharmacy(myData);
     }

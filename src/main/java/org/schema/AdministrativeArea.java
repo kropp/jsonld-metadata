@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A geographical region, typically under the jurisdiction of a particular government.
  */
@@ -32,6 +34,9 @@ public class AdministrativeArea extends Place {
    * Builder for {@link AdministrativeArea}
    */
   public static class Builder extends Place.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AdministrativeArea build() {
       return new AdministrativeArea(myData);
     }

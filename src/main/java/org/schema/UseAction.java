@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of applying an object to its intended purpose.
  */
@@ -32,6 +34,9 @@ public class UseAction extends ConsumeAction {
    * Builder for {@link UseAction}
    */
   public static class Builder extends ConsumeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public UseAction build() {
       return new UseAction(myData);
     }

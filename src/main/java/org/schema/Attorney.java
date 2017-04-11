@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Professional service: Attorney. \n\nThis type is deprecated - [[LegalService]] is more inclusive and less ambiguous.
  */
@@ -32,6 +34,9 @@ public class Attorney extends LegalService {
    * Builder for {@link Attorney}
    */
   public static class Builder extends LegalService.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Attorney build() {
       return new Attorney(myData);
     }

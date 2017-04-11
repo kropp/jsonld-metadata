@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of consuming audio content.
  */
@@ -32,6 +34,9 @@ public class ListenAction extends ConsumeAction {
    * Builder for {@link ListenAction}
    */
   public static class Builder extends ConsumeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ListenAction build() {
       return new ListenAction(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * This vocabulary was improved through collaboration with the MusicBrainz project
  *     ([www.musicbrainz.org](http://www.musicbrainz.org)), and is partially inspired by the MusicBrainz and
@@ -34,6 +36,9 @@ public class MBZ extends Organization {
    * Builder for {@link MBZ}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MBZ build() {
       return new MBZ(myData);
     }

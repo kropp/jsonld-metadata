@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of stopping or deactivating a device or application (e.g. stopping a timer or turning off a flashlight).
  */
@@ -32,6 +34,9 @@ public class DeactivateAction extends ControlAction {
    * Builder for {@link DeactivateAction}
    */
   public static class Builder extends ControlAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DeactivateAction build() {
       return new DeactivateAction(myData);
     }

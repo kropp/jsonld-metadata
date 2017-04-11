@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A lodging business, such as a motel, hotel, or inn.
@@ -190,6 +191,9 @@ public class LodgingBusiness extends LocalBusiness {
    * Builder for {@link LodgingBusiness}
    */
   public static class Builder extends LocalBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public LodgingBusiness build() {
       return new LodgingBusiness(myData);
     }

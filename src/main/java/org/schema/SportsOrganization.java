@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Represents the collection of all sports organizations, including sports teams, governing bodies, and sports associations.
@@ -54,6 +55,9 @@ public class SportsOrganization extends Organization {
    * Builder for {@link SportsOrganization}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SportsOrganization build() {
       return new SportsOrganization(myData);
     }

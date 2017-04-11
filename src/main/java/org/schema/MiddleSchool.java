@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A middle school (typically for children aged around 11-14, although this varies somewhat).
  */
@@ -32,6 +34,9 @@ public class MiddleSchool extends EducationalOrganization {
    * Builder for {@link MiddleSchool}
    */
   public static class Builder extends EducationalOrganization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MiddleSchool build() {
       return new MiddleSchool(myData);
     }

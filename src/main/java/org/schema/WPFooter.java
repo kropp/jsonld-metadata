@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The footer section of the page.
  */
@@ -32,6 +34,9 @@ public class WPFooter extends WebPageElement {
    * Builder for {@link WPFooter}
    */
   public static class Builder extends WebPageElement.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public WPFooter build() {
       return new WPFooter(myData);
     }

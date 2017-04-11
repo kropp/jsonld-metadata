@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * An list item, e.g. a step in a checklist or how-to description.
@@ -88,6 +89,9 @@ public class ListItem extends Intangible implements Position {
    * Builder for {@link ListItem}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ListItem build() {
       return new ListItem(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Properties that take Mass as values are of the form '&lt;Number&gt; &lt;Mass unit of measure&gt;'. E.g., '7 kg'.
  */
@@ -32,6 +34,9 @@ public class Mass extends Quantity {
    * Builder for {@link Mass}
    */
   public static class Builder extends Quantity.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Mass build() {
       return new Mass(myData);
     }

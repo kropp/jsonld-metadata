@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Properties that take Energy as values are of the form '&lt;Number&gt; &lt;Energy unit of measure&gt;'.
  */
@@ -32,6 +34,9 @@ public class Energy extends Quantity {
    * Builder for {@link Energy}
    */
   public static class Builder extends Quantity.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Energy build() {
       return new Energy(myData);
     }

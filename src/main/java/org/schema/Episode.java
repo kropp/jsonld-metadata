@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A media episode (e.g. TV, radio, video game) which can be part of a series or season.
@@ -207,6 +208,9 @@ public class Episode extends CreativeWork {
    * Builder for {@link Episode}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Episode build() {
       return new Episode(myData);
     }

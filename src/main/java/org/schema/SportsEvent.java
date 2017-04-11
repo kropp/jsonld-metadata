@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Event type: Sports event.
@@ -88,6 +89,9 @@ public class SportsEvent extends Event {
    * Builder for {@link SportsEvent}
    */
   public static class Builder extends Event.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SportsEvent build() {
       return new SportsEvent(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of installing an application.
  */
@@ -32,6 +34,9 @@ public class InstallAction extends ConsumeAction {
    * Builder for {@link InstallAction}
    */
   public static class Builder extends ConsumeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public InstallAction build() {
       return new InstallAction(myData);
     }

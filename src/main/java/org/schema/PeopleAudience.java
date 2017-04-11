@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A set of characteristics belonging to people, e.g. who compose an item's target audience.
@@ -275,6 +276,9 @@ public class PeopleAudience extends Audience {
    * Builder for {@link PeopleAudience}
    */
   public static class Builder extends Audience.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PeopleAudience build() {
       return new PeopleAudience(myData);
     }

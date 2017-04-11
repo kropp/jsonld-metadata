@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of planning the execution of an event/task/action/reservation/plan to a future date.
@@ -54,6 +55,9 @@ public class PlanAction extends OrganizeAction {
    * Builder for {@link PlanAction}
    */
   public static class Builder extends OrganizeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PlanAction build() {
       return new PlanAction(myData);
     }

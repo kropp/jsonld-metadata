@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A video file.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_rNews
@@ -190,6 +191,9 @@ public class VideoObject extends MediaObject {
    * Builder for {@link VideoObject}
    */
   public static class Builder extends MediaObject.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public VideoObject build() {
       return new VideoObject(myData);
     }

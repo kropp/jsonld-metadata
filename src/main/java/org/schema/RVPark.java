@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A place offering space for "Recreational Vehicles", Caravans, mobile homes and the like.
  */
@@ -32,6 +34,9 @@ public class RVPark extends CivicStructure {
    * Builder for {@link RVPark}
    */
   public static class Builder extends CivicStructure.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public RVPark build() {
       return new RVPark(myData);
     }

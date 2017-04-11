@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A service provided by a government organization, e.g. food stamps, veterans benefits, etc.
@@ -54,6 +55,9 @@ public class GovernmentService extends Service {
    * Builder for {@link GovernmentService}
    */
   public static class Builder extends Service.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public GovernmentService build() {
       return new GovernmentService(myData);
     }

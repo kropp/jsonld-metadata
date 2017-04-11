@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Properties that take Distances as values are of the form '&lt;Number&gt; &lt;Length unit of measure&gt;'. E.g., '7 ft'.
  */
@@ -32,6 +34,9 @@ public class Distance extends Quantity {
    * Builder for {@link Distance}
    */
   public static class Builder extends Quantity.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Distance build() {
       return new Distance(myData);
     }

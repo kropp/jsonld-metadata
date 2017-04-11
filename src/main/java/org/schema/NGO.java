@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Organization: Non-governmental Organization.
  */
@@ -32,6 +34,9 @@ public class NGO extends Organization {
    * Builder for {@link NGO}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public NGO build() {
       return new NGO(myData);
     }

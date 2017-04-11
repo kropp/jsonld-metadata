@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of accomplishing something via previous efforts. It is an instantaneous action rather than an ongoing process.
  */
@@ -32,6 +34,9 @@ public class AchieveAction extends Action {
    * Builder for {@link AchieveAction}
    */
   public static class Builder extends Action.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AchieveAction build() {
       return new AchieveAction(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Web page type: Search results page.
  */
@@ -32,6 +34,9 @@ public class SearchResultsPage extends WebPage {
    * Builder for {@link SearchResultsPage}
    */
   public static class Builder extends WebPage.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SearchResultsPage build() {
       return new SearchResultsPage(myData);
     }

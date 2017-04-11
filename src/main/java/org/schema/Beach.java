@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Beach.
  */
@@ -32,6 +34,9 @@ public class Beach extends CivicStructure {
    * Builder for {@link Beach}
    */
   public static class Builder extends CivicStructure.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Beach build() {
       return new Beach(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A medical organization (physical or not), such as hospital, institution or clinic.
  */
@@ -32,6 +34,9 @@ public class MedicalOrganization extends Organization {
    * Builder for {@link MedicalOrganization}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MedicalOrganization build() {
       return new MedicalOrganization(myData);
     }

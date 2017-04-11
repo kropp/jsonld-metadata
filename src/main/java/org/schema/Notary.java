@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A notary.
  */
@@ -32,6 +34,9 @@ public class Notary extends LegalService {
    * Builder for {@link Notary}
    */
   public static class Builder extends LegalService.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Notary build() {
       return new Notary(myData);
     }

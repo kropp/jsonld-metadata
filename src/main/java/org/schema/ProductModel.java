@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A datasheet or vendor specification of a product (in the sense of a prototypical description).Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -88,6 +89,9 @@ public class ProductModel extends Product {
    * Builder for {@link ProductModel}
    */
   public static class Builder extends Product.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ProductModel build() {
       return new ProductModel(myData);
     }

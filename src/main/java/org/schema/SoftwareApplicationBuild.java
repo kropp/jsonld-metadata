@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Specific build of a software applicaton
@@ -241,6 +242,9 @@ public class SoftwareApplicationBuild extends SoftwareApplication {
    * Builder for {@link SoftwareApplicationBuild}
    */
   public static class Builder extends SoftwareApplication.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SoftwareApplicationBuild build() {
       return new SoftwareApplicationBuild(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Quantity: Duration (use [ISO 8601 duration format](http://en.wikipedia.org/wiki/ISO_8601)).
  */
@@ -32,6 +34,9 @@ public class Duration extends Quantity {
    * Builder for {@link Duration}
    */
   public static class Builder extends Quantity.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Duration build() {
       return new Duration(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of consuming dynamic/moving visual content.
  */
@@ -32,6 +34,9 @@ public class WatchAction extends ConsumeAction {
    * Builder for {@link WatchAction}
    */
   public static class Builder extends ConsumeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public WatchAction build() {
       return new WatchAction(myData);
     }

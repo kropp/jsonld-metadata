@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A mountain, like Mount Whitney or Mount Everest.
  */
@@ -32,6 +34,9 @@ public class Mountain extends Landform {
    * Builder for {@link Mountain}
    */
   public static class Builder extends Landform.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Mountain build() {
       return new Mountain(myData);
     }

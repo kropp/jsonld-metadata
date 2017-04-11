@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A pond.
  */
@@ -32,6 +34,9 @@ public class Pond extends BodyOfWater {
    * Builder for {@link Pond}
    */
   public static class Builder extends BodyOfWater.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Pond build() {
       return new Pond(myData);
     }

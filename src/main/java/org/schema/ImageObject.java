@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * An image file.Equivalent class: http://purl.org/dc/dcmitype/Image
@@ -122,6 +123,9 @@ public class ImageObject extends MediaObject {
    * Builder for {@link ImageObject}
    */
   public static class Builder extends MediaObject.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ImageObject build() {
       return new ImageObject(myData);
     }

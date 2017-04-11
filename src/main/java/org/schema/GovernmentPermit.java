@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A permit issued by a government agency.
  */
@@ -32,6 +34,9 @@ public class GovernmentPermit extends Permit {
    * Builder for {@link GovernmentPermit}
    */
   public static class Builder extends Permit.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public GovernmentPermit build() {
       return new GovernmentPermit(myData);
     }

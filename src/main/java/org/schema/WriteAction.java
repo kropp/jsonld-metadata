@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of authoring written creative content.
@@ -71,6 +72,9 @@ public class WriteAction extends CreateAction {
    * Builder for {@link WriteAction}
    */
   public static class Builder extends CreateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public WriteAction build() {
       return new WriteAction(myData);
     }

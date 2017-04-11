@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A state or province of a country.
  */
@@ -32,6 +34,9 @@ public class State extends AdministrativeArea {
    * Builder for {@link State}
    */
   public static class Builder extends AdministrativeArea.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public State build() {
       return new State(myData);
     }

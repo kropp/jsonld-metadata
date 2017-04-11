@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A spreadsheet file.
  */
@@ -32,6 +34,9 @@ public class SpreadsheetDigitalDocument extends DigitalDocument {
    * Builder for {@link SpreadsheetDigitalDocument}
    */
   public static class Builder extends DigitalDocument.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SpreadsheetDigitalDocument build() {
       return new SpreadsheetDigitalDocument(myData);
     }

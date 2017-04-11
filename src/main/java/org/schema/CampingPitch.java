@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A camping pitch is an individual place for overnight stay in the outdoors, typically being part of a larger camping site.
  * <br /><br />
@@ -35,6 +37,9 @@ public class CampingPitch extends Accommodation {
    * Builder for {@link CampingPitch}
    */
   public static class Builder extends Accommodation.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CampingPitch build() {
       return new CampingPitch(myData);
     }

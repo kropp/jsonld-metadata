@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A musical composition.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#MBZ
@@ -224,6 +225,9 @@ public class MusicComposition extends CreativeWork {
    * Builder for {@link MusicComposition}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MusicComposition build() {
       return new MusicComposition(myData);
     }

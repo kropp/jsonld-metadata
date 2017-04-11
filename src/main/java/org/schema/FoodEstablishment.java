@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A food-related business.
@@ -139,6 +140,9 @@ public class FoodEstablishment extends LocalBusiness {
    * Builder for {@link FoodEstablishment}
    */
   public static class Builder extends LocalBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public FoodEstablishment build() {
       return new FoodEstablishment(myData);
     }

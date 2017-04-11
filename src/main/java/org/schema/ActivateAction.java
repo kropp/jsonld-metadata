@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of starting or activating a device or application (e.g. starting a timer or turning on a flashlight).
  */
@@ -32,6 +34,9 @@ public class ActivateAction extends ControlAction {
    * Builder for {@link ActivateAction}
    */
   public static class Builder extends ControlAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ActivateAction build() {
       return new ActivateAction(myData);
     }

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * An organization that provides flights for passengers.
@@ -71,6 +72,9 @@ public class Airline extends Organization {
    * Builder for {@link Airline}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Airline build() {
       return new Airline(myData);
     }

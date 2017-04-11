@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of expressing a preference from a fixed/finite/structured set of choices/options.
@@ -54,6 +55,9 @@ public class VoteAction extends ChooseAction {
    * Builder for {@link VoteAction}
    */
   public static class Builder extends ChooseAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public VoteAction build() {
       return new VoteAction(myData);
     }

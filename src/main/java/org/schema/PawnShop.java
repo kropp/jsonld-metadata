@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A shop that will buy, or lend money against the security of, personal possessions.
  */
@@ -32,6 +34,9 @@ public class PawnShop extends Store {
    * Builder for {@link PawnShop}
    */
   public static class Builder extends Store.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PawnShop build() {
       return new PawnShop(myData);
     }

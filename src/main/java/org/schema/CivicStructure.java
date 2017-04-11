@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A public structure, such as a town hall or concert hall.
@@ -54,6 +55,9 @@ public class CivicStructure extends Place {
    * Builder for {@link CivicStructure}
    */
   public static class Builder extends Place.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public CivicStructure build() {
       return new CivicStructure(myData);
     }

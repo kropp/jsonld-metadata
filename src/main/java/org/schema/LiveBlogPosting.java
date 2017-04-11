@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A blog post intended to provide a rolling textual coverage of an ongoing event through continuous updates.
@@ -88,6 +89,9 @@ public class LiveBlogPosting extends BlogPosting {
    * Builder for {@link LiveBlogPosting}
    */
   public static class Builder extends BlogPosting.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public LiveBlogPosting build() {
       return new LiveBlogPosting(myData);
     }

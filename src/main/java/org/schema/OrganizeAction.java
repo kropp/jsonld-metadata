@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of manipulating/administering/supervising/controlling one or more objects.
  */
@@ -32,6 +34,9 @@ public class OrganizeAction extends Action {
    * Builder for {@link OrganizeAction}
    */
   public static class Builder extends Action.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public OrganizeAction build() {
       return new OrganizeAction(myData);
     }

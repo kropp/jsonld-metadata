@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A unique instance of a radio BroadcastService on a CableOrSatelliteService lineup.
  */
@@ -32,6 +34,9 @@ public class RadioChannel extends BroadcastChannel {
    * Builder for {@link RadioChannel}
    */
   public static class Builder extends BroadcastChannel.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public RadioChannel build() {
       return new RadioChannel(myData);
     }

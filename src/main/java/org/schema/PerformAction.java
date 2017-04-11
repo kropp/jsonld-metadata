@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of participating in performance arts.
@@ -54,6 +55,9 @@ public class PerformAction extends PlayAction {
    * Builder for {@link PerformAction}
    */
   public static class Builder extends PlayAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PerformAction build() {
       return new PerformAction(myData);
     }

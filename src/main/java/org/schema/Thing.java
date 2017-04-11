@@ -238,6 +238,9 @@ public class Thing {
         myData.put(key, value);
       }
     }
+    public Builder(@NotNull HashMap<String,Object> data) {
+      myData = data;
+    }
     @NotNull public Thing build() {
       return new Thing(myData);
     }
@@ -367,7 +370,7 @@ public class Thing {
       if ("ids".equals(key) && value instanceof String) { id((String)value); return; }
       if ("@id".equals(key) && value instanceof String) { id((String)value); return; }
     }
-    protected HashMap<String,Object> myData = new HashMap<String,Object>();
+    protected HashMap<String,Object> myData;
   }
   
   protected java.util.Map<String,Object> myData;

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A value indicating a steering position.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
  */
@@ -32,6 +34,9 @@ public class SteeringPositionValue extends QualitativeValue {
    * Builder for {@link SteeringPositionValue}
    */
   public static class Builder extends QualitativeValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SteeringPositionValue build() {
       return new SteeringPositionValue(myData);
     }

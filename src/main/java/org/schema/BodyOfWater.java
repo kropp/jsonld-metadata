@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A body of water, such as a sea, ocean, or lake.
  */
@@ -32,6 +34,9 @@ public class BodyOfWater extends Landform {
    * Builder for {@link BodyOfWater}
    */
   public static class Builder extends Landform.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public BodyOfWater build() {
       return new BodyOfWater(myData);
     }

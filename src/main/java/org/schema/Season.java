@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A media season e.g. tv, radio, video game etc.
  */
@@ -32,6 +34,9 @@ public class Season extends CreativeWork {
    * Builder for {@link Season}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Season build() {
       return new Season(myData);
     }

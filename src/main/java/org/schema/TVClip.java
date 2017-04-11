@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A short TV program or a segment/part of a TV program.
  */
@@ -32,6 +34,9 @@ public class TVClip extends Clip {
    * Builder for {@link TVClip}
    */
   public static class Builder extends Clip.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TVClip build() {
       return new TVClip(myData);
     }

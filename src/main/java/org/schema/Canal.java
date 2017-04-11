@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A canal, like the Panama Canal.
  */
@@ -32,6 +34,9 @@ public class Canal extends BodyOfWater {
    * Builder for {@link Canal}
    */
   public static class Builder extends BodyOfWater.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Canal build() {
       return new Canal(myData);
     }

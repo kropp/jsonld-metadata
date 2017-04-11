@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A tourist information center.
  */
@@ -32,6 +34,9 @@ public class TouristInformationCenter extends LocalBusiness {
    * Builder for {@link TouristInformationCenter}
    */
   public static class Builder extends LocalBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TouristInformationCenter build() {
       return new TouristInformationCenter(myData);
     }

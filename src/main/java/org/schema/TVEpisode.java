@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A TV episode which can be part of a series or season.
@@ -88,6 +89,9 @@ public class TVEpisode extends Episode {
    * Builder for {@link TVEpisode}
    */
   public static class Builder extends Episode.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TVEpisode build() {
       return new TVEpisode(myData);
     }

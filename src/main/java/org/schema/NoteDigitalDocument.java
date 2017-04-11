@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A file containing a note, primarily for the author.
  */
@@ -32,6 +34,9 @@ public class NoteDigitalDocument extends DigitalDocument {
    * Builder for {@link NoteDigitalDocument}
    */
   public static class Builder extends DigitalDocument.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public NoteDigitalDocument build() {
       return new NoteDigitalDocument(myData);
     }

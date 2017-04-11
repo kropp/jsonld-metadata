@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of distributing content to people for their amusement or edification.
  */
@@ -32,6 +34,9 @@ public class ShareAction extends CommunicateAction {
    * Builder for {@link ShareAction}
    */
   public static class Builder extends CommunicateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ShareAction build() {
       return new ShareAction(myData);
     }

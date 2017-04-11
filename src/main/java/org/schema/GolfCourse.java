@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A golf course.
  */
@@ -32,6 +34,9 @@ public class GolfCourse extends SportsActivityLocation {
    * Builder for {@link GolfCourse}
    */
   public static class Builder extends SportsActivityLocation.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public GolfCourse build() {
       return new GolfCourse(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A governmental organization or agency.
  */
@@ -32,6 +34,9 @@ public class GovernmentOrganization extends Organization {
    * Builder for {@link GovernmentOrganization}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public GovernmentOrganization build() {
       return new GovernmentOrganization(myData);
     }

@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Computer programming source code. Example: Full (compile ready) solutions, code snippet samples, scripts, templates.
@@ -139,6 +140,9 @@ public class SoftwareSourceCode extends CreativeWork {
    * Builder for {@link SoftwareSourceCode}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public SoftwareSourceCode build() {
       return new SoftwareSourceCode(myData);
     }

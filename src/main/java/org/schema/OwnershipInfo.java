@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A structured value providing information about when a certain organization or person owned a certain product.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_GoodRelationsClass
@@ -139,6 +140,9 @@ public class OwnershipInfo extends StructuredValue {
    * Builder for {@link OwnershipInfo}
    */
   public static class Builder extends StructuredValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public OwnershipInfo build() {
       return new OwnershipInfo(myData);
     }

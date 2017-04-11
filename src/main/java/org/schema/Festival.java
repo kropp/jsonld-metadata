@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Event type: Festival.
  */
@@ -32,6 +34,9 @@ public class Festival extends Event {
    * Builder for {@link Festival}
    */
   public static class Builder extends Event.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Festival build() {
       return new Festival(myData);
     }

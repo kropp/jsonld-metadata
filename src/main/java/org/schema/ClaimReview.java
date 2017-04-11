@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A fact-checking review of claims made (or reported) in some creative work (referenced via itemReviewed).Source: https://github.com/schemaorg/schemaorg/issues/1061
@@ -54,6 +55,9 @@ public class ClaimReview extends Review {
    * Builder for {@link ClaimReview}
    */
   public static class Builder extends Review.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ClaimReview build() {
       return new ClaimReview(myData);
     }

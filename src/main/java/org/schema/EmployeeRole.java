@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A subclass of OrganizationRole used to describe employee relationships.
@@ -54,6 +55,9 @@ public class EmployeeRole extends OrganizationRole {
    * Builder for {@link EmployeeRole}
    */
   public static class Builder extends OrganizationRole.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public EmployeeRole build() {
       return new EmployeeRole(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The schema.org Actions mechanism benefited from extensive discussions across the Web standards community around W3C, in particular from the [Hydra project](http://purl.org/hydra/)'s community group.
  */
@@ -32,6 +34,9 @@ public class ActionCollabClass extends Organization {
    * Builder for {@link ActionCollabClass}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ActionCollabClass build() {
       return new ActionCollabClass(myData);
     }

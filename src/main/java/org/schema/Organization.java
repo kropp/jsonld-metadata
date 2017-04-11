@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * An organization such as a school, NGO, corporation, club, etc.
@@ -768,6 +769,9 @@ public class Organization extends Thing implements MemberOf {
    * Builder for {@link Organization}
    */
   public static class Builder extends Thing.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Organization build() {
       return new Organization(myData);
     }

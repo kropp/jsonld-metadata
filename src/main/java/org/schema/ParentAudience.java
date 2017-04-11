@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A set of characteristics describing parents, who can be interested in viewing some content.
@@ -207,6 +208,9 @@ public class ParentAudience extends PeopleAudience {
    * Builder for {@link ParentAudience}
    */
   public static class Builder extends PeopleAudience.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ParentAudience build() {
       return new ParentAudience(myData);
     }

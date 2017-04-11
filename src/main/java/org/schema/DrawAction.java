@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of producing a visual/graphical representation of an object, typically with a pen/pencil and paper as instruments.
  */
@@ -32,6 +34,9 @@ public class DrawAction extends CreateAction {
    * Builder for {@link DrawAction}
    */
   public static class Builder extends CreateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DrawAction build() {
       return new DrawAction(myData);
     }

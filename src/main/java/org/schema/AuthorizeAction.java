@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * The act of granting permission to an object.
@@ -88,6 +89,9 @@ public class AuthorizeAction extends AllocateAction {
    * Builder for {@link AuthorizeAction}
    */
   public static class Builder extends AllocateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public AuthorizeAction build() {
       return new AuthorizeAction(myData);
     }

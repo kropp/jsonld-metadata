@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A short TV or radio program or a segment/part of a program.
@@ -173,6 +174,9 @@ public class Clip extends CreativeWork {
    * Builder for {@link Clip}
    */
   public static class Builder extends CreativeWork.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Clip build() {
       return new Clip(myData);
     }

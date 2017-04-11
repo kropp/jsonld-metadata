@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of interacting with another person or organization.
  */
@@ -32,6 +34,9 @@ public class InteractAction extends Action {
    * Builder for {@link InteractAction}
    */
   public static class Builder extends Action.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public InteractAction build() {
       return new InteractAction(myData);
     }

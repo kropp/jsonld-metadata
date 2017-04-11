@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * This class contains information contributed by [http://wikidoc.org>WikiDoc](http://wikidoc.org>WikiDoc).
  */
@@ -32,6 +34,9 @@ public class WikiDoc extends Organization {
    * Builder for {@link WikiDoc}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public WikiDoc build() {
       return new WikiDoc(myData);
     }

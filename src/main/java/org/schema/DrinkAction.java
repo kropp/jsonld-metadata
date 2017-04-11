@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of swallowing liquids.
  */
@@ -32,6 +34,9 @@ public class DrinkAction extends ConsumeAction {
    * Builder for {@link DrinkAction}
    */
   public static class Builder extends ConsumeAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public DrinkAction build() {
       return new DrinkAction(myData);
     }

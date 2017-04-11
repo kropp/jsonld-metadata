@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A car is a wheeled, self-powered motor vehicle used for transportation.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#Automotive_Ontology_Working_Group
  */
@@ -32,6 +34,9 @@ public class Car extends Vehicle {
    * Builder for {@link Car}
    */
   public static class Builder extends Vehicle.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Car build() {
       return new Car(myData);
     }

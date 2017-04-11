@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * An image of a visual machine-readable code such as a barcode or QR code.
  */
@@ -32,6 +34,9 @@ public class Barcode extends ImageObject {
    * Builder for {@link Barcode}
    */
   public static class Builder extends ImageObject.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Barcode build() {
       return new Barcode(myData);
     }

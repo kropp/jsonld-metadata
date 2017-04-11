@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of responding instinctively and emotionally to an object, expressing a sentiment.
  */
@@ -32,6 +34,9 @@ public class ReactAction extends AssessAction {
    * Builder for {@link ReactAction}
    */
   public static class Builder extends AssessAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ReactAction build() {
       return new ReactAction(myData);
     }

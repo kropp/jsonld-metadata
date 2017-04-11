@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A group of multiple reservations with common values for all sub-reservations.
@@ -54,6 +55,9 @@ public class ReservationPackage extends Reservation {
    * Builder for {@link ReservationPackage}
    */
   public static class Builder extends Reservation.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ReservationPackage build() {
       return new ReservationPackage(myData);
     }

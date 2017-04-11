@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * An educational organization.
@@ -54,6 +55,9 @@ public class EducationalOrganization extends Organization {
    * Builder for {@link EducationalOrganization}
    */
   public static class Builder extends Organization.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public EducationalOrganization build() {
       return new EducationalOrganization(myData);
     }

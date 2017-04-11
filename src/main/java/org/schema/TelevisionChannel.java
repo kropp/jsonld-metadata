@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A unique instance of a television BroadcastService on a CableOrSatelliteService lineup.
  */
@@ -32,6 +34,9 @@ public class TelevisionChannel extends BroadcastChannel {
    * Builder for {@link TelevisionChannel}
    */
   public static class Builder extends BroadcastChannel.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public TelevisionChannel build() {
       return new TelevisionChannel(myData);
     }

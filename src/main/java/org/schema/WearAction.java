@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of dressing oneself in clothing.
  */
@@ -32,6 +34,9 @@ public class WearAction extends UseAction {
    * Builder for {@link WearAction}
    */
   public static class Builder extends UseAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public WearAction build() {
       return new WearAction(myData);
     }

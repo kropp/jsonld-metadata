@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Financial services business.
@@ -54,6 +55,9 @@ public class FinancialService extends LocalBusiness {
    * Builder for {@link FinancialService}
    */
   public static class Builder extends LocalBusiness.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public FinancialService build() {
       return new FinancialService(myData);
     }

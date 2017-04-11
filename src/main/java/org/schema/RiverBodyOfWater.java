@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A river (for example, the broad majestic Shannon).
  */
@@ -32,6 +34,9 @@ public class RiverBodyOfWater extends BodyOfWater {
    * Builder for {@link RiverBodyOfWater}
    */
   public static class Builder extends BodyOfWater.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public RiverBodyOfWater build() {
       return new RiverBodyOfWater(myData);
     }

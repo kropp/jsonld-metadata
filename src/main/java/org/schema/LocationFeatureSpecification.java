@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Specifies a location feature by providing a structured value representing a feature of an accommodation as a property-value pair of varying degrees of formality.Source: https://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#STI_Accommodation_Ontology
@@ -71,6 +72,9 @@ public class LocationFeatureSpecification extends PropertyValue {
    * Builder for {@link LocationFeatureSpecification}
    */
   public static class Builder extends PropertyValue.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public LocationFeatureSpecification build() {
       return new LocationFeatureSpecification(myData);
     }

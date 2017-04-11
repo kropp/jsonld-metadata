@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A musical group, such as a band, an orchestra, or a choir. Can also be a solo musician.
@@ -105,6 +106,9 @@ public class MusicGroup extends PerformingGroup {
    * Builder for {@link MusicGroup}
    */
   public static class Builder extends PerformingGroup.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public MusicGroup build() {
       return new MusicGroup(myData);
     }

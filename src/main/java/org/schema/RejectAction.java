@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of rejecting to/adopting an object.\n\nRelated actions:\n\n* [[AcceptAction]]: The antonym of RejectAction.
  */
@@ -32,6 +34,9 @@ public class RejectAction extends AllocateAction {
    * Builder for {@link RejectAction}
    */
   public static class Builder extends AllocateAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public RejectAction build() {
       return new RejectAction(myData);
     }

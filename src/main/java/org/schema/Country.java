@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A country.
  */
@@ -32,6 +34,9 @@ public class Country extends AdministrativeArea {
    * Builder for {@link Country}
    */
   public static class Builder extends AdministrativeArea.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Country build() {
       return new Country(myData);
     }

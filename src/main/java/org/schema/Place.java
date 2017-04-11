@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Entities that have a somewhat fixed, physical extension.
@@ -485,6 +486,9 @@ public class Place extends Thing {
    * Builder for {@link Place}
    */
   public static class Builder extends Thing.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Place build() {
       return new Place(myData);
     }

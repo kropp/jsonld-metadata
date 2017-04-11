@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * A Property value specification.Source: http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass
@@ -496,6 +497,9 @@ public class PropertyValueSpecification extends Intangible {
    * Builder for {@link PropertyValueSpecification}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public PropertyValueSpecification build() {
       return new PropertyValueSpecification(myData);
     }

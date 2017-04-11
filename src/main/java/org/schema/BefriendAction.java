@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * The act of forming a personal connection with someone (object) mutually/bidirectionally/symmetrically.\n\nRelated actions:\n\n* [[FollowAction]]: Unlike FollowAction, BefriendAction implies that the connection is reciprocal.
  */
@@ -32,6 +34,9 @@ public class BefriendAction extends InteractAction {
    * Builder for {@link BefriendAction}
    */
   public static class Builder extends InteractAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public BefriendAction build() {
       return new BefriendAction(myData);
     }

@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A bridge.
  */
@@ -32,6 +34,9 @@ public class Bridge extends CivicStructure {
    * Builder for {@link Bridge}
    */
   public static class Builder extends CivicStructure.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Bridge build() {
       return new Bridge(myData);
     }

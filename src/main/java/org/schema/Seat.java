@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Used to describe a seat, such as a reserved seat in an event reservation.
@@ -122,6 +123,9 @@ public class Seat extends Intangible {
    * Builder for {@link Seat}
    */
   public static class Builder extends Intangible.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Seat build() {
       return new Seat(myData);
     }

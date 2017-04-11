@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * Reserving a concrete object.\n\nRelated actions:\n\n* [[ScheduleAction]]</a>: Unlike ScheduleAction, ReserveAction reserves concrete objects (e.g. a table, a hotel) towards a time slot / spatial allocation.
  */
@@ -32,6 +34,9 @@ public class ReserveAction extends PlanAction {
    * Builder for {@link ReserveAction}
    */
   public static class Builder extends PlanAction.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public ReserveAction build() {
       return new ReserveAction(myData);
     }

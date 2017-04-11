@@ -20,6 +20,8 @@ package org.schema;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 /**
  * A playground.
  */
@@ -32,6 +34,9 @@ public class Playground extends CivicStructure {
    * Builder for {@link Playground}
    */
   public static class Builder extends CivicStructure.Builder {
+    public Builder(@NotNull HashMap<String,Object> data) {
+      super(data);
+    }
     @NotNull public Playground build() {
       return new Playground(myData);
     }
