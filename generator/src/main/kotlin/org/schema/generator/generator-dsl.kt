@@ -26,18 +26,18 @@ import java.io.File
 class SourcesRoot(val directory: File)
 
 class Package(val directory: File, val name: String) {
-    fun writeClass(name: String, body: StringBuilder.() -> Unit) {
+    fun writeClass(name: String, extension: String = "java", body: StringBuilder.() -> Unit) {
         val builder = StringBuilder()
 
         builder.body()
 
-        writeClass(name, builder.toString())
+        writeClass(name, builder.toString(), extension)
     }
 
-    fun writeClass(name: String, text: String) {
+    fun writeClass(name: String, text: String, extension: String = "java") {
         val packageDir = this.name.split(Regex("\\.")).fold(directory, ::File)
         packageDir.mkdirs()
-        File(packageDir, "$name.java").writeText(text)
+        File(packageDir, "$name.$extension").writeText(text)
     }
 }
 

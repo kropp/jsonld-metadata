@@ -43,7 +43,8 @@ private val BANNER = """/*
  * This is auto-generated file. Do not edit.
  */"""
 
-private val NAMESPACE = "org.schema"
+private const val NAMESPACE = "org.schema"
+private const val NAMESPACE_KOTLIN = "$NAMESPACE.kotlin"
 
 fun main(args: Array<String>) {
     val sink = GeneratorSink()
@@ -55,20 +56,29 @@ fun main(args: Array<String>) {
     }
     sink.postProcess()
 
+/*
     sources("src/main/java") {
         pakage(NAMESPACE) {
-            println("Generating classes")
+            println("Generating Java classes")
             ClassesGenerator(sink, BANNER).generate(this)
 
             println("Generating API")
             ApiGenerator(sink, BANNER).generate(this)
         }
     }
+*/
+
+    sources("kotlin/src/main/kotlin") {
+        pakage(NAMESPACE_KOTLIN) {
+            println("Generating Kotlin classes")
+            KotlinClassesGenerator(sink, BANNER).generate(this)
+        }
+    }
 
     sources("test/main/java") {
         pakage(NAMESPACE) {
             println("Generating tests")
-            TestsGenerator(sink, BANNER).generate(this)
+            //TestsGenerator(sink, BANNER).generate(this)
         }
     }
 }
