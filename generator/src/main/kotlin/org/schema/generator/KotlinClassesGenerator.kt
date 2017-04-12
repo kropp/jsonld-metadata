@@ -35,25 +35,30 @@ class KotlinClassesGenerator(private val sink: GeneratorSink, private val banner
             val allFields = sink.getAllFields(type)
             allFields.forEach {
                 val eitherTypes = sink.getEitherTypes(it)
+                val varName = it.name!!.decapitalize()
                 if (eitherTypes.size > 1) {
-                    appendln("  var ${it.name!!.decapitalize()}: Any by map")
+                    appendln("  var $varName: Any")
+                    appendln("    get() = map[\"$varName\"]!!")
+                    appendln("    set(value) { map[\"$varName\"] = value }")
                 } else {
                     val type = when (eitherTypes.first()) {
                         "Map" -> "org.schema.Map"
                         "Integer" -> "Int"
                         else -> eitherTypes.first()
                     }
-                    appendln("  var ${it.name!!.decapitalize()}: $type by map")
+                    appendln("  var $varName: $type")
+                    appendln("    get() = map[\"$varName\"] as $type")
+                    appendln("    set(value) { map[\"$varName\"] = value }")
                 }
                 eitherTypes.forEachIndexed { i, fieldType ->
                     val suffix = if (eitherTypes.size > 1) {
                         if (fieldType == "java.util.Date") "Date" else fieldType
                     } else ""
-                    val nameWithSuffix = "${it.name!!.decapitalize()}$suffix"
+                    val nameWithSuffix = "$varName$suffix"
 
                     val isEnum = findType(fieldType)?.isEnum != true && (i >= it.dataTypes.size || sink.types[it.dataTypes[i]]?.isEnum != true)
                     if (!sink.shouldSkip(fieldType) && findType(fieldType)?.isInterface != true && isEnum && fieldType != "String" && fieldType != "Integer" && fieldType != "java.util.Date") {
-                        appendln("  fun $nameWithSuffix(builder: Mutable$fieldType.() -> Unit) { ${it.name!!.decapitalize()} = Mutable$fieldType().apply(builder).build() }")
+                        appendln("  fun $nameWithSuffix(builder: Mutable$fieldType.() -> Unit) { map[\"$varName\"] = Mutable$fieldType().apply(builder).build() }")
                     }
                 }
             }
