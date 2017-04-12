@@ -5,27 +5,61 @@ import org.schema.OpeningHoursSpecification
 
 class MutableContactPoint {
   private val map = HashMap<String,Any>()
-  var availableLanguage: Any by map
-  fun availableLanguageLanguage(builder: MutableLanguage.() -> Unit) { availableLanguage = MutableLanguage().apply(builder).build() }
-  var contactOption: ContactPointOption by map
-  var contactType: String by map
-  var email: String by map
-  var faxNumber: String by map
-  var hoursAvailable: OpeningHoursSpecification by map
-  fun hoursAvailable(builder: MutableOpeningHoursSpecification.() -> Unit) { hoursAvailable = MutableOpeningHoursSpecification().apply(builder).build() }
-  var productSupported: Any by map
-  fun productSupportedProduct(builder: MutableProduct.() -> Unit) { productSupported = MutableProduct().apply(builder).build() }
-  var telephone: String by map
-  var additionalType: String by map
-  var alternateName: String by map
-  var disambiguatingDescription: String by map
-  var mainEntityOfPage: Any by map
-  fun mainEntityOfPageCreativeWork(builder: MutableCreativeWork.() -> Unit) { mainEntityOfPage = MutableCreativeWork().apply(builder).build() }
-  var name: String by map
-  var sameAs: String by map
-  var url: String by map
-  var potentialAction: Action by map
-  fun potentialAction(builder: MutableAction.() -> Unit) { potentialAction = MutableAction().apply(builder).build() }
-  var id: String by map
+  var availableLanguage: Any
+    get() = map["availableLanguage"]!!
+    set(value) { map["availableLanguage"] = value }
+  fun availableLanguageLanguage(builder: MutableLanguage.() -> Unit) { map["availableLanguage"] = MutableLanguage().apply(builder).build() }
+  var contactOption: ContactPointOption
+    get() = map["contactOption"] as ContactPointOption
+    set(value) { map["contactOption"] = value }
+  var contactType: String
+    get() = map["contactType"] as String
+    set(value) { map["contactType"] = value }
+  var email: String
+    get() = map["email"] as String
+    set(value) { map["email"] = value }
+  var faxNumber: String
+    get() = map["faxNumber"] as String
+    set(value) { map["faxNumber"] = value }
+  var hoursAvailable: OpeningHoursSpecification
+    get() = map["hoursAvailable"] as OpeningHoursSpecification
+    set(value) { map["hoursAvailable"] = value }
+  fun hoursAvailable(builder: MutableOpeningHoursSpecification.() -> Unit) { map["hoursAvailable"] = MutableOpeningHoursSpecification().apply(builder).build() }
+  var productSupported: Any
+    get() = map["productSupported"]!!
+    set(value) { map["productSupported"] = value }
+  fun productSupportedProduct(builder: MutableProduct.() -> Unit) { map["productSupported"] = MutableProduct().apply(builder).build() }
+  var telephone: String
+    get() = map["telephone"] as String
+    set(value) { map["telephone"] = value }
+  var additionalType: String
+    get() = map["additionalType"] as String
+    set(value) { map["additionalType"] = value }
+  var alternateName: String
+    get() = map["alternateName"] as String
+    set(value) { map["alternateName"] = value }
+  var disambiguatingDescription: String
+    get() = map["disambiguatingDescription"] as String
+    set(value) { map["disambiguatingDescription"] = value }
+  var mainEntityOfPage: Any
+    get() = map["mainEntityOfPage"]!!
+    set(value) { map["mainEntityOfPage"] = value }
+  fun mainEntityOfPageCreativeWork(builder: MutableCreativeWork.() -> Unit) { map["mainEntityOfPage"] = MutableCreativeWork().apply(builder).build() }
+  var name: String
+    get() = map["name"] as String
+    set(value) { map["name"] = value }
+  var sameAs: String
+    get() = map["sameAs"] as String
+    set(value) { map["sameAs"] = value }
+  var url: String
+    get() = map["url"] as String
+    set(value) { map["url"] = value }
+  var potentialAction: Action
+    get() = map["potentialAction"] as Action
+    set(value) { map["potentialAction"] = value }
+  fun potentialAction(builder: MutableAction.() -> Unit) { map["potentialAction"] = MutableAction().apply(builder).build() }
+  var id: String
+    get() = map["id"] as String
+    set(value) { map["id"] = value }
   fun build() = org.schema.ContactPoint.Builder(map).build()
 }

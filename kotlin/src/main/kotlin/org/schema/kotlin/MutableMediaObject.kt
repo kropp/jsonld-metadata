@@ -2,156 +2,342 @@ package org.schema.kotlin
 import org.schema.*
 class MutableMediaObject {
   private val map = HashMap<String,Any>()
-  var associatedArticle: NewsArticle by map
-  fun associatedArticle(builder: MutableNewsArticle.() -> Unit) { associatedArticle = MutableNewsArticle().apply(builder).build() }
-  var bitrate: String by map
-  var contentSize: String by map
-  var contentUrl: String by map
-  var embedUrl: String by map
-  var encodesCreativeWork: CreativeWork by map
-  fun encodesCreativeWork(builder: MutableCreativeWork.() -> Unit) { encodesCreativeWork = MutableCreativeWork().apply(builder).build() }
-  var encodingFormat: String by map
-  var expires: java.util.Date by map
-  var height: Any by map
-  fun heightDistance(builder: MutableDistance.() -> Unit) { height = MutableDistance().apply(builder).build() }
-  fun heightQuantitativeValue(builder: MutableQuantitativeValue.() -> Unit) { height = MutableQuantitativeValue().apply(builder).build() }
-  var playerType: String by map
-  var productionCompany: Organization by map
-  fun productionCompany(builder: MutableOrganization.() -> Unit) { productionCompany = MutableOrganization().apply(builder).build() }
-  var requiresSubscription: Boolean by map
-  var uploadDate: java.util.Date by map
-  var width: Any by map
-  fun widthDistance(builder: MutableDistance.() -> Unit) { width = MutableDistance().apply(builder).build() }
-  fun widthQuantitativeValue(builder: MutableQuantitativeValue.() -> Unit) { width = MutableQuantitativeValue().apply(builder).build() }
-  var regionsAllowed: Place by map
-  fun regionsAllowed(builder: MutablePlace.() -> Unit) { regionsAllowed = MutablePlace().apply(builder).build() }
-  var schemaVersion: String by map
-  var about: Thing by map
-  fun about(builder: MutableThing.() -> Unit) { about = MutableThing().apply(builder).build() }
-  var accessibilityAPI: String by map
-  var accessibilityControl: String by map
-  var accessibilityFeature: String by map
-  var accessibilityHazard: String by map
-  var accountablePerson: Person by map
-  fun accountablePerson(builder: MutablePerson.() -> Unit) { accountablePerson = MutablePerson().apply(builder).build() }
-  var aggregateRating: AggregateRating by map
-  fun aggregateRating(builder: MutableAggregateRating.() -> Unit) { aggregateRating = MutableAggregateRating().apply(builder).build() }
-  var alternativeHeadline: String by map
-  var associatedMedia: MediaObject by map
-  fun associatedMedia(builder: MutableMediaObject.() -> Unit) { associatedMedia = MutableMediaObject().apply(builder).build() }
-  var audience: Audience by map
-  fun audience(builder: MutableAudience.() -> Unit) { audience = MutableAudience().apply(builder).build() }
-  var audio: AudioObject by map
-  fun audio(builder: MutableAudioObject.() -> Unit) { audio = MutableAudioObject().apply(builder).build() }
-  var author: Any by map
-  fun authorOrganization(builder: MutableOrganization.() -> Unit) { author = MutableOrganization().apply(builder).build() }
-  fun authorPerson(builder: MutablePerson.() -> Unit) { author = MutablePerson().apply(builder).build() }
-  var award: String by map
-  var citation: Any by map
-  fun citationCreativeWork(builder: MutableCreativeWork.() -> Unit) { citation = MutableCreativeWork().apply(builder).build() }
-  var comment: Comment by map
-  fun comment(builder: MutableComment.() -> Unit) { comment = MutableComment().apply(builder).build() }
-  var locationCreated: Place by map
-  fun locationCreated(builder: MutablePlace.() -> Unit) { locationCreated = MutablePlace().apply(builder).build() }
-  var contentRating: String by map
-  var contributor: Any by map
-  fun contributorOrganization(builder: MutableOrganization.() -> Unit) { contributor = MutableOrganization().apply(builder).build() }
-  fun contributorPerson(builder: MutablePerson.() -> Unit) { contributor = MutablePerson().apply(builder).build() }
-  var copyrightHolder: Any by map
-  fun copyrightHolderOrganization(builder: MutableOrganization.() -> Unit) { copyrightHolder = MutableOrganization().apply(builder).build() }
-  fun copyrightHolderPerson(builder: MutablePerson.() -> Unit) { copyrightHolder = MutablePerson().apply(builder).build() }
-  var copyrightYear: Any by map
-  var creator: Any by map
-  fun creatorOrganization(builder: MutableOrganization.() -> Unit) { creator = MutableOrganization().apply(builder).build() }
-  fun creatorPerson(builder: MutablePerson.() -> Unit) { creator = MutablePerson().apply(builder).build() }
-  var dateCreated: java.util.Date by map
-  var dateModified: java.util.Date by map
-  var datePublished: java.util.Date by map
-  var discussionUrl: String by map
-  var editor: Person by map
-  fun editor(builder: MutablePerson.() -> Unit) { editor = MutablePerson().apply(builder).build() }
-  var educationalAlignment: AlignmentObject by map
-  fun educationalAlignment(builder: MutableAlignmentObject.() -> Unit) { educationalAlignment = MutableAlignmentObject().apply(builder).build() }
-  var educationalUse: String by map
-  var encoding: MediaObject by map
-  fun encoding(builder: MutableMediaObject.() -> Unit) { encoding = MutableMediaObject().apply(builder).build() }
-  var fileFormat: String by map
-  var isAccessibleForFree: Boolean by map
-  var genre: String by map
-  var headline: String by map
-  var inLanguage: Any by map
-  fun inLanguageLanguage(builder: MutableLanguage.() -> Unit) { inLanguage = MutableLanguage().apply(builder).build() }
-  var interactivityType: String by map
-  var isBasedOn: Any by map
-  fun isBasedOnCreativeWork(builder: MutableCreativeWork.() -> Unit) { isBasedOn = MutableCreativeWork().apply(builder).build() }
-  fun isBasedOnProduct(builder: MutableProduct.() -> Unit) { isBasedOn = MutableProduct().apply(builder).build() }
-  var isFamilyFriendly: Boolean by map
-  var keywords: String by map
-  var license: Any by map
-  fun licenseCreativeWork(builder: MutableCreativeWork.() -> Unit) { license = MutableCreativeWork().apply(builder).build() }
-  var learningResourceType: String by map
-  var mainEntity: Thing by map
-  fun mainEntity(builder: MutableThing.() -> Unit) { mainEntity = MutableThing().apply(builder).build() }
-  var mentions: Thing by map
-  fun mentions(builder: MutableThing.() -> Unit) { mentions = MutableThing().apply(builder).build() }
-  var offers: Offer by map
-  fun offers(builder: MutableOffer.() -> Unit) { offers = MutableOffer().apply(builder).build() }
-  var producer: Any by map
-  fun producerOrganization(builder: MutableOrganization.() -> Unit) { producer = MutableOrganization().apply(builder).build() }
-  fun producerPerson(builder: MutablePerson.() -> Unit) { producer = MutablePerson().apply(builder).build() }
-  var publication: PublicationEvent by map
-  fun publication(builder: MutablePublicationEvent.() -> Unit) { publication = MutablePublicationEvent().apply(builder).build() }
-  var publisher: Any by map
-  fun publisherOrganization(builder: MutableOrganization.() -> Unit) { publisher = MutableOrganization().apply(builder).build() }
-  fun publisherPerson(builder: MutablePerson.() -> Unit) { publisher = MutablePerson().apply(builder).build() }
-  var publishingPrinciples: String by map
-  var recordedAt: Event by map
-  fun recordedAt(builder: MutableEvent.() -> Unit) { recordedAt = MutableEvent().apply(builder).build() }
-  var review: Review by map
-  fun review(builder: MutableReview.() -> Unit) { review = MutableReview().apply(builder).build() }
-  var sourceOrganization: Organization by map
-  fun sourceOrganization(builder: MutableOrganization.() -> Unit) { sourceOrganization = MutableOrganization().apply(builder).build() }
-  var spatialCoverage: Place by map
-  fun spatialCoverage(builder: MutablePlace.() -> Unit) { spatialCoverage = MutablePlace().apply(builder).build() }
-  var funder: Any by map
-  fun funderOrganization(builder: MutableOrganization.() -> Unit) { funder = MutableOrganization().apply(builder).build() }
-  fun funderPerson(builder: MutablePerson.() -> Unit) { funder = MutablePerson().apply(builder).build() }
-  var temporalCoverage: Any by map
-  var text: String by map
-  var thumbnailUrl: String by map
-  var timeRequired: Duration by map
-  var typicalAgeRange: String by map
-  var version: Any by map
-  var video: VideoObject by map
-  fun video(builder: MutableVideoObject.() -> Unit) { video = MutableVideoObject().apply(builder).build() }
-  var provider: Any by map
-  fun providerOrganization(builder: MutableOrganization.() -> Unit) { provider = MutableOrganization().apply(builder).build() }
-  fun providerPerson(builder: MutablePerson.() -> Unit) { provider = MutablePerson().apply(builder).build() }
-  var commentCount: Int by map
-  var hasPart: HasPart by map
-  var workExample: CreativeWork by map
-  fun workExample(builder: MutableCreativeWork.() -> Unit) { workExample = MutableCreativeWork().apply(builder).build() }
-  var exampleOfWork: CreativeWork by map
-  fun exampleOfWork(builder: MutableCreativeWork.() -> Unit) { exampleOfWork = MutableCreativeWork().apply(builder).build() }
-  var character: Person by map
-  fun character(builder: MutablePerson.() -> Unit) { character = MutablePerson().apply(builder).build() }
-  var translator: Any by map
-  fun translatorOrganization(builder: MutableOrganization.() -> Unit) { translator = MutableOrganization().apply(builder).build() }
-  fun translatorPerson(builder: MutablePerson.() -> Unit) { translator = MutablePerson().apply(builder).build() }
-  var releasedEvent: PublicationEvent by map
-  fun releasedEvent(builder: MutablePublicationEvent.() -> Unit) { releasedEvent = MutablePublicationEvent().apply(builder).build() }
-  var interactionStatistic: InteractionCounter by map
-  fun interactionStatistic(builder: MutableInteractionCounter.() -> Unit) { interactionStatistic = MutableInteractionCounter().apply(builder).build() }
-  var additionalType: String by map
-  var alternateName: String by map
-  var disambiguatingDescription: String by map
-  var mainEntityOfPage: Any by map
-  fun mainEntityOfPageCreativeWork(builder: MutableCreativeWork.() -> Unit) { mainEntityOfPage = MutableCreativeWork().apply(builder).build() }
-  var name: String by map
-  var sameAs: String by map
-  var url: String by map
-  var potentialAction: Action by map
-  fun potentialAction(builder: MutableAction.() -> Unit) { potentialAction = MutableAction().apply(builder).build() }
-  var id: String by map
+  var associatedArticle: NewsArticle
+    get() = map["associatedArticle"] as NewsArticle
+    set(value) { map["associatedArticle"] = value }
+  fun associatedArticle(builder: MutableNewsArticle.() -> Unit) { map["associatedArticle"] = MutableNewsArticle().apply(builder).build() }
+  var bitrate: String
+    get() = map["bitrate"] as String
+    set(value) { map["bitrate"] = value }
+  var contentSize: String
+    get() = map["contentSize"] as String
+    set(value) { map["contentSize"] = value }
+  var contentUrl: String
+    get() = map["contentUrl"] as String
+    set(value) { map["contentUrl"] = value }
+  var embedUrl: String
+    get() = map["embedUrl"] as String
+    set(value) { map["embedUrl"] = value }
+  var encodesCreativeWork: CreativeWork
+    get() = map["encodesCreativeWork"] as CreativeWork
+    set(value) { map["encodesCreativeWork"] = value }
+  fun encodesCreativeWork(builder: MutableCreativeWork.() -> Unit) { map["encodesCreativeWork"] = MutableCreativeWork().apply(builder).build() }
+  var encodingFormat: String
+    get() = map["encodingFormat"] as String
+    set(value) { map["encodingFormat"] = value }
+  var expires: java.util.Date
+    get() = map["expires"] as java.util.Date
+    set(value) { map["expires"] = value }
+  var height: Any
+    get() = map["height"]!!
+    set(value) { map["height"] = value }
+  fun heightDistance(builder: MutableDistance.() -> Unit) { map["height"] = MutableDistance().apply(builder).build() }
+  fun heightQuantitativeValue(builder: MutableQuantitativeValue.() -> Unit) { map["height"] = MutableQuantitativeValue().apply(builder).build() }
+  var playerType: String
+    get() = map["playerType"] as String
+    set(value) { map["playerType"] = value }
+  var productionCompany: Organization
+    get() = map["productionCompany"] as Organization
+    set(value) { map["productionCompany"] = value }
+  fun productionCompany(builder: MutableOrganization.() -> Unit) { map["productionCompany"] = MutableOrganization().apply(builder).build() }
+  var requiresSubscription: Boolean
+    get() = map["requiresSubscription"] as Boolean
+    set(value) { map["requiresSubscription"] = value }
+  var uploadDate: java.util.Date
+    get() = map["uploadDate"] as java.util.Date
+    set(value) { map["uploadDate"] = value }
+  var width: Any
+    get() = map["width"]!!
+    set(value) { map["width"] = value }
+  fun widthDistance(builder: MutableDistance.() -> Unit) { map["width"] = MutableDistance().apply(builder).build() }
+  fun widthQuantitativeValue(builder: MutableQuantitativeValue.() -> Unit) { map["width"] = MutableQuantitativeValue().apply(builder).build() }
+  var regionsAllowed: Place
+    get() = map["regionsAllowed"] as Place
+    set(value) { map["regionsAllowed"] = value }
+  fun regionsAllowed(builder: MutablePlace.() -> Unit) { map["regionsAllowed"] = MutablePlace().apply(builder).build() }
+  var schemaVersion: String
+    get() = map["schemaVersion"] as String
+    set(value) { map["schemaVersion"] = value }
+  var about: Thing
+    get() = map["about"] as Thing
+    set(value) { map["about"] = value }
+  fun about(builder: MutableThing.() -> Unit) { map["about"] = MutableThing().apply(builder).build() }
+  var accessibilityAPI: String
+    get() = map["accessibilityAPI"] as String
+    set(value) { map["accessibilityAPI"] = value }
+  var accessibilityControl: String
+    get() = map["accessibilityControl"] as String
+    set(value) { map["accessibilityControl"] = value }
+  var accessibilityFeature: String
+    get() = map["accessibilityFeature"] as String
+    set(value) { map["accessibilityFeature"] = value }
+  var accessibilityHazard: String
+    get() = map["accessibilityHazard"] as String
+    set(value) { map["accessibilityHazard"] = value }
+  var accountablePerson: Person
+    get() = map["accountablePerson"] as Person
+    set(value) { map["accountablePerson"] = value }
+  fun accountablePerson(builder: MutablePerson.() -> Unit) { map["accountablePerson"] = MutablePerson().apply(builder).build() }
+  var aggregateRating: AggregateRating
+    get() = map["aggregateRating"] as AggregateRating
+    set(value) { map["aggregateRating"] = value }
+  fun aggregateRating(builder: MutableAggregateRating.() -> Unit) { map["aggregateRating"] = MutableAggregateRating().apply(builder).build() }
+  var alternativeHeadline: String
+    get() = map["alternativeHeadline"] as String
+    set(value) { map["alternativeHeadline"] = value }
+  var associatedMedia: MediaObject
+    get() = map["associatedMedia"] as MediaObject
+    set(value) { map["associatedMedia"] = value }
+  fun associatedMedia(builder: MutableMediaObject.() -> Unit) { map["associatedMedia"] = MutableMediaObject().apply(builder).build() }
+  var audience: Audience
+    get() = map["audience"] as Audience
+    set(value) { map["audience"] = value }
+  fun audience(builder: MutableAudience.() -> Unit) { map["audience"] = MutableAudience().apply(builder).build() }
+  var audio: AudioObject
+    get() = map["audio"] as AudioObject
+    set(value) { map["audio"] = value }
+  fun audio(builder: MutableAudioObject.() -> Unit) { map["audio"] = MutableAudioObject().apply(builder).build() }
+  var author: Any
+    get() = map["author"]!!
+    set(value) { map["author"] = value }
+  fun authorOrganization(builder: MutableOrganization.() -> Unit) { map["author"] = MutableOrganization().apply(builder).build() }
+  fun authorPerson(builder: MutablePerson.() -> Unit) { map["author"] = MutablePerson().apply(builder).build() }
+  var award: String
+    get() = map["award"] as String
+    set(value) { map["award"] = value }
+  var citation: Any
+    get() = map["citation"]!!
+    set(value) { map["citation"] = value }
+  fun citationCreativeWork(builder: MutableCreativeWork.() -> Unit) { map["citation"] = MutableCreativeWork().apply(builder).build() }
+  var comment: Comment
+    get() = map["comment"] as Comment
+    set(value) { map["comment"] = value }
+  fun comment(builder: MutableComment.() -> Unit) { map["comment"] = MutableComment().apply(builder).build() }
+  var locationCreated: Place
+    get() = map["locationCreated"] as Place
+    set(value) { map["locationCreated"] = value }
+  fun locationCreated(builder: MutablePlace.() -> Unit) { map["locationCreated"] = MutablePlace().apply(builder).build() }
+  var contentRating: String
+    get() = map["contentRating"] as String
+    set(value) { map["contentRating"] = value }
+  var contributor: Any
+    get() = map["contributor"]!!
+    set(value) { map["contributor"] = value }
+  fun contributorOrganization(builder: MutableOrganization.() -> Unit) { map["contributor"] = MutableOrganization().apply(builder).build() }
+  fun contributorPerson(builder: MutablePerson.() -> Unit) { map["contributor"] = MutablePerson().apply(builder).build() }
+  var copyrightHolder: Any
+    get() = map["copyrightHolder"]!!
+    set(value) { map["copyrightHolder"] = value }
+  fun copyrightHolderOrganization(builder: MutableOrganization.() -> Unit) { map["copyrightHolder"] = MutableOrganization().apply(builder).build() }
+  fun copyrightHolderPerson(builder: MutablePerson.() -> Unit) { map["copyrightHolder"] = MutablePerson().apply(builder).build() }
+  var copyrightYear: Any
+    get() = map["copyrightYear"]!!
+    set(value) { map["copyrightYear"] = value }
+  var creator: Any
+    get() = map["creator"]!!
+    set(value) { map["creator"] = value }
+  fun creatorOrganization(builder: MutableOrganization.() -> Unit) { map["creator"] = MutableOrganization().apply(builder).build() }
+  fun creatorPerson(builder: MutablePerson.() -> Unit) { map["creator"] = MutablePerson().apply(builder).build() }
+  var dateCreated: java.util.Date
+    get() = map["dateCreated"] as java.util.Date
+    set(value) { map["dateCreated"] = value }
+  var dateModified: java.util.Date
+    get() = map["dateModified"] as java.util.Date
+    set(value) { map["dateModified"] = value }
+  var datePublished: java.util.Date
+    get() = map["datePublished"] as java.util.Date
+    set(value) { map["datePublished"] = value }
+  var discussionUrl: String
+    get() = map["discussionUrl"] as String
+    set(value) { map["discussionUrl"] = value }
+  var editor: Person
+    get() = map["editor"] as Person
+    set(value) { map["editor"] = value }
+  fun editor(builder: MutablePerson.() -> Unit) { map["editor"] = MutablePerson().apply(builder).build() }
+  var educationalAlignment: AlignmentObject
+    get() = map["educationalAlignment"] as AlignmentObject
+    set(value) { map["educationalAlignment"] = value }
+  fun educationalAlignment(builder: MutableAlignmentObject.() -> Unit) { map["educationalAlignment"] = MutableAlignmentObject().apply(builder).build() }
+  var educationalUse: String
+    get() = map["educationalUse"] as String
+    set(value) { map["educationalUse"] = value }
+  var encoding: MediaObject
+    get() = map["encoding"] as MediaObject
+    set(value) { map["encoding"] = value }
+  fun encoding(builder: MutableMediaObject.() -> Unit) { map["encoding"] = MutableMediaObject().apply(builder).build() }
+  var fileFormat: String
+    get() = map["fileFormat"] as String
+    set(value) { map["fileFormat"] = value }
+  var isAccessibleForFree: Boolean
+    get() = map["isAccessibleForFree"] as Boolean
+    set(value) { map["isAccessibleForFree"] = value }
+  var genre: String
+    get() = map["genre"] as String
+    set(value) { map["genre"] = value }
+  var headline: String
+    get() = map["headline"] as String
+    set(value) { map["headline"] = value }
+  var inLanguage: Any
+    get() = map["inLanguage"]!!
+    set(value) { map["inLanguage"] = value }
+  fun inLanguageLanguage(builder: MutableLanguage.() -> Unit) { map["inLanguage"] = MutableLanguage().apply(builder).build() }
+  var interactivityType: String
+    get() = map["interactivityType"] as String
+    set(value) { map["interactivityType"] = value }
+  var isBasedOn: Any
+    get() = map["isBasedOn"]!!
+    set(value) { map["isBasedOn"] = value }
+  fun isBasedOnCreativeWork(builder: MutableCreativeWork.() -> Unit) { map["isBasedOn"] = MutableCreativeWork().apply(builder).build() }
+  fun isBasedOnProduct(builder: MutableProduct.() -> Unit) { map["isBasedOn"] = MutableProduct().apply(builder).build() }
+  var isFamilyFriendly: Boolean
+    get() = map["isFamilyFriendly"] as Boolean
+    set(value) { map["isFamilyFriendly"] = value }
+  var keywords: String
+    get() = map["keywords"] as String
+    set(value) { map["keywords"] = value }
+  var license: Any
+    get() = map["license"]!!
+    set(value) { map["license"] = value }
+  fun licenseCreativeWork(builder: MutableCreativeWork.() -> Unit) { map["license"] = MutableCreativeWork().apply(builder).build() }
+  var learningResourceType: String
+    get() = map["learningResourceType"] as String
+    set(value) { map["learningResourceType"] = value }
+  var mainEntity: Thing
+    get() = map["mainEntity"] as Thing
+    set(value) { map["mainEntity"] = value }
+  fun mainEntity(builder: MutableThing.() -> Unit) { map["mainEntity"] = MutableThing().apply(builder).build() }
+  var mentions: Thing
+    get() = map["mentions"] as Thing
+    set(value) { map["mentions"] = value }
+  fun mentions(builder: MutableThing.() -> Unit) { map["mentions"] = MutableThing().apply(builder).build() }
+  var offers: Offer
+    get() = map["offers"] as Offer
+    set(value) { map["offers"] = value }
+  fun offers(builder: MutableOffer.() -> Unit) { map["offers"] = MutableOffer().apply(builder).build() }
+  var producer: Any
+    get() = map["producer"]!!
+    set(value) { map["producer"] = value }
+  fun producerOrganization(builder: MutableOrganization.() -> Unit) { map["producer"] = MutableOrganization().apply(builder).build() }
+  fun producerPerson(builder: MutablePerson.() -> Unit) { map["producer"] = MutablePerson().apply(builder).build() }
+  var publication: PublicationEvent
+    get() = map["publication"] as PublicationEvent
+    set(value) { map["publication"] = value }
+  fun publication(builder: MutablePublicationEvent.() -> Unit) { map["publication"] = MutablePublicationEvent().apply(builder).build() }
+  var publisher: Any
+    get() = map["publisher"]!!
+    set(value) { map["publisher"] = value }
+  fun publisherOrganization(builder: MutableOrganization.() -> Unit) { map["publisher"] = MutableOrganization().apply(builder).build() }
+  fun publisherPerson(builder: MutablePerson.() -> Unit) { map["publisher"] = MutablePerson().apply(builder).build() }
+  var publishingPrinciples: String
+    get() = map["publishingPrinciples"] as String
+    set(value) { map["publishingPrinciples"] = value }
+  var recordedAt: Event
+    get() = map["recordedAt"] as Event
+    set(value) { map["recordedAt"] = value }
+  fun recordedAt(builder: MutableEvent.() -> Unit) { map["recordedAt"] = MutableEvent().apply(builder).build() }
+  var review: Review
+    get() = map["review"] as Review
+    set(value) { map["review"] = value }
+  fun review(builder: MutableReview.() -> Unit) { map["review"] = MutableReview().apply(builder).build() }
+  var sourceOrganization: Organization
+    get() = map["sourceOrganization"] as Organization
+    set(value) { map["sourceOrganization"] = value }
+  fun sourceOrganization(builder: MutableOrganization.() -> Unit) { map["sourceOrganization"] = MutableOrganization().apply(builder).build() }
+  var spatialCoverage: Place
+    get() = map["spatialCoverage"] as Place
+    set(value) { map["spatialCoverage"] = value }
+  fun spatialCoverage(builder: MutablePlace.() -> Unit) { map["spatialCoverage"] = MutablePlace().apply(builder).build() }
+  var funder: Any
+    get() = map["funder"]!!
+    set(value) { map["funder"] = value }
+  fun funderOrganization(builder: MutableOrganization.() -> Unit) { map["funder"] = MutableOrganization().apply(builder).build() }
+  fun funderPerson(builder: MutablePerson.() -> Unit) { map["funder"] = MutablePerson().apply(builder).build() }
+  var temporalCoverage: Any
+    get() = map["temporalCoverage"]!!
+    set(value) { map["temporalCoverage"] = value }
+  var text: String
+    get() = map["text"] as String
+    set(value) { map["text"] = value }
+  var thumbnailUrl: String
+    get() = map["thumbnailUrl"] as String
+    set(value) { map["thumbnailUrl"] = value }
+  var timeRequired: Duration
+    get() = map["timeRequired"] as Duration
+    set(value) { map["timeRequired"] = value }
+  var typicalAgeRange: String
+    get() = map["typicalAgeRange"] as String
+    set(value) { map["typicalAgeRange"] = value }
+  var version: Any
+    get() = map["version"]!!
+    set(value) { map["version"] = value }
+  var video: VideoObject
+    get() = map["video"] as VideoObject
+    set(value) { map["video"] = value }
+  fun video(builder: MutableVideoObject.() -> Unit) { map["video"] = MutableVideoObject().apply(builder).build() }
+  var provider: Any
+    get() = map["provider"]!!
+    set(value) { map["provider"] = value }
+  fun providerOrganization(builder: MutableOrganization.() -> Unit) { map["provider"] = MutableOrganization().apply(builder).build() }
+  fun providerPerson(builder: MutablePerson.() -> Unit) { map["provider"] = MutablePerson().apply(builder).build() }
+  var commentCount: Int
+    get() = map["commentCount"] as Int
+    set(value) { map["commentCount"] = value }
+  var hasPart: HasPart
+    get() = map["hasPart"] as HasPart
+    set(value) { map["hasPart"] = value }
+  var workExample: CreativeWork
+    get() = map["workExample"] as CreativeWork
+    set(value) { map["workExample"] = value }
+  fun workExample(builder: MutableCreativeWork.() -> Unit) { map["workExample"] = MutableCreativeWork().apply(builder).build() }
+  var exampleOfWork: CreativeWork
+    get() = map["exampleOfWork"] as CreativeWork
+    set(value) { map["exampleOfWork"] = value }
+  fun exampleOfWork(builder: MutableCreativeWork.() -> Unit) { map["exampleOfWork"] = MutableCreativeWork().apply(builder).build() }
+  var character: Person
+    get() = map["character"] as Person
+    set(value) { map["character"] = value }
+  fun character(builder: MutablePerson.() -> Unit) { map["character"] = MutablePerson().apply(builder).build() }
+  var translator: Any
+    get() = map["translator"]!!
+    set(value) { map["translator"] = value }
+  fun translatorOrganization(builder: MutableOrganization.() -> Unit) { map["translator"] = MutableOrganization().apply(builder).build() }
+  fun translatorPerson(builder: MutablePerson.() -> Unit) { map["translator"] = MutablePerson().apply(builder).build() }
+  var releasedEvent: PublicationEvent
+    get() = map["releasedEvent"] as PublicationEvent
+    set(value) { map["releasedEvent"] = value }
+  fun releasedEvent(builder: MutablePublicationEvent.() -> Unit) { map["releasedEvent"] = MutablePublicationEvent().apply(builder).build() }
+  var interactionStatistic: InteractionCounter
+    get() = map["interactionStatistic"] as InteractionCounter
+    set(value) { map["interactionStatistic"] = value }
+  fun interactionStatistic(builder: MutableInteractionCounter.() -> Unit) { map["interactionStatistic"] = MutableInteractionCounter().apply(builder).build() }
+  var additionalType: String
+    get() = map["additionalType"] as String
+    set(value) { map["additionalType"] = value }
+  var alternateName: String
+    get() = map["alternateName"] as String
+    set(value) { map["alternateName"] = value }
+  var disambiguatingDescription: String
+    get() = map["disambiguatingDescription"] as String
+    set(value) { map["disambiguatingDescription"] = value }
+  var mainEntityOfPage: Any
+    get() = map["mainEntityOfPage"]!!
+    set(value) { map["mainEntityOfPage"] = value }
+  fun mainEntityOfPageCreativeWork(builder: MutableCreativeWork.() -> Unit) { map["mainEntityOfPage"] = MutableCreativeWork().apply(builder).build() }
+  var name: String
+    get() = map["name"] as String
+    set(value) { map["name"] = value }
+  var sameAs: String
+    get() = map["sameAs"] as String
+    set(value) { map["sameAs"] = value }
+  var url: String
+    get() = map["url"] as String
+    set(value) { map["url"] = value }
+  var potentialAction: Action
+    get() = map["potentialAction"] as Action
+    set(value) { map["potentialAction"] = value }
+  fun potentialAction(builder: MutableAction.() -> Unit) { map["potentialAction"] = MutableAction().apply(builder).build() }
+  var id: String
+    get() = map["id"] as String
+    set(value) { map["id"] = value }
   fun build() = org.schema.MediaObject.Builder(map).build()
 }

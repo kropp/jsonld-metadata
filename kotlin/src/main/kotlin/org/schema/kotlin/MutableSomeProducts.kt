@@ -2,73 +2,155 @@ package org.schema.kotlin
 import org.schema.*
 class MutableSomeProducts {
   private val map = HashMap<String,Any>()
-  var inventoryLevel: QuantitativeValue by map
-  fun inventoryLevel(builder: MutableQuantitativeValue.() -> Unit) { inventoryLevel = MutableQuantitativeValue().apply(builder).build() }
-  var aggregateRating: AggregateRating by map
-  fun aggregateRating(builder: MutableAggregateRating.() -> Unit) { aggregateRating = MutableAggregateRating().apply(builder).build() }
-  var audience: Audience by map
-  fun audience(builder: MutableAudience.() -> Unit) { audience = MutableAudience().apply(builder).build() }
-  var award: String by map
-  var brand: Any by map
-  fun brandBrand(builder: MutableBrand.() -> Unit) { brand = MutableBrand().apply(builder).build() }
-  fun brandOrganization(builder: MutableOrganization.() -> Unit) { brand = MutableOrganization().apply(builder).build() }
-  var category: Any by map
-  fun categoryThing(builder: MutableThing.() -> Unit) { category = MutableThing().apply(builder).build() }
-  var color: String by map
-  var depth: Any by map
-  fun depthDistance(builder: MutableDistance.() -> Unit) { depth = MutableDistance().apply(builder).build() }
-  fun depthQuantitativeValue(builder: MutableQuantitativeValue.() -> Unit) { depth = MutableQuantitativeValue().apply(builder).build() }
-  var gtin12: Identifier by map
-  var gtin13: Identifier by map
-  var gtin14: Identifier by map
-  var gtin8: Identifier by map
-  var height: Any by map
-  fun heightDistance(builder: MutableDistance.() -> Unit) { height = MutableDistance().apply(builder).build() }
-  fun heightQuantitativeValue(builder: MutableQuantitativeValue.() -> Unit) { height = MutableQuantitativeValue().apply(builder).build() }
-  var isAccessoryOrSparePartFor: Product by map
-  fun isAccessoryOrSparePartFor(builder: MutableProduct.() -> Unit) { isAccessoryOrSparePartFor = MutableProduct().apply(builder).build() }
-  var isConsumableFor: Product by map
-  fun isConsumableFor(builder: MutableProduct.() -> Unit) { isConsumableFor = MutableProduct().apply(builder).build() }
-  var isRelatedTo: Any by map
-  fun isRelatedToProduct(builder: MutableProduct.() -> Unit) { isRelatedTo = MutableProduct().apply(builder).build() }
-  fun isRelatedToService(builder: MutableService.() -> Unit) { isRelatedTo = MutableService().apply(builder).build() }
-  var isSimilarTo: Any by map
-  fun isSimilarToProduct(builder: MutableProduct.() -> Unit) { isSimilarTo = MutableProduct().apply(builder).build() }
-  fun isSimilarToService(builder: MutableService.() -> Unit) { isSimilarTo = MutableService().apply(builder).build() }
-  var itemCondition: OfferItemCondition by map
-  var logo: Any by map
-  fun logoImageObject(builder: MutableImageObject.() -> Unit) { logo = MutableImageObject().apply(builder).build() }
-  var model: Any by map
-  fun modelProductModel(builder: MutableProductModel.() -> Unit) { model = MutableProductModel().apply(builder).build() }
-  var mpn: String by map
-  var manufacturer: Organization by map
-  fun manufacturer(builder: MutableOrganization.() -> Unit) { manufacturer = MutableOrganization().apply(builder).build() }
-  var offers: Offer by map
-  fun offers(builder: MutableOffer.() -> Unit) { offers = MutableOffer().apply(builder).build() }
-  var productID: Identifier by map
-  var releaseDate: java.util.Date by map
-  var review: Review by map
-  fun review(builder: MutableReview.() -> Unit) { review = MutableReview().apply(builder).build() }
-  var sku: Identifier by map
-  var weight: QuantitativeValue by map
-  fun weight(builder: MutableQuantitativeValue.() -> Unit) { weight = MutableQuantitativeValue().apply(builder).build() }
-  var width: Any by map
-  fun widthDistance(builder: MutableDistance.() -> Unit) { width = MutableDistance().apply(builder).build() }
-  fun widthQuantitativeValue(builder: MutableQuantitativeValue.() -> Unit) { width = MutableQuantitativeValue().apply(builder).build() }
-  var additionalProperty: PropertyValue by map
-  fun additionalProperty(builder: MutablePropertyValue.() -> Unit) { additionalProperty = MutablePropertyValue().apply(builder).build() }
-  var productionDate: java.util.Date by map
-  var purchaseDate: java.util.Date by map
-  var additionalType: String by map
-  var alternateName: String by map
-  var disambiguatingDescription: String by map
-  var mainEntityOfPage: Any by map
-  fun mainEntityOfPageCreativeWork(builder: MutableCreativeWork.() -> Unit) { mainEntityOfPage = MutableCreativeWork().apply(builder).build() }
-  var name: String by map
-  var sameAs: String by map
-  var url: String by map
-  var potentialAction: Action by map
-  fun potentialAction(builder: MutableAction.() -> Unit) { potentialAction = MutableAction().apply(builder).build() }
-  var id: String by map
+  var inventoryLevel: QuantitativeValue
+    get() = map["inventoryLevel"] as QuantitativeValue
+    set(value) { map["inventoryLevel"] = value }
+  fun inventoryLevel(builder: MutableQuantitativeValue.() -> Unit) { map["inventoryLevel"] = MutableQuantitativeValue().apply(builder).build() }
+  var aggregateRating: AggregateRating
+    get() = map["aggregateRating"] as AggregateRating
+    set(value) { map["aggregateRating"] = value }
+  fun aggregateRating(builder: MutableAggregateRating.() -> Unit) { map["aggregateRating"] = MutableAggregateRating().apply(builder).build() }
+  var audience: Audience
+    get() = map["audience"] as Audience
+    set(value) { map["audience"] = value }
+  fun audience(builder: MutableAudience.() -> Unit) { map["audience"] = MutableAudience().apply(builder).build() }
+  var award: String
+    get() = map["award"] as String
+    set(value) { map["award"] = value }
+  var brand: Any
+    get() = map["brand"]!!
+    set(value) { map["brand"] = value }
+  fun brandBrand(builder: MutableBrand.() -> Unit) { map["brand"] = MutableBrand().apply(builder).build() }
+  fun brandOrganization(builder: MutableOrganization.() -> Unit) { map["brand"] = MutableOrganization().apply(builder).build() }
+  var category: Any
+    get() = map["category"]!!
+    set(value) { map["category"] = value }
+  fun categoryThing(builder: MutableThing.() -> Unit) { map["category"] = MutableThing().apply(builder).build() }
+  var color: String
+    get() = map["color"] as String
+    set(value) { map["color"] = value }
+  var depth: Any
+    get() = map["depth"]!!
+    set(value) { map["depth"] = value }
+  fun depthDistance(builder: MutableDistance.() -> Unit) { map["depth"] = MutableDistance().apply(builder).build() }
+  fun depthQuantitativeValue(builder: MutableQuantitativeValue.() -> Unit) { map["depth"] = MutableQuantitativeValue().apply(builder).build() }
+  var gtin12: Identifier
+    get() = map["gtin12"] as Identifier
+    set(value) { map["gtin12"] = value }
+  var gtin13: Identifier
+    get() = map["gtin13"] as Identifier
+    set(value) { map["gtin13"] = value }
+  var gtin14: Identifier
+    get() = map["gtin14"] as Identifier
+    set(value) { map["gtin14"] = value }
+  var gtin8: Identifier
+    get() = map["gtin8"] as Identifier
+    set(value) { map["gtin8"] = value }
+  var height: Any
+    get() = map["height"]!!
+    set(value) { map["height"] = value }
+  fun heightDistance(builder: MutableDistance.() -> Unit) { map["height"] = MutableDistance().apply(builder).build() }
+  fun heightQuantitativeValue(builder: MutableQuantitativeValue.() -> Unit) { map["height"] = MutableQuantitativeValue().apply(builder).build() }
+  var isAccessoryOrSparePartFor: Product
+    get() = map["isAccessoryOrSparePartFor"] as Product
+    set(value) { map["isAccessoryOrSparePartFor"] = value }
+  fun isAccessoryOrSparePartFor(builder: MutableProduct.() -> Unit) { map["isAccessoryOrSparePartFor"] = MutableProduct().apply(builder).build() }
+  var isConsumableFor: Product
+    get() = map["isConsumableFor"] as Product
+    set(value) { map["isConsumableFor"] = value }
+  fun isConsumableFor(builder: MutableProduct.() -> Unit) { map["isConsumableFor"] = MutableProduct().apply(builder).build() }
+  var isRelatedTo: Any
+    get() = map["isRelatedTo"]!!
+    set(value) { map["isRelatedTo"] = value }
+  fun isRelatedToProduct(builder: MutableProduct.() -> Unit) { map["isRelatedTo"] = MutableProduct().apply(builder).build() }
+  fun isRelatedToService(builder: MutableService.() -> Unit) { map["isRelatedTo"] = MutableService().apply(builder).build() }
+  var isSimilarTo: Any
+    get() = map["isSimilarTo"]!!
+    set(value) { map["isSimilarTo"] = value }
+  fun isSimilarToProduct(builder: MutableProduct.() -> Unit) { map["isSimilarTo"] = MutableProduct().apply(builder).build() }
+  fun isSimilarToService(builder: MutableService.() -> Unit) { map["isSimilarTo"] = MutableService().apply(builder).build() }
+  var itemCondition: OfferItemCondition
+    get() = map["itemCondition"] as OfferItemCondition
+    set(value) { map["itemCondition"] = value }
+  var logo: Any
+    get() = map["logo"]!!
+    set(value) { map["logo"] = value }
+  fun logoImageObject(builder: MutableImageObject.() -> Unit) { map["logo"] = MutableImageObject().apply(builder).build() }
+  var model: Any
+    get() = map["model"]!!
+    set(value) { map["model"] = value }
+  fun modelProductModel(builder: MutableProductModel.() -> Unit) { map["model"] = MutableProductModel().apply(builder).build() }
+  var mpn: String
+    get() = map["mpn"] as String
+    set(value) { map["mpn"] = value }
+  var manufacturer: Organization
+    get() = map["manufacturer"] as Organization
+    set(value) { map["manufacturer"] = value }
+  fun manufacturer(builder: MutableOrganization.() -> Unit) { map["manufacturer"] = MutableOrganization().apply(builder).build() }
+  var offers: Offer
+    get() = map["offers"] as Offer
+    set(value) { map["offers"] = value }
+  fun offers(builder: MutableOffer.() -> Unit) { map["offers"] = MutableOffer().apply(builder).build() }
+  var productID: Identifier
+    get() = map["productID"] as Identifier
+    set(value) { map["productID"] = value }
+  var releaseDate: java.util.Date
+    get() = map["releaseDate"] as java.util.Date
+    set(value) { map["releaseDate"] = value }
+  var review: Review
+    get() = map["review"] as Review
+    set(value) { map["review"] = value }
+  fun review(builder: MutableReview.() -> Unit) { map["review"] = MutableReview().apply(builder).build() }
+  var sku: Identifier
+    get() = map["sku"] as Identifier
+    set(value) { map["sku"] = value }
+  var weight: QuantitativeValue
+    get() = map["weight"] as QuantitativeValue
+    set(value) { map["weight"] = value }
+  fun weight(builder: MutableQuantitativeValue.() -> Unit) { map["weight"] = MutableQuantitativeValue().apply(builder).build() }
+  var width: Any
+    get() = map["width"]!!
+    set(value) { map["width"] = value }
+  fun widthDistance(builder: MutableDistance.() -> Unit) { map["width"] = MutableDistance().apply(builder).build() }
+  fun widthQuantitativeValue(builder: MutableQuantitativeValue.() -> Unit) { map["width"] = MutableQuantitativeValue().apply(builder).build() }
+  var additionalProperty: PropertyValue
+    get() = map["additionalProperty"] as PropertyValue
+    set(value) { map["additionalProperty"] = value }
+  fun additionalProperty(builder: MutablePropertyValue.() -> Unit) { map["additionalProperty"] = MutablePropertyValue().apply(builder).build() }
+  var productionDate: java.util.Date
+    get() = map["productionDate"] as java.util.Date
+    set(value) { map["productionDate"] = value }
+  var purchaseDate: java.util.Date
+    get() = map["purchaseDate"] as java.util.Date
+    set(value) { map["purchaseDate"] = value }
+  var additionalType: String
+    get() = map["additionalType"] as String
+    set(value) { map["additionalType"] = value }
+  var alternateName: String
+    get() = map["alternateName"] as String
+    set(value) { map["alternateName"] = value }
+  var disambiguatingDescription: String
+    get() = map["disambiguatingDescription"] as String
+    set(value) { map["disambiguatingDescription"] = value }
+  var mainEntityOfPage: Any
+    get() = map["mainEntityOfPage"]!!
+    set(value) { map["mainEntityOfPage"] = value }
+  fun mainEntityOfPageCreativeWork(builder: MutableCreativeWork.() -> Unit) { map["mainEntityOfPage"] = MutableCreativeWork().apply(builder).build() }
+  var name: String
+    get() = map["name"] as String
+    set(value) { map["name"] = value }
+  var sameAs: String
+    get() = map["sameAs"] as String
+    set(value) { map["sameAs"] = value }
+  var url: String
+    get() = map["url"] as String
+    set(value) { map["url"] = value }
+  var potentialAction: Action
+    get() = map["potentialAction"] as Action
+    set(value) { map["potentialAction"] = value }
+  fun potentialAction(builder: MutableAction.() -> Unit) { map["potentialAction"] = MutableAction().apply(builder).build() }
+  var id: String
+    get() = map["id"] as String
+    set(value) { map["id"] = value }
   fun build() = org.schema.SomeProducts.Builder(map).build()
 }
