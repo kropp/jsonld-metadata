@@ -21,8 +21,41 @@ repositories {
     }
 }
 
-compileKotlin {
-    kotlinOptions.verbose = true
+version = rootProject.version
+
+jar {
+    baseName = 'jsonld-metadata-kotlin'
+}
+
+if (System.getenv('BINTRAY_USER')) {
+    bintray {
+        user = System.getenv('BINTRAY_USER')
+        key = System.getenv('BINTRAY_KEY')
+        pkg {
+            repo = 'org.schema'
+            name = 'jsonld-metadata-kotlin'
+            userOrg = 'kropp'
+            licenses = ['Apache-2.0']
+            vcsUrl = 'git@github.com:kropp/jsonld-metadata.git'
+            version {
+                name = project.version
+                desc = 'JSON-LD Metadata Kotlin ' + project.version
+                vcsTag = project.version
+            }
+        }
+        publications = ['JsonLdMetadataKotlinPublication']
+    }
+}
+
+publishing {
+    publications {
+        JsonLdMetadataKotlinPublication(MavenPublication) {
+            //from components.kotlin
+            groupId 'org.schema'
+            artifactId 'jsonld-metadata-kotlin'
+            version project.version
+        }
+    }
 }
 
 dependencies {
