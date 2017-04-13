@@ -13,6 +13,10 @@ buildscript {
 }
 
 apply plugin: 'kotlin'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.github.kropp.teamcity-gitversion'
+apply plugin: 'com.jfrog.bintray'
 
 repositories {
     mavenCentral()
@@ -20,8 +24,6 @@ repositories {
         url 'https://dl.bintray.com/kotlin/kotlin-eap-1.1'
     }
 }
-
-version = rootProject.version
 
 jar {
     baseName = 'jsonld-metadata-kotlin'
@@ -50,7 +52,7 @@ if (System.getenv('BINTRAY_USER')) {
 publishing {
     publications {
         JsonLdMetadataKotlinPublication(MavenPublication) {
-            //from components.kotlin
+            artifact jar
             groupId 'org.schema'
             artifactId 'jsonld-metadata-kotlin'
             version project.version
