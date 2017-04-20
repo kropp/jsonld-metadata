@@ -61,8 +61,6 @@ publishing {
 }
 
 if (hasProperty('mavenPublishUrl')) {
-    group 'com.jetbrains.hub'
-
     uploadArchives {
         repositories {
             mavenDeployer {
@@ -71,6 +69,8 @@ if (hasProperty('mavenPublishUrl')) {
                 }
 
                 pom.project {
+                    groupId 'org.schema'
+
                     name 'JSON-LD Metadata'
                     description 'JSON-LD Java serializer'
                     packaging 'jar'
