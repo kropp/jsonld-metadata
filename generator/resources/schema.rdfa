@@ -3760,6 +3760,7 @@ The place is __open__ if the [[opens]] property is specified, and __closed__ oth
       <span class="h" property="rdfs:label">audience</span>
       <span property="rdfs:comment">An intended audience, i.e. a group for whom something was created.</span>
       <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Event">Event</a></span>
       <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Product">Product</a></span>
       <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Service">Service</a></span>
       <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/PlayAction">PlayAction</a></span>
@@ -5550,6 +5551,7 @@ The place is __open__ if the [[opens]] property is specified, and __closed__ oth
       <link property="rdfs:subPropertyOf" href="http://schema.org/participant" />
       <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/BorrowAction">BorrowAction</a></span>
       <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Person">Person</a></span>
+      <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Organization">Organization</a></span>
     </div>
     <div typeof="rdf:Property" resource="http://schema.org/lesser">
       <span class="h" property="rdfs:label">lesser</span>
@@ -5747,14 +5749,26 @@ The place is __open__ if the [[opens]] property is specified, and __closed__ oth
       <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/CreativeWork">CreativeWork</a></span>
       <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Thing">Thing</a></span>
     </div>
-    <div typeof="rdf:Property" resource="http://schema.org/menu">
-      <span class="h" property="rdfs:label">menu</span>
+    <div typeof="rdf:Property" resource="http://schema.org/hasMenu">
+      <span class="h" property="rdfs:label">hasMenu</span>
       <span property="rdfs:comment">Either the actual menu as a structured representation, as text, or a URL of the menu.</span>
       <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/FoodEstablishment">FoodEstablishment</a></span>
       <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Menu">Menu</a></span>
       <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
       <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/URL">URL</a></span>
     </div>
+
+    <div typeof="rdf:Property" resource="http://schema.org/menu">
+      <span class="h" property="rdfs:label">menu</span>
+      <span property="rdfs:comment">Either the actual menu as a structured representation, as text, or a URL of the menu.</span>
+      <link property="http://schema.org/supersededBy" href="http://schema.org/hasMenu"/>
+      <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/FoodEstablishment">FoodEstablishment</a></span>
+      <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Menu">Menu</a></span>
+      <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+      <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/URL">URL</a></span>
+    </div>
+
+
     <div typeof="rdf:Property" resource="http://schema.org/merchant">
       <span class="h" property="rdfs:label">merchant</span>
       <span property="rdfs:comment">'merchant' is an out-dated term for 'seller'.</span>
@@ -10492,6 +10506,11 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     <span property="rdfs:comment">This element is based on the work of the Financial Industry Business Ontology project (see [http://www.fibo.org/schema](http://www.fibo.org/schema) for details), in support of the W3C Financial Industry Business Ontology Community Group ([http://www.fibo.org/community](http://www.fibo.org/community)). Many class and property definitions are inspired by or based on [http://www.fibo.org](http://www.fibo.org).</span>
   </div>
 
+<div typeof="http://schema.org/Organization" resource="http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#GLEIF">
+    <span property="rdfs:label">GLEIF</span>
+    <span property="rdfs:comment">The implementation and use of Legal Entity Identifier (LEI) is supported by Global Legal Entity Identifier Foundation [https://www.gleif.org](https://www.gleif.org).</span>
+  </div>
+
   <div typeof="rdfs:Class" resource="http://schema.org/MonetaryAmount">
     <span class="h" property="rdfs:label">MonetaryAmount</span>
     <span property="rdfs:comment">A monetary value or range. This type can be used to describe an amount of money such as $50 USD, or a range as in describing a bank account being suitable for a balance between £1,000 and £1,000,000 GBP, or the value of a salary, etc. It is recommended to use [[PriceSpecification]] Types to describe the price of an Offer, Invoice, etc.</span>
@@ -10505,6 +10524,7 @@ Standards bodies should promote a standard prefix for the identifiers of propert
     <span>Domain: <a property="http://schema.org/domainIncludes" href="http://schema.org/Organization">Organization</a></span>
     <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
     <span>Source:  <a property="dc:source" href="http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#FIBO">FIBO</a></span>
+    <span>Source:  <a property="dc:source" href="http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#GLEIF">GLEIF</a></span>
   </div>
 
 
@@ -11190,7 +11210,6 @@ Typical unit code(s): C62 for person</span>
       <span property="rdfs:comment">A structured representation of food or drink items available from a FoodEstablishment.</span>
       <span>Subclass of: <a property="rdfs:subClassOf" href="http://schema.org/CreativeWork">CreativeWork</a></span>
     </div>
-    <!-- we might consider moving the menu property to be hasMenu, but only if there is a strong call to do so. -->
 
     <div typeof="rdfs:Class" resource="http://schema.org/MenuItem">
       <span class="h" property="rdfs:label">MenuItem</span>
@@ -11220,6 +11239,7 @@ Typical unit code(s): C62 for person</span>
       <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/MenuSection">MenuSection</a></span>
     </div>
 
+<!-- moved to pending per #1541
     <div typeof="rdf:Property" resource="http://schema.org/menuAddOn">
       <span class="h" property="rdfs:label">menuAddOn</span>
       <span property="rdfs:comment">Additional menu item(s) such as a side dish of salad or side order of fries that can be added to this menu item. Additionally it can be a menu section containing allowed add-on menu items for this menu item.</span>
@@ -11227,6 +11247,43 @@ Typical unit code(s): C62 for person</span>
       <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/MenuSection">MenuItem</a></span>
       <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/MenuSection">MenuSection</a></span>
     </div>
+-->
+
+<h2>Digital Publishing Accessibility</h2>
+
+<p>"Proposal of accessMode, accessModeSufficient, and accessibilitySummary properties for e.g. epubs"</p>
+
+    <div typeof="rdf:Property" resource="http://schema.org/accessMode">
+      <span>Category: <span property="schema:category">issue-1110</span></span>
+      <span class="h" property="rdfs:label">accessMode</span>
+      <span property="rdfs:comment">The human sensory perceptual system or cognitive faculty through which a person may process or perceive information. Expected values include: auditory, tactile, textual, visual, colorDependent, chartOnVisual, chemOnVisual, diagramOnVisual, mathOnVisual, musicOnVisual, textOnVisual.
+      </span>
+      <span>domainIncludes: <a property="http://schema.org/domainIncludes" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+      <span>rangeIncludes: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+      <span>Source:  <a property="dc:source" href="https://github.com/schemaorg/schemaorg/issues/1100">#1100</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://schema.org/accessModeSufficient">
+      <span>Category: <span property="schema:category">issue-1110</span></span>
+      <span class="h" property="rdfs:label">accessModeSufficient</span>
+      <span property="rdfs:comment">A list of single or combined accessModes that are sufficient to understand all the intellectual content of a resource. Expected values include:  auditory, tactile, textual, visual.
+      </span>
+      <span>domainIncludes: <a property="http://schema.org/domainIncludes" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+      <span>rangeIncludes: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+      <span>Source:  <a property="dc:source" href="https://github.com/schemaorg/schemaorg/issues/1100">#1100</a></span>
+    </div>
+
+    <div typeof="rdf:Property" resource="http://schema.org/accessibilitySummary">
+      <span>Category: <span property="schema:category">issue-1110</span></span>
+      <span class="h" property="rdfs:label">accessibilitySummary</span>
+      <span property="rdfs:comment">A human-readable summary of specific accessibility features or deficiencies, consistent with the other accessibility metadata but expressing subtleties such as "short descriptions are present but long descriptions will be needed for non-visual users" or "short descriptions are present and no long descriptions are needed."</span>
+      <span>domainIncludes: <a property="http://schema.org/domainIncludes" href="http://schema.org/CreativeWork">CreativeWork</a></span>
+      <span>rangeIncludes: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
+      <span>Source:  <a property="dc:source" href="https://github.com/schemaorg/schemaorg/issues/1100">#1100</a></span>
+    </div>
+
+
+
 
 </div>
 

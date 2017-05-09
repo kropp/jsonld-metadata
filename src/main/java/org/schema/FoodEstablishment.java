@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 JetBrains s.r.o.
+ * Copyright 2015-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -67,14 +67,14 @@ public class FoodEstablishment extends LocalBusiness {
   /**
    * Either the actual menu as a structured representation, as text, or a URL of the menu.
    */
-  @JsonIgnore public Menu getMenuMenu() {
-    return (Menu) getValue("menu");
+  @JsonIgnore public Menu getHasMenuMenu() {
+    return (Menu) getValue("hasMenu");
   }
   /**
    * Either the actual menu as a structured representation, as text, or a URL of the menu.
    */
-  @JsonIgnore public Collection<Menu> getMenuMenus() {
-    final Object current = myData.get("menu");
+  @JsonIgnore public Collection<Menu> getHasMenuMenus() {
+    final Object current = myData.get("hasMenu");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<Menu>) current;
@@ -84,14 +84,14 @@ public class FoodEstablishment extends LocalBusiness {
   /**
    * Either the actual menu as a structured representation, as text, or a URL of the menu.
    */
-  @JsonIgnore public String getMenuString() {
-    return (String) getValue("menu");
+  @JsonIgnore public String getHasMenuString() {
+    return (String) getValue("hasMenu");
   }
   /**
    * Either the actual menu as a structured representation, as text, or a URL of the menu.
    */
-  @JsonIgnore public Collection<String> getMenuStrings() {
-    final Object current = myData.get("menu");
+  @JsonIgnore public Collection<String> getHasMenuStrings() {
+    final Object current = myData.get("hasMenu");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<String>) current;
@@ -163,22 +163,22 @@ public class FoodEstablishment extends LocalBusiness {
     /**
      * Either the actual menu as a structured representation, as text, or a URL of the menu.
      */
-    @NotNull public Builder menu(@NotNull Menu menu) {
-      putValue("menu", menu);
+    @NotNull public Builder hasMenu(@NotNull Menu menu) {
+      putValue("hasMenu", menu);
       return this;
     }
     /**
      * Either the actual menu as a structured representation, as text, or a URL of the menu.
      */
-    @NotNull public Builder menu(@NotNull Menu.Builder menu) {
-      putValue("menu", menu.build());
+    @NotNull public Builder hasMenu(@NotNull Menu.Builder menu) {
+      putValue("hasMenu", menu.build());
       return this;
     }
     /**
      * Either the actual menu as a structured representation, as text, or a URL of the menu.
      */
-    @NotNull public Builder menu(@NotNull String menu) {
-      putValue("menu", menu);
+    @NotNull public Builder hasMenu(@NotNull String hasMenu) {
+      putValue("hasMenu", hasMenu);
       return this;
     }
     /**
@@ -618,10 +618,10 @@ public class FoodEstablishment extends LocalBusiness {
       if ("acceptsReservationss".equals(key) && value instanceof Boolean) { acceptsReservations((Boolean)value); return; }
       if ("acceptsReservations".equals(key) && value instanceof String) { acceptsReservations((String)value); return; }
       if ("acceptsReservationss".equals(key) && value instanceof String) { acceptsReservations((String)value); return; }
-      if ("menu".equals(key) && value instanceof Menu) { menu((Menu)value); return; }
-      if ("menus".equals(key) && value instanceof Menu) { menu((Menu)value); return; }
-      if ("menu".equals(key) && value instanceof String) { menu((String)value); return; }
-      if ("menus".equals(key) && value instanceof String) { menu((String)value); return; }
+      if ("hasMenu".equals(key) && value instanceof Menu) { hasMenu((Menu)value); return; }
+      if ("hasMenus".equals(key) && value instanceof Menu) { hasMenu((Menu)value); return; }
+      if ("hasMenu".equals(key) && value instanceof String) { hasMenu((String)value); return; }
+      if ("hasMenus".equals(key) && value instanceof String) { hasMenu((String)value); return; }
       if ("servesCuisine".equals(key) && value instanceof String) { servesCuisine((String)value); return; }
       if ("servesCuisines".equals(key) && value instanceof String) { servesCuisine((String)value); return; }
       if ("starRating".equals(key) && value instanceof Rating) { starRating((Rating)value); return; }

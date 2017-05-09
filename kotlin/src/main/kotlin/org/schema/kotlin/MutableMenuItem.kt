@@ -1,6 +1,5 @@
 package org.schema.kotlin
 import org.schema.Action
-import org.schema.MenuSection
 import org.schema.NutritionInformation
 import org.schema.RestrictedDiet
 
@@ -13,10 +12,6 @@ class MutableMenuItem {
     get() = map["nutrition"] as NutritionInformation
     set(value) { map["nutrition"] = value }
   fun nutrition(builder: MutableNutritionInformation.() -> Unit) { map["nutrition"] = MutableNutritionInformation().apply(builder).build() }
-  var menuAddOn: MenuSection
-    get() = map["menuAddOn"] as MenuSection
-    set(value) { map["menuAddOn"] = value }
-  fun menuAddOn(builder: MutableMenuSection.() -> Unit) { map["menuAddOn"] = MutableMenuSection().apply(builder).build() }
   var additionalType: String
     get() = map["additionalType"] as String
     set(value) { map["additionalType"] = value }

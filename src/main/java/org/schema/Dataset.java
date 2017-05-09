@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 JetBrains s.r.o.
+ * Copyright 2015-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1092,6 +1092,29 @@ public class Dataset extends CreativeWork {
      */
     @NotNull public Builder interactionStatistic(@NotNull InteractionCounter.Builder interactionCounter) {
       putValue("interactionStatistic", interactionCounter.build());
+      return this;
+    }
+    /**
+     * The human sensory perceptual system or cognitive faculty through which a person may process or perceive information. Expected values include: auditory, tactile, textual, visual, colorDependent, chartOnVisual, chemOnVisual, diagramOnVisual, mathOnVisual, musicOnVisual, textOnVisual.
+     *       
+     */
+    @NotNull public Builder accessMode(@NotNull String accessMode) {
+      putValue("accessMode", accessMode);
+      return this;
+    }
+    /**
+     * A list of single or combined accessModes that are sufficient to understand all the intellectual content of a resource. Expected values include:  auditory, tactile, textual, visual.
+     *       
+     */
+    @NotNull public Builder accessModeSufficient(@NotNull String accessModeSufficient) {
+      putValue("accessModeSufficient", accessModeSufficient);
+      return this;
+    }
+    /**
+     * A human-readable summary of specific accessibility features or deficiencies, consistent with the other accessibility metadata but expressing subtleties such as "short descriptions are present but long descriptions will be needed for non-visual users" or "short descriptions are present and no long descriptions are needed."
+     */
+    @NotNull public Builder accessibilitySummary(@NotNull String accessibilitySummary) {
+      putValue("accessibilitySummary", accessibilitySummary);
       return this;
     }
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 JetBrains s.r.o.
+ * Copyright 2015-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -148,6 +148,23 @@ public class Event extends Thing {
       return (Collection<Person>) current;
     }
     return Arrays.asList((Person) current);
+  }
+  /**
+   * An intended audience, i.e. a group for whom something was created.
+   */
+  @JsonIgnore public Audience getAudience() {
+    return (Audience) getValue("audience");
+  }
+  /**
+   * An intended audience, i.e. a group for whom something was created.
+   */
+  @JsonIgnore public Collection<Audience> getAudiences() {
+    final Object current = myData.get("audience");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Audience>) current;
+    }
+    return Arrays.asList((Audience) current);
   }
   /**
    * A secondary contributor to the CreativeWork or Event.
@@ -757,6 +774,20 @@ public class Event extends Thing {
       return this;
     }
     /**
+     * An intended audience, i.e. a group for whom something was created.
+     */
+    @NotNull public Builder audience(@NotNull Audience audience) {
+      putValue("audience", audience);
+      return this;
+    }
+    /**
+     * An intended audience, i.e. a group for whom something was created.
+     */
+    @NotNull public Builder audience(@NotNull Audience.Builder audience) {
+      putValue("audience", audience.build());
+      return this;
+    }
+    /**
      * A secondary contributor to the CreativeWork or Event.
      */
     @NotNull public Builder contributor(@NotNull Organization organization) {
@@ -1185,6 +1216,8 @@ public class Event extends Thing {
       if ("attendees".equals(key) && value instanceof Organization) { attendee((Organization)value); return; }
       if ("attendee".equals(key) && value instanceof Person) { attendee((Person)value); return; }
       if ("attendees".equals(key) && value instanceof Person) { attendee((Person)value); return; }
+      if ("audience".equals(key) && value instanceof Audience) { audience((Audience)value); return; }
+      if ("audiences".equals(key) && value instanceof Audience) { audience((Audience)value); return; }
       if ("contributor".equals(key) && value instanceof Organization) { contributor((Organization)value); return; }
       if ("contributors".equals(key) && value instanceof Organization) { contributor((Organization)value); return; }
       if ("contributor".equals(key) && value instanceof Person) { contributor((Person)value); return; }

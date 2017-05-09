@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 JetBrains s.r.o.
+ * Copyright 2015-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +17,6 @@
  */
 
 package org.schema;
-
-import com.fasterxml.jackson.databind.annotation.*;
-import com.fasterxml.jackson.annotation.*;
-import org.jetbrains.annotations.NotNull;
-import java.util.*;
 
 /**
  * A work featured in some event, e.g. exhibited in an ExhibitionEvent.

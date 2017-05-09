@@ -31,6 +31,10 @@ class MutableCourseInstance {
     set(value) { map["attendee"] = value }
   fun attendeeOrganization(builder: MutableOrganization.() -> Unit) { map["attendee"] = MutableOrganization().apply(builder).build() }
   fun attendeePerson(builder: MutablePerson.() -> Unit) { map["attendee"] = MutablePerson().apply(builder).build() }
+  var audience: Audience
+    get() = map["audience"] as Audience
+    set(value) { map["audience"] = value }
+  fun audience(builder: MutableAudience.() -> Unit) { map["audience"] = MutableAudience().apply(builder).build() }
   var contributor: Any
     get() = map["contributor"]!!
     set(value) { map["contributor"] = value }

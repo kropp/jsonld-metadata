@@ -5,10 +5,10 @@ class MutableBakery {
   var acceptsReservations: Any
     get() = map["acceptsReservations"]!!
     set(value) { map["acceptsReservations"] = value }
-  var menu: Any
-    get() = map["menu"]!!
-    set(value) { map["menu"] = value }
-  fun menuMenu(builder: MutableMenu.() -> Unit) { map["menu"] = MutableMenu().apply(builder).build() }
+  var hasMenu: Any
+    get() = map["hasMenu"]!!
+    set(value) { map["hasMenu"] = value }
+  fun hasMenuMenu(builder: MutableMenu.() -> Unit) { map["hasMenu"] = MutableMenu().apply(builder).build() }
   var servesCuisine: String
     get() = map["servesCuisine"] as String
     set(value) { map["servesCuisine"] = value }

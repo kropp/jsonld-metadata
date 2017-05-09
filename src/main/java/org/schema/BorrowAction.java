@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 JetBrains s.r.o.
+ * Copyright 2015-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,13 +33,30 @@ public class BorrowAction extends TransferAction {
   /**
    * A sub property of participant. The person that lends the object being borrowed.
    */
-  @JsonIgnore public Person getLender() {
+  @JsonIgnore public Organization getLenderOrganization() {
+    return (Organization) getValue("lender");
+  }
+  /**
+   * A sub property of participant. The person that lends the object being borrowed.
+   */
+  @JsonIgnore public Collection<Organization> getLenderOrganizations() {
+    final Object current = myData.get("lender");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Organization>) current;
+    }
+    return Arrays.asList((Organization) current);
+  }
+  /**
+   * A sub property of participant. The person that lends the object being borrowed.
+   */
+  @JsonIgnore public Person getLenderPerson() {
     return (Person) getValue("lender");
   }
   /**
    * A sub property of participant. The person that lends the object being borrowed.
    */
-  @JsonIgnore public Collection<Person> getLenders() {
+  @JsonIgnore public Collection<Person> getLenderPersons() {
     final Object current = myData.get("lender");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
@@ -60,6 +77,20 @@ public class BorrowAction extends TransferAction {
     }
     @NotNull public BorrowAction build() {
       return new BorrowAction(myData);
+    }
+    /**
+     * A sub property of participant. The person that lends the object being borrowed.
+     */
+    @NotNull public Builder lender(@NotNull Organization organization) {
+      putValue("lender", organization);
+      return this;
+    }
+    /**
+     * A sub property of participant. The person that lends the object being borrowed.
+     */
+    @NotNull public Builder lender(@NotNull Organization.Builder organization) {
+      putValue("lender", organization.build());
+      return this;
     }
     /**
      * A sub property of participant. The person that lends the object being borrowed.
@@ -265,6 +296,8 @@ public class BorrowAction extends TransferAction {
       return id(Long.toString(id));
     }
     @Override protected void fromMap(String key, Object value) {
+      if ("lender".equals(key) && value instanceof Organization) { lender((Organization)value); return; }
+      if ("lenders".equals(key) && value instanceof Organization) { lender((Organization)value); return; }
       if ("lender".equals(key) && value instanceof Person) { lender((Person)value); return; }
       if ("lenders".equals(key) && value instanceof Person) { lender((Person)value); return; }
       super.fromMap(key, value);

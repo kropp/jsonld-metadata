@@ -282,6 +282,15 @@ class MutableClip {
     get() = map["interactionStatistic"] as InteractionCounter
     set(value) { map["interactionStatistic"] = value }
   fun interactionStatistic(builder: MutableInteractionCounter.() -> Unit) { map["interactionStatistic"] = MutableInteractionCounter().apply(builder).build() }
+  var accessMode: String
+    get() = map["accessMode"] as String
+    set(value) { map["accessMode"] = value }
+  var accessModeSufficient: String
+    get() = map["accessModeSufficient"] as String
+    set(value) { map["accessModeSufficient"] = value }
+  var accessibilitySummary: String
+    get() = map["accessibilitySummary"] as String
+    set(value) { map["accessibilitySummary"] = value }
   var additionalType: String
     get() = map["additionalType"] as String
     set(value) { map["additionalType"] = value }

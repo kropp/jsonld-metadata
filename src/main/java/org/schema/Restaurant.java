@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 JetBrains s.r.o.
+ * Copyright 2015-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -57,22 +57,22 @@ public class Restaurant extends FoodEstablishment {
     /**
      * Either the actual menu as a structured representation, as text, or a URL of the menu.
      */
-    @NotNull public Builder menu(@NotNull Menu menu) {
-      putValue("menu", menu);
+    @NotNull public Builder hasMenu(@NotNull Menu menu) {
+      putValue("hasMenu", menu);
       return this;
     }
     /**
      * Either the actual menu as a structured representation, as text, or a URL of the menu.
      */
-    @NotNull public Builder menu(@NotNull Menu.Builder menu) {
-      putValue("menu", menu.build());
+    @NotNull public Builder hasMenu(@NotNull Menu.Builder menu) {
+      putValue("hasMenu", menu.build());
       return this;
     }
     /**
      * Either the actual menu as a structured representation, as text, or a URL of the menu.
      */
-    @NotNull public Builder menu(@NotNull String menu) {
-      putValue("menu", menu);
+    @NotNull public Builder hasMenu(@NotNull String hasMenu) {
+      putValue("hasMenu", hasMenu);
       return this;
     }
     /**

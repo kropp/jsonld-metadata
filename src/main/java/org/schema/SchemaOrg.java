@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 JetBrains s.r.o.
+ * Copyright 2015-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1738,6 +1738,10 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
    */
   @NotNull public static QualitativeValue.Builder qualitativeValue() { return new QualitativeValue.Builder(new HashMap<String,Object>()); }
   /**
+   * The implementation and use of Legal Entity Identifier (LEI) is supported by Global Legal Entity Identifier Foundation [https://www.gleif.org](https://www.gleif.org).
+   */
+  @NotNull public static GLEIF.Builder gLEIF() { return new GLEIF.Builder(new HashMap<String,Object>()); }
+  /**
    * The average rating based on multiple ratings or reviews.
    */
   @NotNull public static AggregateRating.Builder aggregateRating() { return new AggregateRating.Builder(new HashMap<String,Object>()); }
@@ -2831,6 +2835,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
     if ("AutomatedTeller".equals(type)) { return new AutomatedTeller.Builder(new HashMap<String,Object>()); }
     if ("DataFeedItem".equals(type)) { return new DataFeedItem.Builder(new HashMap<String,Object>()); }
     if ("QualitativeValue".equals(type)) { return new QualitativeValue.Builder(new HashMap<String,Object>()); }
+    if ("GLEIF".equals(type)) { return new GLEIF.Builder(new HashMap<String,Object>()); }
     if ("AggregateRating".equals(type)) { return new AggregateRating.Builder(new HashMap<String,Object>()); }
     if ("AlignmentObject".equals(type)) { return new AlignmentObject.Builder(new HashMap<String,Object>()); }
     if ("PerformingArtsTheater".equals(type)) { return new PerformingArtsTheater.Builder(new HashMap<String,Object>()); }

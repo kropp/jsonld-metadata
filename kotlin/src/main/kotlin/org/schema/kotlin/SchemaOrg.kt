@@ -416,6 +416,7 @@ fun synagogue(builder: MutableSynagogue.() -> Unit) = MutableSynagogue().apply(b
 fun automatedTeller(builder: MutableAutomatedTeller.() -> Unit) = MutableAutomatedTeller().apply(builder).build()
 fun dataFeedItem(builder: MutableDataFeedItem.() -> Unit) = MutableDataFeedItem().apply(builder).build()
 fun qualitativeValue(builder: MutableQualitativeValue.() -> Unit) = MutableQualitativeValue().apply(builder).build()
+fun gLEIF(builder: MutableGLEIF.() -> Unit) = MutableGLEIF().apply(builder).build()
 fun aggregateRating(builder: MutableAggregateRating.() -> Unit) = MutableAggregateRating().apply(builder).build()
 fun alignmentObject(builder: MutableAlignmentObject.() -> Unit) = MutableAlignmentObject().apply(builder).build()
 fun performingArtsTheater(builder: MutablePerformingArtsTheater.() -> Unit) = MutablePerformingArtsTheater().apply(builder).build()

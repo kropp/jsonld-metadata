@@ -2,10 +2,11 @@ package org.schema.kotlin
 import org.schema.*
 class MutableBorrowAction {
   private val map = HashMap<String,Any>()
-  var lender: Person
-    get() = map["lender"] as Person
+  var lender: Any
+    get() = map["lender"]!!
     set(value) { map["lender"] = value }
-  fun lender(builder: MutablePerson.() -> Unit) { map["lender"] = MutablePerson().apply(builder).build() }
+  fun lenderOrganization(builder: MutableOrganization.() -> Unit) { map["lender"] = MutableOrganization().apply(builder).build() }
+  fun lenderPerson(builder: MutablePerson.() -> Unit) { map["lender"] = MutablePerson().apply(builder).build() }
   var fromLocation: Place
     get() = map["fromLocation"] as Place
     set(value) { map["fromLocation"] = value }
