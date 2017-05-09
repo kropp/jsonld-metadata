@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2016 JetBrains s.r.o.
+ * Copyright 2015-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ import java.io.FileInputStream
  */
 
 private val BANNER = """/*
- * Copyright 2015-2016 JetBrains s.r.o.
+ * Copyright 2015-2017 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,6 @@ fun main(args: Array<String>) {
     }
     sink.postProcess()
 
-/*
     sources("src/main/java") {
         pakage(NAMESPACE) {
             println("Generating Java classes")
@@ -66,7 +65,6 @@ fun main(args: Array<String>) {
             ApiGenerator(sink, BANNER).generate(this)
         }
     }
-*/
 
     sources("kotlin/src/main/kotlin") {
         pakage(NAMESPACE_KOTLIN) {
