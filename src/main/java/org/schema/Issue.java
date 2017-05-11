@@ -48,6 +48,23 @@ public class Issue extends CreativeWork {
     return Arrays.asList((String) current);
   }
   /**
+   * Project this issue belongs to.
+   */
+  @JsonIgnore public Project getProject() {
+    return (Project) getValue("project");
+  }
+  /**
+   * Project this issue belongs to.
+   */
+  @JsonIgnore public Collection<Project> getProjects() {
+    final Object current = myData.get("project");
+    if (current == null) return Collections.emptyList();
+    if (current instanceof Collection) {
+      return (Collection<Project>) current;
+    }
+    return Arrays.asList((Project) current);
+  }
+  /**
    * Related source code revisions.
    */
   @JsonIgnore public SourceCodeRevision getSourceCodeRevision() {
@@ -83,6 +100,20 @@ public class Issue extends CreativeWork {
      */
     @NotNull public Builder state(@NotNull String state) {
       putValue("state", state);
+      return this;
+    }
+    /**
+     * Project this issue belongs to.
+     */
+    @NotNull public Builder project(@NotNull Project project) {
+      putValue("project", project);
+      return this;
+    }
+    /**
+     * Project this issue belongs to.
+     */
+    @NotNull public Builder project(@NotNull Project.Builder project) {
+      putValue("project", project.build());
       return this;
     }
     /**
@@ -1197,6 +1228,8 @@ public class Issue extends CreativeWork {
     @Override protected void fromMap(String key, Object value) {
       if ("state".equals(key) && value instanceof String) { state((String)value); return; }
       if ("states".equals(key) && value instanceof String) { state((String)value); return; }
+      if ("project".equals(key) && value instanceof Project) { project((Project)value); return; }
+      if ("projects".equals(key) && value instanceof Project) { project((Project)value); return; }
       if ("sourceCodeRevision".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
       if ("sourceCodeRevisions".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
       super.fromMap(key, value);

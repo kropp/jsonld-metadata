@@ -5,6 +5,10 @@ class MutableIssue {
   var state: String
     get() = map["state"] as String
     set(value) { map["state"] = value }
+  var project: Project
+    get() = map["project"] as Project
+    set(value) { map["project"] = value }
+  fun project(builder: MutableProject.() -> Unit) { map["project"] = MutableProject().apply(builder).build() }
   var sourceCodeRevision: SourceCodeRevision
     get() = map["sourceCodeRevision"] as SourceCodeRevision
     set(value) { map["sourceCodeRevision"] = value }

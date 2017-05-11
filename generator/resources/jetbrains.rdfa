@@ -193,6 +193,13 @@
         <span>Range: <a property="http://schema.org/rangeIncludes" href="http://schema.org/Text">Text</a></span>
     </div>
 
+    <div typeof="rdf:Property" resource="http://jetbrains.org/schema/issueProject">
+        <span class="h" property="rdfs:label">project</span>
+        <span property="rdfs:comment">Project this issue belongs to.</span>
+        <span>Domain: <a property="http://schema.org/domainIncludes" href="http://jetbrains.org/schema/Issue">Issue</a></span>
+        <span>Range: <a property="http://schema.org/rangeIncludes" href="http://jetbrains.org/schema/Project">Project</a></span>
+    </div>
+
      <div typeof="rdf:Property" resource="http://jetbrains.org/schema/reviewState">
         <span class="h" property="rdfs:label">state</span>
         <span property="rdfs:comment">State of the review</span>
