@@ -27,20 +27,20 @@ import java.util.Collections;
 import java.util.HashMap;
 
 /**
- * Single entity in issue tracker (e.g. bug or feature)
+ * A property of an issue
  */
-public class Issue extends CreativeWork {
+public class IssueField extends CreativeWork {
   /**
-   * Issue state
+   * Property value.
    */
-  @JsonIgnore public String getState() {
-    return (String) getValue("state");
+  @JsonIgnore public String getValue() {
+    return (String) getValue("value");
   }
   /**
-   * Issue state
+   * Property value.
    */
-  @JsonIgnore public Collection<String> getStates() {
-    final Object current = myData.get("state");
+  @JsonIgnore public Collection<String> getValues() {
+    final Object current = myData.get("value");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
       return (Collection<String>) current;
@@ -48,117 +48,48 @@ public class Issue extends CreativeWork {
     return Arrays.asList((String) current);
   }
   /**
-   * Project this issue belongs to.
+   * Previous property value.
    */
-  @JsonIgnore public Project getProject() {
-    return (Project) getValue("project");
+  @JsonIgnore public String getOldValue() {
+    return (String) getValue("oldValue");
   }
   /**
-   * Project this issue belongs to.
+   * Previous property value.
    */
-  @JsonIgnore public Collection<Project> getProjects() {
-    final Object current = myData.get("project");
+  @JsonIgnore public Collection<String> getOldValues() {
+    final Object current = myData.get("oldValue");
     if (current == null) return Collections.emptyList();
     if (current instanceof Collection) {
-      return (Collection<Project>) current;
+      return (Collection<String>) current;
     }
-    return Arrays.asList((Project) current);
+    return Arrays.asList((String) current);
   }
-  /**
-   * Issue property.
-   */
-  @JsonIgnore public IssueField getField() {
-    return (IssueField) getValue("field");
-  }
-  /**
-   * Issue property.
-   */
-  @JsonIgnore public Collection<IssueField> getFields() {
-    final Object current = myData.get("field");
-    if (current == null) return Collections.emptyList();
-    if (current instanceof Collection) {
-      return (Collection<IssueField>) current;
-    }
-    return Arrays.asList((IssueField) current);
-  }
-  /**
-   * Related source code revisions.
-   */
-  @JsonIgnore public SourceCodeRevision getSourceCodeRevision() {
-    return (SourceCodeRevision) getValue("sourceCodeRevision");
-  }
-  /**
-   * Related source code revisions.
-   */
-  @JsonIgnore public Collection<SourceCodeRevision> getSourceCodeRevisions() {
-    final Object current = myData.get("sourceCodeRevision");
-    if (current == null) return Collections.emptyList();
-    if (current instanceof Collection) {
-      return (Collection<SourceCodeRevision>) current;
-    }
-    return Arrays.asList((SourceCodeRevision) current);
-  }
-  protected Issue(java.util.Map<String,Object> data) {
+  protected IssueField(java.util.Map<String,Object> data) {
     super(data);
   }
   
   /**
-   * Builder for {@link Issue}
+   * Builder for {@link IssueField}
    */
   public static class Builder extends CreativeWork.Builder {
     public Builder(@NotNull HashMap<String,Object> data) {
       super(data);
     }
-    @NotNull public Issue build() {
-      return new Issue(myData);
+    @NotNull public IssueField build() {
+      return new IssueField(myData);
     }
     /**
-     * Issue state
+     * Property value.
      */
-    @NotNull public Builder state(@NotNull String state) {
-      putValue("state", state);
+    @NotNull public Builder value(@NotNull String value) {
+      putValue("value", value);
       return this;
     }
     /**
-     * Project this issue belongs to.
+     * Previous property value.
      */
-    @NotNull public Builder project(@NotNull Project project) {
-      putValue("project", project);
-      return this;
-    }
-    /**
-     * Project this issue belongs to.
-     */
-    @NotNull public Builder project(@NotNull Project.Builder project) {
-      putValue("project", project.build());
-      return this;
-    }
-    /**
-     * Issue property.
-     */
-    @NotNull public Builder field(@NotNull IssueField issueField) {
-      putValue("field", issueField);
-      return this;
-    }
-    /**
-     * Issue property.
-     */
-    @NotNull public Builder field(@NotNull IssueField.Builder issueField) {
-      putValue("field", issueField.build());
-      return this;
-    }
-    /**
-     * Related source code revisions.
-     */
-    @NotNull public Builder sourceCodeRevision(@NotNull SourceCodeRevision sourceCodeRevision) {
-      putValue("sourceCodeRevision", sourceCodeRevision);
-      return this;
-    }
-    /**
-     * Related source code revisions.
-     */
-    @NotNull public Builder sourceCodeRevision(@NotNull SourceCodeRevision.Builder sourceCodeRevision) {
-      putValue("sourceCodeRevision", sourceCodeRevision.build());
+    @NotNull public Builder oldValue(@NotNull String oldValue) {
+      putValue("oldValue", oldValue);
       return this;
     }
     /**
@@ -1257,14 +1188,10 @@ public class Issue extends CreativeWork {
       return id(Long.toString(id));
     }
     @Override protected void fromMap(String key, Object value) {
-      if ("state".equals(key) && value instanceof String) { state((String)value); return; }
-      if ("states".equals(key) && value instanceof String) { state((String)value); return; }
-      if ("project".equals(key) && value instanceof Project) { project((Project)value); return; }
-      if ("projects".equals(key) && value instanceof Project) { project((Project)value); return; }
-      if ("field".equals(key) && value instanceof IssueField) { field((IssueField)value); return; }
-      if ("fields".equals(key) && value instanceof IssueField) { field((IssueField)value); return; }
-      if ("sourceCodeRevision".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
-      if ("sourceCodeRevisions".equals(key) && value instanceof SourceCodeRevision) { sourceCodeRevision((SourceCodeRevision)value); return; }
+      if ("value".equals(key) && value instanceof String) { value((String)value); return; }
+      if ("values".equals(key) && value instanceof String) { value((String)value); return; }
+      if ("oldValue".equals(key) && value instanceof String) { oldValue((String)value); return; }
+      if ("oldValues".equals(key) && value instanceof String) { oldValue((String)value); return; }
       super.fromMap(key, value);
     }
   }

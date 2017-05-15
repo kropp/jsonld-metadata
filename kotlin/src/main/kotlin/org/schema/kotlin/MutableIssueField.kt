@@ -1,22 +1,13 @@
 package org.schema.kotlin
 import org.schema.*
-class MutableIssue {
+class MutableIssueField {
   private val map = HashMap<String,Any>()
-  var state: String
-    get() = map["state"] as String
-    set(value) { map["state"] = value }
-  var project: Project
-    get() = map["project"] as Project
-    set(value) { map["project"] = value }
-  fun project(builder: MutableProject.() -> Unit) { map["project"] = MutableProject().apply(builder).build() }
-  var field: IssueField
-    get() = map["field"] as IssueField
-    set(value) { map["field"] = value }
-  fun field(builder: MutableIssueField.() -> Unit) { map["field"] = MutableIssueField().apply(builder).build() }
-  var sourceCodeRevision: SourceCodeRevision
-    get() = map["sourceCodeRevision"] as SourceCodeRevision
-    set(value) { map["sourceCodeRevision"] = value }
-  fun sourceCodeRevision(builder: MutableSourceCodeRevision.() -> Unit) { map["sourceCodeRevision"] = MutableSourceCodeRevision().apply(builder).build() }
+  var value: String
+    get() = map["value"] as String
+    set(value) { map["value"] = value }
+  var oldValue: String
+    get() = map["oldValue"] as String
+    set(value) { map["oldValue"] = value }
   var schemaVersion: String
     get() = map["schemaVersion"] as String
     set(value) { map["schemaVersion"] = value }
@@ -310,5 +301,5 @@ class MutableIssue {
   var id: String
     get() = map["id"] as String
     set(value) { map["id"] = value }
-  fun build() = org.schema.Issue.Builder(map).build()
+  fun build() = org.schema.IssueField.Builder(map).build()
 }

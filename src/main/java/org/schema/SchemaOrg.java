@@ -35,6 +35,10 @@ public class SchemaOrg {
    */
   @NotNull public static WriteAction.Builder writeAction() { return new WriteAction.Builder(new HashMap<String,Object>()); }
   /**
+   * A property of an issue
+   */
+  @NotNull public static IssueField.Builder issueField() { return new IssueField.Builder(new HashMap<String,Object>()); }
+  /**
    * All-wheel Drive is a transmission layout where the engine drives all four wheels.
    */
   @NotNull public static AllWheelDriveConfiguration.Builder allWheelDriveConfiguration() { return new AllWheelDriveConfiguration.Builder(new HashMap<String,Object>()); }
@@ -2421,6 +2425,7 @@ See also the <a href="/docs/hotels.html">dedicated document on the use of schema
   public static ThingBuilder getBuilder(@NotNull String type) {
     if ("CollegeOrUniversity".equals(type)) { return new CollegeOrUniversity.Builder(new HashMap<String,Object>()); }
     if ("WriteAction".equals(type)) { return new WriteAction.Builder(new HashMap<String,Object>()); }
+    if ("IssueField".equals(type)) { return new IssueField.Builder(new HashMap<String,Object>()); }
     if ("AllWheelDriveConfiguration".equals(type)) { return new AllWheelDriveConfiguration.Builder(new HashMap<String,Object>()); }
     if ("Dentist".equals(type)) { return new Dentist.Builder(new HashMap<String,Object>()); }
     if ("BusStop".equals(type)) { return new BusStop.Builder(new HashMap<String,Object>()); }

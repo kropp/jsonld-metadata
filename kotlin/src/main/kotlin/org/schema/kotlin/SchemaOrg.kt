@@ -2,6 +2,7 @@ package org.schema.kotlin
 
 fun collegeOrUniversity(builder: MutableCollegeOrUniversity.() -> Unit) = MutableCollegeOrUniversity().apply(builder).build()
 fun writeAction(builder: MutableWriteAction.() -> Unit) = MutableWriteAction().apply(builder).build()
+fun issueField(builder: MutableIssueField.() -> Unit) = MutableIssueField().apply(builder).build()
 fun allWheelDriveConfiguration(builder: MutableAllWheelDriveConfiguration.() -> Unit) = MutableAllWheelDriveConfiguration().apply(builder).build()
 fun dentist(builder: MutableDentist.() -> Unit) = MutableDentist().apply(builder).build()
 fun busStop(builder: MutableBusStop.() -> Unit) = MutableBusStop().apply(builder).build()
